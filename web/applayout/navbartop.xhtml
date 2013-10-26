@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+
+        <ui:composition>
+            
+            <b:navBar brand="BootsFaces" brandHref="#{request.contextPath}" inverse="true" fixed="top">
+                <b:navbarLinks>
+                    <b:navLink></b:navLink>
+                    <b:navLink></b:navLink>
+                    <b:navLink outcome="/download" value="Getting Started"></b:navLink>
+                    <b:dropMenu value="Layout">
+                        <b:navLink value="Basic Layout" outcome="/layout/basic"></b:navLink>
+                        <b:navLink value="Listlinks and NavLink" outcome="/layout/listLinks" icon="list"></b:navLink>
+                        <b:navLink value="Navbars" outcome="/layout/navbars"></b:navLink>
+                        <b:navLink value="Panels" outcome="/layout/panels"></b:navLink>
+                        <b:navLink value="Jumbotron" outcome="/layout/jumbotron"></b:navLink>
+                        <b:navLink value="Wells" outcome="/layout/wells"></b:navLink>
+                    </b:dropMenu>
+                    <b:dropMenu value="Forms">
+                        <b:navLink value="Buttons" outcome="/forms/buttons"></b:navLink>
+                        <b:navLink value="Command Button" outcome="/forms/commandButton"></b:navLink>
+                        <b:navLink value="Input Text" outcome="/forms/inputText"></b:navLink>
+                    </b:dropMenu>
+                    <b:dropMenu value="Bootstrap Widgets">
+                        <b:navLink value="Alerts" outcome="/bootstrap/alerts"></b:navLink>
+                        <b:navLink value="Labels and Badges" outcome="/bootstrap/labelsbadge" icon="tag"></b:navLink>
+                        <b:navLink value="Modals" outcome="/bootstrap/modal"></b:navLink>
+                        <!--b:navLink value="Popover"></b:navLink-->
+                    </b:dropMenu>
+                    <b:dropMenu value="jQuery UI Widgets">
+                        <b:navLink value="Slider" outcome="/jquery-ui/slider"></b:navLink>
+                        <b:navLink value="DatePicker" outcome="/jquery-ui/datepicker" icon="calendar"></b:navLink>
+                    </b:dropMenu>
+                </b:navbarLinks>
+                <ul class="nav navbar-nav pull-right">
+                    <b:navLink outcome="/examples/index" value="Examples" icon="eye-open icon-white"></b:navLink>
+                </ul>
+            </b:navBar>
+
+        </ui:composition>
+    </h:body>
+</html>
+

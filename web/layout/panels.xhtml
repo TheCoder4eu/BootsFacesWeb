@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>BootsFaces: next-gen JSF Framework</title>
+        <meta name="author" content="Riccardo Massera"></meta>
+    </h:head>
+    <h:body style="padding-top: 60px">
+        <ui:composition template="/applayout/pageTemplate.xhtml">
+            <ui:define name="content">
+                <h1>Panels</h1>
+                <p>While not always necessary, sometimes you need to put your DOM in a box. For those situations, the panel component comes in handy.</p>
+
+                <h3>Basic example</h3>
+                <p>By default, all the <code>&lt;b:panel&gt;</code> does is apply some basic border and padding to contain some content.</p>
+
+                <b:panel>
+                    <h:outputText value="Basic panel example "/>
+                </b:panel>
+
+                <h3 id="panels-heading">Panel with heading</h3>
+                <p>Easily add a heading container to your panel specifying the <code>heading</code> facet. You may also include any <code>&lt;h1&gt;</code>-<code>&lt;h6&gt;</code> to add a pre-styled heading.</p>
+                <p>As an alternative, you can specify a Title with the <code>title</code> attribute; since this is  meant as an option, the heading facet will not be rendered and the panel will render with a heading having the attribute's value as Title.</p>
+
+                <b:panel>
+                    <f:facet name="heading">
+                        <h:outputText value="Panel heading without title"/>
+                    </f:facet>
+                    <h:outputText value="Panel Content"/>
+                </b:panel>
+                <br/>
+                <b:panel title="Panel title">
+                    <f:facet name="heading">
+                        <h:outputText value="Panel heading without title"/>
+                    </f:facet>
+                    <h:outputText value="Panel Content"/>
+                </b:panel>
+                <br/>
+                <h3 id="panels-alternatives">Contextual alternatives</h3>
+                <p>Like other components, easily make a panel more meaningful to a particular context by adding a <code>look</code> attribute with values primary, success, info, warning or danger.</p>
+                <b:panel title="Panel Title - Primary" look="primary">
+                    <h:outputText value="Panel Content"/>
+                </b:panel>
+                <b:panel title="Panel Title - Success" look="success">
+                    <h:outputText value="Panel Content"/>
+                </b:panel>
+                <b:panel title="Panel Title - Info" look="info">
+                    <h:outputText value="Panel Content"/>
+                </b:panel>
+                <b:panel title="Panel Title - Warning" look="warning">
+                    <h:outputText value="Panel Content"/>
+                </b:panel>
+                <b:panel title="Panel Title - Danger" look="danger">
+                    <h:outputText value="Panel Content"/>
+                </b:panel>
+                <h3 id="panels-footer">Panel with footer</h3>
+                <p>Wrap buttons or secondary text in a <code>footer</code> facet. Note that panel footers <strong>do not</strong> inherit colors and borders when using contextual variations as they are not meant to be in the foreground.</p>
+                <b:panel title="Panel with Footer" look="info">
+                    <h:outputText value="Panel Content"/>
+                    <f:facet name="footer">
+                        <h:outputText value="Panel Footer"/>
+                    </f:facet>
+                </b:panel>
+                <br/><br/><br/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

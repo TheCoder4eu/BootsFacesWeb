@@ -1,0 +1,191 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>BootFaces: next-gen JSF Framework</title>
+        <meta name="author" content="Riccardo Massera"></meta>
+    </h:head>
+    <h:body style="padding-top: 60px">
+        <ui:composition template="/applayout/pageTemplate.xhtml">
+            <ui:define name="content">
+                <h1>Navbars</h1>
+                <p>The main use of the NavBar component, when designing an application or website, is to place a Navigation bar at top, bottom or both of the page.</p>
+                <p>The NavBar tipically will have a Brand, that could be, for example, the name of your Project.</p>
+                <b:panel>
+                    <f:facet name="heading"><b>EXAMPLE</b></f:facet>
+                    <b:navBar brand="Brand" brandHref="#">
+                        <b:navbarLinks>
+                            <b:navLink value="Link" href="#"></b:navLink>
+                            <b:navLink value="Link" href="#"></b:navLink>
+                            <b:dropMenu value="Dropdown">
+                                <b:navLink value="Action" href="#"></b:navLink>
+                                <b:navLink value="Another action" href="#"></b:navLink>
+                                <b:navLink value="Something else here" href="#"></b:navLink>
+                                <b:navLink></b:navLink>
+                                <b:navLink header="Nav header"></b:navLink>
+                                <b:navLink value="Separated link" href="#"></b:navLink>
+                                <b:navLink value="One more separated link" href="#"></b:navLink>
+                            </b:dropMenu>
+                        </b:navbarLinks>
+                        <form class="navbar-form navbar-left" role="search">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search"/>
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit</button>
+                        </form>
+                        <b:navbarLinks pull="right">
+                            <b:navLink value="Link" href="#"></b:navLink>
+                            <b:dropMenu value="Dropdown">
+                                <b:navLink value="Action" href="#"></b:navLink>
+                                <b:navLink value="Another action" href="#"></b:navLink>
+                                <b:navLink value="Something else here" href="#"></b:navLink>
+                                <b:navLink></b:navLink>
+                                <b:navLink header="Nav header"></b:navLink>
+                                <b:navLink value="Separated link" href="#"></b:navLink>
+                                <b:navLink value="One more separated link" href="#"></b:navLink>
+                            </b:dropMenu>
+                        </b:navbarLinks>
+                    </b:navBar>
+                </b:panel>
+                <p>A navbar can be rendered in different ways, to fit in your page layout scheme.</p>
+                <p>The default NavBar appears as part of the page content, tipically centered and at the beginning.</p>
+                <p>The two other ways a Navigation Bar can be rendered in the page are:</p>
+                <ul>
+                    <li><b>fixed</b> to the top or bottom of the page, without scrolling with the content, </li>
+                    <li>statically on top of the page, scrolling away with the page.</li>
+                </ul>
+                <p>To better understand the different layouts, just have a look at the <h:link outcome="/examples/navbar" value="NavBar examples"/></p>
+                <br/>
+                
+                <h3>Using the b:navbar Tag</h3>
+                <p>Using the <code>b:navbar</code> tag is very straightforward, as you can see from the following table you need to specify few attributes:</p>
+                
+                <strong>Widget attributes</strong>
+                <table class="table table-bordered table-striped">
+                    <caption>b:navbar</caption>
+                    <thead>
+                        <tr>
+                            <th>Attribute</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>brand</code></td>
+                            <td>String</td>
+                            <td>Brand for the Navbar.</td>
+                        </tr>
+                        <tr>
+                            <td><code>brandHref</code></td>
+                            <td>String</td>
+                            <td>Link URL for the Navbar Brand.</td>
+                        </tr>
+                        <tr>
+                            <td><code>static</code></td>
+                            <td>boolean</td>
+                            <td>If true, a full-width navbar that scrolls away with the page will be rendered. Can be true or false, default false.</td>
+                        </tr>
+                        <tr>
+                            <td><code>fixed</code></td>
+                            <td>String</td>
+                            <td>If specified, the Fixed Bar will be rendered on top or bottom of the page. Can be bottom or top.</td>
+                        </tr>
+                        <tr>
+                            <td><code>inverse</code></td>
+                            <td>boolean</td>
+                            <td>Boolean value to specify if Navbar should use inverse color scheme.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br/>
+                <strong>Inverted Navbar</strong>
+                <p>Modify the look of the navbar by adding the <code>inverse</code> attribute:</p>
+                <b:panel>
+                    <f:facet name="heading"><b>EXAMPLE</b></f:facet>
+                    <b:navBar brand="Brand" brandHref="#" inverse="true">
+                        <b:navbarLinks>
+                            <b:navLink value="Home" href="#"></b:navLink>
+                            <b:navLink value="Link" href="#"></b:navLink>
+                            <b:navLink value="Link" href="#"></b:navLink>
+                        </b:navbarLinks>
+                    </b:navBar>
+                    <f:facet name="footer">
+                        <strong>Markup:</strong><br/>
+
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
+                            <![CDATA[
+                            <b:navBar brand="Brand" brandHref="#" inverse="true">
+                                <b:navbarLinks>
+                                    <b:navLink value="Home" href="#"></b:navLink>
+                                    <b:navLink value="Link" href="#"></b:navLink>
+                                    <b:navLink value="Link" href="#"></b:navLink>
+                                </b:navbarLinks>
+                            </b:navBar>
+
+                            ]]></script>
+                    </f:facet>
+                </b:panel>
+                <br/>
+                <strong>Navbar Links</strong>
+                <p>A NavBar will also contain a set of links. You can add the links to <code>b:navbar</code> using <code>b:navLink</code> as you do with <h:link outcome="listLinks" value="listLinks"/>.</p>
+                <p>The difference is that you nest the <code>b:navLink</code> elements inside a <code>b:navbarLinks</code> element instead of <code>b:listLinks</code> element.</p>
+                <br/>
+                <strong>Drop Menus</strong>
+                <p>You can build up a rich menu bar using anoter useful element: <code>b:dropMenu</code>. It is another element where you can put your <code>b:navLink</code> elements.</p>
+                <p>You can have multiple <code>b:navbarLinks</code> and <code>b:dropMenu</code> elements in a navbar, just pay attention to the resulting layout.</p>
+                <b:panel>
+                    <f:facet name="heading"><b>EXAMPLE</b></f:facet>
+                    <b:navBar brand="Brand" brandHref="#">
+                        <b:navbarLinks>
+                            <b:navLink value="Home" href="#"></b:navLink>
+                            <b:navLink value="Link" href="#"></b:navLink>
+                            <b:navLink value="Link" href="#"></b:navLink>
+                            <b:dropMenu value="Dropdown">
+                                <b:navLink value="Action" href="#"></b:navLink>
+                                <b:navLink value="Another action" href="#"></b:navLink>
+                                <b:navLink value="Something else here" href="#"></b:navLink>
+                                <b:navLink></b:navLink>
+                                <b:navLink header="Nav header"></b:navLink>
+                                <b:navLink value="Separated link" href="#"></b:navLink>
+                                <b:navLink value="One more separated link" href="#"></b:navLink>
+                            </b:dropMenu>
+                        </b:navbarLinks>
+                    </b:navBar>
+                    <f:facet name="footer">
+                        <strong>Markup:</strong><br/>
+
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
+                            <![CDATA[
+                            <b:navBar brand="Brand" brandHref="#">
+                                <b:navbarLinks>
+                                    <b:navLink value="Home" href="#"></b:navLink>
+                                    <b:navLink value="Link" href="#"></b:navLink>
+                                    <b:navLink value="Link" href="#"></b:navLink>
+                                    <b:dropMenu value="Dropdown">
+                                        <b:navLink value="Action" href="#"></b:navLink>
+                                        <b:navLink value="Another action" href="#"></b:navLink>
+                                        <b:navLink value="Something else here" href="#"></b:navLink>
+                                        <b:navLink></b:navLink>
+                                        <b:navLink header="Nav header"></b:navLink>
+                                        <b:navLink value="Separated link" href="#"></b:navLink>
+                                        <b:navLink value="One more separated link" href="#"></b:navLink>
+                                    </b:dropMenu>
+                                </b:navbarLinks>
+                            </b:navBar>
+
+                            ]]></script>
+                    </f:facet>
+                </b:panel>
+                <br/><br/><br/>
+                <script type="text/javascript">
+                    SyntaxHighlighter.all();
+                </script>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

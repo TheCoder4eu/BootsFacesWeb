@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>BootsFaces: next-gen JSF Framework</title>
+        <meta name="author" content="Riccardo Massera"></meta>
+    </h:head>
+    <h:body style="padding-top: 60px;">
+        <ui:composition template="/applayout/pageTemplate.xhtml">
+            <ui:define name="content">
+                <style>
+                    img.thumbnail:hover, img.thumbnail:focus {
+                        border: 2px solid;
+                        border-color: #428BCA;
+                    }
+                </style>
+                <h1>Examples</h1>
+                <p>These BootsFaces examples are ports of Twitter Bootstrap 3 examples.</p>
+                <p>They are built using JSF and BootsFaces's components, to show the framework in action and how it can be used to build your pages.</p>
+                <p>You can get them as a point of start for developing your projects.</p>
+                <b:row>
+                    <b:column span="4">
+                        <h:link outcome="template">
+                            <h:graphicImage library="examples" class="thumbnail" name="starter-template.jpg"/>
+                        </h:link>
+                        <h4>Starter template</h4>
+                        <p>Nothing but the basics: compiled CSS and JavaScript along with a container.</p>
+                    </b:column>
+                    <b:column span="4">
+                        <h:link outcome="comingsoon">
+                            <h:graphicImage library="examples" class="thumbnail" name="grid.jpg"/>
+                        </h:link>
+                        <h4>Grids</h4>
+                        <p>Multiple examples of grid layouts with all four tiers, nesting, and more.</p>
+                    </b:column>
+                    <b:column span="4">
+                        <h:link outcome="comingsoon">
+                            <h:graphicImage library="examples" class="thumbnail" name="jumbotron.jpg"/>
+                        </h:link>
+                        <h4>Jumbotron</h4>
+                        <p>Build around the jumbotron with a navbar and some basic grid columns.</p>
+                    </b:column>
+                    <b:column span="4">
+                        <h:link outcome="navbar">
+                            <h:graphicImage library="examples" class="thumbnail" name="navbar.jpg"/>
+                        </h:link>
+                        <h4>Navbar</h4>
+                        <p>Super basic template that includes the navbar along with some additional content.</p>
+                    </b:column>
+                    <b:column span="4">
+                        <h:link outcome="navbar-static-top">
+                            <h:graphicImage library="examples" class="thumbnail" name="navbar-static.jpg"/>
+                        </h:link>
+                        <h4>Static top navbar</h4>
+                        <p>Super basic template with a static top navbar along with some additional content.</p>
+                    </b:column>
+                    <b:column span="4">
+                        <h:link outcome="navbar-fixed-top">
+                            <h:graphicImage library="examples" class="thumbnail" name="navbar-fixed.jpg"/>
+                        </h:link>
+                        <h4>Fixed navbar</h4>
+                        <p>Super basic template with a fixed top navbar along with some additional content.</p>
+                    </b:column>
+                    
+                </b:row>
+                <br/><br/><br/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

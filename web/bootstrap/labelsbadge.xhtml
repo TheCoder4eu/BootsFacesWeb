@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>BootFaces: next-gen JSF Framework</title>
+        <meta name="author" content="Riccardo Massera"></meta>
+    </h:head>
+    <h:body style="padding-top: 60px">
+        <ui:composition template="/applayout/pageTemplate.xhtml">
+            <ui:define name="content">
+                <h1>Labels and Badges</h1>
+                <b:well size="large">
+                    <h:panelGrid columns="4" cellpadding="5">
+                        <h:outputText value="Label" /><h:outputText value="Badge" />
+                        <h:outputText value="Label" /><h:outputText value="Badge" />
+                        <b:label text="Default"/> <b:badge value="1"/>
+                        <b:label text="Success" severity="success"/> <b:badge value="7" severity="success"/>
+                        <b:label text="Warning" severity="warning"/> <b:badge value="9" severity="warning"/>
+                        <b:label text="Danger" severity="danger"/> <b:badge value="4" severity="important"/>
+                        <b:label text="Info" severity="info"/> <b:badge value="12" severity="info"/>
+                        <b:label text="Primary" severity="primary"/> <b:badge value="3" severity="inverse"/>
+                    </h:panelGrid>
+                </b:well>
+                <p><i>Note: starting from Bootstrap 3, the Badge has no more severity colors and some severity level names for label have changed(important => danger and inverse=> primary).</i></p>
+                <br/>
+                <b:well>
+                    <strong>Labels and badges showing EL values</strong>
+                    <h:panelGrid columns="4" cellpadding="5">
+                        <h:outputText value="Label" /><h:outputText value="Badge" />
+                        <h:outputText value="Label" /><h:outputText value="Badge" />
+                        <b:label text="#{testBean.label1}" severity="info"/> <b:badge value="#{testBean.val1}" />
+                        <b:label text="#{testBean.label2}" severity="success"/> <b:badge value="#{testBean.val2}" />
+                    </h:panelGrid>
+                </b:well>
+                <strong>Markup:</strong><br/>
+                
+                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                <![CDATA[
+                <b:well>
+                    <strong>Labels and badges with EL values</strong>
+                    <h:panelGrid columns="4" cellpadding="5">
+                        <h:outputText value="Label" /><h:outputText value="Badge" />
+                        <h:outputText value="Label" /><h:outputText value="Badge" />
+                        <b:label text="&#35;{testBean.label1}" severity="info"/>
+                        <b:badge value="&#35;{testBean.val1}" />
+                        <b:label text="&#35;{testBean.label2}" severity="success" />
+                        <b:badge value="&#35;{testBean.val2}" />
+                    </h:panelGrid>
+                </b:well>
+            
+                ]]></script>
+                <script type="text/javascript">
+                    SyntaxHighlighter.all();
+                </script>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

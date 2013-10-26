@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>BootsFaces: next-gen JSF Framework</title>
+        <meta name="author" content="Riccardo Massera"></meta>
+    </h:head>
+    <h:body style="padding-top: 60px">
+        <ui:composition template="/applayout/pageTemplate.xhtml">
+            <ui:define name="content">
+
+                <b:row>
+                    <div class="jumbotron">
+                        <h1>BootsFaces</h1>
+                        <p>Welcome to BootsFaces, a powerful JSF framework that takes the best from</p>
+                        <p>Twitter Bootstrap 3 and jQuery UI to let you develop Enterprise Websites fast and easy.</p>
+                        <b:button outcome="/download" value="Download BootsFaces" icon="save" look="success"/>
+                    </div>
+                </b:row>
+                <b:row>
+                    <b:column span="4">
+                        <b:panel title="Design your Application quickly" look="primary">
+                            
+                        </b:panel>
+                    </b:column>
+                    <b:column span="4">
+                        <b:panel title="Simple to use" look="warning">
+                            
+                        </b:panel>
+                    </b:column>
+                    <b:column span="4">
+                        <b:panel title="Ready for the cloud" look="success">
+                            
+                        </b:panel>
+                    </b:column>
+                </b:row>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

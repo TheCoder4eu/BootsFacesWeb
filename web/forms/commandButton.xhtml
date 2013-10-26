@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>BootFaces: next-gen JSF Framework</title>
+        <meta name="author" content="Riccardo Massera"></meta>
+    </h:head>
+    <h:body style="padding-top: 60px">
+        <ui:composition template="/applayout/pageTemplate.xhtml">
+            <ui:define name="content">
+                <h1>CommandButton</h1>
+            <h:form id="form">
+                <p>The b:commandButton tag extends the standard h:commandButton with Ajax, and partial processing features.
+                </p>
+                <b:well>
+                    <h3>Personal Information</h3>
+                    <h:panelGrid id="inform" columns="3" cellpadding="5">  
+                        <h:outputLabel for="firstname" value="Firstname: *" />  
+                        <b:inputText id="firstname" value="#{informBean.firstname}" >  
+                            <f:validateLength minimum="2" />  
+                        </b:inputText><h:message for="firstname" />
+
+                        <h:outputLabel for="familyname" value="Family (surname/last) name: *" />  
+                        <b:inputText id="familyname" value="#{informBean.familyname}" />
+                    </h:panelGrid><h:message for="familyname" />
+                </b:well>
+                <b:row>
+                    <b:column span="2">
+                        <b:commandButton value="No Ajax Submit" id="cb" />
+                    </b:column>
+                    <b:column span="2">
+                        <b:commandButton value="Ajax Submit" ajax="true" update="form:inform infoshow" id="ajaxcb" look="primary" />
+                    </b:column>
+                    <b:column span="2">
+                        <b:commandButton value="With Icon" ajax="true" update="form:inform infoshow" id="acb" icon="plus-sign" look="success" />
+                    </b:column>
+                    <b:column span="2">
+                        <b:commandButton value="Ajax Modal" ajax="true" update="form:inform amodal" id="ajaxmodal" 
+                                         look="inverse" oncomplete="$('#amodal').modal('show');"/>
+                    </b:column>
+                    <b:column span="2">
+                        <b:commandButton value="" ajax="true" update="form:inform infoshow" icon="plus-sign" look="info" />
+                    </b:column>
+                    
+                </b:row>
+                <!-- actionListener="" /--> 
+            </h:form>
+                <br/>
+            <b:well id="infoshow">
+                <strong>Submitted information:</strong>
+                <h:panelGrid columns="2">  
+                    <h:outputText value="Firstname: " />  
+                    <h:outputText value="#{informBean.firstname}" />  
+
+                    <h:outputText value="Family (surname/last) name: " />  
+                    <h:outputText value="#{informBean.familyname}" />  
+                </h:panelGrid>
+            </b:well>
+            <b:modal id="amodal" title="Person">
+                <h:panelGrid columns="2">  
+                    <h:outputText value="Firstname: " />  
+                    <h:outputText value="#{informBean.firstname}" />  
+
+                    <h:outputText value="Family (surname/last) name: " />  
+                    <h:outputText value="#{informBean.familyname}" />  
+                </h:panelGrid>
+                <f:facet name="footer">
+                    <b:button value="close" dismiss="modal" onclick="return false;"/>
+                    <b:button value="Ok" look="primary"/>
+                </f:facet>
+            </b:modal>
+                <br/><br/><br/><br/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

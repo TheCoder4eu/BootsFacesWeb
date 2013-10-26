@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>BootsFaces: next-gen JSF Framework</title>
+        <meta name="author" content="Riccardo Massera"></meta>
+    </h:head>
+    <h:body style="padding-top: 60px">
+        <ui:composition template="/applayout/pageTemplate.xhtml">
+            <ui:define name="content">
+                <h1>Download BootsFaces</h1>
+                <b:alert severity="warning" title="Not for production yet" closable="true" >
+                    <p>This is the first stable release of BootsFaces , but the development continues.</p>
+                    <p>The project has been developed with great care but still there is no guarantee that everything works perfectly.</p>
+                    <p>However we encourage you to try BootsFaces and give us your feedback, which is of course greatly appreciated.</p>
+                </b:alert>
+                <p>Current version: 0.3.0</p>
+                <a class="btn btn-lg btn-primary" href="/downloads/BootsFaces-0.3.0.jar"><span class="glyphicon glyphicon-save"></span> Download BootsFaces</a>
+                <br/><br/>
+                <p>BootsFaces is planned to support:
+                    <ul>
+                        <li>Twitter Bootstrap Layout and Widgets</li>
+                        <li>Autocomplete, Datepicker and Slider jQuery-UI's widgets.</li>
+                    </ul>
+                </p>
+                <p>The focus of the 0.3+ release(s) will be on:
+                    <ul>
+                        <li>Layout</li>
+                        <li>Forms</li>
+                        <li>Supporting most widgets of Bootstrap</li>
+                        <li>Support of Datepicker and Slider jQuery-UI's widgets.</li>
+
+                    </ul>
+                </p>
+                <br/><br/><br/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

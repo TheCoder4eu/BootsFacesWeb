@@ -1,0 +1,204 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>BootFaces: next-gen JSF Framework</title>
+        <meta name="author" content="Riccardo Massera"></meta>
+    </h:head>
+    <h:body style="padding-top: 60px">
+        <ui:composition template="/applayout/pageTemplate.xhtml">
+            <ui:define name="content">
+                <h1>InputText</h1>
+                
+                <p>The most common form controls are text-based input fields. </p>
+                    Future versions of BootFaces will try to add support for the most relevant HTML5 types: 
+                <p>    text, password, datetime, datetime-local, date, month, time, week, number, email, url, search, tel, and color.</p>
+                <br/>
+                <p>The most simple example is a plain <code>b:inputText</code> with a <code>placeholder</code> attribute, which contains an hint that is shown in the input field until something is typed in it.</p>
+                <h:form>
+                    <b:inputText placeholder="Type something here..."/>
+                </h:form>
+                <p>As you noticed, the input is as large as its parent container. You will see how to control its size later in this section.</p>
+                <br/>
+                <h3>Enhancing the b:inputText form control</h3>
+                <p>To help you enhance the User experience, BootFaces come in with a useful feature:</p>
+                <p>you can easily prepend or append text to your inputTexts and what you prepend and append will seem part of the input field.</p>
+                <p>To do so, you just need to use the facets <code>prepend</code> and <code>append</code> where you will place the <code>h:outputText</code> element</p>
+                <p>You can even prepend and append at the same time, as in the following example:</p>
+                <h:form>
+                    <h:panelGrid columns="2"  cellpadding="5">
+                        <h:outputText value="e-mail:"/>
+                        <b:inputText>
+                            <f:facet name="prepend">
+                                <h:outputText value="@" />
+                            </f:facet>
+                        </b:inputText>
+                        <h:outputText value="Amount:"/>
+                        <b:inputText>
+                            <f:facet name="append">
+                                <h:outputText value=".00" />
+                            </f:facet>
+                        </b:inputText>
+                        <h:outputText value="Price:"/>
+                        <b:inputText>
+                            <f:facet name="prepend">
+                                <h:outputText value="$" />
+                            </f:facet>
+                            <f:facet name="append">
+                                <h:outputText value=".00" />
+                            </f:facet>
+                        </b:inputText>
+                    </h:panelGrid>
+                </h:form>
+                <strong>Markup:</strong><br/>
+                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+<![CDATA[
+<h:form>
+    <h:panelGrid columns="2" cellpadding="5">
+        <h:outputText value="e-mail:"/>
+        <b:inputText>
+            <f:facet name="prepend">
+                <h:outputText value="@" />
+            </f:facet>
+        </b:inputText>
+        <h:outputText value="Amount:"/>
+        <b:inputText>
+            <f:facet name="append">
+                <h:outputText value=".00" />
+            </f:facet>
+        </b:inputText>
+        <h:outputText value="Price:"/>
+        <b:inputText>
+            <f:facet name="prepend">
+                <h:outputText value="$" />
+            </f:facet>
+            <f:facet name="append">
+                <h:outputText value=".00" />
+            </f:facet>
+        </b:inputText>
+    </h:panelGrid>
+</h:form>
+
+]]></script>
+                <p>Finally, you can go further and prepend or append more text elements, as in the following example:</p>
+                <h:form>
+                    <h:panelGrid columns="2" cellpadding="10">
+                        
+                        <h:outputText value="Your Bid:"/>
+                        
+                        <b:inputText value="99">
+                            <f:facet name="prepend">
+                                <h:outputText value="offer" />
+                                <h:outputText value="$" />
+                            </f:facet>
+                            <f:facet name="append">
+                                <h:outputText value=".00" />
+                                <h:outputText value="cash" />
+                            </f:facet>
+                        </b:inputText>
+                    </h:panelGrid>
+                </h:form>
+                <strong>Markup:</strong><br/>
+                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+<![CDATA[
+<h:form>
+    <h:panelGrid columns="2" cellpadding="5">
+
+        <h:outputText value="Your Bid:"/>
+        <b:inputText value="99" span="1">
+            <f:facet name="prepend">
+                <h:outputText value="offer" />
+                <h:outputText value="$" />
+            </f:facet>
+            <f:facet name="append">
+                <h:outputText value=".00" />
+                <h:outputText value="cash" />
+            </f:facet>
+        </b:inputText>
+    </h:panelGrid>
+</h:form>
+
+]]></script>
+                <strong>Appending or prepending Buttons</strong><br/>
+                <p>Another nice feature is that you can append(or prepend) buttons mixed with text:</p>
+                <h:form>
+                    <h:panelGrid columns="2" cellpadding="5">
+                        
+                        <h:outputText value="Your Offer:"/>
+                        <b:inputText value="#{testBean.val6}">
+                            <f:facet name="prepend">
+                                <h:outputText value="$" />
+                            </f:facet>
+                            <f:facet name="append">
+                                <h:outputText value=".00" />
+                                <b:commandButton look="primary" value="Bid!" update="amodal" oncomplete="$('#amodal').modal('show');"/>
+                                <b:button look="danger" value="Cancel"/>
+                            </f:facet>
+                        </b:inputText>
+                    </h:panelGrid>
+                </h:form>
+                <p>allowing you to build compact mini-forms for specific actions with little effort.</p>
+                <b:modal id="amodal" title="Bid for this Item">
+                    <h4>Congratulations!</h4>
+                <h:panelGrid columns="2">  
+                    <h:outputText value="You offered $" />  
+                    <h:outputText value="#{testBean.val6}" />  
+                </h:panelGrid>
+                <f:facet name="footer">
+                    <b:button value="close" dismiss="modal" onclick="return false;"/>
+                </f:facet>
+                </b:modal>
+                
+                <h4>Controlling the size of b:inputText</h4>
+                <br/>
+                <strong>Height sizing</strong>
+                <p>You can create larger or smaller form controls that match button sizes.</p>
+                <p>Use the <code>fieldSize</code> attribute for predefined input field sizes:</p>
+                <b:well>
+                    <strong>Input sizes (fieldSize)</strong><br/>
+                    <h:panelGrid cellpadding="5">
+                        <b:inputText fieldSize="xs" placeholder="extra small"/>
+                        <b:inputText fieldSize="sm" placeholder="small"/>
+                        <b:inputText placeholder="default"/>
+                        <b:inputText fieldSize="lg" placeholder="large"/>
+                    </h:panelGrid>
+                    
+                </b:well>
+                <br/>
+                <strong>Grid sizing</strong>
+                <p>If your inputText is not in a panelGrid(table) or is not already in a b:column of your grid layout,
+                    BootsFaces can place the component in a column for you, allowing you to easily control its size.</p>
+                <p>Use <code>span="1"</code> to <code>span="12"</code> for inputs that match the same sizes of the BootFaces grid columns:</p>
+                <b:well>
+                    <strong>Input sizes</strong><br/>
+                    In a row:
+                    <b:row>
+                        <b:inputText span="1" placeholder="span1"/>
+                        <b:inputText span="2" placeholder="span 2"/>
+                        <b:inputText span="3" placeholder="span 3"/>
+                    </b:row>
+                    <br/>
+                    or in a Form:
+                    <h:form styleClass="form-horizontal">
+                        <b:inputText span="1" placeholder="span1"/>
+                        <b:inputText span="2" placeholder="span 2"/>
+                        <b:inputText span="3" placeholder="span 3"/>
+                        <b:inputText span="6" placeholder="span 6"/>
+                        <b:inputText span="9" placeholder="span 9"/>
+                        <b:inputText span="12" placeholder="span 12"/>
+                    </h:form>
+                </b:well>
+                
+                
+                <script type="text/javascript">
+                    SyntaxHighlighter.all();
+                </script>
+                <br/><br/><br/><br/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

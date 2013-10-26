@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>BootFaces: next-gen JSF Framework</title>
+        <meta name="author" content="Riccardo Massera"></meta>
+    </h:head>
+    <h:body style="padding-top: 60px">
+        <ui:composition template="/applayout/pageTemplate.xhtml">
+            <ui:define name="content">
+                <h1>Slider</h1>
+                <p>BootFaces derives the Slider component from jQuery UI's widget, thus the b:slider tag supports most of its options</p>
+                <p>You can use the attributes <code>min</code>, <code>max</code>, <code>orientation</code> and <code>step</code></p>
+                <br/>
+                <p>The basic slider is horizontal and has a single handle that can be moved with the mouse or by using the arrow keys.</p>
+                <h:form id="fslider">
+
+                    <b:row>
+                        <b:column>
+                            HH<b:slider min="0" max="24" value="#{testBean.val5}" ></b:slider>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column>
+                            MM<b:slider min="0" max="60" step="5" value="#{testBean.val6}"></b:slider>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column>
+                            <p>You can use <code>orientation="vertical"</code> to obtain a vertical slider:</p>
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <h:outputText value="Value(0-100)"/>
+                                <b:slider orientation="vertical" value="#{testBean.val1}"></b:slider>
+                            </h:panelGrid>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <br/>
+                        <b:commandButton value="Submit" update="fslider amodal" id="modalcb" ajax="true"
+                                         look="primary" oncomplete="$('#amodal').modal('show');"/>
+                    </b:row>
+                </h:form>
+                <b:modal id="amodal" title="Slider">
+                    <strong>Submitted values:</strong>
+                    <h:panelGrid columns="2">  
+                        <h:outputText value="Hour(0-24): " />  
+                        <h:outputText value="#{testBean.val5}" />  
+
+                        <h:outputText value="Minutes(step 5 min): " />  
+                        <h:outputText value="#{testBean.val6}" />
+
+                        <h:outputText value="Value(0-100): " />  
+                        <h:outputText value="#{testBean.val1}" />
+                    </h:panelGrid>
+                    <f:facet name="footer">
+                        <b:button value="close" dismiss="modal" onclick="return false;"/>
+                        <b:button value="Ok" look="primary" />
+                    </f:facet>
+                </b:modal>
+
+                <strong>Markup:</strong><br/>
+
+                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                <![CDATA[
+                        <b:row>
+                            <b:column>
+                                HH<b:slider min="0" max="24" value="&#35;{testBean.val5}"></b:slider>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column>
+                                MM<b:slider min="0" max="60" step="5" value="&#35;{testBean.val6}"></b:slider>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column>
+                                <h:panelGrid columns="2" cellpadding="10">
+                                    <h:outputText value="Value(0-100)"/>
+                                    <b:slider orientation="vertical" value="&#35;{testBean.val1}"></b:slider>
+                                </h:panelGrid>
+                            </b:column>
+                        </b:row>
+            
+                ]]></script>
+                <script type="text/javascript">
+                    SyntaxHighlighter.all();
+                </script>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

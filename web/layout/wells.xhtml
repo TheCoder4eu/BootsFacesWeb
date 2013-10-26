@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>BootFaces: next-gen JSF Framework</title>
+        <meta name="author" content="Riccardo Massera"></meta>
+    </h:head>
+    
+
+    <h:body style="padding-top: 60px">
+        <ui:composition template="/applayout/pageTemplate.xhtml">
+            <ui:define name="content">
+                <h1>Wells</h1>
+                <p>Use the well as a simple effect on an element to give it an inset effect.</p>
+                
+                <b:panel title="Example" look="primary">
+                    <b:container>
+                        <b:well>
+                            <h3>Well Header</h3>
+                            Well content.
+                        </b:well>
+                    </b:container>
+                    <f:facet name="footer">
+                        <strong>Markup:</strong><br/>
+
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
+                            <![CDATA[
+                            <b:well>
+                                <h3>Well Header</h3>
+                                Well content.
+                            </b:well>
+
+                            ]]></script>
+                    </f:facet>
+                </b:panel>
+                <br/>
+                <script type="text/javascript">
+                    SyntaxHighlighter.all();
+                </script>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

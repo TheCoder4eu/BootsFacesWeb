@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>BootFaces: next-gen JSF Framework</title>
+        <meta name="author" content="Riccardo Massera"></meta>
+    </h:head>
+    <h:body style="padding-top: 60px">
+        <ui:composition template="/applayout/pageTemplate.xhtml">
+            <ui:define name="content">
+                <h1>Buttons</h1>
+                <p><code>&lt;b:button&gt;</code>extends the standard JSF h:button component.</p>
+                
+                <strong>Button Look</strong>
+                <p>Button styles can be applied to anything with the <code>look</code> attribute:</p>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>b:button</th>
+                            <th><code>look</code> attribute</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b:button value="Default" /></td>
+                            <td>missing</td>
+                            <td>Standard gray button with gradient</td>
+                        </tr>
+                        <tr>
+                            <td><b:button value="Primary" look="primary"/></td>
+                            <td><code>look="primary"</code></td>
+                            <td>Provides extra visual weight and identifies the primary action in a set of buttons</td>
+                        </tr>
+                        <tr>
+                            <td><b:button look="info" value="Info"/></td>
+                            <td><code>look="info"</code></td>
+                            <td>Used as an alternative to the default styles</td>
+                        </tr>
+                        <tr>
+                            <td><b:button look="success" value="Success"/></td>
+                            <td><code>look="success"</code></td>
+                            <td>Indicates a successful or positive action</td>
+                        </tr>
+                        <tr>
+                            <td><b:button look="warning" value="Warning"/></td>
+                            <td><code>look="warning"</code></td>
+                            <td>Indicates caution should be taken with this action</td>
+                        </tr>
+                        <tr>
+                            <td><b:button look="danger" value="Danger"/></td>
+                            <td><code>look="danger"</code></td>
+                            <td>Indicates a dangerous or potentially negative action</td>
+                        </tr>
+                        <tr>
+                            <td><b:button look="link" value="Link" /></td>
+                            <td><code>look="link"</code></td>
+                            <td>Alternate dark gray button, not tied to a semantic action or use</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <p><i>Note: starting from Bootstrap 3, some look names for buttons have changed (inverse=> dropped in favor of link).</i></p>
+                <br/>
+                
+                <strong>Button size</strong>
+                <p>Fancy larger or smaller buttons? Add <code>size="lg"</code> (Large), <code>size="sm"</code> (Small), or <code>size="xs"</code> for additional sizes.</p>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <b:button value="Large button" look="primary" size="lg"/><b:button value="Large button" size="lg"/>
+                    <b:button value="Normal button" look="primary" /><b:button value="Normal button" />
+                    <b:button value="Small button" look="primary" size="sm"/><b:button value="Small button" size="sm"/>
+                    <b:button value="Extra small button" look="primary" size="mini"/><b:button value="Extra small button" size="mini"/>
+                </h:panelGrid>
+                <p><i>Note: starting from Bootstrap 3, size names for buttons have changed (large => lg, small => sm, mini => xs).</i></p>
+                <br/>
+                <strong>Disabled State</strong>
+                <p>Make buttons look unclickable by fading them back 50%.</p>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <b:button value="Primary button" look="primary" disabled="true"/><b:button value="Button" disabled="true" />
+                </h:panelGrid>
+                
+                <strong>Button functionality</strong>
+                <p>Just like h:button, <code>&lt;b:button&gt;</code> does GET requests targeting bookmarkable URLs.</p>
+                <b:panel title="Example" look="primary">
+                <h:panelGrid columns="4" cellpadding="10">
+                    <b:button outcome="testButton" value="Bookmark" icon="bookmark">  
+                        <f:param name="testId" value="11" />  
+                    </b:button>  
+
+                    <b:button outcome="testButton" value="With Icon" icon="envelope">  
+                        <f:param name="testId" value="22" />  
+                    </b:button>  
+
+                    <b:button outcome="testButton" value="" icon="envelope">  
+                        <f:param name="testId" value="33" />  
+                    </b:button>  
+
+                    <b:button outcome="testButton" value="Bookmark" icon="envelope" disabled="true">  
+                        <f:param name="testId" value="44" />  
+                    </b:button>
+                </h:panelGrid>
+                    <f:facet name="footer">
+                <strong>Markup:</strong><br/>
+                
+                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
+                <![CDATA[
+                <h:panelGrid columns="4" cellpadding="10">
+                    <b:button outcome="testButton" value="Bookmark" icon="bookmark">  
+                        <f:param name="testId" value="11" />  
+                    </b:button>  
+
+                    <b:button outcome="testButton" value="With Icon" icon="envelope">  
+                        <f:param name="testId" value="22" />  
+                    </b:button>  
+
+                    <b:button outcome="testButton" value="" icon="envelope">  
+                        <f:param name="testId" value="33" />  
+                    </b:button>  
+
+                    <b:button outcome="testButton" value="Bookmark" icon="envelope" disabled="true">  
+                        <f:param name="testId" value="44" />  
+                    </b:button>
+                </h:panelGrid>
+                ]]></script>
+                    </f:facet>
+                </b:panel>
+                <script type="text/javascript">
+                    SyntaxHighlighter.all();
+                </script>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
