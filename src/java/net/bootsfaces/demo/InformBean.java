@@ -1,8 +1,7 @@
-package net.bootfaces.preview;
+package net.bootsfaces.demo;
 
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * A Bean Used for Demo purposes
  */
 
 import java.io.Serializable;
@@ -11,7 +10,7 @@ import javax.faces.bean.RequestScoped;
 
 /**
  *
- * @author droidcoder
+ * @author TheCoder4eu
  */
 @ManagedBean
 @RequestScoped

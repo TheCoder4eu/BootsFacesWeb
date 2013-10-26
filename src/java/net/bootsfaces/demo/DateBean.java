@@ -1,8 +1,7 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * A Bean Used for Demo purposes
  */
-package net.bootfaces.preview;
+package net.bootsfaces.demo;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -11,7 +10,7 @@ import javax.faces.bean.RequestScoped;
 
 /**
  *
- * @author droidcoder
+ * @author TheCoder4eu
  */
 @ManagedBean(name = "dateBean")
 @RequestScoped
