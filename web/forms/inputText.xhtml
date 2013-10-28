@@ -125,18 +125,18 @@
 ]]></script>
                 <strong>Appending or prepending Buttons</strong><br/>
                 <p>Another nice feature is that you can append(or prepend) buttons mixed with text:</p>
-                <h:form>
+                <h:form id="bid" prependId="false" >
                     <h:panelGrid columns="2" cellpadding="5">
                         
                         <h:outputText value="Your Offer:"/>
-                        <b:inputText value="#{testBean.val6}">
+                        <b:inputText id="mybid" value="#{testBean.val6}">
                             <f:facet name="prepend">
                                 <h:outputText value="$" />
                             </f:facet>
                             <f:facet name="append">
                                 <h:outputText value=".00" />
-                                <b:commandButton look="primary" value="Bid!" update="amodal" oncomplete="$('#amodal').modal('show');"/>
-                                <b:button look="danger" value="Cancel"/>
+                                <b:commandButton look="primary" value="Bid!" ajax="true" update="amodal" oncomplete="$('#amodal').modal('show');"/>
+                                <b:button look="danger" value="Reset" onclick="$('#mybid').val('');return false;"/>
                             </f:facet>
                         </b:inputText>
                     </h:panelGrid>
