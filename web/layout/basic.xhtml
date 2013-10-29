@@ -227,7 +227,7 @@
                             ]]></script>
                     </f:facet>
                 </b:panel>
-                <h3 id="grid-example-mixed-complete">Example: Mobile, tablet, desktops</h3>
+                <h3>Example: Mobile, tablet, desktops</h3>
                 <p>Build on the previous example by creating even more dynamic and powerful layouts with tablet <code>col-sm=*</code> attribute.</p>
                 <b:panel>
                     
@@ -259,6 +259,81 @@
                                 <!-- Optional: clear the XS cols if their content doesn't match in height -->
                                 <div class="clearfix visible-xs"></div>
                                 <b:column col-xs="6" col-sm="4" col-md="4"><h:outputText value="col-xs=6 col-sm=4 col-md=4"/></b:column>
+                            </b:row>
+                            ]]></script>
+                    </f:facet>
+                </b:panel>
+                <h3>Offsetting columns</h3>
+                <p> Move columns to the right using <code>offset=*</code> or <code>col-md-offset=*</code> attribute.
+                    These attributes increase the left margin of a column by <code>*</code> columns.
+                    For example, <code>offest=4</code> moves a <code>span=4</code> over four columns.
+                </p>
+                <b:panel>
+                    
+                <b:container>
+                    <b:row styleClass="show-grid">
+                        <b:column span="4"><h:outputText value="span=4"/></b:column>
+                        <b:column span="4" offset="4"><h:outputText value="span=4 offset=4"/></b:column>
+                    </b:row>
+                    <b:row styleClass="show-grid">
+                        <b:column span="3" offset="3"><h:outputText value="span=3 offset=3"/></b:column>
+                        <b:column span="3" offset="3"><h:outputText value="span=3 offset=3"/></b:column>
+                    </b:row>
+                    <b:row styleClass="show-grid">
+                        <b:column span="6" offset="3"><h:outputText value="span=6 offset=3"/></b:column>
+                    </b:row>
+                </b:container>
+                    <f:facet name="footer">
+                        <strong>Markup:</strong><br/>
+
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                            <![CDATA[
+                            <b:row styleClass="show-grid">
+                                <b:column span="4"><h:outputText value="span=4"/></b:column>
+                                <b:column span="4" offset="4"><h:outputText value="span=4 offset=4"/></b:column>
+                            </b:row>
+                            <b:row styleClass="show-grid">
+                                <b:column span="3" offset="3"><h:outputText value="span=3 offset=3"/></b:column>
+                                <b:column span="3" offset="3"><h:outputText value="span=3 offset=3"/></b:column>
+                            </b:row>
+                            <b:row styleClass="show-grid">
+                                <b:column span="6" offset="3"><h:outputText value="span=6 offset=3"/></b:column>
+                            </b:row>
+                            ]]></script>
+                    </f:facet>
+                </b:panel>
+                <h3>Nesting columns</h3>
+                <p>
+                To nest your content with the default grid, add a new <code>row</code> and set of <code>col-md=*</code> columns within an existing
+                <code>col-md=*</code> column.
+                Nested rows should include a set of columns that add up to 12.
+                </p>
+                <b:panel>
+                    
+                <b:container>
+                    <b:row styleClass="show-grid">
+                        <b:column col-md="9">
+                            <h:outputText value="Level 1: col-md=9"/>
+                            <b:row styleClass="show-grid">
+                                <b:column col-md="6"><h:outputText value="Level 2: col-md=6"/></b:column>
+                                <b:column col-md="6"><h:outputText value="Level 2: col-md=6"/></b:column>
+                            </b:row>
+                        </b:column>
+                    </b:row>
+                </b:container>
+                    <f:facet name="footer">
+                        <strong>Markup:</strong><br/>
+
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                            <![CDATA[
+                            <b:row styleClass="show-grid">
+                                <b:column col-md="9">
+                                    <h:outputText value="Level 1: col-md=9"/>
+                                    <b:row styleClass="show-grid">
+                                        <b:column col-md="6"><h:outputText value="Level 2: col-md=6"/></b:column>
+                                        <b:column col-md="6"><h:outputText value="Level 2: col-md=6"/></b:column>
+                                    </b:row>
+                                </b:column>
                             </b:row>
                             ]]></script>
                     </f:facet>
