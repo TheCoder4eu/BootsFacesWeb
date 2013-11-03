@@ -4,6 +4,13 @@
         <param-name>javax.faces.PROJECT_STAGE</param-name>
         <param-value>Production</param-value>
     </context-param>
+    <!-- The BootsFaces_USETHEME context-param controls the loading of the bootstrap-theme.css -->
+    <!-- The default is false, when set to true the bootstrap-theme.css will be loaded -->
+    <context-param>
+        <param-name>BootsFaces_USETHEME</param-name>
+        <param-value>true</param-value>
+    </context-param>
+
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
