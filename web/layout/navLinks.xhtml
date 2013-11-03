@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>BootFaces: next-gen JSF Framework</title>
+        <meta name="author" content="Riccardo Massera"></meta>
+    </h:head>
+    <h:body style="padding-top: 60px">
+        <ui:composition template="/applayout/pageTemplate.xhtml">
+            <ui:define name="content">
+                <style>
+                    .panel-body .divider {
+                        background-color: #E5E5E5;
+                        height: 1px;
+                        margin: 9px 0;
+                        overflow: hidden;
+                    }
+                    .panel-body .dropdown-header { padding: 3px 15px; }
+                </style>
+                
+                <h1>NavLinks</h1>
+                <p>The NavLink is a very versatile component, that you can use for different purposes.</p>
+                <p>The <code>b:navLink</code> tag is a more powerful version of the standard JSF <code>b:link</code> tag.</p>
+                <p>This means that you can use the <code>outcome</code>, <code>fragment</code> and <code>href</code> attributes.</p>
+                <p>NavLinks can be used in: </p>
+                <ul>
+                    <b:navLink outcome="navbars" fragment="dropmenus" value="Drop menus in NavBars"/>
+                    <b:navLink outcome="/bootstrap/dropButton" value="Drop Buttons"/>
+                    <li>List Links</li>
+                </ul>
+                <p>There are four kinds of b:navLink:
+                    <ul>
+                        <li>a link that points to an outcome</li>
+                        <li>an external link</li>
+                        <li>a header link</li>
+                        <li>a separator link</li>
+                    </ul>
+                    The outcome and external links can have an icon (left or right, default is left).
+                </p>
+                <p>You can control the icon position by specifying it in the attribute <code>iconAlign</code></p>
+                <p>In the following example the <code>b:listLinks</code> tag is used as a container for the NavLinks, showing how to create a Sidebar with links.</p>
+                <b:panel>
+                    <f:facet name="heading"><b>EXAMPLE</b></f:facet>
+                    <b:row>
+                        <b:column span="3">
+                            <b:panel look="primary">
+                                <f:facet name="heading">Sidebar</f:facet>   
+                                <b:listLinks>
+                                    <b:navLink header="BootsFaces" />
+                                    <b:navLink href="http://www.bootsfaces.net" value="BootsFaces"
+                                               icon="globe" iconAlign="right"/>
+                                    <b:navLink></b:navLink>
+                                    <b:navLink header="Bootstrap"/>
+                                    <b:navLink href="http://getbootstrap.com/components/#navbar" value="Bootstrap" icon="link"></b:navLink>
+                                    <b:navLink></b:navLink>
+                                    <b:navLink header="Preview"/>
+                                    <b:navLink value="Labels and Badges" outcome="/bootstrap/labelsbadge"
+                                               icon="tag" iconAlign="right"/>
+                                    <b:navLink value="Slider" outcome="/jquery-ui/slider" icon="tasks"/>
+                                </b:listLinks>
+                             </b:panel>
+                        </b:column>
+                    </b:row>
+                    <f:facet name="footer">
+                        <strong>Markup:</strong><br/>
+                
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
+                        <![CDATA[
+                        <b:panel look="primary">
+                            <f:facet name="heading">Sidebar</f:facet>   
+                            <b:listLinks>
+                                <b:navLink header="BootsFaces" />
+                                <b:navLink href="http://www.bootsfaces.net" value="BootsFaces"
+                                           icon="globe" iconAlign="right"/>
+                                <b:navLink></b:navLink>
+                                <b:navLink header="Bootstrap"/>
+                                <b:navLink href="http://getbootstrap.com/components/#navbar" value="Bootstrap" icon="link"></b:navLink>
+                                <b:navLink></b:navLink>
+                                <b:navLink header="Preview"/>
+                                <b:navLink value="Labels and Badges" outcome="/bootstrap/labelsbadge"
+                                           icon="tag" iconAlign="right"/>
+                                <b:navLink value="Slider" outcome="/jquery-ui/slider" icon="tasks"/>
+                            </b:listLinks>
+                         </b:panel>
+                        ]]></script>
+                    </f:facet>
+                </b:panel>
+                
+                <script type="text/javascript">
+                    SyntaxHighlighter.all();
+                </script>
+                <br/><br/><br/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

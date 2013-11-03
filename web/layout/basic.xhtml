@@ -20,6 +20,8 @@
                         padding-top: 10px;
                         margin-bottom: 15px;
                     }
+                    //Needed for TBS 3.0.1 (panel content overflow issue)
+                    .panel-body { margin: 0px 15px; }
                 </style>
                 <h1>Basic Layout</h1>
                 <p>BootsFaces inherits Bootstrap's responsive, mobile first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases. This allows developers to easyly build complex layouts without worrying how they will look on different devices .</p>
@@ -114,7 +116,6 @@
                 <p>The <code>span=*</code> and <code>offset=*</code> attributes are meant for this common special use case, to speed up markup writing</p>
                 <b:panel>
                     
-                <b:container>
                     <b:row styleClass="show-grid">
                         <b:column span="1"><h:outputText value="span=1"/></b:column>
                         <b:column span="1"><h:outputText value="span=1"/></b:column>
@@ -142,7 +143,6 @@
                         <b:column span="6"><h:outputText value="span=6"/></b:column>
                         <b:column span="6"><h:outputText value="span=6"/></b:column>
                     </b:row>
-                </b:container>
                     <f:facet name="footer">
                         <strong>Markup:</strong><br/>
 
@@ -185,7 +185,6 @@
                 </p>
                 <b:panel>
                     
-                <b:container>
                     <!-- Stack the columns on mobile by making one full-width and the other half-width -->
                     <b:row styleClass="show-grid">
                         <b:column col-xs="12" col-md="8"><h:outputText value="col-xs=12 col-md=8"/></b:column>
@@ -202,7 +201,6 @@
                         <b:column col-xs="6"><h:outputText value="col-xs=6"/></b:column>
                         <b:column col-xs="6"><h:outputText value="col-xs=6"/></b:column>
                     </b:row>
-                </b:container>
                     <f:facet name="footer">
                         <strong>Markup:</strong><br/>
 
@@ -231,7 +229,6 @@
                 <p>Build on the previous example by creating even more dynamic and powerful layouts with tablet <code>col-sm=*</code> attribute.</p>
                 <b:panel>
                     
-                <b:container>
                     <b:row styleClass="show-grid">
                         <b:column col-xs="12" col-sm="6" col-md="8"><h:outputText value="col-xs=12 col-sm=6 col-md=8"/></b:column>
                         <b:column col-xs="6" col-sm="6" col-md="4"><h:outputText value="col-xs=6 col-sm=6 col-md=4"/></b:column>
@@ -243,7 +240,6 @@
                         <div class="clearfix visible-xs"></div>
                         <b:column col-xs="6" col-sm="4" col-md="4"><h:outputText value="col-xs=6 col-sm=4 col-md=4"/></b:column>
                     </b:row>
-                </b:container>
                     <f:facet name="footer">
                         <strong>Markup:</strong><br/>
 
@@ -270,7 +266,6 @@
                 </p>
                 <b:panel>
                     
-                <b:container>
                     <b:row styleClass="show-grid">
                         <b:column span="4"><h:outputText value="span=4"/></b:column>
                         <b:column span="4" offset="4"><h:outputText value="span=4 offset=4"/></b:column>
@@ -282,7 +277,6 @@
                     <b:row styleClass="show-grid">
                         <b:column span="6" offset="3"><h:outputText value="span=6 offset=3"/></b:column>
                     </b:row>
-                </b:container>
                     <f:facet name="footer">
                         <strong>Markup:</strong><br/>
 
@@ -310,7 +304,6 @@
                 </p>
                 <b:panel>
                     
-                <b:container>
                     <b:row styleClass="show-grid">
                         <b:column col-md="9">
                             <h:outputText value="Level 1: col-md=9"/>
@@ -320,7 +313,6 @@
                             </b:row>
                         </b:column>
                     </b:row>
-                </b:container>
                     <f:facet name="footer">
                         <strong>Markup:</strong><br/>
 
