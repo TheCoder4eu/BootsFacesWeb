@@ -18,7 +18,10 @@
                         border: 1px solid rgba(86, 61, 124, 0.2);
                         padding-bottom: 10px;
                         padding-top: 10px;
-                        margin-bottom: 15px;
+                        //margin-bottom: 15px;
+                    }
+                    .row {
+                        margin-bottom: 20px;
                     }
                 </style>
                 <h1>BootsFaces grid examples</h1>
@@ -116,6 +119,18 @@
                     <b:column col-xs="6" col-sm="3"><h:outputText value="col-xs=6 col-sm=3"/></b:column>
                     <b:column col-xs="6" col-sm="3"><h:outputText value="col-xs=6 col-sm=3"/></b:column>
                 </b:row>
+                <hr/>
+                <h3>Offset, push, and pull resets</h3>
+                <p>Reset offsets, pushes, and pulls at specific breakpoints.</p>
+                <b:row styleClass="show-grid">
+                    <b:column col-sm="5" col-md="6"><h:outputText value="col-sm=5 col-md=6"/></b:column>
+                    <b:column col-sm="5" offset-sm="2" col-md="6" offset="0"><h:outputText value="col-sm=5 offset-sm=2 col-md=6 offset=0"/></b:column>
+                </b:row>
+                <b:row styleClass="show-grid">
+                    <b:column col-sm="6" col-md="5" col-lg="6"><h:outputText value="col-sm=6 col-md=5 col-lg=6"/></b:column>
+                    <b:column col-sm="6" col-md="5" offset="2" col-lg="6" offset-lg="0"><h:outputText value="col-sm=6 col-md=5 offset=2 col-lg=6 offset-lg=0"/></b:column>
+                </b:row>
+                
 
                 <br/><br/><br/>
             </ui:define>
