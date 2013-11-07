@@ -22,7 +22,7 @@
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>b:datepicker</th>
+                            <th style="width: 230px;">b:datepicker</th>
                             <th><code>mode</code> attribute</th>
                             <th>Description</th>
                         </tr>
@@ -54,7 +54,7 @@
                             <td>Same as above, but the icon is positioned on the left of the input.</td>
                         </tr>
                         <tr>
-                            <td><div class="container"><b:datepicker mode="inline"/></div></td>
+                            <td><b:datepicker mode="inline"/></td>
                             <td>inline</td>
                             <td>In this mode, the Date picker is displayed directly inline and no input field is shown.</td>
                         </tr>
@@ -126,14 +126,14 @@
                             <h:panelGroup>Inline Date Picker with <code>showWeek="true"</code> and <code>firstDay="1"</code> .</h:panelGroup>
 
                         </h:panelGrid>
-                    </b:well>
-                    <b:row>
-                        
-                        <b:column span="2" offset="3">
-                            <b:commandButton value="Submit" update="fpickdt amodal" id="ajaxcb" ajax="true"
+                        <b:row>
+                           <b:column span="2" offset="3">
+                        <b:commandButton value="Submit" update="fpickdt amodal" id="ajaxcb" ajax="true"
                                              look="primary" oncomplete="$('#amodal').modal('show');"/>
-                        </b:column>
-                    </b:row>
+                        </b:column> 
+                        </b:row>
+                        
+                    </b:well>
                 </h:form>
                 
                 <b:modal id="amodal" title="Submitted Dates">

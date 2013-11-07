@@ -29,119 +29,128 @@
                 <p>you can easily prepend or append text to your inputTexts and what you prepend and append will seem part of the input field.</p>
                 <p>To do so, you just need to use the facets <code>prepend</code> and <code>append</code> where you will place the <code>h:outputText</code> element</p>
                 <p>You can even prepend and append at the same time, as in the following example:</p>
-                <h:form>
-                    <h:panelGrid columns="2"  cellpadding="5">
-                        <h:outputText value="e-mail:"/>
-                        <b:inputText>
-                            <f:facet name="prepend">
-                                <h:outputText value="@" />
-                            </f:facet>
-                        </b:inputText>
-                        <h:outputText value="Amount:"/>
-                        <b:inputText>
-                            <f:facet name="append">
-                                <h:outputText value=".00" />
-                            </f:facet>
-                        </b:inputText>
-                        <h:outputText value="Price:"/>
-                        <b:inputText>
-                            <f:facet name="prepend">
-                                <h:outputText value="$" />
-                            </f:facet>
-                            <f:facet name="append">
-                                <h:outputText value=".00" />
-                            </f:facet>
-                        </b:inputText>
-                    </h:panelGrid>
-                </h:form>
+                <b:panel>
+                    <f:facet name="heading"><b>EXAMPLE</b></f:facet>
+                        <h:form>
+                            <h:panelGrid columns="2"  cellpadding="5">
+                                <h:outputText value="e-mail:"/>
+                                <b:inputText>
+                                    <f:facet name="prepend">
+                                        <h:outputText value="@" />
+                                    </f:facet>
+                                </b:inputText>
+                                <h:outputText value="Amount:"/>
+                                <b:inputText>
+                                    <f:facet name="append">
+                                        <h:outputText value=".00" />
+                                    </f:facet>
+                                </b:inputText>
+                                <h:outputText value="Price:"/>
+                                <b:inputText>
+                                    <f:facet name="prepend">
+                                        <h:outputText value="$" />
+                                    </f:facet>
+                                    <f:facet name="append">
+                                        <h:outputText value=".00" />
+                                    </f:facet>
+                                </b:inputText>
+                            </h:panelGrid>
+                        </h:form>
+                <f:facet name="footer">
                 <strong>Markup:</strong><br/>
                 <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-<![CDATA[
-<h:form>
-    <h:panelGrid columns="2" cellpadding="5">
-        <h:outputText value="e-mail:"/>
-        <b:inputText>
-            <f:facet name="prepend">
-                <h:outputText value="@" />
-            </f:facet>
-        </b:inputText>
-        <h:outputText value="Amount:"/>
-        <b:inputText>
-            <f:facet name="append">
-                <h:outputText value=".00" />
-            </f:facet>
-        </b:inputText>
-        <h:outputText value="Price:"/>
-        <b:inputText>
-            <f:facet name="prepend">
-                <h:outputText value="$" />
-            </f:facet>
-            <f:facet name="append">
-                <h:outputText value=".00" />
-            </f:facet>
-        </b:inputText>
-    </h:panelGrid>
-</h:form>
-
-]]></script>
+                    <![CDATA[
+                    <h:form>
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <h:outputText value="e-mail:"/>
+                            <b:inputText>
+                                <f:facet name="prepend">
+                                    <h:outputText value="@" />
+                                </f:facet>
+                            </b:inputText>
+                            <h:outputText value="Amount:"/>
+                            <b:inputText>
+                                <f:facet name="append">
+                                    <h:outputText value=".00" />
+                                </f:facet>
+                            </b:inputText>
+                            <h:outputText value="Price:"/>
+                            <b:inputText>
+                                <f:facet name="prepend">
+                                    <h:outputText value="$" />
+                                </f:facet>
+                                <f:facet name="append">
+                                    <h:outputText value=".00" />
+                                </f:facet>
+                            </b:inputText>
+                        </h:panelGrid>
+                    </h:form>]]></script>
+                    </f:facet>
+                </b:panel>
                 <p>Finally, you can go further and prepend or append more text elements, as in the following example:</p>
-                <h:form>
-                    <h:panelGrid columns="2" cellpadding="10">
-                        
-                        <h:outputText value="Your Bid:"/>
-                        
-                        <b:inputText value="99">
-                            <f:facet name="prepend">
-                                <h:outputText value="offer" />
-                                <h:outputText value="$" />
-                            </f:facet>
-                            <f:facet name="append">
-                                <h:outputText value=".00" />
-                                <h:outputText value="cash" />
-                            </f:facet>
-                        </b:inputText>
-                    </h:panelGrid>
-                </h:form>
-                <strong>Markup:</strong><br/>
-                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-<![CDATA[
-<h:form>
-    <h:panelGrid columns="2" cellpadding="5">
+                <b:panel>
+                    <f:facet name="heading"><b>EXAMPLE</b></f:facet>
+                    <h:form>
+                        <h:panelGrid columns="2" cellpadding="10">
 
-        <h:outputText value="Your Bid:"/>
-        <b:inputText value="99" span="1">
-            <f:facet name="prepend">
-                <h:outputText value="offer" />
-                <h:outputText value="$" />
-            </f:facet>
-            <f:facet name="append">
-                <h:outputText value=".00" />
-                <h:outputText value="cash" />
-            </f:facet>
-        </b:inputText>
-    </h:panelGrid>
-</h:form>
+                            <h:outputText value="Your Bid:"/>
 
-]]></script>
+                            <b:inputText value="99">
+                                <f:facet name="prepend">
+                                    <h:outputText value="offer" />
+                                    <h:outputText value="$" />
+                                </f:facet>
+                                <f:facet name="append">
+                                    <h:outputText value=".00" />
+                                    <h:outputText value="cash" />
+                                </f:facet>
+                            </b:inputText>
+                        </h:panelGrid>
+                    </h:form>
+                    <f:facet name="footer">
+                        <strong>Markup:</strong><br/>
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                        <![CDATA[
+                        <h:form>
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <h:outputText value="Your Bid:"/>
+                                <b:inputText value="99" span="1">
+                                    <f:facet name="prepend">
+                                        <h:outputText value="offer" />
+                                        <h:outputText value="$" />
+                                    </f:facet>
+                                    <f:facet name="append">
+                                        <h:outputText value=".00" />
+                                        <h:outputText value="cash" />
+                                    </f:facet>
+                                </b:inputText>
+                            </h:panelGrid>
+                        </h:form>]]></script>
+                    </f:facet>
+                </b:panel>
                 <strong>Appending or prepending Buttons</strong><br/>
-                <p>Another nice feature is that you can append(or prepend) buttons mixed with text:</p>
-                <h:form id="bid" prependId="false" >
-                    <h:panelGrid columns="2" cellpadding="5">
-                        
-                        <h:outputText value="Your Offer:"/>
-                        <b:inputText id="mybid" value="#{testBean.val6}">
-                            <f:facet name="prepend">
-                                <h:outputText value="$" />
-                            </f:facet>
-                            <f:facet name="append">
-                                <h:outputText value=".00" />
-                                <b:commandButton look="primary" value="Bid!" ajax="true" update="amodal" oncomplete="$('#amodal').modal('show');"/>
-                                <b:button look="danger" value="Reset" onclick="$('#mybid').val('');return false;"/>
-                            </f:facet>
-                        </b:inputText>
-                    </h:panelGrid>
-                </h:form>
+                <p>Another nice feature is that you can append(or prepend) buttons:</p>
+                <b:panel>
+                    <f:facet name="heading"><b>EXAMPLE</b></f:facet>
+                    <h:form id="bid" prependId="false" >
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <h:outputText value="Your Offer:"/>
+                            <b:inputText id="mybid" value="#{testBean.val6}">
+                                <f:facet name="prepend">
+                                    <h:outputText value="$" />
+                                </f:facet>
+                                <f:facet name="append">
+                                    <b:commandButton look="primary" value="Bid!" ajax="true" update="amodal" oncomplete="$('#amodal').modal('show');"/>
+                                    <b:button look="danger" value="Reset" onclick="$('#mybid').val('');return false;"/>
+                                </f:facet>
+                            </b:inputText>
+                        </h:panelGrid>
+                    </h:form>
+                </b:panel>
                 <p>allowing you to build compact mini-forms for specific actions with little effort.</p>
+                <p class="text-warning">There is only one limitation: you can not prepend or append mixing texts and buttons, 
+                    the elements on each side can be only of the same type, eg. prepend text elements and append buttons.</p>
+                
                 <b:modal id="amodal" title="Bid for this Item">
                     <h4>Congratulations!</h4>
                 <h:panelGrid columns="2">  
@@ -153,6 +162,44 @@
                 </f:facet>
                 </b:modal>
                 
+                <strong>Appending or prepending DropButtons</strong><br/>
+                <p>What you have seen applies also to DropButtons:</p>
+                <b:panel>
+                    <f:facet name="heading"><b>EXAMPLE</b></f:facet>
+                    <b:row>
+                        <b:column span="6">
+                            <b:inputText placeholder="Text">
+                                <f:facet name="prepend">
+                                    <b:dropButton value="DropButton">
+                                        <b:navLink value="Action" href="#"></b:navLink>
+                                        <b:navLink value="Another action" href="#"></b:navLink>
+                                        <b:navLink value="Something else here" href="#"></b:navLink>
+                                        <b:navLink></b:navLink>
+                                        <b:navLink header="Nav header"></b:navLink>
+                                        <b:navLink value="Separated link" href="#"></b:navLink>
+                                        <b:navLink value="One more separated link" href="#"></b:navLink>
+                                    </b:dropButton>
+                                </f:facet>
+                            </b:inputText>
+                        </b:column>
+                        <b:column span="6">
+                            <b:inputText placeholder="Text">
+                                <f:facet name="append">
+                                    <b:dropButton value="DropButton">
+                                        <b:navLink value="Action" href="#"></b:navLink>
+                                        <b:navLink value="Another action" href="#"></b:navLink>
+                                        <b:navLink value="Something else here" href="#"></b:navLink>
+                                        <b:navLink></b:navLink>
+                                        <b:navLink header="Nav header"></b:navLink>
+                                        <b:navLink value="Separated link" href="#"></b:navLink>
+                                        <b:navLink value="One more separated link" href="#"></b:navLink>
+                                    </b:dropButton> 
+                                </f:facet>
+                            </b:inputText>
+                        </b:column>
+                    </b:row>
+                </b:panel>
+                
                 <h4>Controlling the size of b:inputText</h4>
                 <br/>
                 <strong>Height sizing</strong>
@@ -161,10 +208,9 @@
                 <b:well>
                     <strong>Input sizes (fieldSize)</strong><br/>
                     <h:panelGrid cellpadding="5">
-                        <b:inputText fieldSize="xs" placeholder="extra small"/>
-                        <b:inputText fieldSize="sm" placeholder="small"/>
+                        <b:inputText fieldSize="sm" placeholder="small (sm)"/>
                         <b:inputText placeholder="default"/>
-                        <b:inputText fieldSize="lg" placeholder="large"/>
+                        <b:inputText fieldSize="lg" placeholder="large (lg)"/>
                     </h:panelGrid>
                     
                 </b:well>
@@ -192,7 +238,6 @@
                         <b:inputText span="12" placeholder="span 12"/>
                     </h:form>
                 </b:well>
-                
                 
                 <script type="text/javascript">
                     SyntaxHighlighter.all();
