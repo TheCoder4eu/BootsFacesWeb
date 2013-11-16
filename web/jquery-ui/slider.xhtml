@@ -6,44 +6,163 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
-        <title>BootFaces: next-gen JSF Framework</title>
+        <title>BootsFaces: next-gen JSF Framework</title>
         <meta name="author" content="Riccardo Massera"></meta>
     </h:head>
     <h:body style="padding-top: 60px">
         <ui:composition template="/applayout/pageTemplate.xhtml">
             <ui:define name="content">
                 <h1>Slider</h1>
-                <p>BootFaces derives the Slider component from jQuery UI's widget, thus the b:slider tag supports most of its options</p>
-                <p>You can use the attributes <code>min</code>, <code>max</code>, <code>orientation</code> and <code>step</code></p>
+                <p>BootsFaces derives the Slider component from jQuery UI's widget, thus the <code>b:slider</code> tag supports most of its options.</p>
+                <p>You can use the attributes <code>min</code>, <code>max</code>, <code>orientation</code> and <code>step</code>.</p>
                 <br/>
-                <p>The basic slider is horizontal and has a single handle that can be moved with the mouse or by using the arrow keys.</p>
+                <p>There are three modes available that you can choose with the <code>mode</code> attribute: basic, badge and edit.</p>
+                <p>In <b>basic mode</b>, only the slider and the label(if present) will be shown and the slider value will be hidden.</p>
+                <p>In <b>badge mode</b>, the default, the slider value will be shown in a badge.</p>
+                <p>In <b>edit mode</b>, an editable input field showing the slider value will be shown;
+                   in this mode you can change the value by sliding or editing the value in the field.</p>
+                <br/>
+                <h4>Basic Mode</h4>
+                <p>The most simple slider is horizontal and has a single handle that can be moved with the mouse or by using the arrow keys(once you click on it).</p>
+                
+                <b:row><b:column><b:slider mode="basic" label="Basic Slider:"/></b:column></b:row>
+                <br/>
+                <h4>Edit Mode</h4>
+                <p>Use the edit mode when you want to allow the user to change the value editing it in an input field.</p>
+                <b:row><b:column><b:slider mode="edit" label="Editable Slider:" value="#{testBean.val2}"/></b:column></b:row>
+                <p>Notice how the slide handle positions itself as you type in the input box to reflect the current value and how the value in the input box changes when you slide.</p>
+                <br/>
+                <h4>Badge Mode</h4>
+                <p>In this mode, the slider value will be shown in a badge.</p>
+                <b:row><b:column><b:slider mode="badge" label="Badge Slider:" value="#{testBean.val3}"/></b:column></b:row>
+                <h3>Options and Examples</h3>
+                <p>You can use more than one slider to get input for complex values, like the Time:</p>
                 <h:form id="fslider">
+                    <b:panel look="info">
+                        <f:facet name="heading"><b>EXAMPLE - <span class="glyphicon glyphicon-time"></span> Time slider</b></f:facet>
+                        <b:row>
+                            <b:column>
+                                <b:slider min="0" max="24" value="#{testBean.val5}" label="HH"/>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column>
+                                <b:slider min="0" max="60" step="5" value="#{testBean.val6}" label="MM (step 5)"/>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <br/>
+                            <b:column><b:commandButton value="Submit" update="amodal" id="modalcb" ajax="true"
+                                             look="primary" oncomplete="$('#amodal').modal('show');"/></b:column>
+                        </b:row>
+                        <f:facet name="footer">
+                        <strong>Markup:</strong><br/>
 
-                    <b:row>
-                        <b:column>
-                            HH<b:slider min="0" max="24" value="#{testBean.val5}" ></b:slider>
-                        </b:column>
-                    </b:row>
-                    <b:row>
-                        <b:column>
-                            MM<b:slider min="0" max="60" step="5" value="#{testBean.val6}"></b:slider>
-                        </b:column>
-                    </b:row>
-                    <b:row>
-                        <b:column>
-                            <p>You can use <code>orientation="vertical"</code> to obtain a vertical slider:</p>
-                            <h:panelGrid columns="2" cellpadding="10">
-                                <h:outputText value="Value(0-100)"/>
-                                <b:slider orientation="vertical" value="#{testBean.val1}"></b:slider>
-                            </h:panelGrid>
-                        </b:column>
-                    </b:row>
-                    <b:row>
-                        <br/>
-                        <b:commandButton value="Submit" update="fslider amodal" id="modalcb" ajax="true"
-                                         look="primary" oncomplete="$('#amodal').modal('show');"/>
-                    </b:row>
-                </h:form>
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                        <![CDATA[
+                        <b:row>
+                            <b:column>
+                                <b:slider min="0" max="24" value="#{'#'}{testBean.val5}" label="HH"/>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column>
+                                <b:slider min="0" max="60" step="5" value="#{'#'}{testBean.val6}" label="MM"/>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <br/>
+                            <b:column><b:commandButton value="Submit" update="amodal" id="modalcb" ajax="true"
+                                             look="primary" oncomplete="$('#amodal').modal('show');"/></b:column>
+                        </b:row>
+                        ]]></script>
+                        </f:facet>
+                    </b:panel>
+                    </h:form>
+                    <p>You can use <code>orientation</code> attribute to obtain a vertical slider.</p>
+                    <p>If you specify <code>orientation="vertical"</code>, the Label is rendered on top, then the value and the slider on the bottom.</p>
+                    <p>If <code>orientation="vertical-bottom"</code> is used, the slider is rendered on top, then the value and the Label on the bottom.</p>
+                    <b:panel look="info">
+                        <f:facet name="heading"><b>EXAMPLE - Vertical sliders</b></f:facet>
+                        <b:row>
+                            <b:column span="4" col-sm="4" col-xs="4">#{' '}</b:column>
+                            <b:column span="2" col-sm="2" col-xs="2">
+                                <b:slider orientation="vertical" value="#{testBean.val1}" label="Value (0-100)"></b:slider>
+                            </b:column>
+                            <b:column span="2" col-sm="2" col-xs="2">
+                                <b:slider orientation="vertical-bottom" value="#{testBean.val1}" label="Value (0-100)"></b:slider>
+                            </b:column>
+                            <b:column span="4" col-sm="4" col-xs="4">#{' '}</b:column>
+                        </b:row>
+                        <f:facet name="footer">
+                        <strong>Markup:</strong><br/>
+
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                        <![CDATA[
+                        <b:row>
+                            <b:column span="4" col-sm="4" col-xs="4">#{'#'}{' '}</b:column>
+                            <b:column span="2" col-sm="2" col-xs="2">
+                                <b:slider orientation="vertical" value="#{'#'}{testBean.val1}" label="Value (0-100)"></b:slider>
+                            </b:column>
+                            <b:column span="2" col-sm="2" col-xs="2">
+                                <b:slider orientation="vertical-bottom" value="#{'#'}{testBean.val1}" label="Value (0-100)"></b:slider>
+                            </b:column>
+                            <b:column span="4" col-sm="4" col-xs="4">#{'#'}{' '}</b:column>
+                        </b:row>
+                        ]]></script>
+                        </f:facet>
+                    </b:panel>
+                    <p>The Slider component has been developed so that it fits well both in forms and in Bootstrap Grid system.</p>
+                    <p>This allows you to obtain complex input interfaces that adapt to all media screen sizes, taking advantage of the responsive features of the Grid system.</p>
+                    <b:panel look="info">
+                        <f:facet name="heading"><b>EXAMPLE - <span class="glyphicon glyphicon-signal"></span> Equalizer</b></f:facet>
+                        <b:row>
+                            <b:column span="3" col-sm="3" col-xs="1">#{' '}</b:column>
+                            <b:column span="1" col-sm="1" col-xs="2">
+                                <b:slider mode="basic" orientation="vertical-bottom" value="70" label="62"></b:slider>
+                            </b:column>
+                            <b:column span="1" col-sm="1" col-xs="2">
+                                <b:slider mode="basic" orientation="vertical-bottom" value="80" label="250"></b:slider>
+                            </b:column>
+                            <b:column span="1" col-sm="1" col-xs="2">
+                                <b:slider mode="basic" orientation="vertical-bottom" value="60" label="1K"></b:slider>
+                            </b:column>
+                            <b:column span="1" col-sm="1" col-xs="2">
+                                <b:slider mode="basic" orientation="vertical-bottom" value="90" label="4K"></b:slider>
+                            </b:column>
+                            <b:column span="1" col-sm="1" col-xs="2">
+                                <b:slider mode="basic" orientation="vertical-bottom" value="75" label="16K"></b:slider>
+                            </b:column>
+                            <b:column span="3" col-sm="3" col-xs="1">#{' '}</b:column>
+                        </b:row>
+                        <f:facet name="footer">
+                        <strong>Markup:</strong><br/>
+
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                        <![CDATA[
+                        <b:row>
+                            <b:column span="3" col-sm="3" col-xs="1">#{'#'}{' '}</b:column>
+                            <b:column span="1" col-sm="1" col-xs="2">
+                                <b:slider mode="basic" orientation="vertical-bottom" value="70" label="62"></b:slider>
+                            </b:column>
+                            <b:column span="1" col-sm="1" col-xs="2">
+                                <b:slider mode="basic" orientation="vertical-bottom" value="80" label="250"></b:slider>
+                            </b:column>
+                            <b:column span="1" col-sm="1" col-xs="2">
+                                <b:slider mode="basic" orientation="vertical-bottom" value="60" label="1K"></b:slider>
+                            </b:column>
+                            <b:column span="1" col-sm="1" col-xs="2">
+                                <b:slider mode="basic" orientation="vertical-bottom" value="90" label="4K"></b:slider>
+                            </b:column>
+                            <b:column span="1" col-sm="1" col-xs="2">
+                                <b:slider mode="basic" orientation="vertical-bottom" value="75" label="16K"></b:slider>
+                            </b:column>
+                            <b:column span="3" col-sm="3" col-xs="1">#{'#'}{' '}</b:column>
+                        </b:row>
+                        ]]></script>
+                        </f:facet>
+                    </b:panel>
+                    
                 <b:modal id="amodal" title="Slider">
                     <strong>Submitted values:</strong>
                     <h:panelGrid columns="2">  
@@ -52,40 +171,14 @@
 
                         <h:outputText value="Minutes(step 5 min): " />  
                         <h:outputText value="#{testBean.val6}" />
-
-                        <h:outputText value="Value(0-100): " />  
-                        <h:outputText value="#{testBean.val1}" />
                     </h:panelGrid>
                     <f:facet name="footer">
                         <b:button value="close" dismiss="modal" onclick="return false;"/>
-                        <b:button value="Ok" look="primary" />
+                        <b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"/>
                     </f:facet>
                 </b:modal>
 
-                <strong>Markup:</strong><br/>
-
-                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                <![CDATA[
-                        <b:row>
-                            <b:column>
-                                HH<b:slider min="0" max="24" value="&#35;{testBean.val5}"></b:slider>
-                            </b:column>
-                        </b:row>
-                        <b:row>
-                            <b:column>
-                                MM<b:slider min="0" max="60" step="5" value="&#35;{testBean.val6}"></b:slider>
-                            </b:column>
-                        </b:row>
-                        <b:row>
-                            <b:column>
-                                <h:panelGrid columns="2" cellpadding="10">
-                                    <h:outputText value="Value(0-100)"/>
-                                    <b:slider orientation="vertical" value="&#35;{testBean.val1}"></b:slider>
-                                </h:panelGrid>
-                            </b:column>
-                        </b:row>
-            
-                ]]></script>
+                
                 <script type="text/javascript">
                     SyntaxHighlighter.all();
                 </script>
