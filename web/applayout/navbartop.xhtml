@@ -12,38 +12,40 @@
         <ui:composition>
             
             <b:navBar brand="BootsFaces" brandHref="#{request.contextPath}#{request.servletPath}/index.xhtml" inverse="true" fixed="top">
+                <b:container>
                 <b:navbarLinks>
-                    <b:navLink></b:navLink>
-                    <b:navLink></b:navLink>
-                    <b:navLink outcome="/download" value="Getting Started"></b:navLink>
+                    <b:navLink />
+                    <b:navLink />
+                    <b:navLink outcome="/download" value="Getting Started" />
                     <b:dropMenu value="Layout">
-                        <b:navLink value="Basic Layout" outcome="/layout/basic"></b:navLink>
-                        <b:navLink value="NavLinks" outcome="/layout/navLinks" icon="list"></b:navLink>
-                        <b:navLink value="Navbars" outcome="/layout/navbars"></b:navLink>
-                        <b:navLink value="Panels" outcome="/layout/panels"></b:navLink>
-                        <b:navLink value="Jumbotron" outcome="/layout/jumbotron"></b:navLink>
-                        <b:navLink value="Wells" outcome="/layout/wells"></b:navLink>
+                        <b:navLink value="Basic Layout" outcome="/layout/basic" />
+                        <b:navLink value="NavLinks" outcome="/layout/navLinks" icon="list" />
+                        <b:navLink value="Navbars" outcome="/layout/navbars" />
+                        <b:navLink value="Panels" outcome="/layout/panels" />
+                        <b:navLink value="Jumbotron" outcome="/layout/jumbotron" />
+                        <b:navLink value="Wells" outcome="/layout/wells" />
                     </b:dropMenu>
                     <b:dropMenu value="Forms">
-                        <b:navLink value="Buttons" outcome="/forms/buttons"></b:navLink>
-                        <b:navLink value="Command Button" outcome="/forms/commandButton"></b:navLink>
-                        <b:navLink value="Input Text" outcome="/forms/inputText"></b:navLink>
+                        <b:navLink value="Buttons" outcome="/forms/buttons" />
+                        <b:navLink value="Command Button" outcome="/forms/commandButton" />
+                        <b:navLink value="Input Text" outcome="/forms/inputText" />
                     </b:dropMenu>
                     <b:dropMenu value="Bootstrap Widgets">
-                        <b:navLink value="Alerts" outcome="/bootstrap/alerts" icon="warning-sign"></b:navLink>
-                        <b:navLink value="DropButton" outcome="/bootstrap/dropButton"></b:navLink>
-                        <b:navLink value="Labels and Badges" outcome="/bootstrap/labelsbadge" icon="tag"></b:navLink>
-                        <b:navLink value="Modals" outcome="/bootstrap/modal"></b:navLink>
-                        <!--b:navLink value="Popover"></b:navLink-->
+                        <b:navLink value="Alerts" outcome="/bootstrap/alerts" icon="warning-sign" />
+                        <b:navLink value="DropButton" outcome="/bootstrap/dropButton" />
+                        <b:navLink value="Labels and Badges" outcome="/bootstrap/labelsbadge" icon="tag" />
+                        <b:navLink value="Modals" outcome="/bootstrap/modal" />
+                        <!--b:navLink value="Popover" /-->
                     </b:dropMenu>
                     <b:dropMenu value="jQuery UI Widgets">
-                        <b:navLink value="Slider" outcome="/jquery-ui/slider" icon="tasks"></b:navLink>
-                        <b:navLink value="DatePicker" outcome="/jquery-ui/datepicker" icon="calendar"></b:navLink>
+                        <b:navLink value="Slider" outcome="/jquery-ui/slider" icon="tasks" />
+                        <b:navLink value="DatePicker" outcome="/jquery-ui/datepicker" icon="calendar" />
                     </b:dropMenu>
                 </b:navbarLinks>
-                <ul class="nav navbar-nav pull-right">
-                    <b:navLink outcome="/examples/index" value="Examples" icon="eye-open icon-white"></b:navLink>
-                </ul>
+                <b:navbarLinks pull="right">
+                    <b:navLink outcome="/examples/index" value="Examples" icon="eye-open icon-white" />
+                </b:navbarLinks>
+                </b:container>
             </b:navBar>
 
         </ui:composition>
