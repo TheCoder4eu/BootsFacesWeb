@@ -25,8 +25,9 @@
                         </b:inputText><h:message for="firstname" />
 
                         <h:outputLabel for="familyname" value="Family (surname/last) name: *" />  
-                        <b:inputText id="familyname" value="#{informBean.familyname}" />
-                    </h:panelGrid><h:message for="familyname" />
+                        <b:inputText id="familyname" value="#{informBean.familyname}" required="true" />
+                        <h:message for="familyname" />
+                    </h:panelGrid>
                 </b:well>
                 <b:row>
                     <b:column span="2">

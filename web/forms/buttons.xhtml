@@ -85,24 +85,25 @@
                 
                 <strong>Button functionality</strong>
                 <p>Just like h:button, <code>&lt;b:button&gt;</code> does GET requests targeting bookmarkable URLs.</p>
-                <b:panel title="Example" look="primary">
-                <h:panelGrid columns="4" cellpadding="10">
-                    <b:button outcome="testButton" value="Bookmark" icon="bookmark">  
-                        <f:param name="testId" value="11" />  
-                    </b:button>  
+                <b:panel look="info">
+                    <f:facet name="heading"><b>EXAMPLE</b></f:facet>
+                    <h:panelGrid columns="4" cellpadding="10">
+                        <b:button outcome="testButton" value="Bookmark" icon="bookmark">  
+                            <f:param name="testId" value="11" />  
+                        </b:button>  
 
-                    <b:button outcome="testButton" value="With Icon" icon="envelope">  
-                        <f:param name="testId" value="22" />  
-                    </b:button>  
+                        <b:button outcome="testButton" value="With Icon" icon="envelope">  
+                            <f:param name="testId" value="22" />  
+                        </b:button>  
 
-                    <b:button outcome="testButton" value="" icon="envelope">  
-                        <f:param name="testId" value="33" />  
-                    </b:button>  
+                        <b:button outcome="testButton" value="" icon="envelope">  
+                            <f:param name="testId" value="33" />  
+                        </b:button>  
 
-                    <b:button outcome="testButton" value="Bookmark" icon="envelope" disabled="true">  
-                        <f:param name="testId" value="44" />  
-                    </b:button>
-                </h:panelGrid>
+                        <b:button outcome="testButton" value="Bookmark" icon="envelope" disabled="true">  
+                            <f:param name="testId" value="44" />  
+                        </b:button>
+                    </h:panelGrid>
                     <f:facet name="footer">
                 <strong>Markup:</strong><br/>
                 
