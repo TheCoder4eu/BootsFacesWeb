@@ -3,3 +3,4 @@
 /nbproject/
 /build.xml
 /web/WEB-INF/jboss-web.xml
+/web/META-INF/context.xml

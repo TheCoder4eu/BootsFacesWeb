@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <f:view>
+        <f:metadata>
+            <f:viewParam name="testId" value="#{testBean.val1}" />  
+        </f:metadata>
+        <h:head>
+            <title>BootsFaces: the next-gen JSF Framework based on Bootstrap</title>
+            <meta name="author" content="Riccardo Massera" />
+            <meta name="description" content="BootsFaces, a powerful JSF framework that takes the best from Bootstrap and jQuery UI to let develop well-designed state-of-the-art next-gen Front-end Enterprise Applications fast and easy supporting HTML5." />
+            <meta name="KEYWORDS" content="jsf, bootstrap, framework, java, enterprise, server, faces, jquery, usability, next-gen, web, html5, easy, modern, well-designed, website, state-of-the-art" />
+            <meta name="robots" content="index, follow" />
+
+            <meta name="revisit-after" content="7 days" />
+            <meta name="DISTRIBUTION" content="GLOBAL" />
+            <meta http-equiv="PRAGMA" content="NO-CACHE" />
+            <meta name="copyright" content="TheCoder4.eu ( Riccardo Massera )" />
+            <h:outputStylesheet library="sh" name="css/shCore.css"/>
+            <h:outputStylesheet library="sh" name="css/shCoreEclipse.css"/>
+        </h:head>
+        <h:body style="padding-top: 75px;padding-bottom: 75px;">
+
+            <h:outputScript library="sh" name="js/shCore.js" />
+            <h:outputScript library="sh" name="js/shBrushXml.js" />
+            <script>SyntaxHighlighter.defaults['gutter'] = false;</script>            
+            <ui:insert name="nbtop">
+                <ui:include src="/applayout/navbartop.xhtml"/>
+            </ui:insert>
+
+            <b:container>
+                <ui:insert name="content"/>
+            </b:container>
+
+            <ui:insert name="nbtop">
+                <ui:include src="/applayout/navbarbottom.xhtml"/>
+            </ui:insert>
+
+        </h:body>
+    </f:view>
+</html>
