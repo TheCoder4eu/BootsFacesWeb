@@ -22,6 +22,7 @@
                 <p>In <b>edit mode</b>, an editable input field showing the slider value will be shown;
                    in this mode you can change the value by sliding or editing the value in the field.</p>
                 <br/>
+                <h:form>
                 <h4>Basic Mode</h4>
                 <p>The most simple slider is horizontal and has a single handle that can be moved with the mouse or by using the arrow keys(once you click on it).</p>
                 
@@ -35,6 +36,7 @@
                 <h4>Badge Mode</h4>
                 <p>In this mode, the slider value will be shown in a badge.</p>
                 <b:row><b:column><b:slider mode="badge" label="Badge Slider:" value="#{testBean.val3}"/></b:column></b:row>
+                </h:form>
                 <h3>Options and Examples</h3>
                 <p>You can use more than one slider to get input for complex values, like the Time:</p>
                 <h:form id="fslider">
@@ -84,6 +86,7 @@
                     <p>If <code>orientation="vertical-bottom"</code> is used, the slider is rendered on top, then the value and the Label on the bottom.</p>
                     <b:panel look="info">
                         <f:facet name="heading"><b>EXAMPLE - Vertical sliders</b></f:facet>
+                        <h:form>
                         <b:row>
                             <b:column span="4" col-sm="4" col-xs="4">#{' '}</b:column>
                             <b:column span="2" col-sm="2" col-xs="2">
@@ -94,6 +97,7 @@
                             </b:column>
                             <b:column span="4" col-sm="4" col-xs="4">#{' '}</b:column>
                         </b:row>
+                        </h:form>
                         <f:facet name="footer">
                         <strong>Markup:</strong><br/>
 
@@ -116,6 +120,7 @@
                     <p>This allows you to obtain complex input interfaces that adapt to all media screen sizes, taking advantage of the responsive features of the Grid system.</p>
                     <b:panel look="info">
                         <f:facet name="heading"><b>EXAMPLE - <span class="glyphicon glyphicon-signal"></span> Equalizer</b></f:facet>
+                        <h:form>
                         <b:row>
                             <b:column span="3" col-sm="3" col-xs="1">#{' '}</b:column>
                             <b:column span="1" col-sm="1" col-xs="2">
@@ -135,6 +140,7 @@
                             </b:column>
                             <b:column span="3" col-sm="3" col-xs="1">#{' '}</b:column>
                         </b:row>
+                        </h:form>
                         <f:facet name="footer">
                         <strong>Markup:</strong><br/>
 

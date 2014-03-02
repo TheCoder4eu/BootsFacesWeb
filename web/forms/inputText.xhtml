@@ -167,38 +167,40 @@
                 <p>What you have seen applies also to DropButtons:</p>
                 <b:panel>
                     <f:facet name="heading"><b>EXAMPLE</b></f:facet>
-                    <b:row>
-                        <b:column span="6">
-                            <b:inputText placeholder="Text">
-                                <f:facet name="prepend">
-                                    <b:dropButton value="DropButton">
-                                        <b:navLink value="Action" href="#"></b:navLink>
-                                        <b:navLink value="Another action" href="#"></b:navLink>
-                                        <b:navLink value="Something else here" href="#"></b:navLink>
-                                        <b:navLink></b:navLink>
-                                        <b:navLink header="Nav header"></b:navLink>
-                                        <b:navLink value="Separated link" href="#"></b:navLink>
-                                        <b:navLink value="One more separated link" href="#"></b:navLink>
-                                    </b:dropButton>
-                                </f:facet>
-                            </b:inputText>
-                        </b:column>
-                        <b:column span="6">
-                            <b:inputText placeholder="Text">
-                                <f:facet name="append">
-                                    <b:dropButton value="DropButton">
-                                        <b:navLink value="Action" href="#"></b:navLink>
-                                        <b:navLink value="Another action" href="#"></b:navLink>
-                                        <b:navLink value="Something else here" href="#"></b:navLink>
-                                        <b:navLink></b:navLink>
-                                        <b:navLink header="Nav header"></b:navLink>
-                                        <b:navLink value="Separated link" href="#"></b:navLink>
-                                        <b:navLink value="One more separated link" href="#"></b:navLink>
-                                    </b:dropButton> 
-                                </f:facet>
-                            </b:inputText>
-                        </b:column>
-                    </b:row>
+                    <h:form>
+                        <b:row>
+                            <b:column span="6">
+                                <b:inputText placeholder="Text">
+                                    <f:facet name="prepend">
+                                        <b:dropButton value="DropButton">
+                                            <b:navLink value="Action" href="#"></b:navLink>
+                                            <b:navLink value="Another action" href="#"></b:navLink>
+                                            <b:navLink value="Something else here" href="#"></b:navLink>
+                                            <b:navLink></b:navLink>
+                                            <b:navLink header="Nav header"></b:navLink>
+                                            <b:navLink value="Separated link" href="#"></b:navLink>
+                                            <b:navLink value="One more separated link" href="#"></b:navLink>
+                                        </b:dropButton>
+                                    </f:facet>
+                                </b:inputText>
+                            </b:column>
+                            <b:column span="6">
+                                <b:inputText placeholder="Text">
+                                    <f:facet name="append">
+                                        <b:dropButton value="DropButton">
+                                            <b:navLink value="Action" href="#"></b:navLink>
+                                            <b:navLink value="Another action" href="#"></b:navLink>
+                                            <b:navLink value="Something else here" href="#"></b:navLink>
+                                            <b:navLink></b:navLink>
+                                            <b:navLink header="Nav header"></b:navLink>
+                                            <b:navLink value="Separated link" href="#"></b:navLink>
+                                            <b:navLink value="One more separated link" href="#"></b:navLink>
+                                        </b:dropButton> 
+                                    </f:facet>
+                                </b:inputText>
+                            </b:column>
+                        </b:row>
+                    </h:form>
                 </b:panel>
                 
                 <h4>Controlling the size of b:inputText</h4>
@@ -209,9 +211,11 @@
                 <b:well>
                     <strong>Input sizes (fieldSize)</strong><br/>
                     <h:panelGrid cellpadding="5">
-                        <b:inputText fieldSize="sm" placeholder="small (sm)"/>
-                        <b:inputText placeholder="default"/>
-                        <b:inputText fieldSize="lg" placeholder="large (lg)"/>
+                        <h:form>
+                            <b:inputText fieldSize="sm" placeholder="small (sm)"/>
+                            <b:inputText placeholder="default"/>
+                            <b:inputText fieldSize="lg" placeholder="large (lg)"/>
+                        </h:form>
                     </h:panelGrid>
                     
                 </b:well>
@@ -224,9 +228,11 @@
                     <strong>Input sizes</strong><br/>
                     In a row:
                     <b:row>
-                        <b:inputText span="1" placeholder="span1"/>
-                        <b:inputText span="2" placeholder="span 2"/>
-                        <b:inputText span="3" placeholder="span 3"/>
+                        <h:form>
+                            <b:inputText span="1" placeholder="span1"/>
+                            <b:inputText span="2" placeholder="span 2"/>
+                            <b:inputText span="3" placeholder="span 3"/>
+                        </h:form>
                     </b:row>
                     <br/>
                     or in a Form:
