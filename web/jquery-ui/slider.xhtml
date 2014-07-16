@@ -81,7 +81,7 @@
                         </f:facet>
                     </b:panel>
                     </h:form>
-                    <p>You can use <code>orientation</code> attribute to obtain a vertical slider.</p>
+                    <p>You can use the <code>orientation</code> attribute to obtain a vertical slider.</p>
                     <p>If you specify <code>orientation="vertical"</code>, the Label is rendered on top, then the value and the slider on the bottom.</p>
                     <p>If <code>orientation="vertical-bottom"</code> is used, the slider is rendered on top, then the value and the Label on the bottom.</p>
                     <b:panel look="info">
@@ -168,7 +168,101 @@
                         ]]></script>
                         </f:facet>
                     </b:panel>
-                    
+                <h3>Slider Handle options</h3>
+                <h4>Handle Size</h4>
+                <p>If you are targeting Mobile, it can be useful to have a bigger handle.</p>
+                <p>You can control the handle size adding the <code>handle-size</code> attribute, using the <code>md</code> or <code>lg</code> values for a Medium sized handle and a Large sized handle respectively.</p>
+                <h:form>
+                    <b:panel look="info">
+                        <f:facet name="heading"><b>EXAMPLE - Handle Size</b></f:facet>
+                        <b:row>
+                            <b:column>
+                                <b:slider min="0" max="100" step="5" value="25" label="Default size"/>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column>
+                                <b:slider handle-size="md" min="0" max="100" value="50" label="Medium handle (md)" />
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column>
+                                <b:slider handle-size="lg" min="0" max="100" step="5" value="75" label="Large handle (lg)"/>
+                            </b:column>
+                        </b:row>
+                        
+                        <f:facet name="footer">
+                        <strong>Markup:</strong><br/>
+
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                        <![CDATA[
+                        <b:row>
+                            <b:column>
+                                <b:slider min="0" max="100" step="5" value="25" label="Default size"/>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column>
+                                <b:slider handle-size="md" min="0" max="100" value="50" label="Medium handle (md)" />
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column>
+                                <b:slider handle-size="lg" min="0" max="100" step="5" value="75" label="Large handle (lg)"/>
+                            </b:column>
+                        </b:row>
+                        ]]></script>
+                        </f:facet>
+                    </b:panel>
+                </h:form>
+                <p class="text-success">Note: the same applies to Vertical Sliders.</p>
+                <h4>Handle Shape</h4>
+                <p>The default handle has a rounded square shape.</p>
+                <p>If you prefer a round handle you can add the <code>handle-shape="round"</code> attribute.</p>
+                <h:form>
+                    <b:panel look="info">
+                        <f:facet name="heading"><b>EXAMPLE - Handle Size</b></f:facet>
+                        <b:row>
+                            <b:column>
+                                <b:slider handle-shape="round" min="0" max="100" step="5" value="25" label="Default"/>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column>
+                                <b:slider handle-shape="round" handle-size="md" min="0" max="100" value="75" label="Round handle (md)" />
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column>
+                                <b:slider handle-shape="round" handle-size="lg" min="0" max="100" step="5" value="50" label="Round handle (lg)"/>
+                            </b:column>
+                        </b:row>
+                        
+                        <f:facet name="footer">
+                        <strong>Markup:</strong><br/>
+
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                        <![CDATA[
+                        <b:row>
+                            <b:column>
+                                <b:slider handle-shape="round" min="0" max="100" step="5" value="25" label="Default"/>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column>
+                                <b:slider handle-shape="round" handle-size="md" min="0" max="100" value="75" label="Round handle (md)" />
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column>
+                                <b:slider handle-shape="round" handle-size="lg" min="0" max="100" step="5" value="50" label="Round handle (lg)"/>
+                            </b:column>
+                        </b:row>
+                        ]]></script>
+                        </f:facet>
+                    </b:panel>
+                </h:form>
+                <p class="text-success">Note: the same applies to Vertical Sliders.</p>
                 <b:modal id="amodal" title="Slider">
                     <strong>Submitted values:</strong>
                     <h:panelGrid columns="2">  

@@ -4,7 +4,8 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <title>BootsFaces: next-gen JSF Framework</title>
         <meta name="author" content="Riccardo Massera"></meta>
@@ -14,44 +15,81 @@
             <ui:define name="content">
                 <h1>Modals</h1>
                 <p>Modals are streamlined, but flexible, dialog prompts with the minimum required functionality and smart defaults.</p>
-
-                <a id="trigger" class="btn btn-primary btn-lg" 
-                   href="#amodal" data-toggle="modal">Click here for Modal</a>
-                <b:modal id="amodal" title="Modal Example">
-                    <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                    <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-                    <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                    <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-                    <f:facet name="footer">
-                        <b:button value="close" dismiss="modal" onclick="return false;"/>
-                        <b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"/>
-                    </f:facet>
-                </b:modal>
-
-                <br/><br/>
-                <strong>Markup:</strong><br/>
-
-                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                    <![CDATA[
-<b:modal id="amodal" title="Modal Example">
-    <p>Modal body</p>
-    <f:facet name="footer">
-        <b:button value="close" dismiss="modal" onclick="return false;"/>
-        <b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"/>
-    </f:facet>
-</b:modal>
-
-                    ]]></script>
-                <script type="text/javascript">
-                    SyntaxHighlighter.all();
-                </script>
-                <br/>
-                <strong>Modal options</strong>
+                <p><strong>Modal options</strong></p>
                 <p>You can specify a Header with the <code>title</code> attribute. Modals have a dismiss button(a cross) in the upper right corner by default.</p>
                 <p>The <code>&lt;b:modal&gt;</code> tag has also a facet with name <code>footer</code> where you can add buttons for dismissing the modal or for other actions.</p>
                 <p>Notice that the <code>&lt;b:button&gt;</code> tag must have the <code>dismiss="modal"</code> attribute in order to dismiss the modal when clicked.</p>
+                
+                <h4>Triggering Modals</h4>
+                <p>You have three ways to create a Button that triggers a Modal:</p>
+                <ul>
+                    <li>Using HTML markup - a styled <code>&lt;a&gt;</code> tag with href and data attributes.</li>
+                    <li>Using HTML markup - a styled <code>&lt;button&gt;</code> tag with two data attributes.</li>
+                    <li>Using JSF BootsFaces markup - a <code>&lt;b:button&gt;</code> tag with passthrough data attributes and a little javascript to prevent click event.</li>
+                </ul>
+                <p>Note: if your intendended use is to trigger a data submission that shows the results in a Modal, then have a look at the <h:link outcome="/forms/commandButton" value="commandButton"/> documentation.</p>
+                <p>The following example shows you how to use the three kinds of trigger.</p>
+                <p class="text-warning"><b>Overlapping modals is not supported:</b> be sure not to open a modal while another is still visible. Showing more than one modal at a time requires custom code.</p>
+                
+                
+                <b:panel look="info">
+                    <f:facet name="heading"><b>EXAMPLE - Triggering a modal</b></f:facet>
+                    <b:modal id="amodal" title="Modal Example">
+                        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                        <f:facet name="footer">
+                            <b:button value="close" dismiss="modal" onclick="return false;"/>
+                            <b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"/>
+                        </f:facet>
+                    </b:modal>
+                    <b:row>
+                        <b:column span="4">
+                            <a id="atrigger" class="btn btn-primary btn-lg" href="#amodal" data-toggle="modal">Trigger (HTML A tag)</a>
+                        </b:column>
+                        <b:column span="4">
+                            <button id="btrigger" class="btn btn-info btn-lg" data-target="#amodal" data-toggle="modal">Trigger (HTML Button)</button>
+                        </b:column>
+                        <b:column span="4">
+                            <b:button value="Trigger (JSF passthrough)" look="success" p:data-target="#amodal" p:data-toggle="modal" onclick="return false;" size="lg"/>
+                        </b:column>
+                    </b:row>
+
+                    <f:facet name="footer">
+                        <strong>Markup:</strong><br/>
+
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                            <![CDATA[
+                            <b:modal id="amodal" title="Modal Example">
+                            <p>Modal body</p>
+                                <f:facet name="footer">
+                                    <b:button value="close" dismiss="modal" onclick="return false;"/>
+                                    <b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"/>
+                                </f:facet>
+                            </b:modal>
+                            <b:row>
+                                <b:column span="4">
+                                    <a id="atrigger" class="btn btn-primary btn-lg" href="#amodal" data-toggle="modal">Trigger (HTML A tag)</a>
+                                </b:column>
+                                <b:column span="4">
+                                    <button id="btrigger" class="btn btn-info btn-lg" data-target="#amodal" data-toggle="modal">Trigger (HTML Button)</button>
+                                </b:column>
+                                <b:column span="4">
+                                    <b:button value="Trigger (JSF passthrough)" look="success" p:data-target="#amodal" p:data-toggle="modal" onclick="return false;" size="lg"/>
+                                </b:column>
+                            </b:row>
+                            ]]></script>
+                    </f:facet>
+                </b:panel>
+                <br/> <br/>       
+                
+                <script type="text/javascript">
+                    SyntaxHighlighter.all();
+                </script>
+                
             </ui:define>
         </ui:composition>
     </h:body>
