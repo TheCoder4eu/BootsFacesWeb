@@ -19,7 +19,9 @@
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/page/*</url-pattern>
-    </servlet-mapping>
+		<url-pattern>*.jsf</url-pattern>
+		<url-pattern>/javax.faces.resource/*</url-pattern>
+	</servlet-mapping>
     <session-config>
         <session-timeout>
             30

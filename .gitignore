@@ -4,3 +4,9 @@
 /build.xml
 /web/WEB-INF/jboss-web.xml
 /web/META-INF/context.xml
+/target/
+.settings/
+.project
+.classpath
+/web/META-INF
+/web/WEB-INF/.faces-config.xml.jsfdia
