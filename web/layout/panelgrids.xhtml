@@ -13,8 +13,49 @@
         <ui:composition template="/applayout/pageTemplate.xhtml">
             <ui:define name="content">
                 <h1>Panel grids</h1>
-                <p>to do</p>
+                <p>Using a panel grid is a convenient way to display a couple of input fields. BootsFaces aligns your input fields automatically.</p>
+                <h3>Basic example</h3>
+                <p>
+                The attribute colSpan of &lt;b:panelGrid /&gt; takes the a comma-separated list of numbers. Each number defines how many Bootstrap columns a &lt;b:panelGrid /&gt; column spans. 
+                </p>
+                <b:tabView>
+                <b:tab title="JSF markup">
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+<b:panelGrid colSpans="2,10">
+	<h:outputLabel value="Value 1" />
+	<b:inputText value="{{settingsBean.value1}}"/>
+	<h:outputLabel value="Value 2" />
+	<b:inputText value="{{settingsBean.value2}}"  />
+	<h:outputLabel value="Checkbox 1" />
+	<b:selectBooleanCheckbox value="{{settingsBean.cb1}}" />
+	<h:outputLabel value="Checkbox 2" />
+	<b:selectBooleanCheckbox value="{{settingsBean.cb2}}" />
+</b:panelGrid>
+]]>
+</script>
+</b:tab>
+<b:tab title="displayed as">
+<b:panelGrid colSpans="2,10">
+	<h:outputLabel value="Value 1" />
+	<b:inputText value="#{settingsBean.value1}"/>
+	<h:outputLabel value="Value 2" />
+	<b:inputText value="#{settingsBean.value2}"  />
+	<h:outputLabel value="Checkbox 1" />
+	<b:selectBooleanCheckbox value="#{settingsBean.checkbox1}" />
+	<h:outputLabel value="Checkbox 2" />
+	<b:selectBooleanCheckbox value="#{settingsBean.checkbox2}" />
+</b:panelGrid>
+</b:tab>
+</b:tabView>
+
+<p>colSpan="2,10" means the content of the &lt;b:panelGrid&gt; is arranged in to columns. The first colum takes 2 Bootstrap columns (16% of the available space), the second column take the remaining 10 Bootstrap columns (83% of the available space).</p>
+
+
                 <br/><br/><br/>
+                <script type="text/javascript">
+                    SyntaxHighlighter.all();
+                </script>
             </ui:define>
         </ui:composition>
     </h:body>
