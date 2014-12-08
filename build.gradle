@@ -34,6 +34,7 @@ providedCompile 'org.glassfish.web:el-impl:2.2'
 }
 
 war {
+   archiveName = 'BootsFacesWeb.war'
    classpath fileTree(dir: 'bsflib', include: '*') // adds a file-set to the WEB-INF/lib dir.
 }
 
