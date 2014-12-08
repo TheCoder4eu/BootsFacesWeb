@@ -26,11 +26,11 @@ sourceSets {
 }
 
 dependencies {
-providedCompile 'javax.servlet:servlet-api:2.5'
+providedCompile 'javax.enterprise:cdi-api:1.2'
+providedCompile 'javax.servlet:servlet-api:3.+'
 providedCompile 'com.sun.faces:jsf-api:2.2.+'
 providedCompile 'com.sun.faces:jsf-impl:2.2.+'
-//compile 'javax.servlet.jsp:jsp-api:2.2'
-//compile 'org.glassfish.web:el-impl:2.2'
+providedCompile 'org.glassfish.web:el-impl:2.2'
 }
 
 war {
