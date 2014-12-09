@@ -30,10 +30,11 @@ war.doFirst {
     String contents = new File( 'web/empty.xhtml' ).getText( 'UTF-8' )
 
     //Replace the text
-    contents = contents.replaceAll( 'Title', 'Welcome to '+project.name )
+    contents = contents.replaceAll( 'Title', 'Welcome to BootsFaces' )
     Date buildDate = new Date()
+    String hostname= InetAddress.getLocalHost().getHostName()
     String buildInfo = '\n<b:panel title="Build Informations" look="info">\n'+
-                       "Built by Gradle ${project.gradle.gradleVersion}<br/>\n" +
+                       "Built on $hostname by Gradle ${project.gradle.gradleVersion}<br/>\n" +
                        "sourceCompatibility $sourceCompatibility<br/>\n" +
                        "targetCompatibility $targetCompatibility<br/>\n" +
                        "Build Date  ${buildDate}<br/>\n" +
