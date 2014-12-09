@@ -33,10 +33,10 @@ war.doFirst {
     contents = contents.replaceAll( 'Title', 'Welcome to '+project.name )
     Date buildDate = new Date()
     String buildInfo = '\n<b:panel title="Build Informations" look="info">\n'+
-                       "Built by Gradle ${project.gradle.gradleVersion}\n" +
-                       "sourceCompatibility $sourceCompatibility\n" +
-                       "targetCompatibility $targetCompatibility\n" +
-                       "Build Date  ${buildDate}\n" +
+                       "Built by Gradle ${project.gradle.gradleVersion}<br>\n" +
+                       "sourceCompatibility $sourceCompatibility<br>\n" +
+                       "targetCompatibility $targetCompatibility<br>\n" +
+                       "Build Date  ${buildDate}<br>\n" +
                        '</b:panel>'
     contents = contents.replaceAll( '</h1>', '</h1>'+buildInfo )
     new File( 'web/index.xhtml' ).write( contents, 'UTF-8' )
