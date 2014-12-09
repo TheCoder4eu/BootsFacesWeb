@@ -38,6 +38,7 @@ war.doFirst {
     String buildInfo = '\n<b:panel title="Build Informations" look="info">\n'+
                        "Built on $hostname $currentOS<br/>\n" +
                        "by Gradle ${project.gradle.gradleVersion}<br/>\n" +
+                       "Java Version $currentJvm<br/>\n" +
                        "sourceCompatibility $sourceCompatibility<br/>\n" +
                        "targetCompatibility $targetCompatibility<br/>\n" +
                        "Build Date  ${buildDate}<br/>\n" +
