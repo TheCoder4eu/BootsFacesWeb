@@ -26,7 +26,21 @@ providedCompile 'com.sun.faces:jsf-impl:2.2.+'
 providedCompile 'org.glassfish.web:el-impl:2.2'
 }
 
-war.doFirst { file("web/empty.xhtml").renameTo(file("web/index.xhtml")) }
+war.doFirst {
+    String contents = new File( 'web/empty.xhtml' ).getText( 'UTF-8' )
+
+    //Replace the text
+    contents = contents.replaceAll( 'Title', 'Welcome to '+project.name )
+    Date buildDate = new Date()
+    String buildInfo = '\n<b:panel title="Build Informations" look="info">\n'+
+                       "Built by Gradle ${project.gradle.gradleVersion}\n" +
+                       "sourceCompatibility $sourceCompatibility\n" +
+                       "targetCompatibility $targetCompatibility\n" +
+                       "Build Date  ${buildDate}\n" +
+                       '</b:panel>'
+    contents = contents.replaceAll( '</h1>', '</h1>'+buildInfo )
+    new File( 'web/index.xhtml' ).write( contents, 'UTF-8' )
+}
 
 war {
    archiveName = 'BootsFacesWeb.war'
