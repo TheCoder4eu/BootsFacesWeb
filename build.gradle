@@ -5,15 +5,8 @@ webAppDirName = 'web'
 
 sourceCompatibility = '1.7'
 targetCompatibility = '1.7'
-// Iterate over the source sets
-sourceSets.all {
-    println name
-}
 
 repositories {
-flatDir {
-       dirs 'bsflib'
-   }
 mavenCentral()
 }
 
@@ -32,6 +25,8 @@ providedCompile 'com.sun.faces:jsf-api:2.2.+'
 providedCompile 'com.sun.faces:jsf-impl:2.2.+'
 providedCompile 'org.glassfish.web:el-impl:2.2'
 }
+
+war.doFirst { file("web/empty.xhtml").renameTo(file("web/index.xhtml")) }
 
 war {
    archiveName = 'BootsFacesWeb.war'
