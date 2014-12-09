@@ -33,8 +33,11 @@ war.doFirst {
     contents = contents.replaceAll( 'Title', 'Welcome to BootsFaces' )
     Date buildDate = new Date()
     String hostname= InetAddress.getLocalHost().getHostName()
+    String currentJvm = org.gradle.internal.jvm.Jvm.current()
+    String currentOS = System.properties['os.name']+' '+System.properties['os.version']+' '+System.properties['os.arch']
     String buildInfo = '\n<b:panel title="Build Informations" look="info">\n'+
-                       "Built on $hostname by Gradle ${project.gradle.gradleVersion}<br/>\n" +
+                       "Built on $hostname $currentOS<br/>\n" +
+                       "by Gradle ${project.gradle.gradleVersion}<br/>\n" +
                        "sourceCompatibility $sourceCompatibility<br/>\n" +
                        "targetCompatibility $targetCompatibility<br/>\n" +
                        "Build Date  ${buildDate}<br/>\n" +
