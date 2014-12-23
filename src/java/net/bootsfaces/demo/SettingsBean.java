@@ -25,7 +25,6 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean
 public class SettingsBean {
 	private int value1;
-
 	private int value2;
 
 	private boolean checkbox1;

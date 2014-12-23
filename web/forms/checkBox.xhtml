@@ -13,9 +13,58 @@
         <ui:composition template="/applayout/pageTemplate.xhtml">
             <ui:define name="content">
                 <style>td {padding: 8px;}</style>
-                <h1>Check box (&lt;b:selectBooleanCheckbox&gt;)</h1>
+                <h1>Checkbox (&lt;b:selectBooleanCheckbox&gt;)</h1>
                 
-                <p>to do </p>
+                <p>Checkboxes are very simple input widgets: an empty square that can be checked or not. They permit the user to make a binary choice.</p>
+                <p>&lt;b:selectBooleanCheckbox&gt; makes the Bootstrap style of displaying checkboxes available to JSF programmers.</p>
+                <h1>Basic usage</h1>
+<b:tabView>
+    <b:tab title="JSF markup">
+       <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+<h:form>
+    <h:panelGrid columns="2"  cellpadding="5">
+        <h:outputLabel value="checkbox 1"/> 
+        <b:selectBooleanCheckbox value="#{settingsBean.checkbox1}" />
+    </h:panelGrid>
+</h:form>
+]]>
+       </script>
+    </b:tab>
+    <b:tab title="displayed as">
+        <h:form>
+			<h:panelGrid columns="2"  cellpadding="5">
+                <h:outputLabel value="checkbox 1"/> 
+                <b:selectBooleanCheckbox value="#{settingsBean.checkbox1}" />
+            </h:panelGrid>
+        </h:form>
+    </b:tab>
+</b:tabView>
+
+                <h1>Labels as captions above the checkbox</h1>
+<b:tabView>
+  <b:tab title="JSF markup">
+    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+    <h:form>
+    	<h:panelGrid columns="2"  cellpadding="5">
+         	<b:selectBooleanCheckbox value="#{settingsBean.checkbox2}" label="checkbox 2" />
+        </h:panelGrid>
+    </h:form>
+]]>
+    </script>
+  </b:tab>
+  <b:tab title="displayed as">
+    <h:form>
+    	<h:panelGrid columns="2"  cellpadding="5">
+         	<b:selectBooleanCheckbox value="#{settingsBean.checkbox2}" label="checkbox 2" />
+        </h:panelGrid>
+    </h:form>
+  </b:tab>
+</b:tabView>
+
+                
+                <p></p>
                 
                 <script type="text/javascript">
                     SyntaxHighlighter.all();
