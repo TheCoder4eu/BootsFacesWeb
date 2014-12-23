@@ -23,23 +23,19 @@
        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
 <h:form>
-    <h:panelGrid columns="2"  cellpadding="5">
-        <h:outputLabel value="checkbox 1"/> 
-        <b:selectBooleanCheckbox value="#{settingsBean.checkbox1}" />
-    </h:panelGrid>
+    <b:selectBooleanCheckbox value="#{settingsBean.checkbox1}" caption="checkbox 1"/>
 </h:form>
 ]]>
        </script>
     </b:tab>
     <b:tab title="displayed as">
         <h:form>
-			<h:panelGrid columns="2"  cellpadding="5">
-                <h:outputLabel value="checkbox 1"/> 
-                <b:selectBooleanCheckbox value="#{settingsBean.checkbox1}" />
-            </h:panelGrid>
+            <b:selectBooleanCheckbox value="#{settingsBean.checkbox1}" caption="checkbox 1" />
         </h:form>
     </b:tab>
 </b:tabView>
+
+<p>The caption is displayed behind the checkbox.</p>
 
                 <h1>Labels as captions above the checkbox</h1>
 <b:tabView>
@@ -62,9 +58,8 @@
     </h:form>
   </b:tab>
 </b:tabView>
-
-                
-                <p></p>
+              
+                <p>The label is displayed above the checkbox</p>
                 
                 <script type="text/javascript">
                     SyntaxHighlighter.all();
