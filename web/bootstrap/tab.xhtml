@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>BootsFaces: next-gen JSF Framework</title>
+        <meta name="author" content="Riccardo Massera, Stephan Rauh et al."></meta>
+    </h:head>
+    <h:body style="padding-top: 60px">
+        <ui:composition template="/applayout/pageTemplate.xhtml">
+            <ui:define name="content">
+                <h1>TabView and Tab</h1>
+                <p>Add quick, dynamic tab functionality to transition through panes of local content.</p>
+                <p>You can have also complex content in your tabs like the Thumbnail in the third tab:</p>
+                
+                <b:tabView activeIndex="2">
+                    <b:tab title="First Tab">
+                        <p>This is the first tab.</p>
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    </b:tab>
+                    <b:tab title="Another Tab">
+                        <p>This is the second tab.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </b:tab>
+                    <b:tab title="Image Tab">
+                        <br/>
+                        <b:thumbnail>
+                            <img width="640" height="428" src="https://farm4.staticflickr.com/3093/2573064842_d497899887_z.jpg?zz=1" alt="2008-0608 (7119) Ulun Danu Temple by Jennifer, on Flickr"/>
+                            <f:facet name="caption">
+                                <h3>Ulun Danu Beratan Temple</h3>
+                                <p>Ulun Danu Temple is a Balinese Hindu Temple located at Candi Kuning countryside. 
+                                    It is set at lakeside of Beratan with beautiful lake view and hills surround it.
+                                    It is situated in the plateau area with cool atmosphere surround it and hills as a backdrop.</p>
+                            </f:facet>
+                        </b:thumbnail>
+                    </b:tab>
+                    <b:tab title="Fourth Tab">
+                        <p>This is the fourth tab.</p>
+                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
+                    </b:tab>
+                    
+                </b:tabView>
+                
+                <b:panel look="info">
+                    <f:facet name="heading"><b>Markup:</b></f:facet>
+                    <f:facet name="footer">
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
+                            <![CDATA[
+                            <b:tabView activeIndex="2">
+                                <b:tab title="First Tab">
+                                    <p>This is the first tab.</p>
+                                </b:tab>
+                                <b:tab title="Another Tab">
+                                    <p>This is the second tab.</p>
+                                </b:tab>
+                                <b:tab title="Image Tab">
+                                  ...
+                                </b:tab>
+                                <b:tab title="Fourth Tab">
+                                    <p>This is the fourth tab.</p>
+
+                                </b:tab>
+
+                            </b:tabView>
+                            
+
+                            ]]></script>
+                    </f:facet>
+                </b:panel>
+                <script type="text/javascript">
+                    SyntaxHighlighter.all();
+                </script>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
