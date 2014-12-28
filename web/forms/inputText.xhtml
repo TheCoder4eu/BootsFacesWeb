@@ -27,8 +27,8 @@
                 <br/>
                 <h3>Enhancing the b:inputText form control</h3>
                 <p>To help you enhance the User experience, BootsFaces come in with a useful feature:</p>
-                <p>you can easily prepend or append text to your inputTexts and what you prepend and append will seem part of the input field.</p>
-                <p>To do so, you just need to use the facets <code>prepend</code> and <code>append</code> where you will place the <code>h:outputText</code> element</p>
+                <p>You can easily prepend or append text to your inputTexts and what you prepend and append will seem part of the input field.</p>
+                <p>To do so, you just need to use the facets <code>prepend</code> and <code>append</code> where you will place the <code>h:outputText</code> element.</p>
                 <p>You can even prepend and append at the same time, as in the following example:</p>
                 <b:panel>
                     <f:facet name="heading"><b>EXAMPLE</b></f:facet>
@@ -130,7 +130,7 @@
                     </f:facet>
                 </b:panel>
                 <strong>Appending or prepending Buttons</strong><br/>
-                <p>Another nice feature is that you can append(or prepend) buttons:</p>
+                <p>Another nice feature is that you can append (or prepend) buttons:</p>
                 <b:panel>
                     <f:facet name="heading"><b>EXAMPLE</b></f:facet>
                     <h:form id="bid" prependId="false" >
@@ -149,8 +149,9 @@
                     </h:form>
                 </b:panel>
                 <p>allowing you to build compact mini-forms for specific actions with little effort.</p>
-                <p class="text-warning">There is only one limitation: you can not prepend or append mixing texts and buttons, 
-                    the elements on each side can be only of the same type, eg. prepend text elements and append buttons.</p>
+                <p class="text-warning">There is only one limitation: you can not prepend or append mixing texts and buttons. 
+                    The elements on each side can be only of the same type. For instance, it's possible to prepend text elements and append buttons.
+                    But it's not possible to prepend both a text element and a button at the same time.</p>
                 
                 <b:modal id="amodal" title="Bid for this Item">
                     <h4>Congratulations!</h4>
