@@ -16,7 +16,11 @@
                 <b:navbarLinks>
                     <b:navLink />
                     <b:navLink />
-                    <b:navLink outcome="/download" value="Getting Started" />
+                    <b:dropMenu value="Getting Started">
+                        <b:navLink value="Requirements" outcome="/requirements/requirements" icon="tasks" />
+                        <b:navLink outcome="/download" value="Download" icon="save" />
+                    </b:dropMenu>
+                    
                     <b:dropMenu value="Layout">
                         <b:navLink value="Basic Layout" outcome="/layout/basic" />
                         <b:navLink value="NavLinks" outcome="/layout/navLinks" icon="list" />
@@ -42,14 +46,10 @@
                         <b:navLink value="Modals" outcome="/bootstrap/modal" />
                         <b:navLink value="Thumbnails" outcome="/bootstrap/thumbnails" icon="picture" />
                         <b:navLink value="Tab" outcome="/bootstrap/tab" icon="folder-close" />
-                        <!--b:navLink value="Popover" /-->
                     </b:dropMenu>
                     <b:dropMenu value="jQuery UI Widgets">
                         <b:navLink value="Slider" outcome="/jquery-ui/slider" icon="tasks" />
                         <b:navLink value="DatePicker" outcome="/jquery-ui/datepicker" icon="calendar" />
-                    </b:dropMenu>
-                    <b:dropMenu value="Requirements">
-                        <b:navLink value="Requirements" outcome="/requirements/requirements" icon="tasks" />
                     </b:dropMenu>
                     <b:dropMenu value="Integration">
                         <b:navLink value="AngularFaces" outcome="/integration/angularFaces" icon="tasks" />
