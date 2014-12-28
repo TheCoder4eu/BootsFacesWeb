@@ -1,26 +1,52 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
-    <h:head>
-        <title>BootsFaces: next-gen JSF Framework</title>
-        <meta name="author" content="Riccardo Massera, Stephan Rauh et al."></meta>
-    </h:head>
-    <h:body style="padding-top: 60px">
-        <ui:composition template="/applayout/pageTemplate.xhtml">
-            <ui:define name="content">
-                <h1>Panel grids</h1>
-                <p>Using a panel grid is a convenient way to display a couple of input fields. BootsFaces aligns your input fields automatically.</p>
-                <h3>Basic example</h3>
-                <p>
-                The attribute colSpan of &lt;b:panelGrid /&gt; takes the a comma-separated list of numbers. Each number defines how many Bootstrap columns a &lt;b:panelGrid /&gt; column spans. 
-                </p>
-                <b:tabView>
-                <b:tab title="JSF markup">
-<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>BootsFaces: next-gen JSF Framework</title>
+	<meta name="author" content="Riccardo Massera, Stephan Rauh et al."></meta>
+</h:head>
+<h:body style="padding-top: 60px">
+	<ui:composition template="/applayout/pageTemplate.xhtml">
+		<ui:define name="content">
+			<h1>Panel grids</h1>
+			<p>
+				Using a panel grid is a convenient way to display a couple of input
+				fields. BootsFaces aligns your input fields automatically. You don't
+				have to care about
+				<code>&lt;b:row&gt;</code>
+				and
+				<code>&lt;b:col&gt;</code>
+				. BootsFaces panel grid adds these tags automatically for you.
+			</p>
+			<p>
+				The difference to a standard JSF
+				<code>&lt;h:panelGrid&gt;</code>
+				is that standard JSF generates a table instead of Bootstrap-friendly
+				<code>row</code>
+				and
+				<code>col</code>
+				divs.
+			</p>
+			<h3>Basic example</h3>
+			<p>
+				The attribute
+				<code>colSpan</code>
+				of
+				<code>&lt;b:panelGrid /&gt;</code>
+				takes the a comma-separated list of numbers. Each number defines how
+				many Bootstrap columns a
+				<code>&lt;b:panelGrid /&gt;</code>
+				column spans.
+			</p>
+			<b:tabView>
+				<b:tab title="JSF markup">
+					<b:well>
+						<script type="syntaxhighlighter"
+							class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
 <b:panelGrid colSpans="2,10">
 	<h:outputLabel value="Value 1" />
@@ -34,29 +60,114 @@
 </b:panelGrid>
 ]]>
 </script>
-</b:tab>
-<b:tab title="displayed as">
-<b:panelGrid colSpans="2,10">
-	<h:outputLabel value="Value 1" />
-	<b:inputText value="#{settingsBean.value1}"/>
-	<h:outputLabel value="Value 2" />
-	<b:inputText value="#{settingsBean.value2}"  />
-	<h:outputLabel value="Checkbox 1" />
-	<b:selectBooleanCheckbox value="#{settingsBean.checkbox1}" />
-	<h:outputLabel value="Checkbox 2" />
-	<b:selectBooleanCheckbox value="#{settingsBean.checkbox2}" />
-</b:panelGrid>
-</b:tab>
-</b:tabView>
+					</b:well>
+				</b:tab>
+				<b:tab title="displayed as">
+					<b:well>
+					<b:container>
+						<b:panelGrid colSpans="2,10" size="xs">
+							<h:outputLabel value="Value 1" />
+							<b:inputText value="#{settingsBean.value1}" />
+							<h:outputLabel value="Value 2" />
+							<b:inputText value="#{settingsBean.value2}" />
+							<h:outputLabel value="Checkbox 1" />
+							<b:selectBooleanCheckbox value="#{settingsBean.checkbox1}" />
+							<h:outputLabel value="Checkbox 2" />
+							<b:selectBooleanCheckbox value="#{settingsBean.checkbox2}" />
+						</b:panelGrid>
+						</b:container>
+					</b:well>
+				</b:tab>
+			</b:tabView>
 
-<p>colSpan="2,10" means the content of the &lt;b:panelGrid&gt; is arranged in to columns. The first colum takes 2 Bootstrap columns (16% of the available space), the second column take the remaining 10 Bootstrap columns (83% of the available space).</p>
+			<p>colSpan="2,10" means the content of the &lt;b:panelGrid&gt; is
+				arranged in to columns. The first colum takes 2 Bootstrap columns
+				(16% of the available space), the second column take the remaining
+				10 Bootstrap columns (83% of the available space).</p>
+
+			<b:panel look="info">
+				<f:facet name="heading">
+					<b>Attributes of &lt;b:panelGrid&gt;</b>
+				</f:facet>
+				<f:facet name="footer">
+					<table class="table table-striped table-hover"
+						style="background-color: #fff">
+						<thead>
+							<tr>
+								<th>Attribute</th>
+								<th>Default value</th>
+								<th>Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>colSpans</td>
+								<td>(none)</td>
+								<td>Comma-separated list of integers that must add up to
+									twelve. Defines how many Bootstrap columns each column of the
+									panelGrid spans.</td>
+							</tr>
+							<tr>
+								<td>size</td>
+								<td>lg</td>
+								<td>Optional. Legal values are lg, md, sm and xs. Influences the grid size.
+								</td>
+							</tr>
+							
+							<tr>
+								<td>id</td>
+								<td>(none)</td>
+								<td>Unique identifier of the component.</td>
+							</tr>
+							<tr>
+								<td>style</td>
+								<td>(none)</td>
+								<td>CSS style.
+								</td>
+							</tr>
+							<tr>
+								<td>styleClass</td>
+								<td>(none)</td>
+								<td>CSS class</td>
+							</tr>
+							<tr>
+								<td>rowClasses</td>
+								<td>(none)</td>
+								<td>Optional comma-separated list of CSS classes that are applied to the rows. If there are more rows than <code>rowClasses</code>, BootsFaces starts with the first row class again.</td>
+							</tr>
+							<tr>
+								<td>columnClasses</td>
+								<td>(none)</td>
+								<td>Optional comma-separated list of CSS classes that are applied to the rows. If there are more columns than <code>columnClasses</code>, BootsFaces starts with the first column class again.<br />
+								If a column class contains one of the standard <code>col-{{size}}-{{width}}</code> classes (e.g. <code>col-lg-3</code>), it override the corresponding <code>colSpans</code> setting.</td>
+							</tr>
+
+						</tbody>
+					</table>
+				</f:facet>
+			</b:panel>
+			<b:panel look="info">
+				<f:facet name="heading">
+					<b>Skinning</b>
+				</f:facet>
+				<f:facet name="footer">
+					<p><code>&lt;b:panelGrid&gt;</code> uses the standard Bootstrap CSS classes:</p>
+					<ul>
+					<li>The panelgrid is a <code>div</code> bearing the CSS class <code>container</code>.</li>
+					<li>Each row is a <code>div</code> bearing the CSS class <code>row</code>.</li>
+					<li>Each column is a <code>div</code> bearing the CSS class <code>col-lg-1</code> - <code>col-lg-12</code>.</li>
+					</ul>
+				</f:facet>
+			</b:panel>
 
 
-                <br/><br/><br/>
-                <script type="text/javascript">
+			<br />
+			<br />
+			<br />
+			<script type="text/javascript">
                     SyntaxHighlighter.all();
                 </script>
-            </ui:define>
-        </ui:composition>
-    </h:body>
+		</ui:define>
+	</ui:composition>
+</h:body>
 </html>
