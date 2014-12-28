@@ -225,29 +225,64 @@
                 <p>If your inputText is not in a panelGrid(table) or is not already in a b:column of your grid layout,
                     BootsFaces can place the component in a column for you, allowing you to easily control its size.</p>
                 <p>Use <code>span="1"</code> to <code>span="12"</code> for inputs that match the same sizes of the BootsFaces grid columns:</p>
-                <b:well>
-                    <strong>Input sizes</strong><br/>
+				<b:tabView>
+					<b:tab title="displayed as">
+						<b:well>
+							<strong>Input sizes</strong>
+							<br />
+	                    In a row:
+			                    <b:row>
+								<h:form>
+									<b:inputText span="1" placeholder="span1" />
+									<b:inputText span="2" placeholder="span 2" />
+									<b:inputText span="3" placeholder="span 3" />
+								</h:form>
+							</b:row>
+							<br />
+	                    or in a Form:
+			                    <h:form styleClass="form-horizontal">
+								<b:inputText span="1" placeholder="span1" />
+								<b:inputText span="2" placeholder="span 2" />
+								<b:inputText span="3" placeholder="span 3" />
+								<b:inputText span="6" placeholder="span 6" />
+								<b:inputText span="9" placeholder="span 9" />
+								<b:inputText span="12" placeholder="span 12" />
+							</h:form>
+						</b:well>
+					</b:tab>
+					<b:tab title="JSF markup">
+					<b:well>
+						<script type="syntaxhighlighter"
+							class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+							<![CDATA[
+					<b:well>
+						<strong>Input sizes</strong>
+						<br />
                     In a row:
-                    <b:row>
-                        <h:form>
-                            <b:inputText span="1" placeholder="span1"/>
-                            <b:inputText span="2" placeholder="span 2"/>
-                            <b:inputText span="3" placeholder="span 3"/>
-                        </h:form>
-                    </b:row>
-                    <br/>
+		                    <b:row>
+							<h:form>
+								<b:inputText span="1" placeholder="span1" />
+								<b:inputText span="2" placeholder="span 2" />
+								<b:inputText span="3" placeholder="span 3" />
+							</h:form>
+						</b:row>
+						<br />
                     or in a Form:
-                    <h:form styleClass="form-horizontal">
-                        <b:inputText span="1" placeholder="span1"/>
-                        <b:inputText span="2" placeholder="span 2"/>
-                        <b:inputText span="3" placeholder="span 3"/>
-                        <b:inputText span="6" placeholder="span 6"/>
-                        <b:inputText span="9" placeholder="span 9"/>
-                        <b:inputText span="12" placeholder="span 12"/>
-                    </h:form>
-                </b:well>
-                
-                <script type="text/javascript">
+		                    <h:form styleClass="form-horizontal">
+							<b:inputText span="1" placeholder="span1" />
+							<b:inputText span="2" placeholder="span 2" />
+							<b:inputText span="3" placeholder="span 3" />
+							<b:inputText span="6" placeholder="span 6" />
+							<b:inputText span="9" placeholder="span 9" />
+							<b:inputText span="12" placeholder="span 12" />
+						</h:form>
+					</b:well>
+            ]]>
+					       </script>
+					   </b:well>
+					</b:tab>
+				</b:tabView>
+				<script type="text/javascript">
                     SyntaxHighlighter.all();
                 </script>
                 <br/><br/><br/><br/>
