@@ -23,18 +23,26 @@
        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
         <h:form>
-	        <b:panelGrid colSpans="2,10">
+	        <b:panelGrid colSpans="2,2,2,2,4">
 	        	<h:outputLabel value="Select your car's brand:" for="brandID" />
-			    <b:selectOneMenu value="#{carBean.brand}" id="brandID" >
+			    <b:selectOneMenu value="# {carBean.brand}" id="brandID" >
 				    <f:selectItem itemLabel="Fiat" itemValue="1"/>
 				    <f:selectItem itemLabel="Honda" itemValue="2"/>
 				    <f:selectItem itemLabel="Opel" itemValue="3"/>
 			    </b:selectOneMenu>
-		    <b:selectOneMenu value="#{carBean.type}" label="Select your car's type:">
-		    		<f:selectItem itemLabel="Cinquecento" itemValue="1"/>
-				    <f:selectItem itemLabel="Civic" itemValue="2"/>
-				    <f:selectItem itemLabel="Astra" itemValue="3"/>
-		    </b:selectOneMenu>
+			    <h:message for="brandID"/>
+			    <h:outputLabel value="last submitted value:" for="brandOutputID"/>
+			    <b:inputText value="#{carBean.brand}" disabled="true" id="brandOutputID"/>
+	        	<h:outputLabel value="Select your car's type:" for="typeID" />
+			    <b:selectOneMenu value="#{carBean.type}" id="typeID" required="true">
+			    		<f:selectItem itemLabel="(Please select)" itemValue=""/>
+			    		<f:selectItem itemLabel="Cinquecento" itemValue="1"/>
+					    <f:selectItem itemLabel="Civic" itemValue="2"/>
+					    <f:selectItem itemLabel="Astra" itemValue="3"/>
+			    </b:selectOneMenu>
+			    <h:message for="typeID"/>
+			    <h:outputLabel value="last submitted value:" for="typeOutputID" />
+			    <b:inputText value="#{carBean.type}" disabled="true" id="typeOutputID"/>
 		    </b:panelGrid>
         </h:form>
 ]]>
@@ -43,20 +51,32 @@
     <b:tab title="displayed as">
 				<br />
         <h:form>
-	        <b:panelGrid colSpans="2,10">
-	        	<h:outputLabel value="Select your car's brand:" for="brandID" />
+	        <b:panelGrid colSpans="2,2,2,2,4">
+	        	<h:outputLabel value="Select your car's brand:" for="brandID" id="l1" />
 			    <b:selectOneMenu value="#{carBean.brand}" id="brandID" >
+		    		<f:selectItem itemLabel="(Please select)" itemValue=""/>
 				    <f:selectItem itemLabel="Fiat" itemValue="1"/>
 				    <f:selectItem itemLabel="Honda" itemValue="2"/>
 				    <f:selectItem itemLabel="Opel" itemValue="3"/>
 			    </b:selectOneMenu>
+			    <h:message for="brandID"/>
+			    <h:outputLabel value="last submitted value:" for="brandOutputID"/>
+			    <b:inputText value="#{carBean.brand}" disabled="true" id="brandOutputID"/>
 	        	<h:outputLabel value="Select your car's type:" for="typeID" />
-			    <b:selectOneMenu value="#{carBean.type}" id="typeID">
+			    <b:selectOneMenu value="#{carBean.type}" id="typeID" required="true" >
+			    		<f:selectItem itemLabel="(Please select)" itemValue=""/>
 			    		<f:selectItem itemLabel="Cinquecento" itemValue="1"/>
 					    <f:selectItem itemLabel="Civic" itemValue="2"/>
 					    <f:selectItem itemLabel="Astra" itemValue="3"/>
+					    <f:selectItem itemLabel="Megane" itemValue="4"/>
 			    </b:selectOneMenu>
+			    <h:message for="typeID"/>
+			    <h:outputLabel value="last submitted value:" for="typeOutputID" />
+			    <b:inputText value="#{carBean.type}" disabled="true" id="typeOutputID"/>
 		    </b:panelGrid>
+			    <b:commandButton value="Submit">
+			    	<f:ajax execute="@form" rendered="@form" />
+			    </b:commandButton>
         </h:form>
     </b:tab>
 </b:tabView>
@@ -66,17 +86,21 @@
     <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
     <h:form>
-    	<h:panelGrid columns="2"  cellpadding="5">
-		    <b:selectOneMenu value="#{carBean.brand}" label="Select your car's brand:">
+    	<h:panelGrid columns="4" cellpadding="5">
+		    <b:selectOneMenu value="# {carBean.brand}" label="Select your car's brand:">
 				    <f:selectItem itemLabel="Fiat" itemValue="1"/>
 				    <f:selectItem itemLabel="Honda" itemValue="2"/>
 				    <f:selectItem itemLabel="Opel" itemValue="3"/>
 		    </b:selectOneMenu>
-		    <b:selectOneMenu value="#{carBean.type}" label="Select your car's type:">
+		    <h:message for="brandID"/>
+		    <b:inputText value="#{carBean.brand}" disabled="true" label="last submitted value:"/>
+		    <b:selectOneMenu value="# {carBean.type}" label="Select your car's type:" id="typeID">
 		    		<f:selectItem itemLabel="Cinquecento" itemValue="1"/>
 				    <f:selectItem itemLabel="Civic" itemValue="2"/>
 				    <f:selectItem itemLabel="Astra" itemValue="3"/>
 		    </b:selectOneMenu>
+		    <h:message  for="typeID" />
+		    <b:inputText value="#{carBean.type}" disabled="true" label="last submitted value:"/>
         </h:panelGrid>
     </h:form>
 ]]>
@@ -84,17 +108,21 @@
   </b:tab>
   <b:tab title="displayed as">
     <h:form>
-    	<h:panelGrid columns="2"  cellpadding="5">
-		    <b:selectOneMenu value="#{carBean.brand}" label="Select your car's brand:">
+    	<h:panelGrid columns="3"  cellpadding="5">
+		    <b:selectOneMenu value="# {carBean.brand}" label="Select your car's brand:" id="brandID2">
 				    <f:selectItem itemLabel="Fiat" itemValue="1"/>
 				    <f:selectItem itemLabel="Honda" itemValue="2"/>
 				    <f:selectItem itemLabel="Opel" itemValue="3"/>
 		    </b:selectOneMenu>
-		    <b:selectOneMenu value="#{carBean.type}" label="Select your car's type:">
+		    <h:message showSummary="false"  for="brandID2"/>
+		    <b:inputText value="#{carBean.brand}" disabled="true" label="a last submitted value:"/>
+		    <b:selectOneMenu value="#{carBean.type}" label="Select your car's type:" id="typeID2">
 		    		<f:selectItem itemLabel="Cinquecento" itemValue="1"/>
 				    <f:selectItem itemLabel="Civic" itemValue="2"/>
 				    <f:selectItem itemLabel="Astra" itemValue="3"/>
 		    </b:selectOneMenu>
+		    <h:message for="typeID2"/>
+		    <b:inputText value="#{carBean.type}" disabled="true" label="b last submitted value:"/>
         </h:panelGrid>
     </h:form>
   </b:tab>
