@@ -50,13 +50,13 @@
 <![CDATA[
 <b:panelGrid colSpans="2,10">
 	<h:outputLabel value="Value 1" />
-	<b:inputText value="{{settingsBean.value1}}"/>
+	<b:inputText value="# {settingsBean.value1}"/>
 	<h:outputLabel value="Value 2" />
-	<b:inputText value="{{settingsBean.value2}}"  />
+	<b:inputText value="# {settingsBean.value2}"  />
 	<h:outputLabel value="Checkbox 1" />
-	<b:selectBooleanCheckbox value="{{settingsBean.cb1}}" />
+	<b:selectBooleanCheckbox value="# {settingsBean.cb1}" />
 	<h:outputLabel value="Checkbox 2" />
-	<b:selectBooleanCheckbox value="{{settingsBean.cb2}}" />
+	<b:selectBooleanCheckbox value="# {settingsBean.cb2}" />
 </b:panelGrid>
 ]]>
 </script>
