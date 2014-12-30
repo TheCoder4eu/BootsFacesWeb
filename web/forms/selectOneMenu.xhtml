@@ -18,6 +18,7 @@
                 <p>Comboboxes give you a list of items to select from. As of Bootsfaces 0.6, comboboxes are not editable - they are pure drop-down menus.</p>
                 <p>&lt;b:selectOneMenu&gt; makes the Bootstrap style of displaying comboboxes available to JSF programmers.</p>
                 <h1>Basic usage</h1>
+        <h:form>
 <b:tabView activeIndex="1">
     <b:tab title="JSF markup">
        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
@@ -50,7 +51,6 @@
     </b:tab>
     <b:tab title="displayed as">
 				<br />
-        <h:form>
 	        <b:panelGrid colSpans="2,2,2,2,4">
 	        	<h:outputLabel value="Select your car's brand:" for="brandID" id="l1" />
 			    <b:selectOneMenu value="#{carBean.brand}" id="brandID" >
@@ -77,9 +77,9 @@
 			    <b:commandButton value="Submit">
 			    	<f:ajax execute="@form" rendered="@form" />
 			    </b:commandButton>
-        </h:form>
     </b:tab>
 </b:tabView>
+        </h:form>
                 <h1>Labels as captions above the combobox</h1>
 <b:tabView>
   <b:tab title="JSF markup">
