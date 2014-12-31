@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>BootsFaces: next-gen JSF Framework</title>
+        <meta name="author" content="Riccardo Massera, Stephan Rauh et al."></meta>
+    </h:head>
+    <h:body style="padding-top: 60px">
+        <ui:composition template="/applayout/pageTemplate.xhtml">
+            <ui:define name="content">
+                <style>td {padding: 8px;}</style>
+                <h1>Requirements</h1>
+                
+                <b:well>
+                    <p><b>BootsFaces is targeted at Java EE 6/7 and requires a Java 1.6 or later VM.</b></p>
+                    <p><b>JSF 2.0, 2.1 and 2.2 are supported.</b></p>
+                    <p><b>Oracle Mojarra 2.2+ or Apache MyFaces 2.2+</b></p>
+                    <p class="text-warning">Note1: Oracle has dropped Commercial support for Glassfish as of version 4.0. Glassfish will therefore be only the Reference Implementation for Java EE.<br/>
+                    BootsFaces is therefore first tested for compliance in Glassfish, then tested on other Application Servers such as WildFly/JBoss and TomEE.</p>
+                    <p class="text-warning">Note2: Glassfish 3.2 is installed with an old version of the JSF library(2.1.6) with a known bug fixed in version 2.1.8.
+                                            we suggest you to update the library to the latest version.</p>
+                </b:well>
+                
+                <br/><br/><br/><br/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
