@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.bootsfaces</groupId>
 	<artifactId>BootsFacesWeb</artifactId>
-	<version>0.51-SNAPSHOT</version>
+	<version>0.6.5-SNAPSHOT</version>
 	<name>BootsFacesWeb</name>
 	<packaging>war</packaging>
 	<description>Documentation page of BootsFaces</description>
-	<url>http://www.beyondjava.net</url>
+    <url>http://www.bootsfaces.net</url>
 	<licenses>
 		<license>
 			<name>GNU General Public License (GPL) version 3.0</name>
@@ -59,7 +59,7 @@
 		<dependency>
 			<groupId>net.bootsfaces</groupId>
 			<artifactId>BootsFaces-OSP</artifactId>
-			<version>0.51-SNAPSHOT</version>
+			<version>0.6.5-SNAPSHOT</version>
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>
@@ -73,13 +73,13 @@
 				<dependency>
 					<groupId>com.sun.faces</groupId>
 					<artifactId>jsf-api</artifactId>
-					<version>2.2.8-02</version>
+					<version>2.2.9</version>
 					<scope>compile</scope>
 				</dependency>
 				<dependency>
 					<groupId>com.sun.faces</groupId>
 					<artifactId>jsf-impl</artifactId>
-					<version>2.2.8-02</version>
+					<version>2.2.9</version>
 					<scope>runtime</scope>
 				</dependency>
 			</dependencies>
