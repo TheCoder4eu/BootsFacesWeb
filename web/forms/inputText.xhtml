@@ -9,7 +9,7 @@
         <title>BootsFaces: next-gen JSF Framework</title>
         <meta name="author" content="Riccardo Massera"></meta>
     </h:head>
-    <h:body style="padding-top: 60px">
+    <h:body style="padding-top: 60px" addLabels="false" addMessages="false">
         <ui:composition template="/applayout/pageTemplate.xhtml">
             <ui:define name="content">
                 <style>td {padding: 8px;}</style>
@@ -30,7 +30,7 @@
                 <p>You can easily prepend or append text to your inputTexts and what you prepend and append will seem part of the input field.</p>
                 <p>To do so, you just need to use the facets <code>prepend</code> and <code>append</code> where you will place the <code>h:outputText</code> element.</p>
                 <p>You can even prepend and append at the same time, as in the following example:</p>
-                <b:panel>
+                <b:panel >
                     <f:facet name="heading"><b>EXAMPLE</b></f:facet>
                         <h:form>
                             <h:panelGrid columns="2"  cellpadding="5">

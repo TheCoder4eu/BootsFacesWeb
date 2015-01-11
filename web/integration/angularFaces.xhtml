@@ -1,28 +1,123 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
-    <h:head>
-        <title>BootsFaces: next-gen JSF Framework</title>
-        <meta name="author" content="Riccardo Massera, Stephan Rauh et al."></meta>
-    </h:head>
-    <h:body style="padding-top: 60px">
-        <ui:composition template="/applayout/pageTemplate.xhtml">
-            <ui:define name="content">
-                <style>td {padding: 8px;}</style>
-                <h1>Integration with AngularFaces</h1>
-                <b:alert title="Work in Progress!" severity="warning">
-                    This documentation is going to be released soon.
-                </b:alert>
-                
-                <script type="text/javascript">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:ac="http://beyondjava.net/angularFacesCore">
+<h:head>
+	<title>BootsFaces: next-gen JSF Framework</title>
+	<meta name="author" content="Riccardo Massera, Stephan Rauh et al."></meta>
+</h:head>
+<body style="padding-top: 60px">
+	<ui:composition template="/applayout/angularFacesPageTemplate.xhtml">
+		<ui:define name="content">
+			<style>
+td {
+	padding: 8px;
+}
+</style>
+
+			<h:outputScript library="integration" name="sample1.js" />
+
+
+			<h1>Integration with AngularFaces</h1>
+			<p>Starting with AngularFaces 2.1 and BootsFaces 0.6.0, both
+				frameworks are aligned to each other. AngularFaces offers special
+				support for BootsFaces, and BootsFaces is tested to work with
+				AngularFaces.</p>
+			<h2>Teaser</h2>
+			<p>Consider the form below. As you can see, this is a pretty relaxed, almost HTML-like style of writing a JSF view. Labels and messages are generated automatically by AngularFaces,
+			the <code>b:</code> prefix can be ommitted, many JSR-303 constraints are evaluated on the client and - last not least - you can use AngularJS, which integrates
+			seamlessly into JSF.
+			</p>
+			<ui:include src="af-sample1.xhtml" />
+			 
+			<h2>Getting started</h2>
+			<p>You have to add both the BootsFaces and the AngularFaces jar
+				files. AngularFaces also requires a Json serializer - currently
+				either Gson or Jackson:</p>
+			<b:tabView contentStyle="height:250px">
+				<b:tab title="Maven">
+					<p>Add these lines to your Maven pom.xml file:</p>
+					<b:well>
+						<ui:include src="af-sample2.xhtml" />
+					</b:well>
+				</b:tab>
+				<b:tab title="Gradle">
+				</b:tab>
+				<b:tab title="Others">
+				</b:tab>
+			</b:tabView>
+			<h3>Configuration</h3>
+			<p>
+				You have to add a few lines to the web.xml. For the sake of
+				convenience, we show both the entire minimal
+				<code>web.xml</code>
+				and the complete minimal
+				<code>faces-config.xml</code>
+				files:
+			</p>
+
+			<b:tabView contentStyle="height:580px">
+				<b:tab title="web.xml">
+					<b:well>
+						<ui:include src="af-sample3.xhtml" />
+					</b:well>
+				</b:tab>
+				<b:tab title="faces-config.xml">
+					<b:well>
+						<ui:include src="af-sample4.xhtml" />
+					</b:well>
+				</b:tab>
+
+			</b:tabView>
+
+			<h3>Relaxed HTML-like style of writing</h3>
+			<p>Once you've activated AngularFaces, you can write most BootsFaces tags without the preceding <code>b:</code>. For instance, <code>b:row</code> simply becomes <code>row</code>. These tags can be written in the relaxed fashion:</p>
+			<ul>
+				<li>alert</li>
+				<li>badge</li>
+				<li>modal</li>
+				<li>commandButton</li>
+				<li>buttonGroup</li>
+				<li>buttonToolbar</li>
+				<li>navBar</li>
+				<li>navbarLinks</li>
+				<li>listLinks</li>
+				<li>navLink</li>
+				<li>dropButton</li>
+				<li>dropMenu</li>
+				<li>thumbnail</li>
+				<li>container</li>
+				<li>row</li>
+				<li>column</li>
+				<li>panel</li>
+				<li>jumbotron</li>
+				<li>well</li>
+				<li>datepicker</li>
+				<li>slider</li>
+				<li>inputSecret</li>
+				<li>inputText</li>
+				<li>selectBooleanCheckbox</li>
+				<li>selectOneMenu</li>
+				<li>tabView</li>
+				<li>tab</li>
+			</ul>
+
+
+
+
+
+			<script type="text/javascript">
                     SyntaxHighlighter.all();
                 </script>
-                <br/><br/><br/><br/>
-            </ui:define>
-        </ui:composition>
-    </h:body>
+			<br />
+			<br />
+			<br />
+			<br />
+		</ui:define>
+	</ui:composition>
+</body>
 </html>

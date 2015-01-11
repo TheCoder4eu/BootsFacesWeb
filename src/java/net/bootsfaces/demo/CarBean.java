@@ -25,8 +25,40 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean
 public class CarBean {
 	private String brand;
-	
+
 	private String type;
+
+	private String color;
+
+	private int price;
+
+	private int enginePower;
+	
+	private boolean iAgreeToTheTermsAndConditions=false;
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public int getEnginePower() {
+		return enginePower;
+	}
+
+	public void setEnginePower(int enginePower) {
+		this.enginePower = enginePower;
+	}
 
 	public String getBrand() {
 		return brand;
@@ -42,5 +74,13 @@ public class CarBean {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public boolean isiAgreeToTheTermsAndConditions() {
+		return iAgreeToTheTermsAndConditions;
+	}
+
+	public void setiAgreeToTheTermsAndConditions(boolean iAgreeToTheTermsAndConditions) {
+		this.iAgreeToTheTermsAndConditions = iAgreeToTheTermsAndConditions;
 	}
 }
