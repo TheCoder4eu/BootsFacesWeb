@@ -10,3 +10,7 @@
 .classpath
 /web/META-INF
 /web/WEB-INF/.faces-config.xml.jsfdia
+/bin/
+/lib/xmltask.jar
+/lib/yuicompressor-2.4.8.jar
+/Bootstrap
