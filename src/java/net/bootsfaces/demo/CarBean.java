@@ -19,6 +19,8 @@ package net.bootsfaces.demo;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 /** A simple bean for demo purposes. */
 @RequestScoped
@@ -30,8 +32,12 @@ public class CarBean {
 
 	private String color;
 
+	@Min(500)
+	@Max(50000)
 	private int price;
 
+	@Min(2)
+	@Max(999)
 	private int enginePower;
 	
 	private boolean iAgreeToTheTermsAndConditions=false;
