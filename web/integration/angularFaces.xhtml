@@ -18,9 +18,11 @@ td {
 	padding: 8px;
 }
 .ng-invalid {
-  border-color: red;
-  border-width: 2px;
+  border-bottom-color: #c33;
+  border-bottom-width: 1px dotted;
 }
+.ui-state-error { color:#d33;}
+puimessage { color:#d33;}
 </style>
 
 			<h:outputScript library="integration" name="sample1.js" />
@@ -107,6 +109,9 @@ td {
 				</b:tab>
 
 			</b:tabView>
+			
+			<h3>Pitfalls</h3>
+			<p>It's important to put the form inside the div containing the ng-controller. Otherwise, everything works fine - but you never see the validation error messages.</p>
 
 			<h3>Relaxed HTML-like style of writing</h3>
 			<p>Once you've activated AngularFaces, you can write most BootsFaces tags without the preceding <code>b:</code>. These tags can be written in the relaxed fashion:</p>
