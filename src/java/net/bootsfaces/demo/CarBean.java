@@ -21,21 +21,26 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 /** A simple bean for demo purposes. */
 @RequestScoped
 @ManagedBean
 public class CarBean {
-	private String brand;
+	@NotNull
+	private String brand=null;
 
-	private String type;
+	@NotNull
+	private String type=null;
 
 	private String color;
 
+	@NotNull
 	@Min(500)
 	@Max(50000)
 	private int price;
 
+	@NotNull
 	@Min(2)
 	@Max(999)
 	private int enginePower;

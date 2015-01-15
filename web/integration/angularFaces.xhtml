@@ -28,17 +28,30 @@ td {
 				support for BootsFaces, and BootsFaces is tested to work with
 				AngularFaces.</p>
 			<h2>Teaser</h2>
-			<p>Consider the form below. As you can see, this is a pretty relaxed, almost HTML-like style of writing a JSF view. Labels and messages are generated automatically by AngularFaces,
-			the <code>b:</code> prefix can be ommitted, many JSR-303 constraints are evaluated on the client and - last not least - you can use AngularJS, which integrates
-			seamlessly into JSF.
+			<p>Consider the form below. As you can see, this is a pretty relaxed, almost HTML-like style of writing a JSF view:
 			</p>
 			<ui:include src="af-sample1.xhtml" />
+			
+			<h3>Why is AngularFaces interesting?</h3>
+			<p>We can mention only a few advantages of AngularFaces here:</p>
+			<ul>
+				<li>It opens the world of AngularJS programming to JSF programmers. Notice the mustaches in the JSF source code. They refer both to the AngularJS model and the JSF bean. AngularFaces synchronizes both models for you.</li>
+				<li>You can use (and write) widgets that are rendered on the client side. For instance, ng-table is a great replacement for JSF datatables.</li>
+				<li>Labels and error messages are optionally generated automatically.</li>
+				<li>Labels and messages are translated to foreign languages automatically.</li>
+				<li>Most JSR303 bean validations are evaluated on the client.</li>
+				<li>Optionally you can adopt an HTML-like style. For instance, you can omit the <code>b:</code> prefixes. For instance, <code>b:row</code> simply becomes <code>row</code>. Note
+				    the <code>&lt;b:selectOneMenu /&gt;</code> in the example above. It almost passes for a native HTML <code>&lt;select&gt;</code> widget.</li>
+			</ul>
+			<p>Read the full story on the <a target="#" href="http://www.angularfaces.com">AngularFaces manual page.</a></p>
+			
+			
 			 
 			<h2>Getting started</h2>
 			<p>You have to add both the BootsFaces and the AngularFaces jar
 				files. AngularFaces also requires a Json serializer - currently
 				either Gson or Jackson:</p>
-			<b:tabView contentStyle="height:250px">
+			<b:tabView contentStyle="height:380px">
 				<b:tab title="Maven">
 					<p>Add these lines to your Maven pom.xml file:</p>
 					<b:well>
@@ -46,8 +59,25 @@ td {
 					</b:well>
 				</b:tab>
 				<b:tab title="Gradle">
+					<b:well>
+<script type="syntaxhighlighter" class="brush: groovy; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+	compile 'de.beyondjava:angularFaces-core:2.1.+'
+    compile 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.5.0'
+]]>
+</script>
+<p>AngularFaces also needs a Json serializer. As of AngularFaces 2.1, Jackson and Gson are supported. Activate one of the following dependencies:</p>
+<script type="syntaxhighlighter" class="brush: groovy; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+	compile 'com.google.code.gson:gson:2.2.4'
+
+    compile 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.5.0'
+]]>
+</script>
+					</b:well>
 				</b:tab>
 				<b:tab title="Others">
+					<p>AngularFaces is available at <a target="#" href="">Maven Central.</a> You also need a Json serializer. As of AngularFaces 2.1, Jackson and Gson are supported.</p>
 				</b:tab>
 			</b:tabView>
 			<h3>Configuration</h3>
@@ -75,7 +105,7 @@ td {
 			</b:tabView>
 
 			<h3>Relaxed HTML-like style of writing</h3>
-			<p>Once you've activated AngularFaces, you can write most BootsFaces tags without the preceding <code>b:</code>. For instance, <code>b:row</code> simply becomes <code>row</code>. These tags can be written in the relaxed fashion:</p>
+			<p>Once you've activated AngularFaces, you can write most BootsFaces tags without the preceding <code>b:</code>. These tags can be written in the relaxed fashion:</p>
 			<ul>
 				<li>alert</li>
 				<li>badge</li>

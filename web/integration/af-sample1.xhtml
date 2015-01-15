@@ -7,49 +7,85 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 	<h:body>
-		<h:form>
-			<b:tabView contentStyle="height:590px">
+		<b:tabView  activeIndex="0">
+			<b:tab title="live demo">
+				<b:well>
+<div ng-controller="IntegrationController" ng-app="IntegrationApp" angularJSFile="/pages/integration/test.js">
+	<h:form id="sample1id" name="sample1" prependId="false">
+		<panelGrid colSpans="3,2,7"> 
+			<selectOneMenu value="{{carBean.brand}}" id="brandID">
+				<option value="">            (Please select)</option>
+				<option value="Turin">       Fiat           </option>
+				<option value="Swindon">     Honda          </option>
+				<option value="Ruesselsheim">Opel           </option>
+			</selectOneMenu> 
+			<selectOneMenu value="{{carBean.type}}" id="typeID" label="Select your car">
+				<option value="">(Please select)</option>
+				<option>         Cinquecento    </option>
+				<option>         Civic          </option>
+				<option>         Astra          </option>
+				<option>         Megane         </option>
+			</selectOneMenu> 
+			<inputText value="{{carBean.price}}" label="How much do you want to pay at most?" id="price"> 
+				<f:facet name="prepend">
+				    <h:outputText value="€" />
+				</f:facet> 
+				<f:facet name="append">
+				    <h:outputText value=".00" />
+				</f:facet>
+			</inputText> 
+			<inputText value="{{carBean.enginePower}}">
+				<f:facet name="append">
+				    <h:outputText value="HP" />
+				</f:facet>
+			</inputText> 
+			<selectBooleanCheckbox value="{{carBean.iAgreeToTheTermsAndConditions}}" /> 
+		</panelGrid>
+		<commandButton value="Look which cars are available" ng-show="carBean.iAgreeToTheTermsAndConditions" />
+	</h:form>
+</div>
+				</b:well>
+			</b:tab>
 				<b:tab title="JSF markup">
 					<b:well>
 
 						<script type="syntaxhighlighter"
 							class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
-<form>
-  <div ng-controller="IntegrationController" ng-app="IntegrationApp" angularJSFile="/pages/integration/test.js" >
-	<panelGrid colSpans="3,2,7">
-		<selectOneMenu value="{{carBean.brand}}" id="brandID">
-			<option itemLabel="(Please select)" itemValue="" />
-			<option itemLabel="Fiat" itemValue="1" />
-			<option itemLabel="Honda" itemValue="2" />
-			<option itemLabel="Opel" itemValue="3" />
-		</selectOneMenu> 
-		<selectOneMenu value="{{carBean.type}}" id="typeID"
-			label="Select your car" required="true">
-			<option itemLabel="(Please select)" itemValue="" />
-			<option itemLabel="Cinquecento" itemValue="1" />
-			<option itemLabel="Civic" itemValue="2" />
-			<option itemLabel="Astra" itemValue="3" />
-			<option itemLabel="Megane" itemValue="4" />
-		</selectOneMenu> 
-		<inputText value="{{carBean.price}}" label="How much do you want to pay at most?"> 
-			<f:facet name="prepend">
-				<h:outputText value="€" />
-			</f:facet> 
-			<f:facet name="append">
-				<h:outputText value=".00" />
-			</f:facet>
-		</inputText> 
-		<inputText value="{{carBean.enginePower}}">
-			<f:facet name="append">
-				<h:outputText value="HP" />
-			</f:facet>
-		</inputText> 
-		<selectBooleanCheckbox value="{{carBean.iAgreeToTheTermsAndConditions}}" /> 
-	</panelGrid>
-	<commandButton value="Submit" />
-  </div>
-<form>
+<div ng-controller="IntegrationController" ng-app="IntegrationApp" angularJSFile="/pages/integration/test.js">
+	<h:form id="sample1id" name="sample1" prependId="false">
+		<panelGrid colSpans="3,2,7"> 
+			<selectOneMenu value="{{carBean.brand}}" id="brandID">
+				<option value="">            (Please select)</option>
+				<option value="Turin">       Fiat           </option>
+				<option value="Swindon">     Honda          </option>
+				<option value="Ruesselsheim">Opel           </option>
+			</selectOneMenu> 
+			<selectOneMenu value="{{carBean.type}}" id="typeID" label="Select your car">
+				<option value="">(Please select)</option>
+				<option>         Cinquecento    </option>
+				<option>         Civic          </option>
+				<option>         Astra          </option>
+				<option>         Megane         </option>
+			</selectOneMenu> 
+			<inputText value="{{carBean.price}}" label="How much do you want to pay at most?" id="price"> 
+				<f:facet name="prepend">
+				    <h:outputText value="€" />
+				</f:facet> 
+				<f:facet name="append">
+				    <h:outputText value=".00" />
+				</f:facet>
+			</inputText> 
+			<inputText value="{{carBean.enginePower}}">
+				<f:facet name="append">
+				    <h:outputText value="HP" />
+				</f:facet>
+			</inputText> 
+			<selectBooleanCheckbox value="{{carBean.iAgreeToTheTermsAndConditions}}" /> 
+		</panelGrid>
+		<commandButton value="Look which cars are available" ng-show="carBean.iAgreeToTheTermsAndConditions" />
+	</h:form>
+</div>
 ]]>
        </script>
 					</b:well>
@@ -57,7 +93,7 @@
 				<b:tab title="AngularJS Controller">
 				<b:well>
 						<script type="syntaxhighlighter"
-							class="brush: js; toolbar: false;gutter: false; first-line: 1">
+							class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
 angular.module("IntegrationApp", [ "angularfaces" ])
 .controller('IntegrationController', ['$scope', function($scope) {
@@ -67,52 +103,51 @@ angular.module("IntegrationApp", [ "angularfaces" ])
 
 ]]>
        </script>
-       </b:well>
-				</b:tab>
-				<b:tab title="displayed as">
-					<b:well>
-						<h:graphicImage library="integration" name="af-sample1.png" />
-					</b:well>
-				</b:tab>
-				<b:tab title="live demo">
-					<b:well>
-						<div ng-controller="IntegrationController" ng-app="IntegrationApp" angularJSFile="/pages/integration/test.js">
-							<panelGrid colSpans="3,2,7"> 
-								<selectOneMenu value="{{carBean.brand}}" id="brandID">
-									<option itemLabel="(Please select)" itemValue="" />
-									<option itemLabel="Fiat" itemValue="1" />
-									<option itemLabel="Honda" itemValue="2" />
-									<option itemLabel="Opel" itemValue="3" />
-								</selectOneMenu> 
-								<selectOneMenu value="{{carBean.type}}" id="typeID"
-									label="Select your car" required="true">
-									<option itemLabel="(Please select)" itemValue="" />
-									<option itemLabel="Cinquecento" itemValue="1" />
-									<option itemLabel="Civic" itemValue="2" />
-									<option itemLabel="Astra" itemValue="3" />
-									<option itemLabel="Megane" itemValue="4" />
-								</selectOneMenu> 
-								<inputText value="{{carBean.price}}" label="How much do you want to pay at most?"> 
-									<f:facet name="prepend">
-										<h:outputText value="€" />
-									</f:facet> 
-									<f:facet name="append">
-										<h:outputText value=".00" />
-									</f:facet>
-								</inputText> 
-								<inputText value="{{carBean.enginePower}}">
-									<f:facet name="append">
-										<h:outputText value="HP" />
-									</f:facet>
-								</inputText> 
-								<selectBooleanCheckbox value="{{carBean.iAgreeToTheTermsAndConditions}}" /> 
-							</panelGrid>
-							<commandButton value="Look which cars are available"
-								ng-show="carBean.iAgreeToTheTermsAndConditions" />
-						</div>
-					</b:well>
-				</b:tab>
-			</b:tabView>
-		</h:form>
+      </b:well>
+			</b:tab>
+			<b:tab title="i18n.properties (optional)">
+				<b:well>
+						<script type="syntaxhighlighter"
+							class="brush: js; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+brand=Select your car brand:
+engine power=How much engine power do you need?
+]]>
+</script>
+					
+				</b:well>
+			</b:tab>
+			<b:tab title="JSF bean">
+				<b:well>
+					<script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+@RequestScoped
+@ManagedBean
+public class CarBean {
+	@NotNull
+	private String brand;
+
+	@NotNull
+	private String type;
+
+	@NotNull
+	@Min(500)
+	@Max(50000)
+	private int price;
+
+	@NotNull
+	@Min(2)
+	@Max(999)
+	private int enginePower;
+	
+	private boolean iAgreeToTheTermsAndConditions=false;
+	
+	// getters and setters are omitted for the sake of brevity
+}
+]]>
+					</script>
+				</b:well>
+			</b:tab>
+		</b:tabView>
 	</h:body>
 </ui:fragment>
