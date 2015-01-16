@@ -22,7 +22,8 @@ td {
   border-bottom-width: 1px dotted;
 }
 .ui-state-error { color:#d33;}
-puimessage { color:#d33;}
+.pui-message { color:#d33; padding-top:7px }
+.pui-label { width:100%;}
 </style>
 
 			<h:outputScript library="integration" name="sample1.js" />
@@ -34,7 +35,7 @@ puimessage { color:#d33;}
 				support for BootsFaces, and BootsFaces is tested to work with
 				AngularFaces.</p>
 			<h2>Teaser</h2>
-			<p>Consider the form below. As you can see, this is a pretty relaxed, almost HTML-like style of writing a JSF view:
+			<p>Consider the form below and the corresponding XHTML source code. As you can see, this is a pretty relaxed, almost HTML-like style of writing a JSF view:
 			</p>
 			<ui:include src="af-sample1.xhtml" />
 			
@@ -107,7 +108,6 @@ puimessage { color:#d33;}
 						<ui:include src="af-sample4.xhtml" />
 					</b:well>
 				</b:tab>
-
 			</b:tabView>
 			
 			<h3>Pitfalls</h3>
