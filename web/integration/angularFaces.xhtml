@@ -116,6 +116,11 @@ td {
 			<h4>separatorchar and prependId</h4>
 			<p>AngularJS doesn't cope with Java's default separator char which is used internally in ids. The best solution is to clear the form attribute <code>prependId=false</code>.
 			Alternatively, you can set the separator charactor to "%" in the <code>web.xml.</code> However, the latter solution is not officially supported by the JSF specification, so we don't recommend it.</p>
+			<h4>Tag decorators</h4>
+			<p>By default, AngularFaces converts HTML tags to JSF or even BootsFaces tags very eagerly. Sometimes this stands in your way. If so, you can use the <code>ConservativeAngularTagDecorator</code>
+			instead of the <code>AngularTagDecorator</code> in the <code>faces-config.xml</code>. The conservative implementation only translates <code>div</code>, <code>span</code>, <code>messages</code>
+			and <code>translate</code> to AngularFaces tags.</p>
+			
 
 			<h3>Relaxed HTML-like style of writing</h3>
 			<p>Once you've activated AngularFaces, you can write most BootsFaces tags without the preceding <code>b:</code>. These tags can be written in the relaxed fashion:</p>
