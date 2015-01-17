@@ -19,11 +19,6 @@
             de.beyondjava.angularFaces.core.tagTransformer.AngularTagDecorator
         </param-value>
 	</context-param>
-	<!-- jQuery doesn't cope with JSF's default separator. This setting fixes the problem. -->
- 	<context-param>
-		<param-name>javax.faces.SEPARATOR_CHAR</param-name>
-		<param-value>-</param-value>
-	</context-param>
  
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>

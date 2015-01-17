@@ -111,7 +111,11 @@ td {
 			</b:tabView>
 			
 			<h3>Pitfalls</h3>
+			<h4>form and ng-controller</h4>
 			<p>It's important to put the form inside the div containing the ng-controller. Otherwise, everything works fine - but you never see the validation error messages.</p>
+			<h4>separatorchar and prependId</h4>
+			<p>AngularJS doesn't cope with Java's default separator char which is used internally in ids. The best solution is to clear the form attribute <code>prependId=false</code>.
+			Alternatively, you can set the separator charactor to "%" in the <code>web.xml.</code> However, the latter solution is not officially supported by the JSF specification, so we don't recommend it.</p>
 
 			<h3>Relaxed HTML-like style of writing</h3>
 			<p>Once you've activated AngularFaces, you can write most BootsFaces tags without the preceding <code>b:</code>. These tags can be written in the relaxed fashion:</p>
