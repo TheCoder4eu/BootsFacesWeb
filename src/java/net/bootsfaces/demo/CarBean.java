@@ -17,14 +17,13 @@
 
 package net.bootsfaces.demo;
 
-import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 /** A simple bean for demo purposes. */
-@RequestScoped
+@javax.faces.bean.RequestScoped
 @ManagedBean
 public class CarBean {
 	@NotNull
