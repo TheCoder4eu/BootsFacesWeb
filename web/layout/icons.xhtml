@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>BootsFaces: next-gen JSF Framework</title>
+        <meta name="author" content="Riccardo Massera"></meta>
+    </h:head>
+    <h:body style="padding-top: 60px">
+        <ui:composition template="/applayout/pageTemplate.xhtml">
+            <ui:define name="content">
+                <b:container>
+                    <b:row>
+                        <h1>Icons</h1>
+                    </b:row>
+                    <b:row>
+                        <h3>Default Icons</h3>
+                        <p>BootsFaces supports the default Icon set of Bootstrap <a href="http://getbootstrap.com/components/#glyphicons-glyphs">Glyphicons</a></p>
+                        <hr/>
+                    </b:row>
+                    <b:row>
+                        <b:column span="2">
+                            <b:icon name="cloud" /> glyphicon-cloud<br/>
+                            <b:icon name="envelope" /> glyphicon-envelope<br/>
+                            <b:icon name="pencil" /> glyphicon-pencil<br/>
+                            <b:icon name="glass" /> glyphicon-glass<br/>
+                        </b:column>
+                        <b:column span="10">
+                            <b:tabView activeIndex="0">
+                                <b:tab title="Description">
+                                    <p>Using an icon in BootsFaces is very simple: just add a <code>&lt;b:icon&gt;</code> with a <code>name</code> attribute with the icon name (without the trailing <b>glyphicon-</b> prefix)</p>
+                                </b:tab>
+                                <b:tab title="Markup">
+
+                                </b:tab>
+                            </b:tabView>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <h3>Font Awesome Icon set</h3>
+                        <p>Since BootsFaces is born to help you design a wonderful website, we recognize that Icons are an important tool to achieve this goal and there are never enough:</p>
+                        <p>for this reason, BootsFaces now supports the <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a> Icon set with its 519 icons.</p>
+                        <p>As you will see later, we also support most Awesome features, which will work with Glyphicon too!</p>
+                        <hr/>
+                    </b:row>
+                    <b:row>
+                        <b:column span="2">
+                            <b:icon name="camera-retro" icon-set="FA" /> fa-camera-retro<br/>
+                            <b:icon name="coffee" icon-set="FA" /> fa-coffee<br/>
+                            <b:icon name="futbol-o" icon-set="FA" /> fa-futbol-o<br/>
+                            <b:icon name="heartbeat" icon-set="FA" /> fa-heartbeat<br/>
+                            <b:icon name="group" icon-set="FA" /> fa-group<br/>
+                            <b:icon name="gamepad" icon-set="FA" /> fa-gamepad<br/>
+                        </b:column>
+                        <b:column span="10">
+                            <b:tabView activeIndex="0">
+                                <b:tab title="Font Awesome">
+                                    Adding a Font Awesome icon in BootsFaces is easy: add to your <code>&lt;b:icon&gt;</code> tag a <code>icon-set="FA"</code> attribute and the icon name (without the trailing <b>fa-</b> prefix)
+                                </b:tab>
+                                <b:tab title="Markup">
+
+                                </b:tab>
+                            </b:tabView>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <h3>Icon Size</h3>
+                        <p>BootsFaces supports the default Icon set of Bootstrap <a href="http://getbootstrap.com/components/#glyphicons-glyphs">Glyphicons</a></p>
+                        <hr/>
+                    </b:row>
+                    <b:row>
+                        <b:column span="2">
+                            <b:icon name="globe" size="lg" /> size="lg"<br/>
+                            <b:icon name="globe" size="2x" /> size="2x"<br/>
+                            <b:icon name="globe" size="3x" /> size="3x"<br/>
+                            <b:icon name="globe" size="4x" /> size="4x"<br/>
+                            <b:icon name="globe" size="5x" /> size="5x"<br/>
+                        </b:column>
+                        <b:column span="10">
+                            <b:tabView activeIndex="0">
+                                <b:tab title="Sizing">
+                                    <p>To increase icon sizes relative to their container, use the <code>size="lg"</code> (33% increase), <code>size="2x"</code>,
+                                    <code>size="3x"</code>, <code>size="4x"</code>, or <code>size="5x"</code> attributes.</p>
+                                </b:tab>
+                                <b:tab title="Markup">
+
+                                </b:tab>
+                            </b:tabView>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <h3>Rotated and Flipped Icons</h3>
+                        <p>You can also rotate and flip your icons.</p>
+                        <hr/>
+                    </b:row>
+                    <b:row>
+                        <b:column span="2">
+                            <b:icon name="shield" icon-set="FA" /> normal<br/>
+                            <b:icon name="shield" icon-set="FA" rotate="R" /> rotate="R" (right - 90 deg.)<br/>
+                            <b:icon name="shield" icon-set="FA" rotate="L" /> rotate="L" (left - 270 deg.)<br/>
+                            <b:icon name="shield" icon-set="FA" flip="H" /> flip="H" (horizontal)<br/>
+                            <b:icon name="shield" icon-set="FA" flip="V" /> flip="V" (vertical)<br/>
+                        </b:column>
+                        <b:column span="10">
+                            <b:tabView activeIndex="0">
+                                <b:tab title="Rotate and Flip">
+                                    <p>To rotate or flip your icons, just use the <code>rotate="R"</code>, <code>rotate="L"</code> and <code>flip="H"</code>, <code>flip="V"</code> attributes respectively.</p>
+                                </b:tab>
+                                <b:tab title="Markup">
+
+                                </b:tab>
+                            </b:tabView>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <h3>Animated Icons </h3>
+                        <hr/>
+                    </b:row>
+                    <b:row>
+                        <b:column span="2">
+                            <b:icon name="spinner" icon-set="fa" spin="true" size="3x" />#{'   '}
+                            <b:icon name="circle-o-notch" icon-set="fa" spin="true" size="3x" />#{'   '}
+                            <b:icon name="refresh" icon-set="fa" spin="true" size="3x" />#{'   '}
+                            <b:icon name="cog" icon-set="fa" spin="true" size="3x" />
+                        </b:column>
+                        <b:column span="10">
+                            <b:tabView activeIndex="0">
+                                <b:tab title="Spinning Icons">
+                                    <p>To let your icons spin, just add the <code>spin="true"</code> attribute.</p>
+                                </b:tab>
+                                <b:tab title="Markup">
+
+                                </b:tab>
+                            </b:tabView>
+                        </b:column>
+                    </b:row>
+                    <br/><br/><br/>
+                </b:container>
+                
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
