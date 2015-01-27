@@ -11,6 +11,12 @@
         <param-name>BootsFaces_USETHEME</param-name>
         <param-value>true</param-value>
     </context-param>
+    <!-- The BootsFaces_USE_FA context-param controls the loading of the Font Awesome CSS from CDN -->
+    <!-- The default is false, when set to true the Font Awesome CSS will be loaded -->
+    <context-param>
+        <param-name>BootsFaces_USE_FA</param-name>
+        <param-value>true</param-value>
+    </context-param>
 
 	<!-- Activates the tag decorator that turns divs into JSF components (and much more) -->
 	<context-param>
