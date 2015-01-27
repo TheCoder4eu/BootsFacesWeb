@@ -34,7 +34,13 @@
                                     <p>Using an icon in BootsFaces is very simple: just add a <code>&lt;b:icon&gt;</code> with a <code>name</code> attribute with the icon name (without the trailing <b>glyphicon-</b> prefix)</p>
                                 </b:tab>
                                 <b:tab title="Markup">
-
+                                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                                    <![CDATA[
+                                    <b:icon name="cloud" /> glyphicon-cloud<br/>
+                                    <b:icon name="envelope" /> glyphicon-envelope<br/>
+                                    <b:icon name="pencil" /> glyphicon-pencil<br/>
+                                    <b:icon name="glass" /> glyphicon-glass<br/>
+                                    ]]></script>
                                 </b:tab>
                             </b:tabView>
                         </b:column>
@@ -61,7 +67,15 @@
                                     Adding a Font Awesome icon in BootsFaces is easy: add to your <code>&lt;b:icon&gt;</code> tag a <code>icon-set="FA"</code> attribute and the icon name (without the trailing <b>fa-</b> prefix)
                                 </b:tab>
                                 <b:tab title="Markup">
-
+                                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                                    <![CDATA[
+                                    <b:icon name="camera-retro" icon-set="FA" /> fa-camera-retro<br/>
+                                    <b:icon name="coffee" icon-set="FA" /> fa-coffee<br/>
+                                    <b:icon name="futbol-o" icon-set="FA" /> fa-futbol-o<br/>
+                                    <b:icon name="heartbeat" icon-set="FA" /> fa-heartbeat<br/>
+                                    <b:icon name="group" icon-set="FA" /> fa-group<br/>
+                                    <b:icon name="gamepad" icon-set="FA" /> fa-gamepad<br/>
+                                    ]]></script>
                                 </b:tab>
                             </b:tabView>
                         </b:column>
@@ -86,7 +100,14 @@
                                     <code>size="3x"</code>, <code>size="4x"</code>, or <code>size="5x"</code> attributes.</p>
                                 </b:tab>
                                 <b:tab title="Markup">
-
+                                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                                    <![CDATA[
+                                    <b:icon name="globe" size="lg" /> size="lg"<br/>
+                                    <b:icon name="globe" size="2x" /> size="2x"<br/>
+                                    <b:icon name="globe" size="3x" /> size="3x"<br/>
+                                    <b:icon name="globe" size="4x" /> size="4x"<br/>
+                                    <b:icon name="globe" size="5x" /> size="5x"<br/>
+                                    ]]></script>
                                 </b:tab>
                             </b:tabView>
                         </b:column>
@@ -110,7 +131,14 @@
                                     <p>To rotate or flip your icons, just use the <code>rotate="R"</code>, <code>rotate="L"</code> and <code>flip="H"</code>, <code>flip="V"</code> attributes respectively.</p>
                                 </b:tab>
                                 <b:tab title="Markup">
-
+                                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                                    <![CDATA[
+                                    <b:icon name="shield" icon-set="FA" /> normal<br/>
+                                    <b:icon name="shield" icon-set="FA" rotate="R" /> rotate="R" (right - 90 deg.)<br/>
+                                    <b:icon name="shield" icon-set="FA" rotate="L" /> rotate="L" (left - 270 deg.)<br/>
+                                    <b:icon name="shield" icon-set="FA" flip="H" /> flip="H" (horizontal)<br/>
+                                    <b:icon name="shield" icon-set="FA" flip="V" /> flip="V" (vertical)<br/>
+                                    ]]></script>
                                 </b:tab>
                             </b:tabView>
                         </b:column>
@@ -132,14 +160,22 @@
                                     <p>To let your icons spin, just add the <code>spin="true"</code> attribute.</p>
                                 </b:tab>
                                 <b:tab title="Markup">
-
+                                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                                    <![CDATA[
+                                    <b:icon name="spinner" icon-set="fa" spin="true" size="3x" />#{'#'}{'   '}
+                                    <b:icon name="circle-o-notch" icon-set="fa" spin="true" size="3x" />#{'#'}{'   '}
+                                    <b:icon name="refresh" icon-set="fa" spin="true" size="3x" />#{'#'}{'   '}
+                                    <b:icon name="cog" icon-set="fa" spin="true" size="3x" />
+                                    ]]></script>
                                 </b:tab>
                             </b:tabView>
                         </b:column>
                     </b:row>
                     <br/><br/><br/>
                 </b:container>
-                
+                <script type="text/javascript">
+                    SyntaxHighlighter.all();
+                </script>
             </ui:define>
         </ui:composition>
     </h:body>
