@@ -50,41 +50,32 @@
                         <p>Since BootsFaces is born to help you design a wonderful website, we recognize that Icons are an important tool to achieve this goal and there are never enough:</p>
                         <p>for this reason, BootsFaces now supports the <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a> Icon set with its 519 icons.</p>
                         <p>As you will see later, we also support most Awesome features, which will work with Glyphicon too!</p>
-                        <p>Being a large Icon set, which requires loading a large font, use of Font Awesome is optional and must be enabled.</p>
-                        <p>The <b>BootsFaces_USE_FA</b> context-param in your web.xml controls the loading of Font Awesome:</p>
-                        <p>the default is false, when set to true the Font Awesome will be loaded.</p>
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                        <![CDATA[
-                        <context-param>
-                            <param-name>BootsFaces_USE_FA</param-name>
-                            <param-value>true</param-value>
-                        </context-param>
-                        ]]></script>
+                        
                         <hr/>
                     </b:row>
                     <b:row>
                         <b:column span="2">
-                            <b:icon name="camera-retro" icon-set="FA" /> fa-camera-retro<br/>
-                            <b:icon name="coffee" icon-set="FA" /> fa-coffee<br/>
-                            <b:icon name="futbol-o" icon-set="FA" /> fa-futbol-o<br/>
-                            <b:icon name="heartbeat" icon-set="FA" /> fa-heartbeat<br/>
-                            <b:icon name="group" icon-set="FA" /> fa-group<br/>
-                            <b:icon name="gamepad" icon-set="FA" /> fa-gamepad<br/>
+                            <b:iconAwesome name="camera-retro" /> fa-camera-retro<br/>
+                            <b:iconAwesome name="coffee" /> fa-coffee<br/>
+                            <b:iconAwesome name="futbol-o" /> fa-futbol-o<br/>
+                            <b:iconAwesome name="heartbeat" /> fa-heartbeat<br/>
+                            <b:iconAwesome name="group" /> fa-group<br/>
+                            <b:iconAwesome name="gamepad" /> fa-gamepad<br/>
                         </b:column>
                         <b:column span="10">
                             <b:tabView activeIndex="0">
                                 <b:tab title="Font Awesome">
-                                    Adding a Font Awesome icon in BootsFaces is easy: add to your <code>&lt;b:icon&gt;</code> tag a <code>icon-set="FA"</code> attribute and the icon name (without the trailing <b>fa-</b> prefix)
+                                    Adding a Font Awesome icon in BootsFaces is easy: use the <code>&lt;b:iconAwesome&gt;</code> tag with the icon name (without the trailing <b>fa-</b> prefix)
                                 </b:tab>
                                 <b:tab title="Markup">
                                     <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                                     <![CDATA[
-                                    <b:icon name="camera-retro" icon-set="FA" /> fa-camera-retro<br/>
-                                    <b:icon name="coffee" icon-set="FA" /> fa-coffee<br/>
-                                    <b:icon name="futbol-o" icon-set="FA" /> fa-futbol-o<br/>
-                                    <b:icon name="heartbeat" icon-set="FA" /> fa-heartbeat<br/>
-                                    <b:icon name="group" icon-set="FA" /> fa-group<br/>
-                                    <b:icon name="gamepad" icon-set="FA" /> fa-gamepad<br/>
+                                    <b:iconAwesome name="camera-retro" /> fa-camera-retro<br/>
+                                    <b:iconAwesome name="coffee" /> fa-coffee<br/>
+                                    <b:iconAwesome name="futbol-o" /> fa-futbol-o<br/>
+                                    <b:iconAwesome name="heartbeat" /> fa-heartbeat<br/>
+                                    <b:iconAwesome name="group" /> fa-group<br/>
+                                    <b:iconAwesome name="gamepad" /> fa-gamepad
                                     ]]></script>
                                 </b:tab>
                             </b:tabView>
@@ -92,7 +83,7 @@
                     </b:row>
                     <b:row>
                         <h3>Icon Size</h3>
-                        <p>BootsFaces supports the default Icon set of Bootstrap <a href="http://getbootstrap.com/components/#glyphicons-glyphs">Glyphicons</a></p>
+                        <p>BootsFaces supports different sizes for the Icons.</p>
                         <hr/>
                     </b:row>
                     <b:row>
@@ -129,11 +120,11 @@
                     </b:row>
                     <b:row>
                         <b:column span="2">
-                            <b:icon name="shield" icon-set="FA" /> normal<br/>
-                            <b:icon name="shield" icon-set="FA" rotate="R" /> rotate="R" (right - 90 deg.)<br/>
-                            <b:icon name="shield" icon-set="FA" rotate="L" /> rotate="L" (left - 270 deg.)<br/>
-                            <b:icon name="shield" icon-set="FA" flip="H" /> flip="H" (horizontal)<br/>
-                            <b:icon name="shield" icon-set="FA" flip="V" /> flip="V" (vertical)<br/>
+                            <b:iconAwesome name="shield" /> normal<br/>
+                            <b:iconAwesome name="shield" rotate="R" /> rotate="R" (right - 90 deg.)<br/>
+                            <b:iconAwesome name="shield" rotate="L" /> rotate="L" (left - 270 deg.)<br/>
+                            <b:iconAwesome name="shield" flip="H" /> flip="H" (horizontal)<br/>
+                            <b:iconAwesome name="shield" flip="V" /> flip="V" (vertical)<br/>
                         </b:column>
                         <b:column span="10">
                             <b:tabView activeIndex="0">
@@ -143,11 +134,11 @@
                                 <b:tab title="Markup">
                                     <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                                     <![CDATA[
-                                    <b:icon name="shield" icon-set="FA" /> normal<br/>
-                                    <b:icon name="shield" icon-set="FA" rotate="R" /> rotate="R" (right - 90 deg.)<br/>
-                                    <b:icon name="shield" icon-set="FA" rotate="L" /> rotate="L" (left - 270 deg.)<br/>
-                                    <b:icon name="shield" icon-set="FA" flip="H" /> flip="H" (horizontal)<br/>
-                                    <b:icon name="shield" icon-set="FA" flip="V" /> flip="V" (vertical)<br/>
+                                    <b:iconAwesome name="shield" /> normal<br/>
+                                    <b:iconAwesome name="shield" rotate="R" /> rotate="R" (right - 90 deg.)<br/>
+                                    <b:iconAwesome name="shield" rotate="L" /> rotate="L" (left - 270 deg.)<br/>
+                                    <b:iconAwesome name="shield" flip="H" /> flip="H" (horizontal)<br/>
+                                    <b:iconAwesome name="shield" flip="V" /> flip="V" (vertical)
                                     ]]></script>
                                 </b:tab>
                             </b:tabView>
@@ -159,10 +150,10 @@
                     </b:row>
                     <b:row>
                         <b:column span="2">
-                            <b:icon name="spinner" icon-set="fa" spin="true" size="3x" />#{'   '}
-                            <b:icon name="circle-o-notch" icon-set="fa" spin="true" size="3x" />#{'   '}
-                            <b:icon name="refresh" icon-set="fa" spin="true" size="3x" />#{'   '}
-                            <b:icon name="cog" icon-set="fa" spin="true" size="3x" />
+                            <b:iconAwesome name="spinner" spin="true" size="3x" />#{'   '}
+                            <b:iconAwesome name="circle-o-notch" spin="true" size="3x" />#{'   '}
+                            <b:iconAwesome name="refresh" spin="true" size="3x" />#{'   '}
+                            <b:iconAwesome name="cog" spin="true" size="3x" />
                         </b:column>
                         <b:column span="10">
                             <b:tabView activeIndex="0">
@@ -172,10 +163,10 @@
                                 <b:tab title="Markup">
                                     <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                                     <![CDATA[
-                                    <b:icon name="spinner" icon-set="fa" spin="true" size="3x" />#{'#'}{'   '}
-                                    <b:icon name="circle-o-notch" icon-set="fa" spin="true" size="3x" />#{'#'}{'   '}
-                                    <b:icon name="refresh" icon-set="fa" spin="true" size="3x" />#{'#'}{'   '}
-                                    <b:icon name="cog" icon-set="fa" spin="true" size="3x" />
+                                    <b:iconAwesome name="spinner" spin="true" size="3x" />#{'#'}{'   '}
+                                    <b:iconAwesome name="circle-o-notch" spin="true" size="3x" />#{'#'}{'   '}
+                                    <b:iconAwesome name="refresh" spin="true" size="3x" />#{'#'}{'   '}
+                                    <b:iconAwesome name="cog" spin="true" size="3x" />
                                     ]]></script>
                                 </b:tab>
                             </b:tabView>
