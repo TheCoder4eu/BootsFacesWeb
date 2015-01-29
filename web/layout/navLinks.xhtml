@@ -39,9 +39,11 @@
                         <li>a header link</li>
                         <li>a separator link</li>
                     </ul>
-                    The outcome and external links can have an icon (left or right, default is left).
                 </p>
-                <p>You can control the icon position by specifying it in the attribute <code>iconAlign</code></p>
+                <p>The outcome and external links can have an icon adding the attribute <code>icon</code> (on the left or right, default is left).</p>
+                <p>You can control the icon position by specifying it in the attribute <code>iconAlign</code>.</p>
+                <p>The Icon attribute will add a Glyphicon icon (Bootstrap's default), but now you can also use a Font Awesome icon using the <code>iconAwesome</code> attribute instead of <code>icon</code>.</p>
+                <p>Both <code>icon</code> and <code>iconAwesome</code> attributes, require the icon name as value the icon name without the trailing <b>glyphicon-</b> prefix and <b>fa-</b> prefix respectively.</p>
                 <p>In the following example the <code>b:listLinks</code> tag is used as a container for the NavLinks, showing how to create a Sidebar with links.</p>
                 <b:panel>
                     <f:facet name="heading"><b>EXAMPLE</b></f:facet>
@@ -60,7 +62,7 @@
                                     <b:navLink header="Preview"/>
                                     <b:navLink value="Labels and Badges" outcome="/bootstrap/labelsbadge"
                                                icon="tag" iconAlign="right"/>
-                                    <b:navLink value="Slider" outcome="/jquery-ui/slider" icon="tasks"/>
+                                    <b:navLink value="Slider" outcome="/jquery-ui/slider" iconAwesome="sliders"/>
                                 </b:listLinks>
                              </b:panel>
                         </b:column>
@@ -83,7 +85,7 @@
                                 <b:navLink header="Preview"/>
                                 <b:navLink value="Labels and Badges" outcome="/bootstrap/labelsbadge"
                                            icon="tag" iconAlign="right"/>
-                                <b:navLink value="Slider" outcome="/jquery-ui/slider" icon="tasks"/>
+                                <b:navLink value="Slider" outcome="/jquery-ui/slider" iconAwesome="sliders" />
                             </b:listLinks>
                          </b:panel>
                         ]]></script>
