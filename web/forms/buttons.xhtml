@@ -68,23 +68,37 @@
                 <p><i>Note: starting from Bootstrap 3, some look names for buttons have changed (inverse=> dropped in favor of link).</i></p>
                 <br/>
                 
-                <strong>Button size</strong>
+                <h3>Button size</h3>
                 <p>Fancy larger or smaller buttons? Add <code>size="lg"</code> (Large), <code>size="sm"</code> (Small), or <code>size="xs"</code> for additional sizes.</p>
                 <h:panelGrid columns="2" cellpadding="5">
                     <b:button value="Large button" look="primary" size="lg"/><b:button value="Large button" size="lg"/>
                     <b:button value="Normal button" look="primary" /><b:button value="Normal button" />
                     <b:button value="Small button" look="primary" size="sm"/><b:button value="Small button" size="sm"/>
-                    <b:button value="Extra small button" look="primary" size="mini"/><b:button value="Extra small button" size="mini"/>
+                    <b:button value="Extra small button" look="primary" size="xs"/><b:button value="Extra small button" size="xs"/>
                 </h:panelGrid>
                 <p><i>Note: starting from Bootstrap 3, size names for buttons have changed (large => lg, small => sm, mini => xs).</i></p>
                 <br/>
-                <strong>Disabled State</strong>
+                <h3>Buttons with Icons</h3>
+                <p>Buttons can can have an icon adding the attribute <code>icon</code> (on the left or right, default is left).</p>
+                <p>You can control the icon position by specifying it in the attribute <code>iconAlign</code>.</p>
+                <p>The Icon attribute will add a Glyphicon icon (Bootstrap's default), but now you can also use a Font Awesome icon using the <code>iconAwesome</code> attribute instead of <code>icon</code>.</p>
+                <p>Both <code>icon</code> and <code>iconAwesome</code> attributes, require the icon name as value the icon name without the trailing <b>glyphicon-</b> prefix and <b>fa-</b> prefix respectively.</p>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputText value="Default(Glyphicons)" style="font-weight:bolder"/><h:outputText value="Font Awesome" style="font-weight:bolder"/>
+                    <b:button value="download" icon="download" /><b:button value="cloud-download" iconAwesome="cloud-download" />
+                    <b:button value="download" icon="download" look="warning"/><b:button value="cloud-download" iconAwesome="cloud-download" look="warning"/>
+                    <b:button value="cog (icon Right)" icon="cog" look="primary" iconAlign="right"/><b:button value="cogs (icon Right)" iconAwesome="cogs" look="primary" iconAlign="right"/>
+                    <b:button value="stats" icon="stats" look="info"/><b:button value="bar-chart" iconAwesome="bar-chart" look="info"/>
+                    <b:button value="shopping-cart (size lg)" icon="shopping-cart" look="success" size="lg"/><b:button value="cart-plus (size lg)" iconAwesome="cart-plus" look="success" size="lg"/>
+                </h:panelGrid>
+                <br/>
+                <h4>Disabled State</h4>
                 <p>Make buttons look unclickable by fading them back 50%.</p>
                 <h:panelGrid columns="2" cellpadding="5">
                     <b:button value="Primary button" look="primary" disabled="true"/><b:button value="Button" disabled="true" />
                 </h:panelGrid>
-                
-                <strong>Button functionality</strong>
+                <br/>
+                <h4>Button functionality</h4>
                 <p>Just like h:button, <code>&lt;b:button&gt;</code> does GET requests targeting bookmarkable URLs.</p>
                 <b:panel look="info">
                     <f:facet name="heading"><b>EXAMPLE</b></f:facet>
