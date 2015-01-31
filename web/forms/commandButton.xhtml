@@ -14,12 +14,12 @@
             <ui:define name="content">
                 <h1>CommandButton</h1>
             <h:form id="form">
-                <p>The b:commandButton tag extends the standard h:commandButton with Ajax, and partial processing features.
-                </p>
+                <p>The b:commandButton tag extends the standard h:commandButton with Ajax, and partial processing features.</p>
                 <p>Like Buttons, also CommandButtons can can have an icon adding the attribute <code>icon</code> (on the left or right, default is left).</p>
                 <p>You can control the icon position by specifying it in the attribute <code>iconAlign</code>.</p>
                 <p>The Icon attribute will add a Glyphicon icon (Bootstrap's default), but now you can also use a Font Awesome icon using the <code>iconAwesome</code> attribute instead of <code>icon</code>.</p>
                 <p>Both <code>icon</code> and <code>iconAwesome</code> attributes, require the icon name as value the icon name without the trailing <b>glyphicon-</b> prefix and <b>fa-</b> prefix respectively.</p>
+                <p>In the example below, the rightmost button has the <code>iconAwesome="thumbs-up"</code> attribute.</p>
                 <b:well>
                     <h3>Personal Information</h3>
                     <h:panelGrid id="inform" columns="3" cellpadding="5">  
@@ -52,7 +52,7 @@
                     </b:column>
                     
                 </b:row>
-                <!-- actionListener="" /--> 
+                 
             </h:form>
                 <br/>
             <b:well id="infoshow">
