@@ -129,7 +129,25 @@
                         </h:form>]]></script>
                     </f:facet>
                 </b:panel>
-                <strong>Appending or prepending Buttons</strong><br/>
+                <h4>Appending or prepending Icons</h4><br/>
+                <p>You can take advantage of the <code>&lt;b:icon&gt;</code> or <code>&lt;b:iconAwesome&gt;</code> components to append (or prepend) <h:link outcome="/layout/icons" value="Icons"/> :</p>
+                <h:form>
+                    <h:panelGrid columns="2"  cellpadding="5">
+                        <h:outputText value="e-mail:"/>
+                        <b:inputText placeholder="Username">
+                            <f:facet name="prepend">
+                                <b:icon name="user" />
+                            </f:facet>
+                        </b:inputText>
+                        <h:outputText value="Password:"/>
+                        <b:inputText placeholder="Password">
+                            <f:facet name="prepend">
+                                <b:iconAwesome name="key" />
+                            </f:facet>
+                        </b:inputText>
+                    </h:panelGrid>
+                </h:form>
+                <h4>Appending or prepending Buttons</h4><br/>
                 <p>Another nice feature is that you can append (or prepend) buttons:</p>
                 <b:panel>
                     <f:facet name="heading"><b>EXAMPLE</b></f:facet>
@@ -164,7 +182,7 @@
                 </f:facet>
                 </b:modal>
                 
-                <strong>Appending or prepending DropButtons</strong><br/>
+                <h4>Appending or prepending DropButtons</h4><br/>
                 <p>What you have seen applies also to DropButtons:</p>
                 <b:panel>
                     <f:facet name="heading"><b>EXAMPLE</b></f:facet>
@@ -220,8 +238,7 @@
                     </h:panelGrid>
                     
                 </b:well>
-                <br/>
-                <strong>Grid sizing</strong>
+                <h4>Grid sizing</h4>
                 <p>If your inputText is not in a panelGrid(table) or is not already in a b:column of your grid layout,
                     BootsFaces can place the component in a column for you, allowing you to easily control its size.</p>
                 <p>Use <code>span="1"</code> to <code>span="12"</code> for inputs that match the same sizes of the BootsFaces grid columns:</p>
