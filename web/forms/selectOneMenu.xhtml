@@ -80,6 +80,112 @@
     </b:tab>
 </b:tabView>
         </h:form>
+        
+        <h1>Arrays and HashMaps</h1>
+        <p>The list of items can be defined as an <code>&lt;f:selectItems /&gt;</code> tag. BootsFaces uses a modified version of the 
+        algorithm PrimeFaces 5.1 uses to implement <code>&lt;f:selectItems /&gt;</code>. As a result, you can use <code>&lt;b:selectOneMenu&gt;</code>
+        almost the same way as <code>&lt;b:selectOneMenu&gt;</code>. </p>
+        <h:form>
+<b:tabView activeIndex="0">
+    <b:tab title="JSF markup">
+       <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+	        <b:panelGrid colSpans="2,2,8">
+	        	<h:outputLabel value="Traffic light color" />
+			    <b:selectOneMenu value="#{semaphoreBean.color}"  >
+		    		<f:selectItems value="#{semaphoreBean.colors}" var="c" itemValue="#{c}" itemLabel="#{c}"/>
+			    </b:selectOneMenu>
+			    <h:outputLabel value="" />
+			    <h:outputLabel value="Traffic light meaning" />
+			    <b:selectOneMenu value="#{semaphoreBean.meaning}"  >
+		    		<f:selectItems value="#{semaphoreBean.meanings}"/>
+			    </b:selectOneMenu>
+			    <h:outputLabel value="" />
+		    </b:panelGrid>
+]]>
+       </script>
+    </b:tab>
+    <b:tab title="Java bean">
+       <script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+@javax.faces.bean.RequestScoped
+@ManagedBean
+public class SemaphoreBean {
+	@NotNull
+	private String color = null;
+
+	@NotNull
+	private String meaning = null;
+
+	private List<String> colors;
+
+	private Map<String, String> meanings;
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	public String getMeaning() {
+		return meaning;
+	}
+
+	public void setMeaning(String meaning) {
+		this.meaning = meaning;
+	}
+
+	public List<String> getColors() {
+		return colors;
+	}
+
+	public void setColors(List<String> colors) {
+		this.colors = colors;
+	}
+
+	public Map<String, String> getMeanings() {
+		return meanings;
+	}
+
+	public void setMeanings(Map<String, String> meanings) {
+		this.meanings = meanings;
+	}
+
+	{
+		colors = Arrays.asList("green", "yellow", "red");
+		meanings = new HashMap<String, String>();
+		meanings.put("go", "green");
+		meanings.put("be alert", "yellow");
+		meanings.put("stop", "red");
+	}
+}
+]]>
+       </script>
+    </b:tab>
+    
+    
+    <b:tab title="displayed as">
+				<br />
+	        <b:panelGrid colSpans="2,2,8">
+	        	<h:outputLabel value="Traffic light color" />
+			    <b:selectOneMenu value="#{semaphoreBean.color}"  >
+		    		<f:selectItems value="#{semaphoreBean.colors}" var="c" itemValue="#{c}" itemLabel="#{c}"/>
+			    </b:selectOneMenu>
+			    <h:outputLabel value="" />
+			    <h:outputLabel value="Traffic light meaning" />
+			    <b:selectOneMenu value="#{semaphoreBean.meaning}"  >
+		    		<f:selectItems value="#{semaphoreBean.meanings}"/>
+			    </b:selectOneMenu>
+			    <h:outputLabel value="" />
+		    </b:panelGrid>
+    </b:tab>
+</b:tabView>
+        </h:form>
+        
+        
+        
                 <h1>Labels as captions above the combobox</h1>
 <b:tabView>
   <b:tab title="JSF markup">
