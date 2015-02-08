@@ -65,6 +65,50 @@
                 <p>However, we suggest you start reading the <h:link outcome="/layout/basic" value="Basic Layout"/> page and have a look at the
                    <h:link outcome="/examples/starter_template" value="starter template"/> in the <h:link outcome="/examples/index" value="Examples"/> section.</p>
                 <hr/>
+                
+                <h3>web.xml and faces-config.xml</h3>
+                <p>If the CSS and Javascript files aren't loaded, you have to add a few lines to the <code>faces-config.xml</code> and the <code>web.xml</code> files.</p>
+
+				<b:tabView>            
+				<b:tab title="web.xml">
+                    <b:panel>
+     	    			Add the URL pattern <code>/javax.faces.resource/*</code> to the web.xml:    
+                         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+ 					     <![CDATA[
+                             <servlet>
+                                 <servlet-name>Faces Servlet</servlet-name>
+                                 <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+                                 <load-on-startup>1</load-on-startup>
+                             </servlet>
+                             <servlet-mapping>
+                                 <servlet-name>Faces Servlet</servlet-name>
+                         		<url-pattern>*.jsf</url-pattern>
+                         		<url-pattern>/javax.faces.resource/*</url-pattern>
+                         	</servlet-mapping>
+                        ]]></script>
+                    </b:panel>
+                </b:tab>
+				<b:tab title="faces-config.xml">
+                    <b:panel>
+    				     Add the <code>UnmappedResourceHandler</code> to the <code>faces-config.xml:</code>
+                         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                         <![CDATA[
+                             <?xml version="1.0" encoding="UTF-8"?>
+                             <faces-config
+                                 xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+                                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+                                 version="2.2">
+                             	<application>
+                             		<resource-handler>net.bootsfaces.render.UnmappedResourceHandler</resource-handler>
+                             	</application>
+                             </faces-config>
+                         ]]></script>
+                    </b:panel>
+                    </b:tab>
+                           
+                           </b:tabView>     
+                
                 <h3>Theme CSS support</h3>
                 
                 <p>The BootsFaces_USETHEME context-param in your web.xml controls the loading of the bootstrap-theme.css</p>
