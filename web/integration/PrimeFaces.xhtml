@@ -67,7 +67,7 @@
                 <h2>Example for Scenario 2</h2>
                 <p>The demo below is taken from the PrimeFaces showcase. We adapted it slightly to take advantage of the BootsFaces API.</p>
                 
-			<b:tabView contentStyle="height:180px">
+			<b:tabView >
 				<b:tab title="JSF Markup">
 					<b:well>
                 		<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
@@ -76,42 +76,44 @@
                 <h:form id="form">
 				    <p:growl id="msgs" showDetail="true" />
 				 
-				    <h:panelGrid columns="2" cellpadding="5">
-				        <p:outputLabel for="inline" value="Inline:" />
-				        <p:calendar id="inline" value="# {calendarView.date1}" mode="inline" />
-				 
-				        <p:outputLabel for="popup" value="Popup:" />
-				        <p:calendar id="popup" value="# {calendarView.date2}" />
-				 
-				        <p:outputLabel for="button" value="Button:" />
-				        <p:calendar id="button" value="# {calendarView.date3}" showOn="button" />
-				 
-				        <p:outputLabel for="event" value="Select Event:" />
-				        <p:calendar id="event" value="# {calendarView.date4}">
-				            <p:ajax event="dateSelect" listener="# {calendarView.onDateSelect}" update="msgs" />
-				        </p:calendar>
-				 
-				        <p:outputLabel for="german" value="German:" />
-				        <p:calendar id="german" value="# {calendarView.date5}" locale="de" navigator="true" pattern="yyyy-MMM-dd" />
-				 
-				        <p:outputLabel for="restricted" value="Restricted:" />
-				        <p:calendar id="restricted" value="# {calendarView.date6}" mindate="4/1/14" maxdate="7/1/14" />
-				 
-				        <p:outputLabel for="multi" value="Multiple:" />
-				        <p:calendar id="multi" value="# {calendarView.date7}" pages="3" />
-				 
-				        <p:outputLabel for="effect" value="Effect:" />
-				        <p:calendar id="effect" value="# {calendarView.date8}" effect="fold" />
-				 
-				        <p:outputLabel for="mask" value="Mask:" />
-				        <p:calendar id="mask" value="# {calendarView.date9}" pattern="dd-MM-yyyy" mask="true" />
-				 
-				        <p:outputLabel for="datetime" value="Datetime:" />
-				        <p:calendar id="datetime" value="# {calendarView.date10}" pattern="MM/dd/yyyy HH:mm:ss" />
-				 
-				        <p:outputLabel for="time" value="Time:" />
-				        <p:calendar id="time" value="# {calendarView.date11}" pattern="HH:mm a" timeOnly="true"  />
-				    </h:panelGrid>
+				 	<b:container>
+					    <b:panelGrid colSpans="2,10">
+					        <p:outputLabel for="inline" value="Inline:" />
+					        <p:calendar id="inline" value="# {calendarView.date1}" mode="inline" />
+					 
+					        <p:outputLabel for="popup" value="Popup:" />
+					        <p:calendar id="popup" value="# {calendarView.date2}" />
+					 
+					        <p:outputLabel for="button" value="Button:" />
+					        <p:calendar id="button" value="# {calendarView.date3}" showOn="button" />
+					 
+					        <p:outputLabel for="event" value="Select Event:" />
+					        <p:calendar id="event" value="# {calendarView.date4}">
+					            <p:ajax event="dateSelect" listener="# {calendarView.onDateSelect}" update="msgs" />
+					        </p:calendar>
+					 
+					        <p:outputLabel for="german" value="German:" />
+					        <p:calendar id="german" value="# {calendarView.date5}" locale="de" navigator="true" pattern="yyyy-MMM-dd" />
+					 
+					        <p:outputLabel for="restricted" value="Restricted:" />
+					        <p:calendar id="restricted" value=" #{calendarView.date6}" mindate="4/1/14" maxdate="7/1/14" />
+					 
+					        <p:outputLabel for="multi" value="Multiple:" />
+					        <p:calendar id="multi" value="# {calendarView.date7}" pages="3" />
+					 
+					        <p:outputLabel for="effect" value="Effect:" />
+					        <p:calendar id="effect" value="# {calendarView.date8}" effect="fold" />
+					 
+					        <p:outputLabel for="mask" value="Mask:" />
+					        <p:calendar id="mask" value="# {calendarView.date9}" pattern="dd-MM-yyyy" mask="true" />
+					 
+					        <p:outputLabel for="datetime" value="Datetime:" />
+					        <p:calendar id="datetime" value="# {calendarView.date10}" pattern="MM/dd/yyyy HH:mm:ss" />
+					 
+					        <p:outputLabel for="time" value="Time:" />
+					        <p:calendar id="time" value=" #{calendarView.date11}" pattern="HH:mm a" timeOnly="true"  />
+						 </b:panelGrid>
+					 </b:container>
 				 
 				    <p:commandButton value="Submit" update="msgs" actionListener="# {calendarView.click}" icon="ui-icon-check" />
 				 
@@ -179,49 +181,50 @@
 					</b:well>
 				</b:tab>
 				<b:tab title="preview">
-					<b:well>
+					<b:well >
                 <h:form id="form">
 				    <p:growl id="msgs" showDetail="true" />
 				 
-				    <h:panelGrid columns="2" cellpadding="5">
-				        <p:outputLabel for="inline" value="Inline:" />
-				        <p:calendar id="inline" value="#{calendarView.date1}" mode="inline" />
-				 
-				        <p:outputLabel for="popup" value="Popup:" />
-				        <p:calendar id="popup" value="#{calendarView.date2}" />
-				 
-				        <p:outputLabel for="button" value="Button:" />
-				        <p:calendar id="button" value="#{calendarView.date3}" showOn="button" />
-				 
-				        <p:outputLabel for="event" value="Select Event:" />
-				        <p:calendar id="event" value="#{calendarView.date4}">
-				            <p:ajax event="dateSelect" listener="#{calendarView.onDateSelect}" update="msgs" />
-				        </p:calendar>
-				 
-				        <p:outputLabel for="german" value="German:" />
-				        <p:calendar id="german" value="#{calendarView.date5}" locale="de" navigator="true" pattern="yyyy-MMM-dd" />
-				 
-				        <p:outputLabel for="restricted" value="Restricted:" />
-				        <p:calendar id="restricted" value="#{calendarView.date6}" mindate="4/1/14" maxdate="7/1/14" />
-				 
-				        <p:outputLabel for="multi" value="Multiple:" />
-				        <p:calendar id="multi" value="#{calendarView.date7}" pages="3" />
-				 
-				        <p:outputLabel for="effect" value="Effect:" />
-				        <p:calendar id="effect" value="#{calendarView.date8}" effect="fold" />
-				 
-				        <p:outputLabel for="mask" value="Mask:" />
-				        <p:calendar id="mask" value="#{calendarView.date9}" pattern="dd-MM-yyyy" mask="true" />
-				 
-				        <p:outputLabel for="datetime" value="Datetime:" />
-				        <p:calendar id="datetime" value="#{calendarView.date10}" pattern="MM/dd/yyyy HH:mm:ss" />
-				 
-				        <p:outputLabel for="time" value="Time:" />
-				        <p:calendar id="time" value="#{calendarView.date11}" pattern="HH:mm a" timeOnly="true"  />
-				    </h:panelGrid>
-				 
+				 	<b:container>
+					    <b:panelGrid colSpans="2,10">
+					        <p:outputLabel for="inline" value="Inline:" />
+					        <p:calendar id="inline" value="#{calendarView.date1}" mode="inline" />
+					 
+					        <p:outputLabel for="popup" value="Popup:" />
+					        <p:calendar id="popup" value="#{calendarView.date2}" />
+					 
+					        <p:outputLabel for="button" value="Button:" />
+					        <p:calendar id="button" value="#{calendarView.date3}" showOn="button" />
+					 
+					        <p:outputLabel for="event" value="Select Event:" />
+					        <p:calendar id="event" value="#{calendarView.date4}">
+					            <p:ajax event="dateSelect" listener="#{calendarView.onDateSelect}" update="msgs" />
+					        </p:calendar>
+					 
+					        <p:outputLabel for="german" value="German:" />
+					        <p:calendar id="german" value="#{calendarView.date5}" locale="de" navigator="true" pattern="yyyy-MMM-dd" />
+					 
+					        <p:outputLabel for="restricted" value="Restricted:" />
+					        <p:calendar id="restricted" value="#{calendarView.date6}" mindate="4/1/14" maxdate="7/1/14" />
+					 
+					        <p:outputLabel for="multi" value="Multiple:" />
+					        <p:calendar id="multi" value="#{calendarView.date7}" pages="3" />
+					 
+					        <p:outputLabel for="effect" value="Effect:" />
+					        <p:calendar id="effect" value="#{calendarView.date8}" effect="fold" />
+					 
+					        <p:outputLabel for="mask" value="Mask:" />
+					        <p:calendar id="mask" value="#{calendarView.date9}" pattern="dd-MM-yyyy" mask="true" />
+					 
+					        <p:outputLabel for="datetime" value="Datetime:" />
+					        <p:calendar id="datetime" value="#{calendarView.date10}" pattern="MM/dd/yyyy HH:mm:ss" />
+					 
+					        <p:outputLabel for="time" value="Time:" />
+					        <p:calendar id="time" value="#{calendarView.date11}" pattern="HH:mm a" timeOnly="true"  />
+						 </b:panelGrid>
+					 </b:container>
 				    <p:commandButton value="Submit" update="msgs" actionListener="#{calendarView.click}" icon="ui-icon-check" />
-				 
+				 	
 				    <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
 				        <p:panelGrid id="display" columns="2" columnClasses="label,value">
 				            <h:outputText value="Inline:" />
