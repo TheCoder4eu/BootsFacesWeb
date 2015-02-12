@@ -47,12 +47,15 @@ war.doFirst {
 	
 	String dependencies="";
 	try {
-    	def compileConfiguration = project.configurations.getByName("compile")
-    	def resolvedConfiguration = compileConfiguration.resolvedConfiguration
-    	def resolvedArtifacts = resolvedConfiguration.resolvedArtifacts
-    	resolvedArtifacts.each { dp ->
-			dependencies += "${dp.name} ${dp.resolvedDependency}<br/>"
-    	}
+		eachDependency { DependencyResolveDetails details ->
+			dependencies +="${details.requested.group}:${details.requested.name}:${details.requested.version}"
+		}
+//    	def compileConfiguration = project.configurations.getByName("compile")
+//    	def resolvedConfiguration = compileConfiguration.resolvedConfiguration
+//    	def resolvedArtifacts = resolvedConfiguration.resolvedArtifacts
+//    	resolvedArtifacts.each { dp ->
+//			dependencies += "${dp.name} ${dp.resolvedDependency}<br/>"
+//    	}
 	} catch (Exception e) {
 		dependencies = "Couldn't resolve the dependencies: $e"
 	}
