@@ -49,7 +49,7 @@ war.doFirst {
 	try {
 		eachDependency { DependencyResolveDetails details ->
 			dependencies +="${details.requested.group}:${details.requested.name}:${details.requested.version}"
-		}
+		
 //    	def compileConfiguration = project.configurations.getByName("compile")
 //    	def resolvedConfiguration = compileConfiguration.resolvedConfiguration
 //    	def resolvedArtifacts = resolvedConfiguration.resolvedArtifacts
