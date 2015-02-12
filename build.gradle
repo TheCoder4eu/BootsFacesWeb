@@ -51,7 +51,7 @@ war.doFirst {
     	def resolvedConfiguration = compileConfiguration.resolvedConfiguration
     	def resolvedArtifacts = resolvedConfiguration.resolvedArtifacts
     	resolvedArtifacts.each { dp ->
-			dependencies += "${dp.name}:${dp.version}<br/>"
+			dependencies += "${dp.name}:${dp.class.name}<br/>"
     	}
 	} catch (Exception e) {
 		dependencies = "Couldn't resolve the dependencies: $e"
