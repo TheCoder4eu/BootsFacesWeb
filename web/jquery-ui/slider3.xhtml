@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:ac="http://beyondjava.net/angularFacesCore"
+	xmlns:a="http://beyondjava.net/angularFaces">
+<h:head>
+	<title>BootsFaces: next-gen JSF Framework</title>
+	<meta name="author" content="Riccardo Massera"></meta>
+	<style>
+body {
+	padding: 2em;
+}
+
+pre {
+	border: 1px solid #999;
+	padding: 1em;
+	background-color: #FFE;
+}
+
+li {
+	list-style-position: inside;
+}
+
+.sliderExample {
+	width: 640px;
+	padding: 2em;
+	background-color: #f5f5f5;
+	border: 1px solid #f0f0f0;
+	margin: 2em;
+}
+
+.sliderExample>div {
+	margin: 1em 0;
+}
+
+.vertical-container {
+	width: 15%;
+	display: inline-block;
+}
+
+#swatch {
+	width: 100px;
+	height: 100px;
+	border: 1px solid black;
+}
+
+#red .ui-slider-range {
+	background: #ef2929;
+}
+
+#red .ui-slider-handle {
+	border-color: #ef2929;
+}
+
+#green .ui-slider-range {
+	background: #8ae234;
+}
+
+#green .ui-slider-handle {
+	border-color: #8ae234;
+}
+
+#blue .ui-slider-range {
+	background: #729fcf;
+}
+
+#blue .ui-slider-handle {
+	border-color: #729fcf;
+}
+</style>
+
+</h:head>
+<h:body style="padding-top: 60px">
+	<ui:composition template="/applayout/pageTemplate.xhtml">
+		<ui:define name="content">
+			<h1>Fancy sliders</h1>
+ 			<div ng-app="sliderDemoApp" ng-controller="sliderDemoCtrl">
+				 <a:slider min="0" max="59" step="3" orientation="horizontal" value="{{clockBean.minute}}"/>
+				
+				<div>Angular Slider: {{clockBean.minute}}</div>
+			</div>
+	<script>
+		var app = angular.module('sliderDemoApp', ['ui.slider']);
+		app.controller('sliderDemoCtrl', function($scope, $log) {
+		});
+	</script>
+ 
+			
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
