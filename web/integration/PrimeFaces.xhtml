@@ -22,6 +22,44 @@
                 </ul>
 
                 <h2>Configuration</h2>
+			<b:tabView contentStyle="height:180px">
+				<b:tab title="Maven">
+					<p>Add these lines to your Maven pom.xml file:</p>
+					<b:well>
+                		<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+<dependency>
+	<groupId>org.primefaces</groupId>
+	<artifactId>primefaces</artifactId>
+	<version>5.1</version>
+	<scope>compile</scope>
+</dependency>
+]]>
+</script>
+					</b:well>
+				</b:tab>
+				<b:tab title="Gradle">
+					<b:well>
+<script type="syntaxhighlighter" class="brush: groovy; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+	compile 'org.primefaces:primefaces:5.1'
+]]>
+</script>
+					</b:well>
+				</b:tab>
+				<b:tab title="web.xml">
+					<b:well>
+						web.xml
+					</b:well>
+				</b:tab>
+				<b:tab title="faces-config.xml">
+					<b:well>
+						faces.config
+					</b:well>
+				</b:tab>
+			</b:tabView>
+                
+                
 
                 <h2>Example for Scenario 2</h2>
                 <p>The demo below is taken from the PrimeFaces showcase. We adapted it slightly to take advantage of the BootsFaces API.</p>
