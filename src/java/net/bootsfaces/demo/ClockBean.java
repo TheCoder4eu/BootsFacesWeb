@@ -23,12 +23,10 @@ public class ClockBean implements Serializable {
 	private static final long serialVersionUID = 5497787734011747081L;
 	@Min(0)
 	@Max(23)
-	@Size(max=2)
 	private int hour;
 
 	@Min(0)
 	@Max(55)
-	@Size(max=2)
 	private int minute;
 	
 	{
