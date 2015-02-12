@@ -25,6 +25,7 @@ providedCompile 'com.sun.faces:jsf-api:2.2.+'
 providedCompile 'com.sun.faces:jsf-impl:2.2.+'
 providedCompile 'org.glassfish.web:el-impl:2.2'
 providedCompile 'javax.validation:validation-api:1.0.0.GA'
+compile 'org.primefaces:primefaces:5.1'
 compile(
     'de.beyondjava:angularFaces-core:2.1.0',
     'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.5.0'
@@ -43,15 +44,33 @@ war.doFirst {
     Date buildDate = new Date()
     String hostname= InetAddress.getLocalHost().getHostName()
     String currentJvm = org.gradle.internal.jvm.Jvm.current()
+	
+	String dependencies="";
+	try {
+    	def compileConfiguration = project.configurations.getByName("compile")
+    	def resolvedConfiguration = compileConfiguration.resolvedConfiguration
+    	def resolvedArtifacts = resolvedConfiguration.resolvedArtifacts
+    	resolvedArtifacts.each { dp ->
+			dependencies += "${dp}<br>"
+    	}
+	} catch (Exception e) {
+		dependencies = "Couldn't resolve the dependencies: $e"
+	}
+	
     String currentOS = System.properties['os.name']+' '+System.properties['os.version']+' '+System.properties['os.arch']
-    String buildInfo = '\n<b:panel title="Build Informations" look="info">\n'+
-                       "Built on $hostname $currentOS<br/>\n" +
-                       "by Gradle ${project.gradle.gradleVersion}<br/>\n" +
-                       "Java Version $currentJvm<br/>\n" +
-                       "sourceCompatibility $sourceCompatibility<br/>\n" +
-                       "targetCompatibility $targetCompatibility<br/>\n" +
-                       "Build Date  ${buildDate}<br/>\n" +
-                       '</b:panel>'
+    String buildInfo = """
+					   <b:panel title="Build Informations" look="info">
+                           Built on $hostname $currentOS<br/>
+                           by Gradle ${project.gradle.gradleVersion}<br/>
+                           Java Version $currentJvm<br/>
+                           sourceCompatibility $sourceCompatibility<br/>
+                           targetCompatibility $targetCompatibility<br/>
+                           Build Date  ${buildDate}<br/>
+                       </b:panel>
+					   <b:panel title="Libraries used in the demo" look="info">
+                           $dependencies
+                       </b:panel>
+					   """
     contents = contents.replaceAll( '</h1>', '</h1>'+buildInfo )
     new File( 'web/index.xhtml' ).write( contents, 'UTF-8' )
 }
