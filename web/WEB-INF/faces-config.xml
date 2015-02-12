@@ -7,5 +7,4 @@
 	<application>
 		<resource-handler>net.bootsfaces.render.UnmappedResourceHandler</resource-handler>
 	</application>
-
 </faces-config>
