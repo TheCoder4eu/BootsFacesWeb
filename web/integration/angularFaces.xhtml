@@ -21,7 +21,7 @@ td {
   border-bottom-color: #c33;
   border-bottom-width: 1px dotted;
 }
-.ui-state-error { color:#d33;}
+.ui-state-error { color:#d33;background-color:inherit;border:none;}
 .pui-message { color:#d33; padding-top:7px }
 .pui-label { width:100%;}
 </style>
@@ -58,7 +58,7 @@ td {
 			<p>You have to add both the BootsFaces and the AngularFaces jar
 				files. AngularFaces also requires a Json serializer - currently
 				either Gson or Jackson:</p>
-			<b:tabView contentStyle="height:380px">
+			<b:tabView contentStyle="height:480px">
 				<b:tab title="Maven">
 					<p>Add these lines to your Maven pom.xml file:</p>
 					<b:well>
@@ -70,6 +70,7 @@ td {
 <script type="syntaxhighlighter" class="brush: groovy; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
 	compile 'de.beyondjava:angularFaces-core:2.1.+'
+    compile 'net.bootsfaces:bootsfaces:0.6.5'
     compile 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.5.0'
 ]]>
 </script>

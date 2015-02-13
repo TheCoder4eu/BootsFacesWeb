@@ -18,7 +18,36 @@
                 <p>Read the <h:link outcome="/requirements" value="requirements"/>.</p>
                 <hr/>
                 <h3>Download</h3>
-                <p>If you have not downloaded BootsFaces yet, <h:link outcome="/download" value="click here"/>.</p>
+                <b:tabView contentStyle="height:180px">
+					<b:tab title="Maven">
+						<p>Add these lines to your Maven pom.xml build file:</p>
+						<b:well>
+                    		<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                            <![CDATA[
+                            		<dependency>
+                            			<groupId>net.bootsfaces</groupId>
+                            			<artifactId>bootsfaces</artifactId>
+                            			<version>0.6.5</version>
+                            			<scope>compile</scope>
+                            		</dependency>
+                            ]]>
+                            </script>
+                      	</b:well>
+                    </b:tab>
+                    <b:tab title="Gradle">
+						<p>Add this line to your .gradle build file:</p>
+                        <b:well>
+                            <script type="syntaxhighlighter" class="brush: groovy; toolbar: false;gutter: false; first-line: 1">
+                            <![CDATA[
+                            	compile 'net.bootsfaces:bootsfaces:0.6.5'
+                            ]]>
+                            </script>
+                     	</b:well>
+    				</b:tab>
+                    <b:tab title="Manual download">
+               			<p>If you have not downloaded BootsFaces yet, <h:link outcome="/download" value="click here"/>.</p>
+                    </b:tab>
+                </b:tabView>
                 <hr/>
                 <h3>Starting a project</h3>
                 <p>Open your favorite IDE, start a new project and add the downloaded BootsFaces Jar to your libraries.</p>
@@ -67,7 +96,7 @@
                 <hr/>
                 
                 <h3>web.xml and faces-config.xml</h3>
-                <p>If the CSS and Javascript files aren't loaded, you have to add a few lines to the <code>faces-config.xml</code> and the <code>web.xml</code> files.</p>
+                <p>Sometimes the CSS and Javascript files aren't loaded automatically. If you happen to run into this error, you have to add a few lines to the <code>faces-config.xml</code> and the <code>web.xml</code> files.</p>
 
 				<b:tabView>            
 				<b:tab title="web.xml">
