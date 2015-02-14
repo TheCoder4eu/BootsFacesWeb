@@ -89,7 +89,14 @@
 			                <h:form>
 							    <p:growl id="msgs1" showDetail="true" />
 							 	<b:container>
-								    <b:panelGrid colSpans="5,4,3">
+								    <b:panelGrid colSpans="5,7">
+								    	<b:inputText label="Enter a number">
+											<f:facet name="prepend">
+												<h:outputText value="Code39" />
+											</f:facet>
+										</b:inputText>
+										<p:barcode value="1234567890128" type="code39" />
+								    
 										<b:inputText label="Enter your internet address">
 											<f:facet name="prepend">
 												<b:selectOneMenu value="http://">
