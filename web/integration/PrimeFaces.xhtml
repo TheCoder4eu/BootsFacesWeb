@@ -73,18 +73,47 @@
 			</b:tabView>
                 
                 <h2>Example for Scenario 1</h2>
-                <p>Even with the Bootstrap theme, PrimeFaces components don't blend into the Bootstrap look perfectly. On the other hand, PrimeFaces has a lot of advanced components BootsFaces doesn't provide - and never will.
+                <p>Even with the Bootstrap theme, PrimeFaces components don't blend into the Bootstrap look perfectly. On the other hand, PrimeFaces has a lot of advanced components BootsFaces doesn't provide - and probably never will.
                 So it's a good idea to use the "bread and butter" widgets of BootsFaces and use PrimeFaces for the advanced widgets:</p>
 				<b:tabView activeIndex="1">
 					<b:tab title="JSF Markup">
 						<b:well>
 	                		<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
+						<b:well>
+			                <h:form>
+							    <p:growl id="msgs1" showDetail="true" />
+							 	<b:container>
+								    <b:panelGrid colSpans="5,7">
+								    	<b:inputText label="Enter a number">
+											<f:facet name="prepend">
+												<h:outputText value="Code39" />
+											</f:facet>
+										</b:inputText>
+										<p:barcode value="1234567890128" type="code39" />
+								    
+										<b:inputText label="Enter your internet address">
+											<f:facet name="prepend">
+												<b:selectOneMenu value="http://">
+        											<f:selectItem itemLabel="http://"/>
+        											<f:selectItem itemLabel="https://"/>
+    											</b:selectOneMenu>
+												<h:outputText value="www." />
+											</f:facet>
+										</b:inputText>
+										<p:barcode value="http://www.angularfaces.com" type="qr" />
+									</b:panelGrid>
+								</b:container>
+							</h:form>
+						</b:well>
 ]]>
 	</script>
 						</b:well>
 					</b:tab>
 					<b:tab title="preview">
+						<h:graphicImage library="integration" name="barcodes.png"/>
+					</b:tab>
+					<b:tab title="live preview">
 						<b:well>
 			                <h:form>
 							    <p:growl id="msgs1" showDetail="true" />
