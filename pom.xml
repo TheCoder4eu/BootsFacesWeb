@@ -7,7 +7,7 @@
 	<name>BootsFacesWeb</name>
 	<packaging>war</packaging>
 	<description>Documentation page of BootsFaces</description>
-    <url>http://www.bootsfaces.net</url>
+	<url>http://www.bootsfaces.net</url>
 	<licenses>
 		<license>
 			<name>GNU General Public License (GPL) version 3.0</name>
@@ -67,13 +67,8 @@
 			<artifactId>angularFaces-core</artifactId>
 			<version>2.1.0</version>
 		</dependency>
-		<!--  coming soon:
-		<dependency>
-			<groupId>de.beyondjava</groupId>
-			<artifactId>angularFaces-widgets</artifactId>
-			<version>2.2.0-SNAPSHOT</version>
-		</dependency>
-		 -->
+		<!-- coming soon: <dependency> <groupId>de.beyondjava</groupId> <artifactId>angularFaces-widgets</artifactId> 
+			<version>2.2.0-SNAPSHOT</version> </dependency> -->
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
@@ -84,6 +79,27 @@
 			<groupId>com.fasterxml.jackson.jaxrs</groupId>
 			<artifactId>jackson-jaxrs-json-provider</artifactId>
 			<version>2.5.0</version>
+		</dependency>
+		<dependency>
+			<groupId>net.glxn</groupId>
+			<artifactId>qrgen</artifactId>
+			<version>1.4</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.barcode4j</groupId>
+			<artifactId>barcode4j</artifactId>
+			<version>2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>core</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>javase</artifactId>
+			<version>3.1.0</version>
 		</dependency>
 	</dependencies>
 	<profiles>
@@ -223,19 +239,19 @@
 				</executions>
 
 			</plugin>
-		     <plugin>
-		        <groupId>org.apache.maven.plugins</groupId>
-		        <artifactId>maven-war-plugin</artifactId>
-		        <version>2.5</version>
-		        <configuration>
-		          <webResources>
-		            <resource>
-		              <!-- this is relative to the pom.xml directory -->
-		              <directory>web</directory>
-		            </resource>
-		          </webResources>
-		        </configuration>
-		      </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<webResources>
+						<resource>
+							<!-- this is relative to the pom.xml directory -->
+							<directory>web</directory>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
 
 		</plugins>
 	</build>
