@@ -85,23 +85,25 @@
 							    <p:growl id="msgs1" showDetail="true" />
 							 	<b:container>
 								    <b:panelGrid colSpans="5,7">
-								    	<b:inputText label="Enter a number">
+								    	<b:inputText label="Enter a number" value="&num;{barcodeBean.code39}">
 											<f:facet name="prepend">
 												<h:outputText value="Code39" />
 											</f:facet>
+											<p:ajax event="keyup" update="code39" />
 										</b:inputText>
-										<p:barcode value="1234567890128" type="code39" />
+										<p:barcode value="&num;{barcodeBean.code39}" type="code39" id="code39"/>
 								    
-										<b:inputText label="Enter your internet address">
+										<b:inputText label="Enter your internet address" value="&num;{barcodeBean.url}">
 											<f:facet name="prepend">
-												<b:selectOneMenu value="http://">
+												<b:selectOneMenu value="&num;{barcodeBean.protocol}">
         											<f:selectItem itemLabel="http://"/>
         											<f:selectItem itemLabel="https://"/>
     											</b:selectOneMenu>
 												<h:outputText value="www." />
 											</f:facet>
+											<p:ajax event="keyup" update="qr" />
 										</b:inputText>
-										<p:barcode value="http://www.angularfaces.com" type="qr" />
+										<p:barcode value="&num;{barcodeBean.completeURL}" type="qr" id="qr"/>
 									</b:panelGrid>
 								</b:container>
 							</h:form>
@@ -110,32 +112,31 @@
 	</script>
 						</b:well>
 					</b:tab>
-					<b:tab title="preview">
-						<h:graphicImage library="integration" name="barcodes.png"/>
-					</b:tab>
 					<b:tab title="live preview">
 						<b:well>
 			                <h:form>
 							    <p:growl id="msgs1" showDetail="true" />
 							 	<b:container>
 								    <b:panelGrid colSpans="5,7">
-								    	<b:inputText label="Enter a number">
+								    	<b:inputText label="Enter a number" value="#{barcodeBean.code39}">
 											<f:facet name="prepend">
 												<h:outputText value="Code39" />
 											</f:facet>
+											<p:ajax event="keyup" update="@next" />
 										</b:inputText>
-										<p:barcode value="1234567890128" type="code39" />
+										<p:barcode value="#{barcodeBean.code39}" type="code39"/>
 								    
-										<b:inputText label="Enter your internet address">
+										<b:inputText label="Enter your internet address" value="#{barcodeBean.url}">
 											<f:facet name="prepend">
-												<b:selectOneMenu value="http://">
+												<b:selectOneMenu value="#{barcodeBean.protocol}">
         											<f:selectItem itemLabel="http://"/>
         											<f:selectItem itemLabel="https://"/>
     											</b:selectOneMenu>
 												<h:outputText value="www." />
 											</f:facet>
+											<p:ajax event="keyup" update="@next" />
 										</b:inputText>
-										<p:barcode value="http://www.angularfaces.com" type="qr" />
+										<p:barcode value="#{barcodeBean.completeURL}" type="qr" id="qr"/>
 									</b:panelGrid>
 								</b:container>
 							</h:form>
