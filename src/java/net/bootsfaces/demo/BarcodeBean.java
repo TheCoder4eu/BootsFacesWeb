@@ -18,35 +18,53 @@ package net.bootsfaces.demo;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.validation.constraints.Pattern;
 
+/**
+ * This bean is used by the PrimeFaces barcode demo.
+ * @author Stephan Rauh, http://www.beyondjava.net
+ */
 @ViewScoped
 @ManagedBean
 public class BarcodeBean {
-	private String code39="1234567890128";
-	private String protocol="http://";
+	private String code39 = "1234567890128";
+	private String protocol = "http://";
 	private String url = "angularfaces.net";
+	private String url2 = "http://www.bootsfaces.net";
+
 	public String getUrl() {
 		return url;
 	}
+
 	public void setUrl(String url) {
 		this.url = url;
 	}
+
 	public String getProtocol() {
 		return protocol;
 	}
+
 	public void setProtocol(String protocol) {
 		this.protocol = protocol;
 	}
+
 	public String getCode39() {
 		return code39;
 	}
+
 	public void setCode39(String code39) {
 		this.code39 = code39;
 	}
+
 	public String getCompleteURL() {
 		return protocol + "www." + url;
 	}
-	
+
+	public String getUrl2() {
+		return url2;
+	}
+
+	public void setUrl2(String url2) {
+		this.url2 = url2;
+	}
 
 }

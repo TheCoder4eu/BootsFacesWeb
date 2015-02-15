@@ -92,8 +92,13 @@
 											<p:ajax event="keyup" update="code39" />
 										</b:inputText>
 										<p:barcode value="&num;{barcodeBean.code39}" type="code39" id="code39"/>
+
+										<b:inputText label="Enter your internet address" value="&num;{barcodeBean.url2}">
+											<p:ajax event="keyup" update="@next" />
+										</b:inputText>
+										<p:barcode value="&num;{barcodeBean.url2}" type="qr" id="qr1" style="width:90px;height:90px;"/>
 								    
-										<b:inputText label="Enter your internet address" value="&num;{barcodeBean.url}">
+										<b:inputText label="Enter another internet address" value="&num;{barcodeBean.url}">
 											<f:facet name="prepend">
 												<b:selectOneMenu value="&num;{barcodeBean.protocol}">
         											<f:selectItem itemLabel="http://"/>
@@ -103,7 +108,7 @@
 											</f:facet>
 											<p:ajax event="keyup" update="qr" />
 										</b:inputText>
-										<p:barcode value="&num;{barcodeBean.completeURL}" type="qr" id="qr"/>
+										<p:barcode value="&num;{barcodeBean.completeURL}" type="qr" id="qr2" style="width:90px;height:90px;"/>
 									</b:panelGrid>
 								</b:container>
 							</h:form>
@@ -122,11 +127,16 @@
 											<f:facet name="prepend">
 												<h:outputText value="Code39" />
 											</f:facet>
+											<p:ajax event="keyup" update="code39" />
+										</b:inputText>
+										<p:barcode value="#{barcodeBean.code39}" type="code39" id="code39"/>
+
+										<b:inputText label="Enter your internet address" value="#{barcodeBean.url2}">
 											<p:ajax event="keyup" update="@next" />
 										</b:inputText>
-										<p:barcode value="#{barcodeBean.code39}" type="code39"/>
+										<p:barcode value="#{barcodeBean.url2}" type="qr" id="qr1" style="width:90px;height:90px;"/>
 								    
-										<b:inputText label="Enter your internet address" value="#{barcodeBean.url}">
+										<b:inputText label="Enter another internet address" value="#{barcodeBean.url}">
 											<f:facet name="prepend">
 												<b:selectOneMenu value="#{barcodeBean.protocol}">
         											<f:selectItem itemLabel="http://"/>
@@ -136,7 +146,7 @@
 											</f:facet>
 											<p:ajax event="keyup" update="@next" />
 										</b:inputText>
-										<p:barcode value="#{barcodeBean.completeURL}" type="qr" id="qr"/>
+										<p:barcode value="#{barcodeBean.completeURL}" type="qr" id="qr2" style="width:90px;height:90px;"/>
 									</b:panelGrid>
 								</b:container>
 							</h:form>
