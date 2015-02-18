@@ -23,12 +23,12 @@
     </h:head>
     <h:body style="padding-top: 75px;padding-bottom: 75px;">
         
-        <h:outputScript library="sh" name="js/shCore.js" />
-        <h:outputScript library="sh" name="js/shBrushXml.js" />
-        <h:outputScript library="sh" name="js/shBrushJScript.js" />
-        <h:outputScript library="sh" name="js/shBrushJava.js" />
-        <h:outputScript library="sh" name="js/shBrushGroovy.js" />
-        <h:outputScript library="sh" name="js/shBrushCss.js" />
+        <h:outputScript library="sh" name="js/shCore.js"         target="head" />
+        <h:outputScript library="sh" name="js/shBrushXml.js"     target="head" />
+        <h:outputScript library="sh" name="js/shBrushJScript.js" target="head" />
+        <h:outputScript library="sh" name="js/shBrushJava.js"    target="head" />
+        <h:outputScript library="sh" name="js/shBrushGroovy.js"  target="head" />
+        <h:outputScript library="sh" name="js/shBrushCss.js"     target="head" />
         <script>SyntaxHighlighter.defaults['gutter'] = false;</script>            
         <ui:insert name="nbtop">
             <ui:include src="/applayout/navbartop.xhtml"/>

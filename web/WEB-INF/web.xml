@@ -29,7 +29,7 @@
     <!-- cache ten combined resources at most -->
     <context-param>
         <param-name>org.omnifaces.CACHE_SETTING_APPLICATION_MAX_CAPACITY</param-name>
-        <param-value>10</param-value>
+        <param-value>30</param-value>
     </context-param>
     <!-- set the maximum time-to-live of cache entries to one day -->
     <context-param>
@@ -55,6 +55,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.xhtml</welcome-file>
+        <welcome-file>index.jsf</welcome-file>
     </welcome-file-list>
 </web-app>
