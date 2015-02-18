@@ -14,9 +14,122 @@
             <ui:define name="content">
                 <style>td {padding: 8px;}</style>
                 <h1>Integration with OmniFaces</h1>
-                <b:alert title="Work in Progress!" severity="warning">
-                    This documentation is going to be released soon.
-                </b:alert>
+                <p>BootsFaces loads many small CSS and Javascript files. So it's a good idea to combine it with OmniFaces.</p>
+                <p>We didn't encounter
+                any difficulties when we activated the <a target="#" href="http://showcase.omnifaces.org/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></a> of OmniFaces, but we didn't run
+                an exhaustive compatibility test yet.</p>
+                
+     <b:tabView contentStyle="height:280px">
+        <b:tab title="Maven">
+          <p>Add these lines to your Maven pom.xml file:</p>
+          <b:well>
+                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+<dependency>
+  <groupId>net.bootsfaces</groupId>
+  <artifactId>bootsfaces</artifactId>
+  <version>0.6.5</version>
+  <scope>compile</scope>
+</dependency>
+<dependency>
+  <groupId>org.omnifaces</groupId>
+  <artifactId>omnifaces</artifactId>
+  <version>1.10</version>
+  <scope>compile</scope>
+</dependency>
+]]>
+</script>
+          </b:well>
+        </b:tab>
+        <b:tab title="Gradle">
+          <b:well>
+<script type="syntaxhighlighter" class="brush: groovy; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+  compile 'net.bootsfaces:bootsfaces:0.6.5'
+  compile 'org.omnifaces:omnifaces:1.10'
+]]>
+</script>
+          </b:well>
+        </b:tab>
+        <b:tab title="faces-config.xml">
+        To activate the <code>CombinedResourceHandler</code>, add a <code>&lt;resource-handler&gt;</code> to the <code>faces-config.xml</code> file:
+        <b:well>
+<script type="syntaxhighlighter" class="brush: groovy; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+        <?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd" 
+    version="2.2">
+    <application>
+        <resource-handler>org.omnifaces.resourcehandler.CombinedResourceHandler
+        </resource-handler>
+    </application>
+</faces-config>
+]]>
+</script>
+        </b:well>
+        </b:tab>
+      </b:tabView>
+
+<h3>Caching version of the CombinedResourceHandler</h3>
+<p>Caching can add a lot to your page's responsiveness. We've submitted a pull request to OmniFaces that adds caching to the <code>CombinedResourceHandler</code>.
+If you happen to use version 2.0 or earlier of OmniFaces, you can add caching yourself by adding a couple of classes to your application's class path.
+You also have to add a few lines to the <code>web.xml</code> file to activate and configure caching.</p>
+<p>Note that by adding the classes you overwrite classes contained in the OmniFaces.jar. This trick relies on the correct working of the classloader. According to the
+documentation, Tomcat is garanteed to support this (at least in the default configuration). But in the general case, we can't guarantee for anything. Use at own risk.</p>
+
+
+     <b:tabView contentStyle="height:280px">
+        <b:tab title="web.xml">
+          <b:well>
+          Download the <a target="#" href="http://repository.primefaces.org/org/primefaces/themes/bootstrap/">PrimeFaces Bootsstrap theme</a>, add it to your application's <code>lib</code> folder and activate it in the <code>web.xml</code> like so:
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+    <!-- activate resource caching -->
+    <context-param>
+        <param-name>org.omnifaces.COMBINED_RESOURCE_ACTIVATE_RESOURCE_CACHING</param-name>
+        <param-value>
+      true
+    </param-value>
+    </context-param>
+    <!-- cache ten combined resources at most -->
+    <context-param>
+        <param-name>org.omnifaces.CACHE_SETTING_APPLICATION_MAX_CAPACITY</param-name>
+        <param-value>30</param-value>
+    </context-param>
+    <!-- set the maximum time-to-live of cache entries to one day -->
+    <context-param>
+        <param-name>org.omnifaces.CACHE_SETTING_APPLICATION_TTL</param-name>
+        <param-value>86400</param-value>
+    </context-param>
+]]>
+</script>
+          </b:well>
+        </b:tab>
+        <b:tab title="Classes to be added">
+          <b:well>
+            As mentioned above, you only have to add these classes if you use OmniFaces 2.0 or below.<br />
+            <a target="#" href="https://github.com/TheCoder4eu/BootsFacesWeb/blob/master/src/java/org/omnifaces/resourcehandler/CombinedResourceInputStream.java">CombinedResourceInputStream</a>
+            <br />
+            <a target="#" href="https://github.com/TheCoder4eu/BootsFacesWeb/blob/master/src/java/org/omnifaces/component/output/cache/CacheEntry.java">CacheEntry</a>
+            <br />
+            <a target="#" href="https://github.com/TheCoder4eu/BootsFacesWeb/blob/master/src/java/org/omnifaces/component/output/cache/CacheFactory.java">CacheFactory</a>
+            <br />
+            <a target="#" href="https://github.com/TheCoder4eu/BootsFacesWeb/blob/master/src/java/org/omnifaces/component/output/cache/CacheInstancePerScopeProvider.java">CacheInstancePerScopeProvider</a>
+            <br />
+            <a target="#" href="https://github.com/TheCoder4eu/BootsFacesWeb/blob/master/src/java/org/omnifaces/component/output/cache/CacheProvider.java">CacheProvider</a>
+            <br />
+            <a target="#" href="https://github.com/TheCoder4eu/BootsFacesWeb/blob/master/src/java/org/omnifaces/component/output/cache/DefaultCache.java">DefaultCache</a>
+            <br />
+            <a target="#" href="https://github.com/TheCoder4eu/BootsFacesWeb/blob/master/src/java/org/omnifaces/component/output/cache/DefaultCacheProvider.java">DefaultCacheProvider</a>
+            <br />
+            <a target="#" href="https://github.com/TheCoder4eu/BootsFacesWeb/blob/master/src/java/org/omnifaces/component/output/cache/TimeToLiveCache.java">TimeToLiveCache</a>
+            <br />
+          </b:well>
+        </b:tab>
+      </b:tabView>
+                
                 
                 <script type="text/javascript">
                     SyntaxHighlighter.all();
