@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <context-param>
         <param-name>javax.faces.PROJECT_STAGE</param-name>
-        <!--param-value>Production</param-value-->
+        <!--param-value>Production</param-value -->
         <param-value>Development</param-value>
     </context-param>
     <!-- The BootsFaces_USETHEME context-param controls the loading of the bootstrap-theme.css -->
@@ -11,18 +12,35 @@
         <param-name>BootsFaces_USETHEME</param-name>
         <param-value>true</param-value>
     </context-param>
-
-	<!-- Activates the tag decorator that turns divs into JSF components (and much more) -->
-	<context-param>
-		<param-name>javax.faces.FACELETS_DECORATORS</param-name>
-		<param-value>
+    <!-- Activates the tag decorator that turns divs into JSF components (and much more) -->
+    <context-param>
+        <param-name>javax.faces.FACELETS_DECORATORS</param-name>
+        <param-value>
             de.beyondjava.angularFaces.core.tagTransformer.AngularTagDecorator
         </param-value>
-	</context-param>
-	 <context-param>
-	    <param-name>primefaces.THEME</param-name>
-	    <param-value>bootstrap</param-value>
-	</context-param>
+    </context-param>
+    <!-- activate resource caching -->
+    <context-param>
+        <param-name>org.omnifaces.COMBINED_RESOURCE_ACTIVATE_RESOURCE_CACHING</param-name>
+        <param-value>
+      true
+    </param-value>
+    </context-param>
+    <!-- cache ten combined resources at most -->
+    <context-param>
+        <param-name>org.omnifaces.CACHE_SETTING_APPLICATION_MAX_CAPACITY</param-name>
+        <param-value>10</param-value>
+    </context-param>
+    <!-- set the maximum time-to-live of cache entries to one day -->
+    <context-param>
+        <param-name>org.omnifaces.CACHE_SETTING_APPLICATION_TTL</param-name>
+        <param-value>86400</param-value>
+    </context-param>
+    
+    <context-param>
+        <param-name>primefaces.THEME</param-name>
+        <param-value>bootstrap</param-value>
+    </context-param>
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -30,17 +48,13 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
-        <url-pattern>/page/*</url-pattern>
-		<url-pattern>*.jsf</url-pattern>
-		<url-pattern>/javax.faces.resource/*</url-pattern>
-	</servlet-mapping>
-	
+        <url-pattern>*.jsf</url-pattern>
+    </servlet-mapping>
     <session-config>
-        <session-timeout>
-            30
+        <session-timeout>30
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>page/index.xhtml</welcome-file>
+        <welcome-file>index.xhtml</welcome-file>
     </welcome-file-list>
 </web-app>
