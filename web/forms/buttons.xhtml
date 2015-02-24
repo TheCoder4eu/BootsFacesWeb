@@ -18,6 +18,8 @@
                 
                 <strong>Button Look</strong>
                 <p>Button styles can be applied to anything with the <code>look</code> attribute:</p>
+                <b:tabView>
+                  <b:tab title="live preview">
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
@@ -65,6 +67,60 @@
 
                     </tbody>
                 </table>
+                </b:tab>
+                    <b:tab title="JSF markup">
+       <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>b:button</th>
+                            <th><code>look</code> attribute</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b:button value="Default" /></td>
+                            <td>missing</td>
+                            <td>Standard gray button with gradient</td>
+                        </tr>
+                        <tr>
+                            <td><b:button value="Primary" look="primary"/></td>
+                            <td><code>look="primary"</code></td>
+                            <td>Provides extra visual weight and identifies the primary action in a set of buttons</td>
+                        </tr>
+                        <tr>
+                            <td><b:button look="info" value="Info"/></td>
+                            <td><code>look="info"</code></td>
+                            <td>Used as an alternative to the default styles</td>
+                        </tr>
+                        <tr>
+                            <td><b:button look="success" value="Success"/></td>
+                            <td><code>look="success"</code></td>
+                            <td>Indicates a successful or positive action</td>
+                        </tr>
+                        <tr>
+                            <td><b:button look="warning" value="Warning"/></td>
+                            <td><code>look="warning"</code></td>
+                            <td>Indicates caution should be taken with this action</td>
+                        </tr>
+                        <tr>
+                            <td><b:button look="danger" value="Danger"/></td>
+                            <td><code>look="danger"</code></td>
+                            <td>Indicates a dangerous or potentially negative action</td>
+                        </tr>
+                        <tr>
+                            <td><b:button look="link" value="Link" /></td>
+                            <td><code>look="link"</code></td>
+                            <td>Alternate dark gray button, not tied to a semantic action or use</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                ]]></script>
+                </b:tab>
+                </b:tabView>
                 <p><i>Note: starting from Bootstrap 3, some look names for buttons have changed (inverse=> dropped in favor of link).</i></p>
                 <br/>
                 
