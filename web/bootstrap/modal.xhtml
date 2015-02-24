@@ -86,9 +86,14 @@
                 </b:panel>
                 
                 <h4>Troubleshooting</h4>
-                <p>Don't put your modal dialog into a form. If you do, be aware that the id is modified. The <code>href</code> of the <code>b:button</code> refers
+                <p>Using <code>ids</code> is always a bit tricky in JSF. 
+                Don't put your modal dialog into a form. If you do, be aware that the id is modified. The <code>href</code> of the <code>b:button</code> refers
                 to the <code>id</code> in the HTML code, not to the <code>id</code> of the source code. JSF prepends the ids of the parent containers
                 to the <code>id</code> of <code>b:modal</code>.</p>
+                <p>In general, it's a better idea to use a pseudo CSS class instead of an <code>id</code>. That's a <code>styleClass</code> that may or may not have
+                CSS instructions applied to it. Pure pseudo CSS classes don't influence the layout at all. They are simply a convenient alternative to ids. Instead
+                of writing <code>href="#someId"</code> you can write <code>href=".somePseudoClass"</code>. JSF never modifies CSS class names, so they are a good
+                alternative to using <code>ids</code>.</p>
                 
                 <br/> <br/>       
                 
