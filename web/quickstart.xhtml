@@ -98,10 +98,33 @@
                 <h3>web.xml and faces-config.xml</h3>
                 <p>Sometimes the CSS and Javascript files aren't loaded automatically. If you happen to run into this error, you have to add a few lines to the <code>faces-config.xml</code> and the <code>web.xml</code> files.</p>
 
-				<b:tabView>            
-				<b:tab title="web.xml">
+				<b:tabView>
+                <b:tab title="web.xml (recommended)">
                     <b:panel>
-     	    			Add the URL pattern <code>/javax.faces.resource/*</code> to the web.xml:    
+                        <p>Keep the URL patterns of your web application as simple as possible. In this case, the resource files are loaded without further ado.
+                        The hints the the other two tabs are only workarounds if this <code>web.xml</code> doesn't do the trick, or if you need
+                        a more complex <code>url-pattern</code> for some reason.</p>    
+                         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                         <![CDATA[
+                             <servlet>
+                                 <servlet-name>Faces Servlet</servlet-name>
+                                 <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+                                 <load-on-startup>1</load-on-startup>
+                             </servlet>
+                             <servlet-mapping>
+                                 <servlet-name>Faces Servlet</servlet-name>
+                                <url-pattern>*.jsf</url-pattern>
+                                <url-pattern>/javax.faces.resource/*</url-pattern>
+                            </servlet-mapping>
+                        ]]></script>
+                    </b:panel>
+                </b:tab>
+                            
+				<b:tab title="web.xml (workaround)">
+                    <b:panel>
+                        <p>It seems that multiple or non-standard <code>url-patterns</code> causes problem when it comes to loading resources. For instance,
+                        <code>&lt;url-pattern&gt;/page/&lt;url-pattern&gt;</code> is popular in the textbooks, but it's not recommendable in the
+                        real world. However, if you need such a pattern for some reason, add a second URL pattern <code>/javax.faces.resource/*</code> to the web.xml:</p>    
                          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
  					     <![CDATA[
                              <servlet>
@@ -110,16 +133,18 @@
                                  <load-on-startup>1</load-on-startup>
                              </servlet>
                              <servlet-mapping>
-                                 <servlet-name>Faces Servlet</servlet-name>
+                                <servlet-name>Faces Servlet</servlet-name>
                          		<url-pattern>*.jsf</url-pattern>
                          		<url-pattern>/javax.faces.resource/*</url-pattern>
                          	</servlet-mapping>
                         ]]></script>
                     </b:panel>
                 </b:tab>
-				<b:tab title="faces-config.xml">
+				<b:tab title="faces-config.xml (workaround)">
                     <b:panel>
-    				     Add the <code>UnmappedResourceHandler</code> to the <code>faces-config.xml:</code>
+                        <p>Use this hint only as a last resort if everything else has failed.
+    				     Adding the <code>UnmappedResourceHandler</code> to the <code>faces-config.xml</code> can fix nasty resource loading problems:
+                         </p>
                          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                          <![CDATA[
                              <?xml version="1.0" encoding="UTF-8"?>
@@ -150,10 +175,24 @@
     </context-param>
                         ]]></script>
                 <br/><hr/>
-                <h3>Building</h3>
-                <p>Please read the README-BUILD.TXT file in the <a href="https://github.com/TheCoder4eu/BootsFaces-OSP/"  target="_blank">github repository</a>.</p>
+                <h3>Building the BootsFaces.jar from source</h3>
+                <p>Most of the time you're probably happy with the binaries available at Maven Central or at the download page. However, it's
+                also possible to build BootsFaces from source. This way, you get our latest bug fixes and the newest components,
+                and you can also contribute bug fixes or components yourself to the project.</p>
+                <p>The BootsFaces source code is hosted on a  <a href="https://github.com/TheCoder4eu/BootsFaces-OSP/"  target="_blank">GitHub repository</a>.
+                Clone the repository using git (or download the zip file and unpack it to a folder). This folder contains two build files: a Maven <code>pom.xml</code> and an
+                ANT <code>build.xml</code>. 
+                </p>
+                <p>To build the jar, run <code>mvn clean install</code> on the command line. Most IDE also offer decent support for Maven. For instance, Eclipse users
+                can import the project via "Import --&gt; Maven --&gt; Existing Maven project".</p> 
+                <p> The ANT build file is more complete and more sophisticated than the Maven file. Among other things, it minifies the code, yielding slightly better performance. 
+                It also extracts the CSS and Javascript files automatically from Bootstrap, and it allows you to build a customized version of BootsFaces containing only the
+                code you really need. There's a detailed instruction in 
+                the <a target="_blank" href="https://github.com/TheCoder4eu/BootsFaces-OSP/blob/master/README-BUILD.TXT">README-BUILD.TXT file</a> in the <a href="https://github.com/TheCoder4eu/BootsFaces-OSP/"  target="_blank">github repository</a>.
+                Note that Windows users may have to modify the paths of the <code>compile-lesscss-windows</code> target (line 238 at the time of writing).
+                </p>
                 <br/><hr/>
-                <h3>Customization</h3>
+                <h3>Customization of the BootsFaces.jar</h3>
                 <p>Until there is a new version of the customizer, you can still customize the look and feel taking advantage of the build system.
                     There are many Bootstrap customizers on the net, for example <a href="http://bootswatch.com/">Bootswatch</a> .
                     What you need is a file with the variables to customize the build. Some customizers will provide you a .less file as well.</p>
@@ -162,7 +201,7 @@
                 <h3>Roadmap</h3>
                 <p>BootsFaces Roadmap needs to be planned after being released as Open Source Project; some goals could be:
                     <ul>
-                        <li>to releaase more Bootstrap components</li>
+                        <li>to release more Bootstrap components</li>
                         <li>adding new features to existing components.</li>
                         <li>simpler customization of the framework look and feel.</li>
                     </ul>
