@@ -26,8 +26,12 @@
                 <h1>Basic Layout</h1>
                 <p>BootsFaces inherits Bootstrap's responsive, mobile first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases. This allows developers to easyly build complex layouts without worrying how they will look on different devices .</p>
                 <p>There are only three tags you can use to create your layout: <code>b:container</code>, <code>b:row</code> and <code>b:column</code>.</p>
-                <p>The <code>b:container</code> is, as the name suggests, a container for <code>b:row</code>s and <code>b:column</code>s; it centers everything adding appropriate padding and margin.</p>
-                <p><code>b:row</code> is a container for <code>b:column</code>s and you can nest a <code>b:container</code> in a <code>b:column</code>.</p>
+                <p>The <code>b:container</code> is, as the name suggests, a container for <code>b:row</code>s and <code>b:column</code>s; it centers everything adding appropriate padding and margin.
+                As a rule of thumb, always surround your rows with a container. Note that containers can't be nested. By default, containers make for a airy design, leaving a lot of the screen white, as you can see on the page you're currently reading
+                 (and similar to the layout in most books). 
+                You can reduce the amount of white space by adding the <code>fluid</code> attribute: <code>&lt;b:container fluid="true"&gt;</code>. 
+                </p>
+                <p><code>b:row</code> is a container for <code>b:column</code>s and you can't nest a <code>b:container</code> in a <code>b:column</code>.</p>
                 <p>BootsFaces takes full advantage of Bootstrap Grid system while maintaining the benefits of being a JSF framework.</p>
                 <p>This means that you can leverage Bootstrap's layout feature using for example the JSF templating system and conditional rendering to achieve and mantain very complex layouts without much effort.</p>
                 <p>This website is an example itself: it uses a page template with <code>ui:insert</code> and <code>ui:include</code> and the pages are <code>ui:composition</code>s.</p>
