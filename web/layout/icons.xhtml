@@ -172,6 +172,54 @@
                             </b:tabView>
                         </b:column>
                     </b:row>
+                    <b:row>
+                        <b:column span="12">
+                            <h3>Configuring FontAwesome</h3>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column span="12">
+                        <p>By default, BootsFaces fetches FontAwesome 4.3.0 from a CDN (from <code>http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css</code>, to be precise).</p>
+                        <p>If you want to supress the automatical internet access for some reason, you've got several options. You can deactivate it globally in the web.xml, you can
+                        add a header to the JSF-views (which allows you to activate and deactivate the feature on a per-page basis) or you can simply include your own
+                        CSS import. If the file name contains the word <code>font-awesome</code> and ends with <code>.css</code>, BootsFaces won't try to load FontAwesome a second time.
+                        In most cases that's precisely what you need to do anyways, so you don't have to configure anything to deactivate the defaults.</p>
+                        <b:tabView>
+                        <b:tab title="web.xml (global deactivation)">
+                        <b:well>
+                           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                           <![CDATA[
+<context-param>
+   <param-name>net.bootsfaces.get_fontawesome_from_cdn</param-name>
+   <param-value>false</param-value>
+</context-param>
+                          ]]></script>
+                          </b:well>
+                        </b:tab>
+                        <b:tab title="header facet">
+                          <b:well>
+                           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                           <![CDATA[
+    <h:head>
+        <f:facet name="no-fa"></f:facet>
+    </h:head>
+    <h:body>
+	   ...
+	</h:body>
+                          ]]></script>
+                          </b:well>
+                        </b:tab>
+                        <b:tab title="manual import">
+                          <b:well>
+                           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                           <![CDATA[
+        <h:outputStylesheet library="myLocalFontAwesome" name="font-awesome.css"></h:outputStylesheet>
+                          ]]></script>
+                          </b:well>
+                        </b:tab>
+                        </b:tabView>
+                        </b:column>
+                    </b:row>
                     <br/><br/><br/>
                 </b:container>
                 <script type="text/javascript">
