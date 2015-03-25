@@ -1,18 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:ng="http://xmlns.jcp.org/jsf/passthrough">
-    <h:head>
-        <title>BootsFaces: next-gen JSF Framework</title>
-        <meta name="author" content="Riccardo Massera"></meta>
-    </h:head>
-    <h:body style="padding-top: 60px">
-        <ui:composition template="/applayout/pageTemplate.xhtml">
-            <ui:define name="content">
+
+           <ui:define name="content">
                 <h1>Navbars</h1>
                 <p>The main use of the NavBar component, when designing an application or website, is to place a Navigation bar at top, bottom or both of the page.</p>
                 <p>The NavBar typically will have a Brand, that could be, for example, the name of your Project.</p>
@@ -191,5 +186,3 @@
                 </script>
             </ui:define>
         </ui:composition>
-    </h:body>
-</html>

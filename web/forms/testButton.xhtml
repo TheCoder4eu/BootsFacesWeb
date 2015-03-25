@@ -10,17 +10,13 @@
         <meta name="author" content="Riccardo Massera"></meta>
     </h:head>
     <h:body style="padding-top: 60px">
-        <!--ui:composition template="/applayout/testTemplate.xhtml">
-            <ui:define name="content"-->
-                <h1>Button test</h1>
-                <f:metadata>
-                    <f:viewParam name="testId" value="#{testBean.val1}" />  
-                </f:metadata>
-                
-                <p>You arrived to this page clicking a button.  
-                    You have passed a ViewParameter whose value is <strong>"#{testBean.val1}"</strong>  
-                </p>  
-            <!--/ui:define>
-        </ui:composition-->
+        <h1>Button test</h1>
+        <f:metadata>
+            <f:viewParam name="testId" value="#{testBean.val1}" />  
+        </f:metadata>
+        
+        <p>You arrived to this page clicking a button.  
+            You have passed a ViewParameter whose value is <strong>"#{testBean.val1}"</strong>  
+        </p>  
     </h:body>
 </html>

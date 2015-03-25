@@ -1,17 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition template="/applayout/pageTemplate.xhtml"
+      xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-    <h:head>
-        <title>BootsFaces: next-gen JSF Framework</title>
-        <meta name="author" content="Riccardo Massera"></meta>
-    </h:head>
-    <h:body style="padding-top: 60px">
-        <ui:composition template="/applayout/pageTemplate.xhtml">
-            <ui:define name="content">
+
+<ui:define name="content">
                 <b:container>
                     <b:row>
                         <h1>Icons</h1>
@@ -181,7 +177,7 @@
                         <b:column span="12">
                         <p>By default, BootsFaces fetches FontAwesome 4.3.0 from a CDN (from <code>http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css</code>, to be precise).</p>
                         <p>If you want to supress the automatical internet access for some reason, you've got several options. You can deactivate it globally in the web.xml, you can
-                        add a header to the JSF-views (which allows you to activate and deactivate the feature on a per-page basis) or you can simply include your own
+                        add a facet to the header of the JSF-view (which allows you to activate and deactivate the feature on a per-page basis) or you can simply include your own
                         CSS import. If the file name contains the word <code>font-awesome</code> and ends with <code>.css</code>, BootsFaces won't try to load FontAwesome a second time.
                         In most cases that's precisely what you need to do anyways, so you don't have to configure anything to deactivate the defaults.</p>
                         <b:tabView>
@@ -201,7 +197,7 @@
                            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                            <![CDATA[
     <h:head>
-        <f:facet name="no-fa"></f:facet>
+		<f:facet name="no-fa">true</f:facet>
     </h:head>
     <h:body>
 	   ...
@@ -227,5 +223,3 @@
                 </script>
             </ui:define>
         </ui:composition>
-    </h:body>
-</html>

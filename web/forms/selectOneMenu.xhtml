@@ -1,16 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-    <h:head>
-        <title>BootsFaces: next-gen JSF Framework</title>
-        <meta name="author" content="Riccardo Massera, Stephan Rauh"></meta>
-    </h:head>
-    <h:body style="padding-top: 60px">
-        <ui:composition template="/applayout/pageTemplate.xhtml">
+
             <ui:define name="content">
                 <style>td {padding: 8px;}</style>
                 <h1>Combobox (&lt;b:selectOneMenu&gt;)</h1>
@@ -80,6 +75,51 @@
     </b:tab>
 </b:tabView>
         </h:form>
+        
+        <h1>Objects and converters</h1>
+        <p>In most cases you don't need a converter to use an arbitrary object as bean attribute. It suffices to use the attributes <code>var</code>, <code>itemValue</code> and <code>itemLabel</code> of <code>&lt;f:selectItem /&gt;</code> and <code>&lt;f:selectItems /&gt;</code>.</p>
+        <b:alert severity="warning" title="As of BootsFaces 0.7.0-SNAPSHOT, converters aren't used correctly when rendering." />  
+        
+        <h:form>
+            <b:tabView activeIndex="1">
+                <b:tab title="JSF markup">
+                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+                    <b:panelGrid colSpans="2,3,2,3,2">
+                         <f:event listener="&num;{soccerTeamBean.init}" type="preRenderView" />
+                        <h:outputLabel value="Select your team's goalkeeper:" for="keeperID" />
+                        <b:selectOneMenu value="&num;{soccerTeamBean.goalkeeper}" id="keeperID">
+                            <f:selectItems value="&num;{soccerTeamBean.team}" var="playerVar" itemValue="&num;{playerVar}"
+                                itemLabel="&num;{playerVar.name}" />
+                        </b:selectOneMenu>
+                        <h:message for="keeperID" />
+                        Current keeper: &num;{soccerTeamBean.goalkeeper.name}
+                    </b:panelGrid>
+                    <b:commandButton value="Submit">
+                        <f:ajax execute="@form" rendered="@form" />
+                    </b:commandButton>
+]]>
+                   </script>
+                </b:tab>
+                <b:tab title="displayed as">
+                    <br />
+                    <b:panelGrid colSpans="2,3,2,3,2">
+                        <f:event listener="#{soccerTeamBean.init}" type="preRenderView" />
+                        <h:outputLabel value="Select your team's goalkeeper:" for="keeperID" />
+                        <b:selectOneMenu value="#{soccerTeamBean.goalkeeper}" id="keeperID">
+                            <f:selectItems value="#{soccerTeamBean.team}" var="playerVar" itemValue="#{playerVar}"
+                                itemLabel="#{playerVar.name}" />
+                        </b:selectOneMenu>
+                        <h:message for="keeperID" />
+                        Current keeper: #{soccerTeamBean.goalkeeper.name}
+                    </b:panelGrid>
+                    <b:commandButton value="Submit">
+                        <f:ajax execute="@form" rendered="@form" />
+                    </b:commandButton>
+                </b:tab>
+            </b:tabView>
+        </h:form>
+        
         
         <h1>Arrays and HashMaps</h1>
         <p>The list of items can be defined as an <code>&lt;f:selectItems /&gt;</code> tag. BootsFaces uses a modified version of the 
@@ -394,6 +434,4 @@ public class SemaphoreBean {
                 </script>
                 <br/><br/><br/><br/>
             </ui:define>
-        </ui:composition>
-    </h:body>
-</html>
+</ui:composition>
