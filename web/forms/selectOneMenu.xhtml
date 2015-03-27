@@ -14,9 +14,10 @@
                 <p>&lt;b:selectOneMenu&gt; makes the Bootstrap style of displaying comboboxes available to JSF programmers.</p>
                 <h1>Basic usage</h1>
         <h:form>
-<b:tabView activeIndex="1">
-    <b:tab title="JSF markup">
-       <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <b:tabView activeIndex="1">
+                <b:tab title="JSF markup">
+                    <b:well>
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
         <h:form>
 	        <b:panelGrid colSpans="2,2,2,2,4">
@@ -43,37 +44,39 @@
         </h:form>
 ]]>
        </script>
-    </b:tab>
-    <b:tab title="displayed as">
-				<br />
-	        <b:panelGrid colSpans="2,2,2,2,4">
-	        	<h:outputLabel value="Select your car's brand:" for="brandID" id="l1" />
-			    <b:selectOneMenu value="#{carBean.brand}" id="brandID" >
-		    		<f:selectItem itemLabel="(Please select)" itemValue=""/>
-				    <f:selectItem itemLabel="Fiat" itemValue="1"/>
-				    <f:selectItem itemLabel="Honda" itemValue="2"/>
-				    <f:selectItem itemLabel="Opel" itemValue="3"/>
-			    </b:selectOneMenu>
-			    <h:message for="brandID"/>
-			    <h:outputLabel value="last submitted value:" for="brandOutputID"/>
-			    <b:inputText value="#{carBean.brand}" disabled="true" id="brandOutputID"/>
-	        	<h:outputLabel value="Select your car's type:" for="typeID" />
-			    <b:selectOneMenu value="#{carBean.type}" id="typeID" required="true" >
-			    		<f:selectItem itemLabel="(Please select)" itemValue=""/>
-			    		<f:selectItem itemLabel="Cinquecento" itemValue="1"/>
-					    <f:selectItem itemLabel="Civic" itemValue="2"/>
-					    <f:selectItem itemLabel="Astra" itemValue="3"/>
-					    <f:selectItem itemLabel="Megane" itemValue="4"/>
-			    </b:selectOneMenu>
-			    <h:message for="typeID"/>
-			    <h:outputLabel value="last submitted value:" for="typeOutputID" />
-			    <b:inputText value="#{carBean.type}" disabled="true" id="typeOutputID"/>
-		    </b:panelGrid>
-			    <b:commandButton value="Submit">
-			    	<f:ajax execute="@form" rendered="@form" />
-			    </b:commandButton>
-    </b:tab>
-</b:tabView>
+                    </b:well>
+                </b:tab>
+                <b:tab title="displayed as">
+                    <b:well>
+                        <b:panelGrid colSpans="2,2,2,2,4">
+                            <h:outputLabel value="Select your car's brand:" for="brandID" id="l1" />
+                            <b:selectOneMenu value="#{carBean.brand}" id="brandID">
+                                <f:selectItem itemLabel="(Please select)" itemValue="" />
+                                <f:selectItem itemLabel="Fiat" itemValue="1" />
+                                <f:selectItem itemLabel="Honda" itemValue="2" />
+                                <f:selectItem itemLabel="Opel" itemValue="3" />
+                            </b:selectOneMenu>
+                            <h:message for="brandID" />
+                            <h:outputLabel value="last submitted value:" for="brandOutputID" />
+                            <b:inputText value="#{carBean.brand}" disabled="true" id="brandOutputID" />
+                            <h:outputLabel value="Select your car's type:" for="typeID" />
+                            <b:selectOneMenu value="#{carBean.type}" id="typeID" required="true">
+                                <f:selectItem itemLabel="(Please select)" itemValue="" />
+                                <f:selectItem itemLabel="Cinquecento" itemValue="1" />
+                                <f:selectItem itemLabel="Civic" itemValue="2" />
+                                <f:selectItem itemLabel="Astra" itemValue="3" />
+                                <f:selectItem itemLabel="Megane" itemValue="4" />
+                            </b:selectOneMenu>
+                            <h:message for="typeID" />
+                            <h:outputLabel value="last submitted value:" for="typeOutputID" />
+                            <b:inputText value="#{carBean.type}" disabled="true" id="typeOutputID" />
+                        </b:panelGrid>
+                        <b:commandButton value="Submit">
+                            <f:ajax execute="@form" rendered="@form" />
+                        </b:commandButton>
+                    </b:well>
+                </b:tab>
+            </b:tabView>
         </h:form>
         
         <h1>Objects and converters</h1>
@@ -81,18 +84,18 @@
         <b:alert severity="warning" title="As of BootsFaces 0.7.0-SNAPSHOT, converters aren't used correctly when rendering." />  
         
         <h:form>
-            <b:tabView activeIndex="1">
+            <b:tabView activeIndex="3">
                 <b:tab title="JSF markup">
+                <b:well>
                     <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
-                    <b:panelGrid colSpans="2,3,2,3,2">
+                    <b:panelGrid colSpans="3,3,6">
                          <f:event listener="&num;{soccerTeamBean.init}" type="preRenderView" />
                         <h:outputLabel value="Select your team's goalkeeper:" for="keeperID" />
                         <b:selectOneMenu value="&num;{soccerTeamBean.goalkeeper}" id="keeperID">
                             <f:selectItems value="&num;{soccerTeamBean.team}" var="playerVar" itemValue="&num;{playerVar}"
                                 itemLabel="&num;{playerVar.name}" />
                         </b:selectOneMenu>
-                        <h:message for="keeperID" />
                         Current keeper: &num;{soccerTeamBean.goalkeeper.name}
                     </b:panelGrid>
                     <b:commandButton value="Submit">
@@ -100,22 +103,89 @@
                     </b:commandButton>
 ]]>
                    </script>
+                </b:well>
                 </b:tab>
+                                <b:tab title="Team bean">
+                <b:well>
+                    <script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+@ManagedBean
+@ViewScoped
+public class SoccerTeamBean implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    private List<Player> team;
+    private Player goalkeeper;
+
+    public void init(ComponentSystemEvent e) {
+        this.team = new ArrayList<>();
+        this.team.add(new Player("Marc-André ter Stegen"));
+        this.team.add(new Player("Jordi Masip"));
+        this.team.add(new Player("Jordi Alba"));
+        this.team.add(new Player("Marc Batra"));
+    }
+
+    public List<Player> getTeam() {
+        return team;
+    }
+
+    public void setTeam(List<Player> team) {
+        this.team = team;
+    }
+
+    public Player getGoalkeeper() {
+        return goalkeeper;
+    }
+
+    public void setGoalkeeper(Player goalkeeper) {
+        this.goalkeeper = goalkeeper;
+    }
+}
+]]>
+                   </script>
+                   </b:well>
+                </b:tab>
+                                <b:tab title="Player class">
+                                                <b:well>
+                                
+                    <script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+public class Player {
+
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Player(String name) {
+        this.name = name;
+    }
+}
+]]>
+                   </script>
+                   </b:well>
+                </b:tab>
+                
                 <b:tab title="displayed as">
-                    <br />
-                    <b:panelGrid colSpans="2,3,2,3,2">
+                <b:well>
+                    <b:panelGrid colSpans="3,3,6">
                         <f:event listener="#{soccerTeamBean.init}" type="preRenderView" />
                         <h:outputLabel value="Select your team's goalkeeper:" for="keeperID" />
                         <b:selectOneMenu value="#{soccerTeamBean.goalkeeper}" id="keeperID">
                             <f:selectItems value="#{soccerTeamBean.team}" var="playerVar" itemValue="#{playerVar}"
                                 itemLabel="#{playerVar.name}" />
                         </b:selectOneMenu>
-                        <h:message for="keeperID" />
                         Current keeper: #{soccerTeamBean.goalkeeper.name}
                     </b:panelGrid>
                     <b:commandButton value="Submit">
                         <f:ajax execute="@form" rendered="@form" />
                     </b:commandButton>
+                    </b:well>
                 </b:tab>
             </b:tabView>
         </h:form>
@@ -128,6 +198,8 @@
         <h:form>
 <b:tabView activeIndex="0">
     <b:tab title="JSF markup">
+                    <b:well>
+    
        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
 	        <b:panelGrid colSpans="2,2,8">
@@ -144,8 +216,10 @@
 		    </b:panelGrid>
 ]]>
        </script>
+       </b:well>
     </b:tab>
     <b:tab title="Java bean">
+                <b:well>
        <script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
 @javax.faces.bean.RequestScoped
@@ -203,11 +277,12 @@ public class SemaphoreBean {
 }
 ]]>
        </script>
+       </b:well>)
     </b:tab>
     
     
     <b:tab title="displayed as">
-				<br />
+                <b:well>
 	        <b:panelGrid colSpans="2,2,8">
 	        	<h:outputLabel value="Traffic light color" />
 			    <b:selectOneMenu value="#{semaphoreBean.color}"  >
@@ -220,6 +295,7 @@ public class SemaphoreBean {
 			    </b:selectOneMenu>
 			    <h:outputLabel value="" />
 		    </b:panelGrid>
+            </b:well>
     </b:tab>
 </b:tabView>
         </h:form>
@@ -229,6 +305,8 @@ public class SemaphoreBean {
                 <h1>Labels as captions above the combobox</h1>
 <b:tabView>
   <b:tab title="JSF markup">
+                  <b:well>
+  
     <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
     <h:form>
@@ -251,8 +329,11 @@ public class SemaphoreBean {
     </h:form>
 ]]>
     </script>
+    </b:well>
   </b:tab>
   <b:tab title="displayed as">
+                  <b:well>
+  
     <h:form>
     	<h:panelGrid columns="3"  cellpadding="5">
 		    <b:selectOneMenu value="# {carBean.brand}" label="Select your car's brand:" id="brandID2">
@@ -271,6 +352,7 @@ public class SemaphoreBean {
 		    <b:inputText value="#{carBean.type}" disabled="true" label="b last submitted value:"/>
         </h:panelGrid>
     </h:form>
+  </b:well>
   </b:tab>
 </b:tabView>
               
