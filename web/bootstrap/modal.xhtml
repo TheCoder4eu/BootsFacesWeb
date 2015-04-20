@@ -16,11 +16,12 @@
                 <p>Notice that the <code>&lt;b:button&gt;</code> tag must have the <code>dismiss="modal"</code> attribute in order to dismiss the modal when clicked.</p>
                 
                 <h4>Triggering Modals</h4>
-                <p>You have three ways to create a Button that triggers a Modal:</p>
+                <p>You have four ways to create a Button that triggers a Modal:</p>
                 <ul>
                     <li>Using HTML markup - a styled <code>&lt;a&gt;</code> tag with href and data attributes.</li>
                     <li>Using HTML markup - a styled <code>&lt;button&gt;</code> tag with two data attributes.</li>
                     <li>Using JSF BootsFaces markup - a <code>&lt;b:button&gt;</code> tag with passthrough data attributes and a little javascript to prevent click event.</li>
+                    <li>Using Javascript. This is the most flexible version: you can use arbitrary jQuery selectors instead of ids, and you aren't limited to buttons.</li>
                 </ul>
                 <p>Note: if your intendended use is to trigger a data submission that shows the results in a Modal, then have a look at the <h:link outcome="/forms/commandButton" value="commandButton"/> documentation.</p>
                 <p>The following example shows you how to use the three kinds of trigger.</p>
@@ -28,21 +29,19 @@
                 
                 
                 <b:panel look="info">
-                    <f:facet name="heading"><b>EXAMPLE - Triggering a modal</b></f:facet>
-                    <h:form id="myFormID">
-	                    <b:modal id="amodal" title="Modal Example" styleClass="modalPseudoClass">
-	                        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-	                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-	                        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-	                        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-	                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-	                        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-	                        <f:facet name="footer">
-	                            <b:button value="close" dismiss="modal" onclick="return false;"/>
-	                            <b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"/>
-	                        </f:facet>
-	                    </b:modal>
-                    </h:form>
+                    <f:facet name="heading"><b>EXAMPLE - Triggering a modal which isn't inside a form</b></f:facet>
+                    <b:modal id="amodal" title="Modal Example" styleClass="modalPseudoClass">
+                        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                        <f:facet name="footer">
+                            <b:button value="close" dismiss="modal" onclick="return false;"/>
+                            <b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"/>
+                        </f:facet>
+                    </b:modal>
                     <b:row>
                         <b:column span="3">
                             <a id="atrigger" class="btn btn-primary btn-lg" href="#amodal" data-toggle="modal">Trigger (HTML A tag)</a>
@@ -51,7 +50,7 @@
                             <button id="btrigger" class="btn btn-info btn-lg" data-target="#amodal" data-toggle="modal">Trigger (HTML Button)</button>
                         </b:column>
                         <b:column span="3">
-                            <b:button value="Trigger (JSF passthrough)" look="success" p:data-target="#amodal" p:data-toggle="modal" onclick="return false;" size="lg"/>
+                            <b:button value="Trigger (JSF passthrough)" look="warning" p:data-target="#amodal" p:data-toggle="modal" onclick="return false;" size="lg"/>
                         </b:column>
                         <b:column span="3">
                             <b:button value="Trigger (JavaScript)" look="success" onclick="$('.modalPseudoClass').modal();return false;" size="lg"/>
@@ -78,7 +77,7 @@
                                     <button id="btrigger" class="btn btn-info btn-lg" data-target="#amodal" data-toggle="modal">Trigger (HTML Button)</button>
                                 </b:column>
                                 <b:column span="3">
-                                    <b:button value="Trigger (JSF passthrough)" look="success" p:data-target="#amodal" p:data-toggle="modal" onclick="return false;" size="lg"/>
+                                    <b:button value="Trigger (JSF passthrough)" look="warning" p:data-target="#amodal" p:data-toggle="modal" onclick="return false;" size="lg"/>
                                 </b:column>
 		                        <b:column span="3">
         		                    <b:button value="Trigger (JavaScript)" look="success" onclick="$('.modalPseudoClass').modal();return false;" size="lg"/>
@@ -96,7 +95,64 @@
                 <p>In general, it's a better idea to use a pseudo CSS class instead of an <code>id</code>. That's a <code>styleClass</code> that may or may not have
                 CSS instructions applied to it. Pure pseudo CSS classes don't influence the layout at all. They are simply a convenient alternative to ids. Instead
                 of writing <code>href="#someId"</code> you can write <code>href=".somePseudoClass"</code>. JSF never modifies CSS class names, so they are a good
-                alternative to using <code>ids</code>.</p>
+                alternative to using <code>ids</code>. However, you have to use some Javascript to activate the modal dialog using a CSS pseudo class, as the following example shows: </p>
+                
+                <b:panel look="info">
+                    <f:facet name="heading"><b>EXAMPLE - Triggering a modal inside a form</b></f:facet>
+                    <h:form id="myFormID">
+	                    <b:modal id="amodal2" title="Modal Example" styleClass="modalPseudoClass2">
+	                        <p>Far far away, behind the word mountains, far from the
+								countries Vokalia and Consonantia, there live the blind texts.
+								Separated they live in Bookmarksgrove right at the coast of the
+								Semantics, a large language ocean. A small river named Duden flows
+								by their place and supplies it with the necessary regelialia. It
+								is a paradisematic country, in which roasted parts of sentences
+								fly into your mouth. Even the all-powerful Pointing has no control
+								about the blind texts it is an almost unorthographic life One day
+								however a small line of blind text by the name of Lorem Ipsum
+								decided to leave for the far World of Grammar. The Big Oxmox
+								advised her not to do so, because there were thousands of bad
+								Commas, wild Question Marks and devious Semikoli, but the Little
+								Blind Text didn’t listen. She packed her seven versalia, put her
+								initial into the belt and made herself on the way. When she
+								reached the first hills of the Italic Mountains, she had a last
+								view back on the skyline of her hometown Bookmarksgrove, the
+								headline of Alphabet Village and the subline of her own road, the
+								Line Lane.
+							</p>
+	                        <f:facet name="footer">
+	                            <b:button value="close" dismiss="modal" onclick="return false;"/>
+	                            <b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"/>
+	                        </f:facet>
+	                    </b:modal>
+                    </h:form>
+                    <b:row>
+                        <b:column span="3">
+                            <b:button value="Trigger (JavaScript)" look="success" onclick="$('.modalPseudoClass2').modal();return false;" size="lg"/>
+                        </b:column>
+                    </b:row>
+
+                    <f:facet name="footer">
+                        <strong>Markup:</strong><br/>
+
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                            <![CDATA[
+                            <b:modal id="amodal" title="Modal Example" styleClass="modalPseudoClass">
+                            <p>Modal body</p>
+                                <f:facet name="footer">
+                                    <b:button value="close" dismiss="modal" onclick="return false;"/>
+                                    <b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"/>
+                                </f:facet>
+                            </b:modal>
+                            <b:row>
+		                        <b:column span="3">
+        		                    <b:button value="Trigger (JavaScript)" look="success" onclick="$('.modalPseudoClass').modal();return false;" size="lg"/>
+                		        </b:column>
+                            </b:row>
+                            ]]></script>
+                    </f:facet>
+                </b:panel>
+                
                 <br/> <br/>       
                 
                 <script type="text/javascript">
