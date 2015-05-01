@@ -16,7 +16,7 @@
       <table class="table table-bordered table-striped">
           <thead>
               <tr>
-                  <th style="width:160px">Component</th>
+                  <th style="width:210px">Component</th>
                   <th style="width:300px">demo</th>
                   <th>JSF markup</th>
               </tr>
@@ -79,11 +79,14 @@
 <![CDATA[
                   	    <b:buttonGroup>
                             <b:button value="Left" look="success" 
-                                      tooltip="Current color scheme: success" tooltip-position="top"/>
+                                      tooltip="Current color scheme: success" 
+                                      tooltip-position="top"/>
                             <b:button value="Middle" look="primary" 
-                                      tooltip="Current color scheme: primary" tooltip-position="top"/>
+                                      tooltip="Current color scheme: primary" 
+                                      tooltip-position="top"/>
                             <b:button value="Right" look="warning"
-                                      tooltip="Current color scheme: warning" tooltip-position="top"/>
+                                      tooltip="Current color scheme: warning" 
+								      tooltip-position="top"/>
                         </b:buttonGroup>
 		                      
                 ]]></script>
@@ -138,8 +141,9 @@
                   <td>
              <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
-<b:commandButton value="Hover over me"^
-                 tooltip="What a nice tooltip!" tooltip-position="right" />
+<b:commandButton value="Hover over me"
+                 tooltip="What a nice tooltip!" 
+                 tooltip-position="right" />
                 ]]></script>
                   </td>
               </tr>
@@ -149,8 +153,10 @@
                   <td>
              <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
-<b:datepicker mode="popup-icon" placeholder="Select a Date" 
-              tooltip="What a nice tooltip!" tooltip-position="bottom"
+<b:datepicker mode="popup-icon" 
+              placeholder="Select a Date" 
+              tooltip="What a nice tooltip!" 
+              tooltip-position="bottom"
 />                      
 ]]></script>
                   </td>
@@ -166,7 +172,8 @@
              <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
                         <b:dropButton look="warning" value="DropButton" 
-                                      tooltip="Current color scheme: warning" tooltip-position="top">
+                                      tooltip="Current color scheme: warning" 
+                                      tooltip-position="top">
                             <b:navLink value="Action" href="#"></b:navLink>
                         </b:dropButton>
                       
@@ -177,12 +184,12 @@
                   <td>&lt;b:dropMenu &gt; <br />(doesn't work)</td>
                   <td>
 <b:navBar  brandHref="#" fluid="true" 
-           tooltip="Tooltip of the navBar" tooltip-position="top">
-    <b:navbarLinks tooltip="Tooltip of the navbarLinks" tooltip-position="top">
+           tooltip="Tooltip of the navBar" tooltip-position="left">
+    <b:navbarLinks tooltip="Tooltip of the navbarLinks  component" tooltip-position="top">
             <b:dropMenu value="Dropdown" 
-                        tooltip="Tooltip of the drop menu" tooltip-position="top">
+                        tooltip="Tooltip of the drop menu" tooltip-position="right">
             <b:navLink value="Action" href="#" 
-                       tooltip="Tooltip of the navLink" tooltip-position="top">
+                       tooltip="Tooltip of the navLink" tooltip-position="right">
             </b:navLink>
         </b:dropMenu>
    </b:navbarLinks>
@@ -192,17 +199,19 @@
              <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
 <b:navBar  brandHref="#" fluid="true" 
-           tooltip="Tooltip of the navBar" tooltip-position="top">
- <b:navbarLinks tooltip="Tooltip of the navbarLinks" tooltip-position="top">
-    <b:dropMenu value="Dropdown" 
-                tooltip="Tooltip of the drop menu" tooltip-position="top">
-      <b:navLink value="Action" href="#" 
-                 tooltip="Tooltip of the navLink" tooltip-position="top">
-      </b:navLink>
-    </b:dropMenu>
- </b:navbarLinks>
-</b:navBar>
-                      
+           tooltip="Tooltip of the navBar" tooltip-position="left">
+    <b:navbarLinks tooltip="Tooltip of the navbarLinks  component" 
+                   tooltip-position="top">
+            <b:dropMenu value="Dropdown" 
+                        tooltip="Tooltip of the drop menu" 
+                        tooltip-position="right">
+            <b:navLink value="Action" href="#" 
+                       tooltip="Tooltip of the navLink" 
+                       tooltip-position="right">
+            </b:navLink>
+        </b:dropMenu>
+   </b:navbarLinks>
+</b:navBar>                      
                 ]]></script>
                   </td>
               </tr>
@@ -262,6 +271,553 @@
          <h:outputText value="@" />
      </f:facet>
  </b:inputSecret>
+                      
+                ]]></script>
+                  </td>
+              </tr>
+              <tr>
+                  <td>&lt;b:label &gt;</td>
+                  <td><b:label text="This is just a label" severity="success" 
+                               tooltip="But what a fancy tooltip it has!"/>
+                   </td>
+                  <td>
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+<b:label text="This is just a label" severity="success" 
+         tooltip="But what a fancy tooltip it has!"/>
+                ]]></script>
+                  </td>
+              </tr>
+              <tr>
+                  <td>&lt;b:navLinks &gt;</td>
+                  <td>
+<b:navBar  brandHref="#" fluid="true"
+           tooltip="Tooltip of the navBar" tooltip-position="top">
+ <b:navbarLinks tooltip="Tooltip of the navbarLinks component" tooltip-position="left">
+      <b:navLink value="Action" href="#"
+                 tooltip="Tooltip of the navLink" tooltip-position="right">
+      </b:navLink>
+      <b:navLink value="Quit" href="#"
+                 tooltip="Tooltip of the navLink" tooltip-position="right">
+      </b:navLink>
+ </b:navbarLinks>
+</b:navBar>
+                   </td>
+                  <td>
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+<b:navBar  brandHref="#" fluid="true"
+           tooltip="Tooltip of the navBar" 
+           tooltip-position="top">
+ <b:navbarLinks tooltip="Tooltip of the navbarLinks component" 
+                tooltip-position="left">
+      <b:navLink value="Action" href="#"
+                 tooltip="Tooltip of the navLink"
+                 tooltip-position="right">
+      </b:navLink>
+      <b:navLink value="Quit" href="#"
+                 tooltip="Tooltip of the navLink" 
+                 tooltip-position="right">
+      </b:navLink>
+ </b:navbarLinks>
+</b:navBar>
+                ]]></script>
+                  </td>
+              </tr>
+              <tr>
+                  <td>&lt;b:listLinks &gt;</td>
+                  <td>
+<b:navBar  brandHref="#" fluid="true"
+           tooltip="Tooltip of the navBar" tooltip-position="top">
+ <b:listLinks tooltip="Tooltip of the listLinks component" tooltip-position="left">
+      <b:navLink value="Action" href="#"
+                 tooltip="Tooltip of the navLink" tooltip-position="right">
+      </b:navLink>
+      <b:navLink value="Something else" href="#"
+                 tooltip="Tooltip of the navLink" tooltip-position="right">
+      </b:navLink>
+ </b:listLinks>
+</b:navBar>
+                   </td>
+                  <td>
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+<b:navBar  brandHref="#" fluid="true"
+           tooltip="Tooltip of the navBar" tooltip-position="top">
+ <b:listLinks tooltip="Tooltip of the listLinks component" 
+              tooltip-position="left">
+      <b:navLink value="Action" href="#"
+                 tooltip="Tooltip of the navLink" 
+                 tooltip-position="right">
+      </b:navLink>
+      <b:navLink value="Something else" href="#"
+                 tooltip="Tooltip of the navLink" 
+                 tooltip-position="right">
+      </b:navLink>
+ </b:listLinks>
+</b:navBar>
+                ]]></script>
+                  </td>
+              </tr>
+              <tr>
+                  <td>&lt;b:modal &gt;</td>
+                  <td>(not supported)
+                   </td>
+                  <td>
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+                      
+                ]]></script>
+                  </td>
+              </tr>
+              <tr>
+                  <td>&lt;b:navBar &gt;</td>
+                  <td>
+<b:navBar  brandHref="#" fluid="true"
+           tooltip="Tooltip of the navBar" tooltip-position="top">
+ <b:listLinks tooltip="Tooltip of the listLinks component" tooltip-position="left">
+      <b:navLink value="Action" href="#"
+                 tooltip="Tooltip of the navLink" tooltip-position="right">
+      </b:navLink>
+      <b:navLink value="Something else" href="#"
+                 tooltip="Tooltip of the navLink" tooltip-position="right">
+      </b:navLink>
+ </b:listLinks>
+</b:navBar>
+                   </td>
+                  <td>
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+<b:navBar  brandHref="#" fluid="true"
+           tooltip="Tooltip of the navBar" 
+           tooltip-position="top">
+ <b:listLinks tooltip="Tooltip of the listLinks component" 
+              tooltip-position="left">
+      <b:navLink value="Action" href="#"
+                 tooltip="Tooltip of the navLink"
+                 tooltip-position="right">
+      </b:navLink>
+      <b:navLink value="Something else" href="#"
+                 tooltip="Tooltip of the navLink" 
+                 tooltip-position="right">
+      </b:navLink>
+ </b:listLinks>
+</b:navBar>
+                      
+                ]]></script>
+                  </td>
+              </tr>
+              <tr>
+                  <td>&lt;b:navLink &gt;</td>
+                  <td>
+<b:navBar  brandHref="#" fluid="true"
+           tooltip="Tooltip of the navBar" tooltip-position="top">
+ <b:listLinks tooltip="Tooltip of the listLinks component" tooltip-position="left">
+      <b:navLink value="Action" href="#"
+                 tooltip="Tooltip of the navLink" tooltip-position="right">
+      </b:navLink>
+      <b:navLink value="Something else" href="#"
+                 tooltip="Tooltip of the navLink" tooltip-position="right">
+      </b:navLink>
+ </b:listLinks>
+</b:navBar>
+                   </td>
+                  <td>
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+<b:navBar  brandHref="#" fluid="true"
+           tooltip="Tooltip of the navBar" 
+           tooltip-position="top">
+ <b:listLinks tooltip="Tooltip of the listLinks component" 
+              tooltip-position="left">
+      <b:navLink value="Action" href="#"
+                 tooltip="Tooltip of the navLink" 
+                 tooltip-position="right">
+      </b:navLink>
+      <b:navLink value="Something else" href="#"
+                 tooltip="Tooltip of the navLink" 
+                 tooltip-position="right">
+      </b:navLink>
+ </b:listLinks>
+</b:navBar>
+                      
+                ]]></script>
+                  </td>
+              </tr>
+              <tr>
+                  <td>&lt;b:selectBooleanCheckbox &gt;</td>
+                  <td>
+                  <b:selectBooleanCheckbox value="false" 
+                  	                       caption="checkbox 1"
+                  	                       tooltip="Click me to check me."/>
+                   </td>
+                  <td>
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+<b:selectBooleanCheckbox value="false" 
+                         caption="checkbox 1"
+                         tooltip="Click me to check me."/>
+                      
+                ]]></script>
+                  </td>
+              </tr>
+              <tr>
+                  <td>&lt;b:selectOneMenu &gt;</td>
+                  <td>
+<b:selectOneMenu value="2" id="brandID" 
+                 tooltip="Select your favorite car brand.">
+    <f:selectItem itemLabel="Fiat" itemValue="1"/>
+    <f:selectItem itemLabel="Honda" itemValue="2"/>
+    <f:selectItem itemLabel="Opel" itemValue="3"/>
+</b:selectOneMenu>
+                   </td>
+                  <td>
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+<b:selectOneMenu value="2" id="brandID" 
+                 tooltip="Select your favorite car brand.">
+    <f:selectItem itemLabel="Fiat" itemValue="1"/>
+    <f:selectItem itemLabel="Honda" itemValue="2"/>
+    <f:selectItem itemLabel="Opel" itemValue="3"/>
+</b:selectOneMenu>
+                      
+                ]]></script>
+                  </td>
+              </tr>
+              <tr>
+                  <td>&lt;b:slider &gt;</td>
+                  <td>
+                  <b:container fluid="true">
+<b:slider min="0" max="24" 
+          value="#{testBean.val5}" label="Time slider"
+          tooltip="Please select the hour."
+ />                  
+ </b:container>
+                   </td>
+                  <td>
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+<b:slider min="0" max="24" 
+          value="#{testBean.val5}" label="HH"
+          tooltip="Please select the hour."
+ />                  
+                ]]></script>
+                  </td>
+              </tr>
+              <tr>
+                  <td>&lt;b:tabView &gt; and &lt;b:tab /&gt;</td>
+                  <td>
+<b:tabView activeIndex="2" 
+           tooltip="Please select a tab.">
+    <b:tab title="First Tab"
+           tooltip="This is the first tab."
+           tooltip-position="right">
+        <p>This is the first tab.</p>
+    </b:tab>
+    <b:tab title="Another Tab"
+           tooltip="This is the first tab."
+           tooltip-position="right">
+    
+        <p>This is the second tab.</p>
+    </b:tab>
+</b:tabView>
+                   </td>
+                  <td>
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+<b:tabView activeIndex="2" 
+           tooltip="Please select a tab.">
+    <b:tab title="First Tab"
+           tooltip="This is the first tab."
+           tooltip-position="right">
+        <p>This is the first tab.</p>
+    </b:tab>
+    <b:tab title="Another Tab"
+           tooltip="This is the first tab."
+           tooltip-position="right">
+    
+        <p>This is the second tab.</p>
+    </b:tab>
+</b:tabView>
+                      
+                ]]></script>
+                  </td>
+              </tr>
+              <tr>
+                  <td>&lt;b:thumbnail &gt;</td>
+                  <td>
+<b:thumbnail tooltip="Just a small image.">
+  <img src="barcode.png"/>
+</b:thumbnail>
+                  </td>
+                  <td>
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+                      
+                ]]></script>
+                  </td>
+              </tr>
+              <tr>
+                  <td>&lt;b:column &gt;</td>
+                  <td>
+<b:container fluid="true"
+             tooltip="Tooltip of the container."
+             tooltip-position="top">
+   <b:row tooltip="Tooltip of the first row."
+          tooltip-position="left">
+      <b:column tooltip="Tooltip of the first column."
+                span="6">
+                first column
+      </b:column>
+      <b:column tooltip="Tooltip of the second column."
+                span="6">
+                second column
+	  </b:column>
+	</b:row>
+   <b:row tooltip="Tooltip of the second row."
+          tooltip-position="left">
+      <b:column tooltip="Tooltip of the third column."
+                span="6">
+                third column
+      </b:column>
+      <b:column tooltip="Tooltip of the last column."
+                span="6">
+                last column
+	  </b:column>
+	</b:row>
+</b:container>
+                   </td>
+                  <td>
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+<b:container fluid="true"
+             tooltip="Tooltip of the container."
+             tooltip-position="top">
+   <b:row tooltip="Tooltip of the first row."
+          tooltip-position="left">
+      <b:column tooltip="Tooltip of the first column."
+                span="6">
+                first column
+      </b:column>
+      <b:column tooltip="Tooltip of the second column."
+                span="6">
+                second column
+	  </b:column>
+	</b:row>
+   <b:row tooltip="Tooltip of the second row."
+          tooltip-position="left">
+      <b:column tooltip="Tooltip of the third column."
+                span="6">
+                third column
+      </b:column>
+      <b:column tooltip="Tooltip of the last column."
+                span="6">
+                last column
+	  </b:column>
+	</b:row>
+</b:container>
+                      
+                ]]></script>
+                  </td>
+              </tr>
+              <tr>
+                  <td>&lt;b:container &gt;</td>
+                  <td>
+<b:container fluid="true"
+             tooltip="Tooltip of the container."
+             tooltip-position="top">
+   <b:row tooltip="Tooltip of the first row."
+          tooltip-position="left">
+      <b:column tooltip="Tooltip of the first column."
+                span="6">
+                first column
+      </b:column>
+      <b:column tooltip="Tooltip of the second column."
+                span="6">
+                second column
+	  </b:column>
+	</b:row>
+   <b:row tooltip="Tooltip of the second row."
+          tooltip-position="left">
+      <b:column tooltip="Tooltip of the third column."
+                span="6">
+                third column
+      </b:column>
+      <b:column tooltip="Tooltip of the last column."
+                span="6">
+                last column
+	  </b:column>
+	</b:row>
+</b:container>
+                   </td>
+                  <td>
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+<b:container fluid="true"
+             tooltip="Tooltip of the container."
+             tooltip-position="top">
+   <b:row tooltip="Tooltip of the first row."
+          tooltip-position="left">
+      <b:column tooltip="Tooltip of the first column."
+                span="6">
+                first column
+      </b:column>
+      <b:column tooltip="Tooltip of the second column."
+                span="6">
+                second column
+	  </b:column>
+	</b:row>
+   <b:row tooltip="Tooltip of the second row."
+          tooltip-position="left">
+      <b:column tooltip="Tooltip of the third column."
+                span="6">
+                third column
+      </b:column>
+      <b:column tooltip="Tooltip of the last column."
+                span="6">
+                last column
+	  </b:column>
+	</b:row>
+</b:container>
+                      
+                ]]></script>
+                  </td>
+              </tr>
+              <tr>
+                  <td>&lt;b:jumbotron &gt;</td>
+                   <td>
+<b:jumbotron tooltip="...and you've found it!" position="bottom">
+    Hey, I've got a tooltip!
+</b:jumbotron>
+                   </td>
+                  <td>
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+<b:jumbotron tooltip="...and you've found it!" position="bottom">
+    Hey, I've got a tooltip!
+</b:jumbotron>
+                ]]></script>
+                  </td>
+              </tr>
+              <tr>
+                  <td>&lt;b:panel &gt;</td>
+                  <td>
+<b:panel title="Title of the panel"
+         tooltip="Just another tooltip"
+         >
+         Panel content.
+</b:panel>
+                   </td>
+                  <td>
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+<b:panel title="Title of the panel"
+         tooltip="Just another tooltip"
+         >
+         Panel content.
+</b:panel>
+                      
+                ]]></script>
+                  </td>
+              </tr>
+              <tr>
+                  <td>&lt;b:panelGrid &gt;</td>
+                  <td>
+<b:panelGrid colSpans="6,6" 
+             tooltip="This tooltip applies to the entire panel grid.">
+    <h:outputLabel value="Cell 1" />
+    <h:outputLabel value="Cell 2" />
+</b:panelGrid>
+                   </td>
+                  <td>
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+<b:panelGrid colSpans="6,6" 
+             tooltip="This tooltip applies to the entire panel grid.">
+    <h:outputLabel value="Cell 1" />
+    <h:outputLabel value="Cell 2" />
+</b:panelGrid>
+                ]]></script>
+                  </td>
+              </tr>
+              <tr>
+                  <td>&lt;b:row &gt;</td>
+                  <td>
+<b:container fluid="true"
+             tooltip="Tooltip of the container."
+             tooltip-position="top">
+   <b:row tooltip="Tooltip of the first row."
+          tooltip-position="left">
+      <b:column tooltip="Tooltip of the first column."
+                span="6">
+                first column
+      </b:column>
+      <b:column tooltip="Tooltip of the second column."
+                span="6">
+                second column
+	  </b:column>
+	</b:row>
+   <b:row tooltip="Tooltip of the second row."
+          tooltip-position="left">
+      <b:column tooltip="Tooltip of the third column."
+                span="6">
+                third column
+      </b:column>
+      <b:column tooltip="Tooltip of the last column."
+                span="6">
+                last column
+	  </b:column>
+	</b:row>
+</b:container>
+                   </td>
+                  <td>
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+<b:container fluid="true"
+             tooltip="Tooltip of the container."
+             tooltip-position="top">
+   <b:row tooltip="Tooltip of the first row."
+          tooltip-position="left">
+      <b:column tooltip="Tooltip of the first column."
+                span="6">
+                first column
+      </b:column>
+      <b:column tooltip="Tooltip of the second column."
+                span="6">
+                second column
+	  </b:column>
+	</b:row>
+   <b:row tooltip="Tooltip of the second row."
+          tooltip-position="left">
+      <b:column tooltip="Tooltip of the third column."
+                span="6">
+                third column
+      </b:column>
+      <b:column tooltip="Tooltip of the last column."
+                span="6">
+                last column
+	  </b:column>
+	</b:row>
+</b:container>
+                      
+                ]]></script>
+                  </td>
+              </tr>
+              <tr>
+                  <td>&lt;b:well &gt;</td>
+                  <td>
+<b:well tooltip="Well, that's a tooltip.">
+    <h3>Well Header</h3>
+    Well content.
+</b:well>                   
+				  </td>
+                  <td>
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+<b:well tooltip="Well, that's a tooltip.">
+    <h3>Well Header</h3>
+    Well content.
+</b:well>                   
                       
                 ]]></script>
                   </td>
