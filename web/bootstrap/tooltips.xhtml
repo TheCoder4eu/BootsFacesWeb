@@ -1,0 +1,284 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+ 
+   <ui:define name="content">
+      <style>td {padding: 8px;}</style>
+      <h1>Tooltips</h1>
+      <p>You can add a tooltip to most BootsFaces components.</p>
+      
+      <strong>Examples</strong>
+      <h:form>
+      <table class="table table-bordered table-striped">
+          <thead>
+              <tr>
+                  <th style="width:160px">Component</th>
+                  <th style="width:300px">demo</th>
+                  <th>JSF markup</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>&lt;b:button &gt;</td>
+                  <td><b:button value="Hover over me" tooltip="What a nice tooltip!" tooltip-position="auto" /></td>
+                  <td>
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+<b:button value="Hover over me" 
+          tooltip="What a nice tooltip!" 
+          tooltip-position="auto" />
+
+                ]]></script>
+                  </td>
+              </tr>
+              <tr>
+                  <td>&lt;b:alert &gt;</td>
+                  <td><b:alert severity="success" tooltip="What a nice tooltip!" tooltip-position="top"><strong>Well done!</strong> You successfully read this important alert message.</b:alert></td>
+                  <td>
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+<b:alert severity="success" 
+         tooltip="What a nice tooltip!" tooltip-position="top">
+  <strong>Well done!</strong> 
+  You successfully read this important alert message.
+</b:alert>
+
+                ]]></script>
+                  </td>
+              </tr>
+              <tr>
+                  <td>&lt;b:badge &gt;</td>
+                  <td><b:badge value="12" severity="info" tooltip="What a nice tooltip!" tooltip-position="right"/></td>
+                  <td>
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+<b:badge value="12" severity="info" 
+         tooltip="What a nice tooltip!" tooltip-position="right"
+/>                      
+                ]]></script>
+                  </td>
+              </tr>
+              <tr>
+                  <td>&lt;b:buttonGroup &gt;</td>
+                  <td>                        
+                  	    <b:buttonGroup>
+                            <b:button value="Left" look="success" 
+                                      tooltip="Current color scheme: success" tooltip-position="top"/>
+                            <b:button value="Middle" look="primary" 
+                                      tooltip="Current color scheme: primary" tooltip-position="top"/>
+                            <b:button value="Right" look="warning"
+                                      tooltip="Current color scheme: warning" tooltip-position="top"/>
+                        </b:buttonGroup>
+                  </td>
+                  <td>
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+                  	    <b:buttonGroup>
+                            <b:button value="Left" look="success" 
+                                      tooltip="Current color scheme: success" tooltip-position="top"/>
+                            <b:button value="Middle" look="primary" 
+                                      tooltip="Current color scheme: primary" tooltip-position="top"/>
+                            <b:button value="Right" look="warning"
+                                      tooltip="Current color scheme: warning" tooltip-position="top"/>
+                        </b:buttonGroup>
+		                      
+                ]]></script>
+                  </td>
+              </tr>
+              <tr>
+                  <td>&lt;b:buttonToolbar &gt;</td>
+                  <td>
+                    <b:buttonToolbar tooltip="Tooltip of the toolbar">
+                  		<b:buttonGroup>
+                            <b:button value="Left" look="success" 
+                                      tooltip="Current color scheme: success" tooltip-position="top"/>
+                            <b:button value="Middle" look="primary" 
+                                      tooltip="Current color scheme: primary" tooltip-position="top"/>
+                        </b:buttonGroup>
+                  		<b:buttonGroup>
+                            <b:button value="Middle" look="primary" 
+                                      tooltip="Current color scheme: primary" tooltip-position="top"/>
+                            <b:button value="Right" look="warning"
+                                      tooltip="Current color scheme: warning" tooltip-position="top"/>
+                        </b:buttonGroup>
+                    </b:buttonToolbar>
+                  </td>
+                  <td>
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+                    <b:buttonToolbar tooltip="Tooltip of the toolbar">
+                  		<b:buttonGroup>
+                            <b:button value="Left" look="success" 
+                                      tooltip="Current color scheme: success" 
+                                      tooltip-position="top"/>
+                            <b:button value="Middle" look="primary" 
+                                      tooltip="Current color scheme: primary"
+								      tooltip-position="top"/>
+                        </b:buttonGroup>
+                  		<b:buttonGroup>
+                            <b:button value="Middle" look="primary" 
+                                      tooltip="Current color scheme: primary" 
+                                      tooltip-position="top"/>
+                            <b:button value="Right" look="warning"
+                                      tooltip="Current color scheme: warning" 
+                                      tooltip-position="top"/>
+                        </b:buttonGroup>
+                    </b:buttonToolbar>
+                      
+                ]]></script>
+                  </td>
+              </tr>
+              <tr>
+                  <td>&lt;b:commandButton &gt;</td>
+                  <td><b:commandButton value="Hover over me" tooltip="What a nice tooltip!" tooltip-position="right" /></td>
+                  <td>
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+<b:commandButton value="Hover over me"^
+                 tooltip="What a nice tooltip!" tooltip-position="right" />
+                ]]></script>
+                  </td>
+              </tr>
+              <tr>
+                  <td>&lt;b:datePicker &gt;</td>
+                  <td><b:datepicker mode="popup-icon" placeholder="Select a Date" tooltip="What a nice tooltip!" tooltip-position="bottom"/></td>
+                  <td>
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+<b:datepicker mode="popup-icon" placeholder="Select a Date" 
+              tooltip="What a nice tooltip!" tooltip-position="bottom"
+/>                      
+]]></script>
+                  </td>
+              </tr>
+              <tr>
+                  <td>&lt;b:dropButton &gt;</td>
+                  <td>
+                        <b:dropButton look="warning" value="DropButton" tooltip="Current color scheme: warning" tooltip-position="top">
+                            <b:navLink value="Action" href="#"></b:navLink>
+                        </b:dropButton>
+                  </td>
+                  <td>
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+                        <b:dropButton look="warning" value="DropButton" 
+                                      tooltip="Current color scheme: warning" tooltip-position="top">
+                            <b:navLink value="Action" href="#"></b:navLink>
+                        </b:dropButton>
+                      
+                ]]></script>
+                  </td>
+              </tr>
+              <tr>
+                  <td>&lt;b:dropMenu &gt; <br />(doesn't work)</td>
+                  <td>
+<b:navBar  brandHref="#" fluid="true" 
+           tooltip="Tooltip of the navBar" tooltip-position="top">
+    <b:navbarLinks tooltip="Tooltip of the navbarLinks" tooltip-position="top">
+            <b:dropMenu value="Dropdown" 
+                        tooltip="Tooltip of the drop menu" tooltip-position="top">
+            <b:navLink value="Action" href="#" 
+                       tooltip="Tooltip of the navLink" tooltip-position="top">
+            </b:navLink>
+        </b:dropMenu>
+   </b:navbarLinks>
+</b:navBar>
+                  </td>
+                  <td>
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+<b:navBar  brandHref="#" fluid="true" 
+           tooltip="Tooltip of the navBar" tooltip-position="top">
+ <b:navbarLinks tooltip="Tooltip of the navbarLinks" tooltip-position="top">
+    <b:dropMenu value="Dropdown" 
+                tooltip="Tooltip of the drop menu" tooltip-position="top">
+      <b:navLink value="Action" href="#" 
+                 tooltip="Tooltip of the navLink" tooltip-position="top">
+      </b:navLink>
+    </b:dropMenu>
+ </b:navbarLinks>
+</b:navBar>
+                      
+                ]]></script>
+                  </td>
+              </tr>
+              <tr>
+                  <td>&lt;b:icon &gt;</td>
+                  <td><b:icon name="cloud" tooltip="This is a GLYPHICON cloud." /></td>
+                  <td>
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+                      
+                ]]></script>
+                  </td>
+              </tr>
+              <tr>
+                  <td>&lt;b:iconAwesome &gt;</td>
+                  <td><b:iconAwesome name="comment" tooltip="This is a Font Awesome comment." /></td>
+                  <td>
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+                      
+                ]]></script>
+                  </td>
+              </tr>
+              <tr>
+                  <td>&lt;b:inputText &gt;</td>
+                  <td><b:inputText tooltip="Please enter an email address.">
+     <f:facet name="prepend">
+         <h:outputText value="@" />
+     </f:facet>
+ </b:inputText></td>
+                  <td>
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+<b:inputText tooltip="Please enter an email address.">
+     <f:facet name="prepend">
+         <h:outputText value="@" />
+     </f:facet>
+ </b:inputText>
+                      
+                ]]></script>
+                  </td>
+              </tr>
+              <tr>
+                  <td>&lt;b:inputSecret &gt;</td>
+                  <td>
+<b:inputSecret tooltip="Please enter a secret email address.">
+     <f:facet name="prepend">
+         <h:outputText value="@" />
+     </f:facet>
+ </b:inputSecret>
+                   </td>
+                  <td>
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+<b:inputSecret tooltip="Please enter a secret email address.">
+     <f:facet name="prepend">
+         <h:outputText value="@" />
+     </f:facet>
+ </b:inputSecret>
+                      
+                ]]></script>
+                  </td>
+              </tr>
+            </tbody>
+          </table>
+          </h:form>
+    
+	    <script type="text/javascript">
+	        SyntaxHighlighter.all();
+	    </script>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+    </ui:define>
+</ui:composition>
+
+
+ 
