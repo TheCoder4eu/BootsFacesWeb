@@ -1,7 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'war'
 
-webAppDirName = 'web'
+//webAppDirName = 'web'
 
 sourceCompatibility = '1.7'
 targetCompatibility = '1.7'
@@ -10,13 +10,13 @@ repositories {
 mavenCentral()
 }
 
-sourceSets {
-    main {
-        java {
-            srcDir 'src/java'
-        }
-    }
-}
+//sourceSets {
+//    main {
+//        java {
+//            srcDir 'src/java'
+//        }
+//    }
+//}
 
 dependencies {
 providedCompile 'javax.enterprise:cdi-api:1.2'
@@ -42,7 +42,9 @@ compile(
 }
 
 war.doFirst {
-    String contents = new File( 'web/empty.xhtml' ).getText( 'UTF-8' )
+    String emptyPage="${webAppDir}/empty.xhtml"
+    String indexPage="${webAppDir}/index.xhtml"
+    String contents = new File( emptyPage ).getText( 'UTF-8' )
 
     //Replace the text
     contents = contents.replaceAll( 'Title', 'Welcome to BootsFaces' )
@@ -80,7 +82,7 @@ war.doFirst {
                        </b:panel>
 					   """
     contents = contents.replaceAll( '</h1>', '</h1>'+buildInfo )
-    new File( 'web/index.xhtml' ).write( contents, 'UTF-8' )
+    new File( indexPage ).write( contents, 'UTF-8' )
 }
 
 war {

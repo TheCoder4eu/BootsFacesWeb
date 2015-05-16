@@ -200,7 +200,7 @@
         </profile>
     </profiles>
     <build>
-        <sourceDirectory>src/java</sourceDirectory>
+        <!--sourceDirectory>src/java</sourceDirectory-->
         <resources>
             <resource>
                 <directory>web</directory>
@@ -244,14 +244,14 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.5</version>
-                <configuration>
+                <!--configuration>
                     <webResources>
                         <resource>
-                            <!-- this is relative to the pom.xml directory -->
+                            <- this is relative to the pom.xml directory >
                             <directory>web</directory>
                         </resource>
                     </webResources>
-                </configuration>
+                </configuration-->
             </plugin>
         </plugins>
     </build>
