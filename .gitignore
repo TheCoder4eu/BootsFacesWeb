@@ -16,3 +16,4 @@
 /Bootstrap
 /.nb-gradle/
 /build/
+.gradle/
