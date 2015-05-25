@@ -15,13 +15,13 @@
 			thumbnail in the third tab:</p>
 
 		<b:tabView activeIndex="2">
-			<b:tab title="First Tab">
+			<b:tab title="First tab">
 				<p>This is the first tab.</p>
 				<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.
 					Donec id elit non mi porta gravida at eget metus. Nullam id dolor
 					id nibh ultricies vehicula ut id elit.</p>
 			</b:tab>
-			<b:tab title="Another Tab">
+			<b:tab title="Another tab">
 				<p>This is the second tab.</p>
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
 					do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -33,7 +33,7 @@
 					culpa qui officia deserunt mollit anim id est laborum.</p>
 			</b:tab>
             <!-- The next tab shows tabs aren't limited to text. You can put anything in a tab. -->
-			<b:tab title="Image Tab">
+			<b:tab title="Image tab">
 				<br />
 				<b:thumbnail>
 					<img width="640" height="428"
@@ -49,13 +49,21 @@
 					</f:facet>
 				</b:thumbnail>
 			</b:tab>
-			<b:tab title="Fourth Tab">
-				<p>This is the fourth tab.</p>
-				<p>At vero eos et accusamus et iusto odio dignissimos ducimus
-					qui blanditiis praesentium voluptatum deleniti atque corrupti quos
-					dolores et quas molestias excepturi sint occaecati cupiditate non
-					provident, similique sunt in culpa qui officia deserunt mollitia
-					animi, id est laborum et dolorum fuga.</p>
+			<b:tab title="Fancy tab">
+			   <f:facet name="anchor"><b:iconAwesome name="cog" spin="true" /></f:facet>
+				<p>This is the fourth tab. As you can see, you can add arbitrary content to the tab title. In particular, you can add images.</p>
+				<p>You can achieve this by defining a facet called <code>anchor</code>:</p>
+				<b:well>
+				<script type="syntaxhighlighter"
+					class="brush: xml; toolbar: false;first-line: 1">
+                            <![CDATA[
+<b:tab title="Fancy tab">
+   <f:facet name="anchor"><b:iconAwesome name="cog" spin="true" /></f:facet>
+   Content of the tab.
+</b:tab>
+					]]></script>
+					</b:well>
+				<p>However, this fancy tab is an example how to create an unruly design. Don't use too many visual effects.</p>
 			</b:tab>
 
 		</b:tabView>
@@ -79,9 +87,9 @@
 								<b:tab title="Image Tab">
                                   ...
                                 </b:tab>
-                                <b:tab title="Fourth Tab">
-                                    <p>This is the fourth tab.</p>
-
+								<b:tab title="Fancy tab">
+			   						<f:facet name="anchor"><b:iconAwesome name="cog" spin="true" /></f:facet>
+                                    <p>This is fancy tab with a spinning image.</p>
                                 </b:tab>
 
                             </b:tabView>
