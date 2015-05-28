@@ -129,7 +129,7 @@
                 <h:form>
                     <h:panelGrid columns="2"  cellpadding="5">
                         <h:outputText value="e-mail:"/>
-                        <b:inputText placeholder="Username">
+                        <b:inputText placeholder="Username" required="true">
                             <f:facet name="prepend">
                                 <b:icon name="user" />
                             </f:facet>
@@ -294,6 +294,22 @@
 					   </b:well>
 					</b:tab>
 				</b:tabView>
+            <b:panel look="info">
+				<f:facet name="heading">
+					<b>Skinning</b>
+				</f:facet>
+				<f:facet name="footer">
+				<ul>
+					<li>
+				   		<code>&lt;b:inputfield /&gt;</code> is an <code>input</code> tag bearing the CSS-class <code>form-control</code>.
+				   </li>
+				   <li>
+				   		If the attribute <code>required</code> is true, the pseudo CSS class <code>bf-required</code> is added. Thus you can define your custom style for required fields.
+				   </li>
+				  </ul> 
+				</f:facet>
+			</b:panel>
+				
 				<script type="text/javascript">
                     SyntaxHighlighter.all();
                 </script>
