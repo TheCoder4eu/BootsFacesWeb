@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="content">
+		<style>
+td {
+	padding: 8px;
+}
+</style>
+		<h1>Messages</h1>
+
+		<p>Displays FacesMessages in Bootstrap style.</p>
+		<h:form>
+			<p:commandButton value="Info" actionListener="#{messagesBean.info}" update="@form"/>
+			<p:commandButton value="Warn" actionListener="#{messagesBean.warn}" update="@form"/>
+			<p:commandButton value="Error" actionListener="#{messagesBean.error}" update="@form"/>
+			<p:commandButton value="Fatal" actionListener="#{messagesBean.fatal}" update="@form"/>
+			<b:messages />
+		</h:form>
+		<br />
+		<script type="text/javascript">
+      SyntaxHighlighter.all();
+    </script>
+		<br />
+		<br />
+		<br />
+		<br />
+	</ui:define>
+</ui:composition>
