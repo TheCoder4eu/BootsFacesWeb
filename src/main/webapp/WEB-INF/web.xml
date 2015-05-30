@@ -6,6 +6,11 @@
         <!--param-value>Production</param-value -->
         <param-value>Development</param-value>
     </context-param>
+    <!-- deactivate the magic of AngularFaces which would prevent us from rendering BootsFaces messages -->
+    <context-param>
+    	<param-name>clientSideMessages</param-name>
+    	<param-value>false</param-value>
+    </context-param>
     <!-- The BootsFaces_USETHEME context-param controls the loading of the bootstrap-theme.css -->
     <!-- The default is false, when set to true the bootstrap-theme.css will be loaded -->
     <context-param>

@@ -16,15 +16,15 @@
  */
 package net.bootsfaces.demo;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 
 /**
  * This bean is used by the PrimeFaces barcode demo.
  * @author Stephan Rauh, http://www.beyondjava.net
  */
 @ViewScoped
-@ManagedBean
+@Named
 public class BarcodeBean {
 	private String code39 = "1234567890128";
 	private String protocol = "http://";

@@ -5,17 +5,19 @@ package net.bootsfaces.demo;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 
 /**
  *
  * @author TheCoder4eu
  */
-@ManagedBean(name = "dateBean")
+@Named
 @RequestScoped
 public class DateBean implements Serializable {
-    private Date adate;
+	private static final long serialVersionUID = -7642332089180105956L;
+	private Date adate;
     private Date bdate;
     private Date cdate;
     private Date ddate;

@@ -17,14 +17,14 @@
 
 package net.bootsfaces.demo;
 
-import javax.faces.bean.ManagedBean;
+import javax.inject.Named;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 /** A simple bean for demo purposes. */
-@javax.faces.bean.RequestScoped
-@ManagedBean
+@javax.enterprise.context.RequestScoped
+@Named
 public class CarBean {
 	@NotNull
 	private String brand=null;

@@ -5,17 +5,19 @@ package net.bootsfaces.demo;
  */
 
 import java.io.Serializable;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 
 /**
  *
  * @author TheCoder4eu
  */
-@ManagedBean
+@Named
 @RequestScoped
 public class InformBean implements Serializable {
-    private String firstname;
+	private static final long serialVersionUID = 3776366707374123185L;
+	private String firstname;
     private String familyname;
 
     public String getFirstname() {

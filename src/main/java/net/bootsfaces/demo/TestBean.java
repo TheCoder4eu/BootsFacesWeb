@@ -5,17 +5,19 @@ package net.bootsfaces.demo;
  */
 
 import java.io.Serializable;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 
 /**
  *
  * @author TheCoder4eu
  */
-@ManagedBean(name = "testBean")
+@Named
 @RequestScoped
 public class TestBean implements Serializable {
-    private int val1=78;
+	private static final long serialVersionUID = -332002335165889800L;
+	private int val1=78;
     private int val2=87;
     private int val3=34;
     private int val4=43;

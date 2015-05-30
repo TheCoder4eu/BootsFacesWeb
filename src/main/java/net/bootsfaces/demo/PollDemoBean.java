@@ -3,11 +3,11 @@ package net.bootsfaces.demo;
 import java.util.Date;
 
 import javax.enterprise.context.RequestScoped;
-import javax.faces.bean.ManagedBean;
 import javax.faces.event.ActionEvent;
+import javax.inject.Named;
 
 @RequestScoped
-@ManagedBean
+@Named
 public class PollDemoBean {
 	
 	private int counter=0;

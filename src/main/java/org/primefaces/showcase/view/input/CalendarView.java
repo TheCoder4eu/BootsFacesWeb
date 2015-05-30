@@ -2,14 +2,15 @@ package org.primefaces.showcase.view.input;
  
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
- 
+import javax.inject.Named;
+
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
  
-@ManagedBean
+@Named
 public class CalendarView {
          
     private Date date1;

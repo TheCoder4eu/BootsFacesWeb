@@ -22,12 +22,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.faces.bean.ManagedBean;
+import javax.inject.Named;
 import javax.validation.constraints.NotNull;
 
 /** A simple bean for demo purposes. */
-@javax.faces.bean.RequestScoped
-@ManagedBean
+@javax.enterprise.context.RequestScoped
+@Named
 public class SemaphoreBean {
 	@NotNull
 	private String color = null;
