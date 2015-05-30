@@ -17,12 +17,12 @@
 
 package net.bootsfaces.demo;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 /** A simple bean for demo purposes. */
 @RequestScoped
-@Named
+@ManagedBean
 public class SettingsBean {
 	private int value1;
 	private int value2;

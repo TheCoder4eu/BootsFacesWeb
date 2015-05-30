@@ -7,15 +7,15 @@ package net.bootsfaces.demo;
 import java.io.Serializable;
 import java.util.Calendar;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
 /**
  * @author Stephan Rauh, http://www.beyondjava.net
  */
-@Named
+@ManagedBean
 @RequestScoped
 public class ClockBean implements Serializable {
 	private static final long serialVersionUID = 5497787734011747081L;

@@ -2,12 +2,12 @@ package net.bootsfaces.demo;
 
 import java.util.Date;
 
-import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.event.ActionEvent;
-import javax.inject.Named;
 
 @RequestScoped
-@Named
+@ManagedBean
 public class PollDemoBean {
 	
 	private int counter=0;

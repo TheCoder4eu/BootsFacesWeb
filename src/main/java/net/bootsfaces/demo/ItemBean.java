@@ -1,15 +1,15 @@
 package net.bootsfaces.demo;
 
-import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.model.ArrayDataModel;
 import javax.faces.model.DataModel;
-import javax.inject.Named;
 
 /**
  * Data Model Bean for Items
  * @author Thecoder4.eu
  */
-@Named
+@ManagedBean
 @RequestScoped
 public class ItemBean {
     
