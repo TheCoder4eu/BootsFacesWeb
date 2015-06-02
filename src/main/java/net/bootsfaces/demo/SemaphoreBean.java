@@ -17,6 +17,7 @@
 
 package net.bootsfaces.demo;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -29,7 +30,7 @@ import javax.validation.constraints.NotNull;
 /** A simple bean for demo purposes. */
 @RequestScoped
 @ManagedBean
-public class SemaphoreBean {
+public class SemaphoreBean implements Serializable {
 	@NotNull
 	private String color = null;
 

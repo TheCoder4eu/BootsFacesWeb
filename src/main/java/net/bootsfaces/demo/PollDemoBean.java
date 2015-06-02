@@ -1,5 +1,6 @@
 package net.bootsfaces.demo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
@@ -8,7 +9,7 @@ import javax.faces.event.ActionEvent;
 
 @RequestScoped
 @ManagedBean
-public class PollDemoBean {
+public class PollDemoBean implements Serializable {
 	
 	private int counter=0;
 	

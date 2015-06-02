@@ -17,13 +17,14 @@
 
 package net.bootsfaces.demo;
 
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 /** A simple bean for demo purposes. */
 @RequestScoped
 @ManagedBean
-public class SettingsBean {
+public class SettingsBean implements Serializable {
 	private int value1;
 	private int value2;
 

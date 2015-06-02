@@ -17,6 +17,7 @@
 
 package net.bootsfaces.demo;
 
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.validation.constraints.Max;
@@ -26,7 +27,7 @@ import javax.validation.constraints.NotNull;
 /** A simple bean for demo purposes. */
 @RequestScoped
 @ManagedBean
-public class CarBean {
+public class CarBean implements Serializable {
 	@NotNull
 	private String brand=null;
 

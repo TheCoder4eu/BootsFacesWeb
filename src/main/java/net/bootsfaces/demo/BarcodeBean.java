@@ -16,6 +16,7 @@
  */
 package net.bootsfaces.demo;
 
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.view.ViewScoped;
 
@@ -25,7 +26,7 @@ import javax.faces.view.ViewScoped;
  */
 @ViewScoped
 @ManagedBean
-public class BarcodeBean {
+public class BarcodeBean implements Serializable {
 	private String code39 = "1234567890128";
 	private String protocol = "http://";
 	private String url = "angularfaces.net";
