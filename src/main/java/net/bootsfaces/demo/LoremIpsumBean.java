@@ -5,6 +5,7 @@ package net.bootsfaces.demo;
  * @author Thecoder4.eu
  */
 
+import java.io.Serializable;
 import java.util.StringTokenizer;
 
 import javax.faces.bean.ManagedBean;
@@ -18,7 +19,7 @@ import javax.faces.model.DataModel;
  */
 @ManagedBean
 @RequestScoped
-public class LoremIpsumBean {
+public class LoremIpsumBean implements Serializable {
     
     public static final String loremipsum="Lorem ipsum dolor sit amet "
             + "consectetur adipiscing elit sed "

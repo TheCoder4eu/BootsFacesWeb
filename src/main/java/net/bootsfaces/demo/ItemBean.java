@@ -1,5 +1,6 @@
 package net.bootsfaces.demo;
 
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.model.ArrayDataModel;
@@ -11,7 +12,7 @@ import javax.faces.model.DataModel;
  */
 @ManagedBean
 @RequestScoped
-public class ItemBean {
+public class ItemBean implements Serializable {
     
     private static final Item[] itemList = new Item[]{
         new Item("Pencil","P3245","0,49 $"),
