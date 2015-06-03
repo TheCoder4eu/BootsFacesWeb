@@ -75,7 +75,7 @@ You also have to add a few lines to the <code>web.xml</code> file to activate an
 documentation, Tomcat is garanteed to support this (at least in the default configuration). But in the general case, we can't guarantee for anything. Use at own risk.</p>
 
 
-     <b:tabView contentStyle="height:280px">
+     <b:tabView contentStyle="height:340px">
         <b:tab title="web.xml">
           <b:well>
           Download the <a target="#" href="http://repository.primefaces.org/org/primefaces/themes/bootstrap/">PrimeFaces Bootsstrap theme</a>, add it to your application's <code>lib</code> folder and activate it in the <code>web.xml</code> like so:
@@ -125,6 +125,19 @@ documentation, Tomcat is garanteed to support this (at least in the default conf
         </b:tab>
       </b:tabView>
                 
+      <h3>Warnings caused by the CombinedResourceHandler</h3>
+      <p>Mojarra 2.2 generates a lot of warnings on the console in developer mode:</p>
+<b:well>
+      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+Mai 24, 2015 9:30:28 PM com.sun.faces.application.view.FaceletPartialStateManagementStrategy saveDynamicActions
+WARNING: Unable to save dynamic action with clientId 'j_id190' because the UIComponent cannot be found
+      ]]>
+</script>
+</b:well>
+      <p> These warnings are caused by OmniFaces removing the original resources. Mojarra detects there's
+      something missing and complains about it. You can safely ignore these warnings. 
+      Also see the corresponding <a target="#" href="https://github.com/omnifaces/omnifaces/issues/135">issue on the OmniFaces bugtracker</a> for details.</p>           
                 
                 <script type="text/javascript">
                     SyntaxHighlighter.all();
