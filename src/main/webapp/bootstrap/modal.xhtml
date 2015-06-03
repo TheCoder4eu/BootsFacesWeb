@@ -101,7 +101,7 @@
                     <f:facet name="heading"><b>EXAMPLE - Triggering a modal inside a form</b></f:facet>
                     <h:form id="myFormID">
 	                    <b:modal id="amodal2" title="Modal Example" styleClass="modalPseudoClass2" 
-	                             closable="false"  closeonescape="false" backdrop="false">
+	                             closable="false"  close-on-escape="false" backdrop="false">
 	                        <p>Far far away, behind the word mountains, far from the
 								countries Vokalia and Consonantia, there live the blind texts.
 								Separated they live in Bookmarksgrove right at the coast of the
@@ -139,7 +139,7 @@
                         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                             <![CDATA[
                             <b:modal id="amodal" title="Modal Example" styleClass="modalPseudoClass" 
-                                     closable="false" closeOnEscape="false" backdrop="false">
+                                     closable="false" close-on-escape="false" backdrop="false">
                                 <p>Modal body</p>
                                 <f:facet name="footer">
                                     <b:button value="close" dismiss="modal" onclick="return false;"/>
@@ -157,7 +157,7 @@
                 
                 <h4><code>closable</code> and <code>backdrop</code></h4>
                 <p>By default, there's a x symbol which allows the user to close the modal. Set <code>closable="false"</code> to suppress the close icon.
-                Users can close modal dialogs by hitting the ESC key unless you set <code>closeonescape="false"</code>.
+                Users can close modal dialogs by hitting the ESC key unless you set <code>close-on-escape="false"</code>.
                 Another default behavior of modal is that you can close a modal dialog by clicking somewhere outside the modal. Set <code>backdrop="false"</code> to disable this feature.
                 </p>
                 
@@ -242,9 +242,9 @@
 								</td>
 							</tr>
 							<tr>
-								<td>closeonescape</td>
+								<td>close-on-escape</td>
 								<td>(none)</td>
-								<td>By default, users can close modal dialogs by hitting the ESC key. Set <code>closeonescape="false"</code> to disable this feature.
+								<td>By default, users can close modal dialogs by hitting the ESC key. Set <code>close-on-escape="false"</code> to disable this feature.
 								</td>
 							</tr>
 							<tr>
