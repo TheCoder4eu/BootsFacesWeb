@@ -63,7 +63,7 @@
                         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                             <![CDATA[
                             <b:modal id="amodal" title="Modal Example" styleClass="modalPseudoClass">
-                            <p>Modal body</p>
+                                <p>Modal body</p>
                                 <f:facet name="footer">
                                     <b:button value="close" dismiss="modal" onclick="return false;"/>
                                     <b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"/>
@@ -100,7 +100,8 @@
                 <b:panel look="info">
                     <f:facet name="heading"><b>EXAMPLE - Triggering a modal inside a form</b></f:facet>
                     <h:form id="myFormID">
-	                    <b:modal id="amodal2" title="Modal Example" styleClass="modalPseudoClass2" closable="false">
+	                    <b:modal id="amodal2" title="Modal Example" styleClass="modalPseudoClass2" 
+	                             closable="false"  closeonescape="false" backdrop="false">
 	                        <p>Far far away, behind the word mountains, far from the
 								countries Vokalia and Consonantia, there live the blind texts.
 								Separated they live in Bookmarksgrove right at the coast of the
@@ -137,8 +138,9 @@
 
                         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                             <![CDATA[
-                            <b:modal id="amodal" title="Modal Example" styleClass="modalPseudoClass" closable="false">
-                            <p>Modal body</p>
+                            <b:modal id="amodal" title="Modal Example" styleClass="modalPseudoClass" 
+                                     closable="false" closeOnEscape="false" backdrop="false">
+                                <p>Modal body</p>
                                 <f:facet name="footer">
                                     <b:button value="close" dismiss="modal" onclick="return false;"/>
                                     <b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"/>
@@ -154,7 +156,10 @@
                 </b:panel>
                 
                 <h4><code>closable</code> and <code>backdrop</code></h4>
-                <p>By default, there's a x symbol which allows the user to close the modal. Set <code>closable="false"</code> to suppress the close icon.</p>
+                <p>By default, there's a x symbol which allows the user to close the modal. Set <code>closable="false"</code> to suppress the close icon.
+                Users can close modal dialogs by hitting the ESC key unless you set <code>closeonescape="false"</code>.
+                Another default behavior of modal is that you can close a modal dialog by clicking somewhere outside the modal. Set <code>backdrop="false"</code> to disable this feature.
+                </p>
                 
                 <h4>Opening a modal dialog when entering the JSF view</h4>
                 <p>If you don't want to open the modal dialog when a button is clicked, but already when the JSF view is opened, you can use an inline script to open the dialog programmatically:</p>
@@ -184,6 +189,7 @@
                     </html>
                 ]]>
 				</script>
+				<p>However, adding the pass-through attribute <code>pt:data-show="false"</code> doesn't work at the moment (BootsFaces 0.6.7).</p>
                 
                 <b:panel look="info">
 				<f:facet name="heading">
@@ -227,6 +233,18 @@
 								<td>closable</td>
 								<td>(none)</td>
 								<td>By default, there's a x symbol which allows the user to close the modal. Set <code>closable="false"</code> to suppress the close icon.
+								</td>
+							</tr>
+							<tr>
+								<td>backdrop</td>
+								<td>(none)</td>
+								<td>By default, you can close a modal dialog by clicking somewhere outside the modal. Set <code>backdrop="false"</code> to disable this feature.
+								</td>
+							</tr>
+							<tr>
+								<td>closeonescape</td>
+								<td>(none)</td>
+								<td>By default, users can close modal dialogs by hitting the ESC key. Set <code>closeonescape="false"</code> to disable this feature.
 								</td>
 							</tr>
 							<tr>
