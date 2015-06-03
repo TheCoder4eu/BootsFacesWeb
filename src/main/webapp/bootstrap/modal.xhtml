@@ -100,7 +100,7 @@
                 <b:panel look="info">
                     <f:facet name="heading"><b>EXAMPLE - Triggering a modal inside a form</b></f:facet>
                     <h:form id="myFormID">
-	                    <b:modal id="amodal2" title="Modal Example" styleClass="modalPseudoClass2">
+	                    <b:modal id="amodal2" title="Modal Example" styleClass="modalPseudoClass2" closable="false">
 	                        <p>Far far away, behind the word mountains, far from the
 								countries Vokalia and Consonantia, there live the blind texts.
 								Separated they live in Bookmarksgrove right at the coast of the
@@ -108,7 +108,7 @@
 								by their place and supplies it with the necessary regelialia. It
 								is a paradisematic country, in which roasted parts of sentences
 								fly into your mouth. Even the all-powerful Pointing has no control
-								about the blind texts it is an almost unorthographic life One day
+								about the blind texts it is an almost unorthographic life. One day
 								however a small line of blind text by the name of Lorem Ipsum
 								decided to leave for the far World of Grammar. The Big Oxmox
 								advised her not to do so, because there were thousands of bad
@@ -137,7 +137,7 @@
 
                         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                             <![CDATA[
-                            <b:modal id="amodal" title="Modal Example" styleClass="modalPseudoClass">
+                            <b:modal id="amodal" title="Modal Example" styleClass="modalPseudoClass" closable="false">
                             <p>Modal body</p>
                                 <f:facet name="footer">
                                     <b:button value="close" dismiss="modal" onclick="return false;"/>
@@ -152,6 +152,101 @@
                             ]]></script>
                     </f:facet>
                 </b:panel>
+                
+                <h4><code>closable</code> and <code>backdrop</code></h4>
+                <p>By default, there's a x symbol which allows the user to close the modal. Set <code>closable="false"</code> to suppress the close icon.</p>
+                
+                <h4>Opening a modal dialog when entering the JSF view</h4>
+                <p>If you don't want to open the modal dialog when a button is clicked, but already when the JSF view is opened, you can use an inline script to open the dialog programmatically:</p>
+                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                <![CDATA[
+					&lt;script type="text/javascript"> 
+                          $(window).load(function(){ $('.modalPseudoClass').modal('show'); }); 
+                    &lt;/script>
+                ]]>
+				</script>
+				Alternatively, you can use the pass-through attributes that have been introduced with JSF 2.2:
+                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                <![CDATA[
+                    <?xml version='1.0' encoding='UTF-8' ?>
+                    <!DOCTYPE html>
+                    <html xmlns="http://www.w3.org/1999/xhtml"
+                          xmlns:h="http://java.sun.com/jsf/html"
+                          xmlns:f="http://java.sun.com/jsf/core"
+                          xmlns:b="http://bootsfaces.net/ui"
+                          xmlns:ui="http://java.sun.com/jsf/facelets"
+                          xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                          >
+                        <h:head />
+                        <h:body pt:onload="alert(1)">
+                    		...
+                        </h:body>
+                    </html>
+                ]]>
+				</script>
+                
+                <b:panel look="info">
+				<f:facet name="heading">
+					<b>Attributes of &lt;b:modal &gt;</b>
+				</f:facet>
+				<f:facet name="footer">
+					<table class="table table-striped table-hover"
+						style="background-color: #fff">
+						<thead>
+							<tr>
+								<th>Attribute</th>
+								<th>Default value</th>
+								<th>Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>id</td>
+								<td>(none)</td>
+								<td>Unique identifier of the component.</td>
+							</tr>
+							<tr>
+								<td>title</td>
+								<td>(none)</td>
+								<td>Bold Title displayed in Modal's header.</td>
+							</tr>
+							<tr>
+								<td>styleClass</td>
+								<td>(none)</td>
+								<td>CSS style class which is applied to the entire modal dialog.
+								</td>
+							</tr>
+							<tr>
+								<td>rendered</td>
+								<td>true</td>
+								<td>If <code>rendered == false</code>, the modal won't be generated. Note that doesn't mean it's simply invisible. Instead,
+								it's not part of the HTML code.
+								</td>
+							</tr>
+							<tr>
+								<td>closable</td>
+								<td>(none)</td>
+								<td>By default, there's a x symbol which allows the user to close the modal. Set <code>closable="false"</code> to suppress the close icon.
+								</td>
+							</tr>
+							<tr>
+								<td>size</td>
+								<td>(none)</td>
+								<td>Modal's size. Possible values are <code>modal-sm</code> and <code>modal-lg</code>.</td>
+							</tr>
+						</tbody>
+					</table>
+				</f:facet>
+			</b:panel>
+
+            <b:panel look="info">
+				<f:facet name="heading">
+					<b>Facets of &lt;b:modal &gt;</b>
+				</f:facet>
+				<f:facet name="footer">
+					<p>The optional facet <code>footer</code> can be used to display buttons below a horizontal ruler, as shown in the example above.</p>
+				</f:facet>
+			</b:panel>                
                 
                 <br/> <br/>       
                 
