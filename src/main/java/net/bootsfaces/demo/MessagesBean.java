@@ -10,6 +10,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
 /**
  * @author Stephan Rauh, http://www.beyondjava.net
@@ -20,23 +21,30 @@ public class MessagesBean implements Serializable {
 	private static final long serialVersionUID = 5497787734011747081L;
 	
     public void info() {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "PrimeFaces Rocks."));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "PrimeFaces rocks. BootsFaces rocks, too!"));
     }
      
     public void warn() {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Warning!", "Watch out for PrimeFaces."));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Warning!", "Watch out for PrimeFaces. It's a good match to BootsFaces."));
     }
      
     public void error() {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "Contact admin."));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "Something has gone wrong."));
     }
      
     public void fatal() {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Fatal!", "System Error"));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Fatal!", "System Error. What did you do?"));
     }
 	
 	public void showMessages() {
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Info message", "details");
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Info message", "This is a very informative message.");
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
+	
+    public void info(ActionEvent event) {
+    	String[] messages={"BootsFaces rocks!", "How do you like this message?", "This message has been brought to you by an actionListener."};
+    	int index = (int)(Math.random()*messages.length);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", messages[index]));
+    }
+
 }
