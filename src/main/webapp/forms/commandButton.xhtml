@@ -53,11 +53,12 @@
                                 <h:outputLabel for="familyname" value="Family (surname/last) name: *" />
                                 <b:inputText id="familyname" value="#{informBean.familyname}" required="true" />
                                 <h:message for="familyname" />
+					            <b:fetchBeanInfos />
                             </h:panelGrid>
                         </b:well>
                         <b:row>
                             <b:column span="2">
-                                <b:commandButton value="No Ajax Submit" id="cb" />
+                                <b:commandButton value="Non-Ajax Submit" id="cb" />
                             </b:column>
                             <b:column span="2">
                                 <b:commandButton value="Ajax Submit" ajax="true" update="form:inform infoshow" id="ajaxcb" look="primary" />
@@ -68,7 +69,7 @@
                             </b:column>
                             <b:column span="2">
                                 <b:commandButton value="Ajax Modal" ajax="true" update="form:inform amodal" id="ajaxmodal" look="inverse"
-                                    oncomplete="$('#amodal').modal('show');" />
+                                    oncomplete="if(validationFailed) alert('Please enter valid input before opening the modal'); else $('#amodal').modal('show')" />
                             </b:column>
                             <b:column span="2">
                                 <b:commandButton value="" ajax="true" update="form:inform infoshow" iconAwesome="thumbs-up" look="info" title="Thumbs up!" />
@@ -95,11 +96,12 @@
                 <h:outputLabel for="familyname" value="Family (surname/last) name: *" />
                 <b:inputText id="familyname" value="#{informBean.familyname}" required="true" />
                 <h:message for="familyname" />
+				<b:fetchBeanInfos />
               </h:panelGrid>
             </b:well>
             <b:row>
               <b:column span="2">
-                <b:commandButton value="No Ajax Submit" id="cb" />
+                <b:commandButton value="Non-Ajax Submit" id="cb" />
               </b:column>
               <b:column span="2">
                 <b:commandButton value="Ajax Submit" ajax="true" update="form:inform infoshow" id="ajaxcb" look="primary" />
@@ -109,7 +111,7 @@
               </b:column>
               <b:column span="2">
                 <b:commandButton value="Ajax Modal" ajax="true" update="form:inform amodal" id="ajaxmodal" look="inverse"
-                  oncomplete="$('#amodal').modal('show');" />
+                  oncomplete="if(validationFailed) alert('Please enter valid input before opening the modal'); else $('#amodal').modal('show')" />
               </b:column>
               <b:column span="2">
                 <b:commandButton value="" ajax="true" update="form:inform infoshow" iconAwesome="thumbs-up" look="info" />
