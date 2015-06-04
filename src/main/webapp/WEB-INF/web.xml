@@ -28,12 +28,8 @@
     <context-param>
         <param-name>org.omnifaces.COMBINED_RESOURCE_ACTIVATE_RESOURCE_CACHING</param-name>
         <param-value>
-      false
+      true
     </param-value>
-    <context-param>
-     <param-name>org.omnifaces.COMBINED_RESOURCE_HANDLER_DISABLED</param-name>
-     <param-value>true</param-value>
- </context-param>
     </context-param>
     <!-- cache ten combined resources at most -->
     <context-param>
