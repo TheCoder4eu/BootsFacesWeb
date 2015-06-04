@@ -18,7 +18,7 @@
         <param-value>true</param-value>
     </context-param>
     <!-- Activates the tag decorator that turns divs into JSF components (and much more) -->
-    <context-param>
+    <context-param> 
         <param-name>javax.faces.FACELETS_DECORATORS</param-name>
         <param-value>
             de.beyondjava.angularFaces.core.tagTransformer.AngularTagDecorator
@@ -28,8 +28,12 @@
     <context-param>
         <param-name>org.omnifaces.COMBINED_RESOURCE_ACTIVATE_RESOURCE_CACHING</param-name>
         <param-value>
-      true
+      false
     </param-value>
+    <context-param>
+     <param-name>org.omnifaces.COMBINED_RESOURCE_HANDLER_DISABLED</param-name>
+     <param-value>true</param-value>
+ </context-param>
     </context-param>
     <!-- cache ten combined resources at most -->
     <context-param>

@@ -28,16 +28,26 @@
                     <h:outputText value="Panel Content"/>
                 </b:panel>
                 <br/>
-                <b:panel title="Panel title">
+                
+                <b:panel title="Panel title" collapsible="false">
                     <f:facet name="heading">
                         <h:outputText value="Panel heading without title"/>
                     </f:facet>
                     <h:outputText value="Panel Content"/>
                 </b:panel>
+                <h3>Collapsible panels</h3>
+                <p>By default, panels can be collapse by clicking the title bar or the chevron at the right hand side of the title bar. If you
+                don't need this feature, you can switch it off by adding the attribute <code>collapsible="false"</code>:</p>
+                
+                <b:panel title="Try to fold me away!" collapsible="false">
+                   I bet you can't...
+                </b:panel>
+                
+                
                 <br/>
                 <h3 id="panels-alternatives">Contextual alternatives</h3>
                 <p>Like other components, easily make a panel more meaningful to a particular context by adding a <code>look</code> attribute with values primary, success, info, warning or danger.</p>
-                <b:panel title="Panel Title - Primary" look="primary">
+                <b:panel title="Panel Title - Primary" look="primary" >
                     <h:outputText value="Panel Content"/>
                 </b:panel>
                 <b:panel title="Panel Title - Success" look="success">
@@ -86,6 +96,11 @@
 								<td>id</td>
 								<td>(none)</td>
 								<td>Unique identifier of the component.</td>
+							</tr>
+							<tr>
+								<td>collapsible</td>
+								<td>true</td>
+								<td>Set <code>collapsible="false"</code> to suppress the collapse/expand functionality.</td>
 							</tr>
 							<tr>
 								<td>styleClass</td>
