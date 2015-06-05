@@ -43,6 +43,38 @@
                    I bet you can't...
                 </b:panel>
                 
+                <h3>Persistent collapse/expand state</h3>
+                <p>By default, panels are not collapsed when the page is rendered. If they're outside a form, 
+                they are also expanded after a post request (i.e. after clicking a button) - even if the user had collapsed the panel before clicking the button.
+                To preserve the expansion state on postbacks, make sure to put the panel into the same form as the command button. The panel below
+                is the only panel on this page which restores its state after clicking the button:</p>
+                
+                <b:panelGrid colSpans="6,6" id="stateGridId">
+	                <h:form>
+		                <b:panel title="Within form - collapse state is restored" look="primary" >
+		                    <h:outputText value="Panel Content"/>
+		                    <b:messages />
+		                </b:panel>
+		                <b:commandButton value="Redraw this page" update="stateGridId" ajax="true" actionListener="#{messagesBean.info}"/>
+	           	    </h:form>
+	                <b:panel title="outside the form - open after each postback" look="danger" >
+	                    <h:outputText value="Panel Content"/>
+	                    <b:messages />
+	                </b:panel>
+	            </b:panelGrid>
+	            
+	            <h3>Programmable collapse/expand state</h3>
+	            <p>The collapse state can also be controlled by an attribute of a managed bean:</p>
+	            
+	                <b:panel title="I'm closed because of a bean attribute." look="danger" collapsed="#{panelBean.hideContent}">
+	                    <h:outputText value="Panel Content"/>
+	                    <b:messages />
+	                </b:panel>
+	                <b:panel title="I'm closed because of a bean attribute." look="danger" collapsed="true">
+	                    <h:outputText value="Panel Content"/>
+	                    <b:messages />
+	                </b:panel>
+                
                 
                 <br/>
                 <h3 id="panels-alternatives">Contextual alternatives</h3>

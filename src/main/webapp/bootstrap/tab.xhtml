@@ -67,6 +67,13 @@
 			</b:tab>
 
 		</b:tabView>
+		
+		<h3>Persistent tab selection</h3>
+		<p>By default, the first tab is opened, or the tab defined by <code>activeIndex</code>. This also holds true after a postback (i.e. after 
+		clicking a command button that shows the current JSF page again), unless you put the <code>&lt;b:tabView /&gt;</code>
+		into the same form as the button.</p>
+		<p>After a page reload (<kbd>F5</kbd> or <kbd>CTRL+R</kbd>) the initial state is always shown. That's because JSF considers
+		page reloads as a sort of a reset. Everything that's stored in the <code>ViewScope</code> is lost.</p>
 
 		<b:panel look="info">
 			<f:facet name="heading">
