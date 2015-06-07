@@ -21,19 +21,30 @@ import javax.faces.event.ActionEvent;
 public class PanelBean implements Serializable {
 	private static final long serialVersionUID = 5497787734011747081L;
 	
-	private boolean hideContent=true;
-
+	private boolean firstPanelCollapsed=true;
+	
 	public boolean isHideContent() {
-		return hideContent;
+		return firstPanelCollapsed;
 	}
 
-	public void setHideContent(boolean hideContent) {
-		this.hideContent = hideContent;
+	public boolean getSecondPanelCollapsed() {
+		return !firstPanelCollapsed;
 	}
 	
-	public boolean getHideContent() {
-		return hideContent;
+	public boolean getFirstPanelCollapsed() {
+		return firstPanelCollapsed;
 	}
 	
+	public void toggle(ActionEvent event) {
+		firstPanelCollapsed=!firstPanelCollapsed;
+	}
+	
+	public String getFirstText() {
+		return firstPanelCollapsed? "closed":"open";
+	}
+
+	public String getSecondText() {
+		return firstPanelCollapsed? "open":"closed";
+	}
 
 }
