@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:fragment
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+		<b:panel look="info">
+			<f:facet name="heading">
+				<b>Attributes of &lt;b:poll &gt;</b>
+			</f:facet>
+			<table class="table table-striped table-hover"
+				style="background-color: #fff">
+				<thead>
+					<tr>
+						<th>Attribute</th>
+						<th>Default value</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+					    <td>action</td>
+					    <td>(none)</td>
+					    <td>The button action, this can be method expression or a string outcome.</td>
+					</tr>
+					<tr>
+					    <td>actionListener</td>
+					    <td>(none)</td>
+					    <td>A method expression that refers to a method with this signature: void methodName(Action-Event).</td>
+					</tr>
+					<tr>
+					    <td>execute</td>
+					    <td>(none)</td>
+					    <td>Which input fields are to be sent? Default value: @none</td>
+					</tr>
+					<tr>
+					    <td>id</td>
+					    <td>(none)</td>
+					    <td>Unique identifier of the component in a namingContainer.</td>
+					</tr>
+					<tr>
+					    <td>interval</td>
+					    <td>(none)</td>
+					    <td>How often is the poll action to be called? Denotes the number of milliseconds between polls. Default value is 1000.</td>
+					</tr>
+					<tr>
+					    <td>once</td>
+					    <td>(none)</td>
+					    <td>If true, the poll is called only once. Default value: false.</td>
+					</tr>
+					<tr>
+					    <td>rendered</td>
+					    <td>false</td>
+					    <td>Boolean value to specify the rendering of the component, when set to false component will not be rendered.</td>
+					</tr>
+					<tr>
+					    <td>update</td>
+					    <td>(none)</td>
+					    <td>Which region of the screen is to be updated? Default value: @form</td>
+					</tr>
+				</tbody>
+			</table>
+		</b:panel>
+</ui:fragment>

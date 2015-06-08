@@ -103,69 +103,9 @@
                     </f:facet>
                 </b:panel>
                 
-                <h3>Reference section</h3>
-                <b:panel look="info">
-				<f:facet name="heading">
-					<b>Attributes of &lt;b:panel &gt;</b>
-				</f:facet>
-					<table class="table table-striped table-hover"
-						style="background-color: #fff">
-						<thead>
-							<tr>
-								<th>Attribute</th>
-								<th>Default value</th>
-								<th>Description</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>look</td>
-								<td>(none)</td>
-								<td>Displays the panel header in one of the signal colors of Bootstrap:<br />primary, success, info, warning or danger. By default, a panel header is light gray.</td>
-							</tr>
-							<tr>
-								<td>id</td>
-								<td>(none)</td>
-								<td>Unique identifier of the component.</td>
-							</tr>
-							<tr>
-								<td>collapsible</td>
-								<td>true</td>
-								<td>Set <code>collapsible="false"</code> to suppress the collapse/expand functionality.</td>
-							</tr>
-							<tr>
-								<td>styleClass</td>
-								<td>(none)</td>
-								<td>CSS class of the entire panel.</td>
-							</tr>
-							<tr>
-								<td>style</td>
-								<td>(none)</td>
-								<td>Inline CSS of the entire panel.</td>
-							</tr>
-							<tr>
-								<td>title</td>
-								<td>(none)</td>
-								<td>The caption of the panel.</td>
-							</tr>
-							<tr>
-								<td>titleClass</td>
-								<td>(none)</td>
-								<td>CSS class of the title</td>
-							</tr>
-							<tr>
-								<td>contentClass</td>
-								<td>(none)</td>
-								<td>CSS class of the content area.</td>
-							</tr>
-							<tr>
-								<td>contentStyle</td>
-								<td>(none)</td>
-								<td>Inline CSS of the content area.</td>
-							</tr>
-							</tbody>
-                		</table>
-    			</b:panel>
+                <br/>
+                <h2>Reference section</h2>
+                <ui:include src="PanelAttributes.xhtml" />
                 <b:panel look="info">
 				<f:facet name="heading">
 					<b>Facets of &lt;b:panel &gt;</b>

@@ -24,6 +24,20 @@ td {
 			<p:commandButton value="Fatal" actionListener="#{messagesBean.fatal}" update="@form"/>
 			<b:messages />
 		</h:form>
+		
+		        <br/>
+                <h2>Reference section</h2>
+                <ui:include src="MessagesAttributes.xhtml" />
+                <b:panel look="info" rendered="false">
+					<f:facet name="heading">
+						<b>Skinning</b>
+					</f:facet>
+					<ul>
+						<li>Tell the world which CSS classes can be used to change the
+						look of the component.</li>
+					</ul>
+				</b:panel>
+		
 		<br />
 		<script type="text/javascript">
       SyntaxHighlighter.all();

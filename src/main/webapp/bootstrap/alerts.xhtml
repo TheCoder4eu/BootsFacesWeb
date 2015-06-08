@@ -38,6 +38,20 @@
                 <p>You can make Alerts dismissable adding <code>closable="true"</code> :</p>
                 <b:alert severity="warning" title="Warning Title" closable="true"><strong>Warning!</strong> Best check yo self, you're not looking too good. </b:alert>
                 <p>this message will close when you click on the cross on the left.</p>
+                
+                <br/>
+                <h2>Reference section</h2>
+                <ui:include src="AlertAttributes.xhtml" />
+                <b:panel look="info" rendered="false">
+					<f:facet name="heading">
+						<b>Skinning</b>
+					</f:facet>
+					<ul>
+						<li>Tell the world which CSS classes can be used to change the
+						look of the component.</li>
+					</ul>
+				</b:panel>
+                
                 <br/><br/><br/>
                 <script type="text/javascript">
                     SyntaxHighlighter.all();
