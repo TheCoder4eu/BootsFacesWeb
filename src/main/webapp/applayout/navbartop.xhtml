@@ -5,6 +5,11 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:b="http://bootsfaces.net/ui">
             
+    <ui:remove>
+	    <!--
+	    	Hint to editors: The menus follow the Chicago style of capitalization. Please capitalize everything but the "smaller" words. 
+	     -->
+     </ui:remove>
     <b:navBar brand="BootsFaces" brandHref="#{request.contextPath}/index.jsf" inverse="true" fixed="top">
         <b:container>
         <b:navbarLinks>
@@ -29,11 +34,12 @@
             </b:dropMenu>
             <b:dropMenu value="Forms">
                 <b:navLink value="Buttons" outcome="/forms/buttons" />
-                <b:navLink value="Button groups and Toolbars" outcome="/forms/buttonGroups" />
+                <b:navLink value="Button Groups and Toolbars" outcome="/forms/buttonGroups" />
                 <b:navLink value="Command Button" outcome="/forms/commandButton" />
+                <b:navLink value="Fetch Bean Infos (Validations)" outcome="/forms/FetchBeanInfos" />
                 <b:navLink value="Input Text" outcome="/forms/inputText" />
                 <b:navLink value="Input Secret" outcome="/forms/inputSecret" iconAwesome="user-secret" />
-                <b:navLink value="Check box" outcome="/forms/checkBox" />
+                <b:navLink value="Checkbox" outcome="/forms/checkBox" />
                 <b:navLink value="Combobox (SelectOneMenu)" outcome="/forms/selectOneMenu" />
                 <b:navLink value="Poll" outcome="/forms/poll" iconAwesome="refresh" />
                 <b:navLink value="Messages" outcome="/forms/messages" iconAwesome="refresh" />
@@ -49,7 +55,7 @@
             </b:dropMenu>
             <b:dropMenu value="jQuery UI Widgets">
                 <b:navLink value="Slider" outcome="/jquery-ui/slider" icon="tasks" iconAwesome="sliders" />
-                <b:navLink value="more Sliders" outcome="/jquery-ui/slider2" icon="tasks" />
+                <b:navLink value="More Sliders" outcome="/jquery-ui/slider2" icon="tasks" />
                 <b:navLink value="DatePicker" outcome="/jquery-ui/datepicker" icon="calendar" />
             </b:dropMenu>
             <b:dropMenu value="Integration">

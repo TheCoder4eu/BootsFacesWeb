@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="content">
+		<style>
+td {
+	padding: 8px;
+}
+</style>
+		<h1>FetchBeanInfos (&lt;b:fetchBeanInfos /&gt;)</h1>
+
+		<p><code>&lt;b:fetchBeanInfos&gt;</code> is a non-visual component. Its purpose is to make information about the server available to Javascript.</p>
+		<p>As of BootsFaces 0.6.7, <code>&lt;b:fetchBeanInfos&gt;</code> only sets the variable global <code>validationFailed</code> after 
+		processing a JSF event. If one of the validation constraints is violated, <code>validationFailed</code> is set to true, otherwise it's false.</p>
+		 
+		<h1>Basic usage</h1>
+		<p>The <code>&lt;b:commandButton /&gt;</code> page uses to open a modal dialog only if every validation constraint is fulfilled:</p>
+		
+		<b:well>
+		<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+           <h:form>
+              <h:panelGrid id="inform" columns="3" cellpadding="5">
+                <h:outputLabel for="firstname" value="Firstname: *" />
+                <b:inputText id="firstname" value="#{informBean.firstname}">
+                  <f:validateLength minimum="2" />
+                </b:inputText>
+				<b:fetchBeanInfos />
+              </h:panelGrid>
+           	  <b:column span="2">
+        	      <b:commandButton value="Ajax Modal" ajax="true" update="@form:inform" id="ajaxmodal" look="inverse"
+    	             oncomplete="if(validationFailed) alert('Please enter valid input before opening the modal'); else $('#amodal').modal('show')" />
+	          </b:column>
+           <h:form>
+]]></script>
+		</b:well>
+		
+		<h3>AJAX</h3>
+		<p>If you're using AJAX, don't forget to include the <code>&lt;b:fetchBeanInfos&gt;</code> widget in the list of updated regions.</p>
+		
+		<b:panel look="info" rendered="false">
+			<f:facet name="heading">
+				<b>Attributes of &lt;b:fetchBeanInfos &gt;</b>
+			</f:facet>
+			<table class="table table-striped table-hover"
+				style="background-color: #fff">
+				<thead>
+					<tr>
+						<th>Attribute</th>
+						<th>Default value</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</b:panel>
+		<b:panel look="info" rendered="false">
+			<f:facet name="heading">
+				<b>Skinning</b>
+			</f:facet>
+			<ul>
+				<li>Tell the world which CSS classes can be used to change the
+					look of the component.</li>
+			</ul>
+		</b:panel>
+
+		<script type="text/javascript">
+      		SyntaxHighlighter.all();
+    	</script>
+		<br />
+		<br />
+		<br />
+		<br />
+	</ui:define>
+</ui:composition>
