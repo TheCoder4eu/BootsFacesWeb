@@ -296,18 +296,28 @@
 				</b:tabView>
 			
                 <br/>
+                
+                <h2>JSF 2.2 pass-through attributes</h2>
+                <p>It's possible to use pass-through attributes with the <code>&lt;b:inputText</code> widget, but there's a twist: the attributes are added multiple times.
+                This is because there are several plausible places to put a pass-through attribute in, so we decided to leave it as it is.</p>
+                <p>For instance, consider this JSF snippet:</p> 
+  					<b:well>
+						<script type="syntaxhighlighter"
+							class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+							<![CDATA[
+				  				<b:inputText  value="#{userBean.name}" label="Enter your name"
+						                      ng:ng-model="name" />
+								<b:inputText  value="#{userBean.age}" label="How old are you?"
+              								  ng:type="number" ng:min="5" ng:max="125" ng:ng-model="age" />           
+]]>
+					       </script>
+					 </b:well>
+				<p>The generated HTML code looks like so:</p>
+               <h:graphicImage library="passthrough" name="generatedHtml.png" />
+                
                 <h2>Reference section</h2>
                 <ui:include src="InputTextAttributes.xhtml" />
-                <b:panel look="info" rendered="false">
-					<f:facet name="heading">
-						<b>Skinning</b>
-					</f:facet>
-					<ul>
-						<li>Tell the world which CSS classes can be used to change the
-						look of the component.</li>
-					</ul>
-				</b:panel>
-			
+                
             <b:panel look="info">
 				<f:facet name="heading">
 					<b>Skinning</b>
