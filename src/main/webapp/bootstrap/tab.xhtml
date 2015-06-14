@@ -14,7 +14,9 @@
 		<p>You can have also complex content in your tabs like the
 			thumbnail in the third tab:</p>
 
-		<b:tabView activeIndex="2">
+<h:form>
+<b:commandButton actionListener="#{testBean.nextTab}" value="next tab" />
+		<b:tabView activeIndex="#{testBean.index}">
 			<b:tab title="First tab">
 				<p>This is the first tab.</p>
 				<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.
@@ -67,6 +69,7 @@
 			</b:tab>
 
 		</b:tabView>
+		</h:form>
 		
 		<h3>Persistent tab selection</h3>
 		<p>By default, the first tab is opened, or the tab defined by <code>activeIndex</code>. This also holds true after a postback (i.e. after 
