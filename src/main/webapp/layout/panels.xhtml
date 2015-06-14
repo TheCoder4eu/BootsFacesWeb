@@ -63,18 +63,22 @@
 	                </b:panel>
 	            </b:panelGrid>
 	            
-	            <h3>Programmable collapse/expand state</h3>
+				<h3>Programmable collapse/expand state</h3>
 	            <p>The collapse state can also be controlled by an attribute of a managed bean:</p>
-	            
-	                <b:panel title="I'm closed because of a bean attribute." look="danger" collapsed="#{panelBean.hideContent}">
+	            <h:form>
+	            <b:panelGrid colSpans="6,6">
+	                <b:panel title="I'm #{panelBean.firstText} because of a bean attribute." look="danger" collapsed="#{panelBean.firstPanelCollapsed}">
 	                    <h:outputText value="Panel Content"/>
 	                    <b:messages />
 	                </b:panel>
-	                <b:panel title="I'm closed because of a bean attribute." look="danger">
+	                <b:panel title="I'm #{panelBean.secondText} because of a bean attribute." look="danger" collapsed="#{panelBean.secondPanelCollapsed}">
 	                    <h:outputText value="Panel Content"/>
 	                    <b:messages />
 	                </b:panel>
-                
+	                </b:panelGrid>
+	                <b:commandButton ajax="true" update="@form" actionListener="#{panelBean.toggle}" value="toggle" />
+                </h:form>
+                <p>However, if the user opens or closes a panel, their choice overrides the values taken from the bean.</p>                
                 
                 <br/>
                 <h3 id="panels-alternatives">Contextual alternatives</h3>
