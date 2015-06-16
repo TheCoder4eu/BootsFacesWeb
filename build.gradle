@@ -32,10 +32,10 @@ compile 'com.google.zxing:core:3.1.0'
 compile 'com.google.zxing:javase:3.1.0'
 compile 'org.omnifaces:omnifaces:1.10'
 
-//compile(
-//    'de.beyondjava:angularFaces-core:2.1.+',
-//    'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.5.0'
-//)
+compile(
+    'de.beyondjava:angularFaces-core:2.1.+',
+    'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.5.0'
+)
 
 // coming soon:
 // compile 'de.beyondjava:angularFaces-widgets:2.2'
