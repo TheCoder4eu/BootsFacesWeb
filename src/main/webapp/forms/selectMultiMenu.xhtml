@@ -9,14 +9,18 @@
             <ui:define name="content">
                 <style>td {padding: 8px;}</style>
                 <h1>Multiple Choice Combobox (&lt;b:selectMultiMenu&gt;)</h1>
-                
-                <p>Comboboxes give you a list of items to select from. As of Bootsfaces 0.6, comboboxes are not editable - they are pure drop-down menus.</p>
-                <p>&lt;b:selectMultiMenu&gt; makes the Bootstrap style of displaying comboboxes available to JSF programmers.</p>
+                <p>This is a special combobox that allows you to select an arbitrary number of item without sacrificing a lot of screen estate.</p>
+                <p>Both the values and the labels of the items are expected to be strings. If the user selects more than one item,
+                the combobox displays every selected label separated by commas. Likewise, the value of the combobox is a comma-separated list
+                of the item values. You can see both effects in the live demo below.</p>
+
                 <h1>Kudos</h1>
                 <p>This widget is based on the <a target="#" href="http://davidstutz.github.io/bootstrap-multiselect/">Bootstrap Multiselect</a> widget written by David Stutz.</p>
+
                 <h1>License</h1>
                 <p>The original widget is available both under the Apache V2 license and the BSD 3-Clause License. Please note that this is a different license than BootsFaces itself,
                 which has been put under a GPL V3 license (or - at your option - any later version).</p>
+
                 <h1>Basic usage</h1>
         <h:form>
             <b:tabView activeIndex="1">
@@ -37,7 +41,6 @@
 			    <b:inputText value="&num;{carBean.brand}" disabled="true" id="brandOutputID"/>
 	        	<h:outputLabel value="Select your car's type:" for="typeID" />
 			    <b:selectMultiMenu value="&num;{carBean.type}" id="typeID" required="true">
-			    		<f:selectItem itemLabel="(Please select)" itemValue=""/>
 			    		<f:selectItem itemLabel="Cinquecento" itemValue="1"/>
 					    <f:selectItem itemLabel="Civic" itemValue="2"/>
 					    <f:selectItem itemLabel="Astra" itemValue="3"/>
@@ -56,7 +59,6 @@
                         <b:panelGrid colSpans="2,2,2,2,4">
                             <h:outputLabel value="Select your car's brand:" for="brandID" id="l1" />
                             <b:selectMultiMenu value="#{carBean.brand}" id="brandID">
-                                <f:selectItem itemLabel="(Please select)" itemValue="" />
                                 <f:selectItem itemLabel="Fiat" itemValue="1" />
                                 <f:selectItem itemLabel="Honda" itemValue="2" />
                                 <f:selectItem itemLabel="Opel" itemValue="3" />
@@ -66,7 +68,6 @@
                             <b:inputText value="#{carBean.brand}" disabled="true" id="brandOutputID" />
                             <h:outputLabel value="Select your car's type:" for="typeID" />
                             <b:selectMultiMenu value="#{carBean.type}" id="typeID" required="true">
-                                <f:selectItem itemLabel="(Please select)" itemValue="" />
                                 <f:selectItem itemLabel="Cinquecento" itemValue="1" />
                                 <f:selectItem itemLabel="Civic" itemValue="2" />
                                 <f:selectItem itemLabel="Astra" itemValue="3" />
@@ -84,122 +85,57 @@
             </b:tabView>
         </h:form>
         
-        <h1>Objects and converters</h1>
-        <p>In most cases you don't need a converter to use an arbitrary object as bean attribute. It suffices to use the attributes <code>var</code>, <code>itemValue</code> and <code>itemLabel</code> of <code>&lt;f:selectItem /&gt;</code> and <code>&lt;f:selectItems /&gt;</code>.</p>
-        <b:alert severity="warning" title="As of BootsFaces 0.6.6-SNAPSHOT, converters aren't used correctly when rendering." />  
+        <h1>Append and prepend</h1>
+    <p>You can use the <code>prepend</code> facet to put an element seamlessly in front of the multiple choice combobox. However, the <code>append</code> facet
+    doesn't work yet. It is displayed, but not seamlessly next to the combobox.</p>
         
-        <h:form>
-            <b:tabView activeIndex="3">
-                <b:tab title="JSF markup">
-                <b:well>
-                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<b:tabView activeIndex="0">
+    <b:tab title="JSF markup">
+                    <b:well>
+    
+       <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
-                    <b:panelGrid colSpans="3,3,6">
-                         <f:event listener="&num;{soccerTeamBean.init}" type="preRenderView" />
-                        <h:outputLabel value="Select your team's goalkeeper:" for="keeperID" />
-                        <b:selectMultiMenu value="&num;{soccerTeamBean.goalkeeper}" id="keeperID">
-                            <f:selectItems value="&num;{soccerTeamBean.team}" var="playerVar" itemValue="&num;{playerVar}"
-                                itemLabel="&num;{playerVar.name}" />
-                        </b:selectMultiMenu>
-                        Current keeper: &num;{soccerTeamBean.goalkeeper.name}
-                    </b:panelGrid>
-                    <b:commandButton value="Submit">
-                        <f:ajax execute="@form" rendered="@form" />
-                    </b:commandButton>
+                <b:selectMultiMenu value="#{carBean.type}" required="true" label="Select an E-Mail-Address">
+	                <f:facet name="prepend">
+	                    <h:outputText value="@" />
+	                </f:facet>
+	                <f:facet name="append">
+                        <!-- append doesn't work correctly! -->
+	                    <h:outputText value=".com" />
+	                </f:facet>
+	                
+                    <f:selectItem itemLabel="gmail" itemValue="1" />
+                    <f:selectItem itemLabel="github" itemValue="2" />
+                </b:selectMultiMenu>
 ]]>
-                   </script>
+       </script>
+       </b:well>
+       </b:tab>
+       <b:tab title="live preview" contentStyle="height:248px">
+       <b:well style="height:248px">
+                <b:selectMultiMenu value="#{carBean.type}" required="true" label="Select an E-Mail-Address">
+	                <f:facet name="prepend">
+	                    <h:outputText value="@" />
+	                </f:facet>
+	                <f:facet name="append">
+	                    <h:outputText value=".com" />
+	                </f:facet>
+	                
+                    <f:selectItem itemLabel="gmail" itemValue="1" />
+                    <f:selectItem itemLabel="github" itemValue="2" />
+                </b:selectMultiMenu>
                 </b:well>
-                </b:tab>
-                                <b:tab title="Team bean">
-                <b:well>
-                    <script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-@ManagedBean
-@ViewScoped
-public class SoccerTeamBean implements Serializable {
-    private static final long serialVersionUID = 1L;
-
-    private List<Player> team;
-    private Player goalkeeper;
-
-    public void init(ComponentSystemEvent e) {
-        this.team = new ArrayList<>();
-        this.team.add(new Player("Marc-André ter Stegen"));
-        this.team.add(new Player("Jordi Masip"));
-        this.team.add(new Player("Jordi Alba"));
-        this.team.add(new Player("Marc Batra"));
-    }
-
-    public List<Player> getTeam() {
-        return team;
-    }
-
-    public void setTeam(List<Player> team) {
-        this.team = team;
-    }
-
-    public Player getGoalkeeper() {
-        return goalkeeper;
-    }
-
-    public void setGoalkeeper(Player goalkeeper) {
-        this.goalkeeper = goalkeeper;
-    }
-}
-]]>
-                   </script>
-                   </b:well>
-                </b:tab>
-                                <b:tab title="Player class">
-                                                <b:well>
-                                
-                    <script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-public class Player {
-
-    private String name;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Player(String name) {
-        this.name = name;
-    }
-}
-]]>
-                   </script>
-                   </b:well>
-                </b:tab>
-                
-                <b:tab title="displayed as">
-                <b:well>
-                    <b:panelGrid colSpans="3,3,6">
-                        <f:event listener="#{soccerTeamBean.init}" type="preRenderView" />
-                        <h:outputLabel value="Select your team's goalkeeper:" for="keeperID" />
-                        <b:selectMultiMenu value="#{soccerTeamBean.goalkeeper}" id="keeperID">
-                            <f:selectItems value="#{soccerTeamBean.team}" var="playerVar" itemValue="#{playerVar}"
-                                itemLabel="#{playerVar.name}" />
-                        </b:selectMultiMenu>
-                        Current keeper: #{soccerTeamBean.goalkeeper.name}
-                    </b:panelGrid>
-                    <b:commandButton value="Submit">
-                        <f:ajax execute="@form" rendered="@form" />
-                    </b:commandButton>
-                    </b:well>
-                </b:tab>
-            </b:tabView>
-        </h:form>
+       </b:tab>
+       </b:tabView>
         
+        <h1>Objects and converters</h1>
+        <p><code>&lt;b:selectMultiMenu&gt;</code> only works with strings. The value must not be any other datatype. So don't bother with converters -
+        we officially don't support them.</p>
         
         <h1>Arrays and HashMaps</h1>
         <p>The list of items can be defined as an <code>&lt;f:selectItems /&gt;</code> tag. BootsFaces uses a modified version of the 
         algorithm PrimeFaces 5.1 uses to implement <code>&lt;f:selectItems /&gt;</code>. As a result, you can use <code>&lt;b:selectMultiMenu&gt;</code>
-        almost the same way as <code>&lt;b:selectMultiMenu&gt;</code>. </p>
+        almost the same way as <code>&lt;prime:selectOneMenu&gt;</code>. </p>
         <h:form>
 <b:tabView activeIndex="0">
     <b:tab title="JSF markup">
@@ -308,6 +244,11 @@ public class SemaphoreBean {
         
         
                 <h1>Labels as captions above the combobox</h1>
+                <p>By default, BootsFaces displays the label above the input field. However, in the case of the multiple choice combobox,
+                we didn't implement this feature yet.</p>
+                <ui:remove>
+                <!-- 
+                
 <b:tabView>
   <b:tab title="JSF markup">
                   <b:well>
@@ -362,6 +303,8 @@ public class SemaphoreBean {
 </b:tabView>
               
                 <p>The label is displayed above the combobox</p>
+                 -->
+                </ui:remove>
 				<br />
 				<br />
 				<ui:include src="SelectMultiMenuAttributes.xhtml" />

@@ -7,14 +7,15 @@ package net.bootsfaces.demo;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
+import javax.faces.event.ActionEvent;
 
 /**
  *
  * @author TheCoder4eu
  */
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class TestBean implements Serializable {
 	private static final long serialVersionUID = -332002335165889800L;
 	private int val1=78;
@@ -27,6 +28,15 @@ public class TestBean implements Serializable {
     private String label2="Label Two";
     private String text1="Text One";
     private String text2="Text Two";
+    
+    private int index=2;
+    
+    public void nextTab(ActionEvent e) {
+    	index++;
+    	if (index>3) index =0;
+    }
+    
+    
 
     public int getVal1() {
         return val1;
@@ -114,4 +124,12 @@ public class TestBean implements Serializable {
      */
     public TestBean() {
     }
+
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
 }
