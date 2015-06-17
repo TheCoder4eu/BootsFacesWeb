@@ -85,6 +85,75 @@
             </b:tabView>
         </h:form>
         
+        <h1>Options</h1>
+
+		<b:panelGrid colSpans="3,3,6">
+			<h:outputText value="maxHeight" />
+            <b:selectMultiMenu value="#{carBean.brand}" 
+                maxHeight="30">
+                 <f:selectItem itemLabel="Fiat" itemValue="1" />
+                 <f:selectItem itemLabel="Honda" itemValue="2" />
+                 <f:selectItem itemLabel="Opel" itemValue="3" />
+            </b:selectMultiMenu>
+			<h:outputText value="Maximum height of the options panel."/>
+            
+            <h:outputText value="nonSelectedText" />
+            <b:selectMultiMenu value="#{carBean.brand}" 
+                nonSelectedText="Please select!">
+                 <f:selectItem itemLabel="Fiat" itemValue="1" />
+                 <f:selectItem itemLabel="Honda" itemValue="2" />
+                 <f:selectItem itemLabel="Opel" itemValue="3" />
+            </b:selectMultiMenu>
+			<h:outputText value="Text which is displayed if no option has been selected."/>
+            
+            <h:outputText value="nSelectedText, numberDisplayed" />
+            <b:selectMultiMenu value="#{carBean.brand}" 
+                nSelectedText="To many choices!" numberDisplayed="1">
+                 <f:selectItem itemLabel="Fiat" itemValue="1" />
+                 <f:selectItem itemLabel="Honda" itemValue="2" />
+                 <f:selectItem itemLabel="Opel" itemValue="3" />
+            </b:selectMultiMenu>
+			<h:outputText value="Maximum number of options displayed in the button. Text which is displayed if more than numberDisplayed options have been selected."/>
+            
+            <h:outputText value="allSelectedText" />
+            <b:selectMultiMenu value="#{carBean.brand}" 
+                allSelectedText="everything selected">
+                 <f:selectItem itemLabel="Fiat" itemValue="1" />
+                 <f:selectItem itemLabel="Honda" itemValue="2" />
+                 <f:selectItem itemLabel="Opel" itemValue="3" />
+            </b:selectMultiMenu>
+			<h:outputText value="Text which is displayed if every option has been selected."/>
+            
+            <h:outputText value="includeSelectAllOption" />
+            <b:selectMultiMenu value="#{carBean.brand}" 
+                includeSelectAllOption="true">
+                 <f:selectItem itemLabel="Fiat" itemValue="1" />
+                 <f:selectItem itemLabel="Honda" itemValue="2" />
+                 <f:selectItem itemLabel="Opel" itemValue="3" />
+            </b:selectMultiMenu>
+			<h:outputText value="If true, you can select every option with a single click."/>
+            
+            <h:outputText value="selectAllText" />
+            <b:selectMultiMenu value="#{carBean.brand}" 
+                includeSelectAllOption="true" selectAllText="click to chose everything">
+                 <f:selectItem itemLabel="Fiat" itemValue="1" />
+                 <f:selectItem itemLabel="Honda" itemValue="2" />
+                 <f:selectItem itemLabel="Opel" itemValue="3" />
+            </b:selectMultiMenu>
+			<h:outputText value="The text displayed for the select all option."/>
+            
+            <h:outputText value="enableFiltering,filterPlaceholder" />
+            <b:selectMultiMenu value="#{carBean.brand}" 
+                enableFiltering="true" filterPlaceholder="type to filter">
+                 <f:selectItem itemLabel="Fiat" itemValue="1" />
+                 <f:selectItem itemLabel="Honda" itemValue="2" />
+                 <f:selectItem itemLabel="Opel" itemValue="3" />
+            </b:selectMultiMenu>
+			<h:outputText value="Set to true or false to enable or disable the filter. A filter input will be added to dynamically filter all options. The placeholder used for the filter input."    />
+        </b:panelGrid>
+        
+        
+        
         <h1>Append and prepend</h1>
     <p>You can use the <code>prepend</code> facet to put an element seamlessly in front of the multiple choice combobox. However, the <code>append</code> facet
     doesn't work yet. It is displayed, but not seamlessly next to the combobox.</p>

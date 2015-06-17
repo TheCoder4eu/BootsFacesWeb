@@ -22,24 +22,49 @@
 				</thead>
 				<tbody>
 					<tr>
-					    <td>accesskey</td>
-					    <td>(none)</td>
-					    <td>Access key to transfer focus to the input element.</td>
+					    <td>maxHeight</td>
+					    <td>0 </td>
+					    <td>Maximum height of the options panel.</td>
 					</tr>
 					<tr>
-					    <td>alt</td>
+					    <td>nonSelectedText</td>
 					    <td>(none)</td>
-					    <td>Alternate textual description of the input element.</td>
+					    <td>Text which is displayed if no option has been selected.</td>
 					</tr>
 					<tr>
-					    <td>binding</td>
+					    <td>nSelectedText</td>
 					    <td>(none)</td>
-					    <td>An el expression referring to a server side UIComponent instance in a backing bean.</td>
+					    <td>Text which is displayed if more than numberDisplayed options have been selected.</td>
 					</tr>
 					<tr>
-					    <td>dir</td>
+					    <td>allSelectedText</td>
 					    <td>(none)</td>
-					    <td>Direction indication for text that does not inherit directionality.</td>
+					    <td>Text which is displayed if every option has been selected.</td>
+					</tr>
+					<tr>
+					    <td>numberDisplayed</td>
+					    <td>0 </td>
+					    <td>Maximum number of options displayed in the button.</td>
+					</tr>
+					<tr>
+					    <td>includeSelectAllOption</td>
+					    <td>false</td>
+					    <td>If true, you can select every option with a single click.</td>
+					</tr>
+					<tr>
+					    <td>selectAllText</td>
+					    <td>(none)</td>
+					    <td>The text displayed for the select all option.</td>
+					</tr>
+					<tr>
+					    <td>enableFiltering</td>
+					    <td>false</td>
+					    <td>Set to true or false to enable or disable the filter. A filter input will be added to dynamically filter all options.</td>
+					</tr>
+					<tr>
+					    <td>filterPlaceholder</td>
+					    <td>(none)</td>
+					    <td>The placeholder used for the filter input.</td>
 					</tr>
 					<tr>
 					    <td>disabled</td>
@@ -142,11 +167,6 @@
 					    <td>Client side callback to execute when text within input element is selected by user.</td>
 					</tr>
 					<tr>
-					    <td>placeholder</td>
-					    <td>(none)</td>
-					    <td>The placeholder attribute shows text in a field until the field is focused upon, then hides the text.</td>
-					</tr>
-					<tr>
 					    <td>readonly</td>
 					    <td>false</td>
 					    <td>Flag indicating that this input element will prevent changes by the user.</td>
@@ -170,11 +190,6 @@
 					    <td>requiredMessage</td>
 					    <td>(none)</td>
 					    <td>Message to show if the user did not specify a value and the attribute required is set to true.</td>
-					</tr>
-					<tr>
-					    <td>size</td>
-					    <td>0 </td>
-					    <td>Number of characters used to determine the width of the input element.</td>
 					</tr>
 					<tr>
 					    <td>span</td>
