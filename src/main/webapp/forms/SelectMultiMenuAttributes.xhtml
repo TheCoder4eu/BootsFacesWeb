@@ -22,6 +22,56 @@
 				</thead>
 				<tbody>
 					<tr>
+					    <td>accesskey</td>
+					    <td>(none)</td>
+					    <td>Access key to transfer focus to the input element.</td>
+					</tr>
+					<tr>
+					    <td>alt</td>
+					    <td>(none)</td>
+					    <td>Alternate textual description of the input element.</td>
+					</tr>
+					<tr>
+					    <td>binding</td>
+					    <td>(none)</td>
+					    <td>An el expression referring to a server side UIComponent instance in a backing bean.</td>
+					</tr>
+					<tr>
+					    <td>dir</td>
+					    <td>(none)</td>
+					    <td>Direction indication for text that does not inherit directionality.</td>
+					</tr>
+					<tr>
+					    <td>disabled</td>
+					    <td>false</td>
+					    <td>Disables the input element, default is false.</td>
+					</tr>
+					<tr>
+					    <td>fieldSize</td>
+					    <td>(none)</td>
+					    <td>The size of the input.Possible values are xs (extra small), sm (small), md (medium) and lg (large) .</td>
+					</tr>
+					<tr>
+					    <td>id</td>
+					    <td>(none)</td>
+					    <td>Unique identifier of the component in a namingContainer.</td>
+					</tr>
+					<tr>
+					    <td>immediate</td>
+					    <td>false</td>
+					    <td>Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false.</td>
+					</tr>
+					<tr>
+					    <td>label</td>
+					    <td>(none)</td>
+					    <td>The Label of the field .</td>
+					</tr>
+					<tr>
+					    <td>lang</td>
+					    <td>(none)</td>
+					    <td>A localized user presentable name.</td>
+					</tr>
+					<tr>
 					    <td>maxHeight</td>
 					    <td>0 </td>
 					    <td>Maximum height of the options panel.</td>
@@ -67,39 +117,19 @@
 					    <td>The placeholder used for the filter input.</td>
 					</tr>
 					<tr>
-					    <td>disabled</td>
-					    <td>false</td>
-					    <td>Disables the input element, default is false.</td>
+					    <td>radiobuttons</td>
+					    <td> false </td>
+					    <td>Set to true to display radiobuttons instead of checkboxes. Of course, in this case you can only select one option, so the widget's name is sort of a misnomer.</td>
 					</tr>
 					<tr>
-					    <td>fieldSize</td>
-					    <td>(none)</td>
-					    <td>The size of the input.Possible values are xs (extra small), sm (small), md (medium) and lg (large) .</td>
+					    <td>disableIfEmpty</td>
+					    <td> false </td>
+					    <td>If true, the button is disabled if no options are given.</td>
 					</tr>
 					<tr>
-					    <td>id</td>
-					    <td>(none)</td>
-					    <td>Unique identifier of the component in a namingContainer.</td>
-					</tr>
-					<tr>
-					    <td>immediate</td>
-					    <td>false</td>
-					    <td>Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false.</td>
-					</tr>
-					<tr>
-					    <td>label</td>
-					    <td>(none)</td>
-					    <td>The Label of the field .</td>
-					</tr>
-					<tr>
-					    <td>lang</td>
-					    <td>(none)</td>
-					    <td>A localized user presentable name.</td>
-					</tr>
-					<tr>
-					    <td>onblur</td>
-					    <td>(none)</td>
-					    <td>Client side callback to execute when input element loses focus.</td>
+					    <td>dropRight</td>
+					    <td> false </td>
+					    <td>Moves the drop-down-area from the left hand side to the right hand side.</td>
 					</tr>
 					<tr>
 					    <td>onchange</td>
@@ -107,64 +137,39 @@
 					    <td>Client side callback to execute when input element loses focus and its value has been modified since gaining focus.</td>
 					</tr>
 					<tr>
-					    <td>onclick</td>
+					    <td>ondropdownshow</td>
 					    <td>(none)</td>
-					    <td>OnClick DHTML event .</td>
+					    <td>Client side callback called when the drop-down area is shown.</td>
 					</tr>
 					<tr>
-					    <td>ondblclick</td>
+					    <td>ondropdownhide</td>
 					    <td>(none)</td>
-					    <td>Client side callback to execute when input element is double clicked.</td>
+					    <td>Client side callback called when the drop-down area is hidden.</td>
 					</tr>
 					<tr>
-					    <td>onfocus</td>
+					    <td>buttonClass</td>
 					    <td>(none)</td>
-					    <td>Client side callback to execute when input element receives focus.</td>
+					    <td>The CSS class of the button.</td>
 					</tr>
 					<tr>
-					    <td>onkeydown</td>
+					    <td>styleClass</td>
 					    <td>(none)</td>
-					    <td>Client side callback to execute when a key is pressed down over input element.</td>
+					    <td>Style class of the input element. Is translated to the buttonContainer attribute.</td>
 					</tr>
 					<tr>
-					    <td>onkeypress</td>
-					    <td>(none)</td>
-					    <td>Client side callback to execute when a key is pressed and released over input element.</td>
+					    <td>buttonWidth</td>
+					    <td>0 </td>
+					    <td>The width of the multiselect button may be fixed using this option.</td>
 					</tr>
 					<tr>
-					    <td>onkeyup</td>
-					    <td>(none)</td>
-					    <td>Client side callback to execute when a key is released over input element.</td>
+					    <td>enableCaseInsensitiveFiltering</td>
+					    <td> false </td>
+					    <td>If set to true, the filter is case-insensitive.</td>
 					</tr>
 					<tr>
-					    <td>onmousedown</td>
+					    <td>placeholder</td>
 					    <td>(none)</td>
-					    <td>Client side callback to execute when a pointer input element is pressed down over input element.</td>
-					</tr>
-					<tr>
-					    <td>onmousemove</td>
-					    <td>(none)</td>
-					    <td>Client side callback to execute when a pointer input element is moved within input element.</td>
-					</tr>
-					<tr>
-					    <td>onmouseout</td>
-					    <td>(none)</td>
-					    <td>Client side callback to execute when a pointer input element is moved away from input element.</td>
-					</tr>
-					<tr>
-					    <td>onmouseover</td>
-					    <td>(none)</td>
-					    <td>Client side callback to execute when a pointer input element is moved onto input element.</td>
-					</tr>
-					<tr>
-					    <td>onmouseup</td>
-					    <td>(none)</td>
-					    <td>Client side callback to execute when a pointer input element is released over input element.</td>
-					</tr>
-					<tr>
-					    <td>onselect</td>
-					    <td>(none)</td>
-					    <td>Client side callback to execute when text within input element is selected by user.</td>
+					    <td>The placeholder attribute shows text in a field until the field is focused upon, then hides the text.</td>
 					</tr>
 					<tr>
 					    <td>readonly</td>
@@ -192,6 +197,11 @@
 					    <td>Message to show if the user did not specify a value and the attribute required is set to true.</td>
 					</tr>
 					<tr>
+					    <td>size</td>
+					    <td>0 </td>
+					    <td>Number of characters used to determine the width of the input element.</td>
+					</tr>
+					<tr>
 					    <td>span</td>
 					    <td>0 </td>
 					    <td>The size of the input specified as number of grid columns.</td>
@@ -200,11 +210,6 @@
 					    <td>style</td>
 					    <td>(none)</td>
 					    <td>Inline style of the input element.</td>
-					</tr>
-					<tr>
-					    <td>styleClass</td>
-					    <td>(none)</td>
-					    <td>Style class of the input element.</td>
 					</tr>
 					<tr>
 					    <td>tabindex</td>
