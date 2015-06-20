@@ -14,16 +14,15 @@
 		<p>You can have also complex content in your tabs like the
 			thumbnail in the third tab:</p>
 
-<h:form>
-<b:commandButton actionListener="#{testBean.nextTab}" value="next tab" />
-		<b:tabView activeIndex="#{testBean.index}">
-			<b:tab title="First tab">
+<h:form id="tabform">
+		<b:tabView activeIndex="#{testBean.index}" contentStyle="height:500px">
+			<b:tab title="First tab" contentStyle="padding:20px;border-right:1px solid;border-left:1px solid;border-bottom:1px solid;border-color:#e8e8e8">
 				<p>This is the first tab.</p>
 				<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.
 					Donec id elit non mi porta gravida at eget metus. Nullam id dolor
 					id nibh ultricies vehicula ut id elit.</p>
 			</b:tab>
-			<b:tab title="Another tab">
+			<b:tab title="Another tab" contentStyle="padding:20px;border-right:1px solid;border-left:1px solid;border-bottom:1px solid;border-color:#e8e8e8">
 				<p>This is the second tab.</p>
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
 					do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -38,20 +37,22 @@
 			<b:tab title="Image tab">
 				<br />
 				<b:thumbnail>
+				<div style="float:left;padding:20px">
 					<img width="640" height="428"
 						src="https://farm4.staticflickr.com/3093/2573064842_d497899887_z.jpg?zz=1"
 						alt="2008-0608 (7119) Ulun Danu Temple by Jennifer, on Flickr" />
-					<f:facet name="caption">
+				</div>
+				<div style="height:450px">
 						<h3>Ulun Danu Beratan Temple</h3>
 						<p>Ulun Danu Temple is a Balinese Hindu Temple located at
 							Candi Kuning countryside. It is set at lakeside of Beratan with
 							beautiful lake view and hills surround it. It is situated in the
 							plateau area with cool atmosphere surround it and hills as a
 							backdrop.</p>
-					</f:facet>
+							</div>
 				</b:thumbnail>
 			</b:tab>
-			<b:tab title="Fancy tab">
+			<b:tab title="Fancy tab" contentStyle="padding:20px;border-right:1px solid;border-left:1px solid;border-bottom:1px solid;border-color:#e8e8e8">
 			   <f:facet name="anchor"><b:iconAwesome name="cog" spin="true" /></f:facet>
 				<p>This is the fourth tab. As you can see, you can add arbitrary content to the tab title. In particular, you can add images.</p>
 				<p>You can achieve this by defining a facet called <code>anchor</code>:</p>
@@ -69,6 +70,11 @@
 			</b:tab>
 
 		</b:tabView>
+		<br />
+		<p>Optionally, your server-side bean can define which tab is shown. You can achieve this by using the property <code>activeIndex</code>.
+		For instance, the example above uses <code>activeIndex="#{testBean.index}"</code>, which enables use to open the next tab by clicking a command button.
+		However, as soon as the user clicks a tab themselves, the connection to the back-end bean is lost.</p>
+		<b:commandButton actionListener="#{testBean.nextTab}" value="next tab"/>
 		</h:form>
 		
 		<h3>Persistent tab selection</h3>
