@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.bootsfaces</groupId>
 	<artifactId>BootsFacesWeb</artifactId>
-	<version>0.6.7</version>
+	<version>0.7.0</version>
 	<name>BootsFacesWeb</name>
 	<packaging>war</packaging>
 	<description>Documentation page of BootsFaces</description>
@@ -56,7 +56,7 @@
 		<dependency>
 			<groupId>net.bootsfaces</groupId>
 			<artifactId>bootsfaces</artifactId>
-			<version>0.6.7-SNAPSHOT</version>
+			<version>0.7.0</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
