@@ -49,6 +49,7 @@
 			    <h:outputLabel value="last submitted value:" for="typeOutputID" />
 			    <b:inputText value="&num;{carBean.type}" disabled="true" id="typeOutputID"/>
 		    </b:panelGrid>
+            <b:commandButton value="Submit"/>
         </h:form>
 ]]>
        </script>
@@ -77,13 +78,14 @@
                             <h:outputLabel value="last submitted value:" for="typeOutputID" />
                             <b:inputText value="#{carBean.type}" disabled="true" id="typeOutputID" />
                         </b:panelGrid>
-                        <b:commandButton value="Submit">
-                            <f:ajax execute="@form" rendered="@form" />
-                        </b:commandButton>
+                        <b:commandButton value="Submit"/>
                     </b:well>
                 </b:tab>
             </b:tabView>
         </h:form>
+
+        <h1>AJAX</h1>
+        <p>As of BootsFaces 0.7.0, AJAX doesn't seem to work with the multiple-choice combobox. In theory it should work, but there's an issue with the example above, so we can't say for sure it works in your application.</p>
         
         <h1>Options</h1>
 
