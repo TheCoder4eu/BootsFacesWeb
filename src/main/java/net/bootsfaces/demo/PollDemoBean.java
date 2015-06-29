@@ -24,6 +24,6 @@ public class PollDemoBean implements Serializable {
 	}
 
 	public void listener(ActionEvent event) {
-		System.out.println("Poll called me");
+//		System.out.println("Poll called me");
 	}
 }

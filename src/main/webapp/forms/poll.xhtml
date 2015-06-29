@@ -21,17 +21,9 @@ td {
 		</p>
 		<h1>Basic usage</h1>
 		<b:panel look="info" title="Demo">
-			<script type="syntaxhighlighter"
-				class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-<h:form>
-    <b:poll interval=3000" update="@form" />
-</h:form>
-]]>
-       </script>
-
+			<b:panelGrid colSpans="6,6">
 			<h:form id="WorldTimeId">
-				<b:panelGrid colSpans="2,2,8" id="grid">
+				<b:panelGrid colSpans="4,6,2" id="grid">
 					<h:outputText value="Current time:" />
 					<h:outputText value="#{pollDemoBean.currentTime}" />
 					<h:outputText value="" />
@@ -40,6 +32,27 @@ td {
 					<h:outputText value="" />
 				</b:panelGrid>
 			</h:form>
+			<div>
+			<script type="syntaxhighlighter"
+				class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+<h:form>
+    <b:poll interval=3000" 
+            update="@form" 
+            actionListener="&num;{pollDemoBean.listener}"/>
+	<b:panelGrid colSpans="2,2,8" id="grid">
+		<h:outputText value="Current time:" />
+		<h:outputText value="&num;{pollDemoBean.currentTime}" />
+		<h:outputText value="" />
+		<h:outputText value="Counter:" />
+		<h:inputText value="&num;{pollDemoBean.counter}" />
+		<h:outputText value="" />
+	</b:panelGrid>
+</h:form>
+]]>
+       </script>
+       </div>
+			</b:panelGrid>
 		</b:panel>
 		
 		<b:panel look="danger">
