@@ -17,21 +17,17 @@ td {
 
 		<p>
 			<code>&lt;b:poll /&gt;</code>
-			refreshes a part of the screen periodically.
+			refreshes a part of the screen periodically. It can also call an <code>action</code> or an <code>actionListener</code>.
 		</p>
 		<h1>Basic usage</h1>
 		<b:panel look="info" title="Demo">
-			<script type="syntaxhighlighter"
-				class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-<h:form>
-    <b:poll interval="10" update="@form" />
-</h:form>
-]]>
-       </script>
-
-			<h:form id="WorldTimeId">
-				<b:panelGrid colSpans="2,2,8" id="grid">
+			<b:panelGrid colSpans="6,6">
+			<h:form id="timeFormId">
+				<b:poll interval="3000" 
+		            update="timeFormId:worldTimeId" 
+		            execute="timeFormId:worldTimeId" 
+		            actionListener="#{pollDemoBean.listener}"/>
+				<b:panelGrid colSpans="4,6,2" id="worldTimeId">
 					<h:outputText value="Current time:" />
 					<h:outputText value="#{pollDemoBean.currentTime}" />
 					<h:outputText value="" />
@@ -40,11 +36,74 @@ td {
 					<h:outputText value="" />
 				</b:panelGrid>
 			</h:form>
+			<div>
+			<script type="syntaxhighlighter"
+				class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+<h:form>
+	<b:poll interval="3000" 
+            update="worldTimeId" 
+            execute="worldTimeId" 
+            actionListener="&num;{pollDemoBean.listener}"/>
+	<b:panelGrid colSpans="4,6,2" id="worldTimeId">
+		<h:outputText value="Current time:" />
+		<h:outputText value="&num;{pollDemoBean.currentTime}" />
+		<h:outputText value="" />
+		<h:outputText value="Counter:" />
+		<h:inputText value="&num;{pollDemoBean.counter}" />
+		<h:outputText value="" />
+	</b:panelGrid>
+</h:form>
+]]>
+       </script>
+       </div>
+			</b:panelGrid>
 		</b:panel>
 		
 		<b:panel look="danger">
 		  If <code>&lt;b:poll /&gt;</code> is inside the region it updates, you have to set the attribute <code>once="true"</code>. Otherwise,
 		  <code>&lt;b:poll /&gt;</code> is initialized over and over again and starts to send more and more polls until your server is saturated.
+		</b:panel>
+		<b:panel look="info" title="Using the attribute once">
+			<b:panelGrid colSpans="6,6">
+			<h:form>
+				<b:poll interval="2000" 
+				        update="@form" 
+				        execute="@form" 
+				        once="true"
+				        actionListener="#{pollDemoBean.listener}"/>
+				<b:panelGrid colSpans="4,6,2">
+					<h:outputText value="Current time:" />
+					<h:outputText value="#{pollDemoBean.currentTime}" />
+					<h:outputText value="" />
+					<h:outputText value="Counter:" />
+					<h:inputText value="#{pollDemoBean.counter}" />
+					<h:outputText value="" />
+				</b:panelGrid>
+			</h:form>
+			<div>
+			<script type="syntaxhighlighter"
+				class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+<h:form>
+	<b:poll interval="2000" 
+            update="@form" 
+            execute="@form" 
+			once="true"
+            actionListener="&num;{pollDemoBean.listener}"/>
+	<b:panelGrid colSpans="4,6,2">
+		<h:outputText value="Current time:" />
+		<h:outputText value="&num;{pollDemoBean.currentTime}" />
+		<h:outputText value="" />
+		<h:outputText value="Counter:" />
+		<h:inputText value="&num;{pollDemoBean.counter}" />
+		<h:outputText value="" />
+	</b:panelGrid>
+</h:form>
+]]>
+       </script>
+       </div>
+			</b:panelGrid>
 		</b:panel>
 
 		<b:panel look="info">
