@@ -190,70 +190,8 @@
                 ]]>
 				</script>
 				<p>However, adding the pass-through attribute <code>pt:data-show="false"</code> doesn't work at the moment (BootsFaces 0.6.7).</p>
-                
-                <b:panel look="info">
-				<f:facet name="heading">
-					<b>Attributes of &lt;b:modal &gt;</b>
-				</f:facet>
-					<table class="table table-striped table-hover"
-						style="background-color: #fff">
-						<thead>
-							<tr>
-								<th>Attribute</th>
-								<th>Default value</th>
-								<th>Description</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>id</td>
-								<td>(none)</td>
-								<td>Unique identifier of the component.</td>
-							</tr>
-							<tr>
-								<td>title</td>
-								<td>(none)</td>
-								<td>Bold Title displayed in Modal's header.</td>
-							</tr>
-							<tr>
-								<td>styleClass</td>
-								<td>(none)</td>
-								<td>CSS style class which is applied to the entire modal dialog.
-								</td>
-							</tr>
-							<tr>
-								<td>rendered</td>
-								<td>true</td>
-								<td>If <code>rendered == false</code>, the modal won't be generated. Note that doesn't mean it's simply invisible. Instead,
-								it's not part of the HTML code.
-								</td>
-							</tr>
-							<tr>
-								<td>closable</td>
-								<td>(none)</td>
-								<td>By default, there's a x symbol which allows the user to close the modal. Set <code>closable="false"</code> to suppress the close icon.
-								</td>
-							</tr>
-							<tr>
-								<td>backdrop</td>
-								<td>(none)</td>
-								<td>By default, you can close a modal dialog by clicking somewhere outside the modal. Set <code>backdrop="false"</code> to disable this feature.
-								</td>
-							</tr>
-							<tr>
-								<td>close-on-escape</td>
-								<td>(none)</td>
-								<td>By default, users can close modal dialogs by hitting the ESC key. Set <code>close-on-escape="false"</code> to disable this feature.
-								</td>
-							</tr>
-							<tr>
-								<td>size</td>
-								<td>(none)</td>
-								<td>Modal's size. Possible values are <code>modal-sm</code> and <code>modal-lg</code>.</td>
-							</tr>
-						</tbody>
-					</table>
-			</b:panel>
+
+			<ui:include src="ModalAttributes.xhtml"></ui:include>                
 
             <b:panel look="info">
 				<f:facet name="heading">
