@@ -9,7 +9,7 @@
 
 		<b:panel look="info">
 			<f:facet name="heading">
-				<b>Attributes of &lt;b:navLink &gt;</b>
+				<b>Attributes of &lt;b:dropMenu &gt;</b>
 			</f:facet>
 			<table class="table table-striped table-hover"
 				style="background-color: #fff">
@@ -22,11 +22,6 @@
 				</thead>
 				<tbody>
 					<tr>
-					    <td>active</td>
-					    <td>false</td>
-					    <td>Adds the active state to the link.</td>
-					</tr>
-					<tr>
 					    <td>binding</td>
 					    <td>(none)</td>
 					    <td>An el expression referring to a server side UIComponent instance in a backing bean.</td>
@@ -34,67 +29,22 @@
 					<tr>
 					    <td>contentClass</td>
 					    <td>(none)</td>
-					    <td>contentClass is optional: if specified, the content (i.e. the anchor tag) will be displayed with this specific class</td>
+					    <td>contentClass is optional: if specified, the content will be displayed with this specific class</td>
 					</tr>
 					<tr>
 					    <td>contentStyle</td>
 					    <td>(none)</td>
-					    <td>Inline style of the content area (i.e the anchor tag).</td>
+					    <td>Inline style of the content area.</td>
 					</tr>
 					<tr>
-					    <td>fragment</td>
+					    <td>drop</td>
 					    <td>(none)</td>
-					    <td>The fragment  that is to be appended to the target URL. The # separator is applied automatically and needs not be included.</td>
-					</tr>
-					<tr>
-					    <td>header</td>
-					    <td>(none)</td>
-					    <td>If present, this element is rendered as Header in a menu with the text specifide by this attribute value: all other attributes will be ignored.</td>
-					</tr>
-					<tr>
-					    <td>href</td>
-					    <td>(none)</td>
-					    <td>URL to link directly to implement anchor behavior.</td>
-					</tr>
-					<tr>
-					    <td>icon</td>
-					    <td>(none)</td>
-					    <td>Navigation Link Icon, can be one of the Bootstrap's Glyphicons icon names. Alignment can be specified with the iconAlign attribute.</td>
-					</tr>
-					<tr>
-					    <td>iconAlign</td>
-					    <td>(none)</td>
-					    <td>Alignment can right or left.</td>
-					</tr>
-					<tr>
-					    <td>iconAwesome</td>
-					    <td>(none)</td>
-					    <td>Navigation Link Font Awesome Icon, can be one of the Font Awesome icon names. Alignment can be specified with the iconAlign attribute.</td>
+					    <td>Use up For Dropup and down for Dropdown, default is down.</td>
 					</tr>
 					<tr>
 					    <td>id</td>
 					    <td>(none)</td>
 					    <td>Unique identifier of the component in a namingContainer.</td>
-					</tr>
-					<tr>
-					    <td>onblur</td>
-					    <td>(none)</td>
-					    <td>JavaScript function which is called when the widget looses the focus.</td>
-					</tr>
-					<tr>
-					    <td>onclick</td>
-					    <td>(none)</td>
-					    <td>JavaScript function which is called when the widget is clicked.</td>
-					</tr>
-					<tr>
-					    <td>onmouseover</td>
-					    <td>(none)</td>
-					    <td>JavaScript function which is called when the mouse hovers over the widget.</td>
-					</tr>
-					<tr>
-					    <td>outcome</td>
-					    <td>(none)</td>
-					    <td>The outcome to navigate to.</td>
 					</tr>
 					<tr>
 					    <td>rendered</td>
@@ -139,7 +89,7 @@
 					<tr>
 					    <td>value</td>
 					    <td>(none)</td>
-					    <td>Navigation Link text.</td>
+					    <td>The Label for the Dropdown.</td>
 					</tr>
 				</tbody>
 			</table>
