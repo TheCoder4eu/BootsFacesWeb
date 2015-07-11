@@ -25,6 +25,16 @@
                                 <b:navLink></b:navLink>
                                 <b:navLink header="Nav header"></b:navLink>
                                 <b:navLink value="Separated link" href="#"></b:navLink>
+                                <b:dropMenu value="Nested submenu">
+                                	<b:navLink value="You can nest menus" href="#"></b:navLink>
+                                	<b:dropMenu value="Nested sub-submenu">
+	                                	<b:navLink value="... as deep as ..." href="#"></b:navLink>
+		                                <b:dropMenu value="Nested sub-sub-submenu">
+		                                	<b:navLink value="... you want!" href="#"></b:navLink>
+		                                </b:dropMenu>
+    	                            </b:dropMenu>
+                                	
+                                </b:dropMenu>
                                 <b:navLink value="One more separated link" href="#"></b:navLink>
                             </b:dropMenu>
                         </b:navbarLinks>
