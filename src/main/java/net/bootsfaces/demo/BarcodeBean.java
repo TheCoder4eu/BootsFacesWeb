@@ -27,6 +27,7 @@ import javax.faces.view.ViewScoped;
 @ViewScoped
 @ManagedBean
 public class BarcodeBean implements Serializable {
+	private static final long serialVersionUID = -6810958868318611791L;
 	private String code39 = "1234567890128";
 	private String protocol = "http://";
 	private String url = "angularfaces.net";
