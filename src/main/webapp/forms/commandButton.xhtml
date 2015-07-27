@@ -72,19 +72,22 @@
                                     oncomplete="if(validationFailed) alert('Please enter valid input before opening the modal'); else $('#amodal').modal('show')" />
                             </b:column>
                             <b:column span="2">
-                                <b:commandButton value="" ajax="true" update="form:inform infoshow" iconAwesome="thumbs-up" look="info" title="Thumbs up!" />
+                                <b:commandButton value="" ajax="true" update="form:inform infoshow" iconAwesome="thumbs-up" 
+                                                 look="info" title="Thumbs up!" />
                             </b:column>
                             <b:column span="2">
-                                <b:commandButton value="I'm disabled" disabled="true" ajax="true" update="form:inform infoshow" iconAwesome="thumbs-down" look="info" title="Disabled!" />
+                                <b:commandButton value="I'm disabled" disabled="true" ajax="true" update="form:inform infoshow" 
+                                                 iconAwesome="thumbs-down" look="info" title="Disabled!" />
                             </b:column>
                             
 
                         </b:row>
                     </b:tab>
                     <b:tab title="JSF markup">
+                      <b:well>
                         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
-
+            <b:well>
               <h3>Personal Information</h3>
               <h:panelGrid id="inform" columns="3" cellpadding="5">
                 <h:outputLabel for="firstname" value="Firstname: *" />
@@ -116,9 +119,13 @@
               <b:column span="2">
                 <b:commandButton value="" ajax="true" update="form:inform infoshow" iconAwesome="thumbs-up" look="info" />
               </b:column>
+              <b:column span="2">
+                <b:commandButton value="I'm disabled" disabled="true" ajax="true" update="form:inform infoshow" iconAwesome="thumbs-down" look="info" title="Disabled!" />
+               </b:column>
             </b:row>
                           
 ]]></script>
+                       </b:well>
                     </b:tab>
                 </b:tabView>
 
