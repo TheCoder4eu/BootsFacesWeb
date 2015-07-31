@@ -71,14 +71,20 @@
                                 <b:commandButton value="Ajax Modal" ajax="true" update="form:inform amodal" id="ajaxmodal" look="inverse"
                                     oncomplete="if(validationFailed) alert('Please enter valid input before opening the modal'); else $('#amodal').modal('show')" />
                             </b:column>
-                            <b:column span="2">
+                            <b:column span="1">
                                 <b:commandButton value="" ajax="true" update="form:inform infoshow" iconAwesome="thumbs-up" 
-                                                 look="info" title="Thumbs up!" />
+                                                 look="info" tooltip="Thumbs up!" />
                             </b:column>
+                            <b:column span="1">
+	                            <h:commandButton ajax="true" update="form:inform infoshow" tooltip="This looks like an icon, but it's a commandButton">
+								    <b:iconAwesome name="arrow-down"></b:iconAwesome>
+								</h:commandButton>
+							</b:column>
                             <b:column span="2">
                                 <b:commandButton value="I'm disabled" disabled="true" ajax="true" update="form:inform infoshow" 
                                                  iconAwesome="thumbs-down" look="info" title="Disabled!" />
                             </b:column>
+                            
                             
 
                         </b:row>
@@ -116,9 +122,15 @@
                 <b:commandButton value="Ajax Modal" ajax="true" update="form:inform amodal" id="ajaxmodal" look="inverse"
                   oncomplete="if(validationFailed) alert('Please enter valid input before opening the modal'); else $('#amodal').modal('show')" />
               </b:column>
-              <b:column span="2">
+              <b:column span="1">
                 <b:commandButton value="" ajax="true" update="form:inform infoshow" iconAwesome="thumbs-up" look="info" />
               </b:column>
+              <b:column span="1">
+                <h:commandButton ajax="true" update="form:inform infoshow" tooltip="This looks like an icon, but it's a commandButton">
+			      <b:iconAwesome name="arrow-down"></b:iconAwesome>
+			    </h:commandButton>
+         	  </b:column>
+
               <b:column span="2">
                 <b:commandButton value="I'm disabled" disabled="true" ajax="true" update="form:inform infoshow" iconAwesome="thumbs-down" look="info" title="Disabled!" />
                </b:column>
