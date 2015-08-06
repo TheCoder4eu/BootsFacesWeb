@@ -258,6 +258,74 @@
                     </b:panel>
                 </h:form>
                 <p class="text-success">Note: the same applies to Vertical Sliders.</p>
+                <h4>Read only / disabled</h4>
+                <p>The attributes <code>readonly</code> and <code>disabled</code> can also be applied to sliders.</p>
+                <h:form>
+                    <b:panel look="info">
+                        <f:facet name="heading"><b>Disabled and readonly</b></f:facet>
+                        <b:row>
+                            <b:column>
+                                <b:slider handle-shape="round" min="0" max="100" 
+                                          step="5" value="25" label="Default (editable)"
+                                           mode="edit"
+                                />
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column>
+                                <b:slider handle-shape="round" min="0" max="100" 
+                                          step="5" value="25" label="Disabled"
+                                          disabled="true"
+                                           mode="edit"
+                                />
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column>
+                                <b:slider handle-shape="round" min="0" max="100" 
+                                          step="5" value="25" label="Readonly"
+                                          readonly="true"
+                                          mode="edit"
+                                />
+                            </b:column>
+                        </b:row>
+                        
+                        <f:facet name="footer">
+                        <strong>Markup:</strong><br/>
+
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                        <![CDATA[
+                        <b:row>
+                            <b:column>
+                                <b:slider handle-shape="round" min="0" max="100" 
+                                          step="5" value="25" label="Default (editable)"
+                                           mode="edit"
+                               />
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column>
+                                <b:slider handle-shape="round" min="0" max="100" 
+                                          step="5" value="25" label="Disabled"
+                                          mode="edit"
+                                          disabled="true"
+                                />
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column>
+                                <b:slider handle-shape="round" min="0" max="100" 
+                                          step="5" value="25" label="Readonly"
+                                          mode="edit"
+                                          readonly="true"
+                                />
+                            </b:column>
+                        </b:row>
+                        ]]></script>
+                        </f:facet>
+                    </b:panel>
+                </h:form>
+                
                 <b:modal id="amodal" title="Slider">
                     <strong>Submitted values:</strong>
                     <h:panelGrid columns="2">  
