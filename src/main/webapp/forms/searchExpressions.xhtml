@@ -13,112 +13,80 @@
                 <p>Inspired by PrimeFaces, BootsFaces implements a couple of powerful search expressions to make your life easier.
                 In almost every case, you can get rid of ids. Use <code>@form</code>,
                 <code>@next</code>,<code>@previous</code>,<code>@parent</code> and <code>@styleClass(cssClass) instead.</code></p>
- 
-                <b:tabView id="tabViewId">
-                    <b:tab title="live preview" id="previewTabId">
-            <h:form id="form">
-                        <b:well>
-								<ui:repeat id="some_elements" var="image"
-									value="#{imageGallery.images}">
-									<b:row>
-										<b:column span="12">
-											<b:commandButton value=":form:some_elements:graphic  #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseAnotherImage(image)}"
-												update=":form:some_elements:graphic"
-												tooltip="update=':form:some_elements:graphic'"
-												/>
-											<b:commandButton value="@form :@findId(some_elements) #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseAnotherImage(image)}"
-												update="@form:@findId(some_elements):graphic" 
-												tooltip="update='@form :@findId(some_elements)'"/>
-											<b:commandButton value="@form:**:some_elements:graphic  #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseAnotherImage(image)}"
-												update="@form:**:some_elements:graphic" 
-												tooltip="update='@form:**:some_elements:graphic'"/>
-											 <b:commandButton value="@form:**:graphic  #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseAnotherImage(image)}"
-												update="@form:**:graphic" 
-												tooltip="update='@form:**:graphic'"/>	
-											 <b:commandButton value="@form:**:graphic:@previous  #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseAnotherImage(image)}"
-												update="@form:**:graphic:@previous" 
-												tooltip="update='@form:**:graphic:@previous'"/>	
-											<b:commandButton value="@next,@this  #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseAnotherImage(image)}"
-												update="@next,@this"
-												tooltip="update='@next,@this'"/>
-											<b:commandButton value="@this,@previous  #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseAnotherImage(image)}"
-												update="@this,@previous"
-												tooltip="update='@this,@previous'"/>
-											<b:commandButton value="@this @next:@next  #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseAnotherImage(image)}"
-												update="@this @next:@next"
-												tooltip="update='@this @next:@next'"/>
-											<b:commandButton value="@next  #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseAnotherImage(image)}"
-												update="@next"
-												tooltip="update='@next'"/>
-											<h:graphicImage url="#{image}" id="graphic" style="width:153; height:117px" />
-										</b:column>
-									</b:row>
-								</ui:repeat>
-								<b:panel title="The buttons below change every image." >
-									<b:commandButton value=":form  #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseEveryImage()}"
-												update=":form" 
-												tooltip=":form"/>
-									<b:commandButton value="@form #{imageGallery.counter}"  ajax="true"
-												actionListener="#{imageGallery.chooseEveryImage()}"
-												update="@form" 
-												tooltip="@form"/>
-									<b:commandButton value="@all #{imageGallery.counter} (not implemented yet)"  ajax="true"
-												actionListener="#{imageGallery.chooseEveryImage()}"
-												update="@all" 
-												tooltip="@all"/>
-								</b:panel>
-								<b:panel title="Miscellaneous" >
-									<b:commandButton value="@this #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseEveryImage()}"
-												update="@this" 
-												tooltip="@this"/>
-									<b:commandButton value="@next #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseEveryImage()}"
-												update="@next" 
-												tooltip="@next"/>
-									<b:commandButton value="@none #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseEveryImage()}"
-												update="@none" 
-												tooltip="@none"/>
-									<b:commandButton value="@previous #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseEveryImage()}"
-												update="@previous" 
-												tooltip="@previous"/>
-									<b:commandButton value="@parent #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseEveryImage()}"
-												update="@parent" 
-												tooltip="@parent"/>			
-									<b:commandButton value="@parent:@parent #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseEveryImage()}"
-												update="@parent:@parent" 
-												tooltip="@parent:@parent"/>			
-									<b:commandButton value="@parent:@parent:@parent #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseEveryImage()}"
-												update="@parent:@parent:@parent" 
-												tooltip="@parent:@parent:@parent"/>			
-								</b:panel>
-						</b:well>
-            </h:form>
-                     </b:tab>
-                    <b:tab title="JSF markup">
-                      <b:well>
-                      lorem ipsum
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
- ]]></script>
-                       </b:well>
-                    </b:tab>
-                </b:tabView>
+                
+                <h2>State of the art</h2>
+                <p>Currently, the search expressions can only used with the <code>update</code> attribute of <code>&lt;b:commandButton.&gt;</code></p>.
+                <h2>Basic usage</h2>
+                <p>Like in standard JSF, you can use ids to determine which region of the DOM to update:</p>
+                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1"><![CDATA[
+                   <h:body>
+                     <b:tabView id="tabViewId">
+                       <b:tab>
+                         <h:form>
+                            <b:panel id="panelId">	
+                              <b:commandButton update=":tabViewId" />
+                              <b:commandButton update="panelId" />
+                            </b:panel>
+                          </h:form>    
+                       </b:tab>
+                     </b:tabView>
+                   </h:body>
+                ]]></script>
+				<p>The preceding colon indicates that <code>:tabViewId</code> isn't inside the "naming container" - usually a form or a custom composite component -
+				but in the root of the JSF component tree. The <code>panelId</code> is direct descendant of the form, so it doesn't need a colon.</p>
+				
+				<h2>Standard JSF search expressions</h2>
+				<p>Standard JSF introduces several search expressions, basically shortcut allowing you to get rid of the ids in many cases:</p>
+				<ul>
+				<li>@form is the form surrounding the button.</li>
+				<li>@this the the command button itself.</li>
+				<li>@all is the entire JSF page. Note that BootsFaces doesn't support @all yet. In any case, use @all only in there's no other way: it's very
+				inefficient, because it forces every JavaScript library to reinitialize.</li>
+				<li>@none is an exotic special case. It doesn't update anything. You sometimes need it to trigger an action on the server,
+				but don't want to display anything new on the client.</li>
+				</ul>
+				
+				<h2>PrimeFaces search expressions supported by BootsFaces</h2>
+				<p>Standard JSF introduces several search expressions, basically shortcut allowing you to get rid of the ids in many cases:</p>
+				<ul>
+				<li>@previous </li>
+				<li>@next </li>
+				<li>@parent </li>
+				
+				<h2>BootsFaces search expressions</h2>
+				<p>Standard JSF introduces several search expressions, basically shortcut allowing you to get rid of the ids in many cases:</p>				
+				<li>@findIdRecursive(id) find an id anywhere in the JSF tree below the currently select node. For instance, <code>@form:**:someId</code> looks for <code>someId</code>, 
+				considering the entire form.</li>
+				<li>** shortcut for @findIdRecursive</li>
+				<li>@findId(id)  find an id, but restrict the search to the top-most level of the tree</li>
+				<li>*:id shortcut for @findId </li>
+				<li>@findPartialId(id)  find one or many ids, given by a wildcard expression: <code>*suffix</code>, <code>prefix*</code> or <code>prefix*suffix</code>.
+				Only the topmost level is considered.</li>
+				<li>*id shortcut for @findPartialId </li>
+				<li>@findPartialIdRecursive(id)  find one or many ids, given by a wildcard expression: <code>*suffix</code>, <code>prefix*</code> or <code>prefix*suffix</code>.
+				Searches the entire tree.</li>
+				<li>**:*id or **:id* or **:*id* shortcut for @findPartialIdRecursive </li>
+				<li>@styleClass(className) looks for a JSF component with a certain styleClass attribute (yet to be implemented)</li>
+				<li>child(n) yields a certain child of the currently selected JSF subtree.</li>
+				</ul>
+				
+				<h2>PrimeFaces search expressions BootsFaces does not support</h2>
+				<p>There are a few PrimeFaces search expressions BootsFaces does not support:</p>
+				<ul>
+				<li>@() jquery expressions.</li>
+				<li>@namingcontainer</li>
+				<li>@composite</li>
+				<li>@row(n)</li>
+				<li>@widgetVar(name)</li>
+				</ul>
+				
+
+
+                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1"><![CDATA[
+                   emtpy
+                ]]></script>
+
+				<ui:include src="searchExpressionsAllInOneDemo.xhtml"></ui:include> 
  
             <br />
             
