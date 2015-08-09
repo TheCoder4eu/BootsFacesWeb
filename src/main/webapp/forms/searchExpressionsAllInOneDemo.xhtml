@@ -21,10 +21,10 @@
 												update=":form:some_elements:graphic"
 												tooltip="update=':form:some_elements:graphic'"
 												/>
-											<b:commandButton value="@form :@findId(some_elements) #{imageGallery.counter}" ajax="true"
+											<b:commandButton value="@form :@findIdRecursiveRecursive(some_elements) #{imageGallery.counter}" ajax="true"
 												actionListener="#{imageGallery.chooseAnotherImage(image)}"
-												update="@form:@findId(some_elements):graphic" 
-												tooltip="update='@form :@findId(some_elements)'"/>
+												update="@form:@findIdRecursive(some_elements):graphic" 
+												tooltip="update='@form :@findIdRecursive(some_elements)'"/>
 											<b:commandButton value="@form:**:some_elements:graphic  #{imageGallery.counter}" ajax="true"
 												actionListener="#{imageGallery.chooseAnotherImage(image)}"
 												update="@form:**:some_elements:graphic" 
@@ -119,10 +119,10 @@
 												update=":form:some_elements:graphic"
 												tooltip="update=':form:some_elements:graphic'"
 												/>
-											<b:commandButton value="@form :@findId(some_elements) &num;{imageGallery.counter}" ajax="true"
+											<b:commandButton value="@form :@findIdRecursive(some_elements) &num;{imageGallery.counter}" ajax="true"
 												actionListener="&num;{imageGallery.chooseAnotherImage(image)}"
-												update="@form:@findId(some_elements):graphic" 
-												tooltip="update='@form :@findId(some_elements)'"/>
+												update="@form:@findIdRecursive(some_elements):graphic" 
+												tooltip="update='@form :@findIdRecursive(some_elements)'"/>
 											<b:commandButton value="@form:**:some_elements:graphic  &num;{imageGallery.counter}" ajax="true"
 												actionListener="&num;{imageGallery.chooseAnotherImage(image)}"
 												update="@form:**:some_elements:graphic" 
