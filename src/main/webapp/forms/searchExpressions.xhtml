@@ -18,66 +18,71 @@
                 <p>Currently, the search expressions can only used with the <code>update</code> attribute of <code>&lt;b:commandButton.&gt;</code></p>.
                 <h2>Basic usage</h2>
                 <p>Like in standard JSF, you can use ids to determine which region of the DOM to update:</p>
-                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1"><![CDATA[
-                   <h:body>
-                     <b:tabView id="tabViewId">
-                       <b:tab>
-                         <h:form>
-                            <b:panel id="panelId">	
-                              <b:commandButton update=":tabViewId" />
-                              <b:commandButton update="panelId" />
-                            </b:panel>
-                          </h:form>    
-                       </b:tab>
-                     </b:tabView>
-                   </h:body>
-                ]]></script>
+                <b:well>
+	                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1"><![CDATA[
+	                   <h:body>
+	                     <b:tabView id="tabViewId">
+	                       <b:tab>
+	                         <h:form>
+	                            <b:panel id="panelId">	
+	                              <b:commandButton update=":tabViewId" />
+	                              <b:commandButton update="panelId" />
+	                            </b:panel>
+	                          </h:form>    
+	                       </b:tab>
+	                     </b:tabView>
+	                   </h:body>
+	                ]]></script>
+                </b:well>
 				<p>The preceding colon indicates that <code>:tabViewId</code> isn't inside the "naming container" - usually a form or a custom composite component -
 				but in the root of the JSF component tree. The <code>panelId</code> is direct descendant of the form, so it doesn't need a colon.</p>
 				
 				<h2>Standard JSF search expressions</h2>
 				<p>Standard JSF introduces several search expressions, basically shortcut allowing you to get rid of the ids in many cases:</p>
 				<ul>
-				<li>@form is the form surrounding the button.</li>
-				<li>@this the the command button itself.</li>
-				<li>@all is the entire JSF page. Note that BootsFaces doesn't support @all yet. In any case, use @all only in there's no other way: it's very
-				inefficient, because it forces every JavaScript library to reinitialize.</li>
-				<li>@none is an exotic special case. It doesn't update anything. You sometimes need it to trigger an action on the server,
-				but don't want to display anything new on the client.</li>
+					<li>@form is the form surrounding the button.</li>
+					<li>@this the the command button itself.</li>
+					<li>@all is the entire JSF page. Note that BootsFaces doesn't support @all yet. In any case, use @all only in there's no other way: it's very
+					inefficient, because it forces every JavaScript library to reinitialize.</li>
+					<li>@none is an exotic special case. It doesn't update anything. You sometimes need it to trigger an action on the server,
+					but don't want to display anything new on the client.</li>
 				</ul>
 				
 				<h2>PrimeFaces search expressions supported by BootsFaces</h2>
-				<p>Standard JSF introduces several search expressions, basically shortcut allowing you to get rid of the ids in many cases:</p>
+				<p>PrimeFaces adds a couple of very useful search expressions, which are supported by BootsFaces, too. (Actually, @next and @previous originally were
+				contributed to PrimeFaces by one of the BootsFaces team members):</p>
 				<ul>
-				<li>@previous </li>
-				<li>@next </li>
-				<li>@parent </li>
+					<li>@previous </li>
+					<li>@next </li>
+					<li>@parent </li>
+				</ul>
 				
 				<h2>BootsFaces search expressions</h2>
-				<p>Standard JSF introduces several search expressions, basically shortcut allowing you to get rid of the ids in many cases:</p>				
-				<li>@findIdRecursive(id) find an id anywhere in the JSF tree below the currently select node. For instance, <code>@form:**:someId</code> looks for <code>someId</code>, 
-				considering the entire form.</li>
-				<li>** shortcut for @findIdRecursive</li>
-				<li>@findId(id)  find an id, but restrict the search to the top-most level of the tree</li>
-				<li>*:id shortcut for @findId </li>
-				<li>@findPartialId(id)  find one or many ids, given by a wildcard expression: <code>*suffix</code>, <code>prefix*</code> or <code>prefix*suffix</code>.
-				Only the topmost level is considered.</li>
-				<li>*id shortcut for @findPartialId </li>
-				<li>@findPartialIdRecursive(id)  find one or many ids, given by a wildcard expression: <code>*suffix</code>, <code>prefix*</code> or <code>prefix*suffix</code>.
-				Searches the entire tree.</li>
-				<li>**:*id or **:id* or **:*id* shortcut for @findPartialIdRecursive </li>
-				<li>@styleClass(className) looks for a JSF component with a certain styleClass attribute (yet to be implemented)</li>
-				<li>child(n) yields a certain child of the currently selected JSF subtree.</li>
+				<p>Standard JSF introduces several search expressions, basically shortcut allowing you to get rid of the ids in many cases:</p>		
+				<ul>		
+					<li>@findIdRecursive(id) find an id anywhere in the JSF tree below the currently select node. For instance, <code>@form:**:someId</code> looks for <code>someId</code>, 
+					considering the entire form.</li>
+					<li>** shortcut for @findIdRecursive</li>
+					<li>@findId(id)  find an id, but restrict the search to the top-most level of the tree</li>
+					<li>*:id shortcut for @findId </li>
+					<li>@findPartialId(id)  find one or many ids, given by a wildcard expression: <code>*suffix</code>, <code>prefix*</code> or <code>prefix*suffix</code>.
+					Only the topmost level is considered. (yet to be implemented)</li>
+					<li>*id shortcut for @findPartialId (yet to be implemented)</li>
+					<li>@findPartialIdRecursive(id)  find one or many ids, given by a wildcard expression: <code>*suffix</code>, <code>prefix*</code> or <code>prefix*suffix</code>.
+					Searches the entire tree. (yet to be implemented)</li>
+					<li>**:*id or **:id* or **:*id* shortcut for @findPartialIdRecursive </li>
+					<li>@styleClass(className) looks for a JSF component with a certain styleClass attribute (yet to be implemented)</li>
+					<li>child(n) yields a certain child of the currently selected JSF subtree. (yet to be implemented)</li>
 				</ul>
 				
 				<h2>PrimeFaces search expressions BootsFaces does not support</h2>
 				<p>There are a few PrimeFaces search expressions BootsFaces does not support:</p>
 				<ul>
-				<li>@() jquery expressions.</li>
-				<li>@namingcontainer</li>
-				<li>@composite</li>
-				<li>@row(n)</li>
-				<li>@widgetVar(name)</li>
+					<li>@() jquery expressions.</li>
+					<li>@namingcontainer</li>
+					<li>@composite</li>
+					<li>@row(n)</li>
+					<li>@widgetVar(name) (doesn't make sense in BootsFaces, because BootsFaces doesn't use the concept of client-side widgets)</li>
 				</ul>
 				
 
@@ -86,6 +91,11 @@
                    emtpy
                 ]]></script>
 -->
+
+				<h2>Live demo</h2>
+				<p>This demo shows some of the options at a glance.</p>
+				<ui:include src="searchExpressionsSimpleDemo.xhtml"></ui:include> 
+
 				<h2>All-in-One-Demo (aka cheat sheet)</h2>
 				<p>This demo shows most options on a single screen. Most buttons modify the images. The buttons in the image row modify the image in the same row. The buttons below modify
 				the entire page. Some buttons also show the appearance of the button itself (by counting up the numbers). As you can see, you can freely combine every option
