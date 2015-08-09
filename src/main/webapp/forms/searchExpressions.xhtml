@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml"   
+    xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:h="http://java.sun.com/jsf/html" 
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:b="http://bootsfaces.net/ui" 
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+        <ui:define name="content">
+            <h1>Search Expressions</h1>
+                <p>Inspired by PrimeFaces, BootsFaces implements a couple of powerful search expressions to make your life easier.
+                In almost every case, you can get rid of ids. Use <code>@form</code>,
+                <code>@next</code>,<code>@previous</code>,<code>@parent</code> and <code>@styleClass(cssClass) instead.</code></p>
+ 
+                <b:tabView id="tabViewId">
+                    <b:tab title="live preview" id="previewTabId">
+            <h:form id="form">
+                        <b:well>
+								<ui:repeat id="some_elements" var="image"
+									value="#{imageGallery.images}">
+									<b:row>
+										<b:column span="12">
+											<b:commandButton value=":form:some_elements:graphic  #{imageGallery.counter}" ajax="true"
+												actionListener="#{imageGallery.chooseAnotherImage(image)}"
+												update=":form:some_elements:graphic"
+												tooltip="update=':form:some_elements:graphic'"
+												/>
+											<b:commandButton value="@form :@findId(some_elements) #{imageGallery.counter}" ajax="true"
+												actionListener="#{imageGallery.chooseAnotherImage(image)}"
+												update="@form:@findId(some_elements):graphic" 
+												tooltip="update='@form :@findId(some_elements)'"/>
+											<b:commandButton value="@form:**:some_elements:graphic  #{imageGallery.counter}" ajax="true"
+												actionListener="#{imageGallery.chooseAnotherImage(image)}"
+												update="@form:**:some_elements:graphic" 
+												tooltip="update='@form:**:some_elements:graphic'"/>
+											 <b:commandButton value="@form:**:graphic  #{imageGallery.counter}" ajax="true"
+												actionListener="#{imageGallery.chooseAnotherImage(image)}"
+												update="@form:**:graphic" 
+												tooltip="update='@form:**:graphic'"/>	
+											 <b:commandButton value="@form:**:graphic:@previous  #{imageGallery.counter}" ajax="true"
+												actionListener="#{imageGallery.chooseAnotherImage(image)}"
+												update="@form:**:graphic:@previous" 
+												tooltip="update='@form:**:graphic:@previous'"/>	
+											<b:commandButton value="@next,@this  #{imageGallery.counter}" ajax="true"
+												actionListener="#{imageGallery.chooseAnotherImage(image)}"
+												update="@next,@this"
+												tooltip="update='@next,@this'"/>
+											<b:commandButton value="@this,@previous  #{imageGallery.counter}" ajax="true"
+												actionListener="#{imageGallery.chooseAnotherImage(image)}"
+												update="@this,@previous"
+												tooltip="update='@this,@previous'"/>
+											<b:commandButton value="@this @next:@next  #{imageGallery.counter}" ajax="true"
+												actionListener="#{imageGallery.chooseAnotherImage(image)}"
+												update="@this @next:@next"
+												tooltip="update='@this @next:@next'"/>
+											<b:commandButton value="@next  #{imageGallery.counter}" ajax="true"
+												actionListener="#{imageGallery.chooseAnotherImage(image)}"
+												update="@next"
+												tooltip="update='@next'"/>
+											<h:graphicImage url="#{image}" id="graphic" style="width:153; height:117px" />
+										</b:column>
+									</b:row>
+								</ui:repeat>
+								<b:panel title="The buttons below change every image." >
+									<b:commandButton value=":form  #{imageGallery.counter}" ajax="true"
+												actionListener="#{imageGallery.chooseEveryImage()}"
+												update=":form" 
+												tooltip=":form"/>
+									<b:commandButton value="@form #{imageGallery.counter}"  ajax="true"
+												actionListener="#{imageGallery.chooseEveryImage()}"
+												update="@form" 
+												tooltip="@form"/>
+									<b:commandButton value="@all #{imageGallery.counter} (not implemented yet)"  ajax="true"
+												actionListener="#{imageGallery.chooseEveryImage()}"
+												update="@all" 
+												tooltip="@all"/>
+								</b:panel>
+								<b:panel title="Miscellaneous" >
+									<b:commandButton value="@this #{imageGallery.counter}" ajax="true"
+												actionListener="#{imageGallery.chooseEveryImage()}"
+												update="@this" 
+												tooltip="@this"/>
+									<b:commandButton value="@next #{imageGallery.counter}" ajax="true"
+												actionListener="#{imageGallery.chooseEveryImage()}"
+												update="@next" 
+												tooltip="@next"/>
+									<b:commandButton value="@none #{imageGallery.counter}" ajax="true"
+												actionListener="#{imageGallery.chooseEveryImage()}"
+												update="@none" 
+												tooltip="@none"/>
+									<b:commandButton value="@previous #{imageGallery.counter}" ajax="true"
+												actionListener="#{imageGallery.chooseEveryImage()}"
+												update="@previous" 
+												tooltip="@previous"/>
+									<b:commandButton value="@parent #{imageGallery.counter}" ajax="true"
+												actionListener="#{imageGallery.chooseEveryImage()}"
+												update="@parent" 
+												tooltip="@parent"/>			
+									<b:commandButton value="@parent:@parent #{imageGallery.counter}" ajax="true"
+												actionListener="#{imageGallery.chooseEveryImage()}"
+												update="@parent:@parent" 
+												tooltip="@parent:@parent"/>			
+									<b:commandButton value="@parent:@parent:@parent #{imageGallery.counter}" ajax="true"
+												actionListener="#{imageGallery.chooseEveryImage()}"
+												update="@parent:@parent:@parent" 
+												tooltip="@parent:@parent:@parent"/>			
+								</b:panel>
+						</b:well>
+            </h:form>
+                     </b:tab>
+                    <b:tab title="JSF markup">
+                      <b:well>
+                      lorem ipsum
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+ ]]></script>
+                       </b:well>
+                    </b:tab>
+                </b:tabView>
+ 
+            <br />
+            
+            <script type="text/javascript">
+                SyntaxHighlighter.all();
+            </script>
+            <br />
+            <br />
+            <br />
+            <br />
+        </ui:define>
+    </ui:composition>
