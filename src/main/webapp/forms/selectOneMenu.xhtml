@@ -71,7 +71,7 @@
                             <h:outputLabel value="last submitted value:" for="typeOutputID" />
                             <b:inputText value="#{carBean.type}" disabled="true" id="typeOutputID" />
                         </b:panelGrid>
-                        <b:commandButton value="Submit AJAX">
+                        <b:commandButton value="Submit AJAX" onclick="alert('AJAX!')">
                             <f:ajax execute="@form" render="@form" />
                         </b:commandButton>
                        <h:commandButton value="Mojarra AJAX">
