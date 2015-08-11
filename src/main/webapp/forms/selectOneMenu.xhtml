@@ -50,7 +50,7 @@
                     <b:well>
                         <b:panelGrid colSpans="2,2,2,2,4">
                             <h:outputLabel value="Select your car's brand:" for="brandID" id="l1" />
-                            <b:selectOneMenu value="#{carBean.brand}" id="brandID">
+                            <b:selectOneMenu value="#{carBean.brand}" id="brandID" onchange="console.log('change');" onselect="console.log('select');">
                                 <f:selectItem itemLabel="(Please select)" itemValue="" />
                                 <f:selectItem itemLabel="Fiat" itemValue="1" />
                                 <f:selectItem itemLabel="Honda" itemValue="2" />
@@ -71,9 +71,12 @@
                             <h:outputLabel value="last submitted value:" for="typeOutputID" />
                             <b:inputText value="#{carBean.type}" disabled="true" id="typeOutputID" />
                         </b:panelGrid>
-                        <b:commandButton value="Submit">
-                            <f:ajax execute="@form" rendered="@form" />
+                        <b:commandButton value="Submit AJAX">
+                            <f:ajax execute="@form" render="@form" />
                         </b:commandButton>
+                       <h:commandButton value="Mojarra AJAX">
+                            <f:ajax execute="@form" render="@form" />
+                        </h:commandButton>
                     </b:well>
                 </b:tab>
             </b:tabView>
@@ -99,7 +102,7 @@
                         Current keeper: &num;{soccerTeamBean.goalkeeper.name}
                     </b:panelGrid>
                     <b:commandButton value="Submit">
-                        <f:ajax execute="@form" rendered="@form" />
+                        <f:ajax event="click" execute="@form" render="@form" />
                     </b:commandButton>
 ]]>
                    </script>
@@ -183,7 +186,7 @@ public class Player {
                         Current keeper: #{soccerTeamBean.goalkeeper.name}
                     </b:panelGrid>
                     <b:commandButton value="Submit">
-                        <f:ajax execute="@form" rendered="@form" />
+                        <f:ajax  event="click" execute="@form" render="@form" />
                     </b:commandButton>
                     </b:well>
                 </b:tab>

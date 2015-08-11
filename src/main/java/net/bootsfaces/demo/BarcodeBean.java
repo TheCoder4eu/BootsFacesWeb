@@ -17,7 +17,9 @@
 package net.bootsfaces.demo;
 
 import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.view.ViewScoped;
 
 /**
@@ -32,6 +34,10 @@ public class BarcodeBean implements Serializable {
 	private String protocol = "http://";
 	private String url = "angularfaces.net";
 	private String url2 = "http://www.bootsfaces.net";
+	
+	public void capitalizeURL(AjaxBehaviorEvent event) {
+	    url = url.toUpperCase();
+	}
 
 	public String getUrl() {
 		return url;

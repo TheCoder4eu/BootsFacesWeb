@@ -16,7 +16,10 @@
                 <br/>
                 <p>The most simple example is a plain <code>b:inputText</code> with a <code>placeholder</code> attribute, which contains an hint that is shown in the input field until something is typed in it.</p>
                 <h:form>
-                    <b:inputText placeholder="Type something here..."/>
+                    <b:inputText placeholder="Type something here..." value="#{barcodeBean.url}">
+					    <f:ajax event="change" render="@form" listener="#{barcodeBean.capitalizeURL}" />
+                    </b:inputText>
+                    <b:label text="#{barcodeBean.url}" />
                 </h:form>
                 <p>As you noticed, the input is as large as its parent container. You will see how to control its size later in this section.</p>
                 <br/>
