@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml"   
+    xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:h="http://java.sun.com/jsf/html" 
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:b="http://bootsfaces.net/ui" 
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+        <ui:define name="content">
+            <h1>AJAX</h1>
+                <p>While supporting the traditional AJAX style of JSF, BootsFaces also imlements a new AJAX API that's a little simpler to use.</p>
+                
+                <h2>State of the art</h2>
+                <p>The BootsFaces AJAX API is still under development and subject to change. Consider this page only a sneak preview.</p>
+                <p>Currently, the only component using the new AJAX API is the <code>&lt;b:selectOneMenu&gt;</code>.</p>
+                <h2>Basic usage</h2>
+                <p>The general idea is to use the JavaScript attributes for JSF AJAX calls. Unfortunately, JSF doesn't allow us to simple use the JSF EL syntax.
+                Instead, precede the JSF method name by <code>ajax:</code>:</p>
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+                <b:selectOneMenu update="someRegion" 
+                   onchange="ajax:ajaxBean.onComboboxChange()" />
+]]>
+</script>
+				<p>Of course, you can freely combine AJAX calls and Javascript. If you want to execute JavaScript code after the AJAX call,
+				you have to precede it with <code>javascript:</code>. Otherwise BootsFaces tries to run your JavaScript code on the server side. </p>
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+                <b:selectOneMenu update="someRegion" 
+                   onchange="alert('Before the AJAX call');ajax:ajaxBean.onComboboxChange();javascript:alert('after the AJAX call');" />
+]]>
+</script>
+				<p>You can also use more than one JavaScript attribute to call AJAX code: <code>onclick</code>, <code>ondlbclick</code>, <code>onfocus</code>,
+				just to name a few. Each of these AJAX calls update the same part of the DOM tree, defined by the <code>update</code> attribute.</p>
+				
+				<h2>Advanced usage</h2>
+				<p>(This feature hasn't been implemented completely yet)</p>
+                <p>Sometimes you need more flexibility. For instance, it's a common use case to update different regions, depending on the event.
+                 In this case you can resort to the traditional <code>&lt;f:ajax&gt;</code> facets of standard JSF.</p>
+
+				<h2>Live demo</h2>
+				<p>This demo shows some of the options at a glance.</p>
+				<b:tabView>
+				<b:tab title="live demo">
+				<b:well>
+				<ui:include src="ajaxCombobox.xhtml"></ui:include> 
+				</b:well>
+				</b:tab>
+				<b:tab title="source code">
+				<b:well>
+				<ui:include src="ajaxComboboxSource.xhtml"></ui:include> 
+				</b:well>
+				</b:tab>
+				</b:tabView>
+
+ 
+            <br />
+            
+            <script type="text/javascript">
+                SyntaxHighlighter.all();
+            </script>
+            <br />
+            <br />
+            <br />
+            <br />
+        </ui:define>
+    </ui:composition>
