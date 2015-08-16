@@ -5,9 +5,83 @@
 
         <ui:define name="content">
             <h1>CommandButton</h1>
-            <h:form id="form">
-                <p>The <code>&lt;b:commandButton /&gt;</code> tag extends the standard <code>&lt;h:commandButton /&gt;</code> with <a href="ajax.jsf">AJAX</a><A></A>, partial processing features
+                 <p>The <code>&lt;b:commandButton /&gt;</code> tag extends the standard <code>&lt;h:commandButton /&gt;</code> with <a href="ajax.jsf">AJAX</a><A></A>, partial processing features
                 and <a href="searchExpressions.jsf">improved search expressions</a>.</p>
+                
+                <h3>Basic usage</h3>
+                <p>The BootsFaces command button is used similarly to the PrimeFaces command button:</p>
+                <b:well>
+                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+                    <b:commandButton value="click me!" ajax="true" update="@next"
+                                     actionListener="&num;{myBean.listener}" action="&num;{myBean.navigate}" />
+ ]]> </script>             
+ 				</b:well>
+ 				<ul>
+ 				<li>By default, AJAX is deactivated. You can activate it by setting <code>ajax="true"</code>.</li>
+ 				<li>Instead of the <code>render</code> attribute of standard JSF, BootsFaces follows the 
+ 				PrimeFaces tradition and uses the attribute <code>update</code> to define which region of
+ 				the HTML page is to be updated.</li>
+ 				<li>The <code>update</code> attributes supports the full range of BootsFaces search expressions,
+ 				such as <code>@next</code>, <code>@parent</code> and so on. 
+ 				See <a href="searchExpressions.jsf">the page on improved search expressions</a> for more details.</li>
+ 				<li>The <code>actionListener</code> is a Java method that may or may not take the <code>ActionEvent</code>
+ 				as attribute. Actionlisteners can trigger navigations.</li>
+ 				<li>The <code>action</code> is called after the <code>actionlistener</code>. This method may return a
+ 				String. In that case the result of the method triggers a navigation to another page (unless it returns null).
+ 				Note that navigations are always non-AJAX, even if the command button is declared as an AJAX button.</li>
+ 				</ul>
+ 				
+ 				<h3>Advanced usage</h3>
+ 				<p>The command button allows you to freely mix JavaScript calls and AJAX calls in the JavaScript
+ 				callback attributes. The demo below uses this feature to suppress AJAX calls on simple click or on double clicks if the corresponding
+ 				check box is set. It also calls Java method when the mouse point enters the command button (<code>onmouseover</code>), 
+ 				and when it leaves it again (<code>onmouseout</code>):</p>
+ 				<b:tabView>
+ 				<b:tab title="live demo">
+	 				<b:well>
+	                  <h:form id="form1">
+	            		<b:selectBooleanCheckbox value="#{commandButtonBean.suppressClick}" label="suppress click (JavaScript)" id="click" />
+		         		<b:selectBooleanCheckbox value="#{commandButtonBean.suppressDoubleClick}" label="suppress doubleclick (JavaScript)"
+		         		                         id="doubleclick" />
+						<b:commandButton value="click me!" ajax="true" update="@next"
+							actionListener="#{commandButtonBean.onAction}"
+							onclick="var disabled = document.getElementById('form1:click').checked; if (disabled) return false; ajax:commandButtonBean.onAction();javascript:return false;" 
+							onmouseover="ajax:commandButtonBean.onMouseOver();"
+							onmouseout="ajax:commandButtonBean.onMouseOut();"
+							ondblclick="var disabled = document.getElementById('form1:doubleclick').checked; if (disabled) return false;ajax:commandButtonBean.onDoubleClick()" />
+						<b:well id="message">
+						<p>The last message processed by the server-side Java bean was:</p>
+	                    <p>#{commandButtonBean.message}</p>
+	                    </b:well>
+	                  </h:form>
+                  </b:well>
+ 				</b:tab>
+ 				<b:tab title="source code">
+ 				<b:well>
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1"> 				
+<![CDATA[
+                 <h:form id="form1">
+            		<b:selectBooleanCheckbox value="&num;{commandButtonBean.suppressClick}" label="suppress click (JavaScript)" id="click" />
+	         		<b:selectBooleanCheckbox value="&num;{commandButtonBean.suppressDoubleClick}" label="suppress doubleclick (JavaScript)"
+	         		                         id="doubleclick" />
+					<b:commandButton value="click me!" ajax="true" update="@next"
+						actionListener="&num;{commandButtonBean.onAction}"
+						onclick="var disabled = document.getElementById('form1:click').checked; if (disabled) return false; ajax:commandButtonBean.onAction();javascript:return false;" 
+						onmouseover="ajax:commandButtonBean.onMouseOver();"
+						onmouseout="ajax:commandButtonBean.onMouseOut();"
+						ondblclick="var disabled = document.getElementById('form1:doubleclick').checked; if (disabled) return false;ajax:commandButtonBean.onDoubleClick()" />
+					<b:well id="message">
+						<p>The last message processed by the server-side Java bean was:</p>
+                        <p>&num;{commandButtonBean.message}</p>
+                    </b:well>
+                 </h:form>
+ 	 ]]> </script>    
+ 	 				</b:well>
+  				</b:tab>
+ 				</b:tabView>
+ 				
+                <h3>Icons</h3>
                 <p>
                     Like Buttons, also CommandButtons can can have an icon adding the attribute
                     <code>icon</code>
@@ -42,6 +116,8 @@
 
                 <b:tabView>
                     <b:tab title="live preview">
+                        <h:form id="form">
+                    
                         <b:well>
                             <h3>Personal Information</h3>
                             <h:panelGrid id="inform" columns="3" cellpadding="5">
@@ -59,17 +135,17 @@
                         </b:well>
                         <b:row>
                             <b:column span="2">
-                                <b:commandButton value="Non-Ajax Submit" id="cb" />
+                                <b:commandButton value="Non-Ajax Submit" />
                             </b:column>
                             <b:column span="2">
-                                <b:commandButton value="Ajax Submit" ajax="true" update="form:inform infoshow" id="ajaxcb" look="primary" />
+                                <b:commandButton value="Ajax Submit" ajax="true" update="form:inform infoshow" look="primary" />
                             </b:column>
                             <b:column span="2">
-                                <b:commandButton value="With Icon" ajax="true" update="form:inform infoshow" id="acb" icon="plus-sign"
+                                <b:commandButton value="With Icon" ajax="true" update="form:inform infoshow" icon="plus-sign"
                                     look="success" />
                             </b:column>
                             <b:column span="2">
-                                <b:commandButton value="Ajax Modal" ajax="true" update="form:inform amodal" id="ajaxmodal" look="inverse"
+                                <b:commandButton value="Ajax Modal" ajax="true" update="form:inform amodal" look="inverse"
                                     oncomplete="if(validationFailed) alert('Please enter valid input before opening the modal'); else $('#amodal').modal('show')" />
                             </b:column>
                             <b:column span="1">
@@ -77,36 +153,39 @@
                                                  look="info" tooltip="Thumbs up!" />
                             </b:column>
                             <b:column span="1">
-	                            <b:commandButton ajax="true" update="form:inform infoshow" tooltip="This looks like an icon, but it's a commandButton">
+	                            <b:commandButton ajax="true" update="form:inform infoshow" 
+	                                             style="padding: 0; border: none; background: none;color: #000"
+	                                             tooltip="This looks like an icon, but it's a commandButton">
 								    <b:iconAwesome name="arrow-down"></b:iconAwesome>
 								</b:commandButton>
 							</b:column>
                             <b:column span="2">
-                                <b:commandButton value="I'm disabled" disabled="true" ajax="true" update="form:inform infoshow" 
+                                <b:commandButton value="I'm disabled" disabled="true" ajax="true"
                                                  iconAwesome="thumbs-down" look="info" title="Disabled!" />
                             </b:column>
                         </b:row>
+                        </h:form>
                     </b:tab>
                     <b:tab title="JSF markup (buttons only)">
                       <b:well>
                         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
-                <b:commandButton value="Non-Ajax Submit" id="cb" />
+                <b:commandButton value="Non-Ajax Submit"/>
 
-                <b:commandButton value="Ajax Submit" ajax="true" update="form:inform infoshow" id="ajaxcb" look="primary" />
+                <b:commandButton value="Ajax Submit" ajax="true" update="form:inform infoshow" look="primary" />
 
-                <b:commandButton value="With Icon" ajax="true" update="form:inform infoshow" id="acb" icon="plus-sign" look="success" />
+                <b:commandButton value="With Icon" ajax="true" update="form:inform infoshow" icon="plus-sign" look="success" />
 
-                <b:commandButton value="Ajax Modal" ajax="true" update="form:inform amodal" id="ajaxmodal" look="inverse"
-                  oncomplete="if(validationFailed) alert('Please enter valid input before opening the modal'); else $('#amodal').modal('show')" />
+                <b:commandButton value="Ajax Modal" ajax="true" update="form:inform amodal" look="inverse"
+                   oncomplete="if(validationFailed) alert('Please enter valid input before opening the modal'); else $('#amodal').modal('show')" />
 
                 <b:commandButton value="" ajax="true" update="form:inform infoshow" iconAwesome="thumbs-up" look="info" />
 
                 <h:commandButton ajax="true" update="form:inform infoshow" tooltip="This looks like an icon, but it's a commandButton">
-			      <b:iconAwesome name="arrow-down"></b:iconAwesome>
+			       <b:iconAwesome name="arrow-down"></b:iconAwesome>
 			    </h:commandButton>
 
-                <b:commandButton value="I'm disabled" disabled="true" ajax="true" update="form:inform infoshow" iconAwesome="thumbs-down" look="info" title="Disabled!" />
+                <b:commandButton value="I'm disabled" disabled="true" ajax="true" iconAwesome="thumbs-down" look="info" title="Disabled!" />
   ]]></script>
 					  </b:well>
 					</b:tab>                    
@@ -131,29 +210,33 @@
             </b:well>
             <b:row>
               <b:column span="2">
-                <b:commandButton value="Non-Ajax Submit" id="cb" />
+                  <b:commandButton value="Non-Ajax Submit" />
               </b:column>
               <b:column span="2">
-                <b:commandButton value="Ajax Submit" ajax="true" update="form:inform infoshow" id="ajaxcb" look="primary" />
+                  <b:commandButton value="Ajax Submit" ajax="true" update="form:inform infoshow" look="primary" />
               </b:column>
               <b:column span="2">
-                <b:commandButton value="With Icon" ajax="true" update="form:inform infoshow" id="acb" icon="plus-sign" look="success" />
+                  <b:commandButton value="With Icon" ajax="true" update="form:inform infoshow" icon="plus-sign"
+                      look="success" />
               </b:column>
               <b:column span="2">
-                <b:commandButton value="Ajax Modal" ajax="true" update="form:inform amodal" id="ajaxmodal" look="inverse"
-                  oncomplete="if(validationFailed) alert('Please enter valid input before opening the modal'); else $('#amodal').modal('show')" />
+                  <b:commandButton value="Ajax Modal" ajax="true" update="form:inform amodal" look="inverse"
+                      oncomplete="if(validationFailed) alert('Please enter valid input before opening the modal'); else $('#amodal').modal('show')" />
               </b:column>
               <b:column span="1">
-                <b:commandButton value="" ajax="true" update="form:inform infoshow" iconAwesome="thumbs-up" look="info" />
+                  <b:commandButton ajax="true" update="form:inform infoshow" iconAwesome="thumbs-up" 
+                                   look="info" tooltip="Thumbs up!" />
               </b:column>
               <b:column span="1">
-                <h:commandButton ajax="true" update="form:inform infoshow" tooltip="This looks like an icon, but it's a commandButton">
-			      <b:iconAwesome name="arrow-down"></b:iconAwesome>
-			    </h:commandButton>
-         	  </b:column>
-
+                  <b:commandButton ajax="true" update="form:inform infoshow" 
+                                   style="padding: 0; border: none; background: none;color: #000"
+                                   tooltip="This looks like an icon, but it's a commandButton">
+	                  <b:iconAwesome name="arrow-down"></b:iconAwesome>
+	              </b:commandButton>
+              </b:column>
               <b:column span="2">
-                <b:commandButton value="I'm disabled" disabled="true" ajax="true" update="form:inform infoshow" iconAwesome="thumbs-down" look="info" title="Disabled!" />
+                  <b:commandButton value="I'm disabled" disabled="true" ajax="true"
+                                   iconAwesome="thumbs-down" look="info" title="Disabled!" />
               </b:column>
             </b:row>
             <b:well id="infoshow">
@@ -184,7 +267,6 @@
                     </b:tab>
                 </b:tabView>
 
-            </h:form>
             <br />
             <b:well id="infoshow">
                 <strong>Submitted information:</strong>
