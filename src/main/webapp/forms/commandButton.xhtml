@@ -6,7 +6,8 @@
         <ui:define name="content">
             <h1>CommandButton</h1>
             <h:form id="form">
-                <p>The b:commandButton tag extends the standard h:commandButton with Ajax, and partial processing features.</p>
+                <p>The <code>&lt;b:commandButton /&gt;</code> tag extends the standard <code>&lt;h:commandButton /&gt;</code> with <a href="ajax.jsf">AJAX</a><A></A>, partial processing features
+                and <a href="searchExpressions.jsf">improved search expressions</a>.</p>
                 <p>
                     Like Buttons, also CommandButtons can can have an icon adding the attribute
                     <code>icon</code>
@@ -84,12 +85,32 @@
                                 <b:commandButton value="I'm disabled" disabled="true" ajax="true" update="form:inform infoshow" 
                                                  iconAwesome="thumbs-down" look="info" title="Disabled!" />
                             </b:column>
-                            
-                            
-
                         </b:row>
                     </b:tab>
-                    <b:tab title="JSF markup">
+                    <b:tab title="JSF markup (buttons only)">
+                      <b:well>
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+                <b:commandButton value="Non-Ajax Submit" id="cb" />
+
+                <b:commandButton value="Ajax Submit" ajax="true" update="form:inform infoshow" id="ajaxcb" look="primary" />
+
+                <b:commandButton value="With Icon" ajax="true" update="form:inform infoshow" id="acb" icon="plus-sign" look="success" />
+
+                <b:commandButton value="Ajax Modal" ajax="true" update="form:inform amodal" id="ajaxmodal" look="inverse"
+                  oncomplete="if(validationFailed) alert('Please enter valid input before opening the modal'); else $('#amodal').modal('show')" />
+
+                <b:commandButton value="" ajax="true" update="form:inform infoshow" iconAwesome="thumbs-up" look="info" />
+
+                <h:commandButton ajax="true" update="form:inform infoshow" tooltip="This looks like an icon, but it's a commandButton">
+			      <b:iconAwesome name="arrow-down"></b:iconAwesome>
+			    </h:commandButton>
+
+                <b:commandButton value="I'm disabled" disabled="true" ajax="true" update="form:inform infoshow" iconAwesome="thumbs-down" look="info" title="Disabled!" />
+  ]]></script>
+					  </b:well>
+					</b:tab>                    
+                    <b:tab title="JSF markup (complete example)">
                       <b:well>
                         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
@@ -133,10 +154,32 @@
 
               <b:column span="2">
                 <b:commandButton value="I'm disabled" disabled="true" ajax="true" update="form:inform infoshow" iconAwesome="thumbs-down" look="info" title="Disabled!" />
-               </b:column>
+              </b:column>
             </b:row>
-                          
-]]></script>
+            <b:well id="infoshow">
+                <strong>Submitted information:</strong>
+                <h:panelGrid columns="2">
+                    <h:outputText value="Firstname: " />
+                    <h:outputText value="#{informBean.firstname}" />
+  
+                    <h:outputText value="Family (surname/last) name: " />
+                    <h:outputText value="#{informBean.familyname}" />
+                </h:panelGrid>
+            </b:well>
+            <b:modal id="amodal" title="Person">
+                <h:panelGrid columns="2">
+                    <h:outputText value="Firstname: " />
+                    <h:outputText value="#{informBean.firstname}" />
+  
+                    <h:outputText value="Family (surname/last) name: " />
+                    <h:outputText value="#{informBean.familyname}" />
+                </h:panelGrid>
+                <f:facet name="footer">
+                    <b:button value="close" dismiss="modal" onclick="return false;" />
+                    <b:button value="Ok" look="primary" />
+                </f:facet>
+            </b:modal>
+  ]]></script>
                        </b:well>
                     </b:tab>
                 </b:tabView>
@@ -170,14 +213,19 @@
                 <br/>
                 <h2>Reference section</h2>
                 <ui:include src="CommandButtonAttributes.xhtml" />
-                <b:panel look="info" rendered="false">
+                <b:panel look="info">
 					<f:facet name="heading">
 						<b>Skinning</b>
 					</f:facet>
-					<ul>
-						<li>Tell the world which CSS classes can be used to change the
-						look of the component.</li>
-					</ul>
+					<p>A <code>&lt;b:commandButton /&gt;</code> is rendered as an HMTL <code>&lt;button /&gt;</code> bearing the CSS class <code>btn</code>.
+					Depending on the value of the <code>look</code> attribute, the button also bears one of the CSS classes <code>btn-primary</code>, 
+					<code>btn-block</code>, 
+					<code>btn-info</code>, 
+					<code>btn-success</code>, 
+					<code>btn-warning</code>, 
+					<code>btn-important</code> or
+					<code>btn-danger</code>.
+					</p>
 				</b:panel>
             
             <script type="text/javascript">
