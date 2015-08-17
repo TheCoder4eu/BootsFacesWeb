@@ -52,66 +52,143 @@ public class AjaxBean {
 		this.messages = messages;
 	}
 	
+
+	private int counter = 0;
+
+	private String lastMessage = null;
+
+	private boolean bool;
+
+	private String input = "Ignore the text. It's not important.";
+
+	private int brand = 1;
+
+	public int getBrand() {
+		return brand;
+	}
+
+	public void setBrand(int brand) {
+		this.brand = brand;
+		messages.add(0, now() + " Setter has been called: " + brand);
+	}
+
+
 	public String onBlur() {
-		messages.add(0, now() + " blur");
-		return null;
+		String event = " blur";
+		report(event);
+		return "Hallo";
+	}
+
+	private void report(String event) {
+		if (event.equals(lastMessage)) {
+			counter++;
+			messages.set(0, now() + event + " ("+counter+")");
+		} else {
+			counter =1;
+			messages.add(0, now() + event);
+		}
+		lastMessage=event;
+
 	}
 
 	public String onChange() {
-		messages.add(0, now() + " onChange");
-		return null;
+		String event = " c	hange";
+		report(event);
+		return "Hallo";
 	}
+
 	public String onValueChange() {
-		messages.add(0, now() + " valueChange");
-		return null;
+		String event = " valueChange";
+		report(event);
+		return "Hallo";
 	}
+
 	public String onClick() {
-		messages.add(0, now() + " click");
-		return null;
+		String event = " click";
+		report(event);
+		return "Hallo";
 	}
+
 	public String onDblClick() {
-		messages.add(0, now() + " dblclick");
-		return null;
+		String event = " dblclick";
+		report(event);
+		return "Hallo";
 	}
+
 	public String onFocus() {
-		messages.add(0, now() + " focus");
-		return null;
+		String event = " focus";
+		report(event);
+		return "Hallo";
 	}
+
 	public String onKeyDown() {
-		messages.add(0, now() + " keydown");
-		return null;
+		String event = " keydown";
+		report(event);
+		return "Hallo";
 	}
+
 	public String onKeyPress() {
-		messages.add(0, now() + " keypress");
-		return null;
+		String event = " keypress";
+		report(event);
+		return "Hallo";
 	}
+
 	public String onKeyUp() {
-		messages.add(0, now() + " keyup");
-		return null;
+		String event = " keyup";
+		report(event);
+		return "Hallo";
 	}
+
 	public String onMouseDown() {
-		messages.add(0, now() + " mousedown");
-		return null;
+		String event = " mousedown";
+		report(event);
+		return "Hallo";
 	}
+
 	public String onMouseMove() {
-		messages.add(0, now() + " mousemove");
-		return null;
+		String event = " mousemove";
+		report(event);
+		return "Hallo";
 	}
+
 	public String onMouseOut() {
-		messages.add(0, now() + " mouseout");
-		return null;
+		String event = " mouseout";
+		report(event);
+		return "Hallo";
 	}
+
 	public String onMouseOver() {
-		messages.add(0, now() + " mouseover");
-		return null;
+		String event = " mouseover";
+		report(event);
+		return "Hallo";
 	}
+
 	public String onMouseUp() {
-		messages.add(0, now() + " mouseup");
-		return null;
+		String event = " mouseup";
+		report(event);
+		return "Hallo";
 	}
+
 	public String onSelect() {
-		messages.add(0, now() + " select");
-		return null;
+		String event = " select";
+		report(event);
+		return "Hallo";
+	}
+
+	public boolean isBool() {
+		return bool;
+	}
+
+	public void setBool(boolean bool) {
+		this.bool = bool;
+	}
+
+	public String getInput() {
+		return input;
+	}
+
+	public void setInput(String input) {
+		this.input = input;
 	}
 
 	public int getDesktop() {
