@@ -92,7 +92,7 @@ public class AjaxBean {
 	}
 
 	public String onChange() {
-		String event = " c	hange";
+		String event = " change";
 		report(event);
 		return "Hallo";
 	}

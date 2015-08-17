@@ -31,14 +31,14 @@
 					</b:selectOneMenu>
 				</b:panel>
 				<b:panel look="primary"
-					title="AJAXified Combobox including mouse events">
+					title="AJAXified Combobox including most mouse events">
 					<ui:remove>
 						<!-- onmousemove="console.log('mouse move')ajax:ajaxBean.onMouseMove();"  -->
 					</ui:remove>
 
 					<b:label text="What about JavaScript?" />
 					<b:selectOneMenu value="#{ajaxBean.js}" id="jsID"
-						onchange="console.log('before onChange');ajax:ajaxBean.onChange();javascript:console.log('afterOnChange')"
+						onchange="console.log('before onChange');ajax:ajaxBean.onChange();javascript:console.log('after onChange')"
 						onblur="console.log('blur');ajax:ajaxBean.onBlur()"
 						onfocus="console.log('focus');ajax:ajaxBean.onFocus()"
 						onclick="console.log('click');ajax:ajaxBean.onClick()"
@@ -47,6 +47,7 @@
 						onkeyup="console.log('key up');ajax:ajaxBean.onKeyDown()"
 						onmousedown="console.log('mouse down');ajax:ajaxBean.onMouseDown();"
 						onmouseout="console.log('mouse out');ajax:ajaxBean.onMouseOut();"
+						onmouseover="console.log('mouse over');ajax:ajaxBean.onMouseOver();"
 						onmouseup="console.log('mouse up');ajax:ajaxBean.onMouseUp();"
 						onmouseselect="console.log('mouse select');ajax:ajaxBean.onMouseSelect();"
 						onvaluechange="console.log('valueChange);ajax:ajaxBean.onValueChange()"
