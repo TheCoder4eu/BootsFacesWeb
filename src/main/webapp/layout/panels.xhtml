@@ -21,18 +21,33 @@
                 <p>Easily add a heading container to your panel specifying the <code>heading</code> facet. You may also include any <code>&lt;h1&gt;</code>-<code>&lt;h6&gt;</code> to add a pre-styled heading.</p>
                 <p>As an alternative, you can specify a Title with the <code>title</code> attribute; since this is  meant as an option, the heading facet will not be rendered and the panel will render with a heading having the attribute's value as Title.</p>
 
-                <b:panel>
+				<b:tabView>
+  				  <b:tab title="live demo">
+	                <b:panel>
+	                    <f:facet name="heading">
+	                        <h:outputText value="Panel heading with a facet in place of a title "/>
+	                        <b:badge style="margin-left:10px" value="since version 0.4"/>
+	                    </f:facet>
+	                    <h:outputText value="Panel Content"/>
+	                </b:panel>
+                  </b:tab>
+                  <b:tab title="source code">
+                    <b:well>
+	                  <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
+                 <b:panel>
                     <f:facet name="heading">
-                        <h:outputText value="Panel heading without title"/>
+                        <h:outputText value="Panel heading with a facet in place of a title "/>
+                        <b:badge style="margin-left:10px" value="since version 0.4"/>
                     </f:facet>
                     <h:outputText value="Panel Content"/>
-                </b:panel>
+                 </b:panel>
+                    ]]></script>
+                    </b:well>
+                  </b:tab>
+                </b:tabView>
                 <br/>
                 
                 <b:panel title="Panel title" collapsible="false">
-                    <f:facet name="heading">
-                        <h:outputText value="Panel heading without title"/>
-                    </f:facet>
                     <h:outputText value="Panel Content"/>
                 </b:panel>
                 <h3>Collapsible panels</h3>
@@ -148,5 +163,8 @@
     			</b:panel>
                     
                 <br/><br/><br/>
+                <script type="text/javascript">
+                    SyntaxHighlighter.all();
+                </script>
             </ui:define>
         </ui:composition>
