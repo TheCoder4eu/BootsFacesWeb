@@ -279,7 +279,7 @@
         <repository>
           <id>central</id>
           <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-          <releases><enabled>true</enabled></releases>
+          <releases><enabled>false</enabled></releases>
           <snapshots><enabled>true</enabled></snapshots>
         </repository>
     </repositories>
