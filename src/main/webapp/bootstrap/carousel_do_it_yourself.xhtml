@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:fragment template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+         <b:tabView>
+           <b:tab title="preview">
+           
+               <h:outputStylesheet library="bsf" name="css/carousel.css" />
+               <h:outputScript library="bsf" name="js/carousel.js" />
+               <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width:800px">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                  <li data-target="#myCarousel" data-slide-to="1"></li>
+                  <li data-target="#myCarousel" data-slide-to="2"></li>
+                  <li data-target="#myCarousel" data-slide-to="3"></li>
+                  <li data-target="#myCarousel" data-slide-to="4"></li>
+                </ol>
+              
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                  <div class="item active">
+                    <img src="Valladolid1.png" alt="Valladolid" style="width:800px;height:600px"/>
+                  </div>
+              
+                  <div class="item">
+                    <img src="Valladolid2.png" alt="Valladolid" style="width:800px;height:600px"/>
+                  </div>
+              
+                  <div class="item">
+                    <img src="Valladolid3.png" alt="Valladolid" style="width:800px;height:600px" />
+                  </div>
+              
+                  <div class="item">
+                    <img src="Valladolid4.png" alt="Valladolid" style="width:800px;height:600px"/>
+                  </div>
+                  <div class="item">
+                    <img src="Valladolid5.png" alt="Valladolid" style="width:800px;height:600px"/>
+                  </div>
+                </div>
+              
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>   
+              </b:tab>
+              <b:tab title="JSF markup code">
+              <b:well>
+                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                <![CDATA[
+               <h:outputStylesheet library="bsf" name="css/carousel.css" />
+               <h:outputScript library="bsf" name="js/carousel.js" />
+               <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width:800px">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                  <li data-target="#myCarousel" data-slide-to="1"></li>
+                  <li data-target="#myCarousel" data-slide-to="2"></li>
+                  <li data-target="#myCarousel" data-slide-to="3"></li>
+                  <li data-target="#myCarousel" data-slide-to="4"></li>
+                </ol>
+              
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                  <div class="item active">
+                    <img src="Valladolid1.png" alt="Valladolid" style="width:800px;height:600px"/>
+                  </div>
+              
+                  <div class="item">
+                    <img src="Valladolid2.png" alt="Valladolid" style="width:800px;height:600px"/>
+                  </div>
+              
+                  <div class="item">
+                    <img src="Valladolid3.png" alt="Valladolid" style="width:800px;height:600px" />
+                  </div>
+              
+                  <div class="item">
+                    <img src="Valladolid4.png" alt="Valladolid" style="width:800px;height:600px"/>
+                  </div>
+                  <div class="item">
+                    <img src="Valladolid5.png" alt="Valladolid" style="width:800px;height:600px"/>
+                  </div>
+                </div>
+              
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>   
+                ]]></script>
+                </b:well>
+                </b:tab>
+              </b:tabView>            
+                
+
+</ui:fragment>
