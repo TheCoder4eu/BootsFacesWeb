@@ -1,28 +1,104 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
-<ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/applayout/pageTemplate.xhtml"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:b="http://bootsfaces.net/ui"
+  xmlns:ui="http://java.sun.com/jsf/facelets">
 
-      <ui:define name="content">
-           <h1>Carousels: &lt;b:carousel&gt;</h1>
-          <p><code>&lt;b:carousel&gt;</code> allows you to show a slide show. On the other hand,
-          you can also implement a wizard using <code>&lt;b:carousel&gt;</code>.</p>
-          
-            <h1>Basic usage</h1>
-            <p>todo</p>
-          
-           <h1>Do it yourself</h1>
-           <p>If you need more flexibility than <code>b:carousel</code> offers,
-           the <a target="#" href="http://www.w3schools.com/bootstrap/bootstrap_carousel.asp">W3C example"</a>
-           shows how to do it yourself:</p>
-           <ui:include src="carousel_do_it_yourself.xhtml" />
-     
-                
-        <script type="text/javascript">
-            SyntaxHighlighter.all();
-        </script>
-    </ui:define>
+  <ui:define name="content">
+    <h1>Carousels: &lt;b:carousel&gt;</h1>
+    <p>
+      <code>&lt;b:carousel&gt;</code>
+      allows you to show a slide show. On the other hand, you can also
+      implement a wizard using
+      <code>&lt;b:carousel&gt;</code>
+      .
+    </p>
+
+    <h1>Basic usage</h1>
+    <p>todo</p>
+
+    <b:tabView>
+      <b:tab title="preview">
+        <b:carousel id="tiovivo" style="width:800px" interval="2500">
+          <b:carouselItem caption="You'll love Valladolid!">
+            <img src="Valladolid1.png" alt="Valladolid" style="width: 800px; height: 600px" />
+          </b:carouselItem>
+          <b:carouselItem>
+            <img src="Valladolid2.png" alt="Valladolid" style="width: 800px; height: 600px" />
+          </b:carouselItem>
+          <b:carouselItem>
+            <img src="Valladolid3.png" alt="Valladolid" style="width: 800px; height: 600px" />
+          </b:carouselItem>
+          <b:carouselItem>
+            <img src="Valladolid4.png" alt="Valladolid" style="width: 800px; height: 600px" />
+          </b:carouselItem>
+          <b:carouselItem>
+            <img src="Valladolid5.png" alt="Valladolid" style="width: 800px; height: 600px" />
+          </b:carouselItem>
+        </b:carousel>
+      </b:tab>
+      <b:tab title="JSF markup code">
+        <b:well>
+          <script type="syntaxhighlighter"
+            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+             <b:carousel id="tiovivo" style="width:800px" interval="2500">
+                <b:carouselItem caption="You'll love Valladolid!">
+                  <img src="Valladolid1.png" alt="Valladolid" style="width: 800px; height: 600px" />
+                </b:carouselItem>
+                <b:carouselItem>
+                  <img src="Valladolid2.png" alt="Valladolid" style="width: 800px; height: 600px" />
+                </b:carouselItem>
+                <b:carouselItem>
+                  <img src="Valladolid3.png" alt="Valladolid" style="width: 800px; height: 600px" />
+                </b:carouselItem>
+                <b:carouselItem>
+                  <img src="Valladolid4.png" alt="Valladolid" style="width: 800px; height: 600px" />
+                </b:carouselItem>
+                <b:carouselItem>
+                  <img src="Valladolid5.png" alt="Valladolid" style="width: 800px; height: 600px" />
+                </b:carouselItem>
+              </b:carousel>
+          ]]></script>
+        </b:well>
+      </b:tab>
+    </b:tabView>
+
+
+    <h1>Do it yourself</h1>
+    <p>
+      If you need more flexibility than
+      <code>b:carousel</code>
+      offers, the <a target="#"
+        href="http://www.w3schools.com/bootstrap/bootstrap_carousel.asp">W3C
+        example"</a> shows how to do it yourself:
+    </p>
+    
+    <ui:include src="carousel/carousel_do_it_yourself.xhtml" />
+    
+    <br />
+    <br />
+    <b:panel look="info">
+      <f:facet name="heading">
+        <b>Skinning</b>
+      </f:facet>
+      <ul>
+        <li>Tell the world which CSS classes can be used to change the
+          look of the component.</li>
+      </ul>
+    </b:panel>
+    <ui:include src="carousel/CarouselAttributes.xhtml" />
+    <ui:include src="carousel/CarouselItemAttributes.xhtml" />
+    <ui:include src="carousel/CarouselCaptionAttributes.xhtml" />
+    <ui:include src="carousel/CarouselControlAttributes.xhtml" />
+    
+
+
+    <script type="text/javascript">
+					SyntaxHighlighter.all();
+				</script>
+  </ui:define>
 </ui:composition>
