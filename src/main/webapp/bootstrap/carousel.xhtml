@@ -18,24 +18,174 @@
     </p>
 
     <h1>Basic usage</h1>
-    <p>todo</p>
+    <p>Basically, it suffices to put a one or more <code>&lt;b:carouselItem /&gt;</code> into in <code>&lt;b:carousel /&gt;</code> tag:</p>
+    <b:tabView>
+      <b:tab title="preview">
+        <b:carousel id="parque" style="width:400px">
+          <b:carouselItem>
+            <img src="carousel/Valladolid-parque-1.jpg" alt="Valladolid" />
+          </b:carouselItem>
+          <b:carouselItem>
+            <img src="carousel/Valladolid-parque-2.jpg" alt="Valladolid" />
+          </b:carouselItem>
+          <b:carouselItem>
+            <img src="carousel/Valladolid-parque-3.jpg" alt="Valladolid" />
+          </b:carouselItem>
+        </b:carousel>
+      </b:tab>
+      <b:tab title="JSF markup code">
+        <b:well>
+          <script type="syntaxhighlighter"
+            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+        <b:carousel id="parque" style="width:400px">
+          <b:carouselItem>
+            <img src="carousel/Valladolid-parque-1.jpg" alt="Valladolid" />
+          </b:carouselItem>
+          <b:carouselItem>
+            <img src="carousel/Valladolid-parque-2.jpg" alt="Valladolid" />
+          </b:carouselItem>
+          <b:carouselItem>
+            <img src="carousel/Valladolid-parque-3.jpg" alt="Valladolid" />
+          </b:carouselItem>
+       </b:carousel>
+ 
+          ]]></script>
+        </b:well>
+      </b:tab>
+    </b:tabView>
+
+
+    
+<h1>Advanced usage: Wizards</h1>
+<p>You can put arbitrary content into the carousel items. For instance, you can create a wizard using the carousel.
+Chances are you need custom controls in this case. We'll describe custom controls in a minute. First, let's
+see how the standard controls look in a wizard. Don't forget to switch off the animation by setting <code>startAnimation="false"</code>.</p>
+  <b:tabView>
+      <b:tab title="preview" contentStyle="width:600px">
+        <h:form>
+          <b:carousel id="wizard" styleClass="wizardPseudoClass"
+            style="width:400px;height:350px;padding-top:20px"
+            startAnimation="false"
+            showIndicators="false">
+            <b:carouselItem style="width:400px;height:230px">
+              <b:panel title="Step 1" look="primary">
+                <b:inputText label="First name" renderLabel="true"/>
+                <b:inputText label="Last name"  renderLabel="true"/>
+              </b:panel>
+            </b:carouselItem>
+            <b:carouselItem style="width:400px;height:230px">
+              <b:panel title="Step 2" look="danger  ">
+                <b:inputText label="Street"  renderLabel="true"/>
+              </b:panel>
+            </b:carouselItem>
+            <b:carouselItem style="width:400px;height:230px">
+              <b:panel title="Step 3" look="success">
+                <b:inputText label="Zip code" renderLabel="true" />
+                <b:inputText label="City"  renderLabel="true"/>
+              </b:panel>
+            </b:carouselItem>
+            <b:carouselControl direction="right" >
+                <b:commandButton value="previous step" role="button"
+                  onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause'); return false;"
+                  look="info" />
+            </b:carouselControl>
+            <b:carouselControl direction="left">
+                <b:commandButton value="next step" role="button" style="position:absolute;right:0px"
+                  onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause'); return false;"
+                  look="success" />
+            </b:carouselControl>
+           </b:carousel>
+        </h:form>
+      </b:tab>
+      <b:tab title="JSF markup code">
+        <b:well>
+          <script type="syntaxhighlighter"
+            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+       <h:form>
+          <b:carousel id="wizard" styleClass="wizardPseudoClass"
+            style="width:400px;height:350px;padding-top:20px"
+            startAnimation="false"
+            showIndicators="false">
+            <b:carouselItem style="width:400px;height:230px">
+              <b:panel title="Step 1" look="primary">
+                <b:inputText label="First name" renderLabel="true"/>
+                <b:inputText label="Last name"  renderLabel="true"/>
+              </b:panel>
+            </b:carouselItem>
+            <b:carouselItem style="width:400px;height:230px">
+              <b:panel title="Step 2" look="danger  ">
+                <b:inputText label="Street"  renderLabel="true"/>
+              </b:panel>
+            </b:carouselItem>
+            <b:carouselItem style="width:400px;height:230px">
+              <b:panel title="Step 3" look="success">
+                <b:inputText label="Zip code" renderLabel="true" />
+                <b:inputText label="City"  renderLabel="true"/>
+              </b:panel>
+            </b:carouselItem>
+            <b:carouselControl direction="right" >
+                <b:commandButton value="previous step" role="button"
+                  onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause'); return false;"
+                  look="info" />
+            </b:carouselControl>
+            <b:carouselControl direction="left">
+                <b:commandButton value="next step" role="button" style="position:absolute;right:0px"
+                  onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause'); return false;"
+                  look="success" />
+            </b:carouselControl>
+           </b:carousel>
+        </h:form>
+          ]]></script>
+        </b:well>
+      </b:tab>
+    </b:tabView>
+
+    <p>The buttons of this example use the Bootstrap carousel JavaScript API. It's available for you. You just have
+    to be careful with the ids. More often than not, JSF generates ids that aren't compatible with jQuery. Better use
+    CSS pseudo classes instead (i.e. CSS classes that don't bear layout information).</p>
+    <p>To send the form data to the Java bean, use the AJAX api of <code>&lt;b:commandButton /&gt;</code></p>
+    <script type="syntaxhighlighter"
+            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+    <![CDATA[
+        <b:commandButton value="next step" 
+                  update="@form:**:messages"
+                  execute="@form"
+                  onclick="ajax:bean.onclick(); return false;"
+                  look="success" />
+                  oncomplete="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause'); return false;">
+     ]]></script>
+
+    <h1>Advanced usage: Captions</h1>
+    <p>Assign an image description to the slides by adding the <code>caption</code> attribute. This provides some
+    default behavior: the text is embedded in an <code>&lt;h3 /&gt;</code> tag. If you need more
+    flexibility for your caption, your can define it inside a <code>&lt;b:carouselCaption /&gt;</code> tag.</p>
 
     <b:tabView>
       <b:tab title="preview">
         <b:carousel id="tiovivo" style="width:800px" interval="2500">
-          <b:carouselItem caption="You'll love Valladolid!">
+          <b:carouselItem >
             <img src="Valladolid1.png" alt="Valladolid" style="width: 800px; height: 600px" />
+            <b:carouselCaption>
+              <h3>You'll love Valladolid!</h3>
+              <p>The band reads <a style="color:#fff" href="http://www.vanderkrogt.net/statues/object.php?webpage=CO&amp;record=escl010">"Non plus ultra"</a>, being Spains' motto in 1492, when Columbus made his discoveries.</p> 
+            </b:carouselCaption>
           </b:carouselItem>
-          <b:carouselItem>
+          <b:carouselItem caption="Valladolid has a nice central park.">
             <img src="Valladolid2.png" alt="Valladolid" style="width: 800px; height: 600px" />
           </b:carouselItem>
-          <b:carouselItem>
+          <b:carouselItem caption="Ain't he a beauty?">
             <img src="Valladolid3.png" alt="Valladolid" style="width: 800px; height: 600px" />
           </b:carouselItem>
           <b:carouselItem>
             <img src="Valladolid4.png" alt="Valladolid" style="width: 800px; height: 600px" />
+            <b:carouselCaption>
+              <h3>Fountains</h3>
+              <p>In Spain, dry as it is, people love to play with water.</p> 
+            </b:carouselCaption>
           </b:carouselItem>
-          <b:carouselItem>
+          <b:carouselItem caption="Valladolid - a city with a lot of history">
             <img src="Valladolid5.png" alt="Valladolid" style="width: 800px; height: 600px" />
           </b:carouselItem>
         </b:carousel>
@@ -45,23 +195,113 @@
           <script type="syntaxhighlighter"
             class="brush: xml; toolbar: false;gutter: false; first-line: 1">
           <![CDATA[
-             <b:carousel id="tiovivo" style="width:800px" interval="2500">
-                <b:carouselItem caption="You'll love Valladolid!">
-                  <img src="Valladolid1.png" alt="Valladolid" style="width: 800px; height: 600px" />
-                </b:carouselItem>
-                <b:carouselItem>
-                  <img src="Valladolid2.png" alt="Valladolid" style="width: 800px; height: 600px" />
-                </b:carouselItem>
-                <b:carouselItem>
-                  <img src="Valladolid3.png" alt="Valladolid" style="width: 800px; height: 600px" />
-                </b:carouselItem>
-                <b:carouselItem>
-                  <img src="Valladolid4.png" alt="Valladolid" style="width: 800px; height: 600px" />
-                </b:carouselItem>
-                <b:carouselItem>
-                  <img src="Valladolid5.png" alt="Valladolid" style="width: 800px; height: 600px" />
-                </b:carouselItem>
-              </b:carousel>
+       <b:carousel id="tiovivo" style="width:800px" interval="2500">
+          <b:carouselItem >
+            <img src="Valladolid1.png" alt="Valladolid" style="width: 800px; height: 600px" />
+            <b:carouselCaption>
+              <h3>You'll love Valladolid!</h3>
+              <p>The band reads <a style="color:#fff" href="http://www.vanderkrogt.net/statues/object.php?webpage=CO&amp;record=escl010">"Non plus ultra"</a>, being Spains' motto in 1492, when Columbus made his discoveries.</p> 
+            </b:carouselCaption>
+          </b:carouselItem>
+          <b:carouselItem caption="Valladolid has a nice central park.">
+            <img src="Valladolid2.png" alt="Valladolid" style="width: 800px; height: 600px" />
+          </b:carouselItem>
+          <b:carouselItem caption="Ain't he a beauty?">
+            <img src="Valladolid3.png" alt="Valladolid" style="width: 800px; height: 600px" />
+          </b:carouselItem>
+          <b:carouselItem>
+            <img src="Valladolid4.png" alt="Valladolid" style="width: 800px; height: 600px" />
+            <b:carouselCaption>
+              <h3>Fountains</h3>
+              <p>In Spain, dry as it is, people love to play with water.</p> 
+            </b:carouselCaption>
+          </b:carouselItem>
+          <b:carouselItem caption="Valladolid - a city with a lot of history">
+            <img src="Valladolid5.png" alt="Valladolid" style="width: 800px; height: 600px" />
+          </b:carouselItem>
+        </b:carousel>
+          ]]></script>
+        </b:well>
+      </b:tab>
+    </b:tabView>
+
+    <h1>Advanced usage: Custom controls</h1>
+    <p>By default, the BootsFaces carousel comes complete with progress indicators (the little dots)
+    and controls to move to the previous or next slide.</p>
+    <p>You can switch off the indicators by adding <code>showIndicators="false"</code>. Apart from that,
+    BootsFaces doesn't let you modify the indicators (unless you use CSS, of course).</p>
+    <p>The controls are more flexible. You can implement your own custom controls using the tag
+    <code>&lt;b:carouselControl /&gt;</code>. Note that the CSS class "carousel-control" add a
+    shadow to the left and to the right of the image, and positions the control widgets automatically.
+    If you don't want to use the CSS class "custom-control" - as we did in the wizard demo above - 
+    you have to care about positioning yourself.</p>
+    <p>Also note that you need to add at least two <code>&lt;b:carouselControls /&gt;</code>, one
+    for each direction.</p>
+    <b:tabView>
+      <b:tab title="preview">
+      <h:form id="riojaForm">
+        <b:carousel id="rioja" styleClass="riojaPseudoClass" style="width:700px">
+          <b:carouselItem style="padding-left:150px">
+            <img src="carousel/rioja1.jpg" alt="Valladolid" />
+          </b:carouselItem>
+          <b:carouselItem style="padding-left:150px">
+            <img src="carousel/rioja2.jpg" alt="Valladolid" />
+          </b:carouselItem>
+          <b:carouselItem style="padding-left:150px">
+            <img src="carousel/rioja3.jpg" alt="Valladolid" />
+          </b:carouselItem>
+          <b:carouselControl direction="right">
+            <div class="left carousel-control">
+            <b:commandButton value="previous image" role="button" 
+                             onclick="$('.riojaPseudoClass').carousel('prev'); return false;"
+                             style="margin-top:140px"
+                             look="info"/>
+            </div>
+          </b:carouselControl>
+          <b:carouselControl direction="left">
+            <div class="right carousel-control">
+              <b:commandButton value="next image" role="button" 
+                               onclick="$('.riojaPseudoClass').carousel('next'); return false;" 
+                               style="margin-top:140px"
+                               look="success"/>
+            </div>
+          </b:carouselControl>
+        </b:carousel>
+        </h:form>
+      </b:tab>
+      <b:tab title="JSF markup code">
+        <b:well>
+          <script type="syntaxhighlighter"
+            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+       <b:carousel id="rioja" styleClass="riojaPseudoClass" style="width:700px">
+          <b:carouselItem style="padding-left:150px">
+            <img src="carousel/rioja1.jpg" alt="Valladolid" />
+          </b:carouselItem>
+          <b:carouselItem style="padding-left:150px">
+            <img src="carousel/rioja2.jpg" alt="Valladolid" />
+          </b:carouselItem>
+          <b:carouselItem style="padding-left:150px">
+            <img src="carousel/rioja3.jpg" alt="Valladolid" />
+          </b:carouselItem>
+          <b:carouselControl direction="right">
+            <div class="left carousel-control">
+            <b:commandButton value="previous image" role="button" 
+                             onclick="$('.riojaPseudoClass').carousel('prev'); return false;"
+                             style="margin-top:140px"
+                             look="info"/>
+            </div>
+          </b:carouselControl>
+          <b:carouselControl direction="left">
+            <div class="right carousel-control">
+              <b:commandButton value="next image" role="button" 
+                               onclick="$('.riojaPseudoClass').carousel('next'); return false;" 
+                               style="margin-top:140px"
+                               look="success"/>
+            </div>
+          </b:carouselControl>
+        </b:carousel>
+ 
           ]]></script>
         </b:well>
       </b:tab>
@@ -74,7 +314,7 @@
       <code>b:carousel</code>
       offers, the <a target="#"
         href="http://www.w3schools.com/bootstrap/bootstrap_carousel.asp">W3C
-        example"</a> shows how to do it yourself:
+        example</a> shows how to do it yourself:
     </p>
     
     <ui:include src="carousel/carousel_do_it_yourself.xhtml" />
