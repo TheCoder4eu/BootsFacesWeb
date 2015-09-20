@@ -219,5 +219,41 @@ public class AjaxBean {
 		FacesMessage message = new FacesMessage(msg);
 				FacesContext.getCurrentInstance().addMessage(null, message);
 	}
+	
+	public String onPanelCollapseStart() {
+		String event = " panel starts to collapse";
+		report(event);
+		return null;
+	}
+	
+	public String onPanelCollapsed() {
+		String event = " panel finished collapsing";
+		report(event);
+		return null;
+	}
+
+	public String onPanelExpandStart() {
+		String event = " panel starts to expand";
+		report(event);
+		return null;
+	}
+	
+	public String onPanelExpanded() {
+		String event = " panel finished expanding";
+		report(event);
+		return null;
+	}
+
+	public String onCarouselSlideStart() {
+		String event = " carousel started to slide";
+		report(event);
+		return null;
+	}
+	public String onCarouselSlid() {
+		String event = " carousel finished sliding";
+		report(event);
+		return null;
+	}
+
 
 }
