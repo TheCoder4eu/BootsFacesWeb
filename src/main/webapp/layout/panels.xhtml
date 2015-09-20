@@ -323,32 +323,51 @@
          <b:tabView>
              <b:tab title="preview">
                <h:form>
-               <b:panelGrid colSpans="6,6">
-                 <b:panel look="primary" title="AJAXified b:panel"
-                    update="@form:messages"
-                    onexpand="console.log('expand - start');ajax:AjaxBean.onPanelExpandStart()"
-                    onexpanded="console.log('expand - done');ajax:AjaxBean.onPanelExpanded()"
-                    oncollapse="console.log('expand - start');ajax:AjaxBean.onPanelCollapseStart()"
-                    oncollapsed="console.log('expand - done');ajax:AjaxBean.onPanelCollapsed()">
-                    The content of the panel does not matter. Instead, look at the messages.
-                 </b:panel>          
-                  <b:well id="messages">
-                          Last action:
-                          <ul>
-                    <ui:repeat var="message" value="#{AJAXBean.messages}">
-                      <li>#{message}</li>
-                    </ui:repeat>
-                  </ul>
-                </b:well>
-               </b:panelGrid>
-             </h:form>
+                 <b:panelGrid colSpans="6,6">
+                   <b:panel look="primary" title="AJAXified b:panel"
+                      update="@form:messages"
+                      onexpand="console.log('expand - start');ajax:ajaxBean.onPanelExpandStart()"
+                      onexpanded="console.log('expand - done');ajax:ajaxBean.onPanelExpanded()"
+                      oncollapse="console.log('expand - start');ajax:ajaxBean.onPanelCollapseStart()"
+                      oncollapsed="console.log('expand - done');ajax:ajaxBean.onPanelCollapsed()">
+                      The content of the panel does not matter. Instead, look at the messages.
+                   </b:panel>          
+                    <b:well id="messages">
+                            Last action:
+                            <ul>
+                      <ui:repeat var="message" value="#{ajaxBean.messages}">
+                        <li>#{message}</li>
+                      </ui:repeat>
+                    </ul>
+                  </b:well>
+                 </b:panelGrid>
+               </h:form>
             </b:tab>
             <b:tab title="JSF markup">
               <b:well>
                 <script type="syntaxhighlighter"
                   class="brush: xml; toolbar: false;gutter: false; first-line: 1">
              <![CDATA[
-
+              <h:form>
+                 <b:panelGrid colSpans="6,6">
+                   <b:panel look="primary" title="AJAXified b:panel"
+                      update="@form:messages"
+                      onexpand="console.log('expand - start');ajax:ajaxBean.onPanelExpandStart()"
+                      onexpanded="console.log('expand - done');ajax:ajaxBean.onPanelExpanded()"
+                      oncollapse="console.log('expand - start');ajax:ajaxBean.onPanelCollapseStart()"
+                      oncollapsed="console.log('expand - done');ajax:ajaxBean.onPanelCollapsed()">
+                      The content of the panel does not matter. Instead, look at the messages.
+                   </b:panel>          
+                    <b:well id="messages">
+                            Last action:
+                            <ul>
+                      <ui:repeat var="message" value="#{ajaxBean.messages}">
+                        <li>#{message}</li>
+                      </ui:repeat>
+                    </ul>
+                  </b:well>
+                 </b:panelGrid>
+               </h:form>
             ]]>
             </script>
               </b:well>

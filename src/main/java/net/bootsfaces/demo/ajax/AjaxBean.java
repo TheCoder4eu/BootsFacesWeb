@@ -18,7 +18,7 @@ public class AjaxBean {
 	
 	public AjaxBean() {
 		getMessages().add("No message yet.");
-		getMessages().add("Play with the comboboxes to add messages.");
+		getMessages().add("Play with the AJAXified widget to add messages.");
 	}
 	private int jsf=1;
 
