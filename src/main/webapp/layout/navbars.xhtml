@@ -9,8 +9,8 @@
 
            <ui:define name="content">
                 <h1>Navbars</h1>
-                <p>The main use of the NavBar component, when designing an application or website, is to place a Navigation bar at top, bottom or both of the page.</p>
-                <p>The NavBar typically will have a Brand, that could be, for example, the name of your Project.</p>
+                <p>The main use of the NavBar component is to place a navigation menu at top, bottom or both of your web application or web page.</p>
+                <p>The NavBar typically will have a brand, that could be, for example, the name of your project.</p>
                 
                 <b:panel>
                     <f:facet name="heading"><b>EXAMPLE</b></f:facet>
@@ -65,12 +65,12 @@
                 <p>The two other ways a Navigation Bar can be rendered in the page are:</p>
                 <ul>
                     <li><b>fixed</b> to the top or bottom of the page, without scrolling with the content, </li>
-                    <li>statically on top of the page, scrolling away with the page.</li>
+                    <li><b>statically</b> on top of the page, scrolling away with the page.</li>
                 </ul>
-                <p>To better understand the different layouts, just have a look at the <h:link outcome="/examples/navbar" value="NavBar examples"/></p>
+                <p>To better understand the different layouts, just have a look at the <h:link outcome="/examples/navbar" value="NavBar examples"/>.</p>
                 <br/>
                 
-                <h3>Using the b:navbar Tag</h3>
+                <h3>Using the b:navbar tag</h3>
                 <p>Using the <code>b:navbar</code> tag is very straightforward, as you can see from the following table you need to specify few attributes:</p>
                 
                 <strong>Widget attributes</strong>
@@ -146,7 +146,9 @@
                 <br/>
                 <strong>Drop Menus</strong>
                 <p>You can build up a rich menu bar using another useful element: <code>b:dropMenu</code>. It is another element where you can put your <code>b:navLink</code> elements.</p>
-                <p>You can have multiple <code>b:navbarLinks</code> and <code>b:dropMenu</code> elements in a navbar, just pay attention to the resulting layout.</p>
+                <p>You can have multiple <code>b:navbarLinks</code> and <code>b:dropMenu</code> elements in a navbar, just pay attention to the resulting layout. Starting with
+                BootsFaces 0.8.0, <code>b:dropMenu</code>s can also be nested. This way, you get menu of three or more levels. Of course, you shouldn't overdo it. Most of the
+                time, two levels is what users accept. They also accept a third level if it remains the exception. But adding a fourth level makes your application cumbersome.</p>
                 <b:panel>
                     <f:facet name="heading"><b>EXAMPLE</b></f:facet>
                     <b:navBar brand="Brand" brandHref="#">

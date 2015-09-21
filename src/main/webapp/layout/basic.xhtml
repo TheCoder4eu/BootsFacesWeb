@@ -1,151 +1,162 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html>
-<ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
- 
-             <ui:define name="content">
-                <style>
-                    .show-grid [class^="col-"] {
-                        background-color: rgba(86, 61, 124, 0.15);
-                        border: 1px solid rgba(86, 61, 124, 0.2);
-                        padding-bottom: 10px;
-                        padding-top: 10px;
-                        margin-bottom: 15px;
-                    }
-                    //Needed for TBS 3.0.1 (panel content overflow issue)
-                    .panel-body { margin: 0px 15px; }
-                </style>
-                <h1>Basic Layout</h1>
-                <p>BootsFaces inherits Bootstrap's responsive, mobile first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases. This allows developers to easyly build complex layouts without worrying how they will look on different devices .</p>
-                <p>There are only three tags you can use to create your layout: <code>b:container</code>, <code>b:row</code> and <code>b:column</code>.</p>
-                <p>The <code>b:container</code> is, as the name suggests, a container for <code>b:row</code>s and <code>b:column</code>s; it centers everything adding appropriate padding and margin.
-                As a rule of thumb, always surround your rows with a container. Note that containers can't be nested. By default, containers make for a airy design, leaving a lot of the screen white, as you can see on the page you're currently reading
-                 (and similar to the layout in most books). 
-                You can reduce the amount of white space by adding the <code>fluid</code> attribute: <code>&lt;b:container fluid="true"&gt;</code>. 
-                </p>
-                <p><code>b:row</code> is a container for <code>b:column</code>s and you can't nest a <code>b:container</code> in a <code>b:column</code>.</p>
-                <p>BootsFaces takes full advantage of Bootstrap Grid system while maintaining the benefits of being a JSF framework.</p>
-                <p>This means that you can leverage Bootstrap's layout feature using for example the JSF templating system and conditional rendering to achieve and mantain very complex layouts without much effort.</p>
-                <p>This website is an example itself: it uses a page template with <code>ui:insert</code> and <code>ui:include</code> and the pages are <code>ui:composition</code>s.</p>
-                <h2>Understanding BootsFaces Grid System</h2>
-                <strong>Grid options</strong>
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>
-                                    Extra small devices
-                                    <small>Phones (&lt;768px)</small>
-                                </th>
-                                <th>
-                                    Small devices
-                                    <small>Tablets (≥768px)</small>
-                                </th>
-                                <th>
-                                    Medium devices
-                                    <small>Desktops (≥992px)</small>
-                                </th>
-                                <th>
-                                    Large devices
-                                    <small>Desktops (≥1200px)</small>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th>Grid behavior</th>
-                                <td>Horizontal at all times</td>
-                                <td colspan="3">Collapsed to start, horizontal above breakpoints</td>
-                            </tr>
-                            <tr>
-                                <th>Max container width</th>
-                                <td>None (auto)</td>
-                                <td>750px</td>
-                                <td>970px</td>
-                                <td>1170px</td>
-                            </tr>
-                            <tr>
-                                <th><code>b:column</code> attributes</th>
-                                <td><code>col-xs</code></td>
-                                <td><code>col-sm</code></td>
-                                <td><code>col-md</code> or <code>span</code></td>
-                                <td><code>col-lg</code></td>
-                            </tr>
-                            <tr>
-                                <th># of columns</th>
-                                <td colspan="4">12</td>
-                            </tr>
-                            <tr>
-                                <th>Max column width</th>
-                                <td class="text-muted">Auto</td>
-                                <td>60px</td>
-                                <td>78px</td>
-                                <td>95px</td>
-                            </tr>
-                            <tr>
-                                <th>Gutter width</th>
-                                <td colspan="4">30px (15px on each side of a column)</td>
-                            </tr>
-                            <tr>
-                                <th>Nestable</th>
-                                <td colspan="4">Yes</td>
-                            </tr>
-                            <tr>
-                                <th>Offsets</th>
-                                <td class="text-muted" colspan="1">N/A</td>
-                                <td colspan="3">Yes</td>
-                            </tr>
-                            <tr>
-                                <th>Column ordering</th>
-                                <td class="text-muted">N/A</td>
-                                <td colspan="3">Yes</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <br/>
-                <h3 id="grid-example-basic">Example: Stacked-to-horizontal</h3>
-                <p>Using a single set of <code>col-md=*</code> or <code>span=*</code> attributes, 
-                    you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range) 
-                    before becoming horizontal on desktop (medium) devices.</p>
-                <p>The <code>span=*</code> and <code>offset=*</code> attributes are meant for this common special use case, to speed up markup writing</p>
-                <b:panel>
-                    
-                    <b:row styleClass="show-grid">
-                        <b:column span="1"><h:outputText value="span=1"/></b:column>
-                        <b:column span="1"><h:outputText value="span=1"/></b:column>
-                        <b:column span="1"><h:outputText value="span=1"/></b:column>
-                        <b:column span="1"><h:outputText value="span=1"/></b:column>
-                        <b:column span="1"><h:outputText value="span=1"/></b:column>
-                        <b:column span="1"><h:outputText value="span=1"/></b:column>
-                        <b:column span="1"><h:outputText value="span=1"/></b:column>
-                        <b:column span="1"><h:outputText value="span=1"/></b:column>
-                        <b:column span="1"><h:outputText value="span=1"/></b:column>
-                        <b:column span="1"><h:outputText value="span=1"/></b:column>
-                        <b:column span="1"><h:outputText value="span=1"/></b:column>
-                        <b:column span="1"><h:outputText value="span=1"/></b:column>
-                    </b:row>
-                    <b:row styleClass="show-grid">
-                        <b:column span="8"><h:outputText value="span=8"/></b:column>
-                        <b:column span="4"><h:outputText value="span=4"/></b:column>
-                    </b:row>
-                    <b:row styleClass="show-grid">
-                        <b:column span="4"><h:outputText value="span=4"/></b:column>
-                        <b:column span="4"><h:outputText value="span=4"/></b:column>
-                        <b:column span="4"><h:outputText value="span=4"/></b:column>
-                    </b:row>
-                    <b:row styleClass="show-grid">
-                        <b:column span="6"><h:outputText value="span=6"/></b:column>
-                        <b:column span="6"><h:outputText value="span=6"/></b:column>
-                    </b:row>
-                    <f:facet name="footer">
-                        <strong>Markup:</strong><br/>
-
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+  <!DOCTYPE html>
+  <ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:b="http://bootsfaces.net/ui"
+        xmlns:ui="http://java.sun.com/jsf/facelets">
+   
+               <ui:define name="content">
+                  <style>
+                      .show-grid [class^="col-"] {
+                          background-color: rgba(86, 61, 124, 0.15);
+                          border: 1px solid rgba(86, 61, 124, 0.2);
+                          padding-bottom: 10px;
+                          padding-top: 10px;
+                          margin-bottom: 15px;
+                      }
+                      //Needed for TBS 3.0.1 (panel content overflow issue)
+                      .panel-body { margin: 0px 15px; }
+                  </style>
+                  <h1>Basic Layout</h1>
+                  <p><b:badge value="Hint"></b:badge> To understand this page better, check out <a target="#" href="https://github.com/stephanrauh/BootsFaces-Examples/tree/master/ResponsiveDesign">this demo project</a>. It doesn't cover exactly this page, 
+                  but it's a good starting point to play with the grid system of BootsFaces.</p>
+                  <p>BootsFaces inherits Bootstrap's responsive, mobile first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases. 
+                     This allows developers to easily build complex layouts without worrying how they will look on different devices .</p>
+                  <p>There are only three tags you need to create your layout: <code>b:container</code>, <code>b:row</code> and <code>b:column</code>. Later you may also add <code>&lt;b:panelGrid /&gt;</code> to your reportoire,
+                  but basically it's only an abbreviation that spare you a lot of keystrokes.</p>
+                  <p>The <code>b:container</code> is, as the name suggests, a container for <code>b:row</code>s and <code>b:column</code>s; it centers everything adding appropriate padding and margin.
+                  As a rule of thumb, always surround your rows with a container. Note that containers can't be nested. By default, containers make for a airy design, leaving a lot of the screen white, as you can see on the page you're currently reading
+                   (and similar to the layout in most books). 
+                  You can reduce the amount of white space by adding the <code>fluid</code> attribute: <code>&lt;b:container fluid="true"&gt;</code>. 
+                  </p>
+                  <p><code>b:row</code> is a container for <code>b:column</code>s and you can't nest a <code>b:container</code> in a <code>b:column</code>.</p>
+                  <p>BootsFaces takes full advantage of Bootstrap Grid system while maintaining the benefits of being a JSF framework. Actually, we believe it's more concise and more expressive
+                     than programming Bootstrap natively.</p>
+                  <p>This means that you can leverage Bootstrap's layout feature using - for example - the JSF templating system and JSF's conditional rendering to achieve and maintain very complex layouts without much effort.</p>
+                  <p>This website is an example itself: it uses a page template with <code>ui:insert</code> and <code>ui:include</code> and the pages are <code>ui:composition</code>s.</p>
+                  <h2>Understanding BootsFaces Grid System</h2>
+                  <p>The central idea is to divide the page into 12 equal-sized columns. Each element of your page - be it an input field, a label, a table or a text - covers
+                  several of these columns. Widgets can't cover half a column. Your limited to integer multiples: one, two, three, ..., up to twelve columns. At first glance this sounds like
+                  a severe restriction, but in practice 12 columns offer enough flexibility for almost every use case. At the same time, being limited to twelve columns usually ensures an attractive page design.</p>
+                  <p>The second central idea is to avoid horizontal scrolling. If your screen is wide enough to display the twelve columns side-by-side, do it. If not, stack the columns on top of each other.
+                  This means you have to do a lot of horizontal scrolling on small phone displays. But that's still better than having to scroll both horizontally and vertically. Users
+                  can use your application even if screen estate is scarce.</p>
+                  <strong>Grid options</strong>
+                  <div class="table-responsive">
+                      <table class="table table-bordered table-striped">
+                          <thead>
+                              <tr>
+                                  <th></th>
+                                  <th>
+                                      Extra small devices
+                                      <small>Phones (&lt;768px)</small>
+                                  </th>
+                                  <th>
+                                      Small devices
+                                      <small>Tablets (≥768px)</small>
+                                  </th>
+                                  <th>
+                                      Medium devices
+                                      <small>Desktops (≥992px)</small>
+                                  </th>
+                                  <th>
+                                      Large devices
+                                      <small>Desktops (≥1200px)</small>
+                                  </th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <th>Grid behavior</th>
+                                  <td>Horizontal at all times</td>
+                                  <td colspan="3">Collapsed to start, horizontal above breakpoints</td>
+                              </tr>
+                              <tr>
+                                  <th>Max container width</th>
+                                  <td>None (auto)</td>
+                                  <td>750px</td>
+                                  <td>970px</td>
+                                  <td>1170px</td>
+                              </tr>
+                              <tr>
+                                  <th><code>b:column</code> attributes</th>
+                                  <td><code>col-xs</code></td>
+                                  <td><code>col-sm</code></td>
+                                  <td><code>col-md</code> or <code>span</code></td>
+                                  <td><code>col-lg</code></td>
+                              </tr>
+                              <tr>
+                                  <th># of columns</th>
+                                  <td colspan="4">12</td>
+                              </tr>
+                              <tr>
+                                  <th>Max column width</th>
+                                  <td class="text-muted">Auto</td>
+                                  <td>60px</td>
+                                  <td>78px</td>
+                                  <td>95px</td>
+                              </tr>
+                              <tr>
+                                  <th>Gutter width</th>
+                                  <td colspan="4">30px (15px on each side of a column)</td>
+                              </tr>
+                              <tr>
+                                  <th>Nestable</th>
+                                  <td colspan="4">Yes</td>
+                              </tr>
+                              <tr>
+                                  <th>Offsets</th>
+                                  <td class="text-muted" colspan="1">N/A</td>
+                                  <td colspan="3">Yes</td>
+                              </tr>
+                              <tr>
+                                  <th>Column ordering</th>
+                                  <td class="text-muted">N/A</td>
+                                  <td colspan="3">Yes</td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+                  <br/>
+                  <h3 id="grid-example-basic">Example: Stacked-to-horizontal</h3>
+                  <p>Using a single set of <code>col-md=*</code> or <code>span=*</code> attributes, 
+                      you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range) 
+                      before becoming horizontal on desktop (medium) devices.</p>
+                  <p>The <code>span=*</code> and <code>offset=*</code> attributes are meant for this common special use case, to speed up markup writing</p>
+                  <b:panel>
+                      
+                      <b:row styleClass="show-grid">
+                          <b:column span="1"><h:outputText value="span=1"/></b:column>
+                          <b:column span="1"><h:outputText value="span=1"/></b:column>
+                          <b:column span="1"><h:outputText value="span=1"/></b:column>
+                          <b:column span="1"><h:outputText value="span=1"/></b:column>
+                          <b:column span="1"><h:outputText value="span=1"/></b:column>
+                          <b:column span="1"><h:outputText value="span=1"/></b:column>
+                          <b:column span="1"><h:outputText value="span=1"/></b:column>
+                          <b:column span="1"><h:outputText value="span=1"/></b:column>
+                          <b:column span="1"><h:outputText value="span=1"/></b:column>
+                          <b:column span="1"><h:outputText value="span=1"/></b:column>
+                          <b:column span="1"><h:outputText value="span=1"/></b:column>
+                          <b:column span="1"><h:outputText value="span=1"/></b:column>
+                      </b:row>
+                      <b:row styleClass="show-grid">
+                          <b:column span="8"><h:outputText value="span=8"/></b:column>
+                          <b:column span="4"><h:outputText value="span=4"/></b:column>
+                      </b:row>
+                      <b:row styleClass="show-grid">
+                          <b:column span="4"><h:outputText value="span=4"/></b:column>
+                          <b:column span="4"><h:outputText value="span=4"/></b:column>
+                          <b:column span="4"><h:outputText value="span=4"/></b:column>
+                      </b:row>
+                      <b:row styleClass="show-grid">
+                          <b:column span="6"><h:outputText value="span=6"/></b:column>
+                          <b:column span="6"><h:outputText value="span=6"/></b:column>
+                      </b:row>
+                      <f:facet name="footer">
+                          <strong>Markup:</strong><br/>
+  
+                          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
                             <![CDATA[
                             <b:row>
                                 <b:column span="1"><h:outputText value="span=1"/></b:column>
@@ -175,35 +186,35 @@
                                 <b:column span="6"><h:outputText value="span=6"/></b:column>
                             </b:row>
                             ]]></script>
-                    </f:facet>
-                </b:panel>
-                <h3>Example: Mobile and desktop</h3>
-                <p>
-                    Don't want your columns to simply stack in smaller devices? Use the extra small and medium device grid attributes including
-                    <code>col-xs=*</code> and <code>col-md=*</code> in your columns. See the example below for a better idea of how it all works.
-                </p>
-                <b:panel>
-                    
-                    <!-- Stack the columns on mobile by making one full-width and the other half-width -->
-                    <b:row styleClass="show-grid">
-                        <b:column col-xs="12" col-md="8"><h:outputText value="col-xs=12 col-md=8"/></b:column>
-                        <b:column col-xs="6" col-md="4"><h:outputText value="col-xs=6 col-md=4"/></b:column>
-                    </b:row>
-                    <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
-                    <b:row styleClass="show-grid">
-                        <b:column col-xs="6" col-md="4"><h:outputText value="col-xs=6 col-md=4"/></b:column>
-                        <b:column col-xs="6" col-md="4"><h:outputText value="col-xs=6 col-md=4"/></b:column>
-                        <b:column col-xs="6" col-md="4"><h:outputText value="col-xs=6 col-md=4"/></b:column>
-                    </b:row>
-                    <!-- Columns are always 50% wide, on mobile and desktop -->
-                    <b:row styleClass="show-grid">
-                        <b:column col-xs="6"><h:outputText value="col-xs=6"/></b:column>
-                        <b:column col-xs="6"><h:outputText value="col-xs=6"/></b:column>
-                    </b:row>
-                    <f:facet name="footer">
-                        <strong>Markup:</strong><br/>
-
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                      </f:facet>
+                  </b:panel>
+                  <h3>Example: Mobile and desktop</h3>
+                  <p>
+                      Don't want your columns to simply stack in smaller devices? Use the extra small and medium device grid attributes including
+                      <code>col-xs=*</code> and <code>col-md=*</code> in your columns. See the example below for a better idea of how it all works.
+                  </p>
+                  <b:panel>
+                      
+                      <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+                      <b:row styleClass="show-grid">
+                          <b:column col-xs="12" col-md="8"><h:outputText value="col-xs=12 col-md=8"/></b:column>
+                          <b:column col-xs="6" col-md="4"><h:outputText value="col-xs=6 col-md=4"/></b:column>
+                      </b:row>
+                      <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+                      <b:row styleClass="show-grid">
+                          <b:column col-xs="6" col-md="4"><h:outputText value="col-xs=6 col-md=4"/></b:column>
+                          <b:column col-xs="6" col-md="4"><h:outputText value="col-xs=6 col-md=4"/></b:column>
+                          <b:column col-xs="6" col-md="4"><h:outputText value="col-xs=6 col-md=4"/></b:column>
+                      </b:row>
+                      <!-- Columns are always 50% wide, on mobile and desktop -->
+                      <b:row styleClass="show-grid">
+                          <b:column col-xs="6"><h:outputText value="col-xs=6"/></b:column>
+                          <b:column col-xs="6"><h:outputText value="col-xs=6"/></b:column>
+                      </b:row>
+                      <f:facet name="footer">
+                          <strong>Markup:</strong><br/>
+  
+                          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
                             <![CDATA[
                             <!-- Stack the columns on mobile by making one full-width and the other half-width -->
                             <b:row styleClass="show-grid">
@@ -222,27 +233,27 @@
                                 <b:column col-xs="6"><h:outputText value="col-xs=6"/></b:column>
                             </b:row>
                             ]]></script>
-                    </f:facet>
-                </b:panel>
-                <h3>Example: Mobile, tablet, desktops</h3>
-                <p>Build on the previous example by creating even more dynamic and powerful layouts with tablet <code>col-sm=*</code> attribute.</p>
-                <b:panel>
-                    
-                    <b:row styleClass="show-grid">
-                        <b:column col-xs="12" col-sm="6" col-md="8"><h:outputText value="col-xs=12 col-sm=6 col-md=8"/></b:column>
-                        <b:column col-xs="6" col-sm="6" col-md="4"><h:outputText value="col-xs=6 col-sm=6 col-md=4"/></b:column>
-                    </b:row>
-                    <b:row styleClass="show-grid">
-                        <b:column col-xs="6" col-sm="4" col-md="4"><h:outputText value="col-xs=6 col-sm=4 col-md=4"/></b:column>
-                        <b:column col-xs="6" col-sm="4" col-md="4"><h:outputText value="col-xs=6 col-sm=4 col-md=4"/></b:column>
-                        <!-- Optional: clear the XS cols if their content doesn't match in height -->
-                        <div class="clearfix visible-xs"></div>
-                        <b:column col-xs="6" col-sm="4" col-md="4"><h:outputText value="col-xs=6 col-sm=4 col-md=4"/></b:column>
-                    </b:row>
-                    <f:facet name="footer">
-                        <strong>Markup:</strong><br/>
-
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                      </f:facet>
+                  </b:panel>
+                  <h3>Example: Mobile, tablet, desktops</h3>
+                  <p>Build on the previous example by creating even more dynamic and powerful layouts with tablet <code>col-sm=*</code> attribute.</p>
+                  <b:panel>
+                      
+                      <b:row styleClass="show-grid">
+                          <b:column col-xs="12" col-sm="6" col-md="8"><h:outputText value="col-xs=12 col-sm=6 col-md=8"/></b:column>
+                          <b:column col-xs="6" col-sm="6" col-md="4"><h:outputText value="col-xs=6 col-sm=6 col-md=4"/></b:column>
+                      </b:row>
+                      <b:row styleClass="show-grid">
+                          <b:column col-xs="6" col-sm="4" col-md="4"><h:outputText value="col-xs=6 col-sm=4 col-md=4"/></b:column>
+                          <b:column col-xs="6" col-sm="4" col-md="4"><h:outputText value="col-xs=6 col-sm=4 col-md=4"/></b:column>
+                          <!-- Optional: clear the XS cols if their content doesn't match in height -->
+                          <div class="clearfix visible-xs"></div>
+                          <b:column col-xs="6" col-sm="4" col-md="4"><h:outputText value="col-xs=6 col-sm=4 col-md=4"/></b:column>
+                      </b:row>
+                      <f:facet name="footer">
+                          <strong>Markup:</strong><br/>
+  
+                          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
                             <![CDATA[
                             <b:row styleClass="show-grid">
                                 <b:column col-xs="12" col-sm="6" col-md="8"><h:outputText value="col-xs=12 col-sm=6 col-md=8"/></b:column>
@@ -256,30 +267,30 @@
                                 <b:column col-xs="6" col-sm="4" col-md="4"><h:outputText value="col-xs=6 col-sm=4 col-md=4"/></b:column>
                             </b:row>
                             ]]></script>
-                    </f:facet>
-                </b:panel>
-                <h3>Offsetting columns</h3>
-                <p> Move columns to the right using <code>offset=*</code> or <code>col-md-offset=*</code> attribute.
-                    These attributes increase the left margin of a column by <code>*</code> columns.
-                    For example, <code>offest=4</code> moves a <code>span=4</code> over four columns.
-                </p>
-                <b:panel>
-                    
-                    <b:row styleClass="show-grid">
-                        <b:column span="4"><h:outputText value="span=4"/></b:column>
-                        <b:column span="4" offset="4"><h:outputText value="span=4 offset=4"/></b:column>
-                    </b:row>
-                    <b:row styleClass="show-grid">
-                        <b:column span="3" offset="3"><h:outputText value="span=3 offset=3"/></b:column>
-                        <b:column span="3" offset="3"><h:outputText value="span=3 offset=3"/></b:column>
-                    </b:row>
-                    <b:row styleClass="show-grid">
-                        <b:column span="6" offset="3"><h:outputText value="span=6 offset=3"/></b:column>
-                    </b:row>
-                    <f:facet name="footer">
-                        <strong>Markup:</strong><br/>
-
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                      </f:facet>
+                  </b:panel>
+                  <h3>Offsetting columns</h3>
+                  <p> Move columns to the right using <code>offset=*</code> or <code>col-md-offset=*</code> attribute.
+                      These attributes increase the left margin of a column by <code>*</code> columns.
+                      For example, <code>offest=4</code> moves a <code>span=4</code> over four columns.
+                  </p>
+                  <b:panel>
+                      
+                      <b:row styleClass="show-grid">
+                          <b:column span="4"><h:outputText value="span=4"/></b:column>
+                          <b:column span="4" offset="4"><h:outputText value="span=4 offset=4"/></b:column>
+                      </b:row>
+                      <b:row styleClass="show-grid">
+                          <b:column span="3" offset="3"><h:outputText value="span=3 offset=3"/></b:column>
+                          <b:column span="3" offset="3"><h:outputText value="span=3 offset=3"/></b:column>
+                      </b:row>
+                      <b:row styleClass="show-grid">
+                          <b:column span="6" offset="3"><h:outputText value="span=6 offset=3"/></b:column>
+                      </b:row>
+                      <f:facet name="footer">
+                          <strong>Markup:</strong><br/>
+  
+                          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
                             <![CDATA[
                             <b:row styleClass="show-grid">
                                 <b:column span="4"><h:outputText value="span=4"/></b:column>
@@ -293,29 +304,29 @@
                                 <b:column span="6" offset="3"><h:outputText value="span=6 offset=3"/></b:column>
                             </b:row>
                             ]]></script>
-                    </f:facet>
-                </b:panel>
-                <h3>Nesting columns</h3>
-                <p>
-                To nest your content with the default grid, add a new <code>row</code> and set of <code>col-md=*</code> columns within an existing
-                <code>col-md=*</code> column.
-                Nested rows should include a set of columns that add up to 12.
-                </p>
-                <b:panel>
-                    
-                    <b:row styleClass="show-grid">
-                        <b:column col-md="9">
-                            <h:outputText value="Level 1: col-md=9"/>
-                            <b:row styleClass="show-grid">
-                                <b:column col-md="6"><h:outputText value="Level 2: col-md=6"/></b:column>
-                                <b:column col-md="6"><h:outputText value="Level 2: col-md=6"/></b:column>
-                            </b:row>
-                        </b:column>
-                    </b:row>
-                    <f:facet name="footer">
-                        <strong>Markup:</strong><br/>
-
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                      </f:facet>
+                  </b:panel>
+                  <h3>Nesting columns</h3>
+                  <p>
+                  To nest your content with the default grid, add a new <code>row</code> and set of <code>col-md=*</code> columns within an existing
+                  <code>col-md=*</code> column.
+                  Nested rows should include a set of columns that add up to 12.
+                  </p>
+                  <b:panel>
+                      
+                      <b:row styleClass="show-grid">
+                          <b:column col-md="9">
+                              <h:outputText value="Level 1: col-md=9"/>
+                              <b:row styleClass="show-grid">
+                                  <b:column col-md="6"><h:outputText value="Level 2: col-md=6"/></b:column>
+                                  <b:column col-md="6"><h:outputText value="Level 2: col-md=6"/></b:column>
+                              </b:row>
+                          </b:column>
+                      </b:row>
+                      <f:facet name="footer">
+                          <strong>Markup:</strong><br/>
+  
+                          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
                             <![CDATA[
                             <b:row styleClass="show-grid">
                                 <b:column col-md="9">
@@ -327,29 +338,29 @@
                                 </b:column>
                             </b:row>
                             ]]></script>
-                    </f:facet>
-                </b:panel>
-
-                <br/>
-                <h2>Reference section</h2>
-                <ui:include src="ContainerAttributes.xhtml" />
-                <ui:include src="RowAttributes.xhtml" />
-                <ui:include src="ColumnAttributes.xhtml" />
-                
-                <b:panel look="info" rendered="false">
-					<f:facet name="heading">
-						<b>Skinning</b>
-					</f:facet>
-					<ul>
-						<li>Tell the world which CSS classes can be used to change the
-						look of the component.</li>
-					</ul>
-				</b:panel>
-                
-                
-                <br/><br/><br/>
-                <script type="text/javascript">
-                    SyntaxHighlighter.all();
-                </script>
-            </ui:define>
-        </ui:composition>
+                      </f:facet>
+                  </b:panel>
+  
+                  <br/>
+                  <h2>Reference section</h2>
+                  <ui:include src="ContainerAttributes.xhtml" />
+                  <ui:include src="RowAttributes.xhtml" />
+                  <ui:include src="ColumnAttributes.xhtml" />
+                  
+                  <b:panel look="info" rendered="false">
+  					<f:facet name="heading">
+  						<b>Skinning</b>
+  					</f:facet>
+  					<ul>
+  						<li>Tell the world which CSS classes can be used to change the
+  						look of the component.</li>
+  					</ul>
+  				</b:panel>
+                  
+                  
+                  <br/><br/><br/>
+                  <script type="text/javascript">
+                      SyntaxHighlighter.all();
+                  </script>
+              </ui:define>
+          </ui:composition>
