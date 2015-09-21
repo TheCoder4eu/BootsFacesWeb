@@ -329,8 +329,13 @@
                       onexpand="console.log('expand - start');ajax:ajaxBean.onPanelExpandStart()"
                       onexpanded="console.log('expand - done');ajax:ajaxBean.onPanelExpanded()"
                       oncollapse="console.log('expand - start');ajax:ajaxBean.onPanelCollapseStart()"
-                      oncollapsed="console.log('expand - done');ajax:ajaxBean.onPanelCollapsed()">
-                      The content of the panel does not matter. Instead, look at the messages.
+                      oncollapsed="console.log('expand - done');ajax:ajaxBean.onPanelCollapsed()"
+                      onmouseover="console.log('mouse over');ajax:ajaxBean.onMouseOver()"
+                      onmouseout="console.log('mouse out');ajax:ajaxBean.onMouseOut()"
+                      onclick="console.log('click');ajax:ajaxBean.onClick()"
+                      >
+                      The content of the panel does not matter. Look at the messages at the right hand side. 
+                      That's where the music plays.
                    </b:panel>          
                     <b:well id="messages">
                             Last action:
