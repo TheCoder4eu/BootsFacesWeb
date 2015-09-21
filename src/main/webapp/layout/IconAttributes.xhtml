@@ -27,9 +27,19 @@
 					    <td>Boolean value: if true the element is used as Addon.</td>
 					</tr>
 					<tr>
+					    <td>ajax</td>
+					    <td>false</td>
+					    <td>Activates AJAX. The default value is false (no AJAX).</td>
+					</tr>
+					<tr>
 					    <td>binding</td>
 					    <td>(none)</td>
 					    <td>An el expression referring to a server side UIComponent instance in a backing bean.</td>
+					</tr>
+					<tr>
+					    <td>disabled</td>
+					    <td>false</td>
+					    <td>Boolean value to specify if the button is disabled.</td>
 					</tr>
 					<tr>
 					    <td>flip</td>
@@ -45,6 +55,56 @@
 					    <td>name</td>
 					    <td>(none)</td>
 					    <td>Icon name, mandatory.</td>
+					</tr>
+					<tr>
+					    <td>onclick</td>
+					    <td>(none)</td>
+					    <td>The onclick attribute.</td>
+					</tr>
+					<tr>
+					    <td>oncomplete</td>
+					    <td>(none)</td>
+					    <td>Javascript to be executed when ajax completes with success.</td>
+					</tr>
+					<tr>
+					    <td>ondblclick</td>
+					    <td>(none)</td>
+					    <td>Client side callback to execute when input element is double clicked.</td>
+					</tr>
+					<tr>
+					    <td>onmousedown</td>
+					    <td>(none)</td>
+					    <td>Client side callback to execute when a pointer input element is pressed down over input element.</td>
+					</tr>
+					<tr>
+					    <td>onmousemove</td>
+					    <td>(none)</td>
+					    <td>Client side callback to execute when a pointer input element is moved within input element.</td>
+					</tr>
+					<tr>
+					    <td>onmouseout</td>
+					    <td>(none)</td>
+					    <td>Client side callback to execute when a pointer input element is moved away from input element.</td>
+					</tr>
+					<tr>
+					    <td>onmouseover</td>
+					    <td>(none)</td>
+					    <td>Client side callback to execute when a pointer input element is moved onto input element.</td>
+					</tr>
+					<tr>
+					    <td>onmouseup</td>
+					    <td>(none)</td>
+					    <td>Client side callback to execute when a pointer input element is released over input element.</td>
+					</tr>
+					<tr>
+					    <td>process</td>
+					    <td>(none)</td>
+					    <td>Comma or space separated list of ids or search expressions denoting which values are to be sent to the server.</td>
+					</tr>
+					<tr>
+					    <td>readonly</td>
+					    <td>false</td>
+					    <td>Flag indicating that this input element will prevent changes by the user.</td>
 					</tr>
 					<tr>
 					    <td>rendered</td>
@@ -66,11 +126,16 @@
 					    <td>false</td>
 					    <td>Boolean value: if true the icon will spin.</td>
 					</tr>
-                                        <tr>
-                                            <td>styleClass</td>
-                                            <td>(none)</td>
-                                            <td>Style class of this element.</td>
-                                        </tr>
+					<tr>
+					    <td>style</td>
+					    <td>(none)</td>
+					    <td>Inline style</td>
+					</tr>
+					<tr>
+					    <td>styleClass</td>
+					    <td>(none)</td>
+					    <td>CSS style class</td>
+					</tr>
 					<tr>
 					    <td>tooltip</td>
 					    <td>(none)</td>
@@ -78,23 +143,28 @@
 					</tr>
 					<tr>
 					    <td>tooltipDelay</td>
-					    <td>(none)</td>
+					    <td>0 </td>
 					    <td>The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
 					</tr>
 					<tr>
 					    <td>tooltipDelayHide</td>
-					    <td>(none)</td>
+					    <td>0 </td>
 					    <td>The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
 					</tr>
 					<tr>
 					    <td>tooltipDelayShow</td>
-					    <td>(none)</td>
+					    <td>0 </td>
 					    <td>The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
 					</tr>
 					<tr>
 					    <td>tooltipPosition</td>
 					    <td>(none)</td>
 					    <td>Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".</td>
+					</tr>
+					<tr>
+					    <td>update</td>
+					    <td>(none)</td>
+					    <td>Component(s) to be updated with ajax.</td>
 					</tr>
 				</tbody>
 			</table>
