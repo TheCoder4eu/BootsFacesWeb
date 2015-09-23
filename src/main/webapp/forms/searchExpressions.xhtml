@@ -9,13 +9,16 @@
     xmlns:p="http://primefaces.org/ui">
 
         <ui:define name="content">
-            <h1>Search Expressions</h1>
+            <h1>Search Expressions <b:badge value="since 0.8.0" /></h1>
                 <p>Inspired by PrimeFaces, BootsFaces implements a couple of powerful search expressions to make your life easier.
                 In almost every case, you can get rid of ids. Use <code>@form</code>,
                 <code>@next</code>,<code>@previous</code>,<code>@parent</code> and <code>@styleClass(cssClass) instead.</code></p>
                 
                 <h2>State of the art</h2>
-                <p>Currently, the search expressions can only used with the <code>update</code> attribute of <code>&lt;b:commandButton.&gt;</code></p>.
+                <p>The search expressions can be used with the <code>update</code> and <code>process</code> attributes of the AJAX-enabled BootsFaces components.
+                For these components, the search expressions should also work with traditional <code>&lt;f:ajax /&gt;</code> facets (although we discourage
+                the use of these AJAX facets - in most cases you don't need them).</p>
+                 
                 <h2>Basic usage</h2>
                 <p>Like in standard JSF, you can use ids to determine which region of the DOM to update:</p>
                 <b:well>

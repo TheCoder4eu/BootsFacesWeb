@@ -9,36 +9,71 @@
     xmlns:p="http://primefaces.org/ui">
 
         <ui:define name="content">
-            <h1>AJAX</h1>
+            <h1>AJAX <b:badge value="since 0.8.0" /></h1>
                 <p>While supporting the traditional AJAX style of JSF, BootsFaces also imlements a new AJAX API that's a little simpler to use.</p>
                 
                 <h2>State of the art</h2>
-                <p>The BootsFaces AJAX API is still under development and subject to change. Consider this page only a sneak preview.</p>
-                <p>Currently, the only component using the new AJAX API is the <code>&lt;b:selectOneMenu&gt;</code>.</p>
+                <p>The BootsFaces AJAX API is supported by many, but not by all BootsFaces components. Currently, these components include:</p>
+                <ul>
+                <li><code>&lt;b:commandButton /&gt;</code></li>
+                <li><code>&lt;b:selectBooleanCheckbox /&gt;</code></li>
+                <li><code>&lt;b:selectOneMenu /&gt;</code></li>
+                <li><code>&lt;b:inputText /&gt;</code> and <code>&lt;b:inputSecret /&gt;</code></li>
+                <li><code>&lt;b:carousel /&gt;</code></li>
+                <li><code>&lt;b:panel /&gt;</code></li>
+                <li><code>&lt;b:tabView /&gt;</code></li>
+                <li><code>&lt;b:icon /&gt;</code></li>
+                <li><code>&lt;b:iconAwesome /&gt;</code></li>
+                <li><code>&lt;b:image /&gt;</code></li>
+                </ul>
+
                 <h2>Basic usage</h2>
                 <p>The general idea is to use the JavaScript attributes for JSF AJAX calls. Unfortunately, JSF doesn't allow us to simple use the JSF EL syntax.
-                Instead, precede the JSF method name by <code>ajax:</code>:</p>
-<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-                <b:selectOneMenu update="someRegion" 
-                   onchange="ajax:ajaxBean.onComboboxChange()" />
-]]>
-</script>
-				<p>Of course, you can freely combine AJAX calls and Javascript. If you want to execute JavaScript code after the AJAX call,
+                So, we had to look for some inspiration, and we found it with an almost forgotten way to define HTML JavaScript callback handlers. You can
+                optionally define such a handler by preceding it with <code>javascript:</code> to make clear which language you want to use. Similarly, BootsFaces
+                uses the prefix <code>ajax:</code> to indicate the following code is Java code. If you want to execute another piece of JavaScript code after
+                sending the AJAX call, prefix it with <code>javascript:</code> again. Notice that the second JavaScript code usually is execute before the Java code.
+                AJAX means that Java is executes asynchronically.</p>
+                
+                <b:well>
+                   <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                   <![CDATA[
+                                   <b:selectOneMenu update="someRegion" 
+                                      onchange="ajax:ajaxBean.onComboboxChange()" />
+                   ]]>
+                   </script>
+                                   </b:well>
+				<p>Like said before, you can freely combine AJAX calls and Javascript. If you want to execute JavaScript code after the AJAX call,
 				you have to precede it with <code>javascript:</code>. Otherwise BootsFaces tries to run your JavaScript code on the server side. </p>
-<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-                <b:selectOneMenu update="someRegion" 
-                   onchange="alert('Before the AJAX call');ajax:ajaxBean.onComboboxChange();javascript:alert('after the AJAX call');" />
-]]>
-</script>
+                <b:well>
+                  <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                	<![CDATA[
+                                <b:selectOneMenu update="someRegion" 
+                                   onchange="alert('Before the AJAX call');ajax:ajaxBean.onComboboxChange();javascript:alert('after the AJAX call');" />
+               	 ]]>
+                	</script>
+                </b:well>
 				<p>You can also use more than one JavaScript attribute to call AJAX code: <code>onclick</code>, <code>ondlbclick</code>, <code>onfocus</code>,
 				just to name a few. Each of these AJAX calls update the same part of the DOM tree, defined by the <code>update</code> attribute.</p>
+        
+                <h2>Partial processing</h2>
+                <p>Use the <code>process</code> attribute to define which input fields are send to the server.</p>
 				
+        
 				<h2>Advanced usage</h2>
-				<p>(This feature hasn't been implemented completely yet)</p>
                 <p>Sometimes you need more flexibility. For instance, it's a common use case to update different regions, depending on the event.
-                 In this case you can resort to the traditional <code>&lt;f:ajax&gt;</code> facets of standard JSF.</p>
+                 In this case you can resort to the traditional <code>&lt;f:ajax&gt;</code> facets of standard JSF. Note the diffenrent naming
+                 conventions: BootsFaces <code>update</code> becomes <code>render</code>, and <code>process</code> becomes <code>execute</code>. 
+                 This is because <code>f:ajax</code> is provided by the underlying JSF framework, which doesn't follow the conventions of
+                 BootsFaces, which in turn has been inspired by (and is seeking compatibility to) PrimeFaces.</p>
+                 
+                 <h2>(Virtually no) Limits to BootsFaces AJAX</h2>
+                 <p>From a technical point of view, you can do everything with BootsFaces AJAX - as long as the network latency permits. We've even been 
+                 able to implement drag and drop via AJAX. This chess demo is an example of drag'n'drop using BootsFaces: 
+                 <a target="#" href="http://www.angularfaces.net/BootsFacesChess-1.0.0-SNAPSHOT/">BootsFaces Chess demo</a>. You can move the chess pieces
+                 by clicking and draggging them to their target destination.</p>
+                 <p>In other words: what you can and can not do with BootsFaces AJAX depends on your network latency (and your server-side processing time). BootsFaces
+                 processes AJAX fairly efficient, so it's unlikely BootsFaces is the bottleneck to your projects.</p>
 
 				<h2>Live demo</h2>
 				<p>This demo shows some of the options at a glance.</p>
