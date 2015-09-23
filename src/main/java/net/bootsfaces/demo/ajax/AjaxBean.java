@@ -25,6 +25,11 @@ public class AjaxBean {
 	private int js=1;
 
 	private int desktop=1;
+	
+	private boolean spinning=true;
+	private boolean readOnly=false;
+	private boolean disabled=false;
+
 
 	public int getJsf() {
 		return jsf;
@@ -253,6 +258,30 @@ public class AjaxBean {
 		String event = " carousel finished sliding";
 		report(event);
 		return null;
+	}
+
+	public boolean isSpinning() {
+		return spinning;
+	}
+
+	public void setSpinning(boolean spinning) {
+		this.spinning = spinning;
+	}
+
+	public boolean isReadOnly() {
+		return readOnly;
+	}
+
+	public void setReadOnly(boolean readOnly) {
+		this.readOnly = readOnly;
+	}
+
+	public boolean isDisabled() {
+		return disabled;
+	}
+
+	public void setDisabled(boolean disabled) {
+		this.disabled = disabled;
 	}
 
 

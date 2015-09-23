@@ -11,16 +11,37 @@
                 <h1>InputText</h1>
                 
                 <p>The most common form controls are text-based input fields. </p>
-                    Future versions of BootsFaces will try to add support for the most relevant HTML5 types: 
-                <p>    text, password, datetime, datetime-local, date, month, time, week, number, email, url, search, tel, and color.</p>
+                <p>Future versions of BootsFaces will try to add support for the most relevant HTML5 types:</p> 
+                <p>text, password, datetime, datetime-local, date, month, time, week, number, email, url, search, tel, and color.</p>
                 <br/>
-                <p>The most simple example is a plain <code>b:inputText</code> with a <code>placeholder</code> attribute, which contains an hint that is shown in the input field until something is typed in it.</p>
-                <h:form>
-                    <b:inputText placeholder="Type something here..." value="#{barcodeBean.url}">
-					    <f:ajax event="change" render="@form" listener="#{barcodeBean.capitalizeURL}" />
-                    </b:inputText>
-                    <b:label text="#{barcodeBean.url}" />
-                </h:form>
+                <p>The most simple example is a plain <code>b:inputText</code> with a <code>placeholder</code> attribute, which contains an hint that is shown in the input field until something is typed in it.
+                This is how such a simple inputText looks like if we add a bit of AJAX functionality to it:</p>
+                <b:tabView>
+                  <b:tab title="preview">
+                   <h:form>
+                     <b:inputText placeholder="Type something here..." value="#{barcodeBean.emptyText}">
+                        <f:ajax event="keyup" render="label" listener="#{barcodeBean.capitalizeURL}" />
+                        </b:inputText>
+                        <b:label text="#{barcodeBean.emptyTextCapital}" id="label"/>
+                    </h:form>
+                 </b:tab>
+                 <b:tab title="JSF markup">
+                   <b:well>
+                     <script type="syntaxhighlighter"
+                       class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                  <![CDATA[
+                 <h:form>
+                     <b:inputText placeholder="Type something here..." value="&num;{barcodeBean.emptyText}">
+                        <f:ajax event="keyup" render="label" listener="&num;{barcodeBean.capitalizeURL}" />
+                        </b:inputText>
+                        <b:label text="&num;{barcodeBean.emptyTextCapital}" id="label"/>
+                    </h:form>
+                 ]]>
+                 </script>
+                   </b:well>
+                 </b:tab>
+                </b:tabView>
+                <br />
                 <p>As you noticed, the input is as large as its parent container. You will see how to control its size later in this section.</p>
                 <br/>
                 <h3>Enhancing the b:inputText form control</h3>
@@ -300,7 +321,7 @@
 			
                 <br/>
                 
-                <h2>AJAX and JavaScript</h2>
+                <h2>AJAX and JavaScript  <b:badge value="since 0.8.0"</h2>
                 <p>The <code>&lt;b:inputText &gt;</code> supports the full suite of JavaScript and AJAX events,
                 as described in <a href="ajax.jsf">the description of AJAX in BootsFaces</a>. Basically, each of the
                 many JavaScript callback handlers (the <code>on[event]</code> attributes) also supports AJAX.

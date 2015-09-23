@@ -178,9 +178,143 @@
                            <p>Both icon and iconAwesome can be used with AJAX and/or Javascript.</p>
                            <p>The attributes <code>readonly</code> and <code>disabled</code> prevent AJAX from being executed. Note that JavaScript is not affected - it's executed without checking the state of the widget.
                            The difference between <code>readonly</code> and <code>disabled</code> is that <code>disabled</code> grays out the icon.</p>
-                           
+                           <p>This is one of the cases a picture is worth a thousand words. Move the mouse over the spinning icons below, click them, and
+                           change the checkboxes below to get the idea.</p>
                         </b:column>
                     </b:row>
+                    <b:row>
+ 
+                     <b:tabView>
+                       <b:tab title="preview">
+ <h:form>
+    <b:row>
+      <b:column col-sm="6">
+        <b:panel look="primary" title="AJAXified Gylphicon (b:icon) and Font Awesome icon (b:iconAwesome)">
+        Glyphicon:
+          <b:icon name="globe" size="3x" spin="#{ajaxBean.spinning}" id="glyphicon" disabled="#{ajaxBean.disabled}" readonly="#{ajaxBean.readOnly}" 
+            onblur="console.log('blur');ajax:ajaxBean.onBlur()"
+            onfocus="console.log('focus');ajax:ajaxBean.onFocus()"
+            onclick="console.log('click');ajax:ajaxBean.onClick()"
+            ondblclick="console.log('dblclick');ajax:ajaxBean.onDblClick()"
+            onmousedown="console.log('mouse down');ajax:ajaxBean.onMouseDown();"
+            onmousemove="console.log('mouse move');ajax:ajaxBean.onMouseMove();"
+            onmouseout="console.log('mouse out');ajax:ajaxBean.onMouseOut();"
+            onmouseover="console.log('mouse over');ajax:ajaxBean.onMouseOver();"
+            onmouseup="console.log('mouse up');ajax:ajaxBean.onMouseUp();"
+            onmouseselect="console.log('mouse select');ajax:ajaxBean.onMouseSelect();"
+            update="messages" />
+          Font Awesome icon:
+          <b:iconAwesome name="futbol-o" size="3x" spin="#{ajaxBean.spinning}" disabled="#{ajaxBean.disabled}" readonly="#{ajaxBean.readOnly}" id="fontAwesomeicon"
+            onblur="console.log('blur');ajax:ajaxBean.onBlur()"
+            onfocus="console.log('focus');ajax:ajaxBean.onFocus()"
+            onclick="console.log('click');ajax:ajaxBean.onClick()"
+            ondblclick="console.log('dblclick');ajax:ajaxBean.onDblClick()"
+            onmousedown="console.log('mouse down');ajax:ajaxBean.onMouseDown();"
+            onmousemove="console.log('mouse move');ajax:ajaxBean.onMouseMove();"
+            onmouseout="console.log('mouse out');ajax:ajaxBean.onMouseOut();"
+            onmouseover="console.log('mouse over');ajax:ajaxBean.onMouseOver();"
+            onmouseup="console.log('mouse up');ajax:ajaxBean.onMouseUp();"
+            onmouseselect="console.log('mouse select');ajax:ajaxBean.onMouseSelect();"
+            update="messages" />
+                    <br />
+          <b:selectBooleanCheckbox value="#{ajaxBean.spinning}" 
+            onchange="console.log('before onChange');ajax:ajaxBean.onChange();javascript:console.log('afterOnChange')"
+            update="messages @form:**:*icon" caption="spinning" />
+          <b:selectBooleanCheckbox value="#{ajaxBean.disabled}" 
+            onchange="console.log('before onChange');ajax:ajaxBean.onChange();javascript:console.log('afterOnChange')"
+            update="messages @form:**:*icon" caption="disabled (gray the icon and disabled AJAX)" />
+          <b:selectBooleanCheckbox value="#{ajaxBean.readOnly}" 
+            onchange="console.log('before onChange');ajax:ajaxBean.onChange();javascript:console.log('afterOnChange')"
+            update="messages @form:**:*icon" caption="readOnly (disabled AJAX, but doesn't gray out the icon)" />
+        </b:panel>
+      </b:column>
+      <b:column col-sm="6">
+        <b:well id="messages">
+                  Last action:
+                  <ul>
+            <ui:repeat var="message" value="#{ajaxBean.messages}">
+              <li>#{message}</li>
+            </ui:repeat>
+          </ul>
+        </b:well>
+      </b:column>
+    </b:row>
+ </h:form>
+                      </b:tab>
+                      <b:tab title="JSF markup">
+                        <b:well>
+                          <script type="syntaxhighlighter"
+                            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+             				<![CDATA[
+<h:form>
+    <b:row>
+      <b:column col-sm="6">
+        <b:panel look="primary" title="AJAXified Gylphicon (b:icon) and Font Awesome icon (b:iconAwesome)">
+        Glyphicon:
+          <b:icon name="globe" size="3x" spin="&num;{ajaxBean.spinning}" id="glyphicon" disabled="&num;{ajaxBean.disabled}" readonly="&num;{ajaxBean.readOnly}" 
+            onblur="console.log('blur');ajax:ajaxBean.onBlur()"
+            onfocus="console.log('focus');ajax:ajaxBean.onFocus()"
+            onclick="console.log('click');ajax:ajaxBean.onClick()"
+            ondblclick="console.log('dblclick');ajax:ajaxBean.onDblClick()"
+            onmousedown="console.log('mouse down');ajax:ajaxBean.onMouseDown();"
+            onmousemove="console.log('mouse move');ajax:ajaxBean.onMouseMove();"
+            onmouseout="console.log('mouse out');ajax:ajaxBean.onMouseOut();"
+            onmouseover="console.log('mouse over');ajax:ajaxBean.onMouseOver();"
+            onmouseup="console.log('mouse up');ajax:ajaxBean.onMouseUp();"
+            onmouseselect="console.log('mouse select');ajax:ajaxBean.onMouseSelect();"
+            update="messages" />
+          Font Awesome icon:
+          <b:iconAwesome name="futbol-o" size="3x" spin="&num;{ajaxBean.spinning}" disabled="&num;{ajaxBean.disabled}" readonly="&num;{ajaxBean.readOnly}" id="fontAwesomeicon"
+            onblur="console.log('blur');ajax:ajaxBean.onBlur()"
+            onfocus="console.log('focus');ajax:ajaxBean.onFocus()"
+            onclick="console.log('click');ajax:ajaxBean.onClick()"
+            ondblclick="console.log('dblclick');ajax:ajaxBean.onDblClick()"
+            onmousedown="console.log('mouse down');ajax:ajaxBean.onMouseDown();"
+            onmousemove="console.log('mouse move');ajax:ajaxBean.onMouseMove();"
+            onmouseout="console.log('mouse out');ajax:ajaxBean.onMouseOut();"
+            onmouseover="console.log('mouse over');ajax:ajaxBean.onMouseOver();"
+            onmouseup="console.log('mouse up');ajax:ajaxBean.onMouseUp();"
+            onmouseselect="console.log('mouse select');ajax:ajaxBean.onMouseSelect();"
+            update="messages" />
+          <br />
+          <b:selectBooleanCheckbox value="&num;{ajaxBean.spinning}" 
+            onchange="console.log('before onChange');ajax:ajaxBean.onChange();javascript:console.log('afterOnChange')"
+            update="messages @form:**:*icon" caption="spinning" />
+          <b:selectBooleanCheckbox value="&num;{ajaxBean.disabled}" 
+            onchange="console.log('before onChange');ajax:ajaxBean.onChange();javascript:console.log('afterOnChange')"
+            update="messages @form:**:*icon" caption="disabled (gray the icon and disabled AJAX)" />
+          <b:selectBooleanCheckbox value="&num;{ajaxBean.readOnly}" 
+            onchange="console.log('before onChange');ajax:ajaxBean.onChange();javascript:console.log('afterOnChange')"
+            update="messages @form:**:*icon" caption="readOnly (disabled AJAX, but doesn't gray out the icon)" />
+        </b:panel>
+      </b:column>
+      <b:column col-sm="6">
+        <b:well id="messages">
+                  Last action:
+                  <ul>
+            <ui:repeat var="message" value="&num;{ajaxBean.messages}">
+              <li>&num;{message}</li>
+            </ui:repeat>
+          </ul>
+        </b:well>
+      </b:column>
+    </b:row>
+ </h:form>
+ 
+            				]]>
+            				</script>
+                          </b:well>
+                        </b:tab>
+                      </b:tabView>
+                    </b:row>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
                     <b:row>
                         <b:column span="12">
                             <h3>Configuring FontAwesome</h3>
