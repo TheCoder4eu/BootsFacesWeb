@@ -8,111 +8,29 @@
 
             <ui:define name="content">
                 <style>td {padding: 8px;}</style>
-                <h1>Switch (&lt;b:switch /&gt;)</h1>
-                
-                <p>Switches are very simple input widgets: an empty square that can be checked or not. They permit the user to make a binary choice.</p>
-                <p>&lt;b:switch&gt; makes the Bootstrap style of displaying checkboxes available to JSF programmers.</p>
+                <h1>Switch (&lt;b:switch /&gt;) <b:badge value="since 0.8.0" /></h1>
+                               
+                <p>Switches are very simple input widgets for binary choice. They are particularly useful for mobile devices.</p>
+                <p>&lt;b:switch&gt; makes the Bootstrap style of displaying switches available to JSF programmers.</p>
                 <h1>Basic usage</h1>
 				<b:tabView>
+                    <b:tab title="live demo">
+                        <h:form>
+                            <b:switch value="#{settingsBean.checkbox1}" caption="switch 1" />
+                        </h:form>
+                    </b:tab>
 				    <b:tab title="JSF markup">
 				       <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-<h:form>
-    <b:switch value="&#35;{settingsBean.checkbox1}" caption="checkbox 1"/>
-</h:form>
-]]>
-       </script>
-				    </b:tab>
-				    <b:tab title="displayed as">
-				        <h:form>
-				            <b:switch value="#{settingsBean.checkbox1}" caption="switch 1" />
-				        </h:form>
+                          <![CDATA[
+                          <h:form>
+                              <b:switch value="&#35;{settingsBean.checkbox1}" caption="checkbox 1"/>
+                          </h:form>
+                          ]]>
+                       </script>
 				    </b:tab>
 				</b:tabView>
-
-				<p>Use the <code>caption</code> attribute to display the label checkbox. Don't confuse it with the <code>label</code> attribute. This puts the label above the checkbox, as you can see in the next example.</p>
-				
-				                <h1>Labels as captions above the checkbox</h1>
-				<b:tabView>
-				  <b:tab title="JSF markup">
-				    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-    <h:form>
-    	<h:panelGrid columns="2"  cellpadding="5">
-         	<b:selectBooleanCheckbox value="&#35;{settingsBean.checkbox2}" label="checkbox 2" />
-        </h:panelGrid>
-    </h:form>
-]]>
-    </script>
-				  </b:tab>
-				  <b:tab title="displayed as">
-				    <h:form>
-				    	<h:panelGrid columns="2"  cellpadding="5">
-				         	<b:selectBooleanCheckbox value="#{settingsBean.checkbox2}" label="checkbox 2" />
-				        </h:panelGrid>
-				    </h:form>
-				  </b:tab>
-				</b:tabView>
-                <p>The label is displayed above the checkbox</p>
                 
                 
-                <h1>Disabling Checkboxes</h1>
-                <ul>
-                <li>Checkboxes can be disabled by setting the <code>disabled</code> attribute.</li>
-                <li>As of BootsFaces 0.7.0, the attribute <code>readonly</code> is not supported yet. You can simulate it by adding <code>onclick="return false;"</code>.
-                However, this doesn't prevent the user from toggling the checkbox via their keyboard. More precisely, it depends on your browser - some browsers
-                suppress the keyboard if there's <code>onclick="return false;"</code>, but it's not guaranteed to work with every browser.
-                </li>
-                </ul>
-                <p>The example below shows both options:</p> 
-				<b:tabView activeIndex="1">
-				  <b:tab title="JSF markup">
-				    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-    	        <h:panelGrid columns="2"  cellpadding="5">
-				    <h:form>
-				    	<h:panelGrid columns="2"  cellpadding="5">
-				         	<b:selectBooleanCheckbox value="&#35;{checkboxBean.checkbox}" 
-				         	              caption="checkbox" 
-				         	              disabled="&#35;{!checkboxBean.editable}"/>
-				         	<h:outputText value="Value submitted on last submit: &#35;{checkboxBean.checkbox}" />
-				         	<b:selectBooleanCheckbox value="&#35;{checkboxBean.editable}"  
-				         	              caption="editable" 
-				         	              onclick="return false;" />
-				        </h:panelGrid>
-				        <b:commandButton  value="submit" 
-				                          ajax="true" 
-				                          update="@form" />
-				        <b:commandButton  value="&#35;{checkboxBean.editable?'disable checkbox':'ensable checkbox'}" 
-				                          ajax="true" 
-				                          update="@form" 
-				                          actionListener="&#35;{checkboxBean.toggleEditmode}"/>
-				    </h:form>
-               </h:panelGrid>
-]]>
-    </script>
-				  </b:tab>
-				  <b:tab title="displayed as">
-				    <h:form>
-				    	<h:panelGrid columns="1"  cellpadding="5">
-				         	<b:selectBooleanCheckbox value="#{checkboxBean.checkbox}" 
-				         	              caption="checkbox (initially disabled)" 
-				         	              disabled="#{!checkboxBean.editable}"/>
-				         	<h:outputText value="Value submitted on last submit: #{checkboxBean.checkbox}" />
-				         	<b:selectBooleanCheckbox value="#{checkboxBean.editable}"  
-				         	              caption="is the checkbox above editable? (This checkbox is read only)" 
-				         	              onclick="return false;" />
-				        </h:panelGrid>
-				        <b:commandButton  value="submit" 
-				                          ajax="true" 
-				                          update="@form" />
-				        <b:commandButton  value="#{checkboxBean.editable?'disable checkbox':'enable checkbox'}" 
-				                          ajax="true" 
-				                          update="@form" 
-				                          actionListener="#{checkboxBean.toggleEditmode}"/>
-				    </h:form>
-				  </b:tab>
-				</b:tabView>
 				<br />
 				<h1>Reference section</h1>
                 

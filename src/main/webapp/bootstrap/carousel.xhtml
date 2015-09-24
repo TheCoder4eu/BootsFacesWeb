@@ -318,6 +318,45 @@ see how the standard controls look in a wizard. Don't forget to switch off the a
         To get familiar with BootsFaces AJAX, try the 
         <a target="#" href="https://github.com/stephanrauh/BootsFaces-Examples/tree/master/AJAX">BootsFaces AJAX demo project</a>.</p>
     
+    <h2>The <code>disabled</code> attribute</h2>
+    <p>The <code>disabled</code> attribute works a bit different than in most components. It disables (or rather: hides) the controls
+    of the carousel. It still rotates the slides (if you configure it so), but the user can't influence that. AJAX and
+    JavaScript events are processed no matter if the carousel is disabled or not.</p>
+    <b:tabView>
+      <b:tab title="preview">
+        <b:carousel id="parque2" style="width:400px" disabled="true">
+          <b:carouselItem>
+            <img src="carousel/Valladolid-parque-1.jpg" alt="Valladolid" />
+          </b:carouselItem>
+          <b:carouselItem>
+            <img src="carousel/Valladolid-parque-2.jpg" alt="Valladolid" />
+          </b:carouselItem>
+          <b:carouselItem>
+            <img src="carousel/Valladolid-parque-3.jpg" alt="Valladolid" />
+          </b:carouselItem>
+        </b:carousel>
+      </b:tab>
+      <b:tab title="JSF markup code">
+        <b:well>
+          <script type="syntaxhighlighter"
+            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+        <b:carousel id="parque2" style="width:400px" disabled="true">
+          <b:carouselItem>
+            <img src="carousel/Valladolid-parque-1.jpg" alt="Valladolid" />
+          </b:carouselItem>
+          <b:carouselItem>
+            <img src="carousel/Valladolid-parque-2.jpg" alt="Valladolid" />
+          </b:carouselItem>
+          <b:carouselItem>
+            <img src="carousel/Valladolid-parque-3.jpg" alt="Valladolid" />
+          </b:carouselItem>
+       </b:carousel>
+ 
+          ]]></script>
+        </b:well>
+      </b:tab>
+    </b:tabView>
 
 
     <h1>Do it yourself</h1>
