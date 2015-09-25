@@ -12,7 +12,7 @@
             <h1>Search Expressions <b:badge value="since 0.8.0" /></h1>
                 <p>Inspired by PrimeFaces, BootsFaces implements a couple of powerful search expressions to make your life easier.
                 In almost every case, you can get rid of ids. Use <code>@form</code>,
-                <code>@next</code>,<code>@previous</code>,<code>@parent</code> and <code>@styleClass(cssClass) instead.</code></p>
+                <code>@next</code>,<code>@previous</code>,<code>@parent</code> and even jQuery-Expressions like <code>@(.css-class)</code> instead.</p>
                 
                 <h2>State of the art</h2>
                 <p>The search expressions can be used with the <code>update</code> and <code>process</code> attributes of the AJAX-enabled BootsFaces components.
@@ -55,9 +55,13 @@
 				<p>PrimeFaces adds a couple of very useful search expressions, which are supported by BootsFaces, too. (Actually, @next and @previous originally were
 				contributed to PrimeFaces by one of the BootsFaces team members):</p>
 				<ul>
-					<li>@previous </li>
-					<li>@next </li>
-					<li>@parent </li>
+					<li>@previous find the previous JSF element in the same level of the JSF tree. Note that this usually is different from the predecessor in the HMTL tree.</li>
+					<li>@next finds the next JSF element in the same level of the JSF tree.</li>
+					<li>@parent finds the parent element of the current widget in the JSF tree.</li>
+                    <li>@() jquery expressions. These expressions are evaluated on the client. The most useful application is <code>@(.css-class)</code> to find
+                    one or more elements with a given CSS class. The advantage of the jQuery expressions is that you aren't restricted to by the
+                    JSF tree. Instead, the jQuery expressions always searches the entires DOM tree. Be careful: sometimes this can result in
+                    unexpected results, such as sending multiple forms simultaneously to the server, which is forbidden by HTML.</li>
 				</ul>
 				
 				<h2>BootsFaces search expressions</h2>
@@ -74,14 +78,12 @@
 					<li>@findPartialIdRecursive(id)  find one or many ids, given by a wildcard expression: <code>*suffix</code>, <code>prefix*</code> or <code>prefix*suffix</code>.
 					Searches the entire tree. (yet to be implemented)</li>
 					<li>**:*id or **:id* or **:*id* shortcut for @findPartialIdRecursive </li>
-					<li>@styleClass(className) looks for a JSF component with a certain styleClass attribute (yet to be implemented)</li>
 					<li>child(n) yields a certain child of the currently selected JSF subtree. (yet to be implemented)</li>
 				</ul>
 				
 				<h2>PrimeFaces search expressions BootsFaces does not support</h2>
 				<p>There are a few PrimeFaces search expressions BootsFaces does not support:</p>
 				<ul>
-					<li>@() jquery expressions.</li>
 					<li>@namingcontainer</li>
 					<li>@composite</li>
 					<li>@row(n)</li>
