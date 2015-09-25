@@ -1,5 +1,8 @@
 package net.bootsfaces.demo.ajax;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -20,19 +23,19 @@ public class CommandButtonBean {
 	}
 
 	public void onDoubleClick() {
-		message = "Double click";
+		message = now() + " Double click";
 	}
 
 	public void onMouseOver() {
-		message = "Mouse over";
+		message = now() + " Mouse over";
 	}
 
 	public void onMouseOut() {
-		message = "Mouse out";
+		message = now() + " Mouse out";
 	}
 
 	public void onAction() {
-		message = "default action (click or return key)";
+		message = now() + " default action (click or return key)";
 	}
 
 	public boolean isSuppressDoubleClick() {
@@ -49,5 +52,9 @@ public class CommandButtonBean {
 
 	public void setSuppressClick(boolean suppressClick) {
 		this.suppressClick = suppressClick;
+	}
+	
+	private String now() {
+		return new SimpleDateFormat("HH:mm:ss.SSS").format(new Date());
 	}
 }

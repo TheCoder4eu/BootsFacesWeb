@@ -6,7 +6,7 @@
         <ui:define name="content">
             <h1>CommandButton</h1>
                  <p>The <code>&lt;b:commandButton /&gt;</code> tag extends the standard <code>&lt;h:commandButton /&gt;</code> with <a href="ajax.jsf">AJAX</a><A></A>, partial processing features
-                and <a href="searchExpressions.jsf">improved search expressions</a>.</p>
+                and <a href="searchExpressions.jsf">improved search expressions</a>. Last not least, it adds the Bootstrap style.</p>
                 
                 <h3>Basic usage</h3>
                 <p>The BootsFaces command button is used similarly to the PrimeFaces command button:</p>
@@ -20,66 +20,113 @@
  				<ul>
  				<li>By default, AJAX is deactivated. You can activate it by setting <code>ajax="true"</code>.</li>
  				<li>Instead of the <code>render</code> attribute of standard JSF, BootsFaces follows the 
- 				PrimeFaces tradition and uses the attribute <code>update</code> to define which region of
+ 				tradition coined by PrimeFaces, using the attribute <code>update</code> to define which region of
  				the HTML page is to be updated.</li>
  				<li>The <code>update</code> attributes supports the full range of BootsFaces search expressions,
  				such as <code>@next</code>, <code>@parent</code> and so on. 
  				See <a href="searchExpressions.jsf">the page on improved search expressions</a> for more details.</li>
- 				<li>The <code>actionListener</code> is a Java method that may or may not take the <code>ActionEvent</code>
- 				as attribute. Actionlisteners can trigger navigations.</li>
- 				<li>The <code>action</code> is called after the <code>actionlistener</code>. This method may return a
- 				String. In that case the result of the method triggers a navigation to another page (unless it returns null).
- 				Note that navigations are always non-AJAX, even if the command button is declared as an AJAX button.</li>
+ 				<li>Similarly, the <code>process</code> attribute allows you to influence partial processing. In the case
+                of the command button, the default value is <code>@form</code>. You can use the <code>process</code>
+                attribute to reduce the number of input fields sent to the server.</li>
  				</ul>
+        
+                <h3>The Bootstrap look</h3>
+                <p>By default, command buttons are gray (depending on your theme). You can configure them by using a different look:</p>
+                <h:form>
+                <b:panelGrid columns="2,2,2,2,2,2" size="md" >
+                  <b:commandButton value="primary" ajax="true" update="@none" look="primary" style="width:80px"/>
+                  <b:commandButton value="info" ajax="true" update="@none" look="info"  style="width:80px"/>
+                  <b:commandButton value="success" ajax="true" update="@none" look="success"  style="width:80px"/>
+                  <b:commandButton value="warning" ajax="true" update="@none" look="warning"  style="width:80px"/>
+                  <b:commandButton value="danger" ajax="true" update="@none" look="danger"  style="width:80px"/>
+                  <b:commandButton value="default" ajax="true" update="@none"  style="width:80px"/>
+                </b:panelGrid>
+                </h:form>
  				
- 				<h3>Advanced usage</h3>
+                <h3>AJAX and JavaScript  <b:badge value="since 0.8.0" /></h3>
+                <p>The <code>&lt;b:commandButton &gt;</code> supports the full suite of JavaScript and AJAX events,
+                as described in <a href="ajax.jsf">the description of AJAX in BootsFaces</a>. Basically, each of the
+                many JavaScript callback handlers (the <code>on[event]</code> attributes) also supports AJAX.
+                At the time of writing (Sept 25, 2015), the list of supported events is blur, change, click, dblclick, focus, keydown, keypress,
+                keyup, mousedown, mousemove, mouseout, mouseover, mouseup and select.
+                </p>
+                
+                <p>Be careful with the <code>actionListener</code> and the <code>action</code> callback when using one of
+                the JavaScript event listeners to call AJAX. The <code>actionListener</code> and the <code>action</code>
+                are always called, no matter which event originally triggered the AJAX call. As for the call order: </p>
+                <ul>
+                <li>The dedicated <code>on[event]</code>  is called first.
+                </li>
+                <li>The <code>actionListener</code> is called second. It's a Java method that may or may not take the <code>ActionEvent</code>
+                as attribute.</li>
+                <li>The <code>action</code> is called last. This is because it's the only Java method that may trigger a navigation to another page.
+                In order to trigger a navigation, this method may return a
+                String, which triggers a navigation to another page (unless it is null).
+                Note that navigations ignore the <code>update</code> attribute, if the command button is declared as an AJAX button.
+                That's because an AJAX navigation usually replaces the entire page. Therefore, AJAX navigations are
+                always performed using <code>update="@all"</code></li>
+                </ul>
+
  				<p>The command button allows you to freely mix JavaScript calls and AJAX calls in the JavaScript
  				callback attributes. The demo below uses this feature to suppress AJAX calls on simple click or on double clicks if the corresponding
  				check box is set. It also calls Java method when the mouse point enters the command button (<code>onmouseover</code>), 
  				and when it leaves it again (<code>onmouseout</code>):</p>
  				<b:tabView>
  				<b:tab title="live demo">
-	 				<b:well>
+	 				<b:panel>
 	                  <h:form id="form1">
-	            		<b:selectBooleanCheckbox value="#{commandButtonBean.suppressClick}" label="suppress click (JavaScript)" id="click" />
-		         		<b:selectBooleanCheckbox value="#{commandButtonBean.suppressDoubleClick}" label="suppress doubleclick (JavaScript)"
-		         		                         id="doubleclick" />
-						<b:commandButton value="click me!" ajax="true" update="@next"
-							actionListener="#{commandButtonBean.onAction}"
-							onclick="var disabled = document.getElementById('form1:click').checked; if (disabled) return false; ajax:commandButtonBean.onAction();javascript:return false;" 
-							onmouseover="ajax:commandButtonBean.onMouseOver();"
-							onmouseout="ajax:commandButtonBean.onMouseOut();"
-							ondblclick="var disabled = document.getElementById('form1:doubleclick').checked; if (disabled) return false;ajax:commandButtonBean.onDoubleClick()" />
-						<b:well id="message">
-						<p>The last message processed by the server-side Java bean was:</p>
-	                    <p>#{commandButtonBean.message}</p>
-	                    </b:well>
+                        <b:panelGrid columns="12">
+  	            		<b:selectBooleanCheckbox value="#{commandButtonBean.suppressClick}" caption="suppress click (JavaScript)" id="click" />
+  		         		<b:selectBooleanCheckbox value="#{commandButtonBean.suppressDoubleClick}" caption="suppress doubleclick (JavaScript)"
+  		         		                         id="doubleclick" />
+  
+                          <b:commandButton value="click me!" ajax="true" update="@(.message-well)"
+                            style="padding-left:20px"
+                            look="success"
+                            onclick="var disabled = document.getElementsByName('form1:click')[0].checked; if (disabled) return false; ajax:commandButtonBean.onAction();javascript:return false;" 
+                            onmouseover="ajax:commandButtonBean.onMouseOver();"
+                            onmouseout="ajax:commandButtonBean.onMouseOut();"
+                            ondblclick="var disabled = document.getElementsByName('form1:doubleclick')[0].checked; if (disabled) return false;ajax:commandButtonBean.onDoubleClick()" />
+                          <b:well id="message" styleClass="message-well" style="margin-top:10px">
+     						<p>The last message processed by the server-side Java bean was:</p>
+     	                    <p>#{commandButtonBean.message}</p>
+  	                      </b:well>
+                      </b:panelGrid>
 	                  </h:form>
-                  </b:well>
+                  </b:panel>
  				</b:tab>
  				<b:tab title="source code">
  				<b:well>
 <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1"> 				
 <![CDATA[
-                 <h:form id="form1">
-            		<b:selectBooleanCheckbox value="&num;{commandButtonBean.suppressClick}" label="suppress click (JavaScript)" id="click" />
-	         		<b:selectBooleanCheckbox value="&num;{commandButtonBean.suppressDoubleClick}" label="suppress doubleclick (JavaScript)"
-	         		                         id="doubleclick" />
-					<b:commandButton value="click me!" ajax="true" update="@next"
-						actionListener="&num;{commandButtonBean.onAction}"
-						onclick="var disabled = document.getElementById('form1:click').checked; if (disabled) return false; ajax:commandButtonBean.onAction();javascript:return false;" 
-						onmouseover="ajax:commandButtonBean.onMouseOver();"
-						onmouseout="ajax:commandButtonBean.onMouseOut();"
-						ondblclick="var disabled = document.getElementById('form1:doubleclick').checked; if (disabled) return false;ajax:commandButtonBean.onDoubleClick()" />
-					<b:well id="message">
-						<p>The last message processed by the server-side Java bean was:</p>
-                        <p>&num;{commandButtonBean.message}</p>
-                    </b:well>
-                 </h:form>
+	 				<b:panel>
+	                  <h:form id="form1">
+                        <b:panelGrid columns="12">
+  	            		<b:selectBooleanCheckbox value="&num;{commandButtonBean.suppressClick}" caption="suppress click (JavaScript)" id="click" />
+  		         		<b:selectBooleanCheckbox value="&num;{commandButtonBean.suppressDoubleClick}" caption="suppress doubleclick (JavaScript)"
+  		         		                         id="doubleclick" />
+  
+                          <b:commandButton value="click me!" ajax="true" update="@(.message-well)"
+                            style="padding-left:20px"
+                            look="success"
+                            onclick="var disabled = document.getElementsByName('form1:click')[0].checked; if (disabled) return false; ajax:commandButtonBean.onAction();javascript:return false;" 
+                            onmouseover="ajax:commandButtonBean.onMouseOver();"
+                            onmouseout="ajax:commandButtonBean.onMouseOut();"
+                            ondblclick="var disabled = document.getElementsByName('form1:doubleclick')[0].checked; if (disabled) return false;ajax:commandButtonBean.onDoubleClick()" />
+                          <b:well id="message" styleClass="message-well" style="margin-top:10px">
+     						<p>The last message processed by the server-side Java bean was:</p>
+     	                    <p>&num;{commandButtonBean.message}</p>
+  	                      </b:well>
+                      </b:panelGrid>
+	                  </h:form>
+                  </b:panel>
  	 ]]> </script>    
  	 				</b:well>
   				</b:tab>
  				</b:tabView>
+        
+                <p>To get familiar with BootsFaces AJAX, try the 
+                <a target="#" href="https://github.com/stephanrauh/BootsFaces-Examples/tree/master/AJAX">BootsFaces AJAX demo project</a>.</p>
  				
                 <h3>Icons</h3>
                 <p>
@@ -292,12 +339,6 @@
                 </f:facet>
             </b:modal>
             
-            <h3>AJAX and JavaScript  <b:badge value="since 0.8.0"</h3>
-            <p>The <code>&lt;b:commandButton &gt;</code> supports the full suite of JavaScript and AJAX events,
-            as described in <a href="ajax.jsf">the description of AJAX in BootsFaces</a>. Basically, each of the
-            many JavaScript callback handlers (the <code>on[event]</code> attributes) also supports AJAX.
-            To get familiar with BootsFaces AJAX, try the 
-            <a target="#" href="https://github.com/stephanrauh/BootsFaces-Examples/tree/master/AJAX">BootsFaces AJAX demo project</a>.</p>
             
                 <br/>
                 <h2>Reference section</h2>
