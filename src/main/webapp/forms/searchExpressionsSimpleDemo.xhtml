@@ -14,41 +14,56 @@
                         	<b:well>
 								<ui:repeat id="elements" var="image"
 									value="#{imageGallery.images}">
-									<b:panelGrid colSpans="3,2,1,2,4">
+									<b:panelGrid colSpans="3,2,1,2,2,2">
 										<b:commandButton value=":simpleForm:elements:graphic" ajax="true"
 											actionListener="#{imageGallery.chooseAnotherImage(image)}"
 											update=":simpleForm:elements:graphic"
 											tooltip="update=':simpleForm:elements:graphic'"
+                                            look="info"
 											/>
 										 <b:commandButton value="@form:**:graphic " ajax="true"
 											actionListener="#{imageGallery.chooseAnotherImage(image)}"
 											update="@form:**:graphic" 
-											tooltip="update='@form:**:graphic'"/>	
+											tooltip="update='@form:**:graphic'"
+                                            look="info"/>	
 										<b:commandButton value="@next " ajax="true"
 											actionListener="#{imageGallery.chooseAnotherImage(image)}"
 											update="@next"
-											tooltip="update='@next'"/>
+											tooltip="update='@next'"
+                                            look="info"/>
 										<h:graphicImage url="#{image}" id="graphic" style="width:153; height:117px" />
 										<b:commandButton value="@previous " ajax="true"
 											actionListener="#{imageGallery.chooseAnotherImage(image)}"
 											update="@previous"
-											tooltip="update='@previous'"/>
+											tooltip="update='@previous'"
+                                            look="info"/>
+                                        <b:commandButton value="@parent:@child(3)" ajax="true"
+                                        actionListener="#{imageGallery.chooseAnotherImage(image)}"
+                                        update="@parent:@child(3)"
+                                        tooltip="update='@parent:@child(3)'"
+                                        look="info"/>
 										
 									</b:panelGrid>
 								</ui:repeat>
 								<b:panel title="The buttons below change every image." >
 									<b:commandButton value=":simpleForm " ajax="true"
+                                                style="margin-right:10px"
 												actionListener="#{imageGallery.chooseEveryImage()}"
 												update=":simpleForm" 
-												tooltip=":simpleForm"/>
+												tooltip=":simpleForm"
+                                                look="primary"/>
 									<b:commandButton value="@form"  ajax="true"
+                                                style="margin-right:10px"
 												actionListener="#{imageGallery.chooseEveryImage()}"
 												update="@form" 
-												tooltip="@form"/>
+												tooltip="@form"
+                                                look="primary"/>
 									<b:commandButton value="@parent:@parent"  ajax="true"
+                                                style="margin-right:10px"
 												actionListener="#{imageGallery.chooseEveryImage()}"
 												update="@parent:@parent" 
-												tooltip="@parent:@parent = ui:repeat"/>
+												tooltip="@parent:@parent = ui:repeat"
+                                                look="primary"/>
 								</b:panel>
 							</b:well>
 			            </h:form>
