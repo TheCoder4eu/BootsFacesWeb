@@ -11,7 +11,7 @@
                 <b:tabView id="simpleTabViewId">
                     <b:tab title="live preview" id="simpleTabId">
  			           <h:form id="simpleForm">
-                        	<b:well>
+                        	<b:panel>
 								<ui:repeat id="elements" var="image"
 									value="#{imageGallery.images}">
 									<b:panelGrid colSpans="3,2,1,2,2,2">
@@ -45,7 +45,8 @@
 										
 									</b:panelGrid>
 								</ui:repeat>
-								<b:panel title="The buttons below change every image." >
+                <br />
+								<b:panel title="The buttons below change every image." look="info" >
 									<b:commandButton value=":simpleForm " ajax="true"
                                                 style="margin-right:10px"
 												actionListener="#{imageGallery.chooseEveryImage()}"
@@ -65,7 +66,7 @@
 												tooltip="@parent:@parent = ui:repeat"
                                                 look="primary"/>
 								</b:panel>
-							</b:well>
+							</b:panel>
 			            </h:form>
                      </b:tab>
                     <b:tab title="JSF markup">

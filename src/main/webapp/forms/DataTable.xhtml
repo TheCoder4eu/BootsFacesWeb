@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="content">
+		<style>
+td {
+	padding: 8px;
+}
+</style>
+		<h1>DataTable (&lt;b:dataTable /&gt;) <b:badge value="since 0.8.0" /></h1>
+    
+    <b:dataTable value="{{carPool.carPool}}" var="car" id="bcarPool" styleClass="table table-striped table-bordered"
+     style="width:100%">
+      <h:column>
+        <f:facet name="header">
+          <h:outputText value="Brand" />
+        </f:facet>
+        <h:outputText value="#{car.brand}" />
+      </h:column>
+      <h:column>
+        <f:facet name="header">
+          <h:outputText value="Type" />
+        </f:facet>
+        <h:inputText value="#{car.type}"/>
+      </h:column>
+
+    </b:dataTable>
+    
+    <h3>Do it yourself</h3>
+    
+    
+     <h:dataTable value="{{carPool.carPool}}" var="car" id="carPool" styleClass="table table-striped table-bordered"
+     style="width:100%">
+      <h:column>
+        <f:facet name="header">
+          <h:outputText value="Brand" />
+        </f:facet>
+        <h:outputText value="#{car.brand}" />
+      </h:column>
+      <h:column>
+        <f:facet name="header">
+          <h:outputText value="Type" />
+        </f:facet>
+        <h:inputText value="#{car.type}"/>
+      </h:column>
+
+    </h:dataTable>
+    <script>
+    $(document).ready(function() {
+    $('#carPool').DataTable();
+} );
+    </script>
+      
+  <h3>Empty data table:</h3>
+      <h:dataTable value="{{carPool.emptyCarPool}}" var="car" id="emptyCarpool"
+      styleClass="table table-striped table-bordered" style="width:100%">
+      
+      <h:column>
+        <f:facet name="header">
+          <h:outputText value="Brand" />
+        </f:facet>
+        <h:outputText value="#{car.brand}" />
+      </h:column>
+      <h:column>
+        <f:facet name="header">
+          <h:outputText value="Type" />
+        </f:facet>
+        <h:outputText value="#{car.type}" />
+      </h:column>
+
+    </h:dataTable>
+     <script>
+    $(document).ready(function() {
+    $('#emptyCarpool').DataTable();
+} );
+    </script>
+    
+       
+    <h3>Advanced usage</h3>
+    <ui:include src="dataTable.html" />
+
+		<p>Describe in a few words what <code>&lt;b:image&gt;</code> is about.</p>
+		<h1>Basic usage</h1>
+		<p>Put a short description in simple words here.</p>
+    
+        <h3>Reference section</h3>
+        <ui:include src="DataTableAttributes.xhtml" />
+		<b:panel look="info">
+			<f:facet name="heading">
+				<b>Skinning</b>
+			</f:facet>
+			<ul>
+				<li>Tell the world which CSS classes can be used to change the
+					look of the component.</li>
+			</ul>
+		</b:panel>
+
+		<script type="text/javascript">
+      		SyntaxHighlighter.all();
+    	</script>
+		<br />
+		<br />
+		<br />
+		<br />
+	</ui:define>
+</ui:composition>
