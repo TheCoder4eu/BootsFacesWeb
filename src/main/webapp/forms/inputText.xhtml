@@ -321,7 +321,7 @@
 			
                 <br/>
                 
-                <h2>AJAX and JavaScript  <b:badge value="since 0.8.0"</h2>
+                <h2>AJAX and JavaScript  <b:badge value="since 0.8.0" /></h2>
                 <p>The <code>&lt;b:inputText &gt;</code> supports the full suite of JavaScript and AJAX events,
                 as described in <a href="ajax.jsf">the description of AJAX in BootsFaces</a>. Basically, each of the
                 many JavaScript callback handlers (the <code>on[event]</code> attributes) also supports AJAX.
@@ -336,17 +336,55 @@
 						<script type="syntaxhighlighter"
 							class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 							<![CDATA[
-				  				<b:inputText  value="#{userBean.name}" label="Enter your name"
+				  				<b:inputText  value="&num;{userBean.name}" label="Enter your name"
 						                      ng:ng-model="name" />
-								<b:inputText  value="#{userBean.age}" label="How old are you?"
+								<b:inputText  value="&num;{userBean.age}" label="How old are you?"
               								  ng:type="number" ng:min="5" ng:max="125" ng:ng-model="age" />           
 ]]>
 					       </script>
 					 </b:well>
 				<p>The generated HTML code looks like so:</p>
                <h:graphicImage library="passthrough" name="generatedHtml.png" />
-                
-                <h2>Reference section</h2>
+               
+               <h2>Labels and error messages  <b:badge value="updated in 0.8.0" /></h2>
+               <p>You can add a label by adding the attribute <code>label</code>. The label is also used by the JSF messages. Do give you maximum flexibility,
+               you can suppress automatic rendering of labels by adding <code>renderLabel="false"</code>.
+                       </p>
+            <b:tabView>
+              <b:tab title="displayed as">
+              <b:well>
+                <h:form>
+                  <b:inputText id="name" value="#{userBean.name}"
+                    label="Enter your name" required="true" renderLabel="true" />
+                  <h:message for="age" />
+                  <b:inputText id="age" value="#{userBean.age}"
+                    label="What's your age?" renderLabel="true" />
+                  <h:message for="age" />
+                  <b:commandButton update="@form" value="Validate constraints" />
+                </h:form>
+                </b:well>
+              </b:tab>
+              <b:tab title="JSF markup">
+                <b:well>
+                  <script type="syntaxhighlighter"
+                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+				  <![CDATA[
+                     <h:form>
+                        <b:inputText id="name" value="&num;{userBean.name}" label="Enter your name" 
+								     required="true" renderLabel="true"   />
+                         <h:message for="age" />
+                         <b:inputText id="age" value="&num;{userBean.age}" label="What's your age?" 
+                                      renderLabel="true" />
+                         <h:message for="age" />
+                         <b:commandButton update="@form" value="Validate constraints" />         
+                       </h:form>
+                  ]]>
+                 </script>
+                </b:well>
+              </b:tab>
+            </b:tabView>
+        
+            <h2>Reference section</h2>
                 <ui:include src="InputTextAttributes.xhtml" />
                 
             <b:panel look="info">
@@ -360,6 +398,20 @@
 				   <li>
 				   		If the attribute <code>required</code> is true, the pseudo CSS class <code>bf-required</code> is added. Thus you can define your custom style for required fields.
 				   </li>
+                   <li>
+                   if theres a <code>FacesMessage</code>, the input field is bears one of the pseudo CSS classes
+                   <code>bf-info</code>, <code>bf-warning</code>, <code>bf-error</code> or <code>bf-fatal</code>. There there's no messages,
+                   the input field bears the pseudo CSS class <code>bf-no-message</code>.
+                   </li>
+                   <li>If there's a label, if bears the CSS class <code>required</code>, if it's a mandatory field.
+                   This class adds an asterik to the label text. You can override the CSS class to remove the asterik
+                   or to replace it by something else.</li>
+                   <li>If there's a label, if bears the CSS classes <code>bf-info</code>, <code>bf-warning</code>, 
+                   <code>bf-error</code> or <code>bf-fatal</code>, depending on which error message the input field has.
+                   The latter two classes color the label red.<br />
+                   There there's no message,
+                   the input field bears the pseudo CSS class <code>bf-no-message</code>.
+                   </li>
 				  </ul> 
 			</b:panel>
 				
