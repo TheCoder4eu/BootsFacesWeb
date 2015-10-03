@@ -346,10 +346,17 @@
 				<p>The generated HTML code looks like so:</p>
                <h:graphicImage library="passthrough" name="generatedHtml.png" />
                
-               <h2>Labels and error messages  <b:badge value="updated in 0.8.0" /></h2>
-               <p>You can add a label by adding the attribute <code>label</code>. The label is also used by the JSF messages. Do give you maximum flexibility,
+               <h2>Labels, required fields and error messages  <b:badge value="updated in 0.8.0" /></h2>
+               <p>You can add a label by adding the attribute <code>label</code>. The label is also used by the JSF messages. To give you maximum flexibility,
                you can suppress automatic rendering of labels by adding <code>renderLabel="false"</code>.
-                       </p>
+               </p>
+               <p>Required inputs fields and their labels both bear the CSS class <code>bf-required</code>. By default, this adds an asterik to the label.</p>
+               <p>If the field has a FacesMessage, one of the CSS classes <code>bf-info</code>, <code>bf-warning</code>, 
+                   <code>bf-error</code> or <code>bf-fatal</code>, depending on which error severity the message has.
+                   The latter two classes color the label red.</p>
+                <p>If there's no message,
+                   the field and its label bear the pseudo CSS class <code>bf-no-message</code>.
+               </p>
             <b:tabView>
               <b:tab title="displayed as">
               <b:well>
@@ -396,10 +403,11 @@
 				   		<code>&lt;b:inputfield /&gt;</code> is an <code>input</code> tag bearing the CSS-class <code>form-control</code>.
 				   </li>
 				   <li>
-				   		If the attribute <code>required</code> is true, the pseudo CSS class <code>bf-required</code> is added. Thus you can define your custom style for required fields.
+				   		If the attribute <code>required</code> is true, the pseudo CSS class <code>bf-required</code> is added. 
+                        Thus you can define your custom style for required fields.
 				   </li>
                    <li>
-                   if theres a <code>FacesMessage</code>, the input field is bears one of the pseudo CSS classes
+                   If there's a <code>FacesMessage</code>, the input field is bears one of the pseudo CSS classes
                    <code>bf-info</code>, <code>bf-warning</code>, <code>bf-error</code> or <code>bf-fatal</code>. There there's no messages,
                    the input field bears the pseudo CSS class <code>bf-no-message</code>.
                    </li>
@@ -407,9 +415,9 @@
                    This class adds an asterik to the label text. You can override the CSS class to remove the asterik
                    or to replace it by something else.</li>
                    <li>If there's a label, if bears the CSS classes <code>bf-info</code>, <code>bf-warning</code>, 
-                   <code>bf-error</code> or <code>bf-fatal</code>, depending on which error message the input field has.
+                   <code>bf-error</code> or <code>bf-fatal</code>, depending on which severity the error message the input field has.
                    The latter two classes color the label red.<br />
-                   There there's no message,
+                   If there's no message,
                    the input field bears the pseudo CSS class <code>bf-no-message</code>.
                    </li>
 				  </ul> 
