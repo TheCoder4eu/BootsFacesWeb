@@ -211,6 +211,24 @@
                                                  iconAwesome="thumbs-down" look="info" title="Disabled!" />
                             </b:column>
                         </b:row>
+                        <b:row>
+                          <b:column span="2">
+                            <p></p> 
+                            <p>Partial processing:</p>
+                            <p></p> 
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                           <b:column span="2">
+                                <b:commandButton value="Submit first name" ajax="true" update="form:inform infoshow" process="@form:firstname" look="primary" />
+                            </b:column>
+                            <b:column span="2">
+                                <b:commandButton value="Submit surname" ajax="true" update="form:inform infoshow" process="@form:familyname" look="primary" />
+                            </b:column>
+                           <b:column span="2">
+                                <b:commandButton value="Submit both" ajax="true" update="form:inform infoshow" process="@form:firstname @form:familyname" look="primary" />
+                            </b:column>
+                        </b:row>
                         </h:form>
                     </b:tab>
                     <b:tab title="JSF markup (buttons only)">
@@ -233,7 +251,13 @@
 			    </h:commandButton>
 
                 <b:commandButton value="I'm disabled" disabled="true" ajax="true" iconAwesome="thumbs-down" look="info" title="Disabled!" />
-  ]]></script>
+                      
+                <b:commandButton value="Submit first name" ajax="true" update="form:inform infoshow" process="@form:firstname" look="primary" />
+  
+                <b:commandButton value="Submit surname" ajax="true" update="form:inform infoshow" process="@form:familyname" look="primary" />
+
+                <b:commandButton value="Submit both" ajax="true" update="form:inform infoshow" process="@form:firstname @form:familyname" look="primary" />
+   ]]></script>
 					  </b:well>
 					</b:tab>                    
                     <b:tab title="JSF markup (complete example)">
@@ -285,6 +309,17 @@
                   <b:commandButton value="I'm disabled" disabled="true" ajax="true"
                                    iconAwesome="thumbs-down" look="info" title="Disabled!" />
               </b:column>
+            </b:row>
+            <b:row>
+              <b:column span="2">
+                     <b:commandButton value="Submit first name" ajax="true" update="form:inform infoshow" process="@form:firstname" look="primary" />
+                 </b:column>
+                 <b:column span="2">
+                     <b:commandButton value="Submit surname" ajax="true" update="form:inform infoshow" process="@form:familyname" look="primary" />
+                 </b:column>
+                <b:column span="2">
+                     <b:commandButton value="Submit both" ajax="true" update="form:inform infoshow" process="@form:firstname @form:familyname" look="primary" />
+                </b:column>
             </b:row>
             <b:well id="infoshow">
                 <strong>Submitted information:</strong>
@@ -338,6 +373,15 @@
                     <b:button value="Ok" look="primary" />
                 </f:facet>
             </b:modal>
+            
+            <h2>Partial processing with AJAX <b:badge value="since 0.8.0" /></h2>
+            <p>The lower row of the example above shows partial processing. Sometimes you don't want to submit an entire form to the server.
+            In our example you can't send the first name unless you've filled the last name, too, because of the constraint violation
+            which prevents the values from being sent to the server. Partial submit allows you to send parts of the form to the server
+            and to validate and process them independently from the rest of the form. Note that this example "forgets" the changes
+            of the "last name" input field when you submit the first name. Usually, you'll avoid this by using <code>update="@form:firstname"</code>
+            instead of updating the entire form.
+            </p>
             
             
                 <br/>

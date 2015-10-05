@@ -7,14 +7,14 @@ package net.bootsfaces.demo;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 
 /**
  *
  * @author TheCoder4eu
  */
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class InformBean implements Serializable {
 	private static final long serialVersionUID = 3776366707374123185L;
 	private String firstname;
