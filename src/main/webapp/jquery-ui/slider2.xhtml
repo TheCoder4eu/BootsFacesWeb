@@ -123,8 +123,8 @@
 		                    el.setAttribute('transform', 'rotate('+ deg +' 50 50)')
 	                    }
 	                    var d = new Date();
-	                    var hours = $("#hourID").val();
-	                    var minutes=$("#minuteID").val();
+	                    var hours = $("[name='hourID']").val();
+	                    var minutes=$("[name='minuteID']").val();
 	                    if (d.getSeconds()==0) {
 	                       minutes++;
 	                       if (minutes>=60) {
@@ -133,11 +133,11 @@
 	                          if (hours>=24) {
 	                             hours=0;
 	                          }
-	                          $("#hourID").val(hours);
+	                          $("[name='hourID']").val(hours);
 		                       $('span[id="hourID_badge"]').text( hours );
 	                           $( "#hourID_slider" ).slider( "option", "value", hours );
 	                       }
-	                       $("#minuteID").val(minutes);
+	                       $("[name='minuteID']").val(minutes);
 	                       $('span[id="minuteID_badge"]').text( minutes );
                            $( "#minuteID_slider" ).slider( "option", "value", minutes );
 	                    }
@@ -178,8 +178,8 @@
 									+ ' 50 50)')
 						}
 						var d = new Date();
-						var hours = $("#hourID").val();
-						var minutes = $("#minuteID").val();
+						var hours = $("[name='hourID']").val();
+						var minutes = $("[name='minuteID']").val();
 						if (d.getSeconds() == 0) {
 							minutes++;
 							if (minutes >= 60) {
@@ -188,12 +188,12 @@
 								if (hours >= 24) {
 									hours = 0;
 								}
-								$("#hourID").val(hours);
+								$("[name='hourID']").val(hours);
 								$('span[id="hourID_badge"]').text(hours);
 								$("#hourID_slider").slider("option", "value",
 										hours);
 							}
-							$("#minuteID").val(minutes);
+							$("[name='minuteID']").val(minutes);
 							$('span[id="minuteID_badge"]').text(minutes);
 							$("#minuteID_slider").slider("option", "value",
 									minutes);
