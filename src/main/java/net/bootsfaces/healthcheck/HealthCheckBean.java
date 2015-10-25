@@ -54,7 +54,7 @@ public class HealthCheckBean {
 		}
 		final Map<String, Argument> connectArgs = new HashMap<String, Argument>(ac.defaultArguments());
 		connectArgs.get("hostname").setValue("127.0.0.1");
-		connectArgs.get("port").setValue(Integer.toString(30011));
+		connectArgs.get("port").setValue(Integer.toString(3001));
 		connectArgs.get("timeout").setValue("3000");
 		vm = ac.attach(connectArgs);
 		}
