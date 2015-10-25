@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:b="http://bootsfaces.net/ui"
+  xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+  <title>BootsFaces: next-gen JSF Framework</title>
+  <meta name="author" content="Riccardo Massera, Stephan Rauh et al."></meta>
+</h:head>
+<h:body style="padding-top: 60px">
+  <ui:composition template="/applayout/pageTemplate.xhtml">
+    <ui:define name="content">
+      <style>
+td {
+	padding: 8px;
+}
+</style>
+      <h1>Healthcheck</h1>
+
+      <b:well>
+        #{healthCheckBean.reportMostFrequentObjects()}
+        <b:dataTable value="#{healthCheckBean.mostFrequentObjects}" var="obj" id="bcarPool"
+          styleClass="table table-striped table-bordered"
+          style="width:100%">
+          <h:column>
+            <f:facet name="header">
+              <h:outputText value="Number of objects" />
+            </f:facet>
+            <h:outputText value="#{obj.count}" />
+          </h:column>
+          <h:column>
+            <f:facet name="header">
+              <h:outputText value="Type" />
+            </f:facet>
+            <h:outputText value="#{obj.name}" />
+          </h:column>
+
+        </b:dataTable>
+        <b:messages />
+
+      </b:well>
+
+      <br />
+      <br />
+      <br />
+      <br />
+    </ui:define>
+  </ui:composition>
+</h:body>
+</html>
