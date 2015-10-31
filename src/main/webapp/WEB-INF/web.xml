@@ -17,6 +17,18 @@
         <param-name>BootsFaces_USETHEME</param-name>
         <param-value>true</param-value>
     </context-param>
+    <context-param>
+        <param-name>net.bootsfaces.get_jquery_from_cdn</param-name>
+        <param-value>false</param-value>
+    </context-param>
+   <context-param>
+        <param-name>net.bootsfaces.get_jqueryui_from_cdn</param-name>
+        <param-value>false</param-value>
+    </context-param>
+   <context-param>
+        <param-name>net.bootsfaces.get_bootstrap_from_cdn</param-name>
+        <param-value>false</param-value>
+    </context-param>
     <!-- Activates the tag decorator that turns divs into JSF components (and much more) -->
     <context-param> 
         <param-name>javax.faces.FACELETS_DECORATORS</param-name>

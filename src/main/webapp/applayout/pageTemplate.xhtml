@@ -5,7 +5,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <title>BootsFaces: the next-gen JSF Framework based on Bootstrap</title>
         <meta name="author" content="Riccardo Massera" />
@@ -38,7 +38,7 @@
             <ui:include src="/applayout/navbartop.xhtml"/>
         </ui:insert>
         
-        <b:container class="contentToTest">
+        <b:container pt:class="contentToTest">
             <!-- contentToTest start -->
             <ui:insert name="content"/>
             <!-- contentToTest end -->
