@@ -101,19 +101,19 @@
                         <h:form>
                             <h:panelGrid columns="2"  cellpadding="5">
                                 <h:outputText value="e-mail:"/>
-                                <b:inputTextarea>
+                                <b:inputTextarea rows="3">
                                     <f:facet name="prepend">
                                         <h:outputText value="@" />
                                     </f:facet>
                                 </b:inputTextarea>
                                 <h:outputText value="Amount:"/>
-                                <b:inputTextarea>
+                                <b:inputTextarea rows="3">
                                     <f:facet name="append">
                                         <h:outputText value=".00" />
                                     </f:facet>
                                 </b:inputTextarea>
                                 <h:outputText value="Price:"/>
-                                <b:inputTextarea>
+                                <b:inputTextarea rows="3">
                                     <f:facet name="prepend">
                                         <h:outputText value="$" />
                                     </f:facet>
@@ -130,19 +130,19 @@
                     <h:form>
                         <h:panelGrid columns="2" cellpadding="5">
                             <h:outputText value="e-mail:"/>
-                            <b:inputTextarea>
+                            <b:inputTextarea rows="3">
                                 <f:facet name="prepend">
                                     <h:outputText value="@" />
                                 </f:facet>
                             </b:inputTextarea>
                             <h:outputText value="Amount:"/>
-                            <b:inputTextarea>
+                            <b:inputTextarea rows="3">
                                 <f:facet name="append">
                                     <h:outputText value=".00" />
                                 </f:facet>
                             </b:inputTextarea>
                             <h:outputText value="Price:"/>
-                            <b:inputTextarea>
+                            <b:inputTextarea rows="3">
                                 <f:facet name="prepend">
                                     <h:outputText value="$" />
                                 </f:facet>
@@ -162,7 +162,7 @@
 
                             <h:outputText value="Your Bid:"/>
 
-                            <b:inputTextarea value="99">
+                            <b:inputTextarea rows="3" value="99">
                                 <f:facet name="prepend">
                                     <h:outputText value="offer" />
                                     <h:outputText value="$" />
@@ -181,7 +181,7 @@
                         <h:form>
                             <h:panelGrid columns="2" cellpadding="5">
                                 <h:outputText value="Your Bid:"/>
-                                <b:inputTextarea value="99" span="1">
+                                <b:inputTextarea rows="3" value="99" span="1">
                                     <f:facet name="prepend">
                                         <h:outputText value="offer" />
                                         <h:outputText value="$" />
@@ -200,13 +200,13 @@
                 <h:form>
                     <h:panelGrid columns="2"  cellpadding="5">
                         <h:outputText value="e-mail:"/>
-                        <b:inputTextarea placeholder="Username" required="true">
+                        <b:inputTextarea rows="3" placeholder="Username" required="true">
                             <f:facet name="prepend">
                                 <b:icon name="user" />
                             </f:facet>
                         </b:inputTextarea>
                         <h:outputText value="Password:"/>
-                        <b:inputTextarea placeholder="Password">
+                        <b:inputTextarea rows="3" placeholder="Password">
                             <f:facet name="prepend">
                                 <b:iconAwesome name="key" />
                             </f:facet>
@@ -220,7 +220,7 @@
                     <h:form id="bid" prependId="false" >
                         <h:panelGrid columns="2" cellpadding="5">
                             <h:outputText value="Your Offer:"/>
-                            <b:inputTextarea id="mybid" value="#{testBean.val6}">
+                            <b:inputTextarea rows="3" id="mybid" value="#{testBean.val6}">
                                 <f:facet name="prepend">
                                     <h:outputText value="$" />
                                 </f:facet>
@@ -255,7 +255,7 @@
                     <h:form>
                         <b:row>
                             <b:column span="6">
-                                <b:inputTextarea placeholder="Text">
+                                <b:inputTextarea rows="3" placeholder="Text">
                                     <f:facet name="prepend">
                                         <b:dropButton value="DropButton">
                                             <b:navLink value="Action" href="#"></b:navLink>
@@ -270,7 +270,7 @@
                                 </b:inputTextarea>
                             </b:column>
                             <b:column span="6">
-                                <b:inputTextarea placeholder="Text">
+                                <b:inputTextarea rows="3" placeholder="Text">
                                     <f:facet name="append">
                                         <b:dropButton value="DropButton">
                                             <b:navLink value="Action" href="#"></b:navLink>
@@ -297,9 +297,9 @@
                     <strong>Input sizes (fieldSize)</strong><br/>
                     <h:panelGrid cellpadding="5">
                         <h:form>
-                            <b:inputTextarea fieldSize="sm" placeholder="small (sm)"/>
-                            <b:inputTextarea placeholder="default"/>
-                            <b:inputTextarea fieldSize="lg" placeholder="large (lg)"/>
+                            <b:inputTextarea rows="3" fieldSize="sm" placeholder="small (sm)"/>
+                            <b:inputTextarea rows="3" placeholder="default"/>
+                            <b:inputTextarea rows="3" fieldSize="lg" placeholder="large (lg)"/>
                         </h:form>
                     </h:panelGrid>
                     
@@ -316,20 +316,20 @@
 	                    In a row:
 			                    <b:row>
 								<h:form>
-									<b:inputTextarea span="1" placeholder="span1" />
-									<b:inputTextarea span="2" placeholder="span 2" />
-									<b:inputTextarea span="3" placeholder="span 3" />
+									<b:inputTextarea rows="3" span="1" placeholder="span1" />
+									<b:inputTextarea rows="3" span="2" placeholder="span 2" />
+									<b:inputTextarea rows="3" span="3" placeholder="span 3" />
 								</h:form>
 							</b:row>
 							<br />
 	                    or in a Form:
 			                    <h:form styleClass="form-horizontal">
-								<b:inputTextarea span="1" placeholder="span1" />
-								<b:inputTextarea span="2" placeholder="span 2" />
-								<b:inputTextarea span="3" placeholder="span 3" />
-								<b:inputTextarea span="6" placeholder="span 6" />
-								<b:inputTextarea span="9" placeholder="span 9" />
-								<b:inputTextarea span="12" placeholder="span 12" />
+								<b:inputTextarea rows="3" span="1" placeholder="span1" />
+								<b:inputTextarea rows="3" span="2" placeholder="span 2" />
+								<b:inputTextarea rows="3" span="3" placeholder="span 3" />
+								<b:inputTextarea rows="3" span="6" placeholder="span 6" />
+								<b:inputTextarea rows="3" span="9" placeholder="span 9" />
+								<b:inputTextarea rows="3" span="12" placeholder="span 12" />
 							</h:form>
 						</b:well>
 					</b:tab>
@@ -344,20 +344,20 @@
                     In a row:
 		                    <b:row>
 							<h:form>
-								<b:inputTextarea span="1" placeholder="span1" />
-								<b:inputTextarea span="2" placeholder="span 2" />
-								<b:inputTextarea span="3" placeholder="span 3" />
+								<b:inputTextarea rows="3" span="1" placeholder="span1" />
+								<b:inputTextarea rows="3" span="2" placeholder="span 2" />
+								<b:inputTextarea rows="3" span="3" placeholder="span 3" />
 							</h:form>
 						</b:row>
 						<br />
                     or in a Form:
 		                    <h:form styleClass="form-horizontal">
-							<b:inputTextarea span="1" placeholder="span1" />
-							<b:inputTextarea span="2" placeholder="span 2" />
-							<b:inputTextarea span="3" placeholder="span 3" />
-							<b:inputTextarea span="6" placeholder="span 6" />
-							<b:inputTextarea span="9" placeholder="span 9" />
-							<b:inputTextarea span="12" placeholder="span 12" />
+							<b:inputTextarea rows="3" span="1" placeholder="span1" />
+							<b:inputTextarea rows="3" span="2" placeholder="span 2" />
+							<b:inputTextarea rows="3" span="3" placeholder="span 3" />
+							<b:inputTextarea rows="3" span="6" placeholder="span 6" />
+							<b:inputTextarea rows="3" span="9" placeholder="span 9" />
+							<b:inputTextarea rows="3" span="12" placeholder="span 12" />
 						</h:form>
 					</b:well>
             ]]>
@@ -383,9 +383,9 @@
 						<script type="syntaxhighlighter"
 							class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 							<![CDATA[
-				  				<b:inputTextarea  value="&num;{userBean.name}" label="Enter your name"
+				  				<b:inputTextarea rows="3"  value="&num;{userBean.name}" label="Enter your name"
 						                      ng:ng-model="name" />
-								<b:inputTextarea  value="&num;{userBean.age}" label="How old are you?"
+								<b:inputTextarea rows="3"  value="&num;{userBean.age}" label="How old are you?"
               								  ng:type="number" ng:min="5" ng:max="125" ng:ng-model="age" />           
 ]]>
 					       </script>
@@ -408,10 +408,10 @@
               <b:tab title="displayed as">
               <b:well>
                 <h:form>
-                  <b:inputTextarea id="name" value="#{userBean.name}"
+                  <b:inputTextarea rows="3" id="name" value="#{userBean.name}"
                     label="Enter your name" required="true" renderLabel="true" />
                   <h:message for="age" />
-                  <b:inputTextarea id="age" value="#{userBean.age}"
+                  <b:inputTextarea rows="3" id="age" value="#{userBean.age}"
                     label="What's your age?" renderLabel="true" />
                   <h:message for="age" />
                   <b:commandButton update="@form" value="Validate constraints" />
@@ -424,10 +424,10 @@
                     class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 				  <![CDATA[
                      <h:form>
-                        <b:inputTextarea id="name" value="&num;{userBean.name}" label="Enter your name" 
+                        <b:inputTextarea rows="3" id="name" value="&num;{userBean.name}" label="Enter your name" 
 								     required="true" renderLabel="true"   />
                          <h:message for="age" />
-                         <b:inputTextarea id="age" value="&num;{userBean.age}" label="What's your age?" 
+                         <b:inputTextarea rows="3" id="age" value="&num;{userBean.age}" label="What's your age?" 
                                       renderLabel="true" />
                          <h:message for="age" />
                          <b:commandButton update="@form" value="Validate constraints" />         
