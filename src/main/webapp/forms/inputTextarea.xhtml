@@ -1,0 +1,478 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+            <ui:define name="content">
+                <style>td {padding: 8px;}</style>
+                <h1>InputTextarea <b:badge value="since 0.8.0" /></h1>
+                
+                <p>The most common form controls are text-based input fields. </p>
+                <p>Future versions of BootsFaces will try to add support for the most relevant HTML5 types:</p> 
+                <p>text, password, datetime, datetime-local, date, month, time, week, number, email, url, search, tel, and color.</p>
+                <br/>
+                <p>The most simple example is a plain <code>b:inputTextarea</code> with a <code>placeholder</code> attribute, which contains an hint that is shown in the input field until something is typed in it.
+                This is how such a simple InputTextarea looks like if we add a bit of AJAX functionality to it:</p>
+                <b:tabView>
+                  <b:tab title="preview">
+                   <h:form>
+                     <b:inputTextarea placeholder="Type something here..." value="#{barcodeBean.emptyText}">
+                        <f:ajax event="keyup" render="label" listener="#{barcodeBean.capitalizeURL}" />
+                        </b:inputTextarea>
+                        <b:label text="#{barcodeBean.emptyTextCapital}" id="label"/>
+                    </h:form>
+                 </b:tab>
+                 <b:tab title="JSF markup">
+                   <b:well>
+                     <script type="syntaxhighlighter"
+                       class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                  <![CDATA[
+                 <h:form>
+                     <b:inputTextarea placeholder="Type something here..." value="&num;{barcodeBean.emptyText}">
+                        <f:ajax event="keyup" render="label" listener="&num;{barcodeBean.capitalizeURL}" />
+                        </b:inputTextarea>
+                        <b:label text="&num;{barcodeBean.emptyTextCapital}" id="label"/>
+                    </h:form>
+                 ]]>
+                 </script>
+                   </b:well>
+                 </b:tab>
+                </b:tabView>
+                <br />
+                <p>As you noticed, the input is as large as its parent container. You will see how to control its size later in this section.</p>
+                <br/>
+                
+                <h3>Rows and columns</h3>
+                <p>The standard HTML textarea has two attributes to control the size of the input element: <code>cols</code> and <code>rows</code>.
+                <code>&lt;b:inputTextarea/gt;</code> only supports <code>rows</code>. Use it to define the height of the text area.
+                We don't support <code>cols</code> because it's overridden by the Bootstrap grid. Use the attribute <code>span</code> to define the width of the text area:
+                </p>
+                               <b:panel >
+                    <f:facet name="heading"><b>EXAMPLE</b></f:facet>
+                        <h:form>
+                            <b:panelGrid colSpans="6,4,2"  cellpadding="5">
+                               <h:outputText value="span=6, rows=5 (default)"/>
+                               <h:outputText value="span=4, rows=5 (default)"/>
+                               <h:outputText value="span=2, rows=5 (default)"/>
+                               <b:inputTextarea />
+                               <b:inputTextarea />
+                               <b:inputTextarea />
+                               <h:outputText value="span=6, rows=2"/>
+                               <h:outputText value="span=4, rows=3"/>
+                               <h:outputText value="span=2, rows=6"/>
+                               <b:inputTextarea rows="2" />
+                               <b:inputTextarea rows="3" />
+                               <b:inputTextarea rows="6" />
+                            </b:panelGrid>
+                        </h:form>
+                <f:facet name="footer">
+                <strong>Markup:</strong><br/>
+                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                    <![CDATA[
+                    	<h:form>
+                           <b:panelGrid colSpans="6,4,2"  cellpadding="5">
+                               <h:outputText value="span=6, rows=5 (default)"/>
+                               <h:outputText value="span=4, rows=5 (default)"/>
+                               <h:outputText value="span=2, rows=5 (default)"/>
+                               <b:inputTextarea />
+                               <b:inputTextarea />
+                               <b:inputTextarea />
+                               <h:outputText value="span=6, rows=2"/>
+                               <h:outputText value="span=4, rows=3"/>
+                               <h:outputText value="span=2, rows=6"/>
+                               <b:inputTextarea rows="2" />
+                               <b:inputTextarea rows="3" />
+                               <b:inputTextarea rows="6" />
+                            </b:panelGrid>
+                    	</h:form>]]></script>
+                    </f:facet>
+                </b:panel>
+                
+                <h3>Enhancing the b:inputTextarea form control</h3>
+                <p>To help you enhance the User experience, BootsFaces come in with a useful feature:</p>
+                <p>You can easily prepend or append text to your InputTextareas and what you prepend and append will seem part of the input field.</p>
+                <p>To do so, you just need to use the facets <code>prepend</code> and <code>append</code> where you will place the <code>h:outputText</code> element.</p>
+                <p>You can even prepend and append at the same time, as in the following example:</p>
+                <b:panel >
+                    <f:facet name="heading"><b>EXAMPLE</b></f:facet>
+                        <h:form>
+                            <h:panelGrid columns="2"  cellpadding="5">
+                                <h:outputText value="e-mail:"/>
+                                <b:inputTextarea>
+                                    <f:facet name="prepend">
+                                        <h:outputText value="@" />
+                                    </f:facet>
+                                </b:inputTextarea>
+                                <h:outputText value="Amount:"/>
+                                <b:inputTextarea>
+                                    <f:facet name="append">
+                                        <h:outputText value=".00" />
+                                    </f:facet>
+                                </b:inputTextarea>
+                                <h:outputText value="Price:"/>
+                                <b:inputTextarea>
+                                    <f:facet name="prepend">
+                                        <h:outputText value="$" />
+                                    </f:facet>
+                                    <f:facet name="append">
+                                        <h:outputText value=".00" />
+                                    </f:facet>
+                                </b:inputTextarea>
+                            </h:panelGrid>
+                        </h:form>
+                <f:facet name="footer">
+                <strong>Markup:</strong><br/>
+                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                    <![CDATA[
+                    <h:form>
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <h:outputText value="e-mail:"/>
+                            <b:inputTextarea>
+                                <f:facet name="prepend">
+                                    <h:outputText value="@" />
+                                </f:facet>
+                            </b:inputTextarea>
+                            <h:outputText value="Amount:"/>
+                            <b:inputTextarea>
+                                <f:facet name="append">
+                                    <h:outputText value=".00" />
+                                </f:facet>
+                            </b:inputTextarea>
+                            <h:outputText value="Price:"/>
+                            <b:inputTextarea>
+                                <f:facet name="prepend">
+                                    <h:outputText value="$" />
+                                </f:facet>
+                                <f:facet name="append">
+                                    <h:outputText value=".00" />
+                                </f:facet>
+                            </b:inputTextarea>
+                        </h:panelGrid>
+                    </h:form>]]></script>
+                    </f:facet>
+                </b:panel>
+                <p>Finally, you can go further and prepend or append more text elements, as in the following example:</p>
+                <b:panel>
+                    <f:facet name="heading"><b>EXAMPLE</b></f:facet>
+                    <h:form>
+                        <h:panelGrid columns="2" cellpadding="10">
+
+                            <h:outputText value="Your Bid:"/>
+
+                            <b:inputTextarea value="99">
+                                <f:facet name="prepend">
+                                    <h:outputText value="offer" />
+                                    <h:outputText value="$" />
+                                </f:facet>
+                                <f:facet name="append">
+                                    <h:outputText value=".00" />
+                                    <h:outputText value="cash" />
+                                </f:facet>
+                            </b:inputTextarea>
+                        </h:panelGrid>
+                    </h:form>
+                    <f:facet name="footer">
+                        <strong>Markup:</strong><br/>
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                        <![CDATA[
+                        <h:form>
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <h:outputText value="Your Bid:"/>
+                                <b:inputTextarea value="99" span="1">
+                                    <f:facet name="prepend">
+                                        <h:outputText value="offer" />
+                                        <h:outputText value="$" />
+                                    </f:facet>
+                                    <f:facet name="append">
+                                        <h:outputText value=".00" />
+                                        <h:outputText value="cash" />
+                                    </f:facet>
+                                </b:inputTextarea>
+                            </h:panelGrid>
+                        </h:form>]]></script>
+                    </f:facet>
+                </b:panel>
+                <h4>Appending or prepending Icons</h4><br/>
+                <p>You can take advantage of the <code>&lt;b:icon&gt;</code> or <code>&lt;b:iconAwesome&gt;</code> components to append (or prepend) <h:link outcome="/layout/icons" value="Icons"/> :</p>
+                <h:form>
+                    <h:panelGrid columns="2"  cellpadding="5">
+                        <h:outputText value="e-mail:"/>
+                        <b:inputTextarea placeholder="Username" required="true">
+                            <f:facet name="prepend">
+                                <b:icon name="user" />
+                            </f:facet>
+                        </b:inputTextarea>
+                        <h:outputText value="Password:"/>
+                        <b:inputTextarea placeholder="Password">
+                            <f:facet name="prepend">
+                                <b:iconAwesome name="key" />
+                            </f:facet>
+                        </b:inputTextarea>
+                    </h:panelGrid>
+                </h:form>
+                <h4>Appending or prepending Buttons</h4><br/>
+                <p>Another nice feature is that you can append (or prepend) buttons:</p>
+                <b:panel>
+                    <f:facet name="heading"><b>EXAMPLE</b></f:facet>
+                    <h:form id="bid" prependId="false" >
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <h:outputText value="Your Offer:"/>
+                            <b:inputTextarea id="mybid" value="#{testBean.val6}">
+                                <f:facet name="prepend">
+                                    <h:outputText value="$" />
+                                </f:facet>
+                                <f:facet name="append">
+                                    <b:commandButton look="primary" value="Bid!" ajax="true" update="amodal" oncomplete="$('#amodal').modal('show');"/>
+                                    <b:button look="danger" value="Reset" onclick="$('#mybid').val('');return false;"/>
+                                </f:facet>
+                            </b:inputTextarea>
+                        </h:panelGrid>
+                    </h:form>
+                </b:panel>
+                <p>allowing you to build compact mini-forms for specific actions with little effort.</p>
+                <p class="text-warning">There is only one limitation: you can not prepend or append mixing texts and buttons. 
+                    The elements on each side can be only of the same type. For instance, it's possible to prepend text elements and append buttons.
+                    But it's not possible to prepend both a text element and a button at the same time.</p>
+                
+                <b:modal id="amodal" title="Bid for this Item">
+                    <h4>Congratulations!</h4>
+                <h:panelGrid columns="2">  
+                    <h:outputText value="You offered $" />  
+                    <h:outputText value="#{testBean.val6}" />  
+                </h:panelGrid>
+                <f:facet name="footer">
+                    <b:button value="close" dismiss="modal" onclick="return false;"/>
+                </f:facet>
+                </b:modal>
+                
+                <h4>Appending or prepending DropButtons</h4><br/>
+                <p>What you have seen applies also to DropButtons:</p>
+                <b:panel>
+                    <f:facet name="heading"><b>EXAMPLE</b></f:facet>
+                    <h:form>
+                        <b:row>
+                            <b:column span="6">
+                                <b:inputTextarea placeholder="Text">
+                                    <f:facet name="prepend">
+                                        <b:dropButton value="DropButton">
+                                            <b:navLink value="Action" href="#"></b:navLink>
+                                            <b:navLink value="Another action" href="#"></b:navLink>
+                                            <b:navLink value="Something else here" href="#"></b:navLink>
+                                            <b:navLink></b:navLink>
+                                            <b:navLink header="Nav header"></b:navLink>
+                                            <b:navLink value="Separated link" href="#"></b:navLink>
+                                            <b:navLink value="One more separated link" href="#"></b:navLink>
+                                        </b:dropButton>
+                                    </f:facet>
+                                </b:inputTextarea>
+                            </b:column>
+                            <b:column span="6">
+                                <b:inputTextarea placeholder="Text">
+                                    <f:facet name="append">
+                                        <b:dropButton value="DropButton">
+                                            <b:navLink value="Action" href="#"></b:navLink>
+                                            <b:navLink value="Another action" href="#"></b:navLink>
+                                            <b:navLink value="Something else here" href="#"></b:navLink>
+                                            <b:navLink></b:navLink>
+                                            <b:navLink header="Nav header"></b:navLink>
+                                            <b:navLink value="Separated link" href="#"></b:navLink>
+                                            <b:navLink value="One more separated link" href="#"></b:navLink>
+                                        </b:dropButton> 
+                                    </f:facet>
+                                </b:inputTextarea>
+                            </b:column>
+                        </b:row>
+                    </h:form>
+                </b:panel>
+                
+                <h4>Controlling the size of b:inputTextarea</h4>
+                <br/>
+                <strong>Height sizing</strong>
+                <p>You can create larger or smaller form controls that match button sizes.</p>
+                <p>Use the <code>fieldSize</code> attribute for predefined input field sizes:</p>
+                <b:well>
+                    <strong>Input sizes (fieldSize)</strong><br/>
+                    <h:panelGrid cellpadding="5">
+                        <h:form>
+                            <b:inputTextarea fieldSize="sm" placeholder="small (sm)"/>
+                            <b:inputTextarea placeholder="default"/>
+                            <b:inputTextarea fieldSize="lg" placeholder="large (lg)"/>
+                        </h:form>
+                    </h:panelGrid>
+                    
+                </b:well>
+                <h4>Grid sizing</h4>
+                <p>If your InputTextarea is not in a panelGrid(table) or is not already in a b:column of your grid layout,
+                    BootsFaces can place the component in a column for you, allowing you to easily control its size.</p>
+                <p>Use <code>span="1"</code> to <code>span="12"</code> for inputs that match the same sizes of the BootsFaces grid columns:</p>
+				<b:tabView>
+					<b:tab title="displayed as">
+						<b:well>
+							<strong>Input sizes</strong>
+							<br />
+	                    In a row:
+			                    <b:row>
+								<h:form>
+									<b:inputTextarea span="1" placeholder="span1" />
+									<b:inputTextarea span="2" placeholder="span 2" />
+									<b:inputTextarea span="3" placeholder="span 3" />
+								</h:form>
+							</b:row>
+							<br />
+	                    or in a Form:
+			                    <h:form styleClass="form-horizontal">
+								<b:inputTextarea span="1" placeholder="span1" />
+								<b:inputTextarea span="2" placeholder="span 2" />
+								<b:inputTextarea span="3" placeholder="span 3" />
+								<b:inputTextarea span="6" placeholder="span 6" />
+								<b:inputTextarea span="9" placeholder="span 9" />
+								<b:inputTextarea span="12" placeholder="span 12" />
+							</h:form>
+						</b:well>
+					</b:tab>
+					<b:tab title="JSF markup">
+					<b:well>
+						<script type="syntaxhighlighter"
+							class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+							<![CDATA[
+					<b:well>
+						<strong>Input sizes</strong>
+						<br />
+                    In a row:
+		                    <b:row>
+							<h:form>
+								<b:inputTextarea span="1" placeholder="span1" />
+								<b:inputTextarea span="2" placeholder="span 2" />
+								<b:inputTextarea span="3" placeholder="span 3" />
+							</h:form>
+						</b:row>
+						<br />
+                    or in a Form:
+		                    <h:form styleClass="form-horizontal">
+							<b:inputTextarea span="1" placeholder="span1" />
+							<b:inputTextarea span="2" placeholder="span 2" />
+							<b:inputTextarea span="3" placeholder="span 3" />
+							<b:inputTextarea span="6" placeholder="span 6" />
+							<b:inputTextarea span="9" placeholder="span 9" />
+							<b:inputTextarea span="12" placeholder="span 12" />
+						</h:form>
+					</b:well>
+            ]]>
+					       </script>
+					   </b:well>
+					</b:tab>
+				</b:tabView>
+			
+                <br/>
+                
+                <h2>AJAX and JavaScript  <b:badge value="since 0.8.0" /></h2>
+                <p>The <code>&lt;b:inputTextarea &gt;</code> supports the full suite of JavaScript and AJAX events,
+                as described in <a href="ajax.jsf">the description of AJAX in BootsFaces</a>. Basically, each of the
+                many JavaScript callback handlers (the <code>on[event]</code> attributes) also supports AJAX.
+                To get familiar with BootsFaces AJAX, try the 
+                <a target="#" href="https://github.com/stephanrauh/BootsFaces-Examples/tree/master/AJAX">BootsFaces AJAX demo project</a>.</p>
+  
+                <h2>JSF 2.2 pass-through attributes</h2>
+                <p>It's possible to use pass-through attributes with the <code>&lt;b:inputTextarea</code> widget, but there's a twist: the attributes are added multiple times.
+                This is because there are several plausible places to put a pass-through attribute in, so we decided to leave it as it is.</p>
+                <p>For instance, consider this JSF snippet:</p> 
+  					<b:well>
+						<script type="syntaxhighlighter"
+							class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+							<![CDATA[
+				  				<b:inputTextarea  value="&num;{userBean.name}" label="Enter your name"
+						                      ng:ng-model="name" />
+								<b:inputTextarea  value="&num;{userBean.age}" label="How old are you?"
+              								  ng:type="number" ng:min="5" ng:max="125" ng:ng-model="age" />           
+]]>
+					       </script>
+					 </b:well>
+				<p>The generated HTML code looks like so:</p>
+               <h:graphicImage library="passthrough" name="generatedHtml.png" />
+               
+               <h2>Labels, required fields and error messages  <b:badge value="updated in 0.8.0" /></h2>
+               <p>You can add a label by adding the attribute <code>label</code>. The label is also used by the JSF messages. To give you maximum flexibility,
+               you can suppress automatic rendering of labels by adding <code>renderLabel="false"</code>.
+               </p>
+               <p>Required inputs fields and their labels both bear the CSS class <code>bf-required</code>. By default, this adds an asterisk to the label.</p>
+               <p>If the field has a FacesMessage, one of the CSS classes <code>bf-info</code>, <code>bf-warning</code>, 
+                   <code>bf-error</code> or <code>bf-fatal</code>, depending on which error severity the message has.
+                   The latter two classes color the label red.</p>
+                <p>If there's no message,
+                   the field and its label bear the pseudo CSS class <code>bf-no-message</code>.
+               </p>
+            <b:tabView>
+              <b:tab title="displayed as">
+              <b:well>
+                <h:form>
+                  <b:inputTextarea id="name" value="#{userBean.name}"
+                    label="Enter your name" required="true" renderLabel="true" />
+                  <h:message for="age" />
+                  <b:inputTextarea id="age" value="#{userBean.age}"
+                    label="What's your age?" renderLabel="true" />
+                  <h:message for="age" />
+                  <b:commandButton update="@form" value="Validate constraints" />
+                </h:form>
+                </b:well>
+              </b:tab>
+              <b:tab title="JSF markup">
+                <b:well>
+                  <script type="syntaxhighlighter"
+                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+				  <![CDATA[
+                     <h:form>
+                        <b:inputTextarea id="name" value="&num;{userBean.name}" label="Enter your name" 
+								     required="true" renderLabel="true"   />
+                         <h:message for="age" />
+                         <b:inputTextarea id="age" value="&num;{userBean.age}" label="What's your age?" 
+                                      renderLabel="true" />
+                         <h:message for="age" />
+                         <b:commandButton update="@form" value="Validate constraints" />         
+                       </h:form>
+                  ]]>
+                 </script>
+                </b:well>
+              </b:tab>
+            </b:tabView>
+        
+            <h2>Reference section</h2>
+                <ui:include src="InputTextareaAttributes.xhtml" />
+                
+            <b:panel look="info">
+				<f:facet name="heading">
+					<b>Skinning</b>
+				</f:facet>
+				<ul>
+					<li>
+				   		<code>&lt;b:inputTextarea /&gt;</code> is a <code>textarea</code> tag bearing the CSS-class <code>form-control</code>.
+				   </li>
+				   <li>
+				   		If the attribute <code>required</code> is true, the pseudo CSS class <code>bf-required</code> is added. 
+                        Thus you can define your custom style for required fields.
+				   </li>
+                   <li>
+                   If there's a <code>FacesMessage</code>, the input field is bears one of the pseudo CSS classes
+                   <code>bf-info</code>, <code>bf-warning</code>, <code>bf-error</code> or <code>bf-fatal</code>. There there's no messages,
+                   the input field bears the pseudo CSS class <code>bf-no-message</code>.
+                   </li>
+                   <li>If there's a label, if bears the CSS class <code>required</code>, if it's a mandatory field.
+                   This class adds an asterisk to the label text. You can override the CSS class to remove the asterisk
+                   or to replace it by something else.</li>
+                   <li>If there's a label, if bears the CSS classes <code>bf-info</code>, <code>bf-warning</code>, 
+                   <code>bf-error</code> or <code>bf-fatal</code>, depending on which severity the error message the input field has.
+                   The latter two classes color the label red.<br />
+                   If there's no message,
+                   the input field bears the pseudo CSS class <code>bf-no-message</code>.
+                   </li>
+				  </ul> 
+			</b:panel>
+				
+				<script type="text/javascript">
+                    SyntaxHighlighter.all();
+                </script>
+                <br/><br/><br/><br/>
+            </ui:define>
+        </ui:composition>
