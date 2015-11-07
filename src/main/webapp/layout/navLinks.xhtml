@@ -17,7 +17,7 @@
                     .panel-body .dropdown-header { padding: 3px 15px; }
                 </style>
                 
-                <h1>NavLinks</h1>
+                <h1>NavLinks and NavCommandLinks</h1>
                 <p>The NavLink is a very versatile component you can use for different purposes.</p>
                 <p>The <code>b:navLink</code> tag is a more powerful version of the standard JSF <code>h:link</code> tag.</p>
                 <p>This means that you can use the <code>outcome</code>, <code>fragment</code> and <code>href</code> attributes.</p>
@@ -36,6 +36,12 @@
                         <li>a separator link</li>
                     </ul>
                 </p>
+                <p>For some technical reason, the <code>&lt;b:navLink /&gt;</code> component can't call JSF action listeners. To circumvent this limitation, there's a second
+                component, <code>&lt;b:navCommandLink /&gt;</code> that's adds calls to JSF action listeners and a JSF action. It also adds limited AJAX functionality.
+                You can trigger an AJAX call by setting <code>ajax="true"</code> and using <code>update="..."</code>. However, <code>&lt;b:navCommandLink /&gt;</code>
+                doesn't support the new unified AJAX and search expression engines of BootsFaces 0.8.0 yet.</p>
+                <br/>
+                
                 <p>The outcome link, the external link and the Javascript link can have an icon adding the attribute <code>icon</code> (on the left or right, default is left).</p>
                 <p>You can control the icon position by specifying it in the attribute <code>iconAlign</code>.</p>
                 <p>The Icon attribute will add a Glyphicon icon (Bootstrap's default), but now you can also use a Font Awesome icon using the <code>iconAwesome</code> attribute instead of <code>icon</code>.</p>

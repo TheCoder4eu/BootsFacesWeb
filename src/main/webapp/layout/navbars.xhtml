@@ -144,6 +144,13 @@
                 <p>A NavBar will also contain a set of links. You can add the links to <code>b:navbar</code> using <code>b:navLink</code> as you do with <code>b:listLinks</code>.</p>
                 <p>The difference is that you nest the <code>b:navLink</code> elements inside a <code>b:navbarLinks</code> element instead of <code>b:listLinks</code> element.</p>
                 <br/>
+                
+                <strong>Navbar CommandLinks <b:badge value="since 0.7.0" /></strong>
+                <p>For some technical reason, the <code>&lt;b:navLink /&gt;</code> component can't call JSF action listeners. To circumvent this limitation, there's a second
+                components, <code>&lt;b:navCommandLink /&gt;</code> that's adds calls to JSF action listeners and a JSF action. </p>
+                <br/>
+                
+                
                 <strong>Drop Menus</strong>
                 <p>You can build up a rich menu bar using another useful element: <code>b:dropMenu</code>. It is another element where you can put your <code>b:navLink</code> elements.</p>
                 <p>You can have multiple <code>b:navbarLinks</code> and <code>b:dropMenu</code> elements in a navbar, just pay attention to the resulting layout. Starting with
