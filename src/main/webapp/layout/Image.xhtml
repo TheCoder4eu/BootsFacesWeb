@@ -33,7 +33,7 @@ td {
         <b:well>
                       <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
         <![CDATA[
-        <b:image value="#{image}"
+        <b:image value="&num;{image}"
                       style="position: absolute; top: 0px; left: 0px;width: 68px; height: 68px;#{board.getOpacity(rowStatus.index,columnStatus.index)}"
                       onclick="ajax:board.onclick(rowStatus.index,columnStatus.index)"
                       oncomplete="document.getElementById('form:opponent').click()"
