@@ -14,10 +14,36 @@ td {
 }
 </style>
 		<h1>Image (&lt;b:image /&gt;) <b:badge value="since 0.8.0" /></h1>
+		<p>The <code>&lt;b:image /&gt;</code> component is just that: an image. Plus the unified AJAX engine of BootsFaces, and Bootstrap tooltips.</p>
 
-		<p>Describe in a few words what <code>&lt;b:image&gt;</code> is about.</p>
 		<h1>Basic usage</h1>
-		<p>Put a short description in simple words here.</p>
+        <b:well>
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+        <![CDATA[
+           <b:image value="/bootstrap/carousel/Valladolid-parque-3.jpg" tooltip="Ain't he a beauty?" />
+        ]]>
+          </script>
+         </b:well>
+            
+        <b:image value="../bootstrap/carousel/Valladolid-parque-3.jpg"  tooltip="Ain't he a beauty?" tooltipPosition="right"/>
+        <h1>Advanced usage</h1>
+        <p>You can use the standard JavaScript callbacks to call both JavaScript function and Java methods (via AJAX). 
+        See <a target="#" href="http://www.angularfaces.net/BootsFacesChess-1.0.0-SNAPSHOT/">BootsFaces chess</a>
+         for a full-blown demo. These following demonstrate how BootsFaces chess uses AJAX to implement drag and drop:</p>
+        <b:well>
+                      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+        <![CDATA[
+        <b:image value="#{image}"
+                      style="position: absolute; top: 0px; left: 0px;width: 68px; height: 68px;#{board.getOpacity(rowStatus.index,columnStatus.index)}"
+                      onclick="ajax:board.onclick(rowStatus.index,columnStatus.index)"
+                      oncomplete="document.getElementById('form:opponent').click()"
+                      ondragstart="ajax:board.ondragstart(rowStatus.index,columnStatus.index)"
+                      ondragover="if (targets.indexOf('(#{rowStatus.index},#{columnStatus.index})')>=0) event.preventDefault();"
+                      ondrop="ajax:board.ondragdrop(rowStatus.index,columnStatus.index)"
+                      update="@form :messages" />
+        ]]>
+        </script>
+        </b:well>
     
         <h3>Reference section</h3>
         <ui:include src="ImageAttributes.xhtml" />
@@ -25,10 +51,8 @@ td {
 			<f:facet name="heading">
 				<b>Skinning</b>
 			</f:facet>
-			<ul>
-				<li>Tell the world which CSS classes can be used to change the
-					look of the component.</li>
-			</ul>
+			<p>BootsFaces generates pretty simple code for the <code>&lt;b:image&gt;</code>. In particular, there's no extra CSS class. You can modify the appearance of the
+            image using the standard JSF attributes <code>styleClass</code> and <code>style</code>.</p>
 		</b:panel>
 
 		<script type="text/javascript">
