@@ -93,7 +93,8 @@
 										</b:inputText>
 										<p:barcode value="&num;{barcodeBean.url2}" type="qr" id="qr1" style="width:90px;height:90px;"/>
 								    
-										<b:inputText label="Enter another internet address" value="&num;{barcodeBean.url}">
+										<b:inputText label="Enter another internet address" value="&num;{barcodeBean.url}"
+											onkeyup="ajax:barcodeBean.doNothing()" update="@next">
 											<f:facet name="prepend">
 												<b:selectOneMenu value="&num;{barcodeBean.protocol}">
         											<f:selectItem itemLabel="http://"/>
@@ -101,7 +102,6 @@
     											</b:selectOneMenu>
 												<h:outputText value="www." />
 											</f:facet>
-											<p:ajax event="keyup" update="qr" />
 										</b:inputText>
 										<p:barcode value="&num;{barcodeBean.completeURL}" type="qr" id="qr2" style="width:90px;height:90px;"/>
 									</b:panelGrid>
@@ -131,7 +131,8 @@
 										</b:inputText>
 										<p:barcode value="#{barcodeBean.url2}" type="qr" id="qr1" style="width:90px;height:90px;"/>
 								    
-										<b:inputText label="Enter another internet address" value="#{barcodeBean.url}">
+                                        <b:inputText label="Enter another internet address" value="#{barcodeBean.url}"
+                                                     onkeyup="ajax:barcodeBean.doNothing()" update="@next">
 											<f:facet name="prepend">
 												<b:selectOneMenu value="#{barcodeBean.protocol}">
         											<f:selectItem itemLabel="http://"/>
@@ -139,7 +140,6 @@
     											</b:selectOneMenu>
 												<h:outputText value="www." />
 											</f:facet>
-											<p:ajax event="keyup" update="@next" />
 										</b:inputText>
 										<p:barcode value="#{barcodeBean.completeURL}" type="qr" id="qr2" style="width:90px;height:90px;"/>
 									</b:panelGrid>

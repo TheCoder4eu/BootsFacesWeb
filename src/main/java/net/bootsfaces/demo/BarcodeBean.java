@@ -41,6 +41,10 @@ public class BarcodeBean implements Serializable {
 	    url = url.toUpperCase();
 	    setEmptyTextCapital(emptyText.toUpperCase());
 	}
+	
+	public void doNothing() {
+		// this method does nothing, but it's required by the unified AJAX API of BootsFaces
+	}
 
 	public String getUrl() {
 		return url;
