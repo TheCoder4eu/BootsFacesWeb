@@ -35,11 +35,14 @@ public class BarcodeBean implements Serializable {
 	private String url = "angularfaces.net";
 	private String url2 = "http://www.bootsfaces.net";
 	private String emptyText="";
+	private String nonEmptyText="Hello World";
 	private String emptyTextCapital="";
+	private String nonEmptyTextCapital="";
 	
 	public void capitalizeURL(AjaxBehaviorEvent event) {
 	    url = url.toUpperCase();
-	    setEmptyTextCapital(emptyText.toUpperCase());
+	    setEmptyTextCapital(emptyText==null?"":emptyText.toUpperCase());
+	    setNonEmptyTextCapital(nonEmptyText==null?"":nonEmptyText.toUpperCase());
 	}
 	
 	public void doNothing() {
@@ -96,6 +99,22 @@ public class BarcodeBean implements Serializable {
 
 	public void setEmptyTextCapital(String emptyTextCapital) {
 		this.emptyTextCapital = emptyTextCapital;
+	}
+
+	public String getNonEmptyText() {
+		return nonEmptyText;
+	}
+
+	public void setNonEmptyText(String nonEmptyText) {
+		this.nonEmptyText = nonEmptyText;
+	}
+
+	public String getNonEmptyTextCapital() {
+		return nonEmptyTextCapital;
+	}
+
+	public void setNonEmptyTextCapital(String nonEmptyTextCapital) {
+		this.nonEmptyTextCapital = nonEmptyTextCapital;
 	}
 
 }

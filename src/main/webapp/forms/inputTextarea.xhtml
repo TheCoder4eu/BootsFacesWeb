@@ -19,10 +19,10 @@
                 <b:tabView>
                   <b:tab title="preview">
                    <h:form>
-                     <b:inputTextarea placeholder="Type something here..." value="#{barcodeBean.emptyText}">
+                     <b:inputTextarea placeholder="Type something here..." value="#{barcodeBean.nonEmptyText}">
                         <f:ajax event="keyup" render="label" listener="#{barcodeBean.capitalizeURL}" />
-                        </b:inputTextarea>
-                        <b:label text="#{barcodeBean.emptyTextCapital}" id="label"/>
+                     </b:inputTextarea>
+                     <b:label text="#{barcodeBean.nonEmptyTextCapital}" id="label"/>
                     </h:form>
                  </b:tab>
                  <b:tab title="JSF markup">
@@ -31,10 +31,10 @@
                        class="brush: xml; toolbar: false;gutter: false; first-line: 1">
                   <![CDATA[
                  <h:form>
-                     <b:inputTextarea placeholder="Type something here..." value="&num;{barcodeBean.emptyText}">
+                     <b:inputTextarea placeholder="Type something here..." value="&num;{barcodeBean.nonEmptyText}">
                         <f:ajax event="keyup" render="label" listener="&num;{barcodeBean.capitalizeURL}" />
                         </b:inputTextarea>
-                        <b:label text="&num;{barcodeBean.emptyTextCapital}" id="label"/>
+                        <b:label text="&num;{barcodeBean.nonEmptyTextCapital}" id="label"/>
                     </h:form>
                  ]]>
                  </script>
