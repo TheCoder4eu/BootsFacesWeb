@@ -31,23 +31,23 @@
         <h:form>
 	        <b:panelGrid colSpans="2,2,2,2,4">
 	        	<h:outputLabel value="Select your car's brand:" for="brandID" />
-			    <b:selectMultiMenu value="&num;{AJAXBean.brand}" id="brandID" >
+			    <b:selectMultiMenu value="&num;{selectMultiMenuBean.brand}" id="brandID" >
 				    <f:selectItem itemLabel="Fiat" itemValue="1"/>
 				    <f:selectItem itemLabel="Honda" itemValue="2"/>
 				    <f:selectItem itemLabel="Opel" itemValue="3"/>
 			    </b:selectMultiMenu>
 			    <h:message for="brandID"/>
 			    <h:outputLabel value="last submitted value:" for="brandOutputID"/>
-			    <b:inputText value="&num;{AJAXBean.brand}" disabled="true" id="brandOutputID"/>
+			    <b:inputText value="&num;{selectMultiMenuBean.brand}" disabled="true" id="brandOutputID"/>
 	        	<h:outputLabel value="Select your car's type:" for="typeID" />
-			    <b:selectMultiMenu value="&num;{AJAXBean.type}" id="typeID" required="true">
+			    <b:selectMultiMenu value="&num;{selectMultiMenuBean.type}" id="typeID" required="true">
 			    		<f:selectItem itemLabel="Cinquecento" itemValue="1"/>
 					    <f:selectItem itemLabel="Civic" itemValue="2"/>
 					    <f:selectItem itemLabel="Astra" itemValue="3"/>
 			    </b:selectMultiMenu>
 			    <h:message for="typeID"/>
 			    <h:outputLabel value="last submitted value:" for="typeOutputID" />
-			    <b:inputText value="&num;{AJAXBean.type}" disabled="true" id="typeOutputID"/>
+			    <b:inputText value="&num;{selectMultiMenuBean.type}" disabled="true" id="typeOutputID"/>
 		    </b:panelGrid>
             <b:commandButton value="Submit"/>
         </h:form>
@@ -59,16 +59,16 @@
                     <b:well>
                         <b:panelGrid colSpans="2,2,2,2,4">
                             <h:outputLabel value="Select your car's brand:" for="brandID" id="l1" />
-                            <b:selectMultiMenu value="#{AJAXBean.brand}" id="brandID">
+                            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" id="brandID">
                                 <f:selectItem itemLabel="Fiat" itemValue="1" />
                                 <f:selectItem itemLabel="Honda" itemValue="2" />
                                 <f:selectItem itemLabel="Opel" itemValue="3" />
                             </b:selectMultiMenu>
                             <h:message for="brandID" />
                             <h:outputLabel value="last submitted value:" for="brandOutputID" />
-                            <b:inputText value="#{AJAXBean.brand}" disabled="true" id="brandOutputID" />
+                            <b:inputText value="#{selectMultiMenuBean.brand}" disabled="true" id="brandOutputID" />
                             <h:outputLabel value="Select your car's type:" for="typeID" />
-                            <b:selectMultiMenu value="#{AJAXBean.type}" id="typeID" required="true">
+                            <b:selectMultiMenu value="#{selectMultiMenuBean.type}" id="typeID" required="true">
                                 <f:selectItem itemLabel="Cinquecento" itemValue="1" />
                                 <f:selectItem itemLabel="Civic" itemValue="2" />
                                 <f:selectItem itemLabel="Astra" itemValue="3" />
@@ -76,7 +76,7 @@
                             </b:selectMultiMenu>
                             <h:message for="typeID" />
                             <h:outputLabel value="last submitted value:" for="typeOutputID" />
-                            <b:inputText value="#{AJAXBean.type}" disabled="true" id="typeOutputID" />
+                            <b:inputText value="#{selectMultiMenuBean.type}" disabled="true" id="typeOutputID" />
                         </b:panelGrid>
                         <b:commandButton value="Submit"/>
                     </b:well>
@@ -91,7 +91,7 @@
 
 		<b:panelGrid colSpans="3,3,6">
 			<h:outputText value="radiobuttons" />
-            <b:selectMultiMenu value="#{AJAXBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
                 radiobuttons="true">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
@@ -100,7 +100,7 @@
 			<h:outputText value="Converts the multiple-choice widget into a single-choice combobox."/>
 		
 			<h:outputText value="maxHeight" />
-            <b:selectMultiMenu value="#{AJAXBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
                 maxHeight="70">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
@@ -109,7 +109,7 @@
 			<h:outputText value="Maximum height of the options panel."/>
             
             <h:outputText value="nonSelectedText" />
-            <b:selectMultiMenu value="#{AJAXBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
                 nonSelectedText="Please select!">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
@@ -118,7 +118,7 @@
 			<h:outputText value="Text which is displayed if no option has been selected."/>
             
             <h:outputText value="nSelectedText, numberDisplayed" />
-            <b:selectMultiMenu value="#{AJAXBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
                 nSelectedText="Too many choices!" numberDisplayed="1">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
@@ -127,7 +127,7 @@
 			<h:outputText value="Maximum number of options displayed in the button. Text which is displayed if more than numberDisplayed options have been selected."/>
             
             <h:outputText value="allSelectedText" />
-            <b:selectMultiMenu value="#{AJAXBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
                 allSelectedText="everything selected">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
@@ -136,7 +136,7 @@
 			<h:outputText value="Text which is displayed if every option has been selected."/>
             
             <h:outputText value="includeSelectAllOption" />
-            <b:selectMultiMenu value="#{AJAXBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
                 includeSelectAllOption="true">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
@@ -145,7 +145,7 @@
 			<h:outputText value="If true, you can select every option with a single click."/>
             
             <h:outputText value="selectAllText" />
-            <b:selectMultiMenu value="#{AJAXBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
                 includeSelectAllOption="true" selectAllText="click to chose everything">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
@@ -154,7 +154,7 @@
 			<h:outputText value="The text displayed for the select all option."/>
             
             <h:outputText value="enableFiltering, filterPlaceholder" />
-            <b:selectMultiMenu value="#{AJAXBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
                 enableFiltering="true" filterPlaceholder="type to filter">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
@@ -163,7 +163,7 @@
 			<h:outputText value="Set to true or false to enable or disable the filter. A filter input will be added to dynamically filter all options. The placeholder used for the filter input."    />
 			
 			<h:outputText value="enableFiltering, enableCaseInsensitiveFiltering, filterPlaceholder" />
-            <b:selectMultiMenu value="#{AJAXBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
                 enableFiltering="true" enableCaseInsensitiveFiltering="true" filterPlaceholder="type to filter">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
@@ -172,7 +172,7 @@
 			<h:outputText value="Set to true or false to enable or disable the filter. A filter input will be added to dynamically filter all options. The placeholder used for the filter input."    />
 			
 			<h:outputText value="dropRight" />
-            <b:selectMultiMenu value="#{AJAXBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
                 dropRight="true" buttonWidth="250">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
@@ -181,13 +181,13 @@
 			<h:outputText value="Moves the drop-down-area from the left hand side to the right hand side."    />
 			
 			<h:outputText value="disableIfEmpty" />
-            <b:selectMultiMenu value="#{AJAXBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
                 disableIfEmpty="true">
             </b:selectMultiMenu>
 			<h:outputText value="If true, the button is disabled if no options are given."    />
 
 			<h:outputText value="onchange" />
-            <b:selectMultiMenu value="#{AJAXBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
                 onchange="function(option, checked, select) {console.log('changed option ' + $(option).val())}">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
@@ -196,7 +196,7 @@
 			<h:outputText value="Client side callback to execute when input element loses focus and its value has been modified since gaining focus."    />
 
 			<h:outputText value="ondropdownshow" />
-            <b:selectMultiMenu value="#{AJAXBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
                 ondropdownshow="function(event) {console.log('shown')}">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
@@ -205,7 +205,7 @@
 			<h:outputText value="Client side callback called when the drop-down area is shown."    />
 
 			<h:outputText value="ondropdownhide" />
-            <b:selectMultiMenu value="#{AJAXBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
                 ondropdownhide="function(event) {console.log('hidden')}">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
@@ -214,7 +214,7 @@
 			<h:outputText value="Client side callback called when the drop-down area is hidden."    />
 
 			<h:outputText value="buttonClass" />
-            <b:selectMultiMenu value="#{AJAXBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
                 buttonClass="btn btn-link">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
@@ -223,7 +223,7 @@
 			<h:outputText value="The CSS class of the button."    />
 
 			<h:outputText value="styleClass" />
-            <b:selectMultiMenu value="#{AJAXBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
                 styleClass="navbar-inverse">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
@@ -232,7 +232,7 @@
 			<h:outputText value="Style class of the input element. Is translated to the buttonContainer attribute."    />
 
 			<h:outputText value="buttonWidth" />
-            <b:selectMultiMenu value="#{AJAXBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
                 buttonWidth="250">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
@@ -255,7 +255,7 @@
     
        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
-                <b:selectMultiMenu value="#{AJAXBean.type}" required="true" label="Select an E-Mail-Address">
+                <b:selectMultiMenu value="#{selectMultiMenuBean.type}" required="true" label="Select an E-Mail-Address">
 	                <f:facet name="prepend">
 	                    <h:outputText value="@" />
 	                </f:facet>
@@ -273,7 +273,7 @@
        </b:tab>
        <b:tab title="live preview" contentStyle="height:248px">
        <b:well style="height:248px">
-                <b:selectMultiMenu value="#{AJAXBean.type}" required="true" label="Select an E-Mail-Address">
+                <b:selectMultiMenu value="#{selectMultiMenuBean.type}" required="true" label="Select an E-Mail-Address">
 	                <f:facet name="prepend">
 	                    <h:outputText value="@" />
 	                </f:facet>
@@ -417,20 +417,20 @@ public class SemaphoreBean {
 <![CDATA[
     <h:form>
     	<h:panelGrid columns="4" cellpadding="5">
-		    <b:selectMultiMenu value="&num;{AJAXBean.brand}" label="Select your car's brand:">
+		    <b:selectMultiMenu value="&num;{selectMultiMenuBean.brand}" label="Select your car's brand:">
 				    <f:selectItem itemLabel="Fiat" itemValue="1"/>
 				    <f:selectItem itemLabel="Honda" itemValue="2"/>
 				    <f:selectItem itemLabel="Opel" itemValue="3"/>
 		    </b:selectMultiMenu>
 		    <h:message for="brandID"/>
-		    <b:inputText value="&num;{AJAXBean.brand}" disabled="true" label="last submitted value:"/>
-		    <b:selectMultiMenu value="&num; {AJAXBean.type}" label="Select your car's type:" id="typeID">
+		    <b:inputText value="&num;{selectMultiMenuBean.brand}" disabled="true" label="last submitted value:"/>
+		    <b:selectMultiMenu value="&num; {selectMultiMenuBean.type}" label="Select your car's type:" id="typeID">
 		    		<f:selectItem itemLabel="Cinquecento" itemValue="1"/>
 				    <f:selectItem itemLabel="Civic" itemValue="2"/>
 				    <f:selectItem itemLabel="Astra" itemValue="3"/>
 		    </b:selectMultiMenu>
 		    <h:message  for="typeID" />
-		    <b:inputText value="&num;{AJAXBean.type}" disabled="true" label="last submitted value:"/>
+		    <b:inputText value="&num;{selectMultiMenuBean.type}" disabled="true" label="last submitted value:"/>
         </h:panelGrid>
     </h:form>
 ]]>
@@ -442,20 +442,20 @@ public class SemaphoreBean {
   
     <h:form>
     	<h:panelGrid columns="3"  cellpadding="5">
-		    <b:selectMultiMenu value="# {AJAXBean.brand}" label="Select your car's brand:" id="brandID2">
+		    <b:selectMultiMenu value="# {selectMultiMenuBean.brand}" label="Select your car's brand:" id="brandID2">
 				    <f:selectItem itemLabel="Fiat" itemValue="1"/>
 				    <f:selectItem itemLabel="Honda" itemValue="2"/>
 				    <f:selectItem itemLabel="Opel" itemValue="3"/>
 		    </b:selectMultiMenu>
 		    <h:message showSummary="false"  for="brandID2"/>
-		    <b:inputText value="#{AJAXBean.brand}" disabled="true" label="a last submitted value:"/>
-		    <b:selectMultiMenu value="#{AJAXBean.type}" label="Select your car's type:" id="typeID2">
+		    <b:inputText value="#{selectMultiMenuBean.brand}" disabled="true" label="a last submitted value:"/>
+		    <b:selectMultiMenu value="#{selectMultiMenuBean.type}" label="Select your car's type:" id="typeID2">
 		    		<f:selectItem itemLabel="Cinquecento" itemValue="1"/>
 				    <f:selectItem itemLabel="Civic" itemValue="2"/>
 				    <f:selectItem itemLabel="Astra" itemValue="3"/>
 		    </b:selectMultiMenu>
 		    <h:message for="typeID2"/>
-		    <b:inputText value="#{AJAXBean.type}" disabled="true" label="b last submitted value:"/>
+		    <b:inputText value="#{selectMultiMenuBean.type}" disabled="true" label="b last submitted value:"/>
         </h:panelGrid>
     </h:form>
   </b:well>
