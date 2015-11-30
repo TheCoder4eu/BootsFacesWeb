@@ -218,10 +218,21 @@
                 <h4>The Maven build</h4>
                 <p>To build the jar, run <code>mvn clean install</code> on the command line. Most IDEs also offer decent support for Maven. For instance, Eclipse users
                 can import the project via "Import --&gt; Maven --&gt; Existing Maven project".</p> 
-                <h4>The Gradle build</h4>
+                <h4>The Gradle build from Command Line</h4>
+                <p>Building BootsFaces with Gradle is very straightforward, the only prerequisite is having java installed (JDK 7 or later),</p>
+                <p>there is no need to have Gradle installed, thanks to the Gradle wrapper.</p>
+                <p>Just change your directory to the root directory of the project and execute:</p>
+                <code>./gradlew</code>
+                <p>on *NIX systems or</p>
+                <code>gradlew.bat</code>
+                <p>on Windows systems.</p>
+                <p>After few seconds you should see the "BUILD SUCCESSFUL" message and will find the library</p>
+                <p>in the subdirectory build/libs .</p>
+                
+                <h4>The Gradle build in your IDE</h4>
                 <p>Import the Gradle project into your IDE. Whether you import the subproject or not, is up to you. You don't need it. To build the project,
                 first run Gradle with the target <code>buildResources</code> (which is inherited from the subproject). After that,
-                run "Gradle assemble" to build the BootsFaces-OSP.jar. You find the jar file in the <code>build</code> folder of your project.</p>.
+                run "Gradle assemble" to build the BootsFaces-OSP.jar. You find the jar file in the <code>build</code> folder of your project.</p>
                 
                 <br/><hr/>
                 <h3>Customization of the BootsFaces.jar</h3>
