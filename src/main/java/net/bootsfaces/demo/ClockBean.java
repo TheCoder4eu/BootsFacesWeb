@@ -19,12 +19,8 @@ import javax.validation.constraints.Min;
 @RequestScoped
 public class ClockBean implements Serializable {
 	private static final long serialVersionUID = 5497787734011747081L;
-	@Min(0)
-	@Max(23)
 	private int hour;
 
-	@Min(0)
-	@Max(55)
 	private int minute;
 	
 	{
