@@ -61,7 +61,9 @@
                     <li>@() jquery expressions. These expressions are evaluated on the client. The most useful application is <code>@(.css-class)</code> to find
                     one or more elements with a given CSS class. The advantage of the jQuery expressions is that you aren't restricted to by the
                     JSF tree. Instead, the jQuery expressions always searches the entires DOM tree. Be careful: sometimes this can result in
-                    unexpected results, such as sending multiple forms simultaneously to the server, which is forbidden by HTML.</li>
+                    unexpected results, such as sending multiple forms simultaneously to the server, which is forbidden by HTML. Note that the
+                    algorithm parsing the jQuery expression is very primitive. Don't add spaces to the jQuery expression. Otherwise, it is treated
+                    as two distinct jQuery expressions.</li>
 				</ul>
 				
 				<h2>BootsFaces search expressions</h2>

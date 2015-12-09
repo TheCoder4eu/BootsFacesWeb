@@ -15,7 +15,7 @@
     <!-- The default is false, when set to true the bootstrap-theme.css will be loaded -->
     <context-param>
         <param-name>BootsFaces_USETHEME</param-name>
-        <param-value>true</param-value>
+        <param-value>#{theme.internalTheme}</param-value>
     </context-param>
     <context-param>
         <param-name>net.bootsfaces.get_jquery_from_cdn</param-name>

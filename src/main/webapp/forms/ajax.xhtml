@@ -75,6 +75,12 @@
                  <p>In other words: what you can and can not do with BootsFaces AJAX depends on your network latency (and your server-side processing time). BootsFaces
                  processes AJAX fairly efficient, so it's unlikely BootsFaces is the bottleneck to your projects.</p>
 
+                <h2>Known bugs and limitations</h2>
+                <ul>
+                <li><code>update="@all"</code> doesn't work in BootsFaces 0.8.0.</li>
+                <li>The algorithm parsing jQuery expression in update statements (e.g. <code>update="@(body>*)"</code>) is very primitive. It fails if 
+                there's a space in the jQuery expression.</li>
+                </ul>
 				<h2>Live demo</h2>
 				<p>This demo shows some of the options at a glance.</p>
 				<b:tabView>

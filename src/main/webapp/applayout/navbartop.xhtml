@@ -1,84 +1,155 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:fragment xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:b="http://bootsfaces.net/ui">
-            
-    <ui:remove>
-	    <!--
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:b="http://bootsfaces.net/ui">
+
+  <ui:remove>
+    <!--
 	    	Hint to editors: The menus follow the Chicago style of capitalization. Please capitalize everything but the "smaller" words. 
 	     -->
-     </ui:remove>
-    <b:navBar brand="BootsFaces" brandHref="#{request.contextPath}/index.jsf" inverse="true" fixed="top">
-        <b:container>
-        <b:navbarLinks>
-            <b:navLink />
-            <b:navLink />
-            <b:dropMenu value="Getting Started">
-                <b:navLink value="Requirements" outcome="/requirements" icon="check" />
-                <b:navLink value="Download" outcome="/download"  icon="save" />
-                <b:navLink value="Quick Start" outcome="/quickstart"  icon="play-circle" />
-                <b:navLink value="PrimeFaces" outcome="/integration/PrimeFaces" icon="tasks" />
-                <b:navLink value="OmniFaces" outcome="/integration/OmniFaces" icon="tasks" />
-                <b:navLink value="AngularFaces" outcome="/integration/angularFaces" icon="tasks" />
-                
-                <ui:remove>
-                <b:navLink value="undocumented components" outcome="/undocumented"  icon="question-circle" />
-                </ui:remove>
-            </b:dropMenu>
-            
-            <b:dropMenu value="Layout">
-                <b:navLink value="Basic Layout and Grid System" outcome="/layout/basic" iconAwesome="table" />
-                <b:navLink value="CSS files, JS files and CDNs" outcome="/layout/resourcemanagement" />
-                <b:navLink value="Sidebars (NavLinks and NavCommandLinks)" outcome="/layout/navLinks" icon="list" />
-                <b:navLink value="Menus (Navbars)" outcome="/layout/navbars" iconAwesome="ellipsis-h"/>
-                <b:navLink value="Panels" outcome="/layout/panels" iconAwesome="list-alt"/>
-                <b:navLink value="Grids" outcome="/layout/panelgrids" iconAwesome="th-large"/>
-                <b:navLink value="Icons" outcome="/layout/icons" iconAwesome="photo"/>
-                <b:navLink value="Image" outcome="/layout/Image" iconAwesome="photo"/>
-                <b:navLink value="Jumbotron" outcome="/layout/jumbotron" />
-                <b:navLink value="Wells" outcome="/layout/wells" />
-            </b:dropMenu>
-            <b:dropMenu value="Forms">
-                <b:navLink value="AJAX" outcome="/forms/ajax" />
-                <b:navLink value="Search Expressions" outcome="/forms/searchExpressions" />
-                <b:navLink value="Buttons" outcome="/forms/buttons" />
-                <b:navLink value="Button Groups and Toolbars" outcome="/forms/buttonGroups" />
-                <b:navLink value="Command Button" outcome="/forms/commandButton" />
-                <b:navLink value="DataTable (experimental)" outcome="/forms/DataTable" />
-                <b:navLink value="Fetch Bean Infos (Validations)" outcome="/forms/FetchBeanInfos" />
-                <b:navLink value="Input Text" outcome="/forms/inputText" />
-                <b:navLink value="Input Secret" outcome="/forms/inputSecret" iconAwesome="user-secret" />
-                <b:navLink value="Textarea" outcome="/forms/inputTextarea" />
-                <b:navLink value="Checkbox" outcome="/forms/checkBox" />
-                <b:navLink value="Switch" outcome="/forms/switch" />
-                <b:navLink value="Combobox (SelectOneMenu)" outcome="/forms/selectOneMenu" />
-                <b:navLink value="Multiple Choice Combobox (SelectMultiMenu)" outcome="/forms/selectMultiMenu" />
-                <b:navLink value="Poll" outcome="/forms/poll" iconAwesome="refresh" />
-                <b:navLink value="Messages" outcome="/forms/messages" iconAwesome="refresh" />
-            </b:dropMenu>
-            <b:dropMenu value="Bootstrap Widgets">
-                <b:navLink value="Alerts" outcome="/bootstrap/alerts" icon="warning-sign" />
-                <b:navLink value="Carousel" outcome="/bootstrap/carousel" />
-                <b:navLink value="DropButton" outcome="/bootstrap/dropButton" />
-                <b:navLink value="Labels and Badges" outcome="/bootstrap/labelsbadge" icon="tag" />
-                <b:navLink value="Modals" outcome="/bootstrap/modal" />
-                <b:navLink value="Thumbnails" outcome="/bootstrap/thumbnails" icon="picture" />
-                <b:navLink value="Tab" outcome="/bootstrap/tab" icon="folder-close" />
-                <b:navLink value="Tooltip" outcome="/bootstrap/tooltips" iconAwesome="comment" />
-            </b:dropMenu>
-            <b:dropMenu value="jQueryUI Widgets">
-                <b:navLink value="Slider" outcome="/jquery-ui/slider" icon="tasks" iconAwesome="sliders" />
-                <b:navLink value="More Sliders" outcome="/jquery-ui/slider2" icon="tasks" />
-                <b:navLink value="DatePicker" outcome="/jquery-ui/datepicker" icon="calendar" />
-            </b:dropMenu>
-            
-        </b:navbarLinks>
-        <b:navbarLinks pull="right">
-            <b:navLink outcome="/examples/index" value="Examples" iconAwesome="desktop" />
-        </b:navbarLinks>
-        </b:container>
-    </b:navBar>
+  </ui:remove>
+  <b:navBar brand="BootsFaces"
+    brandHref="#{request.contextPath}/index.jsf" inverse="true"
+    fixed="top">
+    <b:container>
+      <b:navbarLinks>
+        <b:navLink />
+        <b:navLink />
+        <b:dropMenu value="Getting Started">
+          <b:navLink value="Requirements" outcome="/requirements"
+            icon="check" />
+          <b:navLink value="Download" outcome="/download" icon="save" />
+          <b:navLink value="Quick Start" outcome="/quickstart"
+            icon="play-circle" />
+          <b:navLink value="PrimeFaces"
+            outcome="/integration/PrimeFaces" icon="tasks" />
+          <b:navLink value="OmniFaces" outcome="/integration/OmniFaces"
+            icon="tasks" />
+          <b:navLink value="AngularFaces"
+            outcome="/integration/angularFaces" icon="tasks" />
+
+          <ui:remove>
+            <b:navLink value="undocumented components"
+              outcome="/undocumented" icon="question-circle" />
+          </ui:remove>
+        </b:dropMenu>
+
+        <b:dropMenu value="Layout">
+          <b:navLink value="Basic Layout and Grid System"
+            outcome="/layout/basic" iconAwesome="table" />
+          <b:navLink value="CSS files, JS files and CDNs"
+            outcome="/layout/resourcemanagement" />
+          <b:navLink value="Sidebars (NavLinks and NavCommandLinks)"
+            outcome="/layout/navLinks" icon="list" />
+          <b:navLink value="Menus (Navbars)" outcome="/layout/navbars"
+            iconAwesome="ellipsis-h" />
+          <b:navLink value="Panels" outcome="/layout/panels"
+            iconAwesome="list-alt" />
+          <b:navLink value="Grids" outcome="/layout/panelgrids"
+            iconAwesome="th-large" />
+          <b:navLink value="Icons" outcome="/layout/icons"
+            iconAwesome="photo" />
+          <b:navLink value="Image" outcome="/layout/Image"
+            iconAwesome="photo" />
+          <b:navLink value="Jumbotron" outcome="/layout/jumbotron" />
+          <b:navLink value="Wells" outcome="/layout/wells" />
+        </b:dropMenu>
+        <b:dropMenu value="Forms">
+          <b:navLink value="AJAX" outcome="/forms/ajax" />
+          <b:navLink value="Search Expressions"
+            outcome="/forms/searchExpressions" />
+          <b:navLink value="Buttons" outcome="/forms/buttons" />
+          <b:navLink value="Button Groups and Toolbars"
+            outcome="/forms/buttonGroups" />
+          <b:navLink value="Command Button"
+            outcome="/forms/commandButton" />
+          <b:navLink value="DataTable (experimental)"
+            outcome="/forms/DataTable" />
+          <b:navLink value="Fetch Bean Infos (Validations)"
+            outcome="/forms/FetchBeanInfos" />
+          <b:navLink value="Input Text" outcome="/forms/inputText" />
+          <b:navLink value="Input Secret" outcome="/forms/inputSecret"
+            iconAwesome="user-secret" />
+          <b:navLink value="Textarea" outcome="/forms/inputTextarea" />
+          <b:navLink value="Checkbox" outcome="/forms/checkBox" />
+          <b:navLink value="Switch" outcome="/forms/switch" />
+          <b:navLink value="Combobox (SelectOneMenu)"
+            outcome="/forms/selectOneMenu" />
+          <b:navLink value="Multiple Choice Combobox (SelectMultiMenu)"
+            outcome="/forms/selectMultiMenu" />
+          <b:navLink value="Poll" outcome="/forms/poll"
+            iconAwesome="refresh" />
+          <b:navLink value="Messages" outcome="/forms/messages"
+            iconAwesome="refresh" />
+        </b:dropMenu>
+        <b:dropMenu value="Bootstrap Widgets">
+          <b:navLink value="Alerts" outcome="/bootstrap/alerts"
+            icon="warning-sign" />
+          <b:navLink value="Carousel" outcome="/bootstrap/carousel" />
+          <b:navLink value="DropButton" outcome="/bootstrap/dropButton" />
+          <b:navLink value="Labels and Badges"
+            outcome="/bootstrap/labelsbadge" icon="tag" />
+          <b:navLink value="Modals" outcome="/bootstrap/modal" />
+          <b:navLink value="Thumbnails" outcome="/bootstrap/thumbnails"
+            icon="picture" />
+          <b:navLink value="Tab" outcome="/bootstrap/tab"
+            icon="folder-close" />
+          <b:navLink value="Tooltip" outcome="/bootstrap/tooltips"
+            iconAwesome="comment" />
+        </b:dropMenu>
+        <b:dropMenu value="jQueryUI Widgets">
+          <b:navLink value="Slider" outcome="/jquery-ui/slider"
+            icon="tasks" iconAwesome="sliders" />
+          <b:navLink value="More Sliders" outcome="/jquery-ui/slider2"
+            icon="tasks" />
+          <b:navLink value="DatePicker" outcome="/jquery-ui/datepicker"
+            icon="calendar" />
+        </b:dropMenu>
+      </b:navbarLinks>
+      <b:navbarLinks>
+        <h:form style="display:inline" styleClass="form-inline">
+          <b:selectOneMenu value="#{theme.currentTheme}"
+            style="width:180px;margin-top:8px"
+            onchange="$('.theme-selector-button').click()">
+            <f:selectItem itemValue="default" itemLabel="default" />
+            <f:selectItem itemValue="cerulean" itemLabel="cerulean" />
+            <f:selectItem itemValue="cosmo" itemLabel="cosmo" />
+            <f:selectItem itemValue="cyborg" itemLabel="cyborg" />
+            <f:selectItem itemValue="darkly" itemLabel="darkly" />
+            <f:selectItem itemValue="flatly" itemLabel="flatly" />
+            <f:selectItem itemValue="journal" itemLabel="journal" />
+            <f:selectItem itemValue="lumen" itemLabel="lumen" />
+            <f:selectItem itemValue="paper" itemLabel="paper" />
+            <f:selectItem itemValue="readable" itemLabel="readable" />
+            <f:selectItem itemValue="sandstone" itemLabel="sandstone" />
+            <f:selectItem itemValue="simplex" itemLabel="simplex" />
+            <f:selectItem itemValue="slate" itemLabel="slate" />
+            <f:selectItem itemValue="spacelab" itemLabel="spacelab" />
+            <f:selectItem itemValue="superhero" itemLabel="superhero" />
+            <f:selectItem itemValue="united" itemLabel="united" />
+            <f:selectItem itemValue="yeti" itemLabel="yeti" />
+            <f:selectItem itemValue="freelancer" itemLabel="Freelancer (custom)" />
+            <f:selectItem itemValue="grayscale" itemLabel="Grayscale (custom)" />
+            <f:selectItem itemValue="other" itemLabel="other (none)" />
+            <f:selectItem itemValue="custom" itemLabel="custom (none)" />
+            <f:selectItem itemValue="no" itemLabel="no (none)" />
+            <f:selectItem itemValue="false" itemLabel="false (none)" />
+            <f:selectItem itemValue="yes" itemLabel="yes (default)" />
+          </b:selectOneMenu>
+          <b:commandButton class="theme-selector-button" value="select"
+            action="#{theme.selectTheme}" style="display:none" />
+        </h:form>
+      </b:navbarLinks>
+
+      <b:navbarLinks pull="right">
+        <b:navLink outcome="/examples/index" value="Examples"
+          iconAwesome="desktop" />
+
+      </b:navbarLinks>
+    </b:container>
+  </b:navBar>
 
 </ui:fragment>
