@@ -9,10 +9,11 @@
              <ui:define name="content">
                 <style>td {padding: 8px;}</style>
                 <h1>Integration with OmniFaces</h1>
-                <p>BootsFaces loads many small CSS and Javascript files. So it's a good idea to combine it with OmniFaces.</p>
-                <p>We didn't encounter
-                any difficulties when we activated the <a target="#" href="http://showcase.omnifaces.org/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></a> of OmniFaces, but we didn't run
-                an exhaustive compatibility test yet.</p>
+                <p>BootsFaces loads many small CSS and Javascript files. So it's a good idea to combine it with OmniFaces.
+                In particular, we recommend to use the <a target="#" href="http://showcase.omnifaces.org/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></a>. It solves
+                a couple of weird problems. Particular, FontAwesome icons typically aren't displayed correctly without the <code>CombinedResourceHandler</code>.
+                </p>
+                <p>Note that we didn't run an exhaustive compatibility test yet. However, nobody's ever reported us problems with BootsFaces and OmniFaces.</p>
                 
      <b:tabView contentStyle="height:280px">
         <b:tab title="Maven">
@@ -23,13 +24,13 @@
 <dependency>
   <groupId>net.bootsfaces</groupId>
   <artifactId>bootsfaces</artifactId>
-  <version>0.6.6</version>
+  <version>0.8.0</version>
   <scope>compile</scope>
 </dependency>
 <dependency>
   <groupId>org.omnifaces</groupId>
   <artifactId>omnifaces</artifactId>
-  <version>1.10</version>
+  <version>1.12.1</version>
   <scope>compile</scope>
 </dependency>
 ]]>
@@ -40,8 +41,8 @@
           <b:well>
 <script type="syntaxhighlighter" class="brush: groovy; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
-  compile 'net.bootsfaces:bootsfaces:0.6.6'
-  compile 'org.omnifaces:omnifaces:1.10'
+  compile 'net.bootsfaces:bootsfaces:0.8.0'
+  compile 'org.omnifaces:omnifaces:1.12.1'
 ]]>
 </script>
           </b:well>
@@ -126,7 +127,7 @@ documentation, Tomcat is garanteed to support this (at least in the default conf
       </b:tabView>
                 
       <h3>Warnings caused by the CombinedResourceHandler</h3>
-      <p>Mojarra 2.2 generates a lot of warnings on the console in developer mode:</p>
+      <p>If you use an older version of OmniFaces, Mojarra 2.2 generates a lot of warnings on the console in developer mode:</p>
 <b:well>
       <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
@@ -137,7 +138,8 @@ WARNING: Unable to save dynamic action with clientId 'j_id190' because the UICom
 </b:well>
       <p> These warnings are caused by OmniFaces removing the original resources. Mojarra detects there's
       something missing and complains about it. You can safely ignore these warnings. 
-      Also see the corresponding <a target="#" href="https://github.com/omnifaces/omnifaces/issues/135">issue on the OmniFaces bugtracker</a> for details.</p>           
+      Also see the corresponding <a target="#" href="https://github.com/omnifaces/omnifaces/issues/135">issue on the OmniFaces bugtracker</a> for details.</p>      
+      <p>This nuisance has been fixed with OmniFaces 1.12 and 2.2.</p>     
                 
                 <script type="text/javascript">
                     SyntaxHighlighter.all();

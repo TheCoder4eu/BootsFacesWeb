@@ -121,15 +121,17 @@
                    <h:link outcome="/examples/starter_template" value="starter template"/> in the <h:link outcome="/examples/index" value="Examples"/> section.</p>
                 <hr/>
                 
-                <h3>Troubleshooting: web.xml and faces-config.xml</h3>
-                <p>Sometimes the CSS and Javascript files aren't loaded automatically. If you happen to run into this error, you have to add a few lines to the <code>faces-config.xml</code> and the <code>web.xml</code> files.</p>
+                <h3>Troubleshooting: web.xml and faces-config.xml <b:badge value="updated in BootsFaces 0.8.0" /></h3>
+                <p>Sometimes the CSS and Javascript files aren't loaded automatically. 
+                If you happen to run into this error, you have to add a few lines to the <code>faces-config.xml</code> and the <code>web.xml</code> files.
+                Notice that we now recommend to use the <code>CombinedResourceHandler</code> of OmniFaces. In earlier vesions of BootsFaces we'd recommended
+                other things, but this didn't work out.</p>
 
 				<b:tabView>
                 <b:tab title="web.xml (recommended)">
                     <b:panel>
                         <p>Keep the URL patterns of your web application as simple as possible. In this case, the resource files are loaded without further ado.
-                        The hints the the other two tabs are only workarounds if this <code>web.xml</code> doesn't do the trick, or if you need
-                        a more complex <code>url-pattern</code> for some reason.</p>    
+                        Do not use multiple <code>url-patterns</code>.</p>    
                          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                          <![CDATA[
                              <servlet>
@@ -140,36 +142,14 @@
                              <servlet-mapping>
                                  <servlet-name>Faces Servlet</servlet-name>
                                 <url-pattern>*.jsf</url-pattern>
-                                <url-pattern>/javax.faces.resource/*</url-pattern>
                             </servlet-mapping>
                         ]]></script>
                     </b:panel>
                 </b:tab>
                             
-				<b:tab title="web.xml (workaround)">
+				<b:tab title="faces-config.xml">
                     <b:panel>
-                        <p>It seems that multiple or non-standard <code>url-patterns</code> causes problem when it comes to loading resources. For instance,
-                        <code>&lt;url-pattern&gt;/page/&lt;url-pattern&gt;</code> is popular in the textbooks, but it's not recommendable in the
-                        real world. However, if you need such a pattern for some reason, add a second URL pattern <code>/javax.faces.resource/*</code> to the web.xml:</p>    
-                         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
- 					     <![CDATA[
-                             <servlet>
-                                 <servlet-name>Faces Servlet</servlet-name>
-                                 <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
-                                 <load-on-startup>1</load-on-startup>
-                             </servlet>
-                             <servlet-mapping>
-                                <servlet-name>Faces Servlet</servlet-name>
-                         		<url-pattern>*.jsf</url-pattern>
-                         		<url-pattern>/javax.faces.resource/*</url-pattern>
-                         	</servlet-mapping>
-                        ]]></script>
-                    </b:panel>
-                </b:tab>
-				<b:tab title="faces-config.xml (workaround)">
-                    <b:panel>
-                        <p>Use this hint only as a last resort if everything else has failed.
-    				     Adding the <code>UnmappedResourceHandler</code> to the <code>faces-config.xml</code> can fix nasty resource loading problems:
+                        <p>Adding the <code>CombinedResourceHandler</code> of OmniFaces to the <code>faces-config.xml</code> can fix nasty resource loading problems:
                          </p>
                          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                          <![CDATA[
@@ -180,28 +160,37 @@
                                  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
                                  version="2.2">
                              	<application>
-                             		<resource-handler>net.bootsfaces.render.UnmappedResourceHandler</resource-handler>
+                             		<resource-handler>org.omnifaces.resourcehandler.CombinedResourceHandler</resource-handler>
                              	</application>
                              </faces-config>
                          ]]></script>
                     </b:panel>
                     </b:tab>
-                           
-                           </b:tabView>     
+                </b:tabView>     
                 
-                <h3>Theme CSS support</h3>
+                <h3>Theme CSS support <b:badge value="revamped in BootsFaces 0.8.0" /></h3>
                 
                 <p>The BootsFaces_USETHEME context-param in your web.xml controls the loading of the <code>bootstrap-theme.css</code></p>
-                <p>By default this parameter is set to <code>false</code>. You need to explicitely set it to <code>true</code> to have the <code>bootstrap-theme.css</code> loaded.</p>
+                <p>By default this parameter is set to <code>false</code>. You need to explicitely set it to <code>true</code> or <code>default</code> to have the default <code>bootstrap-theme.css</code> loaded.</p>
                 <b:panel>
                 <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                         <![CDATA[
     <context-param>
         <param-name>BootsFaces_USETHEME</param-name>
-        <param-value>true</param-value>
+        <param-value>default</param-value>
     </context-param>
                         ]]></script>
                 </b:panel>
+                <p>Actually, BootsFaces comes with all 16 BootsWatch themes. You can activate any of these by setting <code>BootsFaces_USETHEME</code> to the name of the theme:</p>
+                 <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                        <![CDATA[
+    <context-param>
+        <param-name>BootsFaces_USETHEME</param-name>
+        <param-value>cerulean</param-value>
+    </context-param>
+                        ]]></script>
+                
+                
                 <br/><hr/>
                 <h3>Building the BootsFaces.jar from source <b:badge value="revamped in BootsFaces 0.8.0" /></h3>
                 <p>Most of the time you're probably happy with the binaries available at Maven Central or at the download page. However, it's
@@ -241,23 +230,24 @@
                     What you need is a file with the variables to customize the build. Some customizers will provide you a .less file as well.</p>
                 <p>Put the files in the <code>BootsFaces/less</code> directory of the build and tweak the bs-* files to use your variables / .less file.</p>
                 <br/><hr/>
-                <h3>Roadmap</h3>
+                <h3>Roadmap <b:badge value="0.8.0 &#8594; 0.9 &#8594; 1.0" /></h3>
                 <p>The big tickets of the next versions are</p>
                 <ul>
                 <li>Going mobile with swipe gesture support</li>
                 <li>Making the library more orthogonal (i.e. adding similar attributes like <code>style</code> and <code>disabled</code> to every component that might benefit from such a feature).</li>
                 <li>Improving the AJAX support, making every visible component AJAX-aware.</li>
-                <li>Adding predefined themes. In particular, we'd like to add Googles Material Design theme.</li>
                 <li>And - of course - support for Bootstrap 4.</li>
                 <li>Possibly we're also going to re-implement the customizer, allowing you to use a special version of BootsFaces with a small footprint 
                     (which you trade for a limited set of components).</li>
-                <li>Last, not least, we'd like to continue improving the documentation.</li>
+                <li>Last, not least, we'd like to continue to improve the documentation.</li>
                 </ul>
                 
                 <p>Minor (but still important) tickets are</p>
                 <ul>
                 <li>fixing bugs :)</li>
                 <li>adding components</li>
+                <li>client-side validation and JSR303 support</li>
+                <li>find out why the <code>CombinedResourceHandler</code> of OmniFaces is needed</li>
                 </ul>
                 <p>In any case, we'd like to hear from you. Use the <a target="#" href="https://github.com/TheCoder4eu/BootsFaces-OSP/issues">bug tracker</a> to inform us about bugs you've discovered, components you'd like to see or contributions
                 you'd like to make. Your feedback is welcome!</p>
