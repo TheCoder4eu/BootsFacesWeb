@@ -41,7 +41,6 @@ public class Theme implements Serializable {
 	}
 	
 	public void selectTheme() {
-		System.out.println("Theme selected");
 	}
 
 }
