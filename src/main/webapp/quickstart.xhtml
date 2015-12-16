@@ -170,8 +170,8 @@
                 
                 <h3>Theme CSS support <b:badge value="revamped in BootsFaces 0.8.0" /></h3>
                 
-                <p>The BootsFaces_USETHEME context-param in your web.xml controls the loading of the <code>bootstrap-theme.css</code></p>
-                <p>By default this parameter is set to <code>false</code>. You need to explicitely set it to <code>true</code> or <code>default</code> to have the default <code>bootstrap-theme.css</code> loaded.</p>
+                <p>The BootsFaces_USETHEME context-param in your web.xml controls the loading of the <code>theme.css</code></p>
+                <p>By default this parameter is set to <code>false</code>. You need to explicitely set it to <code>true</code> or <code>yes</code> to have <code>theme.css</code> loaded.</p>
                 <b:panel>
                 <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                         <![CDATA[
@@ -181,7 +181,8 @@
     </context-param>
                         ]]></script>
                 </b:panel>
-                <p>Actually, BootsFaces comes with all 16 BootsWatch themes. You can activate any of these by setting <code>BootsFaces_USETHEME</code> to the name of the theme:</p>
+                
+                <p>Actually, BootsFaces comes with all 16 BootsWatch themes. You can activate any of these by setting <code>BootsFaces_THEME</code> to the name of the theme:</p>
                  <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                         <![CDATA[
     <context-param>
@@ -189,8 +190,9 @@
         <param-value>cerulean</param-value>
     </context-param>
                         ]]></script>
-                
-                
+                <p>If you don't specify this context parameter or you use the <code>default</code> value, BootsFaces will load the plain Bootstrap CSS</p>
+                <p>If you need more customization you can use the <code>custom<code> value.</p>
+                <p>In this case however, you will need to provide your custom CSS in the <code>META-INF/resources/bsf/css/other</code> folder inside the jar</p>
                 <br/><hr/>
                 <h3>Building the BootsFaces.jar from source <b:badge value="revamped in BootsFaces 0.8.0" /></h3>
                 <p>Most of the time you're probably happy with the binaries available at Maven Central or at the download page. However, it's

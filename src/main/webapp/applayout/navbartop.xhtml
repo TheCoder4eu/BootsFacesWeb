@@ -110,7 +110,7 @@
             icon="calendar" />
         </b:dropMenu>
       </b:navbarLinks>
-      <b:navbarLinks>
+      <b:navbarLinks pull="right">
         <h:form style="display:inline" styleClass="form-inline">
           <b:selectOneMenu value="#{theme.currentTheme}"
             style="width:180px;margin-top:8px"
@@ -146,9 +146,7 @@
       </b:navbarLinks>
 
       <b:navbarLinks pull="right">
-        <b:navLink outcome="/examples/index" value="Examples"
-          iconAwesome="desktop" />
-
+        <b:navLink outcome="/examples/index" value="Examples" iconAwesome="desktop" />
       </b:navbarLinks>
     </b:container>
   </b:navBar>
