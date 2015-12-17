@@ -14,9 +14,11 @@
                 
                  <h3>Theme CSS support <b:badge value="improved in BootsFaces 0.8.0" /></h3>
                 
-                <p>The BootsFaces_USETHEME context-param in your web.xml controls the loading of the <code>theme.css</code></p>
-                <p>When <code>theme.css</code> is loaded, the current theme will be rendered in its Enhanced variant, with shadows and decorations turned on instead of the Flat variant (default).</p>
-                <p>By default this parameter is set to <code>false</code>. You need to explicitly set it to <code>true</code> or <code>yes</code> to have <code>theme.css</code> loaded.</p>
+                <p>The BootsFaces_USETHEME context-param in your web.xml controls whether <code>bootstrap-theme.css</code> is loaded or not.</p>
+                <p>If you set the parameter to false, BootsFaces delivers a CSS file containing the basic layout instructions. This basic
+                file doesn't contain shadows, decorations or colors, so it looks pretty boring. Use this if you want to implement your own
+                look and feel.</p>
+                <p>Setting the parameter to true causes BootsFaces to load of the pre-packaged default theme of Bootstrap.</p>
                 <b:panel>
                 <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                         <![CDATA[
@@ -27,7 +29,7 @@
                         ]]></script>
                 </b:panel>
                 
-                <p>Actually, BootsFaces comes with all 16 BootsWatch themes. You can activate any of these by setting <code>BootsFaces_THEME</code> to the name of the theme:</p>
+                <p>BootsFaces also contains all 16 BootsWatch themes. You can activate any of these by setting <code>BootsFaces_THEME</code> to the name of the theme:</p>
                 <b:panel>
                  <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                         <![CDATA[
