@@ -33,7 +33,7 @@
                 <h3>The Bootstrap look</h3>
                 <p>By default, command buttons are gray (depending on your theme). You can configure them by using a different look:</p>
                 <h:form>
-                <b:panelGrid columns="2,2,2,2,2,2" size="md" >
+                <b:panelGrid columns="2,2,2,2,2,2" size="sm" >
                   <b:commandButton value="primary" ajax="true" update="@none" look="primary" style="width:80px"/>
                   <b:commandButton value="info" ajax="true" update="@none" look="info"  style="width:80px"/>
                   <b:commandButton value="success" ajax="true" update="@none" look="success"  style="width:80px"/>
@@ -181,51 +181,51 @@
 				            <b:fetchBeanInfos />
                         </b:well>
                         <b:row>
-                            <b:column span="2">
+                            <b:column col-sm="2">
                                 <b:commandButton value="Non-Ajax Submit" />
                             </b:column>
-                            <b:column span="2">
+                            <b:column col-sm="2">
                                 <b:commandButton value="Ajax Submit" ajax="true" update="form:inform infoshow" look="primary" />
                             </b:column>
-                            <b:column span="2">
+                            <b:column col-sm="2">
                                 <b:commandButton value="With Icon" ajax="true" update="form:inform infoshow" icon="plus-sign"
                                     look="success" />
                             </b:column>
-                            <b:column span="2">
+                            <b:column col-sm="2">
                                 <b:commandButton value="Ajax Modal" ajax="true" update="form:inform amodal" look="inverse"
                                     oncomplete="if(validationFailed) alert('Please enter valid input before opening the modal'); else $('#amodal').modal('show')" />
                             </b:column>
-                            <b:column span="1">
+                            <b:column col-sm="1">
                                 <b:commandButton ajax="true" update="form:inform infoshow" iconAwesome="thumbs-up" 
                                                  look="info" tooltip="Thumbs up!" />
                             </b:column>
-                            <b:column span="1">
+                            <b:column col-sm="1">
 	                            <b:commandButton ajax="true" update="form:inform infoshow" 
 	                                             style="padding: 0; border: none; background: none;color: #000"
 	                                             tooltip="This looks like an icon, but it's a commandButton">
 								    <b:iconAwesome name="arrow-down"></b:iconAwesome>
 								</b:commandButton>
 							</b:column>
-                            <b:column span="2">
+                            <b:column col-sm="2">
                                 <b:commandButton value="I'm disabled" disabled="true" ajax="true"
                                                  iconAwesome="thumbs-down" look="info" title="Disabled!" />
                             </b:column>
                         </b:row>
                         <b:row>
-                          <b:column span="2">
+                          <b:column col-sm="2">
                             <p></p> 
                             <p>Partial processing:</p>
                             <p></p> 
                             </b:column>
                         </b:row>
                         <b:row>
-                           <b:column span="2">
+                           <b:column col-sm="3">
                                 <b:commandButton value="Submit first name" ajax="true" update="form:inform infoshow" process="@form:firstname" look="primary" />
                             </b:column>
-                            <b:column span="2">
+                            <b:column col-sm="3">
                                 <b:commandButton value="Submit surname" ajax="true" update="form:inform infoshow" process="@form:familyname" look="primary" />
                             </b:column>
-                           <b:column span="2">
+                           <b:column col-sm="3">
                                 <b:commandButton value="Submit both" ajax="true" update="form:inform infoshow" process="@form:firstname @form:familyname" look="primary" />
                             </b:column>
                         </b:row>
