@@ -38,7 +38,7 @@
                                 <b:navLink value="One more separated link" href="#"></b:navLink>
                             </b:dropMenu>
                         </b:navbarLinks>
-                        <form class="navbar-form navbar-left" role="search">
+                        <form class="navbar-form navbar-left hidden-md hidden-sm hidden-xs" role="search">
                             <div class="form-group">
                                 <input type="text" class="form-control" ng:placeholder="Search"/>
                             </div>
@@ -46,7 +46,7 @@
                         </form>
                         <!-- Following line is needed for TBS 3.0.1 (panel content overflow issue) -->
                         <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
-                        <b:navbarLinks pull="right">
+                          <b:navbarLinks pull="right" styleClass="hidden-xs">
                             <b:navLink value="Link" href="#"></b:navLink>
                             <b:dropMenu value="Dropdown">
                                 <b:navLink value="Action" href="#"></b:navLink>
