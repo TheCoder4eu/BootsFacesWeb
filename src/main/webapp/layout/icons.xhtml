@@ -229,9 +229,9 @@
         </b:panel>
       </b:column>
       <b:column col-sm="6">
-        <b:well id="messages">
-                  Last action:
-                  <ul>
+        <b:well id="messages" style="height:216px;overflow-y:auto">
+          Last action:
+          <ul>
             <ui:repeat var="message" value="#{ajaxBean.messages}">
               <li>#{message}</li>
             </ui:repeat>
@@ -289,9 +289,9 @@
         </b:panel>
       </b:column>
       <b:column col-sm="6">
-        <b:well id="messages">
-                  Last action:
-                  <ul>
+        <b:well id="messages" style="height:216px;overflow-y:auto">
+          Last action:
+          <ul>
             <ui:repeat var="message" value="&num;{ajaxBean.messages}">
               <li>&num;{message}</li>
             </ui:repeat>
