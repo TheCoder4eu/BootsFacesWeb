@@ -78,34 +78,32 @@
 						<b:well>
 			                <h:form>
 							    <p:growl id="msgs1" showDetail="true" />
-							 	<b:container>
-								    <b:panelGrid colSpans="5,7">
-								    	<b:inputText label="Enter a number" value="&num;{barcodeBean.code39}">
-											<f:facet name="prepend">
-												<h:outputText value="Code39" />
-											</f:facet>
-											<p:ajax event="keyup" update="code39" />
-										</b:inputText>
-										<p:barcode value="&num;{barcodeBean.code39}" type="code39" id="code39"/>
+								<b:panelGrid colSpans="5,7">
+									<b:inputText label="Enter a number" value="&num;{barcodeBean.code39}">
+									<f:facet name="prepend">
+										<h:outputText value="Code39" />
+									</f:facet>
+									<p:ajax event="keyup" update="code39" />
+								</b:inputText>
+								<p:barcode value="&num;{barcodeBean.code39}" type="code39" id="code39"/>
 
-										<b:inputText label="Enter your internet address" value="&num;{barcodeBean.url2}">
-											<p:ajax event="keyup" update="@next" />
-										</b:inputText>
-										<p:barcode value="&num;{barcodeBean.url2}" type="qr" id="qr1" style="width:90px;height:90px;"/>
-								    
-										<b:inputText label="Enter another internet address" value="&num;{barcodeBean.url}"
-											onkeyup="ajax:barcodeBean.doNothing()" update="@next">
-											<f:facet name="prepend">
-												<b:selectOneMenu value="&num;{barcodeBean.protocol}">
-        											<f:selectItem itemLabel="http://"/>
-        											<f:selectItem itemLabel="https://"/>
-    											</b:selectOneMenu>
-												<h:outputText value="www." />
-											</f:facet>
-										</b:inputText>
-										<p:barcode value="&num;{barcodeBean.completeURL}" type="qr" id="qr2" style="width:90px;height:90px;"/>
-									</b:panelGrid>
-								</b:container>
+								<b:inputText label="Enter your internet address" value="&num;{barcodeBean.url2}">
+									<p:ajax event="keyup" update="@next" />
+								</b:inputText>
+								<p:barcode value="&num;{barcodeBean.url2}" type="qr" id="qr1" style="width:90px;height:90px;"/>
+								
+								<b:inputText label="Enter another internet address" value="&num;{barcodeBean.url}"
+									onkeyup="ajax:barcodeBean.doNothing()" update="@next">
+									<f:facet name="prepend">
+										<b:selectOneMenu value="&num;{barcodeBean.protocol}">
+        									<f:selectItem itemLabel="http://"/>
+        									<f:selectItem itemLabel="https://"/>
+    									</b:selectOneMenu>
+										<h:outputText value="www." />
+									</f:facet>
+								</b:inputText>
+								<p:barcode value="&num;{barcodeBean.completeURL}" type="qr" id="qr2" style="width:90px;height:90px;"/>
+								:panelGrid>
 							</h:form>
 						</b:well>
 ]]>
@@ -116,34 +114,32 @@
 						<b:well>
 			                <h:form>
 							    <p:growl id="msgs1" showDetail="true" />
-							 	<b:container>
-								    <b:panelGrid colSpans="5,7">
-								    	<b:inputText label="Enter a number" value="#{barcodeBean.code39}">
-											<f:facet name="prepend">
-												<h:outputText value="Code39" />
-											</f:facet>
-											<p:ajax event="keyup" update="code39" />
-										</b:inputText>
-										<p:barcode value="#{barcodeBean.code39}" type="code39" id="code39"/>
-
-										<b:inputText label="Enter your internet address" value="#{barcodeBean.url2}">
-											<p:ajax event="keyup" update="@next" />
-										</b:inputText>
-										<p:barcode value="#{barcodeBean.url2}" type="qr" id="qr1" style="width:90px;height:90px;"/>
-								    
-                                        <b:inputText label="Enter another internet address" value="#{barcodeBean.url}"
-                                                     onkeyup="ajax:barcodeBean.doNothing()" update="@next">
-											<f:facet name="prepend">
-												<b:selectOneMenu value="#{barcodeBean.protocol}">
-        											<f:selectItem itemLabel="http://"/>
-        											<f:selectItem itemLabel="https://"/>
-    											</b:selectOneMenu>
-												<h:outputText value="www." />
-											</f:facet>
-										</b:inputText>
-										<p:barcode value="#{barcodeBean.completeURL}" type="qr" id="qr2" style="width:90px;height:90px;"/>
-									</b:panelGrid>
-								</b:container>
+						        <b:panelGrid colSpans="5,7">
+						        <b:inputText label="Enter a number" value="#{barcodeBean.code39}">
+						        	<f:facet name="prepend">
+						        		<h:outputText value="Code39" />
+						        	</f:facet>
+						        	<p:ajax event="keyup" update="code39" />
+						        </b:inputText>
+						        <p:barcode value="#{barcodeBean.code39}" type="code39" id="code39"/>
+                                
+						        <b:inputText label="Enter your internet address" value="#{barcodeBean.url2}">
+						        	<p:ajax event="keyup" update="@next" />
+						        </b:inputText>
+						        <p:barcode value="#{barcodeBean.url2}" type="qr" id="qr1" style="width:90px;height:90px;"/>
+						        
+                                       <b:inputText label="Enter another internet address" value="#{barcodeBean.url}"
+                                                    onkeyup="ajax:barcodeBean.doNothing()" update="@next">
+						        	<f:facet name="prepend">
+						        		<b:selectOneMenu value="#{barcodeBean.protocol}">
+        				        			<f:selectItem itemLabel="http://"/>
+        				        			<f:selectItem itemLabel="https://"/>
+    					        		</b:selectOneMenu>
+						        		<h:outputText value="www." />
+						        	</f:facet>
+						        </b:inputText>
+						        <p:barcode value="#{barcodeBean.completeURL}" type="qr" id="qr2" style="width:90px;height:90px;"/>
+						        </b:panelGrid>
 							</h:form>
 						</b:well>
 					</b:tab>
@@ -161,44 +157,42 @@
                 <h:form id="form">
 				    <p:growl id="msgs" showDetail="true" />
 				 
-				 	<b:container>
-					    <b:panelGrid colSpans="2,10">
-					        <p:outputLabel for="inline" value="Inline:" />
-					        <p:calendar id="inline" value="&num;{calendarView.date1}" mode="inline" />
-					 
-					        <p:outputLabel for="popup" value="Popup:" />
-					        <p:calendar id="popup" value="&num;{calendarView.date2}" />
-					 
-					        <p:outputLabel for="button" value="Button:" />
-					        <p:calendar id="button" value="&num;{calendarView.date3}" showOn="button" />
-					 
-					        <p:outputLabel for="event" value="Select Event:" />
-					        <p:calendar id="event" value="&num;{calendarView.date4}">
-					            <p:ajax event="dateSelect" listener="&num;{calendarView.onDateSelect}" update="msgs" />
-					        </p:calendar>
-					 
-					        <p:outputLabel for="german" value="German:" />
-					        <p:calendar id="german" value="&num;{calendarView.date5}" locale="de" navigator="true" pattern="yyyy-MMM-dd" />
-					 
-					        <p:outputLabel for="restricted" value="Restricted:" />
-					        <p:calendar id="restricted" value=" #{calendarView.date6}" mindate="4/1/14" maxdate="7/1/14" />
-					 
-					        <p:outputLabel for="multi" value="Multiple:" />
-					        <p:calendar id="multi" value="&num;{calendarView.date7}" pages="3" />
-					 
-					        <p:outputLabel for="effect" value="Effect:" />
-					        <p:calendar id="effect" value="&num;{calendarView.date8}" effect="fold" />
-					 
-					        <p:outputLabel for="mask" value="Mask:" />
-					        <p:calendar id="mask" value="&num;{calendarView.date9}" pattern="dd-MM-yyyy" mask="true" />
-					 
-					        <p:outputLabel for="datetime" value="Datetime:" />
-					        <p:calendar id="datetime" value="&num;{calendarView.date10}" pattern="MM/dd/yyyy HH:mm:ss" />
-					 
-					        <p:outputLabel for="time" value="Time:" />
-					        <p:calendar id="time" value=" #{calendarView.date11}" pattern="HH:mm a" timeOnly="true"  />
-						 </b:panelGrid>
-					 </b:container>
+				    <b:panelGrid colSpans="2,10">
+				        <p:outputLabel for="inline" value="Inline:" />
+				        <p:calendar id="inline" value="&num;{calendarView.date1}" mode="inline" />
+				 
+				        <p:outputLabel for="popup" value="Popup:" />
+				        <p:calendar id="popup" value="&num;{calendarView.date2}" />
+				 
+				        <p:outputLabel for="button" value="Button:" />
+				        <p:calendar id="button" value="&num;{calendarView.date3}" showOn="button" />
+				 
+				        <p:outputLabel for="event" value="Select Event:" />
+				        <p:calendar id="event" value="&num;{calendarView.date4}">
+				            <p:ajax event="dateSelect" listener="&num;{calendarView.onDateSelect}" update="msgs" />
+				        </p:calendar>
+				 
+				        <p:outputLabel for="german" value="German:" />
+				        <p:calendar id="german" value="&num;{calendarView.date5}" locale="de" navigator="true" pattern="yyyy-MMM-dd" />
+				 
+				        <p:outputLabel for="restricted" value="Restricted:" />
+				        <p:calendar id="restricted" value=" #{calendarView.date6}" mindate="4/1/14" maxdate="7/1/14" />
+				 
+				        <p:outputLabel for="multi" value="Multiple:" />
+				        <p:calendar id="multi" value="&num;{calendarView.date7}" pages="3" />
+				 
+				        <p:outputLabel for="effect" value="Effect:" />
+				        <p:calendar id="effect" value="&num;{calendarView.date8}" effect="fold" />
+				 
+				        <p:outputLabel for="mask" value="Mask:" />
+				        <p:calendar id="mask" value="&num;{calendarView.date9}" pattern="dd-MM-yyyy" mask="true" />
+				 
+				        <p:outputLabel for="datetime" value="Datetime:" />
+				        <p:calendar id="datetime" value="&num;{calendarView.date10}" pattern="MM/dd/yyyy HH:mm:ss" />
+				 
+				        <p:outputLabel for="time" value="Time:" />
+				        <p:calendar id="time" value=" #{calendarView.date11}" pattern="HH:mm a" timeOnly="true"  />
+					 </b:panelGrid>
 				 
 				    <p:commandButton value="Submit" update="msgs" actionListener="&num;{calendarView.click}" icon="ui-icon-check" />
 				 
@@ -270,7 +264,6 @@
                 <h:form id="form">
 				    <p:growl id="msgs" showDetail="true" />
 				 
-				 	<b:container>
 					    <b:panelGrid colSpans="2,10">
 					        <p:outputLabel for="inline" value="Inline:" />
 					        <p:calendar id="inline" value="#{calendarView.date1}" mode="inline" />
@@ -307,7 +300,6 @@
 					        <p:outputLabel for="time" value="Time:" />
 					        <p:calendar id="time" value="#{calendarView.date11}" pattern="HH:mm a" timeOnly="true"  />
 						 </b:panelGrid>
-					 </b:container>
 				    <p:commandButton value="Submit" update="msgs" actionListener="#{calendarView.click}" icon="ui-icon-check" />
 				 	
 				    <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">

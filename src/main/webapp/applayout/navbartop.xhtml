@@ -28,7 +28,7 @@
             outcome="/integration/PrimeFaces" icon="tasks" />
           <b:navLink value="OmniFaces" outcome="/integration/OmniFaces"
             icon="tasks" />
-          <b:navLink value="AngularFaces"
+          <b:navLink value="AngularFaces" styleClass="hidden-sm hidden-md hidden-sm"
             outcome="/integration/angularFaces" icon="tasks" />
 
           <ui:remove>
@@ -110,7 +110,7 @@
             icon="calendar" />
         </b:dropMenu>
       </b:navbarLinks>
-      <b:navbarLinks>
+      <b:navbarLinks pull="right">
         <h:form style="display:inline" styleClass="form-inline">
           <b:selectOneMenu value="#{theme.currentTheme}"
             style="width:180px;margin-top:8px"
@@ -134,11 +134,6 @@
             <f:selectItem itemValue="yeti" itemLabel="yeti" />
             <f:selectItem itemValue="freelancer" itemLabel="Freelancer (custom)" />
             <f:selectItem itemValue="grayscale" itemLabel="Grayscale (custom)" />
-            <f:selectItem itemValue="other" itemLabel="other (none)" />
-            <f:selectItem itemValue="custom" itemLabel="custom (none)" />
-            <f:selectItem itemValue="no" itemLabel="no (none)" />
-            <f:selectItem itemValue="false" itemLabel="false (none)" />
-            <f:selectItem itemValue="yes" itemLabel="yes (default)" />
           </b:selectOneMenu>
           <b:commandButton class="theme-selector-button" value="select"
             action="#{theme.selectTheme}" style="display:none" />
@@ -146,9 +141,7 @@
       </b:navbarLinks>
 
       <b:navbarLinks pull="right">
-        <b:navLink outcome="/examples/index" value="Examples"
-          iconAwesome="desktop" />
-
+        <b:navLink outcome="/examples/index" value="Examples" iconAwesome="desktop" />
       </b:navbarLinks>
     </b:container>
   </b:navBar>

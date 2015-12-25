@@ -48,13 +48,11 @@
                 <p>Both <code>icon</code> and <code>iconAwesome</code> attributes, require the icon name as value the icon name without the trailing <b>glyphicon-</b> prefix and <b>fa-</b> prefix respectively.</p>
                 <p><b:badge value="Hint" /> Bootstrap 4 is going to drop support for the Glyphicon library. We recommend you to chose icons from the Font Awesome library to avoid future incompatibilities.</p>
                 <p>In the following example the <code>b:listLinks</code> tag is used as a container for the NavLinks, showing how to create a Sidebar with links.</p>
-                <b:panel>
-                    <f:facet name="heading"><b>EXAMPLE</b></f:facet>
-                    	<h:form>
+                <b:panel title="Example" look="default">
+                    <h:form>
                     <b:row>
                         <b:column span="3">
-                            <b:panel look="primary">
-                                <f:facet name="heading">Sidebar</f:facet>   
+                            <b:panel look="primary" title="Sidebar">
                                 <b:listLinks>
                                     <b:navLink header="BootsFaces" />
                                     <b:navLink href="http://www.bootsfaces.net" value="BootsFaces"
@@ -81,8 +79,7 @@
                 
                         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
                         <![CDATA[
-                        <b:panel look="primary">
-                            <f:facet name="heading">Sidebar</f:facet>   
+                        <b:panel look="primary" title="Sidebar">
                             <b:listLinks>
                                 <b:navLink header="BootsFaces" />
                                 <b:navLink href="http://www.bootsfaces.net" value="BootsFaces"

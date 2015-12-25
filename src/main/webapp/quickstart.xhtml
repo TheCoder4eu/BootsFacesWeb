@@ -18,7 +18,7 @@
                 <p>Read the <h:link outcome="/requirements" value="requirements"/>.</p>
                 <hr/>
                 <h3>Download</h3>
-                <b:tabView contentStyle="height:340px">
+                <b:tabView contentStyle="height:370px">
 					<b:tab title="Maven">
 						<p>Add these lines to your Maven pom.xml build file:</p>
 						<b:well>
@@ -170,8 +170,11 @@
                 
                 <h3>Theme CSS support <b:badge value="revamped in BootsFaces 0.8.0" /></h3>
                 
-                <p>The BootsFaces_USETHEME context-param in your web.xml controls the loading of the <code>bootstrap-theme.css</code></p>
-                <p>By default this parameter is set to <code>false</code>. You need to explicitely set it to <code>true</code> or <code>default</code> to have the default <code>bootstrap-theme.css</code> loaded.</p>
+                <p>The BootsFaces_USETHEME context-param in your web.xml controls whether <code>theme.css</code> is loaded or not.</p>
+                <p>If you set the parameter to false, BootsFaces delivers a CSS file containing the basic layout instructions. This basic
+                file doesn't contain shadows, decorations or colors, so it looks pretty boring. But it's a good starting point to implement your own
+                look and feel.</p>
+                <p>Setting the parameter to true causes BootsFaces to load <code>theme.css</code>, this is true for Bootstrap and Bootswatch Themes.</p>
                 <b:panel>
                 <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                         <![CDATA[
@@ -181,16 +184,19 @@
     </context-param>
                         ]]></script>
                 </b:panel>
-                <p>Actually, BootsFaces comes with all 16 BootsWatch themes. You can activate any of these by setting <code>BootsFaces_USETHEME</code> to the name of the theme:</p>
+                
+                <p>BootsFaces also contains all 16 BootsWatch themes. You can activate any of these by setting <code>BootsFaces_THEME</code> to the name of the theme:</p>
+                <b:panel>
                  <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                         <![CDATA[
     <context-param>
-        <param-name>BootsFaces_USETHEME</param-name>
+        <param-name>BootsFaces_THEME</param-name>
         <param-value>cerulean</param-value>
     </context-param>
                         ]]></script>
-                
-                
+                </b:panel>
+                <p>If you need more customization you can use the <code>custom</code> value.</p>
+                <p>Please refer to the <h:link value="Themes" outcome="/layout/themes" /> page for instructions on Custom Theme.</p>
                 <br/><hr/>
                 <h3>Building the BootsFaces.jar from source <b:badge value="revamped in BootsFaces 0.8.0" /></h3>
                 <p>Most of the time you're probably happy with the binaries available at Maven Central or at the download page. However, it's
