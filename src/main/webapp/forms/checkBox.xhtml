@@ -121,6 +121,42 @@
                 many JavaScript callback handlers (the <code>on[event]</code> attributes) also supports AJAX.
                 To get familiar with BootsFaces AJAX, try the 
                 <a target="#" href="https://github.com/stephanrauh/BootsFaces-Examples/tree/master/AJAX">BootsFaces AJAX demo project</a>.</p>
+                
+                <h2>Error messages and ids  <b:badge value="since 0.8.1" /></h2>
+                <h:form id="messageForm">
+                  <b:panelGrid colSpans="3,9">
+                    <b:selectBooleanCheckbox value="#{checkboxBean.cbxError}" 
+                                    id="checkboxWithErrorMessage"
+                                    caption="click to toggle the error message" 
+                                    onclick="ajax:checkboxBean.action();"
+                                    update="@form"
+                                    />
+                    <b:message />
+                    <b:selectBooleanCheckbox value="#{checkboxBean.cbxFatal}" 
+                                    id="checkboxWithFatalMessage"
+                                    caption="click to toggle the fatal error message" 
+                                    onclick="ajax:checkboxBean.action();"
+                                    update="@form"
+                                    />
+                    <b:message for="checkboxWithFatalMessage" />
+                    <b:selectBooleanCheckbox value="#{checkboxBean.cbxWarning}" 
+                                    id="checkboxWithWarning"
+                                    caption="click to toggle the warning" 
+                                    onclick="ajax:checkboxBean.action();"
+                                    update="@form"
+                                    />
+                    <b:message for="@previous:@previous:@next" />
+                    <b:selectBooleanCheckbox value="#{checkboxBean.cbxInfo}" 
+                                    id="checkboxWithInfoMessage"
+                                    caption="click to toggle the info message" 
+                                    onclick="ajax:checkboxBean.action();"
+                                    update="@form"
+                                    />
+                                    
+                    <b:message for="@form:**:checkboxWithInfoMessage" />
+                  </b:panelGrid>
+                </h:form>
+                
         
 				<h1>Reference section</h1>
                 <ui:include src="SelectBooleanCheckboxAttributes.xhtml" />
