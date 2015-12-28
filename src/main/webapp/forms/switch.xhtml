@@ -22,7 +22,8 @@ td {
       <b:tab title="live demo">
         <h:form>
           <b:panelGrid columns="3,3,3,3">
-            <b:switch value="#{settingsBean.checkbox1}" label="switch 1" />
+            <b:switch value="#{settingsBean.checkbox1}" label="switch 1" offColor="success" onColor="info"
+             />
             <b:switch value="#{settingsBean.checkbox2}" label="switch with tooltip"
               tooltip="I'm the tooltip. I'll tell you what this switch is all about." />
             <b:switch value="#{settingsBean.checkbox3}" label="switch with rtl-support!"
@@ -37,6 +38,8 @@ td {
               onchange="ajax:settingsBean.action()"
               offText="rtl"
               onText="ltr"
+              offColor="success"
+              onColor="info"
               update="@form"/>
           </b:panelGrid>
         </h:form>
@@ -46,7 +49,7 @@ td {
                           <![CDATA[
         <h:form>
           <b:panelGrid columns="3,3,3,3">
-            <b:switch value="#num;{settingsBean.checkbox1}" label="switch 1" />
+            <b:switch value="#num;{settingsBean.checkbox1}" label="switch 1" offColor="success" onColor="info" />
             <b:switch value="#num;{settingsBean.checkbox2}" label="switch with tooltip"
               tooltip="I'm the tooltip. I'll tell you what this switch is all about." />
             <b:switch value="#num;{settingsBean.checkbox3}" label="switch with rtl-support!"
@@ -58,6 +61,10 @@ td {
               tooltip="Using the English language, the only effect of the dir=rtl setting is that the exclamation mark are at the left hand side. Isn't that weird?"
               dir="#num;{settingsBean.checkbox4?'ltr':'rtl'}" 
               onchange="ajax:settingsBean.action()"
+              offText="rtl"
+              onText="ltr"
+              offColor="success"
+              onColor="info"
               update="@form"/>
           </b:panelGrid>
         </h:form>
@@ -66,7 +73,7 @@ td {
       </b:tab>
     </b:tabView>
 
-    <h1>Basic usage</h1>
+    <h1>AJAX</h1>
     <p>The <code>&lt;b:switch /&gt;</code> uses the unified AJAX API of BootsFaces. However, you should avoid to use the <code>onclick</code> event because
     it's triggered to early. Use <code>onchange</code> instead.</p>
 
@@ -82,7 +89,7 @@ td {
             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
                  <h:form id="messageForm">
-                  <b:panelGrid colSpans="3,9">
+                  <b:panelGrid colSpans="6,6">
                     <b:switch value="#num;{checkboxBean.cbxError}" 
                                     id="checkboxWithErrorMessage"
                                     caption="click to toggle the error message" 
@@ -123,7 +130,7 @@ td {
           </b:tab>
           <b:tab title="displayed as">
                  <h:form id="messageForm">
-                  <b:panelGrid colSpans="3,9">
+                  <b:panelGrid colSpans="6,6">
                     <b:switch value="#{checkboxBean.cbxError}" 
                                     id="checkboxWithErrorMessage"
                                     caption="click to toggle the error message" 
