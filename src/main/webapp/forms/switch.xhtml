@@ -32,8 +32,11 @@ td {
             <b:switch value="#{settingsBean.checkbox4}" caption="AJAX"
               label="Toggle the switch to toggle between rtl and ltr."
               tooltip="Using the English language, the only effect of the dir=rtl setting is that the exclamation mark are at the left hand side. Isn't that weird?"
+              
               dir="#{settingsBean.checkbox4?'ltr':'rtl'}" 
               onchange="ajax:settingsBean.action()"
+              offText="rtl"
+              onText="ltr"
               update="@form"/>
           </b:panelGrid>
         </h:form>
@@ -67,15 +70,107 @@ td {
     <p>The <code>&lt;b:switch /&gt;</code> uses the unified AJAX API of BootsFaces. However, you should avoid to use the <code>onclick</code> event because
     it's triggered to early. Use <code>onchange</code> instead.</p>
 
+                <h2>Error messages <b:badge value="since 0.8.1" /></h2>
+               <p>If the field has a FacesMessage, one of the CSS classes <code>bf-info</code>, <code>bf-warning</code>, 
+                   <code>bf-error</code> or <code>bf-fatal</code> is added to the label, depending on which error severity the message has.
+                   The latter two classes color the label red. <code>bf-warning</code> colors it orange. You can override this default setting in a custom CSS file.</p>
+                <p>If there's no message,
+                   the field and its label bear the pseudo CSS class <code>bf-no-message</code>.
+               </p>
+          <b:tabView activeIndex="1" contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+          <b:tab title="JSF markup">
+            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+                 <h:form id="messageForm">
+                  <b:panelGrid colSpans="3,9">
+                    <b:switch value="#num;{checkboxBean.cbxError}" 
+                                    id="checkboxWithErrorMessage"
+                                    caption="click to toggle the error message" 
+                                    label="error"
+                                    onchange="ajax:checkboxBean.action();"
+                                    update="@form"
+                                    />
+                    <b:message />
+                    <b:switch value="#num;{checkboxBean.cbxFatal}" 
+                                    id="checkboxWithFatalMessage"
+                                    caption="click to toggle the fatal error message" 
+                                    label="fatal"
+                                    onchange="ajax:checkboxBean.action();"
+                                    update="@form"
+                                    />
+                    <b:message for="checkboxWithFatalMessage" />
+                    <b:switch value="#num;{checkboxBean.cbxWarning}" 
+                                    id="checkboxWithWarning"
+                                    caption="click to toggle the warning" 
+                                    label="warning"
+                                    onchange="ajax:checkboxBean.action();"
+                                    update="@form"
+                                    />
+                    <b:message for="@previous:@previous:@next" />
+                    <b:switch value="#num;{checkboxBean.cbxInfo}" 
+                                    id="checkboxWithInfoMessage"
+                                    caption="click to toggle the info message" 
+                                    label="info"
+                                    onchange="ajax:checkboxBean.action();"
+                                    update="@form"
+                                    />
+                                    
+                    <b:message for="@form:**:checkboxWithInfoMessage" />
+                  </b:panelGrid>
+                </h:form>
+ ]]>
+         </script>
+          </b:tab>
+          <b:tab title="displayed as">
+                 <h:form id="messageForm">
+                  <b:panelGrid colSpans="3,9">
+                    <b:switch value="#{checkboxBean.cbxError}" 
+                                    id="checkboxWithErrorMessage"
+                                    caption="click to toggle the error message" 
+                                    label="error"
+                                    onchange="ajax:checkboxBean.action();"
+                                    update="@form"
+                                    />
+                    <b:message />
+                    <b:switch value="#{checkboxBean.cbxFatal}" 
+                                    id="checkboxWithFatalMessage"
+                                    caption="click to toggle the fatal error message" 
+                                    label="fatal"
+                                    onchange="ajax:checkboxBean.action();"
+                                    update="@form"
+                                    />
+                    <b:message for="checkboxWithFatalMessage" />
+                    <b:switch value="#{checkboxBean.cbxWarning}" 
+                                    id="checkboxWithWarning"
+                                    caption="click to toggle the warning" 
+                                    label="warning"
+                                    onchange="ajax:checkboxBean.action();"
+                                    update="@form"
+                                    />
+                    <b:message for="@previous:@previous:@next" />
+                    <b:switch value="#{checkboxBean.cbxInfo}" 
+                                    id="checkboxWithInfoMessage"
+                                    caption="click to toggle the info message" 
+                                    label="info"
+                                    onchange="ajax:checkboxBean.action();"
+                                    update="@form"
+                                    />
+                                    
+                    <b:message for="@form:**:checkboxWithInfoMessage" />
+                  </b:panelGrid>
+                </h:form>          
+             </b:tab>
+        </b:tabView>
+
     <br />
     <h1>Reference section</h1>
-    <ui:include src="SelectOneMenuAttributes.xhtml" />
+    <ui:include src="SwitchAttributes.xhtml" />
     <b:panel look="info">
       <f:facet name="heading">
         <b>Skinning</b>
       </f:facet>
       <p>
-        The entire checkbox (including label and caption) is enclosed in a
+        The entire switch (including label and caption) is enclosed in a
         <code>div</code>
         bearing the CSS-class
         <code>checkbox</code>
