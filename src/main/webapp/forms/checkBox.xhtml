@@ -115,6 +115,85 @@
 				</b:tabView>
 				<br />
         
+                <h2>Tooltips</h2>
+               <p>The example below shows both options:</p> 
+        <b:tabView activeIndex="1">
+          <b:tab title="JSF markup">
+            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+           <h:form>
+              <h:panelGrid columns="2"  cellpadding="5">
+                  <b:selectBooleanCheckbox value="#num;{checkboxBean.editable}"  
+                                label="disabled checkbox with tooltip"
+                                tooltip="This is a tooltip."/>
+                  <b:selectBooleanCheckbox value="#num;{checkboxBean.checkbox}" 
+                                disabled="true"
+                                label="disabled checkbox with tooltip"
+                                tooltip="Even a disabled checkbox can have a tooltip."/>
+                </h:panelGrid>
+           </h:form>
+ ]]>
+    </script>
+          </b:tab>
+          <b:tab title="displayed as">
+            <h:form>
+              <h:panelGrid columns="2"  cellpadding="5">
+                  <b:selectBooleanCheckbox value="#{checkboxBean.editable}"  
+                                label="disabled checkbox with tooltip"
+                                tooltip="This is a tooltip."/>
+                  <b:selectBooleanCheckbox value="#{checkboxBean.checkbox}" 
+                                disabled="true"
+                                label="disabled checkbox with tooltip"
+                                tooltip="Even a disabled checkbox can have a tooltip."/>
+                </h:panelGrid>
+            </h:form>
+          </b:tab>
+        </b:tabView>
+
+                <h2>RTL-support</h2>
+                <p>Bootstrap 3 doesn't support languages writing from right to left properly. Hence BootsFaces 
+                offers limited support of RTL, too. However, you can add RTL by adding this library:</p>
+                <p><a target="#" href="https://github.com/morteza/bootstrap-rtl">https://github.com/morteza/bootstrap-rtl</a></p>
+               <p>The example shows the out-of-the-box support of BootsFaces:</p> 
+        <b:tabView activeIndex="1">
+          <b:tab title="JSF markup">
+            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+           <h:form>
+              <h:panelGrid columns="2"  cellpadding="5">
+                 <b:selectBooleanCheckbox value="#num;{checkboxBean.editable}"  
+                                label="This is how RTL works!"
+								caption="RTL is active."
+								dir="rtl"
+                                tooltip="Note the position of the exclamation mark. That's due to activating RTL."/>
+                   <b:selectBooleanCheckbox value="#num;{checkboxBean.checkbox}" 
+                                disabled="true"
+                                label="This is how LTR works!"
+                                caption="LTR is active."
+                                tooltip="LTR is the default value."/>
+                </h:panelGrid>
+           </h:form>
+ ]]>
+    </script>
+          </b:tab>
+          <b:tab title="displayed as">
+            <h:form>
+              <h:panelGrid columns="2"  cellpadding="5">
+                 <b:selectBooleanCheckbox value="#{checkboxBean.editable}"  
+                                label="This is how RTL works!"
+								caption="RTL is active."
+								dir="rtl"
+                                tooltip="Note the position of the exclamation mark. That's due to activating RTL."/>
+                   <b:selectBooleanCheckbox value="#{checkboxBean.checkbox}" 
+                                disabled="true"
+                                label="This is how LTR works!"
+                                caption="LTR is active."
+                                tooltip="LTR is the default value."/>
+                </h:panelGrid>
+            </h:form>
+          </b:tab>
+        </b:tabView>
+        
                 <h2>AJAX and JavaScript  <b:badge value="since 0.8.0" /></h2>
                 <p>The <code>&lt;b:selectBooleanCheckbox &gt;</code> supports the full suite of JavaScript and AJAX events,
                 as described in <a href="ajax.jsf">the description of AJAX in BootsFaces</a>. Basically, each of the

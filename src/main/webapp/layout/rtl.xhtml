@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:b="http://bootsfaces.net/ui"
+  xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:define name="content">
+    <style>
+td {
+	padding: 8px;
+}
+</style>
+    <h1>RTL support</h1>
+
+    <p>BootsFaces adds some limited support for RTL (right-to-left) languages. However, RTL isn't fully supported by
+      Bootstrap itself. However, you can add RTL by adding this library:</p>
+    <p>
+      <a target="#" href="https://github.com/morteza/bootstrap-rtl">https://github.com/morteza/bootstrap-rtl</a>
+    </p>
+    <h1>Basic usage</h1>
+    <p>Many BootsFaces components have an <code>dir</code> attribute. Set it to <code>dir="rtl"</code> to activate
+    RTL rendering.</p>
+
+    <script type="text/javascript">
+					SyntaxHighlighter.all();
+				</script>
+    <br />
+    <br />
+    <br />
+    <br />
+  </ui:define>
+</ui:composition>
