@@ -25,11 +25,14 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 @ManagedBean
 public class SettingsBean implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private int value1;
 	private int value2;
 
 	private boolean checkbox1;
 	private boolean checkbox2;
+	private boolean checkbox3;
+	private boolean checkbox4;
 
 	public int getValue1() {
 		return value1;
@@ -63,4 +66,23 @@ public class SettingsBean implements Serializable {
 		this.checkbox2 = checkbox2;
 	}
 
+	public boolean isCheckbox3() {
+		return checkbox3;
+	}
+
+	public void setCheckbox3(boolean checkbox3) {
+		this.checkbox3 = checkbox3;
+	}
+
+	public void action() {
+		
+	}
+
+	public boolean isCheckbox4() {
+		return checkbox4;
+	}
+
+	public void setCheckbox4(boolean checkbox4) {
+		this.checkbox4 = checkbox4;
+	}
 }

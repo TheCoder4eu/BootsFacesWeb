@@ -1,0 +1,196 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:b="http://bootsfaces.net/ui"
+  xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:define name="content">
+    <style>
+.show-grid [class^="col-"] {
+	background-color: rgba(86, 61, 124, 0.15);
+	border: 1px solid rgba(86, 61, 124, 0.2);
+	padding-bottom: 10px;
+	padding-top: 10px;
+	margin-bottom: 15px;
+}
+
+//
+Needed for TBS 3.0.1 (panel content overflow issue )
+                      .panel-body {
+	margin: 0px 15px;
+}
+</style>
+    <h1>Simplified layout</h1>
+    <p>
+      The BootsFaces approach to defining rows and columns using
+      <code>&lt;b:row /&gt;</code>
+      and
+      <code>&lt;b:column /&gt;</code>
+      is a little simpler than the HTML-only Bootstrap approach, but BootsFaces doesn't stop there. There are two
+      shortcuts you can take.
+    </p>
+    <h2>The <code>&lt;b:panelGrid /&gt;</code></h2>
+    <p>
+      Use the
+      <code>&lt;b:panelGrid /&gt;</code>
+      to define forms. More often than not, forms have a very strict layout, often consisting of one or two columns of
+      input fields, which in turn consist of a label column, the input field columns and an error message column. In
+      such a situation,
+      <code>&lt;b:panelGrid /&gt;</code>
+      is the component to use. Read the full story at <a href="../layout/panelgrids.jsf">the documentation page of <code>&lt;b:panelGrid
+          /&gt;</code>.
+      </a>
+    </p>
+    <h2>The <code>span</code> attribute of most input fields</h2>
+    <p>
+      Many components have a
+      <code>span</code>
+      attribute. If this attribute is set, the component automatically is surrounded by a
+      <code>&lt;b:column /&gt;</code>
+      :
+    </p>
+    <h:form>
+      <b:tabView activeIndex="1"
+        contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding-right:25px;padding-left:25px;padding-top:10px"
+        contentClass="show-grid">
+        <b:tab title="JSF markup">
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+          <b:row>
+            <b:inputText value="" span="3" placeholder="Row 1 - 3 columns" />
+            <b:inputText value="" span="6" placeholder="Row 1 - 6 columns" />
+            <b:inputText value="" span="3" placeholder="Row 2 - 3 columns" />
+          </b:row>
+          <b:row>
+            <b:inputText value="value 1" span="3" label="Row 2 - 3 columns" renderLabel="true" />
+            <b:inputText value="value 2" span="5" label="Row 2 - 5 columns" renderLabel="true" />
+            <b:inputText value="value 3" span="4" label="Row 2 - 4 columns" renderLabel="true" />
+          </b:row>
+          <b:row>
+            <b:selectBooleanCheckbox value="true" span="2" label="Row 3 - 2 columns" renderLabel="true" />
+            <b:selectBooleanCheckbox value="false" span="5" label="Row 3 - 5 columns" renderLabel="true" />
+            <b:selectBooleanCheckbox value="true" span="5" label="Row 3 - 5 columns" renderLabel="true" />
+          </b:row>
+         <b:row>
+            <b:selectOneMenu value="" span="3" label="Row 4 - 3 columns" renderLabel="true">
+              <f:selectItem itemLabel="Value 1" />
+              <f:selectItem itemLabel="Value 2" />
+            </b:selectOneMenu>
+            <b:selectOneMenu value="" span="3" label="Row 4 - 3 columns" renderLabel="true">
+              <f:selectItem itemLabel="Value 1" />
+              <f:selectItem itemLabel="Value 2" />
+            </b:selectOneMenu>
+            <b:selectOneMenu value="" span="3" label="Row 4 - 3 columns" renderLabel="true">
+              <f:selectItem itemLabel="Value 1" />
+              <f:selectItem itemLabel="Value 2" />
+            </b:selectOneMenu>
+            <b:selectOneMenu value="" span="3" label="Row 4 - 3 columns" renderLabel="true">
+              <f:selectItem itemLabel="Value 1" />
+              <f:selectItem itemLabel="Value 2" />
+            </b:selectOneMenu>
+          </b:row>
+         <b:row>
+            <b:selectMultiMenu value="" span="2" label="Row 5 - 2 columns" renderLabel="true">
+              <f:selectItem itemLabel="Value 1" />
+              <f:selectItem itemLabel="Value 2" />
+            </b:selectMultiMenu>
+            <b:selectMultiMenu value="" span="3" label="Row 5 - 3 columns" renderLabel="true">
+              <f:selectItem itemLabel="Value 1" />
+              <f:selectItem itemLabel="Value 2" />
+            </b:selectMultiMenu>
+            <b:selectMultiMenu value="" span="4" label="Row 5 - 4 columns" renderLabel="true">
+              <f:selectItem itemLabel="Value 1" />
+              <f:selectItem itemLabel="Value 2" />
+            </b:selectMultiMenu>
+            <b:selectMultiMenu value="" span="3" label="Row 5 - 3 columns" renderLabel="true">
+              <f:selectItem itemLabel="Value 1" />
+              <f:selectItem itemLabel="Value 2" />
+            </b:selectMultiMenu>
+          </b:row>
+          <b:row>
+            <b:switch value="true" span="2" label="Row 6 - 2 columns" renderLabel="true" />
+            <b:switch value="false" span="5" label="Row 6 - 5 columns" renderLabel="true" />
+            <b:switch value="true" span="5" label="Row 6 - 5 columns" renderLabel="true" />
+          </b:row>
+          <b:row>
+            <b:inputTextarea value="value 1" span="3" rows="3" label="Row 7 - 3 columns" renderLabel="true" />
+            <b:inputTextarea value="value 2" span="5" rows="3" label="Row 7 - 5 columns" renderLabel="true" />
+            <b:inputTextarea value="value 3" span="4" rows="3" label="Row 7 - 4 columns" renderLabel="true" />
+          </b:row>
+ ]]>
+         </script>
+        </b:tab>
+        <b:tab title="live preview" >
+          <b:row>
+            <b:inputText value="" span="3" placeholder="Row 1 - 3 columns" />
+            <b:inputText value="" span="6" placeholder="Row 1 - 6 columns" />
+            <b:inputText value="" span="3" placeholder="Row 2 - 3 columns" />
+          </b:row>
+          <b:row>
+            <b:inputText value="value 1" span="3" label="Row 2 - 3 columns" renderLabel="true" />
+            <b:inputText value="value 2" span="5" label="Row 2 - 5 columns" renderLabel="true" />
+            <b:inputText value="value 3" span="4" label="Row 2 - 4 columns" renderLabel="true" />
+          </b:row>
+          <b:row>
+            <b:selectBooleanCheckbox value="true" span="2" label="Row 3 - 2 columns" renderLabel="true" />
+            <b:selectBooleanCheckbox value="false" span="5" label="Row 3 - 5 columns" renderLabel="true" />
+            <b:selectBooleanCheckbox value="true" span="5" label="Row 3 - 5 columns" renderLabel="true" />
+          </b:row>
+         <b:row>
+            <b:selectOneMenu value="" span="3" label="Row 4 - 3 columns" renderLabel="true">
+              <f:selectItem itemLabel="Value 1" />
+              <f:selectItem itemLabel="Value 2" />
+            </b:selectOneMenu>
+            <b:selectOneMenu value="" span="3" label="Row 4 - 3 columns" renderLabel="true">
+              <f:selectItem itemLabel="Value 1" />
+              <f:selectItem itemLabel="Value 2" />
+            </b:selectOneMenu>
+            <b:selectOneMenu value="" span="3" label="Row 4 - 3 columns" renderLabel="true">
+              <f:selectItem itemLabel="Value 1" />
+              <f:selectItem itemLabel="Value 2" />
+            </b:selectOneMenu>
+            <b:selectOneMenu value="" span="3" label="Row 4 - 3 columns" renderLabel="true">
+              <f:selectItem itemLabel="Value 1" />
+              <f:selectItem itemLabel="Value 2" />
+            </b:selectOneMenu>
+          </b:row>
+         <b:row>
+            <b:selectMultiMenu value="" span="2" label="Row 5 - 2 columns" renderLabel="true">
+              <f:selectItem itemLabel="Value 1" />
+              <f:selectItem itemLabel="Value 2" />
+            </b:selectMultiMenu>
+            <b:selectMultiMenu value="" span="3" label="Row 5 - 3 columns" renderLabel="true">
+              <f:selectItem itemLabel="Value 1" />
+              <f:selectItem itemLabel="Value 2" />
+            </b:selectMultiMenu>
+            <b:selectMultiMenu value="" span="4" label="Row 5 - 4 columns" renderLabel="true">
+              <f:selectItem itemLabel="Value 1" />
+              <f:selectItem itemLabel="Value 2" />
+            </b:selectMultiMenu>
+            <b:selectMultiMenu value="" span="3" label="Row 5 - 3 columns" renderLabel="true">
+              <f:selectItem itemLabel="Value 1" />
+              <f:selectItem itemLabel="Value 2" />
+            </b:selectMultiMenu>
+          </b:row>
+          <b:row>
+            <b:switch value="true" span="2" label="Row 6 - 2 columns" renderLabel="true" />
+            <b:switch value="false" span="5" label="Row 6 - 5 columns" renderLabel="true" />
+            <b:switch value="true" span="5" label="Row 6 - 5 columns" renderLabel="true" />
+          </b:row>
+          <b:row>
+            <b:inputTextarea value="value 1" span="3" rows="3" label="Row 7 - 3 columns" renderLabel="true" />
+            <b:inputTextarea value="value 2" span="5" rows="3" label="Row 7 - 5 columns" renderLabel="true" />
+            <b:inputTextarea value="value 3" span="4" rows="3" label="Row 7 - 4 columns" renderLabel="true" />
+          </b:row>
+        </b:tab>
+      </b:tabView>
+    </h:form>
+
+    <br />
+    <br />
+    <br />
+    <script type="text/javascript">
+					SyntaxHighlighter.all();
+				</script>
+  </ui:define>
+</ui:composition>

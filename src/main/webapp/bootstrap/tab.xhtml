@@ -77,7 +77,7 @@
 		<b:commandButton actionListener="#{testBean.nextTab}" value="next tab"/>
 		</h:form>
 		
-		<h3>Persistent tab selection</h3>
+		<h2>Persistent tab selection</h2>
 		<p>By default, the first tab is opened, or the tab defined by <code>activeIndex</code>. This also holds true after a postback (i.e. after 
 		clicking a command button that shows the current JSF page again), unless you put the <code>&lt;b:tabView /&gt;</code>
 		into the same form as the button.</p>
@@ -112,6 +112,33 @@
 
                             ]]></script>
 		</b:panel>
+    
+        <h2>Tabs with borders</h2>
+        <p>You can use add some CSS commands to convert the tab into a more traditional tab with borders:</p>
+        <h:form>
+          <b:tabView contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+            <b:tab title="JSF markup">
+              <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+      <h:form>
+        <b:tabView contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+          <b:tab title="JSF markup">
+			...
+          </b:tab>
+          <b:tab title="second tab">
+              Put some text here.
+          </b:tab>
+         </b:tabView>
+     </h:form>
+ ]]>
+         </script>
+            </b:tab>
+            <b:tab title="second tab">
+              Put some text here.
+            </b:tab>
+          </b:tabView>
+        </h:form>
+        
     
         <h2>AJAX and JavaScript <b:badge value="since 0.8.0" /></h2>
         <p><code>&lt;b:tabView &gt;</code> and <code>&lt;b:tab &gt;</code> support many JavaScript and AJAX events,
