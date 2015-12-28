@@ -37,9 +37,14 @@
 					    <td>An el expression referring to a server side UIComponent instance in a backing bean.</td>
 					</tr>
 					<tr>
+					    <td>buttonContainer</td>
+					    <td>(none)</td>
+					    <td>HTML snippet of the container holding both the button as well as the dropdown. Default: <div class='btn-group' style='display:block' />. Note that the original definition of the widget doesn't use the style definition. We've added it to fix a rendering bug.</td>
+					</tr>
+					<tr>
 					    <td>dir</td>
 					    <td>(none)</td>
-					    <td>Direction indication for text that does not inherit directionality.</td>
+					    <td>Direction indication for text that does not inherit directionality. Legal values: ltr (Default. Left-to-right text direction), rtl (Right-to-left text direction) and auto (let the browser figure out the direction of your alphebet, based on the page content).</td>
 					</tr>
 					<tr>
 					    <td>disabled</td>
@@ -69,7 +74,7 @@
 					<tr>
 					    <td>lang</td>
 					    <td>(none)</td>
-					    <td>A localized user presentable name.</td>
+					    <td>Code describing the language used in the generated markup for this component.</td>
 					</tr>
 					<tr>
 					    <td>maxHeight</td>
@@ -214,7 +219,7 @@
 					<tr>
 					    <td>tabindex</td>
 					    <td>(none)</td>
-					    <td>Advisory tooltip information.</td>
+					    <td>Position of this element in the tabbing order for the current document.  This value must be an integer between 0 and 32767.</td>
 					</tr>
 					<tr>
 					    <td>title</td>
@@ -225,6 +230,11 @@
 					    <td>tooltip</td>
 					    <td>(none)</td>
 					    <td>The text of the tooltip.</td>
+					</tr>
+					<tr>
+					    <td>tooltipContainer</td>
+					    <td> body </td>
+					    <td>Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering error in special cases. Also see data-container in the documentation of Bootstrap. The default value is body.</td>
 					</tr>
 					<tr>
 					    <td>tooltipDelay</td>

@@ -62,7 +62,6 @@ public class CheckboxBean implements Serializable {
 	}
 
 	public void action() {
-		System.out.println("Action");
 	}
 
 	public boolean isCbxFatal() {

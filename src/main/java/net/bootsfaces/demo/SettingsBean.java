@@ -79,12 +79,10 @@ public class SettingsBean implements Serializable {
 	}
 
 	public boolean isCheckbox4() {
-		System.out.println(checkbox4);
 		return checkbox4;
 	}
 
 	public void setCheckbox4(boolean checkbox4) {
 		this.checkbox4 = checkbox4;
-		System.out.println("=" + checkbox4);
 	}
 }
