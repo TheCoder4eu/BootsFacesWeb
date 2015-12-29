@@ -37,8 +37,10 @@
                     </ul>
                 </p>
                 <p><b:badge value="changed in 0.8.1" /> For some technical reason, in BootsFaces 0.8.0 the <code>&lt;b:navLink /&gt;</code> component couldn't call JSF action listeners. To circumvent this limitation, there's a second
-                component, we added <code>&lt;b:navCommandLink /&gt;</code>. Since BootsFaces 0.8.1, both widgets are identical, and both are fully AJAX-aware. We'll remove <code>&lt;b:navCommandLink /&gt;</code>
-                in a future version, but currently it's still there for the sake of compatibility.</p>
+                component, we added <code>&lt;b:navCommandLink /&gt;</code>. The advantage of <code>&lt;b:navCommandLink /&gt;</code> is that is can be use the <code>actionListener</code>
+                and <code>action</code> attributes. The disadvantage is that is has to be put in a <code>&lt;h:form /&gt;</code>. Other than that, both components are identical.
+                In particular, both components support the new unified AJAX API introduced with BootsFaces 0.8.0. You only see the differences when you try to use
+                the standard JSF AJAX API.</p>
                 <br/>
                 
                 <p>The outcome link, the external link and the Javascript link can have an icon adding the attribute <code>icon</code> (on the left or right, default is left).</p>
@@ -66,6 +68,7 @@
                                     <b:navLink value="Slider" outcome="/jquery-ui/slider" iconAwesome="sliders"/>
                                     <b:navCommandLink value="AJAX actionListener" actionListener="#{messagesBean.info}"
                                                icon="tag" iconAlign="right" update="@form"/>
+                                    <b:messages />
                                     
                                 </b:listLinks>
                              </b:panel>
@@ -177,7 +180,175 @@
                 <p>As you can see, the nested content is always rendered between the text and the label. However,
                 in most cases you may want to consider moving the text and the icon (if there are any) into the nested
                 content. This way, the JSF source code looks a bit cleaner.</p>
-				
+                
+                <h2>AJAX <b:badge value="since 0.8.1" /></h2>
+                <p>Both <code>&lt;b:navCommandLink /&gt;</code> and <code>&lt;b:navLink /&gt;</code> support the new 
+                unified AJAX API introduced with BootsFaces 0.8.1. <code>&lt;b:navCommandLink /&gt;</code> also supports
+                the traditional and the PrimeFaces AJAX API (to a certain extent).</p>
+                <h3>Using b:navLink with AJAX</h3>
+      <b:tabView activeIndex="2"
+        contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding-right:25px;padding-left:25px;padding-top:10px"
+        contentClass="show-grid">
+        <b:tab title="JSF markup">
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+          <b:panelGrid colSpans="6,6">
+            <b:panel look="primary" title="Navigation menu">
+              <b:listLinks>
+                <b:navLink onclick="ajax:navLinkBean.navigateToPage(0, 'b:navLink')" value="Page 1  (NavLink)" update="**:targetPage"/>
+                <b:navLink onclick="ajax:navLinkBean.navigateToPage(1, 'b:navLink')" value=" Page 2 (NavLink)" update="**:targetPage"/>
+              </b:listLinks>
+            </b:panel>
+            <b:panel title="#{navLinkBean.getPageTitle()}" id="targetPage" look="#{navLinkBean.getPageLook()}">
+              #{navLinkBean.getPageContent()}
+            </b:panel>
+          </b:panelGrid>
+ ]]>
+         </script>
+        </b:tab>
+        <b:tab title="Java Bean">
+          <script type="syntaxhighlighter" class="brush: java toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+@ViewScoped
+@ManagedBean
+public class NavLinkBean implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	private int activePage = 0;
+
+	private String source;
+
+	public void navigateToPage(int page, String source) {
+		activePage = page;
+		this.source = source;
+	}
+
+	public String getPageTitle() {
+		return "Page " + (activePage + 1);
+	}
+
+	public String getPageContent() {
+		if (source == null) {
+			return "This is the default page.";
+		}
+		if (0 == activePage)
+			return "This is the first page, and you've called it using a " + source + ".";
+		if (1 == activePage)
+			return "This is the second page, and you've called it using a " + source + ".";
+		return "This is an unknown page.";
+	}
+
+	public String getPageLook() {
+		if (0 == activePage)
+			return "primary";
+		return "success";
+	}
+}
+ ]]>
+         </script>
+        </b:tab>
+        <b:tab title="live preview">
+          <b:panelGrid colSpans="6,6">
+            <b:panel look="primary" title="Navigation menu">
+              <b:listLinks>
+                <b:navLink onclick="ajax:navLinkBean.navigateToPage(0, 'b:navLink')" value="Page 1  (NavLink)" update="**:targetPage"/>
+                <b:navLink onclick="ajax:navLinkBean.navigateToPage(1, 'b:navLink')" value=" Page 2 (NavLink)" update="**:targetPage"/>
+              </b:listLinks>
+            </b:panel>
+            <b:panel title="#{navLinkBean.getPageTitle()}" id="targetPage" look="#{navLinkBean.getPageLook()}">
+              #{navLinkBean.getPageContent()}
+            </b:panel>
+          </b:panelGrid>
+        </b:tab>
+      </b:tabView>
+ 
+ <h3>Using b:navCommandLink with AJAX</h3>
+ <p>Using <code>&lt;b:navCommandLink /&gt;</code> isn't much different from using  <code>&lt;b:navLink /&gt;</code>.
+ You have to put it in a <code>&lt;h:form /&gt;</code>. On the plus side, you are rewarded with being allowed to use the attributes 
+ <code>action</code> and <code>actionListener</code>.</p>
+ <h:form>
+       <b:tabView activeIndex="2"
+        contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding-right:25px;padding-left:25px;padding-top:10px"
+        contentClass="show-grid">
+        <b:tab title="JSF markup">
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+       <h:form>
+         <b:panelGrid colSpans="6,6">
+            <b:panel look="primary" title="Navigation menu">
+              <b:listLinks>
+                <b:navCommandLink onclick="ajax:navLinkBean.navigateToPage(0, 'b:navCommandLink')"
+                  value="Page 1 (NavCommandLink)" update="**:targetPage" />
+                <b:navCommandLink onclick="ajax:navLinkBean.navigateToPage(1, 'b:navCommandLink')"
+                  value=" Page 2 (NavCommandLink)" update="**:targetPage" />
+              </b:listLinks>
+            </b:panel>
+            <b:panel title="#{navLinkBean.getPageTitle()}" id="targetPage" look="#{navLinkBean.getPageLook()}">
+               #{navLinkBean.getPageContent()}
+            </b:panel>
+          </b:panelGrid>
+       </h:form>
+ ]]>
+         </script>
+        </b:tab>
+       <b:tab title="Java Bean">
+          <script type="syntaxhighlighter" class="brush: java toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+@ViewScoped
+@ManagedBean
+public class NavLinkBean implements Serializable {
+  private static final long serialVersionUID = 1L;
+
+  private int activePage = 0;
+
+  private String source;
+
+  public void navigateToPage(int page, String source) {
+    activePage = page;
+    this.source = source;
+  }
+
+  public String getPageTitle() {
+    return "Page " + (activePage + 1);
+  }
+
+  public String getPageContent() {
+    if (source == null) {
+      return "This is the default page.";
+    }
+    if (0 == activePage)
+      return "This is the first page, and you've called it using a " + source + ".";
+    if (1 == activePage)
+      return "This is the second page, and you've called it using a " + source + ".";
+    return "This is an unknown page.";
+  }
+
+  public String getPageLook() {
+    if (0 == activePage)
+      return "primary";
+    return "success";
+  }
+}
+ ]]>
+         </script>
+        </b:tab>
+        <b:tab title="live preview">
+          <b:panelGrid colSpans="6,6">
+            <b:panel look="primary" title="Navigation menu">
+              <b:listLinks>
+                <b:navCommandLink onclick="ajax:navLinkBean.navigateToPage(0, 'b:navCommandLink')"
+                  value="Page 1 (NavCommandLink)" update="**:targetPage" />
+                <b:navCommandLink onclick="ajax:navLinkBean.navigateToPage(1, 'b:navCommandLink')"
+                  value=" Page 2 (NavCommandLink)" update="**:targetPage" />
+              </b:listLinks>
+            </b:panel>
+            <b:panel title="#{navLinkBean.getPageTitle()}" id="targetPage" look="#{navLinkBean.getPageLook()}">
+               #{navLinkBean.getPageContent()}
+            </b:panel>
+          </b:panelGrid>
+        </b:tab>
+      </b:tabView>
+ 				</h:form>
                 <br/>
                 
                 <h2>Reference section</h2>
