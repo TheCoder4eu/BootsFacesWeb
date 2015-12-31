@@ -68,7 +68,7 @@
       <groupId>net.bootsfaces</groupId>
       <artifactId>bootsfaces</artifactId>
       <version>0.8.1-SNAPSHOT</version>
-      <scope>compile</scope>
+      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>de.beyondjava</groupId>

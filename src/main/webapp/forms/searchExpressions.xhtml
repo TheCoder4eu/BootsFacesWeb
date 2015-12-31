@@ -58,6 +58,8 @@
 					<li>@previous find the previous JSF element in the same level of the JSF tree. Note that this usually is different from the predecessor in the HMTL tree.</li>
 					<li>@next finds the next JSF element in the same level of the JSF tree.</li>
 					<li>@parent finds the parent element of the current widget in the JSF tree.</li>
+                    <li>@child(n) yields a certain child of the currently selected JSF subtree. However, I don't recommend using this search expression. It's extremely 
+                    vulnerable to changes of your JSF view.</li>
                     <li>@() jquery expressions. These expressions are evaluated on the client. The most useful application is <code>@(.css-class)</code> to find
                     one or more elements with a given CSS class. The advantage of the jQuery expressions is that you aren't restricted to by the
                     JSF tree. Instead, the jQuery expressions always searches the entires DOM tree. Be careful: sometimes this can result in
@@ -80,7 +82,6 @@
 					<li>@findPartialIdRecursive(id)  find one or many ids, given by a wildcard expression: <code>*suffix</code>, <code>prefix*</code> or <code>prefix*suffix</code>.
 					Searches the entire tree.</li>
 					<li>**:*id or **:id* or **:*id* shortcut for @findPartialIdRecursive </li>
-					<li>@child(n) yields a certain child of the currently selected JSF subtree.</li>
 				</ul>
 				
 				<h2>PrimeFaces search expressions BootsFaces does not support</h2>
