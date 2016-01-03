@@ -8,30 +8,32 @@
     <link type="text/css" rel="stylesheet" href="/BootsFacesWeb/javax.faces.resource/bootstrap-rtl.css.jsf?ln=rtl"
       id="rtlStyleSheet" />
     <script>
-					function toggleCSSStylesheet() {
-						if (document.getElementById('rtlStyleSheet').href
-								.indexOf('bootstrap-ltr.css') > 0)
-							document.getElementById('rtlStyleSheet').href = '/BootsFacesWeb/javax.faces.resource/bootstrap-rtl.css.jsf?ln=rtl';
-						else
-							document.getElementById('rtlStyleSheet').href = '/BootsFacesWeb/javax.faces.resource/bootstrap-ltr.css.jsf?ln=rtl';
-					}
-				</script>
-    <h:form>
+		function toggleCSSStylesheet() {
+			if (document.getElementById('rtlStyleSheet').href
+					.indexOf('bootstrap-ltr.css') > 0)
+				document.getElementById('rtlStyleSheet').href = '/BootsFacesWeb/javax.faces.resource/bootstrap-rtl.css.jsf?ln=rtl';
+			else
+				document.getElementById('rtlStyleSheet').href = '/BootsFacesWeb/javax.faces.resource/bootstrap-ltr.css.jsf?ln=rtl';
+		}
+	</script>
+  <h:form>
                            <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
                                 <b:tab title="Live preview">
-     <b:row class="rtlContent">
+     <b:row>
         <b:column span="12">
           <h1>RTL support</h1>
         </b:column>
       </b:row>
       <b:row class="rtlContent">
-        <b:column span="12">#{rtlBean.rtl}
+        <b:column span="12">
           <b:switch label="View this page in" value="#{rtlBean.rtl}" onText="rtl" offText="ltr" offColor="success"
-            onchange="ajax:rtlBean.toggleRTL()" update="@(.rtlContent)" onxcomplete="toggleCSSStylesheet();" />
+            onchange="ajax:rtlBean.toggleRTL()" update="@(.rtlContent)" oncomplete="toggleCSSStylesheet();" />
         </b:column>
       </b:row>
                                 </b:tab>
                                 <b:tab title="JSF Markup"  dir="ltr">
+                                <p>Note that this tab always uses <code>dir="ltr"</code>. Otherwise, the sourcecode
+                                looks a bit corrupted.</p>
                                 
                                     <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
 
@@ -50,9 +52,56 @@
                                     
                                     ]]></script>
                                 </b:tab>
+                             <b:tab title="JavaScript code"  dir="ltr">
+                                <p>Note that this tab always uses <code>dir="ltr"</code>. Otherwise, the sourcecode
+                                looks a bit corrupted.</p>
+                                
+                                    <script type="syntaxhighlighter" class="brush: js; toolbar: false;first-line: 0">
+                                    <![CDATA[
+    <script>
+		function toggleCSSStylesheet() {
+			if (document.getElementById('rtlStyleSheet').href
+					.indexOf('bootstrap-ltr.css') > 0)
+				document.getElementById('rtlStyleSheet').href = '/BootsFacesWeb/javax.faces.resource/bootstrap-rtl.css.jsf?ln=rtl';
+			else
+				document.getElementById('rtlStyleSheet').href = '/BootsFacesWeb/javax.faces.resource/bootstrap-ltr.css.jsf?ln=rtl';
+		}
+	&lt;/script>
+                                    ]]></script>
+                                </b:tab>
+                             <b:tab title="Java Bean"  dir="ltr">
+                                <p>Note that this tab always uses <code>dir="ltr"</code>. Otherwise, the sourcecode
+                                looks a bit corrupted.</p>
+                                
+                                    <script type="syntaxhighlighter" class="brush: java; toolbar: false;first-line: 0">
+
+                                    <![CDATA[
+@SessionScoped
+@ManagedBean
+public class RtlBean implements Serializable {
+	private static final long serialVersionUID = 1L;
+	private boolean rtl = false;
+
+	public boolean isRtl() {
+		return rtl;
+	}
+
+	public void setRtl(boolean rtl) {
+		this.rtl = rtl;
+	}
+
+	public String getDirection() {
+		return rtl ? "rtl" : "ltr";
+	}
+	
+	public void toggleRTL() {
+	}
+}
+                                    ]]></script>
+                                </b:tab>
                             </b:tabView>
 
-      <b:row class="rtlContent">
+      <b:row>
         <b:column span="12">
           <p>BootsFaces adds some limited support for RTL (right-to-left) languages. Many components offer a
           <code>dir</code> attribute. Setting it to <code>rtl</code> activates the support for right-to-left languages
@@ -67,7 +116,7 @@
           circumvents this problem by activating and deactivating the CSS file when you toggle the switch.</p>
         </b:column>
       </b:row>
-      <b:row dir="#{rtlBean.direction}" class="rtlContent">
+      <b:row>
         <b:column span="12">
           <h1 dir="#{rtlBean.direction}">Examples</h1>
           <p dir="#{rtlBean.direction}">
@@ -84,8 +133,7 @@
       <h3>Using the default direction:</h3>
      <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
           <b:tab title="Live preview">
-      <b:row style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black"
-        class="rtlContent">
+      <b:row style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black">
         <b:column span="2" style="border:1px solid black">European Digits</b:column>
         <b:column span="1" style="border:1px solid black">0</b:column>
         <b:column span="1" style="border:1px solid black">1</b:column>
@@ -98,8 +146,7 @@
         <b:column span="1" style="border:1px solid black">8</b:column>
         <b:column span="1" style="border:1px solid black">9</b:column>
       </b:row>
-      <b:row style="border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black"
-        class="rtlContent">
+      <b:row style="border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black">
         <b:column span="2" style="border:1px solid black">Arabic Digits</b:column>
         <b:column span="1" lang="ar" style="border:1px solid black">٠</b:column>
         <b:column span="1" lang="ar" style="border:1px solid black">١</b:column>
@@ -113,11 +160,12 @@
         <b:column span="1" lang="ar" style="border:1px solid black">٩</b:column>
       </b:row>
           </b:tab>
-          <b:tab title="JSF Markup">
+          <b:tab title="JSF Markup"  dir="ltr">
+                                <p>Note that this tab always uses <code>dir="ltr"</code>. Otherwise, the sourcecode
+                                looks a bit corrupted.</p>
               <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                                     <![CDATA[
-      <b:row style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black"
-        class="rtlContent">
+      <b:row style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black">
         <b:column span="2" style="border:1px solid black">European Digits</b:column>
         <b:column span="1" style="border:1px solid black">0</b:column>
         <b:column span="1" style="border:1px solid black">1</b:column>
@@ -130,8 +178,7 @@
         <b:column span="1" style="border:1px solid black">8</b:column>
         <b:column span="1" style="border:1px solid black">9</b:column>
       </b:row>
-      <b:row style="border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black"
-        class="rtlContent">
+      <b:row style="border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black">
         <b:column span="2" style="border:1px solid black">Arabic Digits</b:column>
         <b:column span="1" lang="ar" style="border:1px solid black">٠</b:column>
         <b:column span="1" lang="ar" style="border:1px solid black">١</b:column>
@@ -153,8 +200,7 @@
       ordering itself:</p>
      <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
           <b:tab title="Live preview">
-      <b:row dir="ltr" style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black"
-        class="rtlContent">
+      <b:row dir="ltr" style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black">
         <b:column span="2" style="border:1px solid black">European Digits</b:column>
         <b:column span="1" style="border:1px solid black">0</b:column>
         <b:column span="1" style="border:1px solid black">1</b:column>
@@ -167,8 +213,7 @@
         <b:column span="1" style="border:1px solid black">8</b:column>
         <b:column span="1" style="border:1px solid black">9</b:column>
       </b:row>
-      <b:row dir="ltr" style="border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black"
-        class="rtlContent">
+      <b:row dir="ltr" style="border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black">
         <b:column span="2" style="border:1px solid black">Arabic Digits</b:column>
         <b:column span="1" lang="ar" style="border:1px solid black">٠</b:column>
         <b:column span="1" lang="ar" style="border:1px solid black">١</b:column>
@@ -182,11 +227,12 @@
         <b:column span="1" lang="ar" style="border:1px solid black">٩</b:column>
       </b:row>
           </b:tab>
-          <b:tab title="JSF Markup">
+          <b:tab title="JSF Markup"  dir="ltr">
+                                <p>Note that this tab always uses <code>dir="ltr"</code>. Otherwise, the sourcecode
+                                looks a bit corrupted.</p>
               <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                                     <![CDATA[
-      <b:row dir="ltr" style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black"
-        class="rtlContent">
+      <b:row dir="ltr" style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black">
         <b:column span="2" style="border:1px solid black">European Digits</b:column>
         <b:column span="1" style="border:1px solid black">0</b:column>
         <b:column span="1" style="border:1px solid black">1</b:column>
@@ -199,8 +245,7 @@
         <b:column span="1" style="border:1px solid black">8</b:column>
         <b:column span="1" style="border:1px solid black">9</b:column>
       </b:row>
-      <b:row dir="ltr" style="border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black"
-        class="rtlContent">
+      <b:row dir="ltr" style="border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black">
         <b:column span="2" style="border:1px solid black">Arabic Digits</b:column>
         <b:column span="1" lang="ar" style="border:1px solid black">٠</b:column>
         <b:column span="1" lang="ar" style="border:1px solid black">١</b:column>
@@ -222,8 +267,7 @@
       ordering itself</p>
      <b:tabView activeIndex="0">
           <b:tab title="Live preview">
-       <b:row dir="rtl" style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black"
-        class="rtlContent">
+       <b:row dir="rtl" style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black">
         <b:column span="2" style="border:1px solid black">European Digits</b:column>
         <b:column span="1" style="border:1px solid black">0</b:column>
         <b:column span="1" style="border:1px solid black">1</b:column>
@@ -236,8 +280,7 @@
         <b:column span="1" style="border:1px solid black">8</b:column>
         <b:column span="1" style="border:1px solid black">9</b:column>
       </b:row>
-      <b:row dir="rtl" style="border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black"
-        class="rtlContent">
+      <b:row dir="rtl" style="border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black">
         <b:column span="2" style="border:1px solid black">Arabic Digits</b:column>
         <b:column span="1" lang="ar" style="border:1px solid black">٠</b:column>
         <b:column span="1" lang="ar" style="border:1px solid black">١</b:column>
@@ -251,11 +294,12 @@
         <b:column span="1" lang="ar" style="border:1px solid black">٩</b:column>
       </b:row>
           </b:tab>
-          <b:tab title="JSF Markup">
+          <b:tab title="JSF Markup"  dir="ltr">
+                                <p>Note that this tab always uses <code>dir="ltr"</code>. Otherwise, the sourcecode
+                                looks a bit corrupted.</p>
               <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                                     <![CDATA[
-      <b:row dir="rtl" style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black"
-        class="rtlContent">
+      <b:row dir="rtl" style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black">
         <b:column span="2" style="border:1px solid black">European Digits</b:column>
         <b:column span="1" style="border:1px solid black">0</b:column>
         <b:column span="1" style="border:1px solid black">1</b:column>
@@ -268,8 +312,7 @@
         <b:column span="1" style="border:1px solid black">8</b:column>
         <b:column span="1" style="border:1px solid black">9</b:column>
       </b:row>
-      <b:row dir="rtl" style="border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black"
-        class="rtlContent">
+      <b:row dir="rtl" style="border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black">
         <b:column span="2" style="border:1px solid black">Arabic Digits</b:column>
         <b:column span="1" lang="ar" style="border:1px solid black">٠</b:column>
         <b:column span="1" lang="ar" style="border:1px solid black">١</b:column>

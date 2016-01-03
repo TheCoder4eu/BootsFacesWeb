@@ -24,7 +24,5 @@ public class RtlBean implements Serializable {
 	}
 	
 	public void toggleRTL() {
-		rtl=!rtl;
 	}
-
 }
