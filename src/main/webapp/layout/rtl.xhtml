@@ -5,21 +5,148 @@
   xmlns:ui="http://java.sun.com/jsf/facelets">
 
   <ui:define name="content">
-    <style>
-td {
-	padding: 8px;
-}
-</style>
-    <h1>RTL support</h1>
+    <link type="text/css" rel="stylesheet" href="/BootsFacesWeb/javax.faces.resource/bootstrap-rtl.css.jsf?ln=rtl"
+      id="rtlStyleSheet" />
+    <script>
+					function toggleCSSStylesheet() {
+						if (document.getElementById('rtlStyleSheet').href
+								.indexOf('bootstrap-ltr.css') > 0)
+							document.getElementById('rtlStyleSheet').href = '/BootsFacesWeb/javax.faces.resource/bootstrap-rtl.css.jsf?ln=rtl';
+						else
+							document.getElementById('rtlStyleSheet').href = '/BootsFacesWeb/javax.faces.resource/bootstrap-ltr.css.jsf?ln=rtl';
+					}
+				</script>
+    <h:form>
+      <b:row class="rtlContent">
+        <b:column span="12">
+          <h1>RTL support</h1>
+        </b:column>
+      </b:row>
+      <b:row class="rtlContent">
+        <b:column span="12">
+          <b:switch label="View this page in" value="#{rtlBean.rtl}" onText="rtl" offText="ltr" offColor="success"
+            onchange="ajax:rtlBean.toggleRTL()" update="@(.rtlContent)" oncomplete="toggleCSSStylesheet();" />
+        </b:column>
+      </b:row>
 
-    <p>BootsFaces adds some limited support for RTL (right-to-left) languages. However, RTL isn't fully supported by
-      Bootstrap itself. However, you can add RTL by adding this library:</p>
-    <p>
-      <a target="#" href="https://github.com/morteza/bootstrap-rtl">https://github.com/morteza/bootstrap-rtl</a>
-    </p>
-    <h1>Basic usage</h1>
-    <p>Many BootsFaces components have an <code>dir</code> attribute. Set it to <code>dir="rtl"</code> to activate
-    RTL rendering.</p>
+      <b:row class="rtlContent">
+        <b:column span="12">
+          <p>BootsFaces adds some limited support for RTL (right-to-left) languages. However, RTL isn't fully
+            supported by Bootstrap itself. However, you can add RTL by adding this library:</p>
+          <p>
+            <a target="#" href="https://github.com/morteza/bootstrap-rtl">https://github.com/morteza/bootstrap-rtl</a>
+          </p>
+          <h1>Basic usage</h1>
+          <p>
+            Many BootsFaces components have an
+            <code>dir</code>
+            attribute. Set it to
+            <code>dir="rtl"</code>
+            to activate RTL rendering.
+          </p>
+        </b:column>
+      </b:row>
+      <b:row dir="#{rtlBean.direction}" class="rtlContent">
+        <b:column span="12">
+          <h1 dir="#{rtlBean.direction}">Examples</h1>
+          <p dir="#{rtlBean.direction}">
+            This is an example I found at <a target="#" href="http://www.i18nguy.com/markup/right-to-left.html">http://www.i18nguy.com/markup/right-to-left.html</a>,
+            adapted to make use of
+            <code>&lt;b:column /&gt;</code>
+            and
+            <code>&lt;b:panelGrid /&gt;</code>
+            :
+          </p>
+        </b:column>
+      </b:row>
+      <h3>Using the default direction:</h3>
+      <b:row style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black"
+        class="rtlContent">
+        <b:column span="2" style="border:1px solid black">European Digits</b:column>
+        <b:column span="1" style="border:1px solid black">0</b:column>
+        <b:column span="1" style="border:1px solid black">1</b:column>
+        <b:column span="1" style="border:1px solid black">2</b:column>
+        <b:column span="1" style="border:1px solid black">3</b:column>
+        <b:column span="1" style="border:1px solid black">4</b:column>
+        <b:column span="1" style="border:1px solid black">5</b:column>
+        <b:column span="1" style="border:1px solid black">6</b:column>
+        <b:column span="1" style="border:1px solid black">7</b:column>
+        <b:column span="1" style="border:1px solid black">8</b:column>
+        <b:column span="1" style="border:1px solid black">9</b:column>
+      </b:row>
+      <b:row style="border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black"
+        class="rtlContent">
+        <b:column span="2" style="border:1px solid black">Arabic Digits</b:column>
+        <b:column span="1" lang="ar" style="border:1px solid black">٠</b:column>
+        <b:column span="1" lang="ar" style="border:1px solid black">١</b:column>
+        <b:column span="1" lang="ar" style="border:1px solid black">٢</b:column>
+        <b:column span="1" lang="ar" style="border:1px solid black">٣</b:column>
+        <b:column span="1" lang="ar" style="border:1px solid black">٤</b:column>
+        <b:column span="1" lang="ar" style="border:1px solid black">٥</b:column>
+        <b:column span="1" lang="ar" style="border:1px solid black">٦</b:column>
+        <b:column span="1" lang="ar" style="border:1px solid black">٧</b:column>
+        <b:column span="1" lang="ar" style="border:1px solid black">٨</b:column>
+        <b:column span="1" lang="ar" style="border:1px solid black">٩</b:column>
+      </b:row>
+      <h3 dir="ltr">Always use LTR:</h3>
+      <b:row dir="ltr" style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black"
+        class="rtlContent">
+        <b:column span="2" style="border:1px solid black">European Digits</b:column>
+        <b:column span="1" style="border:1px solid black">0</b:column>
+        <b:column span="1" style="border:1px solid black">1</b:column>
+        <b:column span="1" style="border:1px solid black">2</b:column>
+        <b:column span="1" style="border:1px solid black">3</b:column>
+        <b:column span="1" style="border:1px solid black">4</b:column>
+        <b:column span="1" style="border:1px solid black">5</b:column>
+        <b:column span="1" style="border:1px solid black">6</b:column>
+        <b:column span="1" style="border:1px solid black">7</b:column>
+        <b:column span="1" style="border:1px solid black">8</b:column>
+        <b:column span="1" style="border:1px solid black">9</b:column>
+      </b:row>
+      <b:row dir="ltr" style="border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black"
+        class="rtlContent">
+        <b:column span="2" style="border:1px solid black">Arabic Digits</b:column>
+        <b:column span="1" lang="ar" style="border:1px solid black">٠</b:column>
+        <b:column span="1" lang="ar" style="border:1px solid black">١</b:column>
+        <b:column span="1" lang="ar" style="border:1px solid black">٢</b:column>
+        <b:column span="1" lang="ar" style="border:1px solid black">٣</b:column>
+        <b:column span="1" lang="ar" style="border:1px solid black">٤</b:column>
+        <b:column span="1" lang="ar" style="border:1px solid black">٥</b:column>
+        <b:column span="1" lang="ar" style="border:1px solid black">٦</b:column>
+        <b:column span="1" lang="ar" style="border:1px solid black">٧</b:column>
+        <b:column span="1" lang="ar" style="border:1px solid black">٨</b:column>
+        <b:column span="1" lang="ar" style="border:1px solid black">٩</b:column>
+      </b:row>
+      <h3 dir="rtl">Always use RTL:</h3>
+      <b:row dir="rtl" style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black"
+        class="rtlContent">
+        <b:column span="2" style="border:1px solid black">European Digits</b:column>
+        <b:column span="1" style="border:1px solid black">0</b:column>
+        <b:column span="1" style="border:1px solid black">1</b:column>
+        <b:column span="1" style="border:1px solid black">2</b:column>
+        <b:column span="1" style="border:1px solid black">3</b:column>
+        <b:column span="1" style="border:1px solid black">4</b:column>
+        <b:column span="1" style="border:1px solid black">5</b:column>
+        <b:column span="1" style="border:1px solid black">6</b:column>
+        <b:column span="1" style="border:1px solid black">7</b:column>
+        <b:column span="1" style="border:1px solid black">8</b:column>
+        <b:column span="1" style="border:1px solid black">9</b:column>
+      </b:row>
+      <b:row dir="rtl" style="border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black"
+        class="rtlContent">
+        <b:column span="2" style="border:1px solid black">Arabic Digits</b:column>
+        <b:column span="1" lang="ar" style="border:1px solid black">٠</b:column>
+        <b:column span="1" lang="ar" style="border:1px solid black">١</b:column>
+        <b:column span="1" lang="ar" style="border:1px solid black">٢</b:column>
+        <b:column span="1" lang="ar" style="border:1px solid black">٣</b:column>
+        <b:column span="1" lang="ar" style="border:1px solid black">٤</b:column>
+        <b:column span="1" lang="ar" style="border:1px solid black">٥</b:column>
+        <b:column span="1" lang="ar" style="border:1px solid black">٦</b:column>
+        <b:column span="1" lang="ar" style="border:1px solid black">٧</b:column>
+        <b:column span="1" lang="ar" style="border:1px solid black">٨</b:column>
+        <b:column span="1" lang="ar" style="border:1px solid black">٩</b:column>
+      </b:row>
+    </h:form>
 
     <script type="text/javascript">
 					SyntaxHighlighter.all();
