@@ -9,7 +9,7 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 public class RtlBean implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private boolean rtl = true;
+	private boolean rtl = false;
 
 	public boolean isRtl() {
 		return rtl;
