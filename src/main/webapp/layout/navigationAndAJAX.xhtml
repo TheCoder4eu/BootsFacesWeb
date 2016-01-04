@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:b="http://bootsfaces.net/ui"
+  xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:define name="content">
+    <h1>Navigation and AJAX</h1>
+    <p>
+      <b:badge value="Since 0.8.0"></b:badge>
+      Most JSF appplication benefit tremendously from AJAX. This includes navigation between different JSF views of your
+      application. If done consequently, your BootsFaces looks and feels almost like a single page application (SPA)
+      build on, say, AngularJS. See the demo below to convince yourself.
+    </p>
+    <p>However, there are two surprises and a bug.</p>
+         <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+          <b:tab title="Live preview">
+            <b:row>
+              <b:column span="3">
+                <h:form>
+                  <b:flyOutMenu width="50px">
+                    <b:navLink value="Start" update="@form @(.content)"
+                      onclick="ajax:navigationBean.setPage('start.xhtml')" />
+                    <b:navLink value="Register yourself" update="@form @(.content)"
+                      onclick="ajax:navigationBean.setPage('register.xhtml')" />
+                    <b:navCommandLink value="Start (non AJAX)" action="#{navigationBean.start}" ajax="true"/>
+                    <b:navCommandLink value="Register yourself (non AJAX)" action="#{navigationBean.register}" />
+                  </b:flyOutMenu>
+                </h:form>
+              </b:column>
+              <b:column span="7" class="content">
+                <ui:include src="#{navigationBean.page}" />
+              </b:column>
+            </b:row>
+          </b:tab>
+          <b:tab title="JSF markup">
+      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+        <![CDATA[
+            <b:row>
+              <b:column span="2">
+                <h:form>
+                  <b:flyOutMenu width="50px">
+                    <b:navLink value="Start" icon="globe" iconAlign="right" update="@form @(.content)"
+                      onclick="ajax:navigationBean.setPage('start.xhtml')" />
+                    <b:navLink value="Register yourself" update="@form @(.content)"
+                      onclick="ajax:navigationBean.setPage('register.xhtml')" />
+                   <b:navCommandLink value="Start (non AJAX)" action="#num;{navigationBean.start}" ajax="true"/>
+                    <b:navCommandLink value="Register yourself (non AJAX)" action="#num;{navigationBean.register}" />
+                   </b:flyOutMenu>
+                </h:form>
+              </b:column>
+              <b:column span="10" class="content">
+                <ui:include src="# {navigationBean.page}" />
+              </b:column>
+            </b:row>
+        ]]>
+        </script>
+   </b:tab>
+    </b:tabView>
+    
+    <h3>Resource loading</h3>
+    <p>BootsFaces tries to keep the memory footprint as low as possible. Among other things, this means that it only loads
+    the CSS and JavaScript code required by the current JSF page. If you use AJAX to replace parts of your page,
+    BootsFaces doesn't check if it has to load additional CSS or JavaScript files. This results in pages containing
+    incomplete components.</p>
+    <p>You can force BootsFaces to pre-load the required files by adding those components to the first page. Obviosly,
+    you don't to render these components, so you set <code>rendered="false"</code>:</p>
+      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+        <![CDATA[
+        <b:tabView rendered="false" />
+		<b:switch rendered="false" />
+		<b:selectMultiMenu rendered="false" />
+        ]]></script>
+    
+
+    <h3>Templates</h3>
+    <p>Most JSF developers are used to use templates to embed their payload pages into a common application framework.
+    For example,this showcase uses a template page to provide the main menu and the footer of each page.</p>
+    <p>
+    As is turns out, it's better to think the other way round to make the most of AJAX. Funny thing is that's the 
+    traditional way of thinking. Instead of embedding your page into a common template, you take the common template
+    and include the individual page in it. That's best accomplished by using <code>&lt;ui:include /&gt;</code>
+    with an EL expression pointing to the current payload page. The demo below shows the idea.
+    </p>
+     <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+          <b:tab title="Live preview">
+            <b:row>
+              <b:column span="3">
+                <h:form>
+                  <b:flyOutMenu width="50px">
+                    <b:navLink value="Start" update="@form @(.content)"
+                      onclick="ajax:navigationBean.setPage('start.xhtml')" />
+                    <b:navLink value="Register yourself" update="@form @(.content)"
+                      onclick="ajax:navigationBean.setPage('register.xhtml')" />
+                </b:flyOutMenu>
+                </h:form>
+              </b:column>
+              <b:column span="7" class="content">
+                <ui:include src="#{navigationBean.page}" />
+              </b:column>
+            </b:row>
+          </b:tab>
+          <b:tab title="JSF markup">
+      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+        <![CDATA[
+            <b:row>
+              <b:column span="2">
+                <h:form>
+                  <b:flyOutMenu width="50px">
+                    <b:navLink value="Start" icon="globe" iconAlign="right" update="@form @(.content)"
+                      onclick="ajax:navigationBean.setPage('start.xhtml')" />
+                    <b:navLink value="Register yourself" update="@form @(.content)"
+                      onclick="ajax:navigationBean.setPage('register.xhtml')" />
+                  </b:flyOutMenu>
+                </h:form>
+              </b:column>
+              <b:column span="10" class="content">
+                <ui:include src="# {navigationBean.page}" />
+              </b:column>
+            </b:row>
+        ]]>
+        </script>
+   </b:tab>
+         <b:tab title="Java Bean">
+      <script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1">
+        <![CDATA[
+            @Named
+            @SessionScoped
+            public class NavigationBean implements Serializable {
+            	private static final long serialVersionUID = 1L;
+            	
+            	private String page="start.xhtml";
+            
+            	public String getPage() {
+            		return page;
+            	}
+            	
+            	public void setPage(String currentPage) {
+            		this.page=currentPage;
+            	}
+            }        
+		]]>
+        </script>
+   </b:tab>
+   </b:tabView>
+
+    <h3>JavaScript memory leak</h3>
+    <p>Many components of BootsFaces are jQuery components that should be removed when their HTML tags are removed by
+    an AJAX request. We've already started to investigate the topic (see <a target="#" href="https://github.com/TheCoder4eu/BootsFaces-OSP/issues/220">Bug #220</a>)
+    of our bug tracker). However, the memory leak should be small. Chances are your application has been closed by the user
+    long before the memory leak starts too slow things down.</p>
+
+
+
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <script type="text/javascript">
+					SyntaxHighlighter.all();
+				</script>
+  </ui:define>
+</ui:composition>
