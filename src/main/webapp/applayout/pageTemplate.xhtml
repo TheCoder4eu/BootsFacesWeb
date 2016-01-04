@@ -39,7 +39,11 @@
         <h:outputScript library="sh" name="js/shBrushJava.js"    target="head"/>
         <h:outputScript library="sh" name="js/shBrushGroovy.js"  target="head"/>
         <h:outputScript library="sh" name="js/shBrushJScript.js" target="head"/>
-        <script>SyntaxHighlighter.defaults['gutter'] = false;</script>            
+        <script>SyntaxHighlighter.defaults['gutter'] = false;</script>   
+        <script>
+        $.blockUI.defaults.overlayCSS.opacity=0;
+        $.blockUI.defaults.message='<h1><img src="../javax.faces.resource/images/waitcursor.gif.jsf?ln=bsf" /></h1>';
+        </script>         
         <ui:insert name="nbtop">
             <ui:include src="/applayout/navbartop.xhtml"/>
         </ui:insert>
