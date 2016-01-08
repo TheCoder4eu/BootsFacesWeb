@@ -33,13 +33,20 @@
                 <b:row><b:column><b:slider mode="badge" label="Badge Slider:" value="#{testBean.val3}"/></b:column></b:row>
                 </h:form>
                 <h3>Options and Examples</h3>
+                <h4>Horizontal sliders width</h4>
+                <p>You can use the <code>span</code> attribute to control the width, in terms of Bootstrap's grid columns:</p>
+                <b:row><b:column><b:slider mode="basic" label="Full width(12 columns default):"/></b:column></b:row>
+                <b:row><b:column><b:slider mode="basic" span="6" label="Slider (span=6):"/></b:column></b:row>
+                <b:row><b:column><b:slider mode="basic" span="4" label="Slider (span=4):"/></b:column></b:row>
+                <p>If you omit the <code>span</code> attribute, the component will take the full width of the parent container.</p>
+                <br/>
                 <p>You can use more than one slider to get input for complex values, like the Time:</p>
                 <h:form id="fslider">
                     <b:panel look="info">
                         <f:facet name="heading"><b>EXAMPLE - <span class="glyphicon glyphicon-time"></span> Time slider</b></f:facet>
                         <b:row>
                             <b:column>
-                                <b:slider min="0" max="24" span="6" value="#{testBean.val5}" label="HH"/>
+                                <b:slider min="0" max="24" span="7" value="#{testBean.val5}" label="HH"/>
                             </b:column>
                         </b:row>
                         <b:row>
@@ -59,7 +66,7 @@
                         <![CDATA[
                         <b:row>
                             <b:column>
-                                <b:slider min="0" max="24" value="#{'#'}{testBean.val5}" label="HH"/>
+                                <b:slider min="0" max="24" span="7" value="#{'#'}{testBean.val5}" label="HH"/>
                             </b:column>
                         </b:row>
                         <b:row>
