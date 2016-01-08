@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>BootsFaces: next-gen JSF Framework</title>
+        <meta name="author" content="Riccardo Massera"></meta>
+    </h:head>
+    <h:body style="padding-top: 60px">
+                <h1>Date Picker Localization</h1>
+                <h:form id="fpickdt">
+                    <b:well>
+                        <strong>Date Picker Localization</strong>
+                        <h:panelGrid columns="4" cellpadding="5">
+                            <h:outputText value="Date:" />
+                            <b:datepicker id="adate" showButtonPanel="true" changeMonth="true"
+                                          changeYear="true" placeholder="Select a Date"
+                                          value="#{dateBean.adate}" /><h:message for="adate" />
+                            <h:panelGroup>Date Picker without <code>lang</code>.</h:panelGroup>
+                            <h:outputText value="Date(lang=it):" />
+                            <b:datepicker id="bdate" lang="it" mode="icon-popup" 
+                                          placeholder="Choose a Date" value="#{dateBean.bdate}"/>
+                            <h:message for="bdate" />
+                            <h:panelGroup>Date Picker with <code>numberOfMonths="3"</code> .</h:panelGroup>
+                            <h:outputText value="Inline:" />
+                            <b:datepicker id="cdate" mode="inline" showWeek="true" firstDay="1" value="#{dateBean.cdate}"/>
+                            <h:message for="cdate" />
+                            <h:panelGroup>Inline Date Picker with <code>showWeek="true"</code> and <code>firstDay="1"</code> .</h:panelGroup>
+
+                        </h:panelGrid>
+                        <b:row>
+                           <b:column span="2" offset="3">
+                        <b:commandButton value="Submit" update="fpickdt amodal" id="ajaxcb" ajax="true"
+                                             look="primary" oncomplete="$('#amodal').modal('show');"/>
+                        </b:column> 
+                        </b:row>
+                        
+                    </b:well>
+                </h:form>
+                
+                <b:modal id="amodal" title="Submitted Dates">
+                    <h:panelGrid columns="3" cellpadding="5">  
+                        <h:outputText value="Date: " />
+                        <h:outputText value="#{dateBean.adate}">
+                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                        </h:outputText>
+                        <h:panelGroup>converted with <code>&lt;f:convertDateTime pattern="dd/MM/yyyy"/&gt;</code></h:panelGroup>
+
+                        <h:outputText value="Date (3 months):" />
+                        <h:outputText value="#{dateBean.bdate}">
+                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                        </h:outputText>
+                        <h:panelGroup>converted with <code>&lt;f:convertDateTime pattern="dd/MM/yyyy"/&gt;</code></h:panelGroup>
+                        
+                        <h:outputText value="Inline:" />
+                        <h:outputText value="#{dateBean.cdate}">
+                            <f:convertDateTime pattern="MM/dd/yy"/>
+                        </h:outputText>
+                        <h:panelGroup>converted with <code>&lt;f:convertDateTime pattern="MM/dd/yy"/&gt;</code></h:panelGroup>
+                    </h:panelGrid>
+                    <f:facet name="footer">
+                        <b:button value="close" dismiss="modal" onclick="return false;"/>
+                        <b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"/>
+                    </f:facet>
+                </b:modal>
+    </h:body>
+</html>
