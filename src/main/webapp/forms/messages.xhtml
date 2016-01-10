@@ -15,7 +15,15 @@ td {
 }
 </style>
 		<h1>&lt;b:message /&gt; <b:badge value="since 0.8.1" /></h1>
-    <p>Displays a single <code>FacesMessage</code> in Bootstrap style.</p>
+    <p>Displays a single <code>FacesMessage</code> in Bootstrap style. Use the <code>for</code> attribute to indicate
+    which input field the <code>&lt;b:message &gt;</code> refers to. If the <code>&lt;b:message &gt;</code> immediately
+    follows the input field, you can omit the <code>for</code> attribute: the default value of <code>for</code>
+    is <code>@previous</code>.</p>
+    <p>Note that in most cases you don't need to use any ID, neither for the input field, nor for the 
+    <code>&lt;b:message &gt;</code>. This example only uses IDs because the Java bean needs them to generate
+    the <code>FacesMessage</code>. In general, we recommend to avoid IDs. It's easier to move components
+    around the page or to use copy and paste if you do without IDs.</p>
+    
     
          <b:tabView activeIndex="1" contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
           <b:tab title="JSF markup">
@@ -63,19 +71,20 @@ td {
           </b:tab>
           <b:tab title="displayed as">
                  <h:form id="messageForm">
-                  <b:panelGrid colSpans="3,9">
+                  <b:panelGrid colSpans="3,4,5">
                     <b:selectBooleanCheckbox value="#{checkboxBean.cbxError}" 
                                     id="checkboxWithErrorMessage"
                                     caption="click to toggle the error message" 
-                                    label="error"
+                                    label="Error"
                                     onclick="ajax:checkboxBean.action();"
                                     update="@form"
                                     />
                     <b:message />
+                    <b:message />
                     <b:selectBooleanCheckbox value="#{checkboxBean.cbxFatal}" 
                                     id="checkboxWithFatalMessage"
                                     caption="click to toggle the fatal error message" 
-                                    label="fatal"
+                                    label="Fatal"
                                     onclick="ajax:checkboxBean.action();"
                                     update="@form"
                                     />
@@ -83,7 +92,7 @@ td {
                     <b:selectBooleanCheckbox value="#{checkboxBean.cbxWarning}" 
                                     id="checkboxWithWarning"
                                     caption="click to toggle the warning" 
-                                    label="warning"
+                                    label="Warning"
                                     onclick="ajax:checkboxBean.action();"
                                     update="@form"
                                     />
@@ -91,7 +100,7 @@ td {
                     <b:selectBooleanCheckbox value="#{checkboxBean.cbxInfo}" 
                                     id="checkboxWithInfoMessage"
                                     caption="click to toggle the info message" 
-                                    label="info"
+                                    label="Info"
                                     onclick="ajax:checkboxBean.action();"
                                     update="@form"
                                     />
@@ -101,6 +110,7 @@ td {
                 </h:form>          
              </b:tab>
         </b:tabView>
+        
    
 
         <h1>&lt;b:messages /&gt; <b:badge value="since 0.7" /></h1>
