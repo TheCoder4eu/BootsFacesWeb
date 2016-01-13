@@ -57,6 +57,10 @@
         <param-name>org.omnifaces.CACHE_SETTING_APPLICATION_TTL</param-name>
         <param-value>86400</param-value>
     </context-param>
+    <context-param>
+        <param-name>org.omnifaces.COMBINED_RESOURCE_HANDLER_EXCLUDED_RESOURCES</param-name>
+        <param-value>bsf:css/icons.css</param-value>
+    </context-param>
     
     <context-param>
         <param-name>primefaces.THEME</param-name>
