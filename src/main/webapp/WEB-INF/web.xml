@@ -61,6 +61,10 @@
         <param-name>org.omnifaces.COMBINED_RESOURCE_HANDLER_EXCLUDED_RESOURCES</param-name>
         <param-value>bsf:css/icons.css</param-value>
     </context-param>
+    <context-param>
+     <param-name>org.omnifaces.COMBINED_RESOURCE_HANDLER_DISABLED</param-name>
+     <param-value>true</param-value>
+    </context-param>
     
     <context-param>
         <param-name>primefaces.THEME</param-name>
