@@ -18,24 +18,261 @@
                       //Needed for TBS 3.0.1 (panel content overflow issue)
                       .panel-body { margin: 0px 15px; }
                   </style>
-                  <h1>Basic Layout</h1>
-                  <p><b:badge value="Hint"></b:badge> To understand this page better, check out <a target="#" href="https://github.com/stephanrauh/BootsFaces-Examples/tree/master/ResponsiveDesign">this demo project</a>. It doesn't cover exactly this page, 
+                  <h1>The grid system of Bootstrap</h1>
+                  <p>The general idea of both BootsFaces and Bootstrap is to apply the lesson learnt by generations of typesetters to the
+                  world of websites and applications. Most people like pages with a lot of white space. Plus, they
+                  like a clear structure. It's surprisingly simply to achieve this goal. Put everything into a container
+                  that provides a lot of white space surrounding the payload area, and divide the payload area into twelve
+                  equal-sized columns. Align everything to this grid:</p>
+                  <b:image value="BootsFacesLayout.png" width="100%"/>
+                  <p>What seems as an annoying restriction at first, turns out to be a big plus. Everybody can create
+                  attractive web applications with little effort. The grid system and the well-thought color scheme
+                  of Bootstrap make it almost impossible to create a page that doesn't look nice.</p>
+                  
+                  <h2>Basic usage</h2>
+                 <p><b:badge value="Hint"></b:badge> To understand this page better, check out <a target="#" href="https://github.com/stephanrauh/BootsFaces-Examples/tree/master/ResponsiveDesign">this demo project</a>. It doesn't cover exactly this page, 
                   but it's a good starting point to play with the grid system of BootsFaces.</p>
-                  <p>BootsFaces inherits Bootstrap's responsive, mobile first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases. 
-                     This allows developers to easily build complex layouts without worrying how they will look on different devices .</p>
-                  <p>There are only three tags you need to create your layout: <code>b:container</code>, <code>b:row</code> and <code>b:column</code>. Later you may also add <code>&lt;b:panelGrid /&gt;</code> to your reportoire,
-                  but basically it's only an abbreviation that spare you a lot of keystrokes.</p>
-                  <p>The <code>b:container</code> is, as the name suggests, a container for <code>b:row</code>s and <code>b:column</code>s; it centers everything adding appropriate padding and margin.
-                  As a rule of thumb, always surround your rows with a container. Note that containers can't be nested. By default, containers make for a airy design, leaving a lot of the screen white, as you can see on the page you're currently reading
-                   (and similar to the layout in most books). 
-                  You can reduce the amount of white space by adding the <code>fluid</code> attribute: <code>&lt;b:container fluid="true"&gt;</code>. 
-                  </p>
-                  <p><code>b:row</code> is a container for <code>b:column</code>s and you can't nest a <code>b:container</code> in a <code>b:column</code>.</p>
-                  <p>BootsFaces takes full advantage of Bootstrap Grid system while maintaining the benefits of being a JSF framework. Actually, we believe it's more concise and more expressive
-                     than programming Bootstrap natively.</p>
-                  <p>This means that you can leverage Bootstrap's layout feature using - for example - the JSF templating system and JSF's conditional rendering to achieve and maintain very complex layouts without much effort.</p>
+                   <p>You can see the building blocks of every BootsFaces application in the image above:</p>
+                  <ul>
+                  <li>Every BootsFaces page should have a <code>&lt;b:container /&gt;</code>. That's the component
+                  providing the generous white space around your payload area. As a rule of thumb,
+                  everything must be put in a container, and every BootsFaces page needs a container. But only one. Don't try
+                  to nest containers.<br />
+                  It goes without saying that the white space around your widgets may look nice, but it's also a waste of
+                  space. Screen estate is a scarce resource. You can get rid of the border by using the attribute 
+                  <code>fluid="true"</code>.
+                  </li>
+                  <li>The grid is made of <code>&lt;b:row /&gt;</code> and <code>&lt;b:column /&gt;</code>. <code>&lt;b:row /&gt;</code>
+                  is a simple component that usually doesn't need any parameters.
+                  </li>
+                  <li>A <code>&lt;b:column /&gt;</code> spans one of more grid columns. You can define different column
+                  spans for different screen sizes. More on this in a minute. For now, suffice it to say that
+                  it's usually a good idea to optimize the screen for medium sized or small screens. You layout will scale
+                  seamlessly on larger screen, and still be usable on smaller screens. To define that a column spans
+                  three grid columns on almost every laptop or desktop PC, use the attribute <code>medium="3"</code>.
+                  For those who're already familiar with Bootstap: that's the same as <code>col-md="3"</code>. The generated
+                  HTML code is <code>&lt;div class="col-md-3" /&gt;</code>.
+                  </li>
+                  </ul>
+                  
+                  <h1>Putting it into action</h1>
+
+                <b:tabView>
+                  <b:tab title="preview">
+    <h:form id="loginForm">
+      <b:container layout="fluid">
+        <b:panel title="login screen" look="primary">
+          <b:row>
+            <b:column medium-screen="2">
+              <h:outputText value="Username:" for="username" />
+            </b:column>
+            <b:column medium-screen="4">
+              <b:inputText placeholder="Username" required="true" id="username" value="#{loginBean.username}">
+                <f:facet name="prepend">
+                  <b:icon name="user" />
+                </f:facet>
+              </b:inputText>
+            </b:column>
+            <b:column medium-screen="6">
+              <b:message for="username" />
+            </b:column>
+          </b:row>
+          <b:row>
+            <b:column medium-screen="2">
+              <h:outputText value="Password:" />
+            </b:column>
+            <b:column medium-screen="4">
+              <b:inputSecret placeholder="Password" id="password" value="#{loginBean.password}">
+                <f:facet name="prepend">
+                  <b:iconAwesome name="key" />
+                </f:facet>
+              </b:inputSecret>
+            </b:column>
+            <b:column medium-screen="6">
+              <b:message for="password" />
+            </b:column>
+          </b:row>
+          <b:row>
+            <b:column span="2" offset="2">
+              <b:commandButton value="login" onclick="ajax:loginBean.login()" update="@form" look="primary"
+                style="width:100%" />
+            </b:column>
+            <b:column span="2">
+              <b:commandButton value="password forgotten" onclick="ajax:loginBean.forgotPassword()" update="@form"
+                look="danger" style="width:100%" />
+            </b:column>
+          </b:row>
+        </b:panel>
+      </b:container>
+    </h:form>
+                </b:tab>
+                 <b:tab title="JSF markup (simplified)">
+                   <b:well>
+                     <script type="syntaxhighlighter"
+                       class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                  <![CDATA[
+      <b:container layout="fluid">
+        <b:row>
+          <b:column medium-screen="2">
+            <h:outputText value="Username:"/>
+          </b:column>
+          <b:column medium-screen="4">
+            <b:inputText placeholder="Username" />
+          </b:column>
+          <b:column medium-screen="6">
+            <b:message/>
+          </b:column>
+        </b:row>
+        <b:row>
+          <b:column medium-screen="2">
+            <h:outputText value="Password:" />
+          </b:column>
+          <b:column medium-screen="4">
+            <b:inputSecret placeholder="Password" />
+          </b:column>
+          <b:column medium-screen="6">
+            <b:message />
+          </b:column>
+        </b:row>
+        <b:row>
+          <b:column span="2" offset="2">
+            <b:commandButton value="login" look="primary" style="width:100%" />
+          </b:column>
+          <b:column span="2">
+            <b:commandButton value="password forgotten" look="danger" style="width:100%" />
+          </b:column>
+        </b:row>
+      </b:container>                  ]]>
+                 </script>
+                   </b:well>
+                 </b:tab>
+                 <b:tab title="JSF markup (complete picture)">
+                   <b:well>
+                     <script type="syntaxhighlighter"
+                       class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                  <![CDATA[
+    <h:form id="loginForm">
+      <b:container layout="fluid">
+        <b:panel title="login screen" look="primary">
+          <b:row>
+            <b:column medium-screen="2">
+              <h:outputText value="Username:" for="username" />
+            </b:column>
+            <b:column medium-screen="4">
+              <b:inputText placeholder="Username" required="true" id="username" value="#num;{loginBean.username}">
+                <f:facet name="prepend">
+                  <b:icon name="user" />
+                </f:facet>
+              </b:inputText>
+            </b:column>
+            <b:column medium-screen="6">
+              <b:message for="username" />
+            </b:column>
+          </b:row>
+          <b:row>
+            <b:column medium-screen="2">
+              <h:outputText value="Password:" />
+            </b:column>
+            <b:column medium-screen="4">
+              <b:inputSecret placeholder="Password" id="password" value="#num;{loginBean.password}">
+                <f:facet name="prepend">
+                  <b:iconAwesome name="key" />
+                </f:facet>
+              </b:inputSecret>
+            </b:column>
+            <b:column medium-screen="6">
+              <b:message for="password" />
+            </b:column>
+          </b:row>
+          <b:row>
+            <b:column span="2" offset="2">
+              <b:commandButton value="login" onclick="ajax:loginBean.login()" update="@form" look="primary"
+                style="width:100%" />
+            </b:column>
+            <b:column span="2">
+              <b:commandButton value="password forgotten" onclick="ajax:loginBean.forgotPassword()" update="@form"
+                look="danger" style="width:100%" />
+            </b:column>
+          </b:row>
+        </b:panel>
+      </b:container>
+    </h:form>                  ]]>
+                 </script>
+                   </b:well>
+                 </b:tab>
+                 <b:tab title="Java bean">
+                   <b:well>
+                     <script type="syntaxhighlighter"
+                       class="brush: java; toolbar: false;gutter: false; first-line: 1">
+                  <![CDATA[
+@ManagedBean
+@RequestScoped
+public class LoginBean {
+	@Size(min=4, max=10)
+	@NotEmpty
+	private String username;
+	
+	@Size(min=4, max=10)
+	@NotEmpty
+	private String password;
+	
+
+	public void setUsername(String name) {
+		this.username = name;
+	}
+	
+	public String getUsername() {
+		return username;
+	}
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	public void login() {
+		if ("BootsFaces".equalsIgnoreCase(username) && "rocks!".equalsIgnoreCase(password)) {
+			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Congratulations! You've successfully logged in.");
+			FacesContext.getCurrentInstance().addMessage("loginForm:password", msg);
+			
+		} else {
+			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "That's the wrong password. Hint: BootsFaces rocks!");
+			FacesContext.getCurrentInstance().addMessage("loginForm:password", msg);
+		}
+	}
+	
+	public void forgotPassword() {
+		FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Default user name: BootsFaces");
+		FacesContext.getCurrentInstance().addMessage("loginForm:username", msg);
+		msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Default password: rocks!");
+		FacesContext.getCurrentInstance().addMessage("loginForm:password", msg);
+	}
+}
+                  ]]>
+                 </script>
+                   </b:well>
+                 </b:tab>
+                </b:tabView>
+
+
+                  <h2>Responsive design</h2>
+                  <p>We'll explain the responsive design of BootsFaces in a minute. But we can show it now. Resize your browser window slowly.
+                  Make it smaller. When the window is to small to display everything side-by-side, the widgets are stacked on top of each other.</p>
+                  
+                  <h2>Why BootsFaces? Why not using Bootstrap natively?</h2>
+                 <p>BootsFaces takes full advantage of Bootstrap Grid system while maintaining the benefits of being a JSF framework. Actually, we believe 
+                 it's more concise and more expressive
+                     than programming Bootstrap natively. Convince yourself: inspect the source code of the demo in your
+                     browser's source code view. After reformatting, the form is 81 lines. The JSF source is is 45 lines.</p>
+                  <p>BootsFaces being a JSF framework means that you can leverage Bootstrap's layout feature using - for example - the JSF templating system and JSF's conditional rendering to achieve and maintain very complex layouts without much effort.</p>
                   <p>This website is an example itself: it uses a page template with <code>ui:insert</code> and <code>ui:include</code> and the pages are <code>ui:composition</code>s.</p>
                   <h2>Understanding BootsFaces Grid System</h2>
+                  <p>We've already talked about the Bootstrap grid. Let's cover the topic in more detail.</p>
                   <p>The central idea is to divide the page into 12 equal-sized columns. Each element of your page - be it an input field, a label, a table or a text - covers
                   several of these columns. Widgets can't cover half a column. Your limited to integer multiples: one, two, three, ..., up to twelve columns. At first glance this sounds like
                   a severe restriction, but in practice 12 columns offer enough flexibility for almost every use case. At the same time, being limited to twelve columns usually ensures an attractive page design.</p>
@@ -81,10 +318,10 @@
                               </tr>
                               <tr>
                                   <th><code>b:column</code> attributes</th>
-                                  <td><code>col-xs</code></td>
-                                  <td><code>col-sm</code></td>
-                                  <td><code>col-md</code> or <code>span</code></td>
-                                  <td><code>col-lg</code></td>
+                                  <td><code>col-xs</code> or <code>tiny-screen</code></td>
+                                  <td><code>col-sm</code> or <code>small-screen</code></td>
+                                  <td><code>col-md</code>, <code>medium-screen</code> or <code>span</code></td>
+                                  <td><code>col-lg</code> or <code>large-screen</code></td>
                               </tr>
                               <tr>
                                   <th># of columns</th>
@@ -341,6 +578,26 @@
                       </f:facet>
                   </b:panel>
   
+                 <h2>Alternative attribute names and values <b:badge value="since 0.8.1" /></h2>
+                 <p>You can choose from two alternative spelling to define the column span:</p>
+                 <ul>
+                 <li><code>col-xs</code>, <code>col-xs</code>, <code>col-xs</code> and <code>col-xs</code> follow
+                 the tradition coined by Bootstrap.</li>
+                 <li>Alternatively, you can use the symboliv names <code>tiny-screen</code>,
+                 <code>small-screen</code>, <code>medium-screen</code> and <code>huge-screen</code>.</li>
+                 </ul>
+                 <p>You can also use symbolic names to indicate how many columns to span, at least for
+                 some common cases:</p>
+                 <ul>
+                 <li><code>medium-screen="full-width"</code> amounts to <code>col-md="12"</code>.</li>
+                 <li><code>medium-screen="half"</code> amounts to <code>col-md="6"</code>.</li>
+                 <li><code>medium-screen="one-third"</code> amounts to <code>col-md="4"</code>.</li>
+                 <li><code>medium-screen="two-thirds"</code> amounts to <code>col-md="8"</code>.</li>
+                 <li><code>medium-screen="one-forth"</code> amounts to <code>col-md="3"</code>.</li>
+                 <li><code>medium-screen="three-fourth"</code> amounts to <code>col-md="9"</code>.</li>
+                 </ul>
+                 
+
                   <br/>
                   <h2>Reference section</h2>
                   <ui:include src="ContainerAttributes.xhtml" />

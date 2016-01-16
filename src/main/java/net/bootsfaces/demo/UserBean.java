@@ -2,8 +2,6 @@ package net.bootsfaces.demo;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
 @ManagedBean
