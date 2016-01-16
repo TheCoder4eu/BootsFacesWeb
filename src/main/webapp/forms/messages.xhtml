@@ -71,7 +71,7 @@ td {
           </b:tab>
           <b:tab title="displayed as">
                  <h:form id="messageForm">
-                  <b:panelGrid colSpans="3,4,5">
+                  <b:panelGrid colSpans="3,9">
                     <b:selectBooleanCheckbox value="#{checkboxBean.cbxError}" 
                                     id="checkboxWithErrorMessage"
                                     caption="click to toggle the error message" 
@@ -79,7 +79,6 @@ td {
                                     onclick="ajax:checkboxBean.action();"
                                     update="@form"
                                     />
-                    <b:message />
                     <b:message />
                     <b:selectBooleanCheckbox value="#{checkboxBean.cbxFatal}" 
                                     id="checkboxWithFatalMessage"
