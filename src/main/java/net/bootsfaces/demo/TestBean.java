@@ -31,7 +31,7 @@ public class TestBean implements Serializable {
     
     private int index=2;
     
-    public void nextTab(ActionEvent e) {
+    public void nextTab() {
     	index++;
     	if (index>3) index =0;
     }
