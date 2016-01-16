@@ -19,11 +19,6 @@
             de.beyondjava.angularFaces.core.tagTransformer.AngularTagDecorator
         </param-value>
 	</context-param>
-	<!-- jQuery doesn't cope with JSF's default separator. This setting fixes the problem. -->
-	<context-param>
-		<param-name>javax.faces.SEPARATOR_CHAR</param-name>
-		<param-value>_</param-value>
-	</context-param>
 
     <!-- The BootsFaces_USETHEME context-param controls the loading of the bootstrap-theme.css -->
     <!-- The default is false, when set to true the bootstrap-theme.css will be loaded -->
@@ -39,7 +34,6 @@
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.jsf</url-pattern>
-		<url-pattern>/javax.faces.resource/*</url-pattern>
 	</servlet-mapping>
 </web-app>
 ]]>

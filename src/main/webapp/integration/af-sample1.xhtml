@@ -13,20 +13,20 @@
 <div ng-controller="IntegrationController" ng-app="IntegrationApp" angularJSFile="/pages/integration/test.js">
 	<h:form id="sample1id" name="sample1" prependId="false" styleClass="form-horizontal">
 		<panelGrid colSpans="4,2,6" size="xs"> 
-			<selectOneMenu value="{{AJAXBean.brand}}" id="brandID">
+			<selectOneMenu value="{{carBean.brand}}" id="brandID">
 				<option value="">            (Please select)</option>
 				<option value="Turin">       Fiat           </option>
 				<option value="Swindon">     Honda          </option>
 				<option value="Ruesselsheim">Opel           </option>
 			</selectOneMenu> 
-			<selectOneMenu value="{{AJAXBean.type}}" id="typeID" label="Select your car">
+			<selectOneMenu value="{{carBean.type}}" id="typeID" label="Select your car">
 				<option value="">(Please select)</option>
 				<option>         Cinquecento    </option>
 				<option>         Civic          </option>
 				<option>         Astra          </option>
 				<option>         Megane         </option>
 			</selectOneMenu> 
-			<inputText value="{{AJAXBean.price}}" label="How much do you want to pay at most?" id="price"> 
+			<inputText value="{{carBean.price}}" label="How much do you want to pay at most?" id="price"> 
 				<f:facet name="prepend">
 				    <h:outputText value="€" />
 				</f:facet> 
@@ -34,14 +34,14 @@
 				    <h:outputText value=".00" />
 				</f:facet>
 			</inputText> 
-			<inputText value="{{AJAXBean.enginePower}}">
+			<inputText value="{{carBean.enginePower}}">
 				<f:facet name="append">
 				    <h:outputText value="HP" />
 				</f:facet>
 			</inputText> 
-			<selectBooleanCheckbox value="{{AJAXBean.iAgreeToTheTermsAndConditions}}" /> 
+			<selectBooleanCheckbox value="{{carBean.iAgreeToTheTermsAndConditions}}" /> 
 		</panelGrid>
-		<commandButton value="Look which cars are available" ng-show="AJAXBean.iAgreeToTheTermsAndConditions" />
+		<commandButton value="Look which cars are available" ng-show="carBean.iAgreeToTheTermsAndConditions" />
 	</h:form>
 </div>
 				</b:well>
@@ -55,20 +55,20 @@
 <div ng-controller="IntegrationController" ng-app="IntegrationApp" angularJSFile="/pages/integration/test.js">
 	<h:form id="sample1id" name="sample1" prependId="false">
 		<panelGrid colSpans="4,2,6" size="xs"> 
-			<selectOneMenu value="{{AJAXBean.brand}}" id="brandID">
+			<selectOneMenu value="{{carBean.brand}}" id="brandID">
 				<option value="">            (Please select)</option>
 				<option value="Turin">       Fiat           </option>
 				<option value="Swindon">     Honda          </option>
 				<option value="Ruesselsheim">Opel           </option>
 			</selectOneMenu> 
-			<selectOneMenu value="{{AJAXBean.type}}" id="typeID" label="Select your car">
+			<selectOneMenu value="{{carBean.type}}" id="typeID" label="Select your car">
 				<option value="">(Please select)</option>
 				<option>         Cinquecento    </option>
 				<option>         Civic          </option>
 				<option>         Astra          </option>
 				<option>         Megane         </option>
 			</selectOneMenu> 
-			<inputText value="{{AJAXBean.price}}" label="How much do you want to pay at most?" id="price"> 
+			<inputText value="{{carBean.price}}" label="How much do you want to pay at most?" id="price"> 
 				<f:facet name="prepend">
 				    <h:outputText value="€" />
 				</f:facet> 
@@ -76,14 +76,14 @@
 				    <h:outputText value=".00" />
 				</f:facet>
 			</inputText> 
-			<inputText value="{{AJAXBean.enginePower}}">
+			<inputText value="{{carBean.enginePower}}">
 				<f:facet name="append">
 				    <h:outputText value="HP" />
 				</f:facet>
 			</inputText> 
-			<selectBooleanCheckbox value="{{AJAXBean.iAgreeToTheTermsAndConditions}}" /> 
+			<selectBooleanCheckbox value="{{carBean.iAgreeToTheTermsAndConditions}}" /> 
 		</panelGrid>
-		<commandButton value="Look which cars are available" ng-show="AJAXBean.iAgreeToTheTermsAndConditions" />
+		<commandButton value="Look which cars are available" ng-show="carBean.iAgreeToTheTermsAndConditions" />
 	</h:form>
 </div>
 ]]>
@@ -147,7 +147,7 @@ HP=PS
 <![CDATA[
 @RequestScoped
 @ManagedBean
-public class AJAXBean {
+public class CarBean {
 	@NotNull
 	private String brand;
 

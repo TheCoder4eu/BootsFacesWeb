@@ -3,6 +3,7 @@ package de.beyondjava.jsf.sample.carshop;
 import java.io.Serializable;
 import java.util.Map;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -16,7 +17,7 @@ public class CarBean implements Serializable {
 	private Car car;
 	
 	public CarBean() {
-		
+		car = new Car();
 	}
 
 	public String showDetails(Car car) {
@@ -77,5 +78,11 @@ public class CarBean implements Serializable {
 	}
 	public void setFuel(String fuel) {
 		car.setFuel(fuel);
+	}
+	
+	public void listAvailableCars() {
+		FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Currently, there's no car available. Try again later.");
+		FacesContext.getCurrentInstance().addMessage(null, fm);
+		
 	}
 }
