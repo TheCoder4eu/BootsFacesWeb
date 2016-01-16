@@ -125,7 +125,21 @@ documentation, Tomcat is garanteed to support this (at least in the default conf
           </b:well>
         </b:tab>
       </b:tabView>
-                
+      
+      <h3>Glyphicons and the CombinedResourceHandler</h3>
+      <p><b:label severity="warning" text="Since version 0.8.1" /> If you are using OmniFaces with the CombinedResourceHandler, you need to add the following few lines to the <code>web.xml</code> in order to correctly configure the handler.</p>
+      <b:well>
+          Download the <a target="#" href="http://repository.primefaces.org/org/primefaces/themes/bootstrap/">PrimeFaces Bootsstrap theme</a>, add it to your application's <code>lib</code> folder and activate it in the <code>web.xml</code> like so:
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+    <!-- configure the Combined Resource Handler for Glyphicons -->
+    <context-param>
+        <param-name>org.omnifaces.COMBINED_RESOURCE_HANDLER_EXCLUDED_RESOURCES</param-name>
+        <param-value>bsf:css/icons.css</param-value>
+    </context-param>
+]]>
+</script>
+      </b:well>
       <h3>Warnings caused by the CombinedResourceHandler</h3>
       <p>If you use an older version of OmniFaces, Mojarra 2.2 generates a lot of warnings on the console in developer mode:</p>
 <b:well>
