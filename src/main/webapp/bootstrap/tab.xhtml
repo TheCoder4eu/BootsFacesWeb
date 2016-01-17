@@ -74,7 +74,7 @@
 		<p>Optionally, your server-side bean can define which tab is shown. You can achieve this by using the property <code>activeIndex</code>.
 		For instance, the example above uses <code>activeIndex="#{testBean.index}"</code>, which enables use to open the next tab by clicking a command button.
 		However, as soon as the user clicks a tab themselves, the connection to the back-end bean is lost.</p>
-		<b:commandButton onclick="ajax:testBean.nextTab()" value="next tab" update="@form"/>
+		<b:commandButton action="#{testBean.nextTab}"  value="next tab" ajax="false"/>
 		</h:form>
 		
 		<h2>Persistent tab selection</h2>
