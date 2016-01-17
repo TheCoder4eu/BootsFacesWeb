@@ -47,7 +47,7 @@ public class LoginBean {
 			FacesContext.getCurrentInstance().addMessage("loginForm:password", msg);
 			
 		} else {
-			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "That's the wrong password. Hint: BootsFaces rocks!");
+			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "That's the wrong password. Hint: BootsFaces rocks!");
 			FacesContext.getCurrentInstance().addMessage("loginForm:password", msg);
 		}
 	}
