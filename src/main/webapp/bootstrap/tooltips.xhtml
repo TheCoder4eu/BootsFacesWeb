@@ -11,7 +11,7 @@
       <h1>Tooltips</h1>
       <p>You can add a tooltip to most BootsFaces components.</p>
       <h3>Basic usage</h3>
-      <p>Simply add the attribute <code>tooltip="I'm a tooltip!"</code> to the attribute list of a (almost) arbitrary BootsFaces component. Optionally can you also
+      <p>Simply add the attribute <code>tooltip="I'm a tooltip!"</code> to the attribute list of an (almost) arbitrary BootsFaces component. Optionally can you also
       define the position of the tooltip and a delay:</p>
       <b:well>
       <b:panelGrid colSpans="2,10" style="height:40px">
@@ -38,31 +38,36 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>tooltip</td>
-							<td>none</td>
-							<td>The text of the tooltip.</td>
-						</tr>
-						<tr>
-							<td>tooltip-position</td>
-							<td>bottom</td>
-							<td>Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".</td>
-						</tr>
-						<tr>
-							<td>tooltip-delay</td>
-							<td>0 (no delay)</td>
-							<td>The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
-						</tr>
-						<tr>
-							<td>tooltip-delay-show</td>
-							<td>0 (no delay)</td>
-							<td>The tooltip is shown with a delay. Useful to define different delays for hiding and showing the tooltip. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
-						</tr>
-						<tr>
-							<td>tooltip-delay-hide</td>
-							<td>0 (no delay)</td>
-							<td>The tooltip is hidden with a delay. Useful to define different delays for hiding and showing the tooltip. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
-						</tr>
+					<tr>
+					    <td>tooltip</td>
+					    <td>(none)</td>
+					    <td>The text of the tooltip.</td>
+					</tr>
+					<tr>
+					    <td>tooltip-container<br />tooltipContainer (alternative writing)</td>
+					    <td> body </td>
+					    <td>Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering error in special cases. Also see data-container in the documentation of Bootstrap. The default value is body.</td>
+					</tr>
+					<tr>
+					    <td>tooltip-delay<br />tooltipDelay (alternative writing)</td>
+					    <td>0 </td>
+					    <td>The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
+					</tr>
+					<tr>
+					    <td>tooltip-delay-hide<br />tooltipDelayHide (alternative writing)</td>
+					    <td>0 </td>
+					    <td>The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
+					</tr>
+					<tr>
+					    <td>tooltip-delay-show<br />tooltipDelayShow (alternative writing)</td>
+					    <td>0 </td>
+					    <td>The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
+					</tr>
+					<tr>
+					    <td>tooltip-position<br />tooltipPosition (alternative writing)</td>
+					    <td>(none)</td>
+					    <td>Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".</td>
+					</tr>
 					</tbody>
 				</table>
 		</b:panel>
