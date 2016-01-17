@@ -2,10 +2,10 @@ package de.beyondjava.jsf.sample.carshop;
 
 import java.io.Serializable;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-
-import net.bootsfaces.utils.FacesMessages;
+import javax.faces.context.FacesContext;
 
 @ManagedBean
 @SessionScoped
@@ -80,6 +80,8 @@ public class CarBean implements Serializable {
 	}
 	
 	public void listAvailableCars() {
-		FacesMessages.info("Currently, there's no car available. Try again later.");
+		FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Currently, there's no car available. Try again later.");
+		FacesContext.getCurrentInstance().addMessage(null, fm);
+		
 	}
 }
