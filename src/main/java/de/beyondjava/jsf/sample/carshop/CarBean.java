@@ -11,10 +11,10 @@ import javax.faces.context.FacesContext;
 @SessionScoped
 public class CarBean implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
-	
+
+	private boolean iAgreeToTheTermsAndConditions = false;
 	private Car car;
-	
+
 	public CarBean() {
 		car = new Car();
 	}
@@ -27,7 +27,7 @@ public class CarBean implements Serializable {
 	public String getBrand() {
 		return car.getBrand();
 	}
-	
+
 	public void setBrand(String brand) {
 		car.setBrand(brand);
 	}
@@ -75,13 +75,31 @@ public class CarBean implements Serializable {
 	public String getFuel() {
 		return car.getFuel();
 	}
+
 	public void setFuel(String fuel) {
 		car.setFuel(fuel);
 	}
-	
+
+	public int getEnginePower() {
+		return car.getEnginePower();
+	}
+
+	public void setEnginePower(int enginePower) {
+		car.setEnginePower(enginePower);
+	}
+
 	public void listAvailableCars() {
-		FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Currently, there's no car available. Try again later.");
+		FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_INFO, "",
+				"Currently, there's no car available. Try again later.");
 		FacesContext.getCurrentInstance().addMessage(null, fm);
-		
+
+	}
+
+	public boolean isiAgreeToTheTermsAndConditions() {
+		return iAgreeToTheTermsAndConditions;
+	}
+
+	public void setiAgreeToTheTermsAndConditions(boolean iAgreeToTheTermsAndConditions) {
+		this.iAgreeToTheTermsAndConditions = iAgreeToTheTermsAndConditions;
 	}
 }

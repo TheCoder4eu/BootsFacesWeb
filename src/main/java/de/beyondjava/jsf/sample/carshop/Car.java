@@ -70,6 +70,11 @@ public class Car {
 	@Max(5000000)
 	int price;
 
+	@Min(50)
+	@Max(200)
+	private
+	int enginePower;
+
 	public Car() {
 	}
 
@@ -113,5 +118,14 @@ public class Car {
 
 	public void setYear(int year) {
 		this.year = year;
+	}
+
+	public int getEnginePower() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public void setEnginePower(int enginePower) {
+		this.enginePower = enginePower;
 	}
 }
