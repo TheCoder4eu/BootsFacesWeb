@@ -92,7 +92,7 @@
                 </b:panel>
                 
                 <h3>Enhancing the b:inputTextarea form control</h3>
-                <p>To help you enhance the User experience, BootsFaces come in with a useful feature:</p>
+                <p>To help you enhance the user experience, BootsFaces come in with a useful feature:</p>
                 <p>You can easily prepend or append text to your InputTextareas and what you prepend and append will seem part of the input field.</p>
                 <p>To do so, you just need to use the facets <code>prepend</code> and <code>append</code> where you will place the <code>h:outputText</code> element.</p>
                 <p>You can even prepend and append at the same time, as in the following example:</p>
@@ -104,6 +104,9 @@
                                 <b:inputTextarea rows="3">
                                     <f:facet name="prepend">
                                         <h:outputText value="@" />
+                                    </f:facet>
+                                    <f:facet name="append">
+                                        <b:iconAwesome name="envelope-o" size="2x"/>
                                     </f:facet>
                                 </b:inputTextarea>
                                 <h:outputText value="Amount:"/>
@@ -133,6 +136,9 @@
                             <b:inputTextarea rows="3">
                                 <f:facet name="prepend">
                                     <h:outputText value="@" />
+                                </f:facet>
+                                <f:facet name="append">
+                                    <b:iconAwesome name="envelope-o" size="2x"/>
                                 </f:facet>
                             </b:inputTextarea>
                             <h:outputText value="Amount:"/>
@@ -214,7 +220,8 @@
                     </h:panelGrid>
                 </h:form>
                 <h4>Appending or prepending Buttons</h4><br/>
-                <p>Another nice feature is that you can append (or prepend) buttons:</p>
+                <p>In theory, you can also append (or prepend) buttons. However, their size doesn't fit the size of the textarea, so you have to 
+                adapt the height with some CSS code.</p>
                 <b:panel>
                     <f:facet name="heading"><b>EXAMPLE</b></f:facet>
                     <h:form id="bid" prependId="false" >
@@ -249,7 +256,8 @@
                 </b:modal>
                 
                 <h4>Appending or prepending DropButtons</h4><br/>
-                <p>What you have seen applies also to DropButtons:</p>
+                <p>What you have seen applies also to DropButtons. Unfortunately, their size doesn't fit the size of the textarea, so you have to 
+                adapt the height with some CSS code.</p>
                 <b:panel>
                     <f:facet name="heading"><b>EXAMPLE</b></f:facet>
                     <h:form>
@@ -308,9 +316,9 @@
                 <p>If your InputTextarea is not in a panelGrid(table) or is not already in a b:column of your grid layout,
                     BootsFaces can place the component in a column for you, allowing you to easily control its size.</p>
                 <p>Use <code>span="1"</code> to <code>span="12"</code> for inputs that match the same sizes of the BootsFaces grid columns:</p>
-				<b:tabView>
+				<b:tabView contentStyle="height:460px">
 					<b:tab title="displayed as">
-						<b:well>
+						<b:well style="height:460px">
 							<strong>Input sizes</strong>
 							<br />
 	                    In a row:
@@ -322,7 +330,7 @@
 								</h:form>
 							</b:row>
 							<br />
-	                    or in a Form:
+	                    or in a form:
 			                    <h:form styleClass="form-horizontal">
 								<b:inputTextarea rows="3" span="1" placeholder="span1" />
 								<b:inputTextarea rows="3" span="2" placeholder="span 2" />
@@ -366,8 +374,6 @@
 					</b:tab>
 				</b:tabView>
 			
-                <br/>
-                
                 <h2>AJAX and JavaScript  <b:badge value="since 0.8.0" /></h2>
                 <p>The <code>&lt;b:inputTextarea &gt;</code> supports the full suite of JavaScript and AJAX events,
                 as described in <a href="ajax.jsf">the description of AJAX in BootsFaces</a>. Basically, each of the

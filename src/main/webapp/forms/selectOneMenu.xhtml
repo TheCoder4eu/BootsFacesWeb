@@ -439,10 +439,72 @@ public class SemaphoreBean {
   </b:well>
   </b:tab>
 </b:tabView>
-                           
-                
-                               
-               <h2>Labels, required fields and error messages  <b:badge value="since 0.8.0" /></h2>
+
+    <h2>
+      Prepending or appending facets
+      <b:badge value="since 0.8.2" />
+    </h2>
+    <p>To help you enhance the user experience, BootsFaces come in with a useful feature:</p>
+    <p>You can easily prepend or append text to your InputTextareas and what you prepend and append will seem part
+      of the input field.</p>
+    <p>
+      To do so, you just need to use the facets
+      <code>prepend</code>
+      and
+      <code>append</code>
+      where you will place the
+      <code>h:outputText</code> 
+      element (or any other element). Note that there's a minor layout glitch between the facet and the combobox (the rounded corner).
+      You'll have to fix this with some CSS code.
+    </p>
+    <p>You can even prepend and append at the same time, as in the following example:</p>
+
+    <h:form>
+      <b:tabView activeIndex="1">
+        <b:tab title="JSF markup">
+          <b:well>
+            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+      <b:selectOneMenu label="form of address" renderLabel="true" required="true" requiredMessage="Please provide the form of address.">
+        <f:facet name="prepend">
+           <b:iconAwesome name="comment" title="form of address" />
+        </f:facet>
+        <f:facet name="append">
+            <b:iconAwesome name="list" title="form of address" />
+        </f:facet>
+        <f:selectItem itemLabel="- please select - " />
+        <f:selectItem itemLabel="Mrs." />
+        <f:selectItem itemLabel="Mr." />
+      </b:selectOneMenu>
+]]></script>
+          </b:well>
+        </b:tab>
+        <b:tab title="live preview">
+        <b:well>
+        <b:row>
+        <b:column small-screen="half">
+          <b:selectOneMenu label="form of address" renderLabel="true" required="true"
+            requiredMessage="Please provide the form of address.">
+            <f:facet name="prepend">
+              <b:iconAwesome name="comment" title="form of address" />
+            </f:facet>
+            <f:facet name="append">
+              <b:iconAwesome name="list" title="form of address" />
+            </f:facet>
+            <f:selectItem itemLabel="- please select - " />
+            <f:selectItem itemLabel="Mrs." />
+            <f:selectItem itemLabel="Mr." />
+          </b:selectOneMenu>
+          </b:column>
+          </b:row>
+          </b:well>
+        </b:tab>
+      </b:tabView>
+    </h:form>
+
+
+
+    <h2>Labels, required fields and error messages  <b:badge value="since 0.8.0" /></h2>
                <p>You can add a label by adding the attribute <code>label</code>. The label is also used by the JSF messages. To give you maximum flexibility,
                you can suppress automatic rendering of labels by adding <code>renderLabel="false"</code>.
                </p>
