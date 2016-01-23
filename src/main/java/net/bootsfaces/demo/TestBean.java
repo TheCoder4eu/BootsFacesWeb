@@ -29,14 +29,10 @@ public class TestBean implements Serializable {
 	private String text1 = "Text One";
 	private String text2 = "Text Two";
 
-	private boolean issue259 = false;
-
 	private int index = 2;
 
 	public void nextTab() {
-		issue259 = !issue259;
-		if (issue259)
-			index++;
+		index++;
 		if (index > 3)
 			index = 0;
 	}
