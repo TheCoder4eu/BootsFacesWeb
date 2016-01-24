@@ -42,6 +42,13 @@
   </properties>
   <dependencies>
     <dependency>
+     <groupId>de.larmic.butterfaces</groupId>
+     <artifactId>components</artifactId>
+     <version>1.10.3</version>
+     <scope>runtime</scope>
+    </dependency>
+  
+    <dependency>
       <groupId>javax.el</groupId>
       <artifactId>javax.el-api</artifactId>
       <version>3.0.0</version>

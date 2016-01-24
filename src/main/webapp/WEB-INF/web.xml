@@ -11,6 +11,14 @@
     	<param-name>clientSideMessages</param-name>
     	<param-value>false</param-value>
     </context-param>
+    <context-param>
+    <param-name>de.larmic.butterfaces.provideJQuery</param-name>
+    <param-value>true</param-value>
+</context-param>
+    <context-param>
+    <param-name>de.larmic.butterfaces.provideBootstrap</param-name>
+    <param-value>false</param-value>
+</context-param>
     <!-- The BootsFaces_THEME context-param controls the loading of the Themes -->
     <!-- The default is Bootstrap, the valid values are a Bootswach Theme name (lowercase) or "custom".
          If custom is chosen, you will have to provide your custom CSS in the "other" folder. -->
