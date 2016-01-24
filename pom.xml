@@ -42,12 +42,11 @@
   </properties>
   <dependencies>
     <dependency>
-     <groupId>de.larmic.butterfaces</groupId>
-     <artifactId>components</artifactId>
-     <version>1.10.3</version>
-     <scope>compile</scope>
+      <groupId>de.larmic.butterfaces</groupId>
+      <artifactId>components</artifactId>
+      <version>1.10.3</version>
+      <scope>compile</scope>
     </dependency>
-  
     <dependency>
       <groupId>javax.el</groupId>
       <artifactId>javax.el-api</artifactId>
@@ -284,26 +283,13 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
         <version>2.5</version>
-        <!--configuration> <webResources> <resource> <- this is relative 
-          to the pom.xml directory > <directory>web</directory> </resource> </webResources> 
-          </configuration -->
+        <!--configuration> <webResources> <resource> <- this is relative to the pom.xml directory > <directory>web</directory> 
+          </resource> </webResources> </configuration -->
       </plugin>
     </plugins>
   </build>
-  <!-- 
-  <repositories>
-    <repository>
-      <id>central</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
-   -->
+  <!-- <repositories> <repository> <id>central</id> <url>https://oss.sonatype.org/content/repositories/snapshots</url> <releases> 
+    <enabled>false</enabled> </releases> <snapshots> <enabled>true</enabled> </snapshots> </repository> </repositories> -->
   <distributionManagement>
     <snapshotRepository>
       <id>ossrh</id>
