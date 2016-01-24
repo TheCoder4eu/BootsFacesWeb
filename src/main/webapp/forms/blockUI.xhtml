@@ -47,11 +47,21 @@
      <!-- Activates the waitcursor and the double-click protection -->
     <context-param>
       <param-name>net.bootsfaces.blockUI</param-name>
-      <param-value># {true}</param-value>
+      <param-value>#num;{blockUIBean.isBlockUIActive()}</param-value>
     </context-param>
 ]]>
        </script>
-       
+
+    <h2>AJAX, mouse events and BlockUI</h2>
+    <p>If blockUI is active, every AJAX request triggers a <code>mouseOutEvent</code>. When the AJAX request has
+    been processed and the BlockUI overlay pane is hidden, a <code>mouseOverEvent</code> is triggered. Keep this
+    in mind if you need to use the mouse events.</p>
+
+    <h2>Live demo</h2>
+    <h:form>
+      <b:commandButton value="Wait 5 seconds" onclick="ajax:blockUIBean.waitFiveSeconds()" look="primary"/>
+    </h:form>
+
     <h2>Customizing</h2>
     <p>Use <code>$.blockUI.defaults</code> to configure BootsFaces BlockUI, as decribed <a target="#" href="http://malsup.com/jquery/block/#options">here.</a>
     For instance, these lines deactive the gray-out-effect, and show the waitcursor of BootsFaces.</p>

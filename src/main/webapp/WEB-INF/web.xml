@@ -31,7 +31,7 @@
      <!-- Activates the waitcursor and the double-click protection -->
     <context-param>
       <param-name>net.bootsfaces.blockUI</param-name>
-        <param-value>#{true}</param-value>
+        <param-value>#{blockUIBean.isBlockUIActive()}</param-value>
     </context-param>
     <!-- Activates the tag decorator that turns divs into JSF components (and much more) -->
     <context-param> 
