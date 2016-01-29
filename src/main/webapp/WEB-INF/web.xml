@@ -41,6 +41,10 @@
       <param-name>net.bootsfaces.blockUI</param-name>
         <param-value>#{blockUIBean.isBlockUIActive()}</param-value>
     </context-param>
+    <context-param>
+      <param-name>net.bootsfaces.defaults.renderLabel</param-name>
+        <param-value>#{defaultValuesBean.renderLabel}</param-value>
+    </context-param>
     <!-- Activates the tag decorator that turns divs into JSF components (and much more) -->
     <context-param> 
         <param-name>javax.faces.FACELETS_DECORATORS</param-name>

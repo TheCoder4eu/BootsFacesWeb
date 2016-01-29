@@ -363,7 +363,7 @@
                 <h:form>
                   <b:inputText id="name" value="#{userBean.name}"
                     label="Enter your name" required="true" renderLabel="true" />
-                  <h:message for="age" />
+                  <h:message for="name" />
                   <b:inputText id="age" value="#{userBean.age}"
                     label="What's your age?" renderLabel="true" />
                   <h:message for="age" />
@@ -379,7 +379,7 @@
                      <h:form>
                         <b:inputText id="name" value="&num;{userBean.name}" label="Enter your name" 
 								     required="true" renderLabel="true"   />
-                         <h:message for="age" />
+                         <h:message for="name" />
                          <b:inputText id="age" value="&num;{userBean.age}" label="What's your age?" 
                                       renderLabel="true" />
                          <h:message for="age" />
@@ -390,6 +390,84 @@
                 </b:well>
               </b:tab>
             </b:tabView>
+            
+            <h2>Configuring the default value of the <code>renderLabel</code> attribute</h2>
+            <p>Strictly speaking, BootsFaces adds a second meaning to an attribute that already exists. Standard JSF uses<code>label</code>
+            to decorate <code>&lt;h:message /&gt;</code>. In order to minimize confusion, we decided to deactivate
+            the label rendering feature of BootsFaces by default. However, at the end of the day, it's your application.
+            So it's you who needs to be in charge. Starting with BootsFaces 0.8.2, you can add a contet parameter to the
+            <code>web.xml</code> of your application to set the default value of <code>renderLabel</code>. It goes without
+            saying that you can use EL expressions with this attribute. We traded performance to give you maximum flexibility.</p>
+ 
+             <b:tabView>
+              <b:tab title="displayed as">
+              <b:well>
+                <h:form>
+                  <b:inputText id="age" value="#{userBean.age}"
+                    label="What's your age?" />
+                  <h:message for="age" />
+                  <b:commandButton update="@form" value="Toggle renderLabel default attribute" onclick="ajax:defaultValuesBean.toggleRenderLabel()"/>
+                </h:form>
+                </b:well>
+              </b:tab>
+              <b:tab title="JSF markup">
+                <b:well>
+                  <script type="syntaxhighlighter"
+                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+                     <h:form>
+                          <b:inputText id="age" value="&num;{userBean.age}" label="What's your age?" />
+                         <h:message for="age" />
+                         <b:commandButton update="@form" value="Validate constraints" />         
+                         <b:commandButton update="@form" value="Toggle renderLabel default attribute" onclick="ajax:defaultValuesBean.toggleRenderLabel()"/>
+                       </h:form>
+                  ]]>
+                 </script>
+                </b:well>
+              </b:tab>
+              <b:tab title="web.xml">
+                <b:well>
+                  <script type="syntaxhighlighter"
+                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+    <context-param>
+      <param-name>net.bootsfaces.defaults.renderLabel</param-name>
+        <param-value>&num;{defaultValuesBean.renderLabel}</param-value>
+    </context-param>
+                  ]]>
+                 </script>
+                </b:well>
+              </b:tab>
+             <b:tab title="Java Bean">
+                <b:well>
+                  <script type="syntaxhighlighter"
+                    class="brush: java toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+@ManagedBean
+@SessionScoped
+public class DefaultValuesBean implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
+	private boolean renderLabel=true;
+
+	public boolean isRenderLabel() {
+		return renderLabel;
+	}
+
+	public void setRenderLabel(boolean renderLabel) {
+		this.renderLabel = renderLabel;
+	}
+	
+	public void toggleRenderLabel() {
+		renderLabel=!renderLabel;
+	}
+}
+                  ]]>
+                 </script>
+                </b:well>
+              </b:tab>
+            </b:tabView>
+ 
         
             <h2>Reference section</h2>
                 <ui:include src="InputTextAttributes.xhtml" />
