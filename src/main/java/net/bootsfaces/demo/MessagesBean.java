@@ -21,7 +21,7 @@ public class MessagesBean implements Serializable {
 	private static final long serialVersionUID = 5497787734011747081L;
 	
     public void info() {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "PrimeFaces rocks. BootsFaces rocks, too!"));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "PrimeFaces <b>rocks</b>. BootsFaces <b>rocks</b>, too!"));
     }
      
     public void warn() {
@@ -42,7 +42,7 @@ public class MessagesBean implements Serializable {
 	}
 	
     public void info(ActionEvent event) {
-    	String[] messages={"BootsFaces rocks!", "How do you like this message?", "This message has been brought to you by an actionListener."};
+    	String[] messages={"<b>BootsFaces</b> rocks!", "How do you like <b>this message</b>?", "This message has been brought to <b>you</b> by an actionListener."};
     	int index = (int)(Math.random()*messages.length);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", messages[index]));
     }

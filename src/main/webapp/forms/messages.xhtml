@@ -62,8 +62,7 @@ td {
                                     onclick="ajax:checkboxBean.action();"
                                     update="@form"
                                     />
-                                    
-                    <b:message for="@form:**:checkboxWithInfoMessage" />
+                    <b:message for="@form:**:checkboxWithInfoMessage" escape="false" />
                   </b:panelGrid>
                 </h:form>
  ]]>
@@ -104,14 +103,20 @@ td {
                                     update="@form"
                                     />
                                     
-                    <b:message for="@form:**:checkboxWithInfoMessage" />
+                    <b:message for="@form:**:checkboxWithInfoMessage"  escape="false" />
                   </b:panelGrid>
                 </h:form>          
              </b:tab>
         </b:tabView>
-        
-   
-
+ 
+        <h1>To escape or not to escape <b:badge value="since 0.8.2" /></h1>
+        <p>By public demand, we've added the <code>escape</code> attribute. It allows you to add HTML tags in your
+        messages. Please note that this might be a security issue. You're responsible to make sure that
+        hackers do not enter JavaScript code and have it executed when the page is rendered later. Therefore,
+        BootsFaces prints a message to the console when it renders a message with <code>escape="false"</code>
+        for the first time. This message can't be deactivated. We know that using HTML tags in your error messages
+        is a useful features, but at the same time we want to make sure you're aware of the risk.</p>
+  
         <h1>&lt;b:messages /&gt; <b:badge value="since 0.7" /></h1>
 		<p>Displays <code>FacesMessages</code> in Bootstrap style.</p>
 		
@@ -119,11 +124,14 @@ td {
           <b:tab title="JSF markup">
             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
-			<p:commandButton value="Info" actionListener="#num;{messagesBean.info}" update="@form"/>
-			<p:commandButton value="Warn" actionListener="#num;{messagesBean.warn}" update="@form"/>
-			<p:commandButton value="Error" actionListener="#num;{messagesBean.error}" update="@form"/>
-			<p:commandButton value="Fatal" actionListener="#num;{messagesBean.fatal}" update="@form"/>
-			<b:messages />
+			<p:commandButton value="Info" actionListener="&num;{messagesBean.info}" update="@form"/>
+			<p:commandButton value="Warn" actionListener="&num;{messagesBean.warn}" update="@form"/>
+			<p:commandButton value="Error" actionListener="&num;{messagesBean.error}" update="@form"/>
+			<p:commandButton value="Fatal" actionListener="&num;{messagesBean.fatal}" update="@form"/>
+            <p>Default setting:</p>
+            <b:messages/>
+            <p>Unsafe setting (<code>escape="false"</code>):</p>
+            <b:messages escape="false"/>
 ]]>
          </script>
           </b:tab>
@@ -133,7 +141,10 @@ td {
             <p:commandButton value="Warn" actionListener="#{messagesBean.warn}" update="@form"/>
             <p:commandButton value="Error" actionListener="#{messagesBean.error}" update="@form"/>
             <p:commandButton value="Fatal" actionListener="#{messagesBean.fatal}" update="@form"/>
-            <b:messages />
+            <p>Default setting:</p>
+            <b:messages/>
+            <p>Unsafe setting (<code>escape="false"</code>):</p>
+            <b:messages escape="false"/>
      		</h:form>
           </b:tab>
         </b:tabView>

@@ -84,7 +84,7 @@ public class CheckboxBean implements Serializable {
 		this.cbxWarning = cbxWarning;
 		if (cbxWarning) {
 			FacesContext.getCurrentInstance().addMessage("messageForm:checkboxWithWarning",
-					new FacesMessage(FacesMessage.SEVERITY_WARN, "", "This is what a warning looks like."));
+					new FacesMessage(FacesMessage.SEVERITY_WARN, "", "This is what a <i>warning</i> looks like."));
 		}
 	}
 
@@ -96,7 +96,7 @@ public class CheckboxBean implements Serializable {
 		this.cbxInfo = cbxInfo;
 		if (cbxInfo) {
 			FacesContext.getCurrentInstance().addMessage("messageForm:checkboxWithInfoMessage",
-					new FacesMessage(FacesMessage.SEVERITY_INFO, "", "This is what an info message looks like."));
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "", "This is what an <i>info</i> message looks like."));
 		}
 	}
 
