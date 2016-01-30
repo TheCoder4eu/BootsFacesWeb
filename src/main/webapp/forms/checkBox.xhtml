@@ -83,7 +83,7 @@
 				        <b:commandButton  value="submit" 
 				                          ajax="true" 
 				                          update="@form" />
-				        <b:commandButton  value="&#35;{checkboxBean.editable?'disable checkbox':'ensable checkbox'}" 
+				        <b:commandButton  value="&#35;{checkboxBean.editable?'disable checkbox':'enable checkbox'}" 
 				                          ajax="true" 
 				                          update="@form" 
 				                          actionListener="&#35;{checkboxBean.toggleEditmode}"/>
@@ -124,11 +124,11 @@
            <h:form>
               <h:panelGrid columns="2"  cellpadding="5">
                   <b:selectBooleanCheckbox value="#num;{checkboxBean.editable}"  
-                                label="disabled checkbox with tooltip"
+                                label="Checkbox with tooltip"
                                 tooltip="This is a tooltip."/>
                   <b:selectBooleanCheckbox value="#num;{checkboxBean.checkbox}" 
                                 disabled="true"
-                                label="disabled checkbox with tooltip"
+                                label="Disabled checkbox with tooltip"
                                 tooltip="Even a disabled checkbox can have a tooltip."/>
                 </h:panelGrid>
            </h:form>
@@ -139,11 +139,11 @@
             <h:form>
               <h:panelGrid columns="2"  cellpadding="5">
                   <b:selectBooleanCheckbox value="#{checkboxBean.editable}"  
-                                label="disabled checkbox with tooltip"
+                                label="Checkbox with tooltip"
                                 tooltip="This is a tooltip."/>
                   <b:selectBooleanCheckbox value="#{checkboxBean.checkbox}" 
                                 disabled="true"
-                                label="disabled checkbox with tooltip"
+                                label="Disabled checkbox with tooltip"
                                 tooltip="Even a disabled checkbox can have a tooltip."/>
                 </h:panelGrid>
             </h:form>
