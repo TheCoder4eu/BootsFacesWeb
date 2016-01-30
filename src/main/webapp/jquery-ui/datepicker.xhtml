@@ -10,6 +10,9 @@
                 <style>td {padding: 8px;}</style>
                 <h1>Date Picker</h1>
                 <p>BootsFaces derives the Date Picker component from jQuery UI's widget because of its ease of use and its configurability.</p>
+                <p><b:badge value="breaking changes in 0.9.0" look="primary"/> Please note that the date picker has been improved in version 0.9.0.
+                Unfortunately, this may corrupt your application's layout. If so, add the attribute <code>inline="true"</code>
+                to achieve the old, compact layout.</p>
                 
                 <strong>Date Picker modes</strong>
                 <p>The <code>&lt;b:datepicker&gt;</code> supports six modes for displaying the widget, specified with the attribute<code>mode</code>:</p>
@@ -158,6 +161,44 @@
                 </b:modal>
                 
                 <br/>
+                <h3><code>inline="true"</code> vs. <code>mode="inline"</code></h3>
+                <p>Don't confuse the inline style with the inline mode. When we added the inline style of Bootstrap,
+                the attribute <code>mode="inline"</code> was already out in the wild for ages, so we couldn't simply
+                rename it. The inline mode means that there's no input field. The user can't type the date,
+                but they have to select it from the calendar widget. On the other hand, <code>inline="true"</code>
+                adds a Bootstrap class to the surrounding <code>div</code>, which makes the layout more compact. Without
+                the inline style, Bootstrap alwas adds some white space below the date picker and put the label
+                above the date picker. When the inline mode is activated, the label is put in front of the date picker,
+                and there's no white space below.</p>
+                
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width: 470px;">b:datepicker</th>
+                            <th>attributes</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b:datepicker mode="inline" placeholder="Click here" label="This is an inline mode date picker."/></td>
+                            <td><code>mode="inline"</code></td>
+                            <td>In this mode, the Date picker is displayed directly inline and no input field is shown.</td>
+                        </tr>
+                        <tr>
+                            <td><b:datepicker mode="popup-icon" placeholder="Select a Date" label="This is a regular date picker."/></td>
+                            <td><code>mode="popup-icon"</code></td>
+                            <td>Defaut layout with label above the date picker and some white space below.</td>
+                        </tr>
+                       <tr>
+                            <td><b:datepicker mode="popup-icon" placeholder="Select a Date" inline="true" label="This is an inline date picker: "
+                            style="margin-left:10px"/></td>
+                            <td><code>inline="true" mode="popup-icon"</code></td>
+                            <td>Compact layout.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
                 <h2>Reference section</h2>
                 <ui:include src="DatepickerAttributes.xhtml" />
                 <b:panel look="info" rendered="false">

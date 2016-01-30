@@ -27,17 +27,27 @@
 					    <td>An el expression referring to a server side UIComponent instance in a backing bean.</td>
 					</tr>
 					<tr>
-					    <td>changeMonth</td>
+					    <td>change-month<br />changeMonth (alternative writing)</td>
 					    <td>false</td>
 					    <td>Boolean value to specify if month selector should be shown.</td>
 					</tr>
 					<tr>
-					    <td>changeYear</td>
+					    <td>change-year<br />changeYear (alternative writing)</td>
 					    <td>false</td>
 					    <td>Boolean value to specify if year selector should be shown.</td>
 					</tr>
 					<tr>
-					    <td>firstDay</td>
+					    <td>dateFormat</td>
+					    <td>(none)</td>
+					    <td>Format of the date. I.e. MM/dd/yyyy for the anglo-saxon date format or dd.MM.yyyy for the date format used widely in Europe.</td>
+					</tr>
+					<tr>
+					    <td>disabled</td>
+					    <td>false</td>
+					    <td>Boolean value to specify if the button is disabled.</td>
+					</tr>
+					<tr>
+					    <td>first-day<br />firstDay (alternative writing)</td>
 					    <td>0 </td>
 					    <td>Set the first day of the week: Sunday is 0, Monday is 1, etc.</td>
 					</tr>
@@ -52,12 +62,27 @@
 					    <td>This option allows you to localize the DatePicker, specifying the language code (eg. it, fr, es, nl). The datepicker uses the ISO 639-1 language codes eventually followed by ISO 3166-1 country codes. The Datepicker is localized with the language specified by the ViewRoot Locale.</td>
 					</tr>
 					<tr>
-					    <td>mode</td>
+					    <td>locale</td>
 					    <td>(none)</td>
+					    <td>Locale setting.</td>
+					</tr>
+					<tr>
+					    <td>minDate</td>
+					    <td>(none)</td>
+					    <td>Restricts the legal date range.</td>
+					</tr>
+					<tr>
+					    <td>maxDate</td>
+					    <td>(none)</td>
+					    <td>Restricts the legal date range.</td>
+					</tr>
+					<tr>
+					    <td>mode</td>
+					    <td> toggle-icon </td>
 					    <td>Controls how the Calendar is showed, can be inline or popup. Default is popup.</td>
 					</tr>
 					<tr>
-					    <td>numberOfMonths</td>
+					    <td>number-of-months<br />numberOfMonths (alternative writing)</td>
 					    <td>0 </td>
 					    <td>Number of months to show.</td>
 					</tr>
@@ -72,14 +97,24 @@
 					    <td>Boolean value to specify the rendering of the component, when set to false component will not be rendered.</td>
 					</tr>
 					<tr>
-					    <td>showButtonPanel</td>
+					    <td>show-button-panel<br />showButtonPanel (alternative writing)</td>
 					    <td>false</td>
 					    <td>Boolean value to specify if row Buttons to the bottom of calendar should be shown.</td>
 					</tr>
 					<tr>
-					    <td>showWeek</td>
+					    <td>show-week<br />showWeek (alternative writing)</td>
 					    <td>false</td>
 					    <td>Boolean value to specify if Week number should be shown.</td>
+					</tr>
+					<tr>
+					    <td>style</td>
+					    <td>(none)</td>
+					    <td>Inline style of the input element.</td>
+					</tr>
+					<tr>
+					    <td>style-class<br />styleClass (alternative writing)</td>
+					    <td>(none)</td>
+					    <td>Style class of this element.</td>
 					</tr>
 					<tr>
 					    <td>tooltip</td>
@@ -87,22 +122,27 @@
 					    <td>The text of the tooltip.</td>
 					</tr>
 					<tr>
-					    <td>tooltipDelay</td>
-					    <td>(none)</td>
+					    <td>tooltip-container<br />tooltipContainer (alternative writing)</td>
+					    <td> body </td>
+					    <td>Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering error in special cases. Also see data-container in the documentation of Bootstrap. The default value is body.</td>
+					</tr>
+					<tr>
+					    <td>tooltip-delay<br />tooltipDelay (alternative writing)</td>
+					    <td>0 </td>
 					    <td>The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
 					</tr>
 					<tr>
-					    <td>tooltipDelayHide</td>
-					    <td>(none)</td>
+					    <td>tooltip-delay-hide<br />tooltipDelayHide (alternative writing)</td>
+					    <td>0 </td>
 					    <td>The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
 					</tr>
 					<tr>
-					    <td>tooltipDelayShow</td>
-					    <td>(none)</td>
+					    <td>tooltip-delay-show<br />tooltipDelayShow (alternative writing)</td>
+					    <td>0 </td>
 					    <td>The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
 					</tr>
 					<tr>
-					    <td>tooltipPosition</td>
+					    <td>tooltip-position<br />tooltipPosition (alternative writing)</td>
 					    <td>(none)</td>
 					    <td>Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".</td>
 					</tr>
