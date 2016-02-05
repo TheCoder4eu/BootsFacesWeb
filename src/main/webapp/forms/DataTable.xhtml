@@ -13,9 +13,11 @@ td {
 	padding: 8px;
 }
 </style>
-		<h1>DataTable (&lt;b:dataTable /&gt;) <b:badge value="experimental / since 0.8.0" /></h1>
+ 
+	<h1>DataTable (&lt;b:dataTable /&gt;) <b:badge value="experimental / since 0.8.0" /></h1>
     <p>Currently, the <code>&lt;b:dataTable &gt;</code> isn't much more than a proof of concept. We plan to 
     implement a full-blown datatable in the next version of BootsFaces (probably 0.9.0).</p>
+    
     
     <h3>Basic usage</h3>
     
@@ -64,12 +66,12 @@ td {
         </b:tab>
       </b:tabView>
     
-    <h3>Do it yourself</h3>
+    <h3>Do it yourself and localization</h3>
     <p>This example shows how to convert the standard JSF datatable without support by BootsFaces. Until we've finished the
     implementation of  <code>&lt;b:dataTable &gt;</code>, this is the most flexible approach.</p>
-    
-     <h:dataTable value="{{carPool.carPool}}" var="car" id="carPool" styleClass="table table-striped table-bordered"
-     style="width:100%">
+
+    <h:dataTable value="{{carPool.carPool}}" var="car" id="carPool" styleClass="table table-striped table-bordered"
+      style="width:100%">
       <h:column>
         <f:facet name="header">
           <h:outputText value="Brand" />
@@ -80,17 +82,20 @@ td {
         <f:facet name="header">
           <h:outputText value="Type" />
         </f:facet>
-        <h:inputText value="#{car.type}"/>
+        <h:inputText value="#{car.type}" />
       </h:column>
-
     </h:dataTable>
     <script>
     $(document).ready(function() {
-    $('#carPool').DataTable();
-} );
+    $('#carPool').DataTable({
+       "language": {
+           "url": "//cdn.datatables.net/plug-ins/1.10.10/i18n/Spanish.json"
+       }
+     });
+    } );
     </script>
       
-  <h3>Empty data table:</h3>
+  <h3>Empty data table</h3>
       <h:dataTable value="{{carPool.emptyCarPool}}" var="car" id="emptyCarpool"
       styleClass="table table-striped table-bordered" style="width:100%">
       
@@ -111,7 +116,7 @@ td {
      <script>
     $(document).ready(function() {
     $('#emptyCarpool').DataTable();
-} );
+    } );
     </script>
     
        
