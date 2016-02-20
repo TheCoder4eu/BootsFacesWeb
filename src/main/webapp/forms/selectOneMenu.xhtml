@@ -524,6 +524,79 @@ public class SemaphoreBean {
                 many JavaScript callback handlers (the <code>on[event]</code> attributes) also supports AJAX.
                 To get familiar with BootsFaces AJAX, try the 
                 <a target="#" href="https://github.com/stephanrauh/BootsFaces-Examples/tree/master/AJAX">BootsFaces AJAX demo project</a>.</p>
+                
+                        <h:form>
+            <b:tabView activeIndex="1">
+                <b:tab title="JSF markup">
+                    <b:well>
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+        <h:form>
+          <b:panelGrid colSpans="2,2,2,2,4">
+            <h:outputLabel value="Select your car's brand:" for="brandID" />
+          <b:selectOneMenu value="&num;{selectOneMenuBean.brand}" id="brandID" >
+            <f:selectItem itemLabel="Fiat" itemValue="1"/>
+            <f:selectItem itemLabel="Honda" itemValue="2"/>
+            <f:selectItem itemLabel="Opel" itemValue="3"/>
+          </b:selectOneMenu>
+          <h:message for="brandID"/>
+          <h:outputLabel value="last submitted value:" for="brandOutputID"/>
+          <b:inputText value="&num;{selectOneMenuBean.brand}" disabled="true" id="brandOutputID"/>
+            <h:outputLabel value="Select your car's type:" for="typeID" />
+          <b:selectOneMenu value="&num;{selectOneMenuBean.type}" id="typeID" required="true">
+              <f:selectItem itemLabel="(Please select)" itemValue=""/>
+              <f:selectItem itemLabel="Cinquecento" itemValue="1"/>
+              <f:selectItem itemLabel="Civic" itemValue="2"/>
+              <f:selectItem itemLabel="Astra" itemValue="3"/>
+          </b:selectOneMenu>
+          <h:message for="typeID"/>
+          <h:outputLabel value="last submitted value:" for="typeOutputID" />
+          <b:inputText value="&num;{selectOneMenuBean.type}" disabled="true" id="typeOutputID"/>
+        </b:panelGrid>
+            <b:commandButton value="Submit AJAX">
+                <f:ajax execute="@form" render="brandOutputID typeOutputID" />
+            </b:commandButton>
+       </h:form>
+]]>
+       </script>
+                    </b:well>
+                </b:tab>
+                <b:tab title="displayed as">
+                    <b:well>
+                        <b:panelGrid colSpans="2,2,2,2,4">
+                            <h:outputLabel value="Select your car's brand:" for="brandID" id="l1" />
+                            <b:selectOneMenu value="#{selectOneMenuBean.brand}" 
+                                id="brandID" 
+                                onchange="ajax:selectOneMenuBean.onChange()"
+                                update="@parent">
+                                <f:selectItem itemLabel="(Please select)" itemValue="" />
+                                <f:selectItem itemLabel="Fiat" itemValue="1" />
+                                <f:selectItem itemLabel="Honda" itemValue="2" />
+                                <f:selectItem itemLabel="Opel" itemValue="3" />
+                            </b:selectOneMenu>
+                            <h:message id="brandIdMsg" for="@form:brandID" />
+                            <h:outputLabel value="last submitted value:" for="brandOutputID" />
+                            <b:inputText value="#{selectOneMenuBean.brand}" disabled="true" id="brandOutputID" />
+                            <h:outputLabel value="Select your car's type:" for="typeID" />
+                            <b:selectOneMenu value="#{selectOneMenuBean.type}" id="typeID" required="true"
+                                onchange="ajax:selectOneMenuBean.onChange()"
+                                update="@parent">
+                                <f:selectItem itemLabel="(Please select)" itemValue="" />
+                                <f:selectItem itemLabel="Cinquecento" itemValue="1" />
+                                <f:selectItem itemLabel="Civic" itemValue="2" />
+                                <f:selectItem itemLabel="Astra" itemValue="3" />
+                                <f:selectItem itemLabel="Megane" itemValue="4" />
+                            </b:selectOneMenu>
+                            <h:message for="typeID" />
+                            <h:outputLabel value="last submitted value:" for="typeOutputID" />
+                            <b:inputText value="#{selectOneMenuBean.type}" disabled="true" id="typeOutputID" />
+                        </b:panelGrid>
+                   </b:well>
+                </b:tab>
+            </b:tabView>
+        </h:form>
+                
+                
 
                 <h1>Reference section</h1>
                 <ui:include src="SelectOneMenuAttributes.xhtml" />

@@ -24,10 +24,16 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import net.bootsfaces.component.messages.Messages;
+import net.bootsfaces.utils.FacesMessages;
+
 /** A simple bean for demo purposes. */
 @RequestScoped
 @ManagedBean
 public class SelectOneMenuBean implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	@NotNull
 	private String brand=null;
 
@@ -94,5 +100,9 @@ public class SelectOneMenuBean implements Serializable {
 
 	public void setiAgreeToTheTermsAndConditions(boolean iAgreeToTheTermsAndConditions) {
 		this.iAgreeToTheTermsAndConditions = iAgreeToTheTermsAndConditions;
+	}
+	
+	public void onChange() {
+		FacesMessages.info("on change has been called");
 	}
 }
