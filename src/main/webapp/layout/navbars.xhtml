@@ -122,8 +122,88 @@
                     <li><b>fixed</b> to the top or bottom of the page, without scrolling with the content, </li>
                     <li><b>statically</b> on top of the page, scrolling away with the page.</li>
                 </ul>
-                <p>To better understand the different layouts, just have a look at the <h:link outcome="/examples/navbar" value="NavBar examples"/>.</p>
+                <p>To understand the different layouts better, just have a look at the <h:link outcome="/examples/navbar" value="NavBar examples"/>.</p>
                 <br/>
+                
+                <b:modal id="top" title="b:navBar demo 1" style="height:200px">
+                    <b:navBar brand="fixed=top" brandHref="#" fixed="top">
+                    </b:navBar>
+                    <p>This modal dialog has a navBar at the top and a lot of content, so it can scroll.</p>
+                    <p>This modal dialog has a navBar at the top and a lot of content, so it can scroll.</p>
+                    <p>This modal dialog has a navBar at the top and a lot of content, so it can scroll.</p>
+                    <p>This modal dialog has a navBar at the top and a lot of content, so it can scroll.</p>
+                    <p>This modal dialog has a navBar at the top and a lot of content, so it can scroll.</p>
+                    <p>This modal dialog has a navBar at the top and a lot of content, so it can scroll.</p>
+                    <p>This modal dialog has a navBar at the top and a lot of content, so it can scroll.</p>
+                    <p>This modal dialog has a navBar at the top and a lot of content, so it can scroll.</p>
+                    <f:facet name="footer">
+                        <b:button value="close" dismiss="modal" onclick="return false;"/>
+                        <b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"/>
+                    </f:facet>
+                </b:modal>
+                <b:modal id="bottom" title="b:navBar demo 2" style="height:200px">
+                    <b:navBar brand="fixed=bottom" brandHref="#" fixed="bottom">
+                    </b:navBar>
+                    <p>This modal dialog has a navBar at the bottom and a lot of content, so it can scroll.</p>
+                    <p>This modal dialog has a navBar at the bottom and a lot of content, so it can scroll.</p>
+                    <p>This modal dialog has a navBar at the bottom and a lot of content, so it can scroll.</p>
+                    <p>This modal dialog has a navBar at the bottom and a lot of content, so it can scroll.</p>
+                    <p>This modal dialog has a navBar at the bottom and a lot of content, so it can scroll.</p>
+                    <p>This modal dialog has a navBar at the bottom and a lot of content, so it can scroll.</p>
+                    <p>This modal dialog has a navBar at the bottom and a lot of content, so it can scroll.</p>
+                    <p>This modal dialog has a navBar at the bottom and a lot of content, so it can scroll.</p>
+                    <f:facet name="footer">
+                        <b:button value="close" dismiss="modal" onclick="return false;"/>
+                        <b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"/>
+                    </f:facet>
+                </b:modal>
+                <b:modal id="non-sticky" title="b:navBar demo 3" style="height:200px">
+                    <b:navBar brand="fixed=non-sticky" brandHref="#" fixed="non-sticky">
+                    </b:navBar>
+                    <p>This modal dialog has a non-sticky navbar and a lot of content, so it can scroll.</p>
+                    <p>This modal dialog has a non-sticky navbar and a lot of content, so it can scroll.</p>
+                    <p>This modal dialog has a non-sticky navbar and a lot of content, so it can scroll.</p>
+                    <p>This modal dialog has a non-sticky navbar and a lot of content, so it can scroll.</p>
+                    <p>This modal dialog has a non-sticky navbar and a lot of content, so it can scroll.</p>
+                    <p>This modal dialog has a non-sticky navbar and a lot of content, so it can scroll.</p>
+                    <p>This modal dialog has a non-sticky navbar and a lot of content, so it can scroll.</p>
+                    <p>This modal dialog has a non-sticky navbar and a lot of content, so it can scroll.</p>
+                    <f:facet name="footer">
+                        <b:button value="close" dismiss="modal" onclick="return false;"/>
+                        <b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"/>
+                    </f:facet>
+                </b:modal>
+                <b:modal id="static" title="b:navBar demo 4" style="height:200px">
+                    <b:navBar brand="static=true" brandHref="#" static="true">
+                    </b:navBar>
+                    <p>This modal dialog has a static navBar and a lot of content, so it can scroll.</p>
+                    <p>This modal dialog has a static navBar and a lot of content, so it can scroll.</p>
+                    <p>This modal dialog has a static navBar and a lot of content, so it can scroll.</p>
+                    <p>This modal dialog has a static navBar and a lot of content, so it can scroll.</p>
+                    <p>This modal dialog has a static navBar and a lot of content, so it can scroll.</p>
+                    <p>This modal dialog has a static navBar and a lot of content, so it can scroll.</p>
+                    <p>This modal dialog has a static navBar and a lot of content, so it can scroll.</p>
+                    <p>This modal dialog has a static navBar and a lot of content, so it can scroll.</p>
+                    <f:facet name="footer">
+                        <b:button value="close" dismiss="modal" onclick="return false;"/>
+                        <b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"/>
+                    </f:facet>
+                </b:modal>
+                <b:row>
+                    <b:column span="3">
+                        <a class="btn btn-primary btn-lg" href="#top" data-toggle="modal">fixed="top"</a>
+                    </b:column>
+                    <b:column span="3">
+                        <a class="btn btn-primary btn-md" href="#bottom" data-toggle="modal">fixed="bottom"</a>
+                    </b:column>
+                    <b:column span="3">
+                        <a class="btn btn-primary btn-md" href="#non-sticky" data-toggle="modal">fixed="non-sticky"</a>
+                    </b:column>
+                    <b:column span="3">
+                        <a class="btn btn-primary btn-md" href="#static" data-toggle="modal">static="true"</a>
+                    </b:column>
+                 </b:row>
+                 <!-- ********************************************************************************************* -->
                 
                 <h3>Using the b:navbar tag</h3>
                 <p>Using the <code>b:navbar</code> tag is very straightforward, as you can see from the following table you need to specify few attributes:</p>
