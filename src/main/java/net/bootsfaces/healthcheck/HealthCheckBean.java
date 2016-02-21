@@ -29,8 +29,8 @@ import com.sun.jdi.connect.IllegalConnectorArgumentsException;
  * 
  * @author auster
  */
-@ApplicationScoped
-@ManagedBean
+//@ApplicationScoped
+//@ManagedBean(eager=false)
 public class HealthCheckBean {
 	private VirtualMachine vm = null;
 
