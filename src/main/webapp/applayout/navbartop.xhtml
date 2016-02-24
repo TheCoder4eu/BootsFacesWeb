@@ -8,22 +8,22 @@
 
   <ui:remove>
     <!--
-	    	Hint to editors: The menus follow the Chicago style of capitalization. Please capitalize everything but the "smaller" words. 
-	     -->
+	Hint to editors: The menus follow the Chicago style of capitalization. Please capitalize everything but the "smaller" words. 
+    -->
   </ui:remove>
   <b:navBar brand="BootsFaces"
-    brandHref="#{request.contextPath}/index.jsf" inverse="true"
+    brandHref="http://www.bootsfaces.net/" inverse="true"
     fixed="top">
     <b:container>
       <b:navbarLinks>
         <b:navLink />
         <b:navLink />
-        <b:dropMenu value="Getting Started">
-          <b:navLink value="Requirements" outcome="/requirements"
+        <b:dropMenu value="Integration">
+          <!-- b:navLink value="Requirements" outcome="/requirements"
             icon="check" />
           <b:navLink value="Download" outcome="/download" icon="save" />
           <b:navLink value="Quick Start" outcome="/quickstart"
-            icon="play-circle" />
+            icon="play-circle" /-->
           <b:navLink value="PrimeFaces"
             outcome="/integration/PrimeFaces" icon="tasks" />
           <b:navLink value="OmniFaces" outcome="/integration/OmniFaces"
@@ -149,7 +149,7 @@
       </b:navbarLinks>
 
       <b:navbarLinks pull="right">
-        <b:navLink outcome="/examples/index" value="Examples" iconAwesome="desktop" />
+        <b:navLink href="http://showcase.bootsfaces.net/Examples/" value="Examples" iconAwesome="desktop" />
       </b:navbarLinks>
     </b:container>
   </b:navBar>

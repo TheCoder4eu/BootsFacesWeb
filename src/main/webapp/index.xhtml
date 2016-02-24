@@ -4,7 +4,8 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <title>BootsFaces: next-gen JSF Framework</title>
         <meta name="author" content="Riccardo Massera"></meta>
@@ -12,18 +13,31 @@
     <h:body style="padding-top: 60px">
         <ui:composition template="/applayout/pageTemplate.xhtml">
             <ui:define name="content">
-                <h1>Welcome to BootsFaces</h1>
-					   <b:panel title="Build Informations" look="info">
-                           Built on thecoder4eu Linux 4.0.2-040002-generic amd64<br/>
-                           by Gradle 2.4<br/>
-                           Java Version 1.8.0_45 (Oracle Corporation 25.45-b02)<br/>
+                <h1>BootsFaces Showcase</h1>
+                    <b:row>
+                    <b:jumbotron>
+                        <img src="http://www.bootsfaces.net/img/bsf_logo.png"/>
+                        
+                        <p>Welcome to the BootsFaces Showcase and Documentation</p>
+                        <b:button iconAwesome="info" p:data-target="#infomodal" p:data-toggle="modal" onclick="return false;" size="xs" value="" styleClass="pull-right"/>
+                    </b:jumbotron>
+                </b:row>
+                <b:modal id="infomodal" title="Application Build Informations">
+                        <b:panel title="Build Informations" look="info">
+                           Built on thecoder4eu-desktop Linux 4.2.0-27-generic amd64<br/>
+                           by Gradle 2.10<br/>
+                           Java Version 1.8.0_72 (Oracle Corporation 25.72-b15)<br/>
                            sourceCompatibility 1.7<br/>
                            targetCompatibility 1.7<br/>
-                           Build Date  Sat May 16 17:03:29 CEST 2015<br/>
+                           Build Date  Tue Feb 09 23:45:45 CET 2016<br/>
+                        </b:panel>
+                        <b:panel title="Libraries used in the demo" look="info">
+                           hibernate-validator<br/>primefaces<br/>qrgen<br/>barcode4j-light<br/>core<br/>javase<br/>omnifaces<br/>components<br/>angularFaces-core<br/>jackson-jaxrs-json-provider<br/>cdi-api<br/>servlet-api<br/>jsf-api<br/>jsf-impl<br/>el-impl<br/>jboss-logging<br/>classmate<br/>xml-apis<br/>commons-logging<br/>commons-beanutils<br/>jackson-jaxrs-base<br/>jackson-core<br/>jackson-databind<br/>jackson-module-jaxb-annotations<br/>javax.el-api<br/>javax.interceptor-api<br/>javax.inject<br/>el-api<br/>jackson-annotations<br/>validation-api<br/>
                        </b:panel>
-					   <b:panel title="Libraries used in the demo" look="info">
-                           primefaces<br/>qrgen<br/>barcode4j-light<br/>core<br/>javase<br/>omnifaces<br/>angularFaces-core<br/>jackson-jaxrs-json-provider<br/>cdi-api<br/>servlet-api<br/>jsf-api<br/>jsf-impl<br/>el-impl<br/>xml-apis<br/>commons-logging<br/>commons-beanutils<br/>jackson-jaxrs-base<br/>jackson-core<br/>jackson-databind<br/>jackson-module-jaxb-annotations<br/>javax.el-api<br/>javax.interceptor-api<br/>javax.inject<br/>el-api<br/>jackson-annotations<br/>validation-api<br/>
-                       </b:panel>
+                    <f:facet name="footer">
+                        <b:button value="close" dismiss="modal" onclick="return false;"/>
+                    </f:facet>
+                </b:modal>
 					   
                 
             </ui:define>

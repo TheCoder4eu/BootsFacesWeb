@@ -53,7 +53,7 @@ war.doFirst {
     String contents = new File( emptyPage ).getText( 'UTF-8' )
 
     //Replace the text
-    contents = contents.replaceAll( 'Title', 'Welcome to BootsFaces' )
+    contents = contents.replaceAll( 'Title', 'BootsFaces Showcase' )
     Date buildDate = new Date()
     String hostname= InetAddress.getLocalHost().getHostName()
     String currentJvm = org.gradle.internal.jvm.Jvm.current()
@@ -74,18 +74,31 @@ war.doFirst {
 	}
 	
     String currentOS = System.properties['os.name']+' '+System.properties['os.version']+' '+System.properties['os.arch']
-    String buildInfo = """
-					   <b:panel title="Build Informations" look="info">
+    String buildInfo = """\n\
+                    <b:row>
+                    <b:jumbotron>
+                        <img src="http://www.bootsfaces.net/img/bsf_logo.png"/>
+                        
+                        <p>Welcome to the BootsFaces Showcase and Documentation</p>
+                        <b:button iconAwesome="info" p:data-target="#infomodal" p:data-toggle="modal" onclick="return false;" size="xs" value="" styleClass="pull-right"/>
+                    </b:jumbotron>
+                </b:row>
+                <b:modal id="infomodal" title="Application Build Informations">
+                        <b:panel title="Build Informations" look="info">
                            Built on $hostname $currentOS<br/>
                            by Gradle ${project.gradle.gradleVersion}<br/>
                            Java Version $currentJvm<br/>
                            sourceCompatibility $sourceCompatibility<br/>
                            targetCompatibility $targetCompatibility<br/>
                            Build Date  ${buildDate}<br/>
-                       </b:panel>
-					   <b:panel title="Libraries used in the demo" look="info">
+                        </b:panel>
+                        <b:panel title="Libraries used in the demo" look="info">
                            $dependencies
-                       </b:panel>
+                       </b:panel>\n\
+                    <f:facet name="footer">
+                        <b:button value="close" dismiss="modal" onclick="return false;"/>
+                    </f:facet>
+                </b:modal>
 					   """
     contents = contents.replaceAll( '</h1>', '</h1>'+buildInfo )
     new File( indexPage ).write( contents, 'UTF-8' )
