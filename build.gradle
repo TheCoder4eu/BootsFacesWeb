@@ -40,6 +40,8 @@ compile(
      'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.5.0'
 )
 
+compile fileTree(dir: 'bsflib', include: '*.jar') //Required for messages/utils
+
 // coming soon:
 // compile 'de.beyondjava:angularFaces-widgets:2.2'
 

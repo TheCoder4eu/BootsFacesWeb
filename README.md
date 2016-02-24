@@ -1,4 +1,4 @@
 BootsFacesWeb
 =============
 
-BootsFaces : the next gen JSF Framework Web Docs
+BootsFaces : the next gen JSF Framework Showcase and Web Docs
