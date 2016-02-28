@@ -20,3 +20,5 @@
 .metadata/
 download.xhtml
 .DS_Store
+.factorypath
+/src/main/webapp/META-INF/
