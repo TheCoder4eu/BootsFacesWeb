@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>BootsFaces Basic Page</title>
+    </h:head>
+    <h:body>
+	    <h:form id="form1" prependId="false">
+	        <b:container id="mainContent">
+	            <b:row>
+	            	<b:column>
+	            		<h1>[Tree]: javascript complex implementation</h1>
+	            		
+	            		<b:tree value="#{test.jsonModel1}" nodeSelectionListener="#{test}" showCheckbox="true" update="chkItems" enableLinks="true" />
+	            		<br/>
+	            		<br/>
+	            		<b:tree value="#{test.jsonModel2}" nodeSelectionListener="#{test}" showCheckbox="true" update="chkItems" enableLinks="true" />
+	            		
+	            	</b:column>
+	            </b:row>
+	            <b:row>
+	            	<b:inputText id="chkItems" value="#{test.checkedColumns}" />
+	            </b:row>
+	        </b:container>
+	    </h:form>
+	    <h:form id="form2">
+		    <b:container id="secondContent">
+		    	<b:row>
+	            	<b:column>
+	            		<h1>[DefaultCommand] and [ColorPicker]: </h1>
+	            		
+	            		<b:colorPicker value="#{test.selectedColor}" opacity="true" format="rgb" /> 
+				    	<b:inputText  /> 
+				    	<b:commandButton id="button1" actionListener="#{test.button1}" value="Button1" ajax="true" />
+						<b:commandButton id="button2" actionListener="#{test.button2}" value="Button2" ajax="true" look="primary" />
+						<b:commandButton id="button3" actionListener="#{test.button3}" value="Button3" ajax="true" icon="plus-sign" look="success" />
+				    	<b:defaultCommand target="button2" />
+				    </b:column>
+				</b:row>
+		    </b:container>
+	    </h:form>
+	    <!--  b:container id="thirdContent">
+	    	<b:row>
+            	<b:column>
+            		<h1>[Accordion]: </h1>
+					<b:button id="toggler" value="Spalten" style="float:right;" size="sm" iconAwesome="calculator"/>
+			    </b:column>
+			</b:row>
+	    </b:container -->
+    </h:body>
+</html>
