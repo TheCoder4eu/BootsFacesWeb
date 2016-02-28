@@ -114,7 +114,7 @@
          </b:well>
          </b:panel>
                 
-                
+                <h2>Sticky vs. non-sticky navBars and navBar positions <b:badge value="updated in 0.8.2"></b:badge></h2>
                 <p>A navbar can be rendered in different ways, to fit in your page layout scheme.</p>
                 <p>The default NavBar appears as part of the page content, typically centered and at the beginning.</p>
                 <p>The two other ways a Navigation Bar can be rendered in the page are:</p>
@@ -122,6 +122,37 @@
                     <li><b>fixed</b> to the top or bottom of the page, without scrolling with the content, </li>
                     <li><b>statically</b> on top of the page, scrolling away with the page.</li>
                 </ul>
+                <p>Starting with BootsFaces 0.8.2, there's the attribute <code>position</code> as a more expressive alternative:</p>
+                <table class="table table-striped table-hover table-bordered" style="background-color: #fff">
+                  <tr>
+                    <td><code>position="top" sticky="true"</code></td>
+                    <td><code>fixed="top" sticky="true"</code></td>
+                    <td>Sticky NavBar at the top. The page scrolls under the NavBar.</td>
+                  </tr>
+                  <tr>
+                    <td><code>position="top" sticky="false"</code></td>
+                    <td><code>fixed="top" sticky="true"</code></td>
+                    <td>NavBar at the top. The NavBar scrolls with the page.</td>
+                  </tr>
+                  <tr>
+                    <td><code>position="bottom" sticky="true"</code></td>
+                    <td><code>fixed="bottom" sticky="true"</code></td>
+                    <td>Sticky NavBar at the bottom. The page scrolls under the NavBar.</td>
+                  </tr>
+                  <tr>
+                    <td><code>position="bottom" sticky="false"</code></td>
+                    <td><code>fixed="non-sticky" sticky="false"</code></td>
+                    <td>Non-sticky NavBar at the bottom. The NavBar scrolls with the page.</td>
+                  </tr>
+                  <tr>
+                    <td><code>sticky="false"</code></td>
+                    <td><code>sticky="false"</code></td>
+                    <td>Non-sticky NavBar at the current position. The NavBar scrolls with the page.</td>
+                  </tr>
+                </table>
+            
+            
+            
                 <p>To understand the different layouts better, just have a look at the <h:link outcome="/examples/navbar" value="NavBar examples"/>.</p>
                 <br/>
                 
