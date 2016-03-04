@@ -63,12 +63,12 @@ public class TestBean implements TreeNodeEventListener {
 		List<Node> subSubNodes = new ArrayList<Node>();
 		subSubNodes.add(new DefaultNodeImpl("GrandChild 1", "play-circle"));
 		subSubNodes.add(new DefaultNodeImpl("GrandChild 2", "play-circle"));
-		child5.getSubNodes().addAll(subSubNodes);
+		child5.getChilds().addAll(subSubNodes);
 		subNodes.add(child5);
 		
 		DefaultNodeImpl parent3 = new DefaultNodeImpl("Parent3", "signal");
 		parent3.setExpanded(false);
-		parent3.getSubNodes().addAll(subNodes);
+		parent3.getChilds().addAll(subNodes);
 		nodeList.add(parent3);
 		
 		
