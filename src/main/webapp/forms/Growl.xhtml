@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="content">
+		<style>
+td {
+	padding: 8px;
+}
+</style>
+		<h1>Growl (&lt;b:growl /&gt;) <b:badge value="since 0.8.2" /></h1>
+		<p>Displays <code>FacesMessages</code> in Bootstrap Growl style.</p>
+		
+         <b:tabView activeIndex="1"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+          <b:tab title="JSF markup">
+            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+			<p:commandButton value="Info" actionListener="&num;{messagesBean.info}" update="@form"/>
+			<p:commandButton value="Warn" actionListener="&num;{messagesBean.warn}" update="@form"/>
+			<p:commandButton value="Error" actionListener="&num;{messagesBean.error}" update="@form"/>
+			<p:commandButton value="Fatal" actionListener="&num;{messagesBean.fatal}" update="@form"/>
+
+            <p>Base configuration:</p>
+			<b:growl id="growlMsg" globalOnly="true" placement-from="bottom" showDetail="false" showSummary="true" allowDismiss="true" delay="10000" escape="true" />
+]]>
+         </script>
+          </b:tab>
+          <b:tab title="displayed as">
+            <h:form>
+	            <p:commandButton value="Info" actionListener="#{messagesBean.info}" update="@form"/>
+	            <p:commandButton value="Warn" actionListener="#{messagesBean.warn}" update="@form"/>
+	            <p:commandButton value="Error" actionListener="#{messagesBean.error}" update="@form"/>
+	            <p:commandButton value="Fatal" actionListener="#{messagesBean.fatal}" update="@form"/>
+	            
+	            <b:growl id="growlMsg" globalOnly="true" placement-from="bottom" showDetail="false" showSummary="true" allowDismiss="true" delay="10000" escape="true" />
+     		</h:form>
+          </b:tab>
+        </b:tabView>
+		
+		        <br/>
+                <h2>Reference section</h2>
+                <ui:include src="GrowlAttributes.xhtml" />
+                <b:panel look="info" rendered="false">
+					<f:facet name="heading">
+						<b>Skinning</b>
+					</f:facet>
+					<ul>
+						<li>Tell the world which CSS classes can be used to change the
+						look of the component.</li>
+					</ul>
+				</b:panel>
+
+		<script type="text/javascript">
+      		SyntaxHighlighter.all();
+    	</script>
+		<br />
+		<br />
+		<br />
+		<br />
+	</ui:define>
+</ui:composition>

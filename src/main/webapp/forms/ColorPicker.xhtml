@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="content">
+		<style>
+		td {
+			padding: 8px;
+		}
+		</style>
+		<h1>ColorPicker (&lt;b:colorPicker /&gt;) <b:badge value="since 0.8.2" /></h1>
+
+		<p><code>&lt;b:colorPicker&gt;</code> is a simple inputText that display color swatches.
+		The component provide a set of configuration to display the swatch in different position and with different
+		color configurations (RGB, HSL, with or without alpha.)</p>
+		<br/>
+		<h1>Basic usage</h1>
+		
+		<b:tabView activeIndex="1">
+			<b:tab title="JSF markup">
+				<b:well>
+					<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+						<![CDATA[
+    						<b:colorPicker value="&num;{test.selectedColor}" opacity="true" format="rgb" /> 
+							
+							Oppure
+
+							<b:colorPicker value="&num;{test.selectedColor}" opacity="false" format="hex" control="wheel" position="bottom right"/> 
+					]]></script>
+				</b:well>
+			</b:tab>
+			<b:tab title="displayed as" contentStyle="border:1px solid ;padding:10px">
+				<b:colorPicker value="#{test.selectedColor}" opacity="true" format="rgb" /> 
+				<br/>Oppure<br/><br/>
+				<b:colorPicker value="#{test.selectedColor}" opacity="false" format="hex" control="wheel" position="bottom right"/> 
+			</b:tab>
+		</b:tabView>
+
+		<h3>Reference section</h3>
+		<ui:include src="ColorPickerAttributes.xhtml" />
+		<b:panel look="info" rendered="false">
+			<f:facet name="heading">
+				<b>Skinning</b>
+			</f:facet>
+			<ul>
+				<li>Tell the world which CSS classes can be used to change the
+					look of the component.</li>
+			</ul>
+		</b:panel>
+
+		<script type="text/javascript">
+      		SyntaxHighlighter.all();
+    	</script>
+		<br />
+		<br />
+		<br />
+		<br />
+	</ui:define>
+</ui:composition>

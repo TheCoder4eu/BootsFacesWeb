@@ -45,7 +45,8 @@ public class TestBean implements TreeNodeEventListener {
 	}
 	public void setCheckedColumns(String column) { }
 	
-	public List<Node> getJsonModel1() {
+	public Node getTestModel1() {
+		Node rootNode = new DefaultNodeImpl("root", "arrow-right").withBackColor("#FF9988");
 		List<Node> nodeList = new ArrayList<Node>();
 		nodeList.add(new DefaultNodeImpl("Parent1", "user"));
 		nodeList.add(new DefaultNodeImpl("Parent2", "envelope"));
@@ -71,23 +72,23 @@ public class TestBean implements TreeNodeEventListener {
 		parent3.getChilds().addAll(subNodes);
 		nodeList.add(parent3);
 		
-		
-		return nodeList;
+		rootNode.getChilds().addAll(nodeList);
+		return rootNode;
 	}
 	
-	public List<Node> getJsonModel2() {
+	public Node getTestModel2() {
+		Node rootNode = new DefaultNodeImpl("root", "arrow-right").withBackColor("#119988");
+		
+		List<String> tags = new ArrayList<String>();
+		tags.add("TAG 1");
+		tags.add("TAG 2");
 		List<Node> nodeList = new ArrayList<Node>();
-		Node n = new DefaultNodeImpl("Node1", "rocket");
-		n.setUseFaIcons(true);
+		nodeList.add(new DefaultNodeImpl("Node1", "rocket").withUseFaIcons(true).withBackColor("#FFFF00").withColor("#0000FF").withTags(tags));
+		nodeList.add(new DefaultNodeImpl("Node2", "soccer-ball-o").withUseFaIcons(true).withDisabled(true));
 		
-		Node n1 = new DefaultNodeImpl("Node2", "soccer-ball-o");
-		n1.setUseFaIcons(true);
-		
-		nodeList.add(n);
-		nodeList.add(n1);
-		
-		
-		return nodeList;
+		rootNode.getChilds().addAll(nodeList);
+
+		return rootNode;
 	}
 
 	@Override
