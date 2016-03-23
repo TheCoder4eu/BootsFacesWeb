@@ -306,14 +306,33 @@
       colors and borders when using contextual variations as they are
       not meant to be in the foreground.
     </p>
-    <b:panel title="Panel with Footer" look="info">
+    <b:tabView>
+        <b:tab title="preview">
+            <b:panel title="Panel with Footer" look="info">
+                <h:outputText value="Panel Content" />
+                <f:facet name="footer">
+                    <h:outputText value="Panel Footer" />
+               </f:facet>
+            </b:panel>
+        </b:tab>
+        <b:tab title="JSF markup">
+            <b:well>
+                <script type="syntaxhighlighter"
+                  class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+             <![CDATA[
+  <b:panel title="Panel with Footer" look="info">
       <h:outputText value="Panel Content" />
       <f:facet name="footer">
-        <h:outputText value="Panel Footer" />
+          <h:outputText value="Panel Footer" />
       </f:facet>
-    </b:panel>
+  </b:panel>
+            ]]>
+                </script>
+            </b:well>
+        </b:tab>
+    </b:tabView>
     
-    <h3 id="panels-footer">AJAX and JavaScript <b:badge value="since 0.8.0" /></h3>
+    <h3 id="panels-ajax">AJAX and JavaScript <b:badge value="since 0.8.0" /></h3>
     <p>
       You can use the standard JavaScript callback handlers to call both JavaScript and AJAX code. Apart from the standard
       HTML event handlers like onclick and onmouseover there are also four Bootstrap callback listeners: <code>onexpand</code>,
