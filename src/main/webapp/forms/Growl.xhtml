@@ -10,51 +10,69 @@
 
 	<ui:define name="content">
 		<style>
-td {
-	padding: 8px;
-}
-</style>
-		<h1>Growl (&lt;b:growl /&gt;) <b:badge value="since 0.8.2" /></h1>
-		<p>Displays <code>FacesMessages</code> in Bootstrap Growl style.</p>
+		td {
+			padding: 8px;
+		}
+		</style>
+		<h1>
+			Growl (&lt;b:growl /&gt;)
+			<b:badge value="since 0.8.2" />
+		</h1>
+		<p>
+			Displays <code>FacesMessages</code> in Bootstrap Growl style.
+		</p>
+		<br/><br/>
+		<b:panel>
+			<h:form>
+				<p:commandButton value="Info" actionListener="#{messagesBean.info}"
+					update="@form" />
+				<p:commandButton value="Warn" actionListener="#{messagesBean.warn}"
+					update="@form" />
+				<p:commandButton value="Error"
+					actionListener="#{messagesBean.error}" update="@form" />
+				<p:commandButton value="Fatal"
+					actionListener="#{messagesBean.fatal}" update="@form" />
+
+				<b:growl id="growlMsg" globalOnly="true" placementFrom="bottom"
+					showDetail="false" show-summary="true" allowDismiss="true"
+					delay="10000" escape="true" />
+			</h:form>
+		</b:panel>
 		
-         <b:tabView activeIndex="1"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
-          <b:tab title="JSF markup">
-            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+		<b:well>
+			<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
 			<p:commandButton value="Info" actionListener="&num;{messagesBean.info}" update="@form"/>
 			<p:commandButton value="Warn" actionListener="&num;{messagesBean.warn}" update="@form"/>
 			<p:commandButton value="Error" actionListener="&num;{messagesBean.error}" update="@form"/>
 			<p:commandButton value="Fatal" actionListener="&num;{messagesBean.fatal}" update="@form"/>
 
-            <p>Base configuration:</p>
-			<b:growl id="growlMsg" globalOnly="true" placement-from="bottom" showDetail="false" showSummary="true" allowDismiss="true" delay="10000" escape="true" />
+			<b:growl id="growlMsg" globalOnly="true" 
+					 placement-from="bottom" showDetail="false" 
+				     showSummary="true" allowDismiss="true" delay="10000" escape="true" />
 ]]>
-         </script>
-          </b:tab>
-          <b:tab title="displayed as">
-            <h:form>
-	            <p:commandButton value="Info" actionListener="#{messagesBean.info}" update="@form"/>
-	            <p:commandButton value="Warn" actionListener="#{messagesBean.warn}" update="@form"/>
-	            <p:commandButton value="Error" actionListener="#{messagesBean.error}" update="@form"/>
-	            <p:commandButton value="Fatal" actionListener="#{messagesBean.fatal}" update="@form"/>
-	            
-	            <b:growl id="growlMsg" globalOnly="true" placement-from="bottom" showDetail="false" showSummary="true" allowDismiss="true" delay="10000" escape="true" />
-     		</h:form>
-          </b:tab>
-        </b:tabView>
-		
-		        <br/>
-                <h2>Reference section</h2>
-                <ui:include src="GrowlAttributes.xhtml" />
-                <b:panel look="info" rendered="false">
-					<f:facet name="heading">
-						<b>Skinning</b>
-					</f:facet>
-					<ul>
-						<li>Tell the world which CSS classes can be used to change the
-						look of the component.</li>
-					</ul>
-				</b:panel>
+        	</script>
+		</b:well>
+		<br />
+		<p>
+			Basically, Growl is an extension of standard JSF messages, with the ability to display a message in growl style.
+			You can configure the growl position in any of the window corner and a lot of other settings to customize your growl experience.
+		</p>
+		<b:well style="text-align: center;">
+			<h:graphicImage library="images" name="position.jpg" width="90%" />
+		</b:well>
+		<br />
+		<h2>Reference section</h2>
+		<ui:include src="GrowlAttributes.xhtml" />
+		<b:panel look="info" rendered="false">
+			<f:facet name="heading">
+				<b>Skinning</b>
+			</f:facet>
+			<ul>
+				<li>Tell the world which CSS classes can be used to change the
+					look of the component.</li>
+			</ul>
+		</b:panel>
 
 		<script type="text/javascript">
       		SyntaxHighlighter.all();

@@ -21,23 +21,50 @@
 		<br/>
 		<h1>Basic usage</h1>
 		
+		<br/>
+		<h4>Basic RGB Color picker aligned left with opacity active</h4>
 		<b:tabView activeIndex="1">
 			<b:tab title="JSF markup">
 				<b:well>
 					<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 						<![CDATA[
     						<b:colorPicker value="&num;{test.selectedColor}" opacity="true" format="rgb" /> 
-							
-							Oppure
-
+					]]></script>
+				</b:well>
+			</b:tab>
+			<b:tab title="displayed as" contentStyle="padding:10px">
+				<b:colorPicker value="#{test.selectedColor}" opacity="true" format="rgb" /> 
+			</b:tab>
+		</b:tabView>
+		<br/>
+		
+		<h4>Basic HEX Color wheel aligned right without opacity and popup position in bottom-right corner</h4>
+		<b:tabView activeIndex="1">
+			<b:tab title="JSF markup">
+				<b:well>
+					<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+						<![CDATA[
 							<b:colorPicker value="&num;{test.selectedColor}" opacity="false" format="hex" control="wheel" position="bottom right"/> 
 					]]></script>
 				</b:well>
 			</b:tab>
-			<b:tab title="displayed as" contentStyle="border:1px solid ;padding:10px">
-				<b:colorPicker value="#{test.selectedColor}" opacity="true" format="rgb" /> 
-				<br/>Oppure<br/><br/>
+			<b:tab title="displayed as" contentStyle="padding:10px">
 				<b:colorPicker value="#{test.selectedColor}" opacity="false" format="hex" control="wheel" position="bottom right"/> 
+			</b:tab>
+		</b:tabView>
+		
+		<h4>Basic RGB Color Picker with predefined color swatches</h4>
+		<b:tabView activeIndex="1">
+			<b:tab title="JSF markup">
+				<b:well>
+					<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+						<![CDATA[
+							<b:colorPicker value="#{test.selectedColor}" opacity="true" format="rgb" swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"/> 
+					]]></script>
+				</b:well>
+			</b:tab>
+			<b:tab title="displayed as" contentStyle="padding:10px">
+				<b:colorPicker value="#{test.selectedColor}" opacity="true" format="rgb" swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"/> 
 			</b:tab>
 		</b:tabView>
 

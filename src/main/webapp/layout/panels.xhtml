@@ -1,65 +1,70 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
-<ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:sourcecode="http://java.sun.com/jsf/composite/sourcecode">
+<ui:composition template="/applayout/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:sourcecode="http://java.sun.com/jsf/composite/sourcecode">
 
-  <ui:define name="content">
-    <h1>Panels</h1>
-    <p>While not always necessary, sometimes you need to put your
-      DOM in a box. For those situations, the panel component comes in
-      handy.</p>
+	<ui:define name="content">
+		<h1>Panels</h1>
+		<p>While not always necessary, sometimes you need to put your DOM
+			in a box. For those situations, the panel component comes in handy.</p>
 
-    <h3>Basic example</h3>
-    <p>
-      By default, all the <code>&lt;b:panel&gt;</code> does is apply some basic border and padding to contain some content.
-    </p>
+		<h3>Basic example</h3>
+		<p>
+			By default, all the
+			<code>&lt;b:panel&gt;</code>
+			does is apply some basic border and padding to contain some content.
+		</p>
 
-          <b:panel>
-          <h:outputText value="Basic panel example " />
-        </b:panel>
-  
-          <b:well>
-          <script type="syntaxhighlighter"
-            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+		<b:panel>
+			<h:outputText value="Basic panel example " />
+		</b:panel>
+
+		<b:well>
+			<script type="syntaxhighlighter"
+				class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 			<![CDATA[
                  <b:panel>
                     <h:outputText value="Basic panel example "/>
                 </b:panel>
 			]]>
 		  </script>
-        </b:well>
+		</b:well>
 
 
-    <h3 id="panels-heading">Panel with heading</h3>
-    <p>
-      Easily add a heading container to your panel specifying the
-      <code>heading</code>
-      facet. You may also include any
-      <code>&lt;h1&gt;</code>
-      -
-      <code>&lt;h6&gt;</code>
-      to add a pre-styled heading. Facets may contain arbitrary content. For instance, the example below contains a <code>&lt;b:badge /&gt;</code>:
-    </p>
+		<h3 id="panels-heading">Panel with heading</h3>
+		<p>
+			Easily add a heading container to your panel specifying the
+			<code>heading</code>
+			facet. You may also include any
+			<code>&lt;h1&gt;</code>
+			-
+			<code>&lt;h6&gt;</code>
+			to add a pre-styled heading. Facets may contain arbitrary content.
+			For instance, the example below contains a
+			<code>&lt;b:badge /&gt;</code>
+			:
+		</p>
 
-    <b:tabView>
-      <b:tab title="live demo">
-        <b:panel>
-          <f:facet name="heading">
-            <h:outputText
-              value="Panel heading with a facet in place of a title " />
-            <b:badge style="margin-left:10px" value="since version 0.4" />
-          </f:facet>
-          <h:outputText value="Panel Content" />
-        </b:panel>
-      </b:tab>
-      <b:tab title="source code">
-        <b:well>
-          <script type="syntaxhighlighter"
-            class="brush: xml; toolbar: false;first-line: 0">
+		<b:tabView>
+			<b:tab title="live demo">
+				<b:panel>
+					<f:facet name="heading">
+						<h:outputText
+							value="Panel heading with a facet in place of a title " />
+						<b:badge style="margin-left:10px" value="since version 0.4" />
+					</f:facet>
+					<h:outputText value="Panel Content" />
+				</b:panel>
+			</b:tab>
+			<b:tab title="source code">
+				<b:well>
+					<script type="syntaxhighlighter"
+						class="brush: xml; toolbar: false;first-line: 0">
             <![CDATA[
                  <b:panel>
                     <f:facet name="heading">
@@ -69,51 +74,52 @@
                     <h:outputText value="Panel Content"/>
                  </b:panel>
                     ]]></script>
-        </b:well>
-      </b:tab>
-    </b:tabView>
-    <br />
-    <p>
-      As a simple (but less flexible) alternative, you can specify a title with the
-      <code>title</code>
-      attribute; since this is meant as an option, the heading facet
-      will not be rendered and the panel will render with a heading
-      having the attribute's value as Title.
-    </p>
+				</b:well>
+			</b:tab>
+		</b:tabView>
+		<br />
+		<p>
+			As a simple (but less flexible) alternative, you can specify a title
+			with the
+			<code>title</code>
+			attribute; since this is meant as an option, the heading facet will
+			not be rendered and the panel will render with a heading having the
+			attribute's value as Title.
+		</p>
 
-          <b:tabView>
-            <b:tab title="JSF markup">
-              <b:well>
-                <script type="syntaxhighlighter"
-                  class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+		<b:tabView>
+			<b:tab title="JSF markup">
+				<b:well>
+					<script type="syntaxhighlighter"
+						class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
               <b:panel title="Panel title" collapsible="false">
                 <h:outputText value="Panel Content" />
               </b:panel>
 ]]>
         </script>
-              </b:well>
-            </b:tab>
-            <b:tab title="displayed as">
-              <b:panel title="Panel title" collapsible="false">
-                <h:outputText value="Panel Content" />
-              </b:panel>
-            </b:tab>
-          </b:tabView>
-    <h3>Collapsible panels</h3>
-    <p>
-      By default, panels can be collapse by clicking the title bar or
-      the chevron at the right hand side of the title bar. If you don't
-      need this feature, you can switch it off by adding the attribute
-      <code>collapsible="false"</code>
-      :
-    </p>
+				</b:well>
+			</b:tab>
+			<b:tab title="displayed as">
+				<b:panel title="Panel title" collapsible="false">
+					<h:outputText value="Panel Content" />
+				</b:panel>
+			</b:tab>
+		</b:tabView>
+		<h3>Collapsible panels</h3>
+		<p>
+			By default, panels can be collapse by clicking the title bar or the
+			chevron at the right hand side of the title bar. If you don't need
+			this feature, you can switch it off by adding the attribute
+			<code>collapsible="false"</code>
+			:
+		</p>
 
-           <b:tabView>
-            <b:tab title="JSF markup">
-              <b:well>
-                <script type="syntaxhighlighter"
-                  class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+		<b:tabView>
+			<b:tab title="JSF markup">
+				<b:well>
+					<script type="syntaxhighlighter"
+						class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
               <b:panel title="Try to fold me away!" collapsible="false">
                    I bet you can't...
@@ -121,49 +127,48 @@
 
 ]]>
         </script>
-              </b:well>
-            </b:tab>
-            <b:tab title="displayed as">
-              <b:panel title="Try to fold me away!" collapsible="false">
+				</b:well>
+			</b:tab>
+			<b:tab title="displayed as">
+				<b:panel title="Try to fold me away!" collapsible="false">
                    I bet you can't...
               </b:panel>
-            </b:tab>
-          </b:tabView>
+			</b:tab>
+		</b:tabView>
 
-    <h3>Persistent collapse/expand state</h3>
-    <p>By default, panels are not collapsed when the page is
-      rendered. If they're outside a form, they are also expanded after
-      a post request (i.e. after clicking a button) - even if the user
-      had collapsed the panel before clicking the button. To preserve
-      the expansion state on postbacks, make sure to put the panel into
-      the same form as the command button. The panel below is the only
-      panel on this page which restores its state after clicking the
-      button:</p>
+		<h3>Persistent collapse/expand state</h3>
+		<p>By default, panels are not collapsed when the page is rendered.
+			If they're outside a form, they are also expanded after a post
+			request (i.e. after clicking a button) - even if the user had
+			collapsed the panel before clicking the button. To preserve the
+			expansion state on postbacks, make sure to put the panel into the
+			same form as the command button. The panel below is the only panel on
+			this page which restores its state after clicking the button:</p>
 
-          <b:tabView>
-            <b:tab title="preview">
-     <b:panelGrid colSpans="6,6" id="stateGridId">
-      <h:form>
-        <b:panel title="Within form - collapse state is restored"
-          look="primary">
-          <h:outputText value="Panel Content" />
-          <b:messages />
-        </b:panel>
-        <b:commandButton value="Redraw this page" update="stateGridId"
-          ajax="true" actionListener="#{messagesBean.info}" />
-      </h:form>
-      <b:panel title="outside the form - open after each postback"
-        look="danger">
-        <h:outputText value="Panel Content" />
-        <b:messages />
-      </b:panel>
-    </b:panelGrid>
-          
-            </b:tab>
-            <b:tab title="JSF markup">
-              <b:well>
-                <script type="syntaxhighlighter"
-                  class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+		<b:tabView>
+			<b:tab title="preview">
+				<b:panelGrid colSpans="6,6" id="stateGridId">
+					<h:form>
+						<b:panel title="Within form - collapse state is restored"
+							look="primary">
+							<h:outputText value="Panel Content" />
+							<b:messages />
+						</b:panel>
+						<b:commandButton value="Redraw this page" update="stateGridId"
+							ajax="true" actionListener="#{messagesBean.info}" />
+					</h:form>
+					<b:panel title="outside the form - open after each postback"
+						look="danger">
+						<h:outputText value="Panel Content" />
+						<b:messages />
+					</b:panel>
+				</b:panelGrid>
+
+			</b:tab>
+			<b:tab title="JSF markup">
+				<b:well>
+					<script type="syntaxhighlighter"
+						class="brush: xml; toolbar: false;gutter: false; first-line: 1">
         <![CDATA[
     <b:panelGrid colSpans="6,6" id="stateGridId">
       <h:form>
@@ -184,40 +189,40 @@
 
       ]]>
         </script>
-              </b:well>
-            </b:tab>
-          </b:tabView>
-      
+				</b:well>
+			</b:tab>
+		</b:tabView>
 
-    <h3>Programmable collapse/expand state</h3>
-    <p>The collapse state can also be controlled by an attribute of
-      a managed bean:</p>
-          <b:tabView>
-             <b:tab title="preview">
-    <h:form>
-      <b:panelGrid colSpans="6,6">
-        <b:panel
-          title="I'm #{panelBean.firstText} because of a bean attribute."
-          look="danger" collapsed="#{panelBean.firstPanelCollapsed}">
-          <h:outputText value="Panel Content" />
-          <b:messages />
-        </b:panel>
-        <b:panel
-          title="I'm #{panelBean.secondText} because of a bean attribute."
-          look="danger" collapsed="#{panelBean.secondPanelCollapsed}">
-          <h:outputText value="Panel Content" />
-          <b:messages />
-        </b:panel>
-      </b:panelGrid>
-      <b:commandButton ajax="true" update="@form"
-        actionListener="#{panelBean.toggle}" value="toggle" />
-    </h:form>
-          
-            </b:tab>
-           <b:tab title="JSF markup">
-              <b:well>
-                <script type="syntaxhighlighter"
-                  class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+
+		<h3>Programmable collapse/expand state</h3>
+		<p>The collapse state can also be controlled by an attribute of a
+			managed bean:</p>
+		<b:tabView>
+			<b:tab title="preview">
+				<h:form>
+					<b:panelGrid colSpans="6,6">
+						<b:panel
+							title="I'm #{panelBean.firstText} because of a bean attribute."
+							look="danger" collapsed="#{panelBean.firstPanelCollapsed}">
+							<h:outputText value="Panel Content" />
+							<b:messages />
+						</b:panel>
+						<b:panel
+							title="I'm #{panelBean.secondText} because of a bean attribute."
+							look="danger" collapsed="#{panelBean.secondPanelCollapsed}">
+							<h:outputText value="Panel Content" />
+							<b:messages />
+						</b:panel>
+					</b:panelGrid>
+					<b:commandButton ajax="true" update="@form"
+						actionListener="#{panelBean.toggle}" value="toggle" />
+				</h:form>
+
+			</b:tab>
+			<b:tab title="JSF markup">
+				<b:well>
+					<script type="syntaxhighlighter"
+						class="brush: xml; toolbar: false;gutter: false; first-line: 1">
         <![CDATA[
     <h:form>
       <b:panelGrid colSpans="6,6">
@@ -240,43 +245,43 @@
 
       ]]>
         </script>
-              </b:well>
-            </b:tab>
-          </b:tabView>
-      
-    <p>However, if the user opens or closes a panel, their choice
-      overrides the values taken from the bean.</p>
+				</b:well>
+			</b:tab>
+		</b:tabView>
 
-    <br />
-    <h3 id="panels-alternatives">Contextual alternatives</h3>
-    <p>
-      Like other components, easily make a panel more meaningful to a
-      particular context by adding a
-      <code>look</code>
-      attribute with values primary, success, info, warning or danger.
-    </p>
-          <b:tabView>
-             <b:tab title="preview">
-                <b:panel title="Panel Title - Primary" look="primary">
-                  <h:outputText value="Panel Content" />
-                </b:panel>
-                <b:panel title="Panel Title - Success" look="success">
-                  <h:outputText value="Panel Content" />
-                </b:panel>
-                <b:panel title="Panel Title - Info" look="info">
-                  <h:outputText value="Panel Content" />
-                </b:panel>
-                <b:panel title="Panel Title - Warning" look="warning">
-                  <h:outputText value="Panel Content" />
-                </b:panel>
-                <b:panel title="Panel Title - Danger" look="danger">
-                  <h:outputText value="Panel Content" />
-                </b:panel>
-            </b:tab>
-            <b:tab title="JSF markup">
-              <b:well>
-                <script type="syntaxhighlighter"
-                  class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+		<p>However, if the user opens or closes a panel, their choice
+			overrides the values taken from the bean.</p>
+
+		<br />
+		<h3 id="panels-alternatives">Contextual alternatives</h3>
+		<p>
+			Like other components, easily make a panel more meaningful to a
+			particular context by adding a
+			<code>look</code>
+			attribute with values primary, success, info, warning or danger.
+		</p>
+		<b:tabView>
+			<b:tab title="preview">
+				<b:panel title="Panel Title - Primary" look="primary">
+					<h:outputText value="Panel Content" />
+				</b:panel>
+				<b:panel title="Panel Title - Success" look="success">
+					<h:outputText value="Panel Content" />
+				</b:panel>
+				<b:panel title="Panel Title - Info" look="info">
+					<h:outputText value="Panel Content" />
+				</b:panel>
+				<b:panel title="Panel Title - Warning" look="warning">
+					<h:outputText value="Panel Content" />
+				</b:panel>
+				<b:panel title="Panel Title - Danger" look="danger">
+					<h:outputText value="Panel Content" />
+				</b:panel>
+			</b:tab>
+			<b:tab title="JSF markup">
+				<b:well>
+					<script type="syntaxhighlighter"
+						class="brush: xml; toolbar: false;gutter: false; first-line: 1">
              <![CDATA[
     <b:panel title="Panel Title - Primary" look="primary">
       <h:outputText value="Panel Content" />
@@ -295,63 +300,74 @@
     </b:panel>
             ]]>
             </script>
-              </b:well>
-            </b:tab>
-          </b:tabView>
-    <h3 id="panels-footer">Panels with a footer</h3>
-    <p>
-      Wrap buttons or secondary text in a
-      <code>footer</code>
-      facet. Note that panel footers <strong>do not</strong> inherit
-      colors and borders when using contextual variations as they are
-      not meant to be in the foreground.
-    </p>
-    <b:panel title="Panel with Footer" look="info">
-      <h:outputText value="Panel Content" />
-      <f:facet name="footer">
-        <h:outputText value="Panel Footer" />
-      </f:facet>
-    </b:panel>
-    
-    <h3 id="panels-footer">AJAX and JavaScript <b:badge value="since 0.8.0" /></h3>
-    <p>
-      You can use the standard JavaScript callback handlers to call both JavaScript and AJAX code. Apart from the standard
-      HTML event handlers like onclick and onmouseover there are also four Bootstrap callback listeners: <code>onexpand</code>,
-      <code>onexpanded</code>, <code>oncollapse</code> and <code>oncollapsed.</code>.
-    </p>
- 
-         <b:tabView>
-             <b:tab title="preview">
-               <h:form>
-                 <b:panelGrid colSpans="6,6">
-                   <b:panel look="primary" title="AJAXified b:panel"
-                      update="@form:messages"
-                      onexpand="console.log('expand - start');ajax:ajaxBean.onPanelExpandStart()"
-                      onexpanded="console.log('expand - done');ajax:ajaxBean.onPanelExpanded()"
-                      oncollapse="console.log('expand - start');ajax:ajaxBean.onPanelCollapseStart()"
-                      oncollapsed="console.log('expand - done');ajax:ajaxBean.onPanelCollapsed()"
-                      onmouseover="console.log('mouse over');ajax:ajaxBean.onMouseOver()"
-                      onmouseout="console.log('mouse out');ajax:ajaxBean.onMouseOut()"
-                      onclick="console.log('click');ajax:ajaxBean.onClick()"
-                      >
+				</b:well>
+			</b:tab>
+		</b:tabView>
+		<h3 id="panels-footer">Panels with a footer</h3>
+		<p>
+			Wrap buttons or secondary text in a
+			<code>footer</code>
+			facet. Note that panel footers <strong>do not</strong> inherit colors
+			and borders when using contextual variations as they are not meant to
+			be in the foreground.
+		</p>
+		<b:panel title="Panel with Footer" look="info">
+			<h:outputText value="Panel Content" />
+			<f:facet name="footer">
+				<h:outputText value="Panel Footer" />
+			</f:facet>
+		</b:panel>
+
+		<h3 id="panels-footer">
+			AJAX and JavaScript
+			<b:badge value="since 0.8.0" />
+		</h3>
+		<p>
+			You can use the standard JavaScript callback handlers to call both
+			JavaScript and AJAX code. Apart from the standard HTML event handlers
+			like onclick and onmouseover there are also four Bootstrap callback
+			listeners:
+			<code>onexpand</code>
+			,
+			<code>onexpanded</code>
+			,
+			<code>oncollapse</code>
+			and
+			<code>oncollapsed.</code>
+			.
+		</p>
+
+		<b:tabView>
+			<b:tab title="preview">
+				<h:form>
+					<b:panelGrid colSpans="6,6">
+						<b:panel look="primary" title="AJAXified b:panel"
+							update="@form:messages"
+							onexpand="console.log('expand - start');ajax:ajaxBean.onPanelExpandStart()"
+							onexpanded="console.log('expand - done');ajax:ajaxBean.onPanelExpanded()"
+							oncollapse="console.log('expand - start');ajax:ajaxBean.onPanelCollapseStart()"
+							oncollapsed="console.log('expand - done');ajax:ajaxBean.onPanelCollapsed()"
+							onmouseover="console.log('mouse over');ajax:ajaxBean.onMouseOver()"
+							onmouseout="console.log('mouse out');ajax:ajaxBean.onMouseOut()"
+							onclick="console.log('click');ajax:ajaxBean.onClick()">
                       The content of the panel does not matter. Look at the messages at the right hand side. 
                       That's where the music plays.
-                   </b:panel>          
-                    <b:well id="messages">
+                   </b:panel>
+						<b:well id="messages">
                             Last action:
                             <ul>
-                      <ui:repeat var="message" value="#{ajaxBean.messages}">
-                        <li>#{message}</li>
-                      </ui:repeat>
-                    </ul>
-                  </b:well>
-                 </b:panelGrid>
-               </h:form>
-            </b:tab>
-            <b:tab title="JSF markup">
-              <b:well>
-                <script type="syntaxhighlighter"
-                  class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+								<ui:repeat var="message" value="#{ajaxBean.messages}">
+									<li>#{message}</li>
+								</ui:repeat>
+							</ul>
+						</b:well>
+					</b:panelGrid>
+				</h:form>
+			</b:tab>
+			<b:tab title="JSF markup">
+				<b:well>
+					<script type="syntaxhighlighter"
+						class="brush: xml; toolbar: false;gutter: false; first-line: 1">
              <![CDATA[
               <h:form>
                  <b:panelGrid colSpans="6,6">
@@ -375,70 +391,67 @@
                </h:form>
             ]]>
             </script>
-              </b:well>
-            </b:tab>
-          </b:tabView>
-     
-    
+				</b:well>
+			</b:tab>
+		</b:tabView>
 
-    <br />
-    <h2>Reference section</h2>
-    <ui:include src="PanelAttributes.xhtml" />
-    <b:panel look="info">
-      <f:facet name="heading">
-        <b>Facets of &lt;b:panel &gt;</b>
-      </f:facet>
-      <table class="table table-striped table-hover"
-        style="background-color: #fff">
-        <thead>
-          <tr>
-            <th>Name of the facet</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>heading</td>
-            <td>This optional facet can be used to render complex
-              titles.</td>
-          </tr>
-          <tr>
-            <td>footer</td>
-            <td>This optional facet can be used to render complex
-              footers.</td>
-          </tr>
-        </tbody>
-      </table>
-    </b:panel>
 
-    <b:panel look="info">
-      <f:facet name="heading">
-        <b>Skinning</b>
-      </f:facet>
-      <table class="table table-striped table-hover"
-        style="background-color: #fff">
-        <tr>
-          <td>panel</td>
-          <td>This CSS class applies to the entire panel.</td>
-        </tr>
-        <tr>
-          <td>panel-title</td>
-          <td>This CSS class applies to the title area of the
-            panel.</td>
-        </tr>
-        <tr>
-          <td>panel-footer</td>
-          <td>This CSS class applies to the footer area of the
-            panel.</td>
-        </tr>
-      </table>
-    </b:panel>
 
-    <br />
-    <br />
-    <br />
-    <script type="text/javascript">
+		<br />
+		<h2>Reference section</h2>
+		<ui:include src="PanelAttributes.xhtml" />
+		<b:panel look="info">
+			<f:facet name="heading">
+				<b>Facets of &lt;b:panel &gt;</b>
+			</f:facet>
+			<table class="table table-striped table-hover"
+				style="background-color: #fff">
+				<thead>
+					<tr>
+						<th>Name of the facet</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>heading</td>
+						<td>This optional facet can be used to render complex titles.</td>
+					</tr>
+					<tr>
+						<td>footer</td>
+						<td>This optional facet can be used to render complex
+							footers.</td>
+					</tr>
+				</tbody>
+			</table>
+		</b:panel>
+
+		<b:panel look="info">
+			<f:facet name="heading">
+				<b>Skinning</b>
+			</f:facet>
+			<table class="table table-striped table-hover"
+				style="background-color: #fff">
+				<tr>
+					<td>panel</td>
+					<td>This CSS class applies to the entire panel.</td>
+				</tr>
+				<tr>
+					<td>panel-title</td>
+					<td>This CSS class applies to the title area of the panel.</td>
+				</tr>
+				<tr>
+					<td>panel-footer</td>
+					<td>This CSS class applies to the footer area of the panel.</td>
+				</tr>
+			</table>
+		</b:panel>
+
+		<br />
+		<br />
+		<br />
+		<script type="text/javascript">
                     SyntaxHighlighter.all();
                 </script>
-  </ui:define>
+	</ui:define>
 </ui:composition>
