@@ -194,20 +194,20 @@
           </b:tab>
         </b:tabView>
         
-                <h2>AJAX and JavaScript  <b:badge value="since 0.8.0" /></h2>
-                <p>The <code>&lt;b:selectBooleanCheckbox &gt;</code> supports the full suite of JavaScript and AJAX events,
-                as described in <a href="ajax.jsf">the description of AJAX in BootsFaces</a>. Basically, each of the
-                many JavaScript callback handlers (the <code>on[event]</code> attributes) also supports AJAX.
-                To get familiar with BootsFaces AJAX, try the 
-                <a target="#" href="https://github.com/stephanrauh/BootsFaces-Examples/tree/master/AJAX">BootsFaces AJAX demo project</a>.</p>
-                
-                <h2>Error messages <b:badge value="since 0.8.1" /></h2>
-               <p>If the field has a FacesMessage, one of the CSS classes <code>bf-info</code>, <code>bf-warning</code>, 
-                   <code>bf-error</code> or <code>bf-fatal</code> is added to the label, depending on which error severity the message has.
-                   The latter two classes color the label red. <code>bf-warning</code> colors it orange. You can override this default setting in a custom CSS file.</p>
-                <p>If there's no message,
-                   the field and its label bear the pseudo CSS class <code>bf-no-message</code>.
-               </p>
+          <h2>AJAX and JavaScript  <b:badge value="since 0.8.0" /></h2>
+          <p>The <code>&lt;b:selectBooleanCheckbox &gt;</code> supports the full suite of JavaScript and AJAX events,
+          as described in <a href="ajax.jsf">the description of AJAX in BootsFaces</a>. Basically, each of the
+          many JavaScript callback handlers (the <code>on[event]</code> attributes) also supports AJAX.
+          To get familiar with BootsFaces AJAX, try the 
+          <a target="#" href="https://github.com/stephanrauh/BootsFaces-Examples/tree/master/AJAX">BootsFaces AJAX demo project</a>.</p>
+          
+          <h2>Error messages <b:badge value="since 0.8.1" /></h2>
+         <p>If the field has a FacesMessage, one of the CSS classes <code>bf-info</code>, <code>bf-warning</code>, 
+             <code>bf-error</code> or <code>bf-fatal</code> is added to the label, depending on which error severity the message has.
+             The latter two classes color the label red. <code>bf-warning</code> colors it orange. You can override this default setting in a custom CSS file.</p>
+          <p>If there's no message,
+             the field and its label bear the pseudo CSS class <code>bf-no-message</code>.
+          </p>
           <b:tabView activeIndex="1" contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
           <b:tab title="JSF markup">
             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
@@ -292,6 +292,60 @@
                 </h:form>          
              </b:tab>
         </b:tabView>
+        
+          <h2>The <code>required</code> attribute  <b:badge value="since 0.8.2" /></h2>
+          <p>The <code>required</code> attribute works a bit different than the <code>required</code> attribute
+          of other input field. You can't leave a checkbox empty. Even if you don't check it, this may be
+          a deliberate decision. As a consequence, most JSF frameworks ignore the <code>required</code>
+          attribute. However, since version 0.8.2 setting the <code>required</code> attribute amount to
+          forcing the user to check it. A typical usecase is accepting the EULA of your application.</p>
+              
+               
+          <b:tabView activeIndex="1" contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+          <b:tab title="JSF markup">
+            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+            <h:form>
+              <b:selectBooleanCheckbox value="#{checkboxBean.cbxFatal}" 
+                 label="This BootsFaces checkbox has to be checked."
+                 caption="I've read and understood the EULA."
+                 render-label="true"
+                 required="true" 
+                 required-message="Please check the checkbox."
+                 onclick="ajax:checkboxBean.action();"
+                 update="@form" />
+                 <b:message for="@previous" />
+              <b:commandButton value="submit and validate"
+                 onclick="ajax:checkboxBean.action();"
+                 update="@form" />
+              <b:messages global-only="true" />
+            </h:form>
+  ]]>
+         </script>
+          </b:tab>
+          <b:tab title="displayed as">
+             <h:form>
+              <b:selectBooleanCheckbox value="#{checkboxBean.cbxFatal}" 
+                 label="This BootsFaces checkbox has to be checked."
+                 caption="I've read and understood the EULA."
+                 render-label="true"
+                 required="true" 
+                 required-message="Please check the checkbox."
+                 onclick="ajax:checkboxBean.action();"
+                 update="@form" />
+                 <b:message for="@previous" />
+              <b:commandButton value="submit and validate"
+                 onclick="ajax:checkboxBean.action();"
+                 update="@form" />
+              <b:messages global-only="true" />
+            </h:form>
+          </b:tab>
+        </b:tabView>
+        
+        
+        
+        
+
                 
         
 				<h1>Reference section</h1>
