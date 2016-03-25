@@ -13,7 +13,7 @@ import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
-import com.sun.jdi.Bootstrap;
+import com.sun.jdi.Bootstrap; 
 import com.sun.jdi.ReferenceType;
 import com.sun.jdi.VirtualMachine;
 import com.sun.jdi.connect.AttachingConnector;
@@ -62,7 +62,7 @@ public class HealthCheckBean {
 			errormessage = error.getClass().getName() + " " + error.getMessage();
 		}
 
-	}
+	} 
 
 	public String reportMostFrequentObjects() {
 		if (null == vm) {
