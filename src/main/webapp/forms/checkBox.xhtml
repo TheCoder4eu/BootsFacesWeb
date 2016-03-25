@@ -39,7 +39,7 @@
 <![CDATA[
     <h:form>
     	<h:panelGrid columns="2"  cellpadding="5">
-         	<b:selectBooleanCheckbox value="&#35;{settingsBean.checkbox2}" label="checkbox 2" />
+         	<b:selectBooleanCheckbox value="&#35;{settingsBean.checkbox2}" label="checkbox 2" render-label="true" />
         </h:panelGrid>
     </h:form>
 ]]>
@@ -48,7 +48,7 @@
 				  <b:tab title="displayed as">
 				    <h:form>
 				    	<h:panelGrid columns="2"  cellpadding="5">
-				         	<b:selectBooleanCheckbox value="#{settingsBean.checkbox2}" label="checkbox 2" />
+				         	<b:selectBooleanCheckbox value="#{settingsBean.checkbox2}" label="checkbox 2" render-label="true" />
 				        </h:panelGrid>
 				    </h:form>
 				  </b:tab>
@@ -160,15 +160,17 @@
             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
            <h:form>
-              <h:panelGrid columns="2"  cellpadding="5">
+              <h:panelGrid columns="2">
                  <b:selectBooleanCheckbox value="#num;{checkboxBean.editable}"  
                                 label="This is how RTL works!"
+                                render-label="true"
 								caption="RTL is active."
 								dir="rtl"
                                 tooltip="Note the position of the exclamation mark. That's due to activating RTL."/>
                    <b:selectBooleanCheckbox value="#num;{checkboxBean.checkbox}" 
                                 disabled="true"
                                 label="This is how LTR works!"
+                                render-label="true"
                                 caption="LTR is active."
                                 tooltip="LTR is the default value."/>
                 </h:panelGrid>
@@ -178,18 +180,20 @@
           </b:tab>
           <b:tab title="displayed as">
             <h:form>
-              <h:panelGrid columns="2"  cellpadding="5">
+              <b:panelGrid columns="2"  cellpadding="5">
                  <b:selectBooleanCheckbox value="#{checkboxBean.editable}"  
                                 label="This is how RTL works!"
+                                render-label="true"
 								caption="RTL is active."
 								dir="rtl"
                                 tooltip="Note the position of the exclamation mark. That's due to activating RTL."/>
                    <b:selectBooleanCheckbox value="#{checkboxBean.checkbox}" 
                                 disabled="true"
                                 label="This is how LTR works!"
+                                render-label="true"
                                 caption="LTR is active."
                                 tooltip="LTR is the default value."/>
-                </h:panelGrid>
+                </b:panelGrid>
             </h:form>
           </b:tab>
         </b:tabView>
