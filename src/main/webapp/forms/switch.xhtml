@@ -21,7 +21,7 @@ td {
     <b:tabView contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
       <b:tab title="live demo">
         <h:form>
-          <b:panelGrid columns="3,3,3,3">
+          <b:panelGrid columns="4">
             <b:switch value="#{settingsBean.checkbox1}" label="switch 1" offColor="success" onColor="info"
              />
             <b:switch value="#{settingsBean.checkbox2}" label="switch with tooltip"
@@ -48,7 +48,7 @@ td {
         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
                           <![CDATA[
         <h:form>
-          <b:panelGrid columns="3,3,3,3">
+          <b:panelGrid columns="4">
             <b:switch value="#num;{settingsBean.checkbox1}" label="switch 1" offColor="success" onColor="info" />
             <b:switch value="#num;{settingsBean.checkbox2}" label="switch with tooltip"
               tooltip="I'm the tooltip. I'll tell you what this switch is all about." />

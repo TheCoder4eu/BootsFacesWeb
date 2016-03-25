@@ -33,7 +33,7 @@
                 <h3>The Bootstrap look</h3>
                 <p>By default, command buttons are gray (depending on your theme). You can configure them by using a different look:</p>
                 <h:form>
-                <b:panelGrid columns="2,2,2,2,2,2" size="sm" >
+                <b:panelGrid columns="6" size="sm" >
                   <b:commandButton value="primary" ajax="true" update="@none" look="primary" style="width:80px"/>
                   <b:commandButton value="info" ajax="true" update="@none" look="info"  style="width:80px"/>
                   <b:commandButton value="success" ajax="true" update="@none" look="success"  style="width:80px"/>
@@ -75,7 +75,7 @@
  				<b:tab title="live demo">
 	 				<b:panel>
 	                  <h:form id="form1">
-                        <b:panelGrid columns="12">
+                        <b:panelGrid columns="1">
   	            		<b:selectBooleanCheckbox value="#{commandButtonBean.suppressClick}" caption="suppress click (JavaScript)" id="click" />
   		         		<b:selectBooleanCheckbox value="#{commandButtonBean.suppressDoubleClick}" caption="suppress doubleclick (JavaScript)"
   		         		                         id="doubleclick" />

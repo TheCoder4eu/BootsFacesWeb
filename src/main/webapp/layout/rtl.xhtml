@@ -24,7 +24,7 @@
           <h1>RTL support</h1>
         </b:column>
       </b:row>
-      <b:row class="rtlContent">
+      <b:row styleClass="rtlContent">
         <b:column span="12">
           <b:switch label="View this page in" value="#{rtlBean.rtl}" onText="rtl" offText="ltr" offColor="success"
             onchange="ajax:rtlBean.toggleRTL()" update="@(.rtlContent)" oncomplete="toggleCSSStylesheet();" />
