@@ -21,7 +21,7 @@
                     <li>Using HTML markup - a styled <code>&lt;a&gt;</code> tag with href and data attributes.</li>
                     <li>Using HTML markup - a styled <code>&lt;button&gt;</code> tag with two data attributes.</li>
                     <li>Using JSF BootsFaces markup - a <code>&lt;b:button&gt;</code> tag with passthrough data attributes and a little javascript to prevent click event.</li>
-                    <li>Using Javascript. This is the most flexible version: you can use arbitrary jQuery selectors instead of ids, and you aren't limited to buttons.</li>
+                    <li>Using JavaScript. This is the most flexible version: you can use arbitrary jQuery selectors instead of ids, and you aren't limited to buttons.</li>
                 </ul>
                 <p>Note: if your intendended use is to trigger a data submission that shows the results in a Modal, then have a look at the <h:link outcome="/forms/commandButton" value="commandButton"/> documentation.</p>
                 <p>The following example shows you how to use the four kinds of trigger.</p>
@@ -95,7 +95,7 @@
                 <p>In general, it's a better idea to use a pseudo CSS class instead of an <code>id</code>. That's a <code>styleClass</code> that may or may not have
                 CSS instructions applied to it. Pure pseudo CSS classes don't influence the layout at all. They are simply a convenient alternative to ids. Instead
                 of writing <code>href="#someId"</code> you can write <code>href=".somePseudoClass"</code>. JSF never modifies CSS class names, so they are a good
-                alternative to using <code>ids</code>. However, you have to use some Javascript to activate the modal dialog using a CSS pseudo class, as the following example shows: </p>
+                alternative to using <code>ids</code>. However, you have to use some JavaScript to activate the modal dialog using a CSS pseudo class, as the following example shows: </p>
                 
                 <b:panel look="info">
                     <f:facet name="heading"><b>EXAMPLE - Triggering a modal inside a form</b></f:facet>
