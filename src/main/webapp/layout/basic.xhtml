@@ -47,8 +47,8 @@
                   </li>
                   <li>A <code>&lt;b:column /&gt;</code> spans one of more grid columns. You can define different column
                   spans for different screen sizes. More on this in a minute. For now, suffice it to say that
-                  it's usually a good idea to optimize the screen for medium sized or small screens. You layout will scale
-                  seamlessly on larger screen, and still be usable on smaller screens. To define that a column spans
+                  it's usually a good idea to optimize the screen for medium sized or small screens. Your layout will scale
+                  seamlessly on larger screens, and still be usable on smaller screens. To define that a column spans
                   three grid columns on almost every laptop or desktop PC, use the attribute <code>medium="3"</code>.
                   For those who're already familiar with Bootstap: that's the same as <code>col-md="3"</code>. The generated
                   HTML code is <code>&lt;div class="col-md-3" /&gt;</code>.
@@ -262,10 +262,10 @@ public class LoginBean {
 
                   <h2>Responsive design</h2>
                   <p>We'll explain the responsive design of BootsFaces in a minute. But we can show it now. Resize your browser window slowly.
-                  Make it smaller. When the window is to small to display everything side-by-side, the widgets are stacked on top of each other.</p>
+                  Make it smaller. When the window is too small to display everything side-by-side, the widgets are stacked on top of each other.</p>
                   
                   <h2>Why BootsFaces? Why not using Bootstrap natively?</h2>
-                 <p>BootsFaces takes full advantage of Bootstrap Grid system while maintaining the benefits of being a JSF framework. Actually, we believe 
+                 <p>BootsFaces takes full advantage of Bootstrap's Grid system while maintaining the benefits of being a JSF framework. Actually, we believe 
                  it's more concise and more expressive
                      than programming Bootstrap natively. Convince yourself: inspect the source code of the demo in your
                      browser's source code view. After reformatting, the form is 81 lines. The JSF source is is 45 lines.</p>
@@ -274,7 +274,7 @@ public class LoginBean {
                   <h2>Understanding BootsFaces Grid System</h2>
                   <p>We've already talked about the Bootstrap grid. Let's cover the topic in more detail.</p>
                   <p>The central idea is to divide the page into 12 equal-sized columns. Each element of your page - be it an input field, a label, a table or a text - covers
-                  several of these columns. Widgets can't cover half a column. Your limited to integer multiples: one, two, three, ..., up to twelve columns. At first glance this sounds like
+                  several of these columns. Widgets can't cover half a column. You're limited to integer multiples: one, two, three, ..., up to twelve columns. At first glance this sounds like
                   a severe restriction, but in practice 12 columns offer enough flexibility for almost every use case. At the same time, being limited to twelve columns usually ensures an attractive page design.</p>
                   <p>The second central idea is to avoid horizontal scrolling. If your screen is wide enough to display the twelve columns side-by-side, do it. If not, stack the columns on top of each other.
                   This means you have to do a lot of horizontal scrolling on small phone displays. But that's still better than having to scroll both horizontally and vertically. Users
@@ -579,7 +579,7 @@ public class LoginBean {
                   </b:panel>
   
                  <h2>Alternative attribute names and values <b:badge value="since 0.8.1" /></h2>
-                 <p>You can choose from two alternative spelling to define the column span:</p>
+                 <p>You can choose from two alternative spellings to define the column span:</p>
                  <ul>
                  <li><code>col-xs</code>, <code>col-xs</code>, <code>col-xs</code> and <code>col-xs</code> follow
                  the tradition coined by Bootstrap.</li>

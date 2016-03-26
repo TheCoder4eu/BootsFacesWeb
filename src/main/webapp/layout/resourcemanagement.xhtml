@@ -9,7 +9,7 @@
      <ui:define name="content">
         <h1>Dealing with resource files <b:badge value="improved in 0.8.0" /></h1>
         <p>The BootsFaces jar contains many CSS and JavaScript files. You don't need external resource files to use BootsFaces. However,
-        many developers and web designers aren't happy with that. Basically, there are two reasons:
+        many developers and web designers aren't happy with that. These are basically the reasons for using external resources:
         </p>
         <ul>
         <li>Many resource files BootsFaces uses are also provided by CDNs. Using a CDN reduces your server's load, and in many cases CDNs
@@ -32,7 +32,7 @@
         </ul>
         <p>If you provide your own version of jQuery (i.e. if there's a <code>&lt;h:outputScript library="(whatever)" name="(whatever)/jQuery-(whatever).js" /&gt;</code>),
         BootsFaces doesn't add its own jQuery. Its up to you to make sure your jQuery is compatible to BootsFaces. Our mechanism to detect whether you
-        add jQuery is fairly flexible. It checks whether the resource name contains the substring "jquery" and ends with ".js". Plus, it's case-agnostic.</p>
+        add jQuery or not is fairly flexible. It checks whether the resource name contains the substring "jquery" and ends with ".js". Plus, it's case-agnostic.</p>
         <p>The some applies to jQueryUI. In this case, we check for the sub-string "jquery-ui".</p>
        
         
