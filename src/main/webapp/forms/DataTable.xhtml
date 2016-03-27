@@ -179,7 +179,7 @@
 		</script>
 
 		<h3>Empty data table:</h3>
-		<h:dataTable value="{{carPool.emptyCarPool}}" var="car"
+		<b:dataTable value="{{carPool.emptyCarPool}}" var="car"
 			id="emptyCarpool" styleClass="table table-striped table-bordered"
 			style="width:100%">
 
@@ -195,13 +195,7 @@
 				</f:facet>
 				<h:outputText value="#{car.type}" />
 			</h:column>
-
-		</h:dataTable>
-		<script>
-			$(document).ready(function() {
-				$('#emptyCarpool').DataTable();
-			});
-		</script>
+		</b:dataTable>
 
 
 		<h3>Advanced usage</h3>
