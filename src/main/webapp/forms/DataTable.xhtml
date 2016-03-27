@@ -150,56 +150,58 @@
 			</b:tab>
 		</b:tabView>
 
-		<h3>Do it yourself</h3>
-		<p>
-			This example shows how to convert the standard JSF datatable without
-			support by BootsFaces. Until we've finished the implementation of
-			<code>&lt;b:dataTable &gt;</code>, this is the most flexible approach.</p>
-
-		<h:dataTable value="{{carPool.carPool}}" var="car" id="carPool"
-			styleClass="table table-striped table-bordered" style="width:100%">
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Brand" />
-				</f:facet>
-				<h:outputText value="#{car.brand}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Type" />
-				</f:facet>
-				<h:inputText value="#{car.type}" />
-			</h:column>
-
-		</h:dataTable>
-		<script>
-			$(document).ready(function() {
-				$('#carPool').DataTable();
-			});
-		</script>
-
 		<h3>Empty data table:</h3>
-		<b:dataTable value="{{carPool.emptyCarPool}}" var="car"
-			id="emptyCarpool" styleClass="table table-striped table-bordered"
-			style="width:100%">
-
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Brand" />
-				</f:facet>
-				<h:outputText value="#{car.brand}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Type" />
-				</f:facet>
-				<h:outputText value="#{car.type}" />
-			</h:column>
-		</b:dataTable>
+        <b:tabView activeIndex="1">
+          <b:tab title="JSF markup">
+            <b:well>
+              <script type="syntaxhighlighter"
+                class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                <![CDATA[
+        		<b:dataTable value="{{carPool.emptyCarPool}}" var="car"
+        			id="emptyCarpool" styleClass="table table-striped table-bordered"
+        			style="width:100%">
+        
+        			<h:column>
+        				<f:facet name="header">
+        					<h:outputText value="Brand" />
+        				</f:facet>
+        				<h:outputText value="#{car.brand}" />
+        			</h:column>
+        			<h:column>
+        				<f:facet name="header">
+        					<h:outputText value="Type" />
+        				</f:facet>
+        				<h:outputText value="#{car.type}" />
+        			</h:column>
+        		</b:dataTable>
+    			]]>
+  			    </script>
+            </b:well>
+          </b:tab>
+          <b:tab title="displayed as" contentStyle="border:1px solid ;padding:10px">
+    		<b:dataTable value="{{carPool.emptyCarPool}}" var="car"
+    			id="emptyCarpool" styleClass="table table-striped table-bordered"
+    			style="width:100%">
+    
+    			<h:column>
+    				<f:facet name="header">
+    					<h:outputText value="Brand" />
+    				</f:facet>
+    				<h:outputText value="#{car.brand}" />
+    			</h:column>
+    			<h:column>
+    				<f:facet name="header">
+    					<h:outputText value="Type" />
+    				</f:facet>
+    				<h:outputText value="#{car.type}" />
+    			</h:column>
+    		</b:dataTable>
+          </b:tab>
+        </b:tabView>
 
 
 		<h3>Advanced usage</h3>
-		<ui:include src="dataTable.html" />
+		<p>To do</p>
 
 		<h3>Reference section</h3>
 		<ui:include src="DataTableAttributes.xhtml" />
