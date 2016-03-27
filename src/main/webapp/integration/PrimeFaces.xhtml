@@ -213,6 +213,9 @@
 				                <f:convertDateTime pattern="MM/dd/yyyy" />
 				            </h:outputText>
 				 
+                            <p:outputLabel for="issue327" value="Issue 327" />
+                            <p:calendar value="#{calendarView.date3}" mode="popup" size="8" showOn="button" id="issue327"/>
+
 				            <h:outputText value="Event:" />
 				            <h:outputText value="&num;{calendarView.date4}">
 				                <f:convertDateTime pattern="MM/dd/yyyy" />
@@ -273,6 +276,9 @@
 					 
 					        <p:outputLabel for="button" value="Button:" />
 					        <p:calendar id="button" value="#{calendarView.date3}" showOn="button" />
+                  
+                            <p:outputLabel for="issue327" value="Issue 327" />
+                            <p:calendar value="#{calendarView.date3}" mode="popup" size="8" showOn="button" id="issue327"/>
 					 
 					        <p:outputLabel for="event" value="Select Event:" />
 					        <p:calendar id="event" value="#{calendarView.date4}">
