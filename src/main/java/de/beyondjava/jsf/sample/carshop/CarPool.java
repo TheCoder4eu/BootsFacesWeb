@@ -75,7 +75,7 @@ public class CarPool implements Serializable {
 	}
 
 	@PostConstruct
-	private void initRandomCarPool() {
+	public void initRandomCarPool() {
 		types = dynamicOptions.getTypesToBrand(null);
 		carPool = new ArrayList<Car>();
 		for (int i = 0; i < SIZE_OF_INITIAL_CAR_POOL; i++) {
@@ -150,5 +150,4 @@ public class CarPool implements Serializable {
 			selectedCars.add(c);
 		}
 	}
-
 }
