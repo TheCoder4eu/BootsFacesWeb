@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="content">
+		<style>
+td {
+	padding: 8px;
+}
+</style>
+		<h1>Canvas (&lt;b:canvas /&gt;)</h1>
+
+		<p>Sometimes the standard widgets are not enough. You have to draw a painting. That's what <code>&lt;b:canvas&gt;</code> is for.</p>
+		<h1>Basic usage</h1>
+		<p><code>&lt;b:canvas&gt;</code> consists of two parts:</p>
+        <ul>
+        <li>The widget itself, which is simply an HTML canvas.</li>
+        <li>A simple an useful API to define the drawing on the server side. You don't have to know anything about JavaScript to create a drawing.</li>
+        </ul>
+ 
+        <b:tabView activeIndex="0">
+            <b:tab title="Markup">
+                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                <![CDATA[
+               <b:canvas style="width:100%"
+                         width="1600"
+                         height="900"
+                         drawing="&num;{techRadar}" />
+                ]]></script>
+            </b:tab>
+            <b:tab title="JSF bean">
+                <script type="syntaxhighlighter" class="brush: java; toolbar: false;first-line: 0">
+                <![CDATA[
+                  @ManagedBean
+                  @RequestScoped
+                  public class TechRadar extends Drawing {
+                  	{
+                  		circle(800, 450, 420);
+                  		circle(800, 450, 315);
+                  		circle(800, 450,  210);
+                  		circle(800, 450,  105);
+                  		line(800-450, 450, 800+450, 450);
+                  		line(800, 0, 800, 900);
+                  		
+                  		text(805+10, 470, "outdated", "16px Arial");
+                  		text(805+105+20, 470, "proven", "16px Arial");
+                  		text(805+210+10, 470, "innovative", "16px Arial");
+                  		text(805+315, 470, "experimental", "16px Arial");
+                  		
+                  		text(805+315, 470-315, "frameworks", "16px Arial");	
+                  		text(805+315, 470+315, "languages", "16px Arial");	
+                  		text(805-315-80, 470-315, "techniques", "16px Arial");	
+                  		text(805-315-60, 470+315, "tools", "16px Arial");	
+                  
+                  		filledCircle(805+40+70, 470-105-20,5, "green");
+                  		text(805+20+60, 470-100, "BootsFaces", "14px Arial");	
+                  
+                  		filledCircle(805+70+105, 470-210-10,5, "blue");
+                  		text(800+40+105, 470-195, "AngularFaces", "14px Arial");	
+                  	}
+                  }
+                                 ]]></script>
+            </b:tab>
+            <b:tab title="live demo">
+               <b:canvas style="width:100%"
+                         width="1600"
+                         height="900"
+                         drawing="#{techRadar}" />
+            </b:tab>
+        </b:tabView>
+    
+        <ui:include src="CanvasAttributes.xhtml" />
+		<b:panel look="info">
+			<f:facet name="heading">
+				<b>Skinning</b>
+			</f:facet>
+			<ul>
+				<li>Tell the world which CSS classes can be used to change the
+					look of the component.</li>
+			</ul>
+		</b:panel>
+
+		<script type="text/javascript">
+      		SyntaxHighlighter.all();
+    	</script>
+		<br />
+		<br />
+		<br />
+		<br />
+	</ui:define>
+</ui:composition>

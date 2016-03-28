@@ -45,13 +45,6 @@
       <param-name>net.bootsfaces.defaults.renderLabel</param-name>
         <param-value>#{defaultValuesBean.renderLabel}</param-value>
     </context-param>
-    <!-- Activates the tag decorator that turns divs into JSF components (and much more) -->
-    <context-param> 
-        <param-name>javax.faces.FACELETS_DECORATORS</param-name>
-        <param-value>
-            de.beyondjava.angularFaces.core.tagTransformer.AngularTagDecorator
-        </param-value>
-    </context-param>
     <!-- activate resource caching -->
     <context-param>
         <param-name>org.omnifaces.COMBINED_RESOURCE_ACTIVATE_RESOURCE_CACHING</param-name>

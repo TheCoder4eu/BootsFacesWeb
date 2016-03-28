@@ -6,8 +6,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
-import de.beyondjava.angularFaces.components.puiSync.JSONUtilities;
-
 @ManagedBean
 @RequestScoped
 public class SelectionBean {
@@ -44,13 +42,13 @@ public class SelectionBean {
 		this.carAsJSon = carAsJSon;
 	}
 
-	public String showDetails() {
-		int pos = carAsJSon.indexOf(",\"$$hashKey\"");
-		if (pos > 0)
-			carAsJSon = carAsJSon.substring(0, pos) + "}";
-
-		Car car = (Car) JSONUtilities.readObjectFromJSONString(carAsJSon, Car.class);
-		return getCarBean().showDetails(car);
-	}
+//	public String showDetails() {
+//		int pos = carAsJSon.indexOf(",\"$$hashKey\"");
+//		if (pos > 0)
+//			carAsJSon = carAsJSon.substring(0, pos) + "}";
+//
+//		Car car = (Car) JSONUtilities.readObjectFromJSONString(carAsJSon, Car.class);
+//		return getCarBean().showDetails(car);
+//	}
 
 }
