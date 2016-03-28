@@ -77,19 +77,9 @@
       <scope>runtime</scope>
     </dependency>
     <dependency>
-      <groupId>de.beyondjava</groupId>
-      <artifactId>angularFaces-core</artifactId>
-      <version>2.1.11</version>
-    </dependency>
-    <dependency>
       <groupId>org.primefaces</groupId>
       <artifactId>primefaces</artifactId>
       <version>5.3</version>
-    </dependency>
-    <dependency>
-      <groupId>com.fasterxml.jackson.jaxrs</groupId>
-      <artifactId>jackson-jaxrs-json-provider</artifactId>
-      <version>2.5.0</version>
     </dependency>
     <dependency>
       <groupId>net.sf.barcode4j</groupId>
@@ -122,7 +112,7 @@
     <profile>
       <id>Mojarra 2.2.12</id>
       <activation>
-        <activeByDefault>false</activeByDefault>
+        <activeByDefault>true</activeByDefault>
       </activation>
       <dependencies>
         <dependency>
@@ -157,7 +147,7 @@
     <profile>
       <id>MyFaces 2.2.8</id>
       <activation>
-        <activeByDefault>true</activeByDefault>
+        <activeByDefault>false</activeByDefault>
       </activation>
       <dependencies>
         <dependency>

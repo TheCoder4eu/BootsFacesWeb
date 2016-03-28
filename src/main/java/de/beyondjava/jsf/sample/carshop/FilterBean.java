@@ -25,9 +25,7 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.event.AjaxBehaviorEvent;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import de.beyondjava.angularFaces.core.ELTools;
+import net.bootsfaces.beans.ELTools;
 
 @ManagedBean
 @SessionScoped
@@ -71,7 +69,6 @@ public class FilterBean implements Serializable {
 		return color;
 	}
 
-	@JsonIgnore
 	public String getCounter() {
 		initIfNecessary();
 		carPool.applyFilter(this);
@@ -100,7 +97,6 @@ public class FilterBean implements Serializable {
 		return type;
 	}
 	
-	@JsonIgnore
 	public List<String> getTypes() {
 		initIfNecessary();
 		return dynamicOptions.getTypesToBrand(brand);
