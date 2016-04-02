@@ -9,6 +9,8 @@ import net.bootsfaces.component.canvas.Drawing;
 @RequestScoped
 public class TechRadar extends Drawing {
 	{
+		text(150, 40, "Tech Radar by BeyondJava", "24px Arial");	
+		text(150, 70, "April 2016", "24px Arial");	
 		circle(800, 450, 420);
 		circle(800, 450, 315);
 		circle(800, 450,  210);

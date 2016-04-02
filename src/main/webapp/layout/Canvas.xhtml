@@ -20,7 +20,7 @@ td {
 		<p><code>&lt;b:canvas&gt;</code> consists of two parts:</p>
         <ul>
         <li>The widget itself, which is simply an HTML canvas.</li>
-        <li>A simple an useful API to define the drawing on the server side. You don't have to know anything about JavaScript to create a drawing.</li>
+        <li>A simple and useful API to define the drawing on the server side. You don't have to know anything about JavaScript to create a drawing.</li>
         </ul>
  
         <b:tabView activeIndex="0">
@@ -40,7 +40,9 @@ td {
                   @RequestScoped
                   public class TechRadar extends Drawing {
                   	{
-                  		circle(800, 450, 420);
+                   		text(150, 40, "Tech Radar by BeyondJava", "24px Arial");	
+                  		text(150, 70, "April 2016", "24px Arial");	
+                 		circle(800, 450, 420);
                   		circle(800, 450, 315);
                   		circle(800, 450,  210);
                   		circle(800, 450,  105);
