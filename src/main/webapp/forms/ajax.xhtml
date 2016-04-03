@@ -10,7 +10,7 @@
 
         <ui:define name="content">
             <h1>AJAX <b:badge value="since 0.8.0" /></h1>
-                <p>While supporting the traditional AJAX style of JSF, BootsFaces also imlements a new AJAX API that's a little simpler to use.</p>
+                <p>While supporting the traditional AJAX style of JSF, BootsFaces also implements a new AJAX API that's a little simpler to use.</p>
                 
                 <h2>State of the art</h2>
                 <p>The BootsFaces AJAX API is supported by many, but not by all BootsFaces components. Currently, these components include:</p>
@@ -28,12 +28,12 @@
                 </ul>
 
                 <h2>Basic usage</h2>
-                <p>The general idea is to use the JavaScript attributes for JSF AJAX calls. Unfortunately, JSF doesn't allow us to simple use the JSF EL syntax.
+                <p>The general idea is to use the JavaScript attributes for JSF AJAX calls. Unfortunately, JSF doesn't allow us to simply use the JSF EL syntax.
                 So, we had to look for some inspiration, and we found it with an almost forgotten way to define HTML JavaScript callback handlers. You can
                 optionally define such a handler by preceding it with <code>javascript:</code> to make clear which language you want to use. Similarly, BootsFaces
                 uses the prefix <code>ajax:</code> to indicate the following code is Java code. If you want to execute another piece of JavaScript code after
-                sending the AJAX call, prefix it with <code>javascript:</code> again. Notice that the second JavaScript code usually is execute before the Java code.
-                AJAX means that Java is executes asynchronically.</p>
+                sending the AJAX call, prefix it with <code>javascript:</code> again. Notice that the second JavaScript code usually is executed before the Java code.
+                AJAX means that the reference Java code is executed asynchronically.</p>
                 
                 <b:well>
                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
@@ -69,7 +69,7 @@
                  
                  <h2>(Virtually no) Limits to BootsFaces AJAX</h2>
                  <p>From a technical point of view, you can do everything with BootsFaces AJAX - as long as the network latency permits. We've even been 
-                 able to implement drag and drop via AJAX. This chess demo is an example of drag'n'drop using BootsFaces: 
+                 able to implement drag and drop via AJAX. This chess demo is an example of drag and drop using BootsFaces: 
                  <a target="#" href="http://www.angularfaces.net/BootsFacesChess-1.0.0-SNAPSHOT/">BootsFaces Chess demo</a>. You can move the chess pieces
                  by clicking and draggging them to their target destination.</p>
                  <p>In other words: what you can and can not do with BootsFaces AJAX depends on your network latency (and your server-side processing time). BootsFaces

@@ -63,8 +63,8 @@
     the CSS and JavaScript code required by the current JSF page. If you use AJAX to replace parts of your page,
     BootsFaces doesn't check if it has to load additional CSS or JavaScript files. This results in pages containing
     incomplete components.</p>
-    <p>You can force BootsFaces to pre-load the required files by adding those components to the first page. Obviosly,
-    you don't to render these components, so you set <code>rendered="false"</code>:</p>
+    <p>You can force BootsFaces to pre-load the required files by adding those components to the first page. Obviously,
+    you don't have to render these components, so you set <code>rendered="false"</code>:</p>
       <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
         <![CDATA[
         <b:tabView rendered="false" />
@@ -75,7 +75,7 @@
 
     <h3>Templates</h3>
     <p>Most JSF developers are used to use templates to embed their payload pages into a common application framework.
-    For example,this showcase uses a template page to provide the main menu and the footer of each page.</p>
+    For example, this showcase uses a template page to provide the main menu and the footer of each page.</p>
     <p>
     As is turns out, it's better to think the other way round to make the most of AJAX. Funny thing is that's the 
     traditional way of thinking. Instead of embedding your page into a common template, you take the common template
