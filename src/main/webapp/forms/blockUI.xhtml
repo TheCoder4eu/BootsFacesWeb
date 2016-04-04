@@ -9,14 +9,14 @@
       BlockUI
       <b:badge value="since 0.8.1" />
     </h1>
-    <p>While supporting the traditional AJAX style of JSF, BootsFaces also imlements a new AJAX API that's a little
-      simpler to use. Among other things, this include a fairly opinionated BlockUI component. Our theory is you
-      want to activate BlockUI with every AJAX request, so you only have to configure it. Other than other framework
+    <p>While supporting the traditional AJAX style of JSF, BootsFaces also implements a new AJAX API that's a little
+      simpler to use. Among other things, this includes a fairly opinionated BlockUI component. Our theory is you
+      want to activate BlockUI with every AJAX request, so you only have to configure it. Other than other frameworks
       BootsFaces doesn't require you to activate BlockUI on every AJAX requests individually.</p>
-      <p>Most likely you've already suffered from misterious errors caused by doubleclicks. If you don't take
-      precautions, JSF interprets the doubleclick as two individual clicks, and sends two requests to the server.
-      Thing is, most users have learned over time that you can do everything with a doubleclick, and it hardly ever
-      hurts. So they use the doubleclick even when it's superfluous.</p>
+      <p>Most likely you've already suffered from mysterious errors caused by double-clicks. If you don't take
+      precautions, JSF interprets the double-click as two individual clicks, and sends two requests to the server.
+      Thing is, most users have learned over time that you can do everything with a double-click, and it hardly ever
+      hurts. So they use the double-click even when it's superfluous.</p>
       <p>As a solution, you can activate BlockUI. That's a component that prevents user interactions when an AJAX
       request has been started. The screen is darkened, and BootsFaces also shows a waitcursor by default. When the
       AJAX request has been completed, the screen is unlocked again.</p>
@@ -38,7 +38,7 @@
     <h2>Conditional activation and deactivation</h2>
        <p>Once you've activated BootsFaces BlockUI, every AJAX request triggered by a BootsFaces component activates
        the waitcursor and prevents the user from doing further input until the request has been completed. This way,
-       you get a fairly good protection against accidential doubleclicks.</p>
+       you get a fairly good protection against accidential double-clicks.</p>
        <p>If you don't want to activate BlockUI generally, you can control it via an EL expression. Note that this expression
        is read when the page is rendered, and it's only read on non-AJAX requests.</p>
        

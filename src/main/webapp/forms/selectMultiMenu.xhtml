@@ -9,7 +9,7 @@
             <ui:define name="content">
                 <style>td {padding: 8px;}</style>
                 <h1>Multiple Choice Combobox (&lt;b:selectMultiMenu&gt;)</h1>
-                <p>This is a special combobox that allows you to select an arbitrary number of item without sacrificing a lot of screen estate.</p>
+                <p>This is a special combobox that allows you to select an arbitrary number of items without sacrificing a lot of screen estate.</p>
                 <p>Both the values and the labels of the items are expected to be strings. If the user selects more than one item,
                 the combobox displays every selected label separated by commas. Likewise, the value of the combobox is a comma-separated list
                 of the item values. You can see both effects in the live demo below.</p>
@@ -290,7 +290,7 @@
        </b:tabView>
         
         <h1>Objects and converters</h1>
-        <p><code>&lt;b:selectMultiMenu&gt;</code> only works with strings. The value must not be any other datatype. So don't bother with converters -
+        <p><code>&lt;b:selectMultiMenu&gt;</code> only works with strings. The value must not be any other data type. So don't bother with converters -
         we officially don't support them.</p>
         
         <h1>Arrays and HashMaps</h1>
@@ -500,10 +500,10 @@ public class SemaphoreBean {
                    <code>bf-info</code>, <code>bf-warning</code>, <code>bf-error</code> or <code>bf-fatal</code>. If there's no message,
                    the input field bears the pseudo CSS class <code>bf-no-message</code>.
                    </li>
-                   <li>If there's a label, if bears the CSS class <code>required</code>, if it's a mandatory field.
+                   <li>If there's a label, it bears the CSS class <code>required</code>, if it's a mandatory field.
                    This class adds an asterisk to the label text. You can override the CSS class to remove the asterisk
                    or to replace it by something else.</li>
-                   <li>If there's a label, if bears the CSS classes <code>bf-info</code>, <code>bf-warning</code>, 
+                   <li>If there's a label, it bears the CSS classes <code>bf-info</code>, <code>bf-warning</code>, 
                    <code>bf-error</code> or <code>bf-fatal</code>, depending on which severity the error message the input field has.
                    The latter two classes color the label red.<br />
                    If there's no message,
