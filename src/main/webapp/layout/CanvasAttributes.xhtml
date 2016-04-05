@@ -9,7 +9,7 @@
 
 		<b:panel look="info">
 			<f:facet name="heading">
-				<b>Attributes of &lt;b:buttonGroup &gt;</b>
+				<b>Attributes of &lt;b:canvas &gt;</b>
 			</f:facet>
 			<table class="table table-striped table-hover"
 				style="background-color: #fff">
@@ -24,7 +24,12 @@
 					<tr>
 					    <td>binding</td>
 					    <td>(none)</td>
-					    <td>An EL expression referring to a server side UIComponent instance in a backing bean.</td>
+					    <td>An el expression referring to a server side UIComponent instance in a backing bean.</td>
+					</tr>
+					<tr>
+					    <td>initial-drawing<br />initialDrawing (alternative writing)</td>
+					    <td>(none)</td>
+					    <td>Optional description what to draw on this component.</td>
 					</tr>
 					<tr>
 					    <td>id</td>
@@ -32,19 +37,19 @@
 					    <td>Unique identifier of the component in a namingContainer.</td>
 					</tr>
 					<tr>
-					    <td>orientation</td>
-					    <td>(none)</td>
-					    <td>Orientation can be horizontal(default) or vertical.</td>
-					</tr>
-					<tr>
 					    <td>rendered</td>
 					    <td>false</td>
-					    <td>Boolean value to specify the rendering of the component, when set to false the component will not be rendered.</td>
+					    <td>Boolean value to specify the rendering of the component, when set to false component will not be rendered.</td>
 					</tr>
 					<tr>
-					    <td>size</td>
+					    <td>style</td>
 					    <td>(none)</td>
-					    <td>Size of the grouped Buttons, can be lg, sm or xs.</td>
+					    <td>Inline style of the input element.</td>
+					</tr>
+					<tr>
+					    <td>style-class<br />styleClass (alternative writing)</td>
+					    <td>(none)</td>
+					    <td>Style class of this element.</td>
 					</tr>
 					<tr>
 					    <td>tooltip</td>
@@ -52,22 +57,27 @@
 					    <td>The text of the tooltip.</td>
 					</tr>
 					<tr>
-					    <td>tooltipDelay</td>
-					    <td>(none)</td>
+					    <td>tooltip-container<br />tooltipContainer (alternative writing)</td>
+					    <td> body </td>
+					    <td>Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering error in special cases. Also see data-container in the documentation of Bootstrap. The default value is body.</td>
+					</tr>
+					<tr>
+					    <td>tooltip-delay<br />tooltipDelay (alternative writing)</td>
+					    <td>0 </td>
 					    <td>The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
 					</tr>
 					<tr>
-					    <td>tooltipDelayHide</td>
-					    <td>(none)</td>
+					    <td>tooltip-delay-hide<br />tooltipDelayHide (alternative writing)</td>
+					    <td>0 </td>
 					    <td>The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
 					</tr>
 					<tr>
-					    <td>tooltipDelayShow</td>
-					    <td>(none)</td>
+					    <td>tooltip-delay-show<br />tooltipDelayShow (alternative writing)</td>
+					    <td>0 </td>
 					    <td>The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
 					</tr>
 					<tr>
-					    <td>tooltipPosition</td>
+					    <td>tooltip-position<br />tooltipPosition (alternative writing)</td>
 					    <td>(none)</td>
 					    <td>Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".</td>
 					</tr>
