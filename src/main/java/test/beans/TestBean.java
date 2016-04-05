@@ -20,8 +20,48 @@ public class TestBean implements TreeNodeEventListener {
 	private List<Node> checkedNodes = new ArrayList<Node>();
 	private String selectedColor;
 	
-	public TestBean() {
+	private Node statefullRootNode = null;
 
+	public TestBean() {
+		initStatefullRootNode();
+	}
+	
+	private void initStatefullRootNode() {
+		statefullRootNode = new DefaultNodeImpl("root", "arrow-right").withBackColor("#FF1188");
+		List<Node> nodeList = new ArrayList<Node>();
+		nodeList.add(new DefaultNodeImpl("Node1", "user"));
+		nodeList.add(new DefaultNodeImpl("Node2", "envelope"));
+		
+		List<Node> subNodes = new ArrayList<Node>();
+		subNodes.add(new DefaultNodeImpl("Subnode1", "user"));
+		subNodes.add(new DefaultNodeImpl("Subnode2", "main"));
+		subNodes.add(new DefaultNodeImpl("Subnode3", "arrow-left"));
+		DefaultNodeImpl nx = new DefaultNodeImpl("Child4-Link", "arrow-right");
+		nx.setHRef("http://www.google.it");
+		subNodes.add(nx);
+		
+		DefaultNodeImpl child5 = new DefaultNodeImpl("Child5", "arrow-right");
+		child5.setColor("#FF0000");
+		List<Node> subSubNodes = new ArrayList<Node>();
+		subSubNodes.add(new DefaultNodeImpl("GrandChild 1", "play-circle"));
+		subSubNodes.add(new DefaultNodeImpl("GrandChild 2", "play-circle"));
+		child5.getChilds().addAll(subSubNodes);
+		subNodes.add(child5);
+		
+		DefaultNodeImpl parent3 = new DefaultNodeImpl("Parent3", "signal");
+		parent3.setExpanded(false);
+		parent3.getChilds().addAll(subNodes);
+		nodeList.add(parent3);
+		
+		statefullRootNode.getChilds().addAll(nodeList);
+	}
+	
+	public Node getTreeModel() {
+		return statefullRootNode;
+	}
+	
+	public void setTreeModel(Node rootNode) {
+		this.statefullRootNode = rootNode;
 	}
 	
 	public String getSelectedColor() {
