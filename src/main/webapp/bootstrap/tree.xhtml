@@ -11,7 +11,8 @@
                 <h1>Tree <b:badge value="experimental / since 0.8.2" /></h1>
                 <p>Use <code>b:tree</code> to obtain a Tree component with basic functionalities.</p>
                 <p>Tree component needs a backend model to provide the ui structure. So you have to define a value of type net.bootsfaces.component.tree.model.Node.</p>
-				<p>Tree component support snake-case attributes</p>
+				<p>By now, tree does not mantains its state so, if you refresh the page, the tree resets to it's initial state.
+				This happen because the component is totally client-side rendered.</p>
 				<h3>Basic usage</h3>
 		
 				<b:tabView activeIndex="1">
@@ -29,12 +30,14 @@
 						</b:well>
 					</b:tab>
 					<b:tab title="displayed as" contentStyle="border:1px solid ;padding:10px">
-						<b:tree 
-								render-root="false" 
-								value="#{test.testModel1}" 
-								node-selection-listener="#{test}" 
-								showCheckbox="true" 
-								enableLinks="true" />
+						<h:form>
+							<b:tree 
+									render-root="false" 
+									value="#{test.testModel1}" 
+									node-selection-listener="#{test}" 
+									showCheckbox="true" 
+									enableLinks="true" />
+						</h:form>
 					</b:tab>
 				</b:tabView>
 				

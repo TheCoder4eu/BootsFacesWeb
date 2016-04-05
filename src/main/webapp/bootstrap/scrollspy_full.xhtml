@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+	<h:head>
+		<title>Bootstrap ScrollSpy Example</title>
+		<style>
+			body {
+				position: relative;
+			}
+			
+			#section1 {
+				padding-top: 50px;
+				height: 500px;
+				color: #fff;
+				background-color: #1E88E5;
+			}
+			
+			#section2 {
+				padding-top: 50px;
+				height: 500px;
+				color: #fff;
+				background-color: #673ab7;
+			}
+			
+			#section3 {
+				padding-top: 50px;
+				height: 500px;
+				color: #fff;
+				background-color: #ff9800;
+			}
+			
+			#section41 {
+				padding-top: 50px;
+				height: 500px;
+				color: #fff;
+				background-color: #00bcd4;
+			}
+			
+			#section42 {
+				padding-top: 50px;
+				height: 500px;
+				color: #fff;
+				background-color: #009688;
+			}
+		</style>
+	</h:head>
+	<h:body>
+	<h:form>
+		<b:growl id="growlMsg" globalOnly="true" placement-from="bottom" showDetail="false" showSummary="true" allowDismiss="true" delay="10000" escape="true" />
+		<b:navBar id="nb" brand="Brand" brandHref="#" fixed="top">
+		     <b:navbarLinks>
+		         <b:navLink value="Section 1" href="#section1"></b:navLink>
+		         <b:navLink value="Section 2" href="#section2"></b:navLink>
+				<b:navLink value="Section 3" href="#section3"></b:navLink>	
+		         <b:dropMenu value="Dropdown" iconAwesome="birthday-cake">
+		             <b:navLink value="Section 4-1" href="#section41"></b:navLink>
+		             <b:navLink value="Section 4-2" href="#section42"></b:navLink>
+		         </b:dropMenu>
+		     </b:navbarLinks>
+		 </b:navBar>
+
+		<div id="section1" class="container-fluid">
+			<h1>Section 1</h1>
+			<p>Click on the different Section links in the navbar to see the
+				smooth scrolling effect.</p>
+		</div>
+		<div id="section2" class="container-fluid">
+			<h1>Section 2</h1>
+			<p>Click on the different Section links in the navbar to see the
+				smooth scrolling effect.</p>
+		</div>
+		<div id="section3" class="container-fluid">
+			<h1>Section 3</h1>
+			<p>Click on the different Section links in the navbar to see the
+				smooth scrolling effect.</p>
+		</div>
+		<div id="section41" class="container-fluid">
+			<h1>Section 4 Submenu 1</h1>
+			<p>Click on the different Section links in the navbar to see the
+				smooth scrolling effect.</p>
+		</div>
+		<div id="section42" class="container-fluid">
+			<h1>Section 4 Submenu 2</h1>
+			<p>Click on the different Section links in the navbar to see the
+				smooth scrolling effect.</p>
+		</div>
+ 
+		<b:scrollSpy target="nb" smooth="true" selectionListener="#{spy}" update="growlMsg"/>
+	</h:form>
+	</h:body>
+</html>

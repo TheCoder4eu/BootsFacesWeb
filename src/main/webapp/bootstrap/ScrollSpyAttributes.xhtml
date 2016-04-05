@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:fragment
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+		<b:panel look="info">
+			<f:facet name="heading">
+				<b>Attributes of &lt;b:scrollSpy &gt;</b>
+			</f:facet>
+			<table class="table table-striped table-hover"
+				style="background-color: #fff">
+				<thead>
+					<tr>
+						<th>Attribute</th>
+						<th>Default value</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+					    <td>id</td>
+					    <td>(none)</td>
+					    <td>Unique identifier of the component in a namingContainer.</td>
+					</tr>
+					<tr>
+					    <td>rendered</td>
+					    <td>false</td>
+					    <td>Boolean value to specify the rendering of the component, when set to false component will not be rendered.</td>
+					</tr>
+					<tr>
+					    <td>container</td>
+					    <td>(none)</td>
+					    <td>Id of the element that is the scrollable container. If not specified, body is set by default.</td>
+					</tr>
+					<tr>
+					    <td>target</td>
+					    <td>(none)</td>
+					    <td>Id of the navigation target. Usually the id of the NavBar component. If not specified, component with .navbar class is set.</td>
+					</tr>
+					<tr>
+					    <td>offset</td>
+					    <td>0 </td>
+					    <td>Scroll offset</td>
+					</tr>
+					<tr>
+					    <td>smooth</td>
+					    <td>false</td>
+					    <td>Enable smooth scroll</td>
+					</tr>
+					<tr>
+					    <td>selectionListener</td>
+					    <td>(none)</td>
+					    <td></td>
+					</tr>
+					<tr>
+					    <td>ScrollSpyEventListener</td>
+					    <td>(none)</td>
+					    <td>Selection listener called on selection changed.</td>
+					</tr>
+					<tr>
+					    <td>update</td>
+					    <td>(none)</td>
+					    <td>Component(s) to be updated with ajax.</td>
+					</tr>
+				</tbody>
+			</table>
+		</b:panel>
+</ui:fragment>

@@ -23,7 +23,7 @@ td {
 		<b:panel look="info" title="Demo">
 			<b:panelGrid colSpans="6,6">
 			<h:form id="timeFormId">
-				<b:poll interval="3000" 
+				<b:poll id="pippo" interval="3000" 
 		            update="timeFormId:worldTimeId" 
 		            execute="timeFormId:worldTimeId" 
 		            actionListener="#{pollDemoBean.listener}"/>
@@ -67,7 +67,7 @@ td {
 		<b:panel look="info" title="Using the attribute once">
 			<b:panelGrid colSpans="6,6">
 			<h:form>
-				<b:poll interval="2000" 
+				<b:poll id="pluto" interval="2000" 
 				        update="@form" 
 				        execute="@form" 
 				        once="true"
