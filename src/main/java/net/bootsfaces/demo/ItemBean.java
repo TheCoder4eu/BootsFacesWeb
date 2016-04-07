@@ -13,7 +13,8 @@ import javax.faces.model.DataModel;
 @ManagedBean
 @RequestScoped
 public class ItemBean implements Serializable {
-    
+    private static final long serialVersionUID = 1L;
+
     private static final Item[] itemList = new Item[]{
         new Item("Pencil","P3245","0,49 $"),
         new Item("Book","B0563","4,95 $"),

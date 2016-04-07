@@ -1,5 +1,6 @@
 package net.bootsfaces.demo.ajax;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -8,8 +9,10 @@ import javax.faces.bean.ViewScoped;
 
 @ViewScoped
 @ManagedBean
-public class CommandButtonBean {
-	private String message = "No action listener called yet.";
+public class CommandButtonBean implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    private String message = "No action listener called yet.";
 
 	private boolean suppressClick = true;
 	private boolean suppressDoubleClick = false;

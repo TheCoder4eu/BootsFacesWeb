@@ -31,7 +31,9 @@ import javax.validation.constraints.NotNull;
 @RequestScoped
 @ManagedBean
 public class SemaphoreBean implements Serializable {
-	@NotNull
+    private static final long serialVersionUID = 1L;
+
+    @NotNull
 	private String color = null;
 
 	@NotNull

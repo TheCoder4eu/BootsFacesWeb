@@ -30,8 +30,10 @@ import net.bootsfaces.beans.ELTools;
 @ManagedBean
 @SessionScoped
 public class FilterBean implements Serializable {
-	private static final Logger LOGGER = Logger.getLogger("de.beyondjava.jsf.sample.carshop.FilterBean");
-	
+    private static final long serialVersionUID = 1L;
+
+    private static final Logger LOGGER = Logger.getLogger("de.beyondjava.jsf.sample.carshop.FilterBean");
+
 	private String brand;
 
 	@ManagedProperty("#{carPool}")

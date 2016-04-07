@@ -10,9 +10,10 @@ import javax.faces.event.ActionEvent;
 @RequestScoped
 @ManagedBean
 public class PollDemoBean implements Serializable {
-	
-	private int counter=0;
-	
+    private static final long serialVersionUID = 1L;
+
+    private int counter=0;
+
 	public Date getCurrentTime() { return new Date(); }
 
 	public int getCounter() {
