@@ -24,7 +24,6 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-import net.bootsfaces.component.messages.Messages;
 import net.bootsfaces.utils.FacesMessages;
 
 /** A simple bean for demo purposes. */

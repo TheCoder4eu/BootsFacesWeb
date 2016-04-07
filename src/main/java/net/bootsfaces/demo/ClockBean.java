@@ -9,8 +9,6 @@ import java.util.Calendar;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 
 /**
  * @author Stephan Rauh, http://www.beyondjava.net
