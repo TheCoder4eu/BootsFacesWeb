@@ -1,5 +1,6 @@
 package net.bootsfaces.demo.ajax;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,10 +13,11 @@ import javax.faces.context.FacesContext;
 
 @ManagedBean
 @ViewScoped
-public class AjaxBean {
-	
-	private List<String> messages = new ArrayList<>();
-	
+public class AjaxBean implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    private List<String> messages = new ArrayList<>();
+
 	public AjaxBean() {
 		getMessages().add("No message yet.");
 		getMessages().add("Play with the AJAXified widget to add messages.");

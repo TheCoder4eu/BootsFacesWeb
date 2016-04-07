@@ -20,7 +20,8 @@ import javax.faces.model.DataModel;
 @ManagedBean
 @RequestScoped
 public class LoremIpsumBean implements Serializable {
-    
+    private static final long serialVersionUID = 1L;
+
     public static final String loremipsum="Lorem ipsum dolor sit amet "
             + "consectetur adipiscing elit sed "
             + "do eiusmod tempor incididunt "

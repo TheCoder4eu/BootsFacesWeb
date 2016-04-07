@@ -30,7 +30,6 @@ import net.bootsfaces.utils.FacesMessages;
 @RequestScoped
 @ManagedBean
 public class SelectOneMenuBean implements Serializable {
-
 	private static final long serialVersionUID = 1L;
 
 	@NotNull

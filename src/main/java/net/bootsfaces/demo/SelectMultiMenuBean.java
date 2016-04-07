@@ -28,7 +28,9 @@ import javax.validation.constraints.NotNull;
 @RequestScoped
 @ManagedBean
 public class SelectMultiMenuBean implements Serializable {
-	@NotNull
+    private static final long serialVersionUID = 1L;
+
+    @NotNull
 	private String brand=null;
 
 	@NotNull
