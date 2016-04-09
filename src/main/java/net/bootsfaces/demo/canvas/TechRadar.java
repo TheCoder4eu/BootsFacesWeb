@@ -18,7 +18,7 @@ public class TechRadar extends Drawing {
 		line(800-450, 450, 800+450, 450);
 		line(800, 0, 800, 900);
 		
-		text(805+10, 470, "outdated", "16px Arial");
+		text(805+10, 470, "deprecated", "16px Arial");
 		text(805+105+20, 470, "proven", "16px Arial");
 		text(805+210+10, 470, "innovative", "16px Arial");
 		text(805+315, 470, "experimental", "16px Arial");
