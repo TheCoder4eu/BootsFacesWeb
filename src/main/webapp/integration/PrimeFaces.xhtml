@@ -128,7 +128,7 @@
 						        </b:inputText>
 						        <p:barcode value="#{barcodeBean.url2}" type="qr" id="qr1" style="width:90px;height:90px;"/>
 						        
-                                       <b:inputText label="Enter another internet address" value="#{barcodeBean.url}"
+                                <b:inputText label="Enter another internet address" value="#{barcodeBean.url}"
                                                     onkeyup="ajax:barcodeBean.doNothing()" update="@next">
 						        	<f:facet name="prepend">
 						        		<b:selectOneMenu value="#{barcodeBean.protocol}">

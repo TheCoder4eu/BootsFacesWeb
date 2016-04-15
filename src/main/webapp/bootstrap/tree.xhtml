@@ -1,24 +1,38 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-            <ui:define name="content">
-                <h1>Tree <b:badge value="experimental / since 0.8.2" /></h1>
-                <p>Use <code>b:tree</code> to obtain a Tree component with basic functionalities.</p>
-                <p>Tree component needs a backend model to provide the ui structure. So you have to define a value of type net.bootsfaces.component.tree.model.Node.</p>
-				<p>By now, tree does not mantains its state so, if you refresh the page, the tree resets to it's initial state.
-				This happen because the component is totally client-side rendered.</p>
-				<h3>Basic usage</h3>
-		
-				<b:tabView activeIndex="1">
-					<b:tab title="JSF markup">
-						<b:well>
-							<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+	<ui:define name="content">
+		<style>
+		td {
+			padding: 8px;
+		}
+		.table {
+			max-width: none !important;
+		}
+		</style>
+		<h1>Tree <b:badge value="experimental / since 0.8.2" /></h1>
+		<p>
+			Use <code>b:tree</code> to obtain a Tree component with basic functionalities.
+		</p>
+		<p>Tree component needs a backend model to provide the ui
+			structure. So you have to define a value of type
+			net.bootsfaces.component.tree.model.Node.</p>
+		<p>By now, tree does not mantains its state so, if you refresh the
+			page, the tree resets to it's initial state. This happen because the
+			component is totally client-side rendered.</p>
+		<h3>Basic usage</h3>
+
+		<b:tabView activeIndex="1">
+			<b:tab title="JSF markup">
+				<b:well>
+					<script type="syntaxhighlighter"
+						class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 						<![CDATA[
 							<b:tree 
 								render-root="false" 
@@ -27,35 +41,36 @@
 								showCheckbox="true" 
 								enableLinks="true" />
 						]]></script>
-						</b:well>
-					</b:tab>
-					<b:tab title="displayed as" contentStyle="border:1px solid ;padding:10px">
-						<h:form>
-							<b:tree 
-									render-root="false" 
-									value="#{test.treeModel}" 
-									node-selection-listener="#{test}" 
-									showCheckbox="true" 
-									enableLinks="true" />
-						</h:form>
-					</b:tab>
-				</b:tabView>
-				
-				<h3>Reference section</h3>
-				<ui:include src="TreeAttributes.xhtml" />
-				<b:panel look="info" rendered="false">
-					<f:facet name="heading">
-						<b>Skinning</b>
-					</f:facet>
-					<ul>
-						<li>Tell the world which CSS classes can be used to change the
-							look of the component.</li>
-					</ul>
-				</b:panel>
+				</b:well>
+			</b:tab>
+			<b:tab title="displayed as"
+				contentStyle="border:1px solid ;padding:10px">
+				<h:form>
+					<b:tree render-root="false" value="#{test.treeModel}"
+						node-selection-listener="#{test}" showCheckbox="true"
+						enableLinks="true" />
+				</h:form>
+			</b:tab>
+		</b:tabView>
 
-                <br/><br/><br/>
-                <script type="text/javascript">
-                    SyntaxHighlighter.all();
-                </script>
-            </ui:define>
+		<h2>Reference section</h2>
+		<ui:include src="TreeAttributes.xhtml" />
+		<b:panel look="info" rendered="false">
+			<f:facet name="heading">
+				<b>Skinning</b>
+			</f:facet>
+			<ul>
+				<li>Tell the world which CSS classes can be used to change the
+					look of the component.</li>
+			</ul>
+		</b:panel>
+
+		<script type="text/javascript">
+			SyntaxHighlighter.all();
+		</script>
+		<br />
+		<br />
+		<br />
+		<br />
+	</ui:define>
 </ui:composition>

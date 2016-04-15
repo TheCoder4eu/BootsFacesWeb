@@ -1,5 +1,6 @@
 package test.beans;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,10 @@ import net.bootsfaces.component.tree.model.Node;
 
 @SessionScoped
 @ManagedBean(name = "test")
-public class TestBean implements TreeNodeEventListener {
+public class TestBean 
+implements TreeNodeEventListener, Serializable {
+	private static final long serialVersionUID = -4647459610022075061L;
+	
 	private Node selectedNode;
 	private List<Node> checkedNodes = new ArrayList<Node>();
 	private String selectedColor;
