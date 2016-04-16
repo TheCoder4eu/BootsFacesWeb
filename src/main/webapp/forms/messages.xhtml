@@ -140,33 +140,105 @@ td {
             <p:commandButton value="Info" actionListener="#{messagesBean.info}" update="@form"/>
             <p:commandButton value="Warn" actionListener="#{messagesBean.warn}" update="@form"/>
             <p:commandButton value="Error" actionListener="#{messagesBean.error}" update="@form"/>
-            <p:commandButton value="Fatal" actionListener="#{messagesBean.fatal}" update="@form"/>
+            <p:commandButton value="Fatal and multiple messages" actionListener="#{messagesBean.fatal}" update="@form"/>
             <p>Default setting:</p>
-            <b:messages/>
+            <b:messages line-break-tag="&lt;p&gt;&lt;hr /&gt;&lt;/p&gt;"/>
             <p>Unsafe setting (<code>escape="false"</code>):</p>
-            <b:messages escape="false"/>
+            <b:messages escape="false" line-break-tag="&lt;p&gt;&lt;hr /&gt;&lt;/p&gt;"/>
      		</h:form>
           </b:tab>
         </b:tabView>
-		
+
+        <h1>Separators between messages <b:badge value="since 0.8.2" /></h1>
+        <p>By default, the <code>&lt;b:message &gt;</code> tag separates multiple messages of a single input field
+        with a <code>&lt;br /&gt;</code> tag. You can switch off this feature by setting <code>line-break="false"</code>,
+        or you can customizing it by providing an arbitrary HTML snippet. Note that this snippet has to be escaped:</p>
+        <h:form>
+          <b:tabView active-index="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+            <b:tab title="JSF markup (message only)">
+              <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+              <b:message for="password" line-break-tag="&amp;lt;p&amp;gt;&amp;lt;hr /&amp;gt;&amp;lt;/p&amp;gt;"/>
+]]>
+         </script>
+           </b:tab>
+           <b:tab title="JSF markup (complete demo)">
+              <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+           <b:row tooltip="This password has fancy error messages.">
+                <b:column medium-screen="2">
+                  <h:outputText value="Password:" />
+                </b:column>
+                <b:column medium-screen="4">
+                  <b:inputSecret placeholder="Password" id="password" value="#{loginBean.password}"
+                                 ajax="true" autocomplete="false" update="@(.message)">
+                    <f:facet name="prepend">
+                      <b:iconAwesome name="key" />
+                    </f:facet>
+                  </b:inputSecret>
+                </b:column>
+                <b:column medium-screen="6" styleClass="message">
+                  <b:message for="password" line-break-tag="&lt;p&gt;&lt;hr /&gt;&lt;/p&gt;"/>
+                </b:column>
+              </b:row>
+]]>
+         </script>
+           </b:tab>
+            <b:tab title="displayed as">
+            <p>Type some text to see a single error message. Clear the password again to see multiple messages.</p>
+              <b:row tooltip="This password has fancy error messages.">
+                <b:column medium-screen="2">
+                  <h:outputText value="Password:" />
+                </b:column>
+                <b:column medium-screen="4">
+                  <b:inputSecret placeholder="Password" id="password" value="#{loginBean.password}"
+                                 ajax="true" autocomplete="false" update="@(.message)">
+                    <f:facet name="prepend">
+                      <b:iconAwesome name="key" />
+                    </f:facet>
+                  </b:inputSecret>
+                </b:column>
+                <b:column medium-screen="6" styleClass="message">
+                  <b:message for="password" line-break-tag="&lt;p&gt;&lt;hr /&gt;&lt;/p&gt;"/>
+                </b:column>
+              </b:row>
+             </b:tab>
+          </b:tabView>
+        </h:form>
+ 		
 		        <br/>
                 <h2>Reference section</h2>
                 <ui:include src="MessageAttributes.xhtml" />
-                <ui:include src="MessagesAttributes.xhtml" />
-                <b:panel look="info" rendered="false">
+                <b:panel look="info" rendered="true">
 					<f:facet name="heading">
-						<b>Skinning</b>
+						<b>Skinning of b:message</b>
 					</f:facet>
 					<ul>
-						<li>Tell the world which CSS classes can be used to change the
-						look of the component.</li>
+						<li><code>bf-message</code> This CSS class applies to the entire <code>&lt;b:message &gt;</code>.</li>
+                        <li><code>bf-message-icon</code> This CSS class applies to the <code>span</code>code> tag surrounding the optional icon of the message.</li>
+                        <li><code>bf-message-summary</code> This CSS class applies to the <code>span</code>code> tag surrounding the summary of the error message.</li>
+                        <li><code>bf-message-detail</code> This CSS class applies to the <code>span</code>code> tag surrounding the detail of the error message.</li>
 					</ul>
 				</b:panel>
+                <ui:include src="MessagesAttributes.xhtml" />
+                <b:panel look="info" rendered="true">
+                  <f:facet name="heading">
+                    <b>Skinning of b:messages</b>
+                  </f:facet>
+                  <ul>
+                    <li><code>bf-message</code> This CSS class applies to the entire <code>&lt;b:messages &gt;</code> tag (i.e. to the entire collection of messages).</li>
+                    <li><code>bf-message</code> This CSS class applies to the <code>span</code>code> tag surrounding a single message.</li>
+                    <li><code>bf-message-icon</code> This CSS class applies to the <code>span</code>code> tag surrounding the optional icon of the message.</li>
+                    <li><code>bf-message-summary</code> This CSS class applies to the <code>span</code>code> tag surrounding the summary of the message.</li>
+                    <li><code>bf-message-detail</code> This CSS class applies to the <code>span</code>code> tag surrounding the detail of the message.</li>
+                  </ul>
+                </b:panel>
 		
 		<br />
 		<script type="text/javascript">
       SyntaxHighlighter.all();
     </script>
+   
 		<br />
 		<br />
 		<br />

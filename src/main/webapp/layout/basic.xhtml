@@ -67,7 +67,7 @@
               <h:outputText value="Username:" for="username" />
             </b:column>
             <b:column medium-screen="4">
-              <b:inputText placeholder="Username" required="true" id="username" value="#{loginBean.username}" 
+              <b:inputText placeholder="Username" id="username" value="#{loginBean.username}" 
                            ajax="true" autocomplete="false" update="@(.message)">
                 <f:facet name="prepend">
                   <b:icon name="user" />
@@ -75,10 +75,10 @@
               </b:inputText>
             </b:column>
             <b:column medium-screen="6" style-class="message">
-              <b:message for="username"  />
+              <b:message for="username" />
             </b:column>
           </b:row>
-          <b:row>
+          <b:row tooltip="This password has fancy error messages.">
             <b:column medium-screen="2">
               <h:outputText value="Password:" />
             </b:column>
@@ -91,7 +91,7 @@
               </b:inputSecret>
             </b:column>
             <b:column medium-screen="6" styleClass="message">
-              <b:message for="password" />
+              <b:message for="password" line-break-tag="&lt;p&gt;&lt;hr /&gt;&lt;/p&gt;"/>
             </b:column>
           </b:row>
           <b:row>
@@ -161,29 +161,31 @@
               <h:outputText value="Username:" for="username" />
             </b:column>
             <b:column medium-screen="4">
-              <b:inputText placeholder="Username" required="true" id="username" value="#num;{loginBean.username}">
+              <b:inputText placeholder="Username" id="username" value="#{loginBean.username}" 
+                           ajax="true" autocomplete="false" update="@(.message)">
                 <f:facet name="prepend">
                   <b:icon name="user" />
                 </f:facet>
               </b:inputText>
             </b:column>
-            <b:column medium-screen="6">
+            <b:column medium-screen="6" style-class="message">
               <b:message for="username" />
             </b:column>
           </b:row>
-          <b:row>
+          <b:row tooltip="This password has fancy error messages.">
             <b:column medium-screen="2">
               <h:outputText value="Password:" />
             </b:column>
             <b:column medium-screen="4">
-              <b:inputSecret placeholder="Password" id="password" value="#num;{loginBean.password}">
+              <b:inputSecret placeholder="Password" id="password" value="#{loginBean.password}"
+                             ajax="true" autocomplete="false" update="@(.message)">
                 <f:facet name="prepend">
                   <b:iconAwesome name="key" />
                 </f:facet>
               </b:inputSecret>
             </b:column>
-            <b:column medium-screen="6">
-              <b:message for="password" />
+            <b:column medium-screen="6" styleClass="message">
+              <b:message for="password" line-break-tag="&lt;p&gt;&lt;hr /&gt;&lt;/p&gt;"/>
             </b:column>
           </b:row>
           <b:row>
@@ -198,7 +200,8 @@
           </b:row>
         </b:panel>
       </b:container>
-    </h:form>                  ]]>
+    </h:form>
+    ]]>
                  </script>
                    </b:well>
                  </b:tab>
