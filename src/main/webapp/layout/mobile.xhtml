@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+  <!DOCTYPE html>
+  <ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:b="http://bootsfaces.net/ui"
+        xmlns:ui="http://java.sun.com/jsf/facelets">
+   
+ <ui:define name="content">
+    <style>
+        .show-grid [class^="col-"] {
+            background-color: rgba(86, 61, 124, 0.15);
+            border: 1px solid rgba(86, 61, 124, 0.2);
+            padding-bottom: 10px;
+            padding-top: 10px;
+            margin-bottom: 15px;
+        }
+        //Needed for TBS 3.0.1 (panel content overflow issue)
+        .panel-body { margin: 0px 15px; }
+    </style>
+    <h1>Mobile first! <b:badge value="since 0.8.2" /></h1>
+    <p>BootsFaces targets both desktop and mobile platforms. In previous version, developers faced difficulties
+    because they weren't aware of the viewport meta tag. Since BootsFaces 0.8.2, this meta tag is added automatically
+    to every BootsFaces page.
+    </p>
+    <h2>Overriding the viewport</h2>
+    <p>If you need a different viewport setting, simply add it to your <code>&lt;h:head&gt;</code> tag. BootsFaces adds
+    the default viewport setting at the beginning of the HTML file, ensuring you can override it.</p>
+   
+    <br/><br/><br/>
+    <script type="text/javascript">
+        SyntaxHighlighter.all();
+    </script>
+    </ui:define>
+</ui:composition>
