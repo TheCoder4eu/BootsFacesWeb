@@ -94,6 +94,14 @@
               <b:message for="password" line-break-tag="&lt;p&gt;&lt;hr /&gt;&lt;/p&gt;"/>
             </b:column>
           </b:row>
+         <b:row style-class="message">
+            <b:column medium-screen="2">
+              <h:outputText value="#{loginBean.password}" />
+            </b:column>
+            <b:column medium-screen="4">
+              <b:badge value="x #{loginBean.password}" />
+            </b:column>
+            </b:row>
           <b:row>
             <b:column span="2" offset="2">
               <b:commandButton value="login" onclick="ajax:loginBean.login()" update="@form" look="primary"
