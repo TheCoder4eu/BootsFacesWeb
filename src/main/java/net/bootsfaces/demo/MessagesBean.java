@@ -20,6 +20,10 @@ import javax.faces.event.ActionEvent;
 public class MessagesBean implements Serializable {
 	private static final long serialVersionUID = 5497787734011747081L;
 	
+	public void specificInfo() {
+        FacesContext.getCurrentInstance().addMessage("growlForm:ref", new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "This is a specific message!"));
+    }
+	
     public void info() {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "PrimeFaces <b>rocks</b>. BootsFaces <b>rocks</b>, too!"));
     }
