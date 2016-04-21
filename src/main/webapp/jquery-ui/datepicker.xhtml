@@ -160,16 +160,26 @@
                 <br/>
                 <h2>Reference section</h2>
                 <ui:include src="DatepickerAttributes.xhtml" />
-                <b:panel look="info" rendered="false">
-					<f:facet name="heading">
-						<b>Skinning</b>
-					</f:facet>
-					<ul>
-						<li>Tell the world which CSS classes can be used to change the
-						look of the component.</li>
-					</ul>
-				</b:panel>
-                
+            <b:panel look="info">
+				<f:facet name="heading">
+					<b>Skinning</b>
+				</f:facet>
+				<ul>
+					<li>
+				   		<code>&lt;b:datePicker /&gt;</code> is an <code>input</code> tag bearing the CSS-classes <code>form-control</code>  and <code>hasDatepicker</code>.
+				   </li>
+				   <li>
+				   		If the attribute <code>required</code> is true, the pseudo CSS class <code>bf-required</code> is added. 
+                        Thus you can define your custom style for required fields.
+				   </li>
+                   <li>
+                   If there's a <code>FacesMessage</code>, the input field is bears one of the pseudo CSS classes
+                   <code>bf-info</code>, <code>bf-warning</code>, <code>bf-error</code> or <code>bf-fatal</code>. If there are no messages,
+                   the input field bears the pseudo CSS class <code>bf-no-message</code>.
+                   </li>
+				  </ul> 
+			</b:panel>
+               
                 <br/><br/><br/><br/>
             </ui:define>
         </ui:composition>

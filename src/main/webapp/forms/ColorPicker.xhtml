@@ -69,6 +69,14 @@
 				<b:colorPicker value="#{test.selectedColor}" opacity="true" format="rgb" swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"/> 
 			</b:tab>
 		</b:tabView>
+    
+        <h1>Mobile devices</h1>
+        <p>On a mobile device, you should prevent the user from zooming into the page because this interferes with the colorpicker.
+        Simply add these lines to the <code>&lt;h:head /&gt;</code> of your JSF page:</p>
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+              <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+          ]]></script>
 
 		<h3>Reference section</h3>
 		<ui:include src="ColorPickerAttributes.xhtml" />
