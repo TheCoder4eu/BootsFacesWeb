@@ -35,11 +35,6 @@ compile 'org.omnifaces:omnifaces:1.10'
 compile 'de.larmic.butterfaces:components:1.10.3'
 compile files("${System.properties['java.home']}/../lib/tools.jar")
 
-compile(
-    'de.beyondjava:angularFaces-core:2.1.10',
-     'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.5.0'
-)
-
 compile fileTree(dir: 'bsflib', include: '*.jar') //Required for messages/utils
 
 // coming soon:
