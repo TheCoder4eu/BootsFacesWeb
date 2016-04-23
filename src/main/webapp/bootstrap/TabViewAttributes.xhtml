@@ -1,139 +1,139 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:fragment
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:b="http://bootsfaces.net/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:b="http://bootsfaces.net/ui"
+  xmlns:ui="http://java.sun.com/jsf/facelets">
 
-		<b:panel look="info">
-			<f:facet name="heading">
-				<b>Attributes of &lt;b:tabView &gt;</b>
-			</f:facet>
-			<div class="table-responsive">
-				<table class="table table-striped table-hover"
-					style="background-color: #fff">
-					<thead>
-						<tr>
-							<th>Attribute</th>
-							<th>Default value</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-						    <td>active-index<br />activeIndex (alternative writing)</td>
-						    <td>0 </td>
-						    <td>Optional attribute to define which tab is active initially.</td>
-						</tr>
-						<tr>
-						    <td>ajax</td>
-						    <td>false</td>
-						    <td>Activates AJAX. The default value is false (no AJAX).</td>
-						</tr>
-						<tr>
-						    <td>content-class<br />contentClass (alternative writing)</td>
-						    <td>(none)</td>
-						    <td>Style class of the div surrounding the panes.</td>
-						</tr>
-						<tr>
-						    <td>content-style<br />contentStyle (alternative writing)</td>
-						    <td>(none)</td>
-						    <td>Inline CSS style of the div surrounding the panes.</td>
-						</tr>
-						<tr>
-						    <td>dir</td>
-						    <td>(none)</td>
-						    <td>Direction indication for text that does not inherit directionality. Legal values: ltr (Default. Left-to-right text direction), rtl (Right-to-left text direction) and auto (let the browser figure out the direction of your alphabet, based on the page content).</td>
-						</tr>
-						<tr>
-						    <td>tabPosition</td>
-						    <td>(none)</td>
-						    <td>Position of tabs. Legal values are: left, right, top, bottom. Default is top</td>
-						</tr>
-						<tr>
-						    <td>pills</td>
-						    <td>false</td>
-						    <td>Change the rendering of tab to pills mode. Default false</td>
-						</tr>
-						<tr>
-						    <td>disabled</td>
-						    <td>false</td>
-						    <td>Disables the input element, default is false.</td>
-						</tr>
-						<tr>
-						    <td>id</td>
-						    <td>(none)</td>
-						    <td>Unique identifier of the component in a namingContainer.</td>
-						</tr>
-						<tr>
-						    <td>immediate</td>
-						    <td>false</td>
-						    <td>Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false.</td>
-						</tr>
-						<tr>
-						    <td>onclick</td>
-						    <td>(none)</td>
-						    <td>OnClick DHTML event .</td>
-						</tr>
-						<tr>
-						    <td>oncomplete</td>
-						    <td>(none)</td>
-						    <td>JavaScript to be executed when ajax completes with success.</td>
-						</tr>
-						<tr>
-						    <td>process</td>
-						    <td>(none)</td>
-						    <td>Comma or space separated list of ids or search expressions denoting which values are to be sent to the server.</td>
-						</tr>
-						<tr>
-						    <td>role</td>
-						    <td>(none)</td>
-						    <td>The role can be used to provide information to screenreaders.</td>
-						</tr>
-						<tr>
-						    <td>style-class<br />styleClass (alternative writing)</td>
-						    <td>(none)</td>
-						    <td>Style class of the div surrounding this element.</td>
-						</tr>
-						<tr>
-						    <td>tooltip</td>
-						    <td>(none)</td>
-						    <td>The text of the tooltip.</td>
-						</tr>
-						<tr>
-						    <td>tooltip-container<br />tooltipContainer (alternative writing)</td>
-						    <td> body </td>
-						    <td>Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering errors in special cases. Also see data-container in the documentation of Bootstrap. The default value is body.</td>
-						</tr>
-						<tr>
-						    <td>tooltip-delay<br />tooltipDelay (alternative writing)</td>
-						    <td>0 </td>
-						    <td>The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
-						</tr>
-						<tr>
-						    <td>tooltip-delay-hide<br />tooltipDelayHide (alternative writing)</td>
-						    <td>0 </td>
-						    <td>The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
-						</tr>
-						<tr>
-						    <td>tooltip-delay-show<br />tooltipDelayShow (alternative writing)</td>
-						    <td>0 </td>
-						    <td>The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
-						</tr>
-						<tr>
-						    <td>tooltip-position<br />tooltipPosition (alternative writing)</td>
-						    <td>(none)</td>
-						    <td>Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".</td>
-						</tr>
-						<tr>
-						    <td>update</td>
-						    <td>(none)</td>
-						    <td>Component(s) to be updated with ajax.</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</b:panel>
+    <b:panel look="info">
+      <f:facet name="heading">
+        <b>Attributes of &lt;b:tabView &gt;</b>
+      </f:facet>
+      <div class="table-responsive">
+        <table class="table table-striped table-hover"
+          style="background-color: #fff">
+          <thead>
+            <tr>
+              <th>Attribute</th>
+              <th>Default value</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td>active-index<br />activeIndex (alternative writing)</td>
+                <td>0 </td>
+                <td>Optional attribute to define which tab is active initially.</td>
+            </tr>
+            <tr>
+                <td>ajax</td>
+                <td>false</td>
+                <td>Activates AJAX. The default value is false (no AJAX).</td>
+            </tr>
+            <tr>
+                <td>content-class<br />contentClass (alternative writing)</td>
+                <td>(none)</td>
+                <td>Style class of the div surrounding the panes.</td>
+            </tr>
+            <tr>
+                <td>content-style<br />contentStyle (alternative writing)</td>
+                <td>(none)</td>
+                <td>Inline CSS style of the div surrounding the panes.</td>
+            </tr>
+            <tr>
+                <td>dir</td>
+                <td>(none)</td>
+                <td>Direction indication for text that does not inherit directionality. Legal values: ltr (Default. Left-to-right text direction), rtl (Right-to-left text direction) and auto (let the browser figure out the direction of your alphabet, based on the page content).</td>
+            </tr>
+            <tr>
+                <td>tabPosition</td>
+                <td>(none)</td>
+                <td>Position of tabs. Legal values are: left, right, top, bottom. Default is top</td>
+            </tr>
+            <tr>
+                <td>pills</td>
+                <td>false</td>
+                <td>Change the rendering of tab to pills mode. Default false</td>
+            </tr>
+            <tr>
+                <td>disabled</td>
+                <td>false</td>
+                <td>Disables the input element, default is false.</td>
+            </tr>
+            <tr>
+                <td>id</td>
+                <td>(none)</td>
+                <td>Unique identifier of the component in a namingContainer.</td>
+            </tr>
+            <tr>
+                <td>immediate</td>
+                <td>false</td>
+                <td>Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false.</td>
+            </tr>
+            <tr>
+                <td>onclick</td>
+                <td>(none)</td>
+                <td>OnClick DHTML event .</td>
+            </tr>
+            <tr>
+                <td>oncomplete</td>
+                <td>(none)</td>
+                <td>JavaScript to be executed when ajax completes with success.</td>
+            </tr>
+            <tr>
+                <td>process</td>
+                <td>(none)</td>
+                <td>Comma or space separated list of ids or search expressions denoting which values are to be sent to the server.</td>
+            </tr>
+            <tr>
+                <td>role</td>
+                <td>(none)</td>
+                <td>The role can be used to provide information to screenreaders.</td>
+            </tr>
+            <tr>
+                <td>style-class<br />styleClass (alternative writing)</td>
+                <td>(none)</td>
+                <td>Style class of the div surrounding this element.</td>
+            </tr>
+            <tr>
+                <td>tooltip</td>
+                <td>(none)</td>
+                <td>The text of the tooltip.</td>
+            </tr>
+            <tr>
+                <td>tooltip-container<br />tooltipContainer (alternative writing)</td>
+                <td> body </td>
+                <td>Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering errors in special cases. Also see data-container in the documentation of Bootstrap. The default value is body.</td>
+            </tr>
+            <tr>
+                <td>tooltip-delay<br />tooltipDelay (alternative writing)</td>
+                <td>0 </td>
+                <td>The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
+            </tr>
+            <tr>
+                <td>tooltip-delay-hide<br />tooltipDelayHide (alternative writing)</td>
+                <td>0 </td>
+                <td>The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
+            </tr>
+            <tr>
+                <td>tooltip-delay-show<br />tooltipDelayShow (alternative writing)</td>
+                <td>0 </td>
+                <td>The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
+            </tr>
+            <tr>
+                <td>tooltip-position<br />tooltipPosition (alternative writing)</td>
+                <td>(none)</td>
+                <td>Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".</td>
+            </tr>
+            <tr>
+                <td>update</td>
+                <td>(none)</td>
+                <td>Component(s) to be updated with ajax.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </b:panel>
 </ui:fragment>

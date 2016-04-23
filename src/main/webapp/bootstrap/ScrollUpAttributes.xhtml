@@ -1,97 +1,99 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:fragment
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:b="http://bootsfaces.net/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:b="http://bootsfaces.net/ui"
+  xmlns:ui="http://java.sun.com/jsf/facelets">
 
-		<b:panel look="info">
-			<f:facet name="heading">
-				<b>Attributes of &lt;b:scrollUp &gt;</b>
-			</f:facet>
-			<table class="table table-striped table-hover"
-				style="background-color: #fff">
-				<thead>
-					<tr>
-						<th>Attribute</th>
-						<th>Default value</th>
-						<th>Description</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-					    <td>name</td>
-					    <td>(none)</td>
-					    <td>Element ID</td>
-					</tr>
-					<tr>
-					    <td>rendered</td>
-					    <td>false</td>
-					    <td>Boolean value to specify the rendering of the component, when set to false the component will not be rendered.</td>
-					</tr>
-					<tr>
-					    <td>distance</td>
-					    <td>0 </td>
-					    <td>Distance from top/bottom before showing element (px)</td>
-					</tr>
-					<tr>
-					    <td>from</td>
-					    <td>(none)</td>
-					    <td>scroll direction: 'top' or 'bottom'</td>
-					</tr>
-					<tr>
-					    <td>speed</td>
-					    <td>0 </td>
-					    <td>Speed back to top (ms).</td>
-					</tr>
-					<tr>
-					    <td>animation</td>
-					    <td>(none)</td>
-					    <td>Animation type: Fade, slide, none.</td>
-					</tr>
-					<tr>
-					    <td>animationSpeed</td>
-					    <td>0 </td>
-					    <td>Animation speed (ms).</td>
-					</tr>
-					<tr>
-					    <td>text</td>
-					    <td>Scroll To Top</td>
-					    <td>Text for element, can contain HTML.</td>
-					</tr>
-					<tr>
-					    <td>title</td>
-					    <td>(none)</td>
-					    <td>Set a custom &lt;a&gt; title if required.</td>
-					</tr>
-					<tr>
-					    <td>image</td>
-					    <td>(none)</td>
-					    <td>Set true to use image. (Must be set in related css).</td>
-					</tr>
-					<tr>
-					    <td>easing</td>
-					    <td>(none)</td>
-					    <td>Scroll easing (see http://easings.net/).</td>
-					</tr>
-					<tr>
-					    <td>trigger</td>
-					    <td>(none)</td>
-					    <td>Set a custom triggering element. Can be an HTML string or jQuery object</td>
-					</tr>
-					<tr>
-					    <td>target</td>
-					    <td>(none)</td>
-					    <td>Set a custom target element for scrolling to. Can be element or number.</td>
-					</tr>
-					<tr>
-					    <td>overlay</td>
-					    <td>(none)</td>
-					    <td>Set CSS color to display scrollUp active point, e.g '#00FFFF'</td>
-					</tr>
-				</tbody>
-			</table>
-		</b:panel>
+    <b:panel look="info">
+      <f:facet name="heading">
+        <b>Attributes of &lt;b:scrollUp &gt;</b>
+      </f:facet>
+      <div class="table-responsive">
+        <table class="table table-striped table-hover"
+          style="background-color: #fff">
+          <thead>
+            <tr>
+              <th>Attribute</th>
+              <th>Default value</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td>name</td>
+                <td>(none)</td>
+                <td>Element ID</td>
+            </tr>
+            <tr>
+                <td>rendered</td>
+                <td>false</td>
+                <td>Boolean value to specify the rendering of the component, when set to false the component will not be rendered.</td>
+            </tr>
+            <tr>
+                <td>distance</td>
+                <td>0 </td>
+                <td>Distance from top/bottom before showing element (px)</td>
+            </tr>
+            <tr>
+                <td>from</td>
+                <td>(none)</td>
+                <td>scroll direction: 'top' or 'bottom'</td>
+            </tr>
+            <tr>
+                <td>speed</td>
+                <td>0 </td>
+                <td>Speed back to top (ms).</td>
+            </tr>
+            <tr>
+                <td>animation</td>
+                <td>(none)</td>
+                <td>Animation type: Fade, slide, none.</td>
+            </tr>
+            <tr>
+                <td>animationSpeed</td>
+                <td>0 </td>
+                <td>Animation speed (ms).</td>
+            </tr>
+            <tr>
+                <td>text</td>
+                <td>(none)</td>
+                <td>Text for element, can contain HTML.</td>
+            </tr>
+            <tr>
+                <td>title</td>
+                <td>(none)</td>
+                <td>Set a custom &lt;a&gt; title if required.</td>
+            </tr>
+            <tr>
+                <td>image</td>
+                <td>(none)</td>
+                <td>Set true to use image. (Must be set in related css).</td>
+            </tr>
+            <tr>
+                <td>easing</td>
+                <td>(none)</td>
+                <td>Scroll easing (see http://easings.net/).</td>
+            </tr>
+            <tr>
+                <td>trigger</td>
+                <td>(none)</td>
+                <td>Set a custom triggering element. Can be an HTML string or jQuery object</td>
+            </tr>
+            <tr>
+                <td>target</td>
+                <td>(none)</td>
+                <td>Set a custom target element for scrolling to. Can be element or number.</td>
+            </tr>
+            <tr>
+                <td>overlay</td>
+                <td>(none)</td>
+                <td>Set CSS color to display scrollUp active point, e.g '#00FFFF'</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </b:panel>
 </ui:fragment>
