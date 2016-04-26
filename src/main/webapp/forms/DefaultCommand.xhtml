@@ -15,15 +15,15 @@
 		</style>
 		<h1>DefaultCommand (&lt;b:defaultCommand /&gt;)</h1>
 
-		<p>The <code>&lt;b:defaultCommand&gt;</code> the item controls which button must fire click event when enter key is pressed.</p>
+		<p>The <code>&lt;b:defaultCommand&gt;</code> controls which button fires the click event when the enter key is pressed.</p>
 		<h1>Basic usage</h1>
 		<p>
-			Default command let you specify which command has to be fired, using "target" attribute set to the command id. <br/>
+			The default command lets you specify which command has to be fired, using the <code>target</code> attribute set to the command id. <br/>
 		</p>
 		<b:tabView>
 			<b:tab title="preview">
 				<h:form id="test_form">
-					<p>The default command button is 'Button2'</p>
+					<p>The default command button is 'Button2'.</p>
 					<b:inputText></b:inputText>
 					<b:commandButton id="button1" actionListener="#{test.button1}" value="Button1" ajax="true" update="standardMsg" />
 					<b:commandButton id="button2" actionListener="#{test.button2}" value="Button2" ajax="true" look="primary" update="standardMsg" />
@@ -53,10 +53,10 @@
 		<br/>
 		<br/>
 		<br/>
-		<h1>Multiple default command in the same page</h1>
+		<h1>Multiple default commands in the same page</h1>
 		<p>
-			The <code>&lt;b:defaultCommand&gt;</code> component, activate the click listener on the closest form of the component. <br/>
-			In this way, you can define multiple defaultCommands in different form scopes.
+			The <code>&lt;b:defaultCommand&gt;</code> component activates the click listener on the closest form of the component. <br/>
+			This way, you can define multiple defaultCommands in different form scopes.
 		</p>
 		<b:tabView>
 			<b:tab title="preview">
