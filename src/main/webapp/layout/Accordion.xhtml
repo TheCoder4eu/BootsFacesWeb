@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="content">
+		<style>
+		td {
+			padding: 8px;
+		}
+		</style>
+		<h1>Accordion (&lt;b:accordion /&gt;)</h1>
+
+		<p>The <code>&lt;b:accordion&gt;</code> component wrap one or more &lt;b:panel&gt; components to display them as an accordion.</p>
+		<h1>Basic Usage</h1>
+		<p>
+			Essentially, accordion is only a wrapper for panels. The additional attribute that can be specified, is the expandedPanels that
+			provide the ability to make expanded by default, specified panels ids.
+		</p>
+		<b:tabView>
+			<b:tab title="preview">
+				<b:accordion expanded-panels="panel1,panel3">
+                  	<b:panel id="panel1" title="Item 1">Content 1</b:panel>
+                  	<b:panel id="panel2" title="Item 2">Content 2</b:panel>
+                  	<b:panel id="panel3" title="Item 3">Content 3</b:panel>
+                </b:accordion>
+			</b:tab>
+			<b:tab title="JSF markup">
+				<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+					<![CDATA[
+						<b:accordion expanded-panels="panel1,panel3">
+                    		<b:panel id="panel1" title="Item 1">Content 1</b:panel>
+                    		<b:panel id="panel2" title="Item 2">Content 2</b:panel>
+                    		<b:panel id="panel3" title="Item 3">Content 3</b:panel>
+                    	</b:accordion>
+					]]>
+				</script> 
+			</b:tab>
+		</b:tabView>
+
+		<br/>
+        <h2>Reference section</h2>
+        <ui:include src="AccordionAttributes.xhtml" />
+		<b:panel look="info" rendered="false">
+			<f:facet name="heading">
+				<b>Skinning</b>
+			</f:facet>
+			<ul>
+				<li>Tell the world which CSS classes can be used to change the
+					look of the component.</li>
+			</ul>
+		</b:panel>
+
+		<script type="text/javascript">
+      		SyntaxHighlighter.all();
+    	</script>
+		<br />
+		<br />
+		<br />
+		<br />
+	</ui:define>
+</ui:composition>
