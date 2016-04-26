@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="content">
+		<style>
+		td {
+			padding: 8px;
+		}
+		</style>
+		<h1>DefaultCommand (&lt;b:defaultCommand /&gt;)</h1>
+
+		<p>The <code>&lt;b:defaultCommand&gt;</code> the item controls which button must fire click event when enter key is pressed.</p>
+		<h1>Basic usage</h1>
+		<p>
+			Default command let you specify which command has to be fired, using "target" attribute set to the command id. <br/>
+		</p>
+		<b:tabView>
+			<b:tab title="preview">
+				<h:form id="test_form">
+					<p>The default command button is 'Button2'</p>
+					<b:inputText></b:inputText>
+					<b:commandButton id="button1" actionListener="#{test.button1}" value="Button1" ajax="true" update="standardMsg" />
+					<b:commandButton id="button2" actionListener="#{test.button2}" value="Button2" ajax="true" look="primary" update="standardMsg" />
+					<b:commandButton id="button3" actionListener="#{test.button3}" value="Button3" ajax="true" icon="plus-sign" update="standardMsg" />
+			    	<b:defaultCommand target="button2" />
+			    	<br/><br/>
+			    	<b:messages id="standardMsg" globalOnly="true" />
+		    	</h:form>
+			</b:tab>
+			<b:tab title="JSF markup">
+				<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+					<![CDATA[
+					<h:form id="test_form">
+						<b:inputText></b:inputText>
+						<b:commandButton id="button1" actionListener="&num;{test.button1}" value="Button1" ajax="true" update="standardMsg" />
+						<b:commandButton id="button2" actionListener="&num;{test.button2}" value="Button2" ajax="true" look="primary" update="standardMsg" />
+						<b:commandButton id="button3" actionListener="&num;{test.button3}" value="Button3" ajax="true" icon="plus-sign" update="standardMsg" />
+			    		<b:defaultCommand target="button2" />
+			    		<br/><br/>
+			    		<b:messages id="standardMsg" globalOnly="true" />
+					</h:form>
+					]]>
+				</script> 
+			</b:tab>
+		</b:tabView>
+		
+		<br/>
+		<br/>
+		<br/>
+		<h1>Multiple default command in the same page</h1>
+		<p>
+			The <code>&lt;b:defaultCommand&gt;</code> component, activate the click listener on the closest form of the component. <br/>
+			In this way, you can define multiple defaultCommands in different form scopes.
+		</p>
+		<b:tabView>
+			<b:tab title="preview">
+				<p>First Form (focus on input text and press enter key)</p>
+				<h:form id="test_form_1">
+					<p>The default command button is 'Button 2'</p>
+					<b:inputText></b:inputText>
+					<b:commandButton id="button_1" actionListener="#{test.button1}" value="Button 1" ajax="true" update="standardMsg_t1" />
+					<b:commandButton id="button_2" actionListener="#{test.button2}" value="Button 2" ajax="true" look="primary" update="standardMsg_t1" />
+			    	<b:defaultCommand target="button_2" />
+			    	<br/><br/>
+			    	<b:messages id="standardMsg_t1" globalOnly="true" />
+		    	</h:form>
+		    	<hr/>
+		    	<p>Second Form (focus on input text and press enter key)</p>
+		    	<h:form id="test_form_2">
+					<p>The default command button is 'Button 3'</p>
+					<b:inputText></b:inputText>
+					<b:commandButton id="button_3" actionListener="#{test.button3}" value="Button 3" ajax="true" look="primary" update="standardMsg_k1" />
+					<b:commandButton id="button_4" actionListener="#{test.button4}" value="Button 4" ajax="true" update="standardMsg_k1" />
+			    	<b:defaultCommand target="button_3" />
+			    	<br/><br/>
+			    	<b:messages id="standardMsg_k1" globalOnly="true" />
+		    	</h:form>
+			</b:tab>
+			<b:tab title="JSF markup">
+				<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+					<![CDATA[
+				<p>First Form (focus on input text and press enter key)</p>
+				<h:form id="test_form_1">
+					<p>The default command button is 'Button T2'</p>
+					<b:inputText></b:inputText>
+					<b:commandButton id="button_1" actionListener="&num;{test.button1}" value="Button 1" ajax="true" update="standardMsg_t1" />
+					<b:commandButton id="button_2" actionListener="&num;{test.button2}" value="Button 2" ajax="true" look="primary" update="standardMsg_t1" />
+			    	<b:defaultCommand target="button_2" />
+			    	<br/><br/>
+			    	<b:messages id="standardMsg_t1" globalOnly="true" />
+		    	</h:form>
+		    	<hr/>
+		    	<p>Second Form (focus on input text and press enter key)</p>
+		    	<h:form id="test_form_2">
+					<p>The default command button is 'Button K1'</p>
+					<b:inputText></b:inputText>
+					<b:commandButton id="button_3" actionListener="&num;{test.button3}" value="Button 3" ajax="true" look="primary" update="standardMsg_k1" />
+					<b:commandButton id="button_4" actionListener="&num;{test.button4}" value="Button 4" ajax="true" update="standardMsg_k1" />
+			    	<b:defaultCommand target="button_3" />
+			    	<br/><br/>
+			    	<b:messages id="standardMsg_k1" globalOnly="true" />
+		    	</h:form>
+					]]>
+				</script> 
+			</b:tab>
+		</b:tabView>
+		<br/>
+        <h2>Reference section</h2>
+        <ui:include src="DefaultCommandAttributes.xhtml" />
+		<b:panel look="info">
+			<f:facet name="heading">
+				<b>Skinning</b>
+			</f:facet>
+			<ul>
+				<li>Tell the world which CSS classes can be used to change the
+					look of the component.</li>
+			</ul>
+		</b:panel>
+
+		<script type="text/javascript">
+      		SyntaxHighlighter.all();
+    	</script>
+		<br />
+		<br />
+		<br />
+		<br />
+	</ui:define>
+</ui:composition>

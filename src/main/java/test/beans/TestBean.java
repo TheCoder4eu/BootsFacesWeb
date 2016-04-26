@@ -12,6 +12,7 @@ import net.bootsfaces.component.tree.event.TreeNodeEventListener;
 import net.bootsfaces.component.tree.event.TreeNodeSelectionEvent;
 import net.bootsfaces.component.tree.model.DefaultNodeImpl;
 import net.bootsfaces.component.tree.model.Node;
+import net.bootsfaces.utils.FacesMessages;
 
 
 @SessionScoped
@@ -181,16 +182,16 @@ implements TreeNodeEventListener, Serializable {
 	 * Button methods for form test
 	 */
 	public void button1() {
-		System.out.println("SELECTED COLOR: " + selectedColor) ;
-		System.out.println("CLICKED: BUTTON 1");
+		FacesMessages.info("BUTTON 1", "BUTTON 1 WAS PRESSED");
 	}
 	public void button2() {
-		System.out.println("SELECTED COLOR: " + selectedColor) ;
-		System.out.println("CLICKED: BUTTON 2");
+		FacesMessages.info("BUTTON 2", "BUTTON 2 WAS PRESSED");
 	}
 	public void button3() {
-		System.out.println("SELECTED COLOR: " + selectedColor) ;
-		System.out.println("CLICKED: BUTTON 3");
+		FacesMessages.info("BUTTON 3", "BUTTON 3 WAS PRESSED");
+	}
+	public void button4() {
+		FacesMessages.info("BUTTON 4", "BUTTON 4 WAS PRESSED");
 	}
 	
 }
