@@ -40,19 +40,19 @@ public class LoginBean {
 	
 	public void login() {
 		if ("BootsFaces".equalsIgnoreCase(username) && "rocks!".equalsIgnoreCase(password)) {
-			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Congratulations! You've successfully logged in.");
+			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Congratulations! You've successfully logged in.", "");
 			FacesContext.getCurrentInstance().addMessage("loginForm:password", msg);
 			
 		} else {
-			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "That's the wrong password. Hint: BootsFaces rocks!");
+			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "That's the wrong password. Hint: BootsFaces rocks!", "");
 			FacesContext.getCurrentInstance().addMessage("loginForm:password", msg);
 		}
 	}
 	
 	public void forgotPassword() {
-		FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Default user name: BootsFaces");
+		FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Default user name: BootsFaces", "");
 		FacesContext.getCurrentInstance().addMessage("loginForm:username", msg);
-		msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Default password: rocks!");
+		msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Default password: rocks!", "");
 		FacesContext.getCurrentInstance().addMessage("loginForm:password", msg);
 	}
 }
