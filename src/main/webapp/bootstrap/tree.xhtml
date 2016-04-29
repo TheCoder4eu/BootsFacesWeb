@@ -45,10 +45,10 @@
 			</b:tab>
 			<b:tab title="displayed as"
 				contentStyle="border:1px solid ;padding:10px">
-				<h:form>
+				<h:form prependId="false">
 					<b:tree render-root="false" value="#{test.treeModel}"
 						node-selection-listener="#{test}" showCheckbox="true"
-						enableLinks="true" />
+						enableLinks="true" showBorder="true"  />
 				</h:form>
 			</b:tab>
 		</b:tabView>

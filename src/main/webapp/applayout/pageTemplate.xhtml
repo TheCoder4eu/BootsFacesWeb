@@ -24,13 +24,27 @@
         <h:outputStylesheet name="last.css" position="last"/>
         <h:outputStylesheet name="first.css" position="first"/>
         <h:outputStylesheet name="middle.css" position="middle"/>
+        <!-- h:outputStylesheet library="customthemes" name="freelancer/bootstrap.min.css" / -->
         <h:outputStylesheet library="customthemes" name="#{theme.customTheme}/bootstrap.min.css"  rendered="#{theme.customTheme ne ''}"/>
         <h:outputStylesheet library="customthemes" name="#{theme.customTheme}/#{theme.customTheme}.css" rendered="#{theme.customTheme ne ''}"/>
-        <style>.tooltip-inner {
-    max-width: 350px;
-    /* If max-width does not work, try using width instead */
-    width: 350px; 
-}</style>
+        <style>
+        
+        .tooltip-inner {
+		    max-width: 350px;
+		    /* If max-width does not work, try using width instead */
+		    width: 350px; 
+		}
+		
+		#bsfscroll {
+			background-image: url("#{resource['images:top.png']}");
+			bottom: 65px;
+			right: 18px;
+			width: 38px; /* width of the custom image */
+			height: 38px; /* height of the custom image */
+			outline: none;
+		}
+		
+		</style>
 
 		<ui:insert name="custom-header" />
     </h:head>
@@ -48,7 +62,9 @@
           $.blockUI.defaults.overlayCSS.opacity=0;
           $.blockUI.defaults.message='<h1><img src="../javax.faces.resource/images/waitcursor.gif.jsf?ln=bsf" /></h1>';
         }
-        </script>         
+        </script>    
+        <b:scrollUp distance="200" animation="fade" text="" scrollTitle="false" name="bsfscroll" />
+		     
         <ui:insert name="nbtop">
             <ui:include src="/applayout/navbartop.xhtml"/>
         </ui:insert>
