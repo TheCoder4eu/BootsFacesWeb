@@ -9,7 +9,7 @@
             <ui:define name="content">
                 <style>td {padding: 8px;}</style>
                 <h1>Combobox (&lt;b:selectOneMenu&gt;)</h1>
-                
+
                 <p>Comboboxes give you a list of items to select from. As of Bootsfaces 0.6, comboboxes are not editable - they are pure drop-down menus.</p>
                 <p>&lt;b:selectOneMenu&gt; makes the Bootstrap style of displaying comboboxes available to JSF programmers.</p>
                 <h1>Basic usage</h1>
@@ -152,19 +152,19 @@
 
 
         <h3>A note on AJAX</h3>
-        <p>Note that since BootsFaces 0.8.0, we favor an 
+        <p>Note that since BootsFaces 0.8.0, we favor an
         <a href="../forms/ajax.jsf">all-new approach to AJAX</a>. The standard JSF approach
         to AJAX we used in the example above is supported by us, too, but we recommend to adopt the new
         BootsFaces style of AJAX (i.e. <code>onclick="ajax:bean.method()"</code>). Supporting standard
         JSF AJAX and the PrimeFaces approach to AJAX raises the complexity of the implementation considerably.
         So if you run into bugs with either the standard or the PrimeFaces syntax,
         bear with us, and report the bugs <a target="#" href="https://github.com/TheCoder4eu/BootsFaces-OSP/issues">
-        on our bug tracker</a>.</p> 
-        
+        on our bug tracker</a>.</p>
+
         <h1>Objects and converters</h1>
         <p>In most cases you don't need a converter to use an arbitrary object as bean attribute. It suffices to use the attributes <code>var</code>, <code>itemValue</code> and <code>itemLabel</code> of <code>&lt;f:selectItem /&gt;</code> and <code>&lt;f:selectItems /&gt;</code>.</p>
-        <b:alert severity="danger" title="As of BootsFaces 0.8.0, converters aren't used correctly when rendering. In other words: the example below doesn't work." />  
-        
+        <b:alert severity="danger" title="As of BootsFaces 0.8.0, converters aren't used correctly when rendering. In other words: the example below doesn't work." />
+
         <h:form>
             <b:tabView activeIndex="3">
                 <b:tab title="JSF markup">
@@ -229,7 +229,7 @@ public class SoccerTeamBean implements Serializable {
                 </b:tab>
                                 <b:tab title="Player class">
                                                 <b:well>
-                                
+
                     <script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
 public class Player {
@@ -252,7 +252,7 @@ public class Player {
                    </script>
                    </b:well>
                 </b:tab>
-                
+
                 <b:tab title="displayed as">
                 <b:well>
                     <b:panelGrid colSpans="3,3,6">
@@ -271,17 +271,17 @@ public class Player {
                 </b:tab>
             </b:tabView>
         </h:form>
-        
-        
+
+
         <h1>Arrays and HashMaps</h1>
-        <p>The list of items can be defined as an <code>&lt;f:selectItems /&gt;</code> tag. BootsFaces uses a modified version of the 
+        <p>The list of items can be defined as an <code>&lt;f:selectItems /&gt;</code> tag. BootsFaces uses a modified version of the
         algorithm PrimeFaces 5.1 uses to implement <code>&lt;f:selectItems /&gt;</code>. As a result, you can use <code>&lt;b:selectOneMenu&gt;</code>
         almost the same way as <code>&lt;b:selectOneMenu&gt;</code>. </p>
         <h:form>
 <b:tabView activeIndex="0">
     <b:tab title="JSF markup">
                     <b:well>
-    
+
        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
 	        <b:panelGrid colSpans="2,2,8">
@@ -361,8 +361,8 @@ public class SemaphoreBean {
        </script>
        </b:well>)
     </b:tab>
-    
-    
+
+
     <b:tab title="displayed as">
                 <b:well>
 	        <b:panelGrid colSpans="2,2,8">
@@ -381,16 +381,16 @@ public class SemaphoreBean {
     </b:tab>
 </b:tabView>
         </h:form>
-        
-        
-        
+
+
+
                 <h1>Labels as captions above the combobox</h1>
                 <p>You can add a label to the combobox by jotting down the attribute <code>label</code>.
                 This label is displayed above the combobox.</p>
 <b:tabView>
   <b:tab title="JSF markup">
                   <b:well>
-  
+
     <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
     <h:form>
@@ -417,7 +417,7 @@ public class SemaphoreBean {
   </b:tab>
   <b:tab title="displayed as">
                   <b:well>
-  
+
     <h:form>
     	<h:panelGrid columns="3"  cellpadding="5">
 		    <b:selectOneMenu value="# {selectOneMenuBean.brand}" label="Select your car's brand:" id="brandID2">
@@ -453,7 +453,7 @@ public class SemaphoreBean {
       and
       <code>append</code>
       where you will place the
-      <code>h:outputText</code> 
+      <code>h:outputText</code>
       element (or any other element). Note that there's a minor layout glitch between the facet and the combobox (the rounded corner).
       You'll have to fix this with some CSS code.
     </p>
@@ -509,22 +509,22 @@ public class SemaphoreBean {
                you can suppress automatic rendering of labels by adding <code>renderLabel="false"</code>.
                </p>
                <p>Required inputs fields and their labels both bear the CSS class <code>bf-required</code>. By default, this adds an asterisk to the label.</p>
-               <p>If the field has a FacesMessage, one of the CSS classes <code>bf-info</code>, <code>bf-warning</code>, 
+               <p>If the field has a FacesMessage, one of the CSS classes <code>bf-info</code>, <code>bf-warning</code>,
                    <code>bf-error</code> or <code>bf-fatal</code>, depending on which error severity the message has.
                    The latter two classes color the label red.</p>
                 <p>If there's no message,
                    the field and its label bear the pseudo CSS class <code>bf-no-message</code>.
                </p>
-                
+
 
 
                 <h2>AJAX and JavaScript  <b:badge value="since 0.8.0" /></h2>
                 <p>The <code>&lt;b:selectBooleanCheckbox &gt;</code> supports the full suite of JavaScript and AJAX events,
                 as described in <a href="ajax.jsf">the description of AJAX in BootsFaces</a>. Basically, each of the
                 many JavaScript callback handlers (the <code>on[event]</code> attributes) also supports AJAX.
-                To get familiar with BootsFaces AJAX, try the 
+                To get familiar with BootsFaces AJAX, try the
                 <a target="#" href="https://github.com/stephanrauh/BootsFaces-Examples/tree/master/AJAX">BootsFaces AJAX demo project</a>.</p>
-                
+
                         <h:form>
             <b:tabView activeIndex="1">
                 <b:tab title="JSF markup">
@@ -532,30 +532,34 @@ public class SemaphoreBean {
                         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
         <h:form>
-          <b:panelGrid colSpans="2,2,2,2,4">
-            <h:outputLabel value="Select your car's brand:" for="brandID" />
-          <b:selectOneMenu value="&num;{selectOneMenuBean.brand}" id="brandID" >
-            <f:selectItem itemLabel="Fiat" itemValue="1"/>
-            <f:selectItem itemLabel="Honda" itemValue="2"/>
-            <f:selectItem itemLabel="Opel" itemValue="3"/>
-          </b:selectOneMenu>
-          <h:message for="brandID"/>
-          <h:outputLabel value="last submitted value:" for="brandOutputID"/>
-          <b:inputText value="&num;{selectOneMenuBean.brand}" disabled="true" id="brandOutputID"/>
-            <h:outputLabel value="Select your car's type:" for="typeID" />
-          <b:selectOneMenu value="&num;{selectOneMenuBean.type}" id="typeID" required="true">
-              <f:selectItem itemLabel="(Please select)" itemValue=""/>
-              <f:selectItem itemLabel="Cinquecento" itemValue="1"/>
-              <f:selectItem itemLabel="Civic" itemValue="2"/>
-              <f:selectItem itemLabel="Astra" itemValue="3"/>
-          </b:selectOneMenu>
-          <h:message for="typeID"/>
-          <h:outputLabel value="last submitted value:" for="typeOutputID" />
-          <b:inputText value="&num;{selectOneMenuBean.type}" disabled="true" id="typeOutputID"/>
-        </b:panelGrid>
-            <b:commandButton value="Submit AJAX">
-                <f:ajax execute="@form" render="brandOutputID typeOutputID" />
-            </b:commandButton>
+           <b:panelGrid colSpans="2,2,2,2,4">
+               <h:outputLabel value="Select your car's brand:" for="brandID" id="l1" />
+               <b:selectOneMenu value="#{selectOneMenuBean.brand}"
+                   id="brandID"
+                   onchange="ajax:selectOneMenuBean.onChange()"
+                   update="@parent" process="@form">
+                   <f:selectItem itemLabel="(Please select)" itemValue="" />
+                   <f:selectItem itemLabel="Fiat" itemValue="1" />
+                   <f:selectItem itemLabel="Honda" itemValue="2" />
+                   <f:selectItem itemLabel="Opel" itemValue="3" />
+               </b:selectOneMenu>
+               <h:message id="brandIdMsg" for="@form:brandID" />
+               <h:outputLabel value="last submitted value:" for="brandOutputID" />
+               <b:inputText value="#{selectOneMenuBean.brand}" disabled="true" id="brandOutputID" />
+               <h:outputLabel value="Select your car's type:" for="typeID" />
+               <b:selectOneMenu value="#{selectOneMenuBean.type}" id="typeID"
+                   onchange="ajax:selectOneMenuBean.onChange()"
+                   update="@parent" process="@form">
+                   <f:selectItem itemLabel="(Please select)" itemValue="" />
+                   <f:selectItem itemLabel="Cinquecento" itemValue="1" />
+                   <f:selectItem itemLabel="Civic" itemValue="2" />
+                   <f:selectItem itemLabel="Astra" itemValue="3" />
+                   <f:selectItem itemLabel="Megane" itemValue="4" />
+               </b:selectOneMenu>
+               <h:message for="typeID" />
+               <h:outputLabel value="last submitted value:" for="typeOutputID" />
+               <b:inputText value="#{selectOneMenuBean.type}" disabled="true" id="typeOutputID" />
+           </b:panelGrid>
        </h:form>
 ]]>
        </script>
@@ -565,10 +569,10 @@ public class SemaphoreBean {
                     <b:well>
                         <b:panelGrid colSpans="2,2,2,2,4">
                             <h:outputLabel value="Select your car's brand:" for="brandID" id="l1" />
-                            <b:selectOneMenu value="#{selectOneMenuBean.brand}" 
-                                id="brandID" 
+                            <b:selectOneMenu value="#{selectOneMenuBean.brand}"
+                                id="brandID"
                                 onchange="ajax:selectOneMenuBean.onChange()"
-                                update="@parent">
+                                update="@parent" process="@form">
                                 <f:selectItem itemLabel="(Please select)" itemValue="" />
                                 <f:selectItem itemLabel="Fiat" itemValue="1" />
                                 <f:selectItem itemLabel="Honda" itemValue="2" />
@@ -578,9 +582,9 @@ public class SemaphoreBean {
                             <h:outputLabel value="last submitted value:" for="brandOutputID" />
                             <b:inputText value="#{selectOneMenuBean.brand}" disabled="true" id="brandOutputID" />
                             <h:outputLabel value="Select your car's type:" for="typeID" />
-                            <b:selectOneMenu value="#{selectOneMenuBean.type}" id="typeID" required="true"
+                            <b:selectOneMenu value="#{selectOneMenuBean.type}" id="typeID"
                                 onchange="ajax:selectOneMenuBean.onChange()"
-                                update="@parent">
+                                update="@parent" process="@form">
                                 <f:selectItem itemLabel="(Please select)" itemValue="" />
                                 <f:selectItem itemLabel="Cinquecento" itemValue="1" />
                                 <f:selectItem itemLabel="Civic" itemValue="2" />
@@ -595,12 +599,12 @@ public class SemaphoreBean {
                 </b:tab>
             </b:tabView>
         </h:form>
-                
-                
+
+
 
                 <h1>Reference section</h1>
                 <ui:include src="SelectOneMenuAttributes.xhtml" />
- 
+
             <b:panel look="info">
 				<f:facet name="heading">
 					<b>Skinning</b>
@@ -610,7 +614,7 @@ public class SemaphoreBean {
 				   		The combobox is a <code>select</code> tag bearing the CSS-class <code>form-control</code>.
 				   </li>
 				   <li>
-				   		If the attribute <code>required</code> is true, the pseudo CSS class <code>bf-required</code> is added. 
+				   		If the attribute <code>required</code> is true, the pseudo CSS class <code>bf-required</code> is added.
                         Thus you can define your custom style for required fields.
 				   </li>
                    <li>
@@ -621,15 +625,15 @@ public class SemaphoreBean {
                    <li>If there's a label, it bears the CSS class <code>required</code>, if it's a mandatory field.
                    This class adds an asterisk to the label text. You can override the CSS class to remove the asterisk
                    or to replace it by something else.</li>
-                   <li>If there's a label, it bears the CSS classes <code>bf-info</code>, <code>bf-warning</code>, 
+                   <li>If there's a label, it bears the CSS classes <code>bf-info</code>, <code>bf-warning</code>,
                    <code>bf-error</code> or <code>bf-fatal</code>, depending on which severity the error message the input field has.
                    The latter two classes color the label red.<br />
                    If there's no message,
                    the input field bears the pseudo CSS class <code>bf-no-message</code>.
                    </li>
-				  </ul> 
+				  </ul>
 			</b:panel>
-                
+
                 <script type="text/javascript">
                     SyntaxHighlighter.all();
                 </script>

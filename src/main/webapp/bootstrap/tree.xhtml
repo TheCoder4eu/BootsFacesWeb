@@ -34,12 +34,14 @@
 					<script type="syntaxhighlighter"
 						class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 						<![CDATA[
+						<h:form prependId="false">
 							<b:tree 
 								render-root="false" 
-								value="&num;{test.testModel1}" 
-								node-selection-listener="&num;{test}" 
+								value="&num;{test.testModel1}"
 								showCheckbox="true" 
-								enableLinks="true" />
+								enableLinks="true"
+								showBorder="true"  />
+						</h:form>
 						]]></script>
 				</b:well>
 			</b:tab>
@@ -47,11 +49,67 @@
 				contentStyle="border:1px solid ;padding:10px">
 				<h:form prependId="false">
 					<b:tree render-root="false" value="#{test.treeModel}"
-						node-selection-listener="#{test}" showCheckbox="true"
+						showCheckbox="true"
 						enableLinks="true" showBorder="true"  />
 				</h:form>
 			</b:tab>
 		</b:tabView>
+		<br/>
+		<p>
+		<b:badge value="Attention"/> We must indeed pay attention to a couple of things: while the tree component was a client side component, 
+		and that i need to put it inside a form to be able to perform ajax call, i need to set the prependId="false" 
+		option to the form, to prevent the component to lose it's styling, that is based on ids. 
+		We will try to solve this limitation in the future version of the component.
+		<br/><br/>
+		This component is also able to mantain it's state also after a page refresh (expansion level and checked items).
+		<br/>
+		</p>
+		
+		<h3>Advanced usage</h3>
+		<p>In this case, we have defined a nodeSelectionListener that listen to selection and check events</p>
+
+		<b:tabView activeIndex="1">
+			<b:tab title="JSF markup">
+				<b:well>
+					<script type="syntaxhighlighter"
+						class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+						<![CDATA[
+				<h:form prependId="false">
+					<b:container id="treeContent">
+			            <b:row>
+			            	<b:column>
+								<b:tree render-root="false" value="&num;{test.treeModel}"
+									node-selection-listener="&num;{test}" showCheckbox="true"
+									enableLinks="true" showBorder="false" update="chkItems" />
+							</b:column>
+						</b:row>
+						<b:row>
+			            	<b:inputText id="chkItems" styleClass="test" value="&num;{test.checkedColumns}" />
+			            </b:row>
+		            </b:container>
+				</h:form>
+						]]></script>
+				</b:well>
+			</b:tab>
+			<b:tab title="displayed as"
+				contentStyle="border:1px solid ;padding:10px">
+				<h:form prependId="false">
+					<b:container id="treeContent" style="width: 100%">
+			            <b:row>
+			            	<b:column>
+								<b:tree render-root="false" value="#{test.treeModel}"
+									node-selection-listener="#{test}" showCheckbox="true"
+									enableLinks="true" showBorder="false" update="chkItems" />
+							</b:column>
+						</b:row>
+						<b:row>
+			            	<b:inputText id="chkItems" styleClass="test" value="#{test.checkedColumns}" />
+			            </b:row>
+		            </b:container>
+				</h:form>
+			</b:tab>
+		</b:tabView>
+		<br/>
 
 		<h2>Reference section</h2>
 		<ui:include src="TreeAttributes.xhtml" />
