@@ -13,11 +13,12 @@
 			padding: 8px;
 		}
 		#scrollUpCustom {
-			background-image: url("top.png");
+			background-image: url("#{resource['images:top.png']}");
 			bottom: 65px;
 			right: 18px;
 			width: 38px; /* width of the custom image */
 			height: 38px; /* height of the custom image */
+			outline: none;
 		}
 		</style>
 		<h1>ScrollUp (&lt;b:scrollUp /&gt;) <b:badge value="since 0.8.2" /></h1>
@@ -40,13 +41,15 @@
 			<script type="syntaxhighlighter" class="brush: css; toolbar: false;gutter: false; first-line: 1">
 						<![CDATA[
 							&num;scrollUpCustom {
-								background-image: url("top.png");
+								background-image: url("&num;{resource['images:top.png']}");
 								bottom: 65px;
 								right: 18px;
 								width: 38px; /* width of the custom image */
 								height: 38px; /* height of the custom image */
+								outline: none;
 							}
 						]]></script>
+			<b:badge value="Attention" /> If you can use CSS3 selector, you can change the background image size directly with the background-size property.
 		</b:well>
 
 		<br/>
