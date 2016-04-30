@@ -13,13 +13,13 @@ td {
 	padding: 8px;
 }
 </style>
-		<h1>ProgressBar</h1>
-		
+		<h1>ProgressBar <b:badge value="since 0.8.2" /></h1>
+
 		<p>Sometimes you want to show your users a progress or a completion of some kind. That's where a ProgressBar comes in handy.</p>
 
 		<h1>Basic usage</h1>
 		<p>In the simplest case you only need to provide the value the ProgressBar should present. It will then be rendered with the primary look, ranging between 0 and 100, showing the bar completion as a percentage. </p>
-		
+
 		<b:tabView>
 			<b:tab title="preview">
 				<b:progressBar value="50"/>
@@ -29,10 +29,10 @@ td {
 					<![CDATA[
 						<b:progressBar value="50"/>
 					]]>
-				</script> 
+				</script>
 			</b:tab>
 		</b:tabView>
-		
+
 		<h3 id="contextual-alternatives">Contextual alternatives</h3>
 		<p>
 			Like other components, easily make a ProgressBar more meaningful to a particular context by adding a look attribute with values primary, success, info, warning or danger.
@@ -54,15 +54,15 @@ td {
 						<b:progressBar value="70"  look="warning"/>
 						<b:progressBar value="60"  look="danger"/>
 					]]>
-				</script> 
+				</script>
 			</b:tab>
 		</b:tabView>
-		
+
 		<h3 id="labels">Labels</h3>
 		<p>
 			You can always provide your own caption instead of using the standard percentage or simply hide the caption, if you want a pure ProgressBar.
 		</p>
-		
+
 		<b:tabView>
 			<b:tab title="preview">
 				<b:progressBar value="50" caption="This bar is half done."/>
@@ -74,14 +74,14 @@ td {
 						<b:progressBar value="50" caption="This bar is half done."/>
 						<b:progressBar value="50" renderCaption="false"/>
 					]]>
-				</script> 
+				</script>
 			</b:tab>
 		</b:tabView>
-		
+
 		<p>
 			If you use the standard caption, you can also configure the amount of shown fraction digits.
 		</p>
-		
+
 		<b:tabView>
 			<b:tab title="preview">
 				<b:progressBar value="100" min="50" max="200"/>
@@ -95,10 +95,10 @@ td {
 						<b:progressBar value="100" min="50" max="200" maxDecimalPlaces="6"/>
 						<b:progressBar value="100" min="50" max="200" maxDecimalPlaces="0"/>
 					]]>
-				</script> 
+				</script>
 			</b:tab>
 		</b:tabView>
-		
+
 		<h3 id="custom-ranges">Custom ranges</h3>
 		<p>
 			Instead 0 and 100 you can use any integer values as boundaries.
@@ -106,7 +106,7 @@ td {
 		<p>
 			You don't need to calculate the desired completion percentage yourself, just drop a value that lies between your defined range.
 		</p>
-		
+
 		<b:tabView>
 			<b:tab title="preview">
 				<b:progressBar value="100" min="50" max="200" tooltip="min=50, max=200, value=100"/>
@@ -118,10 +118,10 @@ td {
 						<b:progressBar value="100" min="50" max="200" tooltip="min=50, max=200, value=100"/>
 						<b:progressBar value="0" min="-100" max="0" tooltip="min=-100, max=0, value=0"/>
 					]]>
-				</script> 
+				</script>
 			</b:tab>
 		</b:tabView>
-		
+
 		<h3 id="striped">Striped</h3>
 		<p>
 			Striped ProgressBars can be used to indicate a long running action, that was already finished or aborted.
@@ -129,7 +129,7 @@ td {
 		<p>
 			Uses a gradient to create a striped effect. Not available in IE9 and below.
 		</p>
-		
+
 		<b:tabView>
 			<b:tab title="preview">
 				<b:progressBar value="100" striped="true" />
@@ -139,7 +139,7 @@ td {
 					<![CDATA[
 						<b:progressBar value="100" striped="true" />
 					]]>
-				</script> 
+				</script>
 			</b:tab>
 		</b:tabView>
 
@@ -150,7 +150,7 @@ td {
 		<p>
 			Making a ProgressBar animated automatically applies stripes to it (otherwise there would be nothing to see). Thus this is also not available in IE9 and below.
 		</p>
-		
+
 		<b:tabView>
 			<b:tab title="preview">
 				<b:progressBar value="100" animated="true" renderCaption="false"/>
@@ -162,10 +162,10 @@ td {
 						<b:progressBar value="100" animated="true" renderCaption="false"/>
 						<b:progressBar value="75" animated="true"/>
 					]]>
-				</script> 
+				</script>
 			</b:tab>
 		</b:tabView>
-		
+
 		<b:panel look="info">
 			<f:facet name="heading">
 				<b>Attributes of &lt;b:progressBar &gt;</b>
@@ -273,7 +273,7 @@ td {
 					<li>If the bar is animated, this div additionally contains the class <code>active</code> and  <code>progress-bar-striped</code>.</li>
 				</ul>
 				</li>
-				
+
 				<li>The bar's caption is held inside a span with no class, if it is hidden, if bears the CSS-class <code>sr-only</code></li>
 			</ul>
 		</b:panel>

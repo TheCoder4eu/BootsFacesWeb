@@ -32,10 +32,8 @@ import net.bootsfaces.utils.FacesMessages;
 public class SelectOneMenuBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@NotNull
 	private String brand=null;
 
-	@NotNull
 	private String type="2";
 
 	private String color;
@@ -49,7 +47,7 @@ public class SelectOneMenuBean implements Serializable {
 	@Min(2)
 	@Max(999)
 	private int enginePower;
-	
+
 	private boolean iAgreeToTheTermsAndConditions=false;
 
 	public String getColor() {
@@ -99,7 +97,7 @@ public class SelectOneMenuBean implements Serializable {
 	public void setiAgreeToTheTermsAndConditions(boolean iAgreeToTheTermsAndConditions) {
 		this.iAgreeToTheTermsAndConditions = iAgreeToTheTermsAndConditions;
 	}
-	
+
 	public void onChange() {
 		FacesMessages.info("on change has been called");
 	}
