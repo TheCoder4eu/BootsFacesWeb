@@ -10,13 +10,14 @@
 	<ui:define name="content">
 		<h1>TabView and Tab</h1>
 		<p>Add quick, dynamic tab functionality to transition through
-			panes of local content.</p>
-		<p>You can also have complex content in your tabs like the
+			panes of local content. You can also have complex content in your tabs like the
 			thumbnail in the third tab:</p>
 
 		<h:form id="tabform">
-			<b:tabView activeIndex="#{testBean.index}"
-				content-style="height:500px">
+          <b:row>
+	       <b:column colSpan="12">
+    		<b:tabView activeIndex="#{testBean.index}"
+				content-style="height:360px">
 				<b:tab title="First tab"
 					contentStyle="padding:20px;border-right:1px solid;border-left:1px solid;border-bottom:1px solid;border-color:#e8e8e8">
 					<p>This is the first tab.</p>
@@ -40,12 +41,12 @@
 				<b:tab title="Image tab">
 					<br />
 					<b:thumbnail>
-						<div style="float: left; padding: 20px">
-							<img width="640" height="428"
+						<div style="float: left; padding-left: 20px;padding-top:10px;padding-right:20px">
+							<img width="450" height="300"
 								src="https://farm4.staticflickr.com/3093/2573064842_d497899887_z.jpg?zz=1"
 								alt="2008-0608 (7119) Ulun Danu Temple by Jennifer, on Flickr" />
 						</div>
-						<div style="height: 450px">
+						<div style="height: 300px">
 							<h3>Ulun Danu Beratan Temple</h3>
 							<p>Ulun Danu Temple is a Balinese Hindu Temple located at
 								Candi Kuning countryside. It is set at lakeside of Beratan with
@@ -69,21 +70,20 @@
 						:
 					</p>
 					<b:well>
-						<script type="syntaxhighlighter"
-							class="brush: xml; toolbar: false;first-line: 1">
-                            <![CDATA[
-<b:tab title="Fancy tab">
-   <f:facet name="anchor"><b:iconAwesome name="cog" spin="true" /></f:facet>
-   Content of the tab.
-</b:tab>
-					]]></script>
+&lt;b:tab title="Fancy tab"><br />
+<span style="padding-left:20px">  &lt;f:facet name="anchor">&lt;b:iconAwesome name="cog" spin="true" />&lt;/f:facet></span><br />
+<span style="padding-left:20px">  Content of the tab.</span><br />
+&lt;/b:tab><br />
 					</b:well>
 					<p>However, this fancy tab is an example how to create an
 						unruly design. Don't use too many visual effects.</p>
 				</b:tab>
 
 			</b:tabView>
-			<br />
+        </b:column>
+	  </b:row>
+      <b:row>
+        <b:column colSpan="12">
 			<p>
 				Optionally, your server-side bean can define which tab is shown. You
 				can achieve this by using the property
@@ -94,8 +94,10 @@
 				button. However, as soon as the user clicks a tab themselves, the
 				connection to the back-end bean is lost.
 			</p>
-			<b:commandButton action="#{testBean.nextTab}" value="next tab"
-				ajax="false" />
+        </b:column>
+      </b:row>
+      <b:commandButton action="#{testBean.nextTab}" value="next tab"
+        ajax="true" update="@form" />
 		</h:form>
 
 		<h2>Persistent tab selection</h2>
@@ -143,7 +145,7 @@
                                 </b:tab>
 
                             </b:tabView>
-                            
+
 
                             ]]></script>
 		</b:panel>
@@ -269,7 +271,7 @@
 			<br />
 			<br />
 			<h3>Right Tab</h3>
-			<b:tabView tabPosition="right" 
+			<b:tabView tabPosition="right"
 				contentStyle="border: 1px solid #ddd;padding:10px">
 				<b:tab title="JSF markup">
 					<script type="syntaxhighlighter"
