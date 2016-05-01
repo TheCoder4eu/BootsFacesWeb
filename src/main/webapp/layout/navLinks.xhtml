@@ -25,7 +25,10 @@
                 <ul>
                     <b:navLink outcome="navbars" fragment="dropmenus" value="Drop menus in NavBars"/>
                     <b:navLink outcome="/bootstrap/dropButton" value="Drop Buttons"/>
-                    <li>List Links</li>
+                    <li>List links (see below)</li>
+                    <li>Pill links (see below)</li>
+                    <li>Tab links (see below)</li>
+                    <li>or as solitary components (see below).</li>
                 </ul>
                 <p>There are five kinds of <code>&lt;b:navLink: /&gt;</code>
                     <ul>
@@ -95,6 +98,148 @@
                                 <b:navLink value="Slider" outcome="/jquery-ui/slider" iconAwesome="sliders" />
                             </b:listLinks>
                          </b:panel>
+                        ]]></script>
+                    </f:facet>
+                </b:panel>
+                <br />
+
+                <h2>TabLinks <b:badge value="since 0.8.2" /></h2>
+                <p><code>&lt;b:tabLinks /&gt;</code> comes in handy if you want to render a tab strip, but don't want to use
+                a <code>&lt;b:tabView /&gt;</code>. The example below renders five hyperlinks as <code>&lt;b:navLink /&gt;</code>
+                or <code>&lt;b:navCommandLink /&gt;</code>. The result looks like an ordinary <code>&lt;b:tabView /&gt;</code>,
+                but behaves differently. However, using AJAX and <code>&lt;b:navCommandLink /&gt;</code> you can
+                build your own tabView component. This may give you an edge over the "carefree package" if you need more flexibility than the
+                standard <code>&lt;b:tabView /&gt;</code> offers.</p>
+                   <b:panel title="TabLinks example" look="default">
+                    <h:form>
+                     <b:row>
+                        <b:column span="12">
+                            <b:panel look="primary" title="TabLinks">
+                                <b:tabLinks>
+                                    <b:navLink href="http://www.bootsfaces.net" value="BootsFaces"
+                                               icon="globe" iconAlign="right"/>
+                                    <b:navLink href="http://getbootstrap.com/components/#navbar" value="Bootstrap" icon="link"></b:navLink>
+                                    <b:navLink value="Labels and Badges" outcome="/bootstrap/labelsbadge"
+                                               icon="tag" iconAlign="right" active="true"/>
+                                    <b:navLink value="Slider" outcome="/jquery-ui/slider" iconAwesome="sliders"/>
+                                    <b:navCommandLink value="AJAX actionListener" actionListener="#{messagesBean.info}"
+                                               icon="tag" iconAlign="right" update="@form"/>
+                                    <b:messages />
+                                </b:tabLinks>
+                             </b:panel>
+                        </b:column>
+                      </b:row>
+                    </h:form>
+                    <f:facet name="footer">
+                        <strong>Markup:</strong><br/>
+
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
+                        <![CDATA[
+                                <b:tabLinks>
+                                    <b:navLink href="http://www.bootsfaces.net" value="BootsFaces"
+                                               icon="globe" iconAlign="right"/>
+                                    <b:navLink></b:navLink>
+                                    <b:navLink href="http://getbootstrap.com/components/#navbar" value="Bootstrap" icon="link"></b:navLink>
+                                    <b:navLink value="Labels and Badges" outcome="/bootstrap/labelsbadge"
+                                               icon="tag" iconAlign="right" active="true"/>
+                                    <b:navLink value="Slider" outcome="/jquery-ui/slider" iconAwesome="sliders"/>
+                                    <b:navCommandLink value="AJAX actionListener" actionListener="&#35;{messagesBean.info}"
+                                               icon="tag" iconAlign="right" update="@form"/>
+                                    <b:messages />
+                               </b:tabLinks>
+                         ]]></script>
+                    </f:facet>
+                </b:panel>
+                <br />
+
+
+                <h2>Pill links <b:badge value="since 0.8.2" /></h2>
+                <p>The <code>&lt;b:pillLinks /&gt;</code> component resembles the <code>&lt;b:tabLinks /&gt;</code>
+                component, but the layout is slightly different.</p>
+                  <b:panel title="PillLinks example" look="default">
+                    <h:form>
+                     <b:row>
+                        <b:column span="12">
+                            <b:panel look="primary" title="Pill link">
+                                <b:pillLinks>
+                                    <b:navLink href="http://www.bootsfaces.net" value="BootsFaces"
+                                               icon="globe" iconAlign="right"/>
+                                    <b:navLink href="http://getbootstrap.com/components/#navbar" value="Bootstrap" icon="link"></b:navLink>
+                                    <b:navLink value="Labels and Badges" outcome="/bootstrap/labelsbadge"
+                                               icon="tag" iconAlign="right" active="true"/>
+                                    <b:navLink value="Slider" outcome="/jquery-ui/slider" iconAwesome="sliders"/>
+                                    <b:navCommandLink value="AJAX actionListener" actionListener="#{messagesBean.info}"
+                                               icon="tag" iconAlign="right" update="@form"/>
+                                </b:pillLinks>
+                                <b:messages />
+                             </b:panel>
+                        </b:column>
+                      </b:row>
+                    </h:form>
+                    <f:facet name="footer">
+                        <strong>Markup:</strong><br/>
+
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
+                        <![CDATA[
+                             <b:panel look="primary" title="Pill link">
+                                <b:pillLinks>
+                                    <b:navLink href="http://www.bootsfaces.net" value="BootsFaces"
+                                               icon="globe" iconAlign="right"/>
+                                    <b:navLink href="http://getbootstrap.com/components/#navbar" value="Bootstrap" icon="link"></b:navLink>
+                                    <b:navLink value="Labels and Badges" outcome="/bootstrap/labelsbadge"
+                                               icon="tag" iconAlign="right" active="true"/>
+                                    <b:navLink value="Slider" outcome="/jquery-ui/slider" iconAwesome="sliders"/>
+                                    <b:navCommandLink value="AJAX actionListener" actionListener="&#35;{messagesBean.info}"
+                                               icon="tag" iconAlign="right" update="@form"/>
+                                </b:pillLinks>
+                                <b:messages />
+                             </b:panel>
+                        ]]></script>
+                    </f:facet>
+                </b:panel>
+                <br />
+
+
+                <h2>Solitary navLinks</h2>
+                <p>A <code>&lt;b:navLink /&gt;</code> can also be used as a solitary component. In that case,
+                it's replaces an ordinary <code>&lt;h:link /&gt;</code>. Similary, a <code>&lt;b:navCommandlink /&gt;</code>
+                can be used in place of an <code>&lt;h:commandLink /&gt;</code>. Note that the HTML code renders
+                differs slightly from the HTML code of embedded <code>&lt;b:navLink /&gt;</code>. It's an HTML
+                <code>&lt;span /&gt;</code> attribute (as opposed to the <code>&lt;li /&gt;</code> of the embedded version)
+                because solitary links are not part of a list.</p>
+
+                <b:panel title="Solitary navLink" look="default">
+                    <h:form>
+                     <b:row>
+                        <b:column span="12">
+                            <b:panel look="primary" title="Solitary links">
+                                <p>A <code>&lt;h:link /&gt;</code>:
+                                  <b:navLink value="Slider" outcome="/jquery-ui/slider" iconAwesome="sliders"/>
+                                </p>
+                                <p>A <code>&lt;h:navCommandlink /&gt;</code> using AJAX:
+                                  <b:navCommandLink value="actionListener" actionListener="#{messagesBean.info}"
+                                               icon="tag" iconAlign="right" update="@form"/>
+                                </p>
+                                <b:messages escape="false" />
+                            </b:panel>
+                        </b:column>
+                      </b:row>
+                    </h:form>
+                    <f:facet name="footer">
+                        <strong>Markup:</strong><br/>
+
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
+                        <![CDATA[
+                             <b:panel look="primary" title="Solitary links">
+                              <p>A <code>&lt;h:link /&gt;</code>:
+                                  <b:navLink value="Slider" outcome="/jquery-ui/slider" iconAwesome="sliders"/>
+                                </p>
+                                <p>A <code>&lt;h:navCommandlink /&gt;</code> using AJAX:
+                                  <b:navCommandLink value="actionListener" actionListener="#&35;{messagesBean.info}"
+                                               icon="tag" iconAlign="right" update="@form"/>
+                                </p>
+                                <b:messages escape="false" />
+                             </b:panel>
                         ]]></script>
                     </f:facet>
                 </b:panel>
@@ -356,6 +501,8 @@ public class NavLinkBean implements Serializable {
                 <h2>Reference section</h2>
                 <ui:include src="NavLinkAttributes.xhtml" />
                 <ui:include src="ListLinksAttributes.xhtml" />
+                <ui:include src="TabLinksAttributes.xhtml" />
+                <ui:include src="PillLinksAttributes.xhtml" />
                 <b:panel look="info" rendered="false">
 					<f:facet name="heading">
 						<b>Skinning</b>
