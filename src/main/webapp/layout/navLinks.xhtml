@@ -5,7 +5,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
- 
+
              <ui:define name="content">
                 <style>
                     .panel-body .divider {
@@ -16,7 +16,7 @@
                     }
                     .panel-body .dropdown-header { padding: 3px 15px; }
                 </style>
-                
+
                 <h1>NavLinks and NavCommandLinks</h1>
                 <p>The NavLink is a very versatile component you can use for different purposes.</p>
                 <p>The <code>b:navLink</code> tag is a more powerful version of the standard JSF <code>h:link</code> tag.</p>
@@ -42,7 +42,7 @@
                 In particular, both components support the new unified AJAX API introduced with BootsFaces 0.8.0. You only see the differences when you try to use
                 the standard JSF AJAX API.</p>
                 <br/>
-                
+
                 <p>The outcome link, the external link and the JavaScript link can have an icon adding the attribute <code>icon</code> (on the left or right, default is left).</p>
                 <p>You can control the icon position by specifying it in the attribute <code>iconAlign</code>.</p>
                 <p>The Icon attribute will add a Glyphicon icon (Bootstrap's default), but now you can also use a Font Awesome icon using the <code>iconAwesome</code> attribute instead of <code>icon</code>.</p>
@@ -51,7 +51,7 @@
                 <p>In the following example the <code>b:listLinks</code> tag is used as a container for the NavLinks, showing how to create a Sidebar with links.</p>
                 <b:panel title="Example" look="default">
                     <h:form>
-                    <b:row>
+                     <b:row>
                         <b:column span="3">
                             <b:panel look="primary" title="Sidebar">
                                 <b:listLinks>
@@ -69,15 +69,15 @@
                                     <b:navCommandLink value="AJAX actionListener" actionListener="#{messagesBean.info}"
                                                icon="tag" iconAlign="right" update="@form"/>
                                     <b:messages />
-                                    
+
                                 </b:listLinks>
                              </b:panel>
                         </b:column>
-                    </b:row>
-                        </h:form>
+                      </b:row>
+                    </h:form>
                     <f:facet name="footer">
                         <strong>Markup:</strong><br/>
-                
+
                         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
                         <![CDATA[
                         <b:panel look="primary" title="Sidebar">
@@ -106,10 +106,10 @@
                         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
                         <![CDATA[
 							<b:navLink value="About" data-target="#aboutModal" data-toggle="modal"
-           							   onclick="$('.aboutModalPseudoClass').modal('show');return false;"></b:navLink>                        
+           							   onclick="$('.aboutModalPseudoClass').modal('show');return false;"></b:navLink>
 						]]></script>
 				</b:well>
-        
+
                 <h2>Arbitrary content in a <code>&lt;b:navLink /&gt;</code><b:badge value="since 0.8.1" /></h2>
                 <p><code>&lt;b:navLink /&gt;</code> isn't limited to text and icons. You can add arbitrary widgets
                 as children of the <code>&lt;b:navLink /&gt;</code>:</p>
@@ -142,7 +142,7 @@
                                            Text and nested content
                                    <b:badge style="margin-right:5px" value="since 0.8.1" />
                                 </b:navLink>
-                                 
+
                             </b:listLinks>
  ]]>
          </script>
@@ -171,7 +171,7 @@
                                            Text and nested content
                                    <b:badge style="margin-right:5px" value="since 0.8.1" />
                                 </b:navLink>
-                                 
+
                             </b:listLinks>
                          </b:panel>
                     </b:tab>
@@ -180,17 +180,18 @@
                 <p>As you can see, the nested content is always rendered between the text and the label. However,
                 in most cases you may want to consider moving the text and the icon (if there are any) into the nested
                 content. This way, the JSF source code looks a bit cleaner.</p>
-                
+
                 <h2>AJAX <b:badge value="since 0.8.1" /></h2>
-                <p>Both <code>&lt;b:navCommandLink /&gt;</code> and <code>&lt;b:navLink /&gt;</code> support the new 
+                <p>Both <code>&lt;b:navCommandLink /&gt;</code> and <code>&lt;b:navLink /&gt;</code> support the new
                 unified AJAX API introduced with BootsFaces 0.8.1. <code>&lt;b:navCommandLink /&gt;</code> also supports
                 the traditional and the PrimeFaces AJAX API (to a certain extent).</p>
                 <h3>Using b:navLink with AJAX</h3>
-      <b:tabView activeIndex="2"
-        contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding-right:25px;padding-left:25px;padding-top:10px"
-        contentClass="show-grid">
-        <b:tab title="JSF markup">
-          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                <h:form>
+                  <b:tabView activeIndex="2"
+                    contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding-right:25px;padding-left:25px;padding-top:10px"
+                    contentClass="show-grid">
+                    <b:tab title="JSF markup">
+                      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
           <b:panelGrid colSpans="6,6">
             <b:panel look="primary" title="Navigation menu">
@@ -205,9 +206,9 @@
           </b:panelGrid>
  ]]>
          </script>
-        </b:tab>
-        <b:tab title="Java Bean">
-          <script type="syntaxhighlighter" class="brush: java toolbar: false;gutter: false; first-line: 1">
+                    </b:tab>
+                    <b:tab title="Java Bean">
+                      <script type="syntaxhighlighter" class="brush: java toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
 @ViewScoped
 @ManagedBean
@@ -246,32 +247,33 @@ public class NavLinkBean implements Serializable {
 }
  ]]>
          </script>
-        </b:tab>
-        <b:tab title="live preview">
-          <b:panelGrid colSpans="6,6">
-            <b:panel look="primary" title="Navigation menu">
-              <b:listLinks>
-                <b:navLink onclick="ajax:navLinkBean.navigateToPage(0, 'b:navLink')" value="Page 1  (NavLink)" update="**:targetPage"/>
-                <b:navLink onclick="ajax:navLinkBean.navigateToPage(1, 'b:navLink')" value=" Page 2 (NavLink)" update="**:targetPage"/>
-              </b:listLinks>
-            </b:panel>
-            <b:panel title="#{navLinkBean.getPageTitle()}" id="targetPage" look="#{navLinkBean.getPageLook()}">
-              #{navLinkBean.getPageContent()}
-            </b:panel>
-          </b:panelGrid>
-        </b:tab>
-      </b:tabView>
- 
- <h3>Using b:navCommandLink with AJAX</h3>
- <p>Using <code>&lt;b:navCommandLink /&gt;</code> isn't much different from using  <code>&lt;b:navLink /&gt;</code>.
- You have to put it in a <code>&lt;h:form /&gt;</code>. On the plus side, you are rewarded with being allowed to use the attributes 
- <code>action</code> and <code>actionListener</code>.</p>
- <h:form>
-       <b:tabView activeIndex="2"
-        contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding-right:25px;padding-left:25px;padding-top:10px"
-        contentClass="show-grid">
-        <b:tab title="JSF markup">
-          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                    </b:tab>
+                    <b:tab title="live preview">
+                      <b:panelGrid colSpans="6,6">
+                        <b:panel look="primary" title="Navigation menu">
+                          <b:listLinks>
+                            <b:navLink onclick="ajax:navLinkBean.navigateToPage(0, 'b:navLink')" value="Page 1  (NavLink)" update="**:targetPage"/>
+                            <b:navLink onclick="ajax:navLinkBean.navigateToPage(1, 'b:navLink')" value=" Page 2 (NavLink)" update="**:targetPage"/>
+                          </b:listLinks>
+                        </b:panel>
+                        <b:panel title="#{navLinkBean.getPageTitle()}" id="targetPage" look="#{navLinkBean.getPageLook()}">
+                          #{navLinkBean.getPageContent()}
+                        </b:panel>
+                      </b:panelGrid>
+                    </b:tab>
+                  </b:tabView>
+                </h:form>
+
+               <h3>Using b:navCommandLink with AJAX</h3>
+               <p>Using <code>&lt;b:navCommandLink /&gt;</code> isn't much different from using  <code>&lt;b:navLink /&gt;</code>.
+               You have to put it in a <code>&lt;h:form /&gt;</code>. On the plus side, you are rewarded with being allowed to use the attributes
+               <code>action</code> and <code>actionListener</code>.</p>
+               <h:form>
+                 <b:tabView activeIndex="2"
+                  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding-right:25px;padding-left:25px;padding-top:10px"
+                  contentClass="show-grid">
+                  <b:tab title="JSF markup">
+                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
        <h:form>
          <b:panelGrid colSpans="6,6">
@@ -290,9 +292,9 @@ public class NavLinkBean implements Serializable {
        </h:form>
  ]]>
          </script>
-        </b:tab>
-       <b:tab title="Java Bean">
-          <script type="syntaxhighlighter" class="brush: java toolbar: false;gutter: false; first-line: 1">
+                  </b:tab>
+                 <b:tab title="Java Bean">
+                    <script type="syntaxhighlighter" class="brush: java toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
 @ViewScoped
 @ManagedBean
@@ -331,26 +333,26 @@ public class NavLinkBean implements Serializable {
 }
  ]]>
          </script>
-        </b:tab>
-        <b:tab title="live preview">
-          <b:panelGrid colSpans="6,6">
-            <b:panel look="primary" title="Navigation menu">
-              <b:listLinks>
-                <b:navCommandLink onclick="ajax:navLinkBean.navigateToPage(0, 'b:navCommandLink')"
-                  value="Page 1 (NavCommandLink)" update="**:targetPage" />
-                <b:navCommandLink onclick="ajax:navLinkBean.navigateToPage(1, 'b:navCommandLink')"
-                  value=" Page 2 (NavCommandLink)" update="**:targetPage" />
-              </b:listLinks>
-            </b:panel>
-            <b:panel title="#{navLinkBean.getPageTitle()}" id="targetPage" look="#{navLinkBean.getPageLook()}">
-               #{navLinkBean.getPageContent()}
-            </b:panel>
-          </b:panelGrid>
-        </b:tab>
-      </b:tabView>
+                  </b:tab>
+                  <b:tab title="live preview">
+                    <b:panelGrid colSpans="6,6">
+                      <b:panel look="primary" title="Navigation menu">
+                        <b:listLinks>
+                          <b:navCommandLink onclick="ajax:navLinkBean.navigateToPage(0, 'b:navCommandLink')"
+                            value="Page 1 (NavCommandLink)" update="**:targetPage" />
+                          <b:navCommandLink onclick="ajax:navLinkBean.navigateToPage(1, 'b:navCommandLink')"
+                            value=" Page 2 (NavCommandLink)" update="**:targetPage" />
+                        </b:listLinks>
+                      </b:panel>
+                      <b:panel title="#{navLinkBean.getPageTitle()}" id="targetPage" look="#{navLinkBean.getPageLook()}">
+                         #{navLinkBean.getPageContent()}
+                      </b:panel>
+                    </b:panelGrid>
+                  </b:tab>
+                </b:tabView>
  				</h:form>
                 <br/>
-                
+
                 <h2>Reference section</h2>
                 <ui:include src="NavLinkAttributes.xhtml" />
                 <ui:include src="ListLinksAttributes.xhtml" />
@@ -364,7 +366,7 @@ public class NavLinkBean implements Serializable {
 					</ul>
 				</b:panel>
 
-                
+
                 <script type="text/javascript">
                     SyntaxHighlighter.all();
                 </script>
