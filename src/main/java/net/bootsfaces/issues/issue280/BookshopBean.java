@@ -1,11 +1,14 @@
 package net.bootsfaces.issues.issue280;
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.view.ViewScoped;
 
 @ManagedBean
 @ViewScoped
-public class BookshopBean {
+public class BookshopBean implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private double discount=10.5;
 	private double price=34.90;
 	private int quantity=1;
