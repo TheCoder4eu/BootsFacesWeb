@@ -17,19 +17,20 @@
         <b:panel title="Book price calculator" look="primary">
           <b:panelGrid columns="2">
             <b:inputText value="#{bookshopBean.price}" required="true" label="price" render-label="true">
-              <f:convertNumber integerOnly="true" />
+              <f:convertNumber />
             </b:inputText>
             <b:inputText value="#{bookshopBean.discount}" required="true" label="discount" render-label="true">
-              <f:convertNumber integerOnly="true" />
+              <f:convertNumber />
             </b:inputText>
             <b:inputText value="#{bookshopBean.quantity}" required="true" label="number of books" render-label="true">
               <f:convertNumber integerOnly="true" />
             </b:inputText>
             <hr />
             <b:inputText value="#{bookshopBean.total}" disabled="true" label="total" render-label="true">
-              <f:convertNumber integerOnly="true" />
+              <f:convertNumber />
             </b:inputText>
             <b:commandButton value="calculate" actionLister="#{bookshopBean.calculate}" />
+            <b:messages />
           </b:panelGrid>
         </b:panel>
       </h:form>
