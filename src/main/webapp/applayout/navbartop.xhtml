@@ -24,22 +24,13 @@
         <b:navbarLinks rendered="false">
              <b:navLink outcome="/index" value="Home" icon-awesome="home" />
         </b:navbarLinks>
-        <b:dropMenu value="Integration">
-          <!-- b:navLink value="Requirements" outcome="/requirements"
-            icon="check" />
-          <b:navLink value="Download" outcome="/download" icon="save" />
-          <b:navLink value="Quick Start" outcome="/quickstart"
-            icon="play-circle" /-->
+        <b:dropMenu value="Integration" hidden="sm">
           <b:navLink value="PrimeFaces"
             outcome="/integration/PrimeFaces" icon="tasks" />
           <b:navLink value="OmniFaces" outcome="/integration/OmniFaces"
             icon="tasks" />
           <b:navLink value="ButterFaces" outcome="/integration/ButterFaces"
             icon="tasks" />
-          <ui:remove>
-            <b:navLink value="undocumented components"
-              outcome="/undocumented" icon="question-circle" />
-          </ui:remove>
         </b:dropMenu>
 
         <b:dropMenu value="Layout">
@@ -196,7 +187,13 @@
                      icon-awesome="hand-o-up" />
          <b:navLink value="Pinch" outcome="/mobile/Pinch"
                      icon-awesome="hand-scissors-o" />
-        </b:dropMenu>
+         <b:navLink value="PrimeFaces"
+            outcome="/integration/PrimeFaces" icon="tasks" visible="sm"/>
+          <b:navLink value="OmniFaces" outcome="/integration/OmniFaces"
+            icon="tasks"  visible="sm"/>
+          <b:navLink value="ButterFaces" outcome="/integration/ButterFaces"
+            icon="tasks" visible="sm"/>
+         </b:dropMenu>
 
 
       </b:navbarLinks>
