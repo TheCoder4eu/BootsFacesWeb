@@ -111,7 +111,12 @@
           <b:navLink value="Growl" outcome="/forms/Growl"
             icon-awesome="exclamation" />
         </b:dropMenu>
-        <b:dropMenu value="Bootstrap Widgets">
+
+        <ui:remove>
+        <!-- ************ Menu for cell phones and large desktop screens ************ -->
+        </ui:remove>
+
+        <b:dropMenu value="Bootstrap Widgets" visible="xs,lg">
           <b:navLink value="Alerts" outcome="/bootstrap/alerts"
             icon="warning-sign" />
           <b:navLink value="Carousel" outcome="/bootstrap/carousel" />
@@ -133,7 +138,7 @@
           <b:navLink value="ScrollSpy" outcome="/bootstrap/ScrollSpy"
             icon-awesome="user-secret" />
         </b:dropMenu>
-        <b:dropMenu value="jQueryUI Widgets">
+        <b:dropMenu value="jQueryUI Widgets" visible="xs,lg">
           <b:navLink value="Slider" outcome="/jquery-ui/slider"
             icon="tasks" icon-awesome="sliders" />
           <b:navLink value="More Sliders" outcome="/jquery-ui/slider2"
@@ -141,7 +146,7 @@
           <b:navLink value="DatePicker" outcome="/jquery-ui/datepicker"
             icon="calendar" />
         </b:dropMenu>
-        <b:dropMenu value="Mobile">
+        <b:dropMenu value="Mobile" visible="xs,lg">
           <b:navLink value="Shake" outcome="/mobile/Shake"
                      icon-awesome="hand-grab-o" />
           <b:navLink value="Gyroscope" outcome="/mobile/Gyroscope"
@@ -151,6 +156,49 @@
          <b:navLink value="Pinch" outcome="/mobile/Pinch"
                      icon-awesome="hand-scissors-o" />
         </b:dropMenu>
+
+        <ui:remove>
+        <!-- ************ Menu for tablet computers and small laptops ************ -->
+        </ui:remove>
+
+        <b:dropMenu value="Others" visible="sm...md">
+          <b:navLink value="Alerts" outcome="/bootstrap/alerts"
+            icon="warning-sign" />
+          <b:navLink value="Carousel" outcome="/bootstrap/carousel" />
+          <b:navLink value="DropButton" outcome="/bootstrap/dropButton" />
+          <b:navLink value="Labels and Badges"
+            outcome="/bootstrap/labelsbadge" icon="tag" />
+          <b:navLink value="Modals" outcome="/bootstrap/modal" />
+          <b:navLink value="ProgressBar" outcome="/bootstrap/ProgressBar" icon-awesome="tasks"/>
+          <b:navLink value="Thumbnails" outcome="/bootstrap/thumbnails"
+            icon="picture" />
+          <b:navLink value="Tab" outcome="/bootstrap/tab"
+            icon="folder-close" />
+          <b:navLink value="Tooltip" outcome="/bootstrap/tooltips"
+            icon-awesome="comment" />
+          <b:navLink value="Tree" outcome="/bootstrap/tree"
+            icon-awesome="tree" />
+          <b:navLink value="ScrollUp" outcome="/bootstrap/ScrollUp"
+            icon-awesome="arrow-up" />
+          <b:navLink value="ScrollSpy" outcome="/bootstrap/ScrollSpy"
+            icon-awesome="user-secret" />
+          <b:navLink value="Slider" outcome="/jquery-ui/slider"
+            icon="tasks" icon-awesome="sliders" />
+          <b:navLink value="More Sliders" outcome="/jquery-ui/slider2"
+            icon="tasks" />
+          <b:navLink value="DatePicker" outcome="/jquery-ui/datepicker"
+            icon="calendar" />
+          <b:navLink value="Shake" outcome="/mobile/Shake"
+                     icon-awesome="hand-grab-o" />
+          <b:navLink value="Gyroscope" outcome="/mobile/Gyroscope"
+                     icon.awesome="hand-paper-o" />
+          <b:navLink value="Touch and Swipe" outcome="/mobile/Touch"
+                     icon-awesome="hand-o-up" />
+         <b:navLink value="Pinch" outcome="/mobile/Pinch"
+                     icon-awesome="hand-scissors-o" />
+        </b:dropMenu>
+
+
       </b:navbarLinks>
       <b:navbarLinks pull="right">
         <h:form style="display:inline" styleClass="form-inline">
