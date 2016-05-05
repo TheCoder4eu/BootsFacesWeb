@@ -9,8 +9,8 @@ public class Person {
 		return birthdate;
 	}
 
-	public void setBirthdate(String birthdate) {
-		this.birthdate = birthdate;
+	public void setBirthdate(String birthDate) {
+		this.birthdate = birthDate;
 	}
 
 	public String getLastName() {
