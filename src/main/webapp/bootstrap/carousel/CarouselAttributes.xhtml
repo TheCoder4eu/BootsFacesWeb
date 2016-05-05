@@ -23,16 +23,6 @@
           </thead>
           <tbody>
             <tr>
-                <td>id</td>
-                <td>(none)</td>
-                <td>Unique identifier of the component in a namingContainer.</td>
-            </tr>
-            <tr>
-                <td>disabled</td>
-                <td>false</td>
-                <td>Boolean value to specify if the button is disabled.</td>
-            </tr>
-            <tr>
                 <td>action</td>
                 <td>(none)</td>
                 <td>The button action, this can be method expression or a string outcome.</td>
@@ -53,19 +43,19 @@
                 <td>Whether the Button submits the form with AJAX.</td>
             </tr>
             <tr>
+                <td>disabled</td>
+                <td>false</td>
+                <td>Boolean value to specify if the button is disabled.</td>
+            </tr>
+            <tr>
+                <td>id</td>
+                <td>(none)</td>
+                <td>Unique identifier of the component in a namingContainer.</td>
+            </tr>
+            <tr>
                 <td>interval</td>
                 <td> 5000 </td>
                 <td>Specifies the delay (in milliseconds) between each slide.</td>
-            </tr>
-            <tr>
-                <td>pause</td>
-                <td> hover </td>
-                <td>Pauses the carousel from going through the next slide when the mouse pointer enters the carousel, and resumes the sliding when the mouse pointer leaves the carousel. Set pause to false to stop the ability to pause on hover.</td>
-            </tr>
-            <tr>
-                <td>wrap</td>
-                <td> true </td>
-                <td>Specifies whether the carousel should go through all slides continuously, or stop at the last slide.</td>
             </tr>
             <tr>
                 <td>onclick</td>
@@ -108,14 +98,19 @@
                 <td>Client side callback to execute when a pointer input element is released over input element.</td>
             </tr>
             <tr>
+                <td>onslid</td>
+                <td>(none)</td>
+                <td>Client side callback to execute when the carousel just finished sliding to another item.</td>
+            </tr>
+            <tr>
                 <td>onslidestart</td>
                 <td>(none)</td>
                 <td>Client side callback to execute when the carousel start to slide to another item.</td>
             </tr>
             <tr>
-                <td>onslid</td>
-                <td>(none)</td>
-                <td>Client side callback to execute when the carousel just finished sliding to another item.</td>
+                <td>pause</td>
+                <td> hover </td>
+                <td>Pauses the carousel from going through the next slide when the mouse pointer enters the carousel, and resumes the sliding when the mouse pointer leaves the carousel. Set pause to false to stop the ability to pause on hover.</td>
             </tr>
             <tr>
                 <td>process</td>
@@ -123,9 +118,9 @@
                 <td>Comma or space separated list of ids or search expressions denoting which values are to be sent to the server.</td>
             </tr>
             <tr>
-                <td>start-animation<br />startAnimation (alternative writing)</td>
-                <td> true </td>
-                <td>tells Bootstrap to begin animating the carousel immediately when the page loads.</td>
+                <td>rendered</td>
+                <td>false</td>
+                <td>Boolean value to specify the rendering of the component, when set to false the component will not be rendered.</td>
             </tr>
             <tr>
                 <td>show-controls<br />showControls (alternative writing)</td>
@@ -143,6 +138,11 @@
                 <td>Tells Bootstrap to show new items by sliding them into view</td>
             </tr>
             <tr>
+                <td>start-animation<br />startAnimation (alternative writing)</td>
+                <td> true </td>
+                <td>tells Bootstrap to begin animating the carousel immediately when the page loads.</td>
+            </tr>
+            <tr>
                 <td>style</td>
                 <td>(none)</td>
                 <td>Inline style of the input element.</td>
@@ -151,11 +151,6 @@
                 <td>style-class<br />styleClass (alternative writing)</td>
                 <td>(none)</td>
                 <td>Style class of this element.</td>
-            </tr>
-            <tr>
-                <td>rendered</td>
-                <td>false</td>
-                <td>Boolean value to specify the rendering of the component, when set to false the component will not be rendered.</td>
             </tr>
             <tr>
                 <td>tooltip</td>
@@ -191,6 +186,11 @@
                 <td>update</td>
                 <td>(none)</td>
                 <td>Component(s) to be updated with ajax.</td>
+            </tr>
+            <tr>
+                <td>wrap</td>
+                <td> true </td>
+                <td>Specifies whether the carousel should go through all slides continuously, or stop at the last slide.</td>
             </tr>
           </tbody>
         </table>

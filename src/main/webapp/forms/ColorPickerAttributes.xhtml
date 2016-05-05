@@ -48,6 +48,11 @@
                 <td>An EL expression referring to a server side UIComponent instance in a backing bean.</td>
             </tr>
             <tr>
+                <td>control</td>
+                <td>(none)</td>
+                <td>The type of control to display. Valid values: hue, brightness, saturation, and wheel.</td>
+            </tr>
+            <tr>
                 <td>converter</td>
                 <td>(none)</td>
                 <td>An EL expression or a literal text that defines a converter for the component. When it's an EL expression, it's resolved to a converter instance. In case it's a static text, it must refer to a converter id.</td>
@@ -56,26 +61,6 @@
                 <td>converter-message<br />converterMessage (alternative writing)</td>
                 <td>(none)</td>
                 <td>Message to display when conversion fails.</td>
-            </tr>
-            <tr>
-                <td>control</td>
-                <td>(none)</td>
-                <td>The type of control to display. Valid values: hue, brightness, saturation, and wheel.</td>
-            </tr>
-            <tr>
-                <td>format</td>
-                <td>(none)</td>
-                <td>Type of returned data. Valid values: hex and rgb.</td>
-            </tr>
-            <tr>
-                <td>opacity</td>
-                <td>false</td>
-                <td>True to enable opacity swatches.</td>
-            </tr>
-            <tr>
-                <td>position</td>
-                <td>(none)</td>
-                <td>Sets the position of the dropdown. Valid options are bottom left, bottom right, top left, and top right.</td>
             </tr>
             <tr>
                 <td>dir</td>
@@ -91,6 +76,11 @@
                 <td>fieldSize</td>
                 <td>(none)</td>
                 <td>The size of the input. Possible values are xs (extra small), sm (small), md (medium) and lg (large) .</td>
+            </tr>
+            <tr>
+                <td>format</td>
+                <td>(none)</td>
+                <td>Type of returned data. Valid values: hex and rgb.</td>
             </tr>
             <tr>
                 <td>id</td>
@@ -193,9 +183,19 @@
                 <td>Client side callback to execute when text within input element is selected by user.</td>
             </tr>
             <tr>
+                <td>opacity</td>
+                <td>false</td>
+                <td>True to enable opacity swatches.</td>
+            </tr>
+            <tr>
                 <td>placeholder</td>
                 <td>(none)</td>
                 <td>The placeholder attribute shows text in a field until the field is focused upon, then hides the text.</td>
+            </tr>
+            <tr>
+                <td>position</td>
+                <td>(none)</td>
+                <td>Sets the position of the dropdown. Valid options are bottom left, bottom right, top left, and top right.</td>
             </tr>
             <tr>
                 <td>process</td>

@@ -23,9 +23,19 @@
           </thead>
           <tbody>
             <tr>
+                <td>container</td>
+                <td>(none)</td>
+                <td>Id of the element that is the scrollable container. If not specified, body is set by default.</td>
+            </tr>
+            <tr>
                 <td>id</td>
                 <td>(none)</td>
                 <td>Unique identifier of the component in a namingContainer.</td>
+            </tr>
+            <tr>
+                <td>offset</td>
+                <td>0 </td>
+                <td>Scroll offset</td>
             </tr>
             <tr>
                 <td>rendered</td>
@@ -33,19 +43,9 @@
                 <td>Boolean value to specify the rendering of the component, when set to false the component will not be rendered.</td>
             </tr>
             <tr>
-                <td>container</td>
+                <td>selection-listener<br />selectionListener (alternative writing)</td>
                 <td>(none)</td>
-                <td>Id of the element that is the scrollable container. If not specified, body is set by default.</td>
-            </tr>
-            <tr>
-                <td>target</td>
-                <td>(none)</td>
-                <td>Id of the navigation target. Usually the id of the NavBar component. If not specified, component with .navbar class is set.</td>
-            </tr>
-            <tr>
-                <td>offset</td>
-                <td>0 </td>
-                <td>Scroll offset</td>
+                <td>Selection listener called on selection changed.</td>
             </tr>
             <tr>
                 <td>smooth</td>
@@ -58,9 +58,9 @@
                 <td>Speed of the smooth scroll (default 800)</td>
             </tr>
             <tr>
-                <td>selection-listener<br />selectionListener (alternative writing)</td>
+                <td>target</td>
                 <td>(none)</td>
-                <td>Selection listener called on selection changed.</td>
+                <td>Id of the navigation target. Usually the id of the NavBar component. If not specified, component with .navbar class is set.</td>
             </tr>
             <tr>
                 <td>update</td>

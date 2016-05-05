@@ -23,9 +23,29 @@
           </thead>
           <tbody>
             <tr>
+                <td>ajax</td>
+                <td>false</td>
+                <td>Activates AJAX. The default value is false (no AJAX).</td>
+            </tr>
+            <tr>
+                <td>custom-lang-url<br />customLangUrl (alternative writing)</td>
+                <td>(none)</td>
+                <td>Defines a custom lang file url for languages BootsFaces doesn't support out-of-the-box.</td>
+            </tr>
+            <tr>
+                <td>dataTable-properties<br />dataTableProperties (alternative writing)</td>
+                <td>(none)</td>
+                <td>Activates Multi-column search inputs. The default value is false (no multi-column searching). A java.util.Map&lt;net.bootsfaces.component.dataTable.DataTable.DataTablePropertyType, Object&gt; map on the backing bean where the state of the DataTable can be saved, and retrieved after re-rendering.</td>
+            </tr>
+            <tr>
                 <td>disabled</td>
                 <td>false</td>
                 <td>Boolean value to specify if the button is disabled.</td>
+            </tr>
+            <tr>
+                <td>fixed-header<br />fixedHeader (alternative writing)</td>
+                <td>false</td>
+                <td>Activates the fixed header plugin of the dataTable.</td>
             </tr>
             <tr>
                 <td>id</td>
@@ -38,64 +58,14 @@
                 <td>Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false.</td>
             </tr>
             <tr>
-                <td>rendered</td>
+                <td>lang</td>
+                <td>(none)</td>
+                <td>Configured lang for the dataTable. If no default language is configured, the language configured in the browser is used.</td>
+            </tr>
+            <tr>
+                <td>multi-column-search<br />multiColumnSearch (alternative writing)</td>
                 <td>false</td>
-                <td>Boolean value to specify the rendering of the component, when set to false the component will not be rendered.</td>
-            </tr>
-            <tr>
-                <td>style</td>
-                <td>(none)</td>
-                <td>Inline style of the input element.</td>
-            </tr>
-            <tr>
-                <td>style-class<br />styleClass (alternative writing)</td>
-                <td>(none)</td>
-                <td>Style class of this element.</td>
-            </tr>
-            <tr>
-                <td>tooltip</td>
-                <td>(none)</td>
-                <td>The text of the tooltip.</td>
-            </tr>
-            <tr>
-                <td>tooltip-container<br />tooltipContainer (alternative writing)</td>
-                <td> body </td>
-                <td>Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering errors in special cases. Also see data-container in the documentation of Bootstrap. The default value is body.</td>
-            </tr>
-            <tr>
-                <td>tooltip-delay<br />tooltipDelay (alternative writing)</td>
-                <td>0 </td>
-                <td>The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
-            </tr>
-            <tr>
-                <td>tooltip-delay-hide<br />tooltipDelayHide (alternative writing)</td>
-                <td>0 </td>
-                <td>The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
-            </tr>
-            <tr>
-                <td>tooltip-delay-show<br />tooltipDelayShow (alternative writing)</td>
-                <td>0 </td>
-                <td>The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
-            </tr>
-            <tr>
-                <td>tooltip-position<br />tooltipPosition (alternative writing)</td>
-                <td>(none)</td>
-                <td>Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".</td>
-            </tr>
-            <tr>
-                <td>value</td>
-                <td>(none)</td>
-                <td>EL expression referring to the back-end bean attribute providing the value of the field.</td>
-            </tr>
-            <tr>
-                <td>var</td>
-                <td>(none)</td>
-                <td>The var attribute sets the name of a request-scope attribute exposing the data for each iteration over the rows in the underlying data model for this table.</td>
-            </tr>
-            <tr>
-                <td>ajax</td>
-                <td>false</td>
-                <td>Activates AJAX. The default value is false (no AJAX).</td>
+                <td>If true, &lt;b:inputText /&gt; fields will be generated at the bottom of each column which allow you to perform per-column filtering.</td>
             </tr>
             <tr>
                 <td>onclick</td>
@@ -138,26 +108,6 @@
                 <td>Client side callback to execute when a pointer input element is released over input element.</td>
             </tr>
             <tr>
-                <td>process</td>
-                <td>(none)</td>
-                <td>Comma or space separated list of ids or search expressions denoting which values are to be sent to the server.</td>
-            </tr>
-            <tr>
-                <td>update</td>
-                <td>(none)</td>
-                <td>Component(s) to be updated with ajax.</td>
-            </tr>
-            <tr>
-                <td>dataTable-properties<br />dataTableProperties (alternative writing)</td>
-                <td>(none)</td>
-                <td>Activates Multi-column search inputs. The default value is false (no multi-column searching). A java.util.Map&lt;net.bootsfaces.component.dataTable.DataTable.DataTablePropertyType, Object&gt; map on the backing bean where the state of the DataTable can be saved, and retrieved after re-rendering.</td>
-            </tr>
-            <tr>
-                <td>multi-column-search<br />multiColumnSearch (alternative writing)</td>
-                <td>false</td>
-                <td>If true, &lt;b:inputText /&gt; fields will be generated at the bottom of each column which allow you to perform per-column filtering.</td>
-            </tr>
-            <tr>
                 <td>page-length<br />pageLength (alternative writing)</td>
                 <td> 10 </td>
                 <td>Sets the default page length for paginated dataTable. The default value is 10.</td>
@@ -168,29 +118,79 @@
                 <td>Sets the default page length for paginated dataTable. The default value is [10, 25, 50, 100]. Read https://www.datatables.net/examples/advanced_init/length_menu.html for details.</td>
             </tr>
             <tr>
-                <td>responsive</td>
-                <td>false</td>
-                <td>Activates the responsive plugin of the dataTable</td>
-            </tr>
-            <tr>
-                <td>fixed-header<br />fixedHeader (alternative writing)</td>
-                <td>false</td>
-                <td>Activates the fixed header plugin of the dataTable.</td>
-            </tr>
-            <tr>
                 <td>paginated</td>
                 <td> true </td>
                 <td>Activates the pagination of the dataTable. Default value is 'true'.</td>
             </tr>
             <tr>
-                <td>lang</td>
+                <td>process</td>
                 <td>(none)</td>
-                <td>Configured lang for the dataTable. If no default language is configured, the language configured in the browser is used.</td>
+                <td>Comma or space separated list of ids or search expressions denoting which values are to be sent to the server.</td>
             </tr>
             <tr>
-                <td>custom-lang-url<br />customLangUrl (alternative writing)</td>
+                <td>rendered</td>
+                <td>false</td>
+                <td>Boolean value to specify the rendering of the component, when set to false the component will not be rendered.</td>
+            </tr>
+            <tr>
+                <td>responsive</td>
+                <td>false</td>
+                <td>Activates the responsive plugin of the dataTable</td>
+            </tr>
+            <tr>
+                <td>style</td>
                 <td>(none)</td>
-                <td>Defines a custom lang file url for languages BootsFaces doesn't support out-of-the-box.</td>
+                <td>Inline style of the input element.</td>
+            </tr>
+            <tr>
+                <td>style-class<br />styleClass (alternative writing)</td>
+                <td>(none)</td>
+                <td>Style class of this element.</td>
+            </tr>
+            <tr>
+                <td>tooltip</td>
+                <td>(none)</td>
+                <td>The text of the tooltip.</td>
+            </tr>
+            <tr>
+                <td>tooltip-container<br />tooltipContainer (alternative writing)</td>
+                <td> body </td>
+                <td>Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering errors in special cases. Also see data-container in the documentation of Bootstrap. The default value is body.</td>
+            </tr>
+            <tr>
+                <td>tooltip-delay<br />tooltipDelay (alternative writing)</td>
+                <td>0 </td>
+                <td>The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
+            </tr>
+            <tr>
+                <td>tooltip-delay-hide<br />tooltipDelayHide (alternative writing)</td>
+                <td>0 </td>
+                <td>The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
+            </tr>
+            <tr>
+                <td>tooltip-delay-show<br />tooltipDelayShow (alternative writing)</td>
+                <td>0 </td>
+                <td>The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
+            </tr>
+            <tr>
+                <td>tooltip-position<br />tooltipPosition (alternative writing)</td>
+                <td>(none)</td>
+                <td>Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".</td>
+            </tr>
+            <tr>
+                <td>update</td>
+                <td>(none)</td>
+                <td>Component(s) to be updated with ajax.</td>
+            </tr>
+            <tr>
+                <td>value</td>
+                <td>(none)</td>
+                <td>EL expression referring to the back-end bean attribute providing the value of the field.</td>
+            </tr>
+            <tr>
+                <td>var</td>
+                <td>(none)</td>
+                <td>The var attribute sets the name of a request-scope attribute exposing the data for each iteration over the rows in the underlying data model for this table.</td>
             </tr>
             <tr>
                 <td>widgetVar</td>

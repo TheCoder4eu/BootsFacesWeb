@@ -23,6 +23,31 @@
           </thead>
           <tbody>
             <tr>
+                <td>allow-dismiss<br />allowDismiss (alternative writing)</td>
+                <td>false</td>
+                <td>Specifies whether the message can be dismissed.</td>
+            </tr>
+            <tr>
+                <td>animation-enter<br />animationEnter (alternative writing)</td>
+                <td> animated fadeInDown </td>
+                <td>Animation of the message while entering</td>
+            </tr>
+            <tr>
+                <td>animation-exit<br />animationExit (alternative writing)</td>
+                <td> animated fadeOutUp </td>
+                <td>Animation of the message while exiting</td>
+            </tr>
+            <tr>
+                <td>delay</td>
+                <td> 5000 </td>
+                <td>The message is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
+            </tr>
+            <tr>
+                <td>escape</td>
+                <td>false</td>
+                <td>By default, error messages encode HTML and JavaScript code. Instead of being executed, the source code is displayed. This protects you against hacker attacks. By setting escape=false, you deactivate the protection, and allow HTML and JavaScript code to be rendered.</td>
+            </tr>
+            <tr>
                 <td>for</td>
                 <td>(none)</td>
                 <td>The ID of the component whose attached FacesMessage object (if present) should be diplayed by this component. It takes precedence over globalOnly.</td>
@@ -33,9 +58,29 @@
                 <td>Specifies whether only messages (FacesMessage objects) not associated with a specific component should be displayed, ie whether messages should be ignored if they are attached to a particular component. Defaults to false.</td>
             </tr>
             <tr>
+                <td>icon</td>
+                <td>(none)</td>
+                <td>The glyphicon to display on message</td>
+            </tr>
+            <tr>
                 <td>id</td>
                 <td>(none)</td>
                 <td>Get a string which uniquely identifies this UIComponent within the scope of the nearest ancestor NamingContainer component. The id is not necessarily unique across all components in the current view.</td>
+            </tr>
+            <tr>
+                <td>newest-on-top<br />newestOnTop (alternative writing)</td>
+                <td>false</td>
+                <td>Specifies if newest messages must be displayed on top of the others.</td>
+            </tr>
+            <tr>
+                <td>placement-align<br />placementAlign (alternative writing)</td>
+                <td> right </td>
+                <td>Horizontal position of the growl message. Valid values are 'left', 'center' or 'right'.</td>
+            </tr>
+            <tr>
+                <td>placement-from<br />placementFrom (alternative writing)</td>
+                <td> top </td>
+                <td>Vertical position of the growl message. Valid values are 'top' or 'bottom'.</td>
             </tr>
             <tr>
                 <td>rendered</td>
@@ -63,54 +108,9 @@
                 <td>The CSS class for this element.  Corresponds to the HTML 'class' attribute.</td>
             </tr>
             <tr>
-                <td>icon</td>
-                <td>(none)</td>
-                <td>The glyphicon to display on message</td>
-            </tr>
-            <tr>
-                <td>placement-from<br />placementFrom (alternative writing)</td>
-                <td> top </td>
-                <td>Vertical position of the growl message. Valid values are 'top' or 'bottom'.</td>
-            </tr>
-            <tr>
-                <td>placement-align<br />placementAlign (alternative writing)</td>
-                <td> right </td>
-                <td>Horizontal position of the growl message. Valid values are 'left', 'center' or 'right'.</td>
-            </tr>
-            <tr>
-                <td>delay</td>
-                <td> 5000 </td>
-                <td>The message is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
-            </tr>
-            <tr>
                 <td>timer</td>
                 <td> 1000 </td>
                 <td>This is the amount of milliseconds removed from the notify at every timer milliseconds.</td>
-            </tr>
-            <tr>
-                <td>animation-enter<br />animationEnter (alternative writing)</td>
-                <td> animated fadeInDown </td>
-                <td>Animation of the message while entering</td>
-            </tr>
-            <tr>
-                <td>animation-exit<br />animationExit (alternative writing)</td>
-                <td> animated fadeOutUp </td>
-                <td>Animation of the message while exiting</td>
-            </tr>
-            <tr>
-                <td>newest-on-top<br />newestOnTop (alternative writing)</td>
-                <td>false</td>
-                <td>Specifies if newest messages must be displayed on top of the others.</td>
-            </tr>
-            <tr>
-                <td>allow-dismiss<br />allowDismiss (alternative writing)</td>
-                <td>false</td>
-                <td>Specifies whether the message can be dismissed.</td>
-            </tr>
-            <tr>
-                <td>escape</td>
-                <td>false</td>
-                <td>By default, error messages encode HTML and JavaScript code. Instead of being executed, the source code is displayed. This protects you against hacker attacks. By setting escape=false, you deactivate the protection, and allow HTML and JavaScript code to be rendered.</td>
             </tr>
           </tbody>
         </table>

@@ -33,6 +33,11 @@
                 <td>Alternate textual description of the input element.</td>
             </tr>
             <tr>
+                <td>animate</td>
+                <td>false</td>
+                <td>Animate the switch. Default value: true.</td>
+            </tr>
+            <tr>
                 <td>binding</td>
                 <td>(none)</td>
                 <td>An EL expression referring to a server side UIComponent instance in a backing bean.</td>
@@ -63,9 +68,19 @@
                 <td>Disables the input element, default is false.</td>
             </tr>
             <tr>
+                <td>disabled</td>
+                <td>false</td>
+                <td>Is the switch disabled? Default value: false.</td>
+            </tr>
+            <tr>
                 <td>field-size<br />fieldSize (alternative writing)</td>
                 <td>(none)</td>
                 <td>The size of the input. Possible values are xs (extra small), sm (small), md (medium) and lg (large) .</td>
+            </tr>
+            <tr>
+                <td>handle-width<br />handleWidth (alternative writing)</td>
+                <td>0 </td>
+                <td>Width of the left and right sides in pixels.</td>
             </tr>
             <tr>
                 <td>id</td>
@@ -78,14 +93,54 @@
                 <td>Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false.</td>
             </tr>
             <tr>
+                <td>indeterminate</td>
+                <td>false</td>
+                <td>Indeterminate state. Turned off by default.</td>
+            </tr>
+            <tr>
+                <td>inverse</td>
+                <td>false</td>
+                <td>Inverse switch direction. Default value: false</td>
+            </tr>
+            <tr>
                 <td>label</td>
                 <td>(none)</td>
                 <td>The label above of the field .</td>
             </tr>
             <tr>
+                <td>label-text<br />labelText (alternative writing)</td>
+                <td>(none)</td>
+                <td>Text of the center handle of the switch. Default value: a space (nbsp).</td>
+            </tr>
+            <tr>
+                <td>label-width<br />labelWidth (alternative writing)</td>
+                <td>0 </td>
+                <td>Width of the center handle in pixels.</td>
+            </tr>
+            <tr>
                 <td>lang</td>
                 <td>(none)</td>
                 <td>Code describing the language used in the generated markup for this component.</td>
+            </tr>
+            <tr>
+                <td>off-color<br />offColor (alternative writing)</td>
+                <td>(none)</td>
+                <td>Color of the right hand side of the switch. Legal values: 'primary', 'info', 'success', 'warning', 'danger', 'default'. Default value: 'primary'.</td>
+            </tr>
+            <tr>
+                <td>off-text<br />offText (alternative writing)</td>
+                <td>(none)</td>
+                <td>Optional label of the inactive switch. The default value is 'off'.</td>
+            </tr>
+            <tr>
+                <td>on-color<br />onColor (alternative writing)</td>
+                <td>(none)</td>
+                <td>Color of the left hand side of the switch. Legal values: 'primary', 'info', 'success', 'warning', 'danger', 'default'. Default value: 'primary'.</td>
+            </tr>
+            <tr>
+                <td>on-text<br />onText (alternative writing)</td>
+                <td>(none)</td>
+                <td>Optional label of the active switch. The default value is 'on'.</td>
             </tr>
             <tr>
                 <td>onblur</td>
@@ -158,19 +213,14 @@
                 <td>Client side callback to execute when text within input element is selected by user.</td>
             </tr>
             <tr>
-                <td>on-text<br />onText (alternative writing)</td>
-                <td>(none)</td>
-                <td>Optional label of the active switch. The default value is 'on'.</td>
-            </tr>
-            <tr>
-                <td>off-text<br />offText (alternative writing)</td>
-                <td>(none)</td>
-                <td>Optional label of the inactive switch. The default value is 'off'.</td>
+                <td>readonly</td>
+                <td>false</td>
+                <td>Flag indicating that this input element will prevent changes by the user.</td>
             </tr>
             <tr>
                 <td>readonly</td>
                 <td>false</td>
-                <td>Flag indicating that this input element will prevent changes by the user.</td>
+                <td>Is the switch readonly? Default value: false.</td>
             </tr>
             <tr>
                 <td>render-label<br />renderLabel (alternative writing)</td>
@@ -196,6 +246,11 @@
                 <td>style-class<br />styleClass (alternative writing)</td>
                 <td>(none)</td>
                 <td>Style class of the input element.</td>
+            </tr>
+            <tr>
+                <td>switchsize</td>
+                <td>(none)</td>
+                <td>The checkbox size. null, 'mini', 'small', 'normal', 'large'. Default value: 'null'.</td>
             </tr>
             <tr>
                 <td>tabindex</td>
@@ -246,61 +301,6 @@
                 <td>value-change-listener<br />valueChangeListener (alternative writing)</td>
                 <td>(none)</td>
                 <td>A method binding expression referring to a method for handling a valuechangeevent.</td>
-            </tr>
-            <tr>
-                <td>on-color<br />onColor (alternative writing)</td>
-                <td>(none)</td>
-                <td>Color of the left hand side of the switch. Legal values: 'primary', 'info', 'success', 'warning', 'danger', 'default'. Default value: 'primary'.</td>
-            </tr>
-            <tr>
-                <td>off-color<br />offColor (alternative writing)</td>
-                <td>(none)</td>
-                <td>Color of the right hand side of the switch. Legal values: 'primary', 'info', 'success', 'warning', 'danger', 'default'. Default value: 'primary'.</td>
-            </tr>
-            <tr>
-                <td>indeterminate</td>
-                <td>false</td>
-                <td>Indeterminate state. Turned off by default.</td>
-            </tr>
-            <tr>
-                <td>inverse</td>
-                <td>false</td>
-                <td>Inverse switch direction. Default value: false</td>
-            </tr>
-            <tr>
-                <td>switchsize</td>
-                <td>(none)</td>
-                <td>The checkbox size. null, 'mini', 'small', 'normal', 'large'. Default value: 'null'.</td>
-            </tr>
-            <tr>
-                <td>animate</td>
-                <td>false</td>
-                <td>Animate the switch. Default value: true.</td>
-            </tr>
-            <tr>
-                <td>disabled</td>
-                <td>false</td>
-                <td>Is the switch disabled? Default value: false.</td>
-            </tr>
-            <tr>
-                <td>readonly</td>
-                <td>false</td>
-                <td>Is the switch readonly? Default value: false.</td>
-            </tr>
-            <tr>
-                <td>label-text<br />labelText (alternative writing)</td>
-                <td>(none)</td>
-                <td>Text of the center handle of the switch. Default value: a space (nbsp).</td>
-            </tr>
-            <tr>
-                <td>handle-width<br />handleWidth (alternative writing)</td>
-                <td>0 </td>
-                <td>Width of the left and right sides in pixels.</td>
-            </tr>
-            <tr>
-                <td>label-width<br />labelWidth (alternative writing)</td>
-                <td>0 </td>
-                <td>Width of the center handle in pixels.</td>
             </tr>
           </tbody>
         </table>
