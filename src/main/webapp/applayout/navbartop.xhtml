@@ -137,6 +137,8 @@
           <b:navLink value="DatePicker" outcome="/jquery-ui/datepicker"
             icon="calendar" />
         </b:dropMenu>
+        <!-- Temporarily hiding the Mobile Menu until 0.9 -->
+        <ui:remove>
         <b:dropMenu value="Mobile" visible="xs,lg">
           <b:navLink value="Shake" outcome="/mobile/Shake"
                      icon-awesome="hand-grab-o" />
@@ -147,6 +149,7 @@
          <b:navLink value="Pinch" outcome="/mobile/Pinch"
                      icon-awesome="hand-scissors-o" />
         </b:dropMenu>
+        </ui:remove>
 
         <ui:remove>
         <!-- ************ Menu for tablet computers and small laptops ************ -->
