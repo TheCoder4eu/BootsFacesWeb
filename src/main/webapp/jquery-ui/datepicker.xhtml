@@ -5,15 +5,15 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
- 
+
              <ui:define name="content">
                 <style>td {padding: 8px;}</style>
                 <h1>Date Picker</h1>
                 <p>BootsFaces derives the Date Picker component from jQuery UI's widget because of its ease of use and its configurability.</p>
-                
+
                 <strong>Date Picker modes</strong>
                 <p>The <code>&lt;b:datepicker&gt;</code> supports six modes for displaying the widget, specified with the attribute<code>mode</code>:</p>
-                
+
                 <h:form>
                 <table class="table table-bordered table-striped">
                     <thead>
@@ -57,10 +57,10 @@
                     </tbody>
                 </table>
                 </h:form>
-                
+
                 <strong>Widget options</strong>
                 <p>BootsFaces <code>&lt;b:datepicker&gt;</code> tag supports jQuery UI's widget most relevant options:</p>
-                
+
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
@@ -102,18 +102,18 @@
                         </tr>
                     </tbody>
                 </table>
-                    
-                <h:form id="fpickdt">
+
+                <h:form>
                     <b:well>
                         <strong>Date Picker examples</strong>
-                        <h:panelGrid columns="4" cellpadding="5">
+                        <h:panelGrid columns="4" cellpadding="5" id="fpickdt">
                             <h:outputText value="Date:" />
                             <b:datepicker id="adate" showButtonPanel="true" changeMonth="true" lang="it"
                                           changeYear="true" placeholder="Select a Date"
                                           value="#{dateBean.adate}" /><h:message for="adate" />
                             <h:panelGroup>Date Picker with <code>showButtonPanel</code>, <code>changeMonth</code>, <code>changeYear</code> set to true.</h:panelGroup>
                             <h:outputText value="Date(3 months):" />
-                            <b:datepicker id="bdate" numberOfMonths="3" mode="icon-popup" 
+                            <b:datepicker id="bdate" numberOfMonths="3" mode="icon-popup"
                                           placeholder="Choose a Date" value="#{dateBean.bdate}"/>
                             <h:message for="bdate" />
                             <h:panelGroup>Date Picker with <code>numberOfMonths="3"</code> .</h:panelGroup>
@@ -127,14 +127,14 @@
                            <b:column span="2" offset="3">
                         <b:commandButton value="Submit" update="fpickdt amodal" id="ajaxcb" ajax="true"
                                              look="primary" oncomplete="$('#amodal').modal('show');"/>
-                        </b:column> 
+                        </b:column>
                         </b:row>
-                        
+
                     </b:well>
                 </h:form>
-                
+
                 <b:modal id="amodal" title="Submitted Dates">
-                    <h:panelGrid columns="3" cellpadding="5">  
+                    <h:panelGrid columns="3" cellpadding="5">
                         <h:outputText value="Date: " />
                         <h:outputText value="#{dateBean.adate}">
                             <f:convertDateTime pattern="dd/MM/yyyy"/>
@@ -144,7 +144,7 @@
                         <h:outputText value="Date (3 months):" />
                         <h:outputText value="#{dateBean.bdate}"/>
                         <h:outputText value="no conversion" />
-                        
+
                         <h:outputText value="Inline:" />
                         <h:outputText value="#{dateBean.cdate}">
                             <f:convertDateTime pattern="MM/dd/yy"/>
@@ -156,7 +156,7 @@
                         <b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"/>
                     </f:facet>
                 </b:modal>
-                
+
                 <br/>
                 <h2>Reference section</h2>
                 <ui:include src="DatepickerAttributes.xhtml" />
@@ -169,7 +169,7 @@
 				   		<code>&lt;b:datePicker /&gt;</code> is an <code>input</code> tag bearing the CSS-classes <code>form-control</code>  and <code>hasDatepicker</code>.
 				   </li>
 				   <li>
-				   		If the attribute <code>required</code> is true, the pseudo CSS class <code>bf-required</code> is added. 
+				   		If the attribute <code>required</code> is true, the pseudo CSS class <code>bf-required</code> is added.
                         Thus you can define your custom style for required fields.
 				   </li>
                    <li>
@@ -177,9 +177,9 @@
                    <code>bf-info</code>, <code>bf-warning</code>, <code>bf-error</code> or <code>bf-fatal</code>. If there are no messages,
                    the input field bears the pseudo CSS class <code>bf-no-message</code>.
                    </li>
-				  </ul> 
+				  </ul>
 			</b:panel>
-               
+
                 <br/><br/><br/><br/>
             </ui:define>
         </ui:composition>
