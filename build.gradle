@@ -75,6 +75,7 @@ war.doFirst {
                         <img src="http://www.bootsfaces.net/img/bsf_logo.png"/>
                         
                         <p>Welcome to the BootsFaces Showcase and Documentation</p>
+                        <p><b:navLink value="BootsFaces License" outcome="license" iconAwesome="gavel"/></p>
                         <b:button iconAwesome="info" pt:data-target="#infomodal" pt:data-toggle="modal" onclick="return false;" size="xs" value="" styleClass="pull-right"/>
                     </b:jumbotron>
                 </b:row>
