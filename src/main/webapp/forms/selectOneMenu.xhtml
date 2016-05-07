@@ -161,122 +161,14 @@
         bear with us, and report the bugs <a target="#" href="https://github.com/TheCoder4eu/BootsFaces-OSP/issues">
         on our bug tracker</a>.</p>
 
-        <h1>Objects and converters</h1>
-        <p>In most cases you don't need a converter to use an arbitrary object as bean attribute. It suffices to use the attributes <code>var</code>, <code>itemValue</code> and <code>itemLabel</code> of <code>&lt;f:selectItem /&gt;</code> and <code>&lt;f:selectItems /&gt;</code>.</p>
-        <b:alert severity="danger" title="As of BootsFaces 0.8.0, converters aren't used correctly when rendering. In other words: the example below doesn't work." />
-
-        <h:form>
-            <b:tabView activeIndex="3">
-                <b:tab title="JSF markup">
-                <b:well>
-                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-                    <b:panelGrid colSpans="3,3,6">
-                         <f:event listener="&num;{soccerTeamBean.init}" type="preRenderView" />
-                        <h:outputLabel value="Select your team's goalkeeper:" for="keeperID" />
-                        <b:selectOneMenu value="&num;{soccerTeamBean.goalkeeper}" id="keeperID">
-                            <f:selectItems value="&num;{soccerTeamBean.team}" var="playerVar" itemValue="&num;{playerVar}"
-                                itemLabel="&num;{playerVar.name}" />
-                        </b:selectOneMenu>
-                        Current keeper: &num;{soccerTeamBean.goalkeeper.name}
-                    </b:panelGrid>
-                    <b:commandButton value="Submit (doesn't work yet)">
-                        <f:ajax event="click" execute="@form" render="@form" />
-                    </b:commandButton>
-]]>
-                   </script>
-                </b:well>
-                </b:tab>
-                                <b:tab title="Team bean">
-                <b:well>
-                    <script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-@ManagedBean
-@ViewScoped
-public class SoccerTeamBean implements Serializable {
-    private static final long serialVersionUID = 1L;
-
-    private List<Player> team;
-    private Player goalkeeper;
-
-    public void init(ComponentSystemEvent e) {
-        this.team = new ArrayList<>();
-        this.team.add(new Player("Marc-André ter Stegen"));
-        this.team.add(new Player("Jordi Masip"));
-        this.team.add(new Player("Jordi Alba"));
-        this.team.add(new Player("Marc Batra"));
-    }
-
-    public List<Player> getTeam() {
-        return team;
-    }
-
-    public void setTeam(List<Player> team) {
-        this.team = team;
-    }
-
-    public Player getGoalkeeper() {
-        return goalkeeper;
-    }
-
-    public void setGoalkeeper(Player goalkeeper) {
-        this.goalkeeper = goalkeeper;
-    }
-}
-]]>
-                   </script>
-                   </b:well>
-                </b:tab>
-                                <b:tab title="Player class">
-                                                <b:well>
-
-                    <script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-public class Player {
-
-    private String name;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Player(String name) {
-        this.name = name;
-    }
-}
-]]>
-                   </script>
-                   </b:well>
-                </b:tab>
-
-                <b:tab title="displayed as">
-                <b:well>
-                    <b:panelGrid colSpans="3,3,6">
-                        <f:event listener="#{soccerTeamBean.init}" type="preRenderView" />
-                        <h:outputLabel value="Select your team's goalkeeper:" for="keeperID" />
-                        <b:selectOneMenu value="#{soccerTeamBean.goalkeeper}" id="keeperID">
-                            <f:selectItems value="#{soccerTeamBean.team}" var="playerVar" itemValue="#{playerVar}"
-                                itemLabel="#{playerVar.name}" />
-                        </b:selectOneMenu>
-                        Current keeper: #{soccerTeamBean.goalkeeper.name}
-                    </b:panelGrid>
-                    <b:commandButton value="Submit (doesn't work yet)">
-                        <f:ajax  event="click" execute="@form" render="@form" />
-                    </b:commandButton>
-                    </b:well>
-                </b:tab>
-            </b:tabView>
-        </h:form>
 
 
-        <h1>Arrays and HashMaps</h1>
+        <h1>Arrays and HashMaps <b:badge value="broken in 0.8.5" /></h1>
         <p>The list of items can be defined as an <code>&lt;f:selectItems /&gt;</code> tag. BootsFaces uses a modified version of the
         algorithm PrimeFaces 5.1 uses to implement <code>&lt;f:selectItems /&gt;</code>. As a result, you can use <code>&lt;b:selectOneMenu&gt;</code>
         almost the same way as <code>&lt;b:selectOneMenu&gt;</code>. </p>
+        <b:alert severity="danger">Due to a bug, arrays and hashmaps can be used to display the combobox, but the
+        user input is not processed correctly by the server. This bug will be fixed in the next version of BootsFaces.</b:alert>
         <h:form>
 <b:tabView activeIndex="0">
     <b:tab title="JSF markup">
