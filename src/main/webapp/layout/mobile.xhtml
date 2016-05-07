@@ -19,13 +19,39 @@
         .panel-body { margin: 0px 15px; }
     </style>
     <h1>Mobile first! <b:badge value="since 0.8.5" /></h1>
-    <p>BootsFaces targets both desktop and mobile platforms. In previous version, developers faced difficulties
+    <p>BootsFaces targets both desktop and mobile platforms. In previous versions, developers faced difficulties
     because they weren't aware of the viewport meta tag. Since BootsFaces 0.8.5, this meta tag is added automatically
-    to every BootsFaces page.
+    to every BootsFaces page. It defaults to <code>width=device-width, initial-scale=1</code>.
     </p>
+    
+    <h2>Disabling the standard setting</h2>
+    If you don't want a meta viewport tag at all, you can disable this behaviour by setting its context paramater to <code>false</code>.
+    <b:panel>
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+            <context-param>
+                <param-name>BootsFaces_USE_VIEWPORT</param-name>
+                <param-value>false</param-value>
+            </context-param>
+            ]]>
+        </script>
+    </b:panel>
+    
     <h2>Overriding the viewport</h2>
     <p>If you need a different viewport setting, simply add it to your <code>&lt;h:head&gt;</code> tag. BootsFaces adds
     the default viewport setting at the beginning of the HTML file, ensuring you can override it.</p>
+   
+    You can also provide your own setting by setting the context parameter to your desired <code>content</code>.
+    <b:panel>
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+            <context-param>
+                <param-name>BootsFaces_USE_VIEWPORT</param-name>
+                <param-value>width=device-width, initial-scale=1.0, user-scalable=no</param-value>
+            </context-param>
+            ]]>
+        </script>
+    </b:panel>
    
     <br/><br/><br/>
     <script type="text/javascript">
