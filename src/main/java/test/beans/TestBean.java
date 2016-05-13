@@ -2,6 +2,7 @@ package test.beans;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -24,11 +25,20 @@ implements TreeNodeEventListener, Serializable {
 	private Node selectedNode;
 	private List<Node> checkedNodes = new ArrayList<Node>();
 	private String selectedColor;
+	private Date dataToPick = new Date();
 	
 	private Node statefullRootNode = null;
 
 	public TestBean() {
 		initStatefullRootNode();
+	}
+	
+	public Date getDataToPick() {
+		return dataToPick;
+	}
+
+	public void setDataToPick(Date dataToPick) {
+		this.dataToPick = dataToPick;
 	}
 	
 	private void initStatefullRootNode() {

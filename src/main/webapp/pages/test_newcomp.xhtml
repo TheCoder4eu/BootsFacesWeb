@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+	<h:head>
+		<meta charset="utf-8" />
+		<title>DatePicker 2</title>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+	</h:head>
+	
+	<h:body>
+		<br/>
+		<h:form id="form1">
+			<b:dateTimePicker col-sm="3" offset="2" value="#{test.dataToPick}" type="inline" format="DD/MM/YYYY HH:mm:SS"/>
+			<br/>
+			<b:commandButton col-sm="3" offset="2" value="Send" />
+		</h:form>
+		<br/>
+		<br/>
+		<h:form id="form2">
+			<b:dateTimePicker col-sm="3" offset="2" value="#{test.dataToPick}" type="component" format="DD/MM/YYYY"  />
+			<br/>
+			<b:commandButton col-sm="3" offset="2" value="Send" />
+		</h:form>
+
+		<br/>
+		<br/>
+		<h:form id="form3">
+			<b:dateTimePicker col-sm="3" offset="2" value="#{test.dataToPick}" type="plain" />
+			<br/>
+			<b:commandButton col-sm="3" offset="2" value="Send" />
+		</h:form>
+
+		<br/>
+		<br/>
+		<hr/>
+		
+		<b:inputText value="#{test.dataToPick}" />
+		<b:socialButton value="Sign in with twitter" social="twitter" /> <br/>
+		<b:socialButton social="linkedin" only-icon="true" href="https://www.linkedin.com/in/dario-d-urzo-470b2024?trk=hp-identity-name" />
+	</h:body>
+</html>
