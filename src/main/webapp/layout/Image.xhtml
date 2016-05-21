@@ -25,7 +25,7 @@ td {
           </script>
          </b:well>
 
-        <b:image value="../bootstrap/carousel/Valladolid-parque-3.jpg"  tooltip="Ain't he a beauty?" tooltipPosition="right"/>
+        <b:image name="test" value="../bootstrap/carousel/Valladolid-parque-3.jpg"  tooltip="Ain't he a beauty?" tooltipPosition="right"/>
         <p>Alternatively, you can use the JSF resource libraries, just the way you're used to from <code>&lt;h:graphicImage /&gt;</code>;</p>
 
         <b:well>
@@ -58,6 +58,12 @@ td {
         ]]>
         </script>
         </b:well>
+
+        <h1>Don't use both <code>value</code> and <code>name/library</code></h1>
+        <p>Until BootsFaces 0.8.5, there was an error in the documentation which lead some developers to use both
+        <code>name</code> and <code>value</code>. Both attributes belong to different resource loading mechanisms,
+        so this caused <code>RES_NOT_FOUND</code> errors. Since BootsFaces 0.8.6, the value attributes is evaluated first.
+        If both attributes are provided, BootsFaces displays a warning in the logfile (only in the development stage).</p>
 
         <h3>Reference section</h3>
         <ui:include src="ImageAttributes.xhtml" />
