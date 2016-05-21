@@ -18,16 +18,30 @@ td {
 
 		<h1>Basic usage</h1>
         <b:well>
-        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-        <![CDATA[
-           <b:image value="/bootstrap/carousel/Valladolid-parque-3.jpg" tooltip="Ain't he a beauty?" />
-        ]]>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+	        <![CDATA[
+	           <b:image value="../bootstrap/carousel/Valladolid-parque-3.jpg" tooltip="Ain't he a beauty?" />
+    	    ]]>
           </script>
          </b:well>
-            
+
         <b:image value="../bootstrap/carousel/Valladolid-parque-3.jpg"  tooltip="Ain't he a beauty?" tooltipPosition="right"/>
+        <p>Alternatively, you can use the JSF resource libraries, just the way you're used to from <code>&lt;h:graphicImage /&gt;</code>;</p>
+
+        <b:well>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+  		      <![CDATA[
+        	   <b:image library="images" name="Valladolid4.png" tooltip="Great water fountain in Valladolid, Spain" />
+ 		      ]]>
+          </script>
+         </b:well>
+
+        <b:image library="images" name="Valladolid4.png" tooltip="Great water fountain in Valladolid, Spain" />
+
+
+
         <h1>Advanced usage</h1>
-        <p>You can use the standard JavaScript callbacks to call both JavaScript function and Java methods (via AJAX). 
+        <p>You can use the standard JavaScript callbacks to call both JavaScript function and Java methods (via AJAX).
         See <a target="#" href="http://www.angularfaces.net/BootsFacesChess-1.0.0-SNAPSHOT/">BootsFaces chess</a>
          for a full-blown demo. These following demonstrate how BootsFaces chess uses AJAX to implement drag and drop:</p>
         <b:well>
@@ -44,7 +58,7 @@ td {
         ]]>
         </script>
         </b:well>
-    
+
         <h3>Reference section</h3>
         <ui:include src="ImageAttributes.xhtml" />
 		<b:panel look="info">
