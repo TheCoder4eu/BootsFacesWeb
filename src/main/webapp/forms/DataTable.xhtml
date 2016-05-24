@@ -121,7 +121,8 @@
 			<b:tab title="displayed as" contentStyle="border:1px solid ;padding:10px">
 				<b:dataTable value="#{carPool.carPool}" var="car" id="bcarPool2"
 					styleClass="table table-striped table-bordered" style="width:100%"
-					fixedHeader="true" responsive="true" lang="it">
+					fixedHeader="true" responsive="true" lang="it"
+                    searching="false">
 					<h:column>
 						<f:facet name="header">
 							<h:outputText value="Brand" />
@@ -160,7 +161,7 @@
         		<b:dataTable value="#{carPool.emptyCarPool}" var="car"
         			id="emptyCarpool" styleClass="table table-striped table-bordered"
         			style="width:100%">
-        
+
         			<h:column>
         				<f:facet name="header">
         					<h:outputText value="Brand" />
@@ -182,7 +183,7 @@
     		<b:dataTable value="#{carPool.emptyCarPool}" var="car"
     			id="emptyCarpool" styleClass="table table-striped table-bordered"
     			style="width:100%">
-    
+
     			<h:column>
     				<f:facet name="header">
     					<h:outputText value="Brand" />
