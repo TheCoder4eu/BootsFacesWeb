@@ -15,58 +15,36 @@
     brand-style="padding-top:0px;padding-bottom:0px"
     -->
   </ui:remove>
-  <b:navBar brand="BootsFaces"
-    brand-href="http://www.bootsfaces.net/" inverse="true"
-
-    position="top" sticky="true"
+  <b:navBar brand="BootsFaces" brand-href="http://www.bootsfaces.net/" inverse="true" position="top" sticky="true"
     style="padding-top:2px;padding-bottom:2px">
     <b:container>
       <b:navbarLinks>
         <b:navLink />
         <b:navLink />
         <b:navbarLinks rendered="false">
-             <b:navLink outcome="/index" value="Home" icon-awesome="home" />
+          <b:navLink outcome="/index" value="Home" icon-awesome="home" />
         </b:navbarLinks>
         <b:dropMenu value="Integration" hidden="sm">
-          <b:navLink value="PrimeFaces"
-            outcome="/integration/PrimeFaces" icon="tasks" />
-          <b:navLink value="OmniFaces" outcome="/integration/OmniFaces"
-            icon="tasks" />
-          <b:navLink value="ButterFaces" outcome="/integration/ButterFaces"
-            icon="tasks" />
+          <b:navLink value="PrimeFaces" outcome="/integration/PrimeFaces" icon="tasks" />
+          <b:navLink value="OmniFaces" outcome="/integration/OmniFaces" icon="tasks" />
+          <b:navLink value="ButterFaces" outcome="/integration/ButterFaces" icon="tasks" />
         </b:dropMenu>
 
         <b:dropMenu value="Layout">
-          <!--b:navLink value="License"
-            outcome="/license" /-->
-
-          <b:navLink value="Basic Layout and Grid System"
-            outcome="/layout/basic" icon-awesome="table" />
-          <b:navLink value="Simplified Grid System"
-            outcome="/layout/simplifiedLayout" icon-awesome="table" />
-          <b:navLink value="Mobile support"
-            outcome="/layout/mobile" icon-awesome="mobile" />
+          <b:navLink value="Basic Layout and Grid System" outcome="/layout/basic" icon-awesome="table" />
+          <b:navLink value="Simplified Grid System" outcome="/layout/simplifiedLayout" icon-awesome="table" />
+          <b:navLink value="Mobile support" outcome="/layout/mobile" icon-awesome="mobile" />
           <b:navLink value="Themes" outcome="/layout/themes" />
-          <b:navLink value="RTL (right-to-left) support"
-            outcome="/layout/rtl" icon-awesome="table" />
-          <b:navLink value="CSS files, JS files and CDNs"
-            outcome="/layout/resourcemanagement" />
-          <b:navLink value="Sidebars (NavLinks and NavCommandLinks)"
-            outcome="/layout/navLinks" icon="list" />
-          <b:navLink value="Menus (Navbars)" outcome="/layout/navbars"
-            icon-awesome="ellipsis-h" />
-          <b:navLink value="Navigation and AJAX" outcome="/layout/navigationAndAJAX"
-            icon-awesome="ellipsis-h" />
-          <b:navLink value="Panels" outcome="/layout/panels"
-            icon-awesome="list-alt" />
-          <b:navLink value="Accordion" outcome="/layout/Accordion"
-            icon-awesome="th-list" />
-          <b:navLink value="Grids" outcome="/layout/panelgrids"
-            icon-awesome="th-large" />
-          <b:navLink value="Icons" outcome="/layout/icons"
-            icon-awesome="photo" />
-          <b:navLink value="Image" outcome="/layout/Image"
-            icon-awesome="photo" />
+          <b:navLink value="RTL (right-to-left) support" outcome="/layout/rtl" icon-awesome="table" />
+          <b:navLink value="CSS files, JS files and CDNs" outcome="/layout/resourcemanagement" />
+          <b:navLink value="Sidebars (NavLinks and NavCommandLinks)" outcome="/layout/navLinks" icon="list" />
+          <b:navLink value="Menus (Navbars)" outcome="/layout/navbars" icon-awesome="ellipsis-h" />
+          <b:navLink value="Navigation and AJAX" outcome="/layout/navigationAndAJAX" icon-awesome="ellipsis-h" />
+          <b:navLink value="Panels" outcome="/layout/panels" icon-awesome="list-alt" />
+          <b:navLink value="Accordion" outcome="/layout/Accordion" icon-awesome="th-list" />
+          <b:navLink value="Grids" outcome="/layout/panelgrids" icon-awesome="th-large" />
+          <b:navLink value="Icons" outcome="/layout/icons" icon-awesome="photo" />
+          <b:navLink value="Image" outcome="/layout/Image" icon-awesome="photo" />
           <b:navLink value="Jumbotron" outcome="/layout/jumbotron" icon-awesome="square" />
           <b:navLink value="Wells" outcome="/layout/wells" icon-awesome="square-o" />
           <b:navLink value="Canvas" outcome="/layout/Canvas" icon-awesome="paint-brush" />
@@ -74,146 +52,94 @@
         <b:dropMenu value="Forms">
           <b:navLink value="AJAX" outcome="/forms/ajax" />
           <b:navLink value="BlockUI" outcome="/forms/blockUI" />
-          <b:navLink value="Search Expressions"
-            outcome="/forms/searchExpressions" />
-          <b:navLink value="Custom Search Expressions"
-            outcome="/forms/customSearchExpressions" />
+          <b:navLink value="Search Expressions" outcome="/forms/searchExpressions" />
+          <b:navLink value="Custom Search Expressions" outcome="/forms/customSearchExpressions" />
           <b:navLink value="Buttons" outcome="/forms/buttons" />
-          <b:navLink value="Button Groups and Toolbars"
-            outcome="/forms/buttonGroups" />
+          <b:navLink value="Button Groups and Toolbars" outcome="/forms/buttonGroups" />
           <b:navLink value="Converters" outcome="/forms/converters" />
-          <b:navLink value="Command Button"
-            outcome="/forms/commandButton" />
-          <b:navLink value="Default Command"
-            outcome="/forms/DefaultCommand" />
-          <b:navLink value="DataTable (experimental)"
-            outcome="/forms/DataTable" />
-          <b:navLink value="Fetch Bean Infos (Validations)"
-            outcome="/forms/FetchBeanInfos" />
+          <b:navLink value="Command Button" outcome="/forms/commandButton" />
+          <b:navLink value="Default Command" outcome="/forms/DefaultCommand" />
+          <b:navLink value="DataTable (experimental)" outcome="/forms/DataTable" />
+          <b:navLink value="Fetch Bean Infos (Validations)" outcome="/forms/FetchBeanInfos" />
           <b:navLink value="Input Text" outcome="/forms/inputText" />
-          <b:navLink value="Input Secret" outcome="/forms/inputSecret"
-            icon-awesome="user-secret" />
-          <b:navLink value="Textarea" outcome="/forms/inputTextarea"/>
-          <b:navLink value="ColorPicker" outcome="/forms/ColorPicker" icon="leaf"/>
+          <b:navLink value="Input Secret" outcome="/forms/inputSecret" icon-awesome="user-secret" />
+          <b:navLink value="Textarea" outcome="/forms/inputTextarea" />
+          <b:navLink value="ColorPicker" outcome="/forms/ColorPicker" icon="leaf" />
           <b:navLink value="Checkbox" outcome="/forms/checkBox" />
           <b:navLink value="Switch" outcome="/forms/switch" />
-          <b:navLink value="Combobox (SelectOneMenu)"
-            outcome="/forms/selectOneMenu" />
-          <b:navLink value="Multiple Choice Combobox (SelectMultiMenu)"
-            outcome="/forms/selectMultiMenu" />
-          <b:navLink value="Poll" outcome="/forms/poll"
-            icon-awesome="refresh" />
-          <b:navLink value="Messages" outcome="/forms/messages"
-            icon-awesome="refresh" />
-          <b:navLink value="Growl" outcome="/forms/Growl"
-            icon-awesome="exclamation" />
+          <b:navLink value="Combobox (SelectOneMenu)" outcome="/forms/selectOneMenu" />
+          <b:navLink value="Multiple Choice Combobox (SelectMultiMenu)" outcome="/forms/selectMultiMenu" />
+          <b:navLink value="Poll" outcome="/forms/poll" icon-awesome="refresh" />
+          <b:navLink value="Messages" outcome="/forms/messages" icon-awesome="refresh" />
+          <b:navLink value="Growl" outcome="/forms/Growl" icon-awesome="exclamation" />
         </b:dropMenu>
 
         <ui:remove>
-        <!-- ************ Menu for cell phones and large desktop screens ************ -->
+          <!-- ************ Menu for cell phones and large desktop screens ************ -->
         </ui:remove>
 
         <b:dropMenu value="Bootstrap Widgets" visible="xs,lg">
-          <b:navLink value="Alerts" outcome="/bootstrap/alerts"
-            icon="warning-sign" />
+          <b:navLink value="Alerts" outcome="/bootstrap/alerts" icon="warning-sign" />
           <b:navLink value="Carousel" outcome="/bootstrap/carousel" />
           <b:navLink value="DropButton" outcome="/bootstrap/dropButton" />
-          <b:navLink value="Labels and Badges"
-            outcome="/bootstrap/labelsbadge" icon="tag" />
+          <b:navLink value="Labels and Badges" outcome="/bootstrap/labelsbadge" icon="tag" />
           <b:navLink value="Modals" outcome="/bootstrap/modal" />
-          <b:navLink value="ProgressBar" outcome="/bootstrap/ProgressBar" icon-awesome="tasks"/>
-          <b:navLink value="Thumbnails" outcome="/bootstrap/thumbnails"
-            icon="picture" />
-          <b:navLink value="Tab" outcome="/bootstrap/tab"
-            icon="folder-close" />
-          <b:navLink value="Tooltip" outcome="/bootstrap/tooltips"
-            icon-awesome="comment" />
-          <b:navLink value="Tree" outcome="/bootstrap/tree"
-            icon-awesome="tree" />
-          <b:navLink value="ScrollUp" outcome="/bootstrap/ScrollUp"
-            icon-awesome="arrow-up" />
-          <b:navLink value="ScrollSpy" outcome="/bootstrap/ScrollSpy"
-            icon-awesome="user-secret" />
+          <b:navLink value="ProgressBar" outcome="/bootstrap/ProgressBar" icon-awesome="tasks" />
+          <b:navLink value="Thumbnails" outcome="/bootstrap/thumbnails" icon="picture" />
+          <b:navLink value="Tab" outcome="/bootstrap/tab" icon="folder-close" />
+          <b:navLink value="Tooltip" outcome="/bootstrap/tooltips" icon-awesome="comment" />
+          <b:navLink value="Tree" outcome="/bootstrap/tree" icon-awesome="tree" />
+          <b:navLink value="ScrollUp" outcome="/bootstrap/ScrollUp" icon-awesome="arrow-up" />
+          <b:navLink value="ScrollSpy" outcome="/bootstrap/ScrollSpy" icon-awesome="user-secret" />
         </b:dropMenu>
         <b:dropMenu value="jQueryUI Widgets" visible="xs,lg">
-          <b:navLink value="Slider" outcome="/jquery-ui/slider"
-            icon="tasks" icon-awesome="sliders" />
-          <b:navLink value="More Sliders" outcome="/jquery-ui/slider2"
-            icon="tasks" />
-          <b:navLink value="DatePicker" outcome="/jquery-ui/datepicker"
-            icon="calendar" />
+          <b:navLink value="Slider" outcome="/jquery-ui/slider" icon="tasks" icon-awesome="sliders" />
+          <b:navLink value="More Sliders" outcome="/jquery-ui/slider2" icon="tasks" />
+          <b:navLink value="DatePicker" outcome="/jquery-ui/datepicker" icon="calendar" />
         </b:dropMenu>
-        <!-- Temporarily hiding the Mobile Menu until 0.9 -->
-        <ui:remove>
         <b:dropMenu value="Mobile" visible="xs,lg">
-          <b:navLink value="Shake" outcome="/mobile/Shake"
-                     icon-awesome="hand-grab-o" />
-          <b:navLink value="Gyroscope" outcome="/mobile/Gyroscope"
-                     icon.awesome="hand-paper-o" />
-          <b:navLink value="Touch and Swipe" outcome="/mobile/Touch"
-                     icon-awesome="hand-o-up" />
-         <b:navLink value="Pinch" outcome="/mobile/Pinch"
-                     icon-awesome="hand-scissors-o" />
+          <b:navLink value="Shake" outcome="/mobile/Shake" icon-awesome="hand-grab-o" />
+          <b:navLink value="Gyroscope" outcome="/mobile/Gyroscope" icon.awesome="hand-paper-o" />
+          <b:navLink value="Touch and Swipe" outcome="/mobile/Touch" icon-awesome="hand-o-up" />
+          <b:navLink value="Pinch" outcome="/mobile/Pinch" icon-awesome="hand-scissors-o" />
         </b:dropMenu>
-        </ui:remove>
 
         <ui:remove>
-        <!-- ************ Menu for tablet computers and small laptops ************ -->
+          <!-- ************ Menu for tablet computers and small laptops ************ -->
         </ui:remove>
 
         <b:dropMenu value="Others" visible="sm...md">
-          <b:navLink value="Alerts" outcome="/bootstrap/alerts"
-            icon="warning-sign" />
+          <b:navLink value="Alerts" outcome="/bootstrap/alerts" icon="warning-sign" />
           <b:navLink value="Carousel" outcome="/bootstrap/carousel" />
           <b:navLink value="DropButton" outcome="/bootstrap/dropButton" />
-          <b:navLink value="Labels and Badges"
-            outcome="/bootstrap/labelsbadge" icon="tag" />
+          <b:navLink value="Labels and Badges" outcome="/bootstrap/labelsbadge" icon="tag" />
           <b:navLink value="Modals" outcome="/bootstrap/modal" />
-          <b:navLink value="ProgressBar" outcome="/bootstrap/ProgressBar" icon-awesome="tasks"/>
-          <b:navLink value="Thumbnails" outcome="/bootstrap/thumbnails"
-            icon="picture" />
-          <b:navLink value="Tab" outcome="/bootstrap/tab"
-            icon="folder-close" />
-          <b:navLink value="Tooltip" outcome="/bootstrap/tooltips"
-            icon-awesome="comment" />
-          <b:navLink value="Tree" outcome="/bootstrap/tree"
-            icon-awesome="tree" />
-          <b:navLink value="ScrollUp" outcome="/bootstrap/ScrollUp"
-            icon-awesome="arrow-up" />
-          <b:navLink value="ScrollSpy" outcome="/bootstrap/ScrollSpy"
-            icon-awesome="user-secret" />
-          <b:navLink value="Slider" outcome="/jquery-ui/slider"
-            icon="tasks" icon-awesome="sliders" />
-          <b:navLink value="More Sliders" outcome="/jquery-ui/slider2"
-            icon="tasks" />
-          <b:navLink value="DatePicker" outcome="/jquery-ui/datepicker"
-            icon="calendar" />
+          <b:navLink value="ProgressBar" outcome="/bootstrap/ProgressBar" icon-awesome="tasks" />
+          <b:navLink value="Thumbnails" outcome="/bootstrap/thumbnails" icon="picture" />
+          <b:navLink value="Tab" outcome="/bootstrap/tab" icon="folder-close" />
+          <b:navLink value="Tooltip" outcome="/bootstrap/tooltips" icon-awesome="comment" />
+          <b:navLink value="Tree" outcome="/bootstrap/tree" icon-awesome="tree" />
+          <b:navLink value="ScrollUp" outcome="/bootstrap/ScrollUp" icon-awesome="arrow-up" />
+          <b:navLink value="ScrollSpy" outcome="/bootstrap/ScrollSpy" icon-awesome="user-secret" />
+          <b:navLink value="Slider" outcome="/jquery-ui/slider" icon="tasks" icon-awesome="sliders" />
+          <b:navLink value="More Sliders" outcome="/jquery-ui/slider2" icon="tasks" />
+          <b:navLink value="DatePicker" outcome="/jquery-ui/datepicker" icon="calendar" />
 
-        <!-- Temporarily hiding the Mobile Menu until 0.9 -->
-          <ui:remove>
-            <b:navLink value="Shake" outcome="/mobile/Shake"
-                       icon-awesome="hand-grab-o" />
-            <b:navLink value="Gyroscope" outcome="/mobile/Gyroscope"
-                       icon.awesome="hand-paper-o" />
-            <b:navLink value="Touch and Swipe" outcome="/mobile/Touch"
-                       icon-awesome="hand-o-up" />
-           <b:navLink value="Pinch" outcome="/mobile/Pinch"
-                       icon-awesome="hand-scissors-o" />
-         </ui:remove>
-         <b:navLink value="PrimeFaces"
-            outcome="/integration/PrimeFaces" icon="tasks" visible="sm"/>
-          <b:navLink value="OmniFaces" outcome="/integration/OmniFaces"
-            icon="tasks"  visible="sm"/>
-          <b:navLink value="ButterFaces" outcome="/integration/ButterFaces"
-            icon="tasks" visible="sm"/>
-         </b:dropMenu>
+          <!-- Temporarily hiding the Mobile Menu until 0.9 -->
+          <b:navLink value="Shake" outcome="/mobile/Shake" icon-awesome="hand-grab-o" />
+          <b:navLink value="Gyroscope" outcome="/mobile/Gyroscope" icon.awesome="hand-paper-o" />
+          <b:navLink value="Touch and Swipe" outcome="/mobile/Touch" icon-awesome="hand-o-up" />
+          <b:navLink value="Pinch" outcome="/mobile/Pinch" icon-awesome="hand-scissors-o" />
+          <b:navLink value="PrimeFaces" outcome="/integration/PrimeFaces" icon="tasks" visible="sm" />
+          <b:navLink value="OmniFaces" outcome="/integration/OmniFaces" icon="tasks" visible="sm" />
+          <b:navLink value="ButterFaces" outcome="/integration/ButterFaces" icon="tasks" visible="sm" />
+        </b:dropMenu>
 
 
       </b:navbarLinks>
       <b:navbarLinks pull="right">
         <h:form style="display:inline" styleClass="form-inline">
-          <b:selectOneMenu value="#{theme.currentTheme}"
-            style="width:180px;margin-top:8px"
+          <b:selectOneMenu value="#{theme.currentTheme}" style="width:180px;margin-top:8px"
             onchange="$('.theme-selector-button').click()">
             <f:selectItem itemValue="default" itemLabel="default" />
             <f:selectItem itemValue="cerulean" itemLabel="cerulean" />
@@ -235,8 +161,8 @@
             <f:selectItem itemValue="freelancer" itemLabel="Freelancer (custom)" />
             <f:selectItem itemValue="grayscale" itemLabel="Grayscale (custom)" />
           </b:selectOneMenu>
-          <b:commandButton class="theme-selector-button" value="select"
-            action="#{theme.selectTheme}" style="display:none" />
+          <b:commandButton class="theme-selector-button" value="select" action="#{theme.selectTheme}"
+            style="display:none" />
         </h:form>
       </b:navbarLinks>
 

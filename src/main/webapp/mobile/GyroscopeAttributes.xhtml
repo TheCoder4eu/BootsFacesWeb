@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:fragment
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:b="http://bootsfaces.net/ui"
+  xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <b:panel look="info">
+      <f:facet name="heading">
+        <b>Attributes of &lt;b:gyroscope &gt;</b>
+      </f:facet>
+      <div class="table-responsive">
+        <table class="table table-striped table-hover"
+          style="background-color: #fff">
+          <thead>
+            <tr>
+              <th>Attribute</th>
+              <th>Default value</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td>action</td>
+                <td>(none)</td>
+                <td>The button action, this can be method expression or a string outcome.</td>
+            </tr>
+            <tr>
+                <td>action-listener<br />actionListener (alternative writing)</td>
+                <td>(none)</td>
+                <td>A method expression that refers to a method with this signature: void methodName(Action-Event).</td>
+            </tr>
+            <tr>
+                <td>ajax</td>
+                <td>false</td>
+                <td>Whether the Button submits the form with AJAX.</td>
+            </tr>
+            <tr>
+                <td>disabled</td>
+                <td>false</td>
+                <td>Disables the input element, default is false.</td>
+            </tr>
+            <tr>
+                <td>id</td>
+                <td>(none)</td>
+                <td>Unique identifier of the component in a namingContainer.</td>
+            </tr>
+            <tr>
+                <td>interval</td>
+                <td> 500 </td>
+                <td>Specifies the delay (in milliseconds) between each slide.</td>
+            </tr>
+            <tr>
+                <td>oncomplete</td>
+                <td>(none)</td>
+                <td>JavaScript to be executed when ajax completes with success.</td>
+            </tr>
+            <tr>
+                <td>onrotation</td>
+                <td>(none)</td>
+                <td>A method binding expression referring to a method for handling a valuechangeevent.</td>
+            </tr>
+            <tr>
+                <td>process</td>
+                <td>(none)</td>
+                <td>Comma or space separated list of ids or search expressions denoting which values are to be sent to the server.</td>
+            </tr>
+            <tr>
+                <td>threshold</td>
+                <td> 15 </td>
+                <td>Specifies the sensitivity of the skae detector.</td>
+            </tr>
+            <tr>
+                <td>update</td>
+                <td>(none)</td>
+                <td>Component(s) to be updated with ajax.</td>
+            </tr>
+            <tr>
+                <td>widgetVar</td>
+                <td> bfGyroscope </td>
+                <td>optional widget variable to access the datatable widget in JavaScript code.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </b:panel>
+</ui:fragment>
