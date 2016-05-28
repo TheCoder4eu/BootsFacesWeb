@@ -17,7 +17,17 @@ td {
 
 		<p>Gyroscope is a component planned for BootsFaces 0.9.0.</p>
       <h:form>
-        <b:gyroscope onrotation="console.log('rotate: ' + event.gamma);ajax:gyroscopeBean.onRotation()" />
+        <b:gyroscope onrotation="ajax:gyroscopeBean.onRotation()"
+                     alpha="#{gyroscopeBean.alpha}"
+                     beta="#{gyroscopeBean.beta}"
+                     gamma="#{gyroscopeBean.gamma}"
+                     update="@form:server"/>
+          <b:panel title="Values reported to the server" id="server">
+            <p>Alpha: #{gyroscopeBean.alpha} (rotation around z-axis - i.e. rotation while the smartphone lies flat on the table)</p>
+            <p>Beta: #{gyroscopeBean.beta} (rotation around x-axis)</p>
+            <p>Gamma: #{gyroscopeBean.gamma} (rotation around y-axis)</p>
+            <p>Calls: #{gyroscopeBean.calls}</p>
+          </b:panel>
         </h:form>
 
 		<script type="text/javascript">
