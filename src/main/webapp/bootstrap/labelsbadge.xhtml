@@ -51,17 +51,93 @@
                 ]]></script>
 
                 <br/>
+                <h2>Responsive design <b:badge value="since 0.9.0" /></h2>
+                <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
+                also with <code>&lt;b:badge /&gt;</code>:</p>
+               <b:tabView>
+                  <b:tab title="live preview">
+                  <b:well>
+                      <b:row>
+                        <b:badge value="large-screen='full-width'" large-screen="full-width" />
+                      </b:row>
+                     <b:row style="padding-top:5px">
+                        <b:badge value="large-screen='one-third'" large-screen="one-third" />
+                        <b:badge value="large-screen='two-thirds'" large-screen="two-thirds" />
+                      </b:row>
+                     <b:row style="padding-top:5px">
+                        <b:badge value="small-screen='one-third'" small-screen="one-third" />
+                        <b:badge value="small-screen='two-thirds'" small-screen="two-thirds" />
+                      </b:row>
+                    <b:row style="padding-top:5px">
+                        <b:badge value="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
+                        <b:badge value="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
+                      </b:row>
+                  </b:well>
+                  </b:tab>
+                  <b:tab title="JSF markup">
+                  <b:well>
+                  <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                  <![CDATA[
+                        <b:row>
+                        <b:badge value="large-screen='full-width'" large-screen="full-width" />
+                      </b:row>
+                     <b:row style="padding-top:5px">
+                        <b:badge value="large-screen='one-third'" large-screen="one-third" />
+                        <b:badge value="large-screen='two-thirds'" large-screen="two-thirds" />
+                      </b:row>
+                     <b:row style="padding-top:5px">
+                        <b:badge value="small-screen='one-third'" small-screen="one-third" />
+                        <b:badge value="small-screen='two-thirds'" small-screen="two-thirds" />
+                      </b:row>
+                    <b:row style="padding-top:5px">
+                        <b:badge value="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
+                        <b:badge value="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
+                      </b:row>
+                ]]></script>
+                  </b:well>
+                  </b:tab>
+                </b:tabView>
+
+                <h2>Visibility depending on screen size <b:badge value="since 0.8.6/0.9.0" /></h2>
                 <p>With label, you can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
                 <br/>
-                <b:well>
+                <b:tabView>
+                  <b:tab title="live preview">
+                  <b:well>
+                      <h:panelGrid columns="2">
+                          <h:outputText value="Visible on &gt;= md :" />
+                          <b:label text="Visible on medium or large screen" severity="info" visible="md..." />
+                          <h:outputText value="Visible on &lt;= sm :" />
+                          <b:label text="Visible on small-screen" severity="success" visible="...sm"/>
+                          <h:outputText value="Visible on sm...lg :" />
+                          <b:label text="Visible on small to large screen" severity="success" visible="sm...lg"/>
+                          <h:outputText value="Visible on xs and md :" />
+                          <b:label text="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
+                          <h:outputText value="Col-md-6 offset 2 :" />
+                          <b:label text="col-md-6 offset 2" severity="success" col-md="6" offset="2" />
+                      </h:panelGrid>
+                  </b:well>
+                  </b:tab>
+                  <b:tab title="JSF markup">
+                  <b:well>
+                  <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                  <![CDATA[
                     <h:panelGrid columns="2">
-                        <h:outputText value="Visible on &gt;= md :" /><b:label text="Visible on medium or large screen" severity="info" visible="md..." />
-                        <h:outputText value="Visible on &lt;= sm :" /><b:label text="Visible on small-screen" severity="success" visible="...sm"/>
-                        <h:outputText value="Visible on sm...lg :" /><b:label text="Visible on small to large screen" severity="success" visible="sm...lg"/>
-                        <h:outputText value="Visible on xs and md :" /><b:label text="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
-                        <h:outputText value="Col-md-6 offset 2 :" /><b:label text="col-md-6 offset 2" severity="success" col-md="6" offset="2" />
+                        <h:outputText value="Visible on &gt;= md :" />
+						<b:label text="Visible on medium or large screen" severity="info" visible="md..." />
+                        <h:outputText value="Visible on &lt;= sm :" />
+						<b:label text="Visible on small-screen" severity="success" visible="...sm"/>
+                        <h:outputText value="Visible on sm...lg :" />
+						<b:label text="Visible on small to large screen" severity="success" visible="sm...lg"/>
+                        <h:outputText value="Visible on xs and md :" />
+						<b:label text="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
+                        <h:outputText value="Col-md-6 offset 2 :" />
+						<b:label text="col-md-6 offset 2" severity="success" col-md="6" offset="2" />
                     </h:panelGrid>
-                </b:well>
+                  ]]></script>
+                  </b:well>
+                  </b:tab>
+                </b:tabView>
 
                 <br/>
                 <h2>Reference section</h2>
