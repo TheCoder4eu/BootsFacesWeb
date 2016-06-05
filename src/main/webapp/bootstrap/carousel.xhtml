@@ -156,9 +156,25 @@ You may also want to set <code>wrap="false"</code> to prevent the wizard to star
                   update="@form:**:messages"
                   execute="@form"
                   onclick="ajax:bean.onclick(); return false;"
-                  look="success" />
-                  oncomplete="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause'); return false;">
+                  look="success"
+                  oncomplete="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause'); return false;"/>
      ]]></script>
+
+     <p>This also allows you to skip slides. Add an invisible input field to your form, update it with the
+     index of the next slide and call <code>$('.wizardPseudoClass').carousel($('invisibleFieldId').val());</code>:</p>
+
+         <script type="syntaxhighlighter"
+            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+    <![CDATA[
+        <h:inputText id="nextSlideId" type="hidden" value="#39;{wizardBean.nextIndex}" />
+        <b:commandButton value="next step"
+                  update="@form:**:messages @previous"
+                  execute="@form"
+                  onclick="ajax:bean.onclick(); return false;"
+                  look="success"
+                  oncomplete="$('.wizardPseudoClass').carousel($('nextSlideId').val());;$('.wizardPseudoClass').carousel('pause'); return false;"/>
+     ]]></script>
+
 
     <h1>Advanced usage: Captions</h1>
     <p>Assign an image description to the slides by adding the <code>caption</code> attribute. This provides some
