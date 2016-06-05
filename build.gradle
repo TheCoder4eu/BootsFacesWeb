@@ -103,8 +103,8 @@ war.doFirst {
     new File( indexPage ).write( contents, 'UTF-8' )
 }
 
-//war {
-//   archiveName = 'BootsFacesWeb.war'
+war {
+   archiveName = 'BootsFacesWeb.war'
 //   classpath fileTree(dir: 'bsflib', include: '*') // adds a file-set to the WEB-INF/lib dir.
-//}
+}
 
