@@ -37,6 +37,8 @@ compile files("${System.properties['java.home']}/../lib/tools.jar")
 
 compile fileTree(dir: 'bsflib', include: '*.jar') //Required for messages/utils
 
+compile "net.bootsfaces:bootsfaces:0.9.0-SNAPSHOT"
+
 // coming soon:
 // compile 'de.beyondjava:angularFaces-widgets:2.2'
 
@@ -100,8 +102,8 @@ war.doFirst {
     new File( indexPage ).write( contents, 'UTF-8' )
 }
 
-war {
-   archiveName = 'BootsFacesWeb.war'
-   classpath fileTree(dir: 'bsflib', include: '*') // adds a file-set to the WEB-INF/lib dir.
-}
+//war {
+//   archiveName = 'BootsFacesWeb.war'
+//   classpath fileTree(dir: 'bsflib', include: '*') // adds a file-set to the WEB-INF/lib dir.
+//}
 
