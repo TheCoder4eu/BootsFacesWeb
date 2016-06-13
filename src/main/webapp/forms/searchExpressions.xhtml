@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
-<ui:composition template="/applayout/pageTemplate.xhtml"   
-    xmlns="http://www.w3.org/1999/xhtml" 
-    xmlns:h="http://java.sun.com/jsf/html" 
+<ui:composition template="/applayout/pageTemplate.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
     xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:b="http://bootsfaces.net/ui" 
+    xmlns:b="http://bootsfaces.net/ui"
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:p="http://primefaces.org/ui">
 
@@ -13,12 +13,12 @@
                 <p>Inspired by PrimeFaces, BootsFaces implements a couple of powerful search expressions to make your life easier.
                 In almost every case, you can get rid of ids. Use <code>@form</code>,
                 <code>@next</code>,<code>@previous</code>,<code>@parent</code> and even jQuery-Expressions like <code>@(.css-class)</code> instead.</p>
-                
+
                 <h2>State of the art</h2>
                 <p>The search expressions can be used with the <code>update</code> and <code>process</code> attributes of the AJAX-enabled BootsFaces components.
                 For these components, the search expressions should also work with traditional <code>&lt;f:ajax /&gt;</code> facets (although we discourage
                 the use of these AJAX facets - in most cases you don't need them).</p>
-                 
+
                 <h2>Basic usage</h2>
                 <p>Like in standard JSF, you can use ids to determine which region of the DOM to update:</p>
                 <b:well>
@@ -27,11 +27,11 @@
 	                     <b:tabView id="tabViewId">
 	                       <b:tab>
 	                         <h:form>
-	                            <b:panel id="panelId">	
+	                            <b:panel id="panelId">
 	                              <b:commandButton update=":tabViewId" />
 	                              <b:commandButton update="panelId" />
 	                            </b:panel>
-	                          </h:form>    
+	                          </h:form>
 	                       </b:tab>
 	                     </b:tabView>
 	                   </h:body>
@@ -39,7 +39,7 @@
                 </b:well>
 				<p>The preceding colon indicates that <code>:tabViewId</code> isn't inside the "naming container" - usually a form or a custom composite component -
 				but in the root of the JSF component tree. The <code>panelId</code> is direct descendant of the form, so it doesn't need a colon.</p>
-				
+
 				<h2>Standard JSF search expressions</h2>
 				<p>Standard JSF introduces several search expressions, basically shortcut allowing you to get rid of the ids in many cases:</p>
 				<ul>
@@ -50,7 +50,7 @@
 					<li>@none is an exotic special case. It doesn't update anything. You sometimes need it to trigger an action on the server,
 					but don't want to display anything new on the client.</li>
 				</ul>
-				
+
 				<h2>PrimeFaces search expressions supported by BootsFaces</h2>
 				<p>PrimeFaces adds a couple of very useful search expressions, which are supported by BootsFaces, too. (Actually, @next and @previous originally were
 				contributed to PrimeFaces by one of the BootsFaces team members):</p>
@@ -58,7 +58,7 @@
 					<li>@previous finds the previous JSF element in the same level of the JSF tree. Note that this usually is different from the predecessor in the HMTL tree.</li>
 					<li>@next finds the next JSF element in the same level of the JSF tree.</li>
 					<li>@parent finds the parent element of the current widget in the JSF tree.</li>
-                    <li>@child(n) yields a certain child of the currently selected JSF subtree. However, I don't recommend using this search expression. It's extremely 
+                    <li>@child(n) yields a certain child of the currently selected JSF subtree. However, I don't recommend using this search expression. It's extremely
                     vulnerable to changes of your JSF view.</li>
                     <li>@() jquery expressions. These expressions are evaluated on the client. The most useful application is <code>@(.css-class)</code> to find
                     one or more elements with a given CSS class. The advantage of the jQuery expressions is that you aren't restricted to by the
@@ -67,13 +67,14 @@
                     algorithm parsing the jQuery expression is very primitive. Don't add spaces to the jQuery expression. Otherwise, it is treated
                     as two distinct jQuery expressions.</li>
 				</ul>
-				
+
 				<h2>BootsFaces search expressions</h2>
-				<p>Standard JSF introduces several search expressions, basically shortcuts allowing you to get rid of the ids in many cases:</p>		
-				<ul>		
-					<li>@findIdRecursive(id) find an id anywhere in the JSF tree below the currently select node. For instance, <code>@form:**:someId</code> looks for <code>someId</code>, 
+				<p>Standard JSF introduces several search expressions, basically shortcuts allowing you to get rid of the ids in many cases:</p>
+				<ul>
+					<li>@findIdRecursive(id) find an id anywhere in the JSF tree below the currently select node. For instance, <code>@form:**:someId</code> looks for <code>someId</code>,
 					considering the entire form.</li>
 					<li>** shortcut for @findIdRecursive</li>
+                    <li>@id and @findIdRecursively are synonyms of @findIdRecursive</li>
 					<li>@findId(id)  find an id, but restrict the search to the top-most level of the tree</li>
 					<li>*:id shortcut for @findId </li>
 					<li>@findPartialId(id)  find one or many ids, given by a wildcard expression: <code>*suffix</code>, <code>prefix*</code> or <code>prefix*suffix</code>.
@@ -83,7 +84,7 @@
 					Searches the entire tree.</li>
 					<li>**:*id or **:id* or **:*id* shortcut for @findPartialIdRecursive </li>
 				</ul>
-				
+
 				<h2>PrimeFaces search expressions BootsFaces does not support</h2>
 				<p>There are a few PrimeFaces search expressions BootsFaces does not support:</p>
 				<ul>
@@ -92,9 +93,9 @@
 					<li>@row(n)</li>
 					<li>@widgetVar(name) (doesn't make sense in BootsFaces, because BootsFaces doesn't use the concept of client-side widgets)</li>
 				</ul>
-				
 
-<!-- 
+
+<!--
                 <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1"><![CDATA[
                    emtpy
                 ]]></script>
@@ -102,16 +103,16 @@
 
 				<h2>Live demo</h2>
 				<p>This demo shows some of the options at a glance.</p>
-				<ui:include src="searchExpressionsSimpleDemo.xhtml"></ui:include> 
+				<ui:include src="searchExpressionsSimpleDemo.xhtml"></ui:include>
 
 				<h2>All-in-One-Demo (aka cheat sheet)</h2>
 				<p>This demo shows most options on a single screen. Most buttons modify the images. The buttons in the image row modify the image in the same row. The buttons below modify
 				the entire page. Some buttons also show the appearance of the button itself (by counting up the numbers). As you can see, you can freely combine every option
 				the search expression framework gives you.</p>
-				<ui:include src="searchExpressionsAllInOneDemo.xhtml"></ui:include> 
- 
+				<ui:include src="searchExpressionsAllInOneDemo.xhtml"></ui:include>
+
             <br />
-            
+
             <script type="text/javascript">
                 SyntaxHighlighter.all();
             </script>
