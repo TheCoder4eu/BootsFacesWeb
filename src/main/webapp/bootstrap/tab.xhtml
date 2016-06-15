@@ -312,7 +312,17 @@
 			try the <a target="#"
 				href="https://github.com/stephanrauh/BootsFaces-Examples/tree/master/AJAX">BootsFaces
 				AJAX demo project</a>.
+
 		</p>
+        <b:tabView onhide="console.log('hide ' + e.target);" onhidden="console.log('hidden')" onshow="console.log('show')" onshown="console.log('shown')">
+          <b:tab title="first tab">
+           first tab
+          </b:tab>
+          <b:tab title="second tab">
+           second tab
+          </b:tab>
+        </b:tabView>
+
 
 		<h1>Reference section</h1>
 		<ui:include src="TabViewAttributes.xhtml" />
