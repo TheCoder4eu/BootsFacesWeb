@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
-<ui:composition template="/applayout/pageTemplate.xhtml" 
+<ui:composition template="/applayout/pageTemplate.xhtml"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
@@ -10,7 +10,7 @@
             <ui:define name="content">
                 <h1>Wells</h1>
                 <p>Use the well as a simple effect on an element to give it an inset effect.</p>
-                
+
                 <b:panel look="info">
                     <f:facet name="heading"><b>EXAMPLE  - Well</b></f:facet>
                         <b:row>
@@ -18,7 +18,7 @@
                               <b:well>
                                   <h3>Well Header</h3>
                                   Well, that's the content of the <code>&lt;b:well /&gt;</code>.
-                              </b:well> 
+                              </b:well>
                             </b:column>
                         </b:row>
                     <f:facet name="footer">
@@ -34,70 +34,10 @@
                     </f:facet>
                 </b:panel>
                 <br/>
-                
-                <b:panel look="info">
-				<f:facet name="heading">
-					<b>Attributes of &lt;b:well&gt;</b>
-				</f:facet>
-					<table class="table table-striped table-hover"
-						style="background-color: #fff">
-						<thead>
-							<tr>
-								<th>Attribute</th>
-								<th>Default value</th>
-								<th>Description</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>size</td>
-								<td>(none)</td>
-								<td>Optional. Legal values are <code>lg</code> and <code>sm</code>. Makes the well blend in nicely with large and small layouts.</td>
-							</tr>
-							<tr>
-								<td>id</td>
-								<td>(none)</td>
-								<td>Unique identifier of the component.</td>
-							</tr>
-							<tr>
-							    <td>style</td>
-							    <td>(none)</td>
-							    <td>Inline style of the input element.</td>
-							</tr>
-							<tr>
-							    <td>styleClass</td>
-							    <td>(none)</td>
-							    <td>Style class of the input element.</td>
-							</tr>
-							<tr>
-							    <td>tooltip</td>
-							    <td>(none)</td>
-							    <td>The text of the tooltip.</td>
-							</tr>
-							<tr>
-							    <td>tooltipDelay</td>
-							    <td>(none)</td>
-							    <td>The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
-							</tr>
-							<tr>
-							    <td>tooltipDelayHide</td>
-							    <td>(none)</td>
-							    <td>The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
-							</tr>
-							<tr>
-							    <td>tooltipDelayShow</td>
-							    <td>(none)</td>
-							    <td>The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
-							</tr>
-							<tr>
-							    <td>tooltipPosition</td>
-							    <td>(none)</td>
-							    <td>Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".</td>
-							</tr>
-						</tbody>
-					</table>
-			</b:panel>
-            <b:panel look="info">
+
+             <ui:include src="wellAttributes.xhtml" />
+
+             <b:panel look="info">
 				<f:facet name="heading">
 					<b>Skinning</b>
 				</f:facet>
@@ -112,7 +52,7 @@
 			<br />
 			<br />
 			<br />
-                
+
                 <script type="text/javascript">
                     SyntaxHighlighter.all();
                 </script>
