@@ -38,9 +38,39 @@
                 <td>Boolean value to specify if year selector should be shown.</td>
             </tr>
             <tr>
+                <td>col-lg<br />colLg (alternative writing)</td>
+                <td> -1 </td>
+                <td>Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+            </tr>
+            <tr>
+                <td>col-md<br />colMd (alternative writing)</td>
+                <td> -1 </td>
+                <td>Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+            </tr>
+            <tr>
+                <td>col-sm<br />colSm (alternative writing)</td>
+                <td> -1 </td>
+                <td>Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+            </tr>
+            <tr>
+                <td>col-xs<br />colXs (alternative writing)</td>
+                <td> -1 </td>
+                <td>Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+            </tr>
+            <tr>
+                <td>display</td>
+                <td> block </td>
+                <td>If you use the "visible" attribute, the value of this attribute is added. Legal values: block, inline, inline-block. Default: block.</td>
+            </tr>
+            <tr>
                 <td>first-day<br />firstDay (alternative writing)</td>
                 <td>0 </td>
                 <td>Set the first day of the week: Sunday is 0, Monday is 1, etc.</td>
+            </tr>
+            <tr>
+                <td>hidden</td>
+                <td>(none)</td>
+                <td>This column is hidden on a certain screen size and below. Legal values: lg, md, sm, xs.</td>
             </tr>
             <tr>
                 <td>id</td>
@@ -53,6 +83,16 @@
                 <td>This option allows you to localize the DatePicker, specifying the language code (eg. it, fr, es, nl). The datepicker uses the ISO 639-1 language codes eventually followed by ISO 3166-1 country codes. The Datepicker is localized with the language specified by the ViewRoot Locale.</td>
             </tr>
             <tr>
+                <td>large-screen<br />largeScreen (alternative writing)</td>
+                <td> -1 </td>
+                <td>Alternative spelling to col-lg. Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+            </tr>
+            <tr>
+                <td>medium-screen<br />mediumScreen (alternative writing)</td>
+                <td> -1 </td>
+                <td>Alternative spelling to col-md. Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+            </tr>
+            <tr>
                 <td>mode</td>
                 <td>(none)</td>
                 <td>Controls how the Calendar is showed, can be inline or popup. Default is popup.</td>
@@ -61,6 +101,31 @@
                 <td>number-of-months<br />numberOfMonths (alternative writing)</td>
                 <td>0 </td>
                 <td>Number of months to show.</td>
+            </tr>
+            <tr>
+                <td>offset</td>
+                <td>(none)</td>
+                <td>Integer value to specify how many columns to offset.</td>
+            </tr>
+            <tr>
+                <td>offset-lg<br />offsetLg (alternative writing)</td>
+                <td>(none)</td>
+                <td>Integer value to specify how many columns to offset.</td>
+            </tr>
+            <tr>
+                <td>offset-md<br />offsetMd (alternative writing)</td>
+                <td>(none)</td>
+                <td>Integer value to specify how many columns to offset.</td>
+            </tr>
+            <tr>
+                <td>offset-sm<br />offsetSm (alternative writing)</td>
+                <td>(none)</td>
+                <td>Integer value to specify how many columns to offset.</td>
+            </tr>
+            <tr>
+                <td>offset-xs<br />offsetXs (alternative writing)</td>
+                <td>(none)</td>
+                <td>Integer value to specify how many columns to offset.</td>
             </tr>
             <tr>
                 <td>placeholder</td>
@@ -73,6 +138,16 @@
                 <td>Boolean value to specify the rendering of the component, when set to false the component will not be rendered.</td>
             </tr>
             <tr>
+                <td>required</td>
+                <td>false</td>
+                <td>Boolean value Require input in the component when the form is submitted.</td>
+            </tr>
+            <tr>
+                <td>required-message<br />requiredMessage (alternative writing)</td>
+                <td>(none)</td>
+                <td>Message to show if the user did not specify a value and the attribute required is set to true.</td>
+            </tr>
+            <tr>
                 <td>show-button-panel<br />showButtonPanel (alternative writing)</td>
                 <td>false</td>
                 <td>Boolean value to specify if row Buttons to the bottom of calendar should be shown.</td>
@@ -83,6 +158,16 @@
                 <td>Boolean value to specify if Week number should be shown.</td>
             </tr>
             <tr>
+                <td>small-screen<br />smallScreen (alternative writing)</td>
+                <td> -1 </td>
+                <td>Alternative spelling to col-sm. Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+            </tr>
+            <tr>
+                <td>span</td>
+                <td>(none)</td>
+                <td>Integer value to specify how many columns to span on medium screens (≥992 pixels). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+            </tr>
+            <tr>
                 <td>style</td>
                 <td>(none)</td>
                 <td>Inline style of the input element.</td>
@@ -91,6 +176,11 @@
                 <td>style-class<br />styleClass (alternative writing)</td>
                 <td>(none)</td>
                 <td>Style class of this element.</td>
+            </tr>
+            <tr>
+                <td>tiny-screen<br />tinyScreen (alternative writing)</td>
+                <td> -1 </td>
+                <td>Alternative spelling to col-xs. Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
             </tr>
             <tr>
                 <td>tooltip</td>
@@ -126,6 +216,11 @@
                 <td>value</td>
                 <td>(none)</td>
                 <td>Value.</td>
+            </tr>
+            <tr>
+                <td>visible</td>
+                <td>(none)</td>
+                <td>This column is shown on a certain screen size and above. Legal values: lg, md, sm, xs.</td>
             </tr>
           </tbody>
         </table>
