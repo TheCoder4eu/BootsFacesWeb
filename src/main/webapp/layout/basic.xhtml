@@ -5,7 +5,7 @@
         xmlns:f="http://java.sun.com/jsf/core"
         xmlns:b="http://bootsfaces.net/ui"
         xmlns:ui="http://java.sun.com/jsf/facelets">
-   
+
                <ui:define name="content">
                   <style>
                       .show-grid [class^="col-"] {
@@ -28,9 +28,9 @@
                   <p>What seems as an annoying restriction at first, turns out to be a big plus. Everybody can create
                   attractive web applications with little effort. The grid system and the well-thought color scheme
                   of Bootstrap make it almost impossible to create a page that doesn't look nice.</p>
-                  
+
                   <h2>Basic usage</h2>
-                 <p><b:badge value="Hint"></b:badge> To understand this page better, check out <a target="#" href="https://github.com/stephanrauh/BootsFaces-Examples/tree/master/ResponsiveDesign">this demo project</a>. It doesn't cover exactly this page, 
+                 <p><b:badge value="Hint"></b:badge> To understand this page better, check out <a target="#" href="https://github.com/stephanrauh/BootsFaces-Examples/tree/master/ResponsiveDesign">this demo project</a>. It doesn't cover exactly this page,
                   but it's a good starting point to play with the grid system of BootsFaces.</p>
                    <p>You can see the building blocks of every BootsFaces application in the image above:</p>
                   <ul>
@@ -39,7 +39,7 @@
                   everything must be put in a container, and every BootsFaces page needs a container. But only one. Don't try
                   to nest containers.<br />
                   It goes without saying that the white space around your widgets may look nice, but it's also a waste of
-                  space. Screen estate is a scarce resource. You can get rid of the border by using the attribute 
+                  space. Screen estate is a scarce resource. You can get rid of the border by using the attribute
                   <code>fluid="true"</code>.
                   </li>
                   <li>The grid is made of <code>&lt;b:row /&gt;</code> and <code>&lt;b:column /&gt;</code>. <code>&lt;b:row /&gt;</code>
@@ -54,68 +54,60 @@
                   HTML code is <code>&lt;div class="col-md-3" /&gt;</code>.
                   </li>
                   </ul>
-                  
+
                   <h1>Putting it into action</h1>
 
                 <b:tabView>
                   <b:tab title="preview">
-    <h:form id="loginForm">
-      <b:container layout="fluid">
-        <b:panel title="login screen" look="primary">
-          <b:row>
-            <b:column medium-screen="2">
-              <h:outputText value="Username:" for="username" />
-            </b:column>
-            <b:column medium-screen="4">
-              <b:inputText placeholder="Username" id="username" value="#{loginBean.username}" 
-                           ajax="true" autocomplete="false" update="@(.message)">
-                <f:facet name="prepend">
-                  <b:icon name="user" />
-                </f:facet>
-              </b:inputText>
-            </b:column>
-            <b:column medium-screen="6" style-class="message">
-              <b:message for="username" />
-            </b:column>
-          </b:row>
-          <b:row tooltip="This password has fancy error messages.">
-            <b:column medium-screen="2">
-              <h:outputText value="Password:" />
-            </b:column>
-            <b:column medium-screen="4">
-              <b:inputSecret placeholder="Password" id="password" value="#{loginBean.password}"
-                             ajax="true" autocomplete="false" update="@(.message)">
-                <f:facet name="prepend">
-                  <b:iconAwesome name="key" />
-                </f:facet>
-              </b:inputSecret>
-            </b:column>
-            <b:column medium-screen="6" styleClass="message">
-              <b:message for="password" line-break-tag="&lt;p&gt;&lt;hr /&gt;&lt;/p&gt;" />
-            </b:column>
-          </b:row>
-         <b:row style-class="message">
-            <b:column medium-screen="2">
-              <h:outputText value="#{loginBean.password}" />
-            </b:column>
-            <b:column medium-screen="4">
-              <b:badge value="x #{loginBean.password}" />
-            </b:column>
-            </b:row>
-          <b:row>
-            <b:column span="2" offset="2">
-              <b:commandButton value="login" onclick="ajax:loginBean.login()" update="@form" look="primary"
-                style="width:100%" />
-            </b:column>
-            <b:column span="2">
-              <b:commandButton value="password forgotten" onclick="ajax:loginBean.forgotPassword()" update="@form"
-                look="danger" style="width:100%" />
-            </b:column>
-          </b:row>
-        </b:panel>
-      </b:container>
-    </h:form>
-                </b:tab>
+        <h:form id="loginForm">
+          <b:container layout="fluid">
+            <b:panel title="login screen" look="primary">
+              <b:row>
+                <b:column medium-screen="2">
+                  <h:outputText value="Username:" for="username" />
+                </b:column>
+                <b:column medium-screen="4">
+                  <b:inputText placeholder="Username" id="username" value="#{loginBean.username}" ajax="true"
+                    autocomplete="false" update="@(.message)">
+                    <f:facet name="prepend">
+                      <b:icon name="user" />
+                    </f:facet>
+                  </b:inputText>
+                </b:column>
+                <b:column medium-screen="6" style-class="message">
+                  <b:message for="username" />
+                </b:column>
+              </b:row>
+              <b:row tooltip="This password has fancy error messages.">
+                <b:column medium-screen="2">
+                  <h:outputText value="Password:" />
+                </b:column>
+                <b:column medium-screen="4">
+                  <b:inputSecret placeholder="Password" id="password" value="#{loginBean.password}" ajax="true"
+                    autocomplete="false" update="@(.message)">
+                    <f:facet name="prepend">
+                      <b:iconAwesome name="key" />
+                    </f:facet>
+                  </b:inputSecret>
+                </b:column>
+                <b:column medium-screen="6" styleClass="message">
+                  <b:message for="password" line-break-tag="&lt;p&gt;&lt;hr /&gt;&lt;/p&gt;" />
+                </b:column>
+              </b:row>
+              <b:row>
+                <b:column span="2" offset="2">
+                  <b:commandButton value="login" onclick="ajax:loginBean.login()" update="@form" look="primary"
+                    style="width:100%" />
+                </b:column>
+                <b:column span="2">
+                  <b:commandButton value="password forgotten" onclick="ajax:loginBean.forgotPassword()" update="@form"
+                    look="danger" style="width:100%" />
+                </b:column>
+              </b:row>
+            </b:panel>
+          </b:container>
+        </h:form>
+      </b:tab>
                  <b:tab title="JSF markup (simplified)">
                    <b:well>
                      <script type="syntaxhighlighter"
@@ -169,7 +161,7 @@
               <h:outputText value="Username:" for="username" />
             </b:column>
             <b:column medium-screen="4">
-              <b:inputText placeholder="Username" id="username" value="#{loginBean.username}" 
+              <b:inputText placeholder="Username" id="username" value="#{loginBean.username}"
                            ajax="true" autocomplete="false" update="@(.message)">
                 <f:facet name="prepend">
                   <b:icon name="user" />
@@ -224,16 +216,16 @@ public class LoginBean {
 	@Size(min=4, max=10)
 	@NotEmpty
 	private String username;
-	
+
 	@Size(min=4, max=10)
 	@NotEmpty
 	private String password;
-	
+
 
 	public void setUsername(String name) {
 		this.username = name;
 	}
-	
+
 	public String getUsername() {
 		return username;
 	}
@@ -247,18 +239,18 @@ public class LoginBean {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public void login() {
 		if ("BootsFaces".equalsIgnoreCase(username) && "rocks!".equalsIgnoreCase(password)) {
 			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Congratulations! You've successfully logged in.");
 			FacesContext.getCurrentInstance().addMessage("loginForm:password", msg);
-			
+
 		} else {
 			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "That's the wrong password. Hint: BootsFaces rocks!");
 			FacesContext.getCurrentInstance().addMessage("loginForm:password", msg);
 		}
 	}
-	
+
 	public void forgotPassword() {
 		FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Default user name: BootsFaces");
 		FacesContext.getCurrentInstance().addMessage("loginForm:username", msg);
@@ -276,9 +268,9 @@ public class LoginBean {
                   <h2>Responsive design</h2>
                   <p>We'll explain the responsive design of BootsFaces in a minute. But we can show it now. Resize your browser window slowly.
                   Make it smaller. When the window is too small to display everything side-by-side, the widgets are stacked on top of each other.</p>
-                  
+
                   <h2>Why BootsFaces? Why not using Bootstrap natively?</h2>
-                 <p>BootsFaces takes full advantage of Bootstrap's Grid system while maintaining the benefits of being a JSF framework. Actually, we believe 
+                 <p>BootsFaces takes full advantage of Bootstrap's Grid system while maintaining the benefits of being a JSF framework. Actually, we believe
                  it's more concise and more expressive
                      than programming Bootstrap natively. Convince yourself: inspect the source code of the demo in your
                      browser's source code view. After reformatting, the form is 81 lines. The JSF source is is 45 lines.</p>
@@ -370,12 +362,12 @@ public class LoginBean {
                   </div>
                   <br/>
                   <h3 id="grid-example-basic">Example: Stacked-to-horizontal</h3>
-                  <p>Using a single set of <code>col-md=*</code> or <code>span=*</code> attributes, 
-                      you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range) 
+                  <p>Using a single set of <code>col-md=*</code> or <code>span=*</code> attributes,
+                      you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range)
                       before becoming horizontal on desktop (medium) devices.</p>
                   <p>The <code>span=*</code> and <code>offset=*</code> attributes are meant for this common special use case, to speed up markup writing</p>
                   <b:panel>
-                      
+
                       <b:row styleClass="show-grid">
                           <b:column span="1"><h:outputText value="span=1"/></b:column>
                           <b:column span="1"><h:outputText value="span=1"/></b:column>
@@ -405,7 +397,7 @@ public class LoginBean {
                       </b:row>
                       <f:facet name="footer">
                           <strong>Markup:</strong><br/>
-  
+
                           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
                             <![CDATA[
                             <b:row>
@@ -444,7 +436,7 @@ public class LoginBean {
                       <code>col-xs=*</code> and <code>col-md=*</code> in your columns. See the example below for a better idea of how it all works.
                   </p>
                   <b:panel>
-                      
+
                       <!-- Stack the columns on mobile by making one full-width and the other half-width -->
                       <b:row styleClass="show-grid">
                           <b:column col-xs="12" col-md="8"><h:outputText value="col-xs=12 col-md=8"/></b:column>
@@ -463,7 +455,7 @@ public class LoginBean {
                       </b:row>
                       <f:facet name="footer">
                           <strong>Markup:</strong><br/>
-  
+
                           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
                             <![CDATA[
                             <!-- Stack the columns on mobile by making one full-width and the other half-width -->
@@ -488,7 +480,7 @@ public class LoginBean {
                   <h3>Example: Mobile, tablet, desktops</h3>
                   <p>Build on the previous example by creating even more dynamic and powerful layouts with tablet <code>col-sm=*</code> attribute.</p>
                   <b:panel>
-                      
+
                       <b:row styleClass="show-grid">
                           <b:column col-xs="12" col-sm="6" col-md="8"><h:outputText value="col-xs=12 col-sm=6 col-md=8"/></b:column>
                           <b:column col-xs="6" col-sm="6" col-md="4"><h:outputText value="col-xs=6 col-sm=6 col-md=4"/></b:column>
@@ -502,7 +494,7 @@ public class LoginBean {
                       </b:row>
                       <f:facet name="footer">
                           <strong>Markup:</strong><br/>
-  
+
                           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
                             <![CDATA[
                             <b:row styleClass="show-grid">
@@ -525,7 +517,7 @@ public class LoginBean {
                       For example, <code>offest=4</code> moves a <code>span=4</code> over four columns.
                   </p>
                   <b:panel>
-                      
+
                       <b:row styleClass="show-grid">
                           <b:column span="4"><h:outputText value="span=4"/></b:column>
                           <b:column span="4" offset="4"><h:outputText value="span=4 offset=4"/></b:column>
@@ -539,7 +531,7 @@ public class LoginBean {
                       </b:row>
                       <f:facet name="footer">
                           <strong>Markup:</strong><br/>
-  
+
                           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
                             <![CDATA[
                             <b:row styleClass="show-grid">
@@ -563,7 +555,7 @@ public class LoginBean {
                   Nested rows should include a set of columns that add up to 12.
                   </p>
                   <b:panel>
-                      
+
                       <b:row styleClass="show-grid">
                           <b:column col-md="9">
                               <h:outputText value="Level 1: col-md=9"/>
@@ -575,7 +567,7 @@ public class LoginBean {
                       </b:row>
                       <f:facet name="footer">
                           <strong>Markup:</strong><br/>
-  
+
                           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
                             <![CDATA[
                             <b:row styleClass="show-grid">
@@ -590,7 +582,7 @@ public class LoginBean {
                             ]]></script>
                       </f:facet>
                   </b:panel>
-  
+
                  <h2>Alternative attribute names and values <b:badge value="since 0.8.1" /></h2>
                  <p>You can choose from two alternative spellings to define the column span:</p>
                  <ul>
@@ -609,14 +601,14 @@ public class LoginBean {
                  <li><code>medium-screen="one-fourth"</code> amounts to <code>col-md="3"</code>.</li>
                  <li><code>medium-screen="three-fourth"</code> amounts to <code>col-md="9"</code>.</li>
                  </ul>
-                 
+
 
                   <br/>
                   <h2>Reference section</h2>
                   <ui:include src="ContainerAttributes.xhtml" />
                   <ui:include src="RowAttributes.xhtml" />
                   <ui:include src="ColumnAttributes.xhtml" />
-                  
+
                   <b:panel look="info" rendered="false">
   					<f:facet name="heading">
   						<b>Skinning</b>
@@ -626,8 +618,8 @@ public class LoginBean {
   						look of the component.</li>
   					</ul>
   				</b:panel>
-                  
-                  
+
+
                   <br/><br/><br/>
                   <script type="text/javascript">
                       SyntaxHighlighter.all();
