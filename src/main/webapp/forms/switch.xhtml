@@ -33,8 +33,8 @@ td {
             <b:switch value="#{settingsBean.checkbox4}" caption="AJAX"
               label="Toggle the switch to toggle between rtl and ltr."
               tooltip="Using the English language, the only effect of the dir=rtl setting is that the exclamation mark are at the left hand side. Isn't that weird?"
-              
-              dir="#{settingsBean.checkbox4?'ltr':'rtl'}" 
+
+              dir="#{settingsBean.checkbox4?'ltr':'rtl'}"
               onchange="ajax:settingsBean.action()"
               offText="rtl"
               onText="ltr"
@@ -59,7 +59,7 @@ td {
             <b:switch value="#num;{settingsBean.checkbox4}" caption="AJAX"
               label="Toggle the switch to toggle between rtl and ltr."
               tooltip="Using the English language, the only effect of the dir=rtl setting is that the exclamation mark are at the left hand side. Isn't that weird?"
-              dir="#num;{settingsBean.checkbox4?'ltr':'rtl'}" 
+              dir="#num;{settingsBean.checkbox4?'ltr':'rtl'}"
               onchange="ajax:settingsBean.action()"
               offText="rtl"
               onText="ltr"
@@ -78,7 +78,7 @@ td {
     it's triggered too early. Use <code>onchange</code> instead.</p>
 
                 <h2>Error messages <b:badge value="since 0.8.1" /></h2>
-               <p>If the field has a FacesMessage, one of the CSS classes <code>bf-info</code>, <code>bf-warning</code>, 
+               <p>If the field has a FacesMessage, one of the CSS classes <code>bf-info</code>, <code>bf-warning</code>,
                    <code>bf-error</code> or <code>bf-fatal</code> is added to the label, depending on which error severity the message has.
                    The latter two classes color the label red. <code>bf-warning</code> colors it orange. You can override this default setting in a custom CSS file.</p>
                 <p>If there's no message,
@@ -90,38 +90,38 @@ td {
 <![CDATA[
                  <h:form id="messageForm">
                   <b:panelGrid colSpans="6,6">
-                    <b:switch value="#num;{checkboxBean.cbxError}" 
+                    <b:switch value="#num;{checkboxBean.cbxError}"
                                     id="checkboxWithErrorMessage"
-                                    caption="click to toggle the error message" 
+                                    caption="click to toggle the error message"
                                     label="error"
                                     onchange="ajax:checkboxBean.action();"
                                     update="@form"
                                     />
                     <b:message />
-                    <b:switch value="#num;{checkboxBean.cbxFatal}" 
+                    <b:switch value="#num;{checkboxBean.cbxFatal}"
                                     id="checkboxWithFatalMessage"
-                                    caption="click to toggle the fatal error message" 
+                                    caption="click to toggle the fatal error message"
                                     label="fatal"
                                     onchange="ajax:checkboxBean.action();"
                                     update="@form"
                                     />
                     <b:message for="checkboxWithFatalMessage" />
-                    <b:switch value="#num;{checkboxBean.cbxWarning}" 
+                    <b:switch value="#num;{checkboxBean.cbxWarning}"
                                     id="checkboxWithWarning"
-                                    caption="click to toggle the warning" 
+                                    caption="click to toggle the warning"
                                     label="warning"
                                     onchange="ajax:checkboxBean.action();"
                                     update="@form"
                                     />
                     <b:message for="@previous:@previous:@next" />
-                    <b:switch value="#num;{checkboxBean.cbxInfo}" 
+                    <b:switch value="#num;{checkboxBean.cbxInfo}"
                                     id="checkboxWithInfoMessage"
-                                    caption="click to toggle the info message" 
+                                    caption="click to toggle the info message"
                                     label="info"
                                     onchange="ajax:checkboxBean.action();"
                                     update="@form"
                                     />
-                                    
+
                     <b:message for="@form:**:checkboxWithInfoMessage" />
                   </b:panelGrid>
                 </h:form>
@@ -131,43 +131,132 @@ td {
           <b:tab title="displayed as">
                  <h:form id="messageForm">
                   <b:panelGrid colSpans="6,6">
-                    <b:switch value="#{checkboxBean.cbxError}" 
+                    <b:switch value="#{checkboxBean.cbxError}"
                                     id="checkboxWithErrorMessage"
-                                    caption="click to toggle the error message" 
+                                    caption="click to toggle the error message"
                                     label="error"
                                     onchange="ajax:checkboxBean.action();"
                                     update="@form"
                                     />
                     <b:message />
-                    <b:switch value="#{checkboxBean.cbxFatal}" 
+                    <b:switch value="#{checkboxBean.cbxFatal}"
                                     id="checkboxWithFatalMessage"
-                                    caption="click to toggle the fatal error message" 
+                                    caption="click to toggle the fatal error message"
                                     label="fatal"
                                     onchange="ajax:checkboxBean.action();"
                                     update="@form"
                                     />
                     <b:message for="checkboxWithFatalMessage" />
-                    <b:switch value="#{checkboxBean.cbxWarning}" 
+                    <b:switch value="#{checkboxBean.cbxWarning}"
                                     id="checkboxWithWarning"
-                                    caption="click to toggle the warning" 
+                                    caption="click to toggle the warning"
                                     label="warning"
                                     onchange="ajax:checkboxBean.action();"
                                     update="@form"
                                     />
                     <b:message for="@previous:@previous:@next" />
-                    <b:switch value="#{checkboxBean.cbxInfo}" 
+                    <b:switch value="#{checkboxBean.cbxInfo}"
                                     id="checkboxWithInfoMessage"
-                                    caption="click to toggle the info message" 
+                                    caption="click to toggle the info message"
                                     label="info"
                                     onchange="ajax:checkboxBean.action();"
                                     update="@form"
                                     />
-                                    
+
                     <b:message for="@form:**:checkboxWithInfoMessage" />
                   </b:panelGrid>
-                </h:form>          
+                </h:form>
              </b:tab>
         </b:tabView>
+
+                <br/>
+                <h2>Responsive design <b:badge value="since 0.9.0" /></h2>
+                <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
+                also with <code>&lt;b:switch /&gt;</code>:</p>
+               <b:tabView>
+                  <b:tab title="live preview">
+                  <b:well>
+                     <b:row>
+                        <b:switch  tooltip="large-screen='full-width'" large-screen="full-width" />
+                     </b:row>
+                     <b:row style="padding-top:5px">
+                        <b:switch  tooltip="large-screen='one-third'" large-screen="one-third" />
+                        <b:switch  tooltip="large-screen='two-thirds'" large-screen="two-thirds" />
+                     </b:row>
+                     <b:row style="padding-top:5px">
+                        <b:switch  tooltip="small-screen='one-third'" small-screen="one-third" />
+                        <b:switch  tooltip="small-screen='two-thirds'" small-screen="two-thirds" />
+                     </b:row>
+                     <b:row style="padding-top:5px">
+                        <b:switch  tooltip="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
+                        <b:switch  tooltip="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
+                     </b:row>
+                  </b:well>
+                  </b:tab>
+                  <b:tab title="JSF markup">
+                  <b:well>
+                  <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+             <![CDATA[
+             <b:row>
+                <b:switch  tooltip="large-screen='full-width'" large-screen="full-width" />
+             </b:row>
+             <b:row style="padding-top:5px">
+                <b:switch  tooltip="large-screen='one-third'" large-screen="one-third" />
+                <b:switch  tooltip="large-screen='two-thirds'" large-screen="two-thirds" />
+             </b:row>
+             <b:row style="padding-top:5px">
+                <b:switch  tooltip="small-screen='one-third'" small-screen="one-third" />
+                <b:switch  tooltip="small-screen='two-thirds'" small-screen="two-thirds" />
+             </b:row>
+             <b:row style="padding-top:5px">
+                <b:switch  tooltip="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
+                <b:switch  tooltip="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
+             </b:row>
+             ]]></script>
+                  </b:well>
+                  </b:tab>
+                </b:tabView>
+
+                <h2>Visibility depending on screen size <b:badge value="since 0.8.6/0.9.0" /></h2>
+                <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
+                <br/>
+                <b:tabView>
+                  <b:tab title="live preview">
+                  <b:well>
+                       <b:panelGrid colSpans="3,9">
+                          <h:outputText value="Visible on &gt;= md:" />
+                          <b:switch  value="Visible on medium or large screen" severity="info" visible="md..." />
+                          <h:outputText value="Visible on &lt;= sm:" />
+                          <b:switch  value="Visible on small-screen" severity="success" visible="...sm"/>
+                          <h:outputText value="Visible on sm...lg:" />
+                          <b:switch  value="Visible on small to large screen" severity="success" visible="sm...lg"/>
+                          <h:outputText value="Visible on xs and md:" />
+                          <b:switch  value="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
+                          <h:outputText value="Col-md-6, offset 2:" />
+                          <b:switch  value="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
+                       </b:panelGrid>
+                 </b:well>
+                  </b:tab>
+                  <b:tab title="JSF markup">
+                  <b:well>
+                  <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+             <![CDATA[
+               <b:panelGrid colSpans="3,9">
+                  <h:outputText value="Visible on &gt;= md:" />
+                  <b:switch  value="Visible on medium or large screen" severity="info" visible="md..." />
+                  <h:outputText value="Visible on &lt;= sm:" />
+                  <b:switch  value="Visible on small-screen" severity="success" visible="...sm"/>
+                  <h:outputText value="Visible on sm...lg:" />
+                  <b:switch  value="Visible on small to large screen" severity="success" visible="sm...lg"/>
+                  <h:outputText value="Visible on xs and md:" />
+                  <b:switch  value="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
+                  <h:outputText value="Col-md-6, offset 2:" />
+                  <b:switch  value="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
+               </b:panelGrid>
+             ]]></script>
+                  </b:well>
+                  </b:tab>
+                </b:tabView>
 
     <br />
     <h1>Reference section</h1>
