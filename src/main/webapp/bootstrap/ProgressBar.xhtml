@@ -166,100 +166,116 @@ td {
 			</b:tab>
 		</b:tabView>
 
-		<b:panel look="info">
-			<f:facet name="heading">
-				<b>Attributes of &lt;b:progressBar &gt;</b>
-			</f:facet>
-			<div class="table-responsive">
-				<table class="table table-striped table-hover"
-					style="background-color: #fff">
-					<thead>
-						<tr>
-							<th>Attribute</th>
-							<th>Default value</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-						    <td>id</td>
-						    <td>(none)</td>
-						    <td>Unique identifier of the component in a namingContainer.</td>
-						</tr>
-						<tr>
-						    <td>rendered</td>
-						    <td>false</td>
-						    <td>Boolean value to specify the rendering of the component, when set to false the component will not be rendered.</td>
-						</tr>
-						<tr>
-						    <td>label</td>
-						    <td>(none)</td>
-						    <td>Optional label, which is shown above the progress bar. Can be used for indicating the current value.</td>
-						</tr>
-						<tr>
-						    <td>look</td>
-						    <td>(none)</td>
-						    <td>Look of the ProgressBar, can be info, success, warning, or danger. If not specified, a blue bar will be rendered.</td>
-						</tr>
-						<tr>
-						    <td>value</td>
-						    <td>(none)</td>
-						    <td>The value the ProgressBar should indicate. See the label attribute, if the exact value should be shown in text form.</td>
-						</tr>
-						<tr>
-						    <td>max</td>
-						    <td> 100 </td>
-						    <td>The maximum value of the ProgressBar. (default 100)</td>
-						</tr>
-						<tr>
-						    <td>min</td>
-						    <td> 0 </td>
-						    <td>The minimum value of the ProgressBar. (default 0)</td>
-						</tr>
-						<tr>
-						    <td>striped</td>
-						    <td> false </td>
-						    <td>If true, stripes will be added to the ProgressBar's look. Default value: false.</td>
-						</tr>
-						<tr>
-						    <td>animated</td>
-						    <td> false </td>
-						    <td>If true, stripes will be added and animated to move from right to left to indicate running actions. Default value: false.</td>
-						</tr>
-						<tr>
-						    <td>tooltip</td>
-						    <td>(none)</td>
-						    <td>The text of the tooltip.</td>
-						</tr>
-						<tr>
-						    <td>tooltip-container</td>
-						    <td> body </td>
-						    <td>Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering errors in special cases. Also see data-container in the documentation of Bootstrap. The default value is body.</td>
-						</tr>
-						<tr>
-						    <td>tooltip-delay</td>
-						    <td>0 </td>
-						    <td>The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
-						</tr>
-						<tr>
-						    <td>tooltip-delay-hide</td>
-						    <td>0 </td>
-						    <td>The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
-						</tr>
-						<tr>
-						    <td>tooltip-delay-show</td>
-						    <td>0 </td>
-						    <td>The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
-						</tr>
-						<tr>
-						    <td>tooltip-position</td>
-						    <td>(none)</td>
-						    <td>Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</b:panel>
+        <br/>
+        <h2>Responsive design <b:badge value="since 0.9.0" /></h2>
+        <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
+        also with <code>&lt;b:progressBar /&gt;</code>:</p>
+       <b:tabView>
+          <b:tab title="live preview">
+          <b:well>
+             <b:row>
+                <b:progressBar value="50" min="0" max="100"  tooltip="large-screen='full-width'" large-screen="full-width" />
+             </b:row>
+             <b:row style="padding-top:5px">
+                <b:progressBar value="50" min="0" max="100"  tooltip="large-screen='one-third'" large-screen="one-third" />
+                <b:progressBar value="50" min="0" max="100"  tooltip="large-screen='two-thirds'" large-screen="two-thirds" />
+             </b:row>
+             <b:row style="padding-top:5px">
+                <b:progressBar value="50" min="0" max="100"  tooltip="small-screen='one-third'" small-screen="one-third" />
+                <b:progressBar value="50" min="0" max="100"  tooltip="small-screen='two-thirds'" small-screen="two-thirds" />
+             </b:row>
+             <b:row style="padding-top:5px">
+                <b:progressBar value="50" min="0" max="100"  tooltip="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
+                <b:progressBar value="50" min="0" max="100"  tooltip="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
+             </b:row>
+          </b:well>
+          </b:tab>
+          <b:tab title="JSF markup">
+          <b:well>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+             <![CDATA[
+             <b:row>
+                <b:progressBar value="50" min="0" max="100"  tooltip="large-screen='full-width'" large-screen="full-width" />
+             </b:row>
+             <b:row style="padding-top:5px">
+                <b:progressBar value="50" min="0" max="100"  tooltip="large-screen='one-third'" large-screen="one-third" />
+                <b:progressBar value="50" min="0" max="100"  tooltip="large-screen='two-thirds'" large-screen="two-thirds" />
+             </b:row>
+             <b:row style="padding-top:5px">
+                <b:progressBar value="50" min="0" max="100"  tooltip="small-screen='one-third'" small-screen="one-third" />
+                <b:progressBar value="50" min="0" max="100"  tooltip="small-screen='two-thirds'" small-screen="two-thirds" />
+             </b:row>
+             <b:row style="padding-top:5px">
+                <b:progressBar value="50" min="0" max="100"  tooltip="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
+                <b:progressBar value="50" min="0" max="100"  tooltip="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
+             </b:row>
+             ]]></script>
+          </b:well>
+          </b:tab>
+        </b:tabView>
+
+        <h2>Visibility depending on screen size <b:badge value="since 0.8.6/0.9.0" /></h2>
+        <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
+        <br/>
+        <b:tabView>
+          <b:tab title="live preview">
+          <b:well>
+               <b:panelGrid colSpans="3,9">
+                  <h:outputText value="Visible on &gt;= md:" />
+                  <b:progressBar value="50" min="0" max="100"  tooltip="Visible on medium or large screen" severity="info" visible="md..." />
+                  <h:outputText value="Visible on &lt;= sm:" />
+                  <b:progressBar value="50" min="0" max="100"  tooltip="Visible on small-screen" severity="success" visible="...sm"/>
+                  <h:outputText value="Visible on sm...lg:" />
+                  <b:progressBar value="50" min="0" max="100"  tooltip="Visible on small to large screen" severity="success" visible="sm...lg"/>
+                  <h:outputText value="Visible on xs and md:" />
+                  <b:progressBar value="50" min="0" max="100"  tooltip="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
+                  <h:outputText value="Col-md-6, offset 2:" />
+                  <b:progressBar value="50" min="0" max="100"  tooltip="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
+               </b:panelGrid>
+         </b:well>
+          </b:tab>
+          <b:tab title="JSF markup">
+          <b:well>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+             <![CDATA[
+               <b:panelGrid colSpans="3,9">
+                  <h:outputText value="Visible on &gt;= md:" />
+                  <b:progressBar value="50" min="0" max="100"  tooltip="Visible on medium or large screen" severity="info" visible="md..." />
+                  <h:outputText value="Visible on &lt;= sm:" />
+                  <b:progressBar value="50" min="0" max="100"  tooltip="Visible on small-screen" severity="success" visible="...sm"/>
+                  <h:outputText value="Visible on sm...lg:" />
+                  <b:progressBar value="50" min="0" max="100"  tooltip="Visible on small to large screen" severity="success" visible="sm...lg"/>
+                  <h:outputText value="Visible on xs and md:" />
+                  <b:progressBar value="50" min="0" max="100"  tooltip="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
+                  <h:outputText value="Col-md-6, offset 2:" />
+                  <b:progressBar value="50" min="0" max="100"  tooltip="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
+               </b:panelGrid>
+             ]]></script>
+          </b:well>
+          </b:tab>
+        </b:tabView>
+
+        <h2>Tooltips</h2>
+        <p><code>&lt;b:progressBar /&gt;</code> supports tooltips:</p>
+        <br/>
+        <b:tabView>
+          <b:tab title="live preview">
+          <b:well>
+              <b:progressBar value="50" min="0" max="100" severity="info" tooltip="Ain't it a nice tooltip?"/>
+          </b:well>
+          </b:tab>
+          <b:tab title="JSF markup">
+          <b:well>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                  <![CDATA[
+                      <b:progressBar  value="Look at my tooltip!" tooltip="Ain't it a nice tooltip?"/>
+                 ]]></script>
+          </b:well>
+          </b:tab>
+        </b:tabView>
+
+        <h1>Reference section</h1>
+        <ui:include src="ProgressBarAttributes.xhtml" />
 		<b:panel look="info">
 			<f:facet name="heading">
 				<b>Skinning</b>
