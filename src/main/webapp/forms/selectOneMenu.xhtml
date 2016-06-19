@@ -492,6 +492,113 @@ public class SemaphoreBean {
             </b:tabView>
         </h:form>
 
+                <br/>
+                <h2>Responsive design <b:badge value="since 0.9.0" /></h2>
+                <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
+                also with <code>&lt;b:icon /&gt;</code>:</p>
+               <b:tabView>
+                  <b:tab title="live preview">
+                  <b:well>
+                     <b:row>
+                        <b:selectOneMenu  tooltip="large-screen='full-width'" large-screen="full-width" />
+                     </b:row>
+                     <b:row style="padding-top:5px">
+                        <b:selectOneMenu  tooltip="large-screen='one-third'" large-screen="one-third" />
+                        <b:selectOneMenu  tooltip="large-screen='two-thirds'" large-screen="two-thirds" />
+                     </b:row>
+                     <b:row style="padding-top:5px">
+                        <b:selectOneMenu  tooltip="small-screen='one-third'" small-screen="one-third" />
+                        <b:selectOneMenu  tooltip="small-screen='two-thirds'" small-screen="two-thirds" />
+                     </b:row>
+                     <b:row style="padding-top:5px">
+                        <b:selectOneMenu  tooltip="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
+                        <b:selectOneMenu  tooltip="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
+                     </b:row>
+                  </b:well>
+                  </b:tab>
+                  <b:tab title="JSF markup">
+                  <b:well>
+                  <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+             <![CDATA[
+             <b:row>
+                <b:selectOneMenu  tooltip="large-screen='full-width'" large-screen="full-width" />
+             </b:row>
+             <b:row style="padding-top:5px">
+                <b:selectOneMenu  tooltip="large-screen='one-third'" large-screen="one-third" />
+                <b:selectOneMenu  tooltip="large-screen='two-thirds'" large-screen="two-thirds" />
+             </b:row>
+             <b:row style="padding-top:5px">
+                <b:selectOneMenu  tooltip="small-screen='one-third'" small-screen="one-third" />
+                <b:selectOneMenu  tooltip="small-screen='two-thirds'" small-screen="two-thirds" />
+             </b:row>
+             <b:row style="padding-top:5px">
+                <b:selectOneMenu  tooltip="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
+                <b:selectOneMenu  tooltip="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
+             </b:row>
+             ]]></script>
+                  </b:well>
+                  </b:tab>
+                </b:tabView>
+
+                <h2>Visibility depending on screen size <b:badge value="since 0.8.6/0.9.0" /></h2>
+                <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
+                <br/>
+                <b:tabView>
+                  <b:tab title="live preview">
+                  <b:well>
+                       <b:panelGrid colSpans="3,9">
+                          <h:outputText value="Visible on &gt;= md:" />
+                          <b:selectOneMenu  value="Visible on medium or large screen" severity="info" visible="md..." />
+                          <h:outputText value="Visible on &lt;= sm:" />
+                          <b:selectOneMenu  value="Visible on small-screen" severity="success" visible="...sm"/>
+                          <h:outputText value="Visible on sm...lg:" />
+                          <b:selectOneMenu  value="Visible on small to large screen" severity="success" visible="sm...lg"/>
+                          <h:outputText value="Visible on xs and md:" />
+                          <b:selectOneMenu  value="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
+                          <h:outputText value="Col-md-6, offset 2:" />
+                          <b:selectOneMenu  value="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
+                       </b:panelGrid>
+                 </b:well>
+                  </b:tab>
+                  <b:tab title="JSF markup">
+                  <b:well>
+                  <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+             <![CDATA[
+               <b:panelGrid colSpans="3,9">
+                  <h:outputText value="Visible on &gt;= md:" />
+                  <b:selectOneMenu  value="Visible on medium or large screen" severity="info" visible="md..." />
+                  <h:outputText value="Visible on &lt;= sm:" />
+                  <b:selectOneMenu  value="Visible on small-screen" severity="success" visible="...sm"/>
+                  <h:outputText value="Visible on sm...lg:" />
+                  <b:selectOneMenu  value="Visible on small to large screen" severity="success" visible="sm...lg"/>
+                  <h:outputText value="Visible on xs and md:" />
+                  <b:selectOneMenu  value="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
+                  <h:outputText value="Col-md-6, offset 2:" />
+                  <b:selectOneMenu  value="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
+               </b:panelGrid>
+             ]]></script>
+                  </b:well>
+                  </b:tab>
+                </b:tabView>
+
+                <h2>Tooltips</h2>
+                <p><code>&lt;b:selectOneMenu  /&gt;</code> supports tooltips:</p>
+                <br/>
+                <b:tabView>
+                  <b:tab title="live preview">
+                  <b:well>
+                      <b:selectOneMenu  value="Look at my tooltip!" severity="info" tooltip="Ain't it a nice tooltip?"/>
+                  </b:well>
+                  </b:tab>
+                  <b:tab title="JSF markup">
+                  <b:well>
+                  <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                  <![CDATA[
+                      <b:selectOneMenu  value="Look at my tooltip!" tooltip="Ain't it a nice tooltip?"/>
+                 ]]></script>
+                  </b:well>
+                  </b:tab>
+                </b:tabView>
 
 
                 <h1>Reference section</h1>

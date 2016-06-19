@@ -86,108 +86,108 @@
 
         <h1>AJAX</h1>
         <p>As of BootsFaces 0.7.0, AJAX doesn't seem to work with the multiple-choice combobox. In theory it should work, but there's an issue with the example above, so we can't say for sure it works in your application.</p>
-        
+
         <h1>Options</h1>
 
 		<b:panelGrid colSpans="3,3,6">
 			<h:outputText value="radiobuttons" />
-            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}"
                 radiobuttons="true">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
                  <f:selectItem itemLabel="Opel" itemValue="3" />
             </b:selectMultiMenu>
 			<h:outputText value="Converts the multiple-choice widget into a single-choice combobox."/>
-		
+
 			<h:outputText value="maxHeight" />
-            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}"
                 maxHeight="70">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
                  <f:selectItem itemLabel="Opel" itemValue="3" />
             </b:selectMultiMenu>
 			<h:outputText value="Maximum height of the options panel."/>
-            
+
             <h:outputText value="nonSelectedText" />
-            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}"
                 nonSelectedText="Please select!">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
                  <f:selectItem itemLabel="Opel" itemValue="3" />
             </b:selectMultiMenu>
 			<h:outputText value="Text which is displayed if no option has been selected."/>
-            
+
             <h:outputText value="nSelectedText, numberDisplayed" />
-            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}"
                 nSelectedText="Too many choices!" numberDisplayed="1">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
                  <f:selectItem itemLabel="Opel" itemValue="3" />
             </b:selectMultiMenu>
 			<h:outputText value="Maximum number of options displayed in the button. Text which is displayed if more than numberDisplayed options have been selected."/>
-            
+
             <h:outputText value="allSelectedText" />
-            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}"
                 allSelectedText="everything selected">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
                  <f:selectItem itemLabel="Opel" itemValue="3" />
             </b:selectMultiMenu>
 			<h:outputText value="Text which is displayed if every option has been selected."/>
-            
+
             <h:outputText value="includeSelectAllOption" />
-            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}"
                 includeSelectAllOption="true">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
                  <f:selectItem itemLabel="Opel" itemValue="3" />
             </b:selectMultiMenu>
 			<h:outputText value="If true, you can select every option with a single click."/>
-            
+
             <h:outputText value="selectAllText" />
-            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}"
                 includeSelectAllOption="true" selectAllText="click to chose everything">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
                  <f:selectItem itemLabel="Opel" itemValue="3" />
             </b:selectMultiMenu>
 			<h:outputText value="The text displayed for the select all option."/>
-            
+
             <h:outputText value="enableFiltering, filterPlaceholder" />
-            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}"
                 enableFiltering="true" filterPlaceholder="type to filter">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
                  <f:selectItem itemLabel="Opel" itemValue="3" />
             </b:selectMultiMenu>
 			<h:outputText value="Set to true or false to enable or disable the filter. A filter input will be added to dynamically filter all options. The placeholder used for the filter input."    />
-			
+
 			<h:outputText value="enableFiltering, enableCaseInsensitiveFiltering, filterPlaceholder" />
-            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}"
                 enableFiltering="true" enableCaseInsensitiveFiltering="true" filterPlaceholder="type to filter">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
                  <f:selectItem itemLabel="Opel" itemValue="3" />
             </b:selectMultiMenu>
 			<h:outputText value="Set to true or false to enable or disable the filter. A filter input will be added to dynamically filter all options. The placeholder used for the filter input."    />
-			
+
 			<h:outputText value="dropRight" />
-            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}"
                 dropRight="true" buttonWidth="250">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
                  <f:selectItem itemLabel="Opel" itemValue="3" />
             </b:selectMultiMenu>
 			<h:outputText value="Moves the drop-down-area from the left hand side to the right hand side."    />
-			
+
 			<h:outputText value="disableIfEmpty" />
-            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}"
                 disableIfEmpty="true">
             </b:selectMultiMenu>
 			<h:outputText value="If true, the button is disabled if no options are given."    />
 
 			<h:outputText value="onchange" />
-            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}"
                 onchange="function(option, checked, select) {console.log('changed option ' + $(option).val())}">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
@@ -196,7 +196,7 @@
 			<h:outputText value="Client side callback to execute when input element loses focus and its value has been modified since gaining focus."    />
 
 			<h:outputText value="ondropdownshow" />
-            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}"
                 ondropdownshow="function(event) {console.log('shown')}">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
@@ -205,7 +205,7 @@
 			<h:outputText value="Client side callback called when the drop-down area is shown."    />
 
 			<h:outputText value="ondropdownhide" />
-            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}"
                 ondropdownhide="function(event) {console.log('hidden')}">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
@@ -214,7 +214,7 @@
 			<h:outputText value="Client side callback called when the drop-down area is hidden."    />
 
 			<h:outputText value="buttonClass" />
-            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}"
                 buttonClass="btn btn-link">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
@@ -223,7 +223,7 @@
 			<h:outputText value="The CSS class of the button."    />
 
 			<h:outputText value="styleClass" />
-            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}"
                 styleClass="navbar-inverse">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
@@ -232,28 +232,28 @@
 			<h:outputText value="Style class of the input element. Is translated to the buttonContainer attribute."    />
 
 			<h:outputText value="buttonWidth" />
-            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" 
+            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}"
                 buttonWidth="250">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
                  <f:selectItem itemLabel="Opel" itemValue="3" />
             </b:selectMultiMenu>
 			<h:outputText value="The width of the multiselect button may be fixed using this option."    />
-			
-			
+
+
         </b:panelGrid>
-        
-        
-        
+
+
+
         <h1>Append and prepend</h1>
     <p>You can use the <code>prepend</code> facet to put an element seamlessly in front of the multiple choice combobox. However, the <code>append</code> facet
-    doesn't work yet. It is displayed, but not seamlessly next to the combobox. In any case, both facets don't match the look and feel of the 
+    doesn't work yet. It is displayed, but not seamlessly next to the combobox. In any case, both facets don't match the look and feel of the
     multi-selectbox exactly, so you need to apply some CSS code to improve it.</p>
-        
+
 <b:tabView activeIndex="0">
     <b:tab title="JSF markup">
                     <b:well>
-    
+
        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
                 <b:selectMultiMenu value="#{selectMultiMenuBean.type}" required="true" label="Select an E-Mail-Address">
@@ -264,7 +264,7 @@
                         <!-- append doesn't work correctly! -->
 	                    <h:outputText value=".com" />
 	                </f:facet>
-	                
+
                     <f:selectItem itemLabel="gmail" itemValue="1" />
                     <f:selectItem itemLabel="github" itemValue="2" />
                 </b:selectMultiMenu>
@@ -281,27 +281,27 @@
 	                <f:facet name="append">
 	                    <h:outputText value=".com" />
 	                </f:facet>
-	                
+
                     <f:selectItem itemLabel="gmail" itemValue="1" />
                     <f:selectItem itemLabel="github" itemValue="2" />
                 </b:selectMultiMenu>
                 </b:well>
        </b:tab>
        </b:tabView>
-        
+
         <h1>Objects and converters</h1>
         <p><code>&lt;b:selectMultiMenu&gt;</code> only works with strings. The value must not be any other data type. So don't bother with converters -
         we officially don't support them.</p>
-        
+
         <h1>Arrays and HashMaps</h1>
-        <p>The list of items can be defined as an <code>&lt;f:selectItems /&gt;</code> tag. BootsFaces uses a modified version of the 
+        <p>The list of items can be defined as an <code>&lt;f:selectItems /&gt;</code> tag. BootsFaces uses a modified version of the
         algorithm PrimeFaces 5.1 uses to implement <code>&lt;f:selectItems /&gt;</code>. As a result, you can use <code>&lt;b:selectMultiMenu&gt;</code>
         almost the same way as <code>&lt;prime:selectOneMenu&gt;</code>. </p>
         <h:form>
 <b:tabView activeIndex="0">
     <b:tab title="JSF markup">
                     <b:well>
-    
+
        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
 	        <b:panelGrid colSpans="2,2,8">
@@ -381,8 +381,8 @@ public class SemaphoreBean {
        </script>
        </b:well>)
     </b:tab>
-    
-    
+
+
     <b:tab title="displayed as">
                 <b:well>
 	        <b:panelGrid colSpans="2,2,8">
@@ -401,19 +401,19 @@ public class SemaphoreBean {
     </b:tab>
 </b:tabView>
         </h:form>
-        
-        
-        
+
+
+
                 <h1>Labels as captions above the combobox</h1>
                 <p>By default, BootsFaces displays the label above the input field. However, in the case of the multiple choice combobox,
                 we didn't implement this feature yet.</p>
                 <ui:remove>
-                <!-- 
-                
+                <!--
+
 <b:tabView>
   <b:tab title="JSF markup">
                   <b:well>
-  
+
     <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
     <h:form>
@@ -440,7 +440,7 @@ public class SemaphoreBean {
   </b:tab>
   <b:tab title="displayed as">
                   <b:well>
-  
+
     <h:form>
     	<h:panelGrid columns="3"  cellpadding="5">
 		    <b:selectMultiMenu value="# {selectMultiMenuBean.brand}" label="Select your car's brand:" id="brandID2">
@@ -462,7 +462,7 @@ public class SemaphoreBean {
   </b:well>
   </b:tab>
 </b:tabView>
-              
+
                 <p>The label is displayed above the combobox</p>
 
                <h2>Labels, required fields and error messages  <b:badge value="since 0.8.0" /></h2>
@@ -470,7 +470,7 @@ public class SemaphoreBean {
                you can suppress automatic rendering of labels by adding <code>renderLabel="false"</code>.
                </p>
                <p>Required inputs fields and their labels both bear the CSS class <code>bf-required</code>. By default, this adds an asterisk to the label.</p>
-               <p>If the field has a FacesMessage, one of the CSS classes <code>bf-info</code>, <code>bf-warning</code>, 
+               <p>If the field has a FacesMessage, one of the CSS classes <code>bf-info</code>, <code>bf-warning</code>,
                    <code>bf-error</code> or <code>bf-fatal</code>, depending on which error severity the message has.
                    The latter two classes color the label red.</p>
                 <p>If there's no message,
@@ -479,6 +479,115 @@ public class SemaphoreBean {
 
                  -->
                 </ui:remove>
+
+                <br/>
+                <h2>Responsive design <b:badge value="since 0.9.0" /></h2>
+                <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
+                also with <code>&lt;b:icon /&gt;</code>:</p>
+               <b:tabView>
+                  <b:tab title="live preview">
+                  <b:well>
+                     <b:row>
+                        <b:selectMultiMenu  tooltip="large-screen='full-width'" large-screen="full-width" placeholder="full-width" />
+                     </b:row>
+                     <b:row style="padding-top:5px">
+                        <b:selectMultiMenu  tooltip="large-screen='one-third'" large-screen="one-third" />
+                        <b:selectMultiMenu  tooltip="large-screen='two-thirds'" large-screen="two-thirds" />
+                     </b:row>
+                     <b:row style="padding-top:5px">
+                        <b:selectMultiMenu  tooltip="small-screen='one-third'" small-screen="one-third" />
+                        <b:selectMultiMenu  tooltip="small-screen='two-thirds'" small-screen="two-thirds" />
+                     </b:row>
+                     <b:row style="padding-top:5px">
+                        <b:selectMultiMenu  tooltip="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
+                        <b:selectMultiMenu  tooltip="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
+                     </b:row>
+                  </b:well>
+                  </b:tab>
+                  <b:tab title="JSF markup">
+                  <b:well>
+                  <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+             <![CDATA[
+             <b:row>
+                <b:selectMultiMenu  tooltip="large-screen='full-width'" large-screen="full-width" />
+             </b:row>
+             <b:row style="padding-top:5px">
+                <b:selectMultiMenu  tooltip="large-screen='one-third'" large-screen="one-third" />
+                <b:selectMultiMenu  tooltip="large-screen='two-thirds'" large-screen="two-thirds" />
+             </b:row>
+             <b:row style="padding-top:5px">
+                <b:selectMultiMenu  tooltip="small-screen='one-third'" small-screen="one-third" />
+                <b:selectMultiMenu  tooltip="small-screen='two-thirds'" small-screen="two-thirds" />
+             </b:row>
+             <b:row style="padding-top:5px">
+                <b:selectMultiMenu  tooltip="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
+                <b:selectMultiMenu  tooltip="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
+             </b:row>
+             ]]></script>
+                  </b:well>
+                  </b:tab>
+                </b:tabView>
+
+                <h2>Visibility depending on screen size <b:badge value="since 0.8.6/0.9.0" /></h2>
+                <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
+                <br/>
+                <b:tabView>
+                  <b:tab title="live preview">
+                  <b:well>
+                       <b:panelGrid colSpans="3,9">
+                          <h:outputText value="Visible on &gt;= md:" />
+                          <b:selectMultiMenu  value="Visible on medium or large screen" severity="info" visible="md..." />
+                          <h:outputText value="Visible on &lt;= sm:" />
+                          <b:selectMultiMenu  value="Visible on small-screen" severity="success" visible="...sm"/>
+                          <h:outputText value="Visible on sm...lg:" />
+                          <b:selectMultiMenu  value="Visible on small to large screen" severity="success" visible="sm...lg"/>
+                          <h:outputText value="Visible on xs and md:" />
+                          <b:selectMultiMenu  value="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
+                          <h:outputText value="Col-md-6, offset 2:" />
+                          <b:selectMultiMenu  value="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
+                       </b:panelGrid>
+                 </b:well>
+                  </b:tab>
+                  <b:tab title="JSF markup">
+                  <b:well>
+                  <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+             <![CDATA[
+               <b:panelGrid colSpans="3,9">
+                  <h:outputText value="Visible on &gt;= md:" />
+                  <b:selectMultiMenu  value="Visible on medium or large screen" severity="info" visible="md..." />
+                  <h:outputText value="Visible on &lt;= sm:" />
+                  <b:selectMultiMenu  value="Visible on small-screen" severity="success" visible="...sm"/>
+                  <h:outputText value="Visible on sm...lg:" />
+                  <b:selectMultiMenu  value="Visible on small to large screen" severity="success" visible="sm...lg"/>
+                  <h:outputText value="Visible on xs and md:" />
+                  <b:selectMultiMenu  value="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
+                  <h:outputText value="Col-md-6, offset 2:" />
+                  <b:selectMultiMenu  value="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
+               </b:panelGrid>
+             ]]></script>
+                  </b:well>
+                  </b:tab>
+                </b:tabView>
+
+                <h2>Tooltips</h2>
+                <p><code>&lt;b:selectMultiMenu  /&gt;</code> supports tooltips:</p>
+                <br/>
+                <b:tabView>
+                  <b:tab title="live preview">
+                  <b:well>
+                      <b:selectMultiMenu  value="Look at my tooltip!" severity="info" tooltip="Ain't it a nice tooltip?"/>
+                  </b:well>
+                  </b:tab>
+                  <b:tab title="JSF markup">
+                  <b:well>
+                  <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                  <![CDATA[
+                      <b:selectMultiMenu  value="Look at my tooltip!" tooltip="Ain't it a nice tooltip?"/>
+                 ]]></script>
+                  </b:well>
+                  </b:tab>
+                </b:tabView>
+
 				<br />
 				<br />
 				<ui:include src="SelectMultiMenuAttributes.xhtml" />
@@ -503,15 +612,15 @@ public class SemaphoreBean {
                    <li>If there's a label, it bears the CSS class <code>required</code>, if it's a mandatory field.
                    This class adds an asterisk to the label text. You can override the CSS class to remove the asterisk
                    or to replace it by something else.</li>
-                   <li>If there's a label, it bears the CSS classes <code>bf-info</code>, <code>bf-warning</code>, 
+                   <li>If there's a label, it bears the CSS classes <code>bf-info</code>, <code>bf-warning</code>,
                    <code>bf-error</code> or <code>bf-fatal</code>, depending on which severity the error message the input field has.
                    The latter two classes color the label red.<br />
                    If there's no message,
                    the input field bears the pseudo CSS class <code>bf-no-message</code>.
                    </li>
-				  </ul> 
+				  </ul>
 			</b:panel>
-                
+
                 <script type="text/javascript">
                     SyntaxHighlighter.all();
                 </script>
