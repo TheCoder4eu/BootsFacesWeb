@@ -157,6 +157,14 @@
                     </f:facet>
                 </b:modal>
 
+                <h2>Mandatory Dates</h2>
+                <h:form>
+                  <h:outputLabel value="Date: " for=":cdate3"/>
+                 <b:datepicker id="cdate3" mode="toggle-icon" showWeek="true" firstDay="1" value="#{dateBean.cdate}" required="true"/>
+                 <b:message for="@previous" />
+                 <b:commandButton value="submit" update="@form" />
+                </h:form>
+
                 <br/>
                 <h2>Reference section</h2>
                 <ui:include src="DatepickerAttributes.xhtml" />
