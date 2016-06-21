@@ -6,11 +6,20 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+
+import net.bootsfaces.utils.FacesMessages;
 
 @ViewScoped
 @ManagedBean
 public class ImageGallery implements Serializable {
 	private static final long serialVersionUID = 1L;
+
+	@Min(value=1, message="This number is smaller than 1.")
+	@Max(value=10, message="This number is larger than 10.")
+	private int oneToTen;
+
 
 	private List<String> images = new ArrayList<String>() {
 		{
@@ -31,9 +40,9 @@ public class ImageGallery implements Serializable {
 		}
 		private static final long serialVersionUID = 1L;
 	};
-	
+
 	private int counter=0;
-	
+
 	public int getCounter() {
 		return ++counter;
 	}
@@ -57,5 +66,19 @@ public class ImageGallery implements Serializable {
 			images.set(index, imagePool.get(random));
 			imagePool.set(random, previousImage);
 		}
+	}
+
+	public void validateNumber() {
+		if (oneToTen>=1 && oneToTen <=10) {
+			FacesMessages.info("oneToTenFormId:oneToTenId", "", "Well done!");
+		}
+	}
+
+	public int getOneToTen() {
+		return oneToTen;
+	}
+
+	public void setOneToTen(int oneToTen) {
+		this.oneToTen = oneToTen;
 	}
 }
