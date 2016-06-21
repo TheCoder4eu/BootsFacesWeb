@@ -71,9 +71,9 @@
 				<h2>BootsFaces search expressions</h2>
 				<p>Standard JSF introduces several search expressions, basically shortcuts allowing you to get rid of the ids in many cases:</p>
 				<ul>
-                    <li>@after is similar to @next, but it yields every JSF node following the current one. Very useful if one of more input fields
+                    <li>@after <b:badge value="since 0.9.0" /> is similar to @next, but it yields every JSF node following the current one. Very useful if one of more input fields
                     are to be activated or deactivated depending on a checkbox. There's an example below.</li>
-                    <li>@before is similar to @previous, but it yields every JSF node preceding the current one.</li>
+                    <li>@before <b:badge value="since 0.9.0" /> is similar to @previous, but it yields every JSF node preceding the current one.</li>
 					<li>@findIdRecursive(id) find an id anywhere in the JSF tree below the currently select node. For instance, <code>@form:**:someId</code> looks for <code>someId</code>,
 					considering the entire form.</li>
 					<li>** shortcut for @findIdRecursive</li>
@@ -104,58 +104,8 @@
                 ]]></script>
 -->
 
-                <h2>Classical use cases</h2>
-                <p>The reason why one of us (Stephan) originally invented <code>@next</code> and <code>@previous</code> was that he'd
-                observed that input fields typically occur as a triplet: a label, the input field itself and an error message.
-                It's rather cumbersome and error-prone to implement this using ids, but it's pretty straightforward with
-                <code>@next</code> and <code>@previous</code>. As a bonus, you can copy and paste input field much more
-                easily, and you can even move them from one form to another without updating the id. In fact, the only reason
-                why the example below uses ids is because you need to knwo the id in order to create messages on the
-                server side.</p>
-
-                <h:form id="oneToTenFormId">
-                  <b:tabView id="simpleTabViewId">
-                    <b:tab title="live preview" id="simpleTabId">
-                      <b:well>
-                        <b:panelGrid columns="3">
-                          <p:outputLabel for="@next" value="Enter a number between 1 and 10"/>
-                          <b:inputText value="#{imageGallery.oneToTen}" onkeyup="ajax:imageGallery.validateNumber()" update="@previous @next"
-                                       id="oneToTenId"/>
-                          <b:message for="@previous"/>
-                        </b:panelGrid>
-                      </b:well>
-                    </b:tab>
-                    <b:tab title="JSF markup">
-                      <b:well>
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-						<![CDATA[
-                      <b:panelGrid columns="3">
-                        <p:outputLabel for="@next" value="Enter a number between 1 and 10"/>
-                        <b:inputText value="#{imageGallery.oneToTen}" onkeyup="ajax:imageGallery.validateNumber()" update="@previous @next"
-                                     id="oneToTenId"/>
-                        <b:message for="@previous"/>
-                      </b:panelGrid>
-						]]></script>
-                      </b:well>
-                    </b:tab>
-                    <b:tab title="Java class">
-                      <b:well>
-                        <script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1">
-            			<![CDATA[
-                          	@Min(value=1, message="This number is smaller than 1.")
-                          	@Max(value=10, message="This number is larger than 10.")
-                          	private int oneToTen;
-
-                          	public void validateNumber() {
-                          		if (oneToTen>=1 && oneToTen <=10) {
-                          			FacesMessages.info("oneToTenFormId:oneToTenId", "", "Well done!");
-                          		}
-                          	}
-            			]]></script>
-                      </b:well>
-                    </b:tab>
-                  </b:tabView>
-                </h:form>
+                <ui:include src="searchExpressionsAtNext.xhtml"></ui:include>
+                <ui:include src="searchExpressionsAtAfter.xhtml"></ui:include>
 
                 <h2>More advanced live demo</h2>
 				<p>This demo shows some of the options at a glance.</p>

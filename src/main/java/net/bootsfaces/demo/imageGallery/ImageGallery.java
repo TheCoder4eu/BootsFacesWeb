@@ -16,10 +16,9 @@ import net.bootsfaces.utils.FacesMessages;
 public class ImageGallery implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Min(value=1, message="This number is smaller than 1.")
-	@Max(value=10, message="This number is larger than 10.")
 	private int oneToTen;
 
+	private boolean showNumber;
 
 	private List<String> images = new ArrayList<String>() {
 		{
@@ -71,6 +70,14 @@ public class ImageGallery implements Serializable {
 	public void validateNumber() {
 		if (oneToTen>=1 && oneToTen <=10) {
 			FacesMessages.info("oneToTenFormId:oneToTenId", "", "Well done!");
+			FacesMessages.info("oneToTenFormId2:oneToTenId", "", "Well done!");
+		} else if (oneToTen<1) {
+			FacesMessages.warning("oneToTenFormId:oneToTenId", "", "This number is smaller than 1.");
+			FacesMessages.warning("oneToTenFormId2:oneToTenId", "", "This number is smaller than 1.");
+		}
+		 else {
+			FacesMessages.warning("oneToTenFormId:oneToTenId", "", "This number is larger than 10.");
+			FacesMessages.warning("oneToTenFormId2:oneToTenId", "", "This number is larger than 10.");
 		}
 	}
 
@@ -80,5 +87,13 @@ public class ImageGallery implements Serializable {
 
 	public void setOneToTen(int oneToTen) {
 		this.oneToTen = oneToTen;
+	}
+
+	public boolean isShowNumber() {
+		return showNumber;
+	}
+
+	public void setShowNumber(boolean showNumber) {
+		this.showNumber = showNumber;
 	}
 }
