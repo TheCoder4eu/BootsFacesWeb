@@ -53,11 +53,6 @@
                 <td>Defines a custom lang file url for languages BootsFaces doesn't support out-of-the-box.</td>
             </tr>
             <tr>
-                <td>dataTable-properties<br />dataTableProperties (alternative writing)</td>
-                <td>(none)</td>
-                <td>Activates Multi-column search inputs. The default value is false (no multi-column searching). A java.util.Map&lt;net.bootsfaces.component.dataTable.DataTable.DataTablePropertyType, Object&gt; map on the backing bean where the state of the DataTable can be saved, and retrieved after re-rendering.</td>
-            </tr>
-            <tr>
                 <td>disabled</td>
                 <td>false</td>
                 <td>Boolean value to specify if the button is disabled.</td>
@@ -180,7 +175,7 @@
             <tr>
                 <td>page-length-menu<br />pageLengthMenu (alternative writing)</td>
                 <td> [ 10, 25, 50, 100 ] </td>
-                <td>Sets the default page length for paginated dataTable. The default value is [10, 25, 50, 100]. Read https://www.datatables.net/examples/advanced_init/length_menu.html for details.</td>
+                <td>Sets the default page length for paginated dataTable. The default value is [10, 25, 50, 100]. The brackets are optional. Read https://www.datatables.net/examples/advanced_init/length_menu.html for details.</td>
             </tr>
             <tr>
                 <td>paginated</td>
@@ -206,6 +201,11 @@
                 <td>row-highlight<br />rowHighlight (alternative writing)</td>
                 <td> true </td>
                 <td>Enable the row highlight css. Default: true.</td>
+            </tr>
+            <tr>
+                <td>save-state<br />saveState (alternative writing)</td>
+                <td> true </td>
+                <td>Stores the state of the datatable on the client, so that after a page reload the same filters are active, the same page is shown etc.</td>
             </tr>
             <tr>
                 <td>scroll-collapse<br />scrollCollapse (alternative writing)</td>
