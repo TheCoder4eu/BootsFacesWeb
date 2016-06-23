@@ -49,7 +49,8 @@ td {
       </b:tab>
       <b:tab title="displayed as" contentStyle="border:1px solid ;padding:10px">
         <b:dataTable value="#{carPool.carPool}"
-                     var="car">
+                     var="car"
+                     onpage="console.log('page');">
             <b:dataTableColumn value="#{car.brand}" />
             <b:dataTableColumn value="#{car.type}" />
             <b:dataTableColumn value="#{car.color}" />
@@ -266,7 +267,54 @@ td {
     </b:tabView>
         </h:form>
 
-            <h3>Responsiveness</h3>
+    <h3>Unified AJAX and JavaScript API</h3>
+    <p>The datatable offers a couple of JavaScript and jQuery events you can use to call your own JavaScript or
+    even your own bean method on the backend. Currently, the BootsFaces datatable offers only a subset of the
+    events of the underlying JavaScript widget (see <a target="#" href="https://datatables.net/reference/event/">https://datatables.net/reference/event</a>).</p>
+    <b:tabView activeIndex="1">
+      <b:tab title="JSF markup">
+        <b:well>
+          <script type="syntaxhighlighter"
+            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+        <b:dataTable value="&num;{carPool.carPool}" var="car"
+                     onorder="console.log('order');"
+                     onpage="console.log('page');"
+                     onsearch="console.log('search');"
+                     onselect="console.log('select');"
+                     ondeselect="console.log('deselect');"
+                     >
+            <h:column value="&num;{car.brand}" />
+            <h:column value="&num;{car.type}" />
+            <h:column value="&num;{car.color}" />
+            <h:column value="&num;{car.year}" />
+        </b:dataTable>
+      ]]>
+      </script>
+        </b:well>
+      </b:tab>
+      <b:tab title="displayed as" contentStyle="border:1px solid ;padding:10px">
+        <b:dataTable value="#{carPool.carPool}"
+                     var="car"
+                     onorder="console.log('order');"
+                     onpage="console.log('page');"
+                     onsearch="console.log('search');"
+                     onselect="console.log('select');"
+                     ondeselect="console.log('deselect');"
+                     >
+            <b:dataTableColumn value="#{car.brand}" />
+            <b:dataTableColumn value="#{car.type}" />
+            <b:dataTableColumn value="#{car.color}" />
+            <b:dataTableColumn value="#{car.year}" />
+            <b:dataTableColumn value="#{car.price}" />
+            <b:dataTableColumn value="#{car.enginePower}" label="Engine Power (hp)" />
+        </b:dataTable>
+      </b:tab>
+    </b:tabView>
+
+
+
+    <h3>Responsiveness</h3>
     <p>
       Like most BootsFaces components, the datatable supports the responsive attributes like <code>col-*</code>,
       <code>visible</code> and <code>hidden</code>. If you want to update the datatable by an AJAX request,
