@@ -27,23 +27,21 @@ td {
     </p>
 
     <h3>Basic usage</h3>
+    <p>Getting started with the BootsFaces datatable is pretty easy. Basically, it support the same syntax as its
+    standard JSF counterpart <code>&lt;h:dataTable /&gt;</code>, but is also supports a more compact syntax. The
+    simplest way to define a column is to simply use the <code>value</code> attribute. If you don't set a
+    header, it's automatically derived from the variable name of the value.</p>
     <b:tabView activeIndex="1">
       <b:tab title="JSF markup">
         <b:well>
           <script type="syntaxhighlighter"
             class="brush: xml; toolbar: false;gutter: false; first-line: 1">
             <![CDATA[
-        <b:dataTable value="#{carPool.carPool}"
-                     var="car"
-                     id="bcarPool2"
-                     fixedHeader="true"
-                     responsive="true"
-                     lang="it"
-                     searching="false">
-            <h:column value="#{car.brand}" />
-            <h:column value="#{car.type}" />
-            <h:column value="#{car.color}" />
-            <h:column value="#{car.year}" />
+        <b:dataTable value="&num;{carPool.carPool}" var="car">
+            <h:column value="&num;{car.brand}" />
+            <h:column value="&num;{car.type}" />
+            <h:column value="&num;{car.color}" />
+            <h:column value="&num;{car.year}" />
         </b:dataTable>
       ]]>
       </script>
@@ -51,14 +49,7 @@ td {
       </b:tab>
       <b:tab title="displayed as" contentStyle="border:1px solid ;padding:10px">
         <b:dataTable value="#{carPool.carPool}"
-                     var="car"
-                     id="bcarPool2"
-                     fixedHeader="true"
-                     scroll-size="400px"
-                     scroll-x="false"
-                     responsive="true"
-                     lang="it"
-                     searching="false">
+                     var="car">
             <b:dataTableColumn value="#{car.brand}" />
             <b:dataTableColumn value="#{car.type}" />
             <b:dataTableColumn value="#{car.color}" />
@@ -69,11 +60,20 @@ td {
       </b:tab>
     </b:tabView>
 
-    <h3><code>h:column</code> vs. <code>b:dataTableColumn</code></h3>
+    <h3>Autocompletion: <code>h:column</code> vs. <code>b:dataTableColumn</code></h3>
+    <p>BootsFaces supports a couple of attributes lacking in standard JSF. If you want to benefit from autocompletion,
+    or if you're using a strict IDE like NetBeans, you'll want to use <code>&lt;b:dataTableColumn /&gt;</code>.
+    We couldn't use <code>&lt;b:column /&gt;</code> because this widget is already used for the grid system. However,
+    if you don't mind your IDE complaining, you can use <code>&lt;h:column /&gt;</code> and even
+    <code>&lt;b:column /&gt;</code> with the extra attributes of BootsFaces.</p>
 
     <h3>Defining the header</h3>
+    <p>You can use either the attribute <code>label</code> of the column, or you can define a facet named <code>"header"</code>
+    inside the column. The latter option gives you more flexibility, because you can put arbitrary JSF code in a header.</p>
 
     <h3>Defining the content cells</h3>
+    <p>You can either use the <code>value</code> attribute as seen above, or you can put arbitray JSF into the column.
+    For instance, the example below shows how to put an input field into the column.</p>
 
     <h3>Customizing the table</h3>
     <p>The datatable has a couple of options to configure it. Some of them are shown in the example below.</p>
@@ -84,7 +84,38 @@ td {
           <b:well>
             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 				    <![CDATA[
-					&num;
+              <b:dataTable value="&num;{carPool.carPool}"
+                var="car"
+                id="basicUsageId"
+                page-length="5"
+                page-length-menu="5,10,20"
+                widget-var="basicTableWidget"
+                multi-column-search="&num;{dataTableSettingsBean.multiColumnSearch}"
+                striped="&num;{dataTableSettingsBean.striped}"
+                save-state="&num;{dataTableSettingsBean.saveState}"
+                searching="&num;{dataTableSettingsBean.searching}"
+                border="&num;{dataTableSettingsBean.border}"
+                row-highlight="&num;{dataTableSettingsBean.rowHighlight}"
+                >
+                <b:dataTableColumn value="&num;{car.brand}" />
+                <b:dataTableColumn order-by="dom-text" data-type="text">
+                  <f:facet name="header">
+                    <h:outputText value="Type"/>
+                  </f:facet>
+                  <h:inputText value="&num;{car.type}" />
+                </b:dataTableColumn>
+                <b:dataTableColumn label="Color"
+                                   orderable="false"
+                                   content-style="&num;{dataTableSettingsBean.contentCSS}"
+                                   content-style-class="&num;{dataTableSettingsBean.contentStyleClassName}"
+                                   footer-style="&num;{dataTableSettingsBean.footerCSS}"
+                                   footer-style-class="&num;{dataTableSettingsBean.footerStyleClassName}"
+                                   header-style="&num;{dataTableSettingsBean.headerCSS}"
+                                   header-style-class="&num;{dataTableSettingsBean.headerStyleClassName}"
+                                   >
+                  <h:outputText value="&num;{car.color}" />
+                </b:dataTableColumn>
+              </b:dataTable>
 				    ]]></script>
           </b:well>
         </b:tab>
@@ -168,6 +199,19 @@ td {
         </b:tab>
       </b:tabView>
 
+    <h3>Sorting input fields</h3>
+    <p>By default, the data table only sorts plain text. If you want to sort input field, checkboxes or comboboxes,
+    you have to tell the column which the data type of the input field is:</p>
+        <b:well>
+            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+                  <b:dataTableColumn order-by="dom-text" data-type="text">
+                      <h:inputText value="&num;{car.type}" />
+                  </b:dataTableColumn>
+             ]]></script>
+          </b:well>
+    <p>You can see the effect in the example above.</p>
+
     <h3>Internationalization</h3>
     <p>
       This example shows how to use the i18n support of
@@ -183,17 +227,17 @@ td {
           <script type="syntaxhighlighter"
             class="brush: xml; toolbar: false;gutter: false; first-line: 1">
             <![CDATA[
-        <b:dataTable value="#{carPool.carPool}"
+        <b:dataTable value="&num;{carPool.carPool}"
                      var="car"
                      id="bcarPool2"
                      fixedHeader="true"
                      responsive="true"
                      lang="it"
                      searching="false">
-            <h:column value="#{car.brand}" />
-            <h:column value="#{car.type}" />
-            <h:column value="#{car.color}" />
-            <h:column value="#{car.year}" />
+            <h:column value="&num;{car.brand}" />
+            <h:column value="&num;{car.type}" />
+            <h:column value="&num;{car.color}" />
+            <h:column value="&num;{car.year}" />
         </b:dataTable>
 			]]>
 			</script>
@@ -241,7 +285,7 @@ td {
           <script type="syntaxhighlighter"
             class="brush: xml; toolbar: false;gutter: false; first-line: 1">
             <![CDATA[
-        <b:dataTable value="#{carPool.carPool}"
+        <b:dataTable value="&num;{carPool.carPool}"
                       var="car"
                      id="bcarPool2"
                      fixedHeader="true"
@@ -251,11 +295,11 @@ td {
                      lang="it"
                      searching="false"
                      >
-            <h:column value="#{car.brand}" />
-            <h:column value="#{car.type}" />
-            <h:column value="#{car.color}" />
-            <h:column value="#{car.year}" />
-            <h:column value="#{car.price}" />
+            <h:column value="&num;{car.brand}" />
+            <h:column value="&num;{car.type}" />
+            <h:column value="&num;{car.color}" />
+            <h:column value="&num;{car.year}" />
+            <h:column value="&num;{car.price}" />
         </b:dataTable>
       ]]>
       </script>
@@ -291,12 +335,12 @@ td {
               <script type="syntaxhighlighter"
                 class="brush: xml; toolbar: false;gutter: false; first-line: 1">
                 <![CDATA[
-            <b:dataTable value="#{carPool.emptyCarPool}"
+            <b:dataTable value="&num;{carPool.emptyCarPool}"
               var="car">
-               <h:column value="#{car.brand}" />
-               <h:column value="#{car.type}" />
-               <h:column value="#{car.color}" />
-               <h:column value="#{car.year}" />
+               <h:column value="&num;{car.brand}" />
+               <h:column value="&num;{car.type}" />
+               <h:column value="&num;{car.color}" />
+               <h:column value="&num;{car.year}" />
             </b:dataTable>
                 ]]>
             </script>
@@ -313,10 +357,6 @@ td {
           </b:tab>
         </b:tabView>
         </h:form>
-
-
-    <h3>Advanced usage</h3>
-    <p>To do</p>
 
     <h3>Reference section</h3>
     <ui:include src="DataTableAttributes.xhtml" />
