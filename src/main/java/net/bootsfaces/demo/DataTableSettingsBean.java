@@ -1,0 +1,189 @@
+/**
+ *  (C) 2013-2014 Stephan Rauh http://www.beyondjava.net
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+package net.bootsfaces.demo;
+
+import java.io.Serializable;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+
+/** A simple bean for demo purposes. */
+@RequestScoped
+@ManagedBean
+public class DataTableSettingsBean implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	private boolean headerStyle = false;
+	private boolean headerStyleClass = false;
+	private boolean contentStyle = false;
+
+	private boolean contentStyleClass = false;
+
+	private boolean footerStyle = false;
+
+	private boolean footerStyleClass = false;
+
+	private boolean saveState=false;
+
+	private boolean multiColumnSearch=false;
+	private boolean searching=false;
+
+	private boolean striped=true;
+
+	private boolean border=true;
+	private boolean rowHighlight=true;
+
+	public boolean isSaveState() {
+		return saveState;
+	}
+
+	public void setSaveState(boolean saveState) {
+		this.saveState = saveState;
+	}
+
+	public boolean isMultiColumnSearch() {
+		return multiColumnSearch;
+	}
+
+	public void setMultiColumnSearch(boolean multiColumnSearch) {
+		this.multiColumnSearch = multiColumnSearch;
+	}
+
+	public boolean isSearching() {
+		return searching;
+	}
+
+	public void setSearching(boolean search) {
+		this.searching = search;
+	}
+
+	public boolean isStriped() {
+		return striped;
+	}
+
+	public void setStriped(boolean striped) {
+		this.striped = striped;
+	}
+
+	public boolean isBorder() {
+		return border;
+	}
+
+	public void setBorder(boolean border) {
+		this.border = border;
+	}
+
+	public boolean isRowHighlight() {
+		return rowHighlight;
+	}
+
+	public void setRowHighlight(boolean rowHighlight) {
+		this.rowHighlight = rowHighlight;
+	}
+
+	public String getContentCSS() {
+		if (contentStyle) {
+			return "color:red";
+		}
+		return null;
+	}
+
+	public String getContentStyleClassName() {
+		if (contentStyleClass) {
+			return "hidden";
+		}
+		return null;
+	}
+
+	public String getFooterCSS() {
+		if (footerStyle) {
+			return "color:red";
+		}
+		return null;
+	}
+
+	public String getFooterStyleClassName() {
+		if (footerStyleClass) {
+			return "hidden";
+		}
+		return null;
+	}
+
+	public String getHeaderCSS() {
+		if (headerStyle) {
+			return "color:red";
+		}
+		return null;
+	}
+
+	public String getHeaderStyleClassName() {
+		if (headerStyleClass) {
+			return "hidden";
+		}
+		return null;
+	}
+	public boolean isContentStyle() {
+		return contentStyle;
+	}
+	public boolean isContentStyleClass() {
+		return contentStyleClass;
+	}
+
+	public boolean isFooterStyle() {
+		return footerStyle;
+	}
+
+	public boolean isFooterStyleClass() {
+		return footerStyleClass;
+	}
+
+	public boolean isHeaderStyle() {
+		return headerStyle;
+	}
+
+	public boolean isHeaderStyleClass() {
+		return headerStyleClass;
+	}
+
+	public void setContentStyle(boolean contentStyle) {
+		this.contentStyle = contentStyle;
+	}
+	public void setContentStyleClass(boolean contentStyleClass) {
+		this.contentStyleClass = contentStyleClass;
+	}
+
+	public void setFooterStyle(boolean footerStyle) {
+		this.footerStyle = footerStyle;
+	}
+
+	public void setFooterStyleClass(boolean footerStyleClass) {
+		this.footerStyleClass = footerStyleClass;
+	}
+
+	public void setHeaderStyle(boolean headerStyle) {
+		this.headerStyle = headerStyle;
+	}
+
+	public void setHeaderStyleClass(boolean headerStyleClass) {
+		this.headerStyleClass = headerStyleClass;
+	}
+
+	public void updateSettings() {
+
+	}
+}

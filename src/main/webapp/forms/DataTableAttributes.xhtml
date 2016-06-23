@@ -28,6 +28,11 @@
                 <td>Activates AJAX. The default value is false (no AJAX).</td>
             </tr>
             <tr>
+                <td>border</td>
+                <td> true </td>
+                <td>If set, this will surround the table by a border. Defaults to true.</td>
+            </tr>
+            <tr>
                 <td>col-lg<br />colLg (alternative writing)</td>
                 <td> -1 </td>
                 <td>Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
@@ -101,6 +106,11 @@
                 <td>multi-column-search<br />multiColumnSearch (alternative writing)</td>
                 <td>false</td>
                 <td>If true, &lt;b:inputText /&gt; fields will be generated at the bottom of each column which allow you to perform per-column filtering.</td>
+            </tr>
+            <tr>
+                <td>multi-column-search-position<br />multiColumnSearchPosition (alternative writing)</td>
+                <td> bottom </td>
+                <td>Doesn't work yet. Should the multi-column-search attributes be at the bottom or the top of the table? Legal values: 'top','botton', and 'both'. Default to 'bottom'.</td>
             </tr>
             <tr>
                 <td>offset</td>
@@ -214,8 +224,13 @@
             </tr>
             <tr>
                 <td>scroll-size<br />scrollSize (alternative writing)</td>
-                <td> 0 </td>
-                <td>If set, force the height of table to the size specified.</td>
+                <td>(none)</td>
+                <td>If set, force the height of table to the size specified. You can optionally to add the unit (e.g. scroll-size="200px"). By default, it's px.</td>
+            </tr>
+            <tr>
+                <td>scroll-x<br />scrollX (alternative writing)</td>
+                <td>false</td>
+                <td>If set, the table can scroll horizontally. Defaults to false.</td>
             </tr>
             <tr>
                 <td>searching</td>
@@ -231,6 +246,11 @@
                 <td>span</td>
                 <td>(none)</td>
                 <td>Integer value to specify how many columns to span on medium screens (≥992 pixels). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+            </tr>
+            <tr>
+                <td>striped</td>
+                <td> true </td>
+                <td>If set, this will show the row in alternating background colors (typically shades of gray). Defaults to true.</td>
             </tr>
             <tr>
                 <td>style</td>

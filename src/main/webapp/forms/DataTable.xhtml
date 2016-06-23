@@ -1,227 +1,346 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
-<ui:composition template="/applayout/pageTemplate.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:b="http://bootsfaces.net/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:b="http://bootsfaces.net/ui"
+  xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<ui:define name="content">
-		<style>
-		td {
-			padding: 8px;
-		}
-		</style>
+  <ui:define name="content">
+    <style>
+td {
+	padding: 8px;
+}
+</style>
 
-		<h1>
-			DataTable (&lt;b:dataTable /&gt;)
-			<b:badge value="experimental / since 0.8.0" />
-		</h1>
-		<p>
-			Currently, the
-			<code>&lt;b:dataTable &gt;</code>
-			isn't much more than a proof of concept. We plan to implement a
-			full-blown datatable in the next version of BootsFaces (probably
-			0.9.0).
-		</p>
+    <h1>
+      DataTable (&lt;b:dataTable /&gt;)
+      <b:badge value="since 0.8.0" />
+      <b:badge value="breaking changes in 0.9.0" style="margin-left:10px; background-color:#f2dede;color:red" />
+    </h1>
+    <p>
+      The
+      <code>&lt;b:dataTable &gt;</code>
+      is a convenient component rendering the table mostly on the client. This, in turn, imposes certain limitations
+      over server-side datatables. For instance, user interactions don't use AJAX to redraw the table, so you can't
+      easily implement lazy loading. On the plus side is the speed of the data table. Only very large tables may suffer
+      from long initial load times. Once the table is loaded, it's completely available on the client, which makes
+      filtering and pagination very fast.
+    </p>
 
-		<h3>Basic usage</h3>
+    <h3>Basic usage</h3>
+    <b:tabView activeIndex="1">
+      <b:tab title="JSF markup">
+        <b:well>
+          <script type="syntaxhighlighter"
+            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+        <b:dataTable value="#{carPool.carPool}"
+                     var="car"
+                     id="bcarPool2"
+                     fixedHeader="true"
+                     responsive="true"
+                     lang="it"
+                     searching="false">
+            <h:column value="#{car.brand}" />
+            <h:column value="#{car.type}" />
+            <h:column value="#{car.color}" />
+            <h:column value="#{car.year}" />
+        </b:dataTable>
+      ]]>
+      </script>
+        </b:well>
+      </b:tab>
+      <b:tab title="displayed as" contentStyle="border:1px solid ;padding:10px">
+        <b:dataTable value="#{carPool.carPool}"
+                     var="car"
+                     id="bcarPool2"
+                     fixedHeader="true"
+                     scroll-size="400px"
+                     scroll-x="false"
+                     responsive="true"
+                     lang="it"
+                     searching="false">
+            <b:dataTableColumn value="#{car.brand}" />
+            <b:dataTableColumn value="#{car.type}" />
+            <b:dataTableColumn value="#{car.color}" />
+            <b:dataTableColumn value="#{car.year}" />
+            <b:dataTableColumn value="#{car.price}" />
+            <b:dataTableColumn value="#{car.enginePower}" label="Engine Power (hp)" />
+        </b:dataTable>
+      </b:tab>
+    </b:tabView>
 
-		<b:tabView activeIndex="1">
-			<b:tab title="JSF markup">
-				<b:well>
-					<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-						<![CDATA[
-    <b:dataTable value="&num;{carPool.carPool}" var="car" id="bcarPool" styleClass="table table-striped table-bordered"
-     style="width:100%">
-      <h:column>
-        <f:facet name="header">
-          <h:outputText value="Brand" />
-        </f:facet>
-        <h:outputText value="&num;{car.brand}" />
-      </h:column>
-      <h:column>
-        <f:facet name="header">
-          <h:outputText value="Type" />
-        </f:facet>
-        <h:inputText value="&num;{car.type}" />
-      </h:column>
+    <h3><code>h:column</code> vs. <code>b:dataTableColumn</code></h3>
 
-    </b:dataTable>
-				]]></script>
-				</b:well>
-			</b:tab>
-			<b:tab title="displayed as" contentStyle="border:1px solid ;padding:10px">
-				<b:dataTable value="#{carPool.carPool}" var="car" id="bcarPool"
-					styleClass="table table-striped table-bordered" style="width:100%">
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Brand" />
-						</f:facet>
-						<h:outputText value="#{car.brand}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Type" />
-						</f:facet>
-						<h:inputText value="#{car.type}" />
-					</h:column>
-				</b:dataTable>
-			</b:tab>
-		</b:tabView>
+    <h3>Defining the header</h3>
 
-		<h3>A More advanced usage example</h3>
-		<p>
-			This example shows how to enable some additional dataTable features
-			like responsive design or fixed header. Furthermore in this example,
-			you can also see the i18n support of
-			<code>&lt;b:dataTable &gt;</code>. For i18n there were two ways: use internal translation (you can
-			choose between a limited set of embedded translations) or you can
-			provide your own translation with a remote URL (eg. CDN url)
-		</p>
+    <h3>Defining the content cells</h3>
 
-		<b:tabView activeIndex="1">
-			<b:tab title="JSF markup">
-				<b:well>
-					<script type="syntaxhighlighter"
-						class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-						<![CDATA[
-    <b:dataTable value="&num;{carPool.carPool}" var="car" id="bcarPool2" styleClass="table table-striped table-bordered"
-     style="width:100%" fixedHeader="true" responsive="true" lang="it">
-      <h:column>
-        <f:facet name="header">
-          <h:outputText value="Brand" />
-        </f:facet>
-        <h:outputText value="&num;{car.brand}" />
-      </h:column>
-      <h:column>
-        <f:facet name="header">
-          <h:outputText value="Type" />
-        </f:facet>
-        <h:inputText value="&num;{car.type}"/>
-      </h:column>
- 	  <h:column>
-        <f:facet name="header">
-           <h:outputText value="Color" />
-        </f:facet>
-        <h:outputText value="&num;{car.color}"/>
-      </h:column>
-      <h:column>
-         <f:facet name="header">
-            <h:outputText value="Year" />
-         </f:facet>
-         <h:outputText value="&num;{car.year}"/>
-      </h:column>
-    </b:dataTable>
-]]>
-</script>
-				</b:well>
-			</b:tab>
-			<b:tab title="displayed as" contentStyle="border:1px solid ;padding:10px">
-				<b:dataTable value="#{carPool.carPool}" var="car" id="bcarPool2"
-					styleClass="table table-striped table-bordered" style="width:100%"
-					fixedHeader="true" responsive="true" lang="it"
-                    searching="false">
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Brand" />
-						</f:facet>
-						<h:outputText value="#{car.brand}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Type" />
-						</f:facet>
-						<h:inputText value="#{car.type}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Color" />
-						</f:facet>
-						<h:outputText value="#{car.color}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Year" />
-						</f:facet>
-						<h:outputText value="#{car.year}" />
-					</h:column>
-				</b:dataTable>
-			</b:tab>
-		</b:tabView>
+    <h3>Customizing the table</h3>
+    <p>The datatable has a couple of options to configure it. Some of them are shown in the example below.</p>
 
-		<h3>Empty data table:</h3>
+    <h:form>
+      <b:tabView activeIndex="1">
+        <b:tab title="JSF markup">
+          <b:well>
+            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+				    <![CDATA[
+					&num;
+				    ]]></script>
+          </b:well>
+        </b:tab>
+        <b:tab title="displayed as" contentStyle="border:1px solid;padding:10px">
+          <b:row>
+            <b:column small-screen="two-thirds">
+              <b:dataTable value="#{carPool.carPool}"
+                var="car"
+                id="basicUsageId"
+                page-length="5"
+                page-length-menu="5,10,20"
+                widget-var="basicTableWidget"
+                multi-column-search="#{dataTableSettingsBean.multiColumnSearch}"
+                striped="#{dataTableSettingsBean.striped}"
+                save-state="#{dataTableSettingsBean.saveState}"
+                searching="#{dataTableSettingsBean.searching}"
+                border="#{dataTableSettingsBean.border}"
+                row-highlight="#{dataTableSettingsBean.rowHighlight}"
+                >
+                <b:dataTableColumn value="#{car.brand}" />
+                <b:dataTableColumn order-by="dom-text" data-type="text">
+                  <f:facet name="header">
+                    <h:outputText value="Type"/>
+                  </f:facet>
+                  <h:inputText value="#{car.type}" />
+                </b:dataTableColumn>
+                <b:dataTableColumn label="Color"
+                                   orderable="false"
+                                   content-style="#{dataTableSettingsBean.contentCSS}"
+                                   content-style-class="#{dataTableSettingsBean.contentStyleClassName}"
+                                   footer-style="#{dataTableSettingsBean.footerCSS}"
+                                   footer-style-class="#{dataTableSettingsBean.footerStyleClassName}"
+                                   header-style="#{dataTableSettingsBean.headerCSS}"
+                                   header-style-class="#{dataTableSettingsBean.headerStyleClassName}"
+                                   >
+                  <h:outputText value="#{car.color}" />
+                </b:dataTableColumn>
+              </b:dataTable>
+            </b:column>
+            <b:panelGrid columns="1" small-screen="one-third">
+             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.saveState}" caption="save-state='true'"
+                onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                update="basicUsageId" />
+              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.headerStyle}" caption="header-style='color:red'"
+                onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                update="basicUsageId" />
+              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.headerStyleClass}" caption="header-style-class='hidden'"
+                onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                update="basicUsageId" />
+             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.contentStyle}" caption="content-style='color:red'"
+                onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                update="basicUsageId" />
+             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.contentStyleClass}" caption="content-style-class='hidden'"
+                onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                update="basicUsageId" />
+             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.footerStyle}" caption="footer-style='color:red'"
+                onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                update="basicUsageId" />
+             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.footerStyleClass}" caption="footer-style-class='hidden'"
+                onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                update="basicUsageId" />
+
+             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.searching}" caption="searching='true'"
+                onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                update="basicUsageId" />
+             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.multiColumnSearch}" caption="multi-column-search='true' (requires searching='true')"
+                onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                update="basicUsageId" />
+             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.striped}" caption="striped='true'"
+                onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                update="basicUsageId" />
+             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.border}" caption="border='true'"
+                onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                update="basicUsageId" />
+             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.rowHighlight}" caption="row-highlight='true'"
+                onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                update="basicUsageId" />
+
+            </b:panelGrid>
+          </b:row>
+        </b:tab>
+      </b:tabView>
+
+    <h3>Internationalization</h3>
+    <p>
+      This example shows how to use the i18n support of
+      <code>&lt;b:dataTable &gt;</code>. For i18n there were two ways: use internal translation (you can
+      choose between a limited set of embedded translations) or you can
+      provide your own translation with a remote URL (eg. CDN url)
+    </p>
+
+        <h:form>
+    <b:tabView activeIndex="1">
+      <b:tab title="JSF markup">
+        <b:well>
+          <script type="syntaxhighlighter"
+            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+        <b:dataTable value="#{carPool.carPool}"
+                     var="car"
+                     id="bcarPool2"
+                     fixedHeader="true"
+                     responsive="true"
+                     lang="it"
+                     searching="false">
+            <h:column value="#{car.brand}" />
+            <h:column value="#{car.type}" />
+            <h:column value="#{car.color}" />
+            <h:column value="#{car.year}" />
+        </b:dataTable>
+			]]>
+			</script>
+        </b:well>
+      </b:tab>
+      <b:tab title="displayed as" contentStyle="border:1px solid ;padding:10px">
+        <b:dataTable value="#{carPool.carPool}"
+                     var="car"
+                     id="bcarPool2"
+                     fixedHeader="true"
+                     scroll-size="400px"
+                     scroll-x="false"
+                     responsive="true"
+                     lang="it"
+                     searching="false">
+            <h:column value="#{car.brand}" />
+            <h:column value="#{car.type}" />
+            <h:column value="#{car.color}" />
+            <h:column value="#{car.year}" />
+            <h:column value="#{car.brand}" />
+            <h:column value="#{car.type}" />
+            <h:column value="#{car.color}" />
+            <h:column value="#{car.year}" />
+        </b:dataTable>
+      </b:tab>
+    </b:tabView>
+        </h:form>
+
+            <h3>Responsiveness</h3>
+    <p>
+      Like most BootsFaces components, the datatable supports the responsive attributes like <code>col-*</code>,
+      <code>visible</code> and <code>hidden</code>. If you want to update the datatable by an AJAX request,
+      you should wrap it in a <code>b:column</code> nonetheless. For technical reasons, the id does not belong
+      to the <code>div</code> bearing the CSS style classes for responsiveness. Instead, it belong to the <code>table</code>.
+      So updating the table by its id means it's wrapped into another <code>div</code> each time it's updated by an
+      AJAX request.
+    </p>
+    <p>If there's not enough screen estate to display the table, the last couple of columns are hidden, as you can see
+    in this example:</p>
+
+        <h:form>
+    <b:tabView activeIndex="1">
+      <b:tab title="JSF markup">
+        <b:well>
+          <script type="syntaxhighlighter"
+            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+        <b:dataTable value="#{carPool.carPool}"
+                      var="car"
+                     id="bcarPool2"
+                     fixedHeader="true"
+                     scroll-size="400px"
+                     scroll-x="false"
+                     responsive="true"
+                     lang="it"
+                     searching="false"
+                     >
+            <h:column value="#{car.brand}" />
+            <h:column value="#{car.type}" />
+            <h:column value="#{car.color}" />
+            <h:column value="#{car.year}" />
+            <h:column value="#{car.price}" />
+        </b:dataTable>
+      ]]>
+      </script>
+        </b:well>
+      </b:tab>
+      <b:tab title="displayed as" contentStyle="border:1px solid ;padding:10px;width:300px !important">
+        <b:dataTable value="#{carPool.carPool}"
+                     var="car"
+                     id="bcarPool2"
+                     fixedHeader="true"
+                     scroll-size="400px"
+                     scroll-x="false"
+                     responsive="true"
+                     lang="it"
+                     searching="false"
+                     >
+            <h:column value="#{car.brand}" />
+            <h:column value="#{car.type}" />
+            <h:column value="#{car.color}" />
+            <h:column value="#{car.year}" />
+            <h:column value="#{car.price}" />
+        </b:dataTable>
+      </b:tab>
+    </b:tabView>
+        </h:form>
+
+
+    <h3>Empty data table:</h3>
+        <h:form>
         <b:tabView activeIndex="1">
           <b:tab title="JSF markup">
             <b:well>
               <script type="syntaxhighlighter"
                 class="brush: xml; toolbar: false;gutter: false; first-line: 1">
                 <![CDATA[
-        		<b:dataTable value="#{carPool.emptyCarPool}" var="car"
-        			id="emptyCarpool" styleClass="table table-striped table-bordered"
-        			style="width:100%">
-
-        			<h:column>
-        				<f:facet name="header">
-        					<h:outputText value="Brand" />
-        				</f:facet>
-        				<h:outputText value="#{car.brand}" />
-        			</h:column>
-        			<h:column>
-        				<f:facet name="header">
-        					<h:outputText value="Type" />
-        				</f:facet>
-        				<h:outputText value="#{car.type}" />
-        			</h:column>
-        		</b:dataTable>
-    			]]>
-  			    </script>
+            <b:dataTable value="#{carPool.emptyCarPool}"
+              var="car">
+               <h:column value="#{car.brand}" />
+               <h:column value="#{car.type}" />
+               <h:column value="#{car.color}" />
+               <h:column value="#{car.year}" />
+            </b:dataTable>
+                ]]>
+            </script>
             </b:well>
           </b:tab>
           <b:tab title="displayed as" contentStyle="border:1px solid ;padding:10px">
-    		<b:dataTable value="#{carPool.emptyCarPool}" var="car"
-    			id="emptyCarpool" styleClass="table table-striped table-bordered"
-    			style="width:100%">
-
-    			<h:column>
-    				<f:facet name="header">
-    					<h:outputText value="Brand" />
-    				</f:facet>
-    				<h:outputText value="#{car.brand}" />
-    			</h:column>
-    			<h:column>
-    				<f:facet name="header">
-    					<h:outputText value="Type" />
-    				</f:facet>
-    				<h:outputText value="#{car.type}" />
-    			</h:column>
-    		</b:dataTable>
+            <b:dataTable value="#{carPool.emptyCarPool}"
+              var="car">
+               <h:column value="#{car.brand}" />
+               <h:column value="#{car.type}" />
+               <h:column value="#{car.color}" />
+               <h:column value="#{car.year}" />
+            </b:dataTable>
           </b:tab>
         </b:tabView>
+        </h:form>
 
 
-		<h3>Advanced usage</h3>
-		<p>To do</p>
+    <h3>Advanced usage</h3>
+    <p>To do</p>
 
-		<h3>Reference section</h3>
-		<ui:include src="DataTableAttributes.xhtml" />
-		<b:panel look="info" rendered="false">
-			<f:facet name="heading">
-				<b>Skinning</b>
-			</f:facet>
-			<ul>
-				<li>Tell the world which CSS classes can be used to change the
-					look of the component.</li>
-			</ul>
-		</b:panel>
+    <h3>Reference section</h3>
+    <ui:include src="DataTableAttributes.xhtml" />
+        <ui:include src="DataTableColumnAttributes.xhtml" />
+    <b:panel look="info" rendered="false">
+      <f:facet name="heading">
+        <b>Skinning</b>
+      </f:facet>
+      <ul>
+        <li>Tell the world which CSS classes can be used to change the
+          look of the component.</li>
+      </ul>
+    </b:panel>
 
-		<script type="text/javascript">
-			SyntaxHighlighter.all();
-		</script>
-		<br />
-		<br />
-		<br />
-		<br />
-	</ui:define>
+    <script type="text/javascript">
+      SyntaxHighlighter.all();
+    </script>
+    <br />
+    <br />
+    <br />
+    <br />
+
+
+    </h:form>
+
+  </ui:define>
 </ui:composition>
