@@ -65,6 +65,30 @@ td {
         so this caused <code>RES_NOT_FOUND</code> errors. Since BootsFaces 0.8.6, the value attributes is evaluated first.
         If both attributes are provided, BootsFaces displays a warning in the logfile (only in the development stage).</p>
 
+        <h1>Responsive attributes <b:badge value="since 0.9.0" /></h1>
+        <p>The image supports the full range of responsive attributes, such as <code>col-*</code>, <code>visible</code>
+        and <code>hidden</code>:</p>
+        <b:well>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <b:row>
+            <b:image small-screen="one-third" value="../bootstrap/carousel/Valladolid-parque-1.jpg"  tooltip="small-screen='one-third'"/>
+            <b:image small-screen="one-third" value="../bootstrap/carousel/Valladolid-parque-2.jpg"  tooltip="small-screen='one-third'"/>
+            <b:image small-screen="one-third" hidden="tiny-screen"  value="../bootstrap/carousel/Valladolid-parque-3.jpg"
+                     tooltip="small-screen='one-third' hidden='tiny-screen'"/>
+          </b:row>
+          ]]>
+          </script>
+         </b:well>
+          <b:row>
+            <b:image small-screen="one-third" value="../bootstrap/carousel/Valladolid-parque-1.jpg"  tooltip="small-screen='one-third'"/>
+            <b:image small-screen="one-third" value="../bootstrap/carousel/Valladolid-parque-2.jpg"  tooltip="small-screen='one-third'"/>
+            <b:image small-screen="one-third" hidden="tiny-screen"  value="../bootstrap/carousel/Valladolid-parque-3.jpg"
+                     tooltip="small-screen='one-third' hidden='tiny-screen'"/>
+          </b:row>
+
+
+
         <h3>Reference section</h3>
         <ui:include src="ImageAttributes.xhtml" />
 		<b:panel look="info">
