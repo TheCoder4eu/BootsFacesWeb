@@ -13,13 +13,17 @@
       is about.
     </p>
     <h1>Basic usage</h1>
-    <p>Put a short description in simple words here.</p>
+    <p>The dateTimePicker is a responsive input field that allows you to input the date, the time or both.</p>
     <h:form>
       <b:row>
         <b:panel title="Live preview" small-screen="half" look="primary">
           <b:dateTimePicker value="#{dateTimeBean.justNow}"
                             id="justNowId"
-                            mode="#{dateTimeBean.mode}"/>
+                            mode="#{dateTimeBean.mode}"
+                            side-by-side="#{dateTimeBean.sideBySide}"
+                            show-date="#{dateTimeBean.showDate}"
+                            show-time="#{dateTimeBean.showTime}"
+                            />
         </b:panel>
         <b:panel title="Settings" small-screen="half" look="primary">
           <b:panelGrid columns="1" id="settings">
@@ -32,10 +36,29 @@
            <b:selectBooleanCheckbox value="#{dateTimeBean.modePopup}" caption="mode='popup' (default)"
               onclick="ajax:dateTimeBean.updateSettings()"
               update="justNowId settings" />
+           <b:selectBooleanCheckbox value="#{dateTimeBean.sideBySide}" caption="side-by-side='true'"
+              onclick="ajax:dateTimeBean.updateSettings()"
+              update="justNowId" />
+           <b:selectBooleanCheckbox value="#{dateTimeBean.showDate}" caption="show-date='true' (clear the input field to see the effect, please)"
+              onclick="ajax:dateTimeBean.updateSettings()"
+              update="justNowId" />
+           <b:selectBooleanCheckbox value="#{dateTimeBean.showTime}" caption="show-time='true' (clear the input field to see the effect, please)"
+              onclick="ajax:dateTimeBean.updateSettings()"
+              update="justNowId" />
           </b:panelGrid>
         </b:panel>
       </b:row>
     </h:form>
+
+    <h3>Format</h3>
+    <p>By default, the dateTimePicker tries to guess the proper format from your locale. You can customize this by three
+    options:</p>
+    <ul>
+    <li><code>show-date</code> allows you to show or hide the calendar.</li>
+      <li><code>show-time</code> allows you to show or hide the time picker.</li>
+      <li><code>format</code> This option overrules both <code>show-daten</code> and <code>show-time</code>. You can
+      define an arbitrary date and time format by using the format defintions of <a target="#" href="http://momentjs.com/docs/#/displaying/format/">moment.js</a>.</li>
+    </ul>
 
     <ui:include src="DateTimePickerAttributes.xhtml" />
     <b:panel look="info">

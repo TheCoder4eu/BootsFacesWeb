@@ -25,6 +25,12 @@ public class DateTimeBean implements Serializable {
 
 	private boolean modePopup = false;
 
+	private boolean sideBySide=false;
+
+	private boolean showTime=true;
+
+	private boolean showDate=true;
+
 	public String getMode() {
 		if (modePlain) {
 			modeInline=false;
@@ -75,6 +81,36 @@ public class DateTimeBean implements Serializable {
 
 	public void updateSettings() {
 
+	}
+
+	public boolean isSideBySide() {
+		return sideBySide;
+	}
+
+	public void setSideBySide(boolean sideBySide) {
+		this.sideBySide = sideBySide;
+	}
+
+	public boolean isShowDate() {
+		return showDate;
+	}
+
+	public void setShowDate(boolean showDate) {
+		if (this.showDate != showDate) {
+			justNow=new Date();
+		}
+		this.showDate = showDate;
+	}
+
+	public boolean isShowTime() {
+		return showTime;
+	}
+
+	public void setShowTime(boolean showTime) {
+		if (this.showTime != showTime) {
+			justNow=new Date();
+		}
+		this.showTime = showTime;
 	}
 
 }
