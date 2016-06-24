@@ -1,0 +1,319 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:fragment
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+		<b:panel look="info">
+			<f:facet name="heading">
+				<b>Attributes of &lt;b:dateTimePicker &gt;</b>
+			</f:facet>
+			<div class="table-responsive">
+				<table class="table table-striped table-hover"
+					style="background-color: #fff">
+					<thead>
+						<tr>
+							<th>Attribute</th>
+							<th>Default value</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+						    <td>allow-input-toggle<br />allowInputToggle (alternative writing)</td>
+						    <td>false</td>
+						    <td>If true, the picker will show on textbox focus and icon click when used in a button group. Default: false.</td>
+						</tr>
+						<tr>
+						    <td>binding</td>
+						    <td>(none)</td>
+						    <td>An EL expression referring to a server side UIComponent instance in a backing bean.</td>
+						</tr>
+						<tr>
+						    <td>col-lg<br />colLg (alternative writing)</td>
+						    <td> -1 </td>
+						    <td>Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+						</tr>
+						<tr>
+						    <td>col-md<br />colMd (alternative writing)</td>
+						    <td> -1 </td>
+						    <td>Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+						</tr>
+						<tr>
+						    <td>col-sm<br />colSm (alternative writing)</td>
+						    <td> -1 </td>
+						    <td>Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+						</tr>
+						<tr>
+						    <td>col-xs<br />colXs (alternative writing)</td>
+						    <td> -1 </td>
+						    <td>Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+						</tr>
+						<tr>
+						    <td>collapse</td>
+						    <td> true </td>
+						    <td>Using a Bootstraps collapse to switch between date/time pickers.</td>
+						</tr>
+						<tr>
+						    <td>day-view-header-format<br />dayViewHeaderFormat (alternative writing)</td>
+						    <td> MMMM YYYY </td>
+						    <td>Changes the heading of the datepicker when in 'days' view. Default: 'MMMM YYYY'.</td>
+						</tr>
+						<tr>
+						    <td>disable-time-interval<br />disableTimeInterval (alternative writing)</td>
+						    <td>(none)</td>
+						    <td>Disables time selection between the given moments. Default: false.</td>
+						</tr>
+						<tr>
+						    <td>disabled-dates<br />disabledDates (alternative writing)</td>
+						    <td>(none)</td>
+						    <td>Disables selection of dates in the array, e.g. holidays. Default: false. Accepts: array of [date, moment, string].</td>
+						</tr>
+						<tr>
+						    <td>display</td>
+						    <td> block </td>
+						    <td>If you use the "visible" attribute, the value of this attribute is added. Legal values: block, inline, inline-block. Default: block.</td>
+						</tr>
+						<tr>
+						    <td>enabled-dates<br />enabledDates (alternative writing)</td>
+						    <td>(none)</td>
+						    <td>Disables selection of dates NOT in the array, e.g. holidays. Default: false. Accepts: array of [date, moment, string].</td>
+						</tr>
+						<tr>
+						    <td>focus-on-show<br />focusOnShow (alternative writing)</td>
+						    <td> true </td>
+						    <td>If false, the textbox will not be given focus when the picker is shown. Default: true.</td>
+						</tr>
+						<tr>
+						    <td>format</td>
+						    <td>(none)</td>
+						    <td>See momentjs' docs for valid formats. Format also dictates what components are shown, e.g. MM/dd/YYYY will not display the time picker.</td>
+						</tr>
+						<tr>
+						    <td>hidden</td>
+						    <td>(none)</td>
+						    <td>This column is hidden on a certain screen size and below. Legal values: lg, md, sm, xs.</td>
+						</tr>
+						<tr>
+						    <td>initial-date<br />initialDate (alternative writing)</td>
+						    <td>(none)</td>
+						    <td>Sets the picker default date/time. Overrides useCurrent. Default: false. Accepts: date, moment, string.</td>
+						</tr>
+						<tr>
+						    <td>keep-invalid<br />keepInvalid (alternative writing)</td>
+						    <td>false</td>
+						    <td>Will cause the date picker to not revert or overwrite invalid dates. Default: false.</td>
+						</tr>
+						<tr>
+						    <td>keep-open<br />keepOpen (alternative writing)</td>
+						    <td>false</td>
+						    <td>Will cause the date picker to stay open after selecting a date if no time components are being used. Deafult: false.</td>
+						</tr>
+						<tr>
+						    <td>large-screen<br />largeScreen (alternative writing)</td>
+						    <td> -1 </td>
+						    <td>Alternative spelling to col-lg. Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+						</tr>
+						<tr>
+						    <td>locale</td>
+						    <td>(none)</td>
+						    <td>The desired locale. It uses the moment.js locales.</td>
+						</tr>
+						<tr>
+						    <td>max-date<br />maxDate (alternative writing)</td>
+						    <td>(none)</td>
+						    <td>Prevents date/time selections after this date. minDate will override defaultDate and useCurrent if either of these settings are the same day since both options are invalid according to the rules you've selected. Default: false, Accepts: date, moment, string.</td>
+						</tr>
+						<tr>
+						    <td>medium-screen<br />mediumScreen (alternative writing)</td>
+						    <td> -1 </td>
+						    <td>Alternative spelling to col-md. Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+						</tr>
+						<tr>
+						    <td>min-date<br />minDate (alternative writing)</td>
+						    <td>(none)</td>
+						    <td>Prevents date/time selections before this date. minDate will override defaultDate and useCurrent if either of these settings are the same day since both options are invalid according to the rules you've selected. Default: false, Accepts: date, moment, string.</td>
+						</tr>
+						<tr>
+						    <td>mode</td>
+						    <td> component </td>
+						    <td>Determine the display mode of the component. Available types are: 'inline' (display the full calendar object), 'popup' (text with icon) and 'plain' (only text). Default: 'popup'.</td>
+						</tr>
+						<tr>
+						    <td>offset</td>
+						    <td>(none)</td>
+						    <td>Integer value to specify how many columns to offset.</td>
+						</tr>
+						<tr>
+						    <td>offset-lg<br />offsetLg (alternative writing)</td>
+						    <td>(none)</td>
+						    <td>Integer value to specify how many columns to offset.</td>
+						</tr>
+						<tr>
+						    <td>offset-md<br />offsetMd (alternative writing)</td>
+						    <td>(none)</td>
+						    <td>Integer value to specify how many columns to offset.</td>
+						</tr>
+						<tr>
+						    <td>offset-sm<br />offsetSm (alternative writing)</td>
+						    <td>(none)</td>
+						    <td>Integer value to specify how many columns to offset.</td>
+						</tr>
+						<tr>
+						    <td>offset-xs<br />offsetXs (alternative writing)</td>
+						    <td>(none)</td>
+						    <td>Integer value to specify how many columns to offset.</td>
+						</tr>
+						<tr>
+						    <td>placeholder</td>
+						    <td>(none)</td>
+						    <td>The placeholder attribute shows text in a field until the field is focused upon, then hides the text.</td>
+						</tr>
+						<tr>
+						    <td>rendered</td>
+						    <td>false</td>
+						    <td>Boolean value to specify the rendering of the component, when set to false the component will not be rendered.</td>
+						</tr>
+						<tr>
+						    <td>required</td>
+						    <td>false</td>
+						    <td>Boolean value Require input in the component when the form is submitted.</td>
+						</tr>
+						<tr>
+						    <td>required-message<br />requiredMessage (alternative writing)</td>
+						    <td>(none)</td>
+						    <td>Message to show if the user did not specify a value and the attribute required is set to true.</td>
+						</tr>
+						<tr>
+						    <td>show-button-panel<br />showButtonPanel (alternative writing)</td>
+						    <td>false</td>
+						    <td>Boolean value to specify if row Buttons to the bottom of calendar should be shown (all button at once).</td>
+						</tr>
+						<tr>
+						    <td>show-clear-button<br />showClearButton (alternative writing)</td>
+						    <td>false</td>
+						    <td>Show the 'Clear' button in the icon toolbar. Default: false.</td>
+						</tr>
+						<tr>
+						    <td>show-close-button<br />showCloseButton (alternative writing)</td>
+						    <td>false</td>
+						    <td>Show the 'Close' button in the icon toolbar. Default: false.</td>
+						</tr>
+						<tr>
+						    <td>show-today-button<br />showTodayButton (alternative writing)</td>
+						    <td>false</td>
+						    <td>Show the 'Today' button in the icon toolbar. Default: false.</td>
+						</tr>
+						<tr>
+						    <td>show-week<br />showWeek (alternative writing)</td>
+						    <td>false</td>
+						    <td>Whether or not to show week numbers to the left of week rows. Default false.</td>
+						</tr>
+						<tr>
+						    <td>side-by-side<br />sideBySide (alternative writing)</td>
+						    <td>false</td>
+						    <td>Shows the picker side by side when using the time and date together. Default: false.</td>
+						</tr>
+						<tr>
+						    <td>small-screen<br />smallScreen (alternative writing)</td>
+						    <td> -1 </td>
+						    <td>Alternative spelling to col-sm. Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+						</tr>
+						<tr>
+						    <td>span</td>
+						    <td>(none)</td>
+						    <td>Integer value to specify how many columns to span on medium screens (≥992 pixels). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+						</tr>
+						<tr>
+						    <td>style</td>
+						    <td>(none)</td>
+						    <td>Inline style of the input element.</td>
+						</tr>
+						<tr>
+						    <td>style-class<br />styleClass (alternative writing)</td>
+						    <td>(none)</td>
+						    <td>Style class of this element.</td>
+						</tr>
+						<tr>
+						    <td>time-stepping<br />timeStepping (alternative writing)</td>
+						    <td> 1 </td>
+						    <td>Number of minutes the up/down arrow's will move the minutes value in the time picker. Default 1.</td>
+						</tr>
+						<tr>
+						    <td>tiny-screen<br />tinyScreen (alternative writing)</td>
+						    <td> -1 </td>
+						    <td>Alternative spelling to col-xs. Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+						</tr>
+						<tr>
+						    <td>toolbar-placement<br />toolbarPlacement (alternative writing)</td>
+						    <td> default </td>
+						    <td>Changes the placement of the icon toolbar. Default: 'default'. Accepts: 'default', 'top', 'bottom'.</td>
+						</tr>
+						<tr>
+						    <td>tooltip</td>
+						    <td>(none)</td>
+						    <td>The text of the tooltip.</td>
+						</tr>
+						<tr>
+						    <td>tooltip-container<br />tooltipContainer (alternative writing)</td>
+						    <td> body </td>
+						    <td>Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering errors in special cases. Also see data-container in the documentation of Bootstrap. The default value is body.</td>
+						</tr>
+						<tr>
+						    <td>tooltip-delay<br />tooltipDelay (alternative writing)</td>
+						    <td>0 </td>
+						    <td>The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
+						</tr>
+						<tr>
+						    <td>tooltip-delay-hide<br />tooltipDelayHide (alternative writing)</td>
+						    <td>0 </td>
+						    <td>The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
+						</tr>
+						<tr>
+						    <td>tooltip-delay-show<br />tooltipDelayShow (alternative writing)</td>
+						    <td>0 </td>
+						    <td>The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).</td>
+						</tr>
+						<tr>
+						    <td>tooltip-position<br />tooltipPosition (alternative writing)</td>
+						    <td>(none)</td>
+						    <td>Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".</td>
+						</tr>
+						<tr>
+						    <td>use-current<br />useCurrent (alternative writing)</td>
+						    <td> true </td>
+						    <td>On show, will set the picker to the current date/time. Default: true.</td>
+						</tr>
+						<tr>
+						    <td>use-strict<br />useStrict (alternative writing)</td>
+						    <td>false</td>
+						    <td>Defines if moment should use strict date parsing when considering a date to be valid.</td>
+						</tr>
+						<tr>
+						    <td>value</td>
+						    <td>(none)</td>
+						    <td>Value.</td>
+						</tr>
+						<tr>
+						    <td>view-mode<br />viewMode (alternative writing)</td>
+						    <td> days </td>
+						    <td>The default view to display when the picker is shown. Note: To limit the picker to selecting, for instance the year and month, use format: MM/YYYY. Default: 'days'. Accepts: 'decades','years','months','days'.</td>
+						</tr>
+						<tr>
+						    <td>visible</td>
+						    <td>(none)</td>
+						    <td>This column is shown on a certain screen size and above. Legal values: lg, md, sm, xs.</td>
+						</tr>
+						<tr>
+						    <td>week-days-disabled<br />weekDaysDisabled (alternative writing)</td>
+						    <td>(none)</td>
+						    <td>Days of the week that should be disabled. Values are 0 (Sunday) to 6 (Saturday). Multiple values should be comma-separated. Example: disable weekends: 0,6 or [0,6].</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</b:panel>
+</ui:fragment>
