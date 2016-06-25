@@ -53,6 +53,11 @@
                 <td>CSS style to be used for messages with severity "FATAL".</td>
             </tr>
             <tr>
+                <td>for</td>
+                <td>(none)</td>
+                <td>Optional id or search expression. Only the messages of the component defined by the id and its children are shown. By default, the algorithm checks the ids, which means the the 'for' component has to be a NamingContainer. Note that this algorithm fails if you use the prependId='false'. Alternatively, you can activate a slower but more flexible algorithm by setting 'recursive' to true.</td>
+            </tr>
+            <tr>
                 <td>global-only<br />globalOnly (alternative writing)</td>
                 <td>false</td>
                 <td>Specifies whether only messages (FacesMessage objects) not associated with a specific component should be displayed, ie whether messages should be ignored if they are attached to a particular component. Defaults to false.</td>
@@ -81,6 +86,16 @@
                 <td>line-break-tag<br />lineBreakTag (alternative writing)</td>
                 <td> <br /> </td>
                 <td>If there's more than one message, they can optionally be separated by a line break. By default, the separator is a br tag. You can replace if with an arbitrary HTML snippet.</td>
+            </tr>
+            <tr>
+                <td>recursive</td>
+                <td> false </td>
+                <td>If set to true, b:messages checks the for attributes using a slower algorithm that doesn't require you to put the component into a namingcontainer.</td>
+            </tr>
+            <tr>
+                <td>redisplay</td>
+                <td>false</td>
+                <td>Set the flag indicating whether the <code>detail</code> property of the associated message(s) should be displayed</td>
             </tr>
             <tr>
                 <td>rendered</td>

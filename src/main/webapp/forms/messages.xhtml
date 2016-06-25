@@ -14,50 +14,50 @@ td {
 	padding: 8px;
 }
 </style>
-		<h1>&lt;b:message /&gt; <b:badge value="since 0.8.1" /></h1>
-    <p>Displays a single <code>FacesMessage</code> in Bootstrap style. Use the <code>for</code> attribute to indicate
+	<h1>&lt;b:message /&gt; <b:badge value="since 0.8.1" /></h1>
+    <p>Displays the <code>FacesMessages</code> of a single field in Bootstrap style. Use the <code>for</code> attribute to indicate
     which input field the <code>&lt;b:message &gt;</code> refers to. If the <code>&lt;b:message &gt;</code> immediately
     follows the input field, you can omit the <code>for</code> attribute: the default value of <code>for</code>
     is <code>@previous</code>.</p>
-    <p>Note that in most cases you don't need to use any ID, neither for the input field, nor for the 
+    <p>Note that in most cases you don't need to use any ID, neither for the input field, nor for the
     <code>&lt;b:message &gt;</code>. This example only uses IDs because the Java bean needs them to generate
     the <code>FacesMessage</code>. In general, we recommend to avoid IDs. It's easier to move components
     around the page or to use copy and paste if you don't use IDs.</p>
-    
-    
+
+
          <b:tabView activeIndex="1" contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
           <b:tab title="JSF markup">
             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
                  <h:form id="messageForm">
                   <b:panelGrid colSpans="3,9">
-                    <b:selectBooleanCheckbox value="#num;{checkboxBean.cbxError}" 
+                    <b:selectBooleanCheckbox value="#num;{checkboxBean.cbxError}"
                                     id="checkboxWithErrorMessage"
-                                    caption="click to toggle the error message" 
+                                    caption="click to toggle the error message"
                                     label="error"
                                     onclick="ajax:checkboxBean.action();"
                                     update="@form"
                                     />
                     <b:message />
-                    <b:selectBooleanCheckbox value="#num;{checkboxBean.cbxFatal}" 
+                    <b:selectBooleanCheckbox value="#num;{checkboxBean.cbxFatal}"
                                     id="checkboxWithFatalMessage"
-                                    caption="click to toggle the fatal error message" 
+                                    caption="click to toggle the fatal error message"
                                     label="fatal"
                                     onclick="ajax:checkboxBean.action();"
                                     update="@form"
                                     />
                     <b:message for="checkboxWithFatalMessage" />
-                    <b:selectBooleanCheckbox value="#num;{checkboxBean.cbxWarning}" 
+                    <b:selectBooleanCheckbox value="#num;{checkboxBean.cbxWarning}"
                                     id="checkboxWithWarning"
-                                    caption="click to toggle the warning" 
+                                    caption="click to toggle the warning"
                                     label="warning"
                                     onclick="ajax:checkboxBean.action();"
                                     update="@form"
                                     />
                     <b:message for="@previous:@previous:@next" />
-                    <b:selectBooleanCheckbox value="#num;{checkboxBean.cbxInfo}" 
+                    <b:selectBooleanCheckbox value="#num;{checkboxBean.cbxInfo}"
                                     id="checkboxWithInfoMessage"
-                                    caption="click to toggle the info message" 
+                                    caption="click to toggle the info message"
                                     label="info"
                                     onclick="ajax:checkboxBean.action();"
                                     update="@form"
@@ -71,44 +71,44 @@ td {
           <b:tab title="displayed as">
                  <h:form id="messageForm">
                   <b:panelGrid colSpans="3,9">
-                    <b:selectBooleanCheckbox value="#{checkboxBean.cbxError}" 
+                    <b:selectBooleanCheckbox value="#{checkboxBean.cbxError}"
                                     id="checkboxWithErrorMessage"
-                                    caption="click to toggle the error message" 
+                                    caption="click to toggle the error message"
                                     label="Error"
                                     onclick="ajax:checkboxBean.action();"
                                     update="@form"
                                     />
                     <b:message />
-                    <b:selectBooleanCheckbox value="#{checkboxBean.cbxFatal}" 
+                    <b:selectBooleanCheckbox value="#{checkboxBean.cbxFatal}"
                                     id="checkboxWithFatalMessage"
-                                    caption="click to toggle the fatal error message" 
+                                    caption="click to toggle the fatal error message"
                                     label="Fatal"
                                     onclick="ajax:checkboxBean.action();"
                                     update="@form"
                                     />
                     <b:message for="checkboxWithFatalMessage" />
-                    <b:selectBooleanCheckbox value="#{checkboxBean.cbxWarning}" 
+                    <b:selectBooleanCheckbox value="#{checkboxBean.cbxWarning}"
                                     id="checkboxWithWarning"
-                                    caption="click to toggle the warning" 
+                                    caption="click to toggle the warning"
                                     label="Warning"
                                     onclick="ajax:checkboxBean.action();"
                                     update="@form"
                                     />
                     <b:message for="@previous:@previous:@next" />
-                    <b:selectBooleanCheckbox value="#{checkboxBean.cbxInfo}" 
+                    <b:selectBooleanCheckbox value="#{checkboxBean.cbxInfo}"
                                     id="checkboxWithInfoMessage"
-                                    caption="click to toggle the info message" 
+                                    caption="click to toggle the info message"
                                     label="Info"
                                     onclick="ajax:checkboxBean.action();"
                                     update="@form"
                                     />
-                                    
+
                     <b:message for="@form:**:checkboxWithInfoMessage"  escape="false" />
                   </b:panelGrid>
-                </h:form>          
+                </h:form>
              </b:tab>
         </b:tabView>
- 
+
         <h1>To escape or not to escape <b:badge value="since 0.8.5" /></h1>
         <p>By public demand, we've added the <code>escape</code> attribute. It allows you to add HTML tags in your
         messages. Please note that this might be a security issue. You're responsible to make sure that
@@ -116,10 +116,10 @@ td {
         BootsFaces prints a message to the console when it renders a message with <code>escape="false"</code>
         for the first time. This message can't be deactivated. We know that using HTML tags in your error messages
         is a useful features, but at the same time we want to make sure you're aware of the risk.</p>
-  
+
         <h1>&lt;b:messages /&gt; <b:badge value="since 0.7" /></h1>
 		<p>Displays <code>FacesMessages</code> in Bootstrap style.</p>
-		
+
          <b:tabView activeIndex="1"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
           <b:tab title="JSF markup">
             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
@@ -148,6 +148,52 @@ td {
      		</h:form>
           </b:tab>
         </b:tabView>
+
+        <h1>&lt;b:messages /&gt;: the <code>for</code> attribute <b:badge value="since 0.9.0" /></h1>
+        <p>The <code>for</code> attribute of BootsFaces is more flexible than the <code>for</code> of <code>h:messages</code>.
+        You can use it to limit the list of error messages to a certain form. More precisely, you can show every
+        error message of an arbitrary component and its children. To use this feature you have to set a second
+        attribute <code>recursive="true"</code>. By default, the for attribute only checks the component it points to,
+        ignoring the children.</p>
+        <p>You can see the effect in the example below. The error messages in the live demo are updated as you type.</p>
+          <h:form>
+            <b:tabView contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px"
+                       onshow="ajax:messagesBean.update()" update="leftmessages rightmessages">
+              <b:tab title="JSF markup">
+                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+                <b:panelGrid columns="2">
+                  <b:panel title="Who are you?" look="primary">
+                    <b:inputText value="#{messagesBean.firstName}" label="First name" renderLabel="true" onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages" />
+                    <b:inputText value="#{messagesBean.lastName}" label="Last name" renderLabel="true" onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages"  />
+                    <b:messages styleClass="msgs" redisplay="true" for="@parent" recursive="true" id="leftmessages"/>
+                  </b:panel>
+                  <b:panel title="How old are you?" look="primary">
+                    <b:inputText value="#{messagesBean.age}" label="Age" renderLabel="true" onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages"  />
+                    <b:dateTimePicker value="#{messagesBean.birthday}" label="Birthdate" renderLabel="true" onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages"  />
+                    <b:messages styleClass="msgs" redisplay="true" for="@parent" recursive="true" id="rightmessages"/>
+                  </b:panel>
+                </b:panelGrid>
+]]>
+         </script>
+              </b:tab>
+              <b:tab title="displayed as" >
+                 <b:panelGrid columns="2">
+                  <b:panel title="Who are you?" look="primary">
+                    <b:inputText value="#{messagesBean.firstName}" label="First name" renderLabel="true" onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages" />
+                    <b:inputText value="#{messagesBean.lastName}" label="Last name" renderLabel="true" onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages"  />
+                    <b:messages styleClass="msgs" redisplay="true" for="@parent" recursive="true" id="leftmessages"/>
+                  </b:panel>
+                  <b:panel title="How old are you?" look="primary">
+                    <b:inputText value="#{messagesBean.age}" label="Age" renderLabel="true" onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages"  />
+                    <b:dateTimePicker value="#{messagesBean.birthday}" label="Birthdate" renderLabel="true" onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages"  />
+                    <b:messages styleClass="msgs" redisplay="true" for="@parent" recursive="true" id="rightmessages"/>
+                  </b:panel>
+                </b:panelGrid>
+              </b:tab>
+          </b:tabView>
+        </h:form>
+
 
         <h1>Separators between messages <b:badge value="since 0.8.5" /></h1>
         <p>By default, the <code>&lt;b:message &gt;</code> tag separates multiple messages of a single input field
@@ -205,7 +251,7 @@ td {
              </b:tab>
           </b:tabView>
         </h:form>
- 		
+
 		        <br/>
                 <h2>Reference section</h2>
                 <ui:include src="MessageAttributes.xhtml" />
@@ -233,12 +279,12 @@ td {
                     <li><code>bf-message-detail</code> This CSS class applies to the <code>span</code>code> tag surrounding the detail of the message.</li>
                   </ul>
                 </b:panel>
-		
+
 		<br />
 		<script type="text/javascript">
       SyntaxHighlighter.all();
     </script>
-   
+
 		<br />
 		<br />
 		<br />
