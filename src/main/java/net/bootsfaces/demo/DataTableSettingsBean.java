@@ -52,6 +52,10 @@ public class DataTableSettingsBean implements Serializable {
 
 	private boolean orderable=false;
 
+	private boolean customOptions=false;
+
+	private boolean select=false;
+
 	public boolean isSaveState() {
 		return saveState;
 	}
@@ -211,5 +215,28 @@ public class DataTableSettingsBean implements Serializable {
 		if (languageIsEs)
 			return "es";
 		return null;
+	}
+
+	public boolean isCustomOptions() {
+		return customOptions;
+	}
+
+	public void setCustomOptions(boolean customOptions) {
+		this.customOptions = customOptions;
+	}
+
+	public String getCustomOptionsValue() {
+		if (this.customOptions) {
+			return "colReorder:true";
+		}
+		return null;
+	}
+
+	public boolean isSelect() {
+		return select;
+	}
+
+	public void setSelect(boolean select) {
+		this.select = select;
 	}
 }

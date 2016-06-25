@@ -97,6 +97,8 @@ td {
                 searching="&num;{dataTableSettingsBean.searching}"
                 border="&num;{dataTableSettingsBean.border}"
                 row-highlight="&num;{dataTableSettingsBean.rowHighlight}"
+                lang="&num;{dataTableSettingsBean.language}"
+                custom-options="colReorder: true"
                 >
                 <b:dataTableColumn value="&num;{car.brand}" />
                 <b:dataTableColumn order-by="dom-text" data-type="text">
@@ -113,6 +115,7 @@ td {
                                    footer-style-class="&num;{dataTableSettingsBean.footerStyleClassName}"
                                    header-style="&num;{dataTableSettingsBean.headerCSS}"
                                    header-style-class="&num;{dataTableSettingsBean.headerStyleClassName}"
+                                   custom-options="someColumnOption:true"
                                    >
                   <h:outputText value="&num;{car.color}" />
                 </b:dataTableColumn>
@@ -136,7 +139,8 @@ td {
                 border="#{dataTableSettingsBean.border}"
                 row-highlight="#{dataTableSettingsBean.rowHighlight}"
                 lang="#{dataTableSettingsBean.language}"
-                custom-options="colReorder: true"
+                custom-options="#{dataTableSettingsBean.customOptionsValue}"
+                select="#{dataTableSettingsBean.select}"
                 >
                 <b:dataTableColumn value="#{car.brand}" />
                 <b:dataTableColumn order-by="dom-text" data-type="text">
@@ -206,6 +210,13 @@ td {
                 onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                 update="basicUsageId" />
 
+             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.select}" caption="select='true'"
+                onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                update="basicUsageId" />
+             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.customOptions}" caption="customOption='colReorder:true'"
+                onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                update="basicUsageId" />
+
             </b:panelGrid>
           </b:row>
         </b:tab>
@@ -231,6 +242,14 @@ td {
       choose between a limited set of embedded translations) or you can
       provide your own translation with a remote URL (eg. CDN url)
     </p>
+
+    <h3>Custom options</h3>
+    <p>The JavaScript dataTable widgets has quite a few options. It's almost impossible to cover them all by a JSF
+    component (see <a target="#" href="https://datatables.net/reference/option/">https://datatables.net/reference/option/</a>).
+    Therefore, you can pass <code>custom-options</code> to both the dataTable and to each column. These options are
+    added to the Json object used to initialize the datatable.</p>
+    <p>Note that this feature may lead to incompatibilities in future versions of BoofsFaces. In particular, if
+    your custom option is added to the <code>&lt;b:dataTable /&gt;</code> component, it may be added twice.</p>
 
         <h:form>
     <b:tabView activeIndex="1">
