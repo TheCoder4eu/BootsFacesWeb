@@ -46,12 +46,69 @@ td {
 		</b:well>
 
       <h1>Advanced usage</h1>
+      <p>&lt;b:fetchBeanInfos /&gt; populates six global JavaScript variables:</p>
+       <dl class="dl-horizontal">
+        <dt><code>validationFailed</code></dt><dd>is true if there's at least one error or fatal error message</dd>
+        <dt><code>bfMaximumMessageSeverity</code></dt><dd>ordinal number of the most disturbing FacesMessage. 0=no message, 1=info, 2=warning, 3=error, 4=fatal error.</dd>
+        <dt><code>bfHasFatalError</code></dt><dd>Is there at least one fatal error message?</dd>
+        <dt><code>bfHasError</code></dt><dd>Is there at least one error message?</dd>
+        <dt><code>bfHasWarning</code></dt><dd>Is there at least one warning message?</dd>
+        <dt><code>bfHasInfo</code></dt><dd>Is there at least one info message?</dd>
+      </dl>
+      <p>You can see these variable in the example below. For technical reasons, the values of the variables are shown
+      in an alert box. Click the button to see it.</p>
 
             <b:tabView activeIndex="1" contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
           <b:tab title="JSF markup">
             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
-xxx
+                <h:form id="messageForm">
+                  <b:fetchBeanInfos />
+                  <b:panelGrid colSpans="3,9">
+                    <b:selectBooleanCheckbox value="&num;{checkboxBean.cbxError}"
+                                    id="checkboxWithErrorMessage"
+                                    caption="click to toggle the error message"
+                                    label="Error"
+                                    onclick="ajax:checkboxBean.action();"
+                                    update="@form"
+                                    />
+                    <b:message />
+                    <b:selectBooleanCheckbox value="&num;{checkboxBean.cbxFatal}"
+                                    id="checkboxWithFatalMessage"
+                                    caption="click to toggle the fatal error message"
+                                    label="Fatal"
+                                    onclick="ajax:checkboxBean.action();"
+                                    update="@form"
+                                    />
+                    <b:message for="checkboxWithFatalMessage" />
+                    <b:selectBooleanCheckbox value="&num;{checkboxBean.cbxWarning}"
+                                    id="checkboxWithWarning"
+                                    caption="click to toggle the warning"
+                                    label="Warning"
+                                    onclick="ajax:checkboxBean.action();"
+                                    update="@form"
+                                    />
+                    <b:message for="@previous:@previous:@next" />
+                    <b:selectBooleanCheckbox value="&num;{checkboxBean.cbxInfo}"
+                                    id="checkboxWithInfoMessage"
+                                    caption="click to toggle the info message"
+                                    label="Info"
+                                    onclick="ajax:checkboxBean.action();"
+                                    update="@form"
+                                    />
+                    <b:message for="@form:**:checkboxWithInfoMessage"  escape="false" />
+                  </b:panelGrid>
+                  <b:row>
+                  <b:panel title="Validation result" look="primary">
+                    <b:button value="click to show the values of the JavaScript variables" look="primary"
+                               onclick="alert('bfMaximumMessageSeverity = ' + bfMaximumMessageSeverity + '\n'
+                                       + 'bfHasFatalError = ' + bfHasFatalError + '\n'
+                                       + 'bfHasError = ' + bfHasError + '\n'
+                                       + 'bfHasWarning = ' + bfHasWarning + '\n'
+                                       + 'bfHasInfo = ' + bfHasInfo + '\n')" />
+                  </b:panel>
+                  </b:row>
+                </h:form>
  ]]>
          </script>
           </b:tab>
@@ -94,8 +151,9 @@ xxx
                   </b:panelGrid>
                   <b:row>
                   <b:panel title="Validation result" look="primary">
-                    <b:button value="click to show the values"
-                               onclick="alert('bfHasFatalError = ' + bfHasFatalError + '\n'
+                    <b:button value="click to show the values of the JavaScript variables" look="primary"
+                               onclick="alert('bfMaximumMessageSeverity = ' + bfMaximumMessageSeverity + '\n'
+                                       + 'bfHasFatalError = ' + bfHasFatalError + '\n'
                                        + 'bfHasError = ' + bfHasError + '\n'
                                        + 'bfHasWarning = ' + bfHasWarning + '\n'
                                        + 'bfHasInfo = ' + bfHasInfo + '\n')" />
