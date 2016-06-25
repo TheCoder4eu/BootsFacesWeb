@@ -23,15 +23,16 @@ td {
         <h:form>
           <b:panelGrid columns="4">
             <b:switch value="#{settingsBean.checkbox1}" label="switch 1" offColor="success" onColor="info"
+            render-label="true"
              />
             <b:switch value="#{settingsBean.checkbox2}" label="switch with tooltip"
-              tooltip="I'm the tooltip. I'll tell you what this switch is all about." />
-            <b:switch value="#{settingsBean.checkbox3}" label="switch with rtl-support!"
+              tooltip="I'm the tooltip. I'll tell you what this switch is all about." render-label="true" />
+            <b:switch value="#{settingsBean.checkbox3}" label="switch with rtl-support!" render-label="true"
               caption="and a caption!"
               tooltip="Using the English language, one of the effects of the dir=rtl setting is that the exclamation mark are at the left hand side. Isn't that weird?"
               dir="rtl" />
             <b:switch value="#{settingsBean.checkbox4}" caption="AJAX"
-              label="Toggle the switch to toggle between rtl and ltr."
+              label="Toggle the switch to toggle between rtl and ltr." render-label="true"
               tooltip="Using the English language, the only effect of the dir=rtl setting is that the exclamation mark are at the left hand side. Isn't that weird?"
 
               dir="#{settingsBean.checkbox4?'ltr':'rtl'}"
@@ -49,14 +50,14 @@ td {
                           <![CDATA[
         <h:form>
           <b:panelGrid columns="4">
-            <b:switch value="#num;{settingsBean.checkbox1}" label="switch 1" offColor="success" onColor="info" />
-            <b:switch value="#num;{settingsBean.checkbox2}" label="switch with tooltip"
+            <b:switch value="#num;{settingsBean.checkbox1}" label="switch 1" offColor="success" onColor="info" render-label="true" />
+            <b:switch value="#num;{settingsBean.checkbox2}" label="switch with tooltip" render-label="true"
               tooltip="I'm the tooltip. I'll tell you what this switch is all about." />
-            <b:switch value="#num;{settingsBean.checkbox3}" label="switch with rtl-support!"
+            <b:switch value="#num;{settingsBean.checkbox3}" label="switch with rtl-support!" render-label="true"
               caption="and a caption!"
               tooltip="Using the English language, one of the effects of the dir=rtl setting is that the exclamation mark are at the left hand side. Isn't that weird?"
               dir="rtl" />
-            <b:switch value="#num;{settingsBean.checkbox4}" caption="AJAX"
+            <b:switch value="#num;{settingsBean.checkbox4}" caption="AJAX" render-label="true"
               label="Toggle the switch to toggle between rtl and ltr."
               tooltip="Using the English language, the only effect of the dir=rtl setting is that the exclamation mark are at the left hand side. Isn't that weird?"
               dir="#num;{settingsBean.checkbox4?'ltr':'rtl'}"
@@ -93,7 +94,7 @@ td {
                     <b:switch value="#num;{checkboxBean.cbxError}"
                                     id="checkboxWithErrorMessage"
                                     caption="click to toggle the error message"
-                                    label="error"
+                                    label="error" render-label="true"
                                     onchange="ajax:checkboxBean.action();"
                                     update="@form"
                                     />
@@ -101,7 +102,7 @@ td {
                     <b:switch value="#num;{checkboxBean.cbxFatal}"
                                     id="checkboxWithFatalMessage"
                                     caption="click to toggle the fatal error message"
-                                    label="fatal"
+                                    label="fatal" render-label="true"
                                     onchange="ajax:checkboxBean.action();"
                                     update="@form"
                                     />
@@ -109,7 +110,7 @@ td {
                     <b:switch value="#num;{checkboxBean.cbxWarning}"
                                     id="checkboxWithWarning"
                                     caption="click to toggle the warning"
-                                    label="warning"
+                                    label="warning" render-label="true"
                                     onchange="ajax:checkboxBean.action();"
                                     update="@form"
                                     />
@@ -117,7 +118,7 @@ td {
                     <b:switch value="#num;{checkboxBean.cbxInfo}"
                                     id="checkboxWithInfoMessage"
                                     caption="click to toggle the info message"
-                                    label="info"
+                                    label="info" render-label="true"
                                     onchange="ajax:checkboxBean.action();"
                                     update="@form"
                                     />
@@ -134,7 +135,7 @@ td {
                     <b:switch value="#{checkboxBean.cbxError}"
                                     id="checkboxWithErrorMessage"
                                     caption="click to toggle the error message"
-                                    label="error"
+                                    label="error" render-label="true"
                                     onchange="ajax:checkboxBean.action();"
                                     update="@form"
                                     />
@@ -142,7 +143,7 @@ td {
                     <b:switch value="#{checkboxBean.cbxFatal}"
                                     id="checkboxWithFatalMessage"
                                     caption="click to toggle the fatal error message"
-                                    label="fatal"
+                                    label="fatal" render-label="true"
                                     onchange="ajax:checkboxBean.action();"
                                     update="@form"
                                     />
@@ -150,7 +151,7 @@ td {
                     <b:switch value="#{checkboxBean.cbxWarning}"
                                     id="checkboxWithWarning"
                                     caption="click to toggle the warning"
-                                    label="warning"
+                                    label="warning" render-label="true"
                                     onchange="ajax:checkboxBean.action();"
                                     update="@form"
                                     />
@@ -158,7 +159,7 @@ td {
                     <b:switch value="#{checkboxBean.cbxInfo}"
                                     id="checkboxWithInfoMessage"
                                     caption="click to toggle the info message"
-                                    label="info"
+                                    label="info" render-label="true"
                                     onchange="ajax:checkboxBean.action();"
                                     update="@form"
                                     />

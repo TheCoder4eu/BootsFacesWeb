@@ -20,7 +20,7 @@
                 <h:form>
                 <h4>Basic Mode</h4>
                 <p>The most simple slider is horizontal and has a single handle that can be moved with the mouse or by using the arrow keys(once you click on it).</p>
-                
+
                 <b:row><b:column><b:slider mode="basic" label="Basic Slider:"/></b:column></b:row>
                 <br/>
                 <h4>Edit Mode</h4>
@@ -192,7 +192,7 @@
                                 <b:slider handle-size="lg" min="0" max="100" step="5" value="75" label="Large handle (lg)"/>
                             </b:column>
                         </b:row>
-                        
+
                         <f:facet name="footer">
                         <strong>Markup:</strong><br/>
 
@@ -239,7 +239,7 @@
                                 <b:slider handle-shape="round" handle-size="lg" min="0" max="100" step="5" value="50" label="Round handle (lg)"/>
                             </b:column>
                         </b:row>
-                        
+
                         <f:facet name="footer">
                         <strong>Markup:</strong><br/>
 
@@ -272,7 +272,7 @@
                         <f:facet name="heading"><b>Disabled and readonly</b></f:facet>
                         <b:row>
                             <b:column>
-                                <b:slider handle-shape="round" min="0" max="100" 
+                                <b:slider handle-shape="round" min="0" max="100"
                                           step="5" value="25" label="Default (editable)"
                                            mode="edit"
                                 />
@@ -280,7 +280,7 @@
                         </b:row>
                         <b:row>
                             <b:column>
-                                <b:slider handle-shape="round" min="0" max="100" 
+                                <b:slider handle-shape="round" min="0" max="100"
                                           step="5" value="25" label="Disabled"
                                           disabled="true"
                                            mode="edit"
@@ -289,14 +289,14 @@
                         </b:row>
                         <b:row>
                             <b:column>
-                                <b:slider handle-shape="round" min="0" max="100" 
+                                <b:slider handle-shape="round" min="0" max="100"
                                           step="5" value="25" label="Readonly"
                                           readonly="true"
                                           mode="edit"
                                 />
                             </b:column>
                         </b:row>
-                        
+
                         <f:facet name="footer">
                         <strong>Markup:</strong><br/>
 
@@ -304,7 +304,7 @@
                         <![CDATA[
                         <b:row>
                             <b:column>
-                                <b:slider handle-shape="round" min="0" max="100" 
+                                <b:slider handle-shape="round" min="0" max="100"
                                           step="5" value="25" label="Default (editable)"
                                            mode="edit"
                                />
@@ -312,7 +312,7 @@
                         </b:row>
                         <b:row>
                             <b:column>
-                                <b:slider handle-shape="round" min="0" max="100" 
+                                <b:slider handle-shape="round" min="0" max="100"
                                           step="5" value="25" label="Disabled"
                                           mode="edit"
                                           disabled="true"
@@ -321,7 +321,7 @@
                         </b:row>
                         <b:row>
                             <b:column>
-                                <b:slider handle-shape="round" min="0" max="100" 
+                                <b:slider handle-shape="round" min="0" max="100"
                                           step="5" value="25" label="Readonly"
                                           mode="edit"
                                           readonly="true"
@@ -332,14 +332,14 @@
                         </f:facet>
                     </b:panel>
                 </h:form>
-                
+
                 <b:modal id="amodal" title="Slider">
                     <strong>Submitted values:</strong>
-                    <h:panelGrid columns="2">  
-                        <h:outputText value="Hour(0-24): " />  
-                        <h:outputText value="#{testBean.val5}" />  
+                    <h:panelGrid columns="2">
+                        <h:outputText value="Hour(0-24): " />
+                        <h:outputText value="#{testBean.val5}" />
 
-                        <h:outputText value="Minutes(step 5 min): " />  
+                        <h:outputText value="Minutes(step 5 min): " />
                         <h:outputText value="#{testBean.val6}" />
                     </h:panelGrid>
                     <f:facet name="footer">
@@ -347,19 +347,19 @@
                         <b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"/>
                     </f:facet>
                 </b:modal>
-                
+
                <h2>Labels, required fields and error messages  <b:badge value="since 0.8.0" /></h2>
                <p>You can add a label by adding the attribute <code>label</code>. The label is also used by the JSF messages. To give you maximum flexibility,
                you can suppress automatic rendering of labels by adding <code>renderLabel="false"</code>.
                </p>
                <p>Required inputs fields and their labels both bear the CSS class <code>bf-required</code>. By default, this adds an asterisk to the label.</p>
-               <p>If the field has a FacesMessage, one of the CSS classes <code>bf-info</code>, <code>bf-warning</code>, 
+               <p>If the field has a FacesMessage, one of the CSS classes <code>bf-info</code>, <code>bf-warning</code>,
                    <code>bf-error</code> or <code>bf-fatal</code>, depending on which error severity the message has.
                    The latter two classes color the label red.</p>
                 <p>If there's no message,
                    the field and its label bear the pseudo CSS class <code>bf-no-message</code>.
                </p>
-                
+
 
                 <br/>
                 <h2>Reference section</h2>
@@ -380,7 +380,7 @@
                    <li>If there's a label, it bears the CSS class <code>required</code>, if it's a mandatory field.
                    This class adds an asterisk to the label text. You can override the CSS class to remove the asterisk
                    or to replace it by something else.</li>
-                   <li>If there's a label, it bears the CSS classes <code>bf-info</code>, <code>bf-warning</code>, 
+                   <li>If there's a label, it bears the CSS classes <code>bf-info</code>, <code>bf-warning</code>,
                    <code>bf-error</code> or <code>bf-fatal</code>, depending on which error message the input field has.
                    The latter two classes color the label red.<br />
                    If there's no message,
@@ -389,7 +389,7 @@
 
 					</ul>
 				</b:panel>
-                
+
                 <script type="text/javascript">
                     SyntaxHighlighter.all();
                 </script>

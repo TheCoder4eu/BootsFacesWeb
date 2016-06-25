@@ -251,7 +251,7 @@ td {
     <p>Note that this feature may lead to incompatibilities in future versions of BoofsFaces. In particular, if
     your custom option is added to the <code>&lt;b:dataTable /&gt;</code> component, it may be added twice.</p>
 
-        <h:form>
+    <h:form>
     <b:tabView activeIndex="1">
       <b:tab title="JSF markup">
         <b:well>
@@ -262,6 +262,8 @@ td {
                      var="car"
                      id="bcarPool2"
                      fixedHeader="true"
+                     scroll-size="400px"
+                     scroll-x="false"
                      responsive="true"
                      lang="it"
                      searching="false">
@@ -269,7 +271,10 @@ td {
             <h:column value="&num;{car.type}" />
             <h:column value="&num;{car.color}" />
             <h:column value="&num;{car.year}" />
-        </b:dataTable>
+            <h:column value="&num;{car.brand}" />
+            <h:column value="&num;{car.type}" />
+            <h:column value="&num;{car.color}" />
+            <h:column value="&num;{car.year}" />
 			]]>
 			</script>
         </b:well>
@@ -314,10 +319,12 @@ td {
                      onselect="console.log('select');"
                      ondeselect="console.log('deselect');"
                      >
-            <h:column value="&num;{car.brand}" />
-            <h:column value="&num;{car.type}" />
-            <h:column value="&num;{car.color}" />
-            <h:column value="&num;{car.year}" />
+            <b:dataTableColumn value="&num;{car.brand}" />
+            <b:dataTableColumn value="&num;{car.type}" />
+            <b:dataTableColumn value="&num;{car.color}" />
+            <b:dataTableColumn value="&num;{car.year}" />
+            <b:dataTableColumn value="&num;{car.price}" />
+            <b:dataTableColumn value="&num;{car.enginePower}" label="Engine Power (hp)" />
         </b:dataTable>
       ]]>
       </script>

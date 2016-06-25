@@ -16,6 +16,7 @@
 			padding: 8px;
 		}
 		</style>
+    <h:form>
 		<h1>ColorPicker (&lt;b:colorPicker /&gt;) <b:badge value="since 0.8.5" /></h1>
 
 		<p><code>&lt;b:colorPicker&gt;</code> is a simple inputText that display color swatches.
@@ -30,12 +31,15 @@
 				<b:well>
 					<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 						<![CDATA[
-    						<b:colorPicker value="&num;{test.selectedColor}" opacity="true" format="rgb" />
+    						<b:colorPicker value="&num;{test.selectedColor}" opacity="true" format="rgb"
+                                           label="Choose an RBB color" render-label="true" />
 					]]></script>
 				</b:well>
 			</b:tab>
 			<b:tab title="displayed as" contentStyle="padding:10px">
-				<b:colorPicker value="#{test.selectedColor}" opacity="true" format="rgb" />
+				<b:colorPicker value="#{test.selectedColor}" opacity="true" format="rgb"
+                               label="Choose an RGB color" render-label="true"
+                               />
 			</b:tab>
 		</b:tabView>
 		<br/>
@@ -198,6 +202,7 @@
 					look of the component.</li>
 			</ul>
 		</b:panel>
+    </h:form>
 
 		<script type="text/javascript">
       		SyntaxHighlighter.all();
