@@ -135,6 +135,8 @@ td {
                 searching="#{dataTableSettingsBean.searching}"
                 border="#{dataTableSettingsBean.border}"
                 row-highlight="#{dataTableSettingsBean.rowHighlight}"
+                lang="#{dataTableSettingsBean.language}"
+                custom-options="colReorder: true"
                 >
                 <b:dataTableColumn value="#{car.brand}" />
                 <b:dataTableColumn order-by="dom-text" data-type="text">
@@ -144,13 +146,14 @@ td {
                   <h:inputText value="#{car.type}" />
                 </b:dataTableColumn>
                 <b:dataTableColumn label="Color"
-                                   orderable="false"
+                                   orderable="#{dataTableSettingsBean.orderable}"
                                    content-style="#{dataTableSettingsBean.contentCSS}"
                                    content-style-class="#{dataTableSettingsBean.contentStyleClassName}"
                                    footer-style="#{dataTableSettingsBean.footerCSS}"
                                    footer-style-class="#{dataTableSettingsBean.footerStyleClassName}"
                                    header-style="#{dataTableSettingsBean.headerCSS}"
                                    header-style-class="#{dataTableSettingsBean.headerStyleClassName}"
+                                   custom-options="someColumnOption:true"
                                    >
                   <h:outputText value="#{car.color}" />
                 </b:dataTableColumn>
@@ -192,6 +195,14 @@ td {
                 onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                 update="basicUsageId" />
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.rowHighlight}" caption="row-highlight='true'"
+                onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                update="basicUsageId" />
+
+             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.languageIsEs}" caption="language='es'"
+                onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                update="basicUsageId" />
+
+             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.orderable}" caption="orderable='true' (last column only)"
                 onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                 update="basicUsageId" />
 

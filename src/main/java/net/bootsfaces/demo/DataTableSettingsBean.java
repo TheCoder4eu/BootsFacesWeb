@@ -48,6 +48,10 @@ public class DataTableSettingsBean implements Serializable {
 	private boolean border=true;
 	private boolean rowHighlight=true;
 
+	private boolean languageIsEs=false;
+
+	private boolean orderable=false;
+
 	public boolean isSaveState() {
 		return saveState;
 	}
@@ -185,5 +189,27 @@ public class DataTableSettingsBean implements Serializable {
 
 	public void updateSettings() {
 
+	}
+
+	public boolean isLanguageIsEs() {
+		return languageIsEs;
+	}
+
+	public void setLanguageIsEs(boolean languageIsEs) {
+		this.languageIsEs = languageIsEs;
+	}
+
+	public boolean isOrderable() {
+		return orderable;
+	}
+
+	public void setOrderable(boolean orderable) {
+		this.orderable = orderable;
+	}
+
+	public String getLanguage() {
+		if (languageIsEs)
+			return "es";
+		return null;
 	}
 }
