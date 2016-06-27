@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+      <ui:define name="content">
+        <style>td {padding: 8px;}</style>
+        <h1>InputText with tags <b:badge value="since 0.9.0" /></h1>
+        <p>You can design your input texts more fancy by decorating them with little tags. Note that this is a late
+        addition to <code>&lt;b:inputText /></code>. Most features of the basic input text component should work
+        with the tags extension, but there's no guarantee. However, the alternative was to make it a component of
+        its own, which seemed like overkill to us.</p>
+
+        <h2>Basic usage</h2>
+        <p>By setting the attribute <code>tags="true"</code> you can display the input values as tag - similar to
+        <code>&lt;b:badge /></code> or to price tags in the supermarket. The tags are separated by commas. Users can
+        separate tags either by tying a comma or by hitting the <code>return</code> key.</p>
+        <b:tabView>
+          <b:tab title="live preview">
+           <b:well>
+            <b:row>
+              <b:inputText tags="true" value="price tag,cheap,buy two get three" tiny-screen="full-width"/>
+           </b:row>
+           </b:well>
+          </b:tab>
+          <b:tab title="JSF markup">
+            <b:well>
+            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+             <![CDATA[
+              <b:inputText tags="true" value="price tag,cheap,buy two get three" tiny-screen="full-width"/>
+             ]]></script>
+            </b:well>
+          </b:tab>
+        </b:tabView>
+
+
+            <h2>Reference section</h2>
+                <ui:include src="InputTextAttributes.xhtml" />
+
+            <b:panel look="info">
+				<f:facet name="heading">
+					<b>Skinning</b>
+				</f:facet>
+				<ul>
+					<li>
+				   		<code>&lt;b:inputfield /&gt;</code> is an <code>input</code> tag bearing the CSS-class <code>form-control</code>.
+				   </li>
+				   <li>
+				   		If the attribute <code>required</code> is true, the pseudo CSS class <code>bf-required</code> is added.
+                        Thus you can define your custom style for required fields.
+				   </li>
+                   <li>
+                   If there's a <code>FacesMessage</code>, the input field is bears one of the pseudo CSS classes
+                   <code>bf-info</code>, <code>bf-warning</code>, <code>bf-error</code> or <code>bf-fatal</code>. If there are no messages,
+                   the input field bears the pseudo CSS class <code>bf-no-message</code>.
+                   </li>
+                   <li>If there's a label, it bears the CSS class <code>required</code>, if it's a mandatory field.
+                   This class adds an asterisk to the label text. You can override the CSS class to remove the asterisk
+                   or to replace it by something else.</li>
+                   <li>If there's a label, it bears the CSS classes <code>bf-info</code>, <code>bf-warning</code>,
+                   <code>bf-error</code> or <code>bf-fatal</code>, depending on which severity the error message the input field has.
+                   The latter two classes color the label red.<br />
+                   If there's no message,
+                   the label bears the pseudo CSS class <code>bf-no-message</code>.
+                   </li>
+				  </ul>
+			</b:panel>
+
+				<script type="text/javascript">
+                    SyntaxHighlighter.all();
+                </script>
+                <br/><br/><br/><br/>
+            </ui:define>
+        </ui:composition>

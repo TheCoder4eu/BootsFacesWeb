@@ -628,42 +628,47 @@ public class DefaultValuesBean implements Serializable {
           </b:tab>
         </b:tabView>
 
+        <h2>Tags <b:badge value="since 0.9.0" /></h2>
+        <p>By setting the attribute <code>tags="true"</code> you can display the input values as tag - similar to
+        <code>&lt;b:badge /></code> or to price tags in the supermarket. The tags are separated by commas. Users can
+        separate tags either by tying a comma or by hitting the <code>return</code> key.</p>
+        <p>We've dedicated a special <a href="inputTextWithTags.jsf">showcase page to the input text tags</a>.</p>
 
-            <h2>Reference section</h2>
-                <ui:include src="InputTextAttributes.xhtml" />
+        <h2>Reference section</h2>
+            <ui:include src="InputTextAttributes.xhtml" />
 
-            <b:panel look="info">
-				<f:facet name="heading">
-					<b>Skinning</b>
-				</f:facet>
-				<ul>
-					<li>
-				   		<code>&lt;b:inputfield /&gt;</code> is an <code>input</code> tag bearing the CSS-class <code>form-control</code>.
-				   </li>
-				   <li>
-				   		If the attribute <code>required</code> is true, the pseudo CSS class <code>bf-required</code> is added.
-                        Thus you can define your custom style for required fields.
-				   </li>
-                   <li>
-                   If there's a <code>FacesMessage</code>, the input field is bears one of the pseudo CSS classes
-                   <code>bf-info</code>, <code>bf-warning</code>, <code>bf-error</code> or <code>bf-fatal</code>. If there are no messages,
-                   the input field bears the pseudo CSS class <code>bf-no-message</code>.
-                   </li>
-                   <li>If there's a label, it bears the CSS class <code>required</code>, if it's a mandatory field.
-                   This class adds an asterisk to the label text. You can override the CSS class to remove the asterisk
-                   or to replace it by something else.</li>
-                   <li>If there's a label, it bears the CSS classes <code>bf-info</code>, <code>bf-warning</code>,
-                   <code>bf-error</code> or <code>bf-fatal</code>, depending on which severity the error message the input field has.
-                   The latter two classes color the label red.<br />
-                   If there's no message,
-                   the label bears the pseudo CSS class <code>bf-no-message</code>.
-                   </li>
-				  </ul>
-			</b:panel>
+        <b:panel look="info">
+  	<f:facet name="heading">
+  		<b>Skinning</b>
+  	</f:facet>
+  	<ul>
+  		<li>
+  	   		<code>&lt;b:inputfield /&gt;</code> is an <code>input</code> tag bearing the CSS-class <code>form-control</code>.
+  	   </li>
+  	   <li>
+  	   		If the attribute <code>required</code> is true, the pseudo CSS class <code>bf-required</code> is added.
+                    Thus you can define your custom style for required fields.
+  	   </li>
+               <li>
+               If there's a <code>FacesMessage</code>, the input field is bears one of the pseudo CSS classes
+               <code>bf-info</code>, <code>bf-warning</code>, <code>bf-error</code> or <code>bf-fatal</code>. If there are no messages,
+               the input field bears the pseudo CSS class <code>bf-no-message</code>.
+               </li>
+               <li>If there's a label, it bears the CSS class <code>required</code>, if it's a mandatory field.
+               This class adds an asterisk to the label text. You can override the CSS class to remove the asterisk
+               or to replace it by something else.</li>
+               <li>If there's a label, it bears the CSS classes <code>bf-info</code>, <code>bf-warning</code>,
+               <code>bf-error</code> or <code>bf-fatal</code>, depending on which severity the error message the input field has.
+               The latter two classes color the label red.<br />
+               If there's no message,
+               the label bears the pseudo CSS class <code>bf-no-message</code>.
+               </li>
+  	  </ul>
+  </b:panel>
 
-				<script type="text/javascript">
-                    SyntaxHighlighter.all();
-                </script>
-                <br/><br/><br/><br/>
-            </ui:define>
-        </ui:composition>
+  	<script type="text/javascript">
+                SyntaxHighlighter.all();
+            </script>
+            <br/><br/><br/><br/>
+        </ui:define>
+    </ui:composition>
