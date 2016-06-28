@@ -25,6 +25,13 @@ td {
       from long initial load times. Once the table is loaded, it's completely available on the client, which makes
       filtering and pagination very fast.
     </p>
+    <p>The BootsFaces data table is based on the jQuery plugin <a target="#" href="https://datatables.net/">DataTables.net</a>,
+    which has been published under a MIT licence.
+    Most settings BootsFaces offers translate more or less directly into JavaScript options. So chances are you find
+    a more detailed description of the attributes of the data table at their web site. The data table object is
+    stored in a JavaScript variable (the <code>widgetVar</code>). If you don't specify a <code>widgetVar</code>,
+    BootsFaces generates a variable based on the id of the <code>&lt;b:dataTable &gt;</code>. Following the tradition
+    of Angular and other popular JS frameworks, the kebab-case of the id translates to a camelCase widgetVar.</p>
 
     <h3>Basic usage</h3>
     <p>Getting started with the BootsFaces datatable is pretty easy. Basically, it support the same syntax as its
