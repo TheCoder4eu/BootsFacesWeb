@@ -21,14 +21,22 @@
 			Essentially, accordion is only a wrapper for panels. The additional attribute that can be specified, is the expandedPanels that
 			provide the ability to make expanded by default, specified panels ids.
 		</p>
-		<b:tabView>
-			<b:tab title="preview">
-				<b:accordion expanded-panels="panel1,panel3">
-                  	<b:panel id="panel1" title="Item 1">Content 1</b:panel>
-                  	<b:panel id="panel2" title="Item 2">Content 2</b:panel>
-                  	<b:panel id="panel3" title="Item 3">Content 3</b:panel>
-                </b:accordion>
-			</b:tab>
+          <b:tabView>
+            <b:tab title="preview">
+              <b:accordion expanded-panels="panel1,panel3">
+                <b:panel id="panel1" title="Item 1">Content 1</b:panel>
+                <b:panel id="panel2" title="Item 2">Content 2</b:panel>
+                <b:panel id="panel3">Content 3
+                  <f:facet name="heading">
+                    <h:outputText value="Panel heading with a facet in place of a title " />
+                    <b:badge style="margin-left:10px" value="since version 0.4" />
+                  </f:facet>
+                  <f:facet name="footer">
+                     Footer of panel 3
+                  </f:facet>
+                </b:panel>
+              </b:accordion>
+            </b:tab>
 			<b:tab title="JSF markup">
 				<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
 					<![CDATA[
@@ -38,7 +46,7 @@
                     		<b:panel id="panel3" title="Item 3">Content 3</b:panel>
                     	</b:accordion>
 					]]>
-				</script> 
+				</script>
 			</b:tab>
 		</b:tabView>
 
