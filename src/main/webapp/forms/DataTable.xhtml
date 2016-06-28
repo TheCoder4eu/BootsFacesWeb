@@ -94,7 +94,7 @@ td {
 				    <![CDATA[
               <b:dataTable value="&num;{carPool.carPool}"
                 var="car"
-                id="basicUsageId"
+                id="basic-usage-id"
                 page-length="5"
                 page-length-menu="5,10,20"
                 widget-var="basicTableWidget"
@@ -135,7 +135,7 @@ td {
             <b:column small-screen="two-thirds">
               <b:dataTable value="#{carPool.carPool}"
                 var="car"
-                id="basicUsageId"
+                id="basic-usage-id"
                 page-length="5"
                 page-length-menu="5,10,20"
                 widget-var="basicTableWidget"
@@ -173,56 +173,56 @@ td {
             <b:panelGrid columns="1" small-screen="one-third">
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.saveState}" caption="save-state='true'"
                 onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basicUsageId" />
+                update="basic-usage-id" />
               <b:selectBooleanCheckbox value="#{dataTableSettingsBean.headerStyle}" caption="header-style='color:red'"
                 onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basicUsageId" />
+                update="basic-usage-id" />
               <b:selectBooleanCheckbox value="#{dataTableSettingsBean.headerStyleClass}" caption="header-style-class='hidden'"
                 onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basicUsageId" />
+                update="basic-usage-id" />
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.contentStyle}" caption="content-style='color:red'"
                 onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basicUsageId" />
+                update="basic-usage-id" />
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.contentStyleClass}" caption="content-style-class='hidden'"
                 onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basicUsageId" />
+                update="basic-usage-id" />
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.footerStyle}" caption="footer-style='color:red'"
                 onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basicUsageId" />
+                update="basic-usage-id" />
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.footerStyleClass}" caption="footer-style-class='hidden'"
                 onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basicUsageId" />
+                update="basic-usage-id" />
 
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.searching}" caption="searching='true'"
                 onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basicUsageId" />
+                update="basic-usage-id" />
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.multiColumnSearch}" caption="multi-column-search='true' (requires searching='true')"
                 onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basicUsageId" />
+                update="basic-usage-id" />
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.striped}" caption="striped='true'"
                 onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basicUsageId" />
+                update="basic-usage-id" />
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.border}" caption="border='true'"
                 onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basicUsageId" />
+                update="basic-usage-id" />
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.rowHighlight}" caption="row-highlight='true'"
                 onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basicUsageId" />
+                update="basic-usage-id" />
 
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.languageIsEs}" caption="language='es'"
                 onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basicUsageId" />
+                update="basic-usage-id" />
 
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.orderable}" caption="orderable='true' (last column only)"
                 onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basicUsageId" />
+                update="basic-usage-id" />
 
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.select}" caption="select='true'"
                 onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basicUsageId" />
+                update="basic-usage-id" />
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.customOptions}" caption="customOption='colReorder:true'"
                 onclick="basicTableWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basicUsageId" />
+                update="basic-usage-id" />
 
             </b:panelGrid>
           </b:row>
