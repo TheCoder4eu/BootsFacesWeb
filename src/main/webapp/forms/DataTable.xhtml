@@ -136,20 +136,21 @@ td {
               <b:dataTable value="#{carPool.carPool}"
                 var="car"
                 id="basic-usage-id"
+                border="#{dataTableSettingsBean.border}"
+                custom-options="#{dataTableSettingsBean.customOptionsValue}"
+                fixedHeader="#{dataTableSettingsBean.fixedHeader}"
+                lang="#{dataTableSettingsBean.language}"
+                multi-column-search="#{dataTableSettingsBean.multiColumnSearch}"
                 page-length="5"
                 page-length-menu="5,10,20"
-                multi-column-search="#{dataTableSettingsBean.multiColumnSearch}"
-                striped="#{dataTableSettingsBean.striped}"
+                row-highlight="#{dataTableSettingsBean.rowHighlight}"
                 save-state="#{dataTableSettingsBean.saveState}"
                 searching="#{dataTableSettingsBean.searching}"
-                border="#{dataTableSettingsBean.border}"
-                row-highlight="#{dataTableSettingsBean.rowHighlight}"
-                lang="#{dataTableSettingsBean.language}"
-                custom-options="#{dataTableSettingsBean.customOptionsValue}"
                 select="#{dataTableSettingsBean.select}"
+                striped="#{dataTableSettingsBean.striped}"
                 >
                 <b:dataTableColumn value="#{car.brand}" />
-                <b:dataTableColumn order-by="dom-text" data-type="text">
+                <b:dataTableColumn order-by="dom-text" data-type="text" searchable="#{dataTableSettingsBean.searchable}">
                   <f:facet name="header">
                     <h:outputText value="Type"/>
                   </f:facet>
@@ -164,6 +165,7 @@ td {
                                    header-style="#{dataTableSettingsBean.headerCSS}"
                                    header-style-class="#{dataTableSettingsBean.headerStyleClassName}"
                                    custom-options="someColumnOption:true"
+                                   searchable="#{dataTableSettingsBean.searchable}"
                                    >
                   <h:outputText value="#{car.color}" />
                 </b:dataTableColumn>
@@ -220,6 +222,12 @@ td {
                 onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                 update="basic-usage-id" />
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.customOptions}" caption="customOption='colReorder:true'"
+                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                update="basic-usage-id" />
+             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.fixedHeader}" caption="fixedHeader='true'"
+                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.fixedHeader()"
+                update="basic-usage-id" />
+             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.searchable}" caption="searchable='true' (2nd and last column only)"
                 onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                 update="basic-usage-id" />
 

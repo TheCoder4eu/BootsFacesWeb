@@ -56,6 +56,10 @@ public class DataTableSettingsBean implements Serializable {
 
 	private boolean select=false;
 
+	private boolean fixedHeader=false;
+
+	private boolean searchable=false;
+
 	public boolean isSaveState() {
 		return saveState;
 	}
@@ -238,5 +242,21 @@ public class DataTableSettingsBean implements Serializable {
 
 	public void setSelect(boolean select) {
 		this.select = select;
+	}
+
+	public boolean isSearchable() {
+		return searchable;
+	}
+
+	public void setSearchable(boolean searchable) {
+		this.searchable = searchable;
+	}
+
+	public boolean isFixedHeader() {
+		return fixedHeader;
+	}
+
+	public void setFixedHeader(boolean fixedHeader) {
+		this.fixedHeader = fixedHeader;
 	}
 }
