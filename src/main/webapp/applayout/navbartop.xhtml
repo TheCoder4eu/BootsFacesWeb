@@ -4,7 +4,8 @@
   xmlns:h="http://java.sun.com/jsf/html"
   xmlns:ui="http://java.sun.com/jsf/facelets"
   xmlns:f="http://java.sun.com/jsf/core"
-  xmlns:b="http://bootsfaces.net/ui">
+  xmlns:b="http://bootsfaces.net/ui"
+  xmlns:jsf="http://xmlns.jcp.org/jsf">
 
   <ui:remove>
     <!--
@@ -34,6 +35,7 @@
           <b:navLink value="Basic Layout and Grid System" outcome="/layout/basic" icon-awesome="table" />
           <b:navLink value="Simplified Grid System" outcome="/layout/simplifiedLayout" icon-awesome="table" />
           <b:navLink value="Mobile support" outcome="/layout/mobile" icon-awesome="mobile" />
+          <b:navLink value="HTML5-friendly markup: Using DIV tags in JSF" outcome="/layout/div" />
           <b:navLink value="Themes" outcome="/layout/themes" />
           <b:navLink value="RTL (right-to-left) support" outcome="/layout/rtl" icon-awesome="table" />
           <b:navLink value="CSS files, JS files and CDNs" outcome="/layout/resourcemanagement" />
@@ -102,8 +104,10 @@
         <b:dropMenu value="Mobile" visible="xs,lg">
           <b:navLink value="Shake" outcome="/mobile/Shake" icon-awesome="hand-grab-o" />
           <b:navLink value="Gyroscope" outcome="/mobile/Gyroscope" icon-awesome="hand-paper-o" />
-          <b:navLink value="Touch and Swipe" outcome="/mobile/Touch" icon-awesome="hand-o-up" />
-          <b:navLink value="Pinch" outcome="/mobile/Pinch" icon-awesome="hand-scissors-o" />
+          <ui:remove>
+            <b:navLink value="Touch and Swipe" outcome="/mobile/Touch" icon-awesome="hand-o-up" />
+            <b:navLink value="Pinch" outcome="/mobile/Pinch" icon-awesome="hand-scissors-o" />
+          </ui:remove>
         </b:dropMenu>
 
         <ui:remove>
@@ -130,8 +134,10 @@
           <!-- Temporarily hiding the Mobile Menu until 0.9 -->
           <b:navLink value="Shake" outcome="/mobile/Shake" icon-awesome="hand-grab-o" />
           <b:navLink value="Gyroscope" outcome="/mobile/Gyroscope" icon.awesome="hand-paper-o" />
-          <b:navLink value="Touch and Swipe" outcome="/mobile/Touch" icon-awesome="hand-o-up" />
-          <b:navLink value="Pinch" outcome="/mobile/Pinch" icon-awesome="hand-scissors-o" />
+          <ui:remove>
+            <b:navLink value="Touch and Swipe" outcome="/mobile/Touch" icon-awesome="hand-o-up" />
+            <b:navLink value="Pinch" outcome="/mobile/Pinch" icon-awesome="hand-scissors-o" />
+          </ui:remove>
           <b:navLink value="PrimeFaces" outcome="/integration/PrimeFaces" icon="tasks" visible="sm" />
           <b:navLink value="OmniFaces" outcome="/integration/OmniFaces" icon="tasks" visible="sm" />
           <b:navLink value="ButterFaces" outcome="/integration/ButterFaces" icon="tasks" visible="sm" />

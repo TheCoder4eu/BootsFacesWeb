@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+            <ui:define name="content">
+                <h1>Using <code>&lt;div /&gt;</code> tags in JSF <b:badge value="since 0.9.0 (experimental)" /></h1>
+                <p>If you're coming from the Bootstrap world, you are probably used to use <code>&lt;div /&gt;</code>
+                tags a lot in your pages. Bootstrap may offer many components, but there are quite a few useful
+                Bootstrap components it doesn't implement yet. Plus, BootsFaces aims to be a friendly and tolerant
+                framework. If you prefer your own implementation of, say, <code>&lt;b:tabView /&gt;</code>, so be it.
+                These three thoughts convinced us to make the <code>&lt;div /&gt;</code> tag a first class citizen
+                of JSF. As an option, of course.
+                </p>
+                <p>So we've written a tag decorator which converts your div tags to <code>&lt;h:panelGroups /&gt;</code>.
+                This turns them into JSF components, even if you don't use the pass-through attributes of JSF 2.2+.
+                If you've activated our tag decorator, these three lines generate identical code:</p>
+                <h:form>
+                  <b:tabView>
+                    <b:tab title="JSF code" look="primary">
+                      <b:well>
+                      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
+                         <h:panelGroup id="panelGroupId" styleClass="col-xs-12">PanelGroup</h:panelGroup>
+                        <div jsf:id="passthroughId" class="col-xs-12">div with jsf:id</div>
+                        <div id="decoratorId" class="col-xs-12">simple, HMTL-like div</div>
+                      ]]></script>
+                      </b:well>
+                    </b:tab>
+                    <b:tab title="Live preview" look="primary" >
+                      <b:well>
+                      <b:row style="margin-left:10px">
+                        <p>Use your browser's developer tools to inspect the HTML code:</p>
+                        <h:panelGroup id="panelGroupId" styleClass="col-xs-12">PanelGroup</h:panelGroup>
+                        <div jsf:id="passthroughId" class="col-xs-12">div with jsf:id</div>
+                        <div id="decoratorId" class="col-xs-12">simple, HMTL-like div</div>
+                        </b:row>
+                      </b:well>
+                    </b:tab>
+                   <b:tab title="generated HTML code" look="primary">
+                      <b:well>
+                      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
+                         <span id="j_id_4c:panelGroupId" class="col-xs-12">PanelGroup</span>
+                         <div id="j_id_4c:passthroughId" class="col-xs-12">div with jsf:id</div>
+                         <span id="j_id_4c:decoratorId" class="col-xs-12">simple, HMTL-like div</span>
+                      ]]></script>
+                      </b:well>
+                    </b:tab>
+                  </b:tabView>
+                </h:form>
+
+                <h1>Why?</h1>
+                <p>Truth to tell, you can use <code>&lt;div /&gt;</code> tags in ordinary JSF-code. The problem is that
+                they are not included in the JSF component tree. In other words: you can't use them for the
+                <code>update</code> attribute of AJAX statements. You can't use <code>render="false"</code>.</p>
+                <p>Other advantages are that the HMTL5-like coding style is not restrited to <code>&lt;div /&gt;</code>.
+                 There are also a
+                couple of HTML element that are converted to JSF elements:</p>
+                <dl class="dl-horizontal">
+                  <dt><strong>HTML tag</strong></dt><dd><strong>converts to</strong></dd>
+                  <dt><code>body</code></dt><dd>h:body</dd>
+                  <dt><code>head</code></dt><dd>h:head</dd>
+                  <dt><code>form</code></dt><dd>h:form</dd>
+                  <dt><code>input</code></dt><dd>b:inputText</dd>
+                  <dt><code>label</code></dt><dd>h:outputLabel (subject to change when <code>&lt;b:outputLabel /&gt;</code> is implemented)</dd>
+                  <dt><code>option</code></dt><dd>f:selectItem</dd>
+                  <dt><code>button</code></dt><dd>b:commandButton</dd>
+                  <dt><code>div</code></dt><dd>h:panelGroup display="block"</dd>
+                  <dt><code>span</code></dt><dd>h:panelGroup</dd>
+                </dl>
+                <p>Plus, you can omit the prefix <code>b:</code> of BootsFaces components.</p>
+                <p>This all makes for a more compact JSF code. As a bonus, your web designer may appreciate it because
+                their toolchain usually doesn't cope with the JSF extensions of HTML.</p>
+
+                <h1>Examples</h1>
+                 <h:form>
+                  <b:tabView activeIndex="1">
+                    <b:tab title="JSF code" look="primary">
+                      <b:well>
+                      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
+                      ]]></script>
+                      </b:well>
+                    </b:tab>
+                    <b:tab title="Live preview" look="primary" >
+                      <well>
+                        <row style="margin-left:10px">
+                          <button value="CommandButton" look="primary" small-screen="one-fourth"/>
+                          <b:selectOneMenu small-screen="one-fourth">
+                                <option itemLabel="(Please select)" itemValue="" />
+                                <option itemLabel="Cinquecento" itemValue="1" />
+                                <option itemLabel="Civic" itemValue="2" />
+                                <option itemLabel="Astra" itemValue="3" />
+                                <option itemLabel="Megane" itemValue="4" />
+                           </b:selectOneMenu>
+                        </row>
+                      </well>
+                    </b:tab>
+                 </b:tabView>
+                </h:form>
+
+
+                <h1>How to activate the HTML5-friendly markup</h1>
+                <p>To activate the relaxed markup, you have to add a few lines to your application's <code>web.xml</code>:</p>
+                      <b:well>
+                      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
+                      <context-param>
+                        <param-name>javax.faces.FACELETS_DECORATORS</param-name>
+                        <param-value>
+                            net.bootsfaces.decorator.BootsFacesTagDecorator
+                        </param-value>
+                      </context-param>
+                      ]]></script>
+                      </b:well>
+
+                <h1>What about risks and side-effects?</h1>
+                <p>Making the <code>&lt;div /&gt;</code> tag a first-class citizen of JSF adds some components to the
+                JSF tree, which may slow down rendering. In rare cases, you may have to modify your program if it
+                relies on your <code>&lt;div /&gt;</code> not to be a part of the JSF tree. However, that shouldn't
+                be much of an issue because the <code>&lt;div /&gt;</code> is not a <code>NamingContainer</code>.
+                In other words: it doesn't modify any existing id, so your <code>update</code>
+                and <code>for</code> targets are still valid.</p>
+
+                <script type="text/javascript">
+                    SyntaxHighlighter.all();
+                </script>
+            </ui:define>
+        </ui:composition>
