@@ -252,33 +252,67 @@ td {
           </b:tabView>
         </h:form>
 
-		        <br/>
-                <h2>Reference section</h2>
-                <ui:include src="MessageAttributes.xhtml" />
-                <b:panel look="info" rendered="true">
-					<f:facet name="heading">
-						<b>Skinning of b:message</b>
-					</f:facet>
-					<ul>
-						<li><code>bf-message</code> This CSS class applies to the entire <code>&lt;b:message &gt;</code>.</li>
-                        <li><code>bf-message-icon</code> This CSS class applies to the <code>span</code>code> tag surrounding the optional icon of the message.</li>
-                        <li><code>bf-message-summary</code> This CSS class applies to the <code>span</code>code> tag surrounding the summary of the error message.</li>
-                        <li><code>bf-message-detail</code> This CSS class applies to the <code>span</code>code> tag surrounding the detail of the error message.</li>
-					</ul>
-				</b:panel>
-                <ui:include src="MessagesAttributes.xhtml" />
-                <b:panel look="info" rendered="true">
-                  <f:facet name="heading">
-                    <b>Skinning of b:messages</b>
-                  </f:facet>
-                  <ul>
-                    <li><code>bf-message</code> This CSS class applies to the entire <code>&lt;b:messages &gt;</code> tag (i.e. to the entire collection of messages).</li>
-                    <li><code>bf-message</code> This CSS class applies to the <code>span</code>code> tag surrounding a single message.</li>
+        <h1>Multiple messages and <code>&lt;b:message /&gt;</code> <b:badge value="since 0.9.0" /></h1>
+        <p>Standard JSF defines that <code>&lt;h:message /&gt;</code> displays only a single message. If there are
+        multiple messages, a random message is displayed. By default, BootsFaces always displays every message
+        that has been reported for the associated component. However, some developers need to be able to display
+        a single message. If so, activate the attribute <code>only-most-severe</code>. Setting it to true makes
+        BootsFaces find the message with the highest severity level and displays it. If there are multiple messages
+        with identical severity level, a random message is displayed.</p>
+         <h:form id="twoMessagesFormId">
+            <b:tabView contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px"
+                       activeIndex="1">
+              <b:tab title="JSF markup">
+                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+                  <b:inputText value="#{messagesBean.twoMessages}" label="Two messages" renderLabel="true"
+                               id="twoMessagesId" rendered="false" />
+                  <p>Default <code>&lt;b:message &gt;</code>:</p>
+                  <b:message redisplay="true" for="twoMessagesId" /><br />
+                  <p><code>&lt;b:message only-most-severe="true" &gt;</code>:</p>
+                  <b:message redisplay="true" for="twoMessagesId" only-most-severe="true" />
+]]>
+         </script>
+              </b:tab>
+              <b:tab title="displayed as" >
+                  <b:inputText value="#{messagesBean.twoMessages}" label="Two messages" renderLabel="true"
+                               id="twoMessagesId" rendered="false" />
+                  <p>Default <code>&lt;b:message &gt;</code>:</p>
+                  <b:message redisplay="true" for="twoMessagesId" /><br />
+                  <p><code>&lt;b:message only-most-severe="true" &gt;</code>:</p>
+                  <b:message redisplay="true" for="twoMessagesId" only-most-severe="true" />
+              </b:tab>
+          </b:tabView>
+        </h:form>
+
+
+        <br/>
+            <h2>Reference section</h2>
+            <ui:include src="MessageAttributes.xhtml" />
+            <b:panel look="info" rendered="true">
+            	<f:facet name="heading">
+            		<b>Skinning of b:message</b>
+            	</f:facet>
+            	<ul>
+            		<li><code>bf-message</code> This CSS class applies to the entire <code>&lt;b:message &gt;</code>.</li>
                     <li><code>bf-message-icon</code> This CSS class applies to the <code>span</code>code> tag surrounding the optional icon of the message.</li>
-                    <li><code>bf-message-summary</code> This CSS class applies to the <code>span</code>code> tag surrounding the summary of the message.</li>
-                    <li><code>bf-message-detail</code> This CSS class applies to the <code>span</code>code> tag surrounding the detail of the message.</li>
-                  </ul>
-                </b:panel>
+                    <li><code>bf-message-summary</code> This CSS class applies to the <code>span</code>code> tag surrounding the summary of the error message.</li>
+                    <li><code>bf-message-detail</code> This CSS class applies to the <code>span</code>code> tag surrounding the detail of the error message.</li>
+            	</ul>
+            </b:panel>
+            <ui:include src="MessagesAttributes.xhtml" />
+            <b:panel look="info" rendered="true">
+              <f:facet name="heading">
+                <b>Skinning of b:messages</b>
+              </f:facet>
+              <ul>
+                <li><code>bf-message</code> This CSS class applies to the entire <code>&lt;b:messages &gt;</code> tag (i.e. to the entire collection of messages).</li>
+                <li><code>bf-message</code> This CSS class applies to the <code>span</code>code> tag surrounding a single message.</li>
+                <li><code>bf-message-icon</code> This CSS class applies to the <code>span</code>code> tag surrounding the optional icon of the message.</li>
+                <li><code>bf-message-summary</code> This CSS class applies to the <code>span</code>code> tag surrounding the summary of the message.</li>
+                <li><code>bf-message-detail</code> This CSS class applies to the <code>span</code>code> tag surrounding the detail of the message.</li>
+              </ul>
+            </b:panel>
 
 		<br />
 		<script type="text/javascript">

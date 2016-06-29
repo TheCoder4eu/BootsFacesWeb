@@ -17,6 +17,8 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
+import net.bootsfaces.utils.FacesMessages;
+
 /**
  * @author Stephan Rauh, http://www.beyondjava.net
  */
@@ -37,6 +39,13 @@ public class MessagesBean implements Serializable {
 
 	@Past
 	private Date birthday;
+
+	private String twoMessages;
+
+	public MessagesBean() {
+		FacesMessages.info("twoMessagesFormId:twoMessagesId", "Info message", "This is only an info message.");
+		FacesMessages.error("twoMessagesFormId:twoMessagesId", "Error message", "This is an important error message.");
+	}
 
 	public void specificInfo() {
         FacesContext.getCurrentInstance().addMessage("growlForm:ref", new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "This is a specific message!"));
@@ -105,5 +114,13 @@ public class MessagesBean implements Serializable {
 
 	public void update() {
 
+	}
+
+	public String getTwoMessages() {
+		return twoMessages;
+	}
+
+	public void setTwoMessages(String twoMessages) {
+		this.twoMessages = twoMessages;
 	}
 }
