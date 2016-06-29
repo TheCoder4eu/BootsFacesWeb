@@ -200,6 +200,9 @@ td {
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.multiColumnSearch}" caption="multi-column-search='true' (requires searching='true')"
                 onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                 update="basic-usage-id" />
+             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.searchable}" caption="searchable='true' (2nd and 3rd column only)"
+                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                update="basic-usage-id" />
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.striped}" caption="striped='true'"
                 onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                 update="basic-usage-id" />
@@ -225,9 +228,6 @@ td {
                 onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                 update="basic-usage-id" />
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.fixedHeader}" caption="fixedHeader='true'"
-                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.fixedHeader()"
-                update="basic-usage-id" />
-             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.searchable}" caption="searchable='true' (2nd and last column only)"
                 onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                 update="basic-usage-id" />
 

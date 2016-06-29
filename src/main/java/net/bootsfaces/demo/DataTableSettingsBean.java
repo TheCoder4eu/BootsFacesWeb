@@ -20,10 +20,10 @@ package net.bootsfaces.demo;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 
 /** A simple bean for demo purposes. */
-@RequestScoped
+@SessionScoped
 @ManagedBean
 public class DataTableSettingsBean implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -58,7 +58,7 @@ public class DataTableSettingsBean implements Serializable {
 
 	private boolean fixedHeader=false;
 
-	private boolean searchable=false;
+	private boolean searchable=true;
 
 	public boolean isSaveState() {
 		return saveState;
