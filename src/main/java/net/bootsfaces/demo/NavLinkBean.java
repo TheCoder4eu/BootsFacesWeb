@@ -1,6 +1,8 @@
 package net.bootsfaces.demo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -13,6 +15,16 @@ public class NavLinkBean implements Serializable {
 	private int activePage = 0;
 
 	private String source;
+
+	private List<String> musicStyles= new ArrayList<String>();
+
+	public NavLinkBean() {
+		musicStyles.add("Jazz");
+		musicStyles.add("Rock");
+		musicStyles.add("Rhythm and Blues");
+		musicStyles.add("Punk");
+		musicStyles.add("Heavy Metal");
+	}
 
 	public void navigateToPage(int page, String source) {
 		activePage = page;
@@ -38,5 +50,13 @@ public class NavLinkBean implements Serializable {
 		if (0 == activePage)
 			return "primary";
 		return "success";
+	}
+
+	public List<String> getMusicStyles() {
+		return musicStyles;
+	}
+
+	public void setMusicStyles(List<String> musicStyles) {
+		this.musicStyles = musicStyles;
 	}
 }
