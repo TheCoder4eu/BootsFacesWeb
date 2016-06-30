@@ -45,10 +45,12 @@ td {
             class="brush: xml; toolbar: false;gutter: false; first-line: 1">
             <![CDATA[
         <b:dataTable value="&num;{carPool.carPool}" var="car">
-            <h:column value="&num;{car.brand}" />
-            <h:column value="&num;{car.type}" />
-            <h:column value="&num;{car.color}" />
-            <h:column value="&num;{car.year}" />
+            <b:dataTableColumn value="&num;{car.brand}" />
+            <b:dataTableColumn value="&num;{car.type}" />
+            <b:dataTableColumn value="&num;{car.color}" />
+            <b:dataTableColumn value="&num;{car.year}"  order="asc"/>
+            <b:dataTableColumn value="&num:{car.price}" />
+            <b:dataTableColumn value="&num;{car.enginePower}" label="Engine Power (hp)" />
         </b:dataTable>
       ]]>
       </script>
@@ -61,7 +63,7 @@ td {
             <b:dataTableColumn value="#{car.brand}" />
             <b:dataTableColumn value="#{car.type}" />
             <b:dataTableColumn value="#{car.color}" />
-            <b:dataTableColumn value="#{car.year}" />
+            <b:dataTableColumn value="#{car.year}"  order="asc" />
             <b:dataTableColumn value="#{car.price}" />
             <b:dataTableColumn value="#{car.enginePower}" label="Engine Power (hp)" />
         </b:dataTable>
