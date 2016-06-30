@@ -5,12 +5,12 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
- 
+
              <ui:define name="content">
                 <style>td {padding: 8px;}</style>
                 <h1>Buttons</h1>
                 <p><code>&lt;b:button&gt;</code>extends the standard JSF h:button component.</p>
-                
+
                 <strong>Button Look</strong>
                 <p>Button styles can be applied to anything with the <code>look</code> attribute:</p>
                 <b:tabView>
@@ -118,7 +118,7 @@
                 </b:tabView>
                 <p><i>Note: starting from Bootstrap 3, some look names for buttons have changed (inverse=> dropped in favor of link).</i></p>
                 <br/>
-                
+
                 <h3>Button size</h3>
                 <p>Fancy larger or smaller buttons? Add <code>size="lg"</code> (Large), <code>size="sm"</code> (Small), or <code>size="xs"</code> for additional sizes.</p>
                 <h:panelGrid columns="2" cellpadding="5">
@@ -143,7 +143,68 @@
                     <b:button value="shopping-cart (size lg)" icon="shopping-cart" look="success" size="lg"/><b:button value="cart-plus (size lg)" iconAwesome="cart-plus" look="success" size="lg"/>
                 </h:panelGrid>
                 <br/>
-                
+
+            <h2>Icon modifiers <b:badge value="since 0.9.0" /></h2>
+            <p>Both Fontawesome icons and Glyphicons can be decorated with modifiers:</p>
+            <h:form>
+            <b:panelGrid colSpans="3,9" size="md">
+               <b:button icon-spin="true" iconAwesome="thumbs-down"
+                     value="Thumbs up or thumbs down?" onclick="return false;"
+                     look="info" title="spin='true'" />
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+               <b:button icon-spin="true" iconAwesome="thumbs-down"
+                     value="Thumbs up or thumbs down?" onclick="return false;"
+                     look="info" title="spin='true'" />
+]]></script>
+               <b:button icon-size="2x" iconAwesome="thumbs-up"
+                     value="big thumbs up!" onclick="return false;"
+                     look="info" title="icon-size='2x'" />
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+               <b:button icon-size="2x" iconAwesome="thumbs-up"
+                     value="big thumbs up!" onclick="return false;"
+                     look="info" title="icon-size='2x'" />
+]]></script>
+               <b:button icon-size="3x" iconAwesome="thumbs-up"
+                     value="even bigger thumbs up!" onclick="return false;"
+                     look="info" title="icon-size='3x'" />
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+               <b:button icon-size="3x" iconAwesome="thumbs-up"
+                     value="even bigger thumbs up!" onclick="return false;"
+                     look="info" title="icon-size='3x'" />
+]]></script>
+               <b:button icon-flip="h" iconAwesome="thumbs-up"
+                     value="left-hand thumbs up" onclick="return false;"
+                     look="info" title="icon-flip='h'" />
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+               <b:button icon-flip="h" iconAwesome="thumbs-up"
+                     value="left-hand thumbs up" onclick="return false;"
+                     look="info" title="icon-flip='h'" />
+]]></script>
+               <b:button icon-rotate="l" iconAwesome="thumbs-up"
+                     value="go back" onclick="return false;"
+                     look="info" title="icon-rotate='l'" />
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+               <b:button icon-rotate="l" iconAwesome="thumbs-up"
+                     value="go back" onclick="return false;"
+                     look="info" title="icon-rotate='l'" />
+]]></script>
+               <b:button icon-spin="true" icon="cd" icon-size="2x"
+                     value="Glyphicon" onclick="return false;"
+                     look="info" title="icon-spin='true' icon-size='2x'" />
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+               <b:button icon-spin="true" icon="cd" icon-size="2x"
+                     value="Glyphicon" onclick="return false;"
+                     look="info" title="icon-spin='true' icon-size='2x'" />
+]]></script>
+               </b:panelGrid>
+           </h:form>
+
                 <h3>Disabled State</h3>
                 <p>Make buttons look unclickable by fading them by 50%.</p>
                 <h:panelGrid columns="2" cellpadding="5">
@@ -159,48 +220,48 @@
                 <b:panel look="info">
                     <f:facet name="heading"><b>EXAMPLE</b></f:facet>
                     <h:panelGrid columns="4" cellpadding="10">
-                        <b:button outcome="testButton" value="Bookmark" icon="bookmark">  
-                            <f:param name="testId" value="11" />  
-                        </b:button>  
+                        <b:button outcome="testButton" value="Bookmark" icon="bookmark">
+                            <f:param name="testId" value="11" />
+                        </b:button>
 
-                        <b:button outcome="testButton" value="With Icon" icon="envelope">  
-                            <f:param name="testId" value="22" />  
-                        </b:button>  
+                        <b:button outcome="testButton" value="With Icon" icon="envelope">
+                            <f:param name="testId" value="22" />
+                        </b:button>
 
-                        <b:button outcome="testButton" value="" icon="envelope">  
-                            <f:param name="testId" value="33" />  
-                        </b:button>  
+                        <b:button outcome="testButton" value="" icon="envelope">
+                            <f:param name="testId" value="33" />
+                        </b:button>
 
-                        <b:button outcome="testButton" value="Bookmark" icon="envelope" disabled="true">  
-                            <f:param name="testId" value="44" />  
+                        <b:button outcome="testButton" value="Bookmark" icon="envelope" disabled="true">
+                            <f:param name="testId" value="44" />
                         </b:button>
                     </h:panelGrid>
                     <f:facet name="footer">
                 <strong>Markup:</strong><br/>
-                
+
                 <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
                 <![CDATA[
                 <h:panelGrid columns="4" cellpadding="10">
-                    <b:button outcome="testButton" value="Bookmark" icon="bookmark">  
-                        <f:param name="testId" value="11" />  
-                    </b:button>  
+                    <b:button outcome="testButton" value="Bookmark" icon="bookmark">
+                        <f:param name="testId" value="11" />
+                    </b:button>
 
-                    <b:button outcome="testButton" value="With Icon" icon="envelope">  
-                        <f:param name="testId" value="22" />  
-                    </b:button>  
+                    <b:button outcome="testButton" value="With Icon" icon="envelope">
+                        <f:param name="testId" value="22" />
+                    </b:button>
 
-                    <b:button outcome="testButton" value="" icon="envelope">  
-                        <f:param name="testId" value="33" />  
-                    </b:button>  
+                    <b:button outcome="testButton" value="" icon="envelope">
+                        <f:param name="testId" value="33" />
+                    </b:button>
 
-                    <b:button outcome="testButton" value="Bookmark" icon="envelope" disabled="true">  
-                        <f:param name="testId" value="44" />  
+                    <b:button outcome="testButton" value="Bookmark" icon="envelope" disabled="true">
+                        <f:param name="testId" value="44" />
                     </b:button>
                 </h:panelGrid>
                 ]]></script>
                     </f:facet>
                 </b:panel>
-                
+
                 <br/>
                 <h2>Reference section</h2>
                 <ui:include src="ButtonAttributes.xhtml" />
@@ -213,7 +274,7 @@
 						look of the component.</li>
 					</ul>
 				</b:panel>
-                
+
                 <script type="text/javascript">
                     SyntaxHighlighter.all();
                 </script>
