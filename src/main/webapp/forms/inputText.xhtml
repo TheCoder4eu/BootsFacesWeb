@@ -508,11 +508,11 @@ public class DefaultValuesBean implements Serializable {
                     <![CDATA[
                		  <h:form id="loginForm">
                         <b:inputText id="usernameDiv" fieldId="j_username" name="j_username"
-                                     value="#{loginBean.username}"
+                                     value="&num;{loginBean.username}"
                                      label="Username" render-label="true"/>
                         <b:message for="@previous" />
                         <b:inputSecret id="passwordDiv" fieldId="j_password" name="j_password"
-                                       value="#{loginBean.password}"
+                                       value="&num;{loginBean.password}"
                                        label="Password"  render-label="true"/>
                         <b:message for="passwordDiv" />
                         <b:commandButton update="@form" value="Login" onclick="ajax:loginBean.login2()"/>
