@@ -76,30 +76,54 @@
                 their toolchain usually doesn't cope with the JSF extensions of HTML.</p>
 
                 <h1>Examples</h1>
-                 <h:form>
-                  <b:tabView activeIndex="1">
-                    <b:tab title="JSF code" look="primary">
-                      <b:well>
-                      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
-                      ]]></script>
-                      </b:well>
-                    </b:tab>
-                    <b:tab title="Live preview" look="primary" >
-                      <well>
-                        <row style="margin-left:10px">
-                          <button value="CommandButton" look="primary" small-screen="one-fourth"/>
-                          <b:selectOneMenu small-screen="one-fourth">
+
+                <b:tabView activeIndex="1">
+                  <b:tab title="JSF code" look="primary">
+                    <b:well>
+                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
+                    ]]></script>
+                    </b:well>
+                  </b:tab>
+                  <b:tab title="Live preview" look="primary" >
+                    <well>
+                      <h:form id="loginForm">
+                        <row>
+                            <inputText id="usernameDiv" small-screen="half"
+                                         value="#{loginBean.username}"
+                                         label="Username" render-label="true"/>
+                            <message for="@previous" small-screen="half"/>
+                        </row>
+                        <row>
+                            <inputSecret id="passwordDiv" small-screen="half"
+                                           value="#{loginBean.password}"
+                                           label="Password"  render-label="true"/>
+                            <message for="passwordDiv" small-screen="half"/>
+                         </row>
+                        <row>
+                           <select small-screen="half" label="Login as" render-label="true">
+                                <option value="1" label="admin"/>
+                                <option value="2" label="customer" />
+                                <option value="3" label="user" />
+                           </select>
+
+                          <selectOneMenu small-screen="half" label="Login as" render-label="true">
                                 <option itemLabel="(Please select)" itemValue="" />
                                 <option itemLabel="Cinquecento" itemValue="1" />
                                 <option itemLabel="Civic" itemValue="2" />
                                 <option itemLabel="Astra" itemValue="3" />
                                 <option itemLabel="Megane" itemValue="4" />
-                           </b:selectOneMenu>
+                           </selectOneMenu>
                         </row>
-                      </well>
-                    </b:tab>
-                 </b:tabView>
-                </h:form>
+                        <row>
+                            <column small-screen="full-width">
+                            <button update="@form:loginForm" value="Login" onclick="ajax:loginBean.login2()" look="primary"/>
+                            </column>
+                        </row>
+
+                        </h:form>
+                    </well>
+                  </b:tab>
+               </b:tabView>
 
 
                 <h1>How to activate the HTML5-friendly markup</h1>

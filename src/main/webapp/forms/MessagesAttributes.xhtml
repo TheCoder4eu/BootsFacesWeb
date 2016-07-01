@@ -23,9 +23,34 @@
           </thead>
           <tbody>
             <tr>
+                <td>col-lg<br />colLg (alternative writing)</td>
+                <td> -1 </td>
+                <td>Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+            </tr>
+            <tr>
+                <td>col-md<br />colMd (alternative writing)</td>
+                <td> -1 </td>
+                <td>Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+            </tr>
+            <tr>
+                <td>col-sm<br />colSm (alternative writing)</td>
+                <td> -1 </td>
+                <td>Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+            </tr>
+            <tr>
+                <td>col-xs<br />colXs (alternative writing)</td>
+                <td> -1 </td>
+                <td>Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+            </tr>
+            <tr>
                 <td>dir</td>
                 <td>(none)</td>
                 <td>HTML: The direction of text display, either 'ltr' (left-to-right) or 'rtl' (right-to-left).</td>
+            </tr>
+            <tr>
+                <td>display</td>
+                <td> block </td>
+                <td>If you use the "visible" attribute, the value of this attribute is added. Legal values: block, inline, inline-block. Default: block.</td>
             </tr>
             <tr>
                 <td>error-class<br />errorClass (alternative writing)</td>
@@ -63,6 +88,11 @@
                 <td>Specifies whether only messages (FacesMessage objects) not associated with a specific component should be displayed, ie whether messages should be ignored if they are attached to a particular component. Defaults to false.</td>
             </tr>
             <tr>
+                <td>hidden</td>
+                <td>(none)</td>
+                <td>This column is hidden on a certain screen size and below. Legal values: lg, md, sm, xs.</td>
+            </tr>
+            <tr>
                 <td>id</td>
                 <td>(none)</td>
                 <td>Get a string which uniquely identifies this UIComponent within the scope of the nearest ancestor NamingContainer component. The id is not necessarily unique across all components in the current view.</td>
@@ -78,6 +108,11 @@
                 <td>CSS style to be used for messages with severity "INFO".</td>
             </tr>
             <tr>
+                <td>large-screen<br />largeScreen (alternative writing)</td>
+                <td> -1 </td>
+                <td>Alternative spelling to col-lg. Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+            </tr>
+            <tr>
                 <td>line-break<br />lineBreak (alternative writing)</td>
                 <td> true </td>
                 <td>If there's more than one message, they can optionally be separated by a line break. By default, the separator is a br tag.</td>
@@ -86,6 +121,36 @@
                 <td>line-break-tag<br />lineBreakTag (alternative writing)</td>
                 <td> <br /> </td>
                 <td>If there's more than one message, they can optionally be separated by a line break. By default, the separator is a br tag. You can replace if with an arbitrary HTML snippet.</td>
+            </tr>
+            <tr>
+                <td>medium-screen<br />mediumScreen (alternative writing)</td>
+                <td> -1 </td>
+                <td>Alternative spelling to col-md. Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+            </tr>
+            <tr>
+                <td>offset</td>
+                <td>(none)</td>
+                <td>Integer value to specify how many columns to offset.</td>
+            </tr>
+            <tr>
+                <td>offset-lg<br />offsetLg (alternative writing)</td>
+                <td>(none)</td>
+                <td>Integer value to specify how many columns to offset.</td>
+            </tr>
+            <tr>
+                <td>offset-md<br />offsetMd (alternative writing)</td>
+                <td>(none)</td>
+                <td>Integer value to specify how many columns to offset.</td>
+            </tr>
+            <tr>
+                <td>offset-sm<br />offsetSm (alternative writing)</td>
+                <td>(none)</td>
+                <td>Integer value to specify how many columns to offset.</td>
+            </tr>
+            <tr>
+                <td>offset-xs<br />offsetXs (alternative writing)</td>
+                <td>(none)</td>
+                <td>Integer value to specify how many columns to offset.</td>
             </tr>
             <tr>
                 <td>recursive</td>
@@ -118,6 +183,16 @@
                 <td>Specifies whether the summary information from the message should be shown. Defaults to true.</td>
             </tr>
             <tr>
+                <td>small-screen<br />smallScreen (alternative writing)</td>
+                <td> -1 </td>
+                <td>Alternative spelling to col-sm. Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+            </tr>
+            <tr>
+                <td>span</td>
+                <td>(none)</td>
+                <td>Integer value to specify how many columns to span on medium screens (≥992 pixels). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+            </tr>
+            <tr>
                 <td>style</td>
                 <td>(none)</td>
                 <td>HTML: CSS styling instructions.</td>
@@ -126,6 +201,11 @@
                 <td>style-class<br />styleClass (alternative writing)</td>
                 <td>(none)</td>
                 <td>The CSS class for this element.  Corresponds to the HTML 'class' attribute.</td>
+            </tr>
+            <tr>
+                <td>tiny-screen<br />tinyScreen (alternative writing)</td>
+                <td> -1 </td>
+                <td>Alternative spelling to col-xs. Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
             </tr>
             <tr>
                 <td>tooltip</td>
@@ -156,6 +236,11 @@
                 <td>tooltip-position<br />tooltipPosition (alternative writing)</td>
                 <td>(none)</td>
                 <td>Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".</td>
+            </tr>
+            <tr>
+                <td>visible</td>
+                <td>(none)</td>
+                <td>This column is shown on a certain screen size and above. Legal values: lg, md, sm, xs.</td>
             </tr>
             <tr>
                 <td>warn-class<br />warnClass (alternative writing)</td>

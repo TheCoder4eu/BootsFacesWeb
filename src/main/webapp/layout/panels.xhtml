@@ -21,7 +21,7 @@
           <b:panel>
           <h:outputText value="Basic panel example " />
         </b:panel>
-  
+
           <b:well>
           <script type="syntaxhighlighter"
             class="brush: xml; toolbar: false;gutter: false; first-line: 1">
@@ -130,6 +130,21 @@
             </b:tab>
           </b:tabView>
 
+    <h3>Collapsible panels indicator <b:badge value="since 0.9.0" /></h3>
+    <p>By default, BootsFaces adds a visual clue that the panel can be collapsed using the keyboard.
+    You can deactivate it by setting <code>showCollapseLink="false"</code>:
+    </p>
+    <h:form>
+      <b:panelGrid colSpans="6,6" size="sm">
+        <b:panel title="showCollapseLink='false'"
+          look="primary">
+        </b:panel>
+        <b:panel title="showCollapseLink='true' (default)" showOutline="true"
+          look="primary">
+        </b:panel>
+      </b:panelGrid>
+    </h:form>
+
     <h3>Persistent collapse/expand state</h3>
     <p>By default, panels are not collapsed when the page is
       rendered. If they're outside a form, they are also expanded after
@@ -158,7 +173,7 @@
         <b:messages />
       </b:panel>
     </b:panelGrid>
-          
+
             </b:tab>
             <b:tab title="JSF markup">
               <b:well>
@@ -187,7 +202,7 @@
               </b:well>
             </b:tab>
           </b:tabView>
-      
+
 
     <h3>Programmable collapse/expand state</h3>
     <p>The collapse state can also be controlled by an attribute of
@@ -212,7 +227,7 @@
       <b:commandButton ajax="true" update="@form"
         actionListener="#{panelBean.toggle}" value="toggle" />
     </h:form>
-          
+
             </b:tab>
            <b:tab title="JSF markup">
               <b:well>
@@ -243,7 +258,7 @@
               </b:well>
             </b:tab>
           </b:tabView>
-      
+
     <p>However, if the user opens or closes a panel, their choice
       overrides the values taken from the bean.</p>
 
@@ -331,14 +346,14 @@
             </b:well>
         </b:tab>
     </b:tabView>
-    
+
     <h3 id="panels-ajax">AJAX and JavaScript <b:badge value="since 0.8.0" /></h3>
     <p>
       You can use the standard JavaScript callback handlers to call both JavaScript and AJAX code. Apart from the standard
       HTML event handlers like onclick and onmouseover there are also four Bootstrap callback listeners: <code>onexpand</code>,
       <code>onexpanded</code>, <code>oncollapse</code> and <code>oncollapsed.</code>.
     </p>
- 
+
          <b:tabView>
              <b:tab title="preview">
                <h:form>
@@ -353,9 +368,9 @@
                       onmouseout="console.log('mouse out');ajax:ajaxBean.onMouseOut()"
                       onclick="console.log('click');ajax:ajaxBean.onClick()"
                       >
-                      The content of the panel does not matter. Look at the messages at the right hand side. 
+                      The content of the panel does not matter. Look at the messages at the right hand side.
                       That's where the music plays.
-                   </b:panel>          
+                   </b:panel>
                     <b:well id="messages">
                             Last action:
                             <ul>
@@ -381,7 +396,7 @@
                       oncollapse="console.log('expand - start');ajax:ajaxBean.onPanelCollapseStart()"
                       oncollapsed="console.log('expand - done');ajax:ajaxBean.onPanelCollapsed()">
                       The content of the panel does not matter. Instead, look at the messages.
-                   </b:panel>          
+                   </b:panel>
                     <b:well id="messages">
                             Last action:
                             <ul>
@@ -397,8 +412,8 @@
               </b:well>
             </b:tab>
           </b:tabView>
-     
-    
+
+
 
     <br />
     <h2>Reference section</h2>
