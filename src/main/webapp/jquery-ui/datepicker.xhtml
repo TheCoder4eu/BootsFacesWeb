@@ -181,17 +181,6 @@
               </b:column>
             </b:row>
             <b:row>
-              <b:column medium-screen="4">
-                <h:outputLabel value="Date: " for="cdate4" />
-              </b:column>
-              <b:column medium-screen="4">
-                <b:inputText id="cdate4" value="#{dateBean.cdate}" required="true" />
-              </b:column>
-              <b:column medium-screen="4">
-                <b:message for="cdate4" />
-              </b:column>
-            </b:row>
-            <b:row>
               <b:commandButton value="submit" update="@form" col-sm="2" look="success" />
             </b:row>
           </h:form>
@@ -201,6 +190,23 @@
         <b:well>
           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
              <![CDATA[
+          <h:form>
+            <b:row>
+              <b:column medium-screen="4">
+                <h:outputLabel value="Date: " for="cdate3" />
+              </b:column>
+              <b:column medium-screen="4">
+                <b:datepicker id="cdate3" mode="toggle-icon" showWeek="true" firstDay="1" value="#{dateBean.cdate}"
+                  required="true" />
+              </b:column>
+              <b:column medium-screen="4">
+                <b:message for="cdate3" />
+              </b:column>
+            </b:row>
+            <b:row>
+              <b:commandButton value="submit" update="@form" col-sm="2" look="success" />
+            </b:row>
+          </h:form>
              ]]></script>
         </b:well>
       </b:tab>
@@ -319,6 +325,9 @@
                    </li>
 				  </ul>
 			</b:panel>
+                <script type="text/javascript">
+                    SyntaxHighlighter.all();
+                </script>
 
                 <br/><br/><br/><br/>
             </ui:define>
