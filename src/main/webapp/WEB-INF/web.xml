@@ -45,6 +45,10 @@
       <param-name>net.bootsfaces.defaults.renderLabel</param-name>
         <param-value>#{defaultValuesBean.renderLabel}</param-value>
     </context-param>
+    <context-param>
+      <param-name>net.bootsfaces.defaults.decorator</param-name>
+        <param-value>false</param-value>
+    </context-param>
     <!-- activate resource caching -->
     <context-param>
         <param-name>org.omnifaces.COMBINED_RESOURCE_ACTIVATE_RESOURCE_CACHING</param-name>

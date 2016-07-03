@@ -7,7 +7,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:jsf="http://xmlns.jcp.org/jsf">
 
-            <ui:define name="content">
+            <ui:define name="content" bootsFacesDecorator="true">
                 <h1>Using <code>&lt;div /&gt;</code> tags in JSF <b:badge value="since 0.9.0 (experimental)" /></h1>
                 <p>If you're coming from the Bootstrap world, you are probably used to use <code>&lt;div /&gt;</code>
                 tags a lot in your pages. Bootstrap may offer many components, but there are quite a few useful
@@ -81,6 +81,36 @@
                   <b:tab title="JSF code" look="primary">
                     <b:well>
                     <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
+                    <well>
+                      <h:form id="loginForm">
+                        <row>
+                            <inputText id="usernameDiv" small-screen="half"
+                                         value="#{loginBean.username}"
+                                         label="Username" render-label="true"/>
+                            <message for="@previous" small-screen="half"/>
+                        </row>
+                        <row>
+                            <inputSecret id="passwordDiv" small-screen="half"
+                                           value="#{loginBean.password}"
+                                           label="Password"  render-label="true"/>
+                            <message for="passwordDiv" small-screen="half"/>
+                         </row>
+                        <row>
+                           <select small-screen="half" label="Login as" render-label="true">
+                                <option itemLabel="(Please select)" itemValue="" />
+                                <option value="1" label="admin"/>
+                                <option value="2" label="customer" />
+                                <option value="3" label="user" />
+                           </select>
+                        </row>
+                        <row>
+                            <column small-screen="full-width">
+                            <button update="@form:loginForm" value="Login" onclick="ajax:loginBean.login2()" look="primary"/>
+                            </column>
+                        </row>
+
+                      </h:form>
+                    </well>
                     ]]></script>
                     </b:well>
                   </b:tab>
@@ -131,6 +161,35 @@
                       </context-param>
                       ]]></script>
                       </b:well>
+
+                <h1>How to get rid of the HTML5-friendly markup</h1>
+                <p>BootsFaces allows you to active and deactivate the HTML5-friendly markup both globally and on a per-page base.
+                The global configuration is done by adding the parameter to the <code>web.xml</code>:</p>
+                      <b:well>
+                      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
+                          <ui:define name="content" bootsFacesDecorator="true">
+                             ...
+                          </ui:define>
+                       ]]></script>
+                      </b:well>
+                <p>The default value of <code>net.bootsface.defaults.decorator</code> is <code>true</code>, so you
+                only need to specify the value to deactivate it. Once you've done so, you can reactivate it in any
+                tag of your page by adding <code>bootsFacesDecorator="true"</code>:</p>
+                <b:well>
+                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
+                  <context-param>
+                    <param-name>net.bootsfaces.defaults.decorator</param-name>
+                      <param-value>false</param-value>
+                  </context-param>
+                ]]></script>
+                </b:well>
+                <p>You can activate and deactivate the decorator multiple times on any page. However, this
+                does not follow the usual rules of JSF. The decorator is called during parsing the files. This means
+                it doesn't respect the tree hierarchy of the JSF component tree. Plus, template files and include files
+                are parsed after the current file. Be prepared to encounter surprises if you try to activate and
+                deactivate the decorator within the page. In particular, deactivating the decorator in the global
+                template file does not have the desired effect.</p>
+
 
                 <h1>What about risks and side-effects?</h1>
                 <p>Making the <code>&lt;div /&gt;</code> tag a first-class citizen of JSF adds some components to the
