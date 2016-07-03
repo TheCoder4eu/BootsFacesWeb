@@ -17,9 +17,24 @@
           its own, which seemed like overkill to us.</p>
 
           <h2>Known issues</h2>
-          <p>Both the tags extension and the typeahead extension create new input fields. This means some features
+          <p>The tag extension and the typeahead extension are recent additions. They are fully functional, but there
+          are still a few known issues.</p>
+          <ul>
+          <li>Both the tags extension and the typeahead extension create new input fields. This means some features
           don't work. In particular, CSS styles and style classes get lost. For instance, in the examples
-          below, the input fields for the tags are smaller than they should be.</p>
+          below, the input fields for the tags are smaller than they should be.</li>
+          <li>If you update an <code>&lt;b:inputText</code> with tags by an AJAX request, the input field is not properly
+          reinitialized. You have to do so yourself by adding a CSS pseudo class to the
+          <code>&lt;b:inputText</code> and a JavaScript command to the updated region:
+             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+             <![CDATA[
+                <b:inputText tags="true" style-class="tags" />
+                <$('.tags').tagsinput('refresh');
+             ]]></script>
+          </li>
+          <li>In theory, the typeahead widget can fetch the list of proposals from the server. However, we haven't
+          implemented the BootsFaces API. Currently you're limited to a fixed list of entries.</li>
+          </ul>
 
           <h2>Tags: Basic usage</h2>
           <p>By setting the attribute <code>tags="true"</code> you can display the input values as tag - similar to
