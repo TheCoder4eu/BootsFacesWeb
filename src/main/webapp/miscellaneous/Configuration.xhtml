@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:define name="content">
+        <style>
+            td {
+                padding: 8px;
+            }
+        </style>
+        <h1>Configuration: <code>web.xml</code> and <code>faces-config.xml</code> </h1>
+        <p>You can tweak the behaviour of BootsFaces by a couple of global parameters in the <code>web.xml</code>.</p>
+
+        <h3>Mobile support</h3>
+        <p>By default, BootsFaces adds a viewport meta tag needed for a smooth experience on mobile devices:</p>
+        <p><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code></p>
+        <p>However, if this setting stands in your way, you can deactivate it by setting the context parameter
+        <code>BootsFaces_USE_VIEWPORT</code> to false.</p>
+        <p>This parameter must not contain EL expressions.</p>
+        <b:well>
+            <script type="syntaxhighlighter"
+                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                <![CDATA[
+                  <context-param>
+                      <param-name>BootsFaces_USE_VIEWPORT</param-name>
+                      <param-value>false</param-value>
+                  </context-param>
+            ]]></script>
+        </b:well>
+
+
+        <h3>Themes</h3>
+        <p><code>BootsFaces_THEME</code> selects the Bootstrap theme your application uses. Defaults to (guess what) "default". Legal values
+        are the name of the theme, "default" or "custom". This expression may contain EL expressions. It is evaluated
+        each time a page is rendered.
+        </p>
+        <p><code>BootsFaces_USETHEME</code> should always be set to <code>true</code> unless you use your own custom theme. This expression may contain EL expressions. It is evaluated
+        each time a page is rendered.</p>
+        <b:well>
+            <script type="syntaxhighlighter"
+                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                <![CDATA[
+                  <!-- The BootsFaces_THEME context-param controls the loading of the Themes -->
+                  <!-- The default is Bootstrap, the valid values are a Bootswach Theme name (lowercase) or "custom".
+                       If custom is chosen, you will have to provide your custom CSS in the "other" folder. -->
+                  <context-param>
+                      <param-name>BootsFaces_THEME</param-name>
+                      <param-value>&num;{theme.internalTheme}</param-value>
+                  </context-param>
+                  <!-- The BootsFaces_USETHEME context-param controls the loading of the bootstrap-theme.css -->
+                  <!-- The default is false, when set to true the bootstrap-theme.css will be loaded -->
+                  <context-param>
+                      <param-name>BootsFaces_USETHEME</param-name>
+                      <param-value>true</param-value>
+                  </context-param>
+             ]]></script>
+        </b:well>
+
+        <h3>Use your own version of jQuery, jQueryUI, FontAwesome, or Bootstrap instead of using the version BootsFaces brings</h3>
+        <p>These parameters allow you to replace the built-in version of these libraries by your own libary.
+        For instance, you might prefer to load it from a CDN (hence the name). Setting these parameters to true
+        stops BootsFaces from adding them itself. You have to care about that yourself.
+        </p>
+        <p>Note that setting <code>net.bootsfaces.get_bootstrap_from_cdn</code> is not recommended because it
+        removes every CSS file dealing with Bootstrap - including the file <code>bsf.css</code> that contains
+        the CSS styles some of the BootsFaces component need. Plus, the parameter does not stop BootsFaces from
+        loading the JavaScript code. In most cases, you are be better of setting the theme to "custom".</p>
+        <p>Setting the parameters to <code>true</code> stops BootsFaces from adding the resources. These parameters
+        may contain EL expressions are are evaluated each time a page is rendered.</p>
+        <b:well>
+            <script type="syntaxhighlighter"
+                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                <![CDATA[
+                  <context-param>
+                      <param-name>net.bootsfaces.get_jquery_from_cdn</param-name>
+                      <param-value>false</param-value>
+                  </context-param>
+                  <context-param>
+                      <param-name>net.bootsfaces.get_jqueryui_from_cdn</param-name>
+                      <param-value>false</param-value>
+                  </context-param>
+                  <context-param>
+                      <param-name>net.bootsfaces.get_bootstrap_from_cdn</param-name>
+                      <param-value>false</param-value>
+                  </context-param>
+                  <context-param>
+                      <param-name>net.bootsfaces.get_fontawesome_from_cdn</param-name>
+                      <param-value>false</param-value>
+                  </context-param>
+                ]]></script>
+        </b:well>
+
+        <h3>Activate or deactivate the BlockUI features (aka waitcursor)</h3>
+        <p>By default, BlockUI is not activated. You have to activate it by adding a context parameter to the
+        <code>web.xml</code>. This parameter may contain EL expressions. It is evaluated once each time a JSF
+        page is rendered. This allows you to activate or deactivate it on a per-page basis.
+        </p>
+        <b:well>
+            <script type="syntaxhighlighter"
+                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                <![CDATA[
+                  <!-- Activates the waitcursor and the double-click protection -->
+                 <context-param>
+                   <param-name>net.bootsfaces.blockUI</param-name>
+                   <param-value>&num;{blockUIBean.isBlockUIActive()}</param-value>
+                 </context-param>
+                ]]></script>
+        </b:well>
+        <h3>Suppress the automatic rendering of labels</h3>
+        <p>By default, BootsFaces renders a label if your provide the <code>label</code> attribute of an input
+        field. However, the <code>label</code> is also used for error messages, so sometimes you need more flexibility.
+        You can deactivate rendering labels globally by setting <code>net.bootsfaces.defaults.renderLabel</code>
+        to false. This parameter may contain EL expression. It is evaluated once each time a page is rendered
+        (i.e. it is request scoped).
+        </p>
+        <b:well>
+            <script type="syntaxhighlighter"
+                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                <![CDATA[
+                 <context-param>
+                   <param-name>net.bootsfaces.defaults.renderLabel</param-name>
+                   <param-value>&num;{defaultValuesBean.renderLabel}</param-value>
+                 </context-param>
+                 ]]></script>
+        </b:well>
+        <h3>Activate the BootsFaces tag decorator</h3>
+        <p>The BootsFaces tag decorator allows you to use a relaxed, HTML5-like coding style in your JSF pages.
+        This feature is described in detail <a href="http://127.0.0.1:8080/BootsFacesWeb/layout/div.jsf">here</a>.
+        To activate the feature, you have to register the decorator in the <code>web.xml</code>:
+        </p>
+        <b:well>
+            <script type="syntaxhighlighter"
+                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                <![CDATA[
+                  <context-param>
+                     <param-name>javax.faces.FACELETS_DECORATORS</param-name>
+                     <param-value>
+                         net.bootsfaces.decorator.BootsFacesTagDecorator
+                     </param-value>
+                   </context-param>
+                ]]></script>
+        </b:well>
+
+        <p>After registering the decorator, it is active by default. Sometimes that's not the desired behaviour,
+        especially if you have a lot of legacy code that has been written without the decorator in mind.</p>
+
+        <b:well>
+            <script type="syntaxhighlighter"
+                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                <![CDATA[
+                 <context-param>
+                   <param-name>net.bootsfaces.defaults.decorator</param-name>
+                   <param-value>false</param-value>
+                 </context-param>
+                ]]></script>
+        </b:well>
+        <p>In this case you can deactivate the decorator by default, and reactivate it on a per-page basis by adding the
+        attribute <code> bootsFacesDecorator="true"</code> to an (almost) arbitrary JSF element:
+        </p>
+       <b:well>
+            <script type="syntaxhighlighter"
+                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                <![CDATA[
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml" ...>
+  <ui:define name="content" bootsFacesDecorator="true">
+    ...
+  </ui:define>
+</ui:composition>
+]]></script>
+        </b:well>
+        <p> This expression must not contain EL expressions.</p>
+
+        <script type="text/javascript">
+            SyntaxHighlighter.all();
+        </script>
+        <br />
+        <br />
+        <br />
+        <br />
+    </ui:define>
+</ui:composition>
