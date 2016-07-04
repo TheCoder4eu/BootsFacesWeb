@@ -15,12 +15,32 @@ td {
 </style>
 		<h1>Shake (&lt;b:shake /&gt;) <b:badge value="planned for 0.9.0" /></h1>
 
-		<p>Describe in a few words what <code>&lt;b:shake&gt;</code> is about.</p>
+		<p><code>&lt;b:shake&gt;</code> is a JSF component that detects when your device is shaken.
+        It goes without saying that this only works on devices with a motion sensor. Typically, smartphones
+        and many tablet computers have such a sensor.</p>
 		<h1>Basic usage</h1>
-		<p>Put a short description in simple words here.</p>
-    
-        <b:shake onshake="alert('shaken!');" />
-    
+		<p><code>&lt;b:shake /&gt;</code> only takes a singe parameter: <code>onshake</code>.
+        That's either a JavaScript function or - if it's preceded by <code>ajax:</code> - a call of a backend method.</p>
+
+        <h1>Live demo</h1>
+        <p>Open this page on a mobile device and shake it. Both a JSF message and a JSF alert box should show. This is
+        the source code needed:</p>
+        <b:well>
+            <script type="syntaxhighlighter"
+                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                <![CDATA[
+        <h:form>
+          <b:shake onshake="ajax:shakeBean.onShake();javascript:alert('shaken!');" update="form" />
+          <b:messages />
+        </h:form>
+            ]]></script>
+        </b:well>
+
+        <h:form>
+          <b:shake onshake="ajax:shakeBean.onShake();javascript:alert('shaken!');" update="form" />
+          <b:messages />
+        </h:form>
+
         <ui:include src="ShakeAttributes.xhtml" />
 
 		<b:panel look="info">
