@@ -11,7 +11,7 @@
                 <h1>Navbars</h1>
                 <p>The main use of the NavBar component is to place a navigation menu at top, bottom or both of your web application or web page.</p>
                 <p>The NavBar typically will have a brand, that could be, for example, the name of your project.</p>
-                
+
                 <b:panel>
                     <f:facet name="heading"><b>EXAMPLE</b></f:facet>
                     <b:navBar brand="Brand" brandHref="#">
@@ -33,7 +33,7 @@
 		                                	<b:navLink value="... you want!" href="#"></b:navLink>
 		                                </b:dropMenu>
     	                            </b:dropMenu>
-                                	
+
                                 </b:dropMenu>
                                 <b:navLink value="One more separated link" href="#"></b:navLink>
                             </b:dropMenu>
@@ -44,20 +44,18 @@
                             </div>
                             <button type="submit" class="btn btn-default">Submit</button>
                         </form>
-                        <!-- Following line is needed for TBS 3.0.1 (panel content overflow issue) -->
-                        <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
-                          <b:navbarLinks pull="right" styleClass="hidden-xs">
-                            <b:navLink value="Link" href="#"></b:navLink>
-                            <b:dropMenu value="Dropdown">
-                                <b:navLink value="Action" href="#"></b:navLink>
-                                <b:navLink value="Another action" href="#"></b:navLink>
-                                <b:navLink value="Something else here" href="#"></b:navLink>
-                                <b:navLink></b:navLink>
-                                <b:navLink header="Nav header"></b:navLink>
-                                <b:navLink value="Separated link" href="#"></b:navLink>
-                                <b:navLink value="One more separated link" href="#"></b:navLink>
-                            </b:dropMenu>
-                        </b:navbarLinks>
+                        <b:navbarLinks pull="right" styleClass="hidden-xs" style="margin-right:30px">
+                          <b:navLink value="Link" href="#"></b:navLink>
+                          <b:dropMenu value="Dropdown">
+                              <b:navLink value="Action" href="#"></b:navLink>
+                              <b:navLink value="Another action" href="#"></b:navLink>
+                              <b:navLink value="Something else here" href="#"></b:navLink>
+                              <b:navLink></b:navLink>
+                              <b:navLink header="Nav header"></b:navLink>
+                              <b:navLink value="Separated link" href="#"></b:navLink>
+                              <b:navLink value="One more separated link" href="#"></b:navLink>
+                          </b:dropMenu>
+                      </b:navbarLinks>
                     </b:navBar>
                 </b:panel>
                 <b:panel title="Sourcecode (expand this panel to show the sourcecode)" collapsed="true" look="info">
@@ -83,7 +81,7 @@
 		                                	<b:navLink value="... you want!" href="#"></b:navLink>
 		                                </b:dropMenu>
     	                            </b:dropMenu>
-                                	
+
                                 </b:dropMenu>
                                 <b:navLink value="One more separated link" href="#"></b:navLink>
                             </b:dropMenu>
@@ -113,7 +111,7 @@
           </script>
          </b:well>
          </b:panel>
-                
+
                 <h2>Sticky vs. non-sticky navBars and navBar positions <b:badge value="updated in 0.8.5"></b:badge></h2>
                 <p>A navbar can be rendered in different ways, to fit in your page layout scheme.</p>
                 <p>The default NavBar appears as part of the page content, typically centered and at the beginning.</p>
@@ -150,11 +148,11 @@
                     <td>Non-sticky NavBar at the current position. The NavBar scrolls with the page.</td>
                   </tr>
                 </table>
-            	
-            	
+
+
                 <p>To understand the different layouts better, just have a look at the <b:navLink value="NavBar examples" href="http://showcase.bootsfaces.net/Examples/navbar.jsf"/>.</p>
                 <br/>
-                
+
                 <b:modal id="top" title="b:navBar demo 1" style="height:200px">
                     <b:navBar brand="fixed=top" brandHref="#" fixed="top">
                     </b:navBar>
@@ -234,10 +232,10 @@
                     </b:column>
                  </b:row>
                  <!-- ********************************************************************************************* -->
-                
+
                 <h3>Using the b:navbar tag</h3>
                 <p>Using the <code>b:navbar</code> tag is very straightforward, as you can see from the following table you need to specify few attributes:</p>
-                
+
                 <strong>Widget attributes</strong>
                 <table class="table table-bordered table-striped">
                     <caption>b:navbar</caption>
@@ -309,13 +307,13 @@
                 <p>A NavBar will also contain a set of links. You can add the links to <code>b:navbar</code> using <code>b:navLink</code> as you do with <code>b:listLinks</code>.</p>
                 <p>The difference is that you nest the <code>b:navLink</code> elements inside a <code>b:navbarLinks</code> element instead of <code>b:listLinks</code> element.</p>
                 <br/>
-                
+
                 <strong>Navbar CommandLinks <b:badge value="since 0.7.0" /></strong>
                 <p>For some technical reason, the <code>&lt;b:navLink /&gt;</code> component can't call JSF action listeners. To circumvent this limitation, there's a second
                 component, <code>&lt;b:navCommandLink /&gt;</code> that's adds calls to JSF action listeners and a JSF action. </p>
                 <br/>
-                
-                
+
+
                 <strong>Drop Menus</strong>
                 <p>You can build up a rich menu bar using another useful element: <code>b:dropMenu</code>. It is another element where you can put your <code>b:navLink</code> elements.</p>
                 <p>You can have multiple <code>b:navbarLinks</code> and <code>b:dropMenu</code> elements in a navbar, just pay attention to the resulting layout. Starting with
@@ -364,7 +362,7 @@
                             ]]></script>
                     </f:facet>
                 </b:panel>
-                
+
                 <br/>
                 <h2>Reference section</h2>
                 <ui:include src="NavBarAttributes.xhtml" />
@@ -372,7 +370,7 @@
                 <ui:include src="NavLinkAttributes.xhtml" />
                 <ui:include src="NavCommandLinkAttributes.xhtml" />
                 <ui:include src="DropMenuAttributes.xhtml" />
-                
+
                 <b:panel look="info" rendered="false">
 					<f:facet name="heading">
 						<b>Skinning</b>
@@ -382,8 +380,8 @@
 						look of the component.</li>
 					</ul>
 				</b:panel>
-                
-                
+
+
                 <br/><br/><br/>
                 <script type="text/javascript">
                     SyntaxHighlighter.all();
