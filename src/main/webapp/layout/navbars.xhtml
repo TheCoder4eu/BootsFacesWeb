@@ -154,7 +154,7 @@
                 <br/>
 
                 <b:modal id="top" title="b:navBar demo 1" style="height:200px">
-                    <b:navBar brand="fixed=top" brandHref="#" fixed="top">
+                    <b:navBar brand="position=top" brandHref="#" position="top">
                     </b:navBar>
                     <p>This modal dialog has a navBar at the top and a lot of content, so it can scroll.</p>
                     <p>This modal dialog has a navBar at the top and a lot of content, so it can scroll.</p>
@@ -170,7 +170,7 @@
                     </f:facet>
                 </b:modal>
                 <b:modal id="bottom" title="b:navBar demo 2" style="height:200px">
-                    <b:navBar brand="fixed=bottom" brandHref="#" fixed="bottom">
+                    <b:navBar brand="position=bottom" brandHref="#" position="bottom">
                     </b:navBar>
                     <p>This modal dialog has a navBar at the bottom and a lot of content, so it can scroll.</p>
                     <p>This modal dialog has a navBar at the bottom and a lot of content, so it can scroll.</p>
@@ -186,7 +186,7 @@
                     </f:facet>
                 </b:modal>
                 <b:modal id="non-sticky" title="b:navBar demo 3" style="height:200px">
-                    <b:navBar brand="fixed=non-sticky" brandHref="#" fixed="non-sticky">
+                    <b:navBar brand="position=bottom sticky=false" brandHref="#" position="bottom" sticky="false">
                     </b:navBar>
                     <p>This modal dialog has a non-sticky navbar and a lot of content, so it can scroll.</p>
                     <p>This modal dialog has a non-sticky navbar and a lot of content, so it can scroll.</p>
@@ -219,13 +219,13 @@
                 </b:modal>
                 <b:row>
                     <b:column span="3">
-                        <a class="btn btn-primary btn-lg" href="#top" data-toggle="modal">fixed="top"</a>
+                        <a class="btn btn-primary btn-md" href="#top" data-toggle="modal">position="top"</a>
                     </b:column>
                     <b:column span="3">
-                        <a class="btn btn-primary btn-md" href="#bottom" data-toggle="modal">fixed="bottom"</a>
+                        <a class="btn btn-primary btn-md" href="#bottom" data-toggle="modal">position="bottom"</a>
                     </b:column>
                     <b:column span="3">
-                        <a class="btn btn-primary btn-md" href="#non-sticky" data-toggle="modal">fixed="non-sticky"</a>
+                        <a class="btn btn-primary btn-md" href="#non-sticky" data-toggle="modal">position="bottom" sticky="false"</a>
                     </b:column>
                     <b:column span="3">
                         <a class="btn btn-primary btn-md" href="#static" data-toggle="modal">static="true"</a>
