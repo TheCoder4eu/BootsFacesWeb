@@ -20,24 +20,24 @@ td {
         and many tablet computers have such a sensor.</p>
 		<h1>Basic usage</h1>
 		<p><code>&lt;b:shake /&gt;</code> only takes a singe parameter: <code>onshake</code>.
-        That's either a JavaScript function or - if it's preceded by <code>ajax:</code> - a call of a backend method.</p>
+        That's either a JavaScript function.</p>
 
         <h1>Live demo</h1>
-        <p>Open this page on a mobile device and shake it. Both a JSF message and a JSF alert box should show. This is
+        <p>Open this page on a mobile device and shake it. A JSF alert box should show. This is
         the source code needed:</p>
         <b:well>
             <script type="syntaxhighlighter"
                     class="brush: xml; toolbar: false;gutter: false; first-line: 1">
                 <![CDATA[
         <h:form>
-          <b:shake onshake="ajax:shakeBean.onShake();javascript:alert('shaken!');" update="form" />
+          <b:shake onshake="alert('shaken!');"/>
           <b:messages />
         </h:form>
             ]]></script>
         </b:well>
 
         <h:form>
-          <b:shake onshake="ajax:shakeBean.onShake();javascript:alert('shaken!');" update="form" />
+          <b:shake onshake="alert('shaken!');" />
           <b:messages />
         </h:form>
 
