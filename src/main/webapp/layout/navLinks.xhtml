@@ -56,7 +56,7 @@
                     <h:form>
                      <b:row>
                         <b:column span="3">
-                            <b:panel look="primary" title="Sidebar">
+                            <b:panel look="primary" title="Static sidebar">
                                 <b:listLinks>
                                     <b:navLink header="BootsFaces" />
                                     <b:navLink href="http://www.bootsfaces.net" value="BootsFaces"
@@ -72,12 +72,20 @@
                                     <b:navCommandLink value="AJAX actionListener" actionListener="#{messagesBean.info}"
                                                icon="tag" iconAlign="right" update="@form"/>
 
-                                     <ui:repeat var="musicStyle" value="#{navLinkBean.musicStyles}">
+                                     <b:messages />
+
+                                </b:listLinks>
+                             </b:panel>
+                        </b:column>
+                       <b:column span="3">
+                            <b:panel look="primary" title="Sidebar using ui:repeat">
+                                <b:listLinks>
+                                    <b:navLink header="Music styles" />
+                                      <ui:repeat var="musicStyle" value="#{navLinkBean.musicStyles}">
                                            <b:navCommandLink value="#{musicStyle}" actionListener="#{messagesBean.info}"
                                                              update="@form"/>
                                       </ui:repeat>
                                      <b:messages />
-
                                 </b:listLinks>
                              </b:panel>
                         </b:column>
@@ -88,25 +96,40 @@
 
                         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
                         <![CDATA[
-                            <b:panel look="primary" title="Sidebar">
+                       <b:column span="3">
+                            <b:panel look="primary" title="Static sidebar">
                                 <b:listLinks>
                                     <b:navLink header="BootsFaces" />
                                     <b:navLink href="http://www.bootsfaces.net" value="BootsFaces"
                                                icon="globe" iconAlign="right"/>
                                     <b:navLink></b:navLink>
                                     <b:navLink header="Bootstrap"/>
-                                    <b:navLink href="http://getbootstrap.com/components/#navbar" value="Bootstrap" icon="link"></b:navLink>
+                                    <b:navLink href="http://getbootstrap.com/components/&num;navbar" value="Bootstrap" icon="link"></b:navLink>
                                     <b:navLink></b:navLink>
                                     <b:navLink header="Preview"/>
                                     <b:navLink value="Labels and Badges" outcome="/bootstrap/labelsbadge"
                                                icon="tag" iconAlign="right"/>
-                                    <b:navLink value="Slider" outcome="/jquery-ui/slider" iconAwesome="sliders" />
-                                    <ui:repeat var="musicStyle" value="&num;{navLinkBean.musicStyles}">
-                                       <b:navCommandLink value="#{musicStyle}" actionListener="&num;{messagesBean.info}"
-                                                         update="@form"/>
-                                    </ui:repeat>
+                                    <b:navLink value="Slider" outcome="/jquery-ui/slider" iconAwesome="sliders"/>
+                                    <b:navCommandLink value="AJAX actionListener" actionListener="&num;{messagesBean.info}"
+                                               icon="tag" iconAlign="right" update="@form"/>
+
+                                     <b:messages />
+
                                 </b:listLinks>
-                            </b:panel>
+                             </b:panel>
+                        </b:column>
+                       <b:column span="3">
+                            <b:panel look="primary" title="Sidebar using ui:repeat">
+                                <b:listLinks>
+                                    <b:navLink header="Music styles" />
+                                      <ui:repeat var="musicStyle" value="&num;{navLinkBean.musicStyles}">
+                                           <b:navCommandLink value="&num;{musicStyle}" actionListener="&num;{messagesBean.info}"
+                                                             update="@form"/>
+                                      </ui:repeat>
+                                     <b:messages />
+                                </b:listLinks>
+                             </b:panel>
+                        </b:column>
                         ]]></script>
                     </f:facet>
                 </b:panel>
