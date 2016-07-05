@@ -441,6 +441,36 @@
                </b:panelGrid>
            </h:form>
 
+           <h2>Custom icons and arbitrary content of a command button</h2>
+           <p>You can put arbitrary content in the caption of the command button.
+           You aren't limited to simple icons and text.</p>
+           <b:panelGrid colSpans="5,7" size="sm">
+            <h:form>
+              <b:commandButton style="width:280px"
+                   look="info">
+                   This text
+                   <b:image library="images"
+                      name="BSFLogo.png"
+                      style="width:20%" height="20%"/>
+                   surrounds an image.
+              </b:commandButton>
+            </h:form>
+            <b:well>
+            <script type="syntaxhighlighter"
+                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                <![CDATA[
+               <b:commandButton style="width:280px"
+                   look="info">
+                   This text
+                   <b:image library="images"
+                      name="BSFLogo.png"
+                      style="width:20%" height="20%"/>
+                   surrounds an image.
+              </b:commandButton>
+                 ]]></script>
+                 </b:well>
+            </b:panelGrid>
+
             <h2>Partial processing with AJAX <b:badge value="since 0.8.0" /></h2>
             <p>The lower row of the example above shows partial processing. Sometimes you don't want to submit an entire form to the server.
             In our example you can't send the first name unless you've filled the last name, too, because of the constraint violation

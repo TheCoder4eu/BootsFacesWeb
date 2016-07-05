@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="content">
+		<style>
+td {
+	padding: 8px;
+}
+</style>
+	<h1>Focus (&lt;b:focus /&gt;)</h1>
+
+	<p><code>&lt;b:focus&gt;</code> allows you to define the field that gets the input focus when the page is loaded.</p>
+	<h1>Basic usage</h1>
+	<p>Simply put <code>&lt;b:focus target="someId" &gt;</code> somewhere in your JSF page. The input field bearing this
+      id gets the input focus.</p>
+	<ui:include src="FocusAttributes.xhtml" />
+
+	<script type="text/javascript">
+    		SyntaxHighlighter.all();
+  	</script>
+	<br />
+	<br />
+	<br />
+	<br />
+	</ui:define>
+</ui:composition>
