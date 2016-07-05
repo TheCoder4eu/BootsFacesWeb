@@ -62,7 +62,7 @@
 							itemValue="3" />
 					</b:selectOneMenu>
 				</b:panel>
-				<b:panel look="primary" title="AJAXified Combobox - only mouse move">
+				<b:panel look="primary" title="AJAXified Combobox - only mouse move and onchange">
 					<ui:remove>
 					</ui:remove>
 
@@ -70,6 +70,7 @@
 						text="Which framework do you choose for desktop applications?" />
 					<b:selectOneMenu value="#{ajaxBean.desktop}" id="desktopId"
 						onmousemove="console.log('mouse move');ajax:ajaxBean.onMouseMove();"
+                        onchange="console.log('before onChange');ajax:ajaxBean.onChange()"
 						update="messages jsfMessages">
 
 
