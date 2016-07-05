@@ -55,10 +55,10 @@ public class CheckboxBean implements Serializable {
 
 	public void setCbxError(boolean errorCheckbox) {
 		this.cbxError = errorCheckbox;
-		if (errorCheckbox) {
-			FacesContext.getCurrentInstance().addMessage("messageForm:checkboxWithErrorMessage",
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "This is what an error looks like."));
-		}
+//		if (errorCheckbox) {
+//			FacesContext.getCurrentInstance().addMessage("messageForm:checkboxWithErrorMessage",
+//					new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "This is what an error looks like."));
+//		}
 	}
 
 	public void action() {

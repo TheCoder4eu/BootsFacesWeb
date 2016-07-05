@@ -45,10 +45,15 @@ td {
 ]]></script>
 		</b:well>
 
+      <h1>Caveat</h1>
+      <p>Please not that <code>validationFailed</code> indicates that the <strong>validation phase</strong> of the
+      JSF lifecycle has reported an error. It does not indicate that there's an error message. If you add error messages
+      in an action or actionListener, better check <code>bfHasError || bfHasFatalError</code> to get reliable results.</p>
+
       <h1>Advanced usage</h1>
       <p>&lt;b:fetchBeanInfos /&gt; populates six global JavaScript variables:</p>
        <dl class="dl-horizontal">
-        <dt><code>validationFailed</code></dt><dd>is true if there's at least one error or fatal error message</dd>
+        <dt><code>validationFailed</code></dt><dd>is true if one of the JSF validators found an error during the validation phase of the JSF lifecycle</dd>
         <dt><code>bfMaximumMessageSeverity</code></dt><dd>ordinal number of the most disturbing FacesMessage. 0=no message, 1=info, 2=warning, 3=error, 4=fatal error.</dd>
         <dt><code>bfHasFatalError</code></dt><dd>Is there at least one fatal error message?</dd>
         <dt><code>bfHasError</code></dt><dd>Is there at least one error message?</dd>
@@ -151,7 +156,7 @@ td {
                     <b:message for="@form:**:checkboxWithInfoMessage"  escape="false" />
                   </b:panelGrid>
                   <b:row>
-                  <b:panel title="Validation result" look="primary">
+                  <b:panel title="Validation result" look="primary" small-screen="full">
                     <b:button value="click to show the values of the JavaScript variables" look="primary"
                                onclick="alert('bfMaximumMessageSeverity = ' + bfMaximumMessageSeverity + '\n'
                                        + 'bfHasFatalError = ' + bfHasFatalError + '\n'
@@ -165,6 +170,10 @@ td {
              </b:tab>
         </b:tabView>
 
+        <p>By the way, the example also shows the effect of the validation phase of JSF. If you clear the first
+        checkbox, the messages below disappear. That's because the uppermost error is detected by a bean validation
+        constraint. The other messages are generated during the <code>INVOKE_APPLICATION</code> phase of the lifecycle.
+        However, the application is never invoked as long as JSF detects contraint violations.</p>
 
 		<h3>AJAX</h3>
 		<p>If you're using AJAX, don't forget to include the <code>&lt;b:fetchBeanInfos&gt;</code> widget in the list of updated regions.</p>
