@@ -16,7 +16,7 @@
          <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
           <b:tab title="Live preview">
             <b:row>
-              <b:column span="3">
+              <b:column tiny-screen="6" small-screen="4" medium-screen="3">
                 <h:form>
                   <b:flyOutMenu width="50px">
                     <b:navLink value="Start" update="@form @(.content)"
@@ -28,7 +28,7 @@
                   </b:flyOutMenu>
                 </h:form>
               </b:column>
-              <b:column span="7" class="content">
+              <b:column tiny-screen="6" small-screen="7" class="content">
                 <ui:include src="#{navigationBean.page}" />
               </b:column>
             </b:row>
@@ -57,7 +57,7 @@
         </script>
    </b:tab>
     </b:tabView>
-    
+
     <h3>Resource loading</h3>
     <p>BootsFaces tries to keep the memory footprint as low as possible. Among other things, this means that it only loads
     the CSS and JavaScript code required by the current JSF page. If you use AJAX to replace parts of your page,
@@ -71,13 +71,13 @@
 		<b:switch rendered="false" />
 		<b:selectMultiMenu rendered="false" />
         ]]></script>
-    
+
 
     <h3>Templates</h3>
     <p>Most JSF developers are used to use templates to embed their payload pages into a common application framework.
     For example, this showcase uses a template page to provide the main menu and the footer of each page.</p>
     <p>
-    As is turns out, it's better to think the other way round to make the most of AJAX. Funny thing is that's the 
+    As is turns out, it's better to think the other way round to make the most of AJAX. Funny thing is that's the
     traditional way of thinking. Instead of embedding your page into a common template, you take the common template
     and include the individual page in it. That's best accomplished by using <code>&lt;ui:include /&gt;</code>
     with an EL expression pointing to the current payload page. The demo below shows the idea.
@@ -128,17 +128,17 @@
             @SessionScoped
             public class NavigationBean implements Serializable {
             	private static final long serialVersionUID = 1L;
-            	
+
             	private String page="start.xhtml";
-            
+
             	public String getPage() {
             		return page;
             	}
-            	
+
             	public void setPage(String currentPage) {
             		this.page=currentPage;
             	}
-            }        
+            }
 		]]>
         </script>
    </b:tab>
