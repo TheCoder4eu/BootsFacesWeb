@@ -11,19 +11,21 @@
 		<style>
 			td {
 				padding: 8px;
-			} 
+			}
 		</style>
 		<h1>ScrollSpy (&lt;b:scrollSpy /&gt;) <b:badge value="since 0.8.5" /></h1>
 
 		<p>
 		<code>&lt;b:scrollSpy&gt;</code> is a wrapper of the native bootstrap scrollspy function.
-		it can be used to provide automatic menu highlight during scrolling. The addition of bootsfaces is the 
-		possibility to define an action listener in the backend JSF bean that receive via ajax the name of current 
-		highlighted section.<br/>
-		Is very important that, the section that you use as a scroll container, has the css position property set to "relative".
+		it can be used to provide automatic menu highlight during scrolling. BootsFaces adds AJAX to this feature.You
+        can define an action listener in the backend JSF bean receiving the name of current
+		highlighted section via AJAX.<br/>
+		Is very important that the section you're using as a scroll container has the CSS position property set to "relative".
+        In most cases this scroll container is the <code>&lt;h:body /&gt;</code>. Make sure to set the attributes
+        <code>height</code> and the <code>overflow-y:scroll</code> if using another scroll container than <code>&lt;h:body /&gt;</code>.
 		</p>
 		<h1>Basic usage</h1>
-		<p>This is a very simple inline implementation</p>
+		<p>This is a very simple inline implementation:</p>
 
 		<b:tabView activeIndex="1">
 			<b:tab title="JSF markup">
@@ -44,14 +46,14 @@
 					     <b:navbarLinks>
 					         <b:navLink value="Section 1" href="#section1"></b:navLink>
 					         <b:navLink value="Section 2" href="#section2"></b:navLink>
-							<b:navLink value="Section 3" href="#section3"></b:navLink>	
+							<b:navLink value="Section 3" href="#section3"></b:navLink>
 					         <b:dropMenu value="Dropdown" iconAwesome="birthday-cake">
 					             <b:navLink value="Section 4-1" href="#section41"></b:navLink>
 					             <b:navLink value="Section 4-2" href="#section42"></b:navLink>
 					         </b:dropMenu>
 					     </b:navbarLinks>
 					 </b:navBar>
-			
+
 					<b:container id="scrollable" styleClass="scroll">
 						<div id="section1" class="container-fluid">
 							<h1>Section 1</h1>
@@ -79,7 +81,7 @@
 								smooth scrolling effect.</p>
 						</div>
 					</b:container>
-			 
+
 					<b:scrollSpy container="scrollable" target="nb" />
 				</h:form>
 						]]></script>
@@ -100,14 +102,14 @@
 					     <b:navbarLinks>
 					         <b:navLink value="Section 1" href="#section1"></b:navLink>
 					         <b:navLink value="Section 2" href="#section2"></b:navLink>
-							<b:navLink value="Section 3" href="#section3"></b:navLink>	
+							<b:navLink value="Section 3" href="#section3"></b:navLink>
 					         <b:dropMenu value="Dropdown" iconAwesome="birthday-cake">
 					             <b:navLink value="Section 4-1" href="#section41"></b:navLink>
 					             <b:navLink value="Section 4-2" href="#section42"></b:navLink>
 					         </b:dropMenu>
 					     </b:navbarLinks>
 					 </b:navBar>
-			
+
 					<b:container id="scrollable" styleClass="scroll">
 						<div id="section1">
 							<h1>Section 1</h1>
@@ -135,7 +137,7 @@
 								smooth scrolling effect.</p>
 						</div>
 					</b:container>
-			 
+
 					<b:scrollSpy container="scrollable" target="nb" smooth="true" offset="20" />
 				</h:form>
 			</b:tab>
