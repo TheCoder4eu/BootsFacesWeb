@@ -1,32 +1,84 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:b="http://bootsfaces.net/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<ui:define name="content">
-		<style>
-td {
-	padding: 8px;
-}
-</style>
-	<h1>Focus (&lt;b:focus /&gt;)</h1>
+    <ui:define name="content">
+        <style>
+            td {
+                padding: 8px;
+            }
+        </style>
+        <h1>Focus (&lt;b:focus /&gt;)</h1>
 
-	<p><code>&lt;b:focus&gt;</code> allows you to define the field that gets the input focus when the page is loaded.</p>
-	<h1>Basic usage</h1>
-	<p>Simply put <code>&lt;b:focus target="someId" &gt;</code> somewhere in your JSF page. The input field bearing this
-      id gets the input focus.</p>
-	<ui:include src="FocusAttributes.xhtml" />
+        <p><code>&lt;b:focus&gt;</code> allows you to define the field that gets the input focus when the page is loaded.</p>
+        <h1>Basic usage</h1>
+        <p>Simply add <code>&lt;b:focus target="someId" &gt;</code> somewhere in your JSF page. The input field bearing this
+            id gets the input focus. The attribute <code>target</code> may also contain a search expression, as long as it
+            results in a unique id.</p>
+        <p>Some input fields allow you to activate the focus even simpler, by putting <code>&lt;b:focus&gt;</code>
+            inside the input field:</p>
 
-	<script type="text/javascript">
-    		SyntaxHighlighter.all();
-  	</script>
-	<br />
-	<br />
-	<br />
-	<br />
-	</ui:define>
+        <h:form>
+            <b:tabView>
+              <b:tab title="JSF code" look="primary">
+                    <b:well>
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
+                            <b:inputText id="firstField" label="First field" render-label="true" />
+                            <b:inputText id="secondField" label="Second field" render-label="true">
+                            <b:focus rendered="true" />
+                            </b:inputText>
+                            ]]></script>
+                    </b:well>
+                </b:tab>
+                 <b:tab title="Live preview" look="primary" >
+                    <p>In this example, the focus doesn't seem to work for two reasons: there's a second demo below,
+                    which overrides the focus of the first demo, and after that you've clicked the tab, which
+                    focuses the tab instead of the input field. However, in a simple form <code>&lt;b:focus /&gt;</code>
+                    works as described.</p>
+                    <b:inputText id="firstField" label="First field" render-label="true" />
+                    <b:inputText id="secondField" label="Second field" render-label="true">
+                        <b:focus rendered="true" />
+                    </b:inputText>
+                </b:tab>
+             </b:tabView>
+        </h:form>
+
+       <h1>Basic usage</h1>
+        <p><code>&lt;b:focus /&gt;</code> also works with search expressions. This may allow you to get rid of the ids.</p>
+         <h:form>
+            <b:tabView>
+                 <b:tab title="Live preview" look="primary" >
+                    <b:inputText label="First field" render-label="true" />
+                    <b:inputText label="Second field" render-label="true" />
+                    <b:focus target="@previous" />
+                </b:tab>
+               <b:tab title="JSF code" look="primary">
+                    <b:well>
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
+                    <b:inputText label="First field" render-label="true" />
+                    <b:inputText label="Second field" render-label="true" />
+                    <b:focus target="@previous" />
+                            ]]></script>
+                    </b:well>
+                </b:tab>
+            </b:tabView>
+        </h:form>
+
+
+
+        <ui:include src="FocusAttributes.xhtml" />
+
+        <script type="text/javascript">
+            SyntaxHighlighter.all();
+        </script>
+        <br />
+        <br />
+        <br />
+        <br />
+    </ui:define>
 </ui:composition>
