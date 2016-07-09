@@ -56,8 +56,11 @@
 		<h1>Multiple default commands in the same page</h1>
 		<p>
 			The <code>&lt;b:defaultCommand&gt;</code> component activates the click listener on the closest form of the component. <br/>
-			This way, you can define multiple defaultCommands in different form scopes.
-		</p>
+			This way, you can define multiple defaultCommands in different form scopes.</p>
+            <p> Note that each form can support
+            only a single defaultCommand. You have to split your page into several forms in order to add multiple
+            defaultCommands. Also note that defaultCommands only apply to the surrounding form. Defining a default command
+            in a form doesn't add a defaultCommand to any other form on the page.</p>
 		<b:tabView>
 			<b:tab title="preview">
 				<p>First Form (focus on input text and press enter key)</p>
@@ -110,7 +113,44 @@
 				</script>
 			</b:tab>
 		</b:tabView>
+
+        <h1>Search Expressions</h1>
+    <p>
+      Default commands allow you to use search expressions. In many cases this allows you to get rid of the ids.
+    </p>
+    <b:tabView>
+      <b:tab title="preview">
+        <h:form>
+          <p>The default command button is 'Button3'.</p>
+          <b:inputText />
+          <b:commandButton actionListener="#{test.button1}" value="Button1" ajax="true" update="standardMsg3" />
+          <b:commandButton actionListener="#{test.button2}" value="Button2" ajax="true" update="standardMsg3" />
+          <b:commandButton actionListener="#{test.button3}" value="Button3" ajax="true" look="primary" icon="plus-sign" update="standardMsg3" />
+            <b:defaultCommand target="@previous" />
+            <br/><br/>
+            <b:messages id="standardMsg3" globalOnly="true" />
+          </h:form>
+      </b:tab>
+      <b:tab title="JSF markup">
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <p>The default command button is 'Button3'.</p>
+          <b:inputText />
+          <b:commandButton actionListener="&num;{test.button1}" value="Button1" ajax="true" update="standardMsg3" />
+          <b:commandButton actionListener="&num;{test.button2}" value="Button2" ajax="true" update="standardMsg3" />
+          <b:commandButton actionListener="&num;{test.button3}" value="Button3" ajax="true" look="primary" icon="plus-sign" update="standardMsg3" />
+            <b:defaultCommand target="@previous" />
+            <br/><br/>
+            <b:messages id="standardMsg3" globalOnly="true" />
+          </h:form>
+          ]]>
+        </script>
+      </b:tab>
+    </b:tabView>
+
 		<br/>
+        <h2>Reference section</h2>
+        <ui:include src="DefaultCommandAttributes.xhtml" />
         <br/>
         <br/>
 
