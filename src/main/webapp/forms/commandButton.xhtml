@@ -480,6 +480,47 @@
             instead of updating the entire form.
             </p>
 
+            <h1><code>immediate</code> <b:badge value="since 0.9.1" /></h1>
+            <p><code>&lt;b:commandButton /&gt;</code> supports the <code>immediate</code> attribute, both in AJAX and non-AJAX requests.
+            This allows you to call a backend bean method even if the violation constraints are violated. The example below
+            allows you to start a new game no matter if the input field contains a legal value or not. The BootsFaces
+            ajax methods like <code>onclick</code> execute the validations (but are executed even if there are validation
+            constraints), while the traditional <code>actionListeners</code>
+            bypass validation completely.</p>
+            <p>The classical usecase of the <code>immediate</code> flag is the "cancel" button. Obviously, you don't
+            want to force the user to input correct data before they can cancel their input.</p>
+              <b:tabView>
+                <b:tab title="displayed as" contentStyle="border:1px solid ;padding:10px">
+                  <h:form>
+                    <p>Guess a number. It has to be between 1 and 10.</p>
+                    <b:inputText value="#{numberGuessBean.guess}" label="Your guess"  render-label="true" />
+                    <b:message for="@previous" />
+                    <b:commandButton value="OK" actionListener="#{numberGuessBean.submitGuess}" look="success"/>
+                    <b:commandButton value="New game" actionListener="#{numberGuessBean.newGame}" immediate="true" look="danger" />
+                    <b:commandButton value="OK AJAX" onclick="ajax:numberGuessBean.submitGuess()" look="success" update="@form"/>
+                    <b:commandButton value="New game AJAX (onclick)" onclick="ajax:numberGuessBean.newGame()" immediate="true" look="danger" update="@form"/>
+                    <b:commandButton value="New game AJAX (actionListener)" actionListener="#{numberGuessBean.startNewGame}" immediate="true" look="info" update="@form"/>
+                    <b:messages redisplay="false" />
+                  </h:form>
+                </b:tab>
+                <b:tab title="JSF markup">
+                  <b:well>
+                    <script type="syntaxhighlighter"
+                      class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                      <![CDATA[
+                        <b:inputText value="&num;{numberGuessBean.guess}" label="Your guess"  render-label="true" />
+                        <b:message for="@previous" />
+                        <b:commandButton value="OK" actionListener="&num;{numberGuessBean.submitGuess}" look="success"/>
+                        <b:commandButton value="New game" actionListener="&num;{numberGuessBean.newGame}" immediate="true" look="danger" />
+                        <b:commandButton value="OK AJAX" onclick="ajax:numberGuessBean.submitGuess()" look="success" update="@form"/>
+                        <b:commandButton value="New game AJAX (onclick)" onclick="ajax:numberGuessBean.newGame()" immediate="true" look="danger" update="@form"/>
+                        <b:commandButton value="New game AJAX (actionListener)" actionListener="&num;{numberGuessBean.startNewGame}" immediate="true" look="info" update="@form"/>
+                      <b:messages redisplay="false" />
+                  ]]>
+                  </script>
+                  </b:well>
+                </b:tab>
+              </b:tabView>
 
                 <br/>
                 <h2>Reference section</h2>
