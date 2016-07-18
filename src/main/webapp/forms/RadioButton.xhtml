@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:b="http://bootsfaces.net/ui" xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough" xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+  <title>BootsFaces: next-gen JSF Framework</title>
+  <meta name="author" content="Riccardo Massera"></meta>
+</h:head>
+<h:body style="padding-top: 60px">
+  <ui:composition template="/applayout/pageTemplate.xhtml">
+    <ui:define name="content">
+      <h:form>
+        <h1>Radiobuttons <b:badge value="since 1.0" /></h1>
+        <p>The BootsFaces radiobutton give you more flexibility to design your page layout than the standard JSF radiobutton.</p>
+        <p>For the sake of compatibility, you can follow the traditional JSF approach using <code>&lt;f:selectItem /&gt;</code>
+        or <code>&lt;f:selectItems /&gt;</code>. <b:badge value="yet to be implemented" /> But that only allows for very simple
+        layouts (the buttons are vertical, and no element except the label can be between the buttons). In particular,
+        you can't embed the radiobuttons in a multi-column Bootstrap grid. So BootsFaces offers a more flexible
+        version. You have to repeat the <code>value</code> attribute with every option of the radio button in order
+        to indicate which buttons belong to a common group:</p>
+        <b:panel title="Survey" look="primary">
+          <p>Which Java version do you use?</p>
+          <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 6" itemValue="6" />
+          <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 7" itemValue="7" />
+          <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 8" itemValue="8" />
+          <b:commandButton value="submit your choice" action="#{radiobuttonBean.submit}" look="primary" />
+          <b:messages />
+        </b:panel>
+      </h:form>
+      <b:well>
+         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
+           <b:panel title="Survey" look="primary">
+            <p>Which Java version do you use?</p>
+            <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 6" itemValue="6" />
+            <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 7" itemValue="7" />
+            <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 8" itemValue="8" />
+            <b:commandButton value="submit your choice" action="&num;{radiobuttonBean.submit}" look="primary" />
+            <b:messages />
+          </b:panel>
+        ]]></script>
+      </b:well>
+
+      <br />
+      <br />
+      <br />
+      <br />
+      <ui:include src="RadiobuttonAttributes.xhtml" />
+      <b:panel look="info">
+        <f:facet name="heading">
+          <b>Skinning</b>
+        </f:facet>
+        <ul>
+          <li>Tell the world which CSS classes can be used to change the look of the component.</li>
+        </ul>
+      </b:panel>
+
+      <script type="text/javascript">
+							SyntaxHighlighter.all();
+						</script>
+
+    </ui:define>
+  </ui:composition>
+</h:body>
+</html>
