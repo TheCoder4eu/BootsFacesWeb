@@ -29,15 +29,27 @@ import net.bootsfaces.utils.FacesMessages;
 public class RadiobuttonBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int javaVersion;
+
+	private String favoriteColor;
+
 	public int getJavaVersion() {
 		return javaVersion;
 	}
+
 	public void setJavaVersion(int javaVersion) {
 		this.javaVersion = javaVersion;
 	}
 
 	public void submit() {
 		FacesMessages.info("Thanks! Your choice was " + javaVersion);
+	}
+
+	public String getFavoriteColor() {
+		return favoriteColor;
+	}
+
+	public void setFavoriteColor(String favoriteColor) {
+		this.favoriteColor = favoriteColor;
 	}
 
 }

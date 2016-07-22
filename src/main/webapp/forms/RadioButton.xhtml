@@ -40,7 +40,26 @@
           </b:panel>
         ]]></script>
       </b:well>
+      <h2>Traditional JSF approach</h2>
+      <p>For the sake of convenience and back-ward compatibility, BootsFaces also supports the traditional
+      JSF API using <code>&lt;f:selectItem /&gt;</code>;</p>
 
+      <h:form>
+            <b:radiobutton value="#{radiobuttonBean.favoriteColor}">
+                <f:selectItem itemValue="Red" itemLabel="Color1 - Red" />
+                <f:selectItem itemValue="Green" itemLabel="Color1 - Green" />
+                <f:selectItem itemValue="Blue" itemLabel="Color1 - Blue" />
+            </b:radiobutton>
+      </h:form>
+
+
+<h:form>
+      <h:selectOneRadio value="#{radiobuttonBean.favoriteColor}">
+          <f:selectItem itemValue="Red" itemLabel="Color1 - Red" />
+          <f:selectItem itemValue="Green" itemLabel="Color1 - Green" />
+          <f:selectItem itemValue="Blue" itemLabel="Color1 - Blue" />
+      </h:selectOneRadio>
+</h:form>
       <br />
       <br />
       <br />

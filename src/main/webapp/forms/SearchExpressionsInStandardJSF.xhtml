@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:b="http://bootsfaces.net/ui" xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough" xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+  <title>BootsFaces: next-gen JSF Framework</title>
+  <meta name="author" content="Riccardo Massera"></meta>
+</h:head>
+<h:body style="padding-top: 60px">
+  <ui:composition template="/applayout/pageTemplate.xhtml">
+    <ui:define name="content">
+        <h1>Search Expressions in standard JSF <b:badge value="since 1.0" /></h1>
+        <p>Neither the advanced search expressions of BootsFaces nor their PrimeFaces counterparts work with
+        the components of the base libraries out-of-the-box. However, it's possible to define a JSF bean or
+        an EL expression resolving the advanced search expressions. BootsFaces, in particular, provides an optional
+        facelets decorator that allows you to use the advanced search expressions without further ado. From a technical
+        point of view, that's a fairly convoluted approach because the underlying base library (Mojarra or MyFaces)
+        still doesn't support the search expressions, but from a user's perspective you won't notice the difference.</p>
+
+      <h2>Basic usage (also works without BootsFaces)</h2>
+      <h:form>
+          <h:outputLabel for="#{searchExpressionResolverBean.resolve(component, '@next')}" value="Enter a number between 1 and 10:" />
+          <h:inputText value="#{numberGuessBean.guess}" styleClass="guess" />
+          <h:message for="#{searchExpressionResolverBean.resolve(component, '@previous')}"
+          showDetail="true"  showSummary="true" />
+          <br />
+          <h:commandButton value="submit your guess">
+            <f:ajax render="#{searchExpressionResolverBean.resolve(component, '@parent')}"
+                    execute="#{searchExpressionResolverBean.resolve(component, '@form')}"
+                    listener="#{numberGuessBean.submitGuess}"/>
+          </h:commandButton>
+
+        </h:form>
+
+      <br />
+      <br />
+      <br />
+      <br />
+      <script type="text/javascript">
+							SyntaxHighlighter.all();
+						</script>
+
+    </ui:define>
+  </ui:composition>
+</h:body>
+</html>

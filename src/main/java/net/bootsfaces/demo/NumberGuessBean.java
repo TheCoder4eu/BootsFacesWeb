@@ -1,16 +1,24 @@
 package net.bootsfaces.demo;
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.component.UIViewRoot;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
+import net.bootsfaces.expressions.ExpressionResolver;
 import net.bootsfaces.utils.FacesMessages;
 
 @ManagedBean
 @ViewScoped
-public class NumberGuessBean {
+public class NumberGuessBean  implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private int counter = 1;
 
@@ -20,7 +28,7 @@ public class NumberGuessBean {
 
 	@Min(1)
 	@Max(10)
-	private int guess=42;
+	private int guess=2;
 
 	public int getGuess() {
 		return guess;
@@ -31,6 +39,7 @@ public class NumberGuessBean {
 	}
 
 	public void submitGuess() {
+		String summary="Wrong guess:";
 		String msg = "Guess #" + counter++;
 		if (guess > target) {
 			msg += " is to high.";
@@ -39,9 +48,13 @@ public class NumberGuessBean {
 			msg += " is to small.";
 		} else {
 			msg += " is correct!";
+			summary="Congratulations!";
 		}
-		FacesMessages.info(msg);
+		UIViewRoot viewRoot = FacesContext.getCurrentInstance().getViewRoot();
+		String componentIDs = ExpressionResolver.getComponentIDs(FacesContext.getCurrentInstance(), viewRoot, "@styleClass(guess)");
+		FacesMessages.info(componentIDs, summary, msg);
 	}
+
 
 	public void newGame() {
 		FacesMessages.info("Start game #" + game++ + ".");
