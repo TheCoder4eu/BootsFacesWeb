@@ -62,10 +62,63 @@
             </b:tab>
           </b:tabView>
         </h:form>
-
-        <p>This even works without BootsFaces if you copy the folder <a target="#" href="https://github.com/TheCoder4eu/BootsFaces-OSP/tree/master/src/main/java/net/bootsfaces/expressions">
+        <p>This even works without BootsFaces if you copy the folder
+        <a target="#" href="https://github.com/TheCoder4eu/BootsFaces-OSP/tree/master/src/main/java/net/bootsfaces/expressions">
         https://github.com/TheCoder4eu/BootsFaces-OSP/tree/master/src/main/java/net/bootsfaces/expressions</a>
         to your project. </p>
+
+
+      <h2>Advanced usage (also works without BootsFaces)</h2>
+      <p>By configuring and activating the BootsFaces facelets decorator, you can use search expressions with the
+      <code>for</code> attribute of many standard JSF components, such as <code>&lt;h:message /&lt;</code>,
+      <code>&lt;h:messages /&lt;</code>, and <code>&lt;h:outputLabel /&lt;</code>. From a programmers perspective,
+      you won't see much of a difference between the two classes of components. The only difference is that
+      some of BootsFaces search expressions are very powerful, which makes them slower than a simple id.</p>
+
+      <p>For some reason, the facelets decorator does not work with the <code>&lt;f:ajax /&gt;</code> facet, so you
+      have to resolve the search expressions yourself, as shown below:</p>
+        <ui:fragment bootsFacesDecorator="true">
+         <h:form>
+              <b:tabView>
+                <b:tab title="preview">
+                  <b:well id="myWell">
+                   <h:outputLabel for="@next"
+                                   value="Enter a number between 1 and 10:"
+                                   style="padding-right:10px" />
+                    <h:inputText value="#{numberGuessBean.guess}" styleClass="guess" />
+                    <h:message for="@previous"
+                    showDetail="true"  showSummary="true" />
+                    <br />
+                    <h:commandButton value="submit your guess">
+                    <f:ajax render="#{searchExpressionResolverBean.resolve(component, '@parent')}"
+                            execute="#{searchExpressionResolverBean.resolve(component, '@form')}"
+                            listener="#{numberGuessBean.submitGuess}"/>
+                    </h:commandButton>
+                  </b:well>
+                </b:tab>
+                <b:tab title="JSF markup code">
+                  <b:well>
+                    <script type="syntaxhighlighter"
+                      class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                    <![CDATA[
+                    <h:outputLabel for="@next"
+                                   value="Enter a number between 1 and 10:"
+                                   style="padding-right:10px" />
+                    <h:inputText value="&num;{numberGuessBean.guess}" styleClass="guess" />
+                    <h:message for="@previous"
+                    showDetail="true" showSummary="true" />
+                    <br />
+                    <h:commandButton value="submit your guess">
+                    <f:ajax render="&num;{searchExpressionResolverBean.resolve(component, '@parent')}"
+                            execute="&num;{searchExpressionResolverBean.resolve(component, '@form')}"
+                            listener="&num;{numberGuessBean.submitGuess}"/>
+                    </h:commandButton>
+                    ]]></script>
+                  </b:well>
+                </b:tab>
+              </b:tabView>
+            </h:form>
+          </ui:fragment>
 
       <br />
       <br />

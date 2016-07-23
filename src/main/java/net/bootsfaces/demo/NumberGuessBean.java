@@ -50,9 +50,7 @@ public class NumberGuessBean  implements Serializable {
 			msg += " is correct!";
 			summary="Congratulations!";
 		}
-		UIViewRoot viewRoot = FacesContext.getCurrentInstance().getViewRoot();
-		String componentIDs = ExpressionResolver.getComponentIDs(FacesContext.getCurrentInstance(), viewRoot, "@styleClass(guess)");
-		FacesMessages.info(componentIDs, summary, msg);
+		FacesMessages.info("@styleClass(guess)", summary, msg);
 
 	}
 
