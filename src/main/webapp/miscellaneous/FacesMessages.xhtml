@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:b="http://bootsfaces.net/ui" xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough" xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+  <title>BootsFaces: next-gen JSF Framework</title>
+  <meta name="author" content="Riccardo Massera"></meta>
+</h:head>
+<h:body style="padding-top: 60px">
+  <ui:composition template="/applayout/pageTemplate.xhtml">
+    <ui:define name="content">
+        <h1>Reporting messages <b:badge value="since 0.8.5" /></h1>
+        <p>BootsFaces offers a short-hand API to report <code>FacesMessages</code>:</p>
+
+        <b:well>
+            <script type="syntaxhighlighter" class="brush: java; toolbar: false;first-line: 1">
+            <![CDATA[
+    		FacesMessages.info("Successfully saved.");
+    		FacesMessages.warning("Warning", "Please double-check your input.");
+    		FacesMessages.error("This is not a valid zipcode.");
+    		FacesMessages.fatal("Fatal error", "The application just crashed.");
+            ]]></script>
+        </b:well>
+
+
+        <h2>Search Expressions <b:badge value="since 1.0" /></h2>
+        <p>You can assign a <code>FacesMessage</code> to a particular field by providing its id. Alternatively,
+        you can use a search expression describing one or more fields. This comes in handy because the Java
+        backend shouldn't know much about the implementation details of the front-end, at least not if you're
+        following a paradigm like MVC, MVP or MVVM. </p>
+
+        <b:well>
+           <script type="syntaxhighlighter" class="brush: java; toolbar: false;first-line: 1">
+           <![CDATA[
+    		FacesMessages.error("mainFormId:addressPanelId:zipcodeId", "This is not a valid zipcode.");
+           FacesMessages.error("@styleClass(zipcode)", "This is not a valid zipcode.");
+           ]]></script>
+         </b:well>
+
+        <p>The search expressions use the root of the JSF tree as base component. If your JSF tree contains a lot of
+        components, this may result in slow evaluation of the search expressions scanning the entire subtree, such as
+        <code>@styleClass</code>, <code>**:id</code>, <code>@findIdRecursively</code> and <code>@findPartialIdRecursively</code>.
+        You can improve performance by limiting the search scope. For instance, if you know the field you want to
+        decorate with an error message is in a form with a particular id, you can speed things up like so:</p>
+
+        <b:well>
+            <script type="syntaxhighlighter" class="brush: java; toolbar: false;first-line: 1">
+            <![CDATA[
+            FacesMessages.error("mainFormId:@styleClass(zipcode)", "This is not a valid zipcode.");
+            ]]></script>
+       </b:well>
+
+      <h2>Variables <b:badge value="since 1.0" /></h2>
+
+
+      <br />
+      <br />
+      <br />
+      <br />
+      <script type="text/javascript">
+        SyntaxHighlighter.all();
+	  </script>
+
+    </ui:define>
+  </ui:composition>
+</h:body>
+</html>
