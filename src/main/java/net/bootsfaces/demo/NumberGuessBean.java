@@ -50,7 +50,7 @@ public class NumberGuessBean  implements Serializable {
 			msg += " is correct!";
 			summary="Congratulations!";
 		}
-		FacesMessages.info("@styleClass(guess)", summary, msg);
+		FacesMessages.info("@property(numberGuessBean.guess)", summary, msg);
 
 	}
 

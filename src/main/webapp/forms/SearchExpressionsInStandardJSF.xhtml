@@ -60,6 +60,51 @@
                 ]]></script>
               </b:well>
             </b:tab>
+            <b:tab title="Java bean">
+              <b:well>
+                <script type="syntaxhighlighter"
+                  class="brush: java; toolbar: false;gutter: false; first-line: 1">
+                <![CDATA[
+                   @ManagedBean
+                   @ViewScoped
+                   public class NumberGuessBean  implements Serializable {
+
+                   	private static final long serialVersionUID = 1L;
+
+                   	private int counter = 1;
+
+                   	private int target=5;
+
+                   	@Min(1)
+                   	@Max(10)
+                   	private int guess=2;
+
+                   	public int getGuess() {
+                   		return guess;
+                   	}
+
+                   	public void setGuess(int guess) {
+                   		this.guess = guess;
+                   	}
+
+                   	public void submitGuess() {
+                   		String summary="Wrong guess:";
+                   		String msg = "Guess #" + counter++;
+                   		if (guess > target) {
+                   			msg += " is to high.";
+                   		} else if (guess < target) {
+                   			msg += " is to small.";
+                   		} else {
+                   			msg += " is correct!";
+                   			summary="Congratulations!";
+                   		}
+                   		FacesMessages.info("@property(numberGuessBean.guess)", summary, msg);
+
+                   	}
+                   }
+                ]]></script>
+              </b:well>
+            </b:tab>
           </b:tabView>
         </h:form>
         <p>This even works without BootsFaces if you copy the folder
