@@ -65,11 +65,18 @@
                     JSF tree. Instead, the jQuery expressions always searches the entires DOM tree. Be careful: sometimes this can result in
                     unexpected results, such as sending multiple forms simultaneously to the server, which is forbidden by HTML. Note that the
                     algorithm parsing the jQuery expression is very primitive. Don't add spaces to the jQuery expression. Otherwise, it is treated
-                    as two distinct jQuery expressions.</li>
+                    as two distinct jQuery expressions. Note that this search expression can only be used for the
+                    <code>update</code> and <code>process</code>. Every other attribute requires a search expression evaluated
+                    on the server-side, such as @styleClass.</li>
+                    <li>@root is the root of the JSF tree. It's equivalent to the preceding colon.</li>
 				</ul>
 
 				<h2>BootsFaces search expressions</h2>
-				<p>Standard JSF introduces several search expressions, basically shortcuts allowing you to get rid of the ids in many cases:</p>
+				<p>BootsFaces introduces several search expressions, basically shortcuts allowing you to get rid of the ids in many cases.
+                Note that most BootsFaces search expression scan the entire JSF tree recursively, which may result in a
+                performance penalty. If that's an issue, you can optimize the performance by limiting the
+                search to a subtree. For instance, <code>@property("myBean.myProperty")</code> scans the entire JSF
+                tree, while <code>@form:@property("myBean.myProperty")</code> limits the search to the current form.</p>
 				<ul>
                     <li>@after <b:badge value="since 0.9.0" /> is similar to @next, but it yields every JSF node following the current one. Very useful if one of more input fields
                     are to be activated or deactivated depending on a checkbox. There's an example below.</li>
@@ -86,6 +93,12 @@
 					<li>@findPartialIdRecursive(id)  find one or many ids, given by a wildcard expression: <code>*suffix</code>, <code>prefix*</code> or <code>prefix*suffix</code>.
 					Searches the entire tree.</li>
 					<li>**:*id or **:id* or **:*id* shortcut for @findPartialIdRecursive </li>
+                    <li>@property(EL_Expression) <b:badge value="since 1.0.0" /> finds a JSF component by its EL expression. You can omit the curly braces and
+                    the "#". In other word, @property takes the fully qualified variable name as parameter. This search
+                    expression can return multiple ids if there's more than one input field with the same EL expression
+                    (e.g. on different tabs).</li>
+                    <li>@styleClass(class) <b:badge value="since 1.0.0" />  is a server-side variant of @(.class). It returns a list of the UI components
+                    bearing a certain CSS style class. Note that this search expression scans the entire JSF tree.</li>
 				</ul>
 
 				<h2>PrimeFaces search expressions BootsFaces does not support</h2>

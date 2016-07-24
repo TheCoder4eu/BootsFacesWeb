@@ -28,7 +28,12 @@
         <p>You can assign a <code>FacesMessage</code> to a particular field by providing its id. Alternatively,
         you can use a search expression describing one or more fields. This comes in handy because the Java
         backend shouldn't know much about the implementation details of the front-end, at least not if you're
-        following a paradigm like MVC, MVP or MVVM. </p>
+        following a paradigm like MVC, MVP or MVVM. A fairly common solution is to add a semantic CSS class
+        to the input field (i.e. a CSS class that doesn't modify the look and feel, but serves as a marker).
+        Another, probably even better approach is to use the EL expression of the input field, because the
+        EL expression reflects the server-side data structure. We'll come back to the corresponding search expression
+        <code>@property(.)</code> in a minute.
+        </p>
 
         <b:well>
            <script type="syntaxhighlighter" class="brush: java; toolbar: false;first-line: 1">
