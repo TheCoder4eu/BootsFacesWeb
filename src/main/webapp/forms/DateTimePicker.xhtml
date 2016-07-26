@@ -59,6 +59,50 @@
       <li><code>format</code> This option overrules both <code>show-daten</code> and <code>show-time</code>. You can
       define an arbitrary date and time format by using the format defintions of <a target="#" href="http://momentjs.com/docs/#/displaying/format/">moment.js</a>.</li>
     </ul>
+    <h3>Embedding a DateTimePicker in a form</h3>
+    <p>By default, the (optional) label of the dateTimePicker is put above the dateTimePicker:</p>
+    <h:form>
+      <b:row>
+        <b:panel title="Live preview" small-screen="half" look="primary">
+          <b:dateTimePicker value="#{dateTimeBean.justNow}"
+                            label="regular form"
+                            render-label="true" />
+          <f:facet name="footer">
+            <script type="syntaxhighlighter"
+                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+         		<b:dateTimePicker
+                   value="&num;{dateTimeBean.justNow}"
+                   label="regular form"
+                   render-label="true" />
+ 			]]>
+			</script>
+          </f:facet>
+        </b:panel>
+        <b:panel title="Live preview" small-screen="half" look="primary"
+                 style-class="form-inline">
+          <b:dateTimePicker value="#{dateTimeBean.justNow}"
+                            label="inline form"
+                            render-label="true"
+                            inline="true" />
+          <f:facet name="footer">
+            <script type="syntaxhighlighter"
+                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+            <h:form styleClass="form-inline">
+               <b:dateTimePicker
+                  value="&num;{dateTimeBean.justNow}"
+                  label="inline form"
+                  render-label="true"
+                  inline="true" />
+            </h:form>
+      ]]>
+      </script>
+          </f:facet>
+        </b:panel>
+      </b:row>
+    </h:form>
+
 
     <ui:include src="DateTimePickerAttributes.xhtml" />
     <b:panel look="info">
