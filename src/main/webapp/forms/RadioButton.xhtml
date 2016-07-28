@@ -51,15 +51,18 @@
                 <f:selectItem itemValue="Blue" itemLabel="Color1 - Blue" />
             </b:radiobutton>
       </h:form>
+     <b:well>
+         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
+            <b:radiobutton value="&num;{radiobuttonBean.favoriteColor}">
+                <f:selectItem itemValue="Red" itemLabel="Color1 - Red" />
+                <f:selectItem itemValue="Green" itemLabel="Color1 - Green" />
+                <f:selectItem itemValue="Blue" itemLabel="Color1 - Blue" />
+            </b:radiobutton>
+       ]]></script>
+      </b:well>
 
 
-<h:form>
-      <h:selectOneRadio value="#{radiobuttonBean.favoriteColor}">
-          <f:selectItem itemValue="Red" itemLabel="Color1 - Red" />
-          <f:selectItem itemValue="Green" itemLabel="Color1 - Green" />
-          <f:selectItem itemValue="Blue" itemLabel="Color1 - Blue" />
-      </h:selectOneRadio>
-</h:form>
+
       <br />
       <br />
       <br />
