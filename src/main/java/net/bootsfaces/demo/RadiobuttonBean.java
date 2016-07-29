@@ -44,6 +44,18 @@ public class RadiobuttonBean implements Serializable {
 		FacesMessages.info("Thanks! Your choice was " + javaVersion);
 	}
 
+	public void submitColor() {
+		if (favoriteColor == null || favoriteColor.equals("")) {
+			FacesMessages.warning("You seem to be a bit indecisive.");
+		} else if (favoriteColor.equals("Red")) {
+			FacesMessages.error("Let me guess: you didn't think of traffic lights?");
+		} else if (favoriteColor.equals("Green")) {
+			FacesMessages.info("Green's a go!");
+		} else if (favoriteColor.equals("Blue")) {
+			FacesMessages.info("Blue oceans are always nice to look at. Not to mention blue eyes. Or is it just that you've got the blues?");
+		}
+	}
+
 	public String getFavoriteColor() {
 		return favoriteColor;
 	}

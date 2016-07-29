@@ -24,7 +24,8 @@
           <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 6" itemValue="6" />
           <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 7" itemValue="7" />
           <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 8" itemValue="8" />
-          <b:commandButton value="submit your choice" action="#{radiobuttonBean.submit}" look="primary" />
+          <b:commandButton value="submit your choice" action="#{radiobuttonBean.submit}" look="primary"
+                           update="@form" />
           <b:messages />
         </b:panel>
       </h:form>
@@ -45,19 +46,31 @@
       JSF API using <code>&lt;f:selectItem /&gt;</code>;</p>
 
       <h:form>
+        <b:panel title="Survey" look="primary">
+          <p>What's your favorite color?</p>
             <b:radiobutton value="#{radiobuttonBean.favoriteColor}">
-                <f:selectItem itemValue="Red" itemLabel="Color1 - Red" />
-                <f:selectItem itemValue="Green" itemLabel="Color1 - Green" />
-                <f:selectItem itemValue="Blue" itemLabel="Color1 - Blue" />
+                <f:selectItem itemValue="Red"   itemLabel="Red it is!" />
+                <f:selectItem itemValue="Green" itemLabel="I love green colors." />
+                <f:selectItem itemValue="Blue"  itemLabel="What about blue?" />
             </b:radiobutton>
+            <b:commandButton value="submit your choice" action="#{radiobuttonBean.submitColor}"
+                             look="primary" update="@form" />
+            <b:messages style="#{radiobuttonBean.favoriteColor=='Green'?'background-image:none;background-color:#0f0;':''}"/>
+          </b:panel>
       </h:form>
      <b:well>
          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
+        <b:panel title="Survey" look="primary">
+          <p>What's your favorite color?</p>
             <b:radiobutton value="&num;{radiobuttonBean.favoriteColor}">
-                <f:selectItem itemValue="Red" itemLabel="Color1 - Red" />
-                <f:selectItem itemValue="Green" itemLabel="Color1 - Green" />
-                <f:selectItem itemValue="Blue" itemLabel="Color1 - Blue" />
+                <f:selectItem itemValue="Red"   itemLabel="Red it is!" />
+                <f:selectItem itemValue="Green" itemLabel="I love green colors." />
+                <f:selectItem itemValue="Blue"  itemLabel="What about blue?" />
             </b:radiobutton>
+            <b:commandButton value="submit your choice" action="&num;{radiobuttonBean.submitColor}"
+                             look="primary" update="@form" />
+            <b:messages />
+          </b:panel>
        ]]></script>
       </b:well>
 
