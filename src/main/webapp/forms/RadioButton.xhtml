@@ -43,7 +43,9 @@
       </b:well>
       <h2>Traditional JSF approach</h2>
       <p>For the sake of convenience and back-ward compatibility, BootsFaces also supports the traditional
-      JSF API using <code>&lt;f:selectItem /&gt;</code>;</p>
+      JSF API using <code>&lt;f:selectItem /&gt;</code>. Of course, you loose a lot of flexibility.
+      The radiobuttons are stacked on top of each other, and the only way to change this is using
+      clever CSS tricks.</p>
 
       <h:form>
         <b:panel title="Survey" look="primary">
@@ -75,7 +77,77 @@
        ]]></script>
       </b:well>
 
+      <h2>Using lists and hashmaps</h2>
+      <p><code>&lt;f:selectItems /&gt;</code> allows you to generate the radio buttons from a list or a map:</p>
 
+      <h:form>
+        <b:panel title="Survey" look="primary">
+          <p>What's your favorite band?</p>
+            <b:radiobutton value="#{radiobuttonBean.favoriteBand}">
+                <f:selectItems value="#{radiobuttonBean.bands}" />
+                <f:selectItem itemValue="#{null}" itemLabel="None of the above" />
+            </b:radiobutton>
+            <b:commandButton value="submit your choice" action="#{radiobuttonBean.submitBand}"
+                             look="primary" update="@form" />
+            <b:message for="@form:@property(radiobuttonBean.favoriteBand)" 
+                       />
+          </b:panel>
+      </h:form>
+     <b:well>
+         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
+       <b:panel title="Survey" look="primary">
+          <p>What's your favorite band?</p>
+            <b:radiobutton value="&num;{radiobuttonBean.favoriteBand}">
+                <f:selectItems value="&num;{radiobuttonBean.bands}" />
+                <f:selectItem itemValue="" itemLabel="None of the above" />
+            </b:radiobutton>
+            <b:commandButton value="submit your choice" action="&num;{radiobuttonBean.submitBand}"
+                             look="primary" update="@form" />
+            <b:message for="@form:@property(radiobuttonBean.favoriteBand)" 
+                       />
+          </b:panel>
+       ]]></script>
+      </b:well>
+         <b:well>
+         <script type="syntaxhighlighter" class="brush: java; toolbar: false;first-line: 0"><![CDATA[
+@RequestScoped
+@ManagedBean
+public class RadiobuttonBean implements Serializable {
+	private static final long serialVersionUID = 1L;
+	private Map<String, String> bands = new HashMap<String, String>();
+
+	public RadiobuttonBean() {
+		getBands().put("Arch Enemy", "melodic death metal");
+		getBands().put("Blind Guardian", "speed metal");
+		getBands().put("Fields of the Nephilim", "gothic metal");
+		getBands().put("Led Zeppelin", "rock");
+	}
+	public void submitBand() {
+		if (favoriteBand == null || favoriteBand.equals("")) {
+			FacesMessages.warning("@property(radiobuttonBean.favoriteBand)", "", "You seem to be a bit indecisive.");
+		} else {
+			FacesMessages.info("@property(radiobuttonBean.favoriteBand)", "", "So you like " + favoriteBand + ".");
+		}
+	}
+	public Map<String, String> getBands() {
+		return bands;
+	}
+
+	public void setBands(Map<String, String> bands) {
+		this.bands = bands;
+	}
+
+	public String getFavoriteBand() {
+		return favoriteBand;
+	}
+
+	public void setFavoriteBand(String favoriteBand) {
+		this.favoriteBand = favoriteBand;
+	}
+}
+       ]]></script>
+      </b:well>
+      
 
       <br />
       <br />
