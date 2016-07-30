@@ -46,13 +46,13 @@ public class RadiobuttonBean implements Serializable {
 
 	public void submitColor() {
 		if (favoriteColor == null || favoriteColor.equals("")) {
-			FacesMessages.warning("You seem to be a bit indecisive.");
+			FacesMessages.warning("@property(radiobuttonBean.favoriteColor)", "", "You seem to be a bit indecisive.");
 		} else if (favoriteColor.equals("Red")) {
-			FacesMessages.error("Let me guess: you didn't think of traffic lights?");
+			FacesMessages.error("@property(radiobuttonBean.favoriteColor)", "", "Let me guess: you didn't think of traffic lights?");
 		} else if (favoriteColor.equals("Green")) {
-			FacesMessages.info("Green's a go!");
+			FacesMessages.info("@property(radiobuttonBean.favoriteColor)", "", "Someone ordered green?");
 		} else if (favoriteColor.equals("Blue")) {
-			FacesMessages.info("Blue oceans are always nice to look at. Not to mention blue eyes. Or is it just that you've got the blues?");
+			FacesMessages.info("@property(radiobuttonBean.favoriteColor)", "", "Blue oceans are always nice to look at. Not to mention blue eyes. Or is it just that you've got the blues?");
 		}
 	}
 

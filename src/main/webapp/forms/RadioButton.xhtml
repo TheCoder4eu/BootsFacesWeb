@@ -55,12 +55,12 @@
             </b:radiobutton>
             <b:commandButton value="submit your choice" action="#{radiobuttonBean.submitColor}"
                              look="primary" update="@form" />
-            <b:messages style="#{radiobuttonBean.favoriteColor=='Green'?'background-image:none;background-color:#0f0;':''}"/>
+            <b:message for="@form:@property(radiobuttonBean.favoriteColor)" 
+                       style="#{radiobuttonBean.favoriteColor=='Green'?'background-image:none;background-color:#0c0;color:white':''}"/>
           </b:panel>
       </h:form>
      <b:well>
          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
-        <b:panel title="Survey" look="primary">
           <p>What's your favorite color?</p>
             <b:radiobutton value="&num;{radiobuttonBean.favoriteColor}">
                 <f:selectItem itemValue="Red"   itemLabel="Red it is!" />
@@ -69,7 +69,8 @@
             </b:radiobutton>
             <b:commandButton value="submit your choice" action="&num;{radiobuttonBean.submitColor}"
                              look="primary" update="@form" />
-            <b:messages />
+            <b:message for="@form:@property(radiobuttonBean.favoriteColor)" 
+                       style="&num;{radiobuttonBean.favoriteColor=='Green'?'background-image:none;background-color:#0c0;color:white':''}"/>
           </b:panel>
        ]]></script>
       </b:well>
