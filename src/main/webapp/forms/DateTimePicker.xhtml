@@ -102,6 +102,52 @@
         </b:panel>
       </b:row>
     </h:form>
+    
+    <h3>DateTimePicker widget inside an overflow area</h3>
+    <p>By default, the popup widget of DateTimePicker goes inside the parent of the input component. This means that, if the component itself is too small to display
+    the entire popup and has an hidden overflow, the popup will go under the component area. To prevent this behaviour, you can use the "widgetParent" attribute, that attach
+    the popup widget to the widgetParent item, but display it near to the input of component.
+    </p>
+    <h:form>
+      <b:row>
+        <b:panel title="Live preview" small-screen="half" look="primary">
+	        <div id="picker-anchor" style="position: relative;">Anchor here</div>
+		    <div style="overflow: hidden;">
+				<div class="form-group">
+				    <b:dateTimePicker 
+				    	value="#{dateTimeBean.justNow}" 
+				    	label="With WidgetParent"  
+				    	render-label="true" 
+				    	iconAwesome="clock-o" 
+				    	widgetParent="#picker-anchor" />
+				</div>
+		    </div>
+		    
+		    <div style="overflow: hidden;">
+				<div class="form-group">
+				    <b:dateTimePicker 
+				    	value="#{dateTimeBean.justNow}" 
+				    	label="Without WidgetParent"  
+				    	render-label="true" 
+				    	iconAwesome="clock-o" />
+				</div>
+		    </div>
+          <f:facet name="footer">
+            <script type="syntaxhighlighter"
+                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+                <b:dateTimePicker 
+				    	value="&num;{dateTimeBean.justNow}" 
+				    	label="overflow hidden"  
+ 						render-label="true" 
+				    	iconAwesome="clock-o" 
+				    	widgetParent="&num;picker-anchor" />
+ 			]]>
+			</script>
+          </f:facet>
+        </b:panel>
+      </b:row>
+    </h:form>
 
 
     <ui:include src="DateTimePickerAttributes.xhtml" />
