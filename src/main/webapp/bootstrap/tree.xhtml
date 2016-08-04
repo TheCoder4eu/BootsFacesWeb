@@ -91,7 +91,32 @@
 						]]></script>
 				</b:well>
 			</b:tab>
-			<b:tab title="displayed as"
+			<b:tab title="Bean Code">
+				<br/>
+				<p>To manage selection and check events, you need to implement in your bean, the TreeNodeEventListener interface.
+				This interface exposes some methods to manage the events in the backend. For example: </p>
+				<b:well>
+					<script type="syntaxhighlighter"
+						class="brush: java; toolbar: false;gutter: false; first-line: 1">
+						<![CDATA[
+							@ViewScoped
+							@ManagedBean(name = "test")
+							public class TestBean implements TreeNodeEventListener {
+ 	            			[...]
+
+								public void processValueChecked(TreeNodeCheckedEvent arg0) {
+        							Node node = (DefaultNodeImpl) arg0.getNode();
+        							node.setChecked(true);
+
+        							TreeModelUtils.updateNodeById(getCategoriasModelTree(), node.getNodeId(), node);
+    							}
+
+							[...]
+							}
+						]]></script>
+				</b:well>
+			</b:tab>
+			<b:tab title="Displayed as"
 				contentStyle="border:1px solid ;padding:10px">
 				<h:form prependId="false">
 					<b:container id="treeContent" style="width: 100%">
