@@ -23,6 +23,11 @@
           </thead>
           <tbody>
             <tr>
+                <td>ajax</td>
+                <td>false</td>
+                <td>Activates AJAX. The default value is false (no AJAX).</td>
+            </tr>
+            <tr>
                 <td>allow-input-toggle<br />allowInputToggle (alternative writing)</td>
                 <td>false</td>
                 <td>If true, the picker will show on textbox focus and icon click when used in a button group. Default: false.</td>
@@ -106,6 +111,11 @@
                 <td>icon-awesome<br />iconAwesome (alternative writing)</td>
                 <td>(none)</td>
                 <td>Font Awesome Icon to show in this DateTimePicker, can be one of the Font Awesome icon names.</td>
+            </tr>
+            <tr>
+                <td>immediate</td>
+                <td>false</td>
+                <td>Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false.</td>
             </tr>
             <tr>
                 <td>initial-date<br />initialDate (alternative writing)</td>
@@ -193,9 +203,94 @@
                 <td>Integer value to specify how many columns to offset.</td>
             </tr>
             <tr>
+                <td>onblur</td>
+                <td>(none)</td>
+                <td>Client side callback to execute when input element loses focus.</td>
+            </tr>
+            <tr>
+                <td>onchange</td>
+                <td>(none)</td>
+                <td>Client side callback to execute when input element loses focus and its value has been modified since gaining focus.</td>
+            </tr>
+            <tr>
+                <td>onclick</td>
+                <td>(none)</td>
+                <td>OnClick DHTML event .</td>
+            </tr>
+            <tr>
+                <td>oncomplete</td>
+                <td>(none)</td>
+                <td>JavaScript to be executed when ajax completes with success.</td>
+            </tr>
+            <tr>
+                <td>ondblclick</td>
+                <td>(none)</td>
+                <td>Client side callback to execute when input element is double clicked.</td>
+            </tr>
+            <tr>
+                <td>ondtchange</td>
+                <td>(none)</td>
+                <td>JavaScript event to manage date time change.</td>
+            </tr>
+            <tr>
+                <td>onfocus</td>
+                <td>(none)</td>
+                <td>Client side callback to execute when input element receives focus.</td>
+            </tr>
+            <tr>
+                <td>onkeydown</td>
+                <td>(none)</td>
+                <td>Client side callback to execute when a key is pressed down over input element.</td>
+            </tr>
+            <tr>
+                <td>onkeypress</td>
+                <td>(none)</td>
+                <td>Client side callback to execute when a key is pressed and released over input element.</td>
+            </tr>
+            <tr>
+                <td>onkeyup</td>
+                <td>(none)</td>
+                <td>Client side callback to execute when a key is released over input element.</td>
+            </tr>
+            <tr>
+                <td>onmousedown</td>
+                <td>(none)</td>
+                <td>Client side callback to execute when a pointer input element is pressed down over input element.</td>
+            </tr>
+            <tr>
+                <td>onmousemove</td>
+                <td>(none)</td>
+                <td>Client side callback to execute when a pointer input element is moved within input element.</td>
+            </tr>
+            <tr>
+                <td>onmouseout</td>
+                <td>(none)</td>
+                <td>Client side callback to execute when a pointer input element is moved away from input element.</td>
+            </tr>
+            <tr>
+                <td>onmouseover</td>
+                <td>(none)</td>
+                <td>Client side callback to execute when a pointer input element is moved onto input element.</td>
+            </tr>
+            <tr>
+                <td>onmouseup</td>
+                <td>(none)</td>
+                <td>Client side callback to execute when a pointer input element is released over input element.</td>
+            </tr>
+            <tr>
+                <td>onselect</td>
+                <td>(none)</td>
+                <td>Client side callback to execute when text within input element is selected by user.</td>
+            </tr>
+            <tr>
                 <td>placeholder</td>
                 <td>(none)</td>
                 <td>The placeholder attribute shows text in a field until the field is focused upon, then hides the text.</td>
+            </tr>
+            <tr>
+                <td>process</td>
+                <td>(none)</td>
+                <td>Comma or space separated list of ids or search expressions denoting which values are to be sent to the server.</td>
             </tr>
             <tr>
                 <td>render-label<br />renderLabel (alternative writing)</td>
@@ -321,6 +416,11 @@
                 <td>tooltip-position<br />tooltipPosition (alternative writing)</td>
                 <td>(none)</td>
                 <td>Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".</td>
+            </tr>
+            <tr>
+                <td>update</td>
+                <td>(none)</td>
+                <td>Component(s) to be updated with ajax.</td>
             </tr>
             <tr>
                 <td>use-current<br />useCurrent (alternative writing)</td>

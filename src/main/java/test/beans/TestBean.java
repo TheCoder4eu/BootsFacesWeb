@@ -28,6 +28,7 @@ implements TreeNodeEventListener, Serializable {
 	private Date dataToPick = new Date();
 	
 	private Node statefullRootNode = null;
+	private String testField;
 
 	public TestBean() {
 		initStatefullRootNode();
@@ -202,6 +203,18 @@ implements TreeNodeEventListener, Serializable {
 	}
 	public void button4() {
 		FacesMessages.info("BUTTON 4", "BUTTON 4 WAS PRESSED");
+	}
+	
+	public void updateTestField() {
+		this.testField = "Updated by Ajax Event! ;)";
+	}
+
+	public String getTestField() {
+		return testField;
+	}
+
+	public void setTestField(String testField) {
+		this.testField = testField;
 	}
 	
 }

@@ -136,19 +136,72 @@
             <script type="syntaxhighlighter"
                     class="brush: xml; toolbar: false;gutter: false; first-line: 1">
             <![CDATA[
-                <b:dateTimePicker 
+			<div id="picker-anchor" style="position: relative;">Anchor here</div>
+		    <div style="overflow: hidden;">
+				<div class="form-group">
+				    <b:dateTimePicker 
 				    	value="&num;{dateTimeBean.justNow}" 
-				    	label="overflow hidden"  
- 						render-label="true" 
+				    	label="With WidgetParent"  
+				    	render-label="true" 
 				    	iconAwesome="clock-o" 
 				    	widgetParent="&num;picker-anchor" />
+				</div>
+		    </div>
  			]]>
 			</script>
           </f:facet>
         </b:panel>
       </b:row>
     </h:form>
-
+    
+    
+    <h3>DateTimePicker Ajax <b:badge value="since 1.0" /> </h3>
+    <p>DateTimePicker component also support Ajax events. In addition to the basic javascript events (click, blur, key*, mouse*), it supports also a custom event (dtchange) that is 
+    called every time the datetime value change. But you must pay attention! this event will be fired also during navigation of the popup widget, because it changes the date on the fly.
+    If you want to get the latest selected value, you can use standard events like "onblur".<br/>
+    Note that the component must be inside a form to work in ajax!
+    </p>
+    <h:form>
+      <b:row>
+        <b:panel title="Live preview" small-screen="half" look="primary">
+		  <div id="picker-anchor-2" style="position: relative;"></div>
+		  <div style="overflow: hidden;">
+				<div class="form-group">
+				    <b:dateTimePicker 
+				    	ajax="true"
+				    	iconAwesome="bolt" 
+				    	widgetParent="#picker-anchor-2" 
+				    	ondtchange="ajax:test.updateTestField()" 
+				    	update="@form:tf3"
+				    	process="@this" />
+				    <b:inputText value="#{test.testField}" id="tf3" />
+				</div>
+		  </div>
+          <f:facet name="footer">
+            <script type="syntaxhighlighter"
+                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+			<h:form>
+                <div id="picker-anchor" style="position: relative;"></div>
+		  		<div style="overflow: hidden;">
+					<div class="form-group">
+				    	<b:dateTimePicker 
+				    		ajax="true"
+				    		iconAwesome="bolt" 
+				    		widgetParent="&num;picker-anchor" 
+				    		ondtchange="ajax:test.updateTestFied()" 
+				    		update="@form:tf3"
+				    		process="@this" />
+				    	<b:inputText value="&num;{test.testField}" id="tf3" />
+					</div>
+		  		</div>
+			</h:form>
+ 			]]>
+			</script>
+          </f:facet>
+        </b:panel>
+      </b:row>
+    </h:form>
 
     <ui:include src="DateTimePickerAttributes.xhtml" />
     <b:panel look="info">
