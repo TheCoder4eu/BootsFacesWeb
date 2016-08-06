@@ -155,11 +155,11 @@
     </h:form>
     
     
-    <h3>DateTimePicker Ajax <b:badge value="since 1.0" /> </h3>
-    <p>DateTimePicker component also support Ajax events. In addition to the basic javascript events (click, blur, key*, mouse*), it supports also a custom event (dtchange) that is 
-    called every time the datetime value change. But you must pay attention! this event will be fired also during navigation of the popup widget, because it changes the date on the fly.
+    <h3>DateTimePicker AJAX <b:badge value="since 1.0" /> </h3>
+    <p>DateTimePicker component also support AJAX events. In addition to the basic JavaScript events (click, blur, key*, mouse*), it supports also a custom event (dtchange) that is 
+    called every time the datetime value changes. But you must pay attention! This event will be fired also during navigation of the popup widget, because it changes the date on the fly.
     If you want to get the latest selected value, you can use standard events like "onblur".<br/>
-    Note that the component must be inside a form to work in ajax!
+    Note that the component must be inside a form to work in AJAX!
     </p>
     <h:form>
       <b:row>
@@ -172,6 +172,7 @@
 				    	iconAwesome="bolt" 
 				    	widgetParent="#picker-anchor-2" 
 				    	ondtchange="ajax:test.updateTestField()" 
+				    	value="#{test.dataToPick}" 
 				    	update="@form:tf3"
 				    	process="@this" />
 				    <b:inputText value="#{test.testField}" id="tf3" />
@@ -190,6 +191,7 @@
 				    		iconAwesome="bolt" 
 				    		widgetParent="&num;picker-anchor" 
 				    		ondtchange="ajax:test.updateTestFied()" 
+							value="&num;{test.dataToPick}" 
 				    		update="@form:tf3"
 				    		process="@this" />
 				    	<b:inputText value="&num;{test.testField}" id="tf3" />

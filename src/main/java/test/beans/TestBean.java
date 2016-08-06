@@ -1,6 +1,7 @@
 package test.beans;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -21,6 +22,7 @@ import net.bootsfaces.utils.FacesMessages;
 public class TestBean 
 implements TreeNodeEventListener, Serializable {
 	private static final long serialVersionUID = -4647459610022075061L;
+	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
 	
 	private Node selectedNode;
 	private List<Node> checkedNodes = new ArrayList<Node>();
@@ -206,7 +208,7 @@ implements TreeNodeEventListener, Serializable {
 	}
 	
 	public void updateTestField() {
-		this.testField = "Updated by Ajax Event! ;)";
+		this.testField = "Updated by Ajax Event! ;) You've selected " + dateFormat.format(dataToPick);
 	}
 
 	public String getTestField() {
