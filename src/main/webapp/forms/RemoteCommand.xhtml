@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="content">
+		<style>
+td {
+	padding: 8px;
+}
+</style>
+		<h1>RemoteCommand (&lt;b:remoteCommand /&gt;)</h1>
+
+		<p>The <code>&lt;b:remoteCommand&gt;</code> is an invisible component allowing you to call a Java backend method from JavaScript.</p>
+		<h1>Basic usage</h1>
+		<p>The API of <code>&lt;b:remoteCommand&gt;</code>  resembles the <code>&lt;b:commandButton&gt;</code> (or the PrimeFaces <code>&lt;p:remoteCommand&gt;</code>).</p>
+		<p>More explanations and example will follow, when the component has been implemented.</p>
+		
+		<b:remoteCommand name="carouselStart" id="remoteCommand" actionListener="#{ajaxBean.onCarouselSlideStart}" />
+		
+		<b:button onclick="carouselStart()" value="Call remote function" look="success"/>
+		<ui:include src="RemoteCommandAttributes.xhtml" />
+
+		<script type="text/javascript">
+      		SyntaxHighlighter.all();
+    	</script>
+		<br />
+		<br />
+		<br />
+		<br />
+	</ui:define>
+</ui:composition>
