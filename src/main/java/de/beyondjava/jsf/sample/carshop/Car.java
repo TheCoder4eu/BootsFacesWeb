@@ -75,6 +75,8 @@ public class Car {
 	private
 	int enginePower;
 
+	private boolean editable;
+
 	public Car() {
 	}
 
@@ -127,5 +129,18 @@ public class Car {
 
 	public void setEnginePower(int enginePower) {
 		this.enginePower = enginePower;
+	}
+	
+	public void edit() {
+		editable = !editable;
+		price++;
+	}
+
+	public boolean isEditable() {
+		return editable;
+	}
+
+	public void setEditable(boolean editable) {
+		this.editable = editable;
 	}
 }

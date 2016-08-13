@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:b="http://bootsfaces.net/ui"
+  xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:define name="content">
+    <style>
+td {
+	padding: 8px;
+}
+</style>
+
+    <h1>
+      DataTable (&lt;b:dataTable /&gt;)
+      <b:badge value="since 0.8.0" />
+      <b:badge value="breaking changes in 0.9.0" style="margin-left:10px; background-color:#f2dede;color:red" />
+    </h1>
+    <p>
+      The
+      <code>&lt;b:dataTable &gt;</code>
+      is a convenient component rendering the table mostly on the client. This, in turn, imposes certain limitations
+      over server-side datatables. For instance, user interactions don't use AJAX to redraw the table, so you can't
+      easily implement lazy loading. On the plus side is the speed of the data table. Only very large tables may suffer
+      from long initial load times. Once the table is loaded, it's completely available on the client, which makes
+      filtering and pagination very fast.
+    </p>
+    <p>The BootsFaces data table is based on the jQuery plugin <a target="#" href="https://datatables.net/">DataTables.net</a>,
+    which has been published under a MIT licence.
+    Most settings BootsFaces offers translate more or less directly into JavaScript options. So chances are you find
+    a more detailed description of the attributes of the data table at their web site. The data table object is
+    stored in a JavaScript variable (the <code>widgetVar</code>). If you don't specify a <code>widgetVar</code>,
+    BootsFaces generates a variable based on the id of the <code>&lt;b:dataTable &gt;</code>. Following the tradition
+    of Angular and other popular JS frameworks, the kebab-case of the id translates to a camelCase widgetVar.</p>
+
+    <h3>AJAX</h3>
+    <p>Getting started with the BootsFaces datatable is pretty easy. Basically, it support the same syntax as its
+    standard JSF counterpart <code>&lt;h:dataTable /&gt;</code>, but is also supports a more compact syntax. The
+    simplest way to define a column is to simply use the <code>value</code> attribute. If you don't set a
+    header, it's automatically derived from the variable name of the value.</p>
+    
+    <h:form>
+    <b:tabView activeIndex="1">
+      <b:tab title="JSF markup">
+        <b:well>
+          <script type="syntaxhighlighter"
+            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+lorem ipsum
+      ]]>
+      </script>
+        </b:well>
+      </b:tab>
+      <b:tab title="displayed as" contentStyle="border:1px solid ;padding:10px" styleClass="tabClass">
+        <b:dataTable value="#{carPool.carPool}"
+                     var="car"
+                     class="editableCarTable"
+                     >
+            <h:column value="#{car.brand}" />
+            <h:column value="#{car.type}" />
+            <h:column value="#{car.color}" />
+            <h:column value="#{car.year}"  order="asc" />
+            <h:column label="Price">
+            	<b:inputText value="#{car.price}" rendered="#{car.editable}" />
+            	<h:outputText value="#{car.price}" rendered="#{!car.editable}" />
+            </h:column>
+            <h:column>
+                <b:commandButton value="edit" icon="edit" ajax="true" update="@(.editableCarTable)"
+                    onclick="ajax:car.edit()" >
+                </b:commandButton>
+           </h:column>
+        </b:dataTable>
+      </b:tab>
+    </b:tabView>
+    </h:form>
+ 
+    <hr />
+ 
+    <h:form>
+      <h:dataTable value="#{carPool.carPool}"
+                  var="car"
+                  onpage="console.log('page');" id="mojarraTable">
+         <h:column>#{car.brand} </h:column>
+         <h:column> #{car.type} </h:column>
+         <h:column> #{car.color} </h:column>
+         <h:column> #{car.year} </h:column>
+         <h:column label="Price">
+         	<h:inputText value="#{car.price}" rendered="#{car.editable}" />
+         	<h:outputText value="#{car.price}" rendered="#{!car.editable}" />
+         </h:column>
+         <h:column>
+             <b:commandButton value="edit" icon="edit" ajax="true" update="@form"
+                 onclick="ajax:car.edit()" >
+             </b:commandButton>
+        </h:column>
+     </h:dataTable>
+    
+</h:form>
+
+
+    <script type="text/javascript">
+      SyntaxHighlighter.all();
+    </script>
+    <br />
+    <br />
+    <br />a
+    <br />
+
+
+  </ui:define>
+</ui:composition>
