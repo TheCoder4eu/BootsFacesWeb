@@ -28,6 +28,11 @@
                 <td>Access key to transfer focus to the input element.</td>
             </tr>
             <tr>
+                <td>ajax</td>
+                <td>false</td>
+                <td>Whether the Button submits the form with AJAX.</td>
+            </tr>
+            <tr>
                 <td>alt</td>
                 <td>(none)</td>
                 <td>Alternate textual description of the input element.</td>
@@ -233,9 +238,24 @@
                 <td>OnClick DHTML event .</td>
             </tr>
             <tr>
+                <td>onclick</td>
+                <td>(none)</td>
+                <td>The onclick attribute.</td>
+            </tr>
+            <tr>
+                <td>oncomplete</td>
+                <td>(none)</td>
+                <td>JavaScript to be executed when ajax completes.</td>
+            </tr>
+            <tr>
                 <td>ondblclick</td>
                 <td>(none)</td>
                 <td>Client side callback to execute when input element is double clicked.</td>
+            </tr>
+            <tr>
+                <td>onerror</td>
+                <td>(none)</td>
+                <td>JavaScript to be executed when ajax results on an error (including both network errors and Java exceptions).</td>
             </tr>
             <tr>
                 <td>onfocus</td>
@@ -286,6 +306,16 @@
                 <td>onselect</td>
                 <td>(none)</td>
                 <td>Client side callback to execute when text within input element is selected by user.</td>
+            </tr>
+            <tr>
+                <td>onsuccess</td>
+                <td>(none)</td>
+                <td>JavaScript to be executed when ajax completes with success (i.e. there's neither a network error nor a Java exception).</td>
+            </tr>
+            <tr>
+                <td>process</td>
+                <td>(none)</td>
+                <td>Comma or space separated list of ids or search expressions denoting which values are to be sent to the server.</td>
             </tr>
             <tr>
                 <td>readonly</td>
@@ -376,6 +406,11 @@
                 <td>tooltip-position<br />tooltipPosition (alternative writing)</td>
                 <td>(none)</td>
                 <td>Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".</td>
+            </tr>
+            <tr>
+                <td>update</td>
+                <td>(none)</td>
+                <td>Component(s) to be updated with ajax.</td>
             </tr>
             <tr>
                 <td>value</td>
