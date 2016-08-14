@@ -38,6 +38,7 @@ td {
     standard JSF counterpart <code>&lt;h:dataTable /&gt;</code>, but is also supports a more compact syntax. The
     simplest way to define a column is to simply use the <code>value</code> attribute. If you don't set a
     header, it's automatically derived from the variable name of the value.</p>
+    <h:form>
     <b:tabView activeIndex="1">
       <b:tab title="JSF markup">
         <b:well>
@@ -69,6 +70,7 @@ td {
         </b:dataTable>
       </b:tab>
     </b:tabView>
+    </h:form>
 
     <h3>Autocompletion: <code>h:column</code> vs. <code>b:dataTableColumn</code></h3>
     <p>BootsFaces supports a couple of attributes lacking in standard JSF. If you want to benefit from autocompletion,
@@ -237,6 +239,7 @@ td {
           </b:row>
         </b:tab>
       </b:tabView>
+      </h:form>
 
     <h3>Sorting input fields</h3>
     <p>By default, the data table only sorts plain text. If you want to sort input field, checkboxes or comboboxes,
@@ -459,6 +462,62 @@ td {
         </b:tabView>
         </h:form>
 
+  <h3>Inputfields, command buttons and AJAX <b:badge value="since 1.0" style="margin-left:10px;" /></h3>
+    <p>The BootsFaces datatable also supports input fields, buttons and AJAX calls.</p>
+    
+    <h:form>
+    <b:tabView activeIndex="1">
+      <b:tab title="JSF markup">
+        <b:well>
+          <script type="syntaxhighlighter"
+            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+        <b:dataTable value="&num;{carPool.carPool}"
+                     var="car"
+                     class="editableCarTable"
+                     >
+            <b:dataTableColumn value="&num;{car.brand}" />
+            <b:dataTableColumn value="&num;{car.type}" />
+            <b:dataTableColumn value="&num;{car.color}" />
+            <b:dataTableColumn value="&num;{car.year}"  order="asc" />
+            <b:dataTableColumn label="Price">
+            	<b:inputText value="&num;{car.price}" rendered="&num;{car.editable}" />
+            	<h:outputText value="&num;{car.price}" rendered="&num;{!car.editable}" />
+            </b:dataTableColumn>
+            <b:dataTableColumn>
+                <b:commandButton value="edit" icon="edit" ajax="true" update="@(.editableCarTable)"
+                    onclick="ajax:car.edit()" >
+                </b:commandButton>
+           </b:dataTableColumn>
+        </b:dataTable>
+
+      ]]>
+      </script>
+        </b:well>
+      </b:tab>
+      <b:tab title="displayed as" contentStyle="border:1px solid ;padding:10px" styleClass="tabClass">
+        <b:dataTable value="#{carPool.carPool}"
+                     var="car"
+                     class="editableCarTable"
+                     >
+            <b:dataTableColumn value="#{car.brand}" />
+            <b:dataTableColumn value="#{car.type}" />
+            <b:dataTableColumn value="#{car.color}" />
+            <b:dataTableColumn value="#{car.year}"  order="asc" />
+            <b:dataTableColumn label="Price">
+            	<b:inputText value="#{car.price}" rendered="#{car.editable}" />
+            	<h:outputText value="#{car.price}" rendered="#{!car.editable}" />
+            </b:dataTableColumn>
+            <b:dataTableColumn>
+                <b:commandButton value="edit" icon="edit" ajax="true" update="@(.editableCarTable)"
+                    onclick="ajax:car.edit()" >
+                </b:commandButton>
+           </b:dataTableColumn>
+        </b:dataTable>
+      </b:tab>
+    </b:tabView>
+    </h:form>
+ 
     <h3>Reference section</h3>
     <ui:include src="DataTableAttributes.xhtml" />
         <ui:include src="DataTableColumnAttributes.xhtml" />
@@ -481,7 +540,6 @@ td {
     <br />
 
 
-    </h:form>
 
   </ui:define>
 </ui:composition>

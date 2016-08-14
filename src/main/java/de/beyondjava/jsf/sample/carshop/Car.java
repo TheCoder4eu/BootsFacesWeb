@@ -123,8 +123,7 @@ public class Car {
 	}
 
 	public int getEnginePower() {
-		// TODO Auto-generated method stub
-		return 0;
+		return enginePower;
 	}
 
 	public void setEnginePower(int enginePower) {
@@ -133,7 +132,6 @@ public class Car {
 	
 	public void edit() {
 		editable = !editable;
-		price++;
 	}
 
 	public boolean isEditable() {
