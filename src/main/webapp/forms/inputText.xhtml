@@ -391,7 +391,98 @@
                 </b:well>
               </b:tab>
             </b:tabView>
-
+            
+            <h2>Inline forms <b:badge value="improved in 1.0.0" /></h2>
+            <p>Until BootsFaces 0.9.1, you could define inline forms, but the input fields weren't aligned correctly. Hence, BootsFaces 1.0.0 adds
+            the option <code>label-col-xx</code>, which causes BootsFaces to generate correct Bootstrap HTML code. Alternatively to using the
+            technical names you can also use symbolic names to define the label width.</p>
+            <p>You can still use <code>inline="true"</code> along with <code>label-col-xx="y"</code>. In this case, the input field doesn't
+            fill the row completely.</p>
+            <b:tabView>
+              <b:tab title="displayed as">
+	              <b:well style="height:180px">
+	                <h:form>
+	                  <b:inputText id="name" value="#{userBean.name}" col-xs="8" label-col-xs="4" 
+	                    label="Enter your name" required="true" renderLabel="true" />
+	                  <b:inputText id="age" value="#{userBean.age}" tiny-screen="two-thirds" label-tiny-screen="one-third"
+	                    label="What's your age?" renderLabel="true" />
+	                </h:form>
+	              </b:well>
+              </b:tab>
+              <b:tab title="JSF markup">
+	              <b:well style="height:180px">
+                  <script type="syntaxhighlighter"
+                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+				  <![CDATA[
+    	              <b:well>
+    	                <h:form>
+    	                  <b:inputText id="name" value="&num;{userBean.name}" col-xs="8" label-col-xs="4"
+    	                    label="Enter your name" required="true" renderLabel="true" />
+    	                  <b:inputText id="age" value="&num;{userBean.age}" tiny-screen="two-thirds" label-tiny-screen="one-third"
+    	                    label="What's your age?" renderLabel="true" />
+    	                </h:form>
+    	              </b:well>
+                  ]]>
+                 </script>
+                </b:well>
+              </b:tab>
+              <b:tab title="old version displayed as">
+	              <b:well style="height:180px">
+	                <h:form>
+	                  <b:inputText id="name" value="#{userBean.name}" col-xs="12" inline="true"
+	                    label="Enter your name" required="true" renderLabel="true" />
+	                  <b:inputText id="age" value="#{userBean.age}" tiny-screen="two-thirds" inline="true"
+	                    label="What's your age?" renderLabel="true" />
+	                </h:form>
+	              </b:well>
+              </b:tab>
+              <b:tab title="old JSF markup">
+ 	             <b:well style="height:180px">
+                   <script type="syntaxhighlighter"
+                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+				  <![CDATA[
+    	              <b:well>
+    	                <h:form>
+    	                  <b:inputText id="name" value="&num;{userBean.name}" col-xs="12" inline="true"
+    	                    label="Enter your name" required="true" renderLabel="true" />
+    	                  <b:inputText id="age" value="&num;{userBean.age}" tiny-screen="two-thirds" label-tiny-screen="one-third"
+    	                    label="What's your age?" renderLabel="true" />
+    	                </h:form>
+    	              </b:well>
+                  ]]>
+                 </script>
+                </b:well>
+              </b:tab>
+              <b:tab title="new markup with inline">
+	              <b:well style="height:180px">
+	                <h:form>
+	                  <b:inputText id="name" value="#{userBean.name}" col-xs="8" label-col-xs="4" inline="true"
+	                    label="Enter your name" required="true" renderLabel="true" />
+	                  <b:inputText id="age" value="#{userBean.age}" tiny-screen="two-thirds" label-tiny-screen="one-third"
+	                    label="What's your age?" renderLabel="true" inline="true" />
+	                </h:form>
+	              </b:well>
+              </b:tab>
+              <b:tab title="new JSF markup with inline">
+	              <b:well style="height:180px">
+                  <script type="syntaxhighlighter"
+                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+				  <![CDATA[
+    	              <b:well>
+    	                <h:form>
+    	                  <b:inputText id="name" value="&num;{userBean.name}" col-xs="8" label-col-xs="4" inline="true"
+    	                    label="Enter your name" required="true" renderLabel="true" />
+    	                  <b:inputText id="age" value="&num;{userBean.age}" tiny-screen="two-thirds" label-tiny-screen="one-third"
+    	                    label="What's your age?" renderLabel="true" inline="true" />
+    	                </h:form>
+    	              </b:well>
+                  ]]>
+                 </script>
+                </b:well>
+              </b:tab>
+            </b:tabView>
+            
+            
             <h2>Configuring the default value of the <code>renderLabel</code> attribute</h2>
             <p>Strictly speaking, BootsFaces adds a second meaning to an attribute that already exists. Standard JSF uses<code>label</code>
             to decorate <code>&lt;h:message /&gt;</code>. In order to minimize confusion, we decided to deactivate
