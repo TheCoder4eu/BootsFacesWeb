@@ -24,6 +24,8 @@ public class BlockUIBean implements Serializable {
 			return true;
 		if("/pages/test_newcomp.xhtml".equals(viewId))
 			return true;
+		if("/bootstrap/SocialShare.xhtml".equals(viewId))
+			return true;
 		return false;
 	}
 
