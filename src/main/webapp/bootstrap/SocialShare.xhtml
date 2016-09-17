@@ -18,32 +18,75 @@
 		<p>SocialShare is a simple component that display a list of social button to share your content on these systems.</p>
 		<br/>
 		<h1>Basic usage</h1>
-		<p>The usage is very simple: You can set a list of shares and than provide a custom text to share or an url. If you do not provide this informations, it takes the current url. You can also show label and counts about your share.</p>
-		<p>NB. If you want to use the default blocking functionality, you must activate the blockUI plugin of the Bootsfaces Project, using the web.xml parameter <code>net.bootsfaces.blockUI</code>(See page: <a href="../miscellaneous/Configuration.jsf">Configuration</a>)</p>
-		
+		<p>The usage is very simple: You can set a list of shares and than provide a custom text to share or an url. If you do not provide this informations, it takes the current url. 
+		You can also show label and counts about your share.</p>
+			
 		<br/>
 		<b:tabView activeIndex="1">
 			<b:tab title="JSF markup">
 				<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 						<![CDATA[
-							<b>Full configuration</b><br/>
-					        <b:socialShare shares="twitter,facebook,linkedin"  showLabel="true" show-count="true" text="This is my share text!" block-message="Click HERE!" />
+							<b>Full configuration with data protection (see below)</b><br/>
+					        <b:socialShare shares="twitter,linkedin"  
+                                           showLabel="true" show-count="false" 
+                                           text="BootsFaces rocks!" block-message="Click to unblock the share buttons" />
 					        <br/>
 					        <b>Basic configuration</b><br/>
-					        <b:socialShare shares="twitter,facebook,linkedin" disable-block="true" />
+					        <b:socialShare shares="twitter,linkedin" 
+                                           disable-block="true" />
+						]]>
+				</script>
+			</b:tab>
+			<b:tab title="displayed as" contentStyle="border:1px solid ;padding:10px">
+				<b:well>
+							<b>Full configuration with data protection (see below)</b><br/>
+					        <b:socialShare shares="twitter,linkedin"  
+                                           showLabel="true" show-count="false" 
+                                           text="BootsFaces rocks!" block-message="Click to unblock the share buttons" />
+					        <br/>
+					        <b>Basic configuration</b><br/>
+					        <b:socialShare shares="twitter,linkedin" 
+                                           disable-block="true" />
+				</b:well>
+			</b:tab>
+		</b:tabView>
+		<br/>
+		<br/>
+
+		<h1>Legal considerations, data protection and "Datensparsamkeit"</h1>
+		<p>By default, already showing a social share button sends a request to the social media platform. At least, that's the case with FaceBook. Plus,
+		many people are not aware that clicking a social share button informs the social media platform what they are doing. Thus, the social media platform
+		gathers data about what you're doing in the web without giving you the option to opt out.</p>
+		<p>That, in turn, is illegal in many countries, especially in the EU.</p>
+		<p>To solve the problem, we've implemented a two-click solution. By default, the social share button is blocked by an overlay, as you can see below.
+		Clicking the button unlocks it functionality. A second click opens the "share" window.</p>
+		<p>However, you are still responsible to check whether information is sent at page load time or not! For instance, at the time of writing (Sept 17, 2016)
+		we can't prevent the request sent to FaceBook. Hence, we removed it from this page until the bug has been solved (see 
+		<a target="#" href="https://github.com/tabalinas/jssocials/issues/103">the bug tracker of the js-social libary</a>).</p>
+		<p>Data protection also requires you to set the <code>count</code> attribute to false because the fetching the number of share also amount to sending
+		an http request to the social media platform.</p>
+		
+		<p>NB. If you want to use the default blocking functionality, you must activate the blockUI plugin of the Bootsfaces Project, 
+		using the web.xml parameter <code>net.bootsfaces.blockUI</code>(See page: <a href="../miscellaneous/Configuration.jsf">Configuration</a>)</p>
+		<b:tabView activeIndex="1">
+			<b:tab title="JSF markup">
+				<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+						<![CDATA[
+							<b>Full configuration</b><br/>
+					        <b:socialShare shares="twitter,linkedin"  showLabel="true" show-count="false" text="This is my share text!" block-message="Click HERE!" />
+					        <br/>
 						]]>
 				</script>
 			</b:tab>
 			<b:tab title="displayed as" contentStyle="border:1px solid ;padding:10px">
 				<b:well>
 					<b>Full configuration</b><br/>
-					<b:socialShare shares="twitter,facebook,linkedin"  showLabel="true" show-count="true" text="This is my share text!" block-message="Click HERE!" />
+					<b:socialShare shares="twitter,linkedin"  showLabel="true" show-count="true" text="This is my share text!" block-message="Click HERE!" />
 					<br/>
-					<b>Basic configuration</b><br/>
-					<b:socialShare shares="twitter,facebook,linkedin" disable-block="true" />
 				</b:well>
 			</b:tab>
 		</b:tabView>
+		
 		<br/>
 		<br/>
 		
