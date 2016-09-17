@@ -1,169 +1,169 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:fragment
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:b="http://bootsfaces.net/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:b="http://bootsfaces.net/ui"
+  xmlns:ui="http://java.sun.com/jsf/facelets">
 
-		<b:panel look="info">
-			<f:facet name="heading">
-				<b>Attributes of &lt;b:socialShare &gt;</b>
-			</f:facet>
-			<div class="table-responsive">
-				<table class="table table-striped table-hover"
-					style="background-color: #fff">
-					<thead>
-						<tr>
-							<th>Attribute</th>
-							<th>Default value</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-						    <td>block-message<br />blockMessage (alternative writing)</td>
-						    <td> Click to enable sharing links </td>
-						    <td>Message of the block overaly.</td>
-						</tr>
-						<tr>
-						    <td>col-lg<br />colLg (alternative writing)</td>
-						    <td> -1 </td>
-						    <td>Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
-						</tr>
-						<tr>
-						    <td>col-md<br />colMd (alternative writing)</td>
-						    <td> -1 </td>
-						    <td>Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
-						</tr>
-						<tr>
-						    <td>col-sm<br />colSm (alternative writing)</td>
-						    <td> -1 </td>
-						    <td>Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
-						</tr>
-						<tr>
-						    <td>col-xs<br />colXs (alternative writing)</td>
-						    <td> -1 </td>
-						    <td>Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
-						</tr>
-						<tr>
-						    <td>disable-block<br />disableBlock (alternative writing)</td>
-						    <td> false </td>
-						    <td>Disable the block of buttons. Attention: the block is for respect of new law about social sharing. Disable at your risk.</td>
-						</tr>
-						<tr>
-						    <td>display</td>
-						    <td> block </td>
-						    <td>If you use the "visible" attribute, the value of this attribute is added. Legal values: block, inline, inline-block. Default: block.</td>
-						</tr>
-						<tr>
-						    <td>hidden</td>
-						    <td>(none)</td>
-						    <td>This column is hidden on a certain screen size and below. Legal values: lg, md, sm, xs.</td>
-						</tr>
-						<tr>
-						    <td>large-screen<br />largeScreen (alternative writing)</td>
-						    <td> -1 </td>
-						    <td>Alternative spelling to col-lg. Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
-						</tr>
-						<tr>
-						    <td>medium-screen<br />mediumScreen (alternative writing)</td>
-						    <td> -1 </td>
-						    <td>Alternative spelling to col-md. Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
-						</tr>
-						<tr>
-						    <td>offset</td>
-						    <td>(none)</td>
-						    <td>Integer value to specify how many columns to offset.</td>
-						</tr>
-						<tr>
-						    <td>offset-lg<br />offsetLg (alternative writing)</td>
-						    <td>(none)</td>
-						    <td>Integer value to specify how many columns to offset.</td>
-						</tr>
-						<tr>
-						    <td>offset-md<br />offsetMd (alternative writing)</td>
-						    <td>(none)</td>
-						    <td>Integer value to specify how many columns to offset.</td>
-						</tr>
-						<tr>
-						    <td>offset-sm<br />offsetSm (alternative writing)</td>
-						    <td>(none)</td>
-						    <td>Integer value to specify how many columns to offset.</td>
-						</tr>
-						<tr>
-						    <td>offset-xs<br />offsetXs (alternative writing)</td>
-						    <td>(none)</td>
-						    <td>Integer value to specify how many columns to offset.</td>
-						</tr>
-						<tr>
-						    <td>share-in<br />shareIn (alternative writing)</td>
-						    <td> popup </td>
-						    <td>A string specifying the name of sharing strategy. Available strategies are: blank, popup or self. Default popup.</td>
-						</tr>
-						<tr>
-						    <td>shares</td>
-						    <td>(none)</td>
-						    <td>A list of share button to display. Is a list of comma separated values. Accepted values are: email, twitter, facebook, googleplus, linkedin, pinterest, stumbleupon, whatsapp, line.</td>
-						</tr>
-						<tr>
-						    <td>show-count<br />showCount (alternative writing)</td>
-						    <td>(none)</td>
-						    <td>A true, false or inside to specifying whether and how to show share count. Default false.</td>
-						</tr>
-						<tr>
-						    <td>show-label<br />showLabel (alternative writing)</td>
-						    <td>false</td>
-						    <td>A boolean specifying whether to show the text on the share button. Default false.</td>
-						</tr>
-						<tr>
-						    <td>small-screen<br />smallScreen (alternative writing)</td>
-						    <td> -1 </td>
-						    <td>Alternative spelling to col-sm. Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
-						</tr>
-						<tr>
-						    <td>span</td>
-						    <td>(none)</td>
-						    <td>Integer value to specify how many columns to span on medium screens (≥992 pixels). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
-						</tr>
-						<tr>
-						    <td>style</td>
-						    <td>(none)</td>
-						    <td>Inline style of the input element.</td>
-						</tr>
-						<tr>
-						    <td>style-class<br />styleClass (alternative writing)</td>
-						    <td>(none)</td>
-						    <td>Style class of this element.</td>
-						</tr>
-						<tr>
-						    <td>text</td>
-						    <td>(none)</td>
-						    <td>A string specifying text to share. The content of &lt;meta name='description'&gt; or &lt;title&gt; (if first is missing) is used by default.</td>
-						</tr>
-						<tr>
-						    <td>theme</td>
-						    <td> flat </td>
-						    <td>A string specifying the theme. Available themes are flat or minimal. Default flat.</td>
-						</tr>
-						<tr>
-						    <td>tiny-screen<br />tinyScreen (alternative writing)</td>
-						    <td> -1 </td>
-						    <td>Alternative spelling to col-xs. Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
-						</tr>
-						<tr>
-						    <td>url</td>
-						    <td>(none)</td>
-						    <td>A string specifying url to share. Value of window.location.href is used by default.</td>
-						</tr>
-						<tr>
-						    <td>visible</td>
-						    <td>(none)</td>
-						    <td>This column is shown on a certain screen size and above. Legal values: lg, md, sm, xs.</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</b:panel>
+    <b:panel look="info">
+      <f:facet name="heading">
+        <b>Attributes of &lt;b:socialShare &gt;</b>
+      </f:facet>
+      <div class="table-responsive">
+        <table class="table table-striped table-hover"
+          style="background-color: #fff">
+          <thead>
+            <tr>
+              <th>Attribute</th>
+              <th>Default value</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td>block-message<br />blockMessage (alternative writing)</td>
+                <td> Click to enable sharing links </td>
+                <td>Message of the block overaly.</td>
+            </tr>
+            <tr>
+                <td>col-lg<br />colLg (alternative writing)</td>
+                <td> -1 </td>
+                <td>Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+            </tr>
+            <tr>
+                <td>col-md<br />colMd (alternative writing)</td>
+                <td> -1 </td>
+                <td>Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+            </tr>
+            <tr>
+                <td>col-sm<br />colSm (alternative writing)</td>
+                <td> -1 </td>
+                <td>Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+            </tr>
+            <tr>
+                <td>col-xs<br />colXs (alternative writing)</td>
+                <td> -1 </td>
+                <td>Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+            </tr>
+            <tr>
+                <td>disable-block<br />disableBlock (alternative writing)</td>
+                <td> false </td>
+                <td>Disable the block of buttons. Attention: the block is for respect of new law about social sharing. Disable at your risk.</td>
+            </tr>
+            <tr>
+                <td>display</td>
+                <td> block </td>
+                <td>If you use the "visible" attribute, the value of this attribute is added. Legal values: block, inline, inline-block. Default: block.</td>
+            </tr>
+            <tr>
+                <td>hidden</td>
+                <td>(none)</td>
+                <td>This column is hidden on a certain screen size and below. Legal values: lg, md, sm, xs.</td>
+            </tr>
+            <tr>
+                <td>large-screen<br />largeScreen (alternative writing)</td>
+                <td> -1 </td>
+                <td>Alternative spelling to col-lg. Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+            </tr>
+            <tr>
+                <td>medium-screen<br />mediumScreen (alternative writing)</td>
+                <td> -1 </td>
+                <td>Alternative spelling to col-md. Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+            </tr>
+            <tr>
+                <td>offset</td>
+                <td>(none)</td>
+                <td>Integer value to specify how many columns to offset.</td>
+            </tr>
+            <tr>
+                <td>offset-lg<br />offsetLg (alternative writing)</td>
+                <td>(none)</td>
+                <td>Integer value to specify how many columns to offset.</td>
+            </tr>
+            <tr>
+                <td>offset-md<br />offsetMd (alternative writing)</td>
+                <td>(none)</td>
+                <td>Integer value to specify how many columns to offset.</td>
+            </tr>
+            <tr>
+                <td>offset-sm<br />offsetSm (alternative writing)</td>
+                <td>(none)</td>
+                <td>Integer value to specify how many columns to offset.</td>
+            </tr>
+            <tr>
+                <td>offset-xs<br />offsetXs (alternative writing)</td>
+                <td>(none)</td>
+                <td>Integer value to specify how many columns to offset.</td>
+            </tr>
+            <tr>
+                <td>share-in<br />shareIn (alternative writing)</td>
+                <td> popup </td>
+                <td>A string specifying the name of sharing strategy. Available strategies are: blank, popup or self. Default popup.</td>
+            </tr>
+            <tr>
+                <td>shares</td>
+                <td>(none)</td>
+                <td>A list of share button to display. Is a list of comma separated values. Accepted values are: email, twitter, facebook, googleplus, linkedin, pinterest, stumbleupon, whatsapp, line.</td>
+            </tr>
+            <tr>
+                <td>show-count<br />showCount (alternative writing)</td>
+                <td>(none)</td>
+                <td>A true, false or inside to specifying whether and how to show share count. Default false.</td>
+            </tr>
+            <tr>
+                <td>show-label<br />showLabel (alternative writing)</td>
+                <td>false</td>
+                <td>A boolean specifying whether to show the text on the share button. Default false.</td>
+            </tr>
+            <tr>
+                <td>small-screen<br />smallScreen (alternative writing)</td>
+                <td> -1 </td>
+                <td>Alternative spelling to col-sm. Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+            </tr>
+            <tr>
+                <td>span</td>
+                <td>(none)</td>
+                <td>Integer value to specify how many columns to span on medium screens (≥992 pixels). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+            </tr>
+            <tr>
+                <td>style</td>
+                <td>(none)</td>
+                <td>Inline style of the input element.</td>
+            </tr>
+            <tr>
+                <td>style-class<br />styleClass (alternative writing)</td>
+                <td>(none)</td>
+                <td>Style class of this element.</td>
+            </tr>
+            <tr>
+                <td>text</td>
+                <td>(none)</td>
+                <td>A string specifying text to share. The content of &lt;meta name='description'&gt; or &lt;title&gt; (if first is missing) is used by default.</td>
+            </tr>
+            <tr>
+                <td>theme</td>
+                <td> flat </td>
+                <td>A string specifying the theme. Available themes are flat or minimal. Default flat.</td>
+            </tr>
+            <tr>
+                <td>tiny-screen<br />tinyScreen (alternative writing)</td>
+                <td> -1 </td>
+                <td>Alternative spelling to col-xs. Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+            </tr>
+            <tr>
+                <td>url</td>
+                <td>(none)</td>
+                <td>A string specifying url to share. Value of window.location.href is used by default.</td>
+            </tr>
+            <tr>
+                <td>visible</td>
+                <td>(none)</td>
+                <td>This column is shown on a certain screen size and above. Legal values: lg, md, sm, xs.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </b:panel>
 </ui:fragment>
