@@ -13,16 +13,16 @@ td {
 	padding: 8px;
 }
 </style>
-		<h1>Spinner (&lt;b:spinner /&gt;)</h1>
+		<h1>TouchSpin (&lt;b:touchSpin /&gt;)</h1>
 
-		<p>Spinner is a component that enable to spin up or down values in a defined numeric range.</p>
+		<p>TouchSpin is a component that enable to spin up or down values in a defined numeric range.</p>
 		
 		<h1>Basic usage</h1>
 		<p>Example of basic usage of the component</p>
 		<b:well>
 			<h:form prependId="false">
 				<b:row>
-					<b:spinner id="spin1" col-md="3" value="#{spinBean.spinValue}" min="10" max="200" step="2" prefix="$" />
+					<b:touchSpin id="spin1" col-md="3" value="#{spinBean.spinValue}" min="10" max="200" step="2" prefix="$" />
 					<b:commandButton value="Send Value" col-md="2" actionListener="#{spinBean.button1}" ajax="true" update="@form" />
 					<b:commandButton value="Update Value" col-md="2" actionListener="#{spinBean.button2}" ajax="true" update="@form" />
 				</b:row>
@@ -31,7 +31,7 @@ td {
 		<p>Created with the following code:</p>
 		<b:well>
 			<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
-	           <b:spinner id="spin1" col-md="3" value="&amp;{spinBean.spinValue}" min="10" max="200" step="2" prefix="$" />
+	           <b:touchSpin id="spin1" col-md="3" value="&amp;{spinBean.spinValue}" min="10" max="200" step="2" prefix="$" />
 	        ]]></script>
 		</b:well>
 		<br/><br/>
@@ -40,7 +40,7 @@ td {
 		<b:well>
 			<b:row>
 				<b:column col-md="3">
-					<b:spinner min="10" max="200" step="2" value="140d"
+					<b:touchSpin min="10" max="200" step="2" value="140d"
 						onstartspin="writeLine('touchspin.on.startspin');"  
 						onstartupspin="writeLine('touchspin.on.startupspin');"  
 						onstartdownspin="writeLine('touchspin.on.startdownspin');"  
@@ -69,7 +69,7 @@ td {
 			<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
 	           <b:row>
 				<b:column col-md="3">
-					<b:spinner min="10" max="200" step="2" 
+					<b:touchSpin min="10" max="200" step="2" 
 						onstartspin="writeLine('touchspin.on.startspin');"  
 						onstartupspin="writeLine('touchspin.on.startupspin');"  
 						onstartdownspin="writeLine('touchspin.on.startdownspin');"  
@@ -86,7 +86,7 @@ td {
 	        ]]></script>
 		</b:well>
 		<br/><br/>
-		<ui:include src="SpinnerAttributes.xhtml" />
+		<ui:include src="TouchSpinAttributes.xhtml" />
 		<b:panel look="info">
 			<f:facet name="heading">
 				<b>Skinning</b>

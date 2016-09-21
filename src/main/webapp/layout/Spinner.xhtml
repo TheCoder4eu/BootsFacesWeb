@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="content">
+		<style>
+td {
+	padding: 8px;
+}
+</style>
+		<h1>Spinner (&lt;b:spinner /&gt;)</h1>
+
+		<p><code>&lt;b:spinner&gt;</code> is a facility tag to have a spinner icon, to use as a loading ui.</p>
+		<h1>Basic usage</h1>
+		<b:row>
+            <b:column span="12">
+                <b:tabView activeIndex="0">
+                    <b:tab title="Spinning Icons">
+                        <b:spinner size="2x" />#{'   '}
+		                <b:spinner name="refresh" size="3x" />#{'   '}
+		                <b:spinner name="cog" size="1x" />
+                    </b:tab>
+                    <b:tab title="Markup">
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                                    <![CDATA[
+                                    <b:spinner size="2x" />#{'#'}{'   '}
+                                    <b:spinner name="refresh" size="3x" />#{'#'}{'   '}
+                                    <b:spinner name="cog" size="1x" />
+                                    ]]></script>
+                    </b:tab>
+                </b:tabView>
+            </b:column>
+        </b:row>
+        <br/>
+        <br/>
+		<ui:include src="SpinnerAttributes.xhtml" />
+		<b:panel look="info">
+			<f:facet name="heading">
+				<b>Skinning</b>
+			</f:facet>
+			<ul>
+				<li>Tell the world which CSS classes can be used to change the
+					look of the component.</li>
+			</ul>
+		</b:panel>
+
+		<script type="text/javascript">
+      		SyntaxHighlighter.all();
+    	</script>
+		<br />
+		<br />
+		<br />
+		<br />
+	</ui:define>
+</ui:composition>
