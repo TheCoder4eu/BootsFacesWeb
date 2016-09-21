@@ -7,6 +7,11 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
             <ui:define name="content">
+	            <style>
+		        .tooltip-inner {
+				    width: auto !important; 
+				}
+				</style>
                 <h1>Bootstrap Slider</h1>
                 <p>BootsFaces derives the Slider component from jQuery UI's widget, thus the <code>b:slider2</code> tag supports most of its options.</p>
                 <p>You can use the attributes <code>min</code>, <code>max</code>, <code>orientation</code> and <code>step</code>.</p>
@@ -23,18 +28,7 @@
 
                 	<b:row>
                 		<b:column>
-                			<b:slider2 id="sdl" mode="basic" label="Float Slider:" value="#{sliderBean.valueFloat}" precision="2" min="0f" max="30f" step="0.5"/>
-                		</b:column>
-                	</b:row>
-                	<b:commandButton id="button1" actionListener="#{sliderBean.button1}" value="Send Value" ajax="true" update="sdl" />
-                </h:form>
-                <h:form>
-                <h4>Array of Float Values</h4>
-                <p>With array of float values.</p>
-
-                	<b:row>
-                		<b:column>
-                			<b:slider2 id="sdl" mode="basic" label="Float[] Slider:" value="#{sliderBean.array}" precision="2" min="0" max="50" step="0.5"/>
+                			<b:slider2 id="sdl" mode="basic" label="Double Slider:" value="#{sliderBean.valueDouble}" precision="2" min="0" max="30" step="0.5"/>
                 		</b:column>
                 	</b:row>
                 	<b:commandButton id="button1" actionListener="#{sliderBean.button1}" value="Send Value" ajax="true" update="sdl" />
@@ -386,7 +380,7 @@
 
                 <br/>
                 <h2>Reference section</h2>
-                <ui:include src="SliderAttributes.xhtml" />
+                <ui:include src="Slider2Attributes.xhtml" />
                 <b:panel look="info" rendered="true">
 					<f:facet name="heading">
 						<b>Skinning</b>

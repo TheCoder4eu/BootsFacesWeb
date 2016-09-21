@@ -6,7 +6,7 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class SpinBean {
-	private float spinValue = 45f;
+	private double spinValue = 45f;
 	
 	public SpinBean() { }
 	
@@ -19,12 +19,12 @@ public class SpinBean {
 		System.out.println("Spin value is: " + spinValue);
 	}
 
-	public float getSpinValue() {
+	public double getSpinValue() {
 		System.out.println("Called set value of: " + spinValue);
 		return spinValue;
 	}
 
-	public void setSpinValue(float spinValue) {
+	public void setSpinValue(double spinValue) {
 		System.out.println("Called set value with: " + spinValue);
 		this.spinValue = spinValue;
 	}

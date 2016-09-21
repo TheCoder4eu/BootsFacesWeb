@@ -5,12 +5,9 @@ package net.bootsfaces.demo;
  */
 
 import java.io.Serializable;
-import java.util.Arrays;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-
-import net.bootsfaces.utils.BsfUtils;
 
 /**
  *
@@ -20,15 +17,14 @@ import net.bootsfaces.utils.BsfUtils;
 @SessionScoped
 public class SliderBean implements Serializable {
 	private static final long serialVersionUID = -332002335165889800L;
-	private String value1 = "10";
-	private String value2 = "87";
-	private String value3 = "84";
-	private String value4 = "43";
-	private String value5 = "12";
-	private String value6 = "30";
-	private Float valueFloat = 15.5f;
+	private double value1 = 10;
+	private double value2 = 87;
+	private double value3 = 84;
+	private double value4 = 43;
+	private double value5 = 12;
+	private double value6 = 30;
 	
-	private Float[] flValues = new Float[]{ 20.2f, 45.5f };
+	private double valueDouble = 15.5;
 	
 	/**
 	 * Creates a new instance of informBean
@@ -37,80 +33,63 @@ public class SliderBean implements Serializable {
 	}
 	
 	public void button1() {
-		System.out.println("Float value is: " + valueFloat);
-		System.out.println("Array of float values is: " + Arrays.toString(flValues));
-		// valueFloat = 28.5f;
-	}
-	
-	public String getArray() {
-		return Arrays.toString(flValues);
-	}
-	
-	public void setArray(String arr) {
-		this.flValues = BsfUtils.getSliderValues(arr, true);
+		System.out.println("Double value is: " + valueDouble);
+		// valueDouble = 28.5;
 	}
 
-	public float getValueFloat() {
-		System.out.println("Called get with value = " + valueFloat);
-		return valueFloat;
-	}
-	
-	public void setValueFloat(float value) {
-		valueFloat = value;
-		System.out.println("NEW VF = " + valueFloat);
-	}
-
-	public String getValue1() {
+	public double getValue1() {
 		return value1;
 	}
 
-	public void setValue1(String value1) {
+	public void setValue1(double value1) {
 		this.value1 = value1;
-		this.flValues = BsfUtils.getSliderValues(value1);
 	}
 
-	public String getValue2() {
+	public double getValue2() {
 		return value2;
 	}
 
-	public void setValue2(String value2) {
+	public void setValue2(double value2) {
 		this.value2 = value2;
-		this.flValues = BsfUtils.getSliderValues(value2);
 	}
 
-	public String getValue3() {
+	public double getValue3() {
 		return value3;
 	}
 
-	public void setValue3(String value3) {
+	public void setValue3(double value3) {
 		this.value3 = value3;
-		this.flValues = BsfUtils.getSliderValues(value3);
 	}
 
-	public String getValue4() {
+	public double getValue4() {
 		return value4;
 	}
 
-	public void setValue4(String value4) {
+	public void setValue4(double value4) {
 		this.value4 = value4;
-		this.flValues = BsfUtils.getSliderValues(value4);
 	}
 
-	public String getValue5() {
+	public double getValue5() {
 		return value5;
 	}
 
-	public void setValue5(String value5) {
+	public void setValue5(double value5) {
 		this.value5 = value5;
-		this.flValues = BsfUtils.getSliderValues(value5);
 	}
-	
-	public String getValue6() {
+
+	public double getValue6() {
 		return value6;
 	}
 
-	public void setValue6(String value6) {
+	public void setValue6(double value6) {
 		this.value6 = value6;
-		this.flValues = BsfUtils.getSliderValues(value6);
+	}
+
+	public double getValueDouble() {
+		return valueDouble;
+	}
+
+	public void setValueDouble(double valueDouble) {
+		this.valueDouble = valueDouble;
 	}
 }
