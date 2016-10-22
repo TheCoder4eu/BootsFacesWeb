@@ -522,6 +522,35 @@
                 </b:tab>
               </b:tabView>
 
+            <h1>Parameters <b:badge value="improved since 1.0" /></h1>
+            <p>You can pass parameters to <code>&lt;b:commandButton /&gt;</code> in three different ways:</p>
+            <ul>
+            	<li>Pass it as an EL expression using the BootsFaces AJAX approach: &lt;b:commandButton onclick="ajax:myBean.myMethod(42);"</li>
+            	<li>Pass it as an EL expression using the JSF standard approach: &lt;b:commandButton actionListener="ajax:myBean.myMethod(42);"</li>
+            	<li>Pass it an an JSF standard &lt;f:param /&gt;.</li>
+            </ul>
+            <b:well>
+                  <h:form>
+                    <p>Click a button to pass the parameter.</p>
+                    <b:panelGrid colSpans="12">
+	                    <b:commandButton value="actionListener" actionListener="#{parameterBean.submitParameter(42)}" look="success" update="@form"/>
+    	                <b:commandButton value="ajax:onclick" onclick="ajax:parameterBean.submitParameter(24)" look="success" update="@form"/>
+        	            <b:commandButton value="f:param (BootsFaces - AJAX" actionListener="#{parameterBean.submitParameter}" look="danger" update="@form">
+        	            	<f:param name="myParameter" value="4711" />
+        	            </b:commandButton>	
+        	            <h:commandButton value="f:param (standard JSF - AJAX)" actionListener="#{parameterBean.submitParameter}" update="@form">
+        	            	<f:param name="myParameter" value="0815" />
+        	            	<f:ajax render="@form"></f:ajax>
+        	            </h:commandButton>		
+           	        </b:panelGrid>
+           	        <p>Parameter passed: #{parameterBean.parameter}</p>
+                    <b:messages redisplay="true" />
+                    
+                  </h:form>
+
+                  
+			</b:well>
+
                 <br/>
                 <h2>Reference section</h2>
                 <ui:include src="CommandButtonAttributes.xhtml" />
