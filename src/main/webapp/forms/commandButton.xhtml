@@ -529,28 +529,40 @@
             	<li>Pass it as an EL expression using the JSF standard approach: &lt;b:commandButton actionListener="ajax:myBean.myMethod(42);"</li>
             	<li>Pass it an an JSF standard &lt;f:param /&gt;.</li>
             </ul>
-            <b:well>
-                  <h:form>
-                    <p>Click a button to pass the parameter.</p>
-                    <b:panelGrid colSpans="12">
-	                    <b:commandButton value="actionListener" actionListener="#{parameterBean.submitParameter(42)}" look="success" update="@form"/>
-    	                <b:commandButton value="ajax:onclick" onclick="ajax:parameterBean.submitParameter(24)" look="success" update="@form"/>
-        	            <b:commandButton value="f:param (BootsFaces - AJAX" actionListener="#{parameterBean.submitParameter}" look="danger" update="@form">
-        	            	<f:param name="myParameter" value="4711" />
-        	            </b:commandButton>	
-        	            <h:commandButton value="f:param (standard JSF - AJAX)" actionListener="#{parameterBean.submitParameter}" update="@form">
-        	            	<f:param name="myParameter" value="0815" />
-        	            	<f:ajax render="@form"></f:ajax>
-        	            </h:commandButton>		
-           	        </b:panelGrid>
-           	        <p>Parameter passed: #{parameterBean.parameter}</p>
-                    <b:messages redisplay="true" />
-                    
-                  </h:form>
-
-                  
-			</b:well>
-
+              <b:tabView>
+                <b:tab title="displayed as" contentStyle="border:1px solid ;padding:10px">
+	               <h:form>
+                   <p>Click a button to pass the parameter.</p>
+	               <b:panelGrid columns="4" size="sm">
+                     <b:commandButton value="actionListener" actionListener="#{parameterBean.submitParameter(42)}" look="success" update="@form"/>
+   	                 <b:commandButton value="ajax:onclick" onclick="ajax:parameterBean.submitParameter(24)" look="success" update="@form"/>
+       	             <b:commandButton value="f:param (GET Request)" actionListener="#{parameterBean.submitParameter}" look="danger">
+       	            	<f:param name="myParameter" value="4711" />
+       	             </b:commandButton>	
+       	             <b:commandButton value="f:param (AJAX)" actionListener="#{parameterBean.submitParameter}" look="danger" update="@form">
+       	            	<f:param name="myParameter" value="4711" />
+       	             </b:commandButton>
+       	           </b:panelGrid>
+                   <b:messages redisplay="true" />
+                 </h:form>
+      	       </b:tab>
+               <b:tab title="JSF markup">
+                  <b:well>
+                    <script type="syntaxhighlighter"
+                      class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                      <![CDATA[
+                     <b:commandButton value="actionListener" actionListener="&num;{parameterBean.submitParameter(42)}" look="success" update="@form"/>
+   	                 <b:commandButton value="ajax:onclick" onclick="ajax:parameterBean.submitParameter(24)" look="success" update="@form"/>
+       	             <b:commandButton value="f:param (GET Request)" actionListener="&num;{parameterBean.submitParameter}" look="danger">
+       	            	<f:param name="myParameter" value="4711" />
+       	             </b:commandButton>	
+       	             <b:commandButton value="f:param (AJAX)" actionListener="&num;{parameterBean.submitParameter}" look="danger" update="@form">
+       	            	<f:param name="myParameter" value="4711" />
+       	             </b:commandButton>
+                    ]]></script>
+                  </b:well>
+                </b:tab>
+      	      </b:tabView>
                 <br/>
                 <h2>Reference section</h2>
                 <ui:include src="CommandButtonAttributes.xhtml" />
