@@ -99,27 +99,29 @@ td {
               <b:dataTable value="&num;{carPool.carPool}"
                 var="car"
                 id="basic-usage-id"
+                border="&num;{dataTableSettingsBean.border}"
+                custom-options="&num;{dataTableSettingsBean.customOptionsValue}"
+                fixedHeader="&num;{dataTableSettingsBean.fixedHeader}"
+                lang="&num;{dataTableSettingsBean.language}"
+                multi-column-search="&num;{dataTableSettingsBean.multiColumnSearch}"
                 page-length="5"
                 page-length-menu="5,10,20"
-                widget-var="tableFormBasicUsageIdWidget"
-                multi-column-search="&num;{dataTableSettingsBean.multiColumnSearch}"
-                striped="&num;{dataTableSettingsBean.striped}"
+                row-highlight="&num;{dataTableSettingsBean.rowHighlight}"
                 save-state="&num;{dataTableSettingsBean.saveState}"
                 searching="&num;{dataTableSettingsBean.searching}"
-                border="&num;{dataTableSettingsBean.border}"
-                row-highlight="&num;{dataTableSettingsBean.rowHighlight}"
-                lang="&num;{dataTableSettingsBean.language}"
-                custom-options="colReorder: true"
+                select="&num;{dataTableSettingsBean.select}"
+                selectionMode="&num;{dataTableSettingsBean.selectionMode}"
+                striped="&num;{dataTableSettingsBean.striped}"
                 >
                 <b:dataTableColumn value="&num;{car.brand}" />
-                <b:dataTableColumn order-by="dom-text" data-type="text">
+                <b:dataTableColumn order-by="dom-text" data-type="text" searchable="&num;{dataTableSettingsBean.searchable}">
                   <f:facet name="header">
                     <h:outputText value="Type"/>
                   </f:facet>
                   <h:inputText value="&num;{car.type}" />
                 </b:dataTableColumn>
                 <b:dataTableColumn label="Color"
-                                   orderable="false"
+                                   orderable="&num;{dataTableSettingsBean.orderable}"
                                    content-style="&num;{dataTableSettingsBean.contentCSS}"
                                    content-style-class="&num;{dataTableSettingsBean.contentStyleClassName}"
                                    footer-style="&num;{dataTableSettingsBean.footerCSS}"
@@ -127,11 +129,12 @@ td {
                                    header-style="&num;{dataTableSettingsBean.headerCSS}"
                                    header-style-class="&num;{dataTableSettingsBean.headerStyleClassName}"
                                    custom-options="someColumnOption:true"
+                                   searchable="&num;{dataTableSettingsBean.searchable}"
                                    >
                   <h:outputText value="&num;{car.color}" />
                 </b:dataTableColumn>
               </b:dataTable>
-				    ]]></script>
+      	    ]]></script>
           </b:well>
         </b:tab>
         <b:tab title="displayed as" contentStyle="border:1px solid;padding:10px">
@@ -151,6 +154,7 @@ td {
                 save-state="#{dataTableSettingsBean.saveState}"
                 searching="#{dataTableSettingsBean.searching}"
                 select="#{dataTableSettingsBean.select}"
+                selectionMode="#{dataTableSettingsBean.selectionMode}"
                 striped="#{dataTableSettingsBean.striped}"
                 >
                 <b:dataTableColumn value="#{car.brand}" />
@@ -226,6 +230,9 @@ td {
                 update="basic-usage-id" />
 
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.select}" caption="select='true'"
+                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                update="basic-usage-id" />
+             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.singleSelectionMode}" caption="select='single'"
                 onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                 update="basic-usage-id" />
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.customOptions}" caption="customOption='colReorder:true'"

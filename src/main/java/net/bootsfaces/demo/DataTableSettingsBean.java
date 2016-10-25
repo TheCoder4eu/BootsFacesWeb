@@ -56,6 +56,8 @@ public class DataTableSettingsBean implements Serializable {
 
 	private boolean select=false;
 
+	private String selectionMode="multiple";
+
 	private boolean fixedHeader=false;
 
 	private boolean searchable=true;
@@ -258,5 +260,21 @@ public class DataTableSettingsBean implements Serializable {
 
 	public void setFixedHeader(boolean fixedHeader) {
 		this.fixedHeader = fixedHeader;
+	}
+
+	public String getSelectionMode() {
+		return selectionMode;
+	}
+
+	public void setSelectionMode(String selectionMode) {
+		this.selectionMode = selectionMode;
+	}
+	
+	public boolean getSingleSelectionMode() {
+		return "single".equals(selectionMode);
+	}
+
+	public void setSingleSelectionMode(boolean selectionMode) {
+		this.selectionMode = selectionMode?"single":"multiple";
 	}
 }
