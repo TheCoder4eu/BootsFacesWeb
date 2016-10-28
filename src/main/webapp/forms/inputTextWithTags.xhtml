@@ -126,22 +126,54 @@
           <b:tabView>
             <b:tab title="live preview">
              <b:well>
-              <b:row>
-                <b:inputText value=""
-                             tiny-screen="full-width"
-                             typeahead="true"
-                             typeahead-values="#{tagsBean.bandsCSV}"/>
-             </b:row>
-             </b:well>
+	             <b:row>
+	                <b:inputText value=""
+	                             placeholder="CSV string"
+	                             tiny-screen="full-width"
+	                             typeahead="true"
+	                             typeahead-values="#{tagsBean.bandsCSV}"/>
+	             </b:row>
+	             <b:row>
+	                <b:inputText value=""
+	                             placeholder="java.util.List"
+	                             tiny-screen="full-width"
+	                             typeahead="true"
+	                             typeahead-values="#{tagsBean.bandsList}"/>
+	             </b:row>
+	             <b:row>
+	                <b:inputText value=""
+	                             placeholder="array of strings"
+	                             tiny-screen="full-width"
+	                             typeahead="true"
+	                             typeahead-values="#{tagsBean.bands}"/>
+	             </b:row>
+	           </b:well>
             </b:tab>
             <b:tab title="JSF markup">
               <b:well>
               <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
              <![CDATA[
-              <b:inputText value=""
-                           tiny-screen="full-width"
-                           typeahead="true"
-                           typeahead-values="&num;{tagsBean.bandsCSV}"/>
+	             <b:row>
+	                <b:inputText value=""
+	                             placeholder="CSV string"
+	                             tiny-screen="full-width"
+	                             typeahead="true"
+	                             typeahead-values="&num;{tagsBean.bandsCSV}"/>
+	             </b:row>
+	             <b:row>
+	                <b:inputText value=""
+	                             placeholder="java.util.List"
+	                             tiny-screen="full-width"
+	                             typeahead="true"
+	                             typeahead-values="&num;{tagsBean.bandsList}"/>
+	             </b:row>
+	             <b:row>
+	                <b:inputText value=""
+	                             placeholde="array of strings"
+	                             tiny-screen="full-width"
+	                             typeahead="true"
+	                             typeahead-values="&num;{tagsBean.bands}"/>
+	             </b:row>
              ]]></script>
               </b:well>
             </b:tab>
@@ -182,6 +214,13 @@
                 	public void setTags(String tags) {
                 		this.tags = tags;
                 	}
+                   	public String[] getBands() {
+                   		return bands;
+                   	}
+                   	
+                   	public List<String> getBandsList() {
+                   		return Arrays.asList(bands);
+                   	}
                 }
              ]]></script>
               </b:well>
@@ -196,25 +235,61 @@
           <b:tabView>
             <b:tab title="live preview">
              <b:well>
-              <b:row>
+               <b:row>
                 <b:inputText value=""
+                             placeholder="CSV"
                              tags="true"
                              tiny-screen="full-width"
                              typeahead="true"
                              typeahead-values="#{tagsBean.bandsCSV}"/>
-            </b:row>
+               </b:row>
+               <b:row>
+                <b:inputText value=""
+                             placeholder="java.util.List"
+                             tags="true"
+                             tiny-screen="full-width"
+                             typeahead="true"
+                             typeahead-values="#{tagsBean.bandsList}"/>
+               </b:row>
+               <b:row>
+                <b:inputText value=""
+                             placeholder="array of strings"
+                             tags="true"
+                             tiny-screen="full-width"
+                             typeahead="true"
+                             typeahead-values="#{tagsBean.bands}"/>
+               </b:row>
              </b:well>
             </b:tab>
             <b:tab title="JSF markup">
               <b:well>
               <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
              <![CDATA[
-              <b:inputText value=""
+                <b:row>
+                  <b:inputText value=""
+						   placeholder="CSV"
                            tags="true"
                            tiny-screen="full-width"
                            typeahead="true"
                            typeahead-values="&num;{tagsBean.bandsCSV}"/>
-             ]]></script>
+                </b:row>
+                <b:row>
+                  <b:inputText value=""
+                             placeholder="java.util.List"
+                             tags="true"
+                             tiny-screen="full-width"
+                             typeahead="true"
+                             typeahead-values="&num;{tagsBean.bandsList}"/>
+               </b:row>
+               <b:row>
+                <b:inputText value=""
+                             placeholder="array of strings"
+                             tags="true"
+                             tiny-screen="full-width"
+                             typeahead="true"
+                             typeahead-values="&num;{tagsBean.bands}"/>
+               </b:row>
+            ]]></script>
               </b:well>
             </b:tab>
             <b:tab title="JSF bean">
@@ -254,6 +329,13 @@
                 	public void setTags(String tags) {
                 		this.tags = tags;
                 	}
+                   	public String[] getBands() {
+                   		return bands;
+                   	}
+                   	
+                   	public List<String> getBandsList() {
+                   		return Arrays.asList(bands);
+                   	}
                 }
              ]]></script>
               </b:well>

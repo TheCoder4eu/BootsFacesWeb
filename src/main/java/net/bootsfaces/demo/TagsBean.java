@@ -1,6 +1,8 @@
 package net.bootsfaces.demo;
 
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -22,7 +24,7 @@ public class TagsBean implements Serializable {
 
 	public String getBandsCSV() {
 		StringBuilder b=new StringBuilder();
-		for (String s:bands) {
+		for (String s:getBands()) {
 			if (b.length()>0) {
 				b.append(",");
 			}
@@ -39,4 +41,11 @@ public class TagsBean implements Serializable {
 		this.tags = tags;
 	}
 
+	public String[] getBands() {
+		return bands;
+	}
+	
+	public List<String> getBandsList() {
+		return Arrays.asList(bands);
+	}
 }
