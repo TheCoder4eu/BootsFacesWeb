@@ -77,24 +77,6 @@
                 
                 	private String tags = "Rock, Jazz, Rhythm and Blues";
                 
-                	private static String[] bands = {"Arch Enemy","Blind Guardian","Children of Bodom","Dimmu Borgir","Edge of Sanity",
-                	"Fields of the Nephilim", "Gates of Ishtar", "Holy Moses", "Iced Earth", "Jethro Tull",
-                	"Kreator", "Lamb of God", "Mekong Delta", "Night in Gales", "Old Dead Tree", "Persefone",
-                	"Running Wild", "Skyclad", "The Dillinger Escape Plan", "Theater of Tragedy", "Unleashed", "Vanden Plas", "Within Temptation", "Xystus", "Yes",
-                	"Zenobia",
-                	};
-                
-                	public String getBandsCSV() {
-                		StringBuilder b=new StringBuilder();
-                		for (String s:bands) {
-                			if (b.length()>0) {
-                				b.append(",");
-                			}
-                			b.append(s);
-                		}
-                		return b.toString();
-                	}
-                
                 	public String getTags() {
                 		return tags;
                 	}
@@ -107,12 +89,12 @@
               </b:well>
             </b:tab>
           </b:tabView>
-
+          
          <h2>Simple typeahead</h2>
           <p>By setting the attribute <code>tags="true"</code> you can display the input values as tag - similar to
           <code>&lt;b:badge /></code> or to price tags in the supermarket. The tags are separated by commas. Users can
           separate tags either by tying a comma or by hitting the <code>return</code> key.</p>
-          <p>The typeahead extension is based on the <p><a target="#" href="https://twitter.github.io/typeahead.js/">Twitter typeahead</a></p>
+          <p>The typeahead extension is based on the <a target="#" href="https://twitter.github.io/typeahead.js/">Twitter typeahead</a>
           jQuery plugin, which has been published under the Twitter license. You can use it freely, as long as you
           mention the plugin and add the <a target="#" href="https://github.com/bootstrap-tagsinput/bootstrap-tagsinput/blob/master/LICENSE">license file</a>
           to your project. The CSS styles for Bootstrap 3 are added by the
@@ -226,6 +208,15 @@
               </b:well>
             </b:tab>
            </b:tabView>
+           
+           <h2>How to define the list of possible values</h2>
+           <p>The example above show the three options to define the list of possible values:</p>
+           <ul>
+           	 <li><code>typeahead-values</code> may be a comma separated string.</li>
+           	 <li>It may also be a <code>java.util.List</code> of strings (or anything returning something useful when calling <code>toString()</code>). Note that these strings must not contain a comma.</li>
+           	 <li>Or is can be an array of strings (or anything returning something useful when calling <code>toString()</code>). Again, these strings must not contain a comma.</li>
+           </ul>
+           
 
         <h2>Type ahead with tags</h2>
           <p>You can also combine tags and typeahead.</p>
