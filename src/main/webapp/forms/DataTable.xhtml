@@ -123,7 +123,9 @@ td {
                 <b:dataTableColumn label="Color"
                                    orderable="&num;{dataTableSettingsBean.orderable}"
                                    content-style="&num;{dataTableSettingsBean.contentCSS}"
+                                   style="&num;{dataTableSettingsBean.CSS}"
                                    content-style-class="&num;{dataTableSettingsBean.contentStyleClassName}"
+                                   style-class="&num;{dataTableSettingsBean.styleClass}"
                                    footer-style="&num;{dataTableSettingsBean.footerCSS}"
                                    footer-style-class="&num;{dataTableSettingsBean.footerStyleClassName}"
                                    header-style="&num;{dataTableSettingsBean.headerCSS}"
@@ -167,7 +169,9 @@ td {
                 <b:dataTableColumn label="Color"
                                    orderable="#{dataTableSettingsBean.orderable}"
                                    content-style="#{dataTableSettingsBean.contentCSS}"
+                                   style="#{dataTableSettingsBean.CSS}"
                                    content-style-class="#{dataTableSettingsBean.contentStyleClassName}"
+                                   style-class="#{dataTableSettingsBean.styleClassName}"
                                    footer-style="#{dataTableSettingsBean.footerCSS}"
                                    footer-style-class="#{dataTableSettingsBean.footerStyleClassName}"
                                    header-style="#{dataTableSettingsBean.headerCSS}"
@@ -192,7 +196,13 @@ td {
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.contentStyle}" caption="content-style='color:red'"
                 onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                 update="basic-usage-id" />
+             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.style}" caption="style='color:blue'"
+                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                update="basic-usage-id" />
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.contentStyleClass}" caption="content-style-class='hidden'"
+                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                update="basic-usage-id" />
+             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.styleClass}" caption="style-class='hidden'"
                 onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                 update="basic-usage-id" />
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.footerStyle}" caption="footer-style='color:red'"

@@ -31,6 +31,8 @@ public class DataTableSettingsBean implements Serializable {
 	private boolean headerStyle = false;
 	private boolean headerStyleClass = false;
 	private boolean contentStyle = false;
+	private boolean style = false;
+	private boolean styleClass = false;
 
 	private boolean contentStyleClass = false;
 
@@ -117,8 +119,22 @@ public class DataTableSettingsBean implements Serializable {
 		return null;
 	}
 
+	public String getCSS() {
+		if (style) {
+			return "color:blue";
+		}
+		return null;
+	}
+
 	public String getContentStyleClassName() {
 		if (contentStyleClass) {
+			return "hidden";
+		}
+		return null;
+	}
+
+	public String getStyleClassName() {
+		if (styleClass) {
 			return "hidden";
 		}
 		return null;
@@ -276,5 +292,21 @@ public class DataTableSettingsBean implements Serializable {
 
 	public void setSingleSelectionMode(boolean selectionMode) {
 		this.selectionMode = selectionMode?"single":"multiple";
+	}
+
+	public boolean isStyleClass() {
+		return styleClass;
+	}
+
+	public void setStyleClass(boolean styleClass) {
+		this.styleClass = styleClass;
+	}
+
+	public boolean isStyle() {
+		return style;
+	}
+
+	public void setStyle(boolean style) {
+		this.style = style;
 	}
 }
