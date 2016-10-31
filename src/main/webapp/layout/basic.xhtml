@@ -601,6 +601,33 @@ public class LoginBean {
                  <li><code>medium-screen="one-fourth"</code> amounts to <code>col-md="3"</code>.</li>
                  <li><code>medium-screen="three-fourth"</code> amounts to <code>col-md="9"</code>.</li>
                  </ul>
+                 
+                 <h2>Hiding columns on certain screens</h2>
+                 <p>There are two attributes allowing you to hide columns depending on the screen size:</p>
+                 <ul>
+                 <li><code>hidden</code> hides an element on a certain screen size and below. For example, <code>hidden="sm"</code> hides the element on
+                 small (sm) and extra-small (xs) screens.</li>
+                <li><code>visible</code> shows an element on a certain screen size and above. It also hides it on smaller screens. For example, 
+                <code>visible="sm</code> shows the element on small (sm), medium (md) and large (lg) screens.</li>
+                 </ul>
+                 <p><b>Beware:</b> These attributes behave different than the underlying Bootstrap library. To alleviate this, we introduced
+                 a second syntax of the parameter:</p>
+                 <ul>
+                 	<li>Lists of sizes: for instance, <code>hidden="xs,lg"</code> hides the element on tiny and large screens, while showing it on
+                 	small and medium screens.</li>
+                 	<li>Ranges: <code>hidden="xs...md"</code> hides the element on tiny and medium screens, and on every screen size between (i.e. small screens).</li>
+                 	<li>Open ranges: <code>hidden="...md"</code> hides the element on medium screens and everything below.</li>
+                 	<li>Analogously, <code>hidden="sm..."</code> hides the element on small screens and everything above.</li>
+                 </ul>
+                 
+                 <h2>Corner cases: zero columns</h2>
+                 <p>You can define a column to span zero columns. That's equivalent to using the <code>hidden</code> attribute.</p>
+                 <b:row>
+                 	<b:column large-screen="0">large-screen="0" always hides the column on large screens. It's visible on every other screen size.</b:column>
+                 	<b:column medium-screen="0">medium-screen="0" hides the text on medium screens. It's visible on every other screen size.</b:column>
+                 	<b:column small-screen="0">small-screen="0" hides the text on small screens. It's visible on every other screen size.</b:column>
+                 	<b:column tiny-screen="0">tiny-screen="0" hides the text on tiny screens. It's visible on every other screen size.</b:column>
+                 </b:row>
 
 
                   <br/>
