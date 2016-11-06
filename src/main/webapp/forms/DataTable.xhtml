@@ -270,14 +270,46 @@ td {
              ]]></script>
           </b:well>
     <p>You can see the effect in the example above.</p>
+    
+    <h3>Updating a datatable with AJAX</h3>
+    <p>If you want to update a datatable by an AJAX request, you must destroy the datatable before sending the AJAX request.
+    You can do this using the widget variable. Currently (BootsFaces 1.0), there's no attribute <code>widgetVar</code> yet,
+    so you best find out the name of the widget var using the developer tools of the browser. Basically, the name of the
+    widget variable is the id of the datatable without the colons, plus the suffix <code>Widget</code>. For instance,
+    the id of the datatable below is <code>i18n:bcarPool2</code>, so the code to call an AJAX request looks like so:</p>
+    
+    <script type="syntaxhighlighter"
+      class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+      <![CDATA[
+        <b:selectOneMenu onchange="i18nBcarPool2Widget.DataTable().destroy();ajax:carPool.onLanguageChange()" update="bcarPool2">
+      ]]>
+    </script>
 
     <h3>Internationalization</h3>
     <p>
-      This example shows how to use the i18n support of
-      <code>&lt;b:dataTable &gt;</code>. For i18n there were two ways: use internal translation (you can
-      choose between a limited set of embedded translations) or you can
-      provide your own translation with a remote URL (eg. CDN url)
+      This example below shows how to use the i18n support of
+      <code>&lt;b:dataTable &gt;</code>. For i18n there are three ways:
     </p>
+     <ul>
+	     <li>BootsFaces comes with a limited set of predefined translation files: English, German, Spanish, French, Hungarian, Italian, Polish and Russian. </li>
+	     <li>Use other translations using a remote URL (e.g. a CDN):
+	       <script type="syntaxhighlighter"
+	           class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+	          <b:dataTable customLangUrl="//cdn.datatables.net/plug-ins/1.10.12/i18n/Portuguese-Brasil.json">
+            ]]>
+			</script>
+	     </li>
+	     <li>Use your own translation using a local resource file:
+	      <script type="syntaxhighlighter"
+	           class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+	          <b:dataTable customLangUrl="&num;{resource['/pt-br.json']}">
+            ]]>
+		  </script>
+	     </li>
+     </ul> 
+    
 
     <h3>Custom options</h3>
     <p>The JavaScript dataTable widgets has quite a few options. It's almost impossible to cover them all by a JSF
@@ -287,21 +319,28 @@ td {
     <p>Note that this feature may lead to incompatibilities in future versions of BoofsFaces. In particular, if
     your custom option is added to the <code>&lt;b:dataTable /&gt;</code> component, it may be added twice.</p>
 
-    <h:form>
+    <h:form id="i18n">
     <b:tabView activeIndex="1">
       <b:tab title="JSF markup">
         <b:well>
           <script type="syntaxhighlighter"
             class="brush: xml; toolbar: false;gutter: false; first-line: 1">
             <![CDATA[
-        <b:dataTable value="&num;{carPool.carPool}"
+     	    <b:selectOneMenu value="&num;{carPool.language}" onchange="i18nBcarPool2Widget.DataTable().destroy();ajax:carPool.onLanguageChange()" update="bcarPool2">
+                 <f:selectItem itemLabel="Italian" itemValue="Italian"/>
+                 <f:selectItem itemLabel="Brazilian Portuguese" itemValue="Brazilian Portuguese"/>
+                 <f:selectItem itemLabel="Norwegian (Bokmal)" itemValue="Norwegian"/>
+            </b:selectOneMenu>
+            <br />
+            <b:dataTable value="&num;{carPool.carPool}"
                      var="car"
                      id="bcarPool2"
                      fixedHeader="true"
                      scroll-size="400px"
                      scroll-x="false"
                      responsive="true"
-                     lang="it"
+                     lang="&num;{carPool.lang}"
+                     custom-lang-url="&num;{carPool.customLangUrl}"
                      searching="false">
             <h:column value="&num;{car.brand}" />
             <h:column value="&num;{car.type}" />
@@ -316,6 +355,12 @@ td {
         </b:well>
       </b:tab>
       <b:tab title="displayed as" contentStyle="border:1px solid ;padding:10px">
+      	<b:selectOneMenu value="#{carPool.language}" onchange="i18nBcarPool2Widget.DataTable().destroy();ajax:carPool.onLanguageChange()" update="bcarPool2">
+             <f:selectItem itemLabel="Italian" itemValue="Italian"/>
+             <f:selectItem itemLabel="Brazilian Portuguese" itemValue="Brazilian Portuguese"/>
+             <f:selectItem itemLabel="Norwegian (Bokmal)" itemValue="Norwegian"/>
+         </b:selectOneMenu>
+         <br />
         <b:dataTable value="#{carPool.carPool}"
                      var="car"
                      id="bcarPool2"
@@ -323,7 +368,8 @@ td {
                      scroll-size="400px"
                      scroll-x="false"
                      responsive="true"
-                     lang="it"
+                     lang="#{carPool.lang}"
+                     custom-lang-url="#{carPool.customLangUrl}"
                      searching="false">
             <h:column value="#{car.brand}" />
             <h:column value="#{car.type}" />
@@ -335,7 +381,48 @@ td {
             <h:column value="#{car.year}" />
         </b:dataTable>
       </b:tab>
-    </b:tabView>
+      <b:tab title="Java Bean (extract)">
+        <b:well>
+          <script type="syntaxhighlighter"
+            class="brush: java; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+              @ManagedBean
+              @SessionScoped
+              public class CarPool implements Serializable {
+              	private static final long serialVersionUID = 1L;
+              
+              	private final static int SIZE_OF_INITIAL_CAR_POOL = 15;
+              	
+              	private String language="Italian";
+              	public String getLanguage() {
+              		return language;
+              	}
+              
+              	public void setLanguage(String language) {
+              		this.language = language;
+              	}
+              	public String getLang() {
+              		if ("Italian".equals(language))
+              			return "it";
+              		return null;
+              	}
+              	
+              	public String getCustomLangUrl() {
+              		if ("Brazilian Portuguese".equals(language))
+              			return "//cdn.datatables.net/plug-ins/1.10.12/i18n/Portuguese-Brasil.json";
+              		if ("Norwegian".equals(language))
+              			return "//cdn.datatables.net/plug-ins/1.10.12/i18n/Norwegian-Bokmal.json";
+              		return null;
+              	}
+              	
+              	public void onLanguageChange() {
+              	}
+              }
+ 			]]>
+			</script>
+        </b:well>
+      </b:tab>
+   </b:tabView>
         </h:form>
 
     <h3>Unified AJAX and JavaScript API</h3>

@@ -32,6 +32,9 @@ public class CarPool implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private final static int SIZE_OF_INITIAL_CAR_POOL = 15;
+	
+	private String language="Italian";
+
 
 	@ManagedProperty("#{staticOptionBean}")
 	private StaticOptionBean staticOptions;
@@ -51,7 +54,7 @@ public class CarPool implements Serializable {
 	public void setDynamicOptions(DynamicOptionBean dynamicOptions) {
 		this.dynamicOptions = dynamicOptions;
 	}
-
+	
 	@ManagedProperty("#{dynamicOptionBean}")
 	private DynamicOptionBean dynamicOptions;
 
@@ -149,5 +152,30 @@ public class CarPool implements Serializable {
 			}
 			selectedCars.add(c);
 		}
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+	public String getLang() {
+		if ("Italian".equals(language))
+			return "it";
+		return null;
+	}
+	
+	public String getCustomLangUrl() {
+		if ("Brazilian Portuguese".equals(language))
+			return "//cdn.datatables.net/plug-ins/1.10.12/i18n/Portuguese-Brasil.json";
+		if ("Norwegian".equals(language))
+			return "//cdn.datatables.net/plug-ins/1.10.12/i18n/Norwegian-Bokmal.json";
+		return null;
+	}
+	
+	public void onLanguageChange() {
+		
 	}
 }
