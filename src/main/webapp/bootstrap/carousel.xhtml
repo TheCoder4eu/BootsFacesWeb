@@ -18,7 +18,7 @@
     </p>
 
     <h1>Basic usage</h1>
-    <p>Basically, it suffices to put a one or more <code>&lt;b:carouselItem /&gt;</code> into in <code>&lt;b:carousel /&gt;</code> tag:</p>
+    <p>Basically, just put one or more <code>&lt;b:carouselItem /&gt;</code> inside a <code>&lt;b:carousel /&gt;</code> tag:</p>
     <b:tabView>
       <b:tab title="preview">
         <b:carousel id="parque" style="width:400px">
@@ -58,8 +58,8 @@
 
 
 <h1>Advanced usage: Wizards</h1>
-<p>You can put arbitrary content into the carousel items. For instance, you can create a wizard using the carousel.
-Chances are you need custom controls in this case. We'll describe custom controls in a minute. First, let's
+<p>You can put arbitrary content inside Carousel items. For instance, you can create a wizard using the carousel.
+Chances are you need custom controls in this case. We'll hava a look to custom controls in a minute. First, let's
 see how the standard controls look in a wizard. Don't forget to switch off the animation by setting <code>startAnimation="false"</code>.
 You may also want to set <code>wrap="false"</code> to prevent the wizard to start over after the last step.</p>
   <b:tabView>
@@ -145,7 +145,7 @@ You may also want to set <code>wrap="false"</code> to prevent the wizard to star
       </b:tab>
     </b:tabView>
 
-    <p>The buttons of this example use the Bootstrap carousel JavaScript API. It's available for you. You just have
+    <p>In this example, th Buttons use the Bootstrap carousel JavaScript API. It's available for you. You just have
     to be careful with the ids. More often than not, JSF generates ids that aren't compatible with jQuery. Better use
     CSS pseudo classes instead (i.e. CSS classes that don't bear layout information).</p>
     <p>To send the form data to the Java bean, use the AJAX api of <code>&lt;b:commandButton /&gt;</code></p>
@@ -380,11 +380,10 @@ You may also want to set <code>wrap="false"</code> to prevent the wizard to star
 
     <h1>Do it yourself</h1>
     <p>
-      If you need more flexibility than
-      <code>b:carousel</code>
-      offers, the <a target="#"
-        href="http://www.w3schools.com/bootstrap/bootstrap_carousel.asp">W3C
-        example</a> shows how to do it yourself:
+      If you need more flexibility than <code>b:carousel</code> offers,
+      the <a target="#" href="http://www.w3schools.com/bootstrap/bootstrap_carousel.asp">W3C example</a> shows how to do it yourself.
+      Since <b:badge value="v1.0.0" />, you don't need to load carousel CSS, since it is included in the core CSS
+      of default, Bootswatch and PatternFly themes.
     </p>
 
     <ui:include src="carousel/carousel_do_it_yourself.xhtml" />
@@ -404,8 +403,6 @@ You may also want to set <code>wrap="false"</code> to prevent the wizard to star
     <ui:include src="carousel/CarouselItemAttributes.xhtml" />
     <ui:include src="carousel/CarouselCaptionAttributes.xhtml" />
     <ui:include src="carousel/CarouselControlAttributes.xhtml" />
-
-
 
     <script type="text/javascript">
 					SyntaxHighlighter.all();
