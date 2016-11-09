@@ -30,7 +30,69 @@ td {
                     <b:navLink value="One more separated link" href="#"></b:navLink>
                   </b:listLinks>
                 </b:kebab>
+                <hr />
+                <br/>
+                <strong>Using the Kebab in a Navbar</strong>
+                <p>It is possible tu use the Kebab in a Navbar:</p>
+                <b:panel>
+                    <f:facet name="heading"><b>EXAMPLE</b></f:facet>
+                    <b:navBar brand="Brand" brandHref="#">
+                        <b:navbarLinks>
+                            <b:navLink value="Home" href="#"></b:navLink>
+                            <b:navLink value="Link" href="#"></b:navLink>
+                            <b:navLink value="Link" href="#"></b:navLink>
+                        </b:navbarLinks>
+                        <!-- Following line is needed for TBS 3.x (panel content overflow issue) -->
+                        <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
+                        <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
+                        <b:navbarLinks pull="right">
+                        <b:kebab>
+                          <b:listLinks>
+                            <b:navLink value="Action" href="#"></b:navLink>
+                            <b:navLink value="Another action" href="#"></b:navLink>
+                            <b:navLink value="Something else here" href="#"></b:navLink>
+                            <b:navLink></b:navLink>
+                            <b:navLink header="Nav header"></b:navLink>
+                            <b:navLink value="Separated link" href="#"></b:navLink>
+                            <b:navLink value="One more separated link" href="#"></b:navLink>
+                          </b:listLinks>
+                        </b:kebab>
+                        </b:navbarLinks>
+                    </b:navBar>
+                    <f:facet name="footer">
+                        <strong>Markup:</strong><br/>
 
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
+                            <![CDATA[
+                              <b:navBar brand="Brand" brandHref="#">
+                                  <b:navbarLinks>
+                                      <b:navLink value="Home" href="#"></b:navLink>
+                                      <b:navLink value="Link" href="#"></b:navLink>
+                                      <b:navLink value="Link" href="#"></b:navLink>
+                                  </b:navbarLinks>
+                                  <!-- Following line is needed for TBS 3.x (panel content overflow issue) -->
+                                  <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
+                                  <b:navbarLinks pull="right">
+                                  <b:kebab>
+                                    <b:listLinks>
+                                      <b:navLink value="Action" href="#"></b:navLink>
+                                      <b:navLink value="Another action" href="#"></b:navLink>
+                                      <b:navLink value="Something else here" href="#"></b:navLink>
+                                      <b:navLink></b:navLink>
+                                      <b:navLink header="Nav header"></b:navLink>
+                                      <b:navLink value="Separated link" href="#"></b:navLink>
+                                      <b:navLink value="One more separated link" href="#"></b:navLink>
+                                    </b:listLinks>
+                                  </b:kebab>
+                                  </b:navbarLinks>
+                              </b:navBar>
+
+                            ]]></script>
+                    </f:facet>
+                </b:panel>
+                <br/>
+
+<hr />
                 <ui:include src="KebabAttributes.xhtml" />
                 <b:panel look="info">
                         <f:facet name="heading">
