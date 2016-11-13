@@ -14,18 +14,27 @@ td {
 }
 </style>
 		<h1>Form (&lt;b:form /&gt;)</h1>
+		<p>The <code>&lt;b:form&gt;</code> tag, is an enhanced verson of <code>&lt;h:form&gt;</code>.</p>
 
-		<p>Describe in a few words what <code>&lt;b:form&gt;</code> is about.</p>
 		<h1>Basic usage</h1>
-		<p>Put a short description in simple words here.</p>
+		<p>The <code>&lt;b:form&gt;</code> tag inherits all the <code>&lt;h:form&gt;</code> attributes and behavior plus some Bootstrap specific attributes.</p>
+		<p>With Bootstrap you can have three kind of layouts for your forms:</p>
+		<ul>
+			<li><b>Basic Forms</b>, that stack Input elements and Labels vertically</li>
+			<li><b>Inline Forms</b>, where multiple form controls can reside on the same line (only within viewports that are at least 768px wide).</li>
+			<li><b>Horizontal Forms</b>, where the Grid system align labels and form controls in a horizontal layout (the rendered form group is treated as a row).</li>
+		</ul>
+		<p>Using a <code>&lt;b:form&gt;</code> without specifying anything else will render a <b>Basic Form</b>.</p>
+		<p>If you want to obtain a <b>Inline Form</b>, add the <code>inline="true"</code> attribute to the tag.</p>
+		<p>Finally,if you want to obtain a <b>Horizontal Form</b>, add the <code>horizontal="true"</code> attribute to the tag.</p>
+
 		<ui:include src="FormAttributes.xhtml" />
 		<b:panel look="info">
 			<f:facet name="heading">
 				<b>Skinning</b>
 			</f:facet>
 			<ul>
-				<li>Tell the world which CSS classes can be used to change the
-					look of the component.</li>
+				<li>none.</li>
 			</ul>
 		</b:panel>
 
