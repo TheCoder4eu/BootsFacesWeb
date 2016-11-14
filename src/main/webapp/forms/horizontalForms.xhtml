@@ -1,31 +1,56 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough" >
-    <h:head>
-        <title>BootsFaces rocks!</title>
-        <meta name="author" content="Stephan Rauh"></meta>
-    </h:head>
-    <h:body>
-    	<b:container>
+<ui:composition template="/applayout/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="content">
+		<style>
+		td {
+			padding: 8px;
+		}
+		</style>
+		<h1>
+			Horizontal, inline and stacked forms <b:badge value="breaking chance in 1.0" />
+		</h1>
+		<p>
+			There are three different types for form layouts:</p>
+			<ul>
+				<li>By default, forms are stacked. The labels are above the input fields, and both labels and input fields are aligned left.</li>
+				<li>You can also define horizontal forms. To do so, used the BootsFaces <code>&lt;b:form horizontal="true"/gt;</code> tag.
+				    In order to align horizontal forms neatly, add the attributes <code>label-col-xx="4"</code> and <code>col-xx="8</code>.
+				    (Of course, you can also use the symbolic names of BootsFaces, such as <code>label-small-screen="one-third"</code>).</li>
+				<li>Inline forms are define by  <code>&lt;b:form inline="true"/gt;</code>. In this case, you have to use the CSS width 
+				    attribute to align everything neatly. By default, every component within a row is put close to each other.<br />
+				    Note that in BootsFaces 1.0, some corner cases aren't support yet. In particular, input field with facets may be broken in inline forms,
+				    as you can see below.</li>
+				<li><b>Breaking change:</b> Before BootsFaces 1.0, inline forms were defined by adding <code>inline="true"</code>
+					to the input field. This feature is deprecated (because it generated wrong HTML code). Adding insult to injury, it's 
+					broken since BootsFaces 1.0. You can see such a broken example at the bottom of this page. Please migrate to the
+					new horizontal or inline forms.</li>
+			</ul>
+		<p>
+			About this demo: Most of the examples also demonstrate AJAX. When you move the mouse over a field, it's updated with random input.
+			Two input field types (date picker and multi-select combobox) don't support direct AJAX yet, so they are updated by an extra button.
+		</p>
     		<b:panelGrid columns="2">
 	    		<b:panel title="inline form" look="success">
 			    	<b:form inline="true">
 			    		<b:row>
 			    			<b:column medium-screen="full">
-								<b:inputText small-screen="9" style="width:170px" label="b:inputText" render-label="true" label-style="width:150px"
+								<b:inputText style="width:170px" label="b:inputText" render-label="true" label-style="width:150px"
 								             value="#{formBean.inputText}" onmouseover="ajax:formBean.updateInputText()" update="@this"/>
 							</b:column>
 			    			<b:column medium-screen="full">
-								<b:colorPicker small-screen="9" style="width:170px" label="b:colorPicker" render-label="true" label-style="width:150px"
+								<b:colorPicker style="width:170px" label="b:colorPicker" render-label="true" label-style="width:150px"
 								               value="#{formBean.color}" onmouseover="ajax:formBean.updateColor()" update="@this"/>
 							</b:column>
 			    			<b:column medium-screen="full">
-								<b:selectOneMenu small-screen="9" style="width:170px" label="b:selectOneMenu" render-label="true" label-style="width:150px"
+								<b:selectOneMenu  style="width:170px" label="b:selectOneMenu" render-label="true" label-style="width:150px"
 								                 value="#{formBean.combobox}" onmouseover="ajax:formBean.updateCombobox()" update="@this">
 									<f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
 									<f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
@@ -34,7 +59,7 @@
 			    			
 							</b:column>
 			    			<b:column medium-screen="full" >
-								<b:selectMultiMenu small-screen="9" style="width:170px" button-width="170" label="b:selectMultiMenu" render-label="true" label-style="width:150px"
+								<b:selectMultiMenu style="width:170px" button-width="170" label="b:selectMultiMenu" render-label="true" label-style="width:150px"
 								    value="#{formBean.combobox}" onclick="ajax:formBean.updateCombobox()" update="@this">
 									<f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
 									<f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
@@ -43,12 +68,12 @@
 								<b:commandButton value="AJAX" onclick="ajax:formBean.updateCombobox()" update="@previous" process="@previous @this" />
 		  					</b:column>
 			    			<b:column medium-screen="full">
-								<b:datepicker small-screen="9" style="width:170px" label="b:datepicker" inline="true" render-label="true" label-style="width:150px"
+								<b:datepicker style="width:170px" label="b:datepicker" render-label="true" label-style="width:150px"
 								              value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"/>
 								<b:commandButton value="AJAX" onclick="ajax:formBean.updateDate()" update="@previous" process="@previous @this" />
 		  					</b:column>
 			    			<b:column medium-screen="full">
-								<b:dateTimePicker small-screen="9" style="width:170px" label="b:dateTimePicker" inline="true" render-label="true" label-style="width:150px"
+								<b:dateTimePicker style="width:170px" label="b:dateTimePicker" render-label="true" label-style="width:150px"
 								                  value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"/>
 		  					</b:column>
 			    			
@@ -84,11 +109,11 @@
 								</b:selectMultiMenu>
 		  					</b:column>
 			    			<b:column medium-screen="full">
-								<b:datepicker  style="width: 250px;" label="b:datepicker" inline="true" render-label="true" label-style="width:150px"
+								<b:datepicker  style="width: 250px;" label="b:datepicker" render-label="true" label-style="width:150px"
 								              value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"/>
 		  					</b:column>
 			    			<b:column medium-screen="full">
-								<b:dateTimePicker  style="width: 250px;" label="b:dateTimePicker" inline="true" render-label="true" label-style="width:150px"
+								<b:dateTimePicker  style="width: 250px;" label="b:dateTimePicker" render-label="true" label-style="width:150px"
 								              value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"/>
 		  					</b:column>
 			    		</b:row>
@@ -123,11 +148,11 @@
 								</b:selectMultiMenu>
 		  					</b:column>
 			    			<b:column medium-screen="full"  rendered="true">
-								<b:datepicker  label-small-screen="4" small-screen="8"  label="b:datepicker" inline="true" render-label="true"
+								<b:datepicker  label-small-screen="4" small-screen="8"  label="b:datepicker" render-label="true"
 								                  value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"/>
 		  					</b:column>
 			    			<b:column medium-screen="full">
-								<b:dateTimePicker label-small-screen="4" small-screen="8" label="b:dateTimePicker" inline="true" render-label="true"
+								<b:dateTimePicker label-small-screen="4" small-screen="8" label="b:dateTimePicker" render-label="true"
 								                  value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"/>
 		  					</b:column>
 			    			
@@ -163,11 +188,11 @@
 								</b:selectMultiMenu>
 		  					</b:column>
 			    			<b:column medium-screen="full">
-								<b:datepicker  style="width: 250px;" label="b:datepicker" inline="true" render-label="true" label-style="width:150px"
+								<b:datepicker  style="width: 250px;" label="b:datepicker"  render-label="true" label-style="width:150px"
 								               value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"/>
 		  					</b:column>
 			    			<b:column medium-screen="full">
-								<b:dateTimePicker style="width: 250px;" label="b:dateTimePicker" inline="true" render-label="true" label-style="width:150px"
+								<b:dateTimePicker style="width: 250px;" label="b:dateTimePicker" render-label="true" label-style="width:150px"
 								                  value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"/>
 		  					</b:column>
 			    			
@@ -175,7 +200,7 @@
 		    		</h:form>
 	    		</b:panel>
  	    		<b:panel title="inline BootsFaces b:form (with facets)" look="success">
-			    	<b:form>
+			    	<b:form inline="true">
 			    		<b:row>
 			    			<b:column medium-screen="full">
 								<b:inputText small-screen="9" label="b:inputText" render-label="true" label-style="width:150px"
@@ -229,7 +254,7 @@
 								</b:selectMultiMenu>								
 		  					</b:column>
 			    			<b:column medium-screen="full">
-								<b:datepicker small-screen="9" label="b:datepicker" inline="true" render-label="true" label-style="width:150px"
+								<b:datepicker small-screen="9" label="b:datepicker" render-label="true" label-style="width:150px"
 								              value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this">
 									<f:facet name="prepend">
 						                <h:outputText value="$" />
@@ -240,7 +265,7 @@
 								</b:datepicker>
 		  					</b:column>
 			    			<b:column medium-screen="full">
-								<b:dateTimePicker small-screen="9" label="b:dateTimePicker" inline="true" render-label="true" label-style="width:150px"
+								<b:dateTimePicker small-screen="9" label="b:dateTimePicker" render-label="true" label-style="width:150px"
 								                  value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this">
 									<f:facet name="prepend">
 						                <h:outputText value="$" />
@@ -308,7 +333,7 @@
 								</b:selectMultiMenu>								
 		  					</b:column>
 			    			<b:column medium-screen="full">
-								<b:datepicker label="b:datepicker" inline="true" render-label="true" label-style="width:150px"
+								<b:datepicker label="b:datepicker" render-label="true" label-style="width:150px"
 								              value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this">
 									<f:facet name="prepend">
 						                <h:outputText value="$" />
@@ -319,7 +344,7 @@
 								</b:datepicker>
 		  					</b:column>
 			    			<b:column medium-screen="full">
-								<b:dateTimePicker label="b:dateTimePicker" inline="true" render-label="true" label-style="width:150px"
+								<b:dateTimePicker label="b:dateTimePicker" render-label="true" label-style="width:150px"
 								                  value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this">
 									<f:facet name="prepend">
 						                <h:outputText value="$" />
@@ -332,7 +357,7 @@
 			    		</b:row>
 		    		</b:form>
 	    		</b:panel>
-	    		<b:panel title="horitontal BootsFaces b:form (stacked / with facets)" look="success">
+	    		<b:panel title="horizontal BootsFaces b:form (with facets)" look="success">
 			    	<b:form horizontal="true">
 			    		<b:row>
 			    			<b:column medium-screen="full">
@@ -388,7 +413,7 @@
 								</b:selectMultiMenu>								
 		  					</b:column>
 			    			<b:column medium-screen="full">
-								<b:datepicker label-small-screen="4" small-screen="8" label="b:datepicker" inline="true" render-label="true"
+								<b:datepicker label-small-screen="4" small-screen="8" label="b:datepicker" render-label="true"
 								                  value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"
 								                  id="datePickerHorizontalFacets">
 									<f:facet name="prepend">
@@ -400,7 +425,7 @@
 								</b:datepicker>
 		  					</b:column>
 			    			<b:column medium-screen="full">
-								<b:dateTimePicker label-small-screen="4" small-screen="8" label="b:dateTimePicker" inline="true" render-label="true"
+								<b:dateTimePicker label-small-screen="4" small-screen="8" label="b:dateTimePicker" render-label="true"
 								                  value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this" process="@this">
 									<f:facet name="prepend">
 						                <h:outputText value="$" />
@@ -475,7 +500,7 @@
 								</b:selectMultiMenu>								
 		  					</b:column>
 			    			<b:column medium-screen="full">
-								<b:datepicker label="b:datepicker" inline="true" render-label="true" label-style="width:150px"
+								<b:datepicker label="b:datepicker" render-label="true" label-style="width:150px"
 								                  value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this">
 									<f:facet name="prepend">
 						                <h:outputText value="$" />
@@ -486,7 +511,7 @@
 								</b:datepicker>
 		  					</b:column>
 			    			<b:column medium-screen="full">
-								<b:dateTimePicker label="b:dateTimePicker" inline="true" render-label="true" label-style="width:150px"
+								<b:dateTimePicker label="b:dateTimePicker" render-label="true" label-style="width:150px"
 								                  value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this">
 									<f:facet name="prepend">
 						                <h:outputText value="$" />
@@ -499,7 +524,30 @@
 			    		</b:row>
 		    		</h:form>
 	    		</b:panel>
+ 	    		<b:panel title="inline (deprecated / out of order)">
+	   			   <h:form>
+	                  <b:inputText id="name" value="#{userBean.name}" col-xs="8" label-col-xs="4" 
+	                    label="Enter your name" required="true" renderLabel="true" inline="true" />
+	                  <b:colorPicker value="#{formBean.color}" tiny-screen="two-thirds" label-tiny-screen="one-third"
+	                    label="b:colorPicker" renderLabel="true" inline="true"  />
+					  <b:selectOneMenu  label="b:selectOneMenu" render-label="true" tiny-screen="two-thirds" label-tiny-screen="one-third"
+						                value="#{formBean.combobox}" onmouseover="ajax:formBean.updateCombobox()" update="@this" inline="true">
+							<f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
+							<f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
+							<f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
+					  </b:selectOneMenu>
+					  <b:selectMultiMenu tiny-screen="two-thirds" label-tiny-screen="one-third" label="b:selectMultiMenu" render-label="true"
+					    value="#{formBean.combobox}" onclick="ajax:formBean.updateCombobox()" update="@this" inline="true">
+						<f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
+						<f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
+						<f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
+					  </b:selectMultiMenu>
+	                  <b:datepicker value="#{formBean.date}" col-xs="8" label-col-xs="4" 
+	                    label="Enter your name" required="true" renderLabel="true" inline="true" />
+	                  <b:dateTimePicker value="#{formBean.date}" col-xs="8" label-col-xs="4" 
+	                    label="Enter your name" required="true" renderLabel="true" inline="true" />
+	                </h:form>
+	    		</b:panel>
     		</b:panelGrid>
-    	</b:container>
-    </h:body>
-</html>
+	</ui:define>
+</ui:composition>
