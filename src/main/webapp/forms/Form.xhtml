@@ -13,20 +13,28 @@ td {
 	padding: 8px;
 }
 </style>
-		<h1>Form (&lt;b:form /&gt;)</h1>
-		<p>The <code>&lt;b:form&gt;</code> tag, is an enhanced verson of <code>&lt;h:form&gt;</code>.</p>
+		<h1>Form (&lt;b:form /&gt;) <b:badge value="since 1.0" /></h1>
+		<p>The <code>&lt;b:form&gt;</code> tag is an enhanced verson of <code>&lt;h:form&gt;</code>.</p>
 
 		<h1>Basic usage</h1>
 		<p>The <code>&lt;b:form&gt;</code> tag inherits all the <code>&lt;h:form&gt;</code> attributes and behavior plus some Bootstrap specific attributes.</p>
 		<p>With Bootstrap you can have three kind of layouts for your forms:</p>
 		<ul>
-			<li><b>Basic Forms</b>, that stack Input elements and Labels vertically</li>
-			<li><b>Inline Forms</b>, where multiple form controls can reside on the same line (only within viewports that are at least 768px wide).</li>
-			<li><b>Horizontal Forms</b>, where the Grid system align labels and form controls in a horizontal layout (the rendered form group is treated as a row).</li>
+			<li><b>Basic Forms</b>, that stack input elements and labels vertically. That's the default layout you get with a standard <code>&lt;b:form/&gt;</code>
+			       or a BootsFaces <code>&lt;b:form/&gt;</code> without attributes.</li>
+			<li><b>Inline Forms</b>, where multiple form controls can reside on the same line (only within viewports that are at least 768px wide).
+			       Inline forms are defined by  <code>&lt;b:form inline="true"/&gt;</code>.<br />
+				    Note that in BootsFaces 1.0, some corner cases aren't support yet. In particular, input field with facets may be broken in inline forms.</li>
+			<li><b>Horizontal Forms</b>, where the Grid system align labels and form controls in a horizontal layout (the rendered form group is treated as a row).
+			        Horizontal forms are activated by the BootsFaces <code>&lt;b:form horizontal="true"/&gt;</code> tag.
+				    In order to align horizontal forms neatly, add the attributes <code>label-col-xx="4"</code> and <code>col-xx="8</code>.
+				    (Of course, you can also use the symbolic names of BootsFaces, such as <code>label-small-screen="one-third"</code>).
+			</li>
+				<li><b>Breaking change:</b> Before BootsFaces 1.0, inline forms were defined by adding <code>inline="true"</code>
+					to the input field. This feature is deprecated (because it generats wrong HTML code). Adding insult to injury, it's 
+					broken since BootsFaces 1.0. You can see such a broken example at the bottom of this page. Please migrate to the
+					new horizontal or inline forms.</li>
 		</ul>
-		<p>Using a <code>&lt;b:form&gt;</code> without specifying anything else will render a <b>Basic Form</b>.</p>
-		<p>If you want to obtain a <b>Inline Form</b>, add the <code>inline="true"</code> attribute to the tag.</p>
-		<p>Finally,if you want to obtain a <b>Horizontal Form</b>, add the <code>horizontal="true"</code> attribute to the tag.</p>
 
 		<ui:include src="FormAttributes.xhtml" />
 		<b:panel look="info">
