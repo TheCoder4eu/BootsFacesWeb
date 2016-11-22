@@ -49,6 +49,35 @@
         </b:panel>
       </b:row>
     </h:form>
+    
+    <h1>Disable and readonly</h1>
+    <p>The dateTimePicker has also the ability to disable and set the readonly option.</p>
+    <p><b:badge value="Attention" style="background-color:red;"/> Unfortunately, at the moment, the readonly attribute doesn't work on the dateTimePicker in mode="inline"</p>
+    <h:form>
+      <b:row>
+        <b:panel title="Live preview" look="primary">
+	          <b:dateTimePicker label="Disabled DateTimePicker:  "
+	          				    render-label="true"
+	          					value="#{dateTimeBean.justNow}"
+	                            disabled="true"
+	                            inline="true" />
+	          <b:dateTimePicker label="Readonly DateTimePicker:  "
+	          				    render-label="true"
+	          					value="#{dateTimeBean.justNow}"
+	                            readonly="true"
+	                            inline="true" />
+	          <hr/>
+	          <b:dateTimePicker label="Disabled inline DateTimePicker: "
+	          				    render-label="true"
+	          					value="#{dateTimeBean.justNow}"
+	                            disabled="true"
+	                            mode="inline"
+	                            inline="true" />
+	          
+        </b:panel>
+ 
+      </b:row>
+    </h:form>
 
     <h3>Format</h3>
     <p>By default, the dateTimePicker tries to guess the proper format from your locale. You can customize this by three

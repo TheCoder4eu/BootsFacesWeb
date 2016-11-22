@@ -23,6 +23,8 @@ td {
 			<h:form prependId="false">
 				<b:row>
 					<b:touchSpin id="spin1" col-md="3" value="#{spinBean.spinValue}" min="10" max="200" step="2" prefix="$" />
+					<b:touchSpin id="spin2" col-md="3" value="#{spinBean.intSpinValue}" min="10" max="200" step="2" prefix="$" />
+					
 					<b:commandButton value="Send Value" col-md="2" actionListener="#{spinBean.button1}" ajax="true" update="@form" />
 					<b:commandButton value="Update Value" col-md="2" actionListener="#{spinBean.button2}" ajax="true" update="@form" />
 				</b:row>
