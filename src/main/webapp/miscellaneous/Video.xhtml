@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="content">
+		<style>
+td {
+	padding: 8px;
+}
+</style>
+		<h1>Video (&lt;b:video /&gt;)</h1>
+
+		<p>This component is a simple implementation of the HTML <code>&lt;video /&gt;</code> element.</p>
+		<h1>Basic usage</h1>
+		<p>Basically, showing a video is as simple as writing &lt;b:video src="http://URL.com/myVideo.mp4" style="width:100%" /&gt;:</p>
+		<b:row>
+			<b:video small-screen="two-thirds" 
+			         src="http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b1-1.mov" 
+			         style="width:100%"
+			         tooltip="Hawai"
+			         tooltip-position="right"/>
+		</b:row>
+		<h2>Playing videos from your own server</h2>
+		<p>Most application servers support playing videos. Using a relative URL usually suffices to play the video: &lt;b:video src="myVideo.mp4" style="width:100%" /&gt;.</p>
+		
+		<h2>Always set the <code>width</code> attribute</h2>
+		<p>It's a good idea to always set the <code>width</code> of the video. In general, setting it to 100% makes it fit in nicely
+		with the responsive design of your page. The height of the video is calculated automatically because you can't modify the
+		aspect ration of the video. Nonetheless, it's a good idea to set the height, too, in order to prevent the page from 
+		flickering while the video is loaded. As long as the browser doesn't know the dimensions of the video, it uses default
+		values which are almost always wrong.</p>
+		
+		<br />
+		<br />
+		<ui:include src="VideoAttributes.xhtml" />
+		<b:panel look="info">
+			<f:facet name="heading">
+				<b>Skinning</b>
+			</f:facet>
+			<ul>
+				<li>Tell the world which CSS classes can be used to change the
+					look of the component.</li>
+			</ul>
+		</b:panel>
+
+		<script type="text/javascript">
+      		SyntaxHighlighter.all();
+    	</script>
+		<br />
+		<br />
+		<br />
+		<br />
+	</ui:define>
+</ui:composition>
