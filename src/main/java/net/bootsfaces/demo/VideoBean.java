@@ -21,22 +21,22 @@ public class VideoBean implements Serializable {
 	}
 	
 	public void onPlay() {
-		events += "play" + "\n";
+		events = "play" + "\n" + events;
 	}
 	public void onPause() {
-		events += "pause" + "\n";
+		events = "pause" + "\n" + events;
 	}
 	
 	public void onSeeking() {
-		events += "seeking" + "\n";
+		events = "seeking" + "\n" + events;
 	}
 	
 	public void onCanplaythrough() {
-		events += "can play through" + "\n";
+		events = "can play through" + "\n" + events;
 	}
 	
 	public void onLoadeddata() {
-		events += "loaded data" + "\n";
+		events = "loaded data" + "\n" + events;
 	}
 
 }
