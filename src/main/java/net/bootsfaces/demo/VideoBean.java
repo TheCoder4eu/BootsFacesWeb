@@ -26,5 +26,17 @@ public class VideoBean implements Serializable {
 	public void onPause() {
 		events += "pause" + "\n";
 	}
+	
+	public void onSeeking() {
+		events += "seeking" + "\n";
+	}
+	
+	public void onCanplaythrough() {
+		events += "can play through" + "\n";
+	}
+	
+	public void onLoadeddata() {
+		events += "loaded data" + "\n";
+	}
 
 }

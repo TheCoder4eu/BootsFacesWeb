@@ -22,13 +22,16 @@ td {
 			<b:video small-screen="two-thirds" 
 			         src="http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b1-1.mov" 
 			         style="width:100%"
-			         tooltip="Hawai"
+			         tooltip="Video of Hawai provided by Apple (http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b1-1.mov)"
 			         tooltip-position="right"
 			         onplay="ajax:videoBean.onPlay()"
 			         onpause="ajax:videoBean.onPause()"
+			         onloadeddata="ajax:videoBean.onLoadedData()"
+			         oncanplaythrough="ajax:videoBean.onCanplaythrough()"
+			         onseeking="ajax:videoBean.onSeeking()"
 			         update="@next">
 	         </b:video>
-	         <b:inputTextarea value="#{videoBean.events}" small-screen="one-third" />
+	         <b:inputTextarea value="#{videoBean.events}" small-screen="one-third" tooltip="recorded video AJAX events" style="height:350px" />
 		</b:row>
 		<h2>Playing videos from your own server</h2>
 		<p>Most application servers support playing videos. Using a relative URL usually suffices to play the video: &lt;b:video src="myVideo.mp4" style="width:100%" /&gt;.</p>
