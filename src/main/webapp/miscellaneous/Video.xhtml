@@ -23,7 +23,12 @@ td {
 			         src="http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b1-1.mov" 
 			         style="width:100%"
 			         tooltip="Hawai"
-			         tooltip-position="right"/>
+			         tooltip-position="right"
+			         onplay="ajax:videoBean.onPlay()"
+			         onpause="ajax:videoBean.onPause()"
+			         update="@next">
+	         </b:video>
+	         <b:inputTextarea value="#{videoBean.events}" small-screen="one-third" />
 		</b:row>
 		<h2>Playing videos from your own server</h2>
 		<p>Most application servers support playing videos. Using a relative URL usually suffices to play the video: &lt;b:video src="myVideo.mp4" style="width:100%" /&gt;.</p>
@@ -34,7 +39,74 @@ td {
 		aspect ration of the video. Nonetheless, it's a good idea to set the height, too, in order to prevent the page from 
 		flickering while the video is loaded. As long as the browser doesn't know the dimensions of the video, it uses default
 		values which are almost always wrong.</p>
+
+
+		<h3>AJAX</h3>
+		<p>The video element supports a couple of standard events, such as <code>onclick</code>, and the full range of 
+		events described at <a target="#" href="http://www.w3schools.com/tags/ref_av_dom.asp">w3schools.com</a>.
+		The only exception is onerror, which is not supported because there's already a standard AJAX attribute called <code>onerror</code>.</p>
+		<DL class="dl-horizontal">
+		<DT>Event
 		
+		</DT>
+		<DD>Description</DD>
+		<DT>abort</DT>
+		<DD>Fires when the loading of an audio/video is aborted</DD>
+		<DT>canplay</DT>
+		<DD>Fires when the browser can start playing the audio/video</DD>
+		<DT>canplaythrough</DT>
+		<DD>Fires when the browser can play through the audio/video
+			without stopping for buffering</DD>
+		<DT>durationchange</DT>
+		<DD>Fires when the duration of the audio/video is changed</DD>
+		<DT>emptied</DT>
+		<DD>Fires when the current playlist is empty</DD>
+		<DT>ended</DT>
+		<DD>Fires when the current playlist is ended</DD>
+		<DT>error</DT>
+		<DD><b>Not supported!</b> Fires when an error occurred during the loading of an
+			audio/video</DD>
+		<DT>loadeddata</DT>
+		<DD>Fires when the browser has loaded the current frame of the
+			audio/video</DD>
+		<DT>loadedmetadata</DT>
+		<DD>Fires when the browser has loaded meta data for the
+			audio/video</DD>
+		<DT>loadstart</DT>
+		<DD>Fires when the browser starts looking for the audio/video</DD>
+		<DT>pause</DT>
+		<DD>Fires when the audio/video has been paused</DD>
+		<DT>play</DT>
+		<DD>Fires when the audio/video has been started or is no longer
+			paused</DD>
+		<DT>playing</DT>
+		<DD>Fires when the audio/video is playing after having been
+			paused or stopped for buffering</DD>
+		<DT>progress</DT>
+		<DD>Fires when the browser is downloading the audio/video</DD>
+		<DT>ratechange</DT>
+		<DD>Fires when the playing speed of the audio/video is changed</DD>
+		<DT>seeked</DT>
+		<DD>Fires when the user is finished moving/skipping to a new
+			position in the audio/video</DD>
+		<DT>seeking</DT>
+		<DD>Fires when the user starts moving/skipping to a new position
+			in the audio/video</DD>
+		<DT>stalled</DT>
+		<DD>Fires when the browser is trying to get media data, but data
+			is not available</DD>
+		<DT>suspend</DT>
+		<DD>Fires when the browser is intentionally not getting media
+			data</DD>
+		<DT>timeupdate</DT>
+		<DD>Fires when the current playback position has changed</DD>
+		<DT>volumechange</DT>
+		<DD>Fires when the volume has been changed</DD>
+		<DT>waiting</DT>
+		<DD>Fires when the video stops because it needs to buffer the
+			next frame</DD>
+        </DL>
+
 		<br />
 		<br />
 		<ui:include src="VideoAttributes.xhtml" />
