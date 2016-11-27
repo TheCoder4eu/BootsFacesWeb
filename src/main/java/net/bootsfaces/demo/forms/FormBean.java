@@ -10,6 +10,7 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class FormBean {
 	private int inputText = 0;
+	private int inputTextarea = 0;
 	private String color = "#ff0000";
 	private Date date = new Date();
 	private String combobox = "1";
@@ -49,6 +50,9 @@ public class FormBean {
 	public void updateInputText() {
 		inputText = (int) (Math.random()*1000);
 	}
+	public void updateInputTextarea() {
+		inputTextarea = (int) (Math.random()*1000);
+	}
 	public void updateCombobox() {
 		combobox = String.valueOf((int) (Math.random()*3.0));
 	}
@@ -57,6 +61,14 @@ public class FormBean {
 	}
 	public void updateDate() {
 		date = new Date(date.getTime()+86400*1000);
+	}
+
+	public int getInputTextarea() {
+		return inputTextarea;
+	}
+
+	public void setInputTextarea(int inputTextarea) {
+		this.inputTextarea = inputTextarea;
 	}
 
 }
