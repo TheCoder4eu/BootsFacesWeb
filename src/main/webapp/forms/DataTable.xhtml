@@ -435,12 +435,15 @@ td {
           <script type="syntaxhighlighter"
             class="brush: xml; toolbar: false;gutter: false; first-line: 1">
             <![CDATA[
-        <b:dataTable value="&num;{carPool.carPool}" var="car"
+      <b:dataTable value="#{carPool.carPool}"
+                     var="car"
                      onorder="console.log('order');"
                      onpage="console.log('page');"
                      onsearch="console.log('search');"
-                     onselect="console.log('select');"
-                     ondeselect="console.log('deselect');"
+                     onselect="console.log(typeOfSelection + ' ' + indexes + ' has been selected');"
+                     ondeselect="console.log(typeOfSelection + ' ' + indexes + ' has been deselected');"
+                     select="true" 
+                     selectionMode="single"
                      >
             <b:dataTableColumn value="&num;{car.brand}" />
             <b:dataTableColumn value="&num;{car.type}" />
@@ -454,13 +457,15 @@ td {
         </b:well>
       </b:tab>
       <b:tab title="displayed as" contentStyle="border:1px solid ;padding:10px">
-        <b:dataTable value="#{carPool.carPool}"
+      <b:dataTable value="#{carPool.carPool}"
                      var="car"
                      onorder="console.log('order');"
                      onpage="console.log('page');"
                      onsearch="console.log('search');"
-                     onselect="console.log('select');"
-                     ondeselect="console.log('deselect');"
+                     onselect="console.log(typeOfSelection + ' ' + indexes + ' has been selected');"
+                     ondeselect="console.log(typeOfSelection + ' ' + indexes + ' has been deselected');"
+                     select="true" 
+                     selectionMode="single"
                      >
             <b:dataTableColumn value="#{car.brand}" />
             <b:dataTableColumn value="#{car.type}" />
