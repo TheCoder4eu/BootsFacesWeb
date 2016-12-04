@@ -83,6 +83,11 @@
                 <td>JavaScript to be executed when ajax completes with success (i.e. there's neither a network error nor a Java exception).</td>
             </tr>
             <tr>
+                <td>parameters</td>
+                <td>(none)</td>
+                <td>Optional list of parameters to be added to the parameter list of the JavaScript function. The JSF bean can read these parameters from the request parameters (FacesContext.getCurrentContext.getRequestParameter('name1')). If you need more than one parameter, separate them with commas. Don't add a type because this is the signature of the JavaScript function.</td>
+            </tr>
+            <tr>
                 <td>process</td>
                 <td>(none)</td>
                 <td>Comma or space separated list of ids or search expressions denoting which values are to be sent to the server.</td>

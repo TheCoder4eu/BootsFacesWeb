@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
 @ManagedBean
@@ -23,5 +24,12 @@ public class RemoteCommandBean implements Serializable{
 	
 	public void count(ActionEvent event) {
 		counter++;
+	}
+	
+	public void setCounter() {
+		String initialValue = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("initialValue");
+		if (null != initialValue) {
+			counter = Integer.valueOf(initialValue);
+		}
 	}
 }
