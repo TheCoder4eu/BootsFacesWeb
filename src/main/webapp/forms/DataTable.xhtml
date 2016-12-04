@@ -429,6 +429,9 @@ td {
     <p>The datatable offers a couple of JavaScript and jQuery events you can use to call your own JavaScript or
     even your own bean method on the backend. Currently, the BootsFaces datatable offers only a subset of the
     events of the underlying JavaScript widget (see <a target="#" href="https://datatables.net/reference/event/">https://datatables.net/reference/event</a>).</p>
+    <p>Note that the standard JavaScript callbacks like <code>onclick</code> and <code>ondblclick</code> are also there, but they don't 
+    distinguish between the rows and columns. To know which row and/or column has been clicked, either use the jQuery callbacks <code>onselect</code>
+    and <code>ondeselect</code> or add <code>onclick</code> listeners to the individual columns.</p>
     <b:tabView activeIndex="1">
       <b:tab title="JSF markup">
         <b:well>
@@ -441,8 +444,8 @@ td {
                      onorder="console.log('order');"
                      onpage="console.log('page');"
                      onsearch="console.log('search');"
-                     onselect="console.log(typeOfSelection + ' ' + indexes + ' has been selected');"
-                     ondeselect="console.log(typeOfSelection + ' ' + indexes + ' has been deselected');"
+                     onselect="console.log(typeOfSelection + ' ' + indexes + ' has been selected');ajax:carPool.onSelect(car, typeOfSelection, indexes);"
+                     ondeselect="console.log(typeOfSelection + ' ' + indexes + ' has been deselected');ajax:carPool.onDeselect(car, typeOfSelection, indexes);"
                      select="true" 
                      selectionMode="multiple"
                      >
@@ -466,9 +469,10 @@ td {
 	                     onpage="console.log('page');"
 	                     onsearch="console.log('search');"
 	                     onselect="console.log(typeOfSelection + ' ' + indexes + ' has been selected');ajax:carPool.onSelect(car, typeOfSelection, indexes);"
-	                     ondeselect="console.log(typeOfSelection + ' ' + indexes + ' has been deselected');"
+	                     ondeselect="console.log(typeOfSelection + ' ' + indexes + ' has been deselected');ajax:carPool.onDeselect(car, typeOfSelection, indexes);"
 	                     select="true" 
 	                     selectionMode="multiple"
+	                     update="@next"
 	                     >
 	            <b:dataTableColumn value="#{car.brand}" />
 	            <b:dataTableColumn value="#{car.type}" />
@@ -477,11 +481,89 @@ td {
 	            <b:dataTableColumn value="#{car.price}" />
 	            <b:dataTableColumn value="#{car.enginePower}" label="Engine Power (hp)" />
 	        </b:dataTable>
+	        <b:panel title="Currently selected cars" class="selectedCarsPanel">
+	        	#{null==carPool.currentlySelectedCars || 0==carPool.currentlySelectedCars.size()?"none":""}
+	        	<h:panelGroup layout="block" rendered="#{carPool.currentlySelectedCars != null}">
+		        	<ui:repeat var="car" value="#{carPool.currentlySelectedCars}">
+		        		<p>#{car.brand} #{car.type} of #{car.year}</p>
+		        	</ui:repeat>
+	        	</h:panelGroup>
+	        </b:panel>
+	        
           </h:form>
       </b:tab>
+     <b:tab title="Java bean">
+        <b:well>
+          <script type="syntaxhighlighter"
+            class="brush: java; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+@ManagedBean
+@SessionScoped
+public class CarPool implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	private List<Car> currentlySelectedCars = new ArrayList<>();
+
+	public List<Car> getCurrentlySelectedCars() {
+		return currentlySelectedCars;
+	}
+
+	private List<Car> carPool = ...; // add 50 cars here
+
+	public List<Car> getCarPool() {
+		return carPool;
+	}
+
+	public void setCurrentlySelectedCars(List<Car> currentlySelectedCars) {
+		this.currentlySelectedCars = currentlySelectedCars;
+	}
+
+	public void onSelect(Car car, String typeOfSelection, String indexes) {
+		System.out.println("OnSelect:" + car + " typeOfSelection: " + typeOfSelection + " indexes: " + indexes);
+		if (null != car) {
+			getCurrentlySelectedCars().add(car);
+		} else if (null != indexes) {
+			String[] indexArray = indexes.split(",");
+			for (String index:indexArray) {
+				int i = Integer.valueOf(index);
+				Car newCar=carPool.get(i);
+				if (!currentlySelectedCars.contains(newCar)) {
+					getCurrentlySelectedCars().add(newCar);
+				}
+			}
+		}
+	}
+	
+	public void onDeselect(Car car, String typeOfSelection, String indexes) {
+		System.out.println("OnDeselect:" + car + " typeOfSelection: " + typeOfSelection + " indexes: " + indexes);
+		if (null != car) {
+			getCurrentlySelectedCars().remove(car);
+		} else if (null != indexes) {
+			String[] indexArray = indexes.split(",");
+			for (String index:indexArray) {
+				int i = Integer.valueOf(index);
+				getCurrentlySelectedCars().remove(carPool.get(i));
+			}
+		}
+	}
+}
+      ]]>
+      </script>
+        </b:well>
+      </b:tab>
     </b:tabView>
-
-
+	<br />
+	<p>As the example above shows, <code>onselect</code> usually tells you which rows have been added. However, if the users selects an entire range using SHIFT+click,
+	the parameter <code>indexes</code> also contains rows that were already selected. Hence, you have to be careful not to add rows twice. In our example, we 
+	added an <code>if</code> statement to make the problem explicit. In general, you could replace the <code>ArrayList</code> by a <code>Set</code>.</p>
+	<p>If the user adds a single row, the parameter matching the loop variable (i.e. <code>car</code> in our example) contains the selected object.</p>
+	<p>If the user adds multiple rows in a single AJAX request, the parameter matching the loop variable is null. In this case the parameter <code>indexes</code>
+	tells you which rows have been selected. <code>indexes</code> is a comma-separated list of integers, each indicating the index of the selected row.
+	The index always corresponds to the array index of the array in the Java bean. If the users filters or re-orders the table, the row number may be different
+	from the array index. However, the API has been designed in such a way that you won't notice this.</p>
+	<p>Each of the three parameters of the Java bean method is optional. You can omit one or several of them in the <code>onclick</code> listener.
+	For instance, <code>onclick="ajax:onSelect(car)"</code> calls the Java method <code>onSelect(Car car)</code>, and <code>onclick="ajax:onSelect(indexes)"</code>
+	calles the Java method <code>onSelect(String indexes)</code>.</p>
 
     <h3>Responsiveness</h3>
     <p>

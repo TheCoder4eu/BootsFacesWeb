@@ -35,7 +35,7 @@ public class CarPool implements Serializable {
 	private final static int SIZE_OF_INITIAL_CAR_POOL = 15;
 
 	private String language = "Italian";
-
+	
 	@ManagedProperty("#{staticOptionBean}")
 	private StaticOptionBean staticOptions;
 
@@ -72,7 +72,9 @@ public class CarPool implements Serializable {
 		return new ArrayList<Car>();
 	}
 
-	private List<Car> selectedCars;
+	private List<Car> selectedCars = new ArrayList<>();
+
+	private List<Car> currentlySelectedCars = new ArrayList<>();
 
 	public List<Car> getSelectedCars() {
 		return selectedCars;
@@ -187,7 +189,41 @@ public class CarPool implements Serializable {
 	public void onSelect(Car car) {
 		System.out.println("OnSelect:" + car);
 	}
+	
 	public void onSelect(Car car, String typeOfSelection, String indexes) {
 		System.out.println("OnSelect:" + car + " typeOfSelection: " + typeOfSelection + " indexes: " + indexes);
+		if (null != car) {
+			getCurrentlySelectedCars().add(car);
+		} else if (null != indexes) {
+			String[] indexArray = indexes.split(",");
+			for (String index:indexArray) {
+				int i = Integer.valueOf(index);
+				Car newCar=carPool.get(i);
+				if (!currentlySelectedCars.contains(newCar)) {
+					getCurrentlySelectedCars().add(newCar);
+				}
+			}
+		}
+	}
+	
+	public void onDeselect(Car car, String typeOfSelection, String indexes) {
+		System.out.println("OnDeselect:" + car + " typeOfSelection: " + typeOfSelection + " indexes: " + indexes);
+		if (null != car) {
+			getCurrentlySelectedCars().remove(car);
+		} else if (null != indexes) {
+			String[] indexArray = indexes.split(",");
+			for (String index:indexArray) {
+				int i = Integer.valueOf(index);
+				getCurrentlySelectedCars().remove(carPool.get(i));
+			}
+		}
+	}
+
+	public List<Car> getCurrentlySelectedCars() {
+		return currentlySelectedCars;
+	}
+
+	public void setCurrentlySelectedCars(List<Car> currentlySelectedCars) {
+		this.currentlySelectedCars = currentlySelectedCars;
 	}
 }
