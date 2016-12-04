@@ -435,7 +435,8 @@ td {
           <script type="syntaxhighlighter"
             class="brush: xml; toolbar: false;gutter: false; first-line: 1">
             <![CDATA[
-      <b:dataTable value="#{carPool.carPool}"
+      <h:form>
+        <b:dataTable value="#{carPool.carPool}"
                      var="car"
                      onorder="console.log('order');"
                      onpage="console.log('page');"
@@ -443,7 +444,7 @@ td {
                      onselect="console.log(typeOfSelection + ' ' + indexes + ' has been selected');"
                      ondeselect="console.log(typeOfSelection + ' ' + indexes + ' has been deselected');"
                      select="true" 
-                     selectionMode="single"
+                     selectionMode="multiple"
                      >
             <b:dataTableColumn value="&num;{car.brand}" />
             <b:dataTableColumn value="&num;{car.type}" />
@@ -452,28 +453,31 @@ td {
             <b:dataTableColumn value="&num;{car.price}" />
             <b:dataTableColumn value="&num;{car.enginePower}" label="Engine Power (hp)" />
         </b:dataTable>
+      </h:form>
       ]]>
       </script>
         </b:well>
       </b:tab>
       <b:tab title="displayed as" contentStyle="border:1px solid ;padding:10px">
-      <b:dataTable value="#{carPool.carPool}"
-                     var="car"
-                     onorder="console.log('order');"
-                     onpage="console.log('page');"
-                     onsearch="console.log('search');"
-                     onselect="console.log(typeOfSelection + ' ' + indexes + ' has been selected');"
-                     ondeselect="console.log(typeOfSelection + ' ' + indexes + ' has been deselected');"
-                     select="true" 
-                     selectionMode="single"
-                     >
-            <b:dataTableColumn value="#{car.brand}" />
-            <b:dataTableColumn value="#{car.type}" />
-            <b:dataTableColumn value="#{car.color}" />
-            <b:dataTableColumn value="#{car.year}" />
-            <b:dataTableColumn value="#{car.price}" />
-            <b:dataTableColumn value="#{car.enginePower}" label="Engine Power (hp)" />
-        </b:dataTable>
+        <h:form>
+	      <b:dataTable value="#{carPool.carPool}"
+	                     var="car"
+	                     onorder="console.log('order');"
+	                     onpage="console.log('page');"
+	                     onsearch="console.log('search');"
+	                     onselect="console.log(typeOfSelection + ' ' + indexes + ' has been selected');ajax:carPool.onSelect(car, typeOfSelection, indexes);"
+	                     ondeselect="console.log(typeOfSelection + ' ' + indexes + ' has been deselected');"
+	                     select="true" 
+	                     selectionMode="multiple"
+	                     >
+	            <b:dataTableColumn value="#{car.brand}" />
+	            <b:dataTableColumn value="#{car.type}" />
+	            <b:dataTableColumn value="#{car.color}" />
+	            <b:dataTableColumn value="#{car.year}" />
+	            <b:dataTableColumn value="#{car.price}" />
+	            <b:dataTableColumn value="#{car.enginePower}" label="Engine Power (hp)" />
+	        </b:dataTable>
+          </h:form>
       </b:tab>
     </b:tabView>
 

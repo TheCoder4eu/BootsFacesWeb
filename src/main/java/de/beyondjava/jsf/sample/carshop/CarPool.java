@@ -25,6 +25,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 @ManagedBean
 @SessionScoped
@@ -32,9 +33,8 @@ public class CarPool implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private final static int SIZE_OF_INITIAL_CAR_POOL = 15;
-	
-	private String language="Italian";
 
+	private String language = "Italian";
 
 	@ManagedProperty("#{staticOptionBean}")
 	private StaticOptionBean staticOptions;
@@ -54,7 +54,7 @@ public class CarPool implements Serializable {
 	public void setDynamicOptions(DynamicOptionBean dynamicOptions) {
 		this.dynamicOptions = dynamicOptions;
 	}
-	
+
 	@ManagedProperty("#{dynamicOptionBean}")
 	private DynamicOptionBean dynamicOptions;
 
@@ -71,6 +71,7 @@ public class CarPool implements Serializable {
 	public List<Car> getEmptyCarPool() {
 		return new ArrayList<Car>();
 	}
+
 	private List<Car> selectedCars;
 
 	public List<Car> getSelectedCars() {
@@ -138,13 +139,13 @@ public class CarPool implements Serializable {
 			int year = b.getYear();
 			if (c.getYear() < year)
 				continue;
-			criterium= b.getMileage();
+			criterium = b.getMileage();
 			if (criterium != null && criterium.length() > 0) {
-				int km = Integer.parseInt(criterium.substring(2, criterium.length()-3));
+				int km = Integer.parseInt(criterium.substring(2, criterium.length() - 3));
 				if (c.getMileage() > km)
 					continue;
 			}
-			criterium= b.getPrice();
+			criterium = b.getPrice();
 			if (criterium != null && criterium.length() > 0) {
 				int euro = Integer.parseInt(criterium.substring(3, criterium.length()));
 				if (c.getPrice() > euro)
@@ -161,12 +162,13 @@ public class CarPool implements Serializable {
 	public void setLanguage(String language) {
 		this.language = language;
 	}
+
 	public String getLang() {
 		if ("Italian".equals(language))
 			return "it";
 		return null;
 	}
-	
+
 	public String getCustomLangUrl() {
 		if ("Brazilian Portuguese".equals(language))
 			return "//cdn.datatables.net/plug-ins/1.10.12/i18n/Portuguese-Brasil.json";
@@ -174,8 +176,18 @@ public class CarPool implements Serializable {
 			return "//cdn.datatables.net/plug-ins/1.10.12/i18n/Norwegian-Bokmal.json";
 		return null;
 	}
-	
+
 	public void onLanguageChange() {
-		
+
+	}
+
+	public void onSelect() {
+		System.out.println("OnSelect");
+	}
+	public void onSelect(Car car) {
+		System.out.println("OnSelect:" + car);
+	}
+	public void onSelect(Car car, String typeOfSelection, String indexes) {
+		System.out.println("OnSelect:" + car + " typeOfSelection: " + typeOfSelection + " indexes: " + indexes);
 	}
 }
