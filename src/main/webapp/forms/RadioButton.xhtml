@@ -10,6 +10,8 @@
 <h:body style="padding-top: 60px">
   <ui:composition template="/applayout/pageTemplate.xhtml">
     <ui:define name="content">
+    <style>label.disabled { color:#ccc}
+    </style>
       <h:form>
         <h1>Radiobuttons <b:badge value="since 1.0" /></h1>
         <p>The BootsFaces radiobutton give you more flexibility to design your page layout than the standard JSF radiobutton.</p>
@@ -26,7 +28,7 @@
 	          <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 6" itemValue="6" />
 	          <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 7" itemValue="7" />
 	          <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 8" itemValue="8" />
-	          <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 9" itemValue="9" />
+	          <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 9" itemValue="9" disabled="true"/>
           </b:panelGrid>
           <b:commandButton value="submit your choice" action="#{radiobuttonBean.submit}" look="primary"
                            update="@form" />
@@ -35,12 +37,14 @@
       </h:form>
       <b:well>
          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
+           <style>label.disabled { color:#ccc}</style>
            <b:panel title="Survey" look="primary">
             <p>Which Java version do you use?</p>
             <b:panelGrid size="xs" columns="3">
               <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 6" itemValue="6" />
               <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 7" itemValue="7" />
               <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 8" itemValue="8" />
+              <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 9" itemValue="9" disabled="true />
              </b:panelGrid>
             <b:commandButton value="submit your choice" action="&num;{radiobuttonBean.submit}" look="primary" />
             <b:messages />
