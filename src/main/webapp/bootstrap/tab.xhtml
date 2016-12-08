@@ -296,6 +296,111 @@
 			</b:tabView>
 		</h:form>
 
+
+		<h2>
+			Disabled and hidden tabs and tabViews <b:badge value="since 1.0.1" />
+		</h2>
+		<p>You can use the attribute <code>rendered="false"</code> to hide both the entire TabView or an individual tab. Similarly, you can use the attribute
+		<code>disabled="true"</code> to gray out the entire TabView or an individual tab.</p>
+		<br />
+		
+		<h4>Disabling the enire TabView</h4>
+		<h:form>
+			<b:tabView disabled="true"
+				contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-top: 1px solid #ddd;padding:10px">
+				<b:tab title="JSF markup">
+					<script type="syntaxhighlighter"
+						class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+      <h:form>
+        <b:tabView disabled="true" contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-top: 1px solid #ddd;padding:10px">
+          <b:tab title="JSF markup">
+			...
+          </b:tab>
+          <b:tab title="second tab">
+              Put some text here.
+          </b:tab>
+         </b:tabView>
+     </h:form>
+ ]]>
+         </script>
+				</b:tab>
+				<b:tab title="second tab">
+              Put some text here.
+            </b:tab>
+			</b:tabView>
+		</h:form>
+		
+		<h4>Disabling and hiding individual tabs</h4>
+
+		<h:form>
+			<b:tabView 
+				contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-top: 1px solid #ddd;padding:10px">
+				<b:tab title="JSF markup">
+					<script type="syntaxhighlighter"
+						class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+      <h:form>
+        <b:tabView disabled="true" contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-top: 1px solid #ddd;padding:10px">
+          <b:tab title="JSF markup">
+			...
+          </b:tab>
+			<b:tab title="second tab" rendered="false">
+              This tab is not rendered.
+            </b:tab>
+			<b:tab title="third tab">
+              Put some text here.
+            </b:tab>
+			<b:tab title="fourth tab" disabled="true">
+              This tab is disabled.
+            </b:tab>
+         </b:tabView>
+     </h:form>
+ ]]>
+         </script>
+			</b:tab>
+			<b:tab title="second tab" rendered="false">
+              This tab is not rendered.
+            </b:tab>
+			<b:tab title="third tab">
+              Put some text here.
+            </b:tab>
+			<b:tab title="fourth tab" disabled="true">
+              This tab is disabled.
+            </b:tab>
+			</b:tabView>
+		</h:form>
+
+		<h4>Hiding the entire TabView</h4>
+		<p>This demo is sort of hard to demonstrate, but we included it for testing purposes nonetheless. Below you see (or rather: you don't see)
+		a tabView with <code>rendered="false"</code>.</p>
+		<h:form>
+			<b:tabView rendered="false">
+				<b:tab title="first tab">
+					Content of the first tab.
+ 				</b:tab>
+				<b:tab title="second tab">
+	              	Put some text here.
+	            </b:tab>
+			</b:tabView>
+					<script type="syntaxhighlighter"
+						class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+			<b:tabView rendered="false">
+				<b:tab title="first tab">
+					Content of the first tab.
+ 				</b:tab>
+				<b:tab title="second tab">
+	              	Put some text here.
+	            </b:tab>
+			</b:tabView>
+ ]]>
+        </script>
+ </h:form>
+
+
+
+
 		<h2>
 			AJAX and JavaScript
 			<b:badge value="since 0.8.0" />
