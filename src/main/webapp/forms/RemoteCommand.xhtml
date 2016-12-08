@@ -30,7 +30,10 @@ td {
 					<b:panel title="RemoteCommand demo">
 						<b:button onclick="countRemotely()" value="increment remote counter" look="success"/>
 						<b:remoteCommand name="countRemotely" id="remoteCommand" actionListener="&num;{remoteCommandBean.count}" update="@(.counter)" />
-						<h:panelGroup id="counterId" layout="block" class="counter"><br />You've triggered the remoteCommand &num;{remoteCommandBean.counter} times.</h:panelGroup>
+						<h:panelGroup id="counterId" layout="block" class="counter">
+                           <br />
+                           You've triggered the remoteCommand &num;{remoteCommandBean.counter} times.
+                         </h:panelGroup>
 					</b:panel>
       ]]>
       </script>
@@ -90,8 +93,13 @@ public class RemoteCommandBean implements Serializable{
             <![CDATA[
 						<b:button onclick="setCounter(0)" value="set counter to zero" look="success"/>
 						<b:button onclick="setCounter(10)" value="set counter to ten" look="success"/>
-						<b:remoteCommand name="setCounter" id="remoteCommand2" actionListener="&num;{remoteCommandBean.setCounter}" update="@(.counter)" parameters="initialValue" />
-						<h:panelGroup id="counterId" layout="block" class="counter"><br />You've set the remoteCommand counter to &num;{remoteCommandBean.counter}.</h:panelGroup>
+						<b:remoteCommand name="setCounter" id="remoteCommand2" 
+                                         actionListener="&num;{remoteCommandBean.setCounter}" 
+                                         update="@(.counter)" parameters="initialValue" />
+						<h:panelGroup id="counterId" layout="block" class="counter">
+                          <br />
+                          You've set the remoteCommand counter to &num;{remoteCommandBean.counter}.
+                        </h:panelGroup>
       ]]>
       </script>
         </b:well>
