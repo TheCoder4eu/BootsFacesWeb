@@ -233,6 +233,45 @@
         </b:panel>
       </b:row>
     </h:form>
+    
+    
+    <h3>id and field-id <b:badge value="since 1.0.01" /> </h3>
+    <p>The datepicker widgets consists of the input field and some extra HTML code which makes it look like a datepicker. Both items
+    have an id. The id of the outer HTML code is the standard <code>id</code> every JSF component has. The id of the input field
+    can be modified by the attribute <code>field-id</code>. By default, it's the client id plus the suffix <code>_Input</code>,
+    but that's subject to change, so please don't rely on it.
+    </p>
+    <h:form>
+      <b:row>
+        <b:panel title="Live preview" small-screen="half" look="primary">
+			<div class="form-group">
+			    <b:dateTimePicker 
+                       id="aGreatId"
+			        fieldId="evenGreaterFieldId"				    	
+			        iconAwesome="bolt" 
+			    	value="#{test.dataToPick}" 
+			    	/>
+		  </div>
+          <f:facet name="footer">
+            <script type="syntaxhighlighter"
+                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+			<h:form>
+			  <div class="form-group">
+			    <b:dateTimePicker 
+                    id="aGreatId"
+			        fieldId="evenGreaterFieldId"				    	
+			        iconAwesome="bolt" 
+			    	value="#{test.dataToPick}" 
+			    	/>
+			</h:form>
+ 			]]>
+			</script>
+          </f:facet>
+        </b:panel>
+      </b:row>
+    </h:form>
+    
 
     <ui:include src="DateTimePickerAttributes.xhtml" />
     <b:panel look="info">
