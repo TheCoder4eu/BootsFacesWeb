@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+	<composite:interface>
+		<composite:attribute 
+		    name="action"
+			method-signature="java.lang.String action()" />
+		<composite:attribute name="caption" />
+	</composite:interface>
+
+	<composite:implementation>
+	
+		<b:commandButton 
+		    value="#{cc.attrs.caption}"
+			action="#{cc.attrs.action}" 
+			look="danger" />
+	</composite:implementation>
+</ui:composition>

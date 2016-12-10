@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:cc="http://java.sun.com/jsf/composite/customComponents">
+
+	<ui:define name="content">
+		<style>
+td {
+	padding: 8px;
+}
+</style>
+		<h1>Composite Components<b:badge value="since 1.0.1" /></h1>
+
+		<p>BootsFaces supports Composite Components, too.</p>
+		<h:form>
+			<cc:redButton caption="I'm red!" action="#{customComponentsBean.onClick}" />
+		</h:form>
+		
+		<h1>Custom components in a data table</h1>
+
+		<h:form>
+		    <b:dataTable value="#{carPool.carPool}"
+	                     var="car"
+	                     onpage="console.log('page');">
+	            <b:dataTableColumn value="#{car.brand}" />
+	            <b:dataTableColumn value="#{car.type}" />
+	            <b:dataTableColumn value="#{car.color}" />
+	            <b:dataTableColumn value="#{car.year}"  order="asc" />
+	            <b:dataTableColumn value="#{car.price}" />
+	            <b:dataTableColumn value="#{car.enginePower}" label="Engine Power (hp)" />
+	            <b:dataTableColumn label="Non-AJAX">
+	            	<cc:blueButton caption="Select this #{car.brand}" action="#{customComponentsBean.onClick(car)}" />
+	            </b:dataTableColumn>
+	            <b:dataTableColumn label="AJAX">
+	            	<cc:ajaxButton caption="Delete this #{car.brand}" onclick="ajax:customComponentsBean.onDelete(carPool.carPool, car)" update="@form" />
+	            </b:dataTableColumn>
+	        </b:dataTable>
+		</h:form>
+
+		<script type="text/javascript">
+      		SyntaxHighlighter.all();
+    	</script>
+		<br />
+		<br />
+		<br />
+		<br />
+	</ui:define>
+</ui:composition>

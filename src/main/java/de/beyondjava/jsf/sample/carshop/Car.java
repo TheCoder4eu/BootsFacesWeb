@@ -16,12 +16,22 @@
  */
 package de.beyondjava.jsf.sample.carshop;
 
+import java.io.Serializable;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+@ManagedBean
+@SessionScoped
+public class Car implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-public class Car {
 	String brand;
 
 	public int getMileage() {
