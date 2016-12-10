@@ -34,7 +34,7 @@ td {
 	            <b:dataTableColumn value="#{car.price}" />
 	            <b:dataTableColumn value="#{car.enginePower}" label="Engine Power (hp)" />
 	            <b:dataTableColumn label="Non-AJAX">
-	            	<cc:blueButton caption="Select this #{car.brand}" action="#{customComponentsBean.onClick(car)}" />
+	            	<cc:blueButton caption="Select this #{car.brand}" action="#{customComponentsBean.onClick}" />
 	            </b:dataTableColumn>
 	            <b:dataTableColumn label="AJAX">
 	            	<cc:ajaxButton caption="Delete this #{car.brand}" onclick="ajax:customComponentsBean.onDelete(carPool.carPool, car)" update="@form" />
