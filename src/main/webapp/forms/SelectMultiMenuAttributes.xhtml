@@ -28,6 +28,11 @@
                 <td>Access key to transfer focus to the input element.</td>
             </tr>
             <tr>
+                <td>ajax</td>
+                <td>false</td>
+                <td>Whether the Button submits the form with AJAX.</td>
+            </tr>
+            <tr>
                 <td>all-selected-text<br />allSelectedText (alternative writing)</td>
                 <td>(none)</td>
                 <td>Text which is displayed if every option has been selected.</td>
@@ -265,17 +270,67 @@
             <tr>
                 <td>onchange</td>
                 <td>(none)</td>
-                <td>Client side callback to execute when input element loses focus and its value has been modified since gaining focus.</td>
+                <td>AJAX event: A function which is triggered on the change event of the options. Note that the event is not triggered when selecting or deselecting options using the select and deselect methods provided by the plugin.</td>
+            </tr>
+            <tr>
+                <td>onclick</td>
+                <td>(none)</td>
+                <td>The onclick attribute.</td>
+            </tr>
+            <tr>
+                <td>oncomplete</td>
+                <td>(none)</td>
+                <td>JavaScript to be executed when ajax completes.</td>
+            </tr>
+            <tr>
+                <td>ondeselectall</td>
+                <td>(none)</td>
+                <td>AJAX event: This function is triggered when the select all option is used to deselect all options. Note that this can also be triggered manually using the .multiselect('deselectAll') method.</td>
+            </tr>
+            <tr>
+                <td>ondropdownhidden</td>
+                <td>(none)</td>
+                <td>AJAX event: A callback called after the dropdown has been closed.</td>
             </tr>
             <tr>
                 <td>ondropdownhide</td>
                 <td>(none)</td>
-                <td>Client side callback called when the drop-down area is hidden.</td>
+                <td>AJAX event: A callback called when the dropdown is closed.</td>
             </tr>
             <tr>
                 <td>ondropdownshow</td>
                 <td>(none)</td>
-                <td>Client side callback called when the drop-down area is shown.</td>
+                <td>AJAX event: A callback called when the dropdown is shown.</td>
+            </tr>
+            <tr>
+                <td>ondropdownshown</td>
+                <td>(none)</td>
+                <td>AJAX event: A callback called after the dropdown has been shown.</td>
+            </tr>
+            <tr>
+                <td>onerror</td>
+                <td>(none)</td>
+                <td>JavaScript to be executed when ajax results on an error (including both network errors and Java exceptions).</td>
+            </tr>
+            <tr>
+                <td>oninitialized</td>
+                <td>(none)</td>
+                <td>AJAX event: A function which is triggered when the multiselect is finished initializing.</td>
+            </tr>
+            <tr>
+                <td>onselectall</td>
+                <td>(none)</td>
+                <td>AJAX event: This function is triggered when the select all option is used to select all options. Note that this can also be triggered manually using the .multiselect('selectAll') method.</td>
+            </tr>
+            <tr>
+                <td>onsuccess</td>
+                <td>(none)</td>
+                <td>JavaScript to be executed when ajax completes with success (i.e. there's neither a network error nor a Java exception).</td>
+            </tr>
+            <tr>
+                <td>process</td>
+                <td>(none)</td>
+                <td>Comma or space separated list of ids or search expressions denoting which values are to be sent to the server.</td>
             </tr>
             <tr>
                 <td>radiobuttons</td>
@@ -381,6 +436,11 @@
                 <td>tooltip-position<br />tooltipPosition (alternative writing)</td>
                 <td>(none)</td>
                 <td>Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".</td>
+            </tr>
+            <tr>
+                <td>update</td>
+                <td>(none)</td>
+                <td>Component(s) to be updated with ajax.</td>
             </tr>
             <tr>
                 <td>value</td>

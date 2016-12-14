@@ -86,6 +86,48 @@
 
         <h1>AJAX</h1>
         <p>As of BootsFaces 0.7.0, AJAX doesn't seem to work with the multiple-choice combobox. In theory it should work, but there's an issue with the example above, so we can't say for sure it works in your application.</p>
+       <h:form>
+            <b:tabView activeIndex="1">
+                <b:tab title="JSF markup">
+                    <b:well>
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+        <h:form>
+        </h:form>
+]]>
+       </script>
+                    </b:well>
+                </b:tab>
+                <b:tab title="displayed as">
+                    <b:well>
+                        <b:panelGrid colSpans="2,2,2,2,4">
+                            <h:outputLabel value="Select your car's brand:" for="brandID" id="l1" />
+                            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" id="brandID" ondropdownhide="console.log('hide');ajax:selectMultiMenuBean.updateBrandMessage()" update="@next">
+                                <f:selectItem itemLabel="Fiat" itemValue="1" />
+                                <f:selectItem itemLabel="Honda" itemValue="2" />
+                                <f:selectItem itemLabel="Opel" itemValue="3" />
+                            </b:selectMultiMenu>
+                            <h:message for="brandID" />
+                            <h:outputLabel value="last submitted value:" for="brandOutputID" />
+                            <b:inputText value="#{selectMultiMenuBean.brand}" disabled="true" id="brandOutputID" />
+                            <h:outputLabel value="Select your car's type:" for="typeID" />
+                            <b:selectMultiMenu value="#{selectMultiMenuBean.type}" id="typeID" required="true">
+                                <f:selectItem itemLabel="Cinquecento" itemValue="1" />
+                                <f:selectItem itemLabel="Civic" itemValue="2" />
+                                <f:selectItem itemLabel="Astra" itemValue="3" />
+                                <f:selectItem itemLabel="Megane" itemValue="4" />
+                            </b:selectMultiMenu>
+                            <h:message for="typeID" />
+                            <h:outputLabel value="last submitted value:" for="typeOutputID" />
+                            <b:inputText value="#{selectMultiMenuBean.type}" disabled="true" id="typeOutputID" />
+                        </b:panelGrid>
+                        <b:commandButton value="Submit"/>
+                    </b:well>
+                </b:tab>
+            </b:tabView>
+        </h:form>
+
+
 
         <h1>Options</h1>
 
@@ -188,7 +230,7 @@
 
 			<h:outputText value="onchange" />
             <b:selectMultiMenu value="#{selectMultiMenuBean.brand}"
-                onchange="function(option, checked, select) {console.log('changed option ' + $(option).val())}">
+                onchange="console.log('changed option ' + $(option).val());">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
                  <f:selectItem itemLabel="Opel" itemValue="3" />
@@ -197,7 +239,7 @@
 
 			<h:outputText value="ondropdownshow" />
             <b:selectMultiMenu value="#{selectMultiMenuBean.brand}"
-                ondropdownshow="function(event) {console.log('shown')}">
+                ondropdownshow="console.log('shown')">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
                  <f:selectItem itemLabel="Opel" itemValue="3" />
@@ -206,7 +248,7 @@
 
 			<h:outputText value="ondropdownhide" />
             <b:selectMultiMenu value="#{selectMultiMenuBean.brand}"
-                ondropdownhide="function(event) {console.log('hidden')}">
+                ondropdownhide="console.log('hidden')">
                  <f:selectItem itemLabel="Fiat" itemValue="1" />
                  <f:selectItem itemLabel="Honda" itemValue="2" />
                  <f:selectItem itemLabel="Opel" itemValue="3" />

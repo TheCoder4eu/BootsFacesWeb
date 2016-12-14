@@ -24,6 +24,8 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import net.bootsfaces.utils.FacesMessages;
+
 /** A simple bean for demo purposes. */
 @RequestScoped
 @ManagedBean
@@ -49,7 +51,7 @@ public class SelectMultiMenuBean implements Serializable {
 	private int enginePower;
 	
 	private boolean iAgreeToTheTermsAndConditions=false;
-
+	
 	public String getColor() {
 		return color;
 	}
@@ -96,5 +98,9 @@ public class SelectMultiMenuBean implements Serializable {
 
 	public void setiAgreeToTheTermsAndConditions(boolean iAgreeToTheTermsAndConditions) {
 		this.iAgreeToTheTermsAndConditions = iAgreeToTheTermsAndConditions;
+	}
+	
+	public void updateBrandMessage() {
+		FacesMessages.warning("brandId", "Brand selected", "You've selected " + brand);
 	}
 }
