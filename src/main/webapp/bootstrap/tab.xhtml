@@ -12,6 +12,31 @@
 		<p>Add quick, dynamic tab functionality to transition through
 			panes of local content. You can also have complex content in your tabs like the
 			thumbnail in the third tab:</p>
+		<h:form>
+			<b:tabView disabled="true"
+				contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-top: 1px solid #ddd;padding:10px">
+				<b:tab title="JSF markup">
+					<script type="syntaxhighlighter"
+						class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+      <h:form>
+        <b:tabView disabled="true" contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-top: 1px solid #ddd;padding:10px">
+          <b:tab title="JSF markup">
+			...
+          </b:tab>
+          <b:tab title="second tab">
+              Put some text here.
+          </b:tab>
+         </b:tabView>
+     </h:form>
+ ]]>
+         </script>
+				</b:tab>
+				<b:tab title="second tab">
+              Put some text here.
+            </b:tab>
+			</b:tabView>
+		</h:form>
 
 		<h:form id="tabform">
           <b:row>
@@ -94,6 +119,8 @@
 				button. However, as soon as the user clicks a tab themselves, the
 				connection to the back-end bean is lost.
 			</p>
+			<p>You can also use a negative tab index. In this case, the tabs are counted from the right hand side. For instance, <code>activeIndex="-1"</code>
+			activates the right-most tab.</p>
         </b:column>
       </b:row>
       <b:commandButton action="#{testBean.nextTab}" value="next tab"
@@ -304,7 +331,8 @@
 		<code>disabled="true"</code> to gray out the entire TabView or an individual tab.</p>
 		<br />
 		
-		<h4>Disabling the enire TabView</h4>
+		<h4>Disabling the entire TabView</h4>
+		<p>That's a pretty radical step. You can't activate any of the tabs. Nor is the content of any of the tabs ever shown.</p>
 		<h:form>
 			<b:tabView disabled="true"
 				contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-top: 1px solid #ddd;padding:10px">
@@ -332,26 +360,35 @@
 		</h:form>
 		
 		<h4>Disabling and hiding individual tabs</h4>
+		<p>Inactive tabs can't be activated by clicking. If the currently active tab is disabled, the next tab is activated, until an enabled tab is found.
+		In the example below, the first tab is initially active. However, it's disabled, so the next tab is activated. It's an enabled tab, so it's rendered
+		as active. If none of the tabs were enabled, there's no active tab - just like in the example above.</p>
 
 		<h:form>
-			<b:tabView 
+			<b:tabView activeIndex="-5"
 				contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-top: 1px solid #ddd;padding:10px">
+			<b:tab title="first tab (disabled)" disabled="true">
+              This tab is disabled.
+            </b:tab>
 				<b:tab title="JSF markup">
 					<script type="syntaxhighlighter"
 						class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
       <h:form>
         <b:tabView disabled="true" contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-top: 1px solid #ddd;padding:10px">
+			<b:tab title="first tab (disabled)" disabled="true">
+              This tab is disabled.
+            </b:tab>
           <b:tab title="JSF markup">
 			...
           </b:tab>
-			<b:tab title="second tab" rendered="false">
+			<b:tab title="invisible tab" rendered="false">
               This tab is not rendered.
             </b:tab>
 			<b:tab title="third tab">
               Put some text here.
             </b:tab>
-			<b:tab title="fourth tab" disabled="true">
+			<b:tab title="fourth tab (disabled)" disabled="true">
               This tab is disabled.
             </b:tab>
          </b:tabView>
@@ -359,13 +396,13 @@
  ]]>
          </script>
 			</b:tab>
-			<b:tab title="second tab" rendered="false">
+			<b:tab title="invisible tab" rendered="false">
               This tab is not rendered.
             </b:tab>
 			<b:tab title="third tab">
               Put some text here.
             </b:tab>
-			<b:tab title="fourth tab" disabled="true">
+			<b:tab title="fourth tab (disabled)" disabled="true">
               This tab is disabled.
             </b:tab>
 			</b:tabView>
