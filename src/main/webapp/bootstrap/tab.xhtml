@@ -12,32 +12,6 @@
 		<p>Add quick, dynamic tab functionality to transition through
 			panes of local content. You can also have complex content in your tabs like the
 			thumbnail in the third tab:</p>
-		<h:form>
-			<b:tabView disabled="true"
-				contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-top: 1px solid #ddd;padding:10px">
-				<b:tab title="JSF markup">
-					<script type="syntaxhighlighter"
-						class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-      <h:form>
-        <b:tabView disabled="true" contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-top: 1px solid #ddd;padding:10px">
-          <b:tab title="JSF markup">
-			...
-          </b:tab>
-          <b:tab title="second tab">
-              Put some text here.
-          </b:tab>
-         </b:tabView>
-     </h:form>
- ]]>
-         </script>
-				</b:tab>
-				<b:tab title="second tab">
-              Put some text here.
-            </b:tab>
-			</b:tabView>
-		</h:form>
-
 		<h:form id="tabform">
           <b:row>
 	       <b:column colSpan="12">
@@ -127,6 +101,7 @@
         ajax="true" update="@form" />
 		</h:form>
 
+		<a id="persistent"></a>
 		<h2>Persistent tab selection</h2>
 		<p>
 			By default, the first tab is opened, or the tab defined by
@@ -206,6 +181,7 @@
 			</b:tabView>
 		</h:form>
 
+		<a id="pills"></a>
 		<h2>Tab pills <b:badge value="since 0.8.5" /></h2>
 		<p>You can use the pills setting to render pills instead of tabs:</p>
 		<h:form>
@@ -297,6 +273,7 @@
 
 			<br />
 			<br />
+			<a id="right"></a>
 			<h3>Right Tab</h3>
 			<b:tabView tabPosition="right"
 				contentStyle="border: 1px solid #ddd;padding:10px">
@@ -323,7 +300,8 @@
 			</b:tabView>
 		</h:form>
 
-
+		
+		<a id="disabled"></a>
 		<h2>
 			Disabled and hidden tabs and tabViews <b:badge value="since 1.0.1" />
 		</h2>
@@ -438,6 +416,7 @@
 
 
 
+		<a id="ajax"></a>
 		<h2>
 			AJAX and JavaScript
 			<b:badge value="since 0.8.0" />
@@ -466,6 +445,7 @@
         </b:tabView>
 
 
+		<a id="reference"></a>
 		<h1>Reference section</h1>
 		<ui:include src="TabViewAttributes.xhtml" />
 		<ui:include src="TabAttributes.xhtml" />
