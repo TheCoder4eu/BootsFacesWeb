@@ -16,16 +16,27 @@
 		<h1>ScrollSpy (&lt;b:scrollSpy /&gt;) <b:badge value="since 0.8.5" /></h1>
 
 		<p>
-		<code>&lt;b:scrollSpy&gt;</code> is a wrapper of the native bootstrap scrollspy function.
-		it can be used to provide automatic menu highlight during scrolling. BootsFaces adds AJAX to this feature.You
+		<code>&lt;b:scrollSpy&gt;</code> is a wrapper of the native bootstrap scrollspy function which links a menu to
+		the content of a scrollable page. The standard behavior is that a menu jumps to another page or to a certain
+		position within the current page. <code>/lt;b:scrollSpy /&gt;</code> adds the backward link. As you scroll through
+		a page, the menu is updated when you enter a section of the page which can be reached by clicking a menu entry.</p>
+		<p>Menu entries and document sections are linked via the id of the section. You can jump to a section
+		of the current of by defining a menu entry with a fragment URL, such as <code>href="#firstSection"</code>.</p>
+		<p>BootsFaces also adds AJAX to this feature.You
         can define an action listener in the backend JSF bean receiving the name of current
-		highlighted section via AJAX.<br/>
-		Is very important that the section you're using as a scroll container has the CSS position property set to "relative".
+		highlighted section via AJAX.</p>
+		<p>Is very important that the section you're using as a scroll container has the CSS position property set to "relative".
         In most cases this scroll container is the <code>&lt;h:body /&gt;</code>. Make sure to set the attributes
         <code>height</code> and the <code>overflow-y:scroll</code> if using another scroll container than <code>&lt;h:body /&gt;</code>.
 		</p>
 		<h1>Basic usage</h1>
-		<p>This is a very simple inline implementation:</p>
+		<p>Using the scrollspy requires three simple steps:</p>
+		<ul>
+		<li>Add an id to each section you want to link with a menu entry.</li>
+		<li>Use fragment URLs in the menu so you can jump to each section by clicking the menu.</li>
+		<li>Add an id to the menu.</li>
+		<li>Provide the backward link by adding the <code>&lt;b:scrollSpy /&gt;</code> and passing it the id of the menu.</li>
+		</ul>
 
 		<b:tabView activeIndex="1">
 			<b:tab title="JSF markup">
@@ -143,7 +154,7 @@
 			</b:tab>
 		</b:tabView>
 		<br/>
-		<p>Try an example in full screen <b:navLink outcome="scrollspy_full" value="full screen example" /></p>
+		<p>Also try our <b:navLink outcome="scrollspy_full" value="full screen example" />.</p>
 		<br/>
         <h2>Reference section</h2>
         <ui:include src="ScrollSpyAttributes.xhtml" />
