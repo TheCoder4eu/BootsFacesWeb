@@ -347,7 +347,8 @@
 		<p>Inactive tabs can't be activated by clicking. If the currently active tab is disabled, the next tab is activated, until an enabled tab is found.
 		In the example below, the first tab is initially active. However, it's disabled, so the next tab is activated. It's an enabled tab, so it's rendered
 		as active. If none of the tabs were enabled, there's no active tab - just like in the example above.</p>
-
+		<p>If the active index is defined by an bean attribute, such as <code>activeIndex="# {testBean.index}</code>, the bean attribute value
+		if updated to the real index during the rendering phase. If every tab is disabled, the bean attribute is set to <code>Integer.MAX_VALUE</code>.</p>
 		<h:form>
 			<b:tabView activeIndex="-5"
 				contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-top: 1px solid #ddd;padding:10px">
