@@ -237,25 +237,25 @@
                 </h:form>
                 <p class="text-success">Note: the same applies to Vertical Sliders.</p-->
                 <!-- TO FIX in 1.1.0 -->
-                <!--h4>Handle Shape</h4>
-                <p>The default handle has a rounded square shape.</p>
-                <p>If you prefer a round handle you can add the <code>handle-shape="round"</code> attribute.</p>
+                <h4>Handle Shape</h4>
+                <p>The default handle has a rounded shape.</p>
+                <p>If you prefer a square or triangle handle you can add the <code>handleShape="square"</code> or <code>handleShape="triangle"</code> attribute.</p>
                 <h:form>
                     <b:panel look="info">
-                        <f:facet name="heading"><b>EXAMPLE - Handle Size</b></f:facet>
+                        <f:facet name="heading"><b>EXAMPLE - Handle Shape</b></f:facet>
                         <b:row>
                             <b:column>
-                                <b:slider2 handle-shape="round" min="0" max="100" step="5" value="25" label="Default"/>
+                                <b:slider2 handleShape="round" min="0" max="100" step="5" value="25" label="Default (round)"/>
                             </b:column>
                         </b:row>
                         <b:row>
                             <b:column>
-                                <b:slider2 handle-shape="round" handle-size="md" min="0" max="100" value="75" label="Round handle (md)" />
+                                <b:slider2 handleShape="square" min="0" max="100" value="75" label="Round handle" />
                             </b:column>
                         </b:row>
                         <b:row>
                             <b:column>
-                                <b:slider2 handle-shape="round" handle-size="lg" min="0" max="100" step="5" value="50" label="Round handle (lg)"/>
+                                <b:slider2 handleShape="triangle" min="0" max="100" step="5" value="50" label="Triangle handle"/>
                             </b:column>
                         </b:row>
 
@@ -266,24 +266,24 @@
                         <![CDATA[
                         <b:row>
                             <b:column>
-                                <b:slider2 handle-shape="round" min="0" max="100" step="5" value="25" label="Default"/>
+                                <b:slider2 handleShape="round" min="0" max="100" step="5" value="25" label="Default (round)"/>
                             </b:column>
                         </b:row>
                         <b:row>
                             <b:column>
-                                <b:slider2 handle-shape="round" handle-size="md" min="0" max="100" value="75" label="Round handle (md)" />
+                                <b:slider2 handleShape="square" min="0" max="100" value="75" label="Round handle" />
                             </b:column>
                         </b:row>
                         <b:row>
                             <b:column>
-                                <b:slider2 handle-shape="round" handle-size="lg" min="0" max="100" step="5" value="50" label="Round handle (lg)"/>
+                                <b:slider2 handleShape="triangle" min="0" max="100" step="5" value="50" label="Triangle handle"/>
                             </b:column>
                         </b:row>
                         ]]></script>
                         </f:facet>
                     </b:panel>
                 </h:form>
-                <p class="text-success">Note: the same applies to Vertical Sliders.</p-->
+                <p class="text-success">Note: the same applies to Vertical Sliders.</p>
                 <h4>Read only / disabled</h4>
                 <p>The attributes <code>readonly</code> and <code>disabled</code> can also be applied to sliders.</p>
                 <h:form>
