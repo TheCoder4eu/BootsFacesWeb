@@ -16,7 +16,7 @@
           <b:row>
 	       <b:column colSpan="12">
     		<b:tabView activeIndex="#{testBean.index}"
-				content-style="height:360px">
+				content-style="height:360px" onclick="ajax:testBean.onclick()" update="tabInfoId">
 				<b:tab title="First tab"
 					contentStyle="padding:20px;border-right:1px solid;border-left:1px solid;border-bottom:1px solid;border-color:#e8e8e8">
 					<p>This is the first tab.</p>
@@ -38,7 +38,6 @@
 				</b:tab>
 				<!-- The next tab shows tabs aren't limited to text. You can put anything in a tab. -->
 				<b:tab title="Image tab">
-					<br />
 					<b:thumbnail>
 						<div style="float: left; padding-left: 20px;padding-top:10px;padding-right:20px">
 							<img width="450" height="300"
@@ -82,17 +81,15 @@
         </b:column>
 	  </b:row>
       <b:row>
-        <b:column colSpan="12">
+        <b:column colSpan="12" id="tabInfoId">
 			<p>
 				Optionally, your server-side bean can define which tab is shown. You
 				can achieve this by using the property
 				<code>activeIndex</code>
 				. For instance, the example above uses
-				<code>activeIndex="#{testBean.index}"</code>
+				<code>activeIndex="# {testBean.index}"</code>
 				, which enables use to open the next tab by clicking a command
-				button. However, as soon as the user clicks a tab themselves, the
-				connection to the back-end bean is lost.
-			</p>
+				button. When you click a tab, the index is update: <code>"#{testBean.index}"</code>.</p>
 			<p>You can also use a negative tab index. In this case, the tabs are counted from the right hand side. For instance, <code>activeIndex="-1"</code>
 			activates the right-most tab.</p>
         </b:column>
@@ -100,6 +97,15 @@
       <b:commandButton action="#{testBean.nextTab}" value="next tab"
         ajax="true" update="@form" />
 		</h:form>
+
+		<a id="attributes"></a>
+		<h2>Updating the tab index in the Java bean <b:badge value="since 1.0.1"/></h2>
+		<p>In the example above the active tab index is defined by an attribute of a Java bean: <code>activeIndex="# {testBean.index}"</code>.
+		BootsFaces updates the value of the attribute of the Java bean on any request. However, BootsFaces can't do that if you
+		use a method or a constant to define the active index, such as <code>activeIndex="# {testBean.getIndex()}"</code> or <code>activeIndex="1"</code>.
+		In this case, the default value is overriden by the user's click, and the connection between the back-end and the active tab index is lost.
+		</p>
+
 
 		<a id="persistent"></a>
 		<h2>Persistent tab selection</h2>
