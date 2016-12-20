@@ -113,10 +113,10 @@
         to your project. </p>
 
 
-      <h2>Advanced usage (also works without BootsFaces)</h2>
+      <h2>Advanced usage (only works with BootsFaces)</h2>
       <p>By configuring and activating the BootsFaces facelets decorator, you can use search expressions with the
-      <code>for</code> attribute of many standard JSF components, such as <code>&lt;h:message /&lt;</code>,
-      <code>&lt;h:messages /&lt;</code>, and <code>&lt;h:outputLabel /&lt;</code>. From a programmers perspective,
+      <code>for</code> attribute of many standard JSF components, such as <code>&lt;h:message /&gt;</code>,
+      <code>&lt;h:messages /&gt;</code>, and <code>&lt;h:outputLabel /&gt;</code>. From a programmers perspective,
       you won't see much of a difference between the two classes of components. The only difference is that
       some of BootsFaces search expressions are very powerful, which makes them slower than a simple id.</p>
 
@@ -158,6 +158,31 @@
                             execute="&num;{searchExpressionResolverBean.resolve(component, '@form')}"
                             listener="&num;{numberGuessBean.submitGuess}"/>
                     </h:commandButton>
+                    ]]></script>
+                  </b:well>
+                </b:tab>
+                <b:tab title="web.xml configuration">
+                  <b:well>
+                    <script type="syntaxhighlighter"
+                      class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                    <![CDATA[
+    <context-param>
+      <param-name>javax.faces.FACELETS_DECORATORS</param-name>
+      <param-value>
+          net.bootsfaces.expressions.decorator.SearchExpressionsTagDecorator
+      </param-value>
+    </context-param>
+                    ]]></script>
+                  or
+                    <script type="syntaxhighlighter"
+                      class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                    <![CDATA[
+    <context-param>
+      <param-name>javax.faces.FACELETS_DECORATORS</param-name>
+      <param-value>
+          net.bootsfaces.decorator.BootsFacesTagDecorator
+      </param-value>
+    </context-param>
                     ]]></script>
                   </b:well>
                 </b:tab>
