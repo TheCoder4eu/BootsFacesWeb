@@ -395,7 +395,7 @@ public class SemaphoreBean {
     </h:form>
 
 
-
+	<a id="errorClasses" />
     <h2>Labels, required fields and error messages  <b:badge value="since 0.8.0" /></h2>
                <p>You can add a label by adding the attribute <code>label</code>. The label is also used by the JSF messages. To give you maximum flexibility,
                you can suppress automatic rendering of labels by adding <code>renderLabel="false"</code>.
@@ -407,6 +407,73 @@ public class SemaphoreBean {
                 <p>If there's no message,
                    the field and its label bear the pseudo CSS class <code>bf-no-message</code>.
                </p>
+
+    <h:form>
+      <b:tabView activeIndex="1">
+        <b:tab title="JSF markup">
+          <b:well>
+            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+							<b:column small-screen="half" id="selectOneDemoId">
+								<p>AJAX:</p>
+								<b:selectOneMenu label="form of address (required)"
+									renderLabel="true" required="true"
+									requiredMessage="Please provide the form of address."
+									update="selectOneDemoId" value="selectOneMenuBean.address"
+									onchange="ajax:selectOneMenuBean.onChange()">
+									<f:selectItem itemLabel="- please select - " />
+									<f:selectItem itemLabel="Mrs." />
+									<f:selectItem itemLabel="Mr." />
+								</b:selectOneMenu>
+
+								<p>Non-AJAX:</p>
+
+								<b:selectOneMenu label="form of address (required)"
+									renderLabel="true" required="true"
+									requiredMessage="Please provide the form of address."
+									value="selectOneMenuBean.address">
+									<f:selectItem itemLabel="- please select - " />
+									<f:selectItem itemLabel="Mrs." />
+									<f:selectItem itemLabel="Mr." />
+								</b:selectOneMenu>
+								<b:commandButton value="submit form and perform validations"
+									update="selectOneDemoId" />
+]]></script>
+          </b:well>
+        </b:tab>
+				<b:tab title="live preview">
+					<b:well>
+						<b:row>
+							<b:column small-screen="half" id="selectOneDemoId">
+								<p>AJAX:</p>
+								<b:selectOneMenu label="form of address (required)"
+									renderLabel="true" required="true"
+									requiredMessage="Please provide the form of address."
+									update="selectOneDemoId" value="selectOneMenuBean.address"
+									onchange="ajax:selectOneMenuBean.onChange()">
+									<f:selectItem itemLabel="- please select - " />
+									<f:selectItem itemLabel="Mrs." />
+									<f:selectItem itemLabel="Mr." />
+								</b:selectOneMenu>
+
+								<p>Non-AJAX:</p>
+
+								<b:selectOneMenu label="form of address (required)"
+									renderLabel="true" required="true"
+									requiredMessage="Please provide the form of address."
+									value="selectOneMenuBean.address">
+									<f:selectItem itemLabel="- please select - " />
+									<f:selectItem itemLabel="Mrs." />
+									<f:selectItem itemLabel="Mr." />
+								</b:selectOneMenu>
+								<b:commandButton value="submit form and perform validations"
+									update="selectOneDemoId" />
+							</b:column>
+						</b:row>
+					</b:well>
+				</b:tab>
+			</b:tabView>
+    </h:form>
 
 
 

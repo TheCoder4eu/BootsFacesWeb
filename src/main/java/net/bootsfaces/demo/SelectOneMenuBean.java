@@ -47,6 +47,8 @@ public class SelectOneMenuBean implements Serializable {
 	@Min(2)
 	@Max(999)
 	private int enginePower;
+	
+	private String address;
 
 	private boolean iAgreeToTheTermsAndConditions=false;
 
@@ -100,5 +102,13 @@ public class SelectOneMenuBean implements Serializable {
 
 	public void onChange() {
 		FacesMessages.info("on change has been called");
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 }
