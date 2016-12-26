@@ -20,23 +20,25 @@ package net.bootsfaces.demo;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import net.bootsfaces.expressions.ExpressionResolver;
 import net.bootsfaces.utils.FacesMessages;
 
 /** A simple bean for demo purposes. */
 @RequestScoped
 @ManagedBean
 public class SelectMultiMenuBean implements Serializable {
-    private static final long serialVersionUID = 1L;
-
-    @NotNull
-	private String brand=null;
+	private static final long serialVersionUID = 1L;
 
 	@NotNull
-	private String type="2";
+	private String brand = null;
+
+	@NotNull
+	private String type = "2";
 
 	private String color;
 
@@ -49,9 +51,9 @@ public class SelectMultiMenuBean implements Serializable {
 	@Min(2)
 	@Max(999)
 	private int enginePower;
-	
-	private boolean iAgreeToTheTermsAndConditions=false;
-	
+
+	private boolean iAgreeToTheTermsAndConditions = false;
+
 	public String getColor() {
 		return color;
 	}
@@ -99,8 +101,20 @@ public class SelectMultiMenuBean implements Serializable {
 	public void setiAgreeToTheTermsAndConditions(boolean iAgreeToTheTermsAndConditions) {
 		this.iAgreeToTheTermsAndConditions = iAgreeToTheTermsAndConditions;
 	}
-	
+
 	public void updateBrandMessage() {
-		FacesMessages.warning("brandId", "Brand selected", "You've selected " + brand);
+		if (null == brand) {
+			FacesMessages.error("**:brandID", "Error", "No brand selected");
+		} else {
+			FacesMessages.info("**:brandID", "Brand selected", "You've selected " + brand);
+		}
+	}
+
+	public void updateTypeMessage() {
+		if (null == type) {
+			FacesMessages.warning("**:typeID", "Warning", "No type selected");
+		} else {
+			FacesMessages.info("**:typeID", "Type selected", "You've selected " + type);
+		}
 	}
 }

@@ -83,9 +83,13 @@
                 </b:tab>
             </b:tabView>
         </h:form>
+        
+        <p>The Java bean receives a comma-separated list of the selected values. Note that "no selection" results in an empty string. The
+        attribute of the Java bean may contain a null value when the page is rendered, but requests never set null values.</p>
 
-        <h1>AJAX</h1>
-        <p>As of BootsFaces 0.7.0, AJAX doesn't seem to work with the multiple-choice combobox. In theory it should work, but there's an issue with the example above, so we can't say for sure it works in your application.</p>
+        <h1>AJAX <b:badge value="since 1.1.0" /></h1>
+        <p><code>&lt;b:selectMultiMenu /></code> supports many AJAX callbacks. However, many standard AJAX callbacks are not supported.
+        For instance, there's no <code>onblur</code> event. As an alternative, this example uses <code>ondropdownhide</code>:</p>
        <h:form>
             <b:tabView activeIndex="1">
                 <b:tab title="JSF markup">
@@ -93,35 +97,69 @@
                         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
         <h:form>
+          <b:panelGrid colSpans="2,2,4,2,2">
+              <h:outputLabel value="Select your car's brand:" for="brandID" id="l1" />
+              <b:selectMultiMenu value="&num;{selectMultiMenuBean.brand}" id="brandID" 
+                                 ondropdownhide="console.log('hide brand');ajax:selectMultiMenuBean.updateBrandMessage()" 
+                                 update="selectMultiAjax"
+                                 process="@this"
+                                 required="true">
+                  <f:selectItem itemLabel="Fiat" itemValue="1" />
+                  <f:selectItem itemLabel="Honda" itemValue="2" />
+                  <f:selectItem itemLabel="Opel" itemValue="3" />
+              </b:selectMultiMenu>
+              <b:message for="@previous" />
+              <h:outputLabel value="last submitted value:" for="brandOutputID" />
+              <b:inputText value="&num;{selectMultiMenuBean.brand}" disabled="true" id="brandOutputID" />
+              <h:outputLabel value="Select your car's type:" for="typeID" />
+              <b:selectMultiMenu value="&num;{selectMultiMenuBean.type}" id="typeID" required="true"
+                                ondropdownhide="console.log('hide type');ajax:selectMultiMenuBean.updateTypeMessage()" 
+                                update="selectMultiAjax" process="@this">
+                  <f:selectItem itemLabel="Cinquecento" itemValue="1" />
+                  <f:selectItem itemLabel="Civic" itemValue="2" />
+                  <f:selectItem itemLabel="Astra" itemValue="3" />
+                  <f:selectItem itemLabel="Megane" itemValue="4" />
+              </b:selectMultiMenu>
+              <b:message for="@previous" />
+              <h:outputLabel value="last submitted value:" for="typeOutputID" />
+              <b:inputText value="&num;{selectMultiMenuBean.type}" disabled="true" id="typeOutputID" />
+          </b:panelGrid>
+          <b:commandButton value="Submit" update="selectMultiAjax"/>
         </h:form>
 ]]>
        </script>
                     </b:well>
                 </b:tab>
                 <b:tab title="displayed as">
-                    <b:well>
-                        <b:panelGrid colSpans="2,2,2,2,4">
+                    <b:well id="selectMultiAjax">
+                        <b:panelGrid colSpans="2,2,4,2,2">
                             <h:outputLabel value="Select your car's brand:" for="brandID" id="l1" />
-                            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" id="brandID" ondropdownhide="console.log('hide');ajax:selectMultiMenuBean.updateBrandMessage()" update="@next">
+                            <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" id="brandID" 
+                                               ondropdownhide="console.log('hide brand');ajax:selectMultiMenuBean.updateBrandMessage()" 
+                                               update="selectMultiAjax"
+                                               process="@this"
+                                               required="true">
                                 <f:selectItem itemLabel="Fiat" itemValue="1" />
                                 <f:selectItem itemLabel="Honda" itemValue="2" />
                                 <f:selectItem itemLabel="Opel" itemValue="3" />
                             </b:selectMultiMenu>
-                            <h:message for="brandID" />
+                            <b:message for="@previous" />
                             <h:outputLabel value="last submitted value:" for="brandOutputID" />
                             <b:inputText value="#{selectMultiMenuBean.brand}" disabled="true" id="brandOutputID" />
                             <h:outputLabel value="Select your car's type:" for="typeID" />
-                            <b:selectMultiMenu value="#{selectMultiMenuBean.type}" id="typeID" required="true">
+                            <b:selectMultiMenu value="#{selectMultiMenuBean.type}" id="typeID" required="true"
+                                              ondropdownhide="console.log('hide type');ajax:selectMultiMenuBean.updateTypeMessage()" 
+                                              update="selectMultiAjax" process="@this">
                                 <f:selectItem itemLabel="Cinquecento" itemValue="1" />
                                 <f:selectItem itemLabel="Civic" itemValue="2" />
                                 <f:selectItem itemLabel="Astra" itemValue="3" />
                                 <f:selectItem itemLabel="Megane" itemValue="4" />
                             </b:selectMultiMenu>
-                            <h:message for="typeID" />
+                            <b:message for="@previous" />
                             <h:outputLabel value="last submitted value:" for="typeOutputID" />
                             <b:inputText value="#{selectMultiMenuBean.type}" disabled="true" id="typeOutputID" />
                         </b:panelGrid>
-                        <b:commandButton value="Submit"/>
+                        <b:commandButton value="Submit" update="selectMultiAjax"/>
                     </b:well>
                 </b:tab>
             </b:tabView>
