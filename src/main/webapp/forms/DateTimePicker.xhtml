@@ -183,6 +183,52 @@
       </b:row>
     </h:form>
     
+    <h2>Labels, required fields and error messages</h2>
+    <p>You can add a label by adding the attribute <code>label</code>. The label is also used by the JSF messages. To give you maximum flexibility,
+    you can suppress automatic rendering of labels by adding <code>renderLabel="false"</code>.
+    </p>
+    <p>Required inputs fields and their labels both bear the CSS class <code>bf-required</code>. By default, this adds an asterisk to the label.</p>
+    <p>If the field has a FacesMessage, one of the CSS classes <code>bf-info</code>, <code>bf-warning</code>,
+        <code>bf-error</code> or <code>bf-fatal</code>, depending on which error severity the message has.
+        The latter two classes color the label red.</p>
+     <p>If there's no message,
+        the field and its label bear the pseudo CSS class <code>bf-no-message</code>.
+    </p>
+    <b:tabView>
+      <b:tab title="live preview">
+        <b:well>
+          <b:form horizontal="true">
+          	<b:row>
+                <b:dateTimePicker id="cdate3" mode="toggle-icon" showWeek="true" firstDay="1" value="#{dateBean.cdate}"
+                  required="true" label="date " render-label="true" label-col-sm="1" col-sm="4" />
+                <b:message for="cdate3" col-sm="5"/>
+            </b:row>
+            <b:row>
+              <b:commandButton value="submit" update="@form" col-sm="2" look="success" />
+            </b:row>
+          </b:form>
+        </b:well>
+      </b:tab>
+      <b:tab title="JSF markup">
+        <b:well>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+             <![CDATA[
+         <b:form horizontal="true">
+          	<b:row>
+                <b:dateTimePicker id="cdate3" mode="toggle-icon" showWeek="true" firstDay="1" value="&num;{dateBean.cdate}"
+                  required="true" label="date " render-label="true" label-col-sm="1" col-sm="4" />
+                <b:message for="cdate3" col-sm="5"/>
+            </b:row>
+            <b:row>
+              <b:commandButton value="submit" update="@form" col-sm="2" look="success" />
+            </b:row>
+          </h:form>
+             ]]></script>
+        </b:well>
+      </b:tab>
+    </b:tabView>
+    
+    
     
     <h3>DateTimePicker AJAX <b:badge value="since 1.0" /> </h3>
     <p>DateTimePicker component also support AJAX events. In addition to the basic JavaScript events (click, blur, key*, mouse*), it supports also a custom event (dtchange) that is 
