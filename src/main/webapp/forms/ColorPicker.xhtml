@@ -83,6 +83,50 @@
           ]]></script>
 
         <br/>
+        
+    <h2>Labels, required fields and error messages</h2>
+    <p>You can add a label by adding the attribute <code>label</code>. The label is also used by the JSF messages. To give you maximum flexibility,
+    you can suppress automatic rendering of labels by adding <code>renderLabel="false"</code>.
+    </p>
+    <p>Required inputs fields and their labels both bear the CSS class <code>bf-required</code>. By default, this adds an asterisk to the label.</p>
+    <p>If the field has a FacesMessage, one of the CSS classes <code>bf-info</code>, <code>bf-warning</code>,
+        <code>bf-error</code> or <code>bf-fatal</code>, depending on which error severity the message has.
+        The latter two classes color the label red.</p>
+     <p>If there's no message,
+        the field and its label bear the pseudo CSS class <code>bf-no-message</code>.
+    </p>
+    <b:tabView>
+      <b:tab title="live preview">
+        <b:well>
+          	<b:row id="requiredField">
+                <b:colorPicker mode="toggle-icon" showWeek="true" firstDay="1" value="#{test.selectedColor}"
+                  required="true" label="required color" render-label="true" />
+                <b:message for="@previous" col-sm="5"/>
+            </b:row>
+            <b:row>
+              <b:commandButton value="submit" update="requiredField" col-sm="2" look="success" />
+            </b:row>
+        </b:well>
+      </b:tab>
+      <b:tab title="JSF markup">
+        <b:well>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+             <![CDATA[
+         	<b:row id="requiredField">
+                <b:colorPicker mode="toggle-icon" showWeek="true" firstDay="1" value="&num;{test.selectedColor}"
+                  required="true" label="required color" render-label="true" />
+                <b:message for="@previous" col-sm="5"/>
+            </b:row>
+            <b:row>
+              <b:commandButton value="submit" update="requiredField" col-sm="2" look="success" />
+            </b:row>
+             ]]></script>
+        </b:well>
+      </b:tab>
+    </b:tabView>
+        
+        
+        
         <h2>Responsive design <b:badge value="since 0.9.0" /></h2>
         <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
         also with <code>&lt;b:colorPicker /&gt;</code>:</p>
