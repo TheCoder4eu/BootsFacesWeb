@@ -26,6 +26,7 @@
                             show-date="#{dateTimeBean.showDate}"
                             show-time="#{dateTimeBean.showTime}"
                             show-icon="#{dateTimeBean.showIcon}"
+                            use-current="#{dateTimeBean.useCurrent}"
                             />
         </b:panel>
         <b:panel title="Settings" small-screen="half" look="primary">
@@ -45,10 +46,13 @@
            <b:selectBooleanCheckbox value="#{dateTimeBean.sideBySide}" caption="side-by-side='true' (default is 'false')"
               onclick="ajax:dateTimeBean.updateSettings()"
               update="justNowId" />
-           <b:selectBooleanCheckbox value="#{dateTimeBean.showDate}" caption="show-date='true' (clear the input field to see the effect, please)"
+           <b:selectBooleanCheckbox value="#{dateTimeBean.showDate}" caption="show-date='true' (clear the input field to see the effect)"
               onclick="ajax:dateTimeBean.updateSettings()"
               update="justNowId" />
-           <b:selectBooleanCheckbox value="#{dateTimeBean.showTime}" caption="show-time='true' (clear the input field to see the effect, please)"
+           <b:selectBooleanCheckbox value="#{dateTimeBean.showTime}" caption="show-time='true' (clear the input field to see the effect)"
+              onclick="ajax:dateTimeBean.updateSettings()"
+              update="justNowId" />
+           <b:selectBooleanCheckbox value="#{dateTimeBean.useCurrent}" caption="useCurrent='true' (default: true) (clear the input field to see the effect)"
               onclick="ajax:dateTimeBean.updateSettings()"
               update="justNowId" />
           </b:panelGrid>

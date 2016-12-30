@@ -32,6 +32,8 @@ public class DateTimeBean implements Serializable {
 	private boolean iconLeft=false;
 	
 	private boolean allowInputToggle=false;
+	
+	private boolean useCurrent=true;
 
 	public String getMode() {
 		if (modeInline) {
@@ -119,6 +121,14 @@ public class DateTimeBean implements Serializable {
 
 	public void setAllowInputToggle(boolean allowInputToggle) {
 		this.allowInputToggle = allowInputToggle;
+	}
+
+	public boolean isUseCurrent() {
+		return useCurrent;
+	}
+
+	public void setUseCurrent(boolean useCurrent) {
+		this.useCurrent = useCurrent;
 	}
 
 }
