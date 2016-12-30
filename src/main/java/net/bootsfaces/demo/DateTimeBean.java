@@ -19,40 +19,25 @@ public class DateTimeBean implements Serializable {
 	private static final long serialVersionUID = -7642332089180105956L;
 	private Date justNow = new Date();
 
-	private boolean modePlain = false;
-
 	private boolean modeInline = false;
-
-	private boolean modePopup = false;
 
 	private boolean sideBySide=false;
 
 	private boolean showTime=true;
 
 	private boolean showDate=true;
+	
+	private boolean showIcon=true;
+	
+	private boolean iconLeft=false;
+	
+	private boolean allowInputToggle=false;
 
 	public String getMode() {
-		if (modePlain) {
-			modeInline=false;
-			modePopup=false;
-			return "plain";
-		}
 		if (modeInline) {
-			modePopup=false;
 			return "inline";
 		}
-		if (modePopup) {
-			return "popup";
-		}
-		return "component";
-	}
-
-	public boolean isModePlain() {
-		return modePlain;
-	}
-
-	public void setModePlain(boolean modePlain) {
-		this.modePlain = modePlain;
+		return "popup";
 	}
 
 	public boolean isModeInline() {
@@ -61,14 +46,6 @@ public class DateTimeBean implements Serializable {
 
 	public void setModeInline(boolean modeInline) {
 		this.modeInline = modeInline;
-	}
-
-	public boolean isModePopup() {
-		return modePopup;
-	}
-
-	public void setModePopup(boolean modePopup) {
-		this.modePopup = modePopup;
 	}
 
 	public Date getJustNow() {
@@ -111,6 +88,37 @@ public class DateTimeBean implements Serializable {
 			justNow=new Date();
 		}
 		this.showTime = showTime;
+	}
+
+	public boolean isIconLeft() {
+		return iconLeft;
+	}
+
+	public void setIconLeft(boolean iconLeft) {
+		this.iconLeft = iconLeft;
+	}
+
+	public boolean isShowIcon() {
+		return showIcon;
+	}
+
+	public void setShowIcon(boolean showIcon) {
+		this.showIcon = showIcon;
+	}
+	
+	public String getIconPosition() {
+		if (iconLeft)
+			return "left";
+		else
+			return "right";
+	}
+
+	public boolean isAllowInputToggle() {
+		return allowInputToggle;
+	}
+
+	public void setAllowInputToggle(boolean allowInputToggle) {
+		this.allowInputToggle = allowInputToggle;
 	}
 
 }

@@ -19,24 +19,30 @@
         <b:panel title="Live preview" small-screen="half" look="primary">
           <b:dateTimePicker value="#{dateTimeBean.justNow}"
                             id="justNowId"
+                            allow-input-toggle="#{dateTimeBean.allowInputToggle}"
+                            icon-position="#{dateTimeBean.iconPosition}"
                             mode="#{dateTimeBean.mode}"
                             side-by-side="#{dateTimeBean.sideBySide}"
                             show-date="#{dateTimeBean.showDate}"
                             show-time="#{dateTimeBean.showTime}"
+                            show-icon="#{dateTimeBean.showIcon}"
                             />
         </b:panel>
         <b:panel title="Settings" small-screen="half" look="primary">
           <b:panelGrid columns="1" id="settings">
-            <b:selectBooleanCheckbox value="#{dateTimeBean.modePlain}" caption="mode='plain'"
+           <b:selectBooleanCheckbox value="#{dateTimeBean.modeInline}" caption="mode='inline' (default is 'popup')"
               onclick="ajax:dateTimeBean.updateSettings()"
               update="justNowId settings" />
-           <b:selectBooleanCheckbox value="#{dateTimeBean.modeInline}" caption="mode='inline'"
+            <b:selectBooleanCheckbox value="#{dateTimeBean.showIcon}" caption="showIcon='true' (default)"
               onclick="ajax:dateTimeBean.updateSettings()"
               update="justNowId settings" />
-           <b:selectBooleanCheckbox value="#{dateTimeBean.modePopup}" caption="mode='popup' (default)"
+            <b:selectBooleanCheckbox value="#{dateTimeBean.iconLeft}" caption="iconPosition='left' (default is 'right')"
               onclick="ajax:dateTimeBean.updateSettings()"
               update="justNowId settings" />
-           <b:selectBooleanCheckbox value="#{dateTimeBean.sideBySide}" caption="side-by-side='true'"
+            <b:selectBooleanCheckbox value="#{dateTimeBean.allowInputToggle}" caption="allow-input-toggle='true' (default is 'false')"
+              onclick="ajax:dateTimeBean.updateSettings()"
+              update="justNowId settings" />
+           <b:selectBooleanCheckbox value="#{dateTimeBean.sideBySide}" caption="side-by-side='true' (default is 'false')"
               onclick="ajax:dateTimeBean.updateSettings()"
               update="justNowId" />
            <b:selectBooleanCheckbox value="#{dateTimeBean.showDate}" caption="show-date='true' (clear the input field to see the effect, please)"
@@ -49,6 +55,9 @@
         </b:panel>
       </b:row>
     </h:form>
+    
+    <h1>Mode="inline" <b:badge value="breaking change in 1.1.0"/></h1>
+    <p>We've removed the option <code>mode="inline"</code> in favor of two more explicit options: <code>show-icon</code> and <code>icon-position</code>.</p>
     
     <h1>Disable and readonly</h1>
     <p>The dateTimePicker has also the ability to disable and set the readonly option.</p>
