@@ -17,6 +17,8 @@
 package de.beyondjava.jsf.sample.carshop;
 
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -150,5 +152,10 @@ public class Car implements Serializable {
 
 	public void setEditable(boolean editable) {
 		this.editable = editable;
+	}
+	
+	public String getAge() {
+		int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+		return ((currentYear - year) * 12 +5) + " months";				
 	}
 }

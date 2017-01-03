@@ -135,6 +135,7 @@ td {
                                    >
                   <h:outputText value="&num;{car.color}" />
                 </b:dataTableColumn>
+                <b:dataTableColumn value="&num;{car.age}" order="asc" data-order="#{-car.year}" />
               </b:dataTable>
       	    ]]></script>
           </b:well>
@@ -181,6 +182,7 @@ td {
                                    >
                   <h:outputText value="#{car.color}" />
                 </b:dataTableColumn>
+                <b:dataTableColumn value="#{car.age}" order="asc" data-order="#{-car.year}" />
               </b:dataTable>
             </b:column>
             <b:panelGrid columns="1" small-screen="one-third">
@@ -270,6 +272,21 @@ td {
              ]]></script>
           </b:well>
     <p>You can see the effect in the example above.</p>
+    <p>Sometimes specifying the data type isn't enough. For instance, in the table above, the age is a string, consisting
+    of a numeric value and a fixed string. Another example is the time shown in the commit history of GitHub: it displays
+    not the real date, but user-friendly texts like "just now", "5 minutes ago" or "last month". In such as case, you can
+    specify a second, hidden, field indicating the order of the rows. In the table above, that's the year when the car
+    was constructed. In the GitHub commit history, this would be the commit date. You specify this hint in a 
+    <code>/lt;b:dataTableColumn /&gt;</code> using the attribute <code>data-order</code>:</p>
+    <b:well>
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+                   <b:dataTableColumn value="&num;{car.age}" 
+                                      order="asc" 
+                                      data-order="&num;{car.year}" />
+             ]]></script>
+    </b:well>
+    
     
     <h3>Updating a datatable with AJAX</h3>
     <p>If you want to update a datatable by an AJAX request, you must destroy the datatable before sending the AJAX request.
