@@ -135,7 +135,7 @@ td {
                                    >
                   <h:outputText value="&num;{car.color}" />
                 </b:dataTableColumn>
-                <b:dataTableColumn value="&num;{car.age}" order="asc" data-order="#{-car.year}" />
+                <b:dataTableColumn value="&num;{car.age}" order="asc" data-order="&num;{-car.year}" data-search="&num;{car.year} &num;{car.age}" />
               </b:dataTable>
       	    ]]></script>
           </b:well>
@@ -182,8 +182,12 @@ td {
                                    >
                   <h:outputText value="#{car.color}" />
                 </b:dataTableColumn>
-                <b:dataTableColumn value="#{car.age}" order="asc" data-order="#{-car.year}" />
+                <b:dataTableColumn value="#{car.age}" order="asc" data-order="#{-car.year}" data-search="#{car.year} #{car.age}" />
               </b:dataTable>
+              <br />
+              <br />
+              <p>Note that the search has an interesting twist: it's a full-text search allowing to search for the 
+              construction year, also this column isn't shown.</p>
             </b:column>
             <b:panelGrid columns="1" small-screen="one-third">
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.saveState}" caption="save-state='true'"
@@ -272,6 +276,8 @@ td {
              ]]></script>
           </b:well>
     <p>You can see the effect in the example above.</p>
+    
+    <h3>Fine-tuning search and sort order</h3>
     <p>Sometimes specifying the data type isn't enough. For instance, in the table above, the age is a string, consisting
     of a numeric value and a fixed string. Another example is the time shown in the commit history of GitHub: it displays
     not the real date, but user-friendly texts like "just now", "5 minutes ago" or "last month". In such as case, you can
@@ -286,6 +292,20 @@ td {
                                       data-order="&num;{car.year}" />
              ]]></script>
     </b:well>
+    
+    <p>A similar challenge sometimes occurs with search. The table above allows you to search both for the visible age in months
+    and for the (invisible) construction date. Another interesting use case might be to allow search for both American and 
+    your local date format. In both cases, you provide a <code>data-search</code> attribute and populate it with both
+    texts:</p>
+    <b:well>
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+                   <b:dataTableColumn value="&num;{car.age}" 
+                                      order="asc" 
+                                      data-search="&num;{car.year} &num;{car.age}" />
+             ]]></script>
+    </b:well>
+    
     
     
     <h3>Updating a datatable with AJAX</h3>
