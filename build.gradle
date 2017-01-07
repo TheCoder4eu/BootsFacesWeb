@@ -72,7 +72,7 @@ war.doFirst {
     String buildInfo = """\n\
                     <b:row>
                     <b:jumbotron>
-                        <img src="http://www.bootsfaces.net/img/bsf_logo.png"/>
+                        <img src="https://www.bootsfaces.net/img/bsf_logo.png"/>
                         
                         <p>Welcome to the BootsFaces Showcase and Documentation</p>
                         <p><b:navLink value="BootsFaces License" outcome="license" iconAwesome="gavel"/></p>
