@@ -133,15 +133,15 @@
           </b:tabView>
 
     <h3>Collapsible panels indicator <b:badge value="since 0.9.0" /></h3>
-    <p>By default, BootsFaces adds a visual clue that the panel can be collapsed using the keyboard.
-    You can deactivate it by setting <code>showCollapseLink="false"</code>:
+    <p>BootsFaces can underline the panel titel as a visual clue that the panel can be collapsed using the keyboard.
+    You can activate it by setting <code>showCollapseLink="true"</code>:
     </p>
     <h:form>
       <b:panelGrid colSpans="6,6" size="sm">
-        <b:panel title="showCollapseLink='false'"
+        <b:panel title="showCollapseLink='false' (default)"
           look="primary">
         </b:panel>
-        <b:panel title="showCollapseLink='true' (default)" showOutline="true"
+        <b:panel title="showCollapseLink='true'" showCollapseLink="true"
           look="primary">
         </b:panel>
       </b:panelGrid>
