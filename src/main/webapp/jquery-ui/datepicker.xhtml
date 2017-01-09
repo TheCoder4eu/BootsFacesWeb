@@ -167,23 +167,21 @@
     <b:tabView>
       <b:tab title="live preview">
         <b:well>
-          <h:form>
-            <b:row>
-              <b:column medium-screen="4">
-                <h:outputLabel value="Date: " for="cdate3" />
-              </b:column>
-              <b:column medium-screen="4">
-                <b:datepicker id="cdate3" mode="toggle-icon" showWeek="true" firstDay="1" value="#{dateBean.cdate}"
-                  required="true" />
-              </b:column>
-              <b:column medium-screen="4">
-                <b:message for="cdate3" />
-              </b:column>
-            </b:row>
-            <b:row>
-              <b:commandButton value="submit" update="@form" col-sm="2" look="success" />
-            </b:row>
-          </h:form>
+	        <b:form horizontal="true">
+	        	<b:row>
+					<b:datepicker id="cdate3" mode="toggle-icon" showWeek="true"
+						firstDay="1" value="#{dateBean.cdate}" required="true"
+						label="Date" label-col-sm="4" label-col-md="2" col-md="2" col-sm="4" 
+						render-label="true"/>
+					<b:message for="cdate3" col-sm="8" col-md="4" show-summary="false" />
+				</b:row>
+				<b:row>
+					<b:column col-sm="3">
+						<b:commandButton value="submit" update="@form"
+						look="success" onclick="ajax:dateBean.onSubmitDate3()" />
+					</b:column>
+				</b:row>
+			</b:form>
         </b:well>
       </b:tab>
       <b:tab title="JSF markup">
@@ -191,21 +189,17 @@
           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
              <![CDATA[
           <h:form>
-            <b:row>
-              <b:column medium-screen="4">
-                <h:outputLabel value="Date: " for="cdate3" />
-              </b:column>
-              <b:column medium-screen="4">
-                <b:datepicker id="cdate3" mode="toggle-icon" showWeek="true" firstDay="1" value="#{dateBean.cdate}"
-                  required="true" />
-              </b:column>
-              <b:column medium-screen="4">
-                <b:message for="cdate3" />
-              </b:column>
-            </b:row>
-            <b:row>
-              <b:commandButton value="submit" update="@form" col-sm="2" look="success" />
-            </b:row>
+				<b:row>
+					<b:datepicker id="cdate3" mode="toggle-icon" showWeek="true"
+						firstDay="1" value="&num;{dateBean.cdate}" required="true"
+						label="Date:" label-col-sm="4" col-sm="4" render-label="true" />
+					<b:message for="cdate3" col-sm="6" />
+				</b:row>
+				<b:row>
+					<b:col
+					<b:commandButton value="submit" update="@form" col-sm="2"
+						look="success" onclick="ajax:dateBean.onSubmitDate3()" />
+				</b:row>
           </h:form>
              ]]></script>
         </b:well>

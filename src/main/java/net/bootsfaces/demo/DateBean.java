@@ -9,6 +9,8 @@ import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
+import net.bootsfaces.utils.FacesMessages;
+
 /**
  *
  * @author TheCoder4eu
@@ -76,5 +78,9 @@ public class DateBean implements Serializable {
      * Creates a new instance of DateBean
      */
     public DateBean() {
+    }
+    
+    public void onSubmitDate3() {
+    	FacesMessages.info("**:cdate3", "", "Date successfully sent. Empty the field to see the 'required' message." );
     }
 }
