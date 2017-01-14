@@ -17,6 +17,8 @@ public class NavLinkBean implements Serializable {
 	private String source;
 
 	private List<String> musicStyles= new ArrayList<String>();
+	
+	private boolean disabled=false;
 
 	public NavLinkBean() {
 		musicStyles.add("Jazz");
@@ -58,5 +60,17 @@ public class NavLinkBean implements Serializable {
 
 	public void setMusicStyles(List<String> musicStyles) {
 		this.musicStyles = musicStyles;
+	}
+
+	public boolean isDisabled() {
+		return disabled;
+	}
+
+	public void setDisabled(boolean disabled) {
+		this.disabled = disabled;
+	}
+	
+	public void onChange() {
+		
 	}
 }
