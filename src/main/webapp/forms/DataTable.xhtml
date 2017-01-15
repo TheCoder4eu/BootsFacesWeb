@@ -132,6 +132,7 @@ td {
                                    header-style-class="&num;{dataTableSettingsBean.headerStyleClassName}"
                                    custom-options="someColumnOption:true"
                                    searchable="&num;{dataTableSettingsBean.searchable}"
+                                   search-value="&num;{dataTableSettingsBean.defaultColumnFilter}"
                                    >
                   <h:outputText value="&num;{car.color}" />
                 </b:dataTableColumn>
@@ -179,6 +180,7 @@ td {
                                    header-style-class="#{dataTableSettingsBean.headerStyleClassName}"
                                    custom-options="someColumnOption:true"
                                    searchable="#{dataTableSettingsBean.searchable}"
+                                   search-value="#{dataTableSettingsBean.defaultColumnFilter}"
                                    >
                   <h:outputText value="#{car.color}" />
                 </b:dataTableColumn>
@@ -220,10 +222,17 @@ td {
 
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.searching}" caption="searching='true'"
                 onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basic-usage-id" />
+                update="basic-usage-id @next @next:@next" />
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.multiColumnSearch}" caption="multi-column-search='true' (requires searching='true')"
                 onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basic-usage-id" />
+                disabled="#{!dataTableSettingsBean.searching}"
+                update="basic-usage-id @next" />
+             <b:inputText value="#{dataTableSettingsBean.defaultColumnFilter}" label="default search filter for the color:"
+                onkeyup="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                update="basic-usage-id" render-label="true" 
+                styleClass="#{dataTableSettingsBean.multiColumnSearch and dataTableSettingsBean.searching?'':'hidden'}"
+                labelStyleClass="#{dataTableSettingsBean.multiColumnSearch and dataTableSettingsBean.searching?'':'hidden'}"
+                />
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.searchable}" caption="searchable='true' (2nd and 3rd column only)"
                 onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                 update="basic-usage-id" />

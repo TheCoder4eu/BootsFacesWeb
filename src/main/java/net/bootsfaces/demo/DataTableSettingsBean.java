@@ -63,6 +63,8 @@ public class DataTableSettingsBean implements Serializable {
 	private boolean fixedHeader=false;
 
 	private boolean searchable=true;
+	
+	private String defaultColumnFilter="";
 
 	public boolean isSaveState() {
 		return saveState;
@@ -308,5 +310,16 @@ public class DataTableSettingsBean implements Serializable {
 
 	public void setStyle(boolean style) {
 		this.style = style;
+	}
+
+	public String getDefaultColumnFilter() {
+		if ("".equals(defaultColumnFilter)) {
+			return null;
+		}
+		return defaultColumnFilter;
+	}
+
+	public void setDefaultColumnFilter(String defaultColumnFilter) {
+		this.defaultColumnFilter = defaultColumnFilter;
 	}
 }
