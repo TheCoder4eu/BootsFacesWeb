@@ -315,6 +315,31 @@ td {
              ]]></script>
     </b:well>
     
+    <h3>Setting the initial search filter</h3>
+    <p>You can set an initial search filter by adding the attribute <code>search-value</code> to the <code>&lt;dataTableColumn /&gt;</code>.</p>
+    <ul>
+    <li><code>search-value="red"</code> set the initial search value to the string. You can test this feature in the 
+    example above by filling the input field below the checkbox "multi-column-search".</li>
+    <li><code>search-value=""</code> resets the search filter. This comes in handy if you want to remove the filters after an AJAX request.</li>
+    <li><code>search-value="#{null}"</code> doesn't modify the search filter. If you've activated the flag <code>save-state='true'</code>,
+    the old filter is restored after an AJAX request. Note that this feature only works with <code>&lt;dataTableColumn /&gt;</code>.
+    The standard JSF <code>&lt;h:column /&gt;</code> doesn't distinguish between null and empty strings. Therefore, the filter is always
+    removed if you set <code>search-value="#{null}"</code> on an <code>&lt;h:column /&gt;</code>.</li>
+    </ul>
+    <p>Note that the example above maps an empty filter to a null value. We chose to do so in order to be able to demonstrate the effect of <code>save-state</code>:</p>
+    <b:well>
+	    <script type="syntaxhighlighter"
+	      class="brush: java; toolbar: false;gutter: false; first-line: 1">
+      	<![CDATA[
+            public String getDefaultColumnFilter() {
+            	if ("".equals(defaultColumnFilter)) {
+            		return null;
+            	}
+            	return defaultColumnFilter;
+            }
+      	]]>
+	    </script>
+	</b:well>
     
     
     <h3>Updating a datatable with AJAX</h3>
