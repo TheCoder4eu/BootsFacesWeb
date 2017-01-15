@@ -392,6 +392,79 @@
               </b:tab>
             </b:tabView>
             
+            <h2>Bean Validation API (JSR 303 and JSR 349) <b:badge value="since 1.1.0" /></h2>
+            <b:tabView>
+              <b:tab title="displayed as">
+              <b:well>
+                <h:form>
+                  <b:inputText id="name" value="#{beanValidationBean.name}"
+                    label="Enter your name" renderLabel="true" />
+                  <b:message for="@previous" />
+                  <b:inputText id="age" value="#{beanValidationBean.age}"
+                    label="What's your age?" renderLabel="true" />
+                  <b:message for="@previous" />
+                  <b:commandButton update="@form" value="Validate constraints" />
+                  <b:messages redisplay="false"/>
+                </h:form>
+                </b:well>
+              </b:tab>
+              <b:tab title="JSF markup">
+                <b:well>
+                  <script type="syntaxhighlighter"
+                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+				  <![CDATA[
+                     <h:form>
+                        <b:inputText id="name" value="&num;{beanValidationBean.name}" label="Enter your name"
+								     renderLabel="true"   />
+                         <h:message for="name" />
+                         <b:inputText id="age" value="&num;{beanValidationBean.age}" label="What's your age?"
+                                      renderLabel="true" />
+                         <h:message for="age" />
+                         <b:commandButton update="@form" value="Validate constraints" />
+                       </h:form>
+                  ]]>
+                 </script>
+                </b:well>
+              </b:tab>
+             <b:tab title="Java bean">
+                <b:well>
+                  <script type="syntaxhighlighter"
+                    class="brush: java; toolbar: false;gutter: false; first-line: 1">
+				  <![CDATA[
+@ManagedBean
+@RequestScoped
+public class BeanValidationBean {
+	@NotNull(message="Your name is as important as you are. Don't hesitate to fill this field!")
+	@Size(min=1, max=10)
+	private String name;
+	
+	@Min(value=18, message="In most countries, you're not considered a grown-up yet.")
+	@Max(value=65, message="In many countries, you've already reached retirement age.")
+	private int age;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+}
+                  ]]>
+                 </script>
+                </b:well>
+              </b:tab>
+            </b:tabView>
+            
+            
             <h2>Inline forms <b:badge value="improved in 1.0.0" /></h2>
             <p>Until BootsFaces 0.9.1, you could define inline forms, but the input fields weren't aligned correctly. Hence, BootsFaces 1.0.0 adds
             the option <code>label-col-xx</code>, which causes BootsFaces to generate correct Bootstrap HTML code. Alternatively to using the
@@ -560,7 +633,7 @@ public class DefaultValuesBean implements Serializable {
               </b:tab>
             </b:tabView>
 
-            <h2><code>id</code> vs. <code>fieldId</code>, or how to be compatible to JAAS<b:badge value="since 0.9.0" /></h2>
+            <h2><code>id</code> vs. <code>fieldId</code>, or how to be compatible to JAAS <b:badge value="since 0.9.0" /></h2>
             <p>BootsFaces adds some Bootstrap code to the HTML input field. This often leads to problems with the ids.
             Intuitively, most developers expect the id of the <code>&lt;b:inputText&gt;</code> to be identical
             to the id of the <code>&lt;h:input&gt;</code> field. At the same time they expect that AJAX updates the
@@ -634,29 +707,30 @@ public class DefaultValuesBean implements Serializable {
         <code>&lt;b:column /%gt;</code>. In particular, the id and the CSS styles are inside the column div.
         Among other things, this means that <code>rendered="false"</code> hides the input field, but not
         the surrounding <code>div</code>. In other words: the layout is preserved if the input field is hidden.</p>
-       <b:tabView>
-          <b:tab title="live preview">
-          <b:well>
-             <b:row>
-                <b:inputText value="large-screen='full-width'" large-screen="full-width" />
-             </b:row>
-             <b:row style="padding-top:5px">
-                <b:inputText value="large-screen='one-third'" large-screen="one-third" />
-                <b:inputText value="large-screen='two-thirds'" large-screen="two-thirds" />
-             </b:row>
-             <b:row style="padding-top:5px">
-                <b:inputText value="small-screen='one-third'" small-screen="one-third" />
-                <b:inputText value="small-screen='two-thirds'" small-screen="two-thirds" />
-             </b:row>
-             <b:row style="padding-top:5px">
-                <b:inputText value="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
-                <b:inputText value="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
-             </b:row>
-          </b:well>
-          </b:tab>
-          <b:tab title="JSF markup">
-          <b:well>
-          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+        <h:form>
+	       <b:tabView>
+	          <b:tab title="live preview">
+	          <b:well>
+	             <b:row>
+	                <b:inputText value="large-screen='full-width'" large-screen="full-width" />
+	             </b:row>
+	             <b:row style="padding-top:5px">
+	                <b:inputText value="large-screen='one-third'" large-screen="one-third" />
+	                <b:inputText value="large-screen='two-thirds'" large-screen="two-thirds" />
+	             </b:row>
+	             <b:row style="padding-top:5px">
+	                <b:inputText value="small-screen='one-third'" small-screen="one-third" />
+	                <b:inputText value="small-screen='two-thirds'" small-screen="two-thirds" />
+	             </b:row>
+	             <b:row style="padding-top:5px">
+	                <b:inputText value="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
+	                <b:inputText value="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
+	             </b:row>
+	          </b:well>
+	          </b:tab>
+	          <b:tab title="JSF markup">
+	          <b:well>
+	          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
              <![CDATA[
              <b:row>
                 <b:inputText value="large-screen='full-width'" large-screen="full-width" />
@@ -674,33 +748,35 @@ public class DefaultValuesBean implements Serializable {
                 <b:inputText value="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
              </b:row>
              ]]></script>
-          </b:well>
-          </b:tab>
-        </b:tabView>
+	          </b:well>
+	          </b:tab>
+	        </b:tabView>
+        </h:form>
 
         <h2>Visibility depending on screen size <b:badge value="since 0.8.6/0.9.0" /></h2>
         <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
         <br/>
-        <b:tabView>
-          <b:tab title="live preview">
-          <b:well>
-               <b:panelGrid colSpans="3,9">
-                  <h:outputText value="Visible on &gt;= md:" />
-                  <b:inputText value="Visible on medium or large screen" severity="info" visible="md..." />
-                  <h:outputText value="Visible on &lt;= sm:" />
-                  <b:inputText value="Visible on small-screen" severity="success" visible="...sm"/>
-                  <h:outputText value="Visible on sm...lg:" />
-                  <b:inputText value="Visible on small to large screen" severity="success" visible="sm...lg"/>
-                  <h:outputText value="Visible on xs and md:" />
-                  <b:inputText value="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
-                  <h:outputText value="Col-md-6, offset 2:" />
-                  <b:inputText value="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
-               </b:panelGrid>
-         </b:well>
-          </b:tab>
-          <b:tab title="JSF markup">
-          <b:well>
-          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+        <h:form>
+	        <b:tabView>
+	          <b:tab title="live preview">
+	          <b:well>
+	               <b:panelGrid colSpans="3,9">
+	                  <h:outputText value="Visible on &gt;= md:" />
+	                  <b:inputText value="Visible on medium or large screen" severity="info" visible="md..." />
+	                  <h:outputText value="Visible on &lt;= sm:" />
+	                  <b:inputText value="Visible on small-screen" severity="success" visible="...sm"/>
+	                  <h:outputText value="Visible on sm...lg:" />
+	                  <b:inputText value="Visible on small to large screen" severity="success" visible="sm...lg"/>
+	                  <h:outputText value="Visible on xs and md:" />
+	                  <b:inputText value="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
+	                  <h:outputText value="Col-md-6, offset 2:" />
+	                  <b:inputText value="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
+	               </b:panelGrid>
+	         </b:well>
+	          </b:tab>
+	          <b:tab title="JSF markup">
+	          <b:well>
+	          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
              <![CDATA[
                <b:panelGrid colSpans="3,9">
                   <h:outputText value="Visible on &gt;= md:" />
@@ -715,9 +791,10 @@ public class DefaultValuesBean implements Serializable {
                   <b:inputText value="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
                </b:panelGrid>
              ]]></script>
-          </b:well>
-          </b:tab>
-        </b:tabView>
+	          </b:well>
+	          </b:tab>
+	        </b:tabView>
+        </h:form>
 
         <h2>Tags <b:badge value="since 0.9.0" /></h2>
         <p>By setting the attribute <code>tags="true"</code> you can display the input values as tag - similar to
