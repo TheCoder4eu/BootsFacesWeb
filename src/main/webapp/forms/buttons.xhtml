@@ -215,8 +215,10 @@
                 <p>Just like h:button, <code>&lt;b:button&gt;</code> does GET requests targeting bookmarkable URLs.</p>
                 <p>If you don't want to trigger a navigation, but simply call an AJAX or JavaScript method, omit the outcome.
                 You can make your intention more explicit by writing <code>outcome="@none"</code>.</p>
-                <h3>AJAX</h3>
-                <p>AJAX isn't supported yet.</p>
+                <h3>AJAX (not supported)</h3>
+                <p>AJAX isn't supported because <code>&lt;b:button /&gt;</code> doesn't send POST requests to the server. If you need 
+                to communicate with the server (with or without AJAX), use <code>&lt;b:commandButton/&gt;</code>
+                or <code>&lt;b:remoteCommand /&gt;</code>.</p>
                 <b:panel look="info">
                     <f:facet name="heading"><b>EXAMPLE</b></f:facet>
                     <h:panelGrid columns="4" cellpadding="10">
@@ -228,7 +230,7 @@
                             <f:param name="testId" value="22" />
                         </b:button>
 
-                        <b:button outcome="testButton" value="" icon="envelope">
+                        <b:button outcome="testButton" icon="envelope">
                             <f:param name="testId" value="33" />
                         </b:button>
 
@@ -250,7 +252,7 @@
                         <f:param name="testId" value="22" />
                     </b:button>
 
-                    <b:button outcome="testButton" value="" icon="envelope">
+                    <b:button outcome="testButton" icon="envelope">
                         <f:param name="testId" value="33" />
                     </b:button>
 
