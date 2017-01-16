@@ -109,7 +109,8 @@
                         <b:row>
                             <b:column span="4" col-sm="4" col-xs="4">#{' '}</b:column>
                             <b:column span="2" col-sm="2" col-xs="2">
-                                <b:slider2 orientation="vertical" value="#{sliderBean.value1}" label="Value (0-100)"></b:slider2>
+                                <b:slider2 orientation="vertical" value="#{sliderBean.value1}" label="Value (0-100)">                                           
+                                </b:slider2>
                             </b:column>
                             <b:column span="2" col-sm="2" col-xs="2">
                                 <b:slider2 orientation="vertical-bottom" value="#{sliderBean.value1}" label="Value (0-100)"></b:slider2>
@@ -135,6 +136,89 @@
                         ]]></script>
                         </f:facet>
                     </b:panel>
+                    
+                    <h2>Styles and style-classes <b:badge value="Breaking change in 1.1.0" /></h2>
+                    <p>Until version 1.0.2 of BootsFaces, the <code>style</code> and <code>style-class</code> attributes applied only
+                    the the optional badge.</p>
+                    <p>Since 1.1.0, there are three separate pairs of options:</p>
+                    <ul>
+	                    <li><code>style</code> and <code>style-class</code> apply to the entire slider.</li>
+	                    <li><code>label-style</code> and <code>label-style-class</code> apply to the optional label.</li>
+	                    <li><code>badge-style</code> and <code>badge-style-class</code> apply to the optional badge or to the optional input field.</li>
+                    </ul>
+                    <b:panel look="info">
+                        <f:facet name="heading"><b>EXAMPLE - stylish sliders</b></f:facet>
+                        <h:form>
+                        <b:row>
+                            <b:column span="2" col-sm="2" col-xs="2">
+                                <b:slider2 orientation="vertical" value="#{sliderBean.value1}" label="Value (0-100)" 
+                                           label-style="color:green"
+                                           label-style-class="myLabelClass"
+                                           style="border:1px solid green"
+                                           styleClass="mySliderClass"
+                                           badge-style="background-color:green"
+                                           badge-style-class="myBadgeClass" />
+                            </b:column>
+                            <b:column span="2" col-sm="2" col-xs="2">
+                                <b:slider2 orientation="vertical-bottom" value="#{sliderBean.value1}" label="Value (0-100)"
+                                           label-style="color:green"
+                                           label-style-class="myLabelClass"
+                                           style="border:1px solid green"
+                                           styleClass="mySliderClass"
+                                           badge-style="background-color:green"
+                                           badge-style-class="myBadgeClass" />
+                            </b:column>
+                            <b:column span="8" col-sm="8" col-xs="8">
+                                <b:slider2 value="#{sliderBean.value1}" label="Value (0-100)"
+                                           label-style="color:green"
+                                           label-style-class="myLabelClass"
+                                           style="border:1px solid green"
+                                           styleClass="mySliderClass"
+                                           badge-style="background-color:green"
+                                           badge-style-class="myBadgeClass" />
+                            </b:column>
+                        </b:row>
+                        </h:form>
+                        <f:facet name="footer">
+                        <strong>Markup:</strong><br/>
+
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                        <![CDATA[
+                        <b:row>
+                           <b:column span="2" col-sm="2" col-xs="2">
+                                <b:slider2 orientation="vertical" value="&num;{sliderBean.value1}" label="Value (0-100)" 
+                                           label-style="color:green"
+                                           label-style-class="myLabelClass"
+                                           style="border:1px solid green"
+                                           styleClass="mySliderClass"
+                                           badge-style="background-color:green"
+                                           badge-style-class="myBadgeClass" />
+                            </b:column>
+                            <b:column span="2" col-sm="2" col-xs="2">
+                                <b:slider2 orientation="vertical-bottom" value="&num;{sliderBean.value1}" label="Value (0-100)"
+                                           label-style="color:green"
+                                           label-style-class="myLabelClass"
+                                           style="border:1px solid green"
+                                           styleClass="mySliderClass"
+                                           badge-style="background-color:green"
+                                           badge-style-class="myBadgeClass" />
+                            </b:column>
+                            <b:column span="8" col-sm="8" col-xs="8">
+                                <b:slider2 value="&num;{sliderBean.value1}" label="Value (0-100)"
+                                           label-style="color:green"
+                                           label-style-class="myLabelClass"
+                                           style="border:1px solid green"
+                                           styleClass="mySliderClass"
+                                           badge-style="background-color:green"
+                                           badge-style-class="myBadgeClass" />
+                            </b:column>
+                        </b:row>
+                        ]]></script>
+                        </f:facet>
+                    </b:panel>
+                    
+                    
+                    
                     <p>The Slider component has been developed so that it fits well both in forms and in Bootstrap Grid system.</p>
                     <p>This allows you to obtain complex input interfaces that adapt to all media screen sizes, taking advantage of the responsive features of the Grid system.</p>
                     <b:panel look="info">
