@@ -65,6 +65,8 @@ public class DataTableSettingsBean implements Serializable {
 	private boolean searchable=true;
 	
 	private String defaultColumnFilter="";
+	
+	private boolean paginated=true;
 
 	public boolean isSaveState() {
 		return saveState;
@@ -321,5 +323,13 @@ public class DataTableSettingsBean implements Serializable {
 
 	public void setDefaultColumnFilter(String defaultColumnFilter) {
 		this.defaultColumnFilter = defaultColumnFilter;
+	}
+
+	public boolean isPaginated() {
+		return paginated;
+	}
+
+	public void setPaginated(boolean paginated) {
+		this.paginated = paginated;
 	}
 }

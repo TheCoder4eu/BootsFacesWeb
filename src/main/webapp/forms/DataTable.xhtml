@@ -112,6 +112,7 @@ td {
                 select="&num;{dataTableSettingsBean.select}"
                 selectionMode="&num;{dataTableSettingsBean.selectionMode}"
                 striped="&num;{dataTableSettingsBean.striped}"
+                paginated="&num;{dataTableSettingsBean.paginated}"
                 >
                 <b:dataTableColumn value="&num;{car.brand}" />
                 <b:dataTableColumn order-by="dom-text" data-type="text" searchable="&num;{dataTableSettingsBean.searchable}">
@@ -143,7 +144,7 @@ td {
         </b:tab>
         <b:tab title="displayed as" contentStyle="border:1px solid;padding:10px">
           <b:row>
-            <b:column small-screen="two-thirds">
+            <b:column small-screen="half">
               <b:dataTable value="#{carPool.carPool}"
                 var="car"
                 id="basic-usage-id"
@@ -160,13 +161,14 @@ td {
                 select="#{dataTableSettingsBean.select}"
                 selectionMode="#{dataTableSettingsBean.selectionMode}"
                 striped="#{dataTableSettingsBean.striped}"
+                paginated="#{dataTableSettingsBean.paginated}"
                 >
                 <b:dataTableColumn value="#{car.brand}" />
                 <b:dataTableColumn order-by="dom-text" data-type="text" searchable="#{dataTableSettingsBean.searchable}">
                   <f:facet name="header">
                     <h:outputText value="Type"/>
                   </f:facet>
-                  <h:inputText value="#{car.type}" />
+                  <h:inputText value="#{car.type}" size="10"/>
                 </b:dataTableColumn>
                 <b:dataTableColumn label="Color"
                                    orderable="#{dataTableSettingsBean.orderable}"
@@ -191,7 +193,7 @@ td {
               <p>Note that the search has an interesting twist: it's a full-text search allowing to search for the 
               construction year, also this column isn't shown.</p>
             </b:column>
-            <b:panelGrid columns="1" small-screen="one-third">
+            <b:panelGrid columns="1" small-screen="3">
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.saveState}" caption="save-state='true'"
                 onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                 update="basic-usage-id" />
@@ -219,8 +221,7 @@ td {
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.footerStyleClass}" caption="footer-style-class='hidden'"
                 onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                 update="basic-usage-id" />
-
-             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.searching}" caption="searching='true'"
+              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.searching}" caption="searching='true'"
                 onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                 update="basic-usage-id @next @next:@next" />
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.multiColumnSearch}" caption="multi-column-search='true' (requires searching='true')"
@@ -233,6 +234,8 @@ td {
                 styleClass="#{dataTableSettingsBean.multiColumnSearch and dataTableSettingsBean.searching?'':'hidden'}"
                 labelStyleClass="#{dataTableSettingsBean.multiColumnSearch and dataTableSettingsBean.searching?'':'hidden'}"
                 />
+             </b:panelGrid>
+             <b:panelGrid columns="1" small-screen="3">
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.searchable}" caption="searchable='true' (2nd and 3rd column only)"
                 onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                 update="basic-usage-id" />
@@ -264,6 +267,9 @@ td {
                 onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                 update="basic-usage-id" />
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.fixedHeader}" caption="fixedHeader='true'"
+                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                update="basic-usage-id" />
+             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.paginated}" caption="paginated='true'"
                 onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                 update="basic-usage-id" />
 
