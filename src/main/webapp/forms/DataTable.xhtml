@@ -368,7 +368,8 @@ td {
       <code>&lt;b:dataTable &gt;</code>. For i18n there are three ways:
     </p>
      <ul>
-	     <li>BootsFaces comes with a limited set of predefined translation files: English, German, Spanish, French, Hungarian, Italian, Polish and Russian. </li>
+	     <li>BootsFaces comes with a limited set of predefined translation files: English, German, Spanish, French, Hungarian, Italian, Polish and Russian.
+	     You can either rely on the browser's default setting, or you can override the browser's language choice using the <code>lang</code> attribute.</li>
 	     <li>Use other translations using a remote URL (e.g. a CDN):
 	       <script type="syntaxhighlighter"
 	           class="brush: xml; toolbar: false;gutter: false; first-line: 1">
@@ -404,6 +405,7 @@ td {
             class="brush: xml; toolbar: false;gutter: false; first-line: 1">
             <![CDATA[
      	    <b:selectOneMenu value="&num;{carPool.language}" onchange="i18nBcarPool2Widget.DataTable().destroy();ajax:carPool.onLanguageChange()" update="bcarPool2">
+                 <f:selectItem itemLabel="Browser default" itemValue="&num;{null}"/>
                  <f:selectItem itemLabel="Italian" itemValue="Italian"/>
                  <f:selectItem itemLabel="Brazilian Portuguese" itemValue="Brazilian Portuguese"/>
                  <f:selectItem itemLabel="Norwegian (Bokmal)" itemValue="Norwegian"/>
@@ -433,6 +435,7 @@ td {
       </b:tab>
       <b:tab title="displayed as" contentStyle="border:1px solid ;padding:10px">
       	<b:selectOneMenu value="#{carPool.language}" onchange="i18nBcarPool2Widget.DataTable().destroy();ajax:carPool.onLanguageChange()" update="bcarPool2">
+             <f:selectItem itemLabel="Browser default" itemValue="#{null}"/>
              <f:selectItem itemLabel="Italian" itemValue="Italian"/>
              <f:selectItem itemLabel="Brazilian Portuguese" itemValue="Brazilian Portuguese"/>
              <f:selectItem itemLabel="Norwegian (Bokmal)" itemValue="Norwegian"/>
