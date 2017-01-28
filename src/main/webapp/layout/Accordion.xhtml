@@ -49,6 +49,33 @@
 				</script>
 			</b:tab>
 		</b:tabView>
+		
+		<h2>Disabling the content <b:badge value="Since 1.1.0"/></h2>
+		<p>By setting the flag <code>contentDisabled="true"</code> you can set each child element to disabled. More precisely,
+		the panels of the accordion are wrapped in a disabled fieldset, which disables input fields, checkboxes and buttons, but
+		not every component. In particular, tabs and panels still work. You'll also have to be careful about
+		links (everything that's using an <code>&lt;a&gt;</code> tag, like <code>&lt;button&gt;</code> and <code>&lt;b:navLink&gt;</code>.)
+		These elements will be shown as disbled, but still are accessible. In part, that's because this CSS property isn't fully
+		standardized yet. For instance, it isn't supported by Internet Explorer 11 and below, and Opera 18 and below.</p>
+		  <b:tabView>
+            <b:tab title="preview">
+              <b:accordion contentDisabled="true">
+                <b:panel title="Item 1"><b:inputText placeholder="You can't input anything here"/></b:panel>
+                <b:panel title="Item 2"><b:button look="primary" value="You can't click me!"/></b:panel>
+               </b:accordion>
+            </b:tab>
+			<b:tab title="JSF markup">
+				<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+					<![CDATA[
+                      <b:accordion contentDisabled="true">
+                         <b:panel title="Item 1"><b:inputText placeholder="You can't input anything here"/></b:panel>
+                         <b:panel title="Item 2"><b:button look="primary" value="You can't click me!"/></b:panel>
+                      </b:accordion>
+ 					]]>
+				</script>
+			</b:tab>
+		</b:tabView>
+		
 
 		<br/>
         <h2>Reference section</h2>
