@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      >
+    <h:head>
+        <title>BootsFaces rocks!</title>
+        <meta name="author" content="Stephan Rauh"></meta>
+    </h:head>
+    <h:body>
+<h:form>           
+    <p:growl id="message" showDetail="true" />
+ 
+    <p:commandButton value="Destroy the World" actionListener="#{dialogView.destroyWorld}" update="message">
+        <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+    </p:commandButton>
+    <b:commandButton value="Destroy the World" actionListener="#{dialogView.destroyWorld}" update="message"
+                     look="danger">
+        <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+    </b:commandButton>
+ 
+    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    </p:confirmDialog>
+</h:form>
+    </h:body>
+</html>
