@@ -161,6 +161,35 @@ public class RadiobuttonBean implements Serializable {
 }
        ]]></script>
       </b:well>
+      <h:form>
+        <h2>AJAX <b:badge value="since 1.1.0" /></h2>
+        <p>Since BootsFaces 1.1.0, radiobuttons also support AJAX:</p>
+        <b:panel title="Survey" look="primary">
+          <p>Which Java version do you use?</p>
+          <b:panelGrid size="xs" columns="4">
+	          <b:radiobutton onclick="ajax:radiobuttonBean.submit()" update="@form" value="#{radiobuttonBean.javaVersion}" itemLabel="Java 6" itemValue="6" />
+	          <b:radiobutton onclick="ajax:radiobuttonBean.submit()" update="@form" value="#{radiobuttonBean.javaVersion}" itemLabel="Java 7" itemValue="7" />
+	          <b:radiobutton onclick="ajax:radiobuttonBean.submit()" update="@form" value="#{radiobuttonBean.javaVersion}" itemLabel="Java 8" itemValue="8" />
+	          <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 9" itemValue="9" disabled="true"/>
+          </b:panelGrid>
+          <b:messages />
+        </b:panel>
+      </h:form>
+      <b:well>
+         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
+           <style>label.disabled { color:#ccc}</style>
+           <b:panel title="Survey" look="primary">
+            <p>Which Java version do you use?</p>
+            <b:panelGrid size="xs" columns="3">
+              <b:radiobutton onclick="ajax:radiobuttonBean.submit()" value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 6" itemValue="6" />
+              <b:radiobutton onclick="ajax:radiobuttonBean.submit()" value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 7" itemValue="7" />
+              <b:radiobutton onclick="ajax:radiobuttonBean.submit()" value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 8" itemValue="8" />
+              <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 9" itemValue="9" disabled="true />
+             </b:panelGrid>
+            <b:messages />
+          </b:panel>
+        ]]></script>
+      </b:well>
       
 
       <br />
