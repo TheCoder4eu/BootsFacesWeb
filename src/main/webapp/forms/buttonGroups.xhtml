@@ -132,30 +132,76 @@
                 <p>You can even use <b>different looks</b> and/or <b>icons</b> for your buttons, if you need to.</p>
                 <b:panel look="info">
                     <f:facet name="heading"><b>EXAMPLE - Mixing Buttons</b></f:facet>
-                    <b:buttonGroup>
-                        <b:button look="success" value="1" />
-                        <b:button look="primary" icon="print" value="" />
-                        <b:dropButton look="warning" value="DropButton">
-                            <b:navLink value="Action" href="#"></b:navLink>
-                            <b:navLink value="Another action" href="#"></b:navLink>
-                            <b:navLink value="Something else here" href="#"></b:navLink>
-                            <b:navLink></b:navLink>
-                            <b:navLink header="Nav header"></b:navLink>
-                            <b:navLink value="Separated link" href="#"></b:navLink>
-                            <b:navLink value="One more separated link" href="#"></b:navLink>
-                        </b:dropButton>
-                    </b:buttonGroup>
+                    <h:form>
+	                    <b:row>
+	                      <b:column span="8">
+	                      	<b:panel look="primary" title="b:buttonGroup">
+		                      <b:buttonGroup contentDisabled="#{buttonGroupsBean.contentDisabled}">
+		                        <b:button look="success" value="1" />
+		                        <b:button look="primary" icon="print" value="" />
+		                        <b:dropButton look="warning" value="DropButton" contentDisabled="#{buttonGroupsBean.dropButtonDisabled}">
+		                            <b:navLink value="Action" href="#" disabled="#{buttonGroupsBean.invidualLinksDisabled}"></b:navLink>
+		                            <b:navLink value="Another action" href="#" disabled="#{buttonGroupsBean.invidualLinksDisabled}"></b:navLink>
+		                            <b:navLink value="Something else here" href="#" disabled="#{buttonGroupsBean.invidualLinksDisabled}"></b:navLink>
+		                            <b:navLink></b:navLink>
+		                            <b:navLink header="Nav header"></b:navLink>
+		                            <b:navLink value="Separated link" href="#" disabled="#{buttonGroupsBean.invidualLinksDisabled}"></b:navLink>
+		                            <b:navLink value="One more separated link" href="#" disabled="#{buttonGroupsBean.invidualLinksDisabled}"></b:navLink>
+		                        </b:dropButton>
+		                      </b:buttonGroup>
+		                    </b:panel>
+		                    </b:column>
+	                        <b:column span="4">
+	                            <b:panel look="primary" title="Options">
+	                            	<b:switch on-text="true" off-text="default" value="#{buttonGroupsBean.contentDisabled}"
+	                            	          update="@form" onchange="ajax:buttonGroupsBean.onChange()" 
+	                            	          label="b:buttonGroup contentDisabled=" render-label="true"/>
+	                            	<b:switch on-text="disabled" off-text="default" value="#{buttonGroupsBean.dropButtonDisabled}"
+	                            	          update="@form" onchange="ajax:buttonGroupsBean.onChange()" 
+	                            	          label="b:dropButton contentDisabled=" render-label="true"/>
+	                            	<b:switch on-text="disabled" off-text="default" value="#{buttonGroupsBean.invidualLinksDisabled}"
+	                            	          update="@form" onchange="ajax:buttonGroupsBean.onChange()" 
+	                            	          label="individual links disabled" render-label="true"/>
+	                            </b:panel>
+		                    </b:column>
+	                      </b:row>
+                    </h:form>
                     <f:facet name="footer">
                         <strong>Markup:</strong><br/>
                         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;">
                         <![CDATA[
-                        <b:buttonGroup>
-                            <b:button look="success" value="1" />
-                            <b:button look="primary" icon="print" value="" />
-                            <b:dropButton look="warning" value="DropButton">
-                                ...
-                            </b:dropButton>
-                        </b:buttonGroup>
+	                    <b:row>
+	                      <b:column span="8">
+	                      	<b:panel look="primary" title="b:buttonGroup">
+		                      <b:buttonGroup contentDisabled="&num;{buttonGroupsBean.contentDisabled}">
+		                        <b:button look="success" value="1" />
+		                        <b:button look="primary" icon="print" value="" />
+		                        <b:dropButton look="warning" value="DropButton" contentDisabled="&num;{buttonGroupsBean.dropButtonDisabled}">
+		                            <b:navLink value="Action" href="&num;" disabled="&num;{buttonGroupsBean.invidualLinksDisabled}"></b:navLink>
+		                            <b:navLink value="Another action" href="&num;" disabled="&num;{buttonGroupsBean.invidualLinksDisabled}"></b:navLink>
+		                            <b:navLink value="Something else here" href="&num;" disabled="&num;{buttonGroupsBean.invidualLinksDisabled}"></b:navLink>
+		                            <b:navLink></b:navLink>
+		                            <b:navLink header="Nav header"></b:navLink>
+		                            <b:navLink value="Separated link" href="&num;" disabled="&num;{buttonGroupsBean.invidualLinksDisabled}"></b:navLink>
+		                            <b:navLink value="One more separated link" href="&num;" disabled="&num;{buttonGroupsBean.invidualLinksDisabled}"></b:navLink>
+		                        </b:dropButton>
+		                      </b:buttonGroup>
+		                    </b:panel>
+		                    </b:column>
+	                        <b:column span="4">
+	                            <b:panel look="primary" title="Options">
+	                            	<b:switch on-text="true" off-text="default" value="&num;{buttonGroupsBean.contentDisabled}"
+	                            	          update="@form" onchange="ajax:buttonGroupsBean.onChange()" 
+	                            	          label="b:buttonGroup contentDisabled=" render-label="true"/>
+	                            	<b:switch on-text="disabled" off-text="default" value="&num;{buttonGroupsBean.dropButtonDisabled}"
+	                            	          update="@form" onchange="ajax:buttonGroupsBean.onChange()" 
+	                            	          label="b:dropButton contentDisabled=" render-label="true"/>
+	                            	<b:switch on-text="disabled" off-text="default" value="&num;{buttonGroupsBean.invidualLinksDisabled}"
+	                            	          update="@form" onchange="ajax:buttonGroupsBean.onChange()" 
+	                            	          label="individual links disabled" render-label="true"/>
+	                            </b:panel>
+		                    </b:column>
+	                      </b:row>
                         ]]></script>
                     </f:facet>
                 </b:panel>
