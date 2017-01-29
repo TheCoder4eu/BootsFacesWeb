@@ -629,6 +629,68 @@ public class LoginBean {
                  	<b:column tiny-screen="0">tiny-screen="0" hides the text on tiny screens. It's visible on every other screen size.</b:column>
                  </b:row>
 
+		<h2>Disabling the content <b:badge value="Since 1.1.0"/></h2>
+		<p>By setting the flag <code>contentDisabled="true"</code> you can set each child element of
+		<code>&lt;b:container</code>, <code>&lt;b:row</code>, and <code>&lt;b:column</code> to disabled. More precisely,
+		the panels of the accordion are wrapped in a disabled fieldset, which disables input fields, checkboxes and buttons, but
+		not every component. In particular, tabs and panels still work. You'll also have to be careful about
+		links (everything that's using an <code>&lt;a&gt;</code> tag, like <code>&lt;button&gt;</code> and <code>&lt;b:navLink&gt;</code>.)
+		These elements will be shown as disbled, but still are accessible. In part, that's because this CSS property isn't fully
+		standardized yet. For instance, it isn't supported by Internet Explorer 11 and below, and Opera 18 and below.</p>
+		<h:form>
+			  <b:tabView>
+	            <b:tab title="preview">
+	              <b:row>
+	              <b:column span="8">
+	              <b:container fluid="true" contentDisabled="#{columnsBean.containerDisabled}" id="contentDisabledDemoId">
+		              <b:row contentDisabled="#{columnsBean.rowDisabled}">
+		                <b:column span="6" contentDisabled="#{columnsBean.columnDisabled}">
+		                	<b:inputText placeholder="You can't input anything here" label="b:inputText" render-label="true"/>
+			                <b:datepicker label="Datepicker" render-label="true" />
+			                <b:button look="primary" value="You can't click me!"/>
+		                </b:column>
+		                <b:column span="6">
+			                <b:dateTimePicker label="DateTimerPicker" render-label="true"/>
+			                <b:colorPicker label="ColorPicker" render-label="true"/>
+		                    <b:selectOneMenu label="SelectOneMenu" render-label="true">
+			                	<f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
+			                	<f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
+			               	</b:selectOneMenu>
+			                <b:selectMultiMenu label="SelectMultiMenu" render-label="true">
+			                	<f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
+			                	<f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
+			               	</b:selectMultiMenu>
+		                </b:column>
+		               </b:row>
+	               </b:container>
+	               </b:column>
+                       <b:column span="4">
+                           <b:panel look="primary" title="Options">
+                           	<b:switch on-text="true" off-text="default" value="#{columnsBean.containerDisabled}"
+                           	          update="contentDisabledDemoId" onchange="ajax:columnsBean.onChange()" 
+                           	          label="b:container contentDisabled=" render-label="true"/>
+                           	<b:switch on-text="disabled" off-text="default" value="#{columnsBean.rowDisabled}"
+                           	          update="contentDisabledDemoId" onchange="ajax:columnsBean.onChange()" 
+                           	          label="b:row contentDisabled=" render-label="true"/>
+                           	<b:switch on-text="disabled" off-text="default" value="#{columnsBean.columnDisabled}"
+                           	          update="contentDisabledDemoId" onchange="ajax:columnsBean.onChange()" 
+                           	          label="first b:column contentDisabled=" render-label="true"/>
+                           </b:panel>
+                      </b:column>
+                   </b:row>
+	            </b:tab>
+				<b:tab title="JSF markup">
+					<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+					<![CDATA[
+                      <b:accordion contentDisabled="true">
+                         <b:panel title="Item 1"><b:inputText placeholder="You can't input anything here"/></b:panel>
+                         <b:panel title="Item 2"><b:button look="primary" value="You can't click me!"/></b:panel>
+                      </b:accordion>
+ 					]]>
+				</script>
+				</b:tab>
+			</b:tabView>
+		</h:form>
 
                   <br/>
                   <h2>Reference section</h2>
