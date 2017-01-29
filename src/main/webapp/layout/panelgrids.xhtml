@@ -37,11 +37,12 @@
 				<code>&lt;b:panelGrid /&gt;</code>
 				column spans.
 			</p>
-			<b:tabView>
-				<b:tab title="JSF markup">
-					<b:well>
-						<script type="syntaxhighlighter"
-							class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+			<h:form>
+				<b:tabView>
+					<b:tab title="JSF markup">
+						<b:well>
+							<script type="syntaxhighlighter"
+								class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
 <b:panelGrid colSpans="2,10" size="xs">
 	<h:outputLabel value="Value 1" />
@@ -54,89 +55,39 @@
 	<b:selectBooleanCheckbox value="# {settingsBean.cb2}" />
 </b:panelGrid>
 ]]>
-</script>
-					</b:well>
-				</b:tab>
-				<b:tab title="displayed as">
-                                    <b:well>
-                                        <b:panelGrid colSpans="2,10" size="xs">
-                                            <h:outputLabel value="Value 1" />
-                                            <b:inputText span="8" value="#{settingsBean.value1}" />
-                                            <h:outputLabel value="Value 2" />
-                                            <b:inputText span="10" value="#{settingsBean.value2}" />
-                                            <h:outputLabel value="Checkbox 1" />
-                                            <b:selectBooleanCheckbox value="#{settingsBean.checkbox1}" />
-                                            <h:outputLabel value="Checkbox 2" />
-                                            <b:selectBooleanCheckbox value="#{settingsBean.checkbox2}" />
-                                        </b:panelGrid>
-                                    </b:well>
-				</b:tab>
-			</b:tabView>
+	</script>
+						</b:well>
+					</b:tab>
+					<b:tab title="displayed as">
+	                   <b:well>
+	                       <b:panelGrid colSpans="2,10" size="xs" contentDisabled="#{columnsBean.containerDisabled}" id="panelGridId">
+	                           <h:outputLabel value="Value 1" />
+	                           <b:inputText span="8" value="#{settingsBean.value1}" />
+	                           <h:outputLabel value="Value 2" />
+	                           <b:inputText span="10" value="#{settingsBean.value2}" />
+	                           <h:outputLabel value="Checkbox 1" />
+	                           <b:selectBooleanCheckbox value="#{settingsBean.checkbox1}" />
+	                           <h:outputLabel value="Checkbox 2" />
+	                           <b:selectBooleanCheckbox value="#{settingsBean.checkbox2}" />
+	                       </b:panelGrid>
+	                       <b:panel look="primary" title="Options">
+	                      	 <b:switch on-text="true" off-text="default" value="#{columnsBean.containerDisabled}"
+	                      	          update="panelGridId" onchange="ajax:columnsBean.onChange()" 
+	                      	          label="b:panelGrid contentDisabled=" render-label="true"/>
+	                       </b:panel>
+	                   </b:well>
+					</b:tab>
+				</b:tabView>
+			</h:form>
 
 			<p>colSpan="2,10" means the content of the &lt;b:panelGrid&gt; is
 				arranged in to columns. The first colum takes 2 Bootstrap columns
 				(16% of the available space), the second column take the remaining
 				10 Bootstrap columns (83% of the available space).</p>
 
-			<b:panel look="info">
-				<f:facet name="heading">
-					<b>Attributes of &lt;b:panelGrid&gt;</b>
-				</f:facet>
-					<table class="table table-striped table-hover"
-						style="background-color: #fff">
-						<thead>
-							<tr>
-								<th>Attribute</th>
-								<th>Default value</th>
-								<th>Description</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>colSpans</td>
-								<td>(none)</td>
-								<td>Comma-separated list of integers that must add up to
-									twelve. Defines how many Bootstrap columns each column of the
-									panelGrid spans.</td>
-							</tr>
-							<tr>
-								<td>size</td>
-								<td>lg</td>
-								<td>Optional. Legal values are lg, md, sm and xs. Influences the grid size.
-								</td>
-							</tr>
-
-							<tr>
-								<td>id</td>
-								<td>(none)</td>
-								<td>Unique identifier of the component.</td>
-							</tr>
-							<tr>
-								<td>style</td>
-								<td>(none)</td>
-								<td>CSS style.
-								</td>
-							</tr>
-							<tr>
-								<td>styleClass</td>
-								<td>(none)</td>
-								<td>CSS class</td>
-							</tr>
-							<tr>
-								<td>rowClasses</td>
-								<td>(none)</td>
-								<td>Optional comma-separated list of CSS classes that are applied to the rows. If there are more rows than <code>rowClasses</code>, BootsFaces starts with the first row class again.</td>
-							</tr>
-							<tr>
-								<td>columnClasses</td>
-								<td>(none)</td>
-								<td>Optional comma-separated list of CSS classes that are applied to the rows. If there are more columns than <code>columnClasses</code>, BootsFaces starts with the first column class again.<br />
-								If a column class contains one of the standard <code>col-{{size}}-{{width}}</code> classes (e.g. <code>col-lg-3</code>), it override the corresponding <code>colSpans</code> setting.</td>
-							</tr>
-
-						</tbody>
-					</table>
-			</b:panel>
+            <br/>
+            <h2>Reference section</h2>
+            <ui:include src="PanelGridAttributes.xhtml" />
 			<b:panel look="info">
 				<f:facet name="heading">
 					<b>Skinning</b>
