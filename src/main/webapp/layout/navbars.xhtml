@@ -321,22 +321,29 @@
                 time, two levels is what users accept. They also accept a third level if it remains the exception. But adding a fourth level makes your application cumbersome.</p>
                 <b:panel>
                     <f:facet name="heading"><b>EXAMPLE</b></f:facet>
-                    <b:navBar brand="Brand" brandHref="#">
-                        <b:navbarLinks>
-                            <b:navLink value="Home" href="#"></b:navLink>
-                            <b:navLink value="Link" href="#"></b:navLink>
-                            <b:navLink value="Link" href="#"></b:navLink>
-                            <b:dropMenu value="Dropdown">
-                                <b:navLink value="Action" href="#"></b:navLink>
-                                <b:navLink value="Another action" href="#"></b:navLink>
-                                <b:navLink value="Something else here" href="#"></b:navLink>
-                                <b:navLink></b:navLink>
-                                <b:navLink header="Nav header"></b:navLink>
-                                <b:navLink value="Separated link" href="#"></b:navLink>
-                                <b:navLink value="One more separated link" href="#"></b:navLink>
-                            </b:dropMenu>
-                        </b:navbarLinks>
-                    </b:navBar>
+                    <h:form>
+	                    <b:navBar brand="Brand" brandHref="#" id="dropMenuExample">
+	                        <b:navbarLinks>
+	                            <b:navLink value="Home" href="#"></b:navLink>
+	                            <b:navLink value="Link" href="#"></b:navLink>
+	                            <b:navLink value="Link" href="#"></b:navLink>
+	                            <b:dropMenu value="Dropdown" contentDisabled="#{navLinkBean.disabled}">
+	                                <b:navLink value="Action" href="#"></b:navLink>
+	                                <b:navLink value="Another action" href="#"></b:navLink>
+	                                <b:navLink value="Something else here" href="#"></b:navLink>
+	                                <b:navLink></b:navLink>
+	                                <b:navLink header="Nav header"></b:navLink>
+	                                <b:navLink value="Separated link" href="#"></b:navLink>
+	                                <b:navLink value="One more separated link" href="#"></b:navLink>
+	                            </b:dropMenu>
+	                        </b:navbarLinks>
+	                    </b:navBar>
+	                    <b:panel look="primary" title="Options">
+	                     	<b:switch on-text="disabled" off-text="enabled" value="#{navLinkBean.disabled}"
+	                     	          update="dropMenuExample" onchange="ajax:navLinkBean.onChange()"
+	                     	          label="b:dropMenu contentDisabled=" render-label="true"/>
+	                    </b:panel>
+                    </h:form>
                     <f:facet name="footer">
                         <strong>Markup:</strong><br/>
 
