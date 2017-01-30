@@ -322,12 +322,12 @@
                 <b:panel>
                     <f:facet name="heading"><b>EXAMPLE</b></f:facet>
                     <h:form>
-	                    <b:navBar brand="Brand" brandHref="#" id="dropMenuExample">
-	                        <b:navbarLinks>
+	                    <b:navBar brand="Brand" brandHref="#" id="dropMenuExample" contentDisabled="#{navBarBean.navBarDisabled}">
+	                        <b:navbarLinks contentDisabled="#{navBarBean.navBarLinksDisabled}">
 	                            <b:navLink value="Home" href="#"></b:navLink>
 	                            <b:navLink value="Link" href="#"></b:navLink>
 	                            <b:navLink value="Link" href="#"></b:navLink>
-	                            <b:dropMenu value="Dropdown" contentDisabled="#{navLinkBean.disabled}">
+	                            <b:dropMenu value="Dropdown" contentDisabled="#{navBarBean.dropMenuDisabled}">
 	                                <b:navLink value="Action" href="#"></b:navLink>
 	                                <b:navLink value="Another action" href="#"></b:navLink>
 	                                <b:navLink value="Something else here" href="#"></b:navLink>
@@ -339,9 +339,17 @@
 	                        </b:navbarLinks>
 	                    </b:navBar>
 	                    <b:panel look="primary" title="Options">
-	                     	<b:switch on-text="disabled" off-text="enabled" value="#{navLinkBean.disabled}"
-	                     	          update="dropMenuExample" onchange="ajax:navLinkBean.onChange()"
-	                     	          label="b:dropMenu contentDisabled=" render-label="true"/>
+	                    	<b:panelGrid columns="3">
+		                     	<b:switch on-text="disabled" off-text="enabled" value="#{navBarBean.navBarDisabled}"
+		                     	          update="dropMenuExample" onchange="ajax:navBarBean.onChange()"
+		                     	          label="b:dropMenu contentDisabled=" render-label="true"/>
+		                     	<b:switch on-text="disabled" off-text="enabled" value="#{navBarBean.navBarLinksDisabled}"
+		                     	          update="dropMenuExample" onchange="ajax:navBarBean.onChange()"
+		                     	          label="b:dropMenu contentDisabled=" render-label="true"/>
+		                     	<b:switch on-text="disabled" off-text="enabled" value="#{navBarBean.dropMenuDisabled}"
+		                     	          update="dropMenuExample" onchange="ajax:navBarBean.onChange()"
+		                     	          label="b:dropMenu contentDisabled=" render-label="true"/>
+               	            </b:panelGrid>
 	                    </b:panel>
                     </h:form>
                     <f:facet name="footer">
@@ -349,23 +357,21 @@
 
                         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
                             <![CDATA[
-                            <b:navBar brand="Brand" brandHref="#">
-                                <b:navbarLinks>
-                                    <b:navLink value="Home" href="#"></b:navLink>
-                                    <b:navLink value="Link" href="#"></b:navLink>
-                                    <b:navLink value="Link" href="#"></b:navLink>
-                                    <b:dropMenu value="Dropdown">
-                                        <b:navLink value="Action" href="#"></b:navLink>
-                                        <b:navLink value="Another action" href="#"></b:navLink>
-                                        <b:navLink value="Something else here" href="#"></b:navLink>
-                                        <b:navLink></b:navLink>
-                                        <b:navLink header="Nav header"></b:navLink>
-                                        <b:navLink value="Separated link" href="#"></b:navLink>
-                                        <b:navLink value="One more separated link" href="#"></b:navLink>
-                                    </b:dropMenu>
-                                </b:navbarLinks>
-                            </b:navBar>
-
+	                    <b:navBar brand="Brand" brandHref="&num;" id="dropMenuExample" contentDisabled="&num;{navBarBean.navBarDisabled}">
+	                        <b:navbarLinks contentDisabled="&num;{navBarBean.navBarLinksDisabled}">
+	                            <b:navLink value="Home" href="&num;"></b:navLink>
+	                            <b:navLink value="Link" href="&num;"></b:navLink>
+	                            <b:navLink value="Link" href="&num;"></b:navLink>
+	                            <b:dropMenu value="Dropdown" contentDisabled="&num;{navBarBean.dropMenuDisabled}">
+	                                <b:navLink value="Action" href="&num;"></b:navLink>
+	                                <b:navLink value="Another action" href="&num;"></b:navLink>
+	                                <b:navLink value="Something else here" href="&num;"></b:navLink>
+	                                <b:navLink></b:navLink>
+	                                <b:navLink header="Nav header"></b:navLink>
+	                                <b:navLink value="Separated link" href="&num;"></b:navLink>
+	                                <b:navLink value="One more separated link" href="&num;"></b:navLink>
+	                            </b:dropMenu>
+	                        </b:navbarLinks>
                             ]]></script>
                     </f:facet>
                 </b:panel>
