@@ -34,39 +34,43 @@ public class DataTableSettingsBean implements Serializable {
 	private boolean style = false;
 	private boolean styleClass = false;
 
+	private boolean contentDisabled = false;
+
 	private boolean contentStyleClass = false;
 
 	private boolean footerStyle = false;
 
 	private boolean footerStyleClass = false;
 
-	private boolean saveState=false;
+	private boolean saveState = false;
 
-	private boolean multiColumnSearch=false;
-	private boolean searching=false;
+	private boolean multiColumnSearch = false;
+	private String multiColumnSearchPosition = "top";
 
-	private boolean striped=true;
+	private boolean searching = false;
 
-	private boolean border=true;
-	private boolean rowHighlight=true;
+	private boolean striped = true;
 
-	private boolean languageIsEs=false;
+	private boolean border = true;
+	private boolean rowHighlight = true;
 
-	private boolean orderable=false;
+	private boolean languageIsEs = false;
 
-	private boolean customOptions=false;
+	private boolean orderable = false;
 
-	private boolean select=false;
+	private boolean customOptions = false;
 
-	private String selectionMode="multiple";
+	private boolean select = false;
 
-	private boolean fixedHeader=false;
+	private String selectionMode = "multiple";
 
-	private boolean searchable=true;
-	
-	private String defaultColumnFilter="";
-	
-	private boolean paginated=true;
+	private boolean fixedHeader = false;
+
+	private boolean searchable = true;
+
+	private String defaultColumnFilter = "";
+
+	private boolean paginated = true;
 
 	public boolean isSaveState() {
 		return saveState;
@@ -171,9 +175,11 @@ public class DataTableSettingsBean implements Serializable {
 		}
 		return null;
 	}
+
 	public boolean isContentStyle() {
 		return contentStyle;
 	}
+
 	public boolean isContentStyleClass() {
 		return contentStyleClass;
 	}
@@ -197,6 +203,7 @@ public class DataTableSettingsBean implements Serializable {
 	public void setContentStyle(boolean contentStyle) {
 		this.contentStyle = contentStyle;
 	}
+
 	public void setContentStyleClass(boolean contentStyleClass) {
 		this.contentStyleClass = contentStyleClass;
 	}
@@ -289,13 +296,13 @@ public class DataTableSettingsBean implements Serializable {
 	public void setSelectionMode(String selectionMode) {
 		this.selectionMode = selectionMode;
 	}
-	
+
 	public boolean getSingleSelectionMode() {
 		return "single".equals(selectionMode);
 	}
 
 	public void setSingleSelectionMode(boolean selectionMode) {
-		this.selectionMode = selectionMode?"single":"multiple";
+		this.selectionMode = selectionMode ? "single" : "multiple";
 	}
 
 	public boolean isStyleClass() {
@@ -331,5 +338,33 @@ public class DataTableSettingsBean implements Serializable {
 
 	public void setPaginated(boolean paginated) {
 		this.paginated = paginated;
+	}
+
+	public String getMultiColumnSearchPosition() {
+		return multiColumnSearchPosition;
+	}
+
+	public void setMultiColumnSearchPosition(String multiColumnSearchPosition) {
+		this.multiColumnSearchPosition = multiColumnSearchPosition;
+	}
+
+	public void setMultiColumnSearchPositionTop(boolean top) {
+		if (top) {
+			this.multiColumnSearchPosition = "top";
+		} else {
+			this.multiColumnSearchPosition = "bottom";
+		}
+	}
+	
+	public boolean isMultiColumnSearchPositionTop() {
+		return this.multiColumnSearchPosition=="top";
+	}
+
+	public boolean isContentDisabled() {
+		return contentDisabled;
+	}
+
+	public void setContentDisabled(boolean contentDisabled) {
+		this.contentDisabled = contentDisabled;
 	}
 }
