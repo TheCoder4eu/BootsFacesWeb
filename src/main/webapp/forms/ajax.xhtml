@@ -56,6 +56,15 @@
 				<p>You can also use more than one JavaScript attribute to call AJAX code: <code>onclick</code>, <code>ondlbclick</code>, <code>onfocus</code>,
 				just to name a few. Each of these AJAX calls update the same part of the DOM tree, defined by the <code>update</code> attribute.</p>
 
+                <h2>Busy indicator</h2>
+                <p>You can use the BlockUI feature to give feedback to the user. The general idea of BlockUI is to fade the screen to gray while
+                an AJAX request is running. It also prevents the user from sending multiple AJAX requests. It's a common problem that hurried users
+                start to click frantically because they simply don't know whether the application accepted the click or not. Giving the user visual
+                feedback solves this problem. It also solves the dreaded "double click" problem. Many users have learned they need to use a double click
+                to start an application, and it hardly ever causes problems, so they use it everywhere. Unfortunately, web applications don't work
+                that way. They try to execute the action twice. BlockUI solves that problem, too. See <a href="blockUI.jsf">the BlockUI page</a>
+                for more details.</p>
+
                 <h2>Partial processing</h2>
                 <p>Use the <code>process</code> attribute to define which input fields are send to the server.</p>
 
