@@ -17,19 +17,55 @@ td {
 
                 <p><code>&lt;b:kebab&gt;</code> are similar to DropMenu and support the same feature set.</p>
                 <h1>Basic usage</h1>
-                <p>Kebabs are rendered as three vertical dots and will show a overflow menu when clicked.</p>
-                Example:
-                <b:kebab>
-                  <b:listLinks>
-                    <b:navLink value="Action" href="#"></b:navLink>
-                    <b:navLink value="Another action" href="#"></b:navLink>
-                    <b:navLink value="Something else here" href="#"></b:navLink>
-                    <b:navLink></b:navLink>
-                    <b:navLink header="Nav header"></b:navLink>
-                    <b:navLink value="Separated link" href="#"></b:navLink>
-                    <b:navLink value="One more separated link" href="#"></b:navLink>
-                  </b:listLinks>
-                </b:kebab>
+                <p>Kebabs are rendered as three vertical dots and will show a overflow menu when clicked.
+                The example below shows both the kebab menu, and what it looks like if it's content is disabled by setting <code>content-disabled="true"</code>:</p>
+               	<b:tabView>
+                	<b:tab title="Live preview" content-style="border:1px solid #DDD">
+ 			                <h:form>
+			                	<b:panelGrid columns="2">
+					                <b:kebab content-disabled="#{kebabBean.contentDisabled}" id="kebabId">
+					                  <b:listLinks>
+					                    <b:navLink value="Action" href="#"></b:navLink>
+					                    <b:navLink value="Another action" href="#"></b:navLink>
+					                    <b:navLink value="Something else here" href="#"></b:navLink>
+					                    <b:navLink></b:navLink>
+					                    <b:navLink header="Nav header"></b:navLink>
+					                    <b:navLink value="Separated link" href="#"></b:navLink>
+					                    <b:navLink value="One more separated link" href="#"></b:navLink>
+					                  </b:listLinks>
+					                </b:kebab>
+					                <b:switch value="#{kebabBean.contentDisabled}" label="content-disabled=" render-label="true" on-text="true" off-text=" false" 
+									          onchange="ajax:kebabBean.onChange()" update="@form">
+									</b:switch>
+								</b:panelGrid>
+							</h:form>
+					</b:tab>
+ 					<b:tab title="JSF markup">
+						<b:well>
+							<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+					    	<![CDATA[
+			                	<b:panelGrid columns="2">
+					                <b:kebab content-disabled="#{kebabBean.contentDisabled}" id="kebabId">
+					                  <b:listLinks>
+					                    <b:navLink value="Action" href="#"></b:navLink>
+					                    <b:navLink value="Another action" href="#"></b:navLink>
+					                    <b:navLink value="Something else here" href="#"></b:navLink>
+					                    <b:navLink></b:navLink>
+					                    <b:navLink header="Nav header"></b:navLink>
+					                    <b:navLink value="Separated link" href="#"></b:navLink>
+					                    <b:navLink value="One more separated link" href="#"></b:navLink>
+					                  </b:listLinks>
+					                </b:kebab>
+					                <b:switch value="#{kebabBean.contentDisabled}" label="content-disabled=" render-label="true" on-text="true" off-text=" false" 
+									          onchange="ajax:kebabBean.onChange()" update="@form">
+									</b:switch>
+								</b:panelGrid>
+							]]>
+						</script>
+							</b:well>
+               		</b:tab>
+				</b:tabView>
+                
                 <hr />
                 <br/>
                 <strong>Using the Kebab in a Navbar</strong>
