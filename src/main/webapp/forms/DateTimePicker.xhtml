@@ -92,15 +92,59 @@
       </b:row>
     </h:form>
 
-    <h3>Format</h3>
+    <h3>Formatting and locale</h3>
     <p>By default, the dateTimePicker tries to guess the proper format from your locale. You can customize this by three
     options:</p>
     <ul>
     <li><code>show-date</code> allows you to show or hide the calendar.</li>
       <li><code>show-time</code> allows you to show or hide the time picker.</li>
-      <li><code>format</code> This option overrules both <code>show-daten</code> and <code>show-time</code>. You can
-      define an arbitrary date and time format by using the format defintions of <a target="#" href="http://momentjs.com/docs/#/displaying/format/">moment.js</a>.</li>
+      <li><code>format</code> This option overrules both <code>show-date</code> and <code>show-time</code>. You can
+      define an arbitrary date and time format by using the format definitions of 
+      <a target="#" href="http://momentjs.com/docs/#/displaying/format/">moment.js</a>.
+      Note that moment.js is a JavaScript library that does not follow the formatting rules Java programmers are used to.
+      There are subtle (and sometimes not-so-subtle) differences.</li>
     </ul>
+    <h:form>
+      <b:row>
+        <b:panel title="Live preview" small-screen="half" look="primary">
+          <b:dateTimePicker value="#{dateTimeBean.justNow}"
+                            label="German date format"
+                            render-label="true"
+                            format="DD.MM.YYYY" />
+          <f:facet name="footer">
+            <script type="syntaxhighlighter"
+                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+          <b:dateTimePicker value="&num;{dateTimeBean.justNow}"
+                            label="German date format"
+                            render-label="true"
+                            format="DD.MM.YYYY" />
+ 			]]>
+			</script>
+          </f:facet>
+        </b:panel>
+        <b:panel title="Live preview" small-screen="half" look="primary">
+          <b:dateTimePicker value="{dateTimeBean.justNow}"
+                            label="American date format"
+                            render-label="true"
+                            format="MM/DD/YYYY" />
+          <f:facet name="footer">
+            <script type="syntaxhighlighter"
+                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+          <b:dateTimePicker value="&num;{dateTimeBean.justNow}"
+                            label="American date format"
+                            render-label="true"
+                            format="MM/DD/YYYY" />
+ 			]]>
+			</script>
+          </f:facet>
+        </b:panel>
+      </b:row>
+    </h:form>
+    
+    
+    
     <h3>Embedding a DateTimePicker in a form</h3>
     <p>By default, the (optional) label of the dateTimePicker is put above the dateTimePicker:</p>
     <h:form>
