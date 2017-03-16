@@ -480,6 +480,15 @@
                 <h2>Reference section</h2>
                 <ui:include src="IconAttributes.xhtml" />
                 <ui:include src="IconAwesomeAttributes.xhtml" />
+                
+                <h2>List of Font Awesome icons</h2>
+                <ui:repeat var="fontAwesomeIcon" value="#{iconAwesomeBean.fontAwesomeIconList}">
+            		<div>
+            			<i class="fa #{fontAwesomeIcon}" style="padding-right: 20px" />
+            			<h:outputText value="#{fontAwesomeIcon}"/>
+            		</div>            	
+            	</ui:repeat>
+            
                 <b:panel look="info" rendered="false">
 					<f:facet name="heading">
 						<b>Skinning</b>

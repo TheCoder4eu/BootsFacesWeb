@@ -254,6 +254,10 @@
 				<directory>web</directory>
 				<targetPath>META-INF/resources/bsf/css</targetPath>
 			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<targetPath>WEB-INF/classes</targetPath>
+			</resource>
 		</resources>
 		<plugins>
 			<plugin>
