@@ -418,8 +418,53 @@
 			</b:tabView>
  ]]>
         </script>
- </h:form>
+ 		</h:form>
 
+		<h4>Disabling the content of a tab <b:badge value="since 1.1.0" /></h4>
+		<p>This demo is sort of hard to demonstrate, but we included it for testing purposes nonetheless. Below you see (or rather: you don't see)
+		a tabView with <code>rendered="false"</code>.</p>
+		<h:form>
+			<b:panelGrid columns="2">
+				<b:panel title="live preview" id="contentDisabledDemoId">
+					<b:tabView contentStyle="border: 1px solid #ddd;padding:10px;"
+					    content-disabled="#{testBean.contentDisabled}">
+						<b:tab title="content-disabled=#{testBean.contentDisabled}">
+			              	<b:datepicker label="Datepicker" render-label="true" />
+				            <b:dateTimePicker label="DateTimerPicker" render-label="true"/>
+				            <b:colorPicker label="ColorPicker" render-label="true"/>
+		 				</b:tab>
+						<b:tab title="content-disabled=true" content-disabled="true">
+			              	<b:datepicker label="Datepicker" render-label="true" />
+				            <b:dateTimePicker label="DateTimerPicker" render-label="true"/>
+				            <b:colorPicker label="ColorPicker" render-label="true"/>
+			            </b:tab>
+					</b:tabView>
+				</b:panel>
+				<b:panel title="disabled the entire tabView">
+					<b:selectBooleanCheckbox value="#{testBean.contentDisabled}" caption="content-disabled=true"
+							                 onclick="ajax:testBean.onClick()"
+							                 update="contentDisabledDemoId" />
+				</b:panel>
+				
+			</b:panelGrid>
+					<script type="syntaxhighlighter"
+						class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+			<b:tabView rendered="false">
+				<b:tab title="first tab">
+	              	<b:datepicker label="Datepicker" render-label="true" />
+		            <b:dateTimePicker label="DateTimerPicker" render-label="true"/>
+		            <b:colorPicker label="ColorPicker" render-label="true"/>
+ 				</b:tab>
+				<b:tab title="second tab" content-disabled="true">
+	              	<b:datepicker label="Datepicker" render-label="true" />
+		            <b:dateTimePicker label="DateTimerPicker" render-label="true"/>
+		            <b:colorPicker label="ColorPicker" render-label="true"/>
+	            </b:tab>
+			</b:tabView>
+ ]]>
+        </script>
+ </h:form>
 
 
 

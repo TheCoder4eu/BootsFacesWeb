@@ -27,6 +27,8 @@ public class TestBean implements Serializable {
 	private String label2 = "Label Two";
 	private String text1 = "Text One";
 	private String text2 = "Text Two";
+	
+	private boolean contentDisabled=false;
 
 	private int index = 2;
 
@@ -128,5 +130,18 @@ public class TestBean implements Serializable {
 
 	public void setIndex(int index) {
 		this.index = index;
+	}
+
+	public boolean isContentDisabled() {
+		return contentDisabled;
+	}
+
+	public void setContentDisabled(boolean contentDisabled) {
+		this.contentDisabled = contentDisabled;
+	}
+	
+	// dummy method for AJAX
+	public void onClick() {
+		
 	}
 }
