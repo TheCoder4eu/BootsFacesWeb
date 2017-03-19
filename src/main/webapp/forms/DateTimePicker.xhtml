@@ -6,12 +6,8 @@
 
   <ui:define name="content">
     <h1>DateTimePicker (&lt;b:dateTimePicker /&gt;)</h1>
-
-    <p>
-      Describe in a few words what
-      <code>&lt;b:dateTimePicker&gt;</code>
-      is about.
-    </p>
+     
+    <a id="basicUsage"></a>
     <h1>Basic usage</h1>
     <p>The dateTimePicker is a responsive input field that allows you to input the date, the time or both.</p>
     <h:form>
@@ -60,7 +56,8 @@
       </b:row>
     </h:form>
     
-    <h1>Mode="inline" <b:badge value="breaking change in 1.0.2"/></h1>
+    <a id="inline"></a>
+    <h2>Mode="inline" <b:badge value="breaking change in 1.0.2"/></h2>
     <p>We've removed the option <code>mode="inline"</code> in favor of two more explicit options: <code>show-icon</code> and <code>icon-position</code>.</p>
     
     <h1>Disable and readonly</h1>
@@ -92,6 +89,7 @@
       </b:row>
     </h:form>
 
+	<a id="formattingAndLocale"></a>
     <h3>Formatting and locale</h3>
     <p>By default, the dateTimePicker tries to guess the proper format from your locale. You can customize this by three
     options:</p>
@@ -142,9 +140,53 @@
         </b:panel>
       </b:row>
     </h:form>
+
+   <a id="interactiveCheatSheet"></a>
+   <h1>Date formats interactive cheat sheet</h1>
+    <p><code>&lt;b:dateTimePicker &gt;</code> is based on a JavaScript component using the moment.js library. Unfortunately,
+    this library uses different format strings than Java's <code>SimpleDateFormatter</code> does. 
+    For the sake of backward compatibility, we've decided to stick with the moment.js format strings. To make your
+    life easier, here's a little cheat sheet converting the date formats.</p>
+    <b:panel title="Format strings" look="success">
+	    <b:form horizontal="true">
+    		<b:selectOneMenu value="#{dateTimeBean.locale}" label="locale" render-label="true"
+    		     label-small-screen="2" small-screen="2" 
+    		     onchange="ajax:dateTimeBean.updateSettings()" update="result1 result2 result3">
+    		 	<f:selectItems value="#{dateTimeBean.locales}" var="c" itemValue="#{c}" itemLabel="#{c}"/>
+    		</b:selectOneMenu>
+    		<b:selectBooleanCheckbox value="#{dateTimeBean.showDate}" label="show date" render-label="true"
+    		     label-small-screen="2" small-screen="2" 
+    		     onclick="ajax:dateTimeBean.updateSettings()" update="result1 result2 result3"/>
+    		<b:selectBooleanCheckbox value="#{dateTimeBean.showTime}" label="show time" render-label="true"
+    		     label-small-screen="2" small-screen="2" 
+    		     onclick="ajax:dateTimeBean.updateSettings()" update="result1 result2 result3" />
+    		<b:inputText value="#{dateTimeBean.momentJSFormatString}" label="Moment.js format string" render-label="true"
+    		     label-small-screen="2" small-screen="2" 
+    		     onkeyup="ajax:dateTimeBean.updateSettings()" update="result1 result2 result3" />
+	    	<b:row >
+	    		<b:column small-screen="one-third" id="result1" style="border: 1px solid black; height:82px">
+	    			Resulting default format string passed to moment.js if the format attribute is ommitted:
+	    			<br />
+	    			"#{dateTimeBean.defaultSDFFormat}"
+	    			
+	    		</b:column>
+
+	    		<b:column small-screen="one-third" id="result2" style="border: 1px solid black; height:82px">
+	    			Resulting format string passed to moment.js:
+	    			<br />
+	    			"#{dateTimeBean.momentJSDateFormat}"
+	    		</b:column>
+	    		<b:column small-screen="one-third" id="result3" style="border: 1px solid black;height:82px">
+	    			moment.js string converted back to SimpleDatePicker:
+	    			<br />
+	    			"#{dateTimeBean.SDFFormat}"
+	    		</b:column>
+	    	</b:row>
+    	</b:form>
+    </b:panel>
     
     
-    
+    <a id="embeddingInAForm"></a>
     <h3>Embedding a DateTimePicker in a form</h3>
     <p>By default, the (optional) label of the dateTimePicker is put above the dateTimePicker:</p>
     <h:form>
@@ -189,6 +231,7 @@
       </b:row>
     </h:form>
     
+    <a id="overflow"></a>
     <h3>DateTimePicker widget inside an overflow area</h3>
     <p>By default, the popup widget of DateTimePicker goes inside the parent of the input component. This means that, if the component itself is too small to display
     the entire popup and has an hidden overflow, the popup will go under the component area. To prevent this behaviour, you can use the "widgetParent" attribute, that attach
@@ -240,6 +283,7 @@
       </b:row>
     </h:form>
     
+    <a id="labels"></a>
     <h2>Labels, required fields and error messages</h2>
     <p>You can add a label by adding the attribute <code>label</code>. The label is also used by the JSF messages. To give you maximum flexibility,
     you can suppress automatic rendering of labels by adding <code>renderLabel="false"</code>.
@@ -286,7 +330,7 @@
     </b:tabView>
     
     
-    
+    <a id="ajax"></a>
     <h3>DateTimePicker AJAX <b:badge value="since 1.0" /> </h3>
     <p>DateTimePicker component also support AJAX events. In addition to the basic JavaScript events (click, blur, key*, mouse*), it supports also a custom event (dtchange) that is 
     called every time the datetime value changes. But you must pay attention! This event will be fired also during navigation of the popup widget, because it changes the date on the fly.
@@ -337,7 +381,7 @@
       </b:row>
     </h:form>
     
-    
+    <a id="fieldId"></a>
     <h3>id and field-id <b:badge value="since 1.0.1" /> </h3>
     <p>The datepicker widgets consists of the input field and some extra HTML code which makes it look like a datepicker. Both items
     have an id. The id of the outer HTML code is the standard <code>id</code> every JSF component has. The id of the input field
@@ -375,7 +419,6 @@
       </b:row>
     </h:form>
     
-
     <ui:include src="DateTimePickerAttributes.xhtml" />
     <b:panel look="info">
       <f:facet name="heading">

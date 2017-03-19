@@ -4,10 +4,19 @@
 package net.bootsfaces.demo;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+
+import net.bootsfaces.utils.BsfUtils;
+import net.bootsfaces.utils.LocaleUtils;
 
 /**
  *
@@ -34,6 +43,21 @@ public class DateTimeBean implements Serializable {
 	private boolean allowInputToggle=false;
 	
 	private boolean useCurrent=true;
+	
+	private String locale = null;
+	
+	private String momentJSFormatString = null;
+	
+	private static List<String> locales = new ArrayList<String>();
+	
+	static {
+		for (Locale locale : DateFormat.getAvailableLocales()) {
+			String l = locale.getLanguage();
+			if (!locales.contains(l))
+				locales.add(l) ;
+			Collections.sort(locales);
+		}
+	}
 
 	public String getMode() {
 		if (modeInline) {
@@ -130,5 +154,57 @@ public class DateTimeBean implements Serializable {
 	public void setUseCurrent(boolean useCurrent) {
 		this.useCurrent = useCurrent;
 	}
+	
+	public String showDateFormat(String locale, String format, boolean showDate, boolean showTime) {
+		if ("".equals(format)) {
+			format=null;
+		}
+		if ("".equals(locale)) {
+			locale=null;
+		}
+		FacesContext fc = FacesContext.getCurrentInstance();
+		Locale sloc = BsfUtils.selectLocale(fc.getViewRoot().getLocale(), locale, null);
+		String formatString = BsfUtils.selectDateTimeFormat(sloc, format, showDate, showTime);
+		String displayFormat = (format == null ? LocaleUtils.javaToMomentFormat(formatString) : formatString);
+		return displayFormat;
+	}
 
+	public String getMomentJSFormatString() {
+		return momentJSFormatString;
+	}
+
+	public void setMomentJSFormatString(String momentJSFormatString) {
+		this.momentJSFormatString = momentJSFormatString;
+	}
+
+	public String getLocale() {
+		return locale;
+	}
+
+	public void setLocale(String locale) {
+		this.locale = locale;
+	}
+	
+	public String getMomentJSDateFormat() {
+		return showDateFormat(locale, momentJSFormatString, showDate, showTime);
+	}
+	
+	public String getDefaultSDFFormat() {
+		FacesContext fc = FacesContext.getCurrentInstance();
+		if ("".equals(locale)) {
+			locale=null;
+		}
+		Locale sloc = BsfUtils.selectLocale(fc.getViewRoot().getLocale(), locale, null);
+		String formatString = BsfUtils.selectDateTimeFormat(sloc, null, showDate, showTime);
+		return formatString;
+	}
+	
+	public String getSDFFormat() {
+		String momentJSFormatString = getMomentJSDateFormat();
+		return LocaleUtils.momentToJavaFormat(momentJSFormatString);
+	}
+
+	public List<String> getLocales() {
+		return locales;
+	}
 }
