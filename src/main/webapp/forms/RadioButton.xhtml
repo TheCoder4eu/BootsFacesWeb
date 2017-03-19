@@ -25,7 +25,7 @@
         <b:panel title="Survey" look="primary">
           <p>Which Java version do you use?</p>
           <b:panelGrid size="xs" columns="4">
-	          <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 6" itemValue="6" />
+	          <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 6" itemValue="6" required="true" label="Java version"/>
 	          <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 7" itemValue="7" />
 	          <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 8" itemValue="8" />
 	          <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 9" itemValue="9" disabled="true"/>
@@ -33,6 +33,8 @@
           <b:commandButton value="submit your choice" action="#{radiobuttonBean.submit}" look="primary"
                            update="@form" />
           <b:messages />
+           <b:message for="@form:@property(radiobuttonBean.javaVersion)" 
+                      />
         </b:panel>
       </h:form>
       <b:well>
@@ -41,7 +43,7 @@
            <b:panel title="Survey" look="primary">
             <p>Which Java version do you use?</p>
             <b:panelGrid size="xs" columns="3">
-              <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 6" itemValue="6" />
+              <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 6" itemValue="6" required="true" label="Java version"/>
               <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 7" itemValue="7" />
               <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 8" itemValue="8" />
               <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 9" itemValue="9" disabled="true />
@@ -54,6 +56,19 @@
       <p>Note that the radiobuttons are implemented as an HTML &lt;div&gt; tag, so by default, the radiobuttons
       are still stacked on each by default. That's why we wrapped them in a &lt;b:panelGrid /&gt; in the example
       above.</p>
+      
+      <h2>Required fields</h2>
+      <p>You can declare a radiobutton group mandatory by adding the attribute <code>required="true"</code>
+      to the first radiobutton. The label of the first radio button is used in the error message.
+      If you want to show a custom error message, use the attribute <code>required-message</code>.</p>
+      <p>Required inputs fields and their labels both bear the CSS class <code>bf-required</code>.</p>
+      <p>If the field has a FacesMessage, one of the CSS classes <code>bf-info</code>, <code>bf-warning</code>,
+          <code>bf-error</code> or <code>bf-fatal</code>, depending on which error severity the message has.
+          The latter two classes color the label red. </p>
+      <p>If there's no message, the field and its label bear the pseudo CSS classes <code>bf-no-message</code>  
+      and <code>has-success</code>. The latter colors the label green by default.
+      </p>
+
       
       <h2>Traditional JSF approach</h2>
       <p>For the sake of convenience and back-ward compatibility, BootsFaces also supports the traditional
@@ -207,8 +222,8 @@ public class RadiobuttonBean implements Serializable {
       </b:panel>
 
       <script type="text/javascript">
-							SyntaxHighlighter.all();
-						</script>
+		SyntaxHighlighter.all();
+	  </script>
 
     </ui:define>
   </ui:composition>
