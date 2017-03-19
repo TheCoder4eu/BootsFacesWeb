@@ -178,13 +178,16 @@ public class RadiobuttonBean implements Serializable {
       </b:well>
       <h:form>
         <h2>AJAX <b:badge value="since 1.1.0" /></h2>
-        <p>Since BootsFaces 1.1.0, radiobuttons also support AJAX:</p>
+        <p>Since BootsFaces 1.1.0, radio buttons also support AJAX. More precisely, it supports the click event. The attribute
+        <code>update</code> must be repeated for each radio button of the radio button group.
+        However, you can't define different update areas for each radio button. The first radiobutton decides which method is called
+        and which part of the page is updated.</p>
         <b:panel title="Survey" look="primary">
           <p>Which Java version do you use?</p>
           <b:panelGrid size="xs" columns="4">
 	          <b:radiobutton onclick="ajax:radiobuttonBean.submit()" update="@form" value="#{radiobuttonBean.javaVersion}" itemLabel="Java 6" itemValue="6" />
-	          <b:radiobutton onclick="ajax:radiobuttonBean.submit()" update="@form" value="#{radiobuttonBean.javaVersion}" itemLabel="Java 7" itemValue="7" />
-	          <b:radiobutton onclick="ajax:radiobuttonBean.submit()" update="@form" value="#{radiobuttonBean.javaVersion}" itemLabel="Java 8" itemValue="8" />
+	          <b:radiobutton update="@form" value="#{radiobuttonBean.javaVersion}" itemLabel="Java 7" itemValue="7" />
+	          <b:radiobutton update="@form" value="#{radiobuttonBean.javaVersion}" itemLabel="Java 8" itemValue="8" />
 	          <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 9" itemValue="9" disabled="true"/>
           </b:panelGrid>
           <b:messages />
@@ -196,10 +199,10 @@ public class RadiobuttonBean implements Serializable {
            <b:panel title="Survey" look="primary">
             <p>Which Java version do you use?</p>
             <b:panelGrid size="xs" columns="3">
-              <b:radiobutton onclick="ajax:radiobuttonBean.submit()" value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 6" itemValue="6" />
-              <b:radiobutton onclick="ajax:radiobuttonBean.submit()" value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 7" itemValue="7" />
-              <b:radiobutton onclick="ajax:radiobuttonBean.submit()" value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 8" itemValue="8" />
-              <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 9" itemValue="9" disabled="true />
+	          <b:radiobutton onclick="ajax:radiobuttonBean.submit()" update="@form" value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 6" itemValue="6" />
+	          <b:radiobutton update="@form" value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 7" itemValue="7" />
+	          <b:radiobutton update="@form" value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 8" itemValue="8" />
+	          <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 9" itemValue="9" disabled="true"/>
              </b:panelGrid>
             <b:messages />
           </b:panel>
