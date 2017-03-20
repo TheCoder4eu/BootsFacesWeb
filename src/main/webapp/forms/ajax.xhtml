@@ -94,6 +94,52 @@
                  <p>In other words: what you can and can not do with BootsFaces AJAX depends on your network latency (and your server-side processing time). BootsFaces
                  processes AJAX fairly efficient, so it's unlikely BootsFaces is the bottleneck to your projects.</p>
 
+                 <h2>Corner cases: <code>onstart</code>,  <code>oncomplete</code>,  <code>onsuccess</code> and  <code>onerror</code></h2>
+                 <p>Strictly speaking, there are four events that can be triggerd during an AJAX request:</p>
+                 <ul>
+	                 <li><code>onstart</code> notifies your that an AJAX request is sent to the server.</li>
+	                 <li><code>onerror</code> is called when an exception happened on the server side.</li>
+	                 <li><code>onsuccess</code> is called when a request finished without exceptions.</li>
+	                 <li><code>oncomplete</code> is called when a request has finished, regardless of whether it was successful
+	                 or if an exception occurred.</li>
+                 </ul>
+                 <p>From a technical perspective, almost every AJAXified component of BootsFaces supports 
+                 all events except <code>onstart</code>. Unfortunately, the API hasn't been unlocked for every component
+                 yet. Plus, none of the components support <code>onstart</code> yet.</p>
+                 <p>You can circumvent this limitation by hooking directly into the JavaScript API of JSF:</p>
+				 <b:well>
+                  <script type="syntaxhighlighter" class="brush: javascript; toolbar: false;gutter: false; first-line: 1">
+                	<![CDATA[
+                      jsf.ajax.addOnEvent(function (data) {
+                              if (data.status === 'begin') {
+                                  doOnStart();
+                              }
+                              if (data.status === 'complete') {
+                                  doOnComplete();
+                              }
+                              if (data.status === 'success') {
+                                  doOnSuccess();
+                              }
+                              if (data.status === 'error') {
+                                  doOnError();
+                              }
+                          });
+               	    ]]>
+                   </script>
+                </b:well>
+                <p>IF you're using PrimeFaces, the API is slightly different:</p>
+ 				 <b:well>
+                  <script type="syntaxhighlighter" class="brush: javascript; toolbar: false;gutter: false; first-line: 1">
+                	<![CDATA[
+                      $(document).on('pfAjaxComplete', function() { ... });
+                      $(document).on('pfAjaxSuccess', function() { ... });
+                      $(document).on('pfAjaxStart', function() { ... });
+                      $(document).on('pfAjaxSend', function() { ... });
+                      $(document).on('pfAjaxError', function() { ... });               	    
+                    ]]>
+                   </script>
+                </b:well>
+                
                 <h2>Known bugs and limitations</h2>
                 <ul>
                 <li><code>update="@all"</code> doesn't work in BootsFaces 0.8.0.</li>
