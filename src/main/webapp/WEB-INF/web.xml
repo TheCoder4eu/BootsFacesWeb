@@ -45,6 +45,11 @@
       <param-name>net.bootsfaces.defaults.renderLabel</param-name>
         <param-value>#{defaultValuesBean.renderLabel}</param-value>
     </context-param>
+    <!-- should the (wrong, but working) BootsFaces style of displaying error message CSS classes be used? -->
+    <context-param>
+      <param-name>net.bootsfaces.legacy_error_classes</param-name>
+        <param-value>#{messageStyleBean.useLegacyBootsFacesStyle}</param-value>
+    </context-param>
     <context-param>
       <param-name>net.bootsfaces.defaults.decorator</param-name>
         <param-value>false</param-value>
