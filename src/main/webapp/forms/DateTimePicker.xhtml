@@ -304,13 +304,13 @@
       <b:tab title="live preview">
         <b:well>
 			<b:form horizontal="true">
-				<b:panelGrid columns="2">
+				<b:panelGrid columns="2" size="sm">
 					<h:panelGroup display="block">
 						<b:row>
 							<b:dateTimePicker id="cdate3" mode="toggle-icon" showWeek="true"
 								firstDay="1" value="#{dateBean.cdate}" required="true"
-								label="date " render-label="true" label-col-sm="1" col-sm="4" />
-							<b:message for="cdate3" col-sm="5" />
+								label="date " render-label="true" label-col-sm="3" col-sm="6" />
+							<b:message for="cdate3" col-sm="9" />
 						</b:row>
 						<b:row>
 							<b:commandButton value="submit" update="@form" col-sm="2"
@@ -318,7 +318,6 @@
 						</b:row>
 					</h:panelGroup>
 					<h:panelGroup display="block">
-					#{messageStyleBean.useLegacyBootsFacesStyle}
 						<b:switch value="#{messageStyleBean.useLegacyBootsFacesStyle}"
 						    immediate="true"
 		                    caption="use legacy BootsFaces CSS classes"
