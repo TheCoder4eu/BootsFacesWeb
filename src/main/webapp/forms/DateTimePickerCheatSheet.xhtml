@@ -1,0 +1,379 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:define name="content">
+    <b:dateTimePicker rendered="false"></b:dateTimePicker>
+
+    <a id="interactiveCheatSheet"></a>
+    <h1>Date formats interactive cheat sheet</h1>
+    <p><code>&lt;b:dateTimePicker &gt;</code> is based on a JavaScript component using the moment.js library.
+      Unfortunately,
+      this library uses different format strings than Java's <code>SimpleDateFormatter</code> does.
+      For the sake of backward compatibility, we've decided to stick with the moment.js format strings. To make your
+      life easier, here's a little cheat sheet converting the date formats.</p>
+
+    <b:panel title="Format strings (moment.js to Java)" look="primary">
+      <b:form horizontal="true">
+        <b:row>
+          <b:column small-screen="one-third">
+            <b:selectOneMenu value="#{dateTimeBean.locale}" label="locale" render-label="true"
+                             label-small-screen="half" small-screen="half"
+                             onchange="ajax:dateTimeBean.updateSettings()" update="result1">
+              <f:selectItems value="#{dateTimeBean.locales}" var="c" itemValue="#{c}" itemLabel="#{c}"/>
+            </b:selectOneMenu>
+            <b:inputText value="#{dateTimeBean.momentJSFormatString}" label="moment.js format string"
+                         render-label="true"
+                         label-small-screen="half" small-screen="half"
+                         onkeyup="ajax:dateTimeBean.updateSettings()" update="result1"/>
+          </b:column>
+          <b:column small-screen="one-third">
+            <b:selectBooleanCheckbox value="#{dateTimeBean.showDate}" label="show date" render-label="true"
+                                     label-small-screen="half" small-screen="half"
+                                     onclick="ajax:dateTimeBean.updateSettings()" update="result1"/>
+            <b:selectBooleanCheckbox value="#{dateTimeBean.showTime}" label="show time" render-label="true"
+                                     label-small-screen="half" small-screen="half"
+                                     onclick="ajax:dateTimeBean.updateSettings()" update="result1"/>
+          </b:column>
+          <b:column small-screen="one-third" id="result1">
+            Resulting format string passed to moment.js:
+            <br/>
+            <b>"#{dateTimeBean.momentJSDateFormat}"</b>
+            <br/>
+            <br/>
+            moment.js string converted back to SimpleDatePicker:
+            <br/>
+            <b>"#{dateTimeBean.SDFFormat}"</b>
+          </b:column>
+        </b:row>
+      </b:form>
+    </b:panel>
+
+    <b:panelGrid columns="2">
+      <b:panel title="Reference table: Java to moment.js" look="primary">
+        <b:form horizontal="true">
+          <b:row>
+            <b:column small-screen="one-third">
+              <b:selectOneMenu value="#{dateTimeBean.locale}" label="locale" render-label="true"
+                               label-small-screen="half" small-screen="half"
+                               onchange="$('.j2mButtonId').click()">
+                <f:selectItems value="#{dateTimeBean.locales}" var="c" itemValue="#{c}" itemLabel="#{c}"/>
+              </b:selectOneMenu>
+              <b:commandButton value="submit" action="#{dateTimeBean.updateSettings}" class="j2mButtonId"
+                               style="display:none"/>
+            </b:column>
+          </b:row>
+          <script>moment.locale("#{dateTimeBean.locale}");</script>
+          <table>
+            <thead>
+            <th>Java (example)</th>
+            <th style="width:20px"></th>
+            <th>moment.js (example)</th>
+            <th>Description (Java)</th>
+            </thead>
+            <ui:repeat value="#{dateTimeBean.sortedJavaToMoment()}" var="j">
+              <tr>
+                <td>#{j.key} #{dateTimeBean.getFormattedDate(j.key)}</td>
+                <td></td>
+                <td>#{dateTimeBean.pattern(j.value)}
+                  <script>if ("#{dateTimeBean.pattern(j.value)}" !== "") document.write("(" + moment().format("#{dateTimeBean.pattern(j.value).trim()}") + ")");</script>
+                </td>
+                <td>#{dateTimeBean.description(j.value)}</td>
+              </tr>
+            </ui:repeat>
+          </table>
+        </b:form>
+      </b:panel>
+      <b:panel title="Reference table: moment.js to Java" look="primary">
+        <b:form horizontal="true">
+          <b:row>
+            <b:column small-screen="one-third">
+              <b:selectOneMenu value="#{dateTimeBean.locale}" label="locale" render-label="true"
+                               label-small-screen="half" small-screen="half"
+                               onchange="$('.j2mButtonId').click()">
+                <f:selectItems value="#{dateTimeBean.locales}" var="c" itemValue="#{c}" itemLabel="#{c}"/>
+              </b:selectOneMenu>
+              <b:commandButton value="submit" action="#{dateTimeBean.updateSettings}" class="j2mButtonId"
+                               style="display:none"/>
+            </b:column>
+          </b:row>
+          <script>moment.locale("#{dateTimeBean.locale}");</script>
+          <table>
+            <thead>
+            <th>moment.js (example)</th>
+            <th style="width:20px"></th>
+            <th>Java (example)</th>
+            <th>Description (moment.js)</th>
+            </thead>
+            <ui:repeat value="#{dateTimeBean.sortedMomentToJava()}" var="j">
+              <tr>
+                <td>#{j.key}
+                  <script>document.write("(" + moment().format("#{j.key}") + ")");</script>
+                </td>
+                <td></td>
+                <td>#{dateTimeBean.pattern(j.value)} #{dateTimeBean.getFormattedDate(j.value)}</td>
+                <td>#{dateTimeBean.description(j.value)}</td>
+              </tr>
+            </ui:repeat>
+          </table>
+        </b:form>
+      </b:panel>
+    </b:panelGrid>
+    <b:panel title="Reference table: predefined formats" look="primary">
+      <b:form horizontal="true">
+        <b:row>
+          <b:column small-screen="one-third">
+            <b:selectOneMenu value="#{dateTimeBean.locale}" label="locale" render-label="true"
+                             label-small-screen="half" small-screen="half"
+                             onchange="$('.j2mButtonId').click()">
+              <f:selectItems value="#{dateTimeBean.locales}" var="c" itemValue="#{c}" itemLabel="#{c}"/>
+            </b:selectOneMenu>
+            <b:commandButton value="submit" action="#{dateTimeBean.updateSettings}" class="j2mButtonId"
+                             style="display:none"/>
+          </b:column>
+        </b:row>
+        <script>moment.locale("#{dateTimeBean.locale}");</script>
+        <table>
+          <thead>
+          <th>Java</th>
+          <th style="width:20px"></th>
+          <th>Java (example)</th>
+          <th style="width:20px"></th>
+          <th>moment.js</th>
+          <th style="width:20px"></th>
+          <th>moment.js (example)</th>
+          </thead>
+          <tr>
+            <td colspan="5" style="text-align:center;padding-top:15px"><b>Date formats</b></td>
+          </tr>
+          <tr>
+            <td>(n/a)</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>L</td>
+            <td></td>
+            <td>
+              <script>document.write(moment().format("l"));</script>
+            </td>
+          </tr>
+          <tr>
+            <td>SHORT</td>
+            <td></td>
+            <td>#{dateTimeBean.getPredefinedDate(3)}</td>
+            <td></td>
+            <td>L</td>
+            <td></td>
+            <td>
+              <script>document.write(moment().format("L"));</script>
+            </td>
+          </tr>
+          <tr>
+            <td>MEDIUM</td>
+            <td></td>
+            <td>#{dateTimeBean.getPredefinedDate(2)}</td>
+            <td></td>
+            <td>(n/a)</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>(n/a)</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>ll</td>
+            <td></td>
+            <td>
+              <script>document.write(moment().format("ll"));</script>
+            </td>
+          </tr>
+          <tr>
+            <td>LONG</td>
+            <td></td>
+            <td>#{dateTimeBean.getPredefinedDate(1)}</td>
+            <td></td>
+            <td>LL</td>
+            <td></td>
+            <td>
+              <script>document.write(moment().format("LL"));</script>
+            </td>
+          </tr>
+          <tr>
+            <td>FULL</td>
+            <td></td>
+            <td>#{dateTimeBean.getPredefinedDate(0)}</td>
+            <td></td>
+            <td>(n/a)</td>
+            <td></td>
+            <td></td>
+          </tr>
+
+
+          <tr>
+            <td colspan="5" style="text-align:center;padding-top:15px"><b>Time formats</b></td>
+          </tr>
+          <tr>
+            <td>SHORT</td>
+            <td></td>
+            <td>#{dateTimeBean.getPredefinedTime(3)}</td>
+            <td></td>
+            <td>LT</td>
+            <td></td>
+            <td>
+              <script>document.write(moment().format("LT"));</script>
+            </td>
+          </tr>
+          <tr>
+            <td>MEDIUM</td>
+            <td></td>
+            <td>#{dateTimeBean.getPredefinedTime(2)}</td>
+            <td></td>
+            <td>LTS</td>
+            <td></td>
+            <td>
+              <script>document.write(moment().format("LTS"));</script>
+            </td>
+          </tr>
+          <tr>
+            <td>LONG</td>
+            <td></td>
+            <td>#{dateTimeBean.getPredefinedTime(1)}</td>
+            <td></td>
+            <td>(n/a)</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>FULL</td>
+            <td></td>
+            <td>#{dateTimeBean.getPredefinedTime(0)}</td>
+            <td></td>
+            <td>(n/a)</td>
+            <td></td>
+            <td></td>
+          </tr>
+
+
+          <tr>
+            <td colspan="5" style="text-align:center;padding-top:15px"><b>combined formats</b></td>
+          </tr>
+          <tr>
+            <td>SHORT, SHORT</td>
+            <td></td>
+            <td>#{dateTimeBean.getPredefinedDateTime(0, 3)}</td>
+            <td></td>
+            <td>(n/a)</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>MEDIUM, MEDIUM</td>
+            <td></td>
+            <td>#{dateTimeBean.getPredefinedDateTime(0, 3)}</td>
+            <td></td>
+            <td>(n/a)</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>LONG, SHORT</td>
+            <td></td>
+            <td>#{dateTimeBean.getPredefinedDateTime(1, 3)}</td>
+            <td></td>
+            <td>LLL</td>
+            <td></td>
+            <td>
+              <script>document.write(moment().format("LLL"));</script>
+            </td>
+          </tr>
+          <tr>
+            <td>LONG, LONG</td>
+            <td></td>
+            <td>#{dateTimeBean.getPredefinedDateTime(1, 1)}</td>
+            <td></td>
+            <td>(n/a)</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>lll</td>
+            <td></td>
+            <td>
+              <script>document.write(moment().format("lll"));</script>
+            </td>
+          </tr>
+          <tr>
+            <td>FULL, SHORT</td>
+            <td></td>
+            <td>#{dateTimeBean.getPredefinedDateTime(0, 3)}</td>
+            <td></td>
+            <td>LLLL</td>
+            <td></td>
+            <td>
+              <script>document.write(moment().format("LLLL"));</script>
+            </td>
+          </tr>
+
+          <tr>
+            <td>FULL, FULL</td>
+            <td></td>
+            <td>#{dateTimeBean.getPredefinedDateTime(0, 0)}</td>
+            <td></td>
+            <td>(n/a)</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>(n/a)</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>llll</td>
+            <td></td>
+            <td>
+              <script>document.write(moment().format("llll"));</script>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="5" style="text-align:center;padding-top:15px"><b>Usage (examples):</b></td>
+          </tr>
+          <tr>
+            <td colspan="5">DateFormat.getDateInstance(DateFormat.LONG).format(new Date())</td>
+            <td></td>
+            <td>moment().format("LL")</td>
+          </tr>
+          <tr>
+            <td colspan="5">DateFormat.getTimeInstance(DateFormat.SHORT).format(new Date())</td>
+            <td></td>
+            <td>moment().format("LT")</td>
+          </tr>
+          <tr>
+            <td colspan="5">DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.SHORT).format(new Date())</td>
+            <td></td>
+            <td>moment().format("LLLL")</td>
+          </tr>
+        </table>
+
+        <p></p>
+        <p></p>
+      </b:form>
+    </b:panel>
+
+
+    <script type="text/javascript">
+      SyntaxHighlighter.all();
+    </script>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+  </ui:define>
+</ui:composition>
