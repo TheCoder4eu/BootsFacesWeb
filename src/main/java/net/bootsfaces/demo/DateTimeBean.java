@@ -59,11 +59,10 @@ public class DateTimeBean implements Serializable {
 	private String locale = Locale.getDefault().getLanguage();
 
 	private String momentJSFormatString = null;
-	
-	private String javaFormatString = null;
-	
-	private static ScriptEngine scriptEngine;
 
+	private String javaFormatString = null;
+
+	private static ScriptEngine scriptEngine;
 
 	private static List<String> locales = new ArrayList<String>();
 
@@ -216,11 +215,11 @@ public class DateTimeBean implements Serializable {
 		predefinedMomentjsFormats.add("lll");
 		predefinedMomentjsFormats.add("LLLL");
 		predefinedMomentjsFormats.add("llll");
-		
+
 		loadMomentSource();
 
 	}
-	
+
 	private static void loadMomentSource() {
 		InputStream is = Thread.currentThread().getContextClassLoader()
 				.getResourceAsStream("/META-INF/resources/bsf/js/moment.min.js");
@@ -234,16 +233,15 @@ public class DateTimeBean implements Serializable {
 		}
 	}
 
-	public  String formatDateAsMomentJSDate() {
-		if (momentJSFormatString==null || momentJSFormatString.equals("")) {
+	public String formatDateAsMomentJSDate() {
+		if (momentJSFormatString == null || momentJSFormatString.equals("")) {
 			return "";
 		}
 		try {
 			String variableName = "z" + (new Date()).getTime();
 			String jsFormat = momentJSFormatString.replace("'", "\\'");
-			String javascript = "moment.locale('" + locale +"');" +
-					"var " + variableName + " = moment().lang('" + locale + "').format('" + jsFormat
-					+ "');";
+			String javascript = "moment.locale('" + locale + "');" + "var " + variableName + " = moment().lang('"
+					+ locale + "').format('" + jsFormat + "');";
 			scriptEngine.eval(javascript);
 			String variable = (String) scriptEngine.get(variableName);
 			return variable;
@@ -251,16 +249,18 @@ public class DateTimeBean implements Serializable {
 			throw new RuntimeException(e);
 		}
 	}
-	
-	public  String formatDateAsJavaDate() {
-		if (javaFormatString==null || javaFormatString.equals("")) {
+
+	public String formatDateAsJavaDate() {
+		if (javaFormatString == null || javaFormatString.equals("")) {
 			return "";
 		}
 		Date date = new Date();
-		return new SimpleDateFormat(javaFormatString).format(date);
+		try {
+			return new SimpleDateFormat(javaFormatString).format(date);
+		} catch (IllegalArgumentException ex) {
+			return "wrong date pattern: " + javaFormatString + " more details: " + ex.getMessage();
+		}
 	}
-
-
 
 	public String getMode() {
 		if (modeInline) {
@@ -288,7 +288,7 @@ public class DateTimeBean implements Serializable {
 	public void updateSettings() {
 
 	}
-	
+
 	public String updateSettings2() {
 		return "index.jsf#interactiveCheatSheet";
 	}
@@ -371,21 +371,22 @@ public class DateTimeBean implements Serializable {
 		}
 		FacesContext fc = FacesContext.getCurrentInstance();
 		Locale sloc = BsfUtils.selectLocale(fc.getViewRoot().getLocale(), locale, null);
-		String formatString = BsfUtils.selectJavaDateTimeFormatFromMomentJSFormatOrDefault(sloc, format, showDate, showTime);
+		String formatString = BsfUtils.selectJavaDateTimeFormatFromMomentJSFormatOrDefault(sloc, format, showDate,
+				showTime);
 		String displayFormat = (format == null ? LocaleUtils.javaToMomentFormat(formatString) : formatString);
 		return displayFormat;
 	}
-	
+
 	public String getMomentJSFormatFromJavaFormat() {
-		if (javaFormatString== null)
+		if (javaFormatString == null)
 			return "";
 
 		String displayFormat = LocaleUtils.javaToMomentFormat(javaFormatString);
 		return displayFormat;
 	}
-	
+
 	public String getJavaFormatFromMomentJSFormat() {
-		if (momentJSFormatString== null)
+		if (momentJSFormatString == null)
 			return "";
 
 		String displayFormat = LocaleUtils.momentToJavaFormat(momentJSFormatString);
@@ -397,11 +398,15 @@ public class DateTimeBean implements Serializable {
 	}
 
 	public void setMomentJSFormatString(String momentJSFormatString) {
-		this.momentJSFormatString = momentJSFormatString;
-		if (momentJSFormatString==null || momentJSFormatString.equals("")) {
-			this.javaFormatString="";
-		} else {
-			this.javaFormatString = LocaleUtils.momentToJavaFormat(momentJSFormatString);
+		try {
+			this.momentJSFormatString = momentJSFormatString;
+			if (momentJSFormatString == null || momentJSFormatString.equals("")) {
+				this.javaFormatString = "";
+			} else {
+				this.javaFormatString = LocaleUtils.momentToJavaFormat(momentJSFormatString);
+			}
+		} catch (Exception e) {
+			javaFormatString = "(an error occurred: " + e.getClass().getSimpleName() + " " + e.getMessage() + ")";
 		}
 	}
 
@@ -423,7 +428,8 @@ public class DateTimeBean implements Serializable {
 			locale = null;
 		}
 		Locale sloc = BsfUtils.selectLocale(fc.getViewRoot().getLocale(), locale, null);
-		String formatString = BsfUtils.selectJavaDateTimeFormatFromMomentJSFormatOrDefault(sloc, null, showDate, showTime);
+		String formatString = BsfUtils.selectJavaDateTimeFormatFromMomentJSFormatOrDefault(sloc, null, showDate,
+				showTime);
 		return formatString;
 	}
 
@@ -482,20 +488,20 @@ public class DateTimeBean implements Serializable {
 	}
 
 	public Object[] sortedMomentToJava() {
-		
+
 		Object[] entries = momentToJava.entrySet().toArray();
 		Arrays.sort(entries, FORMAT_COMPARATOR);
 		return entries;
 	}
-	
+
 	public String getPredefinedDate(int format) {
 		return DateFormat.getDateInstance(format, new Locale(locale)).format(new Date());
 	}
-	
+
 	public String getPredefinedDateTime(int df, int tf) {
 		return DateFormat.getDateTimeInstance(df, tf, new Locale(locale)).format(new Date());
 	}
-	
+
 	public String getPredefinedTime(int format) {
 		return DateFormat.getTimeInstance(format, new Locale(locale)).format(new Date());
 	}
@@ -505,11 +511,15 @@ public class DateTimeBean implements Serializable {
 	}
 
 	public void setJavaFormatString(String javaFormatString) {
-		this.javaFormatString = javaFormatString;
-		if (javaFormatString==null || javaFormatString.equals("")) {
-			momentJSFormatString = "";
-		} else {
-			momentJSFormatString = LocaleUtils.javaToMomentFormat(javaFormatString);
+		try {
+			this.javaFormatString = javaFormatString;
+			if (javaFormatString == null || javaFormatString.equals("")) {
+				momentJSFormatString = "";
+			} else {
+				momentJSFormatString = LocaleUtils.javaToMomentFormat(javaFormatString);
+			}
+		} catch (Exception e) {
+			momentJSFormatString = "(an error occurred: " + e.getClass().getSimpleName() + " " + e.getMessage() + ")";
 		}
 	}
 }
