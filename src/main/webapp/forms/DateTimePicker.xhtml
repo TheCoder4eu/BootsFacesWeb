@@ -147,43 +147,8 @@
     this library uses different format strings than Java's <code>SimpleDateFormatter</code> does. 
     For the sake of backward compatibility, we've decided to stick with the moment.js format strings. To make your
     life easier, here's a little cheat sheet converting the date formats.</p>
-    <b:panel title="Format strings" look="success">
-	    <b:form horizontal="true">
-    		<b:selectOneMenu value="#{dateTimeBean.locale}" label="locale" render-label="true"
-    		     label-small-screen="2" small-screen="2" 
-    		     onchange="ajax:dateTimeBean.updateSettings()" update="result1 result2 result3">
-    		 	<f:selectItems value="#{dateTimeBean.locales}" var="c" itemValue="#{c}" itemLabel="#{c}"/>
-    		</b:selectOneMenu>
-    		<b:selectBooleanCheckbox value="#{dateTimeBean.showDate}" label="show date" render-label="true"
-    		     label-small-screen="2" small-screen="2" 
-    		     onclick="ajax:dateTimeBean.updateSettings()" update="result1 result2 result3"/>
-    		<b:selectBooleanCheckbox value="#{dateTimeBean.showTime}" label="show time" render-label="true"
-    		     label-small-screen="2" small-screen="2" 
-    		     onclick="ajax:dateTimeBean.updateSettings()" update="result1 result2 result3" />
-    		<b:inputText value="#{dateTimeBean.momentJSFormatString}" label="Moment.js format string" render-label="true"
-    		     label-small-screen="2" small-screen="2" 
-    		     onkeyup="ajax:dateTimeBean.updateSettings()" update="result1 result2 result3" />
-	    	<b:row >
-	    		<b:column small-screen="one-third" id="result1" style="border: 1px solid black; height:82px">
-	    			Resulting default format string passed to moment.js if the format attribute is ommitted:
-	    			<br />
-	    			"#{dateTimeBean.defaultSDFFormat}"
-	    			
-	    		</b:column>
 
-	    		<b:column small-screen="one-third" id="result2" style="border: 1px solid black; height:82px">
-	    			Resulting format string passed to moment.js:
-	    			<br />
-	    			"#{dateTimeBean.momentJSDateFormat}"
-	    		</b:column>
-	    		<b:column small-screen="one-third" id="result3" style="border: 1px solid black;height:82px">
-	    			moment.js string converted back to SimpleDatePicker:
-	    			<br />
-	    			"#{dateTimeBean.SDFFormat}"
-	    		</b:column>
-	    	</b:row>
-    	</b:form>
-    </b:panel>
+    <ui:include src="DateTimePickerCheatSheet.xhtml" />
     
     
     <a id="embeddingInAForm"></a>
