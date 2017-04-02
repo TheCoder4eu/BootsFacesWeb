@@ -22,7 +22,7 @@
                 which has been put under a GPL V3 license (or - at your option - any later version).</p>
 
                 <h1>Basic usage</h1>
-        <h:form>
+  		<h:form>     
             <b:tabView activeIndex="1">
                 <b:tab title="JSF markup">
                     <b:well>
@@ -79,7 +79,7 @@
                             <b:inputText value="#{selectMultiMenuBean.type}" disabled="true" id="typeOutputID" />
                         </b:panelGrid>
                         <b:commandButton value="Submit"/>
-                    </b:well>
+                     </b:well>
                 </b:tab>
             </b:tabView>
         </h:form>
@@ -180,7 +180,7 @@
 
 
         <h1>Options</h1>
-
+		<h:form>
 		<b:panelGrid colSpans="3,3,6">
 			<h:outputText value="radiobuttons" />
             <b:selectMultiMenu value="#{selectMultiMenuBean.brand}"
@@ -331,9 +331,8 @@
                  <f:selectItem itemLabel="Opel" itemValue="3" />
             </b:selectMultiMenu>
 			<h:outputText value="The width of the multiselect button may be fixed using this option."    />
-
-
         </b:panelGrid>
+        </h:form>
 
 
 
@@ -342,6 +341,7 @@
     doesn't work yet. It is displayed, but not seamlessly next to the combobox. In any case, both facets don't match the look and feel of the
     multi-selectbox exactly, so you need to apply some CSS code to improve it.</p>
 
+<h:form>
 <b:tabView activeIndex="0">
     <b:tab title="JSF markup">
                     <b:well>
@@ -380,6 +380,7 @@
                 </b:well>
        </b:tab>
        </b:tabView>
+       </h:form>
 
         <h1>Objects and converters</h1>
         <p><code>&lt;b:selectMultiMenu&gt;</code> only works with strings. The value must not be any other data type. So don't bother with converters -
@@ -499,83 +500,12 @@ public class SemaphoreBean {
                 <h1>Labels as captions above the combobox</h1>
                 <p>By default, BootsFaces displays the label above the input field. However, in the case of the multiple choice combobox,
                 we didn't implement this feature yet.</p>
-                <ui:remove>
-                <!--
-
-<b:tabView>
-  <b:tab title="JSF markup">
-                  <b:well>
-
-    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-    <h:form>
-    	<h:panelGrid columns="4" cellpadding="5">
-		    <b:selectMultiMenu value="&num;{selectMultiMenuBean.brand}" label="Select your car's brand:">
-				    <f:selectItem itemLabel="Fiat" itemValue="1"/>
-				    <f:selectItem itemLabel="Honda" itemValue="2"/>
-				    <f:selectItem itemLabel="Opel" itemValue="3"/>
-		    </b:selectMultiMenu>
-		    <h:message for="brandID"/>
-		    <b:inputText value="&num;{selectMultiMenuBean.brand}" disabled="true" label="last submitted value:"/>
-		    <b:selectMultiMenu value="&num; {selectMultiMenuBean.type}" label="Select your car's type:" id="typeID">
-		    		<f:selectItem itemLabel="Cinquecento" itemValue="1"/>
-				    <f:selectItem itemLabel="Civic" itemValue="2"/>
-				    <f:selectItem itemLabel="Astra" itemValue="3"/>
-		    </b:selectMultiMenu>
-		    <h:message  for="typeID" />
-		    <b:inputText value="&num;{selectMultiMenuBean.type}" disabled="true" label="last submitted value:"/>
-        </h:panelGrid>
-    </h:form>
-]]>
-    </script>
-    </b:well>
-  </b:tab>
-  <b:tab title="displayed as">
-                  <b:well>
-
-    <h:form>
-    	<h:panelGrid columns="3"  cellpadding="5">
-		    <b:selectMultiMenu value="# {selectMultiMenuBean.brand}" label="Select your car's brand:" id="brandID2">
-				    <f:selectItem itemLabel="Fiat" itemValue="1"/>
-				    <f:selectItem itemLabel="Honda" itemValue="2"/>
-				    <f:selectItem itemLabel="Opel" itemValue="3"/>
-		    </b:selectMultiMenu>
-		    <h:message showSummary="false"  for="brandID2"/>
-		    <b:inputText value="#{selectMultiMenuBean.brand}" disabled="true" label="a last submitted value:"/>
-		    <b:selectMultiMenu value="#{selectMultiMenuBean.type}" label="Select your car's type:" id="typeID2">
-		    		<f:selectItem itemLabel="Cinquecento" itemValue="1"/>
-				    <f:selectItem itemLabel="Civic" itemValue="2"/>
-				    <f:selectItem itemLabel="Astra" itemValue="3"/>
-		    </b:selectMultiMenu>
-		    <h:message for="typeID2"/>
-		    <b:inputText value="#{selectMultiMenuBean.type}" disabled="true" label="b last submitted value:"/>
-        </h:panelGrid>
-    </h:form>
-  </b:well>
-  </b:tab>
-</b:tabView>
-
-                <p>The label is displayed above the combobox</p>
-
-               <h2>Labels, required fields and error messages  <b:badge value="since 0.8.0" /></h2>
-               <p>You can add a label by adding the attribute <code>label</code>. The label is also used by the JSF messages. To give you maximum flexibility,
-               you can suppress automatic rendering of labels by adding <code>renderLabel="false"</code>.
-               </p>
-               <p>Required inputs fields and their labels both bear the CSS class <code>bf-required</code>. By default, this adds an asterisk to the label.</p>
-               <p>If the field has a FacesMessage, one of the CSS classes <code>bf-info</code>, <code>bf-warning</code>,
-                   <code>bf-error</code> or <code>bf-fatal</code>, depending on which error severity the message has.
-                   The latter two classes color the label red.</p>
-                <p>If there's no message,
-                   the field and its label bear the pseudo CSS class <code>bf-no-message</code>  and <code>has-success</code>. The latter colors the label green by default.
-               </p>
-
-                 -->
-                </ui:remove>
 
                 <br/>
                 <h2>Responsive design <b:badge value="since 0.9.0" /></h2>
                 <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
                 also with <code>&lt;b:icon /&gt;</code>:</p>
+                <h:form>
                <b:tabView>
                   <b:tab title="live preview">
                   <b:well>
@@ -619,10 +549,12 @@ public class SemaphoreBean {
                   </b:well>
                   </b:tab>
                 </b:tabView>
+                </h:form>
 
                 <h2>Visibility depending on screen size <b:badge value="since 0.8.6/0.9.0" /></h2>
                 <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
                 <br/>
+                <h:form>
                 <b:tabView>
                   <b:tab title="live preview">
                   <b:well>
@@ -660,10 +592,12 @@ public class SemaphoreBean {
                   </b:well>
                   </b:tab>
                 </b:tabView>
+                </h:form>
 
                 <h2>Tooltips</h2>
                 <p><code>&lt;b:selectMultiMenu  /&gt;</code> supports tooltips:</p>
                 <br/>
+                <h:form>
                 <b:tabView>
                   <b:tab title="live preview">
                   <b:well>
@@ -679,6 +613,7 @@ public class SemaphoreBean {
                   </b:well>
                   </b:tab>
                 </b:tabView>
+                </h:form>
 
 				<br />
 				<br />
