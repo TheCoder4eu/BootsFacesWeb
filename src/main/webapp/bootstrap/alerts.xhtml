@@ -39,6 +39,50 @@
                 <b:alert severity="warning" title="Warning Title" closable="true"><strong>Warning!</strong> Best check yo self, you're not looking too good. </b:alert>
                 <p>this message will close when you click on the cross on the left.</p>
                 
+                <br />
+                
+                <h4>Custom alerts</h4>
+                <p><b>Caveat:</b> This is a feature that works with Bootstrap 3 but may break with Bootstrap 4. Use at own risk.</p>
+                <p>BootsFaces doesn't restrict the <code>severity</code> parameters to the five values defined by Bootstrap. So you can define
+                your own alert type.</p>
+                <b:panel>
+                    <f:facet name="heading"><b>EXAMPLE</b></f:facet>
+	                <style>
+	                  .alert-pink {
+						  background-color: #FF1493;
+						  border-color: black;
+						  color: white;
+						
+						  hr {
+						    border-top-color: black;
+						  }
+						}
+	                </style>
+	                <b:alert severity="pink" title="Let's go pink!">This is an alert featuring custom colors.
+	                </b:alert>
+ 	                <f:facet name="footer">
+                        <strong>Markup:</strong><br/>
+
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
+                            <![CDATA[
+ 	                <style>
+	                   .alert-pink {
+						  background-color: #FF1493;
+						  border-color: black;
+						  color: white;
+						
+						  hr {
+						    border-top-color: black;
+						  }
+						}
+	                </style>
+	                <b:alert severity="pink" title="Let's go pink!">This is an alert featuring custom colors.
+	                </b:alert>
+                    ]]></script>
+                    </f:facet>
+                </b:panel>
+                
+                
                 <br/>
                 <h2>Reference section</h2>
                 <ui:include src="AlertAttributes.xhtml" />
