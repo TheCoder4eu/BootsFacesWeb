@@ -166,6 +166,7 @@
                         </b:inputText>
                     </h:panelGrid>
                 </h:form>
+                <a id="prependingButtons" />
                 <h4>Appending or prepending Buttons</h4><br/>
                 <p>Another nice feature is that you can append (or prepend) buttons:</p>
                 <b:panel>
@@ -175,15 +176,31 @@
                             <h:outputText value="Your Offer:"/>
                             <b:inputText id="mybid" value="#{testBean.val6}">
                                 <f:facet name="prepend">
-                                    <h:outputText value="$" />
+                                    <b:button look="danger" value="Reset" onclick="$('#input_mybid').val('');return false;" iconAwesome="recycle"/>
                                 </f:facet>
-                                <f:facet name="append">
-                                    <b:commandButton look="primary" value="Bid!" ajax="true" update="amodal" oncomplete="$('#amodal').modal('show');"/>
-                                    <b:button look="danger" value="Reset" onclick="$('#input_mybid').val('');return false;"/>
+                               <f:facet name="append">
+                                    <b:commandButton look="primary" value="Bid!" ajax="true" update="amodal" oncomplete="$('#amodal').modal('show');" 
+                                                     iconAwesome="rss" icon-align="right"/>
                                 </f:facet>
                             </b:inputText>
                         </h:panelGrid>
                     </h:form>
+                    <f:facet name="footer">
+                        <strong>Markup:</strong><br/>
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                        <![CDATA[
+                           <h:outputText value="Your Offer:"/>
+                            <b:inputText id="mybid" value="#{testBean.val6}">
+                                <f:facet name="prepend">
+                                    <b:button look="danger" value="Reset" onclick="$('#input_mybid').val('');return false;" iconAwesome="recycle"/>
+                                </f:facet>
+                               <f:facet name="append">
+                                    <b:commandButton look="primary" value="Bid!" ajax="true" update="amodal" oncomplete="$('#amodal').modal('show');" 
+                                                     iconAwesome="rss" icon-align="right"/>
+                                </f:facet>
+                            </b:inputText>
+ 						]]></script>
+                    </f:facet>
                 </b:panel>
                 <p>allowing you to build compact mini-forms for specific actions with little effort.</p>
                 <p class="text-warning">There is only one limitation: you can not prepend or append mixed texts and buttons.
