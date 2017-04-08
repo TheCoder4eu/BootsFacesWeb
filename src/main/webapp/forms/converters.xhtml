@@ -14,26 +14,57 @@
     <ui:define name="content">
       <h:form>
         <h1>Book price calculator</h1>
-        <b:panel title="Book price calculator" look="primary">
-          <b:panelGrid columns="2">
-            <b:inputText value="#{bookshopBean.price}" required="true" label="price" render-label="true">
-              <f:convertNumber />
-            </b:inputText>
-            <b:inputText value="#{bookshopBean.discount}" required="true" label="discount" render-label="true">
-              <f:convertNumber />
-            </b:inputText>
-            <b:inputText value="#{bookshopBean.quantity}" required="true" label="number of books" render-label="true">
-              <f:convertNumber integerOnly="true" />
-            </b:inputText>
-            <hr />
-            <b:inputText value="#{bookshopBean.total}" disabled="true" label="total" render-label="true">
-              <f:convertNumber />
-            </b:inputText>
-            <b:commandButton value="calculate" actionListener="#{bookshopBean.calculate}" />
-            <b:messages />
-          </b:panelGrid>
-        </b:panel>
+	        <b:tabView>
+	           <b:tab title="preview">
+		        <b:panel title="Book price calculator" look="primary">
+		          <b:panelGrid columns="2">
+		            <b:inputText value="#{bookshopBean.price}" required="true" label="price" render-label="true" 
+		              onchange="ajax:bookshopBean.calculate()" update="result @this">
+		              <f:convertNumber />
+		            </b:inputText>
+		            <b:inputText value="#{bookshopBean.discount}" required="true" label="discount" render-label="true"
+		              onchange="ajax:bookshopBean.calculate()" update="result">
+		              <f:convertNumber />
+		            </b:inputText>
+		            <b:inputText value="#{bookshopBean.quantity}" required="true" label="number of books" render-label="true"
+		              onchange="ajax:bookshopBean.calculate()" update="result">
+		              <f:convertNumber integerOnly="true" />
+		            </b:inputText>
+		            <b:selectBooleanCheckbox value="#{bookshopBean.vat}" ajax="true" process="@this" label="add VAT" render-label="true"
+		                onchange="ajax:bookshopBean.calculate()" update="result @this">
+            			<f:converter converterId="de.beyondjava.booleanConverter" />
+            		</b:selectBooleanCheckbox>
+
+		            <b:inputText value="#{bookshopBean.total}" disabled="true" label="total" render-label="true" id="result">
+		              <f:convertNumber />
+		            </b:inputText>
+		            <b:commandButton value="calculate" actionListener="#{bookshopBean.calculate}" />
+		            <b:messages />
+		          </b:panelGrid>
+		        </b:panel>
+	             
+	          </b:tab>
+	          <b:tab title="JSF markup">
+	            <b:well>
+	              <script type="syntaxhighlighter"
+	                class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                  <![CDATA[
+                 <h:form>
+                     <b:inputText placeholder="Type something here..." value="&num;{barcodeBean.emptyText}">
+                        <f:ajax event="keyup" render="label" listener="&num;{barcodeBean.capitalizeURL}" />
+                        </b:inputText>
+                        <b:label text="&num;{barcodeBean.emptyTextCapital}" id="label"/>
+                    </h:form>
+                 ]]>
+                 </script>
+	            </b:well>
+	          </b:tab>
+	        </b:tabView>
       </h:form>
+   	<script type="text/javascript">
+                SyntaxHighlighter.all();
+            </script>
+            <br/><br/><br/><br/>
     </ui:define>
   </ui:composition>
 </h:body>

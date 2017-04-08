@@ -1,4 +1,4 @@
-package net.bootsfaces.issues.issue280;
+package net.bootsfaces.demo.converters;
 
 import java.io.Serializable;
 
@@ -12,6 +12,7 @@ public class BookshopBean implements Serializable {
 	private double discount=10.5;
 	private double price=34.90;
 	private int quantity=1;
+	private double vat = 7;
 	private double total=0;
 
 	public double getDiscount() {
@@ -23,7 +24,7 @@ public class BookshopBean implements Serializable {
 	}
 
 	public void calculate() {
-		total = quantity * (price * (100.0-discount)/100.0);
+		total = quantity * (price * (100.0-discount)/100.0) * (100.0+vat)/100.0;
 	}
 
 	public double getPrice() {
@@ -48,6 +49,14 @@ public class BookshopBean implements Serializable {
 
 	public void setTotal(double total) {
 		this.total = total;
+	}
+
+	public double getVat() {
+		return vat;
+	}
+
+	public void setVat(double vat) {
+		this.vat = vat;
 	}
 
 }

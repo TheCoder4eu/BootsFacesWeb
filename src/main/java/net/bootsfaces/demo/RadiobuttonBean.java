@@ -31,7 +31,7 @@ import net.bootsfaces.utils.FacesMessages;
 @ManagedBean
 public class RadiobuttonBean implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private int javaVersion;
+	private int javaVersion = 1;
 
 	private String favoriteColor;
 
