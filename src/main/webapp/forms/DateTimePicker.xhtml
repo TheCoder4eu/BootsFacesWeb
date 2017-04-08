@@ -258,9 +258,12 @@
     </p>
     <h5>BootsFaces 1.1.0:</h5>
     <p><code>bf-info</code>, <code>bf-warning</code>,
-        <code>bf-error</code> or <code>bf-fatal</code> have been dropped in favor of the standard Bootstrap CSS classes <code>has-success</code>,
-        <code>has-warning</code> and <code>has-error</code>. Plus, they are applied to the <code>form-group</code> instead of the labels and input fields.</p>
-    <b:tabView>
+     <code>bf-error</code> or <code>bf-fatal</code> have been dropped in favor of the standard Bootstrap CSS classes <code>has-success</code>,
+     <code>has-warning</code> and <code>has-error</code>. Plus, they are applied to the <code>form-group</code> instead of the labels and input fields.</p>
+     <h5>Compatibility settings</h5>
+     <p>If your application depends on the old HTML code, activate the context parameter <code>net.bootsfaces.legacy_error_classes</code>
+     in the web.xml. The example below shows how to do this.</p>
+  <b:tabView>
       <b:tab title="live preview">
         <b:well>
 			<b:form horizontal="true">

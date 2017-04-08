@@ -401,28 +401,51 @@
 				<p>The generated HTML code looks like so:</p>
                <h:graphicImage library="passthrough" name="generatedHtml.png" />
 
-               <h2>Labels, required fields and error messages  <b:badge value="updated in 0.8.0" /></h2>
-               <p>You can add a label by adding the attribute <code>label</code>. The label is also used by the JSF messages. To give you maximum flexibility,
-               you can suppress automatic rendering of labels by adding <code>renderLabel="false"</code>.
-               </p>
-               <p>Required inputs fields and their labels both bear the CSS class <code>bf-required</code>. By default, this adds an asterisk to the label.</p>
-               <p>If the field has a FacesMessage, one of the CSS classes <code>bf-info</code>, <code>bf-warning</code>,
-                   <code>bf-error</code> or <code>bf-fatal</code>, depending on which error severity the message has.
-                   The latter two classes color the label red.</p>
-                <p>If there's no message,
-                   the field and its label bear the pseudo CSS class <code>bf-no-message</code>  and <code>has-success</code>. The latter colors the label green by default.
-               </p>
+		    <a id="labels"></a>
+		    <h2>Labels, required fields and error messages <b:badge value="breaking change in 1.1.0" /></h2>
+		    <p>You can add a label by adding the attribute <code>label</code>. The label is also used by the JSF messages. To give you maximum flexibility,
+		    you can suppress automatic rendering of labels by adding <code>renderLabel="false"</code>.
+		    </p>
+		    <h5>BootsFaces 1.0.2 and below:</h5>
+		    <p>Required inputs fields and their labels both bear the CSS class <code>bf-required</code>. By default, this adds an asterisk to the label.</p>
+		    <p>If the field has a FacesMessage, one of the CSS classes <code>bf-info</code>, <code>bf-warning</code>,
+		        <code>bf-error</code> or <code>bf-fatal</code>, depending on which error severity the message has.
+		        The latter two classes color the label red.</p>
+		     <p>If there's no message,
+		        the field and its label bear the pseudo CSS class <code>bf-no-message</code>  and <code>has-success</code>. The latter colors the label green by default.
+		    </p>
+		    <h5>BootsFaces 1.1.0:</h5>
+		    <p><code>bf-info</code>, <code>bf-warning</code>,
+	        <code>bf-error</code> or <code>bf-fatal</code> have been dropped in favor of the standard Bootstrap CSS classes <code>has-success</code>,
+	        <code>has-warning</code> and <code>has-error</code>. Plus, they are applied to the <code>form-group</code> instead of the labels and input fields.</p>
+	        <h5>Compatibility settings</h5>
+	        <p>If your application depends on the old HTML code, activate the context parameter <code>net.bootsfaces.legacy_error_classes</code>
+	        in the web.xml. The example below shows how to do this.</p>
+
             <b:tabView>
               <b:tab title="displayed as">
               <b:well>
                 <h:form>
-                  <b:inputTextarea rows="3" id="name" value="#{userBean.name}"
-                    label="Enter your name" required="true" renderLabel="true"/>
-                  <h:message for="age" />
-                  <b:inputTextarea rows="3" id="age" value="#{userBean.age}"
-                    label="What's your age?" renderLabel="true" />
-                  <h:message for="age" />
-                  <b:commandButton update="@form" value="Validate constraints" />
+	             <b:panelGrid columns="2" size="sm">
+					<h:panelGroup display="block">
+	                  <b:inputTextarea rows="3" id="name" value="#{userBean.name}"
+	                    label="Enter your name" required="true" renderLabel="true"/>
+	                  <h:message for="age" />
+	                  <b:inputTextarea rows="3" id="age" value="#{userBean.age}"
+	                    label="What's your age?" renderLabel="true" />
+	                  <h:message for="age" />
+	                  <b:commandButton update="@form" value="Validate constraints" />
+                    </h:panelGroup>
+                    <h:panelGroup display="block">
+						<b:switch value="#{messageStyleBean.useLegacyBootsFacesStyle}"
+						    immediate="true"
+		                    caption="use legacy BootsFaces CSS classes"
+		                    label="compatibility settings" render-label="true"
+		                    onchange="ajax:messageStyleBean.toggleSettings();"
+		                    update="@form"
+		                    />
+					</h:panelGroup>
+				  </b:panelGrid>
                 </h:form>
                 </b:well>
               </b:tab>
