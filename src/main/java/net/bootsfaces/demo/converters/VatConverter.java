@@ -4,8 +4,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@FacesConverter("de.beyondjava.booleanConverter")
-public class BooleanConverter implements Converter {
+@FacesConverter("de.beyondjava.vatConverter")
+public class VatConverter implements Converter {
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {

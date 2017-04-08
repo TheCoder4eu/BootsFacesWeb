@@ -12,8 +12,16 @@
 <h:body style="padding-top: 60px">
   <ui:composition template="/applayout/pageTemplate.xhtml">
     <ui:define name="content">
+      <h1>JSF converters <b:badge value="Since 1.1.0" /></h1>
+      <p>Most form widgets of BootsFaces support the JSF converters. For some reason, this feature
+      has been added to BootsFaces late, so chances are we've missed a component. If you encounter
+      such a component, please open a but report at 
+      <a target="#" href="https://github.com/TheCoder4eu/BootsFaces-OSP/issues">https://github.com/TheCoder4eu/BootsFaces-OSP/issues</a>.</p>
+      <p>Converters are used the way you're used from standard JSF: either by defining a <code>&lt;f:converter /&gt;</code> tag,
+      or by providing the id of the converter with the <code>converter</code> attribute of the input field.</p>
+ 
       <h:form>
-        <h1>Book price calculator</h1>
+        <h1>Converter demo</h1>
 	        <b:tabView>
 	           <b:tab title="preview">
 		        <b:panel title="Book price calculator" look="primary">
@@ -22,6 +30,7 @@
 		              onchange="ajax:bookshopBean.calculate()" update="result @this">
 		              <f:convertNumber />
 		            </b:inputText>
+
 		            <b:inputText value="#{bookshopBean.discount}" required="true" label="discount" render-label="true"
 		              onchange="ajax:bookshopBean.calculate()" update="result">
 		              <f:convertNumber />
@@ -31,16 +40,16 @@
 		              <f:convertNumber integerOnly="true" />
 		            </b:inputText>
 		            <b:selectBooleanCheckbox value="#{bookshopBean.vat}" ajax="true" process="@this" label="add VAT" render-label="true"
-		                onchange="ajax:bookshopBean.calculate()" update="result @this">
-            			<f:converter converterId="de.beyondjava.booleanConverter" />
-            		</b:selectBooleanCheckbox>
+		                onchange="ajax:bookshopBean.calculate()" update="result @this"
+		                converter="de.beyondjava.vatConverter"  />
 
 		            <b:inputText value="#{bookshopBean.total}" disabled="true" label="total" render-label="true" id="result">
 		              <f:convertNumber />
 		            </b:inputText>
-		            <b:commandButton value="calculate" actionListener="#{bookshopBean.calculate}" />
+		            <b:commandButton value="calculate" actionListener="#{bookshopBean.calculate}"
+		                             onclick="ajax:bookshopBean.calculate()" update="result" />
 		            <b:messages />
-		          </b:panelGrid>
+		         </b:panelGrid> 
 		        </b:panel>
 	             
 	          </b:tab>
@@ -49,13 +58,93 @@
 	              <script type="syntaxhighlighter"
 	                class="brush: xml; toolbar: false;gutter: false; first-line: 1">
                   <![CDATA[
-                 <h:form>
-                     <b:inputText placeholder="Type something here..." value="&num;{barcodeBean.emptyText}">
-                        <f:ajax event="keyup" render="label" listener="&num;{barcodeBean.capitalizeURL}" />
-                        </b:inputText>
-                        <b:label text="&num;{barcodeBean.emptyTextCapital}" id="label"/>
-                    </h:form>
+		        <b:panel title="Book price calculator" look="primary">
+		          <b:panelGrid columns="2">
+		            <b:inputText value="&num;{bookshopBean.price}" required="true" label="price" render-label="true" 
+		              onchange="ajax:bookshopBean.calculate()" update="result @this">
+		              <f:convertNumber />
+		            </b:inputText>
+		            <b:inputText value="&num;{bookshopBean.discount}" required="true" label="discount" render-label="true"
+		              onchange="ajax:bookshopBean.calculate()" update="result">
+		              <f:convertNumber />
+		            </b:inputText>
+		            <b:inputText value="&num;{bookshopBean.quantity}" required="true" label="number of books" render-label="true"
+		              onchange="ajax:bookshopBean.calculate()" update="result">
+		              <f:convertNumber integerOnly="true" />
+		            </b:inputText>
+		            <b:selectBooleanCheckbox value="&num;{bookshopBean.vat}" ajax="true" process="@this" label="add VAT" render-label="true"
+		                onchange="ajax:bookshopBean.calculate()" update="result @this"
+		                converter="de.beyondjava.vatConverter" />
+
+		            <b:inputText value="&num;{bookshopBean.total}" disabled="true" label="total" render-label="true" id="result">
+		              <f:convertNumber />
+		            </b:inputText>
+		            <b:commandButton value="calculate" actionListener="&num;{bookshopBean.calculate}"
+                                     onclick="ajax:bookshopBean.calculate()" update="result" />
+		            <b:messages />
+		          </b:panelGrid>
+		        </b:panel>
                  ]]>
+                 </script>
+	            </b:well>
+	          </b:tab>
+	          <b:tab title="Custom converter">
+	            <b:well>
+	              <script type="syntaxhighlighter"
+	                class="brush: java; toolbar: false;gutter: false; first-line: 1">
+                  <![CDATA[
+@FacesConverter("de.beyondjava.vatConverter")
+public class VatConverter implements Converter {
+
+	@Override
+	public Object getAsObject(FacesContext context, UIComponent component, String value) {
+
+		if (null == value)
+			return null;
+		if (value.equals("false")){
+			return 0;
+		}
+		return 7;
+	}
+
+	@Override
+	public String getAsString(FacesContext context, UIComponent component, Object value) {
+		if (null == value)
+			return null;
+		if (value instanceof Number) {
+			int v = ((Number)value).intValue();
+			if (v==0) return "false";
+			return "true";
+		}
+		return null;
+
+	}
+}
+                 ]]>
+                 </script>
+	            </b:well>
+	          </b:tab>
+	          <b:tab title="Java bean">
+	            <b:well>
+	              <script type="syntaxhighlighter"
+	                class="brush: java; toolbar: false;gutter: false; first-line: 1">
+                  <![CDATA[
+@ManagedBean
+@ViewScoped
+public class BookshopBean implements Serializable {
+	private static final long serialVersionUID = 1L;
+	private double discount=10.5;
+	private double price=34.90;
+	private int quantity=1;
+	private double vat = 7;
+	private double total=0;
+
+	public void calculate() {
+		total = quantity * (price * (100.0-discount)/100.0) * (100.0+vat)/100.0;
+	}
+
+	// getters and setters omitted for the sake of brevity
+}                 ]]>
                  </script>
 	            </b:well>
 	          </b:tab>
