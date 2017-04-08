@@ -471,6 +471,50 @@
 	        <h5>Compatibility settings</h5>
 	        <p>If your application depends on the old HTML code, activate the context parameter <code>net.bootsfaces.legacy_error_classes</code>
 	        in the web.xml.</p>
+	        
+            <b:tabView>
+              <b:tab title="displayed as">
+              <b:well>
+                <h:form>
+	             <b:panelGrid columns="2" size="sm">
+					<h:panelGroup display="block">
+	                  <b:slider2 orientation="horizontal" value="#{sliderBean.age}" label="Enter your age (18-65)" 
+                                 mode="edit" id="age" />
+	                  <b:message for="age" />
+	                  <b:commandButton update="@form" value="Validate constraints" />
+                    </h:panelGroup>
+                    <h:panelGroup display="block">
+						<b:switch value="#{messageStyleBean.useLegacyBootsFacesStyle}"
+						    immediate="true"
+		                    caption="use legacy BootsFaces CSS classes"
+		                    label="compatibility settings" render-label="true"
+		                    onchange="ajax:messageStyleBean.toggleSettings();"
+		                    update="@form"
+		                    />
+					</h:panelGroup>
+				  </b:panelGrid>
+                </h:form>
+                </b:well>
+              </b:tab>
+              <b:tab title="JSF markup">
+                <b:well>
+                  <script type="syntaxhighlighter"
+                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+				  <![CDATA[
+                     <h:form>
+                        <b:inputTextarea rows="3" id="name" value="&num;{userBean.name}" label="Enter your name"
+								     required="true" renderLabel="true"   />
+                         <h:message for="age" />
+                         <b:inputTextarea rows="3" id="age" value="&num;{userBean.age}" label="What's your age?"
+                                      renderLabel="true" />
+                         <h:message for="age" />
+                         <b:commandButton update="@form" value="Validate constraints" />
+                       </h:form>
+                  ]]>
+                 </script>
+                </b:well>
+              </b:tab>
+            </b:tabView>
 
 
                 <br/>

@@ -8,6 +8,8 @@ import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 /**
  *
@@ -23,6 +25,10 @@ public class SliderBean implements Serializable {
 	private double value4 = 43;
 	private double value5 = 12;
 	private double value6 = 30;
+	
+	@Min(18)
+	@Max(65)
+	private double age = 0;
 	
 	private double valueDouble = 15.5;
 	
@@ -91,5 +97,13 @@ public class SliderBean implements Serializable {
 
 	public void setValueDouble(double valueDouble) {
 		this.valueDouble = valueDouble;
+	}
+
+	public double getAge() {
+		return age;
+	}
+
+	public void setAge(double age) {
+		this.age = age;
 	}
 }
