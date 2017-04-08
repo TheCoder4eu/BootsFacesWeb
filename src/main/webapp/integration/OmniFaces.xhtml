@@ -10,8 +10,7 @@
                 <style>td {padding: 8px;}</style>
                 <h1>Integration with OmniFaces</h1>
                 <p>BootsFaces loads many small CSS and JavaScript files. So it's a good idea to combine it with OmniFaces.
-                In particular, we recommend to use the <a target="#" href="http://showcase.omnifaces.org/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></a>. It solves
-                a couple of weird problems. For example, Glyphicon icons typically weren't displayed correctly without the <code>CombinedResourceHandler</code> until version 0.8.1 .
+                In particular, we recommend to use the <a target="#" href="http://showcase.omnifaces.org/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></a>.
                 </p>
                 <p>Note that we didn't run an exhaustive compatibility test yet. However, nobody's ever reported us problems with BootsFaces and OmniFaces.</p>
 
@@ -24,13 +23,13 @@
 <dependency>
   <groupId>net.bootsfaces</groupId>
   <artifactId>bootsfaces</artifactId>
-  <version>1.0.1</version>
+  <version>1.1.0</version>
   <scope>compile</scope>
 </dependency>
 <dependency>
   <groupId>org.omnifaces</groupId>
   <artifactId>omnifaces</artifactId>
-  <version>1.12.1</version>
+  <version>2.6.1</version>
   <scope>compile</scope>
 </dependency>
 ]]>
@@ -41,8 +40,8 @@
           <b:well>
 <script type="syntaxhighlighter" class="brush: groovy; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
-  compile 'net.bootsfaces:bootsfaces:1.0.1'
-  compile 'org.omnifaces:omnifaces:1.12.1'
+  compile 'net.bootsfaces:bootsfaces:1.1.0'
+  compile 'org.omnifaces:omnifaces:2.6.1'
 ]]>
 </script>
           </b:well>
@@ -52,14 +51,13 @@
         <b:well>
 <script type="syntaxhighlighter" class="brush: groovy; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
-        <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
     version="2.2">
     <application>
-        <resource-handler>org.omnifaces.resourcehandler.CombinedResourceHandler
-        </resource-handler>
+        <resource-handler>org.omnifaces.resourcehandler.CombinedResourceHandler</resource-handler>
     </application>
 </faces-config>
 ]]>
@@ -69,77 +67,21 @@
       </b:tabView>
 
 <h3>Caching version of the CombinedResourceHandler</h3>
-<p>Caching can add a lot to your page's responsiveness. We've submitted a pull request to OmniFaces that adds caching to the <code>CombinedResourceHandler</code>.
-If you happen to use version 2.0 or earlier of OmniFaces, you can add caching yourself by adding a couple of classes to your application's class path.
-You also have to add a few lines to the <code>web.xml</code> file to activate and configure caching.</p>
-<p>Note that by adding the classes you overwrite classes contained in the OmniFaces.jar. This trick relies on the correct working of the classloader. According to the
-documentation, Tomcat is garanteed to support this (at least in the default configuration). But in the general case, we can't guarantee for anything. Use at own risk.</p>
+<p>Caching can add a lot to your page's responsiveness. You have to add a few lines to the <code>web.xml</code> file to activate and configure caching.</p>
 
+<p>Download the <a target="#" href="http://repository.primefaces.org/org/primefaces/themes/bootstrap/">PrimeFaces Bootsstrap theme</a>, add it to your application's <code>lib</code> folder and activate it in the <code>web.xml</code> like so:</p>
 
-     <b:tabView contentStyle="height:350px">
-        <b:tab title="web.xml">
-          <b:well>
-          Download the <a target="#" href="http://repository.primefaces.org/org/primefaces/themes/bootstrap/">PrimeFaces Bootsstrap theme</a>, add it to your application's <code>lib</code> folder and activate it in the <code>web.xml</code> like so:
+     <b:well>
 <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
-    <!-- activate resource caching -->
-    <context-param>
-        <param-name>org.omnifaces.COMBINED_RESOURCE_ACTIVATE_RESOURCE_CACHING</param-name>
-        <param-value>
-      true
-    </param-value>
-    </context-param>
-    <!-- cache ten combined resources at most -->
-    <context-param>
-        <param-name>org.omnifaces.CACHE_SETTING_APPLICATION_MAX_CAPACITY</param-name>
-        <param-value>30</param-value>
-    </context-param>
     <!-- set the maximum time-to-live of cache entries to one day -->
     <context-param>
-        <param-name>org.omnifaces.CACHE_SETTING_APPLICATION_TTL</param-name>
+        <param-name>org.omnifaces.COMBINED_RESOURCE_HANDLER_CACHE_TTL</param-name>
         <param-value>86400</param-value>
     </context-param>
 ]]>
 </script>
           </b:well>
-        </b:tab>
-        <b:tab title="Classes to be added">
-          <b:well>
-            As mentioned above, you only have to add these classes if you use OmniFaces 2.0 or below.<br />
-            <a target="#" href="https://github.com/TheCoder4eu/BootsFacesWeb/blob/master/src/java/org/omnifaces/resourcehandler/CombinedResourceInputStream.java">CombinedResourceInputStream</a>
-            <br />
-            <a target="#" href="https://github.com/TheCoder4eu/BootsFacesWeb/blob/master/src/java/org/omnifaces/component/output/cache/CacheEntry.java">CacheEntry</a>
-            <br />
-            <a target="#" href="https://github.com/TheCoder4eu/BootsFacesWeb/blob/master/src/java/org/omnifaces/component/output/cache/CacheFactory.java">CacheFactory</a>
-            <br />
-            <a target="#" href="https://github.com/TheCoder4eu/BootsFacesWeb/blob/master/src/java/org/omnifaces/component/output/cache/CacheInstancePerScopeProvider.java">CacheInstancePerScopeProvider</a>
-            <br />
-            <a target="#" href="https://github.com/TheCoder4eu/BootsFacesWeb/blob/master/src/java/org/omnifaces/component/output/cache/CacheProvider.java">CacheProvider</a>
-            <br />
-            <a target="#" href="https://github.com/TheCoder4eu/BootsFacesWeb/blob/master/src/java/org/omnifaces/component/output/cache/DefaultCache.java">DefaultCache</a>
-            <br />
-            <a target="#" href="https://github.com/TheCoder4eu/BootsFacesWeb/blob/master/src/java/org/omnifaces/component/output/cache/DefaultCacheProvider.java">DefaultCacheProvider</a>
-            <br />
-            <a target="#" href="https://github.com/TheCoder4eu/BootsFacesWeb/blob/master/src/java/org/omnifaces/component/output/cache/TimeToLiveCache.java">TimeToLiveCache</a>
-            <br />
-          </b:well>
-        </b:tab>
-      </b:tabView>
-
-      <h3>Warnings caused by the CombinedResourceHandler</h3>
-      <p>If you use an older version of OmniFaces, Mojarra 2.2 generates a lot of warnings on the console in developer mode:</p>
-<b:well>
-      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-Mai 24, 2015 9:30:28 PM com.sun.faces.application.view.FaceletPartialStateManagementStrategy saveDynamicActions
-WARNING: Unable to save dynamic action with clientId 'j_id190' because the UIComponent cannot be found
-      ]]>
-</script>
-</b:well>
-      <p> These warnings are caused by OmniFaces removing the original resources. Mojarra detects there's
-      something missing and complains about it. You can safely ignore these warnings.
-      Also see the corresponding <a target="#" href="https://github.com/omnifaces/omnifaces/issues/135">issue on the OmniFaces bugtracker</a> for details.</p>
-      <p>This nuisance has been fixed with OmniFaces 1.12 and 2.2.</p>
 
                 <script type="text/javascript">
                     SyntaxHighlighter.all();
