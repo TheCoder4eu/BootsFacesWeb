@@ -47,7 +47,7 @@ public class SliderBean implements Serializable {
 		return value1;
 	}
 
-	public void setValue1(double value1) {
+	public void setValue1(int value1) {
 		this.value1 = value1;
 	}
 
@@ -55,7 +55,7 @@ public class SliderBean implements Serializable {
 		return value2;
 	}
 
-	public void setValue2(double value2) {
+	public void setValue2(int value2) {
 		this.value2 = value2;
 	}
 
@@ -63,7 +63,7 @@ public class SliderBean implements Serializable {
 		return value3;
 	}
 
-	public void setValue3(double value3) {
+	public void setValue3(int value3) {
 		this.value3 = value3;
 	}
 
@@ -71,7 +71,7 @@ public class SliderBean implements Serializable {
 		return value4;
 	}
 
-	public void setValue4(double value4) {
+	public void setValue4(int value4) {
 		this.value4 = value4;
 	}
 
@@ -79,7 +79,7 @@ public class SliderBean implements Serializable {
 		return value5;
 	}
 
-	public void setValue5(double value5) {
+	public void setValue5(int value5) {
 		this.value5 = value5;
 	}
 
@@ -87,7 +87,7 @@ public class SliderBean implements Serializable {
 		return value6;
 	}
 
-	public void setValue6(double value6) {
+	public void setValue6(int value6) {
 		this.value6 = value6;
 	}
 
