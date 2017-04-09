@@ -23,3 +23,6 @@ download.xhtml
 .factorypath
 /src/main/webapp/META-INF/
 /.apt_generated/
+nbactions.xml
+faces-config.NavData 
+nb-configuration.xml
