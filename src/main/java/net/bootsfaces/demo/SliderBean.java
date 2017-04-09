@@ -19,31 +19,31 @@ import javax.validation.constraints.Min;
 @SessionScoped
 public class SliderBean implements Serializable {
 	private static final long serialVersionUID = -332002335165889800L;
-	private double value1 = 10;
-	private double value2 = 87;
-	private double value3 = 84;
-	private double value4 = 43;
-	private double value5 = 12;
-	private double value6 = 30;
-	
+	private int value1 = 10;
+	private int value2 = 87;
+	private int value3 = 84;
+	private int value4 = 43;
+	private int value5 = 12;
+	private int value6 = 30;
+
 	@Min(18)
 	@Max(65)
 	private double age = 0;
-	
+
 	private double valueDouble = 15.5;
-	
+
 	/**
 	 * Creates a new instance of informBean
 	 */
 	public SliderBean() {
 	}
-	
+
 	public void button1() {
 		System.out.println("Double value is: " + valueDouble);
 		// valueDouble = 28.5;
 	}
 
-	public double getValue1() {
+	public int getValue1() {
 		return value1;
 	}
 
@@ -51,7 +51,7 @@ public class SliderBean implements Serializable {
 		this.value1 = value1;
 	}
 
-	public double getValue2() {
+	public int getValue2() {
 		return value2;
 	}
 
@@ -59,7 +59,7 @@ public class SliderBean implements Serializable {
 		this.value2 = value2;
 	}
 
-	public double getValue3() {
+	public int getValue3() {
 		return value3;
 	}
 
@@ -67,7 +67,7 @@ public class SliderBean implements Serializable {
 		this.value3 = value3;
 	}
 
-	public double getValue4() {
+	public int getValue4() {
 		return value4;
 	}
 
@@ -75,7 +75,7 @@ public class SliderBean implements Serializable {
 		this.value4 = value4;
 	}
 
-	public double getValue5() {
+	public int getValue5() {
 		return value5;
 	}
 
@@ -83,7 +83,7 @@ public class SliderBean implements Serializable {
 		this.value5 = value5;
 	}
 
-	public double getValue6() {
+	public int getValue6() {
 		return value6;
 	}
 

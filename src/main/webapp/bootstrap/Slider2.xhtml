@@ -9,7 +9,7 @@
             <ui:define name="content">
 	            <style>
 		        .tooltip-inner {
-				    width: auto !important; 
+				    width: auto !important;
 				}
 				</style>
                 <h1>Bootstrap Slider <b:badge value="Since 1.0.0 (experimental)" /></h1>
@@ -22,17 +22,7 @@
                 <p>In <b>edit mode</b>, an editable input field showing the slider value will be shown;
                    in this mode you can change the value by sliding or editing the value in the field.</p>
                 <br/>
-                <h:form>
-                <h4>Float Value</h4>
-                <p>With float value.</p>
 
-                	<b:row>
-                		<b:column>
-                			<b:slider2 id="sdl" mode="basic" label="Double Slider:" value="#{sliderBean.valueDouble}" precision="2" min="0" max="30" step="0.5"/>
-                		</b:column>
-                	</b:row>
-                	<b:commandButton id="button1" actionListener="#{sliderBean.button1}" value="Send Value" ajax="true" update="sdl" />
-                </h:form>
                 <h:form>
                 <br/>
                 <h4>Basic Mode</h4>
@@ -109,7 +99,7 @@
                         <b:row>
                             <b:column span="4" col-sm="4" col-xs="4">#{' '}</b:column>
                             <b:column span="2" col-sm="2" col-xs="2">
-                                <b:slider2 orientation="vertical" value="#{sliderBean.value1}" label="Value (0-100)">                                           
+                                <b:slider2 orientation="vertical" value="#{sliderBean.value1}" label="Value (0-100)">
                                 </b:slider2>
                             </b:column>
                             <b:column span="2" col-sm="2" col-xs="2">
@@ -136,7 +126,7 @@
                         ]]></script>
                         </f:facet>
                     </b:panel>
-                    
+
                     <h2>Styles and style-classes <b:badge value="Breaking change in 1.1.0" /></h2>
                     <p>Until version 1.0.2 of BootsFaces, the <code>style</code> and <code>style-class</code> attributes applied only
                     the the optional badge.</p>
@@ -151,7 +141,7 @@
                         <h:form>
                         <b:row>
                             <b:column span="2" col-sm="2" col-xs="2">
-                                <b:slider2 orientation="vertical" value="#{sliderBean.value1}" label="Value (0-100)" 
+                                <b:slider2 orientation="vertical" value="#{sliderBean.value1}" label="Value (0-100)"
                                            label-style="color:green"
                                            label-style-class="myLabelClass"
                                            style="border:1px solid green"
@@ -186,7 +176,7 @@
                         <![CDATA[
                         <b:row>
                            <b:column span="2" col-sm="2" col-xs="2">
-                                <b:slider2 orientation="vertical" value="&num;{sliderBean.value1}" label="Value (0-100)" 
+                                <b:slider2 orientation="vertical" value="&num;{sliderBean.value1}" label="Value (0-100)"
                                            label-style="color:green"
                                            label-style-class="myLabelClass"
                                            style="border:1px solid green"
@@ -216,9 +206,9 @@
                         ]]></script>
                         </f:facet>
                     </b:panel>
-                    
-                    
-                    
+
+
+
                     <p>The Slider component has been developed so that it fits well both in forms and in Bootstrap Grid system.</p>
                     <p>This allows you to obtain complex input interfaces that adapt to all media screen sizes, taking advantage of the responsive features of the Grid system.</p>
                     <b:panel look="info">
@@ -471,14 +461,14 @@
 	        <h5>Compatibility settings</h5>
 	        <p>If your application depends on the old HTML code, activate the context parameter <code>net.bootsfaces.legacy_error_classes</code>
 	        in the web.xml.</p>
-	        
+
             <b:tabView>
               <b:tab title="displayed as">
               <b:well>
                 <h:form>
 	             <b:panelGrid columns="2" size="sm">
 					<h:panelGroup display="block">
-	                  <b:slider2 orientation="horizontal" value="#{sliderBean.age}" label="Enter your age (18-65)" 
+	                  <b:slider2 orientation="horizontal" value="#{sliderBean.age}" label="Enter your age (18-65)"
                                  mode="edit" id="age" />
 	                  <b:message for="age" />
 	                  <b:commandButton update="@form" value="Validate constraints" />
@@ -516,8 +506,20 @@
               </b:tab>
             </b:tabView>
 
+            <br/>
+            <h:form>
+            <h4>Float Values</h4>
+            <p>Another feature is the option to use Float values to with the Slider. Use the <code>precision</code> attribute to specify the precision to use.</p>
 
-                <br/>
+              <b:row>
+                <b:column>
+                  <b:slider2 id="sdl" mode="basic" label="Double Slider:" value="#{sliderBean.valueDouble}" precision="2" min="0" max="30" step="0.5"/>
+                </b:column>
+              </b:row>
+              <b:commandButton id="button1" actionListener="#{sliderBean.button1}" value="Send Value" ajax="true" update="sdl" />
+            </h:form>
+
+
                 <h2>Reference section</h2>
                 <ui:include src="Slider2Attributes.xhtml" />
                 <b:panel look="info" rendered="true">
