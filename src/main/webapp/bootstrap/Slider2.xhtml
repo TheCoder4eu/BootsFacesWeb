@@ -13,8 +13,8 @@
 				}
 				</style>
                 <h1>Bootstrap Slider <b:badge value="Since 1.0.0 (experimental)" /></h1>
-                <p>This widget is going to replace the traditional <code>&lt;b:slider /&gt;</code> of BootsFaces. The old component is 
-                a jQueryUI widget. This dependency, in turn, causes many incompatibilities, so we searched for a slider component that 
+                <p>This widget is going to replace the traditional <code>&lt;b:slider /&gt;</code> of BootsFaces. The old component is
+                a jQueryUI widget. This dependency, in turn, causes many incompatibilities, so we searched for a slider component that
                 doesn't use jQueryUI. The new <code>&lt;b:slider2 /&gt;</code> widget is based on <a target="#" href="http://seiyria.com/bootstrap-slider/">
                 http://seiyria.com/bootstrap-slider/</a> which is available at an MIT license.</p>
                 <p>You can use the attributes <code>min</code>, <code>max</code>, <code>orientation</code> and <code>step</code>.</p>
@@ -264,11 +264,10 @@
                         ]]></script>
                         </f:facet>
                     </b:panel>
-                <!-- TO FIX in 1.1.0 -->
-                <!--h3>Slider Handle options</h3>
+                <h3>Slider Handle options</h3>
                 <h4>Handle Size</h4>
                 <p>If you are targeting Mobile, it can be useful to have a bigger handle.</p>
-                <p>You can control the handle size adding the <code>handle-size</code> attribute, using the <code>md</code> or <code>lg</code> values for a Medium sized handle and a Large sized handle respectively.</p>
+                <p>You can control the handle size adding the <code>handleShape</code> attribute, using the <code>md</code> or <code>lg</code> values for a Medium sized handle and a Large sized handle respectively.</p>
                 <h:form>
                     <b:panel look="info">
                         <f:facet name="heading"><b>EXAMPLE - Handle Size</b></f:facet>
@@ -279,12 +278,12 @@
                         </b:row>
                         <b:row>
                             <b:column>
-                                <b:slider2 handle-size="md" min="0" max="100" value="50" label="Medium handle (md)" />
+                                <b:slider2 handleShape="md" min="0" max="100" value="50" label="Medium handle (md)" />
                             </b:column>
                         </b:row>
                         <b:row>
                             <b:column>
-                                <b:slider2 handle-size="lg" min="0" max="100" step="5" value="75" label="Large handle (lg)"/>
+                                <b:slider2 handleShape="lg" min="0" max="100" step="5" value="75" label="Large handle (lg)"/>
                             </b:column>
                         </b:row>
 
@@ -300,12 +299,12 @@
                         </b:row>
                         <b:row>
                             <b:column>
-                                <b:slider2 handle-size="md" min="0" max="100" value="50" label="Medium handle (md)" />
+                                <b:slider2 handleShape="md" min="0" max="100" value="50" label="Medium handle (md)" />
                             </b:column>
                         </b:row>
                         <b:row>
                             <b:column>
-                                <b:slider2 handle-size="lg" min="0" max="100" step="5" value="75" label="Large handle (lg)"/>
+                                <b:slider2 handleShape="lg" min="0" max="100" step="5" value="75" label="Large handle (lg)"/>
                             </b:column>
                         </b:row>
                         ]]></script>
@@ -313,7 +312,7 @@
                     </b:panel>
                 </h:form>
                 <p class="text-success">Note: the same applies to Vertical Sliders.</p-->
-                <!-- TO FIX in 1.1.0 -->
+
                 <h4>Handle Shape</h4>
                 <p>The default handle has a rounded shape.</p>
                 <p>If you prefer a square or triangle handle you can add the <code>handleShape="square"</code> or <code>handleShape="triangle"</code> attribute.</p>
@@ -510,6 +509,7 @@
             </b:tabView>
 
             <br/>
+            <!-- TODO in 1.5.0 -->
             <!-- h:form>
             <h4>Float Values</h4>
             <p>Another feature is the option to use Float values to with the Slider. Use the <code>precision</code> attribute to specify the precision to use.</p>
