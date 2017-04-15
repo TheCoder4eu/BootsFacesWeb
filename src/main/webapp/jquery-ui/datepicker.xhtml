@@ -9,8 +9,11 @@
 
              <ui:define name="content">
                 <style>td {padding: 8px;}</style>
-                <h1>Date Picker</h1>
+                <h1>Date Picker <b:badge value="deprecated since 1.1.0" /></h1>
                 <p>BootsFaces derives the Date Picker component from jQuery UI's widget because of its ease of use and its configurability.</p>
+                <p><b>Caveat:</b> There's a new component, the <code>&lt;b:dateTimePicker /&gt;</code>, that doesn't need jQueryUI.
+                We recommend to use the new component. The <code>&lt;b:datepicker&gt;</code> is considered deprecated and will be removed in 
+                one of the next versions of BootsFaces.</p>
 
                 <strong>Date Picker modes</strong>
                 <p>The <code>&lt;b:datepicker&gt;</code> supports six modes for displaying the widget, specified with the attribute<code>mode</code>:</p>

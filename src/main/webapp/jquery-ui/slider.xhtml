@@ -9,6 +9,11 @@
             <ui:define name="content">
                 <h1>Slider</h1>
                 <p>BootsFaces derives the Slider component from jQuery UI's widget, thus the <code>b:slider</code> tag supports most of its options.</p>
+                <p><b>Caveat:</b> Currently, we're developing a new component that doesn't need jQueryUI. In one of the next versions of BootsFaces
+                we'll either replace the implementation of <code>&lt;b:slider/&gt;</code> by what we're currently calling <code>&lt;b:slider2 /&gt;</code>.
+                If that's not possible for compatibility reasons, we'll declare <code>&lt;b:slider /&gt;</code> deprecated and remove it in one of the
+                next versions of BootsFaces.</p>
+                <h2>Basic usage</h2>
                 <p>You can use the attributes <code>min</code>, <code>max</code>, <code>orientation</code> and <code>step</code>.</p>
                 <br/>
                 <p>There are three modes available that you can choose from with the <code>mode</code> attribute: basic, badge and edit.</p>
