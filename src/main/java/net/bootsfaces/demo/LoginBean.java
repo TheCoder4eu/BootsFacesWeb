@@ -71,4 +71,8 @@ public class LoginBean implements Serializable {
 		msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Default password: rocks!", "");
 		FacesContext.getCurrentInstance().addMessage("loginForm:password", msg);
 	}
+	
+	public void update() {
+		
+	}
 }
