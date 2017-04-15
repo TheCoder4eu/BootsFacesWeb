@@ -57,13 +57,17 @@
             </b:tab>
         </b:tabView>
         <br/>
-        <p>
-            <b:badge value="Attention"/> We must indeed pay attention to a couple of things: while the tree component was a client side component, 
-            and that i need to put it inside a form to be able to perform ajax call, i need to set the prependId="false" 
-            option to the form, to prevent the component to lose it's styling, that is based on ids. 
+        <h3>Know bugs and limitations</h3>
+            <ul>
+            <li>You must put the tree into a <code>&lt;h:form /gt;</code> tag. That's because
+            it's able to perform AJAX calls.</li>
+            <li>The form must have the attribute <code>prependId="false"</code>. Otherwise, the tree isn't styled correctly.</li>
+            </ul>
+         <p>
+           
             We will try to solve this limitation in the future version of the component.
             <br/><br/>
-            This component is also able to mantain it's state also after a page refresh (expansion level and checked items).
+            This component is also not yet able to maintain it's state also after a page refresh (expansion level and checked items).
             <br/>
         </p>
 
