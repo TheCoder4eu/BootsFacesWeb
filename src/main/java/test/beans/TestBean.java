@@ -3,14 +3,18 @@ package test.beans;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import net.bootsfaces.component.tree.event.TreeNodeCheckedEvent;
 import net.bootsfaces.component.tree.event.TreeNodeEventListener;
+import net.bootsfaces.component.tree.event.TreeNodeExpandedEvent;
 import net.bootsfaces.component.tree.event.TreeNodeSelectionEvent;
 import net.bootsfaces.component.tree.model.DefaultNodeImpl;
 import net.bootsfaces.component.tree.model.Node;
@@ -24,13 +28,12 @@ implements TreeNodeEventListener, Serializable {
 	private static final long serialVersionUID = -4647459610022075061L;
 	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
 	
-	private Node selectedNode;
-	private List<Node> checkedNodes = new ArrayList<Node>();
 	private String selectedColor;
 	private Date dataToPick = new Date();
 	
 	private Node statefullRootNode = null;
 	private String testField;
+        private LinkedList<String> messages = new LinkedList<>();
 
 	public TestBean() {
 		initStatefullRootNode();
@@ -43,6 +46,10 @@ implements TreeNodeEventListener, Serializable {
 	public void setDataToPick(Date dataToPick) {
 		this.dataToPick = dataToPick;
 	}
+        
+        public List<String> getMessages() {
+            return messages;
+        }
 	
 	private void initStatefullRootNode() {
 		statefullRootNode = new DefaultNodeImpl("root", "arrow-right").withBackColor("#FF1188");
@@ -89,27 +96,14 @@ implements TreeNodeEventListener, Serializable {
 	public void setSelectedColor(String selectedColor) {
 		this.selectedColor = selectedColor;
 	}
-
-	public String getCheckedColumns() {
-		if(checkedNodes != null && checkedNodes.size() > 0){
-			StringBuilder sb = new StringBuilder();
-			sb.append("CHECKED NODES: ");
-			for(Node n: checkedNodes) {
-				sb.append(n.getText() + " : ");
-			}
-			return sb.toString();
-		}
-		return "NO CHECKED ITEMS";
-	}
-	public void setCheckedColumns(String column) { }
 	
 	public Node getTestModel1() {
 		Node rootNode = new DefaultNodeImpl("root", "arrow-right").withBackColor("#FF9988");
-		List<Node> nodeList = new ArrayList<Node>();
+		List<Node> nodeList = new ArrayList<>();
 		nodeList.add(new DefaultNodeImpl("Parent1", "user"));
 		nodeList.add(new DefaultNodeImpl("Parent2", "envelope"));
 		
-		List<Node> subNodes = new ArrayList<Node>();
+		List<Node> subNodes = new ArrayList<>();
 		subNodes.add(new DefaultNodeImpl("Child1", "user"));
 		subNodes.add(new DefaultNodeImpl("Child2", "main"));
 		subNodes.add(new DefaultNodeImpl("Child3", "arrow-left"));
@@ -119,7 +113,7 @@ implements TreeNodeEventListener, Serializable {
 		
 		DefaultNodeImpl child5 = new DefaultNodeImpl("Child5", "arrow-right");
 		child5.setColor("#FF0000");
-		List<Node> subSubNodes = new ArrayList<Node>();
+		List<Node> subSubNodes = new ArrayList<>();
 		subSubNodes.add(new DefaultNodeImpl("GrandChild 1", "play-circle"));
 		subSubNodes.add(new DefaultNodeImpl("GrandChild 2", "play-circle"));
 		child5.getChilds().addAll(subSubNodes);
@@ -148,48 +142,30 @@ implements TreeNodeEventListener, Serializable {
 
 		return rootNode;
 	}
-
-	@Override
-	public boolean isValueSelected(Node arg0) {
-		if(selectedNode != null) {
-			return selectedNode.getText().equalsIgnoreCase(arg0.getText());
-		}
-		return false;
-	}
-
-	@Override
-	public void processValueChange(TreeNodeSelectionEvent event) {
-		System.out.println("SELEZIONATO NODO:"); 
-		System.out.println("NEW TITLE: " + event.getNewSelectedNode().getText());
-		if(event.getOldSelectedNode() != null)
-			System.out.println("OLD TITLE: " + event.getOldSelectedNode().getText());
-		
-		selectedNode = event.getNewSelectedNode();
-	}
-
-	@Override
-	public boolean isValueChecked(Node arg0) {
-		return false;
+        
+        @Override
+	public void processValueSelected(TreeNodeSelectionEvent event) {
+                if (event.isSelected())
+                    messages.addFirst("Node selected: '" + event.getNode().getText() + "'");
+                else
+                    messages.addFirst("Node unselected: '" + event.getNode().getText() + "'");
 	}
 
 	@Override
 	public void processValueChecked(TreeNodeCheckedEvent event) {
-		System.out.println("CHECKED NODE:" + event.getNode().getText());
-		checkedNodes.add(event.getNode());
+                if (event.isChecked())
+                    messages.addFirst("Node checked: '" + event.getNode().getText() + "'");
+                else
+                    messages.addFirst("Node unchecked: '" + event.getNode().getText() + "'");
 	}
-
-	@Override
-	public void processValueUnchecked(TreeNodeCheckedEvent event) {
-		System.out.println("UNCHECKED NODE:" + event.getNode().getText());
-		for(Node n : checkedNodes) {
-			if(n.getText().equals(event.getNode().getText())) {
-				checkedNodes.remove(n);
-				break;
-			}
-		}
-		// checkedNodes.remove(event.getNode());
-		
-	}
+        
+        @Override
+        public void processValueExpanded(TreeNodeExpandedEvent event) {
+            if (event.isExpanded())
+                messages.addFirst("Node expanded: '" + event.getNode().getText() + "'");
+            else
+                messages.addFirst("Node collapsed: '" + event.getNode().getText() + "'");
+        }
 
 	/**
 	 * Button methods for form test
@@ -218,5 +194,4 @@ implements TreeNodeEventListener, Serializable {
 	public void setTestField(String testField) {
 		this.testField = testField;
 	}
-	
 }
