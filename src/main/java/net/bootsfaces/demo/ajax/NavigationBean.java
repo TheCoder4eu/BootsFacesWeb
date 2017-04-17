@@ -21,22 +21,24 @@ public class NavigationBean implements Serializable {
 	public void setPage(String currentPage) {
 		this.page=currentPage;
 	}
-	public void register() {
+	public String register() {
 		this.page="register.xhtml";
-		try {
-			FacesContext.getCurrentInstance().getExternalContext().redirect("./navigationAndAJAX.jsf");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		return null;
+//		try {
+//			FacesContext.getCurrentInstance().getExternalContext().redirect("./navigationAndAJAX.jsf");
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
-	public void start() {
+	public String start() {
 		this.page="start.xhtml";
-		try {
-			FacesContext.getCurrentInstance().getExternalContext().redirect("./navigationAndAJAX.jsf");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		return null;
+//		try {
+//			FacesContext.getCurrentInstance().getExternalContext().redirect("./navigationAndAJAX.jsf");
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 }        
