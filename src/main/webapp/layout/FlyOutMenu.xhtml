@@ -9,41 +9,54 @@
 
 	<ui:define name="content">
 		<style>
-		td {
-			padding: 8px;
-		}
-		</style>
+td {
+	padding: 8px;
+}
+</style>
 		<h1>Fly-out menu</h1>
-		<p>The fly-out menu is a hierarchical menu that puts the sub-menus to the right-hand side of the parent menu.
-		They "fly out" of the parent menu.</p>
-		<p>The menu entries are <code>&lt;b:navLink /&gt;</code> tags supporting both AJAX and non-AJAX navigation.</p>
-		<p>You can create a submenu by grouping several menu entries in a <code>&lt;b:dropMenu /&gt;</code> tag.</p>
+		<p>The fly-out menu is a hierarchical menu that puts the sub-menus
+			to the right-hand side of the parent menu. They "fly out" of the
+			parent menu.</p>
+		<p>
+			The menu entries are
+			<code>&lt;b:navLink /&gt;</code>
+			tags supporting both AJAX and non-AJAX navigation.
+		</p>
+		<p>
+			You can create a submenu by grouping several menu entries in a
+			<code>&lt;b:dropMenu /&gt;</code>
+			tag.
+		</p>
 		<h:form>
-          <b:tabView>
-            <b:tab title="preview"  contentStyle="height:292px" >
-            	<b:panelGrid columns="2" id="flyOutMenuId">
-					<b:flyOutMenu width="50px" content-disabled="#{flyOutMenuBean.contentDisabled}">
-						<b:navLink value="Lunch" icon="globe" iconAlign="right" />
-						<b:dropMenu value="Users">
-							<b:navLink value="Register yourself" />
-							<b:navLink value="Users" />
-						</b:dropMenu>
-						<b:navLink />
-						<b:dropMenu value="Administration">
-							<b:navLink value="Delivery Services" />
-							<b:navLink value="Users" />
-						</b:dropMenu>
-						<b:navLink value="Action" href="http://www.google.de"/>
-						<b:navCommandLink value="ActionC" />
-					</b:flyOutMenu>
-					<b:switch value="#{flyOutMenuBean.contentDisabled}" label="content-disabled=" render-label="true" on-text="true" off-text=" false" 
-					          onchange="ajax:flyOutMenuBean.onChange()" update="flyOutMenuId">
-					</b:switch>
-				</b:panelGrid>
-           </b:tab>
-			<b:tab title="JSF markup">
-				<b:well>
-				<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+			<b:tabView>
+				<b:tab title="preview" contentStyle="height:292px">
+					<b:panelGrid columns="2" size="tiny-screen" id="flyOutMenuId">
+						<b:flyOutMenu width="50px"
+							content-disabled="#{flyOutMenuBean.contentDisabled}">
+							<b:navLink value="Lunch" icon="globe" iconAlign="right" />
+							<b:dropMenu value="Users">
+								<b:navLink value="Register yourself" />
+								<b:navLink value="Users" />
+							</b:dropMenu>
+							<b:navLink />
+							<b:dropMenu value="Administration">
+								<b:navLink value="Delivery Services" />
+								<b:navLink value="Users" />
+							</b:dropMenu>
+							<b:navLink value="Action" href="http://www.google.de" />
+							<b:navCommandLink value="ActionC" />
+						</b:flyOutMenu>
+						<b:switch value="#{flyOutMenuBean.contentDisabled}"
+							label="content-disabled=" render-label="true" on-text="true"
+							off-text=" false" onchange="ajax:flyOutMenuBean.onChange()"
+							update="flyOutMenuId">
+						</b:switch>
+					</b:panelGrid>
+				</b:tab>
+				<b:tab title="JSF markup">
+					<b:well>
+						<script type="syntaxhighlighter"
+							class="brush: xml; toolbar: false;first-line: 0">
 					<![CDATA[
 				<b:flyOutMenu width="50px">
 					<b:navLink value="Lunch" icon="globe" iconAlign="right" />
@@ -61,12 +74,12 @@
 				</b:flyOutMenu>
 					]]>
 				</script>
-				</b:well>
-			</b:tab>
-		  </b:tabView>
+					</b:well>
+				</b:tab>
+			</b:tabView>
 		</h:form>
-        <h2>Reference section</h2>
-        <ui:include src="FlyOutMenuAttributes.xhtml" />
+		<h2>Reference section</h2>
+		<ui:include src="FlyOutMenuAttributes.xhtml" />
 		<b:panel look="info" rendered="false">
 			<f:facet name="heading">
 				<b>Skinning</b>
@@ -77,8 +90,8 @@
 			</ul>
 		</b:panel>
 		<script type="text/javascript">
-      		SyntaxHighlighter.all();
-    	</script>
+			SyntaxHighlighter.all();
+		</script>
 		<br />
 		<br />
 		<br />
