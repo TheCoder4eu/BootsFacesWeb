@@ -24,7 +24,7 @@ public class NavigationBean implements Serializable {
 	public void register() {
 		this.page="register.xhtml";
 		try {
-			FacesContext.getCurrentInstance().getExternalContext().redirect("navigationAndAJAX.jsf");
+			FacesContext.getCurrentInstance().getExternalContext().redirect("./navigationAndAJAX.jsf");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -33,7 +33,7 @@ public class NavigationBean implements Serializable {
 	public void start() {
 		this.page="start.xhtml";
 		try {
-			FacesContext.getCurrentInstance().getExternalContext().redirect("navigationAndAJAX.jsf");
+			FacesContext.getCurrentInstance().getExternalContext().redirect("./navigationAndAJAX.jsf");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
