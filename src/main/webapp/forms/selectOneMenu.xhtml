@@ -10,9 +10,9 @@
                 <style>td {padding: 8px;}</style>
                 <h1>Combobox (&lt;b:selectOneMenu&gt;)</h1>
 
-                <p>Comboboxes give you a list of items to select from. As of Bootsfaces 0.6, comboboxes are not editable - they are pure drop-down menus.</p>
+                <p>Comboboxes give you a list of items to select from. As of Bootsfaces 1.1.0, comboboxes are not editable - they are pure drop-down menus.</p>
                 <p>&lt;b:selectOneMenu&gt; makes the Bootstrap style of displaying comboboxes available to JSF programmers.</p>
-                <h1>Basic usage</h1>
+                <h2>Basic usage</h2>
         <h:form>
             <b:tabView activeIndex="1">
                 <b:tab title="JSF markup">
@@ -134,23 +134,6 @@
       </b:tabView>
     </h:form>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <h3>A note on AJAX</h3>
         <p>Note that since BootsFaces 0.8.0, we favor an
         <a href="../forms/ajax.jsf">all-new approach to AJAX</a>. The standard JSF approach
@@ -162,8 +145,15 @@
         on our bug tracker</a>.</p>
 
 
+		<h2>Converters <b:badge value="(rarely) breaking change in 1.1.0" /></h2>
+		<p>Since BootsFaces 1.1.0, you can use converters as defined by <a href="http://docs.oracle.com/javaee/6/tutorial/doc/bnaus.html" target="#">the JavaEE documentation</a>
+		and described by <a href="https://www.mkyong.com/jsf2/custom-converter-in-jsf-2-0/" target="#">M. K. Yong</a>.
+		In rare cases, this may turn out to be a breaking change. Previous versions of BootsFaces simply ignored the 
+		converter. In some case, such as <a target="#" href="https://github.com/TheCoder4eu/BootsFaces-OSP/issues/713">issue 713</a>,
+		this can be surprising because JavaEE allows you to define converters via annotations. In this case, the converter
+		isn't mentioned by the <code>&lt;b:selectOneMenu /&gt;</code> declaration directly.</p>
 
-        <h1>Arrays and HashMaps <b:badge value="broken in 0.8.5" /></h1>
+        <h2>Arrays and HashMaps <b:badge value="broken in 0.8.5" /></h2>
         <p>The list of items can be defined as an <code>&lt;f:selectItems /&gt;</code> tag. BootsFaces uses a modified version of the
         algorithm PrimeFaces 5.1 uses to implement <code>&lt;f:selectItems /&gt;</code>. As a result, you can use <code>&lt;b:selectOneMenu&gt;</code>
         almost the same way as <code>&lt;b:selectOneMenu&gt;</code>. </p>
@@ -276,7 +266,7 @@ public class SemaphoreBean {
 
 
 
-                <h1>Labels as captions above the combobox</h1>
+                <h2>Labels as captions above the combobox</h2>
                 <p>You can add a label to the combobox by jotting down the attribute <code>label</code>.
                 This label is displayed above the combobox.</p>
 <b:tabView>
