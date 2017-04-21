@@ -44,16 +44,16 @@
                  <p>If you want to use a custom theme, set <code>BootsFaces_THEME</code> to <code>custom</code> .
                  In this case, you have to add the custom theme files manually to your JSF page. Typically, the custom CSS files are a <code>Bootstrap.min.css</code>
                  and a <code>theme.css</code>, so the import looks like this:</p>
-                 <b:well>
+                 <b:panel>
                 <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                         <![CDATA[
          <h:outputStylesheet library="customthemes" name="bootstrap.min.css"/>
         <h:outputStylesheet library="customthemes" name="Freelancer.css""/>
                         ]]></script>
-                </b:well>
+                </b:panel>
                <h3>Switching themes</h3> 
                <p>You can even implement a theme switcher by using an EL expression in the web.xml:</p>
-                                <b:well>
+                                <b:panel>
                  <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                         <![CDATA[
     <context-param>
@@ -61,12 +61,7 @@
         <param-value>&num;{themeBean.currentTheme}</param-value>
     </context-param>
                         ]]></script>
-                        </b:well>
-                
-                 
-  			<br />
-			<br />
-			<br />
+                        </b:panel>
                 
                 <script type="text/javascript">
                     SyntaxHighlighter.all();

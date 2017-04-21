@@ -16,22 +16,24 @@
 				document.getElementById('rtlStyleSheet').href = '../javax.faces.resource/bootstrap-ltr.css.jsf?ln=rtl';
 		}
 	</script>
-  <h:form>
-                           <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
-                                <b:tab title="Live preview">
-     <b:row>
-        <b:column span="12">
-          <h1>RTL support</h1>
-        </b:column>
-      </b:row>
-      <b:row styleClass="rtlContent">
-        <b:column span="12">
-          <b:switch label="View this page in" value="#{rtlBean.rtl}" onText="rtl" offText="ltr" offColor="success"
-            onchange="ajax:rtlBean.toggleRTL()" update="@(.rtlContent)" oncomplete="toggleCSSStylesheet();" />
-        </b:column>
-      </b:row>
-                                </b:tab>
-                                <b:tab title="JSF Markup"  dir="ltr">
+      
+      <b:panel title="Live preview">
+          <b:row>
+              <b:column span="12">
+                  <h1>RTL support</h1>
+              </b:column>
+          </b:row>
+          <b:row styleClass="rtlContent">
+              <b:column span="12">
+                  <b:switch label="View this page in" value="#{rtlBean.rtl}" onText="rtl" offText="ltr" offColor="success"
+                            onchange="ajax:rtlBean.toggleRTL()" update="@(.rtlContent)" oncomplete="toggleCSSStylesheet();" />
+              </b:column>
+          </b:row>
+
+          <f:facet name="footer">
+<b:tabView contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+                                
+                                <b:tab title="JSF Markup" dir="ltr">
                                 <p>Note that this tab always uses <code>dir="ltr"</code>. Otherwise, the sourcecode
                                 looks a bit corrupted.</p>
                                 
@@ -102,6 +104,8 @@ public class RtlBean implements Serializable {
                                     ]]></script>
                                 </b:tab>
                             </b:tabView>
+          </f:facet>
+      </b:panel>
 
       <b:row>
         <b:column span="12">
@@ -133,9 +137,9 @@ public class RtlBean implements Serializable {
         </b:column>
       </b:row>
       <h3>Using the default direction:</h3>
-     <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
-          <b:tab title="Live preview">
-      <b:row style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black">
+      
+      <b:panel title="Live preview">
+           <b:row style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black">
         <b:column span="2" style="border:1px solid black">European Digits</b:column>
         <b:column span="1" style="border:1px solid black">0</b:column>
         <b:column span="1" style="border:1px solid black">1</b:column>
@@ -161,13 +165,13 @@ public class RtlBean implements Serializable {
         <b:column span="1" lang="ar" style="border:1px solid black">٨</b:column>
         <b:column span="1" lang="ar" style="border:1px solid black">٩</b:column>
       </b:row>
-          </b:tab>
-          <b:tab title="JSF Markup"  dir="ltr">
-                                <p>Note that this tab always uses <code>dir="ltr"</code>. Otherwise, the sourcecode
-                                looks a bit corrupted.</p>
+          
+          <f:facet name="footer">
+              <strong>JSF markup:</strong>
+              <b:panel dir="ltr">
               <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                                    <![CDATA[
-      <b:row style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black">
+ <![CDATA[
+    <b:row style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black">
         <b:column span="2" style="border:1px solid black">European Digits</b:column>
         <b:column span="1" style="border:1px solid black">0</b:column>
         <b:column span="1" style="border:1px solid black">1</b:column>
@@ -195,44 +199,47 @@ public class RtlBean implements Serializable {
       </b:row>
                                     
                                     ]]></script>
-          </b:tab>
-      </b:tabView>
+            </b:panel>
+          </f:facet>
+      </b:panel>
+      
+     
       <h3 dir="ltr">Always use LTR:</h3>
       <p  dir="ltr">Setting <code>dir="ltr"</code> influences the text within the columns, but it doesn't change the column
       ordering itself:</p>
-     <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
-          <b:tab title="Live preview">
-      <b:row dir="ltr" style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black">
-        <b:column span="2" style="border:1px solid black">European Digits</b:column>
-        <b:column span="1" style="border:1px solid black">0</b:column>
-        <b:column span="1" style="border:1px solid black">1</b:column>
-        <b:column span="1" style="border:1px solid black">2</b:column>
-        <b:column span="1" style="border:1px solid black">3</b:column>
-        <b:column span="1" style="border:1px solid black">4</b:column>
-        <b:column span="1" style="border:1px solid black">5</b:column>
-        <b:column span="1" style="border:1px solid black">6</b:column>
-        <b:column span="1" style="border:1px solid black">7</b:column>
-        <b:column span="1" style="border:1px solid black">8</b:column>
-        <b:column span="1" style="border:1px solid black">9</b:column>
-      </b:row>
-      <b:row dir="ltr" style="border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black">
-        <b:column span="2" style="border:1px solid black">Arabic Digits</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٠</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">١</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٢</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٣</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٤</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٥</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٦</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٧</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٨</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٩</b:column>
-      </b:row>
-          </b:tab>
-          <b:tab title="JSF Markup"  dir="ltr">
-                                <p>Note that this tab always uses <code>dir="ltr"</code>. Otherwise, the sourcecode
-                                looks a bit corrupted.</p>
-              <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+      
+      <b:panel title="Live preview">
+          <b:row dir="ltr" style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black">
+              <b:column span="2" style="border:1px solid black">European Digits</b:column>
+              <b:column span="1" style="border:1px solid black">0</b:column>
+              <b:column span="1" style="border:1px solid black">1</b:column>
+              <b:column span="1" style="border:1px solid black">2</b:column>
+              <b:column span="1" style="border:1px solid black">3</b:column>
+              <b:column span="1" style="border:1px solid black">4</b:column>
+              <b:column span="1" style="border:1px solid black">5</b:column>
+              <b:column span="1" style="border:1px solid black">6</b:column>
+              <b:column span="1" style="border:1px solid black">7</b:column>
+              <b:column span="1" style="border:1px solid black">8</b:column>
+              <b:column span="1" style="border:1px solid black">9</b:column>
+          </b:row>
+          <b:row dir="ltr" style="border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black">
+              <b:column span="2" style="border:1px solid black">Arabic Digits</b:column>
+              <b:column span="1" lang="ar" style="border:1px solid black">٠</b:column>
+              <b:column span="1" lang="ar" style="border:1px solid black">١</b:column>
+              <b:column span="1" lang="ar" style="border:1px solid black">٢</b:column>
+              <b:column span="1" lang="ar" style="border:1px solid black">٣</b:column>
+              <b:column span="1" lang="ar" style="border:1px solid black">٤</b:column>
+              <b:column span="1" lang="ar" style="border:1px solid black">٥</b:column>
+              <b:column span="1" lang="ar" style="border:1px solid black">٦</b:column>
+              <b:column span="1" lang="ar" style="border:1px solid black">٧</b:column>
+              <b:column span="1" lang="ar" style="border:1px solid black">٨</b:column>
+              <b:column span="1" lang="ar" style="border:1px solid black">٩</b:column>
+          </b:row>
+          
+          <f:facet name="footer">
+              <strong>JSF markup:</strong>
+              <b:panel dir="ltr">
+                  <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                                     <![CDATA[
       <b:row dir="ltr" style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black">
         <b:column span="2" style="border:1px solid black">European Digits</b:column>
@@ -262,44 +269,45 @@ public class RtlBean implements Serializable {
       </b:row>
                                     
                                     ]]></script>
-          </b:tab>
-      </b:tabView>
+              </b:panel>
+          </f:facet>
+      </b:panel>
+      
       <h3 dir="rtl">:Always use RTL</h3>
       <p  dir="rtl">:Analogously, setting <code>dir="rtl"</code> influences the text within the columns, but it doesn't change the column
       ordering itself</p>
-     <b:tabView activeIndex="0">
-          <b:tab title="Live preview">
-       <b:row dir="rtl" style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black">
-        <b:column span="2" style="border:1px solid black">European Digits</b:column>
-        <b:column span="1" style="border:1px solid black">0</b:column>
-        <b:column span="1" style="border:1px solid black">1</b:column>
-        <b:column span="1" style="border:1px solid black">2</b:column>
-        <b:column span="1" style="border:1px solid black">3</b:column>
-        <b:column span="1" style="border:1px solid black">4</b:column>
-        <b:column span="1" style="border:1px solid black">5</b:column>
-        <b:column span="1" style="border:1px solid black">6</b:column>
-        <b:column span="1" style="border:1px solid black">7</b:column>
-        <b:column span="1" style="border:1px solid black">8</b:column>
-        <b:column span="1" style="border:1px solid black">9</b:column>
-      </b:row>
-      <b:row dir="rtl" style="border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black">
-        <b:column span="2" style="border:1px solid black">Arabic Digits</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٠</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">١</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٢</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٣</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٤</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٥</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٦</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٧</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٨</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٩</b:column>
-      </b:row>
-          </b:tab>
-          <b:tab title="JSF Markup"  dir="ltr">
-                                <p>Note that this tab always uses <code>dir="ltr"</code>. Otherwise, the sourcecode
-                                looks a bit corrupted.</p>
-              <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+      
+      <b:panel title="Live preview">
+          <b:row dir="rtl" style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black">
+              <b:column span="2" style="border:1px solid black">European Digits</b:column>
+              <b:column span="1" style="border:1px solid black">0</b:column>
+              <b:column span="1" style="border:1px solid black">1</b:column>
+              <b:column span="1" style="border:1px solid black">2</b:column>
+              <b:column span="1" style="border:1px solid black">3</b:column>
+              <b:column span="1" style="border:1px solid black">4</b:column>
+              <b:column span="1" style="border:1px solid black">5</b:column>
+              <b:column span="1" style="border:1px solid black">6</b:column>
+              <b:column span="1" style="border:1px solid black">7</b:column>
+              <b:column span="1" style="border:1px solid black">8</b:column>
+              <b:column span="1" style="border:1px solid black">9</b:column>
+          </b:row>
+          <b:row dir="rtl" style="border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black">
+              <b:column span="2" style="border:1px solid black">Arabic Digits</b:column>
+              <b:column span="1" lang="ar" style="border:1px solid black">٠</b:column>
+              <b:column span="1" lang="ar" style="border:1px solid black">١</b:column>
+              <b:column span="1" lang="ar" style="border:1px solid black">٢</b:column>
+              <b:column span="1" lang="ar" style="border:1px solid black">٣</b:column>
+              <b:column span="1" lang="ar" style="border:1px solid black">٤</b:column>
+              <b:column span="1" lang="ar" style="border:1px solid black">٥</b:column>
+              <b:column span="1" lang="ar" style="border:1px solid black">٦</b:column>
+              <b:column span="1" lang="ar" style="border:1px solid black">٧</b:column>
+              <b:column span="1" lang="ar" style="border:1px solid black">٨</b:column>
+              <b:column span="1" lang="ar" style="border:1px solid black">٩</b:column>
+          </b:row>
+          <f:facet name="footer">
+              <strong>JSF markup:</strong>
+              <b:panel>
+                  <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                                     <![CDATA[
       <b:row dir="rtl" style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black">
         <b:column span="2" style="border:1px solid black">European Digits</b:column>
@@ -329,16 +337,12 @@ public class RtlBean implements Serializable {
       </b:row>
                                     
                                     ]]></script>
-          </b:tab>
-      </b:tabView>
-    </h:form>
+              </b:panel>
+          </f:facet>
+      </b:panel>
 
     <script type="text/javascript">
 					SyntaxHighlighter.all();
 	</script>
-    <br />
-    <br />
-    <br />
-    <br />
   </ui:define>
 </ui:composition>

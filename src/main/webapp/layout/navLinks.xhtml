@@ -52,57 +52,59 @@
                 <p>Both <code>icon</code> and <code>iconAwesome</code> attributes, require the icon name as value, without the trailing <b>glyphicon-</b> prefix and <b>fa-</b> prefix respectively.</p>
                 <p><b:badge value="Hint" /> Bootstrap 4 is going to drop support for the Glyphicon library. We recommend you to choose icons from the Font Awesome library to avoid future incompatibilities.</p>
                 <p>In the following example the <code>b:listLinks</code> tag is used as a container for the NavLinks, showing how to create a Sidebar with links.</p>
-                <b:panel title="Example" look="default">
+                
+                <b:panel title="Live preview">
                     <h:form>
-                     <b:row>
-                        <b:column span="4">
-                            <b:panel look="primary" title="Static sidebar">
-                                <b:listLinks>
-                                    <b:navLink header="BootsFaces" disabled="#{navLinkBean.disabled}"/>
-                                    <b:navLink href="http://www.bootsfaces.net" value="BootsFaces"
-                                               icon="globe" iconAlign="right"  disabled="#{navLinkBean.disabled}"/>
-                                    <b:navLink></b:navLink>
-                                    <b:navLink header="Bootstrap" disabled="#{navLinkBean.disabled}"/>
-                                    <b:navLink href="http://getbootstrap.com/components/#navbar" value="Bootstrap" icon="link" disabled="#{navLinkBean.disabled}"></b:navLink>
-                                    <b:navLink  disabled="#{navLinkBean.disabled}"></b:navLink>
-                                    <b:navLink header="Preview"  disabled="#{navLinkBean.disabled}"/>
-                                    <b:navLink value="Labels and Badges" outcome="/bootstrap/labelsbadge"
-                                               icon="tag" iconAlign="right"  disabled="#{navLinkBean.disabled}"/>
-                                    <b:navLink value="Slider" outcome="/jquery-ui/slider" iconAwesome="sliders"  disabled="#{navLinkBean.disabled}"/>
-                                    <b:navLink value="Slider (in a new tab)" target="#" onblur="alert('blur')" outcome="/jquery-ui/slider" 
-                                               iconAwesome="sliders"  disabled="#{navLinkBean.disabled}"/>
-                                    <b:navCommandLink value="AJAX actionListener" actionListener="#{messagesBean.info}"
-                                               icon="tag" iconAlign="right" update="@form"  disabled="#{navLinkBean.disabled}"/>
+                        <b:row>
+                            <b:column span="4">
+                                <b:panel look="primary" title="Static sidebar">
+                                    <b:listLinks>
+                                        <b:navLink header="BootsFaces" disabled="#{navLinkBean.disabled}"/>
+                                        <b:navLink href="http://www.bootsfaces.net" value="BootsFaces"
+                                                   icon="globe" iconAlign="right"  disabled="#{navLinkBean.disabled}"/>
+                                        <b:navLink></b:navLink>
+                                        <b:navLink header="Bootstrap" disabled="#{navLinkBean.disabled}"/>
+                                        <b:navLink href="http://getbootstrap.com/components/#navbar" value="Bootstrap" icon="link" disabled="#{navLinkBean.disabled}"></b:navLink>
+                                        <b:navLink  disabled="#{navLinkBean.disabled}"></b:navLink>
+                                        <b:navLink header="Preview"  disabled="#{navLinkBean.disabled}"/>
+                                        <b:navLink value="Labels and Badges" outcome="/bootstrap/labelsbadge"
+                                                   icon="tag" iconAlign="right"  disabled="#{navLinkBean.disabled}"/>
+                                        <b:navLink value="Slider" outcome="/jquery-ui/slider" iconAwesome="sliders"  disabled="#{navLinkBean.disabled}"/>
+                                        <b:navLink value="Slider (in a new tab)" target="#" onblur="alert('blur')" outcome="/jquery-ui/slider" 
+                                                   iconAwesome="sliders"  disabled="#{navLinkBean.disabled}"/>
+                                        <b:navCommandLink value="AJAX actionListener" actionListener="#{messagesBean.info}"
+                                                          icon="tag" iconAlign="right" update="@form"  disabled="#{navLinkBean.disabled}"/>
 
-                                     <b:messages />
+                                        <b:messages />
 
-                                </b:listLinks>
-                             </b:panel>
-                        </b:column>
-                       <b:column span="4">
-                            <b:panel look="primary" title="Sidebar using ui:repeat">
-                                <b:listLinks>
-                                    <b:navLink header="Music styles" />
-                                      <ui:repeat var="musicStyle" value="#{navLinkBean.musicStyles}">
-                                           <b:navCommandLink value="#{musicStyle}" actionListener="#{messagesBean.info}"
-                                                             update="@form"  disabled="#{navLinkBean.disabled}"/>
-                                      </ui:repeat>
-                                     <b:messages />
-                                </b:listLinks>
-                             </b:panel>
-                        </b:column>
-                       <b:column span="4">
-                            <b:panel look="primary" title="Options">
-                            	<b:switch on-text="disabled" off-text="enabled" value="#{navLinkBean.disabled}"
-                            	          update="@form" onchange="ajax:navLinkBean.onChange()"/>
-                            </b:panel>
-                       </b:column>
-                       </b:row>
+                                    </b:listLinks>
+                                </b:panel>
+                            </b:column>
+                            <b:column span="4">
+                                <b:panel look="primary" title="Sidebar using ui:repeat">
+                                    <b:listLinks>
+                                        <b:navLink header="Music styles" />
+                                        <ui:repeat var="musicStyle" value="#{navLinkBean.musicStyles}">
+                                            <b:navCommandLink value="#{musicStyle}" actionListener="#{messagesBean.info}"
+                                                              update="@form"  disabled="#{navLinkBean.disabled}"/>
+                                        </ui:repeat>
+                                        <b:messages />
+                                    </b:listLinks>
+                                </b:panel>
+                            </b:column>
+                            <b:column span="4">
+                                <b:panel look="primary" title="Options">
+                                    <b:switch on-text="disabled" off-text="enabled" value="#{navLinkBean.disabled}"
+                                              update="@form" onchange="ajax:navLinkBean.onChange()"/>
+                                </b:panel>
+                            </b:column>
+                        </b:row>
                     </h:form>
-                    <f:facet name="footer">
-                        <strong>Markup:</strong><br/>
 
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
+                    <f:facet name="footer">
+                        <strong>JSF markup:</strong>
+                        <b:panel>
+                            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
                         <![CDATA[
                        <b:column span="3">
                             <b:panel look="primary" title="Static sidebar">
@@ -139,9 +141,9 @@
                              </b:panel>
                         </b:column>
                         ]]></script>
+                        </b:panel>
                     </f:facet>
                 </b:panel>
-                <br />
 
                 <h2>TabLinks <b:badge value="since 0.8.5" /></h2>
                 <p><code>&lt;b:tabLinks /&gt;</code> comes in handy if you want to render a tab strip, but don't want to use

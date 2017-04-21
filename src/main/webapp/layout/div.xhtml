@@ -19,39 +19,38 @@
                 <p>So we've written a tag decorator which converts your div tags to <code>&lt;h:panelGroups /&gt;</code>.
                 This turns them into JSF components, even if you don't use the pass-through attributes of JSF 2.2+.
                 If you've activated our tag decorator, these three lines generate identical code:</p>
-                <h:form>
-                  <b:tabView>
-                    <b:tab title="JSF code" look="primary">
-                      <b:well>
-                      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
-                         <h:panelGroup id="panelGroupId" styleClass="col-xs-12">PanelGroup</h:panelGroup>
-                        <div jsf:id="passthroughId" class="col-xs-12">div with jsf:id</div>
-                        <div id="decoratorId" class="col-xs-12">simple, HMTL-like div</div>
-                      ]]></script>
-                      </b:well>
-                    </b:tab>
-                    <b:tab title="Live preview" look="primary" >
-                      <b:well>
-                      <b:row style="margin-left:10px">
+                
+                <b:panel title="Live preview">
+                    <b:row style="margin-left:10px">
                         <p>Use your browser's developer tools to inspect the HTML code:</p>
                         <h:panelGroup id="panelGroupId" styleClass="col-xs-12">PanelGroup</h:panelGroup>
                         <div jsf:id="passthroughId" class="col-xs-12">div with jsf:id</div>
                         <div id="decoratorId" class="col-xs-12">simple, HMTL-like div</div>
-                        </b:row>
-                      </b:well>
-                    </b:tab>
-                   <b:tab title="generated HTML code" look="primary">
-                      <b:well>
+                    </b:row>
+                    <f:facet name="footer">
+                        <b:tabView>
+                            <b:tab title="JSF code">
+                                <b:panel>
+                                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
+                                        <h:panelGroup id="panelGroupId" styleClass="col-xs-12">PanelGroup</h:panelGroup>
+                                       <div jsf:id="passthroughId" class="col-xs-12">div with jsf:id</div>
+                                       <div id="decoratorId" class="col-xs-12">simple, HMTL-like div</div>
+                                     ]]></script>
+                                </b:panel>
+                            </b:tab>
+                            <b:tab title="Generated HTML code">
+                                <b:panel>
                       <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
                          <span id="j_id_4c:panelGroupId" class="col-xs-12">PanelGroup</span>
                          <div id="j_id_4c:passthroughId" class="col-xs-12">div with jsf:id</div>
                          <span id="j_id_4c:decoratorId" class="col-xs-12">simple, HMTL-like div</span>
                       ]]></script>
-                      </b:well>
-                    </b:tab>
-                  </b:tabView>
-                </h:form>
-
+                      </b:panel>
+                   </b:tab>
+                        </b:tabView>        
+                    </f:facet>
+                </b:panel>
+                
                 <h1>Why?</h1>
                 <p>Truth to tell, you can use <code>&lt;div /&gt;</code> tags in ordinary JSF-code. The problem is that
                 they are not included in the JSF component tree. In other words: you can't use them for the
@@ -77,11 +76,41 @@
 
                 <h1>Examples</h1>
 
-                <b:tabView activeIndex="1">
-                  <b:tab title="JSF code" look="primary">
-                    <b:well>
+                <b:panel title="Live preview">
+                    <h:form id="loginForm">
+                        <row>
+                            <inputText id="usernameDiv" small-screen="half"
+                                         value="#{loginBean.username}"
+                                         label="Username" render-label="true"/>
+                            <message for="@previous" small-screen="half"/>
+                        </row>
+                        <row>
+                            <inputSecret id="passwordDiv" small-screen="half"
+                                           value="#{loginBean.password}"
+                                           label="Password"  render-label="true"/>
+                            <message for="passwordDiv" small-screen="half"/>
+                         </row>
+                        <row>
+                           <select small-screen="half" label="Login as" render-label="true">
+                                <option itemLabel="(Please select)" itemValue="" />
+                                <option value="1" label="admin"/>
+                                <option value="2" label="customer" />
+                                <option value="3" label="user" />
+                           </select>
+                        </row>
+                        <row>
+                            <column small-screen="full-width">
+                            <button update="@form:loginForm" value="Login" onclick="ajax:loginBean.login2()" look="primary"/>
+                            </column>
+                        </row>
+
+                      </h:form>
+                    
+                    <f:facet name="footer">
+                        JSF markup:<br/>
+                        
+                        <b:panel>
                     <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
-                    <well>
                       <h:form id="loginForm">
                         <row>
                             <inputText id="usernameDiv" small-screen="half"
@@ -110,48 +139,14 @@
                         </row>
 
                       </h:form>
-                    </well>
                     ]]></script>
-                    </b:well>
-                  </b:tab>
-                  <b:tab title="Live preview" look="primary" >
-                    <well>
-                      <h:form id="loginForm">
-                        <row>
-                            <inputText id="usernameDiv" small-screen="half"
-                                         value="#{loginBean.username}"
-                                         label="Username" render-label="true"/>
-                            <message for="@previous" small-screen="half"/>
-                        </row>
-                        <row>
-                            <inputSecret id="passwordDiv" small-screen="half"
-                                           value="#{loginBean.password}"
-                                           label="Password"  render-label="true"/>
-                            <message for="passwordDiv" small-screen="half"/>
-                         </row>
-                        <row>
-                           <select small-screen="half" label="Login as" render-label="true">
-                                <option itemLabel="(Please select)" itemValue="" />
-                                <option value="1" label="admin"/>
-                                <option value="2" label="customer" />
-                                <option value="3" label="user" />
-                           </select>
-                        </row>
-                        <row>
-                            <column small-screen="full-width">
-                            <button update="@form:loginForm" value="Login" onclick="ajax:loginBean.login2()" look="primary"/>
-                            </column>
-                        </row>
-
-                      </h:form>
-                    </well>
-                  </b:tab>
-               </b:tabView>
-
+                    </b:panel>
+                    </f:facet>
+                </b:panel>
 
                 <h1>How to activate the HTML5-friendly markup</h1>
                 <p>To activate the relaxed markup, you have to add a few lines to your application's <code>web.xml</code>:</p>
-                      <b:well>
+                      <b:panel>
                       <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
                       <context-param>
                         <param-name>javax.faces.FACELETS_DECORATORS</param-name>
@@ -160,29 +155,29 @@
                         </param-value>
                       </context-param>
                       ]]></script>
-                      </b:well>
+                      </b:panel>
 
                 <h1>How to get rid of the HTML5-friendly markup</h1>
                 <p>BootsFaces allows you to active and deactivate the HTML5-friendly markup both globally and on a per-page base.
                 The global configuration is done by adding the parameter to the <code>web.xml</code>:</p>
-                      <b:well>
+                      <b:panel>
                       <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
                           <ui:define name="content" bootsFacesDecorator="true">
                              ...
                           </ui:define>
                        ]]></script>
-                      </b:well>
+                      </b:panel>
                 <p>The default value of <code>net.bootsface.defaults.decorator</code> is <code>true</code>, so you
                 only need to specify the value to deactivate it. Once you've done so, you can reactivate it in any
                 tag of your page by adding <code>bootsFacesDecorator="true"</code>:</p>
-                <b:well>
+                <b:panel>
                 <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
                   <context-param>
                     <param-name>net.bootsfaces.defaults.decorator</param-name>
                       <param-value>false</param-value>
                   </context-param>
                 ]]></script>
-                </b:well>
+                </b:panel>
                 <p>You can activate and deactivate the decorator multiple times on any page. However, this
                 does not follow the usual rules of JSF. The decorator is called during parsing the files. This means
                 it doesn't respect the tree hierarchy of the JSF component tree. Plus, template files and include files

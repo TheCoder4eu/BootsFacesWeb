@@ -35,7 +35,7 @@ public class VideoBean implements Serializable {
 		events = "can play through" + "\n" + events;
 	}
 	
-	public void onLoadeddata() {
+	public void onLoadedData() {
 		events = "loaded data" + "\n" + events;
 	}
 
