@@ -41,12 +41,14 @@
 		<maven.compiler.testTarget>1.7</maven.compiler.testTarget>
 	</properties>
 	<dependencies>
+	<!-- 
 		<dependency>
 			<groupId>de.larmic.butterfaces</groupId>
 			<artifactId>components</artifactId>
 			<version>1.10.3</version>
 			<scope>compile</scope>
 		</dependency>
+	-->
 		<dependency>
 			<groupId>javax.el</groupId>
 			<artifactId>javax.el-api</artifactId>
@@ -103,7 +105,7 @@
 		<dependency>
 			<groupId>org.omnifaces</groupId>
 			<artifactId>omnifaces</artifactId>
-			<version>1.12.1</version>
+			<version>1.14</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
