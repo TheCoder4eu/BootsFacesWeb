@@ -27,35 +27,36 @@ td {
 			<code>&lt;b:dropMenu /&gt;</code>
 			tag.
 		</p>
-		<h:form>
-			<b:tabView>
-				<b:tab title="preview" contentStyle="height:292px">
-					<b:panelGrid columns="2" size="tiny-screen" id="flyOutMenuId">
-						<b:flyOutMenu width="50px"
-							content-disabled="#{flyOutMenuBean.contentDisabled}">
-							<b:navLink value="Lunch" icon="globe" iconAlign="right" />
-							<b:dropMenu value="Users">
-								<b:navLink value="Register yourself" />
-								<b:navLink value="Users" />
-							</b:dropMenu>
-							<b:navLink />
-							<b:dropMenu value="Administration">
-								<b:navLink value="Delivery Services" />
-								<b:navLink value="Users" />
-							</b:dropMenu>
-							<b:navLink value="Action" href="http://www.google.de" />
-							<b:navCommandLink value="ActionC" />
-						</b:flyOutMenu>
-						<b:switch value="#{flyOutMenuBean.contentDisabled}"
-							label="content-disabled=" render-label="true" on-text="true"
-							off-text=" false" onchange="ajax:flyOutMenuBean.onChange()"
-							update="flyOutMenuId">
-						</b:switch>
-					</b:panelGrid>
-				</b:tab>
-				<b:tab title="JSF markup">
-					<b:well>
-						<script type="syntaxhighlighter"
+        <b:panel title="Live preview">
+            <h:form>
+                <b:panelGrid columns="2" size="tiny-screen" id="flyOutMenuId">
+                    <b:flyOutMenu width="50px"
+                                  content-disabled="#{flyOutMenuBean.contentDisabled}">
+                        <b:navLink value="Lunch" icon="globe" iconAlign="right" />
+                        <b:dropMenu value="Users">
+                            <b:navLink value="Register yourself" />
+                            <b:navLink value="Users" />
+                        </b:dropMenu>
+                        <b:navLink />
+                        <b:dropMenu value="Administration">
+                            <b:navLink value="Delivery Services" />
+                            <b:navLink value="Users" />
+                        </b:dropMenu>
+                        <b:navLink value="Action" href="http://www.google.de" />
+                        <b:navCommandLink value="ActionC" />
+                    </b:flyOutMenu>
+                    <b:switch value="#{flyOutMenuBean.contentDisabled}"
+                              label="content-disabled=" render-label="true" on-text="true"
+                              off-text=" false" onchange="ajax:flyOutMenuBean.onChange()"
+                              update="flyOutMenuId">
+                    </b:switch>
+                </b:panelGrid>
+            </h:form>
+
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+	<script type="syntaxhighlighter"
 							class="brush: xml; toolbar: false;first-line: 0">
 					<![CDATA[
 				<b:flyOutMenu width="50px">
@@ -74,10 +75,10 @@ td {
 				</b:flyOutMenu>
 					]]>
 				</script>
-					</b:well>
-				</b:tab>
-			</b:tabView>
-		</h:form>
+                </b:panel>
+            </f:facet>
+        </b:panel>
+        
 		<h2>Reference section</h2>
 		<ui:include src="FlyOutMenuAttributes.xhtml" />
 		<b:panel look="info" rendered="false">

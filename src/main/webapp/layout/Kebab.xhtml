@@ -19,9 +19,9 @@ td {
                 <h1>Basic usage</h1>
                 <p>Kebabs are rendered as three vertical dots and will show a overflow menu when clicked.
                 The example below shows both the kebab menu, and what it looks like if it's content is disabled by setting <code>content-disabled="true"</code>:</p>
-               	<b:tabView>
-                	<b:tab title="Live preview" content-style="border:1px solid #DDD">
- 			                <h:form>
+                
+                <b:panel title="Live preview">
+                    <h:form>
 			                	<b:panelGrid columns="2">
 					                <b:kebab content-disabled="#{kebabBean.contentDisabled}" id="kebabId">
 					                  <b:listLinks>
@@ -39,11 +39,14 @@ td {
 									</b:switch>
 								</b:panelGrid>
 							</h:form>
-					</b:tab>
- 					<b:tab title="JSF markup">
-						<b:well>
-							<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                    
+                    <f:facet name="footer">
+                        <strong>JSF markup:</strong>
+                        
+                        <b:panel>
+                            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
 					    	<![CDATA[
+                              <h:form>
 			                	<b:panelGrid columns="2">
 					                <b:kebab content-disabled="#{kebabBean.contentDisabled}" id="kebabId">
 					                  <b:listLinks>
@@ -60,18 +63,17 @@ td {
 									          onchange="ajax:kebabBean.onChange()" update="@form">
 									</b:switch>
 								</b:panelGrid>
-							]]>
+                              </h:form>]]>
 						</script>
-							</b:well>
-               		</b:tab>
-				</b:tabView>
+                        </b:panel>
+                    </f:facet>
+                </b:panel>
                 
                 <hr />
                 <br/>
                 <strong>Using the Kebab in a Navbar</strong>
                 <p>It is possible tu use the Kebab in a Navbar:</p>
-                <b:panel>
-                    <f:facet name="heading"><b>EXAMPLE</b></f:facet>
+                <b:panel title="Live preview">
                     <b:navBar brand="Brand" brandHref="#">
                         <b:navbarLinks>
                             <b:navLink value="Home" href="#"></b:navLink>
@@ -96,7 +98,7 @@ td {
                         </b:navbarLinks>
                     </b:navBar>
                     <f:facet name="footer">
-                        <strong>Markup:</strong><br/>
+                        <strong>JSF markup:</strong>
 
                         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
                             <![CDATA[
@@ -109,6 +111,7 @@ td {
                                   <!-- Following line is needed for TBS 3.x (panel content overflow issue) -->
                                   <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
                                   <b:navbarLinks pull="right">
+                                  
                                   <b:kebab>
                                     <b:listLinks>
                                       <b:navLink value="Action" href="#"></b:navLink>
@@ -120,9 +123,9 @@ td {
                                       <b:navLink value="One more separated link" href="#"></b:navLink>
                                     </b:listLinks>
                                   </b:kebab>
+                                  
                                   </b:navbarLinks>
                               </b:navBar>
-
                             ]]></script>
                     </f:facet>
                 </b:panel>
@@ -142,9 +145,5 @@ td {
                 <script type="text/javascript">
                 SyntaxHighlighter.all();
         </script>
-                <br />
-                <br />
-                <br />
-                <br />
         </ui:define>
 </ui:composition>
