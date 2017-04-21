@@ -10,6 +10,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.AjaxBehaviorEvent;
 
 @ManagedBean
 @ViewScoped
@@ -86,6 +87,12 @@ public class AjaxBean implements Serializable {
 		return "Hallo";
 	}
 
+	public String onBlur(AjaxBehaviorEvent e) {
+		String event = " blur (traditional JSF)";
+		report(event);
+		return "Hallo";
+	}
+
 	private void report(String event) {
 		if (event.equals(lastMessage)) {
 			counter++;
@@ -100,6 +107,12 @@ public class AjaxBean implements Serializable {
 
 	public String onChange() {
 		String event = " change";
+		report(event);
+		return "Hallo";
+	}
+	
+	public String onChange(AjaxBehaviorEvent e) {
+		String event = "  (traditional JSF)";
 		report(event);
 		return "Hallo";
 	}

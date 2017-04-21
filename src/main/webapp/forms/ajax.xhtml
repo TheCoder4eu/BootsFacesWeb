@@ -160,6 +160,45 @@
 				</b:well>
 				</b:tab>
 				</b:tabView>
+				
+				<h2>Traditional JSF AJAX</h2>
+				<p>By public demand, BootsFaces also supports the traditional approach to AJAX. 
+				But BootsFaces doesn't offer full compatibility. Most things work, but some
+				features may be broken. That's because we put more resources on the BootsFaces
+				syntax than on the legacy syntax.</p>
+				<h:form>
+					<b:row>
+						<b:column col-sm="6">
+							<b:panel look="primary"
+								title="Traditional JSF AJAX API">
+								<b:label text="Which JSF framework do you like most?" />
+								<b:selectOneMenu value="#{ajaxBean.jsf}" id="jsfID">
+									<f:selectItem itemLabel="(Please select)" itemValue="0" />
+									<f:selectItem itemLabel="PrimeFaces" itemValue="1" />
+									<f:selectItem itemLabel="BootsFaces" itemValue="2" />
+									<f:selectItem itemLabel="I combine both!" itemValue="3" />
+									<f:ajax event="blur" listener="#{ajaxBean.onBlur}" render="jsfMessages messages" />
+									<f:ajax event="change" listener="#{ajaxBean.onChange}" render="jsfMessages messages" />
+								</b:selectOneMenu>
+							</b:panel>
+							<b:panel look="primary" title="JSF messages" id="jsfMessages">
+								<b:messages showSummary="false" />
+							</b:panel>
+						</b:column>
+						<b:column col-sm="6">
+							<b:well id="messages">
+			                Last server-side events:
+			                <ul>
+									<ui:repeat var="message" value="#{ajaxBean.messages}">
+										<li>#{message}</li>
+									</ui:repeat>
+								</ul>
+							</b:well>
+						</b:column>
+					</b:row>
+				</h:form>
+				
+				
 
 
             <br />
