@@ -13,10 +13,10 @@ td {
 	padding: 8px;
 }
 </style>
-		<h1>Form (&lt;b:form /&gt;) <b:badge value="since 1.0" /></h1>
-		<p>The <code>&lt;b:form&gt;</code> tag is an enhanced verson of <code>&lt;h:form&gt;</code>.</p>
+		<h1>Form (&lt;b:form /&gt;) <b:badge value="since 1.0" /> and FormGroup <b:badge value="since 1.1.0" /></h1>
+		<p>The <code>&lt;b:form&gt;</code> tag is an enhanced version of <code>&lt;h:form&gt;</code>.</p>
 
-		<h1>Basic usage</h1>
+		<h2>Basic usage</h2>
 		<p>The <code>&lt;b:form&gt;</code> tag inherits all the <code>&lt;h:form&gt;</code> attributes and behavior plus some Bootstrap specific attributes.</p>
 		<p>With Bootstrap you can have three kind of layouts for your forms:</p>
 		<ul>
@@ -35,6 +35,13 @@ td {
 					broken since BootsFaces 1.0. You can see such a broken example at the bottom of this page. Please migrate to the
 					new horizontal or inline forms.</li>
 		</ul>
+		
+		<h2>&lt;b:formGroup /&gt;</h2>
+		<p>If you want to put muliple JSF elements into the same line of a horizontal form, you need to add a
+		<code>&lt;b:formGroup /&gt;</code>. Otherwise, BootsFaces generates a <code>form-group</code> <code>div</code>
+		for each component, thus ruining the layout.
+		</p>
+		
 
 		<ui:include src="FormAttributes.xhtml" />
 		<b:panel look="info">
