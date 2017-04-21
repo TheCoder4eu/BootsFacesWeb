@@ -71,6 +71,8 @@
                                     <b:navLink value="Slider" outcome="/jquery-ui/slider" iconAwesome="sliders"  disabled="#{navLinkBean.disabled}"/>
                                     <b:navLink value="Slider (in a new tab)" target="#" onblur="alert('blur')" outcome="/jquery-ui/slider" 
                                                iconAwesome="sliders"  disabled="#{navLinkBean.disabled}"/>
+                                    <b:navCommandLink value="non-AJAX actionListener" actionListener="#{messagesBean.info}"
+                                               icon="tag" iconAlign="right" disabled="#{navLinkBean.disabled}"/>
                                     <b:navCommandLink value="AJAX actionListener" actionListener="#{messagesBean.info}"
                                                icon="tag" iconAlign="right" update="@form"  disabled="#{navLinkBean.disabled}"/>
 
