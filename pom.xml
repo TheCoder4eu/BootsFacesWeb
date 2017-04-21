@@ -111,7 +111,7 @@
 		<dependency>
 			<groupId>org.highfaces</groupId>
 			<artifactId>highfaces</artifactId>
-			<version>1.1</version>
+			<version>1.2</version>
 		</dependency>
 	</dependencies>
 	<profiles>
