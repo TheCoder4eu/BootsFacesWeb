@@ -22,11 +22,11 @@
       <p>Let's start with the basic idea, which required a lot of keystrokes, but doesn't require you to configure
       the decorator. BootsFaces provides a JSF bean method resolving search expressions. All you have to do is to
       wrap the call to this method around your search expressions:</p>
-      <h:form>
-          <b:tabView>
-            <b:tab title="preview">
-              <b:well>
-                <h:outputLabel for="#{searchExpressionResolverBean.resolve(component, '@next')}"
+      
+      
+        <b:panel title="Live preview">
+            <h:form>
+            <h:outputLabel for="#{searchExpressionResolverBean.resolve(component, '@next')}"
                                value="Enter a number between 1 and 10:"
                                style="padding-right:10px" />
                 <h:inputText value="#{numberGuessBean.guess}" styleClass="guess" />
@@ -38,13 +38,16 @@
                           execute="#{searchExpressionResolverBean.resolve(component, '@form')}"
                           listener="#{numberGuessBean.submitGuess}"/>
                 </h:commandButton>
-              </b:well>
-            </b:tab>
-            <b:tab title="JSF markup code">
-              <b:well>
-                <script type="syntaxhighlighter"
+            </h:form>
+
+            <f:facet name="footer">
+                <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+                    <b:tab title="JSF markup">
+                        <b:panel>
+                            <script type="syntaxhighlighter"
                   class="brush: xml; toolbar: false;gutter: false; first-line: 1">
                 <![CDATA[
+            <h:form>
                 <h:outputLabel for="&num;{searchExpressionResolverBean.resolve(component, '@next')}"
                                value="Enter a number between 1 and 10:"
                                style="padding-right:10px" />
@@ -57,56 +60,79 @@
                           execute="&num;{searchExpressionResolverBean.resolve(component, '@form')}"
                           listener="&num;{numberGuessBean.submitGuess}"/>
                 </h:commandButton>
+            <h:form>
                 ]]></script>
-              </b:well>
-            </b:tab>
-            <b:tab title="Java bean">
-              <b:well>
-                <script type="syntaxhighlighter"
+                        </b:panel>
+                    </b:tab>
+                    <b:tab title="Java Bean (NumberGuess)">
+                        <b:panel>
+                            <script type="syntaxhighlighter"
                   class="brush: java; toolbar: false;gutter: false; first-line: 1">
                 <![CDATA[
-                   @ManagedBean
-                   @ViewScoped
-                   public class NumberGuessBean  implements Serializable {
-
-                   	private static final long serialVersionUID = 1L;
-
-                   	private int counter = 1;
-
-                   	private int target=5;
-
-                   	@Min(1)
-                   	@Max(10)
-                   	private int guess=2;
-
-                   	public int getGuess() {
-                   		return guess;
-                   	}
-
-                   	public void setGuess(int guess) {
-                   		this.guess = guess;
-                   	}
-
-                   	public void submitGuess() {
-                   		String summary="Wrong guess:";
-                   		String msg = "Guess #" + counter++;
-                   		if (guess > target) {
-                   			msg += " is to high.";
-                   		} else if (guess < target) {
-                   			msg += " is to small.";
-                   		} else {
-                   			msg += " is correct!";
-                   			summary="Congratulations!";
-                   		}
-                   		FacesMessages.info("@property(numberGuessBean.guess)", summary, msg);
-
-                   	}
-                   }
+@ManagedBean
+@ViewScoped
+public class NumberGuessBean  implements Serializable {
+ 
+ private static final long serialVersionUID = 1L;
+ 
+ private int counter = 1;
+ 
+ private int target=5;
+ 
+ @Min(1)
+ @Max(10)
+ private int guess=2;
+ 
+ public int getGuess() {
+     return guess;
+ }
+ 
+ public void setGuess(int guess) {
+     this.guess = guess;
+ }
+ 
+ public void submitGuess() {
+     String summary="Wrong guess:";
+     String msg = "Guess #" + counter++;
+     if (guess > target) {
+         msg += " is to high.";
+     } else if (guess < target) {
+         msg += " is to small.";
+     } else {
+         msg += " is correct!";
+         summary="Congratulations!";
+     }
+     FacesMessages.info("@property(numberGuessBean.guess)", summary, msg);
+ 
+ }
+}
                 ]]></script>
-              </b:well>
-            </b:tab>
-          </b:tabView>
-        </h:form>
+                        </b:panel>
+                    </b:tab><b:tab title="Java Bean (SearchExpressionResolver)">
+                        <b:panel>
+                            <script type="syntaxhighlighter"
+                  class="brush: java; toolbar: false;gutter: false; first-line: 1">
+                <![CDATA[
+@ManagedBean
+@RequestScoped
+public class SearchExpressionResolverBean {
+	public String resolve(UIComponent component, String expression) {
+		String componentIDs = ExpressionResolver.getComponentIDs(FacesContext.getCurrentInstance(), component, expression);
+		if (componentIDs.indexOf(' ')>=0) {
+			// multiple component ids
+			componentIDs = componentIDs.replace(" ", " :");
+		}
+		return ":"+componentIDs;
+	}
+}
+                ]]></script>
+                        </b:panel>
+                    </b:tab>
+                </b:tabView>
+            </f:facet>
+        </b:panel>
+       
+      
         <p>This even works without BootsFaces if you copy the folder
         <a target="#" href="https://github.com/TheCoder4eu/BootsFaces-OSP/tree/master/src/main/java/net/bootsfaces/expressions">
         https://github.com/TheCoder4eu/BootsFaces-OSP/tree/master/src/main/java/net/bootsfaces/expressions</a>
@@ -123,11 +149,11 @@
       <p>For some reason, the facelets decorator does not work with the <code>&lt;f:ajax /&gt;</code> facet, so you
       have to resolve the search expressions yourself, as shown below:</p>
         <ui:fragment bootsFacesDecorator="true">
-         <h:form>
-              <b:tabView>
-                <b:tab title="preview">
-                  <b:well id="myWell">
-                   <h:outputLabel for="@next"
+
+
+        <b:panel title="Live preview">
+            <h:form>
+                    <h:outputLabel for="@next"
                                    value="Enter a number between 1 and 10:"
                                    style="padding-right:10px" />
                     <h:inputText value="#{numberGuessBean.guess}" styleClass="guess" />
@@ -139,13 +165,16 @@
                             execute="#{searchExpressionResolverBean.resolve(component, '@form')}"
                             listener="#{numberGuessBean.submitGuess}"/>
                     </h:commandButton>
-                  </b:well>
-                </b:tab>
-                <b:tab title="JSF markup code">
-                  <b:well>
-                    <script type="syntaxhighlighter"
+            </h:form>
+
+            <f:facet name="footer">
+                <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+                    <b:tab title="JSF markup">
+                        <b:panel>
+                            <script type="syntaxhighlighter"
                       class="brush: xml; toolbar: false;gutter: false; first-line: 1">
                     <![CDATA[
+                <h:form>
                     <h:outputLabel for="@next"
                                    value="Enter a number between 1 and 10:"
                                    style="padding-right:10px" />
@@ -158,12 +187,13 @@
                             execute="&num;{searchExpressionResolverBean.resolve(component, '@form')}"
                             listener="&num;{numberGuessBean.submitGuess}"/>
                     </h:commandButton>
-                    ]]></script>
-                  </b:well>
-                </b:tab>
-                <b:tab title="web.xml configuration">
-                  <b:well>
-                    <script type="syntaxhighlighter"
+                <h:form>                
+    ]]></script>
+                        </b:panel>
+                    </b:tab>
+                    <b:tab title="web.xml">
+                        <b:panel>
+                            <script type="syntaxhighlighter"
                       class="brush: xml; toolbar: false;gutter: false; first-line: 1">
                     <![CDATA[
     <context-param>
@@ -173,7 +203,10 @@
       </param-value>
     </context-param>
                     ]]></script>
-                  or
+                        </b:panel>
+
+or
+<b:panel>
                     <script type="syntaxhighlighter"
                       class="brush: xml; toolbar: false;gutter: false; first-line: 1">
                     <![CDATA[
@@ -184,16 +217,12 @@
       </param-value>
     </context-param>
                     ]]></script>
-                  </b:well>
-                </b:tab>
-              </b:tabView>
-            </h:form>
-          </ui:fragment>
+</b:panel>
+                    </b:tab>
+                </b:tabView>
+            </f:facet>
+        </b:panel></ui:fragment>
 
-      <br />
-      <br />
-      <br />
-      <br />
       <script type="text/javascript">
 							SyntaxHighlighter.all();
 						</script>

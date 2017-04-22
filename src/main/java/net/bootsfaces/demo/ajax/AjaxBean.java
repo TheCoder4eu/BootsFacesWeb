@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -218,7 +217,7 @@ public class AjaxBean implements Serializable {
 	public void setDesktop(int desktop) {
 		this.desktop = desktop;
 		String msg="Take your time to think about the question. There's no hurry.";
-		if (desktop==1) msg="Sounds like a sensible choice to me, provide you target the Windows platform.";
+		if (desktop==1) msg="Sounds like a sensible choice to me, provided you target the Windows platform.";
 		if (desktop==2) msg="JavaFX is cool!";
 		if (desktop==3) msg="GroovyFX is JavaFX on steroids.";
 		if (desktop==4) msg="JSF is great, but don't forget about the alternatives.";
