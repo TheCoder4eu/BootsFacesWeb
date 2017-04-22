@@ -16,44 +16,44 @@
 		<h1>DefaultCommand (&lt;b:defaultCommand /&gt;) <b:badge value="since 0.8.5" /></h1>
 
 		<p>The <code>&lt;b:defaultCommand&gt;</code> controls which button fires the click event when the enter key is pressed.</p>
-		<h1>Basic usage</h1>
+		<h3>Basic usage</h3>
 		<p>
 			The default command lets you specify which command has to be fired, using the <code>target</code> attribute set to the command id. <br/>
 		</p>
-		<b:tabView>
-			<b:tab title="preview">
-				<h:form id="test_form">
+        
+                <b:panel title="Live preview">            
+<h:form>
 					<p>The default command button is 'Button2'.</p>
 					<b:inputText></b:inputText>
-					<b:commandButton id="button1" actionListener="#{test.button1}" value="Button1" ajax="true" update="standardMsg" />
-					<b:commandButton id="button2" actionListener="#{test.button2}" value="Button2" ajax="true" look="primary" update="standardMsg" />
-					<b:commandButton id="button3" actionListener="#{test.button3}" value="Button3" ajax="true" icon="plus-sign" update="standardMsg" />
+					<b:commandButton id="button1" action="#{test.button1}" value="Button1" ajax="true" update="standardMsg" />
+					<b:commandButton id="button2" action="#{test.button2}" value="Button2" ajax="true" look="primary" update="standardMsg" />
+					<b:commandButton id="button3" action="#{test.button3}" value="Button3" ajax="true" icon="plus-sign" update="standardMsg" />
 			    	<b:defaultCommand target="button2" />
 			    	<br/><br/>
 			    	<b:messages id="standardMsg" globalOnly="true" />
 		    	</h:form>
-			</b:tab>
-			<b:tab title="JSF markup">
-				<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
 					<![CDATA[
-					<h:form id="test_form">
+					<h:form>
 						<b:inputText></b:inputText>
-						<b:commandButton id="button1" actionListener="&num;{test.button1}" value="Button1" ajax="true" update="standardMsg" />
-						<b:commandButton id="button2" actionListener="&num;{test.button2}" value="Button2" ajax="true" look="primary" update="standardMsg" />
-						<b:commandButton id="button3" actionListener="&num;{test.button3}" value="Button3" ajax="true" icon="plus-sign" update="standardMsg" />
+						<b:commandButton id="button1" action="&num;{test.button1}" value="Button1" ajax="true" update="standardMsg" />
+						<b:commandButton id="button2" action="&num;{test.button2}" value="Button2" ajax="true" look="primary" update="standardMsg" />
+						<b:commandButton id="button3" action="&num;{test.button3}" value="Button3" ajax="true" icon="plus-sign" update="standardMsg" />
 			    		<b:defaultCommand target="button2" />
 			    		<br/><br/>
 			    		<b:messages id="standardMsg" globalOnly="true" />
 					</h:form>
 					]]>
 				</script>
-			</b:tab>
-		</b:tabView>
-
-		<br/>
-		<br/>
-		<br/>
-		<h1>Multiple default commands in the same page</h1>
+                </b:panel>
+            </f:facet>
+        </b:panel>
+       
+     
+		<h3>Multiple default commands in the same page</h3>
 		<p>
 			The <code>&lt;b:defaultCommand&gt;</code> component activates the click listener on the closest form of the component. <br/>
 			This way, you can define multiple defaultCommands in different form scopes.</p>
@@ -61,10 +61,10 @@
             only a single defaultCommand. You have to split your page into several forms in order to add multiple
             defaultCommands. Also note that defaultCommands only apply to the surrounding form. Defining a default command
             in a form doesn't add a defaultCommand to any other form on the page.</p>
-		<b:tabView>
-			<b:tab title="preview">
-				<p>First Form (focus on input text and press enter key)</p>
-				<h:form id="test_form_1">
+
+ <b:panel title="Live preview">            
+<p>First Form (focus on input text and press enter key)</p>
+				<h:form>
 					<p>The default command button is 'Button 2'</p>
 					<b:inputText></b:inputText>
 					<b:commandButton id="button_1" actionListener="#{test.button1}" value="Button 1" ajax="true" update="standardMsg_t1" />
@@ -75,7 +75,7 @@
 		    	</h:form>
 		    	<hr/>
 		    	<p>Second Form (focus on input text and press enter key)</p>
-		    	<h:form id="test_form_2">
+		    	<h:form>
 					<p>The default command button is 'Button 3'</p>
 					<b:inputText></b:inputText>
 					<b:commandButton id="button_3" actionListener="#{test.button3}" value="Button 3" ajax="true" look="primary" update="standardMsg_k1" />
@@ -84,12 +84,13 @@
 			    	<br/><br/>
 			    	<b:messages id="standardMsg_k1" globalOnly="true" />
 		    	</h:form>
-			</b:tab>
-			<b:tab title="JSF markup">
-				<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
 					<![CDATA[
 				<p>First Form (focus on input text and press enter key)</p>
-				<h:form id="test_form_1">
+				<h:form>
 					<p>The default command button is 'Button T2'</p>
 					<b:inputText></b:inputText>
 					<b:commandButton id="button_1" actionListener="&num;{test.button1}" value="Button 1" ajax="true" update="standardMsg_t1" />
@@ -100,7 +101,7 @@
 		    	</h:form>
 		    	<hr/>
 		    	<p>Second Form (focus on input text and press enter key)</p>
-		    	<h:form id="test_form_2">
+		    	<h:form>
 					<p>The default command button is 'Button K1'</p>
 					<b:inputText></b:inputText>
 					<b:commandButton id="button_3" actionListener="&num;{test.button3}" value="Button 3" ajax="true" look="primary" update="standardMsg_k1" />
@@ -111,16 +112,19 @@
 		    	</h:form>
 					]]>
 				</script>
-			</b:tab>
-		</b:tabView>
+                </b:panel>
+            </f:facet>
+        </b:panel>
 
-        <h1>Search Expressions</h1>
+
+        <h3>Search Expressions</h3>
     <p>
       Default commands allow you to use search expressions. In many cases this allows you to get rid of the ids.
     </p>
-    <b:tabView>
-      <b:tab title="preview">
-        <h:form>
+
+    
+        <b:panel title="Live preview">            
+          <h:form>
           <p>The default command button is 'Button3'.</p>
           <b:inputText />
           <b:commandButton actionListener="#{test.button1}" value="Button1" ajax="true" update="standardMsg3" />
@@ -130,9 +134,11 @@
             <br/><br/>
             <b:messages id="standardMsg3" globalOnly="true" />
           </h:form>
-      </b:tab>
-      <b:tab title="JSF markup">
-        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
           <![CDATA[
           <p>The default command button is 'Button3'.</p>
           <b:inputText />
@@ -145,21 +151,15 @@
           </h:form>
           ]]>
         </script>
-      </b:tab>
-    </b:tabView>
+                </b:panel>
+            </f:facet>
+        </b:panel>
 
-		<br/>
         <h2>Reference section</h2>
         <ui:include src="DefaultCommandAttributes.xhtml" />
-        <br/>
-        <br/>
 
 		<script type="text/javascript">
       		SyntaxHighlighter.all();
     	</script>
-		<br />
-		<br />
-		<br />
-		<br />
 	</ui:define>
 </ui:composition>
