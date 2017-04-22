@@ -10,47 +10,45 @@
                 <style>td {padding: 8px;}</style>
                 <h1>InputText</h1>
 
-                <p>The most common form controls are text-based input fields. </p>
-                <p>Future versions of BootsFaces will try to add support for the most relevant HTML5 types:</p>
-                <p>text, password, datetime, datetime-local, date, month, time, week, number, email, url, search, tel, and color.</p>
-                <br/>
-                <p>The most simple example is a plain <code>b:inputText</code> with a <code>placeholder</code> attribute, which contains an hint that is shown in the input field until something is typed in it.
-                This is how such a simple inputText looks like if we add a bit of AJAX functionality to it:</p>
+                <p>The most common form controls are text-based input fields. They accept arbitrary text 
+                (as opposed to date pickers and color pickers, which restrict the input to their data type).
+                </p>
+                <p>The most simple example is a plain <code>b:inputText</code> with a <code>placeholder</code> attribute, 
+                which contains an hint that is shown in the input field until something is typed in it.
+                This is how such a simple inputText looks like. We've added a bit of AJAX functionality to it to make it more interesting:</p>
                 
-                        <b:panel title="Live preview">            
-                    <h:form>
-                     <b:inputText placeholder="Type something here..." value="#{barcodeBean.emptyText}">
-                        <f:ajax event="keyup" render="label" listener="#{barcodeBean.capitalizeURL}" />
-                        </b:inputText>
-                        <b:label text="#{barcodeBean.emptyTextCapital}" id="label"/>
-                    </h:form>
+                <b:panel title="Live preview" look="primary">            
+                   <h:form>
+                     <b:inputText placeholder="Type something here..." value="#{inputTextBean.text}"
+                                  onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                     <b:label text="#{inputTextBean.capitalText}" id="label"/>
+                   </h:form>
 
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-<script type="syntaxhighlighter"
-                       class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                  <![CDATA[
-                 <h:form>
-                     <b:inputText placeholder="Type something here..." value="&num;{barcodeBean.emptyText}">
-                        <f:ajax event="keyup" render="label" listener="&num;{barcodeBean.capitalizeURL}" />
-                      </b:inputText>
-                      <b:label text="&num;{barcodeBean.emptyTextCapital}" id="label"/>
-                 </h:form>
-                 ]]>
-                 </script>
-                </b:panel>
-            </f:facet>
-        </b:panel>
+		           <f:facet name="footer">
+		              <strong>JSF markup:</strong>
+        		      <b:panel>
+        				<script type="syntaxhighlighter"
+        		                      class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+         	               <![CDATA[
+        	                 <h:form>
+        	                   <b:inputText placeholder="Type something here..." value="&num;{inputTextBean.text}"
+         	                                onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+         	                  <b:label text="&num;{inputTextBean.capitalText}" id="label"/>
+         	                </h:form>
+        	               ]]>
+        	               </script>
+        		      </b:panel>
+        		   </f:facet>
+		        </b:panel>
                 
-                <p>As you noticed, the input is as large as its parent container. You will see how to control its size later in this section.</p>
+                <p>As you noticed, the input is as large as its parent container (minus a little margin). You will see how to control its size later in this section.</p>
 
                 <h3>Enhancing the b:inputText form control</h3>
                 <p>To help you enhance the user experience, BootsFaces comes in with a useful feature:</p>
-                <p>You can easily prepend or append text to your inputTexts and what you prepend and append will seem part of the input field.</p>
-                <p>To do so, you just need to use the facets <code>prepend</code> and <code>append</code> where you will place the <code>h:outputText</code> element.</p>
-                <p>You can even prepend and append at the same time, as in the following example:</p>
-                <b:panel title="Live preview">
+                <p>You can easily prepend or append text to your inputTexts and what you prepend and append will seem part of the input field.
+                Just use the facets <code>prepend</code> and <code>append</code> and put the <code>h:outputText</code> element 
+                (or image, or whatever) into the facet. You can even prepend and append at the same time, as in the following example:</p>
+                <b:panel title="Live preview" look="primary">
                     <b:form inline="true">
                         <h:panelGrid columns="1"  cellpadding="5">
                             <b:inputText label="E-mail:" renderLabel="true" style="width:100%;" labelStyle="width:80px;">
@@ -101,8 +99,8 @@
                     </b:form>]]></script>
                     </f:facet>
                 </b:panel>
-                <p>Finally, you can go further and prepend or append more text elements, as in the following example:</p>
-                <b:panel title="Live preview">
+                <p>Finally, you can go further and prepend or append multiple text elements, as in the following example:</p>
+                <b:panel title="Live preview" look="primary">
                     <b:form inline="true">
                         <b:inputText value="99" label="Your bid" renderLabel="true">
                             <f:facet name="prepend">
@@ -133,17 +131,17 @@
                     </b:form>]]></script>
                     </f:facet>
                 </b:panel>
-                <h3>Appending or prepending Icons</h3><br/>
+                <h3>Appending or prepending icons</h3>
                 <p>You can take advantage of the <code><b:navLink outcome="/layout/icons" value="&lt;b:icon&gt;"/></code> or <code><b:navLink outcome="/layout/icons" value="&lt;b:iconAwesome&gt;"/></code> components to append (or prepend) icons :</p>
-                        <b:panel title="Live preview">            
+                <b:panel title="Live preview" look="primary">            
                 <b:form horizontal="true">
-                    <b:inputText placeholder="Username" required="true" label="Username" renderLabel="true" colMd="9" labelColMd="3">
+                    <b:inputText placeholder="Username" required="true" label="Username" renderLabel="true" colMd="10" labelColMd="2">
                         <f:facet name="prepend">
                             <b:icon name="user" />
                         </f:facet>
                     </b:inputText>
 
-                    <b:inputText placeholder="Password" label="Password" renderLabel="true" colMd="9" labelColMd="3">
+                    <b:inputText placeholder="Password" label="Password" renderLabel="true" colMd="10" labelColMd="2">
                         <f:facet name="prepend">
                             <b:iconAwesome name="key" />
                         </f:facet>
@@ -155,13 +153,13 @@
                         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                         <![CDATA[
                 <b:form horizontal="true">
-                    <b:inputText placeholder="Username" required="true" label="Username" colMd="9" labelColMd="3">
+                    <b:inputText placeholder="Username" required="true" label="Username" colMd="10" labelColMd="2">
                         <f:facet name="prepend">
                             <b:icon name="user" />
                         </f:facet>
                     </b:inputText>
 
-                    <b:inputText placeholder="Password" label="Password" colMd="9" labelColMd="3">
+                    <b:inputText placeholder="Password" label="Password" colMd="10" labelColMd="2">
                         <f:facet name="prepend">
                             <b:iconAwesome name="key" />
                         </f:facet>
@@ -173,9 +171,9 @@
         </b:panel>
        
                 <a id="prependingButtons" />
-                <h3>Appending or prepending Buttons</h3><br/>
+                <h3>Appending or prepending buttons</h3><br/>
                 <p>Another nice feature is that you can append (or prepend) buttons:</p>
-                <b:panel title="Live preview">
+                <b:panel title="Live preview"  look="primary">
                     <b:form id="bid" prependId="false">
                         <b:inputText id="mybid" class="mybid-example" value="#{testBean.val6}" label="Your offer:" renderLabel="true">
                                 <f:facet name="prepend">
@@ -233,7 +231,7 @@
 
                 <h3>Appending or prepending DropButtons</h3><br/>
                 <p>What you have seen also applies to DropButtons:</p>
-                <b:panel title="Live preview">
+                <b:panel title="Live preview" look="primary">
                     <b:form horizontal="true">
                         <b:formGroup>
                             <b:inputText placeholder="Text" span="6">
@@ -314,7 +312,7 @@
                 <p>You can create larger or smaller form controls that match button sizes.</p>
                 <p>Use the <code>fieldSize</code> attribute for predefined input field sizes:</p>
                 
-                <b:panel title="Live preview">            
+                <b:panel title="Live preview" look="primary">            
                     <b:form>
                         <b:inputText fieldSize="sm" placeholder="small (sm)"/>
                         <b:inputText placeholder="default"/>
@@ -343,7 +341,7 @@
                 <p>Use <code>span="1"</code> to <code>span="12"</code> for inputs that match the same sizes of the BootsFaces grid columns:</p>
                 
 
-        <b:panel title="Live preview">            
+        <b:panel title="Live preview" look="primary">            
 	                    In a row:
                         <b:row>
                             <b:form>
@@ -414,7 +412,7 @@ or in an horizontal Form:
                 <p>It's possible to use pass-through attributes with the <code>&lt;b:inputText</code> widget, but there's a twist: the attributes are added multiple times.
                 This is because there are several plausible places to put a pass-through attribute in, so we decided to leave it as it is.</p>
                 <p>For instance, consider this JSF snippet:</p>
-  					<b:panel>
+  					<b:panel look="primary">
 						<script type="syntaxhighlighter"
 							class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 							<![CDATA[
@@ -449,7 +447,7 @@ or in an horizontal Form:
 	        in the web.xml. The example below shows how to do this.</p>
             
             
-        <b:panel title="Live preview">
+        <b:panel title="Live preview" look="primary">
             
                   <b:panelGrid columns="2" size="sm">
                       <b:form>
@@ -548,7 +546,7 @@ public class UserBean {
             
             <h2>Bean Validation API (JSR 303 and JSR 349) <b:badge value="since 1.1.0" /></h2>
             
-        <b:panel title="Live preview">
+        <b:panel title="Live preview" look="primary">
             <b:form>
                       <b:inputText id="name" value="#{beanValidationBean.name}"
                                    label="Enter your name" renderLabel="true" />
@@ -721,7 +719,7 @@ public class BeanValidationBean {
 
             
             
-                     <b:panel title="Live preview">
+                     <b:panel title="Live preview" look="primary">
                          <b:form>
                              <b:inputText id="age" value="#{userBean.age}" label="What's your age?" />
                              <h:message for="age" />
@@ -805,7 +803,7 @@ public class DefaultValuesBean implements Serializable {
             <p>This feature comes in handy if you're working with JAAS, which requires the id and the name of the field
             to be "j_username" and "j_password":
             </p>
-            <b:panel title="Live preview">
+            <b:panel title="Live preview" look="primary">
                 <b:form id="loginForm">
                     <b:inputText id="usernameDiv" fieldId="j_username" name="j_username"
                                  value="#{loginBean.username}"
@@ -871,7 +869,7 @@ public class DefaultValuesBean implements Serializable {
         also with <code>&lt;b:inputText /&gt;</code>. Note that this is equivalent to putting it into a
         <code>&lt;b:column /&gt;</code>. In particular, the CSS styles are inside the column div. Responsive design only applies to horizontal forms.
         </p>
-        <b:panel title="Live preview">            
+        <b:panel title="Live preview" look="primary">            
 
 <b:form horizontal="true">
     <b:inputText value="large-screen='full-width'" large-screen="full-width" />
@@ -918,7 +916,7 @@ public class DefaultValuesBean implements Serializable {
         <h2>Visibility depending on screen size <b:badge value="since 0.8.6/0.9.0" /></h2>
         <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
         <br/>
-        <b:panel title="Live preview">            
+        <b:panel title="Live preview" look="primary">            
             <b:form horizontal="true">
                 <b:formGroup>
                     <b:column col-md="2">
