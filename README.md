@@ -1,7 +1,6 @@
 BootsFaces Showcase
 ===================
 
-BootsFaces JSF Framework Showcase and Web Docs (see https://showcase.bootsfaces.net/ )
+BootsFaces JSF Framework Showcase and Web Docs (see https://showcase.bootsfaces.net/ ).
 
-The Examples are now in the separate Repository TheCoder4eu/BootsFaces-examples .
-
+The examples are now in the separate repository TheCoder4eu/BootsFaces-examples .
