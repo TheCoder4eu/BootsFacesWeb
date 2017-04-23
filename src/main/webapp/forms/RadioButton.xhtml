@@ -12,7 +12,6 @@
     <ui:define name="content">
     <style>label.disabled { color:#ccc}
     </style>
-      <h:form>
         <h1>Radiobuttons <b:badge value="since 1.0" /></h1>
         <p>The BootsFaces radiobutton give you more flexibility to design your page layout than the standard JSF radiobutton.</p>
         <p>For the sake of compatibility, you can follow the traditional JSF approach using <code>&lt;f:selectItem /&gt;</code>
@@ -22,37 +21,41 @@
         version. The drawback is that you have to add an extra attribute defining which radio buttons belong together.
         We chose the <code>value</code> value attribute for this. So you have to repeat the <code>value</code> attribute 
         with every option of the radio button in order to indicate which buttons belong to a common group:</p>
-        <b:panel title="Survey" look="primary">
-          <p>Which Java version do you use?</p>
-          <b:panelGrid size="xs" columns="4">
-	          <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 6" itemValue="6" required="true" label="Java version"/>
-	          <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 7" itemValue="7" />
-	          <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 8" itemValue="8" />
-	          <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 9" itemValue="9" disabled="true"/>
-          </b:panelGrid>
-          <b:commandButton value="submit your choice" action="#{radiobuttonBean.submit}" look="primary"
-                           update="@form" />
-          <b:messages />
-           <b:message for="@form:@property(radiobuttonBean.javaVersion)" 
-                      />
+        
+                               <b:panel title="Live preview" look="info" collapsible="false">
+ <b:form>
+                <p>Which Java version do you use?</p>
+                <b:panelGrid size="xs" columns="4">
+                    <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 6" itemValue="6" required="true" />
+                    <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 7" itemValue="7" />
+                    <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 8" itemValue="8" />
+                    <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 9" itemValue="9" disabled="true"/>
+                </b:panelGrid>
+                <b:commandButton value="submit your choice" action="#{radiobuttonBean.submit}" look="primary" update="@form" />
+                <b:messages />
+                <b:message for="@form:@property(radiobuttonBean.javaVersion)" />
+            </b:form>
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+ <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+             <![CDATA[
+            <b:form>
+                <p>Which Java version do you use?</p>
+                <b:panelGrid size="xs" columns="4">
+                    <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 6" itemValue="6" required="true" />
+                    <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 7" itemValue="7" />
+                    <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 8" itemValue="8" />
+                    <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 9" itemValue="9" disabled="true"/>
+                </b:panelGrid>
+                <b:commandButton value="submit your choice" action="&num;{radiobuttonBean.submit}" look="primary" update="@form" />
+                <b:messages />
+                <b:message for="@form:@property(radiobuttonBean.javaVersion)" />
+            </b:form>]]></script>
+                </b:panel>
+            </f:facet>
         </b:panel>
-      </h:form>
-      <b:well>
-         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
-           <style>label.disabled { color:#ccc}</style>
-           <b:panel title="Survey" look="primary">
-            <p>Which Java version do you use?</p>
-            <b:panelGrid size="xs" columns="3">
-              <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 6" itemValue="6" required="true" label="Java version"/>
-              <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 7" itemValue="7" />
-              <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 8" itemValue="8" />
-              <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 9" itemValue="9" disabled="true />
-             </b:panelGrid>
-            <b:commandButton value="submit your choice" action="&num;{radiobuttonBean.submit}" look="primary" />
-            <b:messages />
-          </b:panel>
-        ]]></script>
-      </b:well>
+        
       <p>Note that the radiobuttons are implemented as an HTML &lt;div&gt; tag, so by default, the radiobuttons
       are still stacked on each by default. That's why we wrapped them in a &lt;b:panelGrid /&gt; in the example
       above.</p>
@@ -76,22 +79,24 @@
       The radiobuttons are stacked on top of each other, and the only way to change this is using
       clever CSS tricks.</p>
 
-      <h:form>
-        <b:panel title="Survey" look="primary">
-          <p>What's your favorite color?</p>
-            <b:radiobutton value="#{radiobuttonBean.favoriteColor}">
-                <f:selectItem itemValue="Red"   itemLabel="Red it is!" />
-                <f:selectItem itemValue="Green" itemLabel="I love green colors." />
-                <f:selectItem itemValue="Blue"  itemLabel="What about blue?" />
-            </b:radiobutton>
-            <b:commandButton value="submit your choice" action="#{radiobuttonBean.submitColor}"
-                             look="primary" update="@form" />
-            <b:message for="@form:@property(radiobuttonBean.favoriteColor)" 
-                       style="#{radiobuttonBean.favoriteColor=='Green'?'background-image:none;background-color:#0c0;color:white':''}"/>
-          </b:panel>
-      </h:form>
-     <b:well>
-         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
+      
+                <b:panel title="Live preview" look="info" collapsible="false">
+<b:form>
+              <b:radiobutton value="#{radiobuttonBean.favoriteColor}">
+                              <f:selectItem itemValue="Red"   itemLabel="Red it is!" />
+                              <f:selectItem itemValue="Green" itemLabel="I love green colors." />
+                              <f:selectItem itemValue="Blue"  itemLabel="What about blue?" />
+               </b:radiobutton>
+                              <b:commandButton value="submit your choice" action="#{radiobuttonBean.submitColor}"
+                                               look="primary" update="@form" />
+                              <b:message for="@form:@property(radiobuttonBean.favoriteColor)" 
+                                         style="#{radiobuttonBean.favoriteColor=='Green'?'background-image:none;background-color:#0c0;color:white':''}"/>
+           </b:form>
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
+       <b:form>
           <p>What's your favorite color?</p>
             <b:radiobutton value="&num;{radiobuttonBean.favoriteColor}">
                 <f:selectItem itemValue="Red"   itemLabel="Red it is!" />
@@ -103,15 +108,19 @@
             <b:message for="@form:@property(radiobuttonBean.favoriteColor)" 
                        style="&num;{radiobuttonBean.favoriteColor=='Green'?'background-image:none;background-color:#0c0;color:white':''}"/>
           </b:panel>
+       </b:form>
        ]]></script>
-      </b:well>
+                </b:panel>
+            </f:facet>
+        </b:panel>
+       
 
       <h2>Using lists and hashmaps</h2>
       <p><code>&lt;f:selectItems /&gt;</code> allows you to generate the radio buttons from a list or a map:</p>
 
-      <h:form>
-        <b:panel title="Survey" look="primary">
-          <p>What's your favorite band?</p>
+              <b:panel title="Live preview" look="info" collapsible="false">
+<b:form>
+<p>What's your favorite band?</p>
             <b:radiobutton value="#{radiobuttonBean.favoriteBand}">
                 <f:selectItems value="#{radiobuttonBean.bands}" />
                 <f:selectItem itemValue="#{null}" itemLabel="None of the above" />
@@ -120,25 +129,28 @@
                              look="primary" update="@form" />
             <b:message for="@form:@property(radiobuttonBean.favoriteBand)" 
                        />
-          </b:panel>
-      </h:form>
-     <b:well>
-         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
-       <b:panel title="Survey" look="primary">
-          <p>What's your favorite band?</p>
+           </b:form>
+            <f:facet name="footer">
+<b:tabView contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+                    <b:tab title="JSF markup">
+                        <b:panel>
+                            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
+       <b:form>
+            <p>What's your favorite band?</p>
             <b:radiobutton value="&num;{radiobuttonBean.favoriteBand}">
                 <f:selectItems value="&num;{radiobuttonBean.bands}" />
                 <f:selectItem itemValue="" itemLabel="None of the above" />
             </b:radiobutton>
             <b:commandButton value="submit your choice" action="&num;{radiobuttonBean.submitBand}"
                              look="primary" update="@form" />
-            <b:message for="@form:@property(radiobuttonBean.favoriteBand)" 
-                       />
-          </b:panel>
+            <b:message for="@form:@property(radiobuttonBean.favoriteBand)" />
+       </b:form>
        ]]></script>
-      </b:well>
-         <b:well>
-         <script type="syntaxhighlighter" class="brush: java; toolbar: false;first-line: 0"><![CDATA[
+                        </b:panel>
+                    </b:tab>
+                    <b:tab title="Java Bean">
+                        <b:panel>
+                            <script type="syntaxhighlighter" class="brush: java; toolbar: false;first-line: 0"><![CDATA[
 @RequestScoped
 @ManagedBean
 public class RadiobuttonBean implements Serializable {
@@ -175,15 +187,20 @@ public class RadiobuttonBean implements Serializable {
 	}
 }
        ]]></script>
-      </b:well>
-      <h:form>
+                        </b:panel>
+                    </b:tab>
+                </b:tabView>
+            </f:facet>
+        </b:panel>
+       
         <h2>AJAX <b:badge value="since 1.1.0" /></h2>
         <p>Since BootsFaces 1.1.0, radio buttons also support AJAX. More precisely, it supports the click event. The attribute
         <code>update</code> must be repeated for each radio button of the radio button group.
         However, you can't define different update areas for each radio button. The first radiobutton decides which method is called
         and which part of the page is updated.</p>
-        <b:panel title="Survey" look="primary">
-          <p>Which Java version do you use?</p>
+                <b:panel title="Live preview" look="info" collapsible="false">
+                    <b:form>
+<p>Which Java version do you use?</p>
           <b:panelGrid size="xs" columns="4">
 	          <b:radiobutton onclick="ajax:radiobuttonBean.submit()" update="@form" value="#{radiobuttonBean.javaVersion}" itemLabel="Java 6" itemValue="6" />
 	          <b:radiobutton update="@form" value="#{radiobuttonBean.javaVersion}" itemLabel="Java 7" itemValue="7" />
@@ -191,29 +208,30 @@ public class RadiobuttonBean implements Serializable {
 	          <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 9" itemValue="9" disabled="true"/>
           </b:panelGrid>
           <b:messages />
-        </b:panel>
-      </h:form>
-      <b:well>
-         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
-           <style>label.disabled { color:#ccc}</style>
-           <b:panel title="Survey" look="primary">
-            <p>Which Java version do you use?</p>
-            <b:panelGrid size="xs" columns="3">
-	          <b:radiobutton onclick="ajax:radiobuttonBean.submit()" update="@form" value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 6" itemValue="6" />
-	          <b:radiobutton update="@form" value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 7" itemValue="7" />
-	          <b:radiobutton update="@form" value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 8" itemValue="8" />
-	          <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 9" itemValue="9" disabled="true"/>
-             </b:panelGrid>
-            <b:messages />
-          </b:panel>
-        ]]></script>
-      </b:well>
-      
+</b:form>
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
+<style>
+    label.disabled {
+        color: #ccc;
+    }
+</style>
 
-      <br />
-      <br />
-      <br />
-      <br />
+<p>Which Java version do you use?</p>
+<b:panelGrid size="xs" columns="3">
+    <b:radiobutton onclick="ajax:radiobuttonBean.submit()" update="@form" value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 6" itemValue="6" />
+    <b:radiobutton update="@form" value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 7" itemValue="7" />
+    <b:radiobutton update="@form" value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 8" itemValue="8" />
+    <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 9" itemValue="9" disabled="true"/>
+</b:panelGrid>
+<b:messages />]]></script>
+                </b:panel>
+            </f:facet>
+        </b:panel>
+       
+      
       <ui:include src="RadiobuttonAttributes.xhtml" />
       <b:panel look="info">
         <f:facet name="heading">
