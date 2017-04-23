@@ -6,7 +6,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 import javax.validation.constraints.AssertTrue;
 
 @SessionScoped
@@ -37,7 +36,7 @@ public class CheckboxBean implements Serializable {
 		this.editable = editable;
 	}
 
-	public void toggleEditmode(ActionEvent even) {
+	public void toggleEditmode() {
 		editable = !editable;
 	}
 
