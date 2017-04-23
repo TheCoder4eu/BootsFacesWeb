@@ -26,11 +26,15 @@
           <li>If you update an <code>&lt;b:inputText</code> with tags by an AJAX request, the input field is not properly
           reinitialized. You have to do so yourself by adding a CSS pseudo class to the
           <code>&lt;b:inputText</code> and a JavaScript command to the updated region:
+          <b:panel>
              <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
              <![CDATA[
                 <b:inputText tags="true" style-class="tags" />
-                <$('.tags').tagsinput('refresh');
+                <script>
+                    $('.tags').tagsinput('refresh');
+                </script&gt;
              ]]></script>
+              </b:panel>
           </li>
           <li>In theory, the typeahead widget can fetch the list of proposals from the server. However, we haven't
           implemented the BootsFaces API. Currently you're limited to a fixed list of entries.</li>
@@ -43,31 +47,30 @@
           <p>The tags extension is based on the jQuery plugin
           <a target="#" href="https://bootstrap-tagsinput.github.io/bootstrap-tagsinput/examples/">Tim Schlechter</a>,
           which has been published unter a MIT license. In other words, you can freely use it.</p>
-          <b:tabView>
-            <b:tab title="live preview">
-             <b:well>
-              <b:row>
-                <b:inputText tags="true" value="#{tagsBean.tags}" tiny-screen="full-width"
+            <b:panel title="Live preview" look="info" collapsible="false">
+                <b:form>
+                    <b:inputText tags="true" value="#{tagsBean.tags}"
                              placeholder="Hit return to create label"
                              label="What's your favorite music style?"
+                             col-xs="12"
                              render-label="true"/>
-             </b:row>
-             </b:well>
-            </b:tab>
-            <b:tab title="JSF markup">
-              <b:well>
-              <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                </b:form>
+
+            <f:facet name="footer">
+                <b:tabView contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+                    <b:tab title="JSF markup">
+                        <b:panel>
+                                       <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
              <![CDATA[
-                <b:inputText tags="true" value="&num;{tagsBean.tags}" tiny-screen="full-width"
-                             placeholder="Hit return to create label"
-                             label="What's your favorite music style?"
-                             render-label="true"/>
+            <b:form>
+                <b:inputText tags="true" value="&num;{tagsBean.tags}" placeholder="Hit return to create label" label="What's your favorite music style?" />
+            </b:form>
              ]]></script>
-              </b:well>
-            </b:tab>
-            <b:tab title="JSF bean">
-              <b:well>
-              <script type="syntaxhighlighter" class="brush: java toolbar: false;first-line: 0">
+                        </b:panel>
+                    </b:tab>
+                    <b:tab title="Java Bean">
+                        <b:panel>
+                            <script type="syntaxhighlighter" class="brush: java toolbar: false;first-line: 0">
              <![CDATA[
                 @ViewScoped
                 @ManagedBean
@@ -86,9 +89,11 @@
                 	}
                 }
              ]]></script>
-              </b:well>
-            </b:tab>
-          </b:tabView>
+                        </b:panel>
+                    </b:tab>
+                </b:tabView>
+            </f:facet>
+        </b:panel>
           
          <h2>Simple typeahead</h2>
           <p>By setting the attribute <code>tags="true"</code> you can display the input values as tag - similar to
@@ -105,63 +110,30 @@
           which has been published under a MIT licence.</p>
 
 
-          <b:tabView>
-            <b:tab title="live preview">
-             <b:well>
-	             <b:row>
-	                <b:inputText value=""
-	                             placeholder="CSV string"
-	                             tiny-screen="full-width"
-	                             typeahead="true"
-	                             typeahead-values="#{tagsBean.bandsCSV}"/>
-	             </b:row>
-	             <b:row>
-	                <b:inputText value=""
-	                             placeholder="java.util.List"
-	                             tiny-screen="full-width"
-	                             typeahead="true"
-	                             typeahead-values="#{tagsBean.bandsList}"/>
-	             </b:row>
-	             <b:row>
-	                <b:inputText value=""
-	                             placeholder="array of strings"
-	                             tiny-screen="full-width"
-	                             typeahead="true"
-	                             typeahead-values="#{tagsBean.bands}"/>
-	             </b:row>
-	           </b:well>
-            </b:tab>
-            <b:tab title="JSF markup">
-              <b:well>
+                 <b:panel title="Live preview" look="info" collapsible="false">
+            <b:form horizontal="true">
+                <b:inputText value="" placeholder="CSV string" typeahead="true" typeahead-values="#{tagsBean.bandsCSV}" tiny-screen="full-width" />
+                <b:inputText value="" placeholder="java.util.List" typeahead="true" typeahead-values="#{tagsBean.bandsList}" tiny-screen="full-width" />
+                <b:inputText value="" placeholder="array of strings" typeahead="true" typeahead-values="#{tagsBean.bands}" tiny-screen="full-width" />
+            </b:form>
+
+            <f:facet name="footer">
+                <b:tabView contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+                    <b:tab title="JSF markup">
+                        <b:panel>
               <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
              <![CDATA[
-	             <b:row>
-	                <b:inputText value=""
-	                             placeholder="CSV string"
-	                             tiny-screen="full-width"
-	                             typeahead="true"
-	                             typeahead-values="&num;{tagsBean.bandsCSV}"/>
-	             </b:row>
-	             <b:row>
-	                <b:inputText value=""
-	                             placeholder="java.util.List"
-	                             tiny-screen="full-width"
-	                             typeahead="true"
-	                             typeahead-values="&num;{tagsBean.bandsList}"/>
-	             </b:row>
-	             <b:row>
-	                <b:inputText value=""
-	                             placeholde="array of strings"
-	                             tiny-screen="full-width"
-	                             typeahead="true"
-	                             typeahead-values="&num;{tagsBean.bands}"/>
-	             </b:row>
+            <b:form horizontal="true">
+                <b:inputText value="" placeholder="CSV string" typeahead="true" typeahead-values="#{tagsBean.bandsCSV}" tiny-screen="full-width" />
+                <b:inputText value="" placeholder="java.util.List" typeahead="true" typeahead-values="#{tagsBean.bandsList}" tiny-screen="full-width" />
+                <b:inputText value="" placeholder="array of strings" typeahead="true" typeahead-values="#{tagsBean.bands}" tiny-screen="full-width" />
+            </b:form>
              ]]></script>
-              </b:well>
-            </b:tab>
-            <b:tab title="JSF bean">
-              <b:well>
-              <script type="syntaxhighlighter" class="brush: java toolbar: false;first-line: 0">
+                        </b:panel>
+                    </b:tab>
+                    <b:tab title="Java Bean">
+                        <b:panel>
+                            <script type="syntaxhighlighter" class="brush: java toolbar: false;first-line: 0">
              <![CDATA[
                 @ViewScoped
                 @ManagedBean
@@ -205,9 +177,11 @@
                    	}
                 }
              ]]></script>
-              </b:well>
-            </b:tab>
-           </b:tabView>
+                        </b:panel>
+                    </b:tab>
+                </b:tabView>
+            </f:facet>
+        </b:panel>
            
            <h2>How to define the list of possible values</h2>
            <p>The example above show the three options to define the list of possible values:</p>
@@ -223,69 +197,30 @@
           <p>Using tags and typeahead at the same time requires
           <a target="#" href="https://github.com/twitter/typeahead.js/blob/master/doc/bloodhound.md">Bloodhound</a>,
           which has been published under a MIT licence.</p>
-          <b:tabView>
-            <b:tab title="live preview">
-             <b:well>
-               <b:row>
-                <b:inputText value=""
-                             placeholder="CSV"
-                             tags="true"
-                             tiny-screen="full-width"
-                             typeahead="true"
-                             typeahead-values="#{tagsBean.bandsCSV}"/>
-               </b:row>
-               <b:row>
-                <b:inputText value=""
-                             placeholder="java.util.List"
-                             tags="true"
-                             tiny-screen="full-width"
-                             typeahead="true"
-                             typeahead-values="#{tagsBean.bandsList}"/>
-               </b:row>
-               <b:row>
-                <b:inputText value=""
-                             placeholder="array of strings"
-                             tags="true"
-                             tiny-screen="full-width"
-                             typeahead="true"
-                             typeahead-values="#{tagsBean.bands}"/>
-               </b:row>
-             </b:well>
-            </b:tab>
-            <b:tab title="JSF markup">
-              <b:well>
+          <b:panel title="Live preview" look="info" collapsible="false">
+<b:form horizontal="true">
+    <b:inputText value="" placeholder="CSV" tags="true" typeahead="true" typeahead-values="#{tagsBean.bandsCSV}" tiny-screen="full-width" />
+    <b:inputText value="" placeholder="java.util.List" tags="true" typeahead="true" typeahead-values="#{tagsBean.bandsList}"  tiny-screen="full-width" />
+    <b:inputText value="" placeholder="array of strings" tags="true" typeahead="true" typeahead-values="#{tagsBean.bands}" tiny-screen="full-width" />
+</b:form>
+
+            <f:facet name="footer">
+                <b:tabView contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+                    <b:tab title="JSF markup">
+                        <b:panel>
               <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
              <![CDATA[
-                <b:row>
-                  <b:inputText value=""
-						   placeholder="CSV"
-                           tags="true"
-                           tiny-screen="full-width"
-                           typeahead="true"
-                           typeahead-values="&num;{tagsBean.bandsCSV}"/>
-                </b:row>
-                <b:row>
-                  <b:inputText value=""
-                             placeholder="java.util.List"
-                             tags="true"
-                             tiny-screen="full-width"
-                             typeahead="true"
-                             typeahead-values="&num;{tagsBean.bandsList}"/>
-               </b:row>
-               <b:row>
-                <b:inputText value=""
-                             placeholder="array of strings"
-                             tags="true"
-                             tiny-screen="full-width"
-                             typeahead="true"
-                             typeahead-values="&num;{tagsBean.bands}"/>
-               </b:row>
-            ]]></script>
-              </b:well>
-            </b:tab>
-            <b:tab title="JSF bean">
-              <b:well>
-              <script type="syntaxhighlighter" class="brush: java toolbar: false;first-line: 0">
+<b:form horizontal="true">
+    <b:inputText value="" placeholder="CSV" tags="true" typeahead="true" typeahead-values="#{tagsBean.bandsCSV}" tiny-screen="full-width" />
+    <b:inputText value="" placeholder="java.util.List" tags="true" typeahead="true" typeahead-values="#{tagsBean.bandsList}"  tiny-screen="full-width" />
+    <b:inputText value="" placeholder="array of strings" tags="true" typeahead="true" typeahead-values="#{tagsBean.bands}" tiny-screen="full-width" />
+</b:form>
+            ]]></script>  
+                        </b:panel>
+                    </b:tab>
+                    <b:tab title="Java Bean">
+                        <b:panel>
+                            <script type="syntaxhighlighter" class="brush: java toolbar: false;first-line: 0">
              <![CDATA[
                 @ViewScoped
                 @ManagedBean
@@ -329,9 +264,11 @@
                    	}
                 }
              ]]></script>
-              </b:well>
-            </b:tab>
-           </b:tabView>
+                        </b:panel>
+                    </b:tab>
+                </b:tabView>
+            </f:facet>
+        </b:panel>
 
               <h2>Reference section</h2>
                   <ui:include src="InputTextAttributes.xhtml" />

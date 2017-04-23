@@ -15,7 +15,8 @@
                 </p>
                 <p>The most simple example is a plain <code>b:inputText</code> with a <code>placeholder</code> attribute, 
                 which contains an hint that is shown in the input field until something is typed in it.
-                This is how such a simple inputText looks like. We've added a bit of AJAX functionality to it to make it more interesting:</p>
+                The demo below shows what such a simple inputText looks like. We've added a bit of 
+                <a href="../forms/ajax.jsf">AJAX functionality</a> to it to make it more interesting:</p>
                 
                 <b:panel title="Live preview" look="info" collapsible="false">
                    <h:form>
@@ -171,9 +172,9 @@
         </b:panel>
        
                 <a id="prependingButtons" />
-                <h3>Appending or prepending buttons</h3><br/>
-                <p>Another nice feature is that you can append (or prepend) buttons:</p>
-                <b:panel title="Live preview"  look="primary">
+                <h3>Appending or prepending buttons</h3>
+                <p>Another nice feature is that you can append (or prepend) buttons, allowing you to build compact mini-forms for specific actions with little effort:</p>
+                <b:panel title="Live preview" look="info">
                     <b:form id="bid" prependId="false">
                         <b:inputText id="mybid" class="mybid-example" value="#{testBean.val6}" label="Your offer:" renderLabel="true">
                                 <f:facet name="prepend">
@@ -224,12 +225,11 @@
                     </f:facet>
                 </b:panel>
 
-                <p>allowing you to build compact mini-forms for specific actions with little effort.</p>
-                <p class="text-warning">There is only one limitation: you can not prepend or append mixed texts and buttons.
+                <p class="text-warning"><b:badge label="caveat" /> There is only one limitation: you can not prepend or append mixed texts and buttons.
                     The elements on each side can be only of the same type. For instance, it's possible to prepend text elements and append buttons.
                     But it's not possible to prepend both a text element and a button at the same time.</p>
 
-                <h3>Appending or prepending DropButtons</h3><br/>
+                <h3>Appending or prepending DropButtons</h3>
                 <p>What you have seen also applies to DropButtons:</p>
                 <b:panel title="Live preview" look="info" collapsible="false">
                     <b:form horizontal="true">
@@ -307,7 +307,7 @@
                 </b:panel>
 
                 <h3>Controlling the size of b:inputText</h3>
-                <br/>
+                
                 <strong>Height sizing</strong>
                 <p>You can create larger or smaller form controls that match button sizes.</p>
                 <p>Use the <code>fieldSize</code> attribute for predefined input field sizes:</p>
@@ -333,73 +333,6 @@
                 </b:panel>
                     </f:facet>
                 </b:panel>
-       
-                
-                <h3>Grid sizing</h3>
-                <p>If your inputText is not in a panelGrid(table) or is not already in a b:column of your grid layout,
-                    BootsFaces can place the component in a column for you, allowing you to easily control its size.</p>
-                <p>Use <code>span="1"</code> to <code>span="12"</code> for inputs that match the same sizes of the BootsFaces grid columns:</p>
-                
-
-        <b:panel title="Live preview" look="info" collapsible="false">            
-	                    In a row:
-                        <b:row>
-                            <b:form>
-                                <b:inputText span="1" placeholder="span1" />
-                                <b:inputText span="2" placeholder="span 2" />
-                                <b:inputText span="3" placeholder="span 3" />
-                            </b:form>
-                        </b:row>
-	                    or in an horizontal Form:
-                        <b:form horizontal="true">
-                            <b:formGroup>
-                                <b:inputText span="1" placeholder="span1" />
-                                <b:inputText span="2" placeholder="span 2" />
-                                <b:inputText span="3" placeholder="span 3" />
-                                <b:inputText span="6" placeholder="span 6" />
-                            </b:formGroup>
-                            <b:formGroup>
-                                <b:inputText span="9" placeholder="span 9" />
-                            </b:formGroup>
-                            <b:formGroup>
-                                <b:inputText span="12" placeholder="span 12" />
-                            </b:formGroup>
-                        </b:form>
-
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-<script type="syntaxhighlighter"
-							class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-							<![CDATA[
-In a row:
-<b:row>
-    <b:form>    
-        <b:inputText span="1" placeholder="span1" />
-        <b:inputText span="2" placeholder="span 2" />
-        <b:inputText span="3" placeholder="span 3" />
-    </b:form>
-</b:row>
-or in an horizontal Form:
-<b:form horizontal="true">
-    <b:formGroup>
-        <b:inputText span="1" placeholder="span1" />
-        <b:inputText span="2" placeholder="span 2" />
-        <b:inputText span="3" placeholder="span 3" />
-        <b:inputText span="6" placeholder="span 6" />
-    </b:formGroup>
-    <b:formGroup>
-        <b:inputText span="9" placeholder="span 9" />
-    </b:formGroup>
-    <b:formGroup>
-        <b:inputText span="12" placeholder="span 12" />
-    </b:formGroup>
-</b:form>
-            ]]>
-					       </script>
-                </b:panel>
-            </f:facet>
-        </b:panel>
 
                 <h2>AJAX and JavaScript  <b:badge value="since 0.8.0" /></h2>
                 <p>The <code>&lt;b:inputText &gt;</code> supports the full suite of JavaScript and AJAX events,
@@ -618,95 +551,99 @@ public class BeanValidationBean {
             </f:facet>
         </b:panel>
             
-            <h2>Inline forms <b:badge value="improved in 1.0.0" /></h2>
-            <p>Until BootsFaces 0.9.1, you could define inline forms, but the input fields weren't aligned correctly. Hence, BootsFaces 1.0.0 adds
-            the option <code>label-col-xx</code>, which causes BootsFaces to generate correct Bootstrap HTML code. Alternatively to using the
-            technical names you can also use symbolic names to define the label width.</p>
-            <p>You can still use <code>inline="true"</code> along with <code>label-col-xx="y"</code>. In this case, the input field doesn't
-            fill the row completely.</p>
+            <h2>Inline forms <b:badge value="breaking change in 1.1.0"/></h2>
+            <p>To comply with the coding style recommended and supported by the Bootstrap team, we've decided to rework the
+            concept of horizontal and inline forms from scratch in BootsFaces 1.1.0. If you're migrating from an
+            earlier version of BootsFaces, and if you're using inline forms, you'll most likely want to replace them
+            by horizontal forms.</p>
+            <p>Since BootsFaces 1.1.0, inline forms can only be used with a single row. There's no such thing as a multi-line
+            inline form. Multiline-forms are supported either by regular stacked forms (default) or by horizontal form.
+            You activate the horizontal form mode by using the BootsFaces form <code>&lt;b:form horizontal="true" &gt;</code></p>.
             <b:tabView>
-              <b:tab title="displayed as">
+              <b:tab title="horizontal form">
 	              <b:well style="height:180px">
-	                <h:form>
-	                  <b:inputText id="name" value="#{userBean.name}" col-xs="8" label-col-xs="4" 
+	                <b:form horizontal="true">
+	                  <b:inputText id="name" value="#{userBean.name}" col-xs="8" col-md="10" label-col-xs="4" label-col-md="2"
 	                    label="Enter your name" required="true" renderLabel="true" />
-	                  <b:inputText id="age" value="#{userBean.age}" tiny-screen="two-thirds" label-tiny-screen="one-third"
+	                  <b:inputText id="age" value="#{userBean.age}" tiny-screen="two-thirds" medium-screen="10" label-tiny-screen="one-third"
+	                    label-medium-screen="2"
 	                    label="What's your age?" renderLabel="true" />
-	                </h:form>
+	                </b:form>
 	              </b:well>
               </b:tab>
-              <b:tab title="JSF markup">
+              <b:tab title="JSF markup (horizontal form)">
 	              <b:well style="height:180px">
                   <script type="syntaxhighlighter"
                     class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 				  <![CDATA[
     	              <b:well>
-    	                <h:form>
-    	                  <b:inputText id="name" value="&num;{userBean.name}" col-xs="8" label-col-xs="4"
+     	                <b:form horizontal="true">
+    	                  <b:inputText id="name" value="&num;{userBean.name}" col-xs="8" col-md="10" label-col-xs="4" label-col-md="2"
     	                    label="Enter your name" required="true" renderLabel="true" />
-    	                  <b:inputText id="age" value="&num;{userBean.age}" tiny-screen="two-thirds" label-tiny-screen="one-third"
+    	                  <b:inputText id="age" value="&num;{userBean.age}" tiny-screen="two-thirds" medium-screen="10" label-tiny-screen="one-third"
+    	                    label-medium-screen="2"
     	                    label="What's your age?" renderLabel="true" />
-    	                </h:form>
+	                    </b:form>
     	              </b:well>
                   ]]>
                  </script>
                 </b:well>
               </b:tab>
-              <b:tab title="old version displayed as">
+              <b:tab title="inline form">
 	              <b:well style="height:180px">
-	                <h:form>
-	                  <b:inputText id="name" value="#{userBean.name}" col-xs="12" inline="true"
+	                <b:form inline="true">
+	                  <b:inputText id="name" value="#{userBean.name}" 
 	                    label="Enter your name" required="true" renderLabel="true" />
-	                  <b:inputText id="age" value="#{userBean.age}" tiny-screen="two-thirds" inline="true"
+	                  <b:inputText id="age" value="#{userBean.age}" 
 	                    label="What's your age?" renderLabel="true" />
-	                </h:form>
+	                </b:form>
 	              </b:well>
               </b:tab>
-              <b:tab title="old JSF markup">
+              <b:tab title="JSF markup (inline form)">
  	             <b:well style="height:180px">
                    <script type="syntaxhighlighter"
                     class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 				  <![CDATA[
-    	              <b:well>
-    	                <h:form>
-    	                  <b:inputText id="name" value="&num;{userBean.name}" col-xs="12" inline="true"
-    	                    label="Enter your name" required="true" renderLabel="true" />
-    	                  <b:inputText id="age" value="&num;{userBean.age}" tiny-screen="two-thirds" label-tiny-screen="one-third"
-    	                    label="What's your age?" renderLabel="true" />
-    	                </h:form>
-    	              </b:well>
+ 	              <b:well style="height:180px">
+	                <b:form inline="true">
+	                  <b:inputText id="name" value="&num;{userBean.name}" 
+	                    label="Enter your name" required="true" renderLabel="true" />
+	                  <b:inputText id="age" value="&num;{userBean.age}" 
+	                    label="What's your age?" renderLabel="true" />
+	                </b:form>
+	              </b:well>
                   ]]>
                  </script>
                 </b:well>
               </b:tab>
-              <b:tab title="new markup with inline">
+              <b:tab title="stacked form">
 	              <b:well style="height:180px">
 	                <h:form>
-	                  <b:inputText id="name" value="#{userBean.name}" col-xs="8" label-col-xs="4" inline="true"
+	                  <b:inputText id="name" value="#{userBean.name}" col-md="6"
 	                    label="Enter your name" required="true" renderLabel="true" />
-	                  <b:inputText id="age" value="#{userBean.age}" tiny-screen="two-thirds" label-tiny-screen="one-third"
-	                    label="What's your age?" renderLabel="true" inline="true" />
+	                  <b:inputText id="age" value="#{userBean.age}" col-md="6"
+	                    label="What's your age?" renderLabel="true" />
 	                </h:form>
 	              </b:well>
               </b:tab>
-              <b:tab title="new JSF markup with inline">
-	              <b:well style="height:180px">
-                  <script type="syntaxhighlighter"
+              <b:tab title="JSF markup (stacked)">
+ 	             <b:well style="height:180px">
+                   <script type="syntaxhighlighter"
                     class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 				  <![CDATA[
-    	              <b:well>
-    	                <h:form>
-    	                  <b:inputText id="name" value="&num;{userBean.name}" col-xs="8" label-col-xs="4" inline="true"
-    	                    label="Enter your name" required="true" renderLabel="true" />
-    	                  <b:inputText id="age" value="&num;{userBean.age}" tiny-screen="two-thirds" label-tiny-screen="one-third"
-    	                    label="What's your age?" renderLabel="true" inline="true" />
-    	                </h:form>
-    	              </b:well>
+ 	              <b:well style="height:180px">
+	                <h:form>
+	                  <b:inputText id="name" value="&num;{userBean.name}" col-md="6"
+	                    label="Enter your name" required="true" renderLabel="true" />
+	                  <b:inputText id="age" value="&num;{userBean.age}" col-md="6"
+	                    label="What's your age?" renderLabel="true" />
+	                </h:form>
+	              </b:well>
                   ]]>
                  </script>
                 </b:well>
               </b:tab>
-            </b:tabView>
+             </b:tabView>
             
             
             <h2>Configuring the default value of the <code>renderLabel</code> attribute</h2>
@@ -717,8 +654,6 @@ public class BeanValidationBean {
             <code>web.xml</code> of your application to set the default value of <code>renderLabel</code>. It goes without
             saying that you can use EL expressions with this attribute. We traded performance to give you maximum flexibility.</p>
 
-            
-            
                      <b:panel title="Live preview" look="info" collapsible="false">
                          <b:form>
                              <b:inputText id="age" value="#{userBean.age}" label="What's your age?" />
@@ -908,6 +843,71 @@ public class DefaultValuesBean implements Serializable {
     </b:formGroup>
 </b:form>
              ]]></script>
+                </b:panel>
+            </f:facet>
+        </b:panel>
+                
+                <p><b>Using the <code>span</code> attribute for responsive design</b></p>
+                <p>The <code>span</code> attribute is a short-hand notation for <code>col-md</code>
+                or <code>medium-screen</code>:</p>
+                
+
+        <b:panel title="Live preview" look="info">            
+	                    In a row:
+                        <b:row>
+                            <b:form>
+                                <b:inputText span="1" placeholder="span1" />
+                                <b:inputText span="2" placeholder="span 2" />
+                                <b:inputText span="3" placeholder="span 3" />
+                            </b:form>
+                        </b:row>
+	                    or in an horizontal Form:
+                        <b:form horizontal="true">
+                            <b:formGroup>
+                                <b:inputText span="1" placeholder="span1" />
+                                <b:inputText span="2" placeholder="span 2" />
+                                <b:inputText span="3" placeholder="span 3" />
+                                <b:inputText span="6" placeholder="span 6" />
+                            </b:formGroup>
+                            <b:formGroup>
+                                <b:inputText span="9" placeholder="span 9" />
+                            </b:formGroup>
+                            <b:formGroup>
+                                <b:inputText span="12" placeholder="span 12" />
+                            </b:formGroup>
+                        </b:form>
+
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+<script type="syntaxhighlighter"
+							class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+							<![CDATA[
+In a row:
+<b:row>
+    <b:form>    
+        <b:inputText span="1" placeholder="span1" />
+        <b:inputText span="2" placeholder="span 2" />
+        <b:inputText span="3" placeholder="span 3" />
+    </b:form>
+</b:row>
+or in an horizontal Form:
+<b:form horizontal="true">
+    <b:formGroup>
+        <b:inputText span="1" placeholder="span1" />
+        <b:inputText span="2" placeholder="span 2" />
+        <b:inputText span="3" placeholder="span 3" />
+        <b:inputText span="6" placeholder="span 6" />
+    </b:formGroup>
+    <b:formGroup>
+        <b:inputText span="9" placeholder="span 9" />
+    </b:formGroup>
+    <b:formGroup>
+        <b:inputText span="12" placeholder="span 12" />
+    </b:formGroup>
+</b:form>
+            ]]>
+					       </script>
                 </b:panel>
             </f:facet>
         </b:panel>
