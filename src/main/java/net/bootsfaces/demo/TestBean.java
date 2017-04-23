@@ -5,7 +5,6 @@ package net.bootsfaces.demo;
  */
 
 import java.io.Serializable;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
