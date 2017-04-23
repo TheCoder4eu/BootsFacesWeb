@@ -96,7 +96,7 @@ td {
     <p>The datatable has a couple of options to configure it. Some of them are shown in the example below.</p>
     
             <b:panel title="Live preview">            
-                <h:form>
+                <h:form id="table-form">
 <b:row>
             <b:column small-screen="half">
               <b:dataTable value="#{carPool.carPool}"
@@ -243,7 +243,7 @@ td {
                 <b:panel>
                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 				    <![CDATA[
-          <h:form>
+          <h:form id="table-form">
               <b:dataTable value="&num;{carPool.carPool}"
                 var="car"
                 id="basic-usage-id"
@@ -423,7 +423,7 @@ td {
 
     
         <b:panel title="Live preview">
-            <h:form>
+            <h:form id="i18n">
             <b:selectOneMenu value="#{carPool.language}" onchange="i18nBcarPool2Widget.DataTable().destroy();ajax:carPool.onLanguageChange()" update="bcarPool2">
              <f:selectItem itemLabel="Browser default" itemValue="#{null}"/>
              <f:selectItem itemLabel="Italian" itemValue="Italian"/>
@@ -458,7 +458,7 @@ td {
                           <script type="syntaxhighlighter"
             class="brush: xml; toolbar: false;gutter: false; first-line: 1">
             <![CDATA[
-        <h:form>
+        <h:form id="i18n">
             <b:selectOneMenu value="&num;{carPool.language}" onchange="i18nBcarPool2Widget.DataTable().destroy();ajax:carPool.onLanguageChange()" update="bcarPool2">
                  <f:selectItem itemLabel="Browser default" itemValue="&num;{null}"/>
                  <f:selectItem itemLabel="Italian" itemValue="Italian"/>
