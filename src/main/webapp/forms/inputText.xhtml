@@ -17,7 +17,7 @@
                 which contains an hint that is shown in the input field until something is typed in it.
                 This is how such a simple inputText looks like. We've added a bit of AJAX functionality to it to make it more interesting:</p>
                 
-                <b:panel title="Live preview" look="info">
+                <b:panel title="Live preview" look="info" collapsible="false">
                    <h:form>
                      <b:inputText placeholder="Type something here..." value="#{inputTextBean.text}"
                                   onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
@@ -48,7 +48,7 @@
                 <p>You can easily prepend or append text to your inputTexts and what you prepend and append will seem part of the input field.
                 Just use the facets <code>prepend</code> and <code>append</code> and put the <code>h:outputText</code> element 
                 (or image, or whatever) into the facet. You can even prepend and append at the same time, as in the following example:</p>
-                <b:panel title="Live preview" look="primary">
+                <b:panel title="Live preview" look="info" collapsible="false">
                     <b:form inline="true">
                         <h:panelGrid columns="1"  cellpadding="5">
                             <b:inputText label="E-mail:" renderLabel="true" style="width:100%;" labelStyle="width:80px;">
@@ -100,7 +100,7 @@
                     </f:facet>
                 </b:panel>
                 <p>Finally, you can go further and prepend or append multiple text elements, as in the following example:</p>
-                <b:panel title="Live preview" look="primary">
+                <b:panel title="Live preview" look="info" collapsible="false">
                     <b:form inline="true">
                         <b:inputText value="99" label="Your bid" renderLabel="true">
                             <f:facet name="prepend">
@@ -133,7 +133,7 @@
                 </b:panel>
                 <h3>Appending or prepending icons</h3>
                 <p>You can take advantage of the <code><b:navLink outcome="/layout/icons" value="&lt;b:icon&gt;"/></code> or <code><b:navLink outcome="/layout/icons" value="&lt;b:iconAwesome&gt;"/></code> components to append (or prepend) icons :</p>
-                <b:panel title="Live preview" look="primary">            
+                <b:panel title="Live preview" look="info" collapsible="false">            
                 <b:form horizontal="true">
                     <b:inputText placeholder="Username" required="true" label="Username" renderLabel="true" colMd="10" labelColMd="2">
                         <f:facet name="prepend">
@@ -231,7 +231,7 @@
 
                 <h3>Appending or prepending DropButtons</h3><br/>
                 <p>What you have seen also applies to DropButtons:</p>
-                <b:panel title="Live preview" look="primary">
+                <b:panel title="Live preview" look="info" collapsible="false">
                     <b:form horizontal="true">
                         <b:formGroup>
                             <b:inputText placeholder="Text" span="6">
@@ -312,7 +312,7 @@
                 <p>You can create larger or smaller form controls that match button sizes.</p>
                 <p>Use the <code>fieldSize</code> attribute for predefined input field sizes:</p>
                 
-                <b:panel title="Live preview" look="primary">            
+                <b:panel title="Live preview" look="info" collapsible="false">            
                     <b:form>
                         <b:inputText fieldSize="sm" placeholder="small (sm)"/>
                         <b:inputText placeholder="default"/>
@@ -341,7 +341,7 @@
                 <p>Use <code>span="1"</code> to <code>span="12"</code> for inputs that match the same sizes of the BootsFaces grid columns:</p>
                 
 
-        <b:panel title="Live preview" look="primary">            
+        <b:panel title="Live preview" look="info" collapsible="false">            
 	                    In a row:
                         <b:row>
                             <b:form>
@@ -447,7 +447,7 @@ or in an horizontal Form:
 	        in the web.xml. The example below shows how to do this.</p>
             
             
-        <b:panel title="Live preview" look="primary">
+        <b:panel title="Live preview" look="info" collapsible="false">
             
                   <b:panelGrid columns="2" size="sm">
                       <b:form>
@@ -546,7 +546,7 @@ public class UserBean {
             
             <h2>Bean Validation API (JSR 303 and JSR 349) <b:badge value="since 1.1.0" /></h2>
             
-        <b:panel title="Live preview" look="primary">
+        <b:panel title="Live preview" look="info" collapsible="false">
             <b:form>
                       <b:inputText id="name" value="#{beanValidationBean.name}"
                                    label="Enter your name" renderLabel="true" />
@@ -719,7 +719,7 @@ public class BeanValidationBean {
 
             
             
-                     <b:panel title="Live preview" look="primary">
+                     <b:panel title="Live preview" look="info" collapsible="false">
                          <b:form>
                              <b:inputText id="age" value="#{userBean.age}" label="What's your age?" />
                              <h:message for="age" />
@@ -803,7 +803,7 @@ public class DefaultValuesBean implements Serializable {
             <p>This feature comes in handy if you're working with JAAS, which requires the id and the name of the field
             to be "j_username" and "j_password":
             </p>
-            <b:panel title="Live preview" look="primary">
+            <b:panel title="Live preview" look="info" collapsible="false">
                 <b:form id="loginForm">
                     <b:inputText id="usernameDiv" fieldId="j_username" name="j_username"
                                  value="#{loginBean.username}"
@@ -869,7 +869,7 @@ public class DefaultValuesBean implements Serializable {
         also with <code>&lt;b:inputText /&gt;</code>. Note that this is equivalent to putting it into a
         <code>&lt;b:column /&gt;</code>. In particular, the CSS styles are inside the column div. Responsive design only applies to horizontal forms.
         </p>
-        <b:panel title="Live preview" look="primary">            
+        <b:panel title="Live preview" look="info" collapsible="false">            
 
 <b:form horizontal="true">
     <b:inputText value="large-screen='full-width'" large-screen="full-width" />
@@ -916,7 +916,7 @@ public class DefaultValuesBean implements Serializable {
         <h2>Visibility depending on screen size <b:badge value="since 0.8.6/0.9.0" /></h2>
         <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
         <br/>
-        <b:panel title="Live preview" look="primary">            
+        <b:panel title="Live preview" look="info" collapsible="false">            
             <b:form horizontal="true">
                 <b:formGroup>
                     <b:column col-md="2">
