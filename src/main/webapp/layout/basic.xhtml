@@ -57,7 +57,7 @@
 
                   <h1>Putting it into action</h1>
 
-                  <b:panel title="Live preview">
+                  <b:panel title="Live preview" look="info" collapsible="false">
                       <h:form id="loginForm">
                           <b:container fluid="true">
                               <b:panel title="login screen" look="primary">
@@ -368,7 +368,7 @@ public class LoginBean {
                       you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range)
                       before becoming horizontal on desktop (medium) devices.</p>
                   <p>The <code>span=*</code> and <code>offset=*</code> attributes are meant for this common special use case, to speed up markup writing</p>
-                  <b:panel title="Live preview">
+                  <b:panel title="Live preview" look="info" collapsible="false">
 
                       <b:row styleClass="show-grid">
                           <b:column span="1"><h:outputText value="span=1"/></b:column>
@@ -437,7 +437,7 @@ public class LoginBean {
                       Don't want your columns to simply stack in smaller devices? Use the extra small and medium device grid attributes including
                       <code>col-xs=*</code> and <code>col-md=*</code> in your columns. See the example below for a better idea of how it all works.
                   </p>
-                  <b:panel title="Live preview">
+                  <b:panel title="Live preview" look="info" collapsible="false">
 
                       <!-- Stack the columns on mobile by making one full-width and the other half-width -->
                       <b:row styleClass="show-grid">
@@ -481,7 +481,7 @@ public class LoginBean {
                   </b:panel>
                   <h3>Example: Mobile, tablet, desktops</h3>
                   <p>Build on the previous example by creating even more dynamic and powerful layouts with tablet <code>col-sm=*</code> attribute.</p>
-                  <b:panel title="Live preview">
+                  <b:panel title="Live preview" look="info" collapsible="false">
 
                       <b:row styleClass="show-grid">
                           <b:column col-xs="12" col-sm="6" col-md="8"><h:outputText value="col-xs=12 col-sm=6 col-md=8"/></b:column>
@@ -518,7 +518,7 @@ public class LoginBean {
                       These attributes increase the left margin of a column by <code>*</code> columns.
                       For example, <code>offest=4</code> moves a <code>span=4</code> over four columns.
                   </p>
-                  <b:panel title="Live preview">
+                  <b:panel title="Live preview" look="info" collapsible="false">
 
                       <b:row styleClass="show-grid">
                           <b:column span="4"><h:outputText value="span=4"/></b:column>
@@ -556,7 +556,7 @@ public class LoginBean {
                   <code>col-md=*</code> column.
                   Nested rows should include a set of columns that add up to 12.
                   </p>
-                  <b:panel title="Live preview">
+                  <b:panel title="Live preview" look="info" collapsible="false">
 
                       <b:row styleClass="show-grid">
                           <b:column col-md="9">
@@ -640,7 +640,7 @@ public class LoginBean {
 		These elements will be shown as disbled, but still are accessible. In part, that's because this CSS property isn't fully
 		standardized yet. For instance, it isn't supported by Internet Explorer 11 and below, and Opera 18 and below.</p>
 		
-            <b:panel title="Live preview">
+            <b:panel title="Live preview" look="info" collapsible="false">
                 <h:form>
                     <b:row>
                         <b:column span="8">

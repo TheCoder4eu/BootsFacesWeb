@@ -122,7 +122,7 @@
     server side.</p>
 
 
-        <b:panel title="Live preview">
+        <b:panel title="Live preview" look="info" collapsible="false">
             <h:form id="oneToTenFormId">
                   <b:panelGrid columns="3">
                     <p:outputLabel for="@next" value="Enter a number between 1 and 10"/>
@@ -188,7 +188,7 @@ public class ImageGallery implements Serializable {
     The input field is hidden until the switch is activated. Of course, both the label and the error message
     have to be hidden, too. You can achieve this with <code>update="@after"</code>:</p>
 
-        <b:panel title="Live preview">            
+        <b:panel title="Live preview" look="info" collapsible="false">            
 <h:form id="oneToTenFormId2">
             <b:panelGrid colSpans="2,2,2,6">
               <b:selectBooleanCheckbox value="#{imageGallery.showNumber}" onclick="ajax:imageGallery.validateNumber()"
@@ -222,7 +222,7 @@ public class ImageGallery implements Serializable {
                 <h2>More advanced live demo</h2>
 				<p>This demo shows some of the options at a glance.</p>
                 
-                <b:panel title="Live preview">
+                <b:panel title="Live preview" look="info" collapsible="false">
 
                     <h:form id="simpleForm">
                         	<b:panel>
@@ -343,7 +343,7 @@ public class ImageGallery implements Serializable {
 				the search expression framework gives you.</p>
 				
                 
-        <b:panel title="Live preview">
+        <b:panel title="Live preview" look="info" collapsible="false">
             
             <h:form id="form">
                         <b:well>

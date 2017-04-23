@@ -16,7 +16,7 @@
                     
                     <p>Using an icon in BootsFaces is very simple: just add a <code>&lt;b:icon&gt;</code> with a <code>name</code> attribute with the icon name (without the trailing <b>glyphicon-</b> prefix)</p>
                     
-                    <b:panel title="Live preview">
+                    <b:panel title="Live preview" look="info" collapsible="false">
                             <b:icon name="cloud" /> glyphicon-cloud<br/>
                             <b:icon name="envelope" /> glyphicon-envelope<br/>
                             <b:icon name="pencil" /> glyphicon-pencil<br/>
@@ -45,7 +45,7 @@
 
                         <hr/>
                         
-                        <b:panel title="Live preview">
+                        <b:panel title="Live preview" look="info" collapsible="false">
                             <b:iconAwesome name="camera-retro" /> fa-camera-retro<br/>
                             <b:iconAwesome name="coffee" /> fa-coffee<br/>
                             <b:iconAwesome name="futbol-o" /> fa-futbol-o<br/>
@@ -77,7 +77,7 @@
                         <p>To increase icon sizes relative to their container, use the <code>size="lg"</code> (33% increase), <code>size="2x"</code>,
                         <code>size="3x"</code>, <code>size="4x"</code>, or <code>size="5x"</code> attributes.</p>
 
-                        <b:panel title="Live preview">
+                        <b:panel title="Live preview" look="info" collapsible="false">
                             <b:icon name="globe" size="lg" /> size="lg"<br/>
                             <b:icon name="globe" size="2x" /> size="2x"<br/>
                             <b:icon name="globe" size="3x" /> size="3x"<br/>
@@ -105,7 +105,7 @@
                         
                         <p>To rotate or flip your icons, just use the <code>rotate="R"</code>, <code>rotate="L"</code> and <code>flip="H"</code>, <code>flip="V"</code> attributes respectively.</p>
                         
-                        <b:panel title="Live preview">
+                        <b:panel title="Live preview" look="info" collapsible="false">
                             <b:iconAwesome name="shield" /> normal<br/>
                             <b:iconAwesome name="shield" rotate="R" /> rotate="R" (right - 90 deg.)<br/>
                             <b:iconAwesome name="shield" rotate="L" /> rotate="L" (left - 270 deg.)<br/>
@@ -132,7 +132,7 @@
                         <hr/>
 
                         <p>To let your icons spin, just add the <code>spin="true"</code> attribute.</p>
-                        <b:panel title="Live preview">
+                        <b:panel title="Live preview" look="info" collapsible="false">
                             <b:iconAwesome name="spinner" spin="true" size="3x" />#{'   '}
                             <b:iconAwesome name="circle-o-notch" spin="true" size="3x" />#{'   '}
                             <b:iconAwesome name="refresh" spin="true" size="3x" />#{'   '}
@@ -159,7 +159,7 @@
                            <p>This is one of the cases a picture is worth a thousand words. Move the mouse over the spinning icons below, click them, and
                            change the checkboxes below to get the idea.</p>
 
-                           <b:panel title="Live preview">
+                           <b:panel title="Live preview" look="info" collapsible="false">
         <h:form>
     <b:row>
       <b:column col-sm="6">
@@ -331,7 +331,7 @@
                 also with <code>&lt;b:icon /&gt;</code>. The example may look a bit odd, because these icons
                 don't fill all the available screen space, but still, it shows the idea nicely:</p>
                 
-                <b:panel title="Live preview">
+                <b:panel title="Live preview" look="info" collapsible="false">
                      <b:row>
                         <b:iconAwesome name="cog" tooltip="large-screen='full-width'" large-screen="full-width" />
                      </b:row>
@@ -377,7 +377,7 @@
                 <h2>Visibility depending on screen size <b:badge value="since 0.8.6/0.9.0" /></h2>
                 <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
                 
-                <b:panel title="Live preview">
+                <b:panel title="Live preview" look="info" collapsible="false">
                     <b:panelGrid colSpans="3,9">
                           <h:outputText value="Visible on &gt;= md:" />
                           <b:iconAwesome name="cog" value="Visible on medium or large screen" severity="info" visible="md..." />
@@ -416,7 +416,7 @@
                 <h2>Tooltips</h2>
                 <p><code>&lt;b:iconAwesome name="cog" /&gt;</code> supports tooltips:</p>
 
-                <b:panel title="Live preview">
+                <b:panel title="Live preview" look="info" collapsible="false">
                     <b:iconAwesome name="cog" value="Look at my tooltip!" severity="info" tooltip="Ain't it a nice tooltip?"/>
                     <f:facet name="footer">
                         <strong>JSF markup: </strong>

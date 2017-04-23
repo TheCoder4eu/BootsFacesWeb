@@ -40,7 +40,7 @@ td {
     simplest way to define a column is to simply use the <code>value</code> attribute. If you don't set a
     header, it's automatically derived from the variable name of the value.</p>
     
-    <b:panel title="Live preview">            
+    <b:panel title="Live preview" look="info" collapsible="false">            
         <h:form>
             <b:dataTable value="#{carPool.carPool}"
                          var="car"
@@ -95,7 +95,7 @@ td {
     <h3>Customizing the table</h3>
     <p>The datatable has a couple of options to configure it. Some of them are shown in the example below.</p>
     
-            <b:panel title="Live preview">            
+            <b:panel title="Live preview" look="info" collapsible="false">            
                 <h:form>
 <b:row>
             <b:column small-screen="half">
@@ -422,7 +422,7 @@ td {
     your custom option is added to the <code>&lt;b:dataTable /&gt;</code> component, it may be added twice.</p>
 
     
-        <b:panel title="Live preview">
+        <b:panel title="Live preview" look="info" collapsible="false">
             <h:form>
             <b:selectOneMenu value="#{carPool.language}" onchange="i18nBcarPool2Widget.DataTable().destroy();ajax:carPool.onLanguageChange()" update="bcarPool2">
              <f:selectItem itemLabel="Browser default" itemValue="#{null}"/>
@@ -542,7 +542,7 @@ td {
     <p>Note that the standard JavaScript callbacks like <code>onclick</code> and <code>ondblclick</code> are also there, but they don't 
     distinguish between the rows and columns. To know which row and/or column has been clicked, either use the jQuery callbacks <code>onselect</code>
     and <code>ondeselect</code> or add <code>onclick</code> listeners to the individual columns.</p>
-            <b:panel title="Live preview">
+            <b:panel title="Live preview" look="info" collapsible="false">
             <h:form>
 	      <b:dataTable value="#{carPool.carPool}"
 	                     var="car"
@@ -690,7 +690,7 @@ public class CarPool implements Serializable {
     <p>If there's not enough screen estate to display the table, the last couple of columns are hidden, as you can see
     in this example:</p>
 
-                <b:panel title="Live preview">            
+                <b:panel title="Live preview" look="info" collapsible="false">            
 
         <b:dataTable value="#{carPool.carPool}"
                      var="car"
@@ -740,7 +740,7 @@ public class CarPool implements Serializable {
     <a id="emptyTable"></a>
     <h3>Empty data table:</h3>
     
-            <b:panel title="Live preview">            
+            <b:panel title="Live preview" look="info" collapsible="false">            
 <b:dataTable value="#{carPool.emptyCarPool}"
               var="car">
                <b:dataTableColumn value="#{car.brand}" />
@@ -775,7 +775,7 @@ public class CarPool implements Serializable {
     this happens if every cell in a row is made editable. In this case you can enforce the correct
     sort order by adding the attribute <code>data-order</code>, as described <a href="#dataOrder">above</a>.</p>
     
-                    <b:panel title="Live preview">            
+                    <b:panel title="Live preview" look="info" collapsible="false">            
           <h:form>
                 <b:dataTable value="#{carPool.carPool}" var="car" class="editableCarTable">
                   <b:dataTableColumn value="#{car.brand}" />

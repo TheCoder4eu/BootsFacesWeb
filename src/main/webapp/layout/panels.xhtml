@@ -18,7 +18,7 @@
       By default, all the <code>&lt;b:panel&gt;</code> does is apply some basic border and padding to contain some content.
     </p>
 
-    <b:panel title="Live preview">
+    <b:panel title="Live preview" look="info" collapsible="false">
         <b:panel>
           <h:outputText value="Basic panel example " />
         </b:panel>
@@ -49,7 +49,7 @@
       to add a pre-styled heading. Facets may contain arbitrary content. For instance, the example below contains a <code>&lt;b:badge /&gt;</code>:
     </p>
     
-    <b:panel title="Live preview">
+    <b:panel title="Live preview" look="info" collapsible="false">
         <b:panel>
           <f:facet name="heading">
           	<i class="fa fa-battery-three-quarters" style="padding-right:20px" />
@@ -88,7 +88,7 @@
       having the attribute's value as Title.
     </p>
 
-    <b:panel title="Live preview">
+    <b:panel title="Live preview" look="info" collapsible="false">
         <b:panel title="Panel title" collapsible="false">
                 <h:outputText value="Panel Content" />
               </b:panel>
@@ -117,7 +117,7 @@
       :
     </p>
     
-    <b:panel title="Live preview">
+    <b:panel title="Live preview" look="info" collapsible="false">
          <b:panel title="Try to fold me away!" collapsible="false">
                    I bet you can't...
               </b:panel>
@@ -142,7 +142,7 @@
     You can activate it by setting <code>showCollapseLink="true"</code>:
     </p>
     
-    <b:panel title="Live preview">
+    <b:panel title="Live preview" look="info" collapsible="false">
         
         <b:panelGrid colSpans="6,6" size="sm">
         <b:panel title="showCollapseLink='false' (default)" look="primary">
@@ -181,7 +181,7 @@
       panel on this page which restores its state after clicking the
       button:</p>
 
-    <b:panel title="Live preview">
+    <b:panel title="Live preview" look="info" collapsible="false">
         <b:panelGrid colSpans="6,6" id="stateGridId">
       <h:form>
         <b:panel title="Within form - collapse state is restored"
@@ -232,7 +232,7 @@
     <p>The collapse state can also be controlled by an attribute of
       a managed bean:</p>
     
-    <b:panel title="Live preview">
+    <b:panel title="Live preview" look="info" collapsible="false">
         <h:form>
       <b:panelGrid colSpans="6,6">
         <b:panel
@@ -295,7 +295,7 @@
       attribute with values primary, success, info, warning or danger.
     </p>
     
-    <b:panel title="Live preview">
+    <b:panel title="Live preview" look="info" collapsible="false">
         <b:panel title="Panel Title - Primary" look="primary">
             <h:outputText value="Panel Content" />
         </b:panel>
@@ -347,7 +347,7 @@
       not meant to be in the foreground.
     </p>
     
-    <b:panel title="Live preview">
+    <b:panel title="Live preview" look="info" collapsible="false">
         
         <b:panel title="Panel with Footer" look="info">
                 <h:outputText value="Panel Content" />
@@ -381,7 +381,7 @@
       <code>onexpanded</code>, <code>oncollapse</code> and <code>oncollapsed.</code>.
     </p>
     
-    <b:panel title="Live preview">
+    <b:panel title="Live preview" look="info" collapsible="false">
         <h:form>
                  <b:panelGrid colSpans="6,6">
                    <b:panel look="primary" title="AJAXified b:panel"
@@ -448,7 +448,7 @@
 		These elements will be shown as disabled, but still are accessible. In part, that's because this CSS property isn't fully
 		standardized yet. For instance, it isn't supported by Internet Explorer 11 and below, and Opera 18 and below.</p>
         
-        <b:panel title="Live preview">
+        <b:panel title="Live preview" look="info" collapsible="false">
         
             <b:panel contentDisabled="true">
                 <h:form>

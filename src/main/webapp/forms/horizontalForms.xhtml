@@ -54,7 +54,7 @@
 		</p>            
             
             <h3>Inline form</h3>
-            <b:panel title="Live preview">
+            <b:panel title="Live preview" look="info" collapsible="false">
 			    	<b:form inline="true">
 						<b:inputText label="random text" render-label="true"
 						    value="#{formBean.inputText}" />#{' '}
@@ -85,17 +85,17 @@
             
             <h3>Regular BootsFaces b:form (stacked)</h3>
             
-            <b:panel title="Live preview">
+            <b:panel title="Live preview" look="info" collapsible="false">
 			    	<b:form>
 			    		<b:row>
 			    			<b:column medium-screen="full">
 								<b:inputText style="width: 250px;" label="b:inputText" render-label="true" label-style="width:150px"
-								             value="&num;{formBean.inputText}" onmouseover="ajax:formBean.updateInputText()" update="@this"
+								             value="#{formBean.inputText}" onmouseover="ajax:formBean.updateInputText()" update="@this"
 								             tooltip="tooltip of the inputText"/>
 							</b:column>
 			    			<b:column medium-screen="full">
 								<b:inputTextarea style="width: 250px;" label="b:inputTextarea" render-label="true" label-style="width:150px"
-								             value="&num;{formBean.inputTextarea}" onmouseover="ajax:formBean.updateInputTextarea()" update="@this"
+								             value="#{formBean.inputTextarea}" onmouseover="ajax:formBean.updateInputTextarea()" update="@this"
 								             tooltip="tooltip of the inputTextarea"/>
 							</b:column>
 			    			<b:column medium-screen="full">
@@ -199,7 +199,7 @@
             
             <h3>Horizontal form</h3>
             
-            <b:panel title="Live preview">
+            <b:panel title="Live preview" look="info" collapsible="false">
 
 			    	<b:form horizontal="true">
 						<b:inputText label-small-screen="4" small-screen="8"  label="b:inputText" render-label="true"

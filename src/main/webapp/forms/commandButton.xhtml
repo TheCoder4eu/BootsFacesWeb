@@ -34,7 +34,7 @@
                 <h3>The Bootstrap look</h3>
                 <p>By default, command buttons are gray (depending on your theme). You can configure them by using a different look:</p>
                 
-                <b:panel title="Live preview">            
+                <b:panel title="Live preview" look="info" collapsible="false">            
                 <h:form>
                     <b:panelGrid columns="6" size="sm" >
                         <b:commandButton value="primary" ajax="true" update="@none" look="primary" />
@@ -97,7 +97,7 @@
  				check box is set. It also calls Java method when the mouse point enters the command button (<code>onmouseover</code>),
  				and when it leaves it again (<code>onmouseout</code>):</p>
                 
-                <b:panel title="Live preview">            
+                <b:panel title="Live preview" look="info" collapsible="false">            
 <h:form id="form1">
                         <b:panelGrid columns="1">
   	            		<b:selectBooleanCheckbox value="#{commandButtonBean.suppressClick}" caption="suppress click (JavaScript)" id="click" />
@@ -191,7 +191,7 @@
                 </p>
 
                                     
-        <b:panel title="Live preview">
+        <b:panel title="Live preview" look="info" collapsible="false">
             <h:form id="form">
 
                         <b:well>
@@ -410,7 +410,7 @@
             <h2>Icon modifiers <b:badge value="since 0.9.0" /></h2>
             <p>Both Fontawesome icons and Glyphicons can be decorated with modifiers:</p>
             
-            <b:panel title="Live preview">            
+            <b:panel title="Live preview" look="info" collapsible="false">            
                 <h:form>
                     <h:panelGrid columns="1">
                         <b:commandButton icon-spin="true" iconAwesome="thumbs-down"
@@ -474,7 +474,7 @@
            <p>You can put arbitrary content in the caption of the command button.
            You aren't limited to simple icons and text.</p>
            
-        <b:panel title="Live preview">            
+        <b:panel title="Live preview" look="info" collapsible="false">            
             <h:form>
               <b:commandButton style="width:280px"
                    look="info">
@@ -521,7 +521,7 @@
             <p>The classical usecase of the <code>immediate</code> flag is the "cancel" button. Obviously, you don't
             want to force the user to input correct data before they can cancel their input.</p>
             
-            <b:panel title="Live preview">            
+            <b:panel title="Live preview" look="info" collapsible="false">            
                 <h:form>
                     <p>Guess a number. It has to be between 1 and 10.</p>
                     <b:inputText value="#{numberGuessBean.guess}" label="Your guess"  render-label="true" />
@@ -563,7 +563,7 @@
             	<li>Pass it an an JSF standard &lt;f:param /&gt;.</li>
             </ul>
 
-            <b:panel title="Live preview">            
+            <b:panel title="Live preview" look="info" collapsible="false">            
                     <p>Click a button to pass the parameter.</p>
                     <h:form>
                     <b:panelGrid columns="4" size="sm">
@@ -612,7 +612,7 @@
         of their container. In other words, the commandButtons were to wide. BootsFaces 1.1.0 fixes this. If your CSS
         rules use the id of the commandButton, you might have to modify the selector of the rule to <code>#id > commandButton</code>.</p>
         
-                <b:panel title="Live preview">            
+                <b:panel title="Live preview" look="info" collapsible="false">            
                     <h:form>
                 <b:row>
 	                <b:commandButton value="large-screen='full-width'" large-screen="full-width" />
@@ -660,7 +660,7 @@
         <h2>Visibility depending on screen size <b:badge value="since 0.8.6/0.9.0" /></h2>
         <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
         
-        <b:panel title="Live preview">            
+        <b:panel title="Live preview" look="info" collapsible="false">            
 
             <h:form>
             <b:panelGrid colSpans="3,9">
