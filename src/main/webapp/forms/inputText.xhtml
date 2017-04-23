@@ -918,36 +918,11 @@ or in an horizontal Form:
         <br/>
         <b:panel title="Live preview" look="info" collapsible="false">            
             <b:form horizontal="true">
-                <b:formGroup>
-                    <b:column col-md="2">
-                        <h:outputText value="Visible on &gt;= md:" />
-                    </b:column>
-                    <b:inputText placeholder="Visible on medium or large screen" visible="md..." col-md="10" />
-                </b:formGroup>
-                <b:formGroup>
-                    <b:column col-md="2">
-                        <h:outputText value="Visible on &lt;= sm:" />
-                    </b:column>
-                    <b:inputText placeholder="Visible on small-screen" visible="...sm" col-md="10"/>
-                </b:formGroup>
-                <b:formGroup>
-                    <b:column col-md="2">
-                        <h:outputText value="Visible on sm...lg:" />
-                    </b:column>
-                    <b:inputText placeholder="Visible on small to large screen" visible="sm...lg" col-md="10"/>
-                </b:formGroup>
-                <b:formGroup>
-                    <b:column col-md="2">
-                        <h:outputText value="Visible on xs and md:" />
-                    </b:column>
-                    <b:inputText placeholder="Visible on tiny and medium screen" visible="xs,md" col-md="10"/>
-                </b:formGroup>
-                <b:formGroup>
-                    <b:column col-md="2">
-                        <h:outputText value="Col-md-6, offset 2:" />
-                    </b:column>
-                    <b:inputText placeholder="col-md-6, offset 2" col-md="6" offset="2" />
-                </b:formGroup>
+                <b:inputText placeholder="Visible on medium or large screen" visible="md..." label="Visible on &gt;= md:" renderLabel="true" label-col-md="2" col-md="10" />
+                <b:inputText placeholder="Visible on small-screen" visible="...sm" label="Visible on &lt;= sm:" renderLabel="true" label-col-md="2" col-md="10"/>
+                <b:inputText placeholder="Visible on small to large screen" visible="sm...lg" label="Visible on sm...lg:" renderLabel="true" label-col-md="2" col-md="10"/>
+                <b:inputText placeholder="Visible on tiny and medium screen" visible="xs,md" label="Visible on xs and md:" renderLabel="true" label-col-md="2" col-md="10"/>
+                <b:inputText placeholder="col-md-6, offset 2" label="Col-md-6, offset 2:" renderLabel="true" label-col-md="2" col-md="6" offset="2" />
             </b:form>
 
             <f:facet name="footer">
@@ -956,36 +931,11 @@ or in an horizontal Form:
 	          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
              <![CDATA[
             <b:form horizontal="true">
-                <b:formGroup>
-                    <b:column col-md="2">
-                        <h:outputText value="Visible on &gt;= md:" />
-                    </b:column>
-                    <b:inputText placeholder="Visible on medium or large screen" visible="md..." col-md="10" />
-                </b:formGroup>
-                <b:formGroup>
-                    <b:column col-md="2">
-                        <h:outputText value="Visible on &lt;= sm:" />
-                    </b:column>
-                    <b:inputText placeholder="Visible on small-screen" visible="...sm" col-md="10"/>
-                </b:formGroup>
-                <b:formGroup>
-                    <b:column col-md="2">
-                        <h:outputText value="Visible on sm...lg:" />
-                    </b:column>
-                    <b:inputText placeholder="Visible on small to large screen" visible="sm...lg" col-md="10"/>
-                </b:formGroup>
-                <b:formGroup>
-                    <b:column col-md="2">
-                        <h:outputText value="Visible on xs and md:" />
-                    </b:column>
-                    <b:inputText placeholder="Visible on tiny and medium screen" visible="xs,md" col-md="10"/>
-                </b:formGroup>
-                <b:formGroup>
-                    <b:column col-md="2">
-                        <h:outputText value="Col-md-6, offset 2:" />
-                    </b:column>
-                    <b:inputText placeholder="col-md-6, offset 2" col-md="6" offset="2" />
-                </b:formGroup>
+                <b:inputText placeholder="Visible on medium or large screen" visible="md..." label="Visible on &gt;= md:" label-col-md="2" col-md="10" />
+                <b:inputText placeholder="Visible on small-screen" visible="...sm" label="Visible on &lt;= sm:" label-col-md="2" col-md="10"/>
+                <b:inputText placeholder="Visible on small to large screen" visible="sm...lg" label="Visible on sm...lg:" label-col-md="2" col-md="10"/>
+                <b:inputText placeholder="Visible on tiny and medium screen" visible="xs,md" label="Visible on xs and md:" label-col-md="2" col-md="10"/>
+                <b:inputText placeholder="col-md-6, offset 2" label="Col-md-6, offset 2:" label-col-md="2" col-md="6" offset="2" />
             </b:form>
              ]]></script>
                 </b:panel>
@@ -996,7 +946,7 @@ or in an horizontal Form:
         <p>By setting the attribute <code>tags="true"</code> you can display the input values as tag - similar to
         <code>&lt;b:badge /></code> or to price tags in the supermarket. The tags are separated by commas. Users can
         separate tags either by tying a comma or by hitting the <code>return</code> key.</p>
-        <p>We've dedicated a special <a href="inputTextWithTags.jsf">showcase page to the input text tags</a>.</p>
+        <p>We've dedicated a special <h:link outcome="inputTextWithTags.jsf">showcase page to the input text tags</h:link>.</p>
 
         <h2>Reference section</h2>
             <ui:include src="InputTextAttributes.xhtml" />
