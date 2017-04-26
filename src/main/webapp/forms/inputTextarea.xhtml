@@ -50,13 +50,13 @@
                 <b:panel title="Live preview" look="info" collapsible="false">
                         <b:form>
                             <b:panelGrid colSpans="6,4,2">
-                               <b:inputTextarea label="span=6, rows=5 (default)" renderLabel="true" />
-                               <b:inputTextarea label="span=4, rows=5 (default)" renderLabel="true"/>
-                               <b:inputTextarea label="span=2, rows=5 (default)" renderLabel="true"/>
+                               <b:inputTextarea label="span=6, rows=5 (default)"  />
+                               <b:inputTextarea label="span=4, rows=5 (default)" />
+                               <b:inputTextarea label="span=2, rows=5 (default)" />
                                
-                               <b:inputTextarea rows="2" label="span=6, rows=2 (default)" renderLabel="true" />
-                               <b:inputTextarea rows="3" label="span=4, rows=3 (default)" renderLabel="true"/>
-                               <b:inputTextarea rows="6" label="span=2, rows=6 (default)" renderLabel="true"/>
+                               <b:inputTextarea rows="2" label="span=6, rows=2 (default)"  />
+                               <b:inputTextarea rows="3" label="span=4, rows=3 (default)" />
+                               <b:inputTextarea rows="6" label="span=2, rows=6 (default)" />
                             </b:panelGrid>
                         </b:form>
                 <f:facet name="footer">
@@ -84,7 +84,7 @@
                 <p>You can even prepend and append at the same time, as in the following example:</p>
                 <b:panel title="Live preview" look="info" collapsible="false">
                     <b:form>
-                        <b:inputTextarea rows="3" label="E-mail" renderLabel="true">
+                        <b:inputTextarea rows="3" label="E-mail" >
                             <f:facet name="prepend">
                                 <h:outputText value="@" />
                             </f:facet>
@@ -93,13 +93,13 @@
                             </f:facet>
                         </b:inputTextarea>
 
-                        <b:inputTextarea rows="3" label="Amount:" renderLabel="true">
+                        <b:inputTextarea rows="3" label="Amount:" >
                             <f:facet name="append">
                                 <h:outputText value=".00" />
                             </f:facet>
                         </b:inputTextarea>
 
-                        <b:inputTextarea rows="3" label="Price:" renderLabel="true">
+                        <b:inputTextarea rows="3" label="Price:" >
                             <f:facet name="prepend">
                                 <h:outputText value="$" />
                             </f:facet>
@@ -143,7 +143,7 @@
                 <p>Finally, you can go further and prepend or append more text elements, as in the following example:</p>
                 <b:panel title="Live preview" look="info" collapsible="false">
                     <b:form inline="true">
-                        <b:inputTextarea rows="3" value="99" label="Your bid:" renderLabel="true">
+                        <b:inputTextarea rows="3" value="99" label="Your bid:" >
                             <f:facet name="prepend">
                                 <h:outputText value="offer" />
                                 <h:outputText value="$" />
@@ -178,7 +178,7 @@
                     <b:form horizontal="true">
                         <b:row>
                             <b:column offsetXs="2" colXs="8">
-                                <b:inputTextarea rows="3" placeholder="Username" required="true" label="E-mail:" renderLabel="true" labelColXs="2" colXs="10">
+                                <b:inputTextarea rows="3" placeholder="Username" required="true" label="E-mail:"  labelColXs="2" colXs="10">
                                     <f:facet name="prepend">
                                         <b:icon name="user" />
                                     </f:facet>
@@ -188,7 +188,7 @@
 
                         <b:row>
                             <b:column offsetXs="2" colXs="8">
-                                <b:inputTextarea rows="3" placeholder="Password" label="Password:" renderLabel="true" labelColXs="2" colXs="10">
+                                <b:inputTextarea rows="3" placeholder="Password" label="Password:"  labelColXs="2" colXs="10">
                                     <f:facet name="prepend">
                                         <b:iconAwesome name="key" />
                                     </f:facet>
@@ -232,7 +232,7 @@
                 adapt the height with some CSS code.</p>
                 <b:panel title="Live preview" look="info" collapsible="false">
                     <b:form inline="true">
-                        <b:inputTextarea rows="3" class="input_mybid" value="#{testBean.val6}" label="Your Offer:" renderLabel="true">
+                        <b:inputTextarea rows="3" class="input_mybid" value="#{testBean.val6}" label="Your Offer:" >
                             <f:facet name="prepend">
                                 <h:outputText value="$" />
                             </f:facet>
@@ -506,10 +506,10 @@
                 <b:panelGrid columns="2" size="sm">
                     <ui:fragment>
                         <b:inputTextarea rows="3" id="name" value="#{userBean.name}"
-                                         label="Enter your name" required="true" renderLabel="true"/>
+                                         label="Enter your name" required="true" />
                         <h:message for="age" />
                         <b:inputTextarea rows="3" id="age" value="#{userBean.age}"
-                                         label="What's your age?" renderLabel="true" />
+                                         label="What's your age?"  />
                         <h:message for="age" />
                         <b:commandButton update="@form" value="Validate constraints" />
                     </ui:fragment>
@@ -517,7 +517,7 @@
                     <b:switch value="#{messageStyleBean.useLegacyBootsFacesStyle}"
                                   immediate="true"
                                   caption="use legacy BootsFaces CSS classes"
-                                  label="compatibility settings" render-label="true"
+                                  label="compatibility settings" 
                                   onchange="ajax:messageStyleBean.toggleSettings();"
                                   process="@this"
                                   update="@form"/>
@@ -597,11 +597,11 @@
         <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
                 <b:panel title="Live preview" look="info" collapsible="false">
 <b:form horizontal="true">
-                  <b:inputTextarea value="Visible on medium or large screen" visible="md..." labelColMd="3" colMd="9" label="Visible on &gt;= md:" renderLabel="true" />
-                  <b:inputTextarea value="Visible on small-screen" visible="...sm" labelColXs="3" colMd="9" label="Visible on &lt;= sm:" renderLabel="true" />
-                  <b:inputTextarea value="Visible on small to large screen" visible="sm...lg" labelColMd="3" colMd="9" label="Visible on sm...lg:" renderLabel="true" />
-                  <b:inputTextarea value="Visible on tiny and medium screen" visible="xs,md" labelColMd="3" colMd="9" label="Visible on xs and md:" renderLabel="true" />
-                  <b:inputTextarea value="col-md-6, offset 2" labelColMd="3" colMd="6" offset="2" label="Col-md-6, offset 2:" renderLabel="true" />
+                  <b:inputTextarea value="Visible on medium or large screen" visible="md..." labelColMd="3" colMd="9" label="Visible on &gt;= md:"  />
+                  <b:inputTextarea value="Visible on small-screen" visible="...sm" labelColXs="3" colMd="9" label="Visible on &lt;= sm:"  />
+                  <b:inputTextarea value="Visible on small to large screen" visible="sm...lg" labelColMd="3" colMd="9" label="Visible on sm...lg:"  />
+                  <b:inputTextarea value="Visible on tiny and medium screen" visible="xs,md" labelColMd="3" colMd="9" label="Visible on xs and md:"  />
+                  <b:inputTextarea value="col-md-6, offset 2" labelColMd="3" colMd="6" offset="2" label="Col-md-6, offset 2:"  />
               </b:form>
             <f:facet name="footer">
                 <strong>JSF markup:</strong>
@@ -609,11 +609,11 @@
  <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
              <![CDATA[
                <b:form horizontal="true">
-                  <b:inputTextarea value="Visible on medium or large screen" visible="md..." labelColMd="3" colMd="9" label="Visible on &gt;= md:" renderLabel="true" />
-                  <b:inputTextarea value="Visible on small-screen" visible="...sm" labelColXs="3" colMd="9" label="Visible on &lt;= sm:" renderLabel="true" />
-                  <b:inputTextarea value="Visible on small to large screen" visible="sm...lg" labelColMd="3" colMd="9" label="Visible on sm...lg:" renderLabel="true" />
-                  <b:inputTextarea value="Visible on tiny and medium screen" visible="xs,md" labelColMd="3" colMd="9" label="Visible on xs and md:" renderLabel="true" />
-                  <b:inputTextarea value="col-md-6, offset 2" labelColMd="3" colMd="6" offset="2" label="Col-md-6, offset 2:" renderLabel="true" />
+                  <b:inputTextarea value="Visible on medium or large screen" visible="md..." labelColMd="3" colMd="9" label="Visible on &gt;= md:"  />
+                  <b:inputTextarea value="Visible on small-screen" visible="...sm" labelColXs="3" colMd="9" label="Visible on &lt;= sm:"  />
+                  <b:inputTextarea value="Visible on small to large screen" visible="sm...lg" labelColMd="3" colMd="9" label="Visible on sm...lg:"  />
+                  <b:inputTextarea value="Visible on tiny and medium screen" visible="xs,md" labelColMd="3" colMd="9" label="Visible on xs and md:"  />
+                  <b:inputTextarea value="col-md-6, offset 2" labelColMd="3" colMd="6" offset="2" label="Col-md-6, offset 2:"  />
               </b:form>]]></script>
                 </b:panel>
             </f:facet>

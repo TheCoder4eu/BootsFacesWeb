@@ -302,20 +302,20 @@ public class SemaphoreBean {
 
     <h:form>
     	<h:panelGrid columns="3"  cellpadding="5">
-		    <b:selectOneMenu value="# {selectOneMenuBean.brand}" label="Select your car's brand:" id="brandID2" render-label="true">
+		    <b:selectOneMenu value="# {selectOneMenuBean.brand}" label="Select your car's brand:" id="brandID2" >
 				    <f:selectItem itemLabel="Fiat" itemValue="1"/>
 				    <f:selectItem itemLabel="Honda" itemValue="2"/>
 				    <f:selectItem itemLabel="Opel" itemValue="3"/>
 		    </b:selectOneMenu>
 		    <h:message showSummary="false"  for="brandID2"/>
-		    <b:inputText value="#{selectOneMenuBean.brand}" disabled="true" label="last submitted value:"  render-label="true"/>
-		    <b:selectOneMenu value="#{selectOneMenuBean.type}" label="Select your car's type:" id="typeID2" render-label="true">
+		    <b:inputText value="#{selectOneMenuBean.brand}" disabled="true" label="last submitted value:"  />
+		    <b:selectOneMenu value="#{selectOneMenuBean.type}" label="Select your car's type:" id="typeID2" >
 		    		<f:selectItem itemLabel="Cinquecento" itemValue="1"/>
 				    <f:selectItem itemLabel="Civic" itemValue="2"/>
 				    <f:selectItem itemLabel="Astra" itemValue="3"/>
 		    </b:selectOneMenu>
 		    <h:message for="typeID2"/>
-		    <b:inputText value="#{selectOneMenuBean.type}" disabled="true" label="last submitted value:"  render-label="true"/>
+		    <b:inputText value="#{selectOneMenuBean.type}" disabled="true" label="last submitted value:"  />
         </h:panelGrid>
     </h:form>
   </b:well>
@@ -347,7 +347,7 @@ public class SemaphoreBean {
           <b:well>
             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
-      <b:selectOneMenu label="form of address" renderLabel="true" required="true" requiredMessage="Please provide the form of address.">
+      <b:selectOneMenu label="form of address"  required="true" requiredMessage="Please provide the form of address.">
         <f:facet name="prepend">
            <b:iconAwesome name="comment" title="form of address" />
         </f:facet>
@@ -365,7 +365,7 @@ public class SemaphoreBean {
         <b:well>
         <b:row>
         <b:column small-screen="half">
-          <b:selectOneMenu label="form of address" renderLabel="true" required="true"
+          <b:selectOneMenu label="form of address"  required="true"
             requiredMessage="Please provide the form of address.">
             <f:facet name="prepend">
               <b:iconAwesome name="comment" title="form of address" />
@@ -416,7 +416,7 @@ public class SemaphoreBean {
 							<b:column small-screen="half" id="selectOneDemoId">
 								<p>AJAX:</p>
 								<b:selectOneMenu label="form of address (required)"
-									renderLabel="true" required="true"
+									 required="true"
 									requiredMessage="Please provide the form of address."
 									update="selectOneDemoId" value="selectOneMenuBean.address"
 									onchange="ajax:selectOneMenuBean.onChange()">
@@ -428,7 +428,7 @@ public class SemaphoreBean {
 								<p>Non-AJAX:</p>
 
 								<b:selectOneMenu label="form of address (required)"
-									renderLabel="true" required="true"
+									 required="true"
 									requiredMessage="Please provide the form of address."
 									value="selectOneMenuBean.address">
 									<f:selectItem itemLabel="- please select - " />
@@ -448,7 +448,7 @@ public class SemaphoreBean {
 							<b:column small-screen="half" id="selectOneDemoId">
 								<p>AJAX:</p>
 								<b:selectOneMenu label="form of address (required)"
-									renderLabel="true" required="true"
+									 required="true"
 									requiredMessage="Please provide the form of address."
 									update="selectOneDemoId" value="selectOneMenuBean.address"
 									onchange="ajax:selectOneMenuBean.onChange()">
@@ -460,7 +460,7 @@ public class SemaphoreBean {
 								<p>Non-AJAX:</p>
 
 								<b:selectOneMenu label="form of address (required)"
-									renderLabel="true" required="true"
+									 required="true"
 									requiredMessage="Please provide the form of address."
 									value="selectOneMenuBean.address">
 									<f:selectItem itemLabel="- please select - " />
@@ -476,7 +476,7 @@ public class SemaphoreBean {
 						<b:switch value="#{messageStyleBean.useLegacyBootsFacesStyle}"
 						    immediate="true"
 		                    caption="use legacy BootsFaces CSS classes"
-		                    label="compatibility settings" render-label="true"
+		                    label="compatibility settings" 
 		                    onchange="ajax:messageStyleBean.toggleSettings();"
 		                    update="validationsFormId"
 		                    />

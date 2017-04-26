@@ -26,24 +26,24 @@
         <b:panel title="Live preview" look="info" collapsible="false">
               <h:form>
 		          <b:panelGrid columns="2">
-		            <b:inputText value="#{bookshopBean.price}" required="true" label="price" render-label="true" 
+		            <b:inputText value="#{bookshopBean.price}" required="true" label="price"  
 		              onchange="ajax:bookshopBean.calculate()" update="result @this">
 		              <f:convertNumber />
 		            </b:inputText>
 
-		            <b:inputText value="#{bookshopBean.discount}" required="true" label="discount" render-label="true"
+		            <b:inputText value="#{bookshopBean.discount}" required="true" label="discount" 
 		              onchange="ajax:bookshopBean.calculate()" update="result">
 		              <f:convertNumber />
 		            </b:inputText>
-		            <b:inputText value="#{bookshopBean.quantity}" required="true" label="number of books" render-label="true"
+		            <b:inputText value="#{bookshopBean.quantity}" required="true" label="number of books" 
 		              onchange="ajax:bookshopBean.calculate()" update="result">
 		              <f:convertNumber integerOnly="true" />
 		            </b:inputText>
-		            <b:selectBooleanCheckbox value="#{bookshopBean.vat}" ajax="true" process="@this" label="add VAT" render-label="true"
+		            <b:selectBooleanCheckbox value="#{bookshopBean.vat}" ajax="true" process="@this" label="add VAT" 
 		                onchange="ajax:bookshopBean.calculate()" update="result @this"
 		                converter="de.beyondjava.vatConverter"  />
 
-		            <b:inputText value="#{bookshopBean.total}" disabled="true" label="total" render-label="true" id="result">
+		            <b:inputText value="#{bookshopBean.total}" disabled="true" label="total"  id="result">
 		              <f:convertNumber />
 		            </b:inputText>
 		            <b:commandButton value="calculate" actionListener="#{bookshopBean.calculate}"
@@ -61,23 +61,23 @@
                   <![CDATA[
                   <h:form>
                     <b:panelGrid columns="2">
-                      <b:inputText value="&num;{bookshopBean.price}" required="true" label="price" render-label="true" 
+                      <b:inputText value="&num;{bookshopBean.price}" required="true" label="price"  
                         onchange="ajax:bookshopBean.calculate()" update="result @this">
                         <f:convertNumber />
                       </b:inputText>
-		              <b:inputText value="&num;{bookshopBean.discount}" required="true" label="discount" render-label="true"
+		              <b:inputText value="&num;{bookshopBean.discount}" required="true" label="discount" 
 		                onchange="ajax:bookshopBean.calculate()" update="result">
 		                <f:convertNumber />
   		              </b:inputText>
-  		              <b:inputText value="&num;{bookshopBean.quantity}" required="true" label="number of books" render-label="true"
+  		              <b:inputText value="&num;{bookshopBean.quantity}" required="true" label="number of books" 
 		                onchange="ajax:bookshopBean.calculate()" update="result">
 		                <f:convertNumber integerOnly="true" />
 		              </b:inputText>
-		              <b:selectBooleanCheckbox value="&num;{bookshopBean.vat}" ajax="true" process="@this" label="add VAT" render-label="true"
+		              <b:selectBooleanCheckbox value="&num;{bookshopBean.vat}" ajax="true" process="@this" label="add VAT" 
 		                  onchange="ajax:bookshopBean.calculate()" update="result @this"
 		                  converter="de.beyondjava.vatConverter" />
 
-		              <b:inputText value="&num;{bookshopBean.total}" disabled="true" label="total" render-label="true" id="result">
+		              <b:inputText value="&num;{bookshopBean.total}" disabled="true" label="total"  id="result">
 		                <f:convertNumber />
 		              </b:inputText>
 		              <b:commandButton value="calculate" actionListener="&num;{bookshopBean.calculate}"

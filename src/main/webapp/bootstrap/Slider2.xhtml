@@ -479,7 +479,7 @@
 						<b:switch value="#{messageStyleBean.useLegacyBootsFacesStyle}"
 						    immediate="true"
 		                    caption="use legacy BootsFaces CSS classes"
-		                    label="compatibility settings" render-label="true"
+		                    label="compatibility settings" 
 		                    onchange="ajax:messageStyleBean.toggleSettings();"
 		                    update="@form"
 		                    />
@@ -495,10 +495,10 @@
 				  <![CDATA[
                      <h:form>
                         <b:inputTextarea rows="3" id="name" value="&num;{userBean.name}" label="Enter your name"
-								     required="true" renderLabel="true"   />
+								     required="true"    />
                          <h:message for="age" />
                          <b:inputTextarea rows="3" id="age" value="&num;{userBean.age}" label="What's your age?"
-                                      renderLabel="true" />
+                                       />
                          <h:message for="age" />
                          <b:commandButton update="@form" value="Validate constraints" />
                        </h:form>

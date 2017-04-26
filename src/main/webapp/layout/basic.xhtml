@@ -647,18 +647,18 @@ public class LoginBean {
                             <b:container fluid="true" contentDisabled="#{columnsBean.containerDisabled}" id="contentDisabledDemoId">
                                 <b:row contentDisabled="#{columnsBean.rowDisabled}">
                                     <b:column span="6" contentDisabled="#{columnsBean.columnDisabled}">
-                                        <b:inputText placeholder="You can't input anything here" label="b:inputText" render-label="true"/>
-                                        <b:datepicker label="Datepicker" render-label="true" />
+                                        <b:inputText placeholder="You can't input anything here" label="b:inputText" />
+                                        <b:datepicker label="Datepicker"  />
                                         <b:button look="primary" value="You can't click me!"/>
                                     </b:column>
                                     <b:column span="6">
-                                        <b:dateTimePicker label="DateTimerPicker" render-label="true"/>
-                                        <b:colorPicker label="ColorPicker" render-label="true"/>
-                                        <b:selectOneMenu label="SelectOneMenu" render-label="true">
+                                        <b:dateTimePicker label="DateTimerPicker" />
+                                        <b:colorPicker label="ColorPicker" />
+                                        <b:selectOneMenu label="SelectOneMenu" >
                                             <f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
                                             <f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
                                         </b:selectOneMenu>
-                                        <b:selectMultiMenu label="SelectMultiMenu" render-label="true">
+                                        <b:selectMultiMenu label="SelectMultiMenu" >
                                             <f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
                                             <f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
                                         </b:selectMultiMenu>
@@ -670,13 +670,13 @@ public class LoginBean {
                             <b:panel look="primary" title="Options">
                                 <b:switch on-text="true" off-text="default" value="#{columnsBean.containerDisabled}"
                                           update="contentDisabledDemoId" onchange="ajax:columnsBean.onChange()" 
-                                          label="b:container contentDisabled=" render-label="true"/>
+                                          label="b:container contentDisabled=" />
                                 <b:switch on-text="disabled" off-text="default" value="#{columnsBean.rowDisabled}"
                                           update="contentDisabledDemoId" onchange="ajax:columnsBean.onChange()" 
-                                          label="b:row contentDisabled=" render-label="true"/>
+                                          label="b:row contentDisabled=" />
                                 <b:switch on-text="disabled" off-text="default" value="#{columnsBean.columnDisabled}"
                                           update="contentDisabledDemoId" onchange="ajax:columnsBean.onChange()" 
-                                          label="first b:column contentDisabled=" render-label="true"/>
+                                          label="first b:column contentDisabled=" />
                             </b:panel>
                         </b:column>
                     </b:row>
@@ -700,7 +700,7 @@ public class LoginBean {
                                             <f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
                                             <f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
                                         </b:selectOneMenu>
-                                        <b:selectMultiMenu label="SelectMultiMenu" render-label="true">
+                                        <b:selectMultiMenu label="SelectMultiMenu" >
                                             <f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
                                             <f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
                                         </b:selectMultiMenu>

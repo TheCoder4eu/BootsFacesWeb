@@ -87,10 +87,10 @@
 
         <b:panel title="Live preview" look="info" collapsible="false">
          <b:form>
-            <b:dateTimePicker value="#{dateTimeBean.justNow}" disabled="true" label="Disabled DateTimePicker:" renderLabel="true" />
-            <b:dateTimePicker value="#{dateTimeBean.justNow}" readonly="true" label="Readonly DateTimePicker:" renderLabel="true"/>
+            <b:dateTimePicker value="#{dateTimeBean.justNow}" disabled="true" label="Disabled DateTimePicker:"  />
+            <b:dateTimePicker value="#{dateTimeBean.justNow}" readonly="true" label="Readonly DateTimePicker:" />
             <hr/>
-            <b:dateTimePicker value="#{dateTimeBean.justNow}" disabled="true" mode="inline" label="Disabled inline DateTimePicker: " renderLabel="true" />
+            <b:dateTimePicker value="#{dateTimeBean.justNow}" disabled="true" mode="inline" label="Disabled inline DateTimePicker: "  />
         </b:form>
 
             <f:facet name="footer">
@@ -127,8 +127,8 @@
     
             <b:panel title="Live preview" look="info" collapsible="false">
     <b:form>
-        <b:dateTimePicker value="#{dateTimeBean.justNow}" format="DD.MM.YYYY" label="German date format" render-label="true" />
-        <b:dateTimePicker value="#{dateTimeBean.justNow}" format="MM/DD/YYYY" label="American date format" render-label="true" />
+        <b:dateTimePicker value="#{dateTimeBean.justNow}" format="DD.MM.YYYY" label="German date format"  />
+        <b:dateTimePicker value="#{dateTimeBean.justNow}" format="MM/DD/YYYY" label="American date format"  />
     </b:form>
 
             <f:facet name="footer">
@@ -138,8 +138,8 @@
                     class="brush: xml; toolbar: false;gutter: false; first-line: 1">
                 <![CDATA[
     <b:form>
-        <b:dateTimePicker value="&num;{dateTimeBean.justNow}" format="DD.MM.YYYY" label="German date format" render-label="true" />
-        <b:dateTimePicker value="&num;{dateTimeBean.justNow}" format="MM/DD/YYYY" label="American date format" render-label="true" />
+        <b:dateTimePicker value="&num;{dateTimeBean.justNow}" format="DD.MM.YYYY" label="German date format"  />
+        <b:dateTimePicker value="&num;{dateTimeBean.justNow}" format="MM/DD/YYYY" label="American date format"  />
     </b:form>
                 ]]>
             </script>
@@ -165,7 +165,7 @@
                     <b:dateTimePicker 
                         value="#{dateTimeBean.justNow}" 
                         label="With WidgetParent"  
-                        render-label="true" 
+                         
                         iconAwesome="clock-o" 
                         widgetParent="#picker-anchor" />
                 </div>
@@ -176,7 +176,7 @@
                     <b:dateTimePicker 
                         value="#{dateTimeBean.justNow}" 
                         label="Without WidgetParent"  
-                        render-label="true" 
+                         
                         iconAwesome="clock-o" />
                 </div>
             </div>
@@ -235,7 +235,7 @@
                  <ui:fragment>
                      <b:formGroup>
                          <b:dateTimePicker mode="toggle-icon" showWeek="true" value="#{dateBean.cdate}" required="true"
-                                           label="Date:" render-label="true" label-col-sm="3" col-sm="6" />
+                                           label="Date:"  label-col-sm="3" col-sm="6" />
                          <b:message for="@previous" col-sm="9" />
                      </b:formGroup>
                      <b:commandButton value="submit" update="@form" look="success" />
@@ -244,7 +244,7 @@
                            immediate="true"
                            process="@this"
                            caption="use legacy BootsFaces CSS classes"
-                           label="compatibility settings" render-label="true"
+                           label="compatibility settings" 
                            onchange="ajax:messageStyleBean.toggleSettings();"
                            update="@form" />
              </b:panelGrid>
@@ -276,8 +276,8 @@
     
         <b:panel title="Live preview" look="info" collapsible="false">
             <b:form>
-                <b:dateTimePicker value="#{test.dataToPick}" ondtchange="ajax:test.updateTestField()" process="@this" update="@next" label="Select date:" iconAwesome="bolt" renderLabel="true" />
-                <b:inputText value="#{test.testField}" label="Result: " readonly="true" renderLabel="true" />
+                <b:dateTimePicker value="#{test.dataToPick}" ondtchange="ajax:test.updateTestField()" process="@this" update="@next" label="Select date:" iconAwesome="bolt"  />
+                <b:inputText value="#{test.testField}" label="Result: " readonly="true"  />
             </b:form>
             <f:facet name="footer">
                 <strong>JSF markup:</strong>
@@ -305,7 +305,7 @@
    
             <b:panel title="Live preview" look="info" collapsible="false">
             <b:form>
-                <b:dateTimePicker id="aGreatId" fieldId="evenGreaterFieldId" value="#{test.dataToPick}" iconAwesome="bolt" label="Select:" renderLabel="true" />
+                <b:dateTimePicker id="aGreatId" fieldId="evenGreaterFieldId" value="#{test.dataToPick}" iconAwesome="bolt" label="Select:"  />
             </b:form>
 
             <f:facet name="footer">
@@ -316,7 +316,7 @@
                     class="brush: xml; toolbar: false;gutter: false; first-line: 1">
             <![CDATA[
             <b:form>
-                <b:dateTimePicker id="aGreatId" fieldId="evenGreaterFieldId" value="&num;{test.dataToPick}" iconAwesome="bolt" label="Select:" renderLabel="true" />
+                <b:dateTimePicker id="aGreatId" fieldId="evenGreaterFieldId" value="&num;{test.dataToPick}" iconAwesome="bolt" label="Select:"  />
             </b:form>
              ]]>
             </script>

@@ -15,7 +15,7 @@
                 <h3>Basic usage</h3>
      <b:panel title="Live preview" look="info" collapsible="false">
     <b:form>
-        <b:selectBooleanCheckbox value="#{settingsBean.checkbox1}" caption="checkbox 1" label="Please decide" renderLabel="true" />
+        <b:selectBooleanCheckbox value="#{settingsBean.checkbox1}" caption="checkbox 1" label="Please decide"  />
     </b:form>
 
             <f:facet name="footer">
@@ -88,8 +88,8 @@
                <p>The example below shows both options:</p>
                 <b:panel title="Live preview" look="info" collapsible="false">         
 <b:form inline="true">
-                  <b:selectBooleanCheckbox value="#{checkboxBean.editable}" label="disabled checkbox with tooltip" tooltip="This is a tooltip." renderLabel="true"/>
-                  <b:selectBooleanCheckbox value="#{checkboxBean.checkbox}" disabled="true" label="disabled checkbox with tooltip" tooltip="Even a disabled checkbox can have a tooltip." renderLabel="true"/>
+                  <b:selectBooleanCheckbox value="#{checkboxBean.editable}" label="disabled checkbox with tooltip" tooltip="This is a tooltip." />
+                  <b:selectBooleanCheckbox value="#{checkboxBean.checkbox}" disabled="true" label="disabled checkbox with tooltip" tooltip="Even a disabled checkbox can have a tooltip." />
               </b:form>
 
             <f:facet name="footer">
@@ -98,8 +98,8 @@
             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
 <b:form inline="true">
-    <b:selectBooleanCheckbox value="#{checkboxBean.editable}" label="disabled checkbox with tooltip" tooltip="This is a tooltip." renderLabel="true"/>
-    <b:selectBooleanCheckbox value="#{checkboxBean.checkbox}" disabled="true" label="disabled checkbox with tooltip" tooltip="Even a disabled checkbox can have a tooltip." renderLabel="true"/>
+    <b:selectBooleanCheckbox value="#{checkboxBean.editable}" label="disabled checkbox with tooltip" tooltip="This is a tooltip." />
+    <b:selectBooleanCheckbox value="#{checkboxBean.checkbox}" disabled="true" label="disabled checkbox with tooltip" tooltip="Even a disabled checkbox can have a tooltip." />
 </b:form>
 ]]>
     </script>
@@ -118,14 +118,14 @@
                   <b:panelGrid columns="2">
                       <b:selectBooleanCheckbox value="#{checkboxBean.editable}"
                                                label="This is how RTL works!"
-                                               render-label="true"
+                                               
                                                caption="RTL is active."
                                                dir="rtl"
                                                tooltip="Note the position of the exclamation mark. That's due to activating RTL."/>
                       <b:selectBooleanCheckbox value="#{checkboxBean.checkbox}"
                                                disabled="true"
                                                label="This is how LTR works!"
-                                               render-label="true"
+                                               
                                                caption="LTR is active."
                                                tooltip="LTR is the default value."/>
                   </b:panelGrid>
@@ -171,7 +171,7 @@
                                              label="error"
                                              onclick="ajax:checkboxBean.action();"
                                              update="@form"
-                                             renderLabel="true"
+                                             
                                              />
                     <b:message />
                     <b:selectBooleanCheckbox value="#{checkboxBean.cbxFatal}"
@@ -180,7 +180,7 @@
                                              label="fatal"
                                              onclick="ajax:checkboxBean.action();"
                                              update="@form"
-                                             renderLabel="true"
+                                             
                                              />
                     <b:message for="checkboxWithFatalMessage" />
                     <b:selectBooleanCheckbox value="#{checkboxBean.cbxWarning}"
@@ -189,7 +189,7 @@
                                              label="warning"
                                              onclick="ajax:checkboxBean.action();"
                                              update="@form"
-                                             renderLabel="true"
+                                             
                                              />
                     <b:message for="@previous:@previous:@next" />
                     <b:selectBooleanCheckbox value="#{checkboxBean.cbxInfo}"
@@ -198,7 +198,7 @@
                                              label="info"
                                              onclick="ajax:checkboxBean.action();"
                                              update="@form"
-                                             renderLabel="true"
+                                             
                                              />
 
                     <b:message for="@form:**:checkboxWithInfoMessage" />
@@ -238,7 +238,7 @@
 
                   <b:panel title="Live preview" look="info" collapsible="false">         
 <b:form>
-                  <b:selectBooleanCheckbox value="#{checkboxBean.cbxFatal}" label="This BootsFaces checkbox has to be checked." caption="I've read and understood the EULA." render-label="true" required="true" required-message="Please check the checkbox." ajax="true" update="@form" />
+                  <b:selectBooleanCheckbox value="#{checkboxBean.cbxFatal}" label="This BootsFaces checkbox has to be checked." caption="I've read and understood the EULA."  required="true" required-message="Please check the checkbox." ajax="true" update="@form" />
                   <b:message for="@previous" />
                   
                   <b:commandButton value="submit and validate" action="checkboxBean.action()" update="@form" ajax="true" />
@@ -251,7 +251,7 @@
 <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
               <b:form>
-                  <b:selectBooleanCheckbox value="&num;{checkboxBean.cbxFatal}" label="This BootsFaces checkbox has to be checked." caption="I've read and understood the EULA." render-label="true" required="true" required-message="Please check the checkbox." ajax="true" update="@form" />
+                  <b:selectBooleanCheckbox value="&num;{checkboxBean.cbxFatal}" label="This BootsFaces checkbox has to be checked." caption="I've read and understood the EULA."  required="true" required-message="Please check the checkbox." ajax="true" update="@form" />
                   <b:message for="@previous" />
                   
                   <b:commandButton value="submit and validate" action="checkboxBean.action()" update="@form" ajax="true" />
@@ -313,11 +313,11 @@
                 
         <b:panel title="Live preview" look="info" collapsible="false">         
          <b:form horizontal="true">
-                <b:selectBooleanCheckbox placeholder="Visible on medium or large screen" visible="md..." label="Visible on &gt;= md:" renderLabel="true" label-col-md="2" col-md="10" />
-                <b:selectBooleanCheckbox placeholder="Visible on small-screen" visible="...sm" label="Visible on &lt;= sm:" renderLabel="true" label-col-md="2" col-md="10"/>
-                <b:selectBooleanCheckbox placeholder="Visible on small to large screen" visible="sm...lg" label="Visible on sm...lg:" renderLabel="true" label-col-md="2" col-md="10"/>
-                <b:selectBooleanCheckbox placeholder="Visible on tiny and medium screen" visible="xs,md" label="Visible on xs and md:" renderLabel="true" label-col-md="2" col-md="10"/>
-                <b:selectBooleanCheckbox placeholder="col-md-6, offset 2" label="Col-md-6, offset 2:" renderLabel="true" label-col-md="2" col-md="6" offset="2" />
+                <b:selectBooleanCheckbox placeholder="Visible on medium or large screen" visible="md..." label="Visible on &gt;= md:"  label-col-md="2" col-md="10" />
+                <b:selectBooleanCheckbox placeholder="Visible on small-screen" visible="...sm" label="Visible on &lt;= sm:"  label-col-md="2" col-md="10"/>
+                <b:selectBooleanCheckbox placeholder="Visible on small to large screen" visible="sm...lg" label="Visible on sm...lg:"  label-col-md="2" col-md="10"/>
+                <b:selectBooleanCheckbox placeholder="Visible on tiny and medium screen" visible="xs,md" label="Visible on xs and md:"  label-col-md="2" col-md="10"/>
+                <b:selectBooleanCheckbox placeholder="col-md-6, offset 2" label="Col-md-6, offset 2:"  label-col-md="2" col-md="6" offset="2" />
             </b:form>
 
             <f:facet name="footer">
@@ -326,11 +326,11 @@
 <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
             <b:form horizontal="true">
-                <b:selectBooleanCheckbox placeholder="Visible on medium or large screen" visible="md..." label="Visible on &gt;= md:" renderLabel="true" label-col-md="2" col-md="10" />
-                <b:selectBooleanCheckbox placeholder="Visible on small-screen" visible="...sm" label="Visible on &lt;= sm:" renderLabel="true" label-col-md="2" col-md="10"/>
-                <b:selectBooleanCheckbox placeholder="Visible on small to large screen" visible="sm...lg" label="Visible on sm...lg:" renderLabel="true" label-col-md="2" col-md="10"/>
-                <b:selectBooleanCheckbox placeholder="Visible on tiny and medium screen" visible="xs,md" label="Visible on xs and md:" renderLabel="true" label-col-md="2" col-md="10"/>
-                <b:selectBooleanCheckbox placeholder="col-md-6, offset 2" label="Col-md-6, offset 2:" renderLabel="true" label-col-md="2" col-md="6" offset="2" />
+                <b:selectBooleanCheckbox placeholder="Visible on medium or large screen" visible="md..." label="Visible on &gt;= md:"  label-col-md="2" col-md="10" />
+                <b:selectBooleanCheckbox placeholder="Visible on small-screen" visible="...sm" label="Visible on &lt;= sm:"  label-col-md="2" col-md="10"/>
+                <b:selectBooleanCheckbox placeholder="Visible on small to large screen" visible="sm...lg" label="Visible on sm...lg:"  label-col-md="2" col-md="10"/>
+                <b:selectBooleanCheckbox placeholder="Visible on tiny and medium screen" visible="xs,md" label="Visible on xs and md:"  label-col-md="2" col-md="10"/>
+                <b:selectBooleanCheckbox placeholder="col-md-6, offset 2" label="Col-md-6, offset 2:"  label-col-md="2" col-md="6" offset="2" />
             </b:form>]]>
          </script>
                 </b:panel>

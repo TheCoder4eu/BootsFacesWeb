@@ -113,7 +113,7 @@
                 <b:form>
                     <b:row>
                         <b:column colXs="6">
-                            <b:colorPicker value="#{test.selectedColor}" required="true" label="required color" renderLabel="true" />
+                            <b:colorPicker value="#{test.selectedColor}" required="true" label="required color"  />
                             <b:message for="@previous" />
                         
                             <b:commandButton value="Submit" update="@parent" look="success" />
@@ -122,7 +122,7 @@
                               <b:switch value="#{messageStyleBean.useLegacyBootsFacesStyle}"
                                   process="@this"
                                   caption="use legacy BootsFaces CSS classes"
-                                  label="compatibility settings" render-label="true"
+                                  label="compatibility settings" 
                                   onchange="ajax:messageStyleBean.toggleSettings();" update="@form" />
                         </b:column>
                     </b:row>
@@ -133,7 +133,7 @@
                         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
              <![CDATA[
          	<b:form>
-                <b:colorPicker value="#{test.selectedColor}" required="true" label="required color" renderLabel="true" />
+                <b:colorPicker value="#{test.selectedColor}" required="true" label="required color"  />
                 <b:message for="@previous" />
                         
                 <b:commandButton value="Submit" update="@parent" look="success" />
@@ -149,19 +149,19 @@
         <b:panel title="Live preview" look="info" collapsible="false">
             <b:form>
                 <b:row>
-                    <b:colorPicker label="large-screen='full-width'" large-screen="full-width" renderLabel="true" />
+                    <b:colorPicker label="large-screen='full-width'" large-screen="full-width"  />
                 </b:row>
                 <b:row style="padding-top:5px">
-                    <b:colorPicker label="large-screen='one-third'" large-screen="one-third" renderLabel="true" />
-                    <b:colorPicker label="large-screen='two-thirds'" large-screen="two-thirds" renderLabel="true" />
+                    <b:colorPicker label="large-screen='one-third'" large-screen="one-third"  />
+                    <b:colorPicker label="large-screen='two-thirds'" large-screen="two-thirds"  />
                 </b:row>
                 <b:row style="padding-top:5px">
-                    <b:colorPicker label="small-screen='one-third'" small-screen="one-third" renderLabel="true" />
-                    <b:colorPicker label="small-screen='two-thirds'" small-screen="two-thirds" renderLabel="true" />
+                    <b:colorPicker label="small-screen='one-third'" small-screen="one-third"  />
+                    <b:colorPicker label="small-screen='two-thirds'" small-screen="two-thirds"  />
                 </b:row>
                 <b:row style="padding-top:5px">
-                    <b:colorPicker label="tiny-screen='one-fourth'" tiny-screen="one-fourth" renderLabel="true" />
-                    <b:colorPicker label="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" renderLabel="true" />
+                    <b:colorPicker label="tiny-screen='one-fourth'" tiny-screen="one-fourth"  />
+                    <b:colorPicker label="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3"  />
                 </b:row>
             </b:form>
             <f:facet name="footer">
@@ -199,11 +199,11 @@
 
             <b:form horizontal="true">
                 <h:outputText value="" />
-                <b:colorPicker value="Visible on medium or large screen" label="Visible on &gt;= md:" renderLabel="true" labelColMd="2" colMd="10" visible="md..." />
-                  <b:colorPicker value="Visible on small-screen" label="Visible on &lt;= sm:" renderLabel="true" labelColMd="2" colMd="10" visible="...sm"/>
-                  <b:colorPicker value="Visible on small to large screen" label="Visible on sm...lg:" renderLabel="true" labelColMd="2" colMd="10" visible="sm...lg"/>
-                  <b:colorPicker value="Visible on tiny and medium screen" label="Visible on xs and md:" renderLabel="true" labelColMd="2" colMd="10" visible="xs,md"/>
-                  <b:colorPicker value="col-md-6, offset 2" label="Col-md-6, offset 2:" renderLabel="true" labelColMd="2" colMd="6" offset="2" />
+                <b:colorPicker value="Visible on medium or large screen" label="Visible on &gt;= md:"  labelColMd="2" colMd="10" visible="md..." />
+                  <b:colorPicker value="Visible on small-screen" label="Visible on &lt;= sm:"  labelColMd="2" colMd="10" visible="...sm"/>
+                  <b:colorPicker value="Visible on small to large screen" label="Visible on sm...lg:"  labelColMd="2" colMd="10" visible="sm...lg"/>
+                  <b:colorPicker value="Visible on tiny and medium screen" label="Visible on xs and md:"  labelColMd="2" colMd="10" visible="xs,md"/>
+                  <b:colorPicker value="col-md-6, offset 2" label="Col-md-6, offset 2:"  labelColMd="2" colMd="6" offset="2" />
             </b:form>
             
             <f:facet name="footer">

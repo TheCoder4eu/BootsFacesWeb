@@ -524,7 +524,7 @@
             <b:panel title="Live preview" look="info" collapsible="false">            
                 <h:form>
                     <p>Guess a number. It has to be between 1 and 10.</p>
-                    <b:inputText value="#{numberGuessBean.guess}" label="Your guess"  render-label="true" />
+                    <b:inputText value="#{numberGuessBean.guess}" label="Your guess"   />
                     <b:message for="@previous" />
                     <b:commandButton value="OK" actionListener="#{numberGuessBean.submitGuess}" look="success"/>
                     <b:commandButton value="New game" actionListener="#{numberGuessBean.newGame}" immediate="true" look="danger" />
@@ -541,7 +541,7 @@
                         <script type="syntaxhighlighter"
                       class="brush: xml; toolbar: false;gutter: false; first-line: 1">
                       <![CDATA[
-                        <b:inputText value="&num;{numberGuessBean.guess}" label="Your guess"  render-label="true" />
+                        <b:inputText value="&num;{numberGuessBean.guess}" label="Your guess"   />
                         <b:message for="@previous" />
                         <b:commandButton value="OK" actionListener="&num;{numberGuessBean.submitGuess}" look="success"/>
                         <b:commandButton value="New game" actionListener="&num;{numberGuessBean.newGame}" immediate="true" look="danger" />

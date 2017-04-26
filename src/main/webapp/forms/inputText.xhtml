@@ -52,17 +52,17 @@
                 <b:panel title="Live preview" look="info" collapsible="false">
                     <b:form inline="true">
                         <h:panelGrid columns="1"  cellpadding="5">
-                            <b:inputText label="E-mail:" renderLabel="true" style="width:100%;" labelStyle="width:80px;">
+                            <b:inputText label="E-mail:"  style="width:100%;" labelStyle="width:80px;">
                                 <f:facet name="prepend">
                                     <h:outputText value="@" />
                                 </f:facet>
                             </b:inputText>
-                            <b:inputText label="Amount:" renderLabel="true" labelStyle="width:80px;">
+                            <b:inputText label="Amount:"  labelStyle="width:80px;">
                                 <f:facet name="append">
                                     <h:outputText value=".00" />
                                 </f:facet>
                             </b:inputText>
-                            <b:inputText label="Price:" renderLabel="true" labelStyle="width:80px;">
+                            <b:inputText label="Price:"  labelStyle="width:80px;">
                                 <f:facet name="prepend">
                                     <h:outputText value="$" />
                                 </f:facet>
@@ -103,7 +103,7 @@
                 <p>Finally, you can go further and prepend or append multiple text elements, as in the following example:</p>
                 <b:panel title="Live preview" look="info" collapsible="false">
                     <b:form inline="true">
-                        <b:inputText value="99" label="Your bid" renderLabel="true">
+                        <b:inputText value="99" label="Your bid" >
                             <f:facet name="prepend">
                                 <h:outputText value="offer" />
                                 <h:outputText value="$" />
@@ -119,7 +119,7 @@
                         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                         <![CDATA[
                     <b:form inline="true">
-                        <b:inputText value="99" label="Your bid" renderLabel="true">
+                        <b:inputText value="99" label="Your bid" >
                             <f:facet name="prepend">
                                 <h:outputText value="offer" />
                                 <h:outputText value="$" />
@@ -136,13 +136,13 @@
                 <p>You can take advantage of the <code><b:navLink outcome="/layout/icons" value="&lt;b:icon&gt;"/></code> or <code><b:navLink outcome="/layout/icons" value="&lt;b:iconAwesome&gt;"/></code> components to append (or prepend) icons :</p>
                 <b:panel title="Live preview" look="info" collapsible="false">            
                 <b:form horizontal="true">
-                    <b:inputText placeholder="Username" required="true" label="Username" renderLabel="true" colMd="10" labelColMd="2">
+                    <b:inputText placeholder="Username" required="true" label="Username"  colMd="10" labelColMd="2">
                         <f:facet name="prepend">
                             <b:icon name="user" />
                         </f:facet>
                     </b:inputText>
 
-                    <b:inputText placeholder="Password" label="Password" renderLabel="true" colMd="10" labelColMd="2">
+                    <b:inputText placeholder="Password" label="Password"  colMd="10" labelColMd="2">
                         <f:facet name="prepend">
                             <b:iconAwesome name="key" />
                         </f:facet>
@@ -176,7 +176,7 @@
                 <p>Another nice feature is that you can append (or prepend) buttons, allowing you to build compact mini-forms for specific actions with little effort:</p>
                 <b:panel title="Live preview" look="info">
                     <b:form id="bid" prependId="false">
-                        <b:inputText id="mybid" class="mybid-example" value="#{testBean.val6}" label="Your offer:" renderLabel="true">
+                        <b:inputText id="mybid" class="mybid-example" value="#{testBean.val6}" label="Your offer:" >
                                 <f:facet name="prepend">
                                     <b:button look="danger" value="Reset" onclick="$('.mybid-example').val('');return false;" iconAwesome="recycle"/>
                                 </f:facet>
@@ -202,7 +202,7 @@
                         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                         <![CDATA[
                     <b:form id="bid" prependId="false">
-                        <b:inputText id="mybid" class="mybid-example" value="&num;{testBean.val6}" label="Your offer:" renderLabel="true">
+                        <b:inputText id="mybid" class="mybid-example" value="&num;{testBean.val6}" label="Your offer:" >
                             <f:facet name="prepend">
                                 <b:button look="danger" value="Reset" onclick="$('.mybid-example').val('');return false;" iconAwesome="recycle"/>
                             </f:facet>
@@ -384,10 +384,10 @@
             
                   <b:panelGrid columns="2" size="sm">
                       <b:form>
-                          <b:inputText id="name" value="#{userBean.name}" label="Enter your name" required="true" renderLabel="true" />
+                          <b:inputText id="name" value="#{userBean.name}" label="Enter your name" required="true"  />
                           <b:message for="@previous" />
                       
-                          <b:inputText id="age" value="#{userBean.age}" label="What's your age?" renderLabel="true" />
+                          <b:inputText id="age" value="#{userBean.age}" label="What's your age?"  />
 	                      <b:message for="@previous" />
                       
 	                      <b:commandButton update="@form" value="Validate constraints" />
@@ -397,7 +397,7 @@
                           <b:switch value="#{messageStyleBean.useLegacyBootsFacesStyle}"
 						    immediate="true"
 		                    caption="use legacy BootsFaces CSS classes"
-		                    label="compatibility settings" render-label="true"
+		                    label="compatibility settings" 
 		                    onchange="ajax:messageStyleBean.toggleSettings();"
 		                    update="@form"
 		                    />
@@ -412,10 +412,10 @@
                     class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 				  <![CDATA[
 <b:form>
-    <b:inputText id="name" value="&num;{userBean.name}" label="Enter your name" required="true" renderLabel="true" />
+    <b:inputText id="name" value="&num;{userBean.name}" label="Enter your name" required="true"  />
     <b:message for="@previous" />
                       
-    <b:inputText id="age" value="&num;{userBean.age}" label="What's your age?" renderLabel="true" />
+    <b:inputText id="age" value="&num;{userBean.age}" label="What's your age?"  />
     <b:message for="@previous" />
                       
     <b:commandButton update="@form" value="Validate constraints" />
@@ -482,10 +482,10 @@ public class UserBean {
         <b:panel title="Live preview" look="info" collapsible="false">
             <b:form>
                       <b:inputText id="name" value="#{beanValidationBean.name}"
-                                   label="Enter your name" renderLabel="true" />
+                                   label="Enter your name"  />
                       <b:message for="@previous" />
                       <b:inputText id="age" value="#{beanValidationBean.age}"
-                                   label="What's your age?" renderLabel="true" />
+                                   label="What's your age?"  />
                       <b:message for="@previous" />
                       <b:commandButton update="@form" value="Validate constraints" />
                       <b:messages redisplay="false"/>
@@ -564,10 +564,10 @@ public class BeanValidationBean {
 	              <b:well style="height:180px">
 	                <b:form horizontal="true">
 	                  <b:inputText id="name" value="#{userBean.name}" col-xs="8" col-md="10" label-col-xs="4" label-col-md="2"
-	                    label="Enter your name" required="true" renderLabel="true" />
+	                    label="Enter your name" required="true"  />
 	                  <b:inputText id="age" value="#{userBean.age}" tiny-screen="two-thirds" medium-screen="10" label-tiny-screen="one-third"
 	                    label-medium-screen="2"
-	                    label="What's your age?" renderLabel="true" />
+	                    label="What's your age?"  />
 	                </b:form>
 	              </b:well>
               </b:tab>
@@ -579,10 +579,10 @@ public class BeanValidationBean {
     	              <b:well>
      	                <b:form horizontal="true">
     	                  <b:inputText id="name" value="&num;{userBean.name}" col-xs="8" col-md="10" label-col-xs="4" label-col-md="2"
-    	                    label="Enter your name" required="true" renderLabel="true" />
+    	                    label="Enter your name" required="true"  />
     	                  <b:inputText id="age" value="&num;{userBean.age}" tiny-screen="two-thirds" medium-screen="10" label-tiny-screen="one-third"
     	                    label-medium-screen="2"
-    	                    label="What's your age?" renderLabel="true" />
+    	                    label="What's your age?"  />
 	                    </b:form>
     	              </b:well>
                   ]]>
@@ -593,9 +593,9 @@ public class BeanValidationBean {
 	              <b:well style="height:180px">
 	                <b:form inline="true">
 	                  <b:inputText id="name" value="#{userBean.name}" 
-	                    label="Enter your name" required="true" renderLabel="true" />
+	                    label="Enter your name" required="true"  />
 	                  <b:inputText id="age" value="#{userBean.age}" 
-	                    label="What's your age?" renderLabel="true" />
+	                    label="What's your age?"  />
 	                </b:form>
 	              </b:well>
               </b:tab>
@@ -607,9 +607,9 @@ public class BeanValidationBean {
  	              <b:well style="height:180px">
 	                <b:form inline="true">
 	                  <b:inputText id="name" value="&num;{userBean.name}" 
-	                    label="Enter your name" required="true" renderLabel="true" />
+	                    label="Enter your name" required="true"  />
 	                  <b:inputText id="age" value="&num;{userBean.age}" 
-	                    label="What's your age?" renderLabel="true" />
+	                    label="What's your age?"  />
 	                </b:form>
 	              </b:well>
                   ]]>
@@ -620,9 +620,9 @@ public class BeanValidationBean {
 	              <b:well style="height:180px">
 	                <h:form>
 	                  <b:inputText id="name" value="#{userBean.name}" col-md="6"
-	                    label="Enter your name" required="true" renderLabel="true" />
+	                    label="Enter your name" required="true"  />
 	                  <b:inputText id="age" value="#{userBean.age}" col-md="6"
-	                    label="What's your age?" renderLabel="true" />
+	                    label="What's your age?"  />
 	                </h:form>
 	              </b:well>
               </b:tab>
@@ -634,9 +634,9 @@ public class BeanValidationBean {
  	              <b:well style="height:180px">
 	                <h:form>
 	                  <b:inputText id="name" value="&num;{userBean.name}" col-md="6"
-	                    label="Enter your name" required="true" renderLabel="true" />
+	                    label="Enter your name" required="true"  />
 	                  <b:inputText id="age" value="&num;{userBean.age}" col-md="6"
-	                    label="What's your age?" renderLabel="true" />
+	                    label="What's your age?"  />
 	                </h:form>
 	              </b:well>
                   ]]>
@@ -742,11 +742,11 @@ public class DefaultValuesBean implements Serializable {
                 <b:form id="loginForm">
                     <b:inputText id="usernameDiv" fieldId="j_username" name="j_username"
                                  value="#{loginBean.username}"
-                                 label="Username" render-label="true"/>
+                                 label="Username" />
                     <b:message for="@previous" />
                     <b:inputSecret id="passwordDiv" fieldId="j_password" name="j_password"
                                    value="#{loginBean.password}"
-                                   label="Password"  render-label="true"/>
+                                   label="Password"  />
                     <b:message for="passwordDiv" />
                     <b:commandButton update="@form" value="Login" onclick="ajax:loginBean.login2()"/>
                 </b:form>
@@ -761,11 +761,11 @@ public class DefaultValuesBean implements Serializable {
                 <b:form id="loginForm">
                     <b:inputText id="usernameDiv" fieldId="j_username" name="j_username"
                                  value="&num;{loginBean.username}"
-                                 label="Username" render-label="true"/>
+                                 label="Username" />
                     <b:message for="@previous" />
                     <b:inputSecret id="passwordDiv" fieldId="j_password" name="j_password"
                                    value="&num;{loginBean.password}"
-                                   label="Password"  render-label="true"/>
+                                   label="Password"  />
                     <b:message for="passwordDiv" />
                     <b:commandButton update="@form" value="Login" onclick="ajax:loginBean.login2()"/>
                 </b:form>
@@ -918,11 +918,11 @@ or in an horizontal Form:
         <br/>
         <b:panel title="Live preview" look="info" collapsible="false">            
             <b:form horizontal="true">
-                <b:inputText placeholder="Visible on medium or large screen" visible="md..." label="Visible on &gt;= md:" renderLabel="true" label-col-md="2" col-md="10" />
-                <b:inputText placeholder="Visible on small-screen" visible="...sm" label="Visible on &lt;= sm:" renderLabel="true" label-col-md="2" col-md="10"/>
-                <b:inputText placeholder="Visible on small to large screen" visible="sm...lg" label="Visible on sm...lg:" renderLabel="true" label-col-md="2" col-md="10"/>
-                <b:inputText placeholder="Visible on tiny and medium screen" visible="xs,md" label="Visible on xs and md:" renderLabel="true" label-col-md="2" col-md="10"/>
-                <b:inputText placeholder="col-md-6, offset 2" label="Col-md-6, offset 2:" renderLabel="true" label-col-md="2" col-md="6" offset="2" />
+                <b:inputText placeholder="Visible on medium or large screen" visible="md..." label="Visible on &gt;= md:"  label-col-md="2" col-md="10" />
+                <b:inputText placeholder="Visible on small-screen" visible="...sm" label="Visible on &lt;= sm:"  label-col-md="2" col-md="10"/>
+                <b:inputText placeholder="Visible on small to large screen" visible="sm...lg" label="Visible on sm...lg:"  label-col-md="2" col-md="10"/>
+                <b:inputText placeholder="Visible on tiny and medium screen" visible="xs,md" label="Visible on xs and md:"  label-col-md="2" col-md="10"/>
+                <b:inputText placeholder="col-md-6, offset 2" label="Col-md-6, offset 2:"  label-col-md="2" col-md="6" offset="2" />
             </b:form>
 
             <f:facet name="footer">
