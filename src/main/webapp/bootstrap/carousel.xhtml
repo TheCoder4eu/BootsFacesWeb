@@ -16,11 +16,11 @@
       .
     </p>
 
-    <h1>Basic usage</h1>
+    <h3>Basic usage</h3>
     <p>Basically, just put one or more <code>&lt;b:carouselItem /&gt;</code> inside a <code>&lt;b:carousel /&gt;</code> tag:</p>
-    <b:tabView>
-      <b:tab title="preview">
-        <b:carousel id="parque" style="width:400px">
+    <b:panel title="Live preview" look="info" collapsible="false">            
+
+<b:carousel id="parque" style="width:400px">
           <b:carouselItem>
             <img src="carousel/Valladolid-parque-1.jpg" alt="Valladolid" />
           </b:carouselItem>
@@ -31,123 +31,127 @@
             <img src="carousel/Valladolid-parque-3.jpg" alt="Valladolid" />
           </b:carouselItem>
         </b:carousel>
-      </b:tab>
-      <b:tab title="JSF markup code">
-        <b:well>
-          <script type="syntaxhighlighter"
+
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+   <script type="syntaxhighlighter"
             class="brush: xml; toolbar: false;gutter: false; first-line: 1">
           <![CDATA[
         <b:carousel id="parque" style="width:400px">
           <b:carouselItem>
-            <img src="carousel/Valladolid-parque-1.jpg" alt="Valladolid" />
+             <img src="carousel/Valladolid-parque-1.jpg" alt="Valladolid" />
           </b:carouselItem>
           <b:carouselItem>
-            <img src="carousel/Valladolid-parque-2.jpg" alt="Valladolid" />
+             <img src="carousel/Valladolid-parque-2.jpg" alt="Valladolid" />
           </b:carouselItem>
           <b:carouselItem>
-            <img src="carousel/Valladolid-parque-3.jpg" alt="Valladolid" />
+             <img src="carousel/Valladolid-parque-3.jpg" alt="Valladolid" />
           </b:carouselItem>
        </b:carousel>
 
           ]]></script>
-        </b:well>
-      </b:tab>
-    </b:tabView>
+                </b:panel>
+            </f:facet>
+        </b:panel>
 
 
 
-<h1>Advanced usage: Wizards</h1>
+<h3>Advanced usage: Wizards</h3>
 <p>You can put arbitrary content inside Carousel items. For instance, you can create a wizard using the carousel.
 Chances are you need custom controls in this case. We'll hava a look to custom controls in a minute. First, let's
 see how the standard controls look in a wizard. Don't forget to switch off the animation by setting <code>startAnimation="false"</code>.
 You may also want to set <code>wrap="false"</code> to prevent the wizard to start over after the last step.</p>
-  <b:tabView>
-      <b:tab title="preview" contentStyle="width:600px">
-        <h:form>
-          <b:carousel id="wizard" styleClass="wizardPseudoClass"
-            style="width:400px;height:350px;padding-top:20px"
-            startAnimation="false"
-            showIndicators="false"
-            wrap="false">
-            <b:carouselItem style="width:400px;height:230px">
-              <b:panel title="Step 1" look="primary">
-                <b:inputText label="First name" />
-                <b:inputText label="Last name"  />
-              </b:panel>
-            </b:carouselItem>
-            <b:carouselItem style="width:400px;height:230px">
-              <b:panel title="Step 2" look="danger  ">
-                <b:inputText label="Street"  />
-              </b:panel>
-            </b:carouselItem>
-            <b:carouselItem style="width:400px;height:230px">
-              <b:panel title="Step 3" look="success">
-                <b:inputText label="Zip code"  />
-                <b:inputText label="City"  />
-              </b:panel>
-            </b:carouselItem>
-            <b:carouselControl direction="right" >
-                <b:commandButton value="previous step" role="button"
-                  onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause'); return false;"
-                  look="info" />
-            </b:carouselControl>
-            <b:carouselControl direction="left">
-                <b:commandButton value="next step" role="button" style="position:absolute;right:0px"
-                  onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause'); return false;"
-                  look="success" />
-            </b:carouselControl>
-           </b:carousel>
-        </h:form>
-      </b:tab>
-      <b:tab title="JSF markup code">
-        <b:well>
-          <script type="syntaxhighlighter"
+  
+<b:panel title="Live preview" look="info" collapsible="false">            
+
+<b:form>
+              <b:carousel id="wizard" styleClass="wizardPseudoClass"
+                          style="width:400px;padding-top:20px"
+                          startAnimation="false"
+                          showIndicators="false"
+                          wrap="false">
+                  <b:carouselItem style="width:400px;height:230px">
+                      <b:panel title="Step 1" look="primary">
+                          <b:inputText label="First name" />
+                          <b:inputText label="Last name"  />
+                      </b:panel>
+                  </b:carouselItem>
+                  <b:carouselItem style="width:400px;height:230px">
+                      <b:panel title="Step 2" look="danger  ">
+                          <b:inputText label="Street"  />
+                      </b:panel>
+                  </b:carouselItem>
+                  <b:carouselItem style="width:400px;height:230px">
+                      <b:panel title="Step 3" look="success">
+                          <b:inputText label="Zip code"  />
+                          <b:inputText label="City"  />
+                      </b:panel>
+                  </b:carouselItem>
+                  <b:carouselControl direction="right" >
+                      <b:button value="Previous step"
+                                onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause');"
+                                look="info" />
+                  </b:carouselControl>
+                  <b:carouselControl direction="left">
+                      <b:button value="Next step" style="position:absolute;right:0px"
+                                onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause');"
+                                look="success" />
+                  </b:carouselControl>
+              </b:carousel>
+          </b:form>
+
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+   <script type="syntaxhighlighter"
             class="brush: xml; toolbar: false;gutter: false; first-line: 1">
           <![CDATA[
-       <h:form>
-          <b:carousel id="wizard" styleClass="wizardPseudoClass"
-            style="width:400px;height:350px;padding-top:20px"
-            startAnimation="false"
-            showIndicators="false"
-            wrap="false">
-            <b:carouselItem style="width:400px;height:230px">
-              <b:panel title="Step 1" look="primary">
-                <b:inputText label="First name" />
-                <b:inputText label="Last name"  />
-              </b:panel>
-            </b:carouselItem>
-            <b:carouselItem style="width:400px;height:230px">
-              <b:panel title="Step 2" look="danger  ">
-                <b:inputText label="Street"  />
-              </b:panel>
-            </b:carouselItem>
-            <b:carouselItem style="width:400px;height:230px">
-              <b:panel title="Step 3" look="success">
-                <b:inputText label="Zip code"  />
-                <b:inputText label="City"  />
-              </b:panel>
-            </b:carouselItem>
-            <b:carouselControl direction="right" >
-                <b:commandButton value="previous step" role="button"
-                  onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause'); return false;"
-                  look="info" />
-            </b:carouselControl>
-            <b:carouselControl direction="left">
-                <b:commandButton value="next step" role="button" style="position:absolute;right:0px"
-                  onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause'); return false;"
-                  look="success" />
-            </b:carouselControl>
-           </b:carousel>
-        </h:form>
+          <b:form>
+              <b:carousel id="wizard" styleClass="wizardPseudoClass"
+                          style="width:400px; padding-top:20px"
+                          startAnimation="false"
+                          showIndicators="false"
+                          wrap="false">
+                  <b:carouselItem style="width:400px; height:230px">
+                      <b:panel title="Step 1" look="primary">
+                          <b:inputText label="First name" />
+                          <b:inputText label="Last name"  />
+                      </b:panel>
+                  </b:carouselItem>
+                  <b:carouselItem style="width:400px;height:230px">
+                      <b:panel title="Step 2" look="danger  ">
+                          <b:inputText label="Street"  />
+                      </b:panel>
+                  </b:carouselItem>
+                  <b:carouselItem style="width:400px;height:230px">
+                      <b:panel title="Step 3" look="success">
+                          <b:inputText label="Zip code"  />
+                          <b:inputText label="City"  />
+                      </b:panel>
+                  </b:carouselItem>
+                  <b:carouselControl direction="right" >
+                      <b:button value="Previous step"
+                                onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause');"
+                                look="info" />
+                  </b:carouselControl>
+                  <b:carouselControl direction="left">
+                      <b:button value="Next step" style="position:absolute;right:0px"
+                                onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause');"
+                                look="success" />
+                  </b:carouselControl>
+              </b:carousel>
+          </b:form>
           ]]></script>
-        </b:well>
-      </b:tab>
-    </b:tabView>
+                </b:panel>
+            </f:facet>
+        </b:panel>
 
     <p>In this example, th Buttons use the Bootstrap carousel JavaScript API. It's available for you. You just have
     to be careful with the ids. More often than not, JSF generates ids that aren't compatible with jQuery. Better use
     CSS pseudo classes instead (i.e. CSS classes that don't bear layout information).</p>
     <p>To send the form data to the Java bean, use the AJAX api of <code>&lt;b:commandButton /&gt;</code></p>
+    <b:panel>
     <script type="syntaxhighlighter"
             class="brush: xml; toolbar: false;gutter: false; first-line: 1">
     <![CDATA[
@@ -156,16 +160,17 @@ You may also want to set <code>wrap="false"</code> to prevent the wizard to star
                   execute="@form"
                   onclick="ajax:bean.onclick(); return false;"
                   look="success"
-                  oncomplete="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause'); return false;"/>
-     ]]></script>
+                  oncomplete="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause'); return false;"/>]]></script>
+        </b:panel>
 
      <p>This also allows you to skip slides. Add an invisible input field to your form, update it with the
      index of the next slide and call <code>$('.wizardPseudoClass').carousel($('invisibleFieldId').val());</code>:</p>
 
+    <b:panel>
          <script type="syntaxhighlighter"
             class="brush: xml; toolbar: false;gutter: false; first-line: 1">
     <![CDATA[
-        <h:inputText id="nextSlideId" type="hidden" value="#39;{wizardBean.nextIndex}" />
+        <h:inputText id="nextSlideId" type="hidden" value="&num;{wizardBean.nextIndex}" />
         <b:commandButton value="next step"
                   update="@form:**:messages @previous"
                   execute="@form"
@@ -173,16 +178,17 @@ You may also want to set <code>wrap="false"</code> to prevent the wizard to star
                   look="success"
                   oncomplete="$('.wizardPseudoClass').carousel($('nextSlideId').val());;$('.wizardPseudoClass').carousel('pause'); return false;"/>
      ]]></script>
+        </b:panel>
 
 
-    <h1>Advanced usage: Captions</h1>
+    <h3>Advanced usage: Captions</h3>
     <p>Assign an image description to the slides by adding the <code>caption</code> attribute. This provides some
     default behavior: the text is embedded in an <code>&lt;h3 /&gt;</code> tag. If you need more
     flexibility for your caption, your can define it inside a <code>&lt;b:carouselCaption /&gt;</code> tag.</p>
 
-    <b:tabView>
-      <b:tab title="preview">
-        <b:carousel id="tiovivo" style="width:800px" interval="2500">
+    <b:panel title="Live preview" look="info" collapsible="false">            
+
+<b:carousel id="tiovivo" style="width:800px" interval="2500">
           <b:carouselItem >
             <img src="Valladolid1.png" alt="Valladolid" style="width: 800px; height: 600px" />
             <b:carouselCaption>
@@ -207,10 +213,11 @@ You may also want to set <code>wrap="false"</code> to prevent the wizard to star
             <img src="Valladolid5.png" alt="Valladolid" style="width: 800px; height: 600px" />
           </b:carouselItem>
         </b:carousel>
-      </b:tab>
-      <b:tab title="JSF markup code">
-        <b:well>
-          <script type="syntaxhighlighter"
+
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+   <script type="syntaxhighlighter"
             class="brush: xml; toolbar: false;gutter: false; first-line: 1">
           <![CDATA[
        <b:carousel id="tiovivo" style="width:800px" interval="2500">
@@ -239,9 +246,9 @@ You may also want to set <code>wrap="false"</code> to prevent the wizard to star
           </b:carouselItem>
         </b:carousel>
           ]]></script>
-        </b:well>
-      </b:tab>
-    </b:tabView>
+                </b:panel>
+            </f:facet>
+        </b:panel>
 
     <h1>Advanced usage: Custom controls</h1>
     <p>By default, the BootsFaces carousel comes complete with progress indicators (the little dots)
@@ -255,77 +262,64 @@ You may also want to set <code>wrap="false"</code> to prevent the wizard to star
     you have to care about positioning yourself.</p>
     <p>Also note that you need to add at least two <code>&lt;b:carouselControls /&gt;</code>, one
     for each direction.</p>
-    <b:tabView>
-      <b:tab title="preview">
-      <h:form id="riojaForm">
-        <b:carousel id="rioja" styleClass="riojaPseudoClass" style="width:700px">
-          <b:carouselItem style="padding-left:150px">
-            <img src="carousel/rioja1.jpg" alt="Valladolid" />
-          </b:carouselItem>
-          <b:carouselItem style="padding-left:150px">
-            <img src="carousel/rioja2.jpg" alt="Valladolid" />
-          </b:carouselItem>
-          <b:carouselItem style="padding-left:150px">
-            <img src="carousel/rioja3.jpg" alt="Valladolid" />
-          </b:carouselItem>
-          <b:carouselControl direction="right">
-            <div class="left carousel-control">
-            <b:commandButton value="previous image" role="button"
-                             onclick="$('.riojaPseudoClass').carousel('prev'); return false;"
-                             style="margin-top:140px"
-                             look="info"/>
-            </div>
-          </b:carouselControl>
-          <b:carouselControl direction="left">
-            <div class="right carousel-control">
-              <b:commandButton value="next image" role="button"
-                               onclick="$('.riojaPseudoClass').carousel('next'); return false;"
-                               style="margin-top:140px"
-                               look="success"/>
-            </div>
-          </b:carouselControl>
-        </b:carousel>
-        </h:form>
-      </b:tab>
-      <b:tab title="JSF markup code">
-        <b:well>
-          <script type="syntaxhighlighter"
+    
+    <b:panel title="Live preview" look="info" collapsible="false">            
+
+<b:carousel id="rioja" styleClass="riojaPseudoClass" style="width:700px">
+                  <b:carouselItem style="padding-left:150px">
+                      <img src="carousel/rioja1.jpg" alt="Rioja 1" />
+                  </b:carouselItem>
+                  <b:carouselItem style="padding-left:150px">
+                      <img src="carousel/rioja2.jpg" alt="Rioja 2" />
+                  </b:carouselItem>
+                  <b:carouselItem style="padding-left:150px">
+                      <img src="carousel/rioja3.jpg" alt="Rioja 3" />
+                  </b:carouselItem>
+                  <b:carouselControl direction="right">
+                      <div class="left carousel-control">
+                          <b:button value="Previous image" onclick="$('.riojaPseudoClass').carousel('prev');" style="margin-top:140px" look="info"/>
+                      </div>
+                  </b:carouselControl>
+                  <b:carouselControl direction="left">
+                      <div class="right carousel-control">
+                          <b:button value="Next image" onclick="$('.riojaPseudoClass').carousel('next');" style="margin-top:140px" look="success"/>
+                      </div>
+                  </b:carouselControl>
+              </b:carousel>
+
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+   <script type="syntaxhighlighter"
             class="brush: xml; toolbar: false;gutter: false; first-line: 1">
           <![CDATA[
-       <b:carousel id="rioja" styleClass="riojaPseudoClass" style="width:700px">
-          <b:carouselItem style="padding-left:150px">
-            <img src="carousel/rioja1.jpg" alt="Valladolid" />
-          </b:carouselItem>
-          <b:carouselItem style="padding-left:150px">
-            <img src="carousel/rioja2.jpg" alt="Valladolid" />
-          </b:carouselItem>
-          <b:carouselItem style="padding-left:150px">
-            <img src="carousel/rioja3.jpg" alt="Valladolid" />
-          </b:carouselItem>
-          <b:carouselControl direction="right">
-            <div class="left carousel-control">
-            <b:commandButton value="previous image" role="button"
-                             onclick="$('.riojaPseudoClass').carousel('prev'); return false;"
-                             style="margin-top:140px"
-                             look="info"/>
-            </div>
-          </b:carouselControl>
-          <b:carouselControl direction="left">
-            <div class="right carousel-control">
-              <b:commandButton value="next image" role="button"
-                               onclick="$('.riojaPseudoClass').carousel('next'); return false;"
-                               style="margin-top:140px"
-                               look="success"/>
-            </div>
-          </b:carouselControl>
-        </b:carousel>
-
+              <b:carousel id="rioja" styleClass="riojaPseudoClass" style="width:700px">
+                  <b:carouselItem style="padding-left:150px">
+                      <img src="carousel/rioja1.jpg" alt="Rioja 1" />
+                  </b:carouselItem>
+                  <b:carouselItem style="padding-left:150px">
+                      <img src="carousel/rioja2.jpg" alt="Rioja 2" />
+                  </b:carouselItem>
+                  <b:carouselItem style="padding-left:150px">
+                      <img src="carousel/rioja3.jpg" alt="Rioja 3" />
+                  </b:carouselItem>
+                  <b:carouselControl direction="right">
+                      <div class="left carousel-control">
+                          <b:button value="Previous image" onclick="$('.riojaPseudoClass').carousel('prev');" style="margin-top:140px" look="info"/>
+                      </div>
+                  </b:carouselControl>
+                  <b:carouselControl direction="left">
+                      <div class="right carousel-control">
+                          <b:button value="Next image" onclick="$('.riojaPseudoClass').carousel('next');" style="margin-top:140px" look="success"/>
+                      </div>
+                  </b:carouselControl>
+              </b:carousel>
           ]]></script>
-        </b:well>
-      </b:tab>
-    </b:tabView>
+                </b:panel>
+            </f:facet>
+        </b:panel>
 
-        <h2>AJAX and JavaScript <b:badge value="since 0.8.0" /></h2>
+        <h3>AJAX and JavaScript <b:badge value="since 0.8.0" /></h3>
         <p><code>&lt;b:carousel &gt;</code> supports many JavaScript and AJAX events,
         as described in <a href="ajax.jsf">the description of AJAX in BootsFaces</a>. Basically, each of the
         many JavaScript callback handlers (the <code>on[event]</code> attributes) also supports AJAX.
@@ -336,13 +330,14 @@ You may also want to set <code>wrap="false"</code> to prevent the wizard to star
         To get familiar with BootsFaces AJAX, try the
         <a target="#" href="https://github.com/stephanrauh/BootsFaces-Examples/tree/master/AJAX">BootsFaces AJAX demo project</a>.</p>
 
-    <h2>The <code>disabled</code> attribute</h2>
+    <h3>The <code>disabled</code> attribute</h3>
     <p>The <code>disabled</code> attribute works a bit different than in most components. It disables (or rather: hides) the controls
     of the carousel. It still rotates the slides (if you configure it so), but the user can't influence that. AJAX and
     JavaScript events are processed no matter if the carousel is disabled or not.</p>
-    <b:tabView>
-      <b:tab title="preview">
-        <b:carousel id="parque2" style="width:400px" disabled="true">
+   
+    <b:panel title="Live preview" look="info" collapsible="false">            
+
+<b:carousel id="parque2" style="width:400px" disabled="true">
           <b:carouselItem>
             <img src="carousel/Valladolid-parque-1.jpg" alt="Valladolid" />
           </b:carouselItem>
@@ -353,10 +348,11 @@ You may also want to set <code>wrap="false"</code> to prevent the wizard to star
             <img src="carousel/Valladolid-parque-3.jpg" alt="Valladolid" />
           </b:carouselItem>
         </b:carousel>
-      </b:tab>
-      <b:tab title="JSF markup code">
-        <b:well>
-          <script type="syntaxhighlighter"
+
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+<script type="syntaxhighlighter"
             class="brush: xml; toolbar: false;gutter: false; first-line: 1">
           <![CDATA[
         <b:carousel id="parque2" style="width:400px" disabled="true">
@@ -372,12 +368,12 @@ You may also want to set <code>wrap="false"</code> to prevent the wizard to star
        </b:carousel>
 
           ]]></script>
-        </b:well>
-      </b:tab>
-    </b:tabView>
+                </b:panel>
+            </f:facet>
+        </b:panel>
 
 
-    <h1>Do it yourself</h1>
+    <h3>Do it yourself</h3>
     <p>
       If you need more flexibility than <code>b:carousel</code> offers,
       the <a target="#" href="http://www.w3schools.com/bootstrap/bootstrap_carousel.asp">W3C example</a> shows how to do it yourself.
@@ -385,10 +381,105 @@ You may also want to set <code>wrap="false"</code> to prevent the wizard to star
       of default, Bootswatch and PatternFly themes.
     </p>
 
-    <ui:include src="carousel/carousel_do_it_yourself.xhtml" />
+<b:panel title="Live preview" look="info" collapsible="false">            
 
-    <br />
-    <br />
+<h:outputScript library="bsf" name="js/carousel.js" />
+               <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width:800px">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                  <li data-target="#myCarousel" data-slide-to="1"></li>
+                  <li data-target="#myCarousel" data-slide-to="2"></li>
+                  <li data-target="#myCarousel" data-slide-to="3"></li>
+                  <li data-target="#myCarousel" data-slide-to="4"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                  <div class="item active">
+                    <img src="Valladolid1.png" alt="Valladolid" style="width:800px;height:600px"/>
+                  </div>
+
+                  <div class="item">
+                    <img src="Valladolid2.png" alt="Valladolid" style="width:800px;height:600px"/>
+                  </div>
+
+                  <div class="item">
+                    <img src="Valladolid3.png" alt="Valladolid" style="width:800px;height:600px" />
+                  </div>
+
+                  <div class="item">
+                    <img src="Valladolid4.png" alt="Valladolid" style="width:800px;height:600px"/>
+                  </div>
+                  <div class="item">
+                    <img src="Valladolid5.png" alt="Valladolid" style="width:800px;height:600px"/>
+                  </div>
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                <![CDATA[
+               <h:outputScript library="bsf" name="js/carousel.js" />
+               <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width:800px">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                  <li data-target="#myCarousel" data-slide-to="1"></li>
+                  <li data-target="#myCarousel" data-slide-to="2"></li>
+                  <li data-target="#myCarousel" data-slide-to="3"></li>
+                  <li data-target="#myCarousel" data-slide-to="4"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                  <div class="item active">
+                    <img src="Valladolid1.png" alt="Valladolid" style="width:800px;height:600px"/>
+                  </div>
+
+                  <div class="item">
+                    <img src="Valladolid2.png" alt="Valladolid" style="width:800px;height:600px"/>
+                  </div>
+
+                  <div class="item">
+                    <img src="Valladolid3.png" alt="Valladolid" style="width:800px;height:600px" />
+                  </div>
+
+                  <div class="item">
+                    <img src="Valladolid4.png" alt="Valladolid" style="width:800px;height:600px"/>
+                  </div>
+                  <div class="item">
+                    <img src="Valladolid5.png" alt="Valladolid" style="width:800px;height:600px"/>
+                  </div>
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+                ]]></script>
+                </b:panel>
+            </f:facet>
+        </b:panel>
+
     <b:panel look="info" rendered="false">
       <f:facet name="heading">
         <b>Skinning</b>
