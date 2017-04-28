@@ -17,77 +17,99 @@ td {
 
 		<p>TouchSpin is a component that enable to spin up or down values in a defined numeric range.</p>
 		
-		<h1>Basic usage</h1>
+		<h3>Basic usage</h3>
 		<p>Example of basic usage of the component</p>
-		<b:well>
-			<h:form prependId="false">
-				<b:row>
-					<b:touchSpin id="spin1" col-md="3" value="#{spinBean.spinValue}" min="10" max="200" step="2" prefix="$" />
-					<b:touchSpin id="spin2" col-md="3" value="#{spinBean.intSpinValue}" min="10" max="200" step="2" prefix="$" />
-					
-					<b:commandButton value="Send Value" col-md="2" actionListener="#{spinBean.button1}" ajax="true" update="@form" />
-					<b:commandButton value="Update Value" col-md="2" actionListener="#{spinBean.button2}" ajax="true" update="@form" />
-				</b:row>
-			</h:form>
-		</b:well>
-		<p>Created with the following code:</p>
-		<b:well>
-			<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
-	           <b:touchSpin id="spin1" col-md="3" value="&amp;{spinBean.spinValue}" min="10" max="200" step="2" prefix="$" />
-	        ]]></script>
-		</b:well>
-		<br/><br/>
-		<h1>Event management</h1>
-		<p>Here is an example of event management client-side</p>
-		<b:well>
-			<b:row>
-				<b:column col-md="3">
-					<b:touchSpin min="10" max="200" step="2" value="140d"
-						onstartspin="writeLine('touchspin.on.startspin');"  
-						onstartupspin="writeLine('touchspin.on.startupspin');"  
-						onstartdownspin="writeLine('touchspin.on.startdownspin');"  
-						onstopspin="writeLine('touchspin.on.stopspin');"  
-						onstopupspin="writeLine('touchspin.on.stopupspin');"  
-						onstopdownspin="writeLine('touchspin.on.stopdownspin');"  
-						onchange="writeLine('change');"  
-					/>
-				</b:column>
-				<b:column col-md="9">
-					<pre id="stepEvtLog" style="height:200px;overflow:auto;"></pre>
-				</b:column>
-			</b:row>
-		</b:well>
-		<script type="text/javascript">
-              var log = $("#stepEvtLog"), text = "";
+		
+                <b:panel title="Live preview" look="info" collapsible="false">         
+<b:form horizontal="true">
+                <b:formGroup>
+                    <b:touchSpin id="spin1" col-md="3" value="#{spinBean.spinValue}" min="10" max="200" step="2" prefix="$" />
+                    <b:touchSpin id="spin2" col-md="3" value="#{spinBean.intSpinValue}" min="10" max="200" step="2" prefix="$" />
 
-              function writeLine(line) {
-                text += line + "\n";
-                log.text(text);
-                log.scrollTop(log[0].scrollHeight - log.height());
-              }
-		</script>
-		<p>Created with the following code:</p>
-		<b:well>
-			<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
-	           <b:row>
-				<b:column col-md="3">
-					<b:touchSpin min="10" max="200" step="2" 
-						onstartspin="writeLine('touchspin.on.startspin');"  
-						onstartupspin="writeLine('touchspin.on.startupspin');"  
-						onstartdownspin="writeLine('touchspin.on.startdownspin');"  
-						onstopspin="writeLine('touchspin.on.stopspin');"  
-						onstopupspin="writeLine('touchspin.on.stopupspin');"  
-						onstopdownspin="writeLine('touchspin.on.stopdownspin');"  
-						onchange="writeLine('change');"  
-					/>
-				</b:column>
-				<b:column col-md="9">
-					<pre id="stepEvtLog" style="height:200px;overflow:auto;"></pre>
-				</b:column>
-			</b:row>
+                    <b:commandButton value="Send Value" col-md="2" actionListener="#{spinBean.button1}" ajax="true" update="@form" />
+                    <b:commandButton value="Update Value" col-md="2" actionListener="#{spinBean.button2}" ajax="true" update="@form" />
+                </b:formGroup>
+            </b:form>
+
+
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
+            <b:form horizontal="true">
+                <b:formGroup>
+                    <b:touchSpin id="spin1" col-md="3" value="&num;{spinBean.spinValue}" min="10" max="200" step="2" prefix="$" />
+                    <b:touchSpin id="spin2" col-md="3" value="&num;{spinBean.intSpinValue}" min="10" max="200" step="2" prefix="$" />
+
+                    <b:commandButton value="Send Value" col-md="2" action="&num;{spinBean.button1}" ajax="true" update="@form" />
+                    <b:commandButton value="Update Value" col-md="2" action="&num;{spinBean.button2}" ajax="true" update="@form" />
+                </b:formGroup>
+            </b:form>
 	        ]]></script>
-		</b:well>
-		<br/><br/>
+                </b:panel>
+            </f:facet>
+        </b:panel>
+       
+        
+		<h3>Event management</h3>
+		<p>Here is an example of event management client-side</p>
+		
+        <b:panel title="Live preview" look="info" collapsible="false">         
+<b:form>
+    <b:panelGrid colSpans="3,9" size="md">
+        <b:touchSpin min="10" max="200" step="2" value="140d"
+            onstartspin="writeLine('touchspin.on.startspin');"  
+            onstartupspin="writeLine('touchspin.on.startupspin');"  
+            onstartdownspin="writeLine('touchspin.on.startdownspin');"  
+            onstopspin="writeLine('touchspin.on.stopspin');"  
+            onstopupspin="writeLine('touchspin.on.stopupspin');"  
+            onstopdownspin="writeLine('touchspin.on.stopdownspin');"  
+            onchange="writeLine('change');" />
+            
+        <pre class="stepEvtLog" style="height:200px;overflow:auto;"></pre>
+    </b:panelGrid>
+</b:form>
+<h:outputScript>
+    var log = $(".stepEvtLog"), text = "";
+
+    function writeLine(line) {
+        text += line + "\n";
+        log.text(text);
+        log.scrollTop(log[0].scrollHeight - log.height());
+    }
+</h:outputScript>
+
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
+<b:form>
+    <b:panelGrid colSpans="3,9" size="md">
+        <b:touchSpin min="10" max="200" step="2" value="140d"
+            onstartspin="writeLine('touchspin.on.startspin');"  
+            onstartupspin="writeLine('touchspin.on.startupspin');"  
+            onstartdownspin="writeLine('touchspin.on.startdownspin');"  
+            onstopspin="writeLine('touchspin.on.stopspin');"  
+            onstopupspin="writeLine('touchspin.on.stopupspin');"  
+            onstopdownspin="writeLine('touchspin.on.stopdownspin');"  
+            onchange="writeLine('change');" />
+            
+        <pre class="stepEvtLog" style="height:200px;overflow:auto;"></pre>
+    </b:panelGrid>
+</b:form>
+<h:outputScript>
+    var log = $(".stepEvtLog"), text = "";
+
+    function writeLine(line) {
+        text += line + "\n";
+        log.text(text);
+        log.scrollTop(log[0].scrollHeight - log.height());
+    }
+</h:outputScript>]]></script>
+                </b:panel>
+            </f:facet>
+        </b:panel>
+        
 		<ui:include src="TouchSpinAttributes.xhtml" />
 		<b:panel look="info">
 			<f:facet name="heading">
