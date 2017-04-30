@@ -470,19 +470,21 @@
                 <h:form>
 	             <b:panelGrid columns="2" size="sm">
 					<h:panelGroup display="block">
+              <div class="container">
 	                  <b:slider2 orientation="horizontal" value="#{sliderBean.age}" label="Enter your age (18-65)"
                                  mode="edit" id="age" />
 	                  <b:message for="age" />
 	                  <b:commandButton update="@form" value="Validate constraints" />
-                    </h:panelGroup>
-                    <h:panelGroup display="block">
+              </div>
+          </h:panelGroup>
+          <h:panelGroup display="block">
 						<b:switch value="#{messageStyleBean.useLegacyBootsFacesStyle}"
-						    immediate="true"
-		                    caption="use legacy BootsFaces CSS classes"
-		                    label="compatibility settings" render-label="true"
-		                    onchange="ajax:messageStyleBean.toggleSettings();"
-		                    update="@form"
-		                    />
+						          immediate="true"
+	                    caption="use legacy BootsFaces CSS classes"
+	                    label="compatibility settings" render-label="true"
+	                    onchange="ajax:messageStyleBean.toggleSettings();"
+	                    update="@form"
+	                    />
 					</h:panelGroup>
 				  </b:panelGrid>
                 </h:form>
@@ -501,7 +503,7 @@
                                       renderLabel="true" />
                          <h:message for="age" />
                          <b:commandButton update="@form" value="Validate constraints" />
-                       </h:form>
+                     </h:form>
                   ]]>
                  </script>
                 </b:well>
