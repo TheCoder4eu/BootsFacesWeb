@@ -57,63 +57,64 @@
 
                   <h1>Putting it into action</h1>
 
-                <b:tabView>
-                  <b:tab title="preview">
-        <h:form id="loginForm">
-          <b:container layout="fluid">
-            <b:panel title="login screen" look="primary">
-              <b:row>
-                <b:column medium-screen="2">
-                  <h:outputText value="Username:" for="username" />
-                </b:column>
-                <b:column medium-screen="4">
-                  <b:inputText placeholder="Username" id="username" value="#{loginBean.username}" ajax="true"
-                    autocomplete="false" update="@(.message)">
-                    <f:facet name="prepend">
-                      <b:icon name="user" />
-                    </f:facet>
-                  </b:inputText>
-                </b:column>
-                <b:column medium-screen="6" style-class="message">
-                  <b:message for="username" />
-                </b:column>
-              </b:row>
-              <b:row tooltip="This password has fancy error messages.">
-                <b:column medium-screen="2">
-                  <h:outputText value="Password:" />
-                </b:column>
-                <b:column medium-screen="4">
-                  <b:inputSecret placeholder="Password" id="password" value="#{loginBean.password}" ajax="true"
-                    autocomplete="false" update="@(.message)">
-                    <f:facet name="prepend">
-                      <b:iconAwesome name="key" />
-                    </f:facet>
-                  </b:inputSecret>
-                </b:column>
-                <b:column medium-screen="6" styleClass="message">
-                  <b:message for="password" line-break-tag="&lt;p&gt;&lt;hr /&gt;&lt;/p&gt;" />
-                </b:column>
-              </b:row>
-              <b:row>
-                <b:column span="2" offset="2">
-                  <b:commandButton value="login" onclick="ajax:loginBean.login()" update="@form" look="primary"
-                    style="width:100%" />
-                </b:column>
-                <b:column span="2">
-                  <b:commandButton value="forgot password" onclick="ajax:loginBean.forgotPassword()" update="@form"
-                    look="danger" style="width:100%" immediate="true"/>
-                </b:column>
-              </b:row>
-            </b:panel>
-          </b:container>
-        </h:form>
-      </b:tab>
+                  <b:panel title="Live preview" look="info" collapsible="false">
+                      <h:form id="loginForm">
+                          <b:container fluid="true">
+                              <b:panel title="login screen" look="primary">
+                                  <b:row>
+                                      <b:column medium-screen="2">
+                                          <h:outputLabel value="Username:" for="username" />
+                                      </b:column>
+                                      <b:column medium-screen="4">
+                                          <b:inputText placeholder="Username" id="username" value="#{loginBean.username}" ajax="true"
+                                                       autocomplete="false" update="@(.message)">
+                                              <f:facet name="prepend">
+                                                  <b:icon name="user" />
+                                              </f:facet>
+                                          </b:inputText>
+                                      </b:column>
+                                      <b:column medium-screen="6" style-class="message">
+                                          <b:message for="username" />
+                                      </b:column>
+                                  </b:row>
+                                  <b:row tooltip="This password has fancy error messages.">
+                                      <b:column medium-screen="2">
+                                          <h:outputText value="Password:" />
+                                      </b:column>
+                                      <b:column medium-screen="4">
+                                          <b:inputSecret placeholder="Password" id="password" value="#{loginBean.password}" ajax="true"
+                                                         autocomplete="false" update="@(.message)">
+                                              <f:facet name="prepend">
+                                                  <b:iconAwesome name="key" />
+                                              </f:facet>
+                                          </b:inputSecret>
+                                      </b:column>
+                                      <b:column medium-screen="6" styleClass="message">
+                                          <b:message for="password" line-break-tag="&lt;p&gt;&lt;hr /&gt;&lt;/p&gt;" />
+                                      </b:column>
+                                  </b:row>
+                                  <b:row>
+                                      <b:column span="2" offset="2">
+                                          <b:commandButton value="login" onclick="ajax:loginBean.login()" update="@form" look="primary"
+                                                           style="width:100%" />
+                                      </b:column>
+                                      <b:column span="2">
+                                          <b:commandButton value="forgot password" onclick="ajax:loginBean.forgotPassword()" update="@form"
+                                                           look="danger" style="width:100%" immediate="true"/>
+                                      </b:column>
+                                  </b:row>
+                              </b:panel>
+                          </b:container>
+                      </h:form>
+
+                      <f:facet name="footer">
+                          <b:tabView>
                  <b:tab title="JSF markup (simplified)">
-                   <b:well>
+                   <b:panel>
                      <script type="syntaxhighlighter"
                        class="brush: xml; toolbar: false;gutter: false; first-line: 1">
                   <![CDATA[
-      <b:container layout="fluid">
+      <b:container fluid="true">
         <b:row>
           <b:column medium-screen="2">
             <h:outputText value="Username:"/>
@@ -145,11 +146,11 @@
           </b:column>
         </b:row>
       </b:container>                  ]]>
-                 </script>
-                   </b:well>
+                     </script>
+                   </b:panel>
                  </b:tab>
                  <b:tab title="JSF markup (complete picture)">
-                   <b:well>
+                     <b:panel>
                      <script type="syntaxhighlighter"
                        class="brush: xml; toolbar: false;gutter: false; first-line: 1">
                   <![CDATA[
@@ -202,12 +203,12 @@
       </b:container>
     </h:form>
     ]]>
-                 </script>
-                   </b:well>
+                     </script>
+                     </b:panel>
                  </b:tab>
                  <b:tab title="Java bean">
-                   <b:well>
-                     <script type="syntaxhighlighter"
+                     <b:panel>
+                         <script type="syntaxhighlighter"
                        class="brush: java; toolbar: false;gutter: false; first-line: 1">
                   <![CDATA[
 @ManagedBean
@@ -259,12 +260,13 @@ public class LoginBean {
 	}
 }
                   ]]>
-                 </script>
-                   </b:well>
+                         </script>
+                     </b:panel>
                  </b:tab>
-                </b:tabView>
-
-
+                          </b:tabView>
+                      </f:facet>
+                  </b:panel>
+       
                   <h2>Responsive design</h2>
                   <p>We'll explain the responsive design of BootsFaces in a minute. But we can show it now. Resize your browser window slowly.
                   Make it smaller. When the window is too small to display everything side-by-side, the widgets are stacked on top of each other.</p>
@@ -366,7 +368,7 @@ public class LoginBean {
                       you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range)
                       before becoming horizontal on desktop (medium) devices.</p>
                   <p>The <code>span=*</code> and <code>offset=*</code> attributes are meant for this common special use case, to speed up markup writing</p>
-                  <b:panel>
+                  <b:panel title="Live preview" look="info" collapsible="false">
 
                       <b:row styleClass="show-grid">
                           <b:column span="1"><h:outputText value="span=1"/></b:column>
@@ -435,7 +437,7 @@ public class LoginBean {
                       Don't want your columns to simply stack in smaller devices? Use the extra small and medium device grid attributes including
                       <code>col-xs=*</code> and <code>col-md=*</code> in your columns. See the example below for a better idea of how it all works.
                   </p>
-                  <b:panel>
+                  <b:panel title="Live preview" look="info" collapsible="false">
 
                       <!-- Stack the columns on mobile by making one full-width and the other half-width -->
                       <b:row styleClass="show-grid">
@@ -479,7 +481,7 @@ public class LoginBean {
                   </b:panel>
                   <h3>Example: Mobile, tablet, desktops</h3>
                   <p>Build on the previous example by creating even more dynamic and powerful layouts with tablet <code>col-sm=*</code> attribute.</p>
-                  <b:panel>
+                  <b:panel title="Live preview" look="info" collapsible="false">
 
                       <b:row styleClass="show-grid">
                           <b:column col-xs="12" col-sm="6" col-md="8"><h:outputText value="col-xs=12 col-sm=6 col-md=8"/></b:column>
@@ -516,7 +518,7 @@ public class LoginBean {
                       These attributes increase the left margin of a column by <code>*</code> columns.
                       For example, <code>offest=4</code> moves a <code>span=4</code> over four columns.
                   </p>
-                  <b:panel>
+                  <b:panel title="Live preview" look="info" collapsible="false">
 
                       <b:row styleClass="show-grid">
                           <b:column span="4"><h:outputText value="span=4"/></b:column>
@@ -554,7 +556,7 @@ public class LoginBean {
                   <code>col-md=*</code> column.
                   Nested rows should include a set of columns that add up to 12.
                   </p>
-                  <b:panel>
+                  <b:panel title="Live preview" look="info" collapsible="false">
 
                       <b:row styleClass="show-grid">
                           <b:column col-md="9">
@@ -637,60 +639,82 @@ public class LoginBean {
 		links (everything that's using an <code>&lt;a&gt;</code> tag, like <code>&lt;button&gt;</code> and <code>&lt;b:navLink&gt;</code>.)
 		These elements will be shown as disbled, but still are accessible. In part, that's because this CSS property isn't fully
 		standardized yet. For instance, it isn't supported by Internet Explorer 11 and below, and Opera 18 and below.</p>
-		<h:form>
-			  <b:tabView>
-	            <b:tab title="preview">
-	              <b:row>
-	              <b:column span="8">
-	              <b:container fluid="true" contentDisabled="#{columnsBean.containerDisabled}" id="contentDisabledDemoId">
-		              <b:row contentDisabled="#{columnsBean.rowDisabled}">
-		                <b:column span="6" contentDisabled="#{columnsBean.columnDisabled}">
-		                	<b:inputText placeholder="You can't input anything here" label="b:inputText" render-label="true"/>
-			                <b:datepicker label="Datepicker" render-label="true" />
-			                <b:button look="primary" value="You can't click me!"/>
-		                </b:column>
-		                <b:column span="6">
-			                <b:dateTimePicker label="DateTimerPicker" render-label="true"/>
-			                <b:colorPicker label="ColorPicker" render-label="true"/>
-		                    <b:selectOneMenu label="SelectOneMenu" render-label="true">
-			                	<f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
-			                	<f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
-			               	</b:selectOneMenu>
-			                <b:selectMultiMenu label="SelectMultiMenu" render-label="true">
-			                	<f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
-			                	<f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
-			               	</b:selectMultiMenu>
-		                </b:column>
-		               </b:row>
-	               </b:container>
-	               </b:column>
-                       <b:column span="4">
-                           <b:panel look="primary" title="Options">
-                           	<b:switch on-text="true" off-text="default" value="#{columnsBean.containerDisabled}"
-                           	          update="contentDisabledDemoId" onchange="ajax:columnsBean.onChange()" 
-                           	          label="b:container contentDisabled=" render-label="true"/>
-                           	<b:switch on-text="disabled" off-text="default" value="#{columnsBean.rowDisabled}"
-                           	          update="contentDisabledDemoId" onchange="ajax:columnsBean.onChange()" 
-                           	          label="b:row contentDisabled=" render-label="true"/>
-                           	<b:switch on-text="disabled" off-text="default" value="#{columnsBean.columnDisabled}"
-                           	          update="contentDisabledDemoId" onchange="ajax:columnsBean.onChange()" 
-                           	          label="first b:column contentDisabled=" render-label="true"/>
-                           </b:panel>
-                      </b:column>
-                   </b:row>
-	            </b:tab>
-				<b:tab title="JSF markup">
-					<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-					<![CDATA[
-                      <b:accordion contentDisabled="true">
-                         <b:panel title="Item 1"><b:inputText placeholder="You can't input anything here"/></b:panel>
-                         <b:panel title="Item 2"><b:button look="primary" value="You can't click me!"/></b:panel>
-                      </b:accordion>
+		
+            <b:panel title="Live preview" look="info" collapsible="false">
+                <h:form>
+                    <b:row>
+                        <b:column span="8">
+                            <b:container fluid="true" contentDisabled="#{columnsBean.containerDisabled}" id="contentDisabledDemoId">
+                                <b:row contentDisabled="#{columnsBean.rowDisabled}">
+                                    <b:column span="6" contentDisabled="#{columnsBean.columnDisabled}">
+                                        <b:inputText placeholder="You can't input anything here" label="b:inputText" />
+                                        <b:datepicker label="Datepicker"  />
+                                        <b:button look="primary" value="You can't click me!"/>
+                                    </b:column>
+                                    <b:column span="6">
+                                        <b:dateTimePicker label="DateTimerPicker" />
+                                        <b:colorPicker label="ColorPicker" />
+                                        <b:selectOneMenu label="SelectOneMenu" >
+                                            <f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
+                                            <f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
+                                        </b:selectOneMenu>
+                                        <b:selectMultiMenu label="SelectMultiMenu" >
+                                            <f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
+                                            <f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
+                                        </b:selectMultiMenu>
+                                    </b:column>
+                                </b:row>
+                            </b:container>
+                        </b:column>
+                        <b:column span="4">
+                            <b:panel look="primary" title="Options">
+                                <b:switch on-text="true" off-text="default" value="#{columnsBean.containerDisabled}"
+                                          update="contentDisabledDemoId" onchange="ajax:columnsBean.onChange()" 
+                                          label="b:container contentDisabled=" />
+                                <b:switch on-text="disabled" off-text="default" value="#{columnsBean.rowDisabled}"
+                                          update="contentDisabledDemoId" onchange="ajax:columnsBean.onChange()" 
+                                          label="b:row contentDisabled=" />
+                                <b:switch on-text="disabled" off-text="default" value="#{columnsBean.columnDisabled}"
+                                          update="contentDisabledDemoId" onchange="ajax:columnsBean.onChange()" 
+                                          label="first b:column contentDisabled=" />
+                            </b:panel>
+                        </b:column>
+                    </b:row>
+                </h:form>
+                <f:facet name="footer">
+                    <strong>JSF markup</strong>:
+                    <b:panel>
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                    <![CDATA[                    
+                            <b:container fluid="true" contentDisabled="false">
+                                <b:row contentDisabled="false">
+                                    <b:column span="6" contentDisabled="false">
+                                        <b:inputText placeholder="You can't input anything here" label="b:inputText"/>
+                                        <b:datepicker label="Datepicker" />
+                                        <b:button look="primary" value="You can't click me!"/>
+                                    </b:column>
+                                    <b:column span="6">
+                                        <b:dateTimePicker label="DateTimerPicker"/>
+                                        <b:colorPicker label="ColorPicker"/>
+                                        <b:selectOneMenu label="SelectOneMenu">
+                                            <f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
+                                            <f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
+                                        </b:selectOneMenu>
+                                        <b:selectMultiMenu label="SelectMultiMenu" >
+                                            <f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
+                                            <f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
+                                        </b:selectMultiMenu>
+                                    </b:column>
+                                </b:row>
+                            </b:container>
  					]]>
-				</script>
-				</b:tab>
-			</b:tabView>
-		</h:form>
+                        </script>
+                    </b:panel>
+                </f:facet>
+            </b:panel>
+            
+			  
+		
 
                   <br/>
                   <h2>Reference section</h2>

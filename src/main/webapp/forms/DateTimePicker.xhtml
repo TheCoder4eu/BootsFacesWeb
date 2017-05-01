@@ -8,86 +8,108 @@
     <h1>DateTimePicker (&lt;b:dateTimePicker /&gt;)</h1>
      
     <a id="basicUsage"></a>
-    <h1>Basic usage</h1>
+    <h3>Basic usage</h3>
     <p>The dateTimePicker is a responsive input field that allows you to input the date, the time or both.</p>
-    <h:form>
-      <b:row>
-        <b:panel title="Live preview" small-screen="half" look="primary">
-          <b:dateTimePicker value="#{dateTimeBean.justNow}"
-                            id="justNowId"
-                            allow-input-toggle="#{dateTimeBean.allowInputToggle}"
-                            icon-position="#{dateTimeBean.iconPosition}"
-                            mode="#{dateTimeBean.mode}"
-                            side-by-side="#{dateTimeBean.sideBySide}"
-                            show-date="#{dateTimeBean.showDate}"
-                            show-time="#{dateTimeBean.showTime}"
-                            show-icon="#{dateTimeBean.showIcon}"
-                            use-current="#{dateTimeBean.useCurrent}"
-                            />
-        </b:panel>
-        <b:panel title="Settings" small-screen="half" look="primary">
-          <b:panelGrid columns="1" id="settings">
-           <b:selectBooleanCheckbox value="#{dateTimeBean.modeInline}" caption="mode='inline' (default is 'popup')"
-              onclick="ajax:dateTimeBean.updateSettings()"
-              update="justNowId settings" />
-            <b:selectBooleanCheckbox value="#{dateTimeBean.showIcon}" caption="showIcon='true' (default)"
-              onclick="ajax:dateTimeBean.updateSettings()"
-              update="justNowId settings" />
-            <b:selectBooleanCheckbox value="#{dateTimeBean.iconLeft}" caption="iconPosition='left' (default is 'right')"
-              onclick="ajax:dateTimeBean.updateSettings()"
-              update="justNowId settings" />
-            <b:selectBooleanCheckbox value="#{dateTimeBean.allowInputToggle}" caption="allow-input-toggle='true' (default is 'false')"
-              onclick="ajax:dateTimeBean.updateSettings()"
-              update="justNowId settings" />
-           <b:selectBooleanCheckbox value="#{dateTimeBean.sideBySide}" caption="side-by-side='true' (default is 'false')"
-              onclick="ajax:dateTimeBean.updateSettings()"
-              update="justNowId" />
-           <b:selectBooleanCheckbox value="#{dateTimeBean.showDate}" caption="show-date='true' (clear the input field to see the effect)"
-              onclick="ajax:dateTimeBean.updateSettings()"
-              update="justNowId" />
-           <b:selectBooleanCheckbox value="#{dateTimeBean.showTime}" caption="show-time='true' (clear the input field to see the effect)"
-              onclick="ajax:dateTimeBean.updateSettings()"
-              update="justNowId" />
-           <b:selectBooleanCheckbox value="#{dateTimeBean.useCurrent}" caption="useCurrent='true' (default: true) (clear the input field to see the effect)"
-              onclick="ajax:dateTimeBean.updateSettings()"
-              update="justNowId" />
-          </b:panelGrid>
-        </b:panel>
-      </b:row>
+            
+    <b:panel title="Live preview" look="info" collapsible="false">
+<h:form>
+        <b:panelGrid columns="2">
+            <b:dateTimePicker value="#{dateTimeBean.justNow}"
+                              allow-input-toggle="#{dateTimeBean.allowInputToggle}"
+                              icon-position="#{dateTimeBean.iconPosition}"
+                              mode="#{dateTimeBean.mode}"
+                              side-by-side="#{dateTimeBean.sideBySide}"
+                              show-date="#{dateTimeBean.showDate}"
+                              show-time="#{dateTimeBean.showTime}"
+                              show-icon="#{dateTimeBean.showIcon}"
+                              use-current="#{dateTimeBean.useCurrent}" />
+            <b:panel title="Settings" look="primary">
+                <b:panelGrid columns="1" id="settings">
+                    <b:selectBooleanCheckbox value="#{dateTimeBean.modeInline}" caption="mode='inline' (default is 'popup')"
+                                             onclick="ajax:dateTimeBean.updateSettings()"
+                                             update="@form" />
+                    <b:selectBooleanCheckbox value="#{dateTimeBean.showIcon}" caption="showIcon='true' (default)"
+                                             onclick="ajax:dateTimeBean.updateSettings()"
+                                             update="@form" />
+                    <b:selectBooleanCheckbox value="#{dateTimeBean.iconLeft}" caption="iconPosition='left' (default is 'right')"
+                                             onclick="ajax:dateTimeBean.updateSettings()"
+                                             update="@form" />
+                    <b:selectBooleanCheckbox value="#{dateTimeBean.allowInputToggle}" caption="allow-input-toggle='true' (default is 'false')"
+                                             onclick="ajax:dateTimeBean.updateSettings()"
+                                             update="@form" />
+                    <b:selectBooleanCheckbox value="#{dateTimeBean.sideBySide}" caption="side-by-side='true' (default is 'false')"
+                                             onclick="ajax:dateTimeBean.updateSettings()"
+                                             update="@form" />
+                    <b:selectBooleanCheckbox value="#{dateTimeBean.showDate}" caption="show-date='true'"
+                                             onclick="ajax:dateTimeBean.updateSettings()"
+                                             update="@form" />
+                    <b:selectBooleanCheckbox value="#{dateTimeBean.showTime}" caption="show-time='true'"
+                                             onclick="ajax:dateTimeBean.updateSettings()"
+                                             update="@form" />
+                    <b:selectBooleanCheckbox value="#{dateTimeBean.useCurrent}" caption="useCurrent='true' (default: true)"
+                                             onclick="ajax:dateTimeBean.updateSettings()"
+                                             update="@form" />
+                </b:panelGrid>
+            </b:panel>
+        </b:panelGrid>
     </h:form>
+
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+            <script type="syntaxhighlighter"
+                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                <![CDATA[
+                      <b:form>
+                          <b:dateTimePicker value="&num;{dateTimeBean.justNow}"
+                              allow-input-toggle="&num;{dateTimeBean.allowInputToggle}"
+                              icon-position="&num;{dateTimeBean.iconPosition}"
+                              mode="&num;{dateTimeBean.mode}"
+                              side-by-side="&num;{dateTimeBean.sideBySide}"
+                              show-date="&num;{dateTimeBean.showDate}"
+                              show-time="&num;{dateTimeBean.showTime}"
+                              show-icon="&num;{dateTimeBean.showIcon}"
+                              use-current="&num;{dateTimeBean.useCurrent}" />
+                      <b:form>
+                ]]>
+            </script>
+                </b:panel>
+            </f:facet>
+        </b:panel>
     
     <a id="inline"></a>
-    <h2>Mode="inline" <b:badge value="breaking change in 1.0.2"/></h2>
+    <h3>Mode="inline" <b:badge value="breaking change in 1.0.2"/></h3>
     <p>We've removed the option <code>mode="inline"</code> in favor of two more explicit options: <code>show-icon</code> and <code>icon-position</code>.</p>
     
-    <h1>Disable and readonly</h1>
+    <h3>Disable and readonly</h3>
     <p>The dateTimePicker has also the ability to disable and set the readonly option.</p>
     <p><b:badge value="Attention" style="background-color:red;"/> Unfortunately, at the moment, the readonly attribute doesn't work on the dateTimePicker in mode="inline"</p>
-    <h:form>
-      <b:row>
-        <b:panel title="Live preview" look="primary">
-	          <b:dateTimePicker label="Disabled DateTimePicker:  "
-	          				    render-label="true"
-	          					value="#{dateTimeBean.justNow}"
-	                            disabled="true"
-	                            inline="true" />
-	          <b:dateTimePicker label="Readonly DateTimePicker:  "
-	          				    render-label="true"
-	          					value="#{dateTimeBean.justNow}"
-	                            readonly="true"
-	                            inline="true" />
-	          <hr/>
-	          <b:dateTimePicker label="Disabled inline DateTimePicker: "
-	          				    render-label="true"
-	          					value="#{dateTimeBean.justNow}"
-	                            disabled="true"
-	                            mode="inline"
-	                            inline="true" />
-	          
-        </b:panel>
- 
-      </b:row>
-    </h:form>
+
+        <b:panel title="Live preview" look="info" collapsible="false">
+         <b:form>
+            <b:dateTimePicker value="#{dateTimeBean.justNow}" disabled="true" label="Disabled DateTimePicker:"  />
+            <b:dateTimePicker value="#{dateTimeBean.justNow}" readonly="true" label="Readonly DateTimePicker:" />
+            <hr/>
+            <b:dateTimePicker value="#{dateTimeBean.justNow}" disabled="true" mode="inline" label="Disabled inline DateTimePicker: "  />
+        </b:form>
+
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+         <script type="syntaxhighlighter"
+                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                <![CDATA[
+        <b:form>
+            <b:dateTimePicker value="&num;{dateTimeBean.justNow}" disabled="true" label="Disabled DateTimePicker:" />
+            <b:dateTimePicker value="&num;{dateTimeBean.justNow}" readonly="true" label="Readonly DateTimePicker:" />
+            <hr/>
+            <b:dateTimePicker value="&num;{dateTimeBean.justNow}" disabled="true" mode="inline" label="Disabled inline DateTimePicker:" />
+        </b:form>
+                ]]>
+            </script>
+                </b:panel>
+            </f:facet>
+        </b:panel> 
 
 	<a id="formattingAndLocale"></a>
     <h3>Formatting and locale</h3>
@@ -102,94 +124,32 @@
       Note that moment.js is a JavaScript library that does not follow the formatting rules Java programmers are used to.
       There are subtle (and sometimes not-so-subtle) differences.</li>
     </ul>
-    <h:form>
-      <b:row>
-        <b:panel title="Live preview" small-screen="half" look="primary">
-          <b:dateTimePicker value="#{dateTimeBean.justNow}"
-                            label="German date format"
-                            render-label="true"
-                            format="DD.MM.YYYY" />
-          <f:facet name="footer">
-            <script type="syntaxhighlighter"
+    
+            <b:panel title="Live preview" look="info" collapsible="false">
+    <b:form>
+        <b:dateTimePicker value="#{dateTimeBean.justNow}" format="DD.MM.YYYY" label="German date format"  />
+        <b:dateTimePicker value="#{dateTimeBean.justNow}" format="MM/DD/YYYY" label="American date format"  />
+    </b:form>
+
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+        <script type="syntaxhighlighter"
                     class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-            <![CDATA[
-          <b:dateTimePicker value="&num;{dateTimeBean.justNow}"
-                            label="German date format"
-                            render-label="true"
-                            format="DD.MM.YYYY" />
- 			]]>
-			</script>
-          </f:facet>
+                <![CDATA[
+    <b:form>
+        <b:dateTimePicker value="&num;{dateTimeBean.justNow}" format="DD.MM.YYYY" label="German date format"  />
+        <b:dateTimePicker value="&num;{dateTimeBean.justNow}" format="MM/DD/YYYY" label="American date format"  />
+    </b:form>
+                ]]>
+            </script>
+                </b:panel>
+            </f:facet>
         </b:panel>
-        <b:panel title="Live preview" small-screen="half" look="primary">
-          <b:dateTimePicker value="#{dateTimeBean.justNow}"
-                            label="American date format"
-                            render-label="true"
-                            format="MM/DD/YYYY" />
-          <f:facet name="footer">
-            <script type="syntaxhighlighter"
-                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-            <![CDATA[
-          <b:dateTimePicker value="&num;{dateTimeBean.justNow}"
-                            label="American date format"
-                            render-label="true"
-                            format="MM/DD/YYYY" />
- 			]]>
-			</script>
-          </f:facet>
-        </b:panel>
-      </b:row>
-    </h:form>
 
    <a id="interactiveCheatSheet"></a>
 
-    <ui:include src="DateTimePickerCheatSheet.xhtml" />
-    
-    
-    <a id="embeddingInAForm"></a>
-    <h3>Embedding a DateTimePicker in a form</h3>
-    <p>By default, the (optional) label of the dateTimePicker is put above the dateTimePicker:</p>
-    <h:form>
-      <b:row>
-        <b:panel title="Live preview" small-screen="half" look="primary">
-          <b:dateTimePicker value="#{dateTimeBean.justNow}"
-                            label="regular form"
-                            render-label="true" />
-          <f:facet name="footer">
-            <script type="syntaxhighlighter"
-                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-            <![CDATA[
-         		<b:dateTimePicker
-                   value="&num;{dateTimeBean.justNow}"
-                   label="regular form"
-                   render-label="true" />
- 			]]>
-			</script>
-          </f:facet>
-        </b:panel>
-        <b:panel title="Live preview" small-screen="half" look="primary"
-                 style-class="form-inline">
-          <b:dateTimePicker value="#{dateTimeBean.justNow}"
-                            label="inline form"
-                            render-label="true"
-                            inline="true" />
-          <f:facet name="footer">
-            <script type="syntaxhighlighter"
-                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-            <![CDATA[
-            <h:form styleClass="form-inline">
-               <b:dateTimePicker
-                  value="&num;{dateTimeBean.justNow}"
-                  label="inline form"
-                  render-label="true"
-                  inline="true" />
-            </h:form>
-      ]]>
-      </script>
-          </f:facet>
-        </b:panel>
-      </b:row>
-    </h:form>
+    <ui:include src="DateTimePickerCheatSheet.xhtml" /> 
     
     <a id="overflow"></a>
     <h3>DateTimePicker widget inside an overflow area</h3>
@@ -197,58 +157,63 @@
     the entire popup and has an hidden overflow, the popup will go under the component area. To prevent this behaviour, you can use the "widgetParent" attribute, that attach
     the popup widget to the widgetParent item, but display it near to the input of component.
     </p>
-    <h:form>
-      <b:row>
-        <b:panel title="Live preview" small-screen="half" look="primary">
-	        <div id="picker-anchor" style="position: relative;">Anchor here</div>
-		    <div style="overflow: hidden;">
-				<div class="form-group">
-				    <b:dateTimePicker 
-				    	value="#{dateTimeBean.justNow}" 
-				    	label="With WidgetParent"  
-				    	render-label="true" 
-				    	iconAwesome="clock-o" 
-				    	widgetParent="#picker-anchor" />
-				</div>
-		    </div>
-		    
-		    <div style="overflow: hidden;">
-				<div class="form-group">
-				    <b:dateTimePicker 
-				    	value="#{dateTimeBean.justNow}" 
-				    	label="Without WidgetParent"  
-				    	render-label="true" 
-				    	iconAwesome="clock-o" />
-				</div>
-		    </div>
-          <f:facet name="footer">
-            <script type="syntaxhighlighter"
+    <b:panel title="Live preview" look="info" collapsible="false">
+        <b:form>
+            <div id="picker-anchor" style="position: relative;">Anchor here</div>
+            <div style="overflow: hidden;">
+                <div class="form-group">
+                    <b:dateTimePicker 
+                        value="#{dateTimeBean.justNow}" 
+                        label="With WidgetParent"  
+                         
+                        iconAwesome="clock-o" 
+                        widgetParent="#picker-anchor" />
+                </div>
+            </div>
+
+            <div style="overflow: hidden;">
+                <div class="form-group">
+                    <b:dateTimePicker 
+                        value="#{dateTimeBean.justNow}" 
+                        label="Without WidgetParent"  
+                         
+                        iconAwesome="clock-o" />
+                </div>
+            </div>
+        </b:form>
+
+        <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+ <script type="syntaxhighlighter"
                     class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-            <![CDATA[
-			<div id="picker-anchor" style="position: relative;">Anchor here</div>
-		    <div style="overflow: hidden;">
-				<div class="form-group">
-				    <b:dateTimePicker 
-				    	value="&num;{dateTimeBean.justNow}" 
-				    	label="With WidgetParent"  
-				    	render-label="true" 
-				    	iconAwesome="clock-o" 
-				    	widgetParent="&num;picker-anchor" />
-				</div>
-		    </div>
- 			]]>
-			</script>
-          </f:facet>
+                <![CDATA[
+        <b:form>
+            <div id="picker-anchor" style="position: relative;">Anchor here</div>
+
+            <div style="overflow: hidden;">
+                <div class="form-group">
+                    <b:dateTimePicker value="&num;{dateTimeBean.justNow}" widgetParent="#picker-anchor" label="With WidgetParent" iconAwesome="clock-o" />
+                </div>
+            </div>
+            
+            <div style="overflow: hidden;">
+                <div class="form-group">
+                    <b:dateTimePicker value="&num;{dateTimeBean.justNow}" label="Without WidgetParent" iconAwesome="clock-o" />
+                </div>
+            </div>
+        </b:form>]]>
+            </script>
+                </b:panel>
+            </f:facet>
         </b:panel>
-      </b:row>
-    </h:form>
     
     <a id="labels"></a>
-    <h2>Labels, required fields and error messages <b:badge value="breaking change in 1.1.0" /></h2>
+    <h3>Labels, required fields and error messages <b:badge value="breaking change in 1.1.0" /></h3>
     <p>You can add a label by adding the attribute <code>label</code>. The label is also used by the JSF messages. To give you maximum flexibility,
     you can suppress automatic rendering of labels by adding <code>renderLabel="false"</code>.
     </p>
-    <h5>BootsFaces 1.0.2 and below:</h5>
+    <h4>BootsFaces 1.0.2 and below:</h4>
     <p>Required inputs fields and their labels both bear the CSS class <code>bf-required</code>. By default, this adds an asterisk to the label.</p>
     <p>If the field has a FacesMessage, one of the CSS classes <code>bf-info</code>, <code>bf-warning</code>,
         <code>bf-error</code> or <code>bf-fatal</code>, depending on which error severity the message has.
@@ -256,113 +221,79 @@
      <p>If there's no message,
         the field and its label bear the pseudo CSS class <code>bf-no-message</code>  and <code>has-success</code>. The latter colors the label green by default.
     </p>
-    <h5>BootsFaces 1.1.0:</h5>
+    <h4>BootsFaces 1.1.0:</h4>
     <p><code>bf-info</code>, <code>bf-warning</code>,
      <code>bf-error</code> or <code>bf-fatal</code> have been dropped in favor of the standard Bootstrap CSS classes <code>has-success</code>,
      <code>has-warning</code> and <code>has-error</code>. Plus, they are applied to the <code>form-group</code> instead of the labels and input fields.</p>
      <h5>Compatibility settings</h5>
      <p>If your application depends on the old HTML code, activate the context parameter <code>net.bootsfaces.legacy_error_classes</code>
      in the web.xml. The example below shows how to do this.</p>
-  <b:tabView>
-      <b:tab title="live preview">
-        <b:well>
-			<b:form horizontal="true">
-				<b:panelGrid columns="2" size="sm">
-					<h:panelGroup display="block">
-						<b:row>
-							<b:dateTimePicker id="cdate3" mode="toggle-icon" showWeek="true"
-								firstDay="1" value="#{dateBean.cdate}" required="true"
-								label="date " render-label="true" label-col-sm="3" col-sm="6" />
-							<b:message for="cdate3" col-sm="9" />
-						</b:row>
-						<b:row>
-							<b:commandButton value="submit" update="@form" col-sm="2"
-								look="success" />
-						</b:row>
-					</h:panelGroup>
-					<h:panelGroup display="block">
-						<b:switch value="#{messageStyleBean.useLegacyBootsFacesStyle}"
-						    immediate="true"
-		                    caption="use legacy BootsFaces CSS classes"
-		                    label="compatibility settings" render-label="true"
-		                    onchange="ajax:messageStyleBean.toggleSettings();"
-		                    update="@form"
-		                    />
-					</h:panelGroup>
-				</b:panelGrid>
-			</b:form>
-		</b:well>
-      </b:tab>
-      <b:tab title="JSF markup">
-        <b:well>
+  
+     <b:panel title="Live preview" look="info" collapsible="false">
+         <b:form horizontal="true">
+             <b:panelGrid columns="2" size="sm">
+                 <ui:fragment>
+                     <b:formGroup>
+                         <b:dateTimePicker mode="toggle-icon" showWeek="true" value="#{dateBean.cdate}" required="true"
+                                           label="Date:"  label-col-sm="3" col-sm="6" />
+                         <b:message for="@previous" col-sm="9" />
+                     </b:formGroup>
+                     <b:commandButton value="submit" update="@form" look="success" />
+                 </ui:fragment>
+                 <b:switch value="#{messageStyleBean.useLegacyBootsFacesStyle}"
+                           immediate="true"
+                           process="@this"
+                           caption="use legacy BootsFaces CSS classes"
+                           label="compatibility settings" 
+                           onchange="ajax:messageStyleBean.toggleSettings();"
+                           update="@form" />
+             </b:panelGrid>
+         </b:form>
+         <f:facet name="footer">
+             <strong>JSF markup:</strong>
+             <b:panel>
           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
              <![CDATA[
-         <b:form horizontal="true">
-          	<b:row>
-                <b:dateTimePicker id="cdate3" mode="toggle-icon" showWeek="true" firstDay="1" value="&num;{dateBean.cdate}"
-                  required="true" label="date " render-label="true" label-col-sm="1" col-sm="4" />
-                <b:message for="cdate3" col-sm="5"/>
-            </b:row>
-            <b:row>
-              <b:commandButton value="submit" update="@form" col-sm="2" look="success" />
-            </b:row>
-          </h:form>
+                    <b:form horizontal="true">
+                        <b:formGroup>
+                            <b:dateTimePicker mode="toggle-icon" showWeek="true" value="&num;{dateBean.cdate}" required="true" label="Date:" label-col-sm="3" col-sm="6" />
+                            <b:message for="@previous" col-sm="9" />
+                        </b:formGroup>
+                        <b:commandButton value="submit" update="@form" look="success" />
+                    </b:form>
              ]]></script>
-        </b:well>
-      </b:tab>
-    </b:tabView>
-    
-    
-    <a id="ajax"></a>
+             </b:panel>
+         </f:facet>
+     </b:panel>
+
+    <a id="ajax" href="#ajax"></a>
     <h3>DateTimePicker AJAX <b:badge value="since 1.0" /> </h3>
     <p>DateTimePicker component also support AJAX events. In addition to the basic JavaScript events (click, blur, key*, mouse*), it supports also a custom event (dtchange) that is 
     called every time the datetime value changes. But you must pay attention! This event will be fired also during navigation of the popup widget, because it changes the date on the fly.
     If you want to get the latest selected value, you can use standard events like "onblur".<br/>
     Note that the component must be inside a form to work in AJAX!
     </p>
-    <h:form>
-      <b:row>
-        <b:panel title="Live preview" small-screen="half" look="primary">
-		  <div id="picker-anchor-2" style="position: relative;"></div>
-		  <div style="overflow: hidden;">
-				<div class="form-group">
-				    <b:dateTimePicker 
-				    	ajax="true"
-				    	iconAwesome="bolt" 
-				    	widgetParent="#picker-anchor-2" 
-				    	ondtchange="ajax:test.updateTestField()" 
-				    	value="#{test.dataToPick}" 
-				    	update="@form:tf3"
-				    	process="@this" />
-				    <b:inputText value="#{test.testField}" id="tf3" />
-				</div>
-		  </div>
-          <f:facet name="footer">
+    
+        <b:panel title="Live preview" look="info" collapsible="false">
+            <b:form>
+                <b:dateTimePicker value="#{test.dataToPick}" ondtchange="ajax:test.updateTestField()" process="@this" update="@next" label="Select date:" iconAwesome="bolt"  />
+                <b:inputText value="#{test.testField}" label="Result: " readonly="true"  />
+            </b:form>
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
             <script type="syntaxhighlighter"
                     class="brush: xml; toolbar: false;gutter: false; first-line: 1">
             <![CDATA[
-			<h:form>
-                <div id="picker-anchor" style="position: relative;"></div>
-		  		<div style="overflow: hidden;">
-					<div class="form-group">
-				    	<b:dateTimePicker 
-				    		ajax="true"
-				    		iconAwesome="bolt" 
-				    		widgetParent="&num;picker-anchor" 
-				    		ondtchange="ajax:test.updateTestFied()" 
-							value="&num;{test.dataToPick}" 
-				    		update="@form:tf3"
-				    		process="@this" />
-				    	<b:inputText value="&num;{test.testField}" id="tf3" />
-					</div>
-		  		</div>
-			</h:form>
- 			]]>
-			</script>
-          </f:facet>
+            <b:form>
+                <b:dateTimePicker value="&num;{test.dataToPick}" ondtchange="ajax:test.updateTestField()" process="@this" update="@next" label="Select date:" iconAwesome="bolt" />
+                <b:inputText value="&num;{test.testField}" label="Result: " readonly="true" />
+            </b:form>
+             ]]>
+            </script>
+                </b:panel>
+            </f:facet>
         </b:panel>
-      </b:row>
-    </h:form>
     
     <a id="fieldId"></a>
     <h3>id and field-id <b:badge value="since 1.0.1" /> </h3>
@@ -371,36 +302,49 @@
     can be modified by the attribute <code>field-id</code>. By default, it's the client id plus the suffix <code>_Input</code>,
     but that's subject to change, so please don't rely on it.
     </p>
-    <h:form>
-      <b:row>
-        <b:panel title="Live preview" small-screen="half" look="primary">
-			<div class="form-group">
-			    <b:dateTimePicker 
-                       id="aGreatId"
-			        fieldId="evenGreaterFieldId"				    	
-			        iconAwesome="bolt" 
-			    	value="#{test.dataToPick}" 
-			    	/>
-		  </div>
-          <f:facet name="footer">
-            <script type="syntaxhighlighter"
+   
+            <b:panel title="Live preview" look="info" collapsible="false">
+            <b:form>
+                <b:dateTimePicker id="aGreatId" fieldId="evenGreaterFieldId" value="#{test.dataToPick}" iconAwesome="bolt" label="Select:"  />
+            </b:form>
+
+            <f:facet name="footer">
+                <b:tabView contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+                    <b:tab title="JSF markup">
+                        <b:panel>
+<script type="syntaxhighlighter"
                     class="brush: xml; toolbar: false;gutter: false; first-line: 1">
             <![CDATA[
-			<h:form>
-			  <div class="form-group">
-			    <b:dateTimePicker 
-                    id="aGreatId"
-			        fieldId="evenGreaterFieldId"				    	
-			        iconAwesome="bolt" 
-			    	value="#{test.dataToPick}" 
-			    	/>
-			</h:form>
- 			]]>
-			</script>
-          </f:facet>
+            <b:form>
+                <b:dateTimePicker id="aGreatId" fieldId="evenGreaterFieldId" value="&num;{test.dataToPick}" iconAwesome="bolt" label="Select:"  />
+            </b:form>
+             ]]>
+            </script>
+                        </b:panel>
+                    </b:tab>
+                    <b:tab title="Generated HTML code">
+                        <b:panel>
+                            <script type="syntaxhighlighter"
+                    class="brush: html; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+<form id="j_idt295" name="j_idt295" method="post" action="/forms/DateTimePicker.jsf">
+    <input name="j_idt295" value="j_idt295" type="hidden">
+    <div id="j_idt295:aGreatId" class="form-group">
+        <label for="evenGreaterFieldId" class=" control-label">Select:</label>
+        <div class="input-group date" id="j_idt295:aGreatIdOuter">
+            <input id="evenGreaterFieldId" name="j_idt295:aGreatId" class="form-control" value="24/06/17 16:48:38" type="text">
+            <!-- More code, ommited for brevity-->
+        </div>
+    </div>
+<!-- More code, ommited for brevity-->
+</form>
+             ]]>
+            </script>
+                        </b:panel>
+                    </b:tab>
+                </b:tabView>
+            </f:facet>
         </b:panel>
-      </b:row>
-    </h:form>
     
     <ui:include src="DateTimePickerAttributes.xhtml" />
     <b:panel look="info">
@@ -415,9 +359,5 @@
     <script type="text/javascript">
 					SyntaxHighlighter.all();
 				</script>
-    <br />
-    <br />
-    <br />
-    <br />
   </ui:define>
 </ui:composition>

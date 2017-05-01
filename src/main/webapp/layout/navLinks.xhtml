@@ -52,7 +52,8 @@
                 <p>Both <code>icon</code> and <code>iconAwesome</code> attributes, require the icon name as value, without the trailing <b>glyphicon-</b> prefix and <b>fa-</b> prefix respectively.</p>
                 <p><b:badge value="Hint" /> Bootstrap 4 is going to drop support for the Glyphicon library. We recommend you to choose icons from the Font Awesome library to avoid future incompatibilities.</p>
                 <p>In the following example the <code>b:listLinks</code> tag is used as a container for the NavLinks, showing how to create a Sidebar with links.</p>
-                <b:panel title="Example" look="default">
+                
+                <b:panel title="Live preview" look="info" collapsible="false">
                     <h:form>
                      <b:row>
                         <b:column span="4">
@@ -101,10 +102,11 @@
                        </b:column>
                        </b:row>
                     </h:form>
-                    <f:facet name="footer">
-                        <strong>Markup:</strong><br/>
 
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
+                    <f:facet name="footer">
+                        <strong>JSF markup:</strong>
+                        <b:panel>
+                            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
                         <![CDATA[
                        <b:column span="3">
                             <b:panel look="primary" title="Static sidebar">
@@ -141,9 +143,9 @@
                              </b:panel>
                         </b:column>
                         ]]></script>
+                        </b:panel>
                     </f:facet>
                 </b:panel>
-                <br />
 
                 <h2>TabLinks <b:badge value="since 0.8.5" /></h2>
                 <p><code>&lt;b:tabLinks /&gt;</code> comes in handy if you want to render a tab strip, but don't want to use
@@ -152,7 +154,7 @@
                 but behaves differently. However, using AJAX and <code>&lt;b:navCommandLink /&gt;</code> you can
                 build your own tabView component. This may give you an edge over the "carefree package" if you need more flexibility than the
                 standard <code>&lt;b:tabView /&gt;</code> offers.</p>
-                   <b:panel title="TabLinks example" look="default">
+                   <b:panel title="Live preview" look="default">
                     <h:form>
                      <b:row>
                         <b:column span="12">
@@ -198,7 +200,7 @@
                 <h2>Pill links <b:badge value="since 0.8.5" /></h2>
                 <p>The <code>&lt;b:pillLinks /&gt;</code> component resembles the <code>&lt;b:tabLinks /&gt;</code>
                 component, but the layout is slightly different.</p>
-                  <b:panel title="PillLinks example" look="default">
+                  <b:panel title="Live preview" look="info" collapsible="false">
                     <h:form>
                      <b:row>
                         <b:column span="12">
@@ -303,23 +305,49 @@
 
 				<h2>Opening a modal dialog in a NavLink</h2>
 				<p>To open a modal dialog from a NavLink, don't use the attributes <code>data-target</code> and <code>data-toggle</code>. Use an <code>onclick</code> handler instead:</p>
-				<b:well>
+				<b:panel>
                         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
                         <![CDATA[
 							<b:navLink value="About" data-target="#aboutModal" data-toggle="modal"
            							   onclick="$('.aboutModalPseudoClass').modal('show');return false;"></b:navLink>
 						]]></script>
-				</b:well>
+				</b:panel>
 
                 <h2>Arbitrary content in a <code>&lt;b:navLink /&gt;</code><b:badge value="since 0.8.1" /></h2>
                 <p><code>&lt;b:navLink /&gt;</code> isn't limited to text and icons. You can add arbitrary widgets
                 as children of the <code>&lt;b:navLink /&gt;</code>:</p>
-                <h:form>
-                  <b:tabView activeIndex="1"
-                    contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding-right:25px;padding-left:25px;padding-top:10px"
-                    contentClass="show-grid">
-                    <b:tab title="JSF markup">
-                      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                
+                <b:panel title="Live preview" look="info" collapsible="false">
+                        <b:panel look="primary" title="b:navLink with child elements" small-screen="full-width">
+                            <b:listLinks>
+                                <b:navLink header="BootsFaces" />
+                                <b:navLink href="http://www.bootsfaces.net">
+                                   <b:badge style="margin-right:5px" value="b:navLink with nested content" />
+                                </b:navLink>
+                                <b:navLink href="http://www.bootsfaces.net" value="b:navLink with label">
+                                   <b:badge style="margin-left:5px" value="and nested content" />
+                                </b:navLink>
+                                <b:navLink href="http://www.bootsfaces.net" value="BootsFaces"
+                                           icon="globe" iconAlign="right">
+                                           rocks (not only)
+                                   <b:badge style="margin-right:5px" value="since 0.8.1" />
+                                </b:navLink>
+                                <b:navLink href="http://www.bootsfaces.net" value="in a b:navLink"
+                                           icon="globe" iconAlign="left">
+                                   <b:badge style="margin-left:10px" value="icon and nested content" />
+                                </b:navLink>
+                                <b:navLink href="http://www.bootsfaces.net" value="BootsFaces"
+                                           iconAlign="right">
+                                           Text and nested content
+                                   <b:badge style="margin-right:5px" value="since 0.8.1" />
+                                </b:navLink>
+
+                            </b:listLinks>
+                         </b:panel>
+                    
+                    <f:facet name="footer">
+                        <strong>JSF markup:</strong>
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
                              <b:listLinks>
                                 <b:navLink header="BootsFaces" />
@@ -347,39 +375,9 @@
                             </b:listLinks>
  ]]>
          </script>
-                    </b:tab>
-                    <b:tab title="live preview" >
-                      <b:row>
-                        <b:panel look="primary" title="b:navLink with child elements" small-screen="full-width">
-                            <b:listLinks>
-                                <b:navLink header="BootsFaces" />
-                                <b:navLink href="http://www.bootsfaces.net">
-                                   <b:badge style="margin-right:5px" value="b:navLink with nested content" />
-                                </b:navLink>
-                                <b:navLink href="http://www.bootsfaces.net" value="b:navLink with label">
-                                   <b:badge style="margin-left:5px" value="and nested content" />
-                                </b:navLink>
-                                <b:navLink href="http://www.bootsfaces.net" value="BootsFaces"
-                                           icon="globe" iconAlign="right">
-                                           rocks (not only)
-                                   <b:badge style="margin-right:5px" value="since 0.8.1" />
-                                </b:navLink>
-                                <b:navLink href="http://www.bootsfaces.net" value="in a b:navLink"
-                                           icon="globe" iconAlign="left">
-                                   <b:badge style="margin-left:10px" value="icon and nested content" />
-                                </b:navLink>
-                                <b:navLink href="http://www.bootsfaces.net" value="BootsFaces"
-                                           iconAlign="right">
-                                           Text and nested content
-                                   <b:badge style="margin-right:5px" value="since 0.8.1" />
-                                </b:navLink>
+                    </f:facet>
+                </b:panel>
 
-                            </b:listLinks>
-                         </b:panel>
-                         </b:row>
-                    </b:tab>
-                  </b:tabView>
-                </h:form>
                 <p>As you can see, the nested content is always rendered between the text and the label. However,
                 in most cases you may want to consider moving the text and the icon (if there are any) into the nested
                 content. This way, the JSF source code looks a bit cleaner.</p>
@@ -391,57 +389,66 @@
             <b:panelGrid colSpans="3,9" size="md">
                <b:navLink icon-spin="true" iconAwesome="thumbs-down"
                      value="Thumbs up or thumbs down?" onclick="return false;"
-                     look="info" title="spin='true'" />
+                     look="info" tooltip="spin='true'" />
 <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
                <b:navLink icon-spin="true" iconAwesome="thumbs-down"
                      value="Thumbs up or thumbs down?" onclick="return false;"
-                     look="info" title="spin='true'" />
+                     look="info" tooltip="spin='true'" />
 ]]></script>
                <b:navCommandLink icon-size="2x" iconAwesome="thumbs-up"
                      value="big thumbs up!" onclick="return false;"
-                     look="info" title="icon-size='2x'" />
+                     look="info" tooltip="icon-size='2x'" />
 <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
                <b:navCommandLink icon-size="2x" iconAwesome="thumbs-up"
                      value="big thumbs up!" onclick="return false;"
-                     look="info" title="icon-size='2x'" />
+                     look="info" tooltip="icon-size='2x'" />
 ]]></script>
                <b:dropMenu icon-size="3x" iconAwesome="thumbs-up"
                      value="even bigger thumbs up!" onclick="return false;"
-                     look="info" title="icon-size='3x'" />
+                     look="info" tooltip="icon-size='3x'" />
 <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
                <b:dropMenu icon-size="3x" iconAwesome="thumbs-up"
                      value="even bigger thumbs up!" onclick="return false;"
-                     look="info" title="icon-size='3x'" />
+                     look="info" tooltip="icon-size='3x'" />
 ]]></script>
                <b:navLink icon-flip="h" iconAwesome="thumbs-up"
                      value="left-hand thumbs up" onclick="return false;"
-                     look="info" title="icon-flip='h'" />
+                     look="info" tooltip="icon-flip='h'" />
 <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
                <b:navLink icon-flip="h" iconAwesome="thumbs-up"
                      value="left-hand thumbs up" onclick="return false;"
-                     look="info" title="icon-flip='h'" />
+                     look="info" tooltip="icon-flip='h'" />
 ]]></script>
                <b:navCommandLink icon-rotate="l" iconAwesome="thumbs-up"
                      value="go back" onclick="return false;"
-                     look="info" title="icon-rotate='l'" />
+                     look="info" tooltip="icon-rotate='l'" />
 <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
                <b:navCommandLink icon-rotate="l" iconAwesome="thumbs-up"
                      value="go back" onclick="return false;"
-                     look="info" title="icon-rotate='l'" />
+                     look="info" tooltip="icon-rotate='l'" />
 ]]></script>
                <b:dropMenu icon-spin="true" icon="cd" icon-size="2x"
                      value="Glyphicon" onclick="return false;"
-                     look="info" title="icon-spin='true' icon-size='2x'" />
+                     look="info" tooltip="icon-spin='true' icon-size='2x'" />
 <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
                <b:dropMenu icon-spin="true" icon="cd" icon-size="2x"
                      value="Glyphicon" onclick="return false;"
-                     look="info" title="icon-spin='true' icon-size='2x'" />
+                     look="info" tooltip="icon-spin='true' icon-size='2x'" />
+]]></script>
+               <b:navLink icon-flip="h" iconAwesome="file-image-o" icon-size="3x"
+                     tooltip="icon only" onclick="return false;"
+                     look="info" />
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+               <b:navLink icon-flip="h" iconAwesome="file-image-o" icon-size="3x"
+                     tooltip="Icon only" onclick="return false;"
+                     look="info" />
 ]]></script>
                </b:panelGrid>
            </h:form>
@@ -452,8 +459,22 @@
                 unified AJAX API introduced with BootsFaces 0.8.1. <code>&lt;b:navCommandLink /&gt;</code> also supports
                 the traditional and the PrimeFaces AJAX API (to a certain extent).</p>
                 <h3>Using b:navLink with AJAX</h3>
-                <h:form>
-                  <b:tabView activeIndex="2"
+                
+                <b:panel title="Live preview" look="info" collapsible="false">
+                        <b:panelGrid colSpans="6,6">
+                        <b:panel look="primary" title="Navigation menu">
+                          <b:listLinks>
+                            <b:navLink onclick="ajax:navLinkBean.navigateToPage(0, 'b:navLink')" value="Page 1  (NavLink)" update="**:targetPage2"/>
+                            <b:navLink onclick="ajax:navLinkBean.navigateToPage(1, 'b:navLink')" value=" Page 2 (NavLink)" update="**:targetPage2"/>
+                          </b:listLinks>
+                        </b:panel>
+                        <b:panel title="#{navLinkBean.pageTitle}" id="targetPage2" look="#{navLinkBean.pageLook}">
+                          #{navLinkBean.pageContent}
+                        </b:panel>
+                      </b:panelGrid>
+
+                    <f:facet name="footer">
+                        <b:tabView
                     contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding-right:25px;padding-left:25px;padding-top:10px"
                     contentClass="show-grid">
                     <b:tab title="JSF markup">
@@ -466,8 +487,8 @@
                 <b:navLink onclick="ajax:navLinkBean.navigateToPage(1, 'b:navLink')" value=" Page 2 (NavLink)" update="**:targetPage"/>
               </b:listLinks>
             </b:panel>
-            <b:panel title="#{navLinkBean.getPageTitle()}" id="targetPage" look="#{navLinkBean.getPageLook()}">
-              #{navLinkBean.getPageContent()}
+            <b:panel title="#{navLinkBean.pageTitle}" id="targetPage" look="#{navLinkBean.pageLook}">
+              #{navLinkBean.pageContent}
             </b:panel>
           </b:panelGrid>
  ]]>
@@ -514,93 +535,36 @@ public class NavLinkBean implements Serializable {
  ]]>
          </script>
                     </b:tab>
-                    <b:tab title="live preview">
-                      <b:panelGrid colSpans="6,6">
-                        <b:panel look="primary" title="Navigation menu">
-                          <b:listLinks>
-                            <b:navLink onclick="ajax:navLinkBean.navigateToPage(0, 'b:navLink')" value="Page 1  (NavLink)" update="**:targetPage"/>
-                            <b:navLink onclick="ajax:navLinkBean.navigateToPage(1, 'b:navLink')" value=" Page 2 (NavLink)" update="**:targetPage"/>
-                          </b:listLinks>
-                        </b:panel>
-                        <b:panel title="#{navLinkBean.getPageTitle()}" id="targetPage" look="#{navLinkBean.getPageLook()}">
-                          #{navLinkBean.getPageContent()}
-                        </b:panel>
-                      </b:panelGrid>
-                    </b:tab>
                   </b:tabView>
-                </h:form>
+                    </f:facet>
+                </b:panel>
 
                <h3>Using b:navCommandLink with AJAX</h3>
                <p>Using <code>&lt;b:navCommandLink /&gt;</code> isn't much different from using  <code>&lt;b:navLink /&gt;</code>.
                You have to put it in a <code>&lt;h:form /&gt;</code>. On the plus side, you are rewarded with being allowed to use the attributes
                <code>action</code> and <code>actionListener</code>.</p>
-               <h:form>
-                 <b:tabView activeIndex="2"
-                  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding-right:25px;padding-left:25px;padding-top:10px"
-                  contentClass="show-grid">
-                  <b:tab title="JSF markup">
-                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+               
+               <b:panel title="Live preview" look="info" collapsible="false">
+                   <b:panelGrid colSpans="6,6">
+                      <b:panel look="primary" title="Navigation menu">
+                        <b:listLinks>
+                          <b:navCommandLink onclick="ajax:navLinkBean.navigateToPage(0, 'b:navCommandLink')"
+                            value="Page 1 (NavCommandLink)" update="**:targetPage" />
+                          <b:navCommandLink onclick="ajax:navLinkBean.navigateToPage(1, 'b:navCommandLink')"
+                            value=" Page 2 (NavCommandLink)" update="**:targetPage" />
+                        </b:listLinks>
+                      </b:panel>
+                      <b:panel title="#{navLinkBean.pageTitle}" id="targetPage" look="#{navLinkBean.pageLook}">
+                         #{navLinkBean.pageContent}
+                      </b:panel>
+                    </b:panelGrid>
+                   <f:facet name="footer">
+                          <b:tabView
+                    contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding-right:25px;padding-left:25px;padding-top:10px"
+                    contentClass="show-grid">
+                    <b:tab title="JSF markup">
+                      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
-       <h:form>
-         <b:panelGrid colSpans="6,6">
-            <b:panel look="primary" title="Navigation menu">
-              <b:listLinks>
-                <b:navCommandLink onclick="ajax:navLinkBean.navigateToPage(0, 'b:navCommandLink')"
-                  value="Page 1 (NavCommandLink)" update="**:targetPage" />
-                <b:navCommandLink onclick="ajax:navLinkBean.navigateToPage(1, 'b:navCommandLink')"
-                  value=" Page 2 (NavCommandLink)" update="**:targetPage" />
-              </b:listLinks>
-            </b:panel>
-            <b:panel title="#{navLinkBean.getPageTitle()}" id="targetPage" look="#{navLinkBean.getPageLook()}">
-               #{navLinkBean.getPageContent()}
-            </b:panel>
-          </b:panelGrid>
-       </h:form>
- ]]>
-         </script>
-                  </b:tab>
-                 <b:tab title="Java Bean">
-                    <script type="syntaxhighlighter" class="brush: java toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-@ViewScoped
-@ManagedBean
-public class NavLinkBean implements Serializable {
-  private static final long serialVersionUID = 1L;
-
-  private int activePage = 0;
-
-  private String source;
-
-  public void navigateToPage(int page, String source) {
-    activePage = page;
-    this.source = source;
-  }
-
-  public String getPageTitle() {
-    return "Page " + (activePage + 1);
-  }
-
-  public String getPageContent() {
-    if (source == null) {
-      return "This is the default page.";
-    }
-    if (0 == activePage)
-      return "This is the first page, and you've called it using a " + source + ".";
-    if (1 == activePage)
-      return "This is the second page, and you've called it using a " + source + ".";
-    return "This is an unknown page.";
-  }
-
-  public String getPageLook() {
-    if (0 == activePage)
-      return "primary";
-    return "success";
-  }
-}
- ]]>
-         </script>
-                  </b:tab>
-                  <b:tab title="live preview">
                     <b:panelGrid colSpans="6,6">
                       <b:panel look="primary" title="Navigation menu">
                         <b:listLinks>
@@ -610,14 +574,57 @@ public class NavLinkBean implements Serializable {
                             value=" Page 2 (NavCommandLink)" update="**:targetPage" />
                         </b:listLinks>
                       </b:panel>
-                      <b:panel title="#{navLinkBean.getPageTitle()}" id="targetPage" look="#{navLinkBean.getPageLook()}">
-                         #{navLinkBean.getPageContent()}
+                      <b:panel title="#{navLinkBean.pageTitle}" id="targetPage" look="#{navLinkBean.pageLook}">
+                         #{navLinkBean.pageContent}
                       </b:panel>
-                    </b:panelGrid>
-                  </b:tab>
-                </b:tabView>
- 				</h:form>
-                <br/>
+                    </b:panelGrid>      
+ ]]>
+         </script>
+                    </b:tab>
+                    <b:tab title="Java Bean">
+                      <script type="syntaxhighlighter" class="brush: java toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+@ViewScoped
+@ManagedBean
+public class NavLinkBean implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	private int activePage = 0;
+
+	private String source;
+
+	public void navigateToPage(int page, String source) {
+		activePage = page;
+		this.source = source;
+	}
+
+	public String getPageTitle() {
+		return "Page " + (activePage + 1);
+	}
+
+	public String getPageContent() {
+		if (source == null) {
+			return "This is the default page.";
+		}
+		if (0 == activePage)
+			return "This is the first page, and you've called it using a " + source + ".";
+		if (1 == activePage)
+			return "This is the second page, and you've called it using a " + source + ".";
+		return "This is an unknown page.";
+	}
+
+	public String getPageLook() {
+		if (0 == activePage)
+			return "primary";
+		return "success";
+	}
+}
+ ]]>
+         </script>
+                    </b:tab>
+                  </b:tabView>
+                    </f:facet>
+               </b:panel>
 
                 <h2>Reference section</h2>
                 <ui:include src="NavLinkAttributes.xhtml" />

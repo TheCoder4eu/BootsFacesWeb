@@ -26,16 +26,18 @@
     
     <h2>Disabling the standard setting</h2>
     If you don't want a meta viewport tag at all, you can disable this behaviour by setting its context paramater to <code>false</code>.
+    
     <b:panel>
         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
             <![CDATA[
             <context-param>
-                <param-name>BootsFaces_USE_VIEWPORT</param-name>
-                <param-value>false</param-value>
+            <param-name>BootsFaces_USE_VIEWPORT</param-name>
+            <param-value>false</param-value>
             </context-param>
             ]]>
         </script>
     </b:panel>
+    
     
     <h2>Overriding the viewport</h2>
     <p>If you need a different viewport setting, simply add it to your <code>&lt;h:head&gt;</code> tag. BootsFaces adds

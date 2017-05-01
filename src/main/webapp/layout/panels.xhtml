@@ -18,12 +18,14 @@
       By default, all the <code>&lt;b:panel&gt;</code> does is apply some basic border and padding to contain some content.
     </p>
 
-          <b:panel>
+    <b:panel title="Live preview" look="info" collapsible="false">
+        <b:panel>
           <h:outputText value="Basic panel example " />
         </b:panel>
-
-          <b:well>
-          <script type="syntaxhighlighter"
+        <f:facet name="footer">
+            <strong>JSF markup:</strong>
+            <b:panel>
+                <script type="syntaxhighlighter"
             class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 			<![CDATA[
                  <b:panel>
@@ -31,8 +33,10 @@
                 </b:panel>
 			]]>
 		  </script>
-        </b:well>
-
+            </b:panel>
+        </f:facet>
+    </b:panel>
+          
 
     <h3 id="panels-heading">Panel with heading</h3>
     <p>
@@ -44,9 +48,8 @@
       <code>&lt;h6&gt;</code>
       to add a pre-styled heading. Facets may contain arbitrary content. For instance, the example below contains a <code>&lt;b:badge /&gt;</code>:
     </p>
-
-    <b:tabView>
-      <b:tab title="live demo">
+    
+    <b:panel title="Live preview" look="info" collapsible="false">
         <b:panel>
           <f:facet name="heading">
           	<i class="fa fa-battery-three-quarters" style="padding-right:20px" />
@@ -56,10 +59,10 @@
           </f:facet>
           <h:outputText value="Panel Content" />
         </b:panel>
-      </b:tab>
-      <b:tab title="source code">
-        <b:well>
-          <script type="syntaxhighlighter"
+        <f:facet name="footer">
+            <strong>JSF markup:</strong>
+            <b:panel>
+                <script type="syntaxhighlighter"
             class="brush: xml; toolbar: false;first-line: 0">
             <![CDATA[
                  <b:panel>
@@ -70,10 +73,12 @@
                     </f:facet>
                     <h:outputText value="Panel Content"/>
                  </b:panel>
-                    ]]></script>
-        </b:well>
-      </b:tab>
-    </b:tabView>
+                    ]]>
+                </script>
+            </b:panel>
+        </f:facet>
+    </b:panel>
+
     <br />
     <p>
       As a simple (but less flexible) alternative, you can specify a title with the
@@ -83,9 +88,13 @@
       having the attribute's value as Title.
     </p>
 
-          <b:tabView>
-            <b:tab title="JSF markup">
-              <b:well>
+    <b:panel title="Live preview" look="info" collapsible="false">
+        <b:panel title="Panel title" collapsible="false">
+                <h:outputText value="Panel Content" />
+              </b:panel>
+        <f:facet name="footer">
+            <strong>JSF markup: </strong>
+            <b:panel>
                 <script type="syntaxhighlighter"
                   class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
@@ -94,14 +103,11 @@
               </b:panel>
 ]]>
         </script>
-              </b:well>
-            </b:tab>
-            <b:tab title="displayed as">
-              <b:panel title="Panel title" collapsible="false">
-                <h:outputText value="Panel Content" />
-              </b:panel>
-            </b:tab>
-          </b:tabView>
+            </b:panel>
+        </f:facet>
+    </b:panel>
+    
+          
     <h3>Collapsible panels</h3>
     <p>
       By default, panels can be collapsed by clicking the title bar or
@@ -110,12 +116,15 @@
       <code>collapsible="false"</code>
       :
     </p>
-
-           <b:tabView>
-            <b:tab title="JSF markup">
-              <b:well>
-                <script type="syntaxhighlighter"
-                  class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+    
+    <b:panel title="Live preview" look="info" collapsible="false">
+         <b:panel title="Try to fold me away!" collapsible="false">
+                   I bet you can't...
+              </b:panel>
+        <f:facet name="footer">
+            <strong>JSF markup: </strong>
+            <b:panel>
+                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
               <b:panel title="Try to fold me away!" collapsible="false">
                    I bet you can't...
@@ -123,28 +132,43 @@
 
 ]]>
         </script>
-              </b:well>
-            </b:tab>
-            <b:tab title="displayed as">
-              <b:panel title="Try to fold me away!" collapsible="false">
-                   I bet you can't...
-              </b:panel>
-            </b:tab>
-          </b:tabView>
+            </b:panel>
+        </f:facet>
+    </b:panel>
+
 
     <h3>Collapsible panels indicator <b:badge value="since 0.9.0" /></h3>
-    <p>BootsFaces can underline the panel titel as a visual clue that the panel can be collapsed using the keyboard.
+    <p>BootsFaces can underline the panel title as a visual clue that the panel can be collapsed using the keyboard.
     You can activate it by setting <code>showCollapseLink="true"</code>:
     </p>
-    <h:form>
-      <b:panelGrid colSpans="6,6" size="sm">
-        <b:panel title="showCollapseLink='false' (default)"
-          look="primary">
+    
+    <b:panel title="Live preview" look="info" collapsible="false">
+        
+        <b:panelGrid colSpans="6,6" size="sm">
+        <b:panel title="showCollapseLink='false' (default)" look="primary">
         </b:panel>
-        <b:panel title="showCollapseLink='true'" showCollapseLink="true"
-          look="primary">
+        <b:panel title="showCollapseLink='true'" showCollapseLink="true" look="primary">
         </b:panel>
       </b:panelGrid>
+        
+        <f:facet name="footer">
+            <strong>JSF markup: </strong>
+            <b:panel>
+                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                <![CDATA[
+              <b:panelGrid colSpans="6,6" size="sm">
+                <b:panel title="showCollapseLink='false' (default)" look="primary">
+                </b:panel>
+                <b:panel title="showCollapseLink='true'" showCollapseLink="true" look="primary">
+                </b:panel>
+              </b:panelGrid>]]>
+                </script>
+            </b:panel>
+        </f:facet>
+    </b:panel>
+    
+    <h:form>
+      
     </h:form>
 
     <h3>Persistent collapse/expand state</h3>
@@ -157,9 +181,8 @@
       panel on this page which restores its state after clicking the
       button:</p>
 
-          <b:tabView>
-            <b:tab title="preview">
-     <b:panelGrid colSpans="6,6" id="stateGridId">
+    <b:panel title="Live preview" look="info" collapsible="false">
+        <b:panelGrid colSpans="6,6" id="stateGridId">
       <h:form>
         <b:panel title="Within form - collapse state is restored"
           look="primary">
@@ -175,11 +198,11 @@
         <b:messages />
       </b:panel>
     </b:panelGrid>
-
-            </b:tab>
-            <b:tab title="JSF markup">
-              <b:well>
-                <script type="syntaxhighlighter"
+        
+        <f:facet name="footer">
+            <strong>JSF markup: </strong>
+            <b:panel>
+    <script type="syntaxhighlighter"
                   class="brush: xml; toolbar: false;gutter: false; first-line: 1">
         <![CDATA[
     <b:panelGrid colSpans="6,6" id="stateGridId">
@@ -200,18 +223,17 @@
     </b:panelGrid>
 
       ]]>
-        </script>
-              </b:well>
-            </b:tab>
-          </b:tabView>
-
-
+        </script>            
+            </b:panel>
+        </f:facet>
+    </b:panel>
+    
     <h3>Programmable collapse/expand state</h3>
     <p>The collapse state can also be controlled by an attribute of
       a managed bean:</p>
-          <b:tabView>
-             <b:tab title="preview">
-    <h:form>
+    
+    <b:panel title="Live preview" look="info" collapsible="false">
+        <h:form>
       <b:panelGrid colSpans="6,6">
         <b:panel
           title="I'm #{panelBean.firstText} because of a bean attribute."
@@ -229,10 +251,10 @@
       <b:commandButton ajax="true" update="@form"
         actionListener="#{panelBean.toggle}" value="toggle" />
     </h:form>
-
-            </b:tab>
-           <b:tab title="JSF markup">
-              <b:well>
+        
+        <f:facet name="footer">
+            <strong>JSF markup: </strong>
+            <b:panel>
                 <script type="syntaxhighlighter"
                   class="brush: xml; toolbar: false;gutter: false; first-line: 1">
         <![CDATA[
@@ -257,9 +279,9 @@
 
       ]]>
         </script>
-              </b:well>
-            </b:tab>
-          </b:tabView>
+            </b:panel>
+        </f:facet>
+    </b:panel>
 
     <p>However, if the user opens or closes a panel, their choice
       overrides the values taken from the bean.</p>
@@ -272,26 +294,27 @@
       <code>look</code>
       attribute with values primary, success, info, warning or danger.
     </p>
-          <b:tabView>
-             <b:tab title="preview">
-                <b:panel title="Panel Title - Primary" look="primary">
-                  <h:outputText value="Panel Content" />
-                </b:panel>
-                <b:panel title="Panel Title - Success" look="success">
-                  <h:outputText value="Panel Content" />
-                </b:panel>
-                <b:panel title="Panel Title - Info" look="info">
-                  <h:outputText value="Panel Content" />
-                </b:panel>
-                <b:panel title="Panel Title - Warning" look="warning">
-                  <h:outputText value="Panel Content" />
-                </b:panel>
-                <b:panel title="Panel Title - Danger" look="danger">
-                  <h:outputText value="Panel Content" />
-                </b:panel>
-            </b:tab>
-            <b:tab title="JSF markup">
-              <b:well>
+    
+    <b:panel title="Live preview" look="info" collapsible="false">
+        <b:panel title="Panel Title - Primary" look="primary">
+            <h:outputText value="Panel Content" />
+        </b:panel>
+        <b:panel title="Panel Title - Success" look="success">
+            <h:outputText value="Panel Content" />
+        </b:panel>
+        <b:panel title="Panel Title - Info" look="info">
+            <h:outputText value="Panel Content" />
+        </b:panel>
+        <b:panel title="Panel Title - Warning" look="warning">
+            <h:outputText value="Panel Content" />
+        </b:panel>
+        <b:panel title="Panel Title - Danger" look="danger">
+            <h:outputText value="Panel Content" />
+        </b:panel>
+        
+        <f:facet name="footer">
+            <strong>JSF markup: </strong>
+            <b:panel>
                 <script type="syntaxhighlighter"
                   class="brush: xml; toolbar: false;gutter: false; first-line: 1">
              <![CDATA[
@@ -309,12 +332,12 @@
     </b:panel>
     <b:panel title="Panel Title - Danger" look="danger">
       <h:outputText value="Panel Content" />
-    </b:panel>
-            ]]>
+    </b:panel>]]>
             </script>
-              </b:well>
-            </b:tab>
-          </b:tabView>
+            </b:panel>
+        </f:facet>
+    </b:panel>
+    
     <h3 id="panels-footer">Panels with a footer</h3>
     <p>
       Wrap buttons or secondary text in a
@@ -323,18 +346,20 @@
       colors and borders when using contextual variations as they are
       not meant to be in the foreground.
     </p>
-    <b:tabView>
-        <b:tab title="preview">
-            <b:panel title="Panel with Footer" look="info">
+    
+    <b:panel title="Live preview" look="info" collapsible="false">
+        
+        <b:panel title="Panel with Footer" look="info">
                 <h:outputText value="Panel Content" />
                 <f:facet name="footer">
                     <h:outputText value="Panel Footer" />
                </f:facet>
             </b:panel>
-        </b:tab>
-        <b:tab title="JSF markup">
-            <b:well>
-                <script type="syntaxhighlighter"
+        
+        <f:facet name="footer">
+            <strong>JSF markup: </strong>
+            <b:panel>
+                 <script type="syntaxhighlighter"
                   class="brush: xml; toolbar: false;gutter: false; first-line: 1">
              <![CDATA[
   <b:panel title="Panel with Footer" look="info">
@@ -345,9 +370,9 @@
   </b:panel>
             ]]>
                 </script>
-            </b:well>
-        </b:tab>
-    </b:tabView>
+            </b:panel>
+        </f:facet>
+    </b:panel>
 
     <h3 id="panels-ajax">AJAX and JavaScript <b:badge value="since 0.8.0" /></h3>
     <p>
@@ -355,10 +380,9 @@
       HTML event handlers like onclick and onmouseover there are also four Bootstrap callback listeners: <code>onexpand</code>,
       <code>onexpanded</code>, <code>oncollapse</code> and <code>oncollapsed.</code>.
     </p>
-
-         <b:tabView>
-             <b:tab title="preview">
-               <h:form>
+    
+    <b:panel title="Live preview" look="info" collapsible="false">
+        <h:form>
                  <b:panelGrid colSpans="6,6">
                    <b:panel look="primary" title="AJAXified b:panel"
                       update="@form:messages"
@@ -383,9 +407,10 @@
                   </b:well>
                  </b:panelGrid>
                </h:form>
-            </b:tab>
-            <b:tab title="JSF markup">
-              <b:well>
+        
+        <f:facet name="footer">
+            <strong>JSF markup: </strong>
+            <b:panel>
                 <script type="syntaxhighlighter"
                   class="brush: xml; toolbar: false;gutter: false; first-line: 1">
              <![CDATA[
@@ -411,9 +436,9 @@
                </h:form>
             ]]>
             </script>
-              </b:well>
-            </b:tab>
-          </b:tabView>
+            </b:panel>
+        </f:facet>
+    </b:panel>
 
 		<h2>Disabling the content <b:badge value="Since 1.1.0"/></h2>
 		<p>By setting the flag <code>contentDisabled="true"</code> you can set each child element to disabled. More precisely,
@@ -422,45 +447,62 @@
 		links (everything that's using an <code>&lt;a&gt;</code> tag, like <code>&lt;button&gt;</code> and <code>&lt;b:navLink&gt;</code>.)
 		These elements will be shown as disabled, but still are accessible. In part, that's because this CSS property isn't fully
 		standardized yet. For instance, it isn't supported by Internet Explorer 11 and below, and Opera 18 and below.</p>
+        
+        <b:panel title="Live preview" look="info" collapsible="false">
+        
+            <b:panel contentDisabled="true">
+                <h:form>
+                    <b:datepicker label="Datepicker"  />
+                    <b:dateTimePicker label="DateTimerPicker" />
+                    <b:colorPicker label="ColorPicker" />
+                    <b:selectOneMenu label="SelectOneMenu" >
+                        <f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
+                        <f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
+                    </b:selectOneMenu>
+                    <b:selectMultiMenu label="SelectMultiMenu" >
+                        <f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
+                        <f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
+                    </b:selectMultiMenu>
+                    <br />
+                    <b:button look="primary" value="You can't click me!"/>
+                </h:form>
+            </b:panel>
+            
+            <f:facet name="footer">
+                <strong>JSF markup: </strong>
+                <b:panel>
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+					<![CDATA[
+	                <b:panel contentDisabled="true">
+                        <h:form>
+                            <b:datepicker label="Datepicker"  />
+                            <b:dateTimePicker label="DateTimerPicker" />
+                            <b:colorPicker label="ColorPicker" />
+                            <b:selectOneMenu label="SelectOneMenu" >
+                                <f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
+                                <f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
+                            </b:selectOneMenu>
+                            <b:selectMultiMenu label="SelectMultiMenu" >
+                                <f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
+                                <f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
+                            </b:selectMultiMenu>
+                            <br />
+                            <b:button look="primary" value="You can't click me!"/>
+                        </h:form>
+                    </b:panel>
+ 					]]>
+				</script>
+                </b:panel>
+            </f:facet>
+        </b:panel>
+        
 		<h:form>
 			  <b:tabView>
 	            <b:tab title="preview">
-	              <b:panel contentDisabled="true">
-		                <b:datepicker label="Datepicker" render-label="true" />
-		                <b:dateTimePicker label="DateTimerPicker" render-label="true"/>
-		                <b:colorPicker label="ColorPicker" render-label="true"/>
-		                <b:selectOneMenu label="SelectOneMenu" render-label="true">
-		                	<f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
-		                	<f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
-		               	</b:selectOneMenu>
-		                <b:selectMultiMenu label="SelectMultiMenu" render-label="true">
-		                	<f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
-		                	<f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
-		               	</b:selectMultiMenu>
-		               	<br />
-	                    <b:button look="primary" value="You can't click me!"/>
-	               </b:panel>
+	              
 	            </b:tab>
 				<b:tab title="JSF markup">
-					<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-					<![CDATA[
-	                <b:panel contentDisabled="true">
-		                <b:datepicker label="Datepicker" render-label="true" />
-		                <b:dateTimePicker label="DateTimerPicker" render-label="true"/>
-		                <b:colorPicker label="ColorPicker" render-label="true"/>
-		                <b:selectOneMenu label="SelectOneMenu" render-label="true">
-		                	<f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
-		                	<f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
-		               	</b:selectOneMenu>
-		                <b:selectMultiMenu label="SelectMultiMenu" render-label="true">
-		                	<f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
-		                	<f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
-		               	</b:selectMultiMenu>
-						<br />
-	                    <b:button look="primary" value="You can't click me!"/>
-	               </b:panel>
- 					]]>
-				</script>
+					
 				</b:tab>
 			</b:tabView>
 		</h:form>

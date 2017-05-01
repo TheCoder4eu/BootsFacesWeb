@@ -17,12 +17,10 @@
 
 package net.bootsfaces.demo;
 
-import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.validation.constraints.NotNull;
@@ -30,8 +28,7 @@ import javax.validation.constraints.NotNull;
 /** A simple bean for demo purposes. */
 @RequestScoped
 @ManagedBean
-public class SemaphoreBean implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class SemaphoreBean {
 
     @NotNull
 	private String color = null;
@@ -43,6 +40,14 @@ public class SemaphoreBean implements Serializable {
 
 	private Map<String, String> meanings;
 
+    public SemaphoreBean() {
+		colors = Arrays.asList("green", "yellow", "red");
+		meanings = new HashMap<>();
+		meanings.put("go", "green");
+		meanings.put("be alert", "yellow");
+		meanings.put("stop", "red");
+	}
+    
 	public String getColor() {
 		return color;
 	}
@@ -73,13 +78,5 @@ public class SemaphoreBean implements Serializable {
 
 	public void setMeanings(Map<String, String> meanings) {
 		this.meanings = meanings;
-	}
-
-	{
-		colors = Arrays.asList("green", "yellow", "red");
-		meanings = new HashMap<String, String>();
-		meanings.put("go", "green");
-		meanings.put("be alert", "yellow");
-		meanings.put("stop", "red");
 	}
 }

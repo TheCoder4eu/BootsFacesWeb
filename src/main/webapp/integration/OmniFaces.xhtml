@@ -17,7 +17,7 @@
      <b:tabView contentStyle="height:280px">
         <b:tab title="Maven">
           <p>Add these lines to your Maven pom.xml file:</p>
-          <b:well>
+          <b:panel>
                     <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
 <dependency>
@@ -34,21 +34,21 @@
 </dependency>
 ]]>
 </script>
-          </b:well>
+          </b:panel>
         </b:tab>
         <b:tab title="Gradle">
-          <b:well>
+          <b:panel>
 <script type="syntaxhighlighter" class="brush: groovy; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
   compile 'net.bootsfaces:bootsfaces:1.1.0'
   compile 'org.omnifaces:omnifaces:2.6.1'
 ]]>
 </script>
-          </b:well>
+          </b:panel>
         </b:tab>
         <b:tab title="faces-config.xml">
         To activate the <code>CombinedResourceHandler</code>, add a <code>&lt;resource-handler&gt;</code> to the <code>faces-config.xml</code> file:
-        <b:well>
+        <b:panel>
 <script type="syntaxhighlighter" class="brush: groovy; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
 <?xml version="1.0" encoding="UTF-8"?>
@@ -62,7 +62,7 @@
 </faces-config>
 ]]>
 </script>
-        </b:well>
+        </b:panel>
         </b:tab>
       </b:tabView>
 
@@ -71,7 +71,7 @@
 
 <p>Download the <a target="#" href="http://repository.primefaces.org/org/primefaces/themes/bootstrap/">PrimeFaces Bootsstrap theme</a>, add it to your application's <code>lib</code> folder and activate it in the <code>web.xml</code> like so:</p>
 
-     <b:well>
+     <b:panel>
 <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
     <!-- set the maximum time-to-live of cache entries to one day -->
@@ -81,7 +81,7 @@
     </context-param>
 ]]>
 </script>
-          </b:well>
+          </b:panel>
 
                 <script type="text/javascript">
                     SyntaxHighlighter.all();

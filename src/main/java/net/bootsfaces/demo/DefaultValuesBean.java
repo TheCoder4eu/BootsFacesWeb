@@ -10,7 +10,7 @@ import javax.faces.bean.SessionScoped;
 public class DefaultValuesBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private boolean renderLabel=false;
+	private boolean renderLabel=true;
 
 	public boolean isRenderLabel() {
 		return renderLabel;

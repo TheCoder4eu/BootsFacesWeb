@@ -20,84 +20,94 @@ td {
 		<h1>Basic usage</h1>
 		<p>In the simplest case you only need to provide the value the ProgressBar should present. It will then be rendered with the primary look, ranging between 0 and 100, showing the bar completion as a percentage. </p>
 
-		<b:tabView>
-			<b:tab title="preview">
-				<b:progressBar value="50"/>
-			</b:tab>
-			<b:tab title="JSF markup">
-				<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+		        <b:panel title="Live preview" look="info" collapsible="false">         
+			<b:progressBar value="50"/>
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
 					<![CDATA[
 						<b:progressBar value="50"/>
 					]]>
 				</script>
-			</b:tab>
-		</b:tabView>
+                </b:panel>
+            </f:facet>
+        </b:panel>
+       
 
 		<h3 id="contextual-alternatives">Contextual alternatives</h3>
 		<p>
 			Like other components, easily make a ProgressBar more meaningful to a particular context by adding a look attribute with values primary, success, info, warning or danger.
 		</p>
-		<b:tabView>
-			<b:tab title="preview">
+		        <b:panel title="Live preview" look="info" collapsible="false">         
 				<b:progressBar value="100" look="primary"/>
-				<b:progressBar value="90"  look="info"/>
-				<b:progressBar value="80"  look="success"/>
-				<b:progressBar value="70"  look="warning"/>
-				<b:progressBar value="60"  look="danger"/>
-			</b:tab>
-			<b:tab title="JSF markup">
-				<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+				<b:progressBar value="90" look="info"/>
+				<b:progressBar value="80" look="success"/>
+				<b:progressBar value="70" look="warning"/>
+				<b:progressBar value="60" look="danger"/>
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
 					<![CDATA[
 						<b:progressBar value="100" look="primary"/>
-						<b:progressBar value="90"  look="info"/>
-						<b:progressBar value="80"  look="success"/>
-						<b:progressBar value="70"  look="warning"/>
-						<b:progressBar value="60"  look="danger"/>
+						<b:progressBar value="90" look="info"/>
+						<b:progressBar value="80" look="success"/>
+						<b:progressBar value="70" look="warning"/>
+						<b:progressBar value="60" look="danger"/>
 					]]>
 				</script>
-			</b:tab>
-		</b:tabView>
+                </b:panel>
+            </f:facet>
+        </b:panel>
+       
 
 		<h3 id="labels">Labels</h3>
 		<p>
 			You can always provide your own caption instead of using the standard percentage or simply hide the caption, if you want a pure ProgressBar.
 		</p>
 
-		<b:tabView>
-			<b:tab title="preview">
-				<b:progressBar value="50" caption="This bar is half done."/>
+		        <b:panel title="Live preview" look="info" collapsible="false">         
+<b:progressBar value="50" caption="This bar is half done."/>
 				<b:progressBar value="50" renderCaption="false"/>
-			</b:tab>
-			<b:tab title="JSF markup">
-				<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
 					<![CDATA[
 						<b:progressBar value="50" caption="This bar is half done."/>
 						<b:progressBar value="50" renderCaption="false"/>
 					]]>
 				</script>
-			</b:tab>
-		</b:tabView>
+                </b:panel>
+            </f:facet>
+        </b:panel>
+       
 
 		<p>
 			If you use the standard caption, you can also configure the amount of shown fraction digits.
 		</p>
 
-		<b:tabView>
-			<b:tab title="preview">
-				<b:progressBar value="100" min="50" max="200"/>
+		        <b:panel title="Live preview" look="info" collapsible="false">         
+
+	<b:progressBar value="100" min="50" max="200"/>
 				<b:progressBar value="100" min="50" max="200" maxDecimalPlaces="6"/>
 				<b:progressBar value="100" min="50" max="200" maxDecimalPlaces="0"/>
-			</b:tab>
-			<b:tab title="JSF markup">
-				<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+	<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
 					<![CDATA[
 						<b:progressBar value="100" min="50" max="200"/>
 						<b:progressBar value="100" min="50" max="200" maxDecimalPlaces="6"/>
 						<b:progressBar value="100" min="50" max="200" maxDecimalPlaces="0"/>
 					]]>
 				</script>
-			</b:tab>
-		</b:tabView>
+                </b:panel>
+            </f:facet>
+        </b:panel>
+       
 
 		<h3 id="custom-ranges">Custom ranges</h3>
 		<p>
@@ -107,20 +117,24 @@ td {
 			You don't need to calculate the desired completion percentage yourself, just drop a value that lies between your defined range.
 		</p>
 
-		<b:tabView>
-			<b:tab title="preview">
-				<b:progressBar value="100" min="50" max="200" tooltip="min=50, max=200, value=100"/>
+        <b:panel title="Live preview" look="info" collapsible="false">         
+
+<b:progressBar value="100" min="50" max="200" tooltip="min=50, max=200, value=100"/>
 				<b:progressBar value="0" min="-100" max="0"   tooltip="min=-100, max=0, value=0"/>
-			</b:tab>
-			<b:tab title="JSF markup">
+
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
 				<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
 					<![CDATA[
 						<b:progressBar value="100" min="50" max="200" tooltip="min=50, max=200, value=100"/>
 						<b:progressBar value="0" min="-100" max="0" tooltip="min=-100, max=0, value=0"/>
 					]]>
 				</script>
-			</b:tab>
-		</b:tabView>
+                </b:panel>
+            </f:facet>
+        </b:panel>
+       
 
 		<h3 id="striped">Striped</h3>
 		<p>
@@ -130,18 +144,22 @@ td {
 			Uses a gradient to create a striped effect. Not available in IE9 and below.
 		</p>
 
-		<b:tabView>
-			<b:tab title="preview">
-				<b:progressBar value="100" striped="true" />
-			</b:tab>
-			<b:tab title="JSF markup">
-				<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+		        <b:panel title="Live preview" look="info" collapsible="false">         
+
+	<b:progressBar value="100" striped="true" />
+
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+	<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
 					<![CDATA[
 						<b:progressBar value="100" striped="true" />
 					]]>
 				</script>
-			</b:tab>
-		</b:tabView>
+                </b:panel>
+            </f:facet>
+        </b:panel>
+       
 
 		<h3 id="animated">Animated</h3>
 		<p>
@@ -151,29 +169,32 @@ td {
 			Making a ProgressBar animated automatically applies stripes to it (otherwise there would be nothing to see). Thus this is also not available in IE9 and below.
 		</p>
 
-		<b:tabView>
-			<b:tab title="preview">
-				<b:progressBar value="100" animated="true" renderCaption="false"/>
+		        <b:panel title="Live preview" look="info" collapsible="false">         
+
+<b:progressBar value="100" animated="true" renderCaption="false"/>
 				<b:progressBar value="75" animated="true"/>
-			</b:tab>
-			<b:tab title="JSF markup">
-				<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
 					<![CDATA[
 						<b:progressBar value="100" animated="true" renderCaption="false"/>
 						<b:progressBar value="75" animated="true"/>
 					]]>
 				</script>
-			</b:tab>
-		</b:tabView>
+                </b:panel>
+            </f:facet>
+        </b:panel>
 
         <br/>
-        <h2>Responsive design <b:badge value="since 0.9.0" /></h2>
+        <h3>Responsive design <b:badge value="since 0.9.0" /></h3>
         <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
         also with <code>&lt;b:progressBar /&gt;</code>:</p>
-       <b:tabView>
-          <b:tab title="live preview">
-          <b:well>
-             <b:row>
+       
+                <b:panel title="Live preview" look="info" collapsible="false">         
+
+<b:row>
                 <b:progressBar value="50" min="0" max="100"  tooltip="large-screen='full-width'" large-screen="full-width" />
              </b:row>
              <b:row style="padding-top:5px">
@@ -188,11 +209,11 @@ td {
                 <b:progressBar value="50" min="0" max="100"  tooltip="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
                 <b:progressBar value="50" min="0" max="100"  tooltip="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
              </b:row>
-          </b:well>
-          </b:tab>
-          <b:tab title="JSF markup">
-          <b:well>
-          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
              <![CDATA[
              <b:row>
                 <b:progressBar value="50" min="0" max="100"  tooltip="large-screen='full-width'" large-screen="full-width" />
@@ -210,71 +231,79 @@ td {
                 <b:progressBar value="50" min="0" max="100"  tooltip="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
              </b:row>
              ]]></script>
-          </b:well>
-          </b:tab>
-        </b:tabView>
+                </b:panel>
+            </f:facet>
+        </b:panel>
+       
 
-        <h2>Visibility depending on screen size <b:badge value="since 0.8.6/0.9.0" /></h2>
+        <h3>Visibility depending on screen size <b:badge value="since 0.8.6/0.9.0" /></h3>
         <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
-        <br/>
-        <b:tabView>
-          <b:tab title="live preview">
-          <b:well>
-               <b:panelGrid colSpans="3,9">
+       
+                <b:panel title="Live preview" look="info" collapsible="false">         
+
+<b:panelGrid colSpans="3,9">
                   <h:outputText value="Visible on &gt;= md:" />
-                  <b:progressBar value="50" min="0" max="100"  tooltip="Visible on medium or large screen" severity="info" visible="md..." />
+                  <b:progressBar value="50" min="0" max="100" tooltip="Visible on medium or large screen" look="info" visible="md..." />
+                  
                   <h:outputText value="Visible on &lt;= sm:" />
-                  <b:progressBar value="50" min="0" max="100"  tooltip="Visible on small-screen" severity="success" visible="...sm"/>
+                  <b:progressBar value="50" min="0" max="100" tooltip="Visible on small-screen" look="success" visible="...sm"/>
+                  
                   <h:outputText value="Visible on sm...lg:" />
-                  <b:progressBar value="50" min="0" max="100"  tooltip="Visible on small to large screen" severity="success" visible="sm...lg"/>
+                  <b:progressBar value="50" min="0" max="100" tooltip="Visible on small to large screen" look="success" visible="sm...lg"/>
+                  
                   <h:outputText value="Visible on xs and md:" />
-                  <b:progressBar value="50" min="0" max="100"  tooltip="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
+                  <b:progressBar value="50" min="0" max="100" tooltip="Visible on tiny and medium screen" look="success" visible="xs,md"/>
+                  
                   <h:outputText value="Col-md-6, offset 2:" />
-                  <b:progressBar value="50" min="0" max="100"  tooltip="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
+                  <b:progressBar value="50" min="0" max="100" tooltip="col-md-6, offset 2" look="success" col-md="6" offset="2" />
                </b:panelGrid>
-         </b:well>
-          </b:tab>
-          <b:tab title="JSF markup">
-          <b:well>
+
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
              <![CDATA[
                <b:panelGrid colSpans="3,9">
                   <h:outputText value="Visible on &gt;= md:" />
-                  <b:progressBar value="50" min="0" max="100"  tooltip="Visible on medium or large screen" severity="info" visible="md..." />
+                  <b:progressBar value="50" min="0" max="100" tooltip="Visible on medium or large screen" severity="info" visible="md..." />
+                  
                   <h:outputText value="Visible on &lt;= sm:" />
-                  <b:progressBar value="50" min="0" max="100"  tooltip="Visible on small-screen" severity="success" visible="...sm"/>
+                  <b:progressBar value="50" min="0" max="100" tooltip="Visible on small-screen" severity="success" visible="...sm"/>
+                  
                   <h:outputText value="Visible on sm...lg:" />
-                  <b:progressBar value="50" min="0" max="100"  tooltip="Visible on small to large screen" severity="success" visible="sm...lg"/>
+                  <b:progressBar value="50" min="0" max="100" tooltip="Visible on small to large screen" severity="success" visible="sm...lg"/>
+                  
                   <h:outputText value="Visible on xs and md:" />
-                  <b:progressBar value="50" min="0" max="100"  tooltip="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
+                  <b:progressBar value="50" min="0" max="100" tooltip="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
+                  
                   <h:outputText value="Col-md-6, offset 2:" />
-                  <b:progressBar value="50" min="0" max="100"  tooltip="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
+                  <b:progressBar value="50" min="0" max="100" tooltip="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
                </b:panelGrid>
              ]]></script>
-          </b:well>
-          </b:tab>
-        </b:tabView>
+                </b:panel>
+            </f:facet>
+        </b:panel>
+       
 
-        <h2>Tooltips</h2>
+        <h3>Tooltips</h3>
         <p><code>&lt;b:progressBar /&gt;</code> supports tooltips:</p>
-        <br/>
-        <b:tabView>
-          <b:tab title="live preview">
-          <b:well>
-              <b:progressBar value="50" min="0" max="100" severity="info" tooltip="Ain't it a nice tooltip?"/>
-          </b:well>
-          </b:tab>
-          <b:tab title="JSF markup">
-          <b:well>
-          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+        
+                <b:panel title="Live preview" look="info" collapsible="false">         
+
+<b:progressBar value="50" min="0" max="100" look="info" tooltip="Ain't it a nice tooltip?"/>
+
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                   <![CDATA[
                       <b:progressBar  value="Look at my tooltip!" tooltip="Ain't it a nice tooltip?"/>
                  ]]></script>
-          </b:well>
-          </b:tab>
-        </b:tabView>
+                </b:panel>
+            </f:facet>
+        </b:panel>
 
-        <h1>Reference section</h1>
+        <h3>Reference section</h3>
         <ui:include src="ProgressBarAttributes.xhtml" />
 		<b:panel look="info">
 			<f:facet name="heading">
@@ -297,9 +326,5 @@ td {
 		<script type="text/javascript">
       		SyntaxHighlighter.all();
     	</script>
-		<br />
-		<br />
-		<br />
-		<br />
 	</ui:define>
 </ui:composition>

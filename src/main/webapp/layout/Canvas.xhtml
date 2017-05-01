@@ -23,7 +23,16 @@ td {
         <li>A simple and useful API to define the drawing on the server side. You don't have to know anything about JavaScript to create a drawing.</li>
         </ul>
 
-        <b:tabView activeIndex="0">
+        <b:panel title="Live preview" look="info" collapsible="false">
+        <b:canvas style="width:100%"
+                         width="1600"
+                         height="900"
+                         drawing="#{techRadar}" />
+            
+            <f:facet name="footer">
+                <strong>JSF markup: </strong>
+                <b:panel>
+<b:tabView activeIndex="0">
             <b:tab title="Markup">
                 <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                 <![CDATA[
@@ -68,14 +77,11 @@ td {
                   }
                                  ]]></script>
             </b:tab>
-            <b:tab title="live demo">
-               <b:canvas style="width:100%"
-                         width="1600"
-                         height="900"
-                         drawing="#{techRadar}" />
-            </b:tab>
         </b:tabView>
-
+                </b:panel>
+            </f:facet>
+        </b:panel>
+        
         <ui:include src="CanvasAttributes.xhtml" />
 		<b:panel look="info">
 			<f:facet name="heading">
@@ -90,9 +96,5 @@ td {
 		<script type="text/javascript">
       		SyntaxHighlighter.all();
     	</script>
-		<br />
-		<br />
-		<br />
-		<br />
 	</ui:define>
 </ui:composition>

@@ -13,7 +13,7 @@
         <h1>Reporting messages <b:badge value="since 0.8.5" /></h1>
         <p>BootsFaces offers a short-hand API to report <code>FacesMessages</code>:</p>
 
-        <b:well>
+        <b:panel>
             <script type="syntaxhighlighter" class="brush: java; toolbar: false;first-line: 1">
             <![CDATA[
     		FacesMessages.info("Successfully saved.");
@@ -21,7 +21,7 @@
     		FacesMessages.error("This is not a valid zipcode.");
     		FacesMessages.fatal("Fatal error", "The application just crashed.");
             ]]></script>
-        </b:well>
+        </b:panel>
 
 
         <h2>Search Expressions <b:badge value="since 1.0" /></h2>
@@ -35,13 +35,13 @@
         <code>@property(.)</code> in a minute.
         </p>
 
-        <b:well>
+        <b:panel>
            <script type="syntaxhighlighter" class="brush: java; toolbar: false;first-line: 1">
            <![CDATA[
     		FacesMessages.error("mainFormId:addressPanelId:zipcodeId", "This is not a valid zipcode.");
            FacesMessages.error("@styleClass(zipcode)", "This is not a valid zipcode.");
            ]]></script>
-         </b:well>
+         </b:panel>
 
         <p>The search expressions use the root of the JSF tree as base component. If your JSF tree contains a lot of
         components, this may result in slow evaluation of the search expressions scanning the entire subtree, such as
@@ -49,18 +49,18 @@
         You can improve performance by limiting the search scope. For instance, if you know the field you want to
         decorate with an error message is in a form with a particular id, you can speed things up like so:</p>
 
-        <b:well>
+        <b:panel>
             <script type="syntaxhighlighter" class="brush: java; toolbar: false;first-line: 1">
             <![CDATA[
             FacesMessages.error("mainFormId:@styleClass(zipcode)", "This is not a valid zipcode.");
             ]]></script>
-       </b:well>
+       </b:panel>
 
       <h2>Variables <b:badge value="since 1.0" /></h2>
       <p>The search expression <code>@property</code> allows you to use the variable name to define the <code>FacesMessage</code>.
       More precicly, <code>@property</code> find the JSF component by its EL expression (without the curly braces):</p>
 
-              <b:well>
+              <b:panel>
                 <script type="syntaxhighlighter"
                   class="brush: java; toolbar: false;gutter: false; first-line: 1">
                 <![CDATA[
@@ -75,14 +75,8 @@
                     }
                    }
                 ]]></script>
-              </b:well>
+              </b:panel>
 
-
-
-      <br />
-      <br />
-      <br />
-      <br />
       <script type="text/javascript">
         SyntaxHighlighter.all();
 	  </script>

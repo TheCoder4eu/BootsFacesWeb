@@ -18,26 +18,27 @@ td {
 		<p>This component is a simple implementation of the HTML <code>&lt;video /&gt;</code> element.</p>
 		<h1>Basic usage</h1>
 		<p>Basically, showing a video is as simple as writing &lt;b:video src="http://URL.com/myVideo.mp4" style="width:100%" /&gt;:</p>
-        <b:panel >
-             <f:facet name="heading"><b>EXAMPLE</b></f:facet>
-	 		<b:row>
-				<b:video small-screen="two-thirds" 
-				         src="http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b1-1.mov" 
-				         style="width:100%"
-				         tooltip="Video of Hawai provided by Apple (http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b1-1.mov)"
-				         tooltip-position="right"
-				         onplay="ajax:videoBean.onPlay()"
-				         onpause="ajax:videoBean.onPause()"
-				         onloadeddata="ajax:videoBean.onLoadedData()"
-				         oncanplaythrough="ajax:videoBean.onCanplaythrough()"
-				         onseeking="ajax:videoBean.onSeeking()"
-				         update="@next">
-		         </b:video>
-		         <b:inputTextarea value="#{videoBean.events}" small-screen="one-third" tooltip="recorded video AJAX events" style="height:350px" />
-			</b:row>
+        
+        <b:panel title="Video">
+            <b:video small-screen="two-thirds" 
+                     src="http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b1-1.mov" 
+                     style="width:100%"
+                     tooltip="Video of Hawai provided by Apple (http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b1-1.mov)"
+                     tooltip-position="right"
+                     onplay="ajax:videoBean.onPlay()"
+                     onpause="ajax:videoBean.onPause()"
+                     onloadeddata="ajax:videoBean.onLoadedData()"
+                     oncanplaythrough="ajax:videoBean.onCanplaythrough()"
+                     onseeking="ajax:videoBean.onSeeking()"
+                     update="@next">
+            </b:video>
+            <b:inputTextarea value="#{videoBean.events}" small-screen="one-third" tooltip="recorded video AJAX events" style="height:350px" />
+            
             <f:facet name="footer">
-               <strong>Markup:</strong><br/>
-               <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                <b:tabView>
+              <b:tab title="JSF Markup">
+                  <b:panel>
+                      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                     <![CDATA[
 	 		<b:row>
 				<b:video small-screen="two-thirds" 
@@ -55,8 +56,11 @@ td {
 		         <b:inputTextarea value="#{videoBean.events}" small-screen="one-third" tooltip="recorded video AJAX events" style="height:350px" />
 			</b:row>
                     ]]></script>
-              <strong>Java Bean:</strong><br/>
-               <script type="syntaxhighlighter" class="brush: java; toolbar: false;first-line: 0">
+                   </b:panel>
+              </b:tab>
+              <b:tab title="Java Bean">
+                  <b:panel>
+                      <script type="syntaxhighlighter" class="brush: java; toolbar: false;first-line: 0">
                     <![CDATA[
 @ManagedBean
 @ViewScoped
@@ -93,8 +97,11 @@ public class VideoBean implements Serializable {
 	}
 }
                     ]]></script>
+                   </b:panel>
+              </b:tab>
+        </b:tabView>
             </f:facet>
- 		</b:panel>
+        </b:panel>
 		
 		<h2>Playing videos from your own server</h2>
 		<p>Most application servers support playing videos. Using a relative URL usually suffices to play the video: &lt;b:video src="myVideo.mp4" style="width:100%" /&gt;.</p>

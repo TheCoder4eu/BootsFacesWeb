@@ -16,36 +16,53 @@ td {
 		<h1>Image (&lt;b:image /&gt;) <b:badge value="since 0.8.0" /></h1>
 		<p>The <code>&lt;b:image /&gt;</code> component is just that: an image. Plus the unified AJAX engine of BootsFaces, and Bootstrap tooltips.</p>
 
-		<h1>Basic usage</h1>
-        <b:well>
-          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+		<h3>Basic usage</h3>
+        
+        <b:panel title="Live preview" look="info" collapsible="false">
+            <b:image name="test" value="../bootstrap/carousel/Valladolid-parque-3.jpg"  tooltip="Ain't he a beauty?" tooltipPosition="right"/>
+            
+            <f:facet name="footer">
+                <strong>JSF markup: </strong>
+                <b:panel>
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 	        <![CDATA[
-	           <b:image value="../bootstrap/carousel/Valladolid-parque-3.jpg" tooltip="Ain't he a beauty?" />
+	           <b:image name="test" value="../bootstrap/carousel/Valladolid-parque-3.jpg"  tooltip="Ain't he a beauty?" tooltipPosition="right"/>
     	    ]]>
           </script>
-         </b:well>
+                </b:panel>
+            </f:facet>
+        </b:panel>
 
-        <b:image name="test" value="../bootstrap/carousel/Valladolid-parque-3.jpg"  tooltip="Ain't he a beauty?" tooltipPosition="right"/>
         <p>Alternatively, you can use the JSF resource libraries, just the way you're used to from <code>&lt;h:graphicImage /&gt;</code>;</p>
 
-        <b:well>
-          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+        <b:panel title="Live preview" look="info" collapsible="false">
+            <b:image library="images" name="Valladolid4.png" tooltip="Great water fountain in Valladolid, Spain" />
+        
+            <f:facet name="footer">
+                <strong>JSF markup: </strong>
+                <b:panel>
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
   		      <![CDATA[
         	   <b:image library="images" name="Valladolid4.png" tooltip="Great water fountain in Valladolid, Spain" />
  		      ]]>
           </script>
-         </b:well>
-
-        <b:image library="images" name="Valladolid4.png" tooltip="Great water fountain in Valladolid, Spain" />
-
-
-
-        <h1>Advanced usage</h1>
+                </b:panel>
+            </f:facet>
+        </b:panel>
+        
+        <h3>Advanced usage</h3>
         <p>You can use the standard JavaScript callbacks to call both JavaScript function and Java methods (via AJAX).
         See <a target="#" href="http://www.angularfaces.net/BootsFacesChess-1.0.0-SNAPSHOT/">BootsFaces chess</a>
          for a full-blown demo. These following demonstrate how BootsFaces chess uses AJAX to implement drag and drop:</p>
-        <b:well>
-                      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+        
+        <b:panel title="Live preview" look="info" collapsible="false">
+        
+            Missing live preview
+            
+            <f:facet name="footer">
+                <strong>JSF markup: </strong>
+                <b:panel>
+            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
         <![CDATA[
         <b:image value="&num;{image}"
                       style="position: absolute; top: 0px; left: 0px;width: 68px; height: 68px;#{board.getOpacity(rowStatus.index,columnStatus.index)}"
@@ -57,6 +74,12 @@ td {
                       update="@form :messages" />
         ]]>
         </script>
+                </b:panel>
+            </f:facet>
+        </b:panel>
+        
+        <b:well>
+                      
         </b:well>
 
         <h1>Don't use both <code>value</code> and <code>name/library</code></h1>
@@ -68,24 +91,30 @@ td {
         <h1>Responsive attributes <b:badge value="since 0.9.0" /></h1>
         <p>The image supports the full range of responsive attributes, such as <code>col-*</code>, <code>visible</code>
         and <code>hidden</code>:</p>
-        <b:well>
-          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+        
+        <b:panel title="Live preview" look="info" collapsible="false">
+            <b:row>
+                <b:image small-screen="one-third" value="../bootstrap/carousel/Valladolid-parque-1.jpg"  tooltip="small-screen='one-third'"/>
+                <b:image small-screen="one-third" value="../bootstrap/carousel/Valladolid-parque-2.jpg"  tooltip="small-screen='one-third'"/>
+                <b:image small-screen="one-third" hidden="tiny-screen"  value="../bootstrap/carousel/Valladolid-parque-3.jpg"
+                         tooltip="small-screen='one-third' hidden='tiny-screen'"/>
+            </b:row>
+            
+            <f:facet name="footer">
+                <strong>JSF markup: </strong>
+                <b:panel>
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
           <![CDATA[
           <b:row>
-            <b:image small-screen="one-third" value="../bootstrap/carousel/Valladolid-parque-1.jpg"  tooltip="small-screen='one-third'"/>
-            <b:image small-screen="one-third" value="../bootstrap/carousel/Valladolid-parque-2.jpg"  tooltip="small-screen='one-third'"/>
-            <b:image small-screen="one-third" hidden="tiny-screen"  value="../bootstrap/carousel/Valladolid-parque-3.jpg"
-                     tooltip="small-screen='one-third' hidden='tiny-screen'"/>
+            <b:image small-screen="one-third" value="../bootstrap/carousel/Valladolid-parque-1.jpg" tooltip="small-screen='one-third'"/>
+            <b:image small-screen="one-third" value="../bootstrap/carousel/Valladolid-parque-2.jpg" tooltip="small-screen='one-third'"/>
+            <b:image small-screen="one-third" hidden="tiny-screen" value="../bootstrap/carousel/Valladolid-parque-3.jpg" tooltip="small-screen='one-third' hidden='tiny-screen'"/>
           </b:row>
           ]]>
           </script>
-         </b:well>
-          <b:row>
-            <b:image small-screen="one-third" value="../bootstrap/carousel/Valladolid-parque-1.jpg"  tooltip="small-screen='one-third'"/>
-            <b:image small-screen="one-third" value="../bootstrap/carousel/Valladolid-parque-2.jpg"  tooltip="small-screen='one-third'"/>
-            <b:image small-screen="one-third" hidden="tiny-screen"  value="../bootstrap/carousel/Valladolid-parque-3.jpg"
-                     tooltip="small-screen='one-third' hidden='tiny-screen'"/>
-          </b:row>
+                </b:panel>
+            </f:facet>
+        </b:panel>
 
 
 
@@ -102,9 +131,5 @@ td {
 		<script type="text/javascript">
       		SyntaxHighlighter.all();
     	</script>
-		<br />
-		<br />
-		<br />
-		<br />
 	</ui:define>
 </ui:composition>

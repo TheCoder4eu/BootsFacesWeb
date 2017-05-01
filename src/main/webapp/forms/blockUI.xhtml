@@ -25,7 +25,8 @@
 
     <h2>Basic usage</h2>
     <p>To activate BootsFaces BlockUI, add a context parameter to your application's <code>web.xml</code>:</p>
-    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+    <b:panel>
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
      <!-- Activates the waitcursor and the double-click protection -->
     <context-param>
@@ -34,6 +35,7 @@
     </context-param>
 ]]>
        </script>
+    </b:panel>
        
     <h2>Conditional activation and deactivation</h2>
        <p>Once you've activated BootsFaces BlockUI, every AJAX request triggered by a BootsFaces component activates
@@ -42,6 +44,7 @@
        <p>If you don't want to activate BlockUI generally, you can control it via an EL expression. Note that this expression
        is read when the page is rendered, and it's only read on non-AJAX requests.</p>
        
+    <b:panel>
    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
      <!-- Activates the waitcursor and the double-click protection -->
@@ -51,6 +54,7 @@
     </context-param>
 ]]>
        </script>
+        </b:panel>
 
     <h2>AJAX, mouse events and BlockUI</h2>
     <p>If blockUI is active, every AJAX request triggers a <code>mouseOutEvent</code>. When the AJAX request has
@@ -58,13 +62,61 @@
     in mind if you need to use the mouse events.</p>
 
     <h2>Live demo</h2>
+    
+    <b:panel title="Live preview" look="info" collapsible="false">
+        <h:form>
+            <b:commandButton value="Wait 5 seconds" onclick="ajax:blockUIBean.waitFiveSeconds()" look="primary"/>
+          </h:form>
+        
+        <f:facet name="footer">
+            <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+                    <b:tab title="JSF markup">
+                         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
     <h:form>
-      <b:commandButton value="Wait 5 seconds" onclick="ajax:blockUIBean.waitFiveSeconds()" look="primary"/>
+        <b:commandButton value="Wait 5 seconds" onclick="ajax:blockUIBean.waitFiveSeconds()" look="primary"/>
     </h:form>
+]]>
+       </script>
+                    </b:tab>
+                    <b:tab title="Java Bean">
+                        <script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1">
+<![CDATA[
+@ManagedBean
+@ViewScoped
+public class BlockUIBean implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	public void waitFiveSeconds() {
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+		}
+	}
+	
+	public boolean isBlockUIActive() {
+		String viewId = FacesContext.getCurrentInstance().getViewRoot().getViewId();
+		if ("/forms/blockUI.xhtml".equals(viewId))
+			return true;
+		if("/pages/test_newcomp.xhtml".equals(viewId))
+			return true;
+		if("/bootstrap/SocialShare.xhtml".equals(viewId))
+			return true;
+		return false;
+	}
+
+}
+]]>
+       </script>
+                    </b:tab>
+            </b:tabView>             
+        </f:facet>
+    </b:panel>
 
     <h2>Customizing</h2>
     <p>Use <code>$.blockUI.defaults</code> to configure BootsFaces BlockUI, as decribed <a target="#" href="http://malsup.com/jquery/block/#options">here.</a>
     For instance, these lines deactive the gray-out-effect, and show the waitcursor of BootsFaces.</p>
+    <b:panel>
    <script type="syntaxhighlighter" class="brush: javascript; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
         &lt;script>
@@ -73,6 +125,8 @@
         &lt;/script>         
 ]]>
        </script>
+        </b:panel>
+        
     <p><b:badge value="Hint" />
     There's a catch: the path of the image is relative to the URL of the current page. If you use nested folders, it
     may be difficult to guess the correct path.</p>
@@ -84,9 +138,5 @@
     <script type="text/javascript">
 					SyntaxHighlighter.all();
 				</script>
-    <br />
-    <br />
-    <br />
-    <br />
   </ui:define>
 </ui:composition>

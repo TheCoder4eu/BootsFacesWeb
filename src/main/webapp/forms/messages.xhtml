@@ -164,13 +164,13 @@ td {
 <![CDATA[
                 <b:panelGrid columns="2">
                   <b:panel title="Who are you?" look="primary">
-                    <b:inputText value="#{messagesBean.firstName}" label="First name" renderLabel="true" onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages" />
-                    <b:inputText value="#{messagesBean.lastName}" label="Last name" renderLabel="true" onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages"  />
+                    <b:inputText value="#{messagesBean.firstName}" label="First name"  onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages" />
+                    <b:inputText value="#{messagesBean.lastName}" label="Last name"  onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages"  />
                     <b:messages styleClass="msgs" redisplay="true" for="@parent" recursive="true" id="leftmessages"/>
                   </b:panel>
                   <b:panel title="How old are you?" look="primary">
-                    <b:inputText value="#{messagesBean.age}" label="Age" renderLabel="true" onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages"  />
-                    <b:dateTimePicker value="#{messagesBean.birthday}" label="Birthdate" renderLabel="true" onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages"  />
+                    <b:inputText value="#{messagesBean.age}" label="Age"  onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages"  />
+                    <b:dateTimePicker value="#{messagesBean.birthday}" label="Birthdate"  onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages"  />
                     <b:messages styleClass="msgs" redisplay="true" for="@parent" recursive="true" id="rightmessages"/>
                   </b:panel>
                 </b:panelGrid>
@@ -180,13 +180,13 @@ td {
               <b:tab title="displayed as" >
                  <b:panelGrid columns="2">
                   <b:panel title="Who are you?" look="primary">
-                    <b:inputText value="#{messagesBean.firstName}" label="First name" renderLabel="true" onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages" />
-                    <b:inputText value="#{messagesBean.lastName}" label="Last name" renderLabel="true" onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages"  />
+                    <b:inputText value="#{messagesBean.firstName}" label="First name"  onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages" />
+                    <b:inputText value="#{messagesBean.lastName}" label="Last name"  onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages"  />
                     <b:messages styleClass="msgs" redisplay="true" for="@parent" recursive="true" id="leftmessages"/>
                   </b:panel>
                   <b:panel title="How old are you?" look="primary">
-                    <b:inputText value="#{messagesBean.age}" label="Age" renderLabel="true" onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages"  />
-                    <b:dateTimePicker value="#{messagesBean.birthday}" label="Birthdate" renderLabel="true" onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages"  />
+                    <b:inputText value="#{messagesBean.age}" label="Age"  onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages"  />
+                    <b:dateTimePicker value="#{messagesBean.birthday}" label="Birthdate"  onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages"  />
                     <b:messages styleClass="msgs" redisplay="true" for="@parent" recursive="true" id="rightmessages"/>
                   </b:panel>
                 </b:panelGrid>
@@ -265,7 +265,7 @@ td {
               <b:tab title="JSF markup">
                 <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
-                  <b:inputText value="#{messagesBean.twoMessages}" label="Two messages" renderLabel="true"
+                  <b:inputText value="#{messagesBean.twoMessages}" label="Two messages" 
                                id="twoMessagesId" rendered="false" />
                   <p>Default <code>&lt;b:message &gt;</code>:</p>
                   <b:message redisplay="true" for="twoMessagesId" /><br />
@@ -275,7 +275,7 @@ td {
          </script>
               </b:tab>
               <b:tab title="displayed as" >
-                  <b:inputText value="#{messagesBean.twoMessages}" label="Two messages" renderLabel="true"
+                  <b:inputText value="#{messagesBean.twoMessages}" label="Two messages" 
                                id="twoMessagesId" rendered="false" />
                   <p>Default <code>&lt;b:message &gt;</code>:</p>
                   <b:message redisplay="true" for="twoMessagesId" /><br />

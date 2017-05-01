@@ -18,7 +18,7 @@
       <b:form horizontal="true">
           <b:row>
             <b:column small-screen="one-third">
-              <b:selectOneMenu value="#{dateTimeBean.locale}" label="locale" render-label="true"
+              <b:selectOneMenu value="#{dateTimeBean.locale}" label="locale" 
                                label-small-screen="half" small-screen="half"
                                onchange="$('.j2mButtonId').click()">
                 <f:selectItems value="#{dateTimeBean.locales}" var="c" itemValue="#{c}" itemLabel="#{c}"/>
@@ -36,13 +36,13 @@
 		<b:tab title="Live demo: Java to moment.js">
 			<b:form horizontal="true">
 				<b:panel id="j2m" title="conversion from Java's SimpleDateFormat to moment.js" look="primary">
-					<b:inputText label="SimpleDateFormat" value="#{dateTimeBean.javaFormatString}" onkeyup="ajax:dateTimeBean.updateSettings" update="@after" render-label="true"
+					<b:inputText label="SimpleDateFormat" value="#{dateTimeBean.javaFormatString}" onkeyup="ajax:dateTimeBean.updateSettings" update="@after" 
 					             col-sm="4" label-col-sm="2"/>
-					<b:inputText label="Java example" value="#{dateTimeBean.formatDateAsJavaDate()}" render-label="true"
+					<b:inputText label="Java example" value="#{dateTimeBean.formatDateAsJavaDate()}" 
 					             col-sm="4" label-col-sm="2" readonly="true"/>
-					<b:inputText label="moment.js" value="#{dateTimeBean.momentJSFormatFromJavaFormat}" render-label="true"
+					<b:inputText label="moment.js" value="#{dateTimeBean.momentJSFormatFromJavaFormat}" 
 					             col-sm="4" label-col-sm="2" readonly="true"/>
-					<b:inputText label="moment.js example" value="#{dateTimeBean.formatDateAsMomentJSDate()}" render-label="true"
+					<b:inputText label="moment.js example" value="#{dateTimeBean.formatDateAsMomentJSDate()}" 
 					             col-sm="4" label-col-sm="2" readonly="true"/>
 				</b:panel>
 				<p>Note that the internationalization doesn't work with the moment.js version of the interactive example. For some reason, the
@@ -52,13 +52,13 @@
 		<b:tab title="Live demo: moment.js to Java">
 			<b:form horizontal="true">
 				<b:panel id="m2j" title="conversion from moment.js to Java's SimpleDateFormat" look="primary">
-					<b:inputText label="moment.js" value="#{dateTimeBean.momentJSFormatString}" onkeyup="ajax:dateTimeBean.updateSettings" update="@after" render-label="true"
+					<b:inputText label="moment.js" value="#{dateTimeBean.momentJSFormatString}" onkeyup="ajax:dateTimeBean.updateSettings" update="@after" 
 					             col-sm="4" label-col-sm="2"/>
-					<b:inputText label="moment.js example" value="#{dateTimeBean.formatDateAsMomentJSDate()}" render-label="true"
+					<b:inputText label="moment.js example" value="#{dateTimeBean.formatDateAsMomentJSDate()}" 
 					             col-sm="4" label-col-sm="2" readonly="true"/>
-					<b:inputText label="SimpleDateFormat" value="#{dateTimeBean.javaFormatString}"  render-label="true"
+					<b:inputText label="SimpleDateFormat" value="#{dateTimeBean.javaFormatString}"  
 					             col-sm="4" label-col-sm="2" readonly="true"/>
-					<b:inputText label="Java example" value="#{dateTimeBean.formatDateAsJavaDate()}" render-label="true"
+					<b:inputText label="Java example" value="#{dateTimeBean.formatDateAsJavaDate()}" 
 					             col-sm="4" label-col-sm="2" readonly="true"/>
 				</b:panel>
 				<p>Note that the internationalization doesn't work with the moment.js version of the interactive example. For some reason, the

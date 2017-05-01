@@ -16,28 +16,26 @@ td {
 		<h1>Spinner (&lt;b:spinner /&gt;)</h1>
 
 		<p><code>&lt;b:spinner&gt;</code> is a facility tag to have a spinner icon, to use as a loading ui.</p>
-		<h1>Basic usage</h1>
-		<b:row>
-            <b:column span="12">
-                <b:tabView activeIndex="0">
-                    <b:tab title="Spinning Icons">
-                        <b:spinner size="2x" />#{'   '}
-		                <b:spinner name="refresh" size="3x" />#{'   '}
-		                <b:spinner name="cog" size="1x" />
-                    </b:tab>
-                    <b:tab title="Markup">
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+		<h3>Basic usage</h3>
+        
+        <b:panel title="Live preview" look="info" collapsible="false">
+            <b:spinner size="2x" />#{'   '}
+            <b:spinner name="refresh" size="3x" />#{'   '}
+            <b:spinner name="cog" size="1x" />
+
+            <f:facet name="footer">
+                <strong>JSF markup: </strong>
+                <b:panel>
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                                     <![CDATA[
                                     <b:spinner size="2x" />#{'#'}{'   '}
                                     <b:spinner name="refresh" size="3x" />#{'#'}{'   '}
                                     <b:spinner name="cog" size="1x" />
                                     ]]></script>
-                    </b:tab>
-                </b:tabView>
-            </b:column>
-        </b:row>
-        <br/>
-        <br/>
+                </b:panel>
+            </f:facet>
+        </b:panel>
+        
 		<ui:include src="SpinnerAttributes.xhtml" />
 		<b:panel look="info">
 			<f:facet name="heading">
@@ -52,9 +50,5 @@ td {
 		<script type="text/javascript">
       		SyntaxHighlighter.all();
     	</script>
-		<br />
-		<br />
-		<br />
-		<br />
 	</ui:define>
 </ui:composition>

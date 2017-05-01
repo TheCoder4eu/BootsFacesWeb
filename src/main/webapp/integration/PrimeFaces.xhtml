@@ -23,7 +23,7 @@
 			<b:tabView contentStyle="height:280px">
 				<b:tab title="Maven">
 					<p>Add these lines to your Maven pom.xml file:</p>
-					<b:well>
+					<b:panel>
                 		<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
 <dependency>
@@ -40,21 +40,21 @@
 </dependency>
 ]]>
 </script>
-					</b:well>
+					</b:panel>
 				</b:tab>
 				<b:tab title="Gradle">
-					<b:well>
+					<b:panel>
 <script type="syntaxhighlighter" class="brush: groovy; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
     compile 'net.bootsfaces:bootsfaces:1.0.1'
 	compile 'org.primefaces:primefaces:6.1'
 ]]>
 </script>
-					</b:well>
+					</b:panel>
 				</b:tab>
 				<b:tab title="web.xml">
-					<b:well>
-					Download the <a target="#" href="http://repository.primefaces.org/org/primefaces/themes/bootstrap/">PrimeFaces Bootstrap theme</a>, add it to your application's <code>lib</code> folder and activate it in the <code>web.xml</code> like so:
+                    <p>Download the <a target="#" href="http://repository.primefaces.org/org/primefaces/themes/bootstrap/">PrimeFaces Bootstrap theme</a>, add it to your application's <code>lib</code> folder and activate it in the <code>web.xml</code> like so:</p>s
+					<b:panel>
 <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
 <context-param>
@@ -63,17 +63,48 @@
 </context-param>
 ]]>
 </script>
-					</b:well>
+					</b:panel>
 				</b:tab>
 			</b:tabView>
                 
                 <h2>Example for Scenario 1</h2>
                 <p>Even with the Bootstrap theme, PrimeFaces components don't blend into the Bootstrap look perfectly. On the other hand, PrimeFaces has a lot of advanced components BootsFaces doesn't provide - and probably never will.
                 So it's a good idea to use the "bread and butter" widgets of BootsFaces and use PrimeFaces for the advanced widgets:</p>
-				<b:tabView activeIndex="1">
-					<b:tab title="JSF Markup">
-						<b:well>
-	                		<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+				
+                <b:panel title="Live preview" look="info" collapsible="false">
+                    <h:form>
+							    <p:growl id="msgs1" showDetail="true" />
+						        <b:panelGrid colSpans="5,7">
+						        <b:inputText label="Enter a number" value="#{barcodeBean.code39}">
+						        	<f:facet name="prepend">
+						        		<h:outputText value="Code39" />
+						        	</f:facet>
+						        	<p:ajax event="keyup" update="code39" />
+						        </b:inputText>
+						        <p:barcode value="#{barcodeBean.code39}" type="code39" id="code39"/>
+                                
+						        <b:inputText label="Enter your internet address" value="#{barcodeBean.url2}">
+						        	<p:ajax event="keyup" update="@next" />
+						        </b:inputText>
+						        <p:barcode value="#{barcodeBean.url2}" type="qr" id="qr1" style="width:90px;height:90px;"/>
+						        
+                                <b:inputText label="Enter another internet address" value="#{barcodeBean.url}"
+                                                    onkeyup="ajax:barcodeBean.doNothing()" update="@next">
+						        	<f:facet name="prepend">
+						        		<b:selectOneMenu value="#{barcodeBean.protocol}">
+        				        			<f:selectItem itemLabel="http://"/>
+        				        			<f:selectItem itemLabel="https://"/>
+    					        		</b:selectOneMenu>
+						        		<h:outputText value="www." />
+						        	</f:facet>
+						        </b:inputText>
+						        <p:barcode value="#{barcodeBean.completeURL}" type="qr" id="qr2" style="width:90px;height:90px;"/>
+						        </b:panelGrid>
+							</h:form>
+                    
+                    <f:facet name="footer">
+                        <strong>Markup:</strong><br/>
+                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
 						<b:well>
 			                <h:form>
@@ -108,49 +139,118 @@
 						</b:well>
 ]]>
 	</script>
-						</b:well>
-					</b:tab>
-					<b:tab title="live preview">
-						<b:well>
-			                <h:form>
-							    <p:growl id="msgs1" showDetail="true" />
-						        <b:panelGrid colSpans="5,7">
-						        <b:inputText label="Enter a number" value="#{barcodeBean.code39}">
-						        	<f:facet name="prepend">
-						        		<h:outputText value="Code39" />
-						        	</f:facet>
-						        	<p:ajax event="keyup" update="code39" />
-						        </b:inputText>
-						        <p:barcode value="#{barcodeBean.code39}" type="code39" id="code39"/>
-                                
-						        <b:inputText label="Enter your internet address" value="#{barcodeBean.url2}">
-						        	<p:ajax event="keyup" update="@next" />
-						        </b:inputText>
-						        <p:barcode value="#{barcodeBean.url2}" type="qr" id="qr1" style="width:90px;height:90px;"/>
-						        
-                                <b:inputText label="Enter another internet address" value="#{barcodeBean.url}"
-                                                    onkeyup="ajax:barcodeBean.doNothing()" update="@next">
-						        	<f:facet name="prepend">
-						        		<b:selectOneMenu value="#{barcodeBean.protocol}">
-        				        			<f:selectItem itemLabel="http://"/>
-        				        			<f:selectItem itemLabel="https://"/>
-    					        		</b:selectOneMenu>
-						        		<h:outputText value="www." />
-						        	</f:facet>
-						        </b:inputText>
-						        <p:barcode value="#{barcodeBean.completeURL}" type="qr" id="qr2" style="width:90px;height:90px;"/>
-						        </b:panelGrid>
-							</h:form>
-						</b:well>
-					</b:tab>
-				</b:tabView>
+                    </f:facet>
+                </b:panel>
 
                 <h2>Example for Scenario 2</h2>
                 <p>The demo below is taken from the PrimeFaces showcase. We adapted it slightly to take advantage of the BootsFaces API.</p>
                 
-			<b:tabView >
-				<b:tab title="JSF Markup">
-					<b:well>
+                <b:panel>
+                <h:form id="form">
+				    <p:growl id="msgs" showDetail="true" />
+				 
+					    <b:panelGrid colSpans="2,10">
+					        <p:outputLabel for="inline" value="Inline:" />
+					        <p:calendar id="inline" value="#{calendarView.date1}" mode="inline" />
+					 
+					        <p:outputLabel for="popup" value="Popup:" />
+					        <p:calendar id="popup" value="#{calendarView.date2}" />
+					 
+					        <p:outputLabel for="button" value="Button:" />
+					        <p:calendar id="button" value="#{calendarView.date3}" showOn="button" />
+                  
+                            <p:outputLabel for="issue327" value="Issue 327" />
+                            <p:calendar value="#{calendarView.date3}" mode="popup" size="8" showOn="button" id="issue327"/>
+					 
+					        <p:outputLabel for="event" value="Select Event:" />
+					        <p:calendar id="event" value="#{calendarView.date4}">
+					            <p:ajax event="dateSelect" listener="#{calendarView.onDateSelect}" update="msgs" />
+					        </p:calendar>
+					 
+					        <p:outputLabel for="german" value="German:" />
+					        <p:calendar id="german" value="#{calendarView.date5}" locale="de" navigator="true" pattern="yyyy-MMM-dd" />
+					 
+					        <p:outputLabel for="restricted" value="Restricted:" />
+					        <p:calendar id="restricted" value="#{calendarView.date6}" mindate="4/1/14" maxdate="7/1/14" />
+					 
+					        <p:outputLabel for="multi" value="Multiple:" />
+					        <p:calendar id="multi" value="#{calendarView.date7}" pages="3" />
+					 
+					        <p:outputLabel for="effect" value="Effect:" />
+					        <p:calendar id="effect" value="#{calendarView.date8}" effect="fold" />
+					 
+					        <p:outputLabel for="mask" value="Mask:" />
+					        <p:calendar id="mask" value="#{calendarView.date9}" pattern="dd-MM-yyyy" mask="true" />
+					 
+					        <p:outputLabel for="datetime" value="Datetime:" />
+					        <p:calendar id="datetime" value="#{calendarView.date10}" pattern="MM/dd/yyyy HH:mm:ss" />
+					 
+					        <p:outputLabel for="time" value="Time:" />
+					        <p:calendar id="time" value="#{calendarView.date11}" pattern="HH:mm a" timeOnly="true"  />
+						 </b:panelGrid>
+				    <p:commandButton value="Submit" update="msgs" actionListener="#{calendarView.click}" icon="ui-icon-check" />
+				 	
+				    <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+				        <p:panelGrid id="display" columns="2" columnClasses="label,value">
+				            <h:outputText value="Inline:" />
+				            <h:outputText value="#{calendarView.date1}">
+				                <f:convertDateTime pattern="MM/dd/yyyy" />
+				            </h:outputText>
+				 
+				            <h:outputText value="Popup:" />
+				            <h:outputText value="#{calendarView.date2}">
+				                <f:convertDateTime pattern="MM/dd/yyyy" />
+				            </h:outputText>
+				 
+				            <h:outputText value="Button:" />
+				            <h:outputText value="#{calendarView.date3}">
+				                <f:convertDateTime pattern="MM/dd/yyyy" />
+				            </h:outputText>
+				 
+				            <h:outputText value="Event:" />
+				            <h:outputText value="#{calendarView.date4}">
+				                <f:convertDateTime pattern="MM/dd/yyyy" />
+				            </h:outputText>
+				 
+				            <h:outputText value="German:" />
+				            <h:outputText value="#{calendarView.date5}">
+				                <f:convertDateTime pattern="MM/dd/yyyy" />
+				            </h:outputText>
+				 
+				            <h:outputText value="Restricted:" />
+				            <h:outputText value="#{calendarView.date6}">
+				                <f:convertDateTime pattern="MM/dd/yyyy" />
+				            </h:outputText>
+				 
+				            <h:outputText value="Multiple:" />
+				            <h:outputText value="#{calendarView.date7}">
+				                <f:convertDateTime pattern="MM/dd/yyyy" />
+				            </h:outputText>
+				 
+				            <h:outputText value="Effect:" />
+				            <h:outputText value="#{calendarView.date8}">
+				                <f:convertDateTime pattern="MM/dd/yyyy" />
+				            </h:outputText>
+				 
+				            <h:outputText value="Mask:" />
+				            <h:outputText value="#{calendarView.date9}">
+				                <f:convertDateTime pattern="MM/dd/yyyy" />
+				            </h:outputText>
+				 
+				            <h:outputText value="Datetime:" />
+				            <h:outputText value="#{calendarView.date10}">
+				                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+				            </h:outputText>
+				 
+				            <h:outputText value="Time:" />
+				            <h:outputText value="#{calendarView.date11}">
+				                <f:convertDateTime pattern="HH:mm a" />
+				            </h:outputText>
+				        </p:panelGrid>
+				    </p:dialog>
+				</h:form>
+                    <f:facet name="footer">
+                        Markup:<br/>
                 		<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
                 
@@ -260,116 +360,8 @@
 				</h:form>
 ]]>
 </script>
-					</b:well>
-				</b:tab>
-				<b:tab title="preview">
-					<b:well >
-                <h:form id="form">
-				    <p:growl id="msgs" showDetail="true" />
-				 
-					    <b:panelGrid colSpans="2,10">
-					        <p:outputLabel for="inline" value="Inline:" />
-					        <p:calendar id="inline" value="#{calendarView.date1}" mode="inline" />
-					 
-					        <p:outputLabel for="popup" value="Popup:" />
-					        <p:calendar id="popup" value="#{calendarView.date2}" />
-					 
-					        <p:outputLabel for="button" value="Button:" />
-					        <p:calendar id="button" value="#{calendarView.date3}" showOn="button" />
-                  
-                            <p:outputLabel for="issue327" value="Issue 327" />
-                            <p:calendar value="#{calendarView.date3}" mode="popup" size="8" showOn="button" id="issue327"/>
-					 
-					        <p:outputLabel for="event" value="Select Event:" />
-					        <p:calendar id="event" value="#{calendarView.date4}">
-					            <p:ajax event="dateSelect" listener="#{calendarView.onDateSelect}" update="msgs" />
-					        </p:calendar>
-					 
-					        <p:outputLabel for="german" value="German:" />
-					        <p:calendar id="german" value="#{calendarView.date5}" locale="de" navigator="true" pattern="yyyy-MMM-dd" />
-					 
-					        <p:outputLabel for="restricted" value="Restricted:" />
-					        <p:calendar id="restricted" value="#{calendarView.date6}" mindate="4/1/14" maxdate="7/1/14" />
-					 
-					        <p:outputLabel for="multi" value="Multiple:" />
-					        <p:calendar id="multi" value="#{calendarView.date7}" pages="3" />
-					 
-					        <p:outputLabel for="effect" value="Effect:" />
-					        <p:calendar id="effect" value="#{calendarView.date8}" effect="fold" />
-					 
-					        <p:outputLabel for="mask" value="Mask:" />
-					        <p:calendar id="mask" value="#{calendarView.date9}" pattern="dd-MM-yyyy" mask="true" />
-					 
-					        <p:outputLabel for="datetime" value="Datetime:" />
-					        <p:calendar id="datetime" value="#{calendarView.date10}" pattern="MM/dd/yyyy HH:mm:ss" />
-					 
-					        <p:outputLabel for="time" value="Time:" />
-					        <p:calendar id="time" value="#{calendarView.date11}" pattern="HH:mm a" timeOnly="true"  />
-						 </b:panelGrid>
-				    <p:commandButton value="Submit" update="msgs" actionListener="#{calendarView.click}" icon="ui-icon-check" />
-				 	
-				    <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
-				        <p:panelGrid id="display" columns="2" columnClasses="label,value">
-				            <h:outputText value="Inline:" />
-				            <h:outputText value="#{calendarView.date1}">
-				                <f:convertDateTime pattern="MM/dd/yyyy" />
-				            </h:outputText>
-				 
-				            <h:outputText value="Popup:" />
-				            <h:outputText value="#{calendarView.date2}">
-				                <f:convertDateTime pattern="MM/dd/yyyy" />
-				            </h:outputText>
-				 
-				            <h:outputText value="Button:" />
-				            <h:outputText value="#{calendarView.date3}">
-				                <f:convertDateTime pattern="MM/dd/yyyy" />
-				            </h:outputText>
-				 
-				            <h:outputText value="Event:" />
-				            <h:outputText value="#{calendarView.date4}">
-				                <f:convertDateTime pattern="MM/dd/yyyy" />
-				            </h:outputText>
-				 
-				            <h:outputText value="German:" />
-				            <h:outputText value="#{calendarView.date5}">
-				                <f:convertDateTime pattern="MM/dd/yyyy" />
-				            </h:outputText>
-				 
-				            <h:outputText value="Restricted:" />
-				            <h:outputText value="#{calendarView.date6}">
-				                <f:convertDateTime pattern="MM/dd/yyyy" />
-				            </h:outputText>
-				 
-				            <h:outputText value="Multiple:" />
-				            <h:outputText value="#{calendarView.date7}">
-				                <f:convertDateTime pattern="MM/dd/yyyy" />
-				            </h:outputText>
-				 
-				            <h:outputText value="Effect:" />
-				            <h:outputText value="#{calendarView.date8}">
-				                <f:convertDateTime pattern="MM/dd/yyyy" />
-				            </h:outputText>
-				 
-				            <h:outputText value="Mask:" />
-				            <h:outputText value="#{calendarView.date9}">
-				                <f:convertDateTime pattern="MM/dd/yyyy" />
-				            </h:outputText>
-				 
-				            <h:outputText value="Datetime:" />
-				            <h:outputText value="#{calendarView.date10}">
-				                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-				            </h:outputText>
-				 
-				            <h:outputText value="Time:" />
-				            <h:outputText value="#{calendarView.date11}">
-				                <f:convertDateTime pattern="HH:mm a" />
-				            </h:outputText>
-				        </p:panelGrid>
-				    </p:dialog>
-				</h:form>
-					</b:well>
-				</b:tab>
-				</b:tabView>
+                    </f:facet>
+				</b:panel>
                 
                 <script type="text/javascript">
                     SyntaxHighlighter.all();

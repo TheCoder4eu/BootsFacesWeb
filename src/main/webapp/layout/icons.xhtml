@@ -9,65 +9,53 @@
 
 <ui:define name="content">
                 <b:container>
-                    <b:row>
                         <h1>Icons</h1>
-                    </b:row>
-                    <b:row>
                         <h3>Default Icons</h3>
                         <p>BootsFaces supports the default Icon set of Bootstrap <a href="http://getbootstrap.com/components/#glyphicons-glyphs">Glyphicons</a></p>
                         <hr/>
-                    </b:row>
-                    <b:row>
-                        <b:column span="2">
+                    
+                    <p>Using an icon in BootsFaces is very simple: just add a <code>&lt;b:icon&gt;</code> with a <code>name</code> attribute with the icon name (without the trailing <b>glyphicon-</b> prefix)</p>
+                    
+                    <b:panel title="Live preview" look="info" collapsible="false">
                             <b:icon name="cloud" /> glyphicon-cloud<br/>
                             <b:icon name="envelope" /> glyphicon-envelope<br/>
                             <b:icon name="pencil" /> glyphicon-pencil<br/>
                             <b:icon name="glass" /> glyphicon-glass<br/>
-                        </b:column>
-                        <b:column span="10">
-                            <b:tabView activeIndex="0">
-                                <b:tab title="Description">
-                                    <p>Using an icon in BootsFaces is very simple: just add a <code>&lt;b:icon&gt;</code> with a <code>name</code> attribute with the icon name (without the trailing <b>glyphicon-</b> prefix)</p>
-                                </b:tab>
-                                <b:tab title="Markup">
-                                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                        <f:facet name="footer">
+                            <strong>JSF markup: </strong>
+                            <b:panel>
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                                     <![CDATA[
                                     <b:icon name="cloud" /> glyphicon-cloud<br/>
                                     <b:icon name="envelope" /> glyphicon-envelope<br/>
                                     <b:icon name="pencil" /> glyphicon-pencil<br/>
                                     <b:icon name="glass" /> glyphicon-glass<br/>
                                     ]]></script>
-                                </b:tab>
-                            </b:tabView>
-                        </b:column>
-                    </b:row>
-                    <b:row>
+                            </b:panel>
+                        </f:facet>
+                    </b:panel>
+                    
                         <hr/>
                         <p class="text-warning"><b:label severity="warning" text="Changed in version 0.8.1" /> If you are using OmniFaces, read the configuration for the Icons to apply to your Project on the <h:link outcome="/integration/OmniFaces" value="Omnifaces Integration"/> page.</p>
-                    </b:row>
-                    <b:row>
+                        
                         <h3>Font Awesome Icon set</h3>
                         <p>Since BootsFaces is born to help you design a wonderful website, we recognize that Icons are an important tool to achieve this goal and there are never enough:</p>
                         <p>for this reason, BootsFaces now supports the <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a> Icon set with its 600+ icons.</p>
                         <p>As you will see later, we also support most Awesome features, which will work with Glyphicon too!</p>
 
                         <hr/>
-                    </b:row>
-                    <b:row>
-                        <b:column span="2">
+                        
+                        <b:panel title="Live preview" look="info" collapsible="false">
                             <b:iconAwesome name="camera-retro" /> fa-camera-retro<br/>
                             <b:iconAwesome name="coffee" /> fa-coffee<br/>
                             <b:iconAwesome name="futbol-o" /> fa-futbol-o<br/>
                             <b:iconAwesome name="heartbeat" /> fa-heartbeat<br/>
                             <b:iconAwesome name="group" /> fa-group<br/>
                             <b:iconAwesome name="gamepad" /> fa-gamepad<br/>
-                        </b:column>
-                        <b:column span="10">
-                            <b:tabView activeIndex="0">
-                                <b:tab title="Font Awesome">
-                                    Adding a Font Awesome icon in BootsFaces is easy: use the <code>&lt;b:iconAwesome&gt;</code> tag with the icon name (without the trailing <b>fa-</b> prefix)
-                                </b:tab>
-                                <b:tab title="Markup">
+                            
+                            <f:facet name="footer">
+                                <strong>JSF markup: </strong>
+                                <b:panel>
                                     <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                                     <![CDATA[
                                     <b:iconAwesome name="camera-retro" /> fa-camera-retro<br/>
@@ -77,30 +65,28 @@
                                     <b:iconAwesome name="group" /> fa-group<br/>
                                     <b:iconAwesome name="gamepad" /> fa-gamepad
                                     ]]></script>
-                                </b:tab>
-                            </b:tabView>
-                        </b:column>
-                    </b:row>
-                    <b:row>
+                                </b:panel>
+                            </f:facet>
+                        </b:panel>
+                        
+                    
                         <h3>Icon Size</h3>
                         <p>BootsFaces supports different sizes for the Icons.</p>
                         <hr/>
-                    </b:row>
-                    <b:row>
-                        <b:column span="2">
+                        
+                        <p>To increase icon sizes relative to their container, use the <code>size="lg"</code> (33% increase), <code>size="2x"</code>,
+                        <code>size="3x"</code>, <code>size="4x"</code>, or <code>size="5x"</code> attributes.</p>
+
+                        <b:panel title="Live preview" look="info" collapsible="false">
                             <b:icon name="globe" size="lg" /> size="lg"<br/>
                             <b:icon name="globe" size="2x" /> size="2x"<br/>
                             <b:icon name="globe" size="3x" /> size="3x"<br/>
                             <b:icon name="globe" size="4x" /> size="4x"<br/>
                             <b:icon name="globe" size="5x" /> size="5x"<br/>
-                        </b:column>
-                        <b:column span="10">
-                            <b:tabView activeIndex="0">
-                                <b:tab title="Sizing">
-                                    <p>To increase icon sizes relative to their container, use the <code>size="lg"</code> (33% increase), <code>size="2x"</code>,
-                                    <code>size="3x"</code>, <code>size="4x"</code>, or <code>size="5x"</code> attributes.</p>
-                                </b:tab>
-                                <b:tab title="Markup">
+                            
+                            <f:facet name="footer">
+                                <strong>JSF markup: </strong>
+                                <b:panel>
                                     <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                                     <![CDATA[
                                     <b:icon name="globe" size="lg" /> size="lg"<br/>
@@ -109,29 +95,26 @@
                                     <b:icon name="globe" size="4x" /> size="4x"<br/>
                                     <b:icon name="globe" size="5x" /> size="5x"<br/>
                                     ]]></script>
-                                </b:tab>
-                            </b:tabView>
-                        </b:column>
-                    </b:row>
-                    <b:row>
+                                </b:panel>
+                            </f:facet>
+                        </b:panel>
+                        
                         <h3>Rotated and Flipped Icons</h3>
                         <p>You can also rotate and flip your icons.</p>
                         <hr/>
-                    </b:row>
-                    <b:row>
-                        <b:column span="2">
+                        
+                        <p>To rotate or flip your icons, just use the <code>rotate="R"</code>, <code>rotate="L"</code> and <code>flip="H"</code>, <code>flip="V"</code> attributes respectively.</p>
+                        
+                        <b:panel title="Live preview" look="info" collapsible="false">
                             <b:iconAwesome name="shield" /> normal<br/>
                             <b:iconAwesome name="shield" rotate="R" /> rotate="R" (right - 90 deg.)<br/>
                             <b:iconAwesome name="shield" rotate="L" /> rotate="L" (left - 270 deg.)<br/>
                             <b:iconAwesome name="shield" flip="H" /> flip="H" (horizontal)<br/>
                             <b:iconAwesome name="shield" flip="V" /> flip="V" (vertical)<br/>
-                        </b:column>
-                        <b:column span="10">
-                            <b:tabView activeIndex="0">
-                                <b:tab title="Rotate and Flip">
-                                    <p>To rotate or flip your icons, just use the <code>rotate="R"</code>, <code>rotate="L"</code> and <code>flip="H"</code>, <code>flip="V"</code> attributes respectively.</p>
-                                </b:tab>
-                                <b:tab title="Markup">
+                            
+                            <f:facet name="footer">
+                                <strong>JSF markup: </strong>
+                                <b:panel>
                                     <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                                     <![CDATA[
                                     <b:iconAwesome name="shield" /> normal<br/>
@@ -140,27 +123,24 @@
                                     <b:iconAwesome name="shield" flip="H" /> flip="H" (horizontal)<br/>
                                     <b:iconAwesome name="shield" flip="V" /> flip="V" (vertical)
                                     ]]></script>
-                                </b:tab>
-                            </b:tabView>
-                        </b:column>
-                    </b:row>
-                    <b:row>
+                                </b:panel>
+                            </f:facet>
+                        </b:panel>
+                        
+                        
                         <h3>Animated Icons </h3>
                         <hr/>
-                    </b:row>
-                    <b:row>
-                        <b:column span="2">
+
+                        <p>To let your icons spin, just add the <code>spin="true"</code> attribute.</p>
+                        <b:panel title="Live preview" look="info" collapsible="false">
                             <b:iconAwesome name="spinner" spin="true" size="3x" />#{'   '}
                             <b:iconAwesome name="circle-o-notch" spin="true" size="3x" />#{'   '}
                             <b:iconAwesome name="refresh" spin="true" size="3x" />#{'   '}
                             <b:iconAwesome name="cog" spin="true" size="3x" />
-                        </b:column>
-                        <b:column span="10">
-                            <b:tabView activeIndex="0">
-                                <b:tab title="Spinning Icons">
-                                    <p>To let your icons spin, just add the <code>spin="true"</code> attribute.</p>
-                                </b:tab>
-                                <b:tab title="Markup">
+                            
+                            <f:facet name="footer">
+                                <strong>JSF markup: </strong>
+                                <b:panel>
                                     <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                                     <![CDATA[
                                     <b:iconAwesome name="spinner" spin="true" size="3x" />#{'#'}{'   '}
@@ -168,29 +148,19 @@
                                     <b:iconAwesome name="refresh" spin="true" size="3x" />#{'#'}{'   '}
                                     <b:iconAwesome name="cog" spin="true" size="3x" />
                                     ]]></script>
-                                </b:tab>
-                            </b:tabView>
-                        </b:column>
-                    </b:row>
-                    <b:row>
-                        <b:column span="12">
+                                </b:panel>
+                            </f:facet>
+                        </b:panel>
+                        
                             <h3>AJAX, JavaScript, <code>disabled</code> and <code>readOnly</code></h3>
-                        </b:column>
-                    </b:row>
-                    <b:row>
-                        <b:column span="12">
                            <p>Both icon and iconAwesome can be used with AJAX and/or JavaScript.</p>
                            <p>The attributes <code>readonly</code> and <code>disabled</code> prevent AJAX from being executed. Note that JavaScript is not affected - it's executed without checking the state of the widget.
                            The difference between <code>readonly</code> and <code>disabled</code> is that <code>disabled</code> grays out the icon.</p>
                            <p>This is one of the cases a picture is worth a thousand words. Move the mouse over the spinning icons below, click them, and
                            change the checkboxes below to get the idea.</p>
-                        </b:column>
-                    </b:row>
-                    <b:row>
 
-                     <b:tabView>
-                       <b:tab title="preview">
- <h:form>
+                           <b:panel title="Live preview" look="info" collapsible="false">
+        <h:form>
     <b:row>
       <b:column col-sm="6">
         <b:panel look="primary" title="AJAXified Gylphicon and Font Awesome icon">
@@ -244,10 +214,11 @@
       </b:column>
     </b:row>
  </h:form>
-                      </b:tab>
-                      <b:tab title="JSF markup">
-                        <b:well>
-                          <script type="syntaxhighlighter"
+                               
+                                <f:facet name="footer">
+                                    <strong>JSF markup: </strong>
+                                    <b:panel>
+<script type="syntaxhighlighter"
                             class="brush: xml; toolbar: false;gutter: false; first-line: 1">
              				<![CDATA[
 <h:form>
@@ -307,33 +278,21 @@
 
             				]]>
             				</script>
-                          </b:well>
-                        </b:tab>
-                      </b:tabView>
-                    </b:row>
+                                    </b:panel>
+                                </f:facet>
+                            </b:panel>
 
 
-
-
-
-
-
-
-                    <b:row>
-                        <b:column span="12">
                             <h3>Configuring FontAwesome</h3>
-                        </b:column>
-                    </b:row>
-                    <b:row>
-                        <b:column span="12">
                         <p>By default, BootsFaces fetches FontAwesome 4.3.0 from a CDN (from <code>http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css</code>, to be precise).</p>
                         <p>If you want to supress the automatical internet access for some reason, you've got several options. You can deactivate it globally in the web.xml, you can
                         add a facet to the header of the JSF-view (which allows you to activate and deactivate the feature on a per-page basis) or you can simply include your own
                         CSS import. If the file name contains the word <code>font-awesome</code> and ends with <code>.css</code>, BootsFaces won't try to load FontAwesome a second time.
                         In most cases that's precisely what you need to do anyways, so you don't have to configure anything to deactivate the defaults.</p>
+                        
                         <b:tabView>
                         <b:tab title="web.xml (global deactivation)">
-                        <b:well>
+                        <b:panel>
                            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                            <![CDATA[
 <context-param>
@@ -341,10 +300,10 @@
    <param-value>false</param-value>
 </context-param>
                           ]]></script>
-                          </b:well>
+                          </b:panel>
                         </b:tab>
-                        <b:tab title="header facet">
-                          <b:well>
+                        <b:tab title="Header facet">
+                          <b:panel>
                            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                            <![CDATA[
     <h:head>
@@ -354,28 +313,25 @@
 	   ...
 	</h:body>
                           ]]></script>
-                          </b:well>
+                          </b:panel>
                         </b:tab>
-                        <b:tab title="manual import">
-                          <b:well>
+                        <b:tab title="Manual import">
+                          <b:panel>
                            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
                            <![CDATA[
         <h:outputStylesheet library="myLocalFontAwesome" name="font-awesome.css"></h:outputStylesheet>
                           ]]></script>
-                          </b:well>
+                          </b:panel>
                         </b:tab>
                         </b:tabView>
-                        </b:column>
-                    </b:row>
 
                 <br/>
                 <h2>Responsive design <b:badge value="since 0.9.0" /></h2>
                 <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
                 also with <code>&lt;b:icon /&gt;</code>. The example may look a bit odd, because these icons
                 don't fill all the available screen space, but still, it shows the idea nicely:</p>
-                <b:tabView>
-                  <b:tab title="live preview">
-                  <b:well>
+                
+                <b:panel title="Live preview" look="info" collapsible="false">
                      <b:row>
                         <b:iconAwesome name="cog" tooltip="large-screen='full-width'" large-screen="full-width" />
                      </b:row>
@@ -391,11 +347,12 @@
                         <b:iconAwesome name="cog" tooltip="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
                         <b:iconAwesome name="cog" tooltip="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
                      </b:row>
-                  </b:well>
-                  </b:tab>
-                  <b:tab title="JSF markup">
-                  <b:well>
-                  <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                    
+                    
+                    <f:facet name="footer">
+                        <strong>JSF markup: </strong>
+                        <b:panel>
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
              <![CDATA[
              <b:row>
                 <b:iconAwesome name="cog" tooltip="large-screen='full-width'" large-screen="full-width" />
@@ -413,17 +370,15 @@
                 <b:iconAwesome name="cog" tooltip="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
              </b:row>
              ]]></script>
-                  </b:well>
-                  </b:tab>
-                </b:tabView>
+                        </b:panel>
+                    </f:facet>
+                </b:panel>
 
                 <h2>Visibility depending on screen size <b:badge value="since 0.8.6/0.9.0" /></h2>
                 <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
-                <br/>
-                <b:tabView>
-                  <b:tab title="live preview">
-                  <b:well>
-                       <b:panelGrid colSpans="3,9">
+                
+                <b:panel title="Live preview" look="info" collapsible="false">
+                    <b:panelGrid colSpans="3,9">
                           <h:outputText value="Visible on &gt;= md:" />
                           <b:iconAwesome name="cog" value="Visible on medium or large screen" severity="info" visible="md..." />
                           <h:outputText value="Visible on &lt;= sm:" />
@@ -435,48 +390,45 @@
                           <h:outputText value="Col-md-6, offset 2:" />
                           <b:iconAwesome name="cog" value="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
                        </b:panelGrid>
-                 </b:well>
-                  </b:tab>
-                  <b:tab title="JSF markup">
-                  <b:well>
-                  <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-             <![CDATA[
-               <b:panelGrid colSpans="3,9">
-                  <h:outputText value="Visible on &gt;= md:" />
-                  <b:iconAwesome name="cog" value="Visible on medium or large screen" severity="info" visible="md..." />
-                  <h:outputText value="Visible on &lt;= sm:" />
-                  <b:iconAwesome name="cog" value="Visible on small-screen" severity="success" visible="...sm"/>
-                  <h:outputText value="Visible on sm...lg:" />
-                  <b:iconAwesome name="cog" value="Visible on small to large screen" severity="success" visible="sm...lg"/>
-                  <h:outputText value="Visible on xs and md:" />
-                  <b:iconAwesome name="cog" value="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
-                  <h:outputText value="Col-md-6, offset 2:" />
-                  <b:iconAwesome name="cog" value="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
-               </b:panelGrid>
-             ]]></script>
-                  </b:well>
-                  </b:tab>
-                </b:tabView>
-
+                    
+                    <f:facet name="footer">
+                        <strong>JSF markup: </strong>
+                        <b:panel>
+            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                         <![CDATA[
+                           <b:panelGrid colSpans="3,9">
+                              <h:outputText value="Visible on &gt;= md:" />
+                              <b:iconAwesome name="cog" value="Visible on medium or large screen" severity="info" visible="md..." />
+                              <h:outputText value="Visible on &lt;= sm:" />
+                              <b:iconAwesome name="cog" value="Visible on small-screen" severity="success" visible="...sm"/>
+                              <h:outputText value="Visible on sm...lg:" />
+                              <b:iconAwesome name="cog" value="Visible on small to large screen" severity="success" visible="sm...lg"/>
+                              <h:outputText value="Visible on xs and md:" />
+                              <b:iconAwesome name="cog" value="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
+                              <h:outputText value="Col-md-6, offset 2:" />
+                              <b:iconAwesome name="cog" value="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
+                           </b:panelGrid>
+                         ]]></script>
+                        </b:panel>
+                    </f:facet>
+                </b:panel>
+                
                 <h2>Tooltips</h2>
                 <p><code>&lt;b:iconAwesome name="cog" /&gt;</code> supports tooltips:</p>
-                <br/>
-                <b:tabView>
-                  <b:tab title="live preview">
-                  <b:well>
-                      <b:iconAwesome name="cog" value="Look at my tooltip!" severity="info" tooltip="Ain't it a nice tooltip?"/>
-                  </b:well>
-                  </b:tab>
-                  <b:tab title="JSF markup">
-                  <b:well>
-                  <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                  <![CDATA[
-                      <b:iconAwesome name="cog" value="Look at my tooltip!" tooltip="Ain't it a nice tooltip?"/>
-                 ]]></script>
-                  </b:well>
-                  </b:tab>
-                </b:tabView>
 
+                <b:panel title="Live preview" look="info" collapsible="false">
+                    <b:iconAwesome name="cog" value="Look at my tooltip!" severity="info" tooltip="Ain't it a nice tooltip?"/>
+                    <f:facet name="footer">
+                        <strong>JSF markup: </strong>
+                        <b:panel>
+                            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                              <![CDATA[
+                                  <b:iconAwesome name="cog" value="Look at my tooltip!" tooltip="Ain't it a nice tooltip?"/>
+                             ]]></script>
+                        </b:panel>
+                    </f:facet>
+                </b:panel>
+                
                 <h2>Reference section</h2>
                 <ui:include src="IconAttributes.xhtml" />
                 <ui:include src="IconAwesomeAttributes.xhtml" />

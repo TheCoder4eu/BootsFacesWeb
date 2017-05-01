@@ -37,48 +37,48 @@
 				<code>&lt;b:panelGrid /&gt;</code>
 				column spans.
 			</p>
-			<h:form>
-				<b:tabView>
-					<b:tab title="JSF markup">
-						<b:well>
-							<script type="syntaxhighlighter"
-								class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            
+            <b:panel title="Live preview" look="info" collapsible="false">
+                <h:form>
+                    <b:panelGrid colSpans="2,10" size="xs" contentDisabled="#{columnsBean.containerDisabled}" id="panelGridId">
+                        <h:outputLabel value="Value 1" />
+                        <b:inputText span="8" value="#{settingsBean.value1}" />
+                        <h:outputLabel value="Value 2" />
+                        <b:inputText span="10" value="#{settingsBean.value2}" />
+                        <h:outputLabel value="Checkbox 1" />
+                        <b:selectBooleanCheckbox value="#{settingsBean.checkbox1}" />
+                        <h:outputLabel value="Checkbox 2" />
+                        <b:selectBooleanCheckbox value="#{settingsBean.checkbox2}" />
+                    </b:panelGrid>
+                    <b:panel look="primary" title="Options">
+                        <b:switch on-text="true" off-text="default" value="#{columnsBean.containerDisabled}"
+                                  update="panelGridId" onchange="ajax:columnsBean.onChange()" 
+                                  label="b:panelGrid contentDisabled=" />
+                    </b:panel>
+                </h:form>
+                
+                <f:facet name="footer">
+                    <strong>JSF markup: </strong>
+                    <b:panel>
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
-<b:panelGrid colSpans="2,10" size="xs">
-	<h:outputLabel value="Value 1" />
-	<b:inputText span="8" value="# {settingsBean.value1}"/>
-	<h:outputLabel value="Value 2" />
-	<b:inputText span="10" value="# {settingsBean.value2}"  />
-	<h:outputLabel value="Checkbox 1" />
-	<b:selectBooleanCheckbox value="# {settingsBean.cb1}" />
-	<h:outputLabel value="Checkbox 2" />
-	<b:selectBooleanCheckbox value="# {settingsBean.cb2}" />
-</b:panelGrid>
+<h:form>
+	<b:panelGrid colSpans="2,10" size="xs">
+		<h:outputLabel value="Value 1" />
+		<b:inputText span="8" value="# {settingsBean.value1}"/>
+		<h:outputLabel value="Value 2" />
+		<b:inputText span="10" value="# {settingsBean.value2}"  />
+		<h:outputLabel value="Checkbox 1" />
+		<b:selectBooleanCheckbox value="# {settingsBean.cb1}" />
+		<h:outputLabel value="Checkbox 2" />
+		<b:selectBooleanCheckbox value="# {settingsBean.cb2}" />
+	</b:panelGrid>
+</h:form>
 ]]>
-	</script>
-						</b:well>
-					</b:tab>
-					<b:tab title="displayed as">
-	                   <b:well>
-	                       <b:panelGrid colSpans="2,10" size="xs" contentDisabled="#{columnsBean.containerDisabled}" id="panelGridId">
-	                           <h:outputLabel value="Value 1" />
-	                           <b:inputText span="8" value="#{settingsBean.value1}" />
-	                           <h:outputLabel value="Value 2" />
-	                           <b:inputText span="10" value="#{settingsBean.value2}" />
-	                           <h:outputLabel value="Checkbox 1" />
-	                           <b:selectBooleanCheckbox value="#{settingsBean.checkbox1}" />
-	                           <h:outputLabel value="Checkbox 2" />
-	                           <b:selectBooleanCheckbox value="#{settingsBean.checkbox2}" />
-	                       </b:panelGrid>
-	                       <b:panel look="primary" title="Options">
-	                      	 <b:switch on-text="true" off-text="default" value="#{columnsBean.containerDisabled}"
-	                      	          update="panelGridId" onchange="ajax:columnsBean.onChange()" 
-	                      	          label="b:panelGrid contentDisabled=" render-label="true"/>
-	                       </b:panel>
-	                   </b:well>
-					</b:tab>
-				</b:tabView>
-			</h:form>
+</script>
+                    </b:panel>
+                </f:facet>
+            </b:panel>
 
 			<p>colSpan="2,10" means the content of the &lt;b:panelGrid&gt; is
 				arranged in to columns. The first colum takes 2 Bootstrap columns

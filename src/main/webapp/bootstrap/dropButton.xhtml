@@ -9,13 +9,11 @@
 
             <ui:define name="content">
                 <h1>Button dropdowns</h1>
-                <p>Use <code>b:dropButton</code> to obtain a Button with a dropdown menu.</p>
-                <p>As for listlinks and navbarlinks, you use the <code>b:navLink</code> tag for the menu entries.</p>
-                <b:panel>
-                    <f:facet name="heading"><b>EXAMPLE</b></f:facet>
-                    <b:container>
-                        <b:row>
-                            <b:column span="12">
+                <p>Basically, <code>b:dropButton</code> is a button with a dropdown menu. <code>b:dropButton</code>
+                is a container containing  <code>b:navLink</code> tags. These, in turn, are the menu entries.</p>
+                
+                <b:panel title="Live preview" look="info" collapsible="false">            
+
                                 <b:dropButton value="Default">
                                     <b:navLink value="Action" href="#"></b:navLink>
                                     <b:navLink value="Another action" href="#"></b:navLink>
@@ -70,33 +68,108 @@
                                     <b:navLink value="Separated link" href="#"></b:navLink>
                                     <b:navLink value="One more separated link" href="#"></b:navLink>
                                 </b:dropButton>
-                            </b:column>
-                        </b:row>
-                    </b:container>
-                    <f:facet name="footer">
-                        <strong>Markup:</strong><br/>
 
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
                             <![CDATA[
-                            <b:dropButton value="Default">
-                                <b:navLink value="Action" href="#"></b:navLink>
-                                <b:navLink value="Another action" href="#"></b:navLink>
-                                <b:navLink value="Something else here" href="#"></b:navLink>
-                                <b:navLink></b:navLink>
-                                <b:navLink header="Nav header"></b:navLink>
-                                <b:navLink value="Separated link" href="#"></b:navLink>
-                                <b:navLink value="One more separated link" href="#"></b:navLink>
-                            </b:dropButton>
+                                <b:dropButton value="Default">
+                                    <b:navLink value="Action" href="#"></b:navLink>
+                                    <b:navLink value="Another action" href="#"></b:navLink>
+                                    <b:navLink value="Something else here" href="#"></b:navLink>
+                                    <b:navLink></b:navLink>
+                                    <b:navLink header="Nav header"></b:navLink>
+                                    <b:navLink value="Separated link" href="#"></b:navLink>
+                                    <b:navLink value="One more separated link" href="#"></b:navLink>
+                                </b:dropButton> 
+                                <b:dropButton look="primary" value="Primary">
+                                    <b:navLink value="Action" href="#"></b:navLink>
+                                    <b:navLink value="Another action" href="#"></b:navLink>
+                                    <b:navLink value="Something else here" href="#"></b:navLink>
+                                    <b:navLink></b:navLink>
+                                    <b:navLink header="Nav header"></b:navLink>
+                                    <b:navLink value="Separated link" href="#"></b:navLink>
+                                    <b:navLink value="One more separated link" href="#"></b:navLink>
+                                </b:dropButton> 
+                                <b:dropButton look="success" value="Success">
+                                    <b:navLink value="Action" href="#"></b:navLink>
+                                    <b:navLink value="Another action" href="#"></b:navLink>
+                                    <b:navLink value="Something else here" href="#"></b:navLink>
+                                    <b:navLink></b:navLink>
+                                    <b:navLink header="Nav header"></b:navLink>
+                                    <b:navLink value="Separated link" href="#"></b:navLink>
+                                    <b:navLink value="One more separated link" href="#"></b:navLink>
+                                </b:dropButton>
+                                <b:dropButton look="info" value="Info">
+                                    <b:navLink value="Action" href="#"></b:navLink>
+                                    <b:navLink value="Another action" href="#"></b:navLink>
+                                    <b:navLink value="Something else here" href="#"></b:navLink>
+                                    <b:navLink></b:navLink>
+                                    <b:navLink header="Nav header"></b:navLink>
+                                    <b:navLink value="Separated link" href="#"></b:navLink>
+                                    <b:navLink value="One more separated link" href="#"></b:navLink>
+                                </b:dropButton>
+                                <b:dropButton look="warning" value="Warning">
+                                    <b:navLink value="Action" href="#"></b:navLink>
+                                    <b:navLink value="Another action" href="#"></b:navLink>
+                                    <b:navLink value="Something else here" href="#"></b:navLink>
+                                    <b:navLink></b:navLink>
+                                    <b:navLink header="Nav header"></b:navLink>
+                                    <b:navLink value="Separated link" href="#"></b:navLink>
+                                    <b:navLink value="One more separated link" href="#"></b:navLink>
+                                </b:dropButton>
+                                <b:dropButton look="danger" value="Danger">
+                                    <b:navLink value="Action" href="#"></b:navLink>
+                                    <b:navLink value="Another action" href="#"></b:navLink>
+                                    <b:navLink value="Something else here" href="#"></b:navLink>
+                                    <b:navLink></b:navLink>
+                                    <b:navLink header="Nav header"></b:navLink>
+                                    <b:navLink value="Separated link" href="#"></b:navLink>
+                                    <b:navLink value="One more separated link" href="#"></b:navLink>
+                                </b:dropButton>
                             ]]></script>
-                    </f:facet>
                 </b:panel>
+            </f:facet>
+        </b:panel>
+                
                 <h3>Sizing</h3>
                 <p>Button dropdowns work with buttons of all sizes.</p>
+                <b:panel title="Live preview" look="info" collapsible="false">            
+
+<b:dropButton value="Large Button" size="lg">
+                                    <b:navLink value="Action" href="#"></b:navLink>
+                                    <b:navLink value="Another action" href="#"></b:navLink>
+                                    <b:navLink value="Something else here" href="#"></b:navLink>
+                                    <b:navLink></b:navLink>
+                                    <b:navLink header="Nav header"></b:navLink>
+                                    <b:navLink value="Separated link" href="#"></b:navLink>
+                                    <b:navLink value="One more separated link" href="#"></b:navLink>
+                                </b:dropButton>
+                                <b:dropButton value="Small Button" size="sm">
+                                    <b:navLink value="Action" href="#"></b:navLink>
+                                    <b:navLink value="Another action" href="#"></b:navLink>
+                                    <b:navLink value="Something else here" href="#"></b:navLink>
+                                    <b:navLink></b:navLink>
+                                    <b:navLink header="Nav header"></b:navLink>
+                                    <b:navLink value="Separated link" href="#"></b:navLink>
+                                    <b:navLink value="One more separated link" href="#"></b:navLink>
+                                </b:dropButton>
+                                <b:dropButton value="Extra small Button" size="xs">
+                                    <b:navLink value="Action" href="#"></b:navLink>
+                                    <b:navLink value="Another action" href="#"></b:navLink>
+                                    <b:navLink value="Something else here" href="#"></b:navLink>
+                                    <b:navLink></b:navLink>
+                                    <b:navLink header="Nav header"></b:navLink>
+                                    <b:navLink value="Separated link" href="#"></b:navLink>
+                                    <b:navLink value="One more separated link" href="#"></b:navLink>
+                                </b:dropButton>
+
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
                 <b:panel>
-                    <f:facet name="heading"><b>EXAMPLE</b></f:facet>
-                    <b:container>
-                        <b:row>
-                            <b:column span="12">
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                            <![CDATA[
                                 <b:dropButton value="Large Button" size="lg">
                                     <b:navLink value="Action" href="#"></b:navLink>
                                     <b:navLink value="Another action" href="#"></b:navLink>
@@ -124,33 +197,38 @@
                                     <b:navLink value="Separated link" href="#"></b:navLink>
                                     <b:navLink value="One more separated link" href="#"></b:navLink>
                                 </b:dropButton>
-                            </b:column>
-                        </b:row>
-                    </b:container>
-                    <f:facet name="footer">
-                        <strong>Markup:</strong><br/>
-
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                            <![CDATA[
-                            <b:dropButton value="Large Button" size="lg">
-                                <b:navLink value="Action" href="#"></b:navLink>
-                                <b:navLink value="Another action" href="#"></b:navLink>
-                                <b:navLink value="Something else here" href="#"></b:navLink>
-                                <b:navLink></b:navLink>
-                                <b:navLink header="Nav header"></b:navLink>
-                                <b:navLink value="Separated link" href="#"></b:navLink>
-                                <b:navLink value="One more separated link" href="#"></b:navLink>
-                            </b:dropButton>
                             ]]></script>
-                    </f:facet>
                 </b:panel>
+            </f:facet>
+        </b:panel>
                 <h3>Dropup variation</h3>
                 <p>Trigger dropdown menus above elements by adding <code>drop="up"</code> to the tag.</p>
+                <b:panel title="Live preview" look="info" collapsible="false">            
+
+<b:dropButton value="Dropup" drop="up">
+                                    <b:navLink value="Action" href="#"></b:navLink>
+                                    <b:navLink value="Another action" href="#"></b:navLink>
+                                    <b:navLink value="Something else here" href="#"></b:navLink>
+                                    <b:navLink></b:navLink>
+                                    <b:navLink header="Nav header"></b:navLink>
+                                    <b:navLink value="Separated link" href="#"></b:navLink>
+                                    <b:navLink value="One more separated link" href="#"></b:navLink>
+                                </b:dropButton>
+                                <b:dropButton value="Right Dropup" drop="up">
+                                    <b:navLink value="Action" href="#"></b:navLink>
+                                    <b:navLink value="Another action" href="#"></b:navLink>
+                                    <b:navLink value="Something else here" href="#"></b:navLink>
+                                    <b:navLink></b:navLink>
+                                    <b:navLink header="Nav header"></b:navLink>
+                                    <b:navLink value="Separated link" href="#"></b:navLink>
+                                    <b:navLink value="One more separated link" href="#"></b:navLink>
+                                </b:dropButton>
+
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
                 <b:panel>
-                    <f:facet name="heading"><b>EXAMPLE</b></f:facet>
-                    <b:container>
-                        <b:row>
-                            <b:column span="12">
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                            <![CDATA[
                                 <b:dropButton value="Dropup" drop="up">
                                     <b:navLink value="Action" href="#"></b:navLink>
                                     <b:navLink value="Another action" href="#"></b:navLink>
@@ -169,29 +247,12 @@
                                     <b:navLink value="Separated link" href="#"></b:navLink>
                                     <b:navLink value="One more separated link" href="#"></b:navLink>
                                 </b:dropButton>
-                            </b:column>
-                        </b:row>
-                    </b:container>
-                    <f:facet name="footer">
-                        <strong>Markup:</strong><br/>
-
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                            <![CDATA[
-                            <b:dropButton value="Dropup" drop="up">
-                                <b:navLink value="Action" href="#"></b:navLink>
-                                <b:navLink value="Another action" href="#"></b:navLink>
-                                <b:navLink value="Something else here" href="#"></b:navLink>
-                                <b:navLink></b:navLink>
-                                <b:navLink header="Nav header"></b:navLink>
-                                <b:navLink value="Separated link" href="#"></b:navLink>
-                                <b:navLink value="One more separated link" href="#"></b:navLink>
-                            </b:dropButton>
                             ]]></script>
-                    </f:facet>
                 </b:panel>
+            </f:facet>
+        </b:panel>
                 
-                <br/>
-                <h2>Reference section</h2>
+                <h3>Reference section</h3>
                 <ui:include src="DropButtonAttributes.xhtml" />
                 <b:panel look="info" rendered="false">
 					<f:facet name="heading">
