@@ -95,7 +95,6 @@ td {
     <h3>Customizing the table</h3>
     <p>The datatable has a couple of options to configure it. Some of them are shown in the example below.</p>
     
-          <h:form>
             <b:panel title="Live preview" look="info" collapsible="false">            
                 <h:form id="table-form">
            <b:row>
@@ -238,7 +237,8 @@ td {
                 update="basic-usage-id" />
 
             </b:panelGrid>
-          </b:row></h:form>
+          </b:row>
+          </h:form>
             <f:facet name="footer">
                 <strong>JSF markup:</strong>
                 <b:panel>
@@ -423,8 +423,6 @@ td {
     your custom option is added to the <code>&lt;b:dataTable /&gt;</code> component, it may be added twice.</p>
 
     
-        <b:panel title="Live preview" look="info" collapsible="false">
-            <h:form>
         <b:panel title="Live preview" look="info" collapsible="false">
             <h:form id="i18n">
             <b:selectOneMenu value="#{carPool.language}" onchange="i18nBcarPool2Widget.DataTable().destroy();ajax:carPool.onLanguageChange()" update="bcarPool2">
