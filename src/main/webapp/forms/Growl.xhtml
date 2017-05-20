@@ -31,23 +31,23 @@
 					actionListener="#{messagesBean.error}" update="@form" />
 				<p:commandButton value="Fatal"
 					actionListener="#{messagesBean.fatal}" update="@form" />
-					
+
 				<p:commandButton id="ref" value="Specific (With custom animation)"
 					actionListener="#{messagesBean.specificInfo}" update="@form" />
 
 				<b:growl id="growlMsg" globalOnly="true" placementFrom="bottom"
 					show-detail="true" show-summary="false" allowDismiss="true"
-					delay="10000" escape="true" /> 
-					
+					delay="10000" escape="true" />
+
 				<b:growl for="ref" id="growlSpecific" placementFrom="top" show-detail="true"
 					global-only="false"
-					show-summary="true" allow-dismiss="true" 
+					show-summary="true" allow-dismiss="true"
 					animation-enter="animated bounceInDown"
-					animation-exit="animated flipOutX" 
+					animation-exit="animated flipOutX"
 					escape="true" />
 			</h:form>
 		</b:panel>
-		
+
 		<b:well>
 			<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
@@ -61,20 +61,20 @@
 
 			<b:growl id="growlMsg" globalOnly="true" placementFrom="bottom"
 					show-detail="true" show-summary="false" allowDismiss="true"
-					delay="10000" escape="true" /> 
-					
+					delay="10000" escape="true" />
+
 			<b:growl for="ref" id="growlSpecific" placementFrom="top" show-detail="true"
 					global-only="false"
-					show-summary="true" allow-dismiss="true" 
+					show-summary="true" allow-dismiss="true"
 					animation-enter="animated bounceInDown"
-					animation-exit="animated flipOutX" 
+					animation-exit="animated flipOutX"
 					escape="true" />
 ]]>
         	</script>
 		</b:well>
 		<br />
 		<br />
-		
+
 		<p>
 			Basically, Growl is an extension of standard JSF messages, with the ability to display a message in growl style.
 			You can configure the growl position in any of the window corner and a lot of other settings to customize your growl experience.
@@ -83,6 +83,16 @@
 			<h:graphicImage library="images" name="position.jpg" width="90%" />
 		</b:well>
 		<br />
+
+    <h2>Severity <b:badge value="since TODO" /></h2>
+    <p>
+      You can set wich severities should be rendered using the <code>severity</code> attribute.
+      The attribute takes one or more comma separated lower case severity names.
+      This can be useful if you want to use this component for info messages and a
+      <a href="./messages.jsf"><code>p:messages</code></a> for error messages.
+      Allowed severity names are: <code>info</code>, <code>warn</code>, <code>error</code>, <code>fatal</code>.
+    </p>
+    
 		<h2>Reference section</h2>
 		<ui:include src="GrowlAttributes.xhtml" />
 		<b:panel look="info" rendered="false">
