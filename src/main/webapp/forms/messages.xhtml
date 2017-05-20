@@ -265,7 +265,7 @@ td {
               <b:tab title="JSF markup">
                 <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 <![CDATA[
-                  <b:inputText value="#{messagesBean.twoMessages}" label="Two messages" 
+                  <b:inputText value="#{messagesBean.twoMessages}" label="Two messages"
                                id="twoMessagesId" rendered="false" />
                   <p>Default <code>&lt;b:message &gt;</code>:</p>
                   <b:message redisplay="true" for="twoMessagesId" /><br />
@@ -275,7 +275,7 @@ td {
          </script>
               </b:tab>
               <b:tab title="displayed as" >
-                  <b:inputText value="#{messagesBean.twoMessages}" label="Two messages" 
+                  <b:inputText value="#{messagesBean.twoMessages}" label="Two messages"
                                id="twoMessagesId" rendered="false" />
                   <p>Default <code>&lt;b:message &gt;</code>:</p>
                   <b:message redisplay="true" for="twoMessagesId" /><br />
@@ -379,6 +379,14 @@ td {
 	        </b:tabView>
         </h:form>
 
+        <h2>Severity <b:badge value="since TODO" /></h2>
+        <p>
+          You can set wich severities should be rendered using the <code>severity</code> attribute.
+          The attribute takes one or more comma separated lower case severity names.
+          This can be useful if you want to use a <a href="./Growl.jsf"><code>b:growl</code></a> for info messages and
+          this component for error messages.
+          Allowed severity names are: <code>info</code>, <code>warn</code>, <code>error</code>, <code>fatal</code>.
+        </p>
 
         <br/>
             <h2>Reference section</h2>
