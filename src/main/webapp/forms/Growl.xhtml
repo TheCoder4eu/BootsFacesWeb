@@ -93,7 +93,45 @@
       <a href="./messages.jsf"><code>b:messages</code></a> for error messages.<br />
       Allowed severity names are: <code>info</code>, <code>warn</code>, <code>error</code>, <code>fatal</code>.
     </p>
-    
+    <br/>
+    <h:form>
+      <b:tabView>
+        <b:tab title="live preview">
+          <b:well>
+            <b:messages id="messages"
+                        globalOnly="true"
+                        escape="false"
+                        severity="error,fatal"/>
+            <b:growl id="growl"
+                     globalOnly="true"
+                     showDetail="true"
+                     severity="info,warn"/>
+            <b:commandButton value="Demo"
+                             action="#{messagesBean.messageOfEachSeverity()}"
+                             update="messages growl" />
+          </b:well>
+        </b:tab>
+        <b:tab title="JSF markup">
+          <b:well>
+            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+              <![CDATA[
+                    <b:messages id="messages"
+                                globalOnly="true"
+                                escape="false"
+                                severity="error,fatal"/>
+                    <b:growl id="growl"
+                             globalOnly="true"
+                             showDetail="true"
+                             severity="info,warn"/>
+                    <b:commandButton value="Demo"
+                                     action="&num;{messagesBean.messageOfEachSeverity()}"
+                                     update="messages growl" />
+                  ]]></script>
+              </b:well>
+            </b:tab>
+          </b:tabView>
+        </h:form>
+
 		<h2>Reference section</h2>
 		<ui:include src="GrowlAttributes.xhtml" />
 		<b:panel look="info" rendered="false">
