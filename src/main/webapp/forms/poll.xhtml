@@ -133,6 +133,21 @@ td {
 					</thead>
 					<tbody>
 						<tr>
+							<td>action</td>
+							<td>none</td>
+							<td>Calls a JSF bean method and initiates a navigation.</td>
+						</tr>
+						<tr>
+							<td>actionListener</td>
+							<td>none</td>
+							<td>Calls an action listener in the JSF bean.</td>
+						</tr>
+						<tr>
+							<td>execute</td>
+							<td>@none</td>
+							<td>Which input fields are to be sent?</td>
+						</tr>
+            <tr>
 							<td>interval</td>
 							<td>1000</td>
 							<td>How often is the poll action to be called? Denotes the number of milliseconds between polls.</td>
@@ -148,19 +163,14 @@ td {
 							<td>Which region of the screen is to be updated?</td>
 						</tr>
 						<tr>
-							<td>execute</td>
-							<td>@none</td>
-							<td>Which input fields are to be sent?</td>
+							<td>stop</td>
+							<td>false</td>
+							<td>If true, the poll will stop.</td>
 						</tr>
 						<tr>
-							<td>actionListener</td>
+							<td>widgetVar</td>
 							<td>none</td>
-							<td>Calls an action listener in the JSF bean.</td>
-						</tr>
-						<tr>
-							<td>action</td>
-							<td>none</td>
-							<td>Calls a JSF bean method and initiates a navigation.</td>
+							<td>Optional widget variable to access the datatable widget in JavaScript code.</td>
 						</tr>
 					</tbody>
 				</table>
