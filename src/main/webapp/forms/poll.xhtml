@@ -24,8 +24,8 @@ td {
 			<b:panelGrid colSpans="6,6">
 			<h:form id="timeFormId">
 				<b:poll id="pippo" interval="3000" 
-		            update="timeFormId:worldTimeId" 
-		            execute="timeFormId:worldTimeId" 
+		            update="worldTimeId" 
+		            execute="worldTimeId" 
 		            actionListener="#{pollDemoBean.listener}"/>
 				<b:panelGrid colSpans="4,6,2" id="worldTimeId">
 					<h:outputText value="Current time:" />
@@ -60,11 +60,23 @@ td {
 			</b:panelGrid>
 		</b:panel>
 		
+		<h2>AJAX <b:badge value="breaking change in 1.1.2"/></h2>
+		<p>Prior to BootsFaces 1.1.2, the attributes <code>update</code> and <code>execute</code> where simply passed to the HTML code.
+		Since 1.1.2, they are evaluated by the advanced search expression engine of BootsFaces, as they should. However, this may
+		break programs relying on the bug (such as this showcase).</p> 
+		
+		<h2>JavaScript API <b:badge value="since 1.1.2" /></h2>
+		<p>You can access the JavaScript API by setting the <code>widgetVar</code> attribute. This attribute is the name of the JavaScript
+		object implementing <code>&lt;b:poll /&gt;</code> on the client side. Currently, the public API consists of a single funktion:</p>
+		<ul>
+		<li><code>widgetVar.stop()</code> allows you to stop polling from JavaScript.</li> 
+		</ul>
+		
 		<b:panel look="danger">
 		  If <code>&lt;b:poll /&gt;</code> is inside the region it updates, you have to set the attribute <code>once="true"</code>. Otherwise,
 		  <code>&lt;b:poll /&gt;</code> is initialized over and over again and starts to send more and more polls until your server is saturated.
 		</b:panel>
-		<b:panel look="info" title="Using the attribute once">
+		<b:panel look="info" title="Using the attribute 'once'">
 			<b:panelGrid colSpans="6,6">
 			<h:form>
 				<b:poll id="pluto" interval="2000" 
@@ -153,7 +165,6 @@ td {
 					</tbody>
 				</table>
 		</b:panel>
-		<b:poll interval="3000" update="WorldTimeId" execute="WorldTimeId" actionListener="#{pollDemoBean.listener}"/>
 
 		<script type="text/javascript">
       SyntaxHighlighter.all();

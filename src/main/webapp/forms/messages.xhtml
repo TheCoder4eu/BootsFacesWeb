@@ -379,12 +379,13 @@ td {
 	        </b:tabView>
         </h:form>
 
-        <h2>Severity <b:badge value="since TODO" /></h2>
+        <h2>Severity <b:badge value="since 1.1.2" /></h2>
         <p>
-          You can set wich severities should be rendered using the <code>severity</code> attribute.
+          You can filter the severities shown using the <code>severity</code> attribute.
           The attribute takes one or more comma separated lower case severity names.
-          This can be useful if you want to use a <a href="./Growl.jsf"><code>b:growl</code></a> for info messages and
-          this component for error messages.
+          This can be useful if you want to distinguish between error messages and info messages. For instance,
+          <code>severity</code> allows you to use a <a href="./Growl.jsf"><code>b:growl</code></a> for info messages and
+          this component for error messages.<br />
           Allowed severity names are: <code>info</code>, <code>warn</code>, <code>error</code>, <code>fatal</code>.
         </p>
 
