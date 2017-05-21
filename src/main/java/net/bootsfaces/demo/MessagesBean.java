@@ -6,17 +6,13 @@ package net.bootsfaces.demo;
 
 import java.io.Serializable;
 import java.util.Date;
-
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
-
 import net.bootsfaces.utils.FacesMessages;
 
 /**
@@ -48,36 +44,50 @@ public class MessagesBean implements Serializable {
 	}
 
 	public void specificInfo() {
-        FacesContext.getCurrentInstance().addMessage("growlForm:ref", new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "This is a specific message!"));
+		FacesMessages.info("growlForm:ref", "Info", "This is a specific message!");
     }
 
     public void info() {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "PrimeFaces <b>rocks</b>. BootsFaces <b>rocks</b>, too!"));
+		FacesMessages.info("Info", "PrimeFaces <b>rocks</b>. BootsFaces <b>rocks</b>, too!");
     }
 
     public void warn() {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Warning!", "Watch out for <i>PrimeFaces</i>. It's a good match to BootsFaces."));
+		FacesMessages.warning("Warning!", "Watch out for <i>PrimeFaces</i>. It's a good match to BootsFaces.");
     }
 
     public void error() {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "Something has gone <strong>wrong</strong>."));
+		FacesMessages.error("Error!", "Something has gone <strong>wrong</strong>.");
     }
 
     public void fatal() {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Fatal!", "System Error. What did <u>you</u> do?"));
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Fatal!", "Now it's too late to do anything. The system is down."));
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Please shut down all systems!"));
+		fatalSingle();
+        FacesMessages.fatal("Fatal!", "Now it's too late to do anything. The system is down.");
+        FacesMessages.info("Info", "Please shut down all systems!");
     }
 
+    public void fatalSingle() {
+		FacesMessages.fatal("Fatal!", "System Error. What did <u>you</u> do?");
+    }
+	
+	/**
+	 * Create a global message of each severity.
+	 */
+	public void messageOfEachSeverity()
+	{
+		info();
+		warn();
+		error();
+		fatalSingle();
+	}
+
 	public void showMessages() {
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Info message", "This is a very informative message.");
-		FacesContext.getCurrentInstance().addMessage(null, message);
+		FacesMessages.info("Info message", "This is a very informative message.");
 	}
 
     public void info(ActionEvent event) {
     	String[] messages={"<b>BootsFaces</b> rocks!", "How do you like <b>this message</b>?", "This message has been brought to <b>you</b> by an actionListener."};
     	int index = (int)(Math.random()*messages.length);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", messages[index]));
+        FacesMessages.info("Info", messages[index]);
     }
 
 	public String getLastName() {
