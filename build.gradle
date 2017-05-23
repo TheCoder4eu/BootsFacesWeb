@@ -39,7 +39,7 @@ compile files("${System.properties['java.home']}/../lib/tools.jar")
 
 compile fileTree(dir: 'bsflib', include: '*.jar') //Required for messages/utils
 
-compile "net.bootsfaces:bootsfaces:1.1.1"
+compile "net.bootsfaces:bootsfaces:1.1.2-SNAPSHOT"
 }
 
 war.doFirst {
@@ -52,7 +52,7 @@ war.doFirst {
     Date buildDate = new Date()
     String hostname= InetAddress.getLocalHost().getHostName()
     String currentJvm = org.gradle.internal.jvm.Jvm.current()
-	
+
 	String dependencies="";
 	try {
 //		eachDependency { DependencyResolveDetails details ->
@@ -67,13 +67,13 @@ war.doFirst {
 	} catch (Exception e) {
 		dependencies = "Couldn't resolve the dependencies: $e"
 	}
-	
+
     String currentOS = System.properties['os.name']+' '+System.properties['os.version']+' '+System.properties['os.arch']
     String buildInfo = """\n\
                     <b:row>
                     <b:jumbotron>
                         <img src="https://www.bootsfaces.net/img/bsf_logo.png"/>
-                        
+
                         <p>Welcome to the BootsFaces Showcase and Documentation</p>
                         <p><b:navLink value="BootsFaces License" outcome="license" iconAwesome="gavel"/></p>
                         <b:button iconAwesome="info" pt:data-target="#infomodal" pt:data-toggle="modal" onclick="return false;" size="xs" value="" styleClass="pull-right"/>
