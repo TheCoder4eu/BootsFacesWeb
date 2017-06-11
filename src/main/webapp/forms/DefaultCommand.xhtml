@@ -24,7 +24,8 @@
                 <b:panel title="Live preview" look="info" collapsible="false">            
 <h:form>
 					<p>The default command button is 'Button2'.</p>
-					<b:inputText></b:inputText>
+					<b:inputText label="InputText"></b:inputText>
+					<b:inputTextarea label="InputTextArea"></b:inputTextarea>
 					<b:commandButton id="button1" action="#{test.button1}" value="Button1" ajax="true" update="standardMsg" />
 					<b:commandButton id="button2" action="#{test.button2}" value="Button2" ajax="true" look="primary" update="standardMsg" />
 					<b:commandButton id="button3" action="#{test.button3}" value="Button3" ajax="true" icon="plus-sign" update="standardMsg" />
