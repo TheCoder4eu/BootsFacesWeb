@@ -43,8 +43,7 @@ td {
     <b:panel title="Live preview" look="info" collapsible="false">            
         <h:form>
             <b:dataTable value="#{carPool.carPool}"
-                         var="car"
-                         onpage="console.log('page');">
+                         var="car">
                 <b:dataTableColumn value="#{car.brand}" />
                 <b:dataTableColumn value="#{car.type}" />
                 <b:dataTableColumn value="#{car.color}" />
@@ -60,7 +59,8 @@ td {
             class="brush: xml; toolbar: false;gutter: false; first-line: 1">
             <![CDATA[
     <h:form>
-        <b:dataTable value="&num;{carPool.carPool}" var="car">
+        <b:dataTable value="&num;{carPool.carPool}" 
+                     var="car">
             <b:dataTableColumn value="&num;{car.brand}" />
             <b:dataTableColumn value="&num;{car.type}" />
             <b:dataTableColumn value="&num;{car.color}" />
@@ -86,12 +86,104 @@ td {
     <h3>Defining the header</h3>
     <p>You can use either the attribute <code>label</code> of the column, or you can define a facet named <code>"header"</code>
     inside the column. The latter option gives you more flexibility, because you can put arbitrary JSF code in a header.</p>
-
+    <p>Note that the header is always embedded in a table header tag (i.e. in a <code>&lt;tr&gt;&lt;th&gt;</code>code> tag).
+    So you can <b>not</b> use attributes like <code>colspan</code> or <code>rowspan</code>.</p>
+  
     <h3>Defining the content cells</h3>
     <p>You can either use the <code>value</code> attribute as seen above, or you can put arbitray JSF into the column.
     For instance, the example below shows how to put an input field into the column.</p>
-
-     <a id="customizing"></a>
+    
+        <b:panel title="Live preview" look="info" collapsible="false">            
+        <h:form>
+            <b:dataTable value="#{carPool.carPool}"
+                         var="car"
+                         page-length="5">
+               <b:dataTableColumn>
+                	<f:facet name="header">
+					     <ul style="margin-bottom:0;list-style-type:none;padding-left:0">
+					       <li>Brand</li>
+					       <li>Type</li>
+					     </ul>
+					</f:facet>
+                  #{car.brand}
+                  <br />
+                  #{car.type}
+                </b:dataTableColumn>
+                <b:dataTableColumn>
+                	<f:facet name="header">
+					     <ul style="margin-bottom:0;list-style-type:none;padding-left:0">
+					       <li>Color</li>
+					       <li>Year</li>
+					     </ul>
+					</f:facet>
+                  #{car.color}
+                  <br />
+                  #{car.year}
+                </b:dataTableColumn>
+                <b:dataTableColumn>
+                	<f:facet name="header">
+					     <ul style="margin-bottom:0;list-style-type:none;padding-left:0">
+					       <li>Price</li>
+					       <li>Engine Power</li>
+					     </ul>
+					</f:facet>
+                  € #{car.price}
+                  <br />
+                  #{car.enginePowerKW} KW (#{car.enginePower} hp) 
+                </b:dataTableColumn>
+             </b:dataTable>
+        </h:form>
+        <f:facet name="footer">
+            <strong>JSF markup:</strong>
+            <b:panel>
+                   <script type="syntaxhighlighter"
+            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+          <h:form>
+            <b:dataTable value="&num;{carPool.carPool}"
+                         var="car">
+               <b:dataTableColumn>
+                	<f:facet name="header">
+					     <ul style="margin-bottom:0;list-style-type:none;padding-left:0">
+					       <li>Brand</li>
+					       <li>Type</li>
+					     </ul>
+					</f:facet>
+                  &num;{car.brand}
+                  <br />
+                  &num;{car.type}
+                </b:dataTableColumn>
+                <b:dataTableColumn>
+                	<f:facet name="header">
+					     <ul style="margin-bottom:0;list-style-type:none;padding-left:0">
+					       <li>Color</li>
+					       <li>Year</li>
+					     </ul>
+					</f:facet>
+                  &num;{car.color}
+                  <br />
+                  &num;{car.year}
+                </b:dataTableColumn>
+                <b:dataTableColumn>
+                	<f:facet name="header">
+					     <ul style="margin-bottom:0;list-style-type:none;padding-left:0">
+					       <li>Price</li>
+					       <li>Engine Power</li>
+					     </ul>
+					</f:facet>
+                  € &num;{car.price}
+                  <br />
+                  &num;{car.enginePowerKW} KW (&num;{car.enginePower} hp) 
+                </b:dataTableColumn>
+             </b:dataTable>
+           </h:form>
+      ]]>
+      </script>
+            </b:panel>
+        </f:facet>
+    </b:panel>
+    
+    <a id="customizing"></a>
     <h3>Customizing the table</h3>
     <p>The datatable has a couple of options to configure it. Some of them are shown in the example below.</p>
     

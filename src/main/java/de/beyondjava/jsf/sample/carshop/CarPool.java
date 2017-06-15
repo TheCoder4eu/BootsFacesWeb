@@ -110,8 +110,11 @@ public class CarPool implements Serializable {
 
 		int fuelIndex = (int) Math.floor(Math.random() * (staticOptions.getFuels().size() - 1));
 		String fuel = staticOptions.getFuels().get(fuelIndex + 1);
+		
+		int enginePower = (int)Math.floor(Math.random() * 100) + 50;
 
 		Car c = new Car(brand, type, year, color, mileage, fuel, price);
+		c.setEnginePower(enginePower);
 		return c;
 	}
 

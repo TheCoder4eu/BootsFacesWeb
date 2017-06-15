@@ -137,6 +137,10 @@ public class Car implements Serializable {
 	public int getEnginePower() {
 		return enginePower;
 	}
+	
+	public int getEnginePowerKW() {
+		return (int)Math.round(enginePower / 1.35962);
+	}
 
 	public void setEnginePower(int enginePower) {
 		this.enginePower = enginePower;
