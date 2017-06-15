@@ -83,11 +83,6 @@ td {
     if you don't mind your IDE complaining, you can use <code>&lt;h:column /&gt;</code> and even
     <code>&lt;b:column /&gt;</code> with the extra attributes of BootsFaces.</p>
 
-    <h3>Defining the header</h3>
-    <p>You can use either the attribute <code>label</code> of the column, or you can define a facet named <code>"header"</code>
-    inside the column. The latter option gives you more flexibility, because you can put arbitrary JSF code in a header.</p>
-    <p>Note that the header is always embedded in a table header tag (i.e. in a <code>&lt;tr&gt;&lt;th&gt;</code>code> tag).
-    So you can <b>not</b> use attributes like <code>colspan</code> or <code>rowspan</code>.</p>
   
     <h3>Defining the content cells</h3>
     <p>You can either use the <code>value</code> attribute as seen above, or you can put arbitray JSF into the column.
@@ -97,7 +92,8 @@ td {
         <h:form>
             <b:dataTable value="#{carPool.carPool}"
                          var="car"
-                         page-length="5">
+                         page-length="5"
+                         page-length-menu="5,10,20">
                <b:dataTableColumn>
                 	<f:facet name="header">
 					     <ul style="margin-bottom:0;list-style-type:none;padding-left:0">
@@ -175,6 +171,80 @@ td {
                   <br />
                   &num;{car.enginePowerKW} KW (&num;{car.enginePower} hp) 
                 </b:dataTableColumn>
+             </b:dataTable>
+           </h:form>
+      ]]>
+      </script>
+            </b:panel>
+        </f:facet>
+    </b:panel>
+    
+    <h3>Defining the header</h3>
+    <p>You can use either the attribute <code>label</code> of the column, or you can define a facet named <code>"header"</code>
+    inside the column. The latter option gives you more flexibility, because you can put arbitrary JSF code in a header.
+    The example above shows how it's done.</p>
+    <p>Note that the header is always embedded in a table header tag (i.e. in a <code>&lt;tr&gt;&lt;th&gt;</code>code> tag).
+    So you can <b>not</b> use attributes like <code>colspan</code> or <code>rowspan</code>. If you need that,
+    you can define a header for the entire table. In this case, the column headers are not rendered. You have to make sure that the 
+    number of header columns matches the number of the columns of the data table. The example below shows how do to it:</p>
+    
+    <b:panel title="Live preview" look="info" collapsible="false">            
+        <h:form>
+            <b:dataTable value="#{carPool.carPool}"
+                         var="car"
+                         page-length="5"
+                         page-length-menu="5,10,20">
+              <f:facet name="header">
+                 <tr>
+	                <th colspan="2" rowspan="2">Car</th>
+	                <th colspan="2">Appearance</th>
+	                <th colspan="2">Technical Data</th>
+	            </tr>
+	            <tr>
+	                <th>Color</th>
+	                <th>Year</th>
+	                <th>Price</th>
+	                <th>Power</th>
+		         </tr>
+           	   </f:facet>
+               <b:dataTableColumn value="#{car.brand}" />
+               <b:dataTableColumn value="#{car.type}" />
+               <b:dataTableColumn value="#{car.color}" />
+               <b:dataTableColumn value="#{car.year}"  order="asc" />
+               <b:dataTableColumn value="#{car.price}" />
+               <b:dataTableColumn value="#{car.enginePower}"/>
+             </b:dataTable>
+        </h:form>
+        <f:facet name="footer">
+            <strong>JSF markup:</strong>
+            <b:panel>
+                   <script type="syntaxhighlighter"
+            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+          <h:form>
+            <b:dataTable value="&num;{carPool.carPool}"
+                         var="car"
+                         page-length="5"
+                         page-length-menu="5,10,20">
+              <f:facet name="header">
+                 <tr>
+	                <th colspan="2" rowspan="2">Car</th>
+	                <th colspan="2">Appearance</th>
+	                <th colspan="2">Technical Data</th>
+	            </tr>
+	            <tr>
+	                <th>Color</th>
+	                <th>Year</th>
+	                <th>Price</th>
+	                <th>Power</th>
+		         </tr>
+           	   </f:facet>
+               <b:dataTableColumn value="&num;{car.brand}" />
+               <b:dataTableColumn value="&num;{car.type}" />
+               <b:dataTableColumn value="&num;{car.color}" />
+               <b:dataTableColumn value="&num;{car.year}"  order="asc" />
+               <b:dataTableColumn value="&num;{car.price}" />
+               <b:dataTableColumn value="&num;{car.enginePower}"/>
              </b:dataTable>
            </h:form>
       ]]>
