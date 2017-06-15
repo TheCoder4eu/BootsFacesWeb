@@ -196,7 +196,7 @@ td {
                          page-length-menu="5,10,20">
               <f:facet name="header">
                  <tr>
-	                <th colspan="2" rowspan="2">Car</th>
+	                <th rowspan="2">Car</th>
 	                <th colspan="2">Appearance</th>
 	                <th colspan="2">Technical Data</th>
 	            </tr>
@@ -207,8 +207,9 @@ td {
 	                <th>Power</th>
 		         </tr>
            	   </f:facet>
-               <b:dataTableColumn value="#{car.brand}" />
-               <b:dataTableColumn value="#{car.type}" />
+               <b:dataTableColumn>
+               		#{car.brand}	#{car.type}
+            	</b:dataTableColumn>
                <b:dataTableColumn value="#{car.color}" />
                <b:dataTableColumn value="#{car.year}"  order="asc" />
                <b:dataTableColumn value="#{car.price}" />
