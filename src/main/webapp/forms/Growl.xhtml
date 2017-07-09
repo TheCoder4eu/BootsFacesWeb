@@ -18,7 +18,8 @@
 			Growl (&lt;b:growl /&gt;) <b:badge value="since 0.8.5" />
 		</h1>
 		<p>
-			Displays <code>FacesMessages</code> in Bootstrap Growl style.
+			Displays <code>FacesMessages</code> in Bootstrap Growl style. The widget is based on <a target="#" href="http://bootstrap-notify.remabledesigns.com/">Bootstrap notify</a>
+			by Robert McIntosh, which is available under the MIT license.
 		</p>
 		<br/><br/>
 		<b:panel>
@@ -84,6 +85,12 @@
 		</b:well>
 		<br />
 
+    <h2>Animations</h2>
+    <p>
+      <code>&lt;b.growl /&gt;</code> used the <a target="#" href="https://daneden.github.io/animate.css/">Animate.css</a>
+      framework by Daniel Eden to (optionally) add animations to the growl. See his website for a complete list of the animations.
+    </p>
+
     <h2>Severity <b:badge value="since 1.1.2" /></h2>
     <p>
       You can filter the severities shown using the <code>severity</code> attribute.
@@ -93,6 +100,7 @@
       <a href="./messages.jsf"><code>b:messages</code></a> for error messages.<br />
       Allowed severity names are: <code>info</code>, <code>warn</code>, <code>error</code>, <code>fatal</code>.
     </p>
+    
     <br/>
     <h:form>
       <b:tabView>
@@ -131,6 +139,14 @@
             </b:tab>
           </b:tabView>
         </h:form>
+
+        <h2>To escape or not to escape <b:badge value="since 0.8.5" /></h2>
+        <p>By public demand, we've added the <code>escape</code> attribute. It allows you to add HTML tags in your
+        messages. Please note that this might be a security issue. You're responsible to make sure that
+        hackers do not enter JavaScript code and have it executed when the page is rendered later. Therefore,
+        BootsFaces prints a message to the console when it renders a message with <code>escape="false"</code>
+        for the first time. This message can't be deactivated. We know that using HTML tags in your error messages
+        is a useful features, but at the same time we want to make sure you're aware of the risk.</p>
 
 		<h2>Reference section</h2>
 		<ui:include src="GrowlAttributes.xhtml" />
