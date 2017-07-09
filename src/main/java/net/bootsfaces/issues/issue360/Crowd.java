@@ -1,15 +1,11 @@
 package net.bootsfaces.issues.issue360;
 
-import java.io.IOException;
 import java.io.Serializable;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-
-import net.bootsfaces.utils.FacesMessages;
 
 @ManagedBean
 @ViewScoped

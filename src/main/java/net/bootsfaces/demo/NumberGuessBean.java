@@ -4,14 +4,10 @@ import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.component.UIComponent;
-import javax.faces.component.UIViewRoot;
-import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
-import net.bootsfaces.expressions.ExpressionResolver;
 import net.bootsfaces.utils.FacesMessages;
 
 @ManagedBean

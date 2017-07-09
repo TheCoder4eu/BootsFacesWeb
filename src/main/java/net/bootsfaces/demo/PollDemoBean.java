@@ -2,6 +2,7 @@ package net.bootsfaces.demo;
 
 import java.io.Serializable;
 import java.util.Date;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;

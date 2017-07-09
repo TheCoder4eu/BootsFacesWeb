@@ -6,8 +6,6 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 
 import net.bootsfaces.utils.FacesMessages;
 
