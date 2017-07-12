@@ -215,14 +215,20 @@
                           xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
                           >
                         <h:head />
-                        <h:body pt:onload="alert(1)">
+                        <h:body pt:onload="$('.modalPseudoClass').modal('show');">
                     		...
                         </h:body>
                     </html>
                 ]]>
 				</script>
-                    </b:panel>
-                    <p>However, adding the pass-through attribute <code>pt:data-show="true"</code> to the <code>b:modal</code> doesn't work at the moment (BootsFaces 0.6.7).</p>
+                </b:panel>
+                <p>Just in case you wonder why it doesn't suffice to add the pass-through attribute <code>pt:data-show="true"</code> to the <code>b:modal</code>:
+                By default, this attribute is already set to <code>true</code>. It influences what happens when you call 
+                <code>$('.modalPseudoClass').modal();</code> (i.e. omitting the attribute <code>'show'</code>). If <code>pt:data-show="false"</code>,
+                the data structure of the modal is initialized, but it remains invisible. If <code>pt:data-show="true"</code>, the modal is also shown.
+                Calling <code>$('.modalPseudoClass').modal('show');</code> or <code>$('.modalPseudoClass').modal('hide');</code> overrides the default
+                setting defined by <code>pt:data-show="true"</code>.</p>
+                <br />    
 
 			<ui:include src="ModalAttributes.xhtml"></ui:include>
 
