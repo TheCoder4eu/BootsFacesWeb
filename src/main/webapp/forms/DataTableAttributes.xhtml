@@ -263,6 +263,11 @@
                 <td>If set, this will have the container match the height of the rows shown in the table if that height is smaller than that given height by the scroll-size. Default: true.</td>
             </tr>
             <tr>
+                <td>scroll-horizontally<br />scrollHorizontally (alternative writing)</td>
+                <td>false</td>
+                <td>Adds a horizontal scroll bar on small screens. Similar to scroll-x, but wraps the entire table within the scroll area. Defaults to false.</td>
+            </tr>
+            <tr>
                 <td>scroll-size<br />scrollSize (alternative writing)</td>
                 <td>(none)</td>
                 <td>If set, force the height of table to the size specified. You can optionally to add the unit (e.g. scroll-size="200px"). By default, it's px.</td>
@@ -270,7 +275,7 @@
             <tr>
                 <td>scroll-x<br />scrollX (alternative writing)</td>
                 <td>false</td>
-                <td>If set, the table can scroll horizontally. Defaults to false.</td>
+                <td>If set, the table can scroll horizontally. Similar to scroll-x, but uses a different approach, so the page selector, the search are not scrolled with the table. Defaults to false.</td>
             </tr>
             <tr>
                 <td>searching</td>
