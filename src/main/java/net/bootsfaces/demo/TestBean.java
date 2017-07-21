@@ -5,6 +5,9 @@ package net.bootsfaces.demo;
  */
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -27,10 +30,12 @@ public class TestBean implements Serializable {
 	private String text1 = "Text One";
 	private String text2 = "Text Two";
 	
+	private List<String> tabs = new ArrayList<>();
+	
 	private boolean contentDisabled=false;
 
 	private int index = 2;
-
+	
 	public void nextTab() {
 		index++;
 		if (index > 3)
@@ -121,6 +126,9 @@ public class TestBean implements Serializable {
 	 * Creates a new instance of informBean
 	 */
 	public TestBean() {
+		tabs.add("first tab");
+		tabs.add("second tab");
+		tabs.add("third tab");
 	}
 
 	public int getIndex() {
@@ -142,5 +150,13 @@ public class TestBean implements Serializable {
 	// dummy method for AJAX
 	public void onClick() {
 		
+	}
+
+	public List<String> getTabs() {
+		return tabs;
+	}
+
+	public void setTabs(List<String> tabs) {
+		this.tabs = tabs;
 	}
 }
