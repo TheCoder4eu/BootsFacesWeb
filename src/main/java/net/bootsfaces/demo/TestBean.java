@@ -29,13 +29,12 @@ public class TestBean implements Serializable {
 	private String label2 = "Label Two";
 	private String text1 = "Text One";
 	private String text2 = "Text Two";
-	
-	private List<String> tabs = new ArrayList<>();
-	
-	private boolean contentDisabled=false;
+	private List<Calculation> tabs = new ArrayList<>();
+
+	private boolean contentDisabled = false;
 
 	private int index = 2;
-	
+
 	public void nextTab() {
 		index++;
 		if (index > 3)
@@ -126,9 +125,9 @@ public class TestBean implements Serializable {
 	 * Creates a new instance of informBean
 	 */
 	public TestBean() {
-		tabs.add("first tab");
-		tabs.add("second tab");
-		tabs.add("third tab");
+		tabs.add(new Calculation("first tab"));
+		tabs.add(new Calculation("second tab"));
+		tabs.add(new Calculation("third tab"));
 	}
 
 	public int getIndex() {
@@ -146,17 +145,60 @@ public class TestBean implements Serializable {
 	public void setContentDisabled(boolean contentDisabled) {
 		this.contentDisabled = contentDisabled;
 	}
-	
+
 	// dummy method for AJAX
 	public void onClick() {
-		
+
 	}
 
-	public List<String> getTabs() {
+	public List<Calculation> getTabs() {
 		return tabs;
 	}
 
-	public void setTabs(List<String> tabs) {
-		this.tabs = tabs;
+	public class Calculation {
+		private String title;
+		private int summand1 = (int) (Math.random() * 100.0d);
+		private int summand2 = (int) (Math.random() * 100.0d);
+		private int sum = 0;
+		
+		public Calculation(String title) {
+			this.title=title;
+		}
+
+		public int getSum() {
+			return sum;
+		}
+
+		public void setSum(int sum) {
+			this.sum = sum;
+		}
+
+		public int getSummand1() {
+			return summand1;
+		}
+
+		public void setSummand1(int summand1) {
+			this.summand1 = summand1;
+		}
+
+		public int getSummand2() {
+			return summand2;
+		}
+
+		public void setSummand2(int summand2) {
+			this.summand2 = summand2;
+		}
+
+		public void add() {
+			sum = summand1 + summand2;
+		}
+
+		public String getTitle() {
+			return title;
+		}
+
+		public void setTitle(String title) {
+			this.title = title;
+		}
 	}
 }

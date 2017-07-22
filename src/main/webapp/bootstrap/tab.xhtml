@@ -5,7 +5,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:b="http://bootsfaces.net/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	template="/applayout/pageTemplate.xhtml">
+	template="/applayout/pageTemplate.xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
 
 	<ui:define name="content">
 		<h1>TabView and Tab</h1>
@@ -186,6 +187,71 @@
             </b:tab>
 			</b:tabView>
 		</h:form>
+		
+		<a id="dynamic"></a>
+		<h3>Dynamic tabs <b:badge value="since 1.2.0" /></h3>
+		<p>If you attach a list of values to the tab, multiple tabs are rendered, one for each entry
+		of the list. Basically, this functionality is derived from <code>&lt;ui:repeat /&gt;</code>,
+		so you can use the same attributes. In particular, the list is stored in the 
+		attribute <code>value</code> and the current entry is stored in the attribute <code>var</code>.
+		</p>
+		<p><strong>Caveat:</strong> The tabs consist of two parts which are rendered independently.
+		So the array is iterated twice. Please don't implement any time-consuming algorithms
+		in the getter. Otherwise, this algorithm is called multiple times, resulting in
+		mediocre performance.
+		</p>
+			<b:panel title="live preview">
+			  <h:form>
+				<b:tabView contentStyle="border: 1px solid #ddd;padding:10px;"
+				    content-disabled="#{testBean.contentDisabled}"
+				    active-index="-2">
+				    <b:tab title="static tab">
+				    		This tab is static. It's content is static, too.
+				    </b:tab>
+					<b:tab title="dynamic tab #{status.index}" value="#{testBean.tabs}" var="currentTab" varStatus="status">
+						<b:panelGrid columns="3" size="xs">
+		              	<b:inputText label="Value 1" value="#{currentTab.summand1}" />
+		              	<b:inputText label="Value 2" value="#{currentTab.summand2}" onkeyup="ajax:currentTab.add()" update="result"/>
+		             	<div jsf:id="result">
+		             		Sum: #{currentTab.sum}
+		             	</div>
+		              	<b:commandButton onclick="ajax:currentTab.add()" update="result">add</b:commandButton>
+		              	</b:panelGrid>
+	 				</b:tab>
+	 				<b:tab title="final static tab">
+				    		This final tab is static. It's content is static, too.
+				    </b:tab>
+				</b:tabView>
+ 		      </h:form>
+              <f:facet name="footer">
+                     <strong>JSF markup:</strong>
+                     <b:panel>
+                          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                          <![CDATA[
+				<b:tabView contentStyle="border: 1px solid #ddd;padding:10px;"
+				    content-disabled="#{testBean.contentDisabled}"
+                    active-index="-2">
+				    <b:tab title="static tab">
+				    		This tab is static. It's content is static, too.
+				    </b:tab>
+					<b:tab title="dynamic tab #{status.index}" value="&num;{testBean.tabs}" var="currentTab" varStatus="status">
+						<b:panelGrid columns="3" size="xs">
+		              	<b:inputText label="Value 1" value="&num;{currentTab.summand1}" />
+		              	<b:inputText label="Value 2" value="&num;{currentTab.summand2}" onkeyup="ajax:currentTab.add()" update="result"/>
+		             	<div jsf:id="result">
+		             		Sum: &num;{currentTab.sum}
+		             	</div>
+		              	<b:commandButton onclick="ajax:currentTab.add()" update="result">add</b:commandButton>
+		              	</b:panelGrid>
+	 				</b:tab>
+	 				<b:tab title="final static tab">
+				    		This final tab is static. It's content is static, too.
+				    </b:tab>
+				</b:tabView>
+                          ]]></script>
+                        </b:panel>
+                    </f:facet>
+                </b:panel>
 
 		<a id="pills"></a>
 		<h2>Tab pills <b:badge value="since 0.8.5" /></h2>
