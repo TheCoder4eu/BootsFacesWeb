@@ -125,10 +125,11 @@
         <b:panel title="Live preview" look="info" collapsible="false">
             <h:form id="oneToTenFormId">
                   <b:panelGrid columns="3">
-                    <p:outputLabel for="@next" value="Enter a number between 1 and 10"/>
+                    <p:outputLabel for="@next" value="Enter a number between 1 and 10:"/>
                     <b:inputText value="#{imageGallery.oneToTen}" onkeyup="ajax:imageGallery.validateNumber()" update="@previous @next"
                                  id="oneToTenId" render-label="false"/>
                     <b:message for="@previous"/>
+					Also enter other numbers or texts to see the error messages.
                   </b:panelGrid>
             </h:form>
 
