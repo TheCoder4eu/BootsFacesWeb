@@ -127,7 +127,7 @@
                   <b:panelGrid columns="3">
                     <p:outputLabel for="@next" value="Enter a number between 1 and 10"/>
                     <b:inputText value="#{imageGallery.oneToTen}" onkeyup="ajax:imageGallery.validateNumber()" update="@previous @next"
-                                 id="oneToTenId"/>
+                                 id="oneToTenId" render-label="false"/>
                     <b:message for="@previous"/>
                   </b:panelGrid>
             </h:form>
