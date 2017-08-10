@@ -9,6 +9,12 @@
 td {
 	padding: 8px;
 }
+.light-power {
+  color: #F00;
+}
+.dark-power {
+  color: #A00;
+}
 </style>
 
     <h1>
@@ -43,13 +49,7 @@ td {
     <b:panel title="Live preview" look="info" collapsible="false">            
         <h:form>
             <b:dataTable value="#{carPool.carPool}"
-                         var="car"
-                         excel="true"
-                         csv="true"
-                         pdf="true"
-                         columnVisibility="true"
-                         copy="true"
-                         print="true">
+                         var="car">
                 <b:dataTableColumn value="#{car.brand}" />
                 <b:dataTableColumn value="#{car.type}" />
                 <b:dataTableColumn value="#{car.color}" />
@@ -80,6 +80,65 @@ td {
             </b:panel>
         </f:facet>
     </b:panel>
+    
+    <a id="buttons"></a>
+    <h3>Buttons and row classes</h3>
+    <p>There are a couple of pre-defined buttons to export the table as an Excel file, as a CSV file, as a PDF file, to copy it to the clipboard
+    ot the print it.</p>
+    <p>You can also add CSS classes to the rows using the attribute <code>row-style-class</code>. This attribute may contain an EL expression.
+    It may also contain a comma-separated list of CSS classes. In this case, the CSS classes are cyclically assigned to the rows.
+    There's a caveat: if the client reorders the rows, the order of the `row-style-classes` is not updated. You can see the effect
+    in the example below.</p>
+    
+    <b:panel title="Live preview" look="info" collapsible="false">            
+        <h:form>
+            <b:dataTable value="#{carPool.carPool}"
+                         var="car"
+                         excel="true"
+                         csv="true"
+                         pdf="true"
+                         columnVisibility="true"
+                         copy="true"
+                         print="true"
+                         row-style-class="#{car.enginePower>100?'light-power':'light'}, #{car.enginePower>100?'dark-power':'dark'} ">
+                <b:dataTableColumn value="#{car.brand}" />
+                <b:dataTableColumn value="#{car.type}" />
+                <b:dataTableColumn value="#{car.color}" />
+                <b:dataTableColumn value="#{car.year}"  order="asc" />
+                <b:dataTableColumn value="#{car.price}" />
+                <b:dataTableColumn value="#{car.enginePower}" label="Engine Power (hp)" />
+            </b:dataTable>
+        </h:form>
+        <f:facet name="footer">
+            <strong>JSF markup:</strong>
+            <b:panel>
+                   <script type="syntaxhighlighter"
+            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+    <h:form>
+        <b:dataTable value="&num;{carPool.carPool}" 
+                     var="car"
+                     excel="true"
+                     csv="true"
+                     pdf="true"
+                     columnVisibility="true"
+                     copy="true"
+                     print="true"
+                     row-style-class="&num;{car.enginePower>100?'light-power':'light'}, &num;{car.enginePower>100?'dark-power':'dark'} ">
+            <b:dataTableColumn value="&num;{car.brand}" />
+            <b:dataTableColumn value="&num;{car.type}" />
+            <b:dataTableColumn value="&num;{car.color}" />
+            <b:dataTableColumn value="&num;{car.year}"  order="asc"/>
+            <b:dataTableColumn value="&num;{car.price}" />
+            <b:dataTableColumn value="&num;{car.enginePower}" label="Engine Power (hp)" />
+        </b:dataTable>
+    </h:form>
+      ]]>
+      </script>
+            </b:panel>
+        </f:facet>
+    </b:panel>
+    
    
     <a id="autocompletion"></a>
     <h3>Autocompletion: <code>h:column</code> vs. <code>b:dataTableColumn</code></h3>
