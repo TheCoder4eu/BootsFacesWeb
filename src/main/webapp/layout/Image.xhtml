@@ -15,7 +15,7 @@ td {
 </style>
 		<h1>Image (&lt;b:image /&gt;) <b:badge value="since 0.8.0" /></h1>
 		<p>The <code>&lt;b:image /&gt;</code> component is just that: an image. Plus the unified AJAX engine of BootsFaces, and Bootstrap tooltips.</p>
-
+				
 		<h3>Basic usage</h3>
         
         <b:panel title="Live preview" look="info" collapsible="false">
@@ -49,6 +49,38 @@ td {
                 </b:panel>
             </f:facet>
         </b:panel>
+        
+        <h3>Progress bar</h3>
+        <p>Sometime your images load slowly. BootsFaces offers a JavaScript API tracking the progress. You can use it to implement 
+        a progress bar. If you benefit from a fast internet connection, the example below is to fast to show a progress bar.
+        However, you can track the progress by opening your browser's web developer tools. The console window should display
+        at least threee progress messages (and probably more).</p>
+        
+        <b:panel title="Live preview" look="info" collapsible="false">
+            <b:image value="slow_mars.jpg"  tooltip="Slow loading image" tooltipPosition="right"
+                     onloadstart="console.log('start loading ' + img.completedPercentage + '%');"
+                     onloadend="console.log('finished loading ' + img.completedPercentage + '%');"
+                     onprogress="console.log('continue loading ' + img.completedPercentage + '%');"
+                     style="width:100%"
+                     />
+            
+            <f:facet name="footer">
+                <strong>JSF markup: </strong>
+                <b:panel>
+<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+	        <![CDATA[
+            <b:image value="slow_mars.jpg"  tooltip="Slow loading image" tooltipPosition="right"
+                     onloadstart="console.log('start loading ' + img.completedPercentage + '%');"
+                     onloadend="console.log('finished loading ' + img.completedPercentage + '%');"
+                     onprogress="console.log('continue loading ' + img.completedPercentage + '%');"
+                     style="width:100%"
+                     />
+   	    ]]>
+          </script>
+                </b:panel>
+            </f:facet>
+        </b:panel>
+        
         
         <h3>Advanced usage</h3>
         <p>You can use the standard JavaScript callbacks to call both JavaScript function and Java methods (via AJAX).
