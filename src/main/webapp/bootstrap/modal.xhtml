@@ -230,6 +230,89 @@
                 setting defined by <code>pt:data-show="true"</code>.</p>
                 <br />    
 
+                <h3>Datatables in a modal</h3>
+                <p>By default, modals are hidden. As a consequence, any <code>&lt;b:dataTable /&gt;</code> inside the modal is rendered incorrectly.
+                You can fix that by recalculating the datatable after showing the modal. You need the JavaScript approach for that. Just add the line
+                <code>myDataTableWidgetVar.DataTable().responsive.recalc();</code> as shown in the example below.</p>
+                <p>If simpler approach is to set the flag <code>scroll-horizontally="true"</code>. This adds a scrollbar to the table.
+                The advantage of this approach is that it works without JavaScript. The disadvantage is that it doesn't work with reponsive tables
+                using <code>responsive="true"</code>. You can see the difference in the example below.</p>
+                <b:panel title="Live preview" look="info" collapsible="false">         
+
+                  <b:modal title="Modal Example" styleClass="responsiveModalPseudoClass"
+                           id="responsiveModal">
+			           <b:dataTable value="#{carPool.carPool}"
+			                         var="car"
+			                         widgetVar="myResponsiveDataTableWidgetVar"
+			                         responsive="true"
+			                         scroll-horizontally="true">
+			                <b:dataTableColumn value="#{car.brand}" />
+			                <b:dataTableColumn value="#{car.type}" />
+			                <b:dataTableColumn value="#{car.color}" />
+			                <b:dataTableColumn value="#{car.year}"  order="asc" />
+			                <b:dataTableColumn value="#{car.price}" />
+			                <b:dataTableColumn value="#{car.enginePower}" label="Engine Power (hp)" />
+			                <b:dataTableColumn value="#{car.brand}" />
+			                <b:dataTableColumn value="#{car.type}" />
+			                <b:dataTableColumn value="#{car.color}" />
+			            </b:dataTable>
+                        <f:facet name="footer">
+                            <b:button value="Close" dismiss="modal" />
+                            <b:button value="Ok" look="primary" dismiss="modal" />
+                        </f:facet>
+                    </b:modal>
+                    <b:column span="3">
+                        <a class="btn btn-primary btn-lg" href="#responsiveModal" data-toggle="modal">Trigger (HTML A tag)</a>
+                    </b:column>
+                    <b:row>
+                         <b:column span="3">
+                            <b:button value="Trigger (JavaScript)" look="success" onclick="$('.responsiveModalPseudoClass').modal();myResponsiveDataTableWidgetVar.DataTable().responsive.recalc();" size="lg"/>
+                        </b:column>
+                    </b:row>
+
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+                   <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                      <![CDATA[
+                        <b:modal title="Modal Example" styleClass="responsiveModalPseudoClass"
+                                 id="responsiveModal">
+        			           <b:dataTable value="&num;{carPool.carPool}"
+        			                        var="car"
+        			                        widgetVar="tableWidgetVar"
+        			                        responsive="true"
+                                        scroll-horizontally="true">
+        			                <b:dataTableColumn value="&num;{car.brand}" />
+        			                <b:dataTableColumn value="&num;{car.type}" />
+        			                <b:dataTableColumn value="&num;{car.color}" />
+        			                <b:dataTableColumn value="&num;{car.year}"  order="asc" />
+        			                <b:dataTableColumn value="&num;{car.price}" />
+        			                <b:dataTableColumn value="&num;{car.enginePower}" label="Engine Power (hp)" />
+        			                <b:dataTableColumn value="&num;{car.brand}" />
+        			                <b:dataTableColumn value="&num;{car.type}" />
+        			                <b:dataTableColumn value="&num;{car.color}" />
+        			            </b:dataTable>
+                            <f:facet name="footer">
+                                <b:button value="Close" dismiss="modal" />
+                                <b:button value="Ok" look="primary" dismiss="modal" />
+                            </f:facet>
+                        </b:modal>
+                        <b:row>
+                           <b:column span="3">
+                                <a class="btn btn-primary btn-lg" href="#responsiveModal" data-toggle="modal">Trigger (HTML A tag)</a>
+                            </b:column>
+                            <b:column span="3">
+                                <b:button value="Trigger (JavaScript)" look="success" 
+                                          onclick="$('.responsiveModalPseudoClass').modal();tableWidgetVar.DataTable().responsive.recalc();" 
+                                          size="lg"/>
+                            </b:column>
+                        </b:row>
+                        ]]>
+                    </script>
+                </b:panel>
+            </f:facet>
+        </b:panel>
+
 			<ui:include src="ModalAttributes.xhtml"></ui:include>
 
             <b:panel look="info">
