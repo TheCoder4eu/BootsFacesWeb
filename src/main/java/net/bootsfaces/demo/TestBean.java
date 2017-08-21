@@ -30,6 +30,8 @@ public class TestBean implements Serializable {
 	private String text1 = "Text One";
 	private String text2 = "Text Two";
 	private List<Calculation> tabs = new ArrayList<>();
+	
+	private Calculation calc = new Calculation("static calculation");
 
 	private boolean contentDisabled = false;
 
@@ -153,6 +155,14 @@ public class TestBean implements Serializable {
 
 	public List<Calculation> getTabs() {
 		return tabs;
+	}
+
+	public Calculation getCalc() {
+		return calc;
+	}
+
+	public void setCalc(Calculation calc) {
+		this.calc = calc;
 	}
 
 	public class Calculation {
