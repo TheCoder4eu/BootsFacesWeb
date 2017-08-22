@@ -17,6 +17,8 @@
 package net.bootsfaces.demo;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.view.ViewScoped;
@@ -32,6 +34,16 @@ public class InputTextBean implements Serializable {
 	private String text="";
 	
 	private String capitalText = "";
+	
+	private Map<String, String> map = new HashMap<String, String>();
+	
+	public String getKey() {
+		return "key";
+	}
+	
+	public InputTextBean() {
+		getMap().put("key", "value");
+	}
 	
 	public void capitalizeText() {
 		setCapitalText(text.toUpperCase());
@@ -51,5 +63,13 @@ public class InputTextBean implements Serializable {
 
 	public void setCapitalText(String capitalText) {
 		this.capitalText = capitalText;
+	}
+
+	public Map<String, String> getMap() {
+		return map;
+	}
+
+	public void setMap(Map<String, String> map) {
+		this.map = map;
 	}
 }
