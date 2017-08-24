@@ -10,9 +10,9 @@
                 <h1>Fancy sliders</h1>
                 <h3>Options and Examples</h3>
                 <p>You can use more than one slider to get input for complex values, like the Time:</p>
-    <h:form id="fslider" prependId="false" addLabels="false">
+    <h:form prependId="false" addLabels="false">
       <b:tabView>
-        <b:tab title="EXAMPLE - Time slider">
+        <b:tab title="EXAMPLE - Time slider" id="time">
           <b:row>
             <b:column col-lg="6">
               <b:row>
@@ -30,9 +30,9 @@
               <b:row>
                 <br />
                 <b:column>
-                  <b:commandButton value="Submit" update="amodal"
+                  <b:commandButton value="Submit" update="@form:@styleClass(amodal)"
                     id="modalcb" ajax="true" look="primary"
-                    oncomplete="$('#amodal').modal('show');" />
+                    oncomplete="$('.amodal').modal('show');" />
                 </b:column>
               </b:row>
             </b:column>
@@ -123,8 +123,8 @@
 		                    el.setAttribute('transform', 'rotate('+ deg +' 50 50)')
 	                    }
 	                    var d = new Date();
-	                    var hours = $("[name='hourID']").val();
-	                    var minutes=$("[name='minuteID']").val();
+	                    var hours = $("[name='time\\:hourID']").val();
+	                    var minutes=$("[name='time\\:minuteID']").val();
 	                    if (d.getSeconds()==0) {
 	                       minutes++;
 	                       if (minutes>=60) {
@@ -150,7 +150,7 @@
                         </b:tab>
                       </b:tabView>
                 
-                      <b:modal id="amodal" title="Slider">
+                      <b:modal style-class="amodal" title="Slider">
                         <strong>Submitted values:</strong>
                         <h:panelGrid columns="2">
                           <h:outputText value="Hour(0-24): " />
@@ -178,8 +178,8 @@
 									+ ' 50 50)')
 						}
 						var d = new Date();
-						var hours = $("[name='hourID']").val();
-						var minutes = $("[name='minuteID']").val();
+						var hours = $("[name='time\\:hourID']").val();
+						var minutes = $("[name='time\\:minuteID']").val();
 						if (d.getSeconds() == 0) {
 							minutes++;
 							if (minutes >= 60) {
@@ -188,14 +188,14 @@
 								if (hours >= 24) {
 									hours = 0;
 								}
-								$("[name='hourID']").val(hours);
-								$('span[id="hourID_badge"]').text(hours);
-								$("#hourID_slider").slider("option", "value",
+								$("[name='time\\:hourID']").val(hours);
+								$('span[id="time\\:hourID_badge"]').text(hours);
+								$("#time\\:hourID_slider").slider("option", "value",
 										hours);
 							}
-							$("[name='minuteID']").val(minutes);
-							$('span[id="minuteID_badge"]').text(minutes);
-							$("#minuteID_slider").slider("option", "value",
+							$("[name='time\\:minuteID']").val(minutes);
+							$('span[id="time\\:minuteID_badge"]').text(minutes);
+							$("#time\\:minuteID_slider").slider("option", "value",
 									minutes);
 						}
 						r(sec, 6 * d.getSeconds())
