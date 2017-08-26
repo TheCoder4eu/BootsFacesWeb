@@ -59,23 +59,24 @@ td {
         <b:panel title="Live preview" look="info" collapsible="false">
             <b:image value="slow_mars.jpg"  tooltip="Slow loading image" tooltipPosition="right"
                      onloadstart="console.log('start loading ' + img.completedPercentage + '%');"
-                     onloadend="console.log('finished loading ' + img.completedPercentage + '%');"
-                     onprogress="console.log('continue loading ' + img.completedPercentage + '%');"
+                     onloadend="console.log('finished loading ' + img.completedPercentage + '%');;$('.imageProgressBar').parent().hide();"
+                     onprogress="console.log('continue loading ' + img.completedPercentage + '%');$('.imageProgressBar')[0].setAttribute('style', 'width:' + img.completedPercentage + '%');$('.imageProgressBar')[0].innerText= img.completedPercentage + '%';"
                      style="width:100%"
                      />
-            
+            <b:progressBar value="90" look="info" content-class="imageProgressBar"/>
             <f:facet name="footer">
                 <strong>JSF markup: </strong>
                 <b:panel>
-<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
 	        <![CDATA[
             <b:image value="slow_mars.jpg"  tooltip="Slow loading image" tooltipPosition="right"
                      onloadstart="console.log('start loading ' + img.completedPercentage + '%');"
-                     onloadend="console.log('finished loading ' + img.completedPercentage + '%');"
-                     onprogress="console.log('continue loading ' + img.completedPercentage + '%');"
+                     onloadend="console.log('finished loading ' + img.completedPercentage + '%');;$('.imageProgressBar').parent().hide();"
+                     onprogress="console.log('continue loading ' + img.completedPercentage + '%');$('.imageProgressBar')[0].setAttribute('style', 'width:' + img.completedPercentage + '%');$('.imageProgressBar')[0].innerText= img.completedPercentage + '%';"
                      style="width:100%"
                      />
-   	    ]]>
+            <b:progressBar value="90" look="info" content-class="imageProgressBar"/>
+   	        ]]>
           </script>
                 </b:panel>
             </f:facet>
