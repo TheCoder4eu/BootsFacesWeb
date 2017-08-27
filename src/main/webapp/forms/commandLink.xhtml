@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:b="http://bootsfaces.net/ui" xmlns:ui="http://java.sun.com/jsf/facelets">
+
+        <ui:define name="content">
+            <style>td {padding: 8px;}</style>
+            <h1>Link and CommandLink</h1>
+                 <p>Lorem ipsum</p>
+                 
+                 
+                 
+                        <b:panel title="Live preview" look="info" collapsible="false">            
+
+            <h:form>
+	            <b:panelGrid colSpans="4,8" size="sm">
+		            <b:link onclick="alert('clicked!'); return false;" value="Click this link to show an alert box." />
+		            <div>Simple link</div>
+		            <b:commandLink onclick="alert('clicked'); return false;" value="Click this command link to show an alert box." />
+					<div>Command link</div>
+	            </b:panelGrid>
+            </h:form>
+
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+             <![CDATA[
+             ]]></script>
+                </b:panel>
+            </f:facet>
+        </b:panel>
+                 
+      <h2>Reference section</h2>
+             <ui:include src="CommandLinkAttributes.xhtml" />
+             <ui:include src="LinkAttributes.xhtml" />
+             <b:panel look="info">
+				<f:facet name="heading">
+					<b>Skinning</b>
+				</f:facet>
+				<p>A <code>&lt;b:commandButton /&gt;</code> is rendered as an HMTL <code>&lt;button /&gt;</code> bearing the CSS class <code>btn</code>.
+				Depending on the value of the <code>look</code> attribute, the button also bears one of the CSS classes <code>btn-primary</code>,
+				<code>btn-block</code>,
+				<code>btn-info</code>,
+				<code>btn-success</code>,
+				<code>btn-warning</code>,
+				<code>btn-important</code> or
+				<code>btn-danger</code>.
+				</p>
+			</b:panel>
+
+         <script type="text/javascript">
+             SyntaxHighlighter.all();
+         </script>
+     </ui:define>
+ </ui:composition>
+                 
