@@ -93,8 +93,17 @@
             </f:facet>
         </b:panel>
        
+                <h3>Troubleshooting: Modal and AJAX</h3>
+                <p>Sometimes developers report that the modal dialog is closed after clicking the "OK" button,
+                but the screen remains gray and inactive. This usually happens if you're using an AJAX update
+                replacing the modal. So the JavaScript variables point to a modal window which ceased to exist.</p>
+                <p>
+                You can solve the bug by reducing the update region. Make sure that the AJAX update only updates
+                the content of the modal. You can also update regions outside the modal. The bottom line is that
+                the modal itself remains unchanged.
+                </p>
 
-                <h3>Troubleshooting</h3>
+                <h3>Troubleshooting: use CSS classes instead of ids</h3>
                 <p>Using <code>ids</code> is always a bit tricky in JSF.
                 Don't put your modal dialog into a form. If you do, be aware that the id is modified. The <code>href</code> of the <code>b:button</code> refers
                 to the <code>id</code> in the HTML code, not to the <code>id</code> of the source code. JSF prepends the ids of the parent containers
