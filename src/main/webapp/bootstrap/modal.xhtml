@@ -6,6 +6,18 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+      
+            <ui:define name="content-navigator">
+       			<b:listLinks>
+		             <b:navLink href="#modals" value="modals" />
+		             <b:navLink href="#triggering" value="triggering modals" />
+		             <b:navLink href="#troubleshooting" value="troubleshooting" />
+		             <b:navLink href="#closable" value="closable and backdrop" />
+		             <b:navLink href="#datatables" value="datatables" />
+		             <b:navLink href="#attributes" value="attributes" />
+	              </b:listLinks>
+            </ui:define>
+      
 
             <ui:define name="content">
                 <h1>Modals</h1>

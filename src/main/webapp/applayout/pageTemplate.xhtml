@@ -74,8 +74,23 @@
             <ui:include src="/applayout/navbartop.xhtml"/>
         </ui:insert>
         
-        <b:container>
-            <ui:insert name="content"/>
+        <b:container fluid="true">
+        		<b:row>
+        			<b:column medium-screen="2" hidden="tiny-screen,small-screen">
+        				<b:inputText placeholder="search component" style="margin-top:22px" />
+	        			<b:listLinks>
+			             <b:navLink href="#{request.contextPath}/layout/basic.jsf" value="&lt;b:container /&gt;" />
+			             <b:navLink href="#{request.contextPath}/layout/basic.jsf" value="&lt;b:column /&gt;" />
+			             <b:navLink href="#{request.contextPath}/layout/basic.jsf" value="&lt;b:row /&gt;" />
+		              </b:listLinks>
+	              </b:column>
+	              <b:column medium-screen="8">
+		            <ui:insert name="content"/>
+		          </b:column>
+	              <b:column medium-screen="2"  hidden="tiny-screen,small-screen">
+		            <ui:insert name="content-navigator"/>
+		          </b:column>
+	          </b:row>
         </b:container>
         
         <ui:insert name="nbtop">
