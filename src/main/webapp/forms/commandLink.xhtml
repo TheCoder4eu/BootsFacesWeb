@@ -13,11 +13,15 @@
                         <b:panel title="Live preview" look="info" collapsible="false">            
 
             <h:form>
-	            <b:panelGrid colSpans="4,8" size="sm">
-		            <b:link onclick="alert('clicked!'); return false;" value="Click this link to show an alert box." />
+	            <b:panelGrid colSpans="6,6" size="sm">
+		            <b:link style-class="some-class" onclick="alert('clicked!'); return false;" value="Click this link to show an alert box." />
 		            <div>Simple link</div>
-		            <b:commandLink onclick="alert('clicked'); return false;" value="Click this command link to show an alert box." />
+		            <b:commandLink style-class="some-class" onclick="alert('clicked'); return false;" value="Click this command link to show an alert box." />
 					<div>Command link</div>
+		            <b:link style-class="some-class" look="success" onclick="alert('clicked!'); return false;" value="Click this link to show an alert box." />
+		            <div>Link shown as button</div>
+		            <b:commandLink style-class="some-class" look="default" onclick="alert('clicked'); return false;" value="Click this command link to show an alert box." />
+					<div>Command link shown as button</div>
 	            </b:panelGrid>
             </h:form>
 
