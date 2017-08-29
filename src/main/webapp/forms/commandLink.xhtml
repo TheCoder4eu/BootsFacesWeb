@@ -3,39 +3,58 @@
 <ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
     xmlns:b="http://bootsfaces.net/ui" xmlns:ui="http://java.sun.com/jsf/facelets">
 
+        <ui:define name="content-navigator">
+   			<b:listLinks>
+           <b:navLink href="#overview" value="overview" />
+           <b:navLink href="#attributes" value="attributes" />
+           </b:listLinks>
+        </ui:define>
+
         <ui:define name="content">
             <style>td {padding: 8px;}</style>
-            <h1>Link and CommandLink</h1>
-                 <p>Lorem ipsum</p>
+            <h1><a id="overview">Link and CommandLink</a></h1>
+                 <p>These classes are mostly equals to <code>&lt;b:navLink /&gt;</code> and <code>&lt;b:navCommandLink /&gt;</code>.
+                 The difference is the different semantics. Links can be used anywhere. If you set the attribute `look`,
+                 the link is displayed as a button.</p>
                  
-                 
-                 
-                        <b:panel title="Live preview" look="info" collapsible="false">            
+                 <b:panel title="Live preview" look="info" collapsible="false">            
 
-            <h:form>
-	            <b:panelGrid colSpans="6,6" size="sm">
-		            <b:link style-class="some-class" onclick="alert('clicked!'); return false;" value="Click this link to show an alert box." />
-		            <div>Simple link</div>
-		            <b:commandLink style-class="some-class" onclick="alert('clicked'); return false;" value="Click this command link to show an alert box." />
-					<div>Command link</div>
-		            <b:link style-class="some-class" look="success" onclick="alert('clicked!'); return false;" value="Click this link to show an alert box." />
-		            <div>Link shown as button</div>
-		            <b:commandLink style-class="some-class" look="default" onclick="alert('clicked'); return false;" value="Click this command link to show an alert box." />
-					<div>Command link shown as button</div>
-	            </b:panelGrid>
-            </h:form>
+	            <h:form>
+		            <b:panelGrid colSpans="6,6" size="sm">
+			            <b:link style-class="some-class" onclick="alert('clicked!'); return false;" value="Click this link to show an alert box." />
+			            <div>Simple link</div>
+			            <b:commandLink style-class="some-class" onclick="alert('clicked'); return false;" value="Click this command link to show an alert box." />
+						<div>Command link</div>
+			            <b:link style-class="some-class" look="success" onclick="alert('clicked!'); return false;" value="Click this link to show an alert box." />
+			            <div>Link shown as button</div>
+			            <b:commandLink style-class="some-class" look="default" onclick="alert('clicked'); return false;" value="Click this command link to show an alert box." />
+						<div>Command link shown as button</div>
+		            </b:panelGrid>
+	            </h:form>
 
             <f:facet name="footer">
                 <strong>JSF markup:</strong>
                 <b:panel>
                     <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
              <![CDATA[
+          <h:form>
+		            <b:panelGrid colSpans="6,6" size="sm">
+			            <b:link style-class="some-class" onclick="alert('clicked!'); return false;" value="Click this link to show an alert box." />
+			            <div>Simple link</div>
+			            <b:commandLink style-class="some-class" onclick="alert('clicked'); return false;" value="Click this command link to show an alert box." />
+						<div>Command link</div>
+			            <b:link style-class="some-class" look="success" onclick="alert('clicked!'); return false;" value="Click this link to show an alert box." />
+			            <div>Link shown as button</div>
+			            <b:commandLink style-class="some-class" look="default" onclick="alert('clicked'); return false;" value="Click this command link to show an alert box." />
+						<div>Command link shown as button</div>
+		            </b:panelGrid>
+	            </h:form>
              ]]></script>
                 </b:panel>
             </f:facet>
         </b:panel>
                  
-      <h2>Reference section</h2>
+      		<h2><a id="attributes">Reference section</a></h2>
              <ui:include src="CommandLinkAttributes.xhtml" />
              <ui:include src="LinkAttributes.xhtml" />
              <b:panel look="info">
