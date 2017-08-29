@@ -49,6 +49,26 @@
 			font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif;
 		}
 		
+		h2>a, h1>a { 
+			padding-top: 70px; 
+		}
+		
+		.internal-navigation > .nav > li > a  {
+			padding-top:0;
+			padding-bottom:5px;
+			color: #999999;
+		}
+		.site-navigation > .nav > li > a  {
+			padding-top:0;
+			padding-bottom:5px;
+			color: black;
+		}
+		.internal-navigation > .nav {
+			border-left: 1px solid #EEE;
+		}
+		.site-navigation {
+			border-right: 1px solid #EEE;
+		}
 		</style>
 
 		<ui:insert name="custom-header" />
@@ -76,7 +96,7 @@
         
         <b:container fluid="true">
         		<b:row>
-        			<b:column medium-screen="2" hidden="tiny-screen,small-screen">
+        			<b:column medium-screen="2" hidden="tiny-screen,small-screen" style-class="site-navigation">
         				<b:inputText placeholder="search component" style="margin-top:22px" />
 	        			<b:listLinks>
 			             <b:navLink href="#{request.contextPath}/layout/basic.jsf" value="&lt;b:container /&gt;" />
@@ -88,7 +108,9 @@
 		            <ui:insert name="content"/>
 		          </b:column>
 	              <b:column medium-screen="2"  hidden="tiny-screen,small-screen">
-		            <ui:insert name="content-navigator"/>
+	              	<div style="position:fixed;top:118px" class="internal-navigation">
+		            		<ui:insert name="content-navigator"/>
+		            </div>
 		          </b:column>
 	          </b:row>
         </b:container>

@@ -20,14 +20,14 @@
       
 
             <ui:define name="content">
-                <h1>Modals</h1>
+                <h1><a id="modals">Modals</a></h1>
                 <p>Modals are streamlined, but flexible, dialog prompts with the minimum required functionality and smart defaults.</p>
                 <p><strong>Modal options</strong></p>
                 <p>You can specify a header with the <code>title</code> attribute. Modals have a dismiss button(a cross) in the upper right corner by default.</p>
                 <p>The <code>&lt;b:modal&gt;</code> tag has also a facet with name <code>footer</code> where you can add buttons for dismissing the modal or for other actions.</p>
                 <p>Notice that the <code>&lt;b:button&gt;</code> tag must have the <code>dismiss="modal"</code> attribute in order to dismiss the modal when clicked.</p>
 
-                <h3>Triggering Modals</h3>
+                <h2><a id="triggering">Triggering Modals</a></h2>
                 <p>You have four ways to create a Button that triggers a Modal:</p>
                 <ul>
                     <li>Using HTML markup - a styled <code>&lt;a&gt;</code> tag with href and data attributes.</li>
@@ -105,7 +105,7 @@
             </f:facet>
         </b:panel>
        
-                <h3>Troubleshooting: Modal and AJAX</h3>
+                <h2><a id="troubleshooting">Troubleshooting: Modal and AJAX</a></h2>
                 <p>Sometimes developers report that the modal dialog is closed after clicking the "OK" button,
                 but the screen remains gray and inactive. This usually happens if you're using an AJAX update
                 replacing the modal. So the JavaScript variables point to a modal window which ceased to exist.</p>
@@ -205,7 +205,7 @@
         </b:panel>
        
 
-                <h3><code>closable</code> and <code>backdrop</code></h3>
+                <h2><a id="closable"><code>closable</code> and <code>backdrop</code></a></h2>
                 <p>By default, there's an x symbol which allows the user to close the modal. Set <code>closable="false"</code> to suppress the close icon.
                 Users can close modal dialogs by hitting the ESC key unless you set <code>close-on-escape="false"</code>.
                 Another default behavior of modal is that you can close a modal dialog by clicking somewhere outside the modal. Set <code>backdrop="false"</code> to disable this feature.
@@ -251,7 +251,7 @@
                 setting defined by <code>pt:data-show="true"</code>.</p>
                 <br />    
 
-                <h3>Datatables in a modal</h3>
+                <h2><a id="datatables">Datatables in a modal</a></h2>
                 <p>By default, modals are hidden. As a consequence, any <code>&lt;b:dataTable /&gt;</code> inside the modal is rendered incorrectly.
                 You can fix that by recalculating the datatable after showing the modal. You need the JavaScript approach for that. Just add the line
                 <code>myDataTableWidgetVar.DataTable().responsive.recalc();</code> as shown in the example below.</p>
@@ -290,7 +290,7 @@
                             <b:button value="Trigger (JavaScript)" look="success" onclick="$('.responsiveModalPseudoClass').modal();myResponsiveDataTableWidgetVar.DataTable().responsive.recalc();" size="lg"/>
                         </b:column>
                     </b:row>
-
+                    
             <f:facet name="footer">
                 <strong>JSF markup:</strong>
                 <b:panel>
@@ -334,6 +334,7 @@
             </f:facet>
         </b:panel>
 
+             <h2><a id="attributes">Reference section</a></h2>
 			<ui:include src="ModalAttributes.xhtml"></ui:include>
 
             <b:panel look="info">
