@@ -7,13 +7,24 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:ng="http://xmlns.jcp.org/jsf/passthrough">
 
+            <ui:define name="content-navigator">
+       			<b:listLinks>
+		             <b:navLink href="#overview" value="overview" />
+		             <b:navLink href="#sticky" value="sticky navbars" />
+		             <b:navLink href="#basic" value="basic usage" />
+		             <b:navLink href="#inverted" value="inverted navbars" />
+		             <b:navLink href="#links" value="links and command links" />
+		             <b:navLink href="#dropmenu" value="dropmenus" />
+		             <b:navLink href="#attributes" value="attributes" />
+	              </b:listLinks>
+            </ui:define>
            <ui:define name="content">
-                <h1>Navbars</h1>
+                <h1><a id="overview">Navbars</a></h1>
                 <p>The main use of the NavBar component is to place a navigation menu at top, bottom or both of your web application or web page.</p>
                 <p>The NavBar typically will have a brand, that could be, for example, the name of your project.</p>
 
                 <b:panel title="Example">
-                    <b:navBar brand="Brand" brandHref="#">
+                    <b:navBar brand="Brand" brandHref="#" fluid="true">
                         <b:navbarLinks>
                             <b:navLink value="Link" href="#"></b:navLink>
                             <b:navLink value="Link" href="#"></b:navLink>
@@ -62,7 +73,7 @@
                 <b:panel>
         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
         <![CDATA[
-                   <b:navBar brand="Brand" brandHref="#">
+                   <b:navBar brand="Brand" brandHref="#" fluid="true">
                         <b:navbarLinks>
                             <b:navLink value="Link" href="#"></b:navLink>
                             <b:navLink value="Link" href="#"></b:navLink>
@@ -113,7 +124,7 @@
                     </f:facet>
                 </b:panel>
 
-                <h2>Sticky vs. non-sticky navBars and navBar positions <b:badge value="updated in 0.8.5"></b:badge></h2>
+                <h2><a id="sticky">Sticky vs. non-sticky navBars and navBar positions </a><b:badge value="updated in 0.8.5"></b:badge></h2>
                 <p>A navbar can be rendered in different ways, to fit in your page layout scheme.</p>
                 <p>The default NavBar appears as part of the page content, typically centered and at the beginning.</p>
                 <p>The two other ways a Navigation Bar can be rendered in the page are:</p>
@@ -155,7 +166,7 @@
                 <br/>
 
                 <b:modal id="top" title="b:navBar demo 1" style="height:200px">
-                    <b:navBar brand="position=top" brandHref="#" position="top">
+                    <b:navBar brand="position=top" brandHref="#" position="top" fluid="true">
                     </b:navBar>
                     <p>This modal dialog has a navBar at the top and a lot of content, so it can scroll.</p>
                     <p>This modal dialog has a navBar at the top and a lot of content, so it can scroll.</p>
@@ -171,7 +182,7 @@
                     </f:facet>
                 </b:modal>
                 <b:modal id="bottom" title="b:navBar demo 2" style="height:200px">
-                    <b:navBar brand="position=bottom" brandHref="#" position="bottom">
+                    <b:navBar brand="position=bottom" brandHref="#" position="bottom" fluid="true">
                     </b:navBar>
                     <p>This modal dialog has a navBar at the bottom and a lot of content, so it can scroll.</p>
                     <p>This modal dialog has a navBar at the bottom and a lot of content, so it can scroll.</p>
@@ -187,7 +198,7 @@
                     </f:facet>
                 </b:modal>
                 <b:modal id="non-sticky" title="b:navBar demo 3" style="height:200px">
-                    <b:navBar brand="position=bottom sticky=false" brandHref="#" position="bottom" sticky="false">
+                    <b:navBar brand="position=bottom sticky=false" brandHref="#" position="bottom" sticky="false" fluid="true">
                     </b:navBar>
                     <p>This modal dialog has a non-sticky navbar and a lot of content, so it can scroll.</p>
                     <p>This modal dialog has a non-sticky navbar and a lot of content, so it can scroll.</p>
@@ -203,7 +214,7 @@
                     </f:facet>
                 </b:modal>
                 <b:modal id="static" title="b:navBar demo 4" style="height:200px">
-                    <b:navBar brand="static=true" brandHref="#" static="true">
+                    <b:navBar brand="static=true" brandHref="#" static="true" fluid="true">
                     </b:navBar>
                     <p>This modal dialog has a static navBar and a lot of content, so it can scroll.</p>
                     <p>This modal dialog has a static navBar and a lot of content, so it can scroll.</p>
@@ -234,7 +245,7 @@
                  </b:row>
                  <!-- ********************************************************************************************* -->
 
-                <h3>Using the b:navbar tag</h3>
+                <h2><a id="basic">Using the b:navbar tag</a></h2>
                 <p>Using the <code>b:navbar</code> tag is very straightforward, as you can see from the following table you need to specify few attributes:</p>
 
                 <strong>Widget attributes</strong>
@@ -276,10 +287,10 @@
                     </tbody>
                 </table>
                 <br/>
-                <strong>Inverted Navbar</strong>
+                <h2><a id="inverted">Inverted Navbar</a></h2>
                 <p>Modify the look of the navbar by adding the <code>inverse</code> attribute:</p>
                 <b:panel title="Live preview" look="info" collapsible="false">
-                    <b:navBar brand="Brand" brandHref="#" inverse="true">
+                    <b:navBar brand="Brand" brandHref="#" inverse="true" fluid="true">
                         <b:navbarLinks>
                             <b:navLink value="Home" href="#"></b:navLink>
                             <b:navLink value="Link" href="#"></b:navLink>
@@ -303,25 +314,25 @@
                     </f:facet>
                 </b:panel>
                 <br/>
+                <h2><a id="links">Navbar links and commandlinks</a></h2>
                 <strong>Navbar Links</strong>
                 <p>A NavBar will also contain a set of links. You can add the links to <code>b:navbar</code> using <code>b:navLink</code> as you do with <code>b:listLinks</code>.</p>
                 <p>The difference is that you nest the <code>b:navLink</code> elements inside a <code>b:navbarLinks</code> element instead of <code>b:listLinks</code> element.</p>
                 <br/>
 
-                <strong>Navbar CommandLinks <b:badge value="since 0.7.0" /></strong>
                 <p>For some technical reason, the <code>&lt;b:navLink /&gt;</code> component can't call JSF action listeners. To circumvent this limitation, there's a second
                 component, <code>&lt;b:navCommandLink /&gt;</code> that's adds calls to JSF action listeners and a JSF action. </p>
                 <br/>
 
 
-                <strong>Drop Menus</strong>
+                <h2><a id="dropmenu">Drop Menus</a></h2>
                 <p>You can build up a rich menu bar using another useful element: <code>b:dropMenu</code>. It is another element where you can put your <code>b:navLink</code> elements.</p>
                 <p>You can have multiple <code>b:navbarLinks</code> and <code>b:dropMenu</code> elements in a navbar, just pay attention to the resulting layout. Starting with
                 BootsFaces 0.8.0, <code>b:dropMenu</code>s can also be nested. This way, you get menu of three or more levels. Of course, you shouldn't overdo it. Most of the
                 time, two levels is what users accept. They also accept a third level if it remains the exception. But adding a fourth level makes your application cumbersome.</p>
                 <b:panel title="Live preview" look="info" collapsible="false">
                     <h:form>
-	                    <b:navBar brand="Brand" brandHref="#" id="dropMenuExample" contentDisabled="#{navBarBean.navBarDisabled}">
+	                    <b:navBar brand="Brand" brandHref="#" id="dropMenuExample" contentDisabled="#{navBarBean.navBarDisabled}"  fluid="true">
 	                        <b:navbarLinks contentDisabled="#{navBarBean.navBarLinksDisabled}">
 	                            <b:navLink value="Home" href="#"></b:navLink>
 	                            <b:navLink value="Link" href="#"></b:navLink>
@@ -376,7 +387,7 @@
                 </b:panel>
 
                 <br/>
-                <h2>Reference section</h2>
+                <h2><a id="attributes">Reference section</a></h2>
                 <ui:include src="NavBarAttributes.xhtml" />
                 <ui:include src="NavbarLinksAttributes.xhtml" />
                 <ui:include src="NavLinkAttributes.xhtml" />
