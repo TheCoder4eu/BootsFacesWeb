@@ -99,9 +99,9 @@
         			<b:column medium-screen="2" hidden="tiny-screen,small-screen" style-class="site-navigation">
         				<b:inputText placeholder="search component" style="margin-top:22px" />
 	        			<b:listLinks>
-			             <b:navLink href="#{request.contextPath}/layout/basic.jsf" value="&lt;b:container /&gt;" />
-			             <b:navLink href="#{request.contextPath}/layout/basic.jsf" value="&lt;b:column /&gt;" />
-			             <b:navLink href="#{request.contextPath}/layout/basic.jsf" value="&lt;b:row /&gt;" />
+	        				<ui:repeat var="c" value="#{componentList.tags}">
+			             	<b:navLink href="#{request.contextPath}/#{componentList.url(c)}" value="#{c}" />
+			             </ui:repeat>
 		              </b:listLinks>
 	              </b:column>
 	              <b:column medium-screen="8">
