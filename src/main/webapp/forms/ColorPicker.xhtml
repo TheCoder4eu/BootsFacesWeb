@@ -10,6 +10,23 @@
 	<ui:define name="custom-header">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	</ui:define>
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#colorpicker" value="ColorPicker (&lt;b:colorPicker /&gt;)" />
+    <b:navLink href="#basic_rgb_color_picker_aligned_left_with_opacity_active" value="Basic RGB Color picker aligned left with opacity active" />
+    <b:navLink href="#basic_hex_color_wheel_aligned_right_without_opacity_and_popup_position_in_bottom" value="Basic HEX Color wheel aligned right without opacity and popup position in bottom-right corner" />
+    <b:navLink href="#basic_rgb_color_picker_with_predefined_color_swatches" value="Basic RGB Color Picker with predefined color swatches" />
+    <b:navLink href="#mobile_devices" value="Mobile devices" />
+    <b:navLink href="#labels" value="Labels, required fields and error messages" />
+    <b:navLink href="#responsive_design" value="Responsive design" />
+    <b:navLink href="#visibility_depending_on_screen_size" value="Visibility depending on screen size" />
+    <b:navLink href="#tooltips" value="Tooltips" />
+    <b:navLink href="#reference_section" value="Reference section" />
+  </b:listLinks>
+</ui:define>
+
+
 	<ui:define name="content">
 		<style>
 		td {
@@ -17,13 +34,13 @@
 		}
 		</style>
     <h:form>
-		<h1>ColorPicker (&lt;b:colorPicker /&gt;) <b:badge value="since 0.8.5" /></h1>
+		<h1><a id="colorpicker">ColorPicker (&lt;b:colorPicker /&gt;)</a><b:badge value="since 0.8.5" /></h1>
 
 		<p><code>&lt;b:colorPicker&gt;</code> is a simple inputText that display color swatches.
 		The component provides a set of configuration to display the swatch in different positions and with different
 		color configurations (RGB, HSL, with or without alpha.)</p>
 		<br/>
-		<h3>Basic RGB Color picker aligned left with opacity active</h3>
+		<h2><a id="basic_rgb_color_picker_aligned_left_with_opacity_active">Basic RGB Color picker aligned left with opacity active</a></h2>
 		        <b:panel title="Live preview" look="info" collapsible="false">
                     <b:form>
                         <b:colorPicker value="#{test.selectedColor}" opacity="true" format="rgb"
@@ -43,7 +60,7 @@
             </f:facet>
         </b:panel>
 
-		<h3>Basic HEX Color wheel aligned right without opacity and popup position in bottom-right corner</h3>
+		<h2><a id="basic_hex_color_wheel_aligned_right_without_opacity_and_popup_position_in_bottom">Basic HEX Color wheel aligned right without opacity and popup position in bottom-right corner</a></h2>
 		  <b:panel title="Live preview" look="info" collapsible="false">
             <b:form>
 				<b:colorPicker value="#{test.selectedColor}" opacity="false" format="hex" control="wheel" position="bottom right"/>
@@ -61,7 +78,7 @@
             </f:facet>
         </b:panel>
 
-		<h3>Basic RGB Color Picker with predefined color swatches</h3>
+		<h2><a id="basic_rgb_color_picker_with_predefined_color_swatches">Basic RGB Color Picker with predefined color swatches</a></h2>
 		        <b:panel title="Live preview" look="info" collapsible="false">
             <b:form>
 				<b:colorPicker value="#{test.selectedColor}" opacity="true" format="rgb" swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"/>
@@ -79,7 +96,7 @@
             </f:facet>
         </b:panel>
 
-        <h3>Mobile devices</h3>
+        <h2><a id="mobile_devices">Mobile devices</a></h2>
         <p>On a mobile device, you should prevent the user from zooming into the page because this interferes with the colorpicker.
         Simply add these lines to the <code>&lt;h:head /&gt;</code> of your JSF page:</p>
         <b:panel>
@@ -89,8 +106,7 @@
           ]]></script>
             </b:panel>
 
-	    <a id="labels"></a>
-	    <h3>Labels, required fields and error messages <b:badge value="breaking change in 1.1.0" /></h3>
+	    <h2><a id="labels">Labels, required fields and error messages</a><b:badge value="breaking change in 1.1.0" /></h2>
 	    <p>You can add a label by adding the attribute <code>label</code>. The label is also used by the JSF messages. To give you maximum flexibility,
 	    you can suppress automatic rendering of labels by adding <code>renderLabel="false"</code>.
 	    </p>
@@ -143,7 +159,7 @@
                 </f:facet>
             </b:panel>
         
-        <h3>Responsive design <b:badge value="since 0.9.0" /></h3>
+        <h2><a id="responsive_design">Responsive design</a><b:badge value="since 0.9.0" /></h2>
         <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
         also with <code>&lt;b:colorPicker /&gt;</code>:</p>
         <b:panel title="Live preview" look="info" collapsible="false">
@@ -191,7 +207,7 @@
             </f:facet>
         </b:panel>
 
-        <h2>Visibility depending on screen size <b:badge value="since 0.8.6/0.9.0" /></h2>
+        <h2><a id="visibility_depending_on_screen_size">Visibility depending on screen size</a><b:badge value="since 0.8.6/0.9.0" /></h2>
         <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
         <br/>
         
@@ -223,7 +239,7 @@
             </f:facet>
         </b:panel>
 
-        <h3>Tooltips</h3>
+        <h2><a id="tooltips">Tooltips</a></h2>
         <p><code>&lt;b:colorPicker /&gt;</code> supports tooltips:</p>
         <b:panel title="Live preview" look="info" collapsible="false">
             <b:form>
@@ -244,7 +260,7 @@
        
 
 
-		<h3>Reference section</h3>
+		<h2><a id="reference_section">Reference section</a></h2>
 		<ui:include src="ColorPickerAttributes.xhtml" />
 		<b:panel look="info" rendered="false">
 			<f:facet name="heading">

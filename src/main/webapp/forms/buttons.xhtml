@@ -6,9 +6,27 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#buttons" value="Buttons" />
+    <b:navLink href="#button_size" value="Button size" />
+    <b:navLink href="#buttons_with_icons" value="Buttons with Icons" />
+    <b:navLink href="#icon_modifiers" value="Icon modifiers" />
+    <b:navLink href="#disabled_state" value="Disabled State" />
+    <b:navLink href="#button_functionality" value="Button functionality" />
+    <b:navLink href="#special_cases_" value="Special cases" />
+    <b:navLink href="#ajax_not_supported" value="AJAX not supported" />
+    <b:navLink href="#responsive_design" value="Responsive design" />
+    <b:navLink href="#visibility_depending_on_screen_size" value="Visibility depending on screen size" />
+    <b:navLink href="#reference_section" value="Reference section" />
+  </b:listLinks>
+</ui:define>
+
+
              <ui:define name="content">
                 <style>td {padding: 8px;}</style>
-                <h1>Buttons</h1>
+                <h1><a id="buttons">Buttons</a></h1>
                 <p><code>&lt;b:button&gt;</code>extends the standard JSF h:button component.</p>
 
                 <strong>Button Look</strong>
@@ -121,7 +139,7 @@
                             </f:facet>
                         </b:panel>
 
-                <h3>Button size</h3>
+                <h2><a id="button_size">Button size</a></h2>
                 <p>Fancy larger or smaller buttons? Add <code>size="lg"</code> (Large), <code>size="sm"</code> (Small), or <code>size="xs"</code> for additional sizes.</p>
                 
                 <b:panel title="Live preview" look="info" collapsible="false">            
@@ -152,7 +170,7 @@
 
                 
                 
-                <h3>Buttons with Icons</h3>
+                <h2><a id="buttons_with_icons">Buttons with Icons</a></h2>
                 <p>Buttons can can have an icon adding the attribute <code>icon</code> (on the left or right, default is left).</p>
                 <p>You can control the icon position by specifying it in the attribute <code>iconAlign</code>.</p>
                 <p>The Icon attribute will add a Glyphicon icon (Bootstrap's default), but now you can also use a Font Awesome icon using the <code>iconAwesome</code> attribute instead of <code>icon</code>.</p>
@@ -188,7 +206,7 @@
                 </b:panel>
 
 
-            <h2>Icon modifiers <b:badge value="since 0.9.0" /></h2>
+            <h2><a id="icon_modifiers">Icon modifiers</a><b:badge value="since 0.9.0" /></h2>
             <p>Both Fontawesome icons and Glyphicons can be decorated with modifiers:</p>
             
              <b:panel title="Live preview" look="info" collapsible="false">            
@@ -246,7 +264,7 @@
             </f:facet>
         </b:panel>
 
-                <h3>Disabled State</h3>
+                <h2><a id="disabled_state">Disabled State</a></h2>
                 <p>Make buttons look unclickable by fading them by 50%.</p>
                 
                 <b:panel title="Live preview" look="info" collapsible="false">            
@@ -271,11 +289,12 @@
        
                 
                 <br/>
-                <h3>Button functionality</h3>
+                <h2><a id="button_functionality">Button functionality</a></h2>
                 <p>Just like h:button, <code>&lt;b:button&gt;</code> does GET requests targeting bookmarkable URLs.</p>
                 <p>If you don't want to trigger a navigation, but simply call an AJAX or JavaScript method, omit the outcome.
                 You can make your intention more explicit by writing <code>outcome="@none"</code>.</p>
-                <h3>Special cases: <code>href</code> and <code>target</code><b:badge value="Since 1.1.0" /></h3>
+
+                <h2><a id="special_cases_">Special cases:</a><code>href</code> and <code>target</code><b:badge value="Since 1.1.0" /></h2>
                 <p>You can also use <code>&lt;b:button /&gt;</code> with the attributes <code>href</code>
                 and / or <code>target</code>. Both attributes are not supported by traditional HTML buttons.
                 Hence, they are rendered as an HTML anchor tag.</p>
@@ -309,7 +328,7 @@
                     </f:facet>
                 </b:panel>
                 
-                <h3>AJAX not supported</h3>
+                <h2><a id="ajax_not_supported">AJAX not supported</a></h2>
                 <p>AJAX isn't supported because <code>&lt;b:button /&gt;</code> doesn't send POST requests to the server. If you need 
                     to communicate with the server (with or without AJAX), use <code><b:navLink outcome="commandButton" value="&lt;b:commandButton/&gt;" /></code>
                     or <code><b:navLink outcome="RemoteCommand" value="&lt;b:remoteCommand /&gt;" /></code>.</p>
@@ -359,7 +378,7 @@
                 
                 
                 
-        <h2>Responsive design <b:badge value="since 0.9.0" /> <b:badge value="breaking change in 1.1.0" /></h2>
+        <h2><a id="responsive_design">Responsive design</a> <b:badge value="since 0.9.0" /> <b:badge value="breaking change in 1.1.0" /></h2>
         <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
         also with <code>&lt;b:button /&gt;</code>. Note that this is equivalent to putting it into a
         <code>&lt;b:column /&gt;</code>. In particular, the the CSS styles are inside the column div.
@@ -412,7 +431,7 @@
             </f:facet>
         </b:panel>
         
-        <h2>Visibility depending on screen size <b:badge value="since 0.8.6/0.9.0" /></h2>
+        <h2><a id="visibility_depending_on_screen_size">Visibility depending on screen size</a> <b:badge value="since 0.8.6/0.9.0" /></h2>
         <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
         
         <b:panel title="Live preview" look="info" collapsible="false">            
@@ -455,7 +474,7 @@
         
                 
         <br/>
-        <h2>Reference section</h2>
+        <h2><a id="reference_section">Reference section</a></h2>
         <ui:include src="ButtonAttributes.xhtml" />
 
         <script type="text/javascript">

@@ -6,10 +6,24 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
  
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#button_groups_and_toolbars" value="Button Groups and Toolbars" />
+    <b:navLink href="#basic_example" value="Basic example" />
+    <b:navLink href="#button_toolbar" value="Button toolbar" />
+    <b:navLink href="#sizing" value="Sizing" />
+    <b:navLink href="#mixed_button_groups" value="Mixed Button Groups" />
+    <b:navLink href="#vertical_variation" value="Vertical variation" />
+    <b:navLink href="#reference_section" value="Reference section" />
+  </b:listLinks>
+</ui:define>
+
+
              <ui:define name="content">
-                <h1>Button Groups and Toolbars</h1>
+                <h1><a id="button_groups_and_toolbars">Button Groups and Toolbars</a></h1>
                 <p>BootsFaces lets you group a series of buttons together on a single line using the <code>&lt;b:buttonGroup&gt;</code> component.</p>
-                <h3>Basic example</h3>
+                <h2><a id="basic_example">Basic example</a></h2>
                 <p>Wrap a series of <code>&lt;b:button&gt;</code>s or <code>&lt;b:commandButton&gt;</code>s by enclosing them in a <code>&lt;b:buttonGroup&gt;</code> .</p>
                 <b:panel title="Live preview" look="info" collapsible="false">
                         <b:buttonGroup>
@@ -32,7 +46,7 @@
                     </f:facet>
                 </b:panel>
                 
-                <h3>Button toolbar</h3>
+                <h2><a id="button_toolbar">Button toolbar</a></h2>
                 <p>You can go further and obtain a Toolbar combining sets of <code>&lt;b:buttonGroup&gt;</code>s inside a <code>&lt;b:buttonToolbar&gt;</code></p>
                 <b:panel title="Live preview" look="info" collapsible="false">
                     <b:buttonToolbar>
@@ -78,7 +92,7 @@
                             </b:panel>
                     </f:facet>
                 </b:panel>
-                <h3>Sizing</h3>
+                <h2><a id="sizing">Sizing</a></h2>
                 <p>Instead of applying button size attribute to every button in a group, just add the size attribute to the <code>&lt;b:buttonGroup&gt;</code>.</p>
                 <b:panel title="Live preview" look="info" collapsible="false">
                         <b:buttonGroup size="lg">
@@ -130,7 +144,7 @@
                         </b:panel>
                     </f:facet>
                 </b:panel>
-                <h3>Mixed Button Groups</h3>
+                <h2><a id="mixed_button_groups">Mixed Button Groups</a></h2>
                 <p>If you want dropdown menus mixed with a series of buttons, just add the <code>&lt;b:dropButton&gt;</code> inside the <code>&lt;b:buttonGroup&gt;</code>.</p>
                 <p>You can even use <b>different looks</b> and/or <b>icons</b> for your buttons, if you need to.</p>
                 <b:panel title="Live preview" look="info" collapsible="false">
@@ -209,7 +223,7 @@
                         </b:panel>
                     </f:facet>
                 </b:panel>
-                <h3>Vertical variation</h3>
+                <h2><a id="vertical_variation">Vertical variation</a></h2>
                 <p>Make a set of buttons appear vertically stacked rather than horizontally, using the <code>orientation="vertical"</code> attribute.</p>
                 <b:panel title="Live preview" look="info" collapsible="false">
                     <b:buttonGroup orientation="vertical">
@@ -259,7 +273,7 @@
                 </b:panel>
                 
                 <br/>
-                <h2>Reference section</h2>
+                <h2><a id="reference_section">Reference section</a></h2>
                 <ui:include src="ButtonAttributes.xhtml" />
                 <ui:include src="ButtonGroupAttributes.xhtml" />
                 <b:panel look="info" rendered="false">

@@ -6,6 +6,28 @@
         xmlns:b="http://bootsfaces.net/ui"
         xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#the_grid_system_of_bootstrap" value="The grid system of Bootstrap" />
+    <b:navLink href="#basic_usage" value="Basic usage" />
+    <b:navLink href="#putting_it_into_action" value="Putting it into action" />
+    <b:navLink href="#responsive_design" value="Responsive design" />
+    <b:navLink href="#why_bootsfaces" value="Why BootsFaces? Why not using Bootstrap natively?" />
+    <b:navLink href="#understanding_bootsfaces_grid_system" value="Understanding BootsFaces Grid System" />
+    <b:navLink href="#example__mobile_and_desktop" value="Example: Mobile and desktop" />
+    <b:navLink href="#example__mobile" value="Example: Mobile, tablet, desktops" />
+    <b:navLink href="#offsetting_columns" value="Offsetting columns" />
+    <b:navLink href="#nesting_columns" value="Nesting columns" />
+    <b:navLink href="#alternative_attribute_names_and_values" value="Alternative attribute names and values" />
+    <b:navLink href="#hiding_columns_on_certain_screens" value="Hiding columns on certain screens" />
+    <b:navLink href="#corner_cases__zero_columns" value="Corner cases: zero columns" />
+    <b:navLink href="#disabling_the_content" value="Disabling the content" />
+    <b:navLink href="#reference_section" value="Reference section" />
+  </b:listLinks>
+</ui:define>
+
+
                <ui:define name="content">
                   <style>
                       .show-grid [class^="col-"] {
@@ -18,7 +40,7 @@
                       //Needed for TBS 3.0.1 (panel content overflow issue)
                       .panel-body { margin: 0px 15px; }
                   </style>
-                  <h1>The grid system of Bootstrap</h1>
+                  <h1><a id="the_grid_system_of_bootstrap">The grid system of Bootstrap</a></h1>
                   <p>The general idea of both BootsFaces and Bootstrap is to apply the lesson learnt by generations of typesetters to the
                   world of websites and applications. Most people like pages with a lot of white space. Plus, they
                   like a clear structure. It's surprisingly simply to achieve this goal. Put everything into a container
@@ -29,7 +51,7 @@
                   attractive web applications with little effort. The grid system and the well-thought color scheme
                   of Bootstrap make it almost impossible to create a page that doesn't look nice.</p>
 
-                  <h2>Basic usage</h2>
+                  <h2><a id="basic_usage">Basic usage</a></h2>
                  <p><b:badge value="Hint"></b:badge> To understand this page better, check out <a target="#" href="https://github.com/stephanrauh/BootsFaces-Examples/tree/master/ResponsiveDesign">this demo project</a>. It doesn't cover exactly this page,
                   but it's a good starting point to play with the grid system of BootsFaces.</p>
                    <p>You can see the building blocks of every BootsFaces application in the image above:</p>
@@ -55,7 +77,7 @@
                   </li>
                   </ul>
 
-                  <h1>Putting it into action</h1>
+                  <h1><a id="putting_it_into_action">Putting it into action</a></h1>
 
                   <b:panel title="Live preview" look="info" collapsible="false">
                       <h:form id="loginForm">
@@ -267,18 +289,18 @@ public class LoginBean {
                       </f:facet>
                   </b:panel>
        
-                  <h2>Responsive design</h2>
+                  <h2><a id="responsive_design">Responsive design</a></h2>
                   <p>We'll explain the responsive design of BootsFaces in a minute. But we can show it now. Resize your browser window slowly.
                   Make it smaller. When the window is too small to display everything side-by-side, the widgets are stacked on top of each other.</p>
 
-                  <h2>Why BootsFaces? Why not using Bootstrap natively?</h2>
+                  <h2><a id="why_bootsfaces">Why BootsFaces? Why not using Bootstrap natively?</a></h2>
                  <p>BootsFaces takes full advantage of Bootstrap's Grid system while maintaining the benefits of being a JSF framework. Actually, we believe
                  it's more concise and more expressive
                      than programming Bootstrap natively. Convince yourself: inspect the source code of the demo in your
                      browser's source code view. After reformatting, the form is 81 lines. The JSF source is is 45 lines.</p>
                   <p>BootsFaces being a JSF framework means that you can leverage Bootstrap's layout feature using - for example - the JSF templating system and JSF's conditional rendering to achieve and maintain very complex layouts without much effort.</p>
                   <p>This website is an example itself: it uses a page template with <code>ui:insert</code> and <code>ui:include</code> and the pages are <code>ui:composition</code>s.</p>
-                  <h2>Understanding BootsFaces Grid System</h2>
+                  <h2><a id="understanding_bootsfaces_grid_system">Understanding BootsFaces Grid System</a></h2>
                   <p>We've already talked about the Bootstrap grid. Let's cover the topic in more detail.</p>
                   <p>The central idea is to divide the page into 12 equal-sized columns. Each element of your page - be it an input field, a label, a table or a text - covers
                   several of these columns. Widgets can't cover half a column. You're limited to integer multiples: one, two, three, ..., up to twelve columns. At first glance this sounds like
@@ -432,7 +454,7 @@ public class LoginBean {
                             ]]></script>
                       </f:facet>
                   </b:panel>
-                  <h3>Example: Mobile and desktop</h3>
+                  <h2><a id="example__mobile_and_desktop">Example: Mobile and desktop</a></h2>
                   <p>
                       Don't want your columns to simply stack in smaller devices? Use the extra small and medium device grid attributes including
                       <code>col-xs=*</code> and <code>col-md=*</code> in your columns. See the example below for a better idea of how it all works.
@@ -479,7 +501,7 @@ public class LoginBean {
                             ]]></script>
                       </f:facet>
                   </b:panel>
-                  <h3>Example: Mobile, tablet, desktops</h3>
+                  <h2><a id="example__mobile">Example: Mobile, tablet, desktops</a></h2>
                   <p>Build on the previous example by creating even more dynamic and powerful layouts with tablet <code>col-sm=*</code> attribute.</p>
                   <b:panel title="Live preview" look="info" collapsible="false">
 
@@ -513,7 +535,7 @@ public class LoginBean {
                             ]]></script>
                       </f:facet>
                   </b:panel>
-                  <h3>Offsetting columns</h3>
+                  <h2><a id="offsetting_columns">Offsetting columns</a></h2>
                   <p> Move columns to the right using <code>offset=*</code> or <code>col-md-offset=*</code> attribute.
                       These attributes increase the left margin of a column by <code>*</code> columns.
                       For example, <code>offest=4</code> moves a <code>span=4</code> over four columns.
@@ -550,7 +572,7 @@ public class LoginBean {
                             ]]></script>
                       </f:facet>
                   </b:panel>
-                  <h3>Nesting columns</h3>
+                  <h2><a id="nesting_columns">Nesting columns</a></h2>
                   <p>
                   To nest your content with the default grid, add a new <code>row</code> and set of <code>col-md=*</code> columns within an existing
                   <code>col-md=*</code> column.
@@ -585,7 +607,7 @@ public class LoginBean {
                       </f:facet>
                   </b:panel>
 
-                 <h2>Alternative attribute names and values <b:badge value="since 0.8.1" /></h2>
+                 <h2><a id="alternative_attribute_names_and_values">Alternative attribute names and values</a><b:badge value="since 0.8.1" /></h2>
                  <p>You can choose from two alternative spellings to define the column span:</p>
                  <ul>
                  <li><code>col-xs</code>, <code>col-xs</code>, <code>col-xs</code> and <code>col-xs</code> follow
@@ -604,7 +626,7 @@ public class LoginBean {
                  <li><code>medium-screen="three-fourth"</code> amounts to <code>col-md="9"</code>.</li>
                  </ul>
                  
-                 <h2>Hiding columns on certain screens</h2>
+                 <h2><a id="hiding_columns_on_certain_screens">Hiding columns on certain screens</a></h2>
                  <p>There are two attributes allowing you to hide columns depending on the screen size:</p>
                  <ul>
                  <li><code>hidden</code> hides an element on a certain screen size and below. For example, <code>hidden="sm"</code> hides the element on
@@ -622,7 +644,7 @@ public class LoginBean {
                  	<li>Analogously, <code>hidden="sm..."</code> hides the element on small screens and everything above.</li>
                  </ul>
                  
-                 <h2>Corner cases: zero columns</h2>
+                 <h2><a id="corner_cases__zero_columns">Corner cases: zero columns</a></h2>
                  <p>You can define a column to span zero columns. That's equivalent to using the <code>hidden</code> attribute.</p>
                  <b:row>
                  	<b:column large-screen="0">large-screen="0" always hides the column on large screens. It's visible on every other screen size.</b:column>
@@ -631,7 +653,7 @@ public class LoginBean {
                  	<b:column tiny-screen="0">tiny-screen="0" hides the text on tiny screens. It's visible on every other screen size.</b:column>
                  </b:row>
 
-		<h2>Disabling the content <b:badge value="Since 1.1.0"/></h2>
+		<h2><a id="disabling_the_content">Disabling the content</a><b:badge value="Since 1.1.0"/></h2>
 		<p>By setting the flag <code>contentDisabled="true"</code> you can set each child element of
 		<code>&lt;b:container</code>, <code>&lt;b:row</code>, and <code>&lt;b:column</code> to disabled. More precisely,
 		the panels of the accordion are wrapped in a disabled fieldset, which disables input fields, checkboxes and buttons, but
@@ -717,7 +739,7 @@ public class LoginBean {
 		
 
                   <br/>
-                  <h2>Reference section</h2>
+                  <h2><a id="reference_section">Reference section</a></h2>
                   <ui:include src="ContainerAttributes.xhtml" />
                   <ui:include src="RowAttributes.xhtml" />
                   <ui:include src="ColumnAttributes.xhtml" />

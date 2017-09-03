@@ -7,16 +7,27 @@
 	xmlns:b="http://bootsfaces.net/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#accordion" value="Accordion (&lt;b:accordion /&gt;)" />
+    <b:navLink href="#basic_usage" value="Basic Usage" />
+    <b:navLink href="#disabling_the_content" value="Disabling the content" />
+    <b:navLink href="#reference_section" value="Reference section" />
+  </b:listLinks>
+</ui:define>
+
+
 	<ui:define name="content">
 		<style>
 		td {
 			padding: 8px;
 		}
 		</style>
-		<h1>Accordion (&lt;b:accordion /&gt;) <b:badge value="since 0.8.5" /></h1>
+		<h1><a id="accordion">Accordion (&lt;b:accordion /&gt;)</a><b:badge value="since 0.8.5" /></h1>
 
 		<p>The <code>&lt;b:accordion&gt;</code> component wrap one or more &lt;b:panel&gt; components to display them as an accordion.</p>
-		<h1>Basic Usage</h1>
+		<h2><a id="basic_usage">Basic Usage</a></h2>
 		<p>
 			Essentially, accordion is only a wrapper for panels. The additional attribute that can be specified, is the expandedPanels that
 			provide the ability to make expanded by default, specified panels ids.
@@ -53,7 +64,7 @@
             </f:facet>
         </b:panel>
         
-		<h2>Disabling the content <b:badge value="Since 1.1.0"/></h2>
+		<h2><a id="disabling_the_content">Disabling the content</a><b:badge value="Since 1.1.0"/></h2>
 		<p>By setting the flag <code>contentDisabled="true"</code> you can set each child element to disabled. More precisely,
 		the panels of the accordion are wrapped in a disabled fieldset, which disables input fields, checkboxes and buttons, but
 		not every component. In particular, tabs and panels still work. You'll also have to be careful about
@@ -114,7 +125,7 @@
 		
 
 		<br/>
-        <h2>Reference section</h2>
+        <h2><a id="reference_section">Reference section</a></h2>
         <ui:include src="AccordionAttributes.xhtml" />
 		<b:panel look="info" rendered="false">
 			<f:facet name="heading">
