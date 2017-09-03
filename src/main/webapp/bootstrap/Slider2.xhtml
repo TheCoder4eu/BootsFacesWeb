@@ -6,13 +6,26 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#bootstrap_slider" value="Bootstrap Slider" />
+    <b:navLink href="#options_and_examples" value="Options and Examples" />
+    <b:navLink href="#styles_and_style" value="Styles and style-classes" />
+    <b:navLink href="#slider_handle_options" value="Slider Handle options" />
+    <b:navLink href="#labels" value="Labels, required fields and error messages" />
+    <b:navLink href="#reference_section" value="Reference section" />
+  </b:listLinks>
+</ui:define>
+
+
             <ui:define name="content">
 	            <style>
 		        .tooltip-inner {
 				    width: auto !important;
 				}
 				</style>
-                <h1>Bootstrap Slider <b:badge value="Since 1.0.0" /></h1>
+                <h1><a id="bootstrap_slider">Bootstrap Slider</a><b:badge value="Since 1.0.0" /></h1>
                 <p>This widget is going to replace the traditional <code>&lt;b:slider /&gt;</code> of BootsFaces. The old component is
                 a jQueryUI widget. This dependency, in turn, causes many incompatibilities, so we searched for a slider component that
                 doesn't use jQueryUI. The new <code>&lt;b:slider2 /&gt;</code> widget is based on <a target="#" href="http://seiyria.com/bootstrap-slider/">
@@ -42,7 +55,7 @@
                 <p>In this mode, the slider value will be shown in a badge.</p>
                 <b:row><b:column><b:slider2 mode="badge" label="Badge Slider:" value="#{sliderBean.value3}"/></b:column></b:row>
                 </h:form>
-                <h3>Options and Examples</h3>
+                <h2><a id="options_and_examples">Options and Examples</a></h2>
                 <h4>Horizontal sliders width</h4>
                 <p>You can use the <code>span</code> attribute to control the width, in terms of Bootstrap's grid columns:</p>
                 <b:row><b:column><b:slider2 mode="basic" label="Full width(12 columns default):"/></b:column></b:row>
@@ -130,7 +143,7 @@
                         </f:facet>
                     </b:panel>
 
-                    <h2>Styles and style-classes <b:badge value="Breaking change in 1.1.0" /></h2>
+                    <h2><a id="styles_and_style">Styles and style-classes</a><b:badge value="Breaking change in 1.1.0" /></h2>
                     <p>Until version 1.0.2 of BootsFaces, the <code>style</code> and <code>style-class</code> attributes applied only
                     the the optional badge.</p>
                     <p>Since 1.1.0, there are three separate pairs of options:</p>
@@ -264,7 +277,7 @@
                         ]]></script>
                         </f:facet>
                     </b:panel>
-                <h3>Slider Handle options</h3>
+                <h2><a id="slider_handle_options">Slider Handle options</a></h2>
                 <h4>Handle Size</h4>
                 <p>If you are targeting Mobile, it can be useful to have a bigger handle.</p>
                 <p>You can control the handle size adding the <code>handleShape</code> attribute, using the <code>md</code> or <code>lg</code> values for a Medium sized handle and a Large sized handle respectively.</p>
@@ -444,7 +457,7 @@
                 </b:modal>
 
  		    <a id="labels"></a>
-		    <h2>Labels, required fields and error messages <b:badge value="breaking change in 1.1.0" /></h2>
+		    <h2><a id="labels">Labels, required fields and error messages</a><b:badge value="breaking change in 1.1.0" /></h2>
 		    <p>You can add a label by adding the attribute <code>label</code>. The label is also used by the JSF messages. To give you maximum flexibility,
 		    you can suppress automatic rendering of labels by adding <code>renderLabel="false"</code>.
 		    </p>
@@ -525,7 +538,7 @@
               <b:commandButton id="button1" actionListener="{sliderBean.button1}" value="Send Value" ajax="true" update="sdl" />
             </h:form -->
 
-          <h2>Reference section</h2>
+          <h2><a id="reference_section">Reference section</a></h2>
           <ui:include src="Slider2Attributes.xhtml" />
           <b:panel look="info" rendered="true">
 					<f:facet name="heading">

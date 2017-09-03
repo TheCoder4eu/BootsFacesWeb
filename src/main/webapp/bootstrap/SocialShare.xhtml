@@ -7,17 +7,27 @@
 	xmlns:b="http://bootsfaces.net/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#socialshare" value="SocialShare (&lt;b:socialShare /&gt;)" />
+    <b:navLink href="#basic_usage" value="Basic usage" />
+    <b:navLink href="#legal_considerations" value="Legal considerations" />
+  </b:listLinks>
+</ui:define>
+
+
 	<ui:define name="content">
 		<style>
 		td {
 			padding: 8px;
 		}
 		</style>
-		<h1>SocialShare (&lt;b:socialShare /&gt;)</h1>
+		<h1><a id="socialshare">SocialShare (&lt;b:socialShare /&gt;)</a></h1>
 
 		<p>SocialShare is a simple component that display a list of social button to share your content on these systems.</p>
 		<br/>
-		<h1>Basic usage</h1>
+		<h2><a id="basic_usage">Basic usage</a></h2>
 		<p>The usage is very simple: You can set a list of shares and than provide a custom text to share or an url. If you do not provide this informations, it takes the current url. 
 		You can also show label and counts about your share.</p>
 			
@@ -54,7 +64,7 @@
 		<br/>
 		<br/>
 
-		<h1>Legal considerations, privacy, data protection and "Datensparsamkeit"</h1>
+		<h2><a id="legal_considerations">Legal considerations, privacy, data protection and "Datensparsamkeit"</a></h2>
 		<p>By default, already showing a social share button sends a request to the social media platform. At least, that's the case with FaceBook. Plus,
 		many people are not aware that clicking a social share button informs the social media platform what they are doing. Thus, the social media platform
 		gathers data about what you're doing in the web without giving you the option to opt out.</p>

@@ -7,8 +7,23 @@
   xmlns:b="http://bootsfaces.net/ui"
   xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#carousels__b_carousel" value="Carousels: &lt;b:carousel&gt;" />
+    <b:navLink href="#basic_usage" value="Basic usage" />
+    <b:navLink href="#advanced_usage__wizards" value="Advanced usage: Wizards" />
+    <b:navLink href="#advanced_usage__captions" value="Advanced usage: Captions" />
+    <b:navLink href="#advanced_usage__custom_controls" value="Advanced usage: Custom controls" />
+    <b:navLink href="#ajax_and_javascript" value="AJAX and JavaScript" />
+    <b:navLink href="#disabled" value="The disabled attribute" />
+    <b:navLink href="#do_it_yourself" value="Do it yourself" />
+  </b:listLinks>
+</ui:define>
+
+
   <ui:define name="content">
-    <h1>Carousels: &lt;b:carousel&gt;</h1>
+    <h1><a id="carousels__b_carousel">Carousels: &lt;b:carousel&gt;</a></h1>
     <p>
       <code>&lt;b:carousel&gt;</code>
       allows you to show a slide show. You can also implement a wizard using
@@ -16,7 +31,7 @@
       .
     </p>
 
-    <h3>Basic usage</h3>
+    <h2><a id="basic_usage">Basic usage</a></h2>
     <p>Basically, just put one or more <code>&lt;b:carouselItem /&gt;</code> inside a <code>&lt;b:carousel /&gt;</code> tag:</p>
     <b:panel title="Live preview" look="info" collapsible="false">            
 
@@ -57,7 +72,7 @@
 
 
 
-<h3>Advanced usage: Wizards</h3>
+<h2><a id="advanced_usage__wizards">Advanced usage: Wizards</a></h2>
 <p>You can put arbitrary content inside Carousel items. For instance, you can create a wizard using the carousel.
 Chances are you need custom controls in this case. We'll hava a look to custom controls in a minute. First, let's
 see how the standard controls look in a wizard. Don't forget to switch off the animation by setting <code>startAnimation="false"</code>.
@@ -181,7 +196,7 @@ You may also want to set <code>wrap="false"</code> to prevent the wizard to star
         </b:panel>
 
 
-    <h3>Advanced usage: Captions</h3>
+    <h2><a id="advanced_usage__captions">Advanced usage: Captions</a></h2>
     <p>Assign an image description to the slides by adding the <code>caption</code> attribute. This provides some
     default behavior: the text is embedded in an <code>&lt;h3 /&gt;</code> tag. If you need more
     flexibility for your caption, your can define it inside a <code>&lt;b:carouselCaption /&gt;</code> tag.</p>
@@ -192,7 +207,7 @@ You may also want to set <code>wrap="false"</code> to prevent the wizard to star
           <b:carouselItem >
             <img src="Valladolid1.png" alt="Valladolid" style="width: 800px; height: 600px" />
             <b:carouselCaption>
-              <h3>You'll love Valladolid!</h3>
+              <h2>You'll love Valladolid!</h2>
               <p>The band reads <a style="color:#fff" href="http://www.vanderkrogt.net/statues/object.php?webpage=CO&amp;record=escl010">"Non plus ultra"</a>, being Spains' motto in 1492, when Columbus made his discoveries.</p>
             </b:carouselCaption>
           </b:carouselItem>
@@ -205,7 +220,7 @@ You may also want to set <code>wrap="false"</code> to prevent the wizard to star
           <b:carouselItem>
             <img src="Valladolid4.png" alt="Valladolid" style="width: 800px; height: 600px" />
             <b:carouselCaption>
-              <h3>Fountains</h3>
+              <h2>Fountains</h2>
               <p>In Spain, dry as it is, people love to play with water.</p>
             </b:carouselCaption>
           </b:carouselItem>
@@ -224,7 +239,7 @@ You may also want to set <code>wrap="false"</code> to prevent the wizard to star
           <b:carouselItem >
             <img src="Valladolid1.png" alt="Valladolid" style="width: 800px; height: 600px" />
             <b:carouselCaption>
-              <h3>You'll love Valladolid!</h3>
+              <h2>You'll love Valladolid!</h2>
               <p>The band reads <a style="color:#fff" href="http://www.vanderkrogt.net/statues/object.php?webpage=CO&amp;record=escl010">"Non plus ultra"</a>, being Spains' motto in 1492, when Columbus made his discoveries.</p>
             </b:carouselCaption>
           </b:carouselItem>
@@ -237,7 +252,7 @@ You may also want to set <code>wrap="false"</code> to prevent the wizard to star
           <b:carouselItem>
             <img src="Valladolid4.png" alt="Valladolid" style="width: 800px; height: 600px" />
             <b:carouselCaption>
-              <h3>Fountains</h3>
+              <h2>Fountains</h2>
               <p>In Spain, dry as it is, people love to play with water.</p>
             </b:carouselCaption>
           </b:carouselItem>
@@ -250,7 +265,7 @@ You may also want to set <code>wrap="false"</code> to prevent the wizard to star
             </f:facet>
         </b:panel>
 
-    <h1>Advanced usage: Custom controls</h1>
+    <h2><a id="advanced_usage__custom_controls">Advanced usage: Custom controls</a></h2>
     <p>By default, the BootsFaces carousel comes complete with progress indicators (the little dots)
     and controls to move to the previous or next slide.</p>
     <p>You can switch off the indicators by adding <code>showIndicators="false"</code>. Apart from that,
@@ -319,7 +334,7 @@ You may also want to set <code>wrap="false"</code> to prevent the wizard to star
             </f:facet>
         </b:panel>
 
-        <h3>AJAX and JavaScript <b:badge value="since 0.8.0" /></h3>
+        <h2><a id="ajax_and_javascript">AJAX and JavaScript</a><b:badge value="since 0.8.0" /></h2>
         <p><code>&lt;b:carousel &gt;</code> supports many JavaScript and AJAX events,
         as described in <a href="ajax.jsf">the description of AJAX in BootsFaces</a>. Basically, each of the
         many JavaScript callback handlers (the <code>on[event]</code> attributes) also supports AJAX.
@@ -330,7 +345,7 @@ You may also want to set <code>wrap="false"</code> to prevent the wizard to star
         To get familiar with BootsFaces AJAX, try the
         <a target="#" href="https://github.com/stephanrauh/BootsFaces-Examples/tree/master/AJAX">BootsFaces AJAX demo project</a>.</p>
 
-    <h3>The <code>disabled</code> attribute</h3>
+    <h2><a id="disabled">The</a><code>disabled</code> attribute</h2>
     <p>The <code>disabled</code> attribute works a bit different than in most components. It disables (or rather: hides) the controls
     of the carousel. It still rotates the slides (if you configure it so), but the user can't influence that. AJAX and
     JavaScript events are processed no matter if the carousel is disabled or not.</p>
@@ -373,7 +388,7 @@ You may also want to set <code>wrap="false"</code> to prevent the wizard to star
         </b:panel>
 
 
-    <h3>Do it yourself</h3>
+    <h2><a id="do_it_yourself">Do it yourself</a></h2>
     <p>
       If you need more flexibility than <code>b:carousel</code> offers,
       the <a target="#" href="http://www.w3schools.com/bootstrap/bootstrap_carousel.asp">W3C example</a> shows how to do it yourself.

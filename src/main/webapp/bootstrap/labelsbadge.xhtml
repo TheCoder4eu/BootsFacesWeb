@@ -6,9 +6,22 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#labels_and_badges" value="Labels and Badges" />
+    <b:navLink href="#labels_and_badges_showing_el_values" value="Labels and badges showing EL values" />
+    <b:navLink href="#responsive_design" value="Responsive design" />
+    <b:navLink href="#visibility_depending_on_screen_size" value="Visibility depending on screen size" />
+    <b:navLink href="#tooltips" value="Tooltips" />
+    <b:navLink href="#reference_section" value="Reference section" />
+  </b:listLinks>
+</ui:define>
+
+
             <ui:define name="content">
                 <style>td {padding: 8px;}</style>
-                <h1>Labels and Badges</h1>
+                <h1><a id="labels_and_badges">Labels and Badges</a></h1>
                 <p><b>Caveat:</b> Bootstrap 4 is going to drop the labels and badges of Bootstrap 3. So there's a certain
                 risk this component won't be supported after migrating BootsFaces to Bootstrap 4.</p>
                 
@@ -67,7 +80,7 @@
             </f:facet>
         </b:panel>
                 
-                <h3>Labels and badges showing EL values</h3>
+                <h2><a id="labels_and_badges_showing_el_values">Labels and badges showing EL values</a></h2>
                 
                 <b:panel title="Live preview" look="info" collapsible="false">            
 
@@ -104,7 +117,7 @@
             </f:facet>
         </b:panel>
 
-                <h2>Responsive design <b:badge value="since 0.9.0" /></h2>
+                <h2><a id="responsive_design">Responsive design</a><b:badge value="since 0.9.0" /></h2>
                 <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
                 also with <code>&lt;b:badge /&gt;</code>:</p>
                 
@@ -186,7 +199,7 @@
             </f:facet>
         </b:panel>
                 
-                <h3>Visibility depending on screen size <b:badge value="since 0.8.6/0.9.0" /></h3>
+                <h2><a id="visibility_depending_on_screen_size">Visibility depending on screen size</a><b:badge value="since 0.8.6/0.9.0" /></h2>
                 <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
                 
                 <b:panel title="Live preview" look="info" collapsible="false">            
@@ -262,7 +275,7 @@
             </f:facet>
         </b:panel>
 
-                <h3>Tooltips<b:badge value="since 0.8.6/0.9.0" /></h3>
+                <h2><a id="tooltips">Tooltips</a><b:badge value="since 0.8.6/0.9.0" /></h2>
                 <p>Both <code>&lt;b:badge /&gt;</code> and  <code>&lt;b:label /&gt;</code> support tooltips:</p>
                 
                 <b:panel title="Live preview" look="info" collapsible="false">            
@@ -284,7 +297,7 @@
             </f:facet>
         </b:panel>
                 
-                <h3>Reference section</h3>
+                <h2><a id="reference_section">Reference section</a></h2>
                 <ui:include src="LabelAttributes.xhtml" />
                 <ui:include src="BadgeAttributes.xhtml" />
                 <b:panel look="info" rendered="false">

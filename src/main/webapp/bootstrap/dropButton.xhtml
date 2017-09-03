@@ -7,8 +7,19 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#button_dropdowns" value="Button dropdowns" />
+    <b:navLink href="#sizing" value="Sizing" />
+    <b:navLink href="#dropup_variation" value="Dropup variation" />
+    <b:navLink href="#reference_section" value="Reference section" />
+  </b:listLinks>
+</ui:define>
+
+
             <ui:define name="content">
-                <h1>Button dropdowns</h1>
+                <h1><a id="button_dropdowns">Button dropdowns</a></h1>
                 <p>Basically, <code>b:dropButton</code> is a button with a dropdown menu. <code>b:dropButton</code>
                 is a container containing  <code>b:navLink</code> tags. These, in turn, are the menu entries.</p>
                 
@@ -133,7 +144,7 @@
             </f:facet>
         </b:panel>
                 
-                <h3>Sizing</h3>
+                <h2><a id="sizing">Sizing</a></h2>
                 <p>Button dropdowns work with buttons of all sizes.</p>
                 <b:panel title="Live preview" look="info" collapsible="false">            
 
@@ -201,7 +212,7 @@
                 </b:panel>
             </f:facet>
         </b:panel>
-                <h3>Dropup variation</h3>
+                <h2><a id="dropup_variation">Dropup variation</a></h2>
                 <p>Trigger dropdown menus above elements by adding <code>drop="up"</code> to the tag.</p>
                 <b:panel title="Live preview" look="info" collapsible="false">            
 
@@ -252,7 +263,7 @@
             </f:facet>
         </b:panel>
                 
-                <h3>Reference section</h3>
+                <h2><a id="reference_section">Reference section</a></h2>
                 <ui:include src="DropButtonAttributes.xhtml" />
                 <b:panel look="info" rendered="false">
 					<f:facet name="heading">
