@@ -6,8 +6,19 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#alerts" value="Alerts" />
+    <b:navLink href="#dismissable_alerts" value="Dismissable alerts" />
+    <b:navLink href="#custom_alerts" value="Custom alerts" />
+    <b:navLink href="#reference_section" value="Reference section" />
+  </b:listLinks>
+</ui:define>
+
+
             <ui:define name="content">
-                <h1>Alerts</h1>
+                <h1><a id="alerts">Alerts</a></h1>
                 <p class="lead">Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.</p>
                 <p>A default gray alert wouldn't make too much sense, so you're required to specify a type with the severity attribute. Choose from success, info, warning, or danger.</p>
                 <p>The <code>title</code> attribute is optional and will add a title to the Alert.</p>
@@ -36,7 +47,7 @@
             </f:facet>
         </b:panel>
                 
-                <h3>Dismissable alerts</h3>
+                <h2><a id="dismissable_alerts">Dismissable alerts</a></h2>
                 <p>You can make Alerts dismissable adding <code>closable="true"</code> :</p>
                 
                 <b:panel title="Live preview" look="info" collapsible="false">            
@@ -56,7 +67,7 @@
                 
                 <p>Click the cross on the right to get rid of the message.</p>
                 
-                <h3>Custom alerts</h3>
+                <h2><a id="custom_alerts">Custom alerts</a></h2>
                 <p><b>Caveat:</b> This is a feature that works with Bootstrap 3 but may break with Bootstrap 4. Use at own risk.</p>
                 <p>BootsFaces doesn't restrict the <code>severity</code> parameters to the five values defined by Bootstrap. So you can define
                 your own alert type.</p>
@@ -90,7 +101,7 @@
             </f:facet>
         </b:panel>
                 
-                <h3>Reference section</h3>
+                <h2><a id="reference_section">Reference section</a></h2>
                 <ui:include src="AlertAttributes.xhtml" />
                 <b:panel look="info" rendered="false">
 					<f:facet name="heading">
