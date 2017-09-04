@@ -8,15 +8,26 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#horizontal" value="Horizontal, inline, and stacked forms" />
+    <b:navLink href="#b_form" value="&lt;b:form /&gt;" />
+    <b:navLink href="#b_formgroup" value="&lt;b:formGroup /&gt;" />
+    <b:navLink href="#inline_form" value="Inline form" />
+    <b:navLink href="#regular_bootsfaces_b_form" value="Regular BootsFaces b:form (stacked)" />
+    <b:navLink href="#horizontal_form" value="Horizontal form" />
+  </b:listLinks>
+</ui:define>
+
+
 	<ui:define name="content">
 		<style>
 		td {
 			padding: 8px;
 		}
 		</style>
-		<h1>
-			Horizontal, inline, and stacked forms <b:badge value="breaking change in 1.1.0" />
-		</h1>
+<h1><a id="horizontal">Horizontal, inline, and stacked forms</a><b:badge value="breaking change in 1.1.0" /></h1>
 		<p>
 			There are three different types for form layouts:</p>
 			<ul>
@@ -37,12 +48,12 @@
 				    please use horizontal forms.</li>
 			</ul>
 
-			<h2>&lt;b:form /&gt;</h2>
+			<h2><a id="b_form">&lt;b:form /&gt;</a></h2>
 			<p>Basically, <code>&lt;b:form /&gt;</code> is identical to the standard JSF component <code>&lt;h:form /&gt;</code>.
 			It adds the attributes <code>inline="true</code> and <code>horizontal="true"</code>. These attributes convert
 			your regular (stacked) form into an one-line inline form or into a multi-line horizontal form.</p>
 
-			<h2>&lt;b:formGroup /&gt;</h2>
+			<h2><a id="b_formgroup">&lt;b:formGroup /&gt;</a></h2>
 			<p>If you want to put muliple JSF elements into the same line of a horizontal form, you need to add a
 			<code>&lt;b:formGroup /&gt;</code>. Otherwise, BootsFaces generates a <code>form-group</code> <code>div</code>
 			for each component, thus ruining the layout.
@@ -53,7 +64,7 @@
 			Two input field types (date picker and multi-select combobox) don't support direct AJAX yet, so they are updated by an extra button.
 		</p>            
             
-            <h3>Inline form</h3>
+            <h2><a id="inline_form">Inline form</a></h2>
             <b:panel title="Live preview" look="info" collapsible="false">
 			    	<b:form inline="true">
 						<b:inputText label="random text" 
@@ -83,7 +94,7 @@
                 </f:facet>
             </b:panel>
             
-            <h3>Regular BootsFaces b:form (stacked)</h3>
+            <h2><a id="regular_bootsfaces_b_form">Regular BootsFaces b:form (stacked)</a></h2>
             
             <b:panel title="Live preview" look="info" collapsible="false">
 			    	<b:form>
@@ -197,7 +208,7 @@
                 </f:facet>
             </b:panel>
             
-            <h3>Horizontal form</h3>
+            <h2><a id="horizontal_form">Horizontal form</a></h2>
             
             <b:panel title="Live preview" look="info" collapsible="false">
 

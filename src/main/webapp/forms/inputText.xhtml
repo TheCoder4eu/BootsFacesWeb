@@ -6,9 +6,33 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#inputtext" value="InputText" />
+    <b:navLink href="#enhancing_the_b_inputtext_form_control" value="Enhancing the b:inputText form control" />
+    <b:navLink href="#appending_or_prepending_icons" value="Appending or prepending icons" />
+    <b:navLink href="#appending_or_prepending_buttons" value="Appending or prepending buttons" />
+    <b:navLink href="#appending_or_prepending_dropbuttons" value="Appending or prepending DropButtons" />
+    <b:navLink href="#controlling_the_size_of_b_inputtext" value="Controlling the size of b:inputText" />
+    <b:navLink href="#ajax_and_javascript" value="AJAX and JavaScript" />
+    <b:navLink href="#jsf" value="JSF 2.2 pass-through attributes" />
+    <b:navLink href="#labels" value="Labels, required fields and error messages" />
+    <b:navLink href="#bean_validation_api" value="Bean Validation API (JSR 303 and JSR 349)" />
+    <b:navLink href="#inline_forms" value="Inline forms" />
+    <b:navLink href="#configuring_the_default_value_of_the" value="Configuring the default value of the" />
+    <b:navLink href="#responsive_design" value="Responsive design" />
+    <b:navLink href="#visibility_depending_on_screen_size" value="Visibility depending on screen size" />
+    <b:navLink href="#tags" value="Tags" />
+    <b:navLink href="#mask" value="Mask" />
+    <b:navLink href="#reference_section" value="Reference section" />
+  </b:listLinks>
+</ui:define>
+
+
             <ui:define name="content">
                 <style>td {padding: 8px;}</style>
-                <h1>InputText</h1>
+                <h1><a id="inputtext">InputText</a></h1>
 
                 <p>The most common form controls are text-based input fields. They accept arbitrary text 
                 (as opposed to date pickers and color pickers, which restrict the input to their data type).
@@ -44,7 +68,7 @@
                 
                 <p>As you noticed, the input is as large as its parent container (minus a little margin). You will see how to control its size later in this section.</p>
 
-                <h3>Enhancing the b:inputText form control</h3>
+                <h2><a id="enhancing_the_b_inputtext_form_control">Enhancing the b:inputText form control</a></h2>
                 <p>To help you enhance the user experience, BootsFaces comes in with a useful feature:</p>
                 <p>You can easily prepend or append text to your inputTexts and what you prepend and append will seem part of the input field.
                 Just use the facets <code>prepend</code> and <code>append</code> and put the <code>h:outputText</code> element 
@@ -132,7 +156,7 @@
                     </b:form>]]></script>
                     </f:facet>
                 </b:panel>
-                <h3>Appending or prepending icons</h3>
+                <h2><a id="appending_or_prepending_icons">Appending or prepending icons</a></h2>
                 <p>You can take advantage of the <code><b:navLink outcome="/layout/icons" value="&lt;b:icon&gt;"/></code> or <code><b:navLink outcome="/layout/icons" value="&lt;b:iconAwesome&gt;"/></code> components to append (or prepend) icons :</p>
                 <b:panel title="Live preview" look="info" collapsible="false">            
                 <b:form horizontal="true">
@@ -172,7 +196,7 @@
         </b:panel>
        
                 <a id="prependingButtons" />
-                <h3>Appending or prepending buttons</h3>
+                <h2><a id="appending_or_prepending_buttons">Appending or prepending buttons</a></h2>
                 <p>Another nice feature is that you can append (or prepend) buttons, allowing you to build compact mini-forms for specific actions with little effort:</p>
                 <b:panel title="Live preview" look="info">
                     <b:form id="bid" prependId="false">
@@ -187,7 +211,7 @@
                             </b:inputText>
 
                         <b:modal id="amodal" class="modal-bid-example" title="Bid for this Item">
-                           <h3>Congratulations!</h3>
+                           <h2>Congratulations!</h2>
                            <h:panelGrid columns="2">
                                <h:outputText value="You offered $" />
                                <h:outputText value="#{testBean.val6}" />
@@ -212,7 +236,7 @@
                         </b:inputText>
 
                         <b:modal id="amodal" class="modal-bid-example" title="Bid for this Item">
-                           <h3>Congratulations!</h3>
+                           <h2>Congratulations!</h2>
                            <h:panelGrid columns="2">
                                <h:outputText value="You offered $" />
                                <h:outputText value="&num;{testBean.val6}" />
@@ -229,7 +253,7 @@
                     The elements on each side can be only of the same type. For instance, it's possible to prepend text elements and append buttons.
                     But it's not possible to prepend both a text element and a button at the same time.</p>
 
-                <h3>Appending or prepending DropButtons</h3>
+                <h2><a id="appending_or_prepending_dropbuttons">Appending or prepending DropButtons</a></h2>
                 <p>What you have seen also applies to DropButtons:</p>
                 <b:panel title="Live preview" look="info" collapsible="false">
                     <b:form horizontal="true">
@@ -306,7 +330,7 @@
                     </f:facet>
                 </b:panel>
 
-                <h3>Controlling the size of b:inputText</h3>
+                <h2><a id="controlling_the_size_of_b_inputtext">Controlling the size of b:inputText</a></h2>
                 
                 <strong>Height sizing</strong>
                 <p>You can create larger or smaller form controls that match button sizes.</p>
@@ -334,14 +358,14 @@
                     </f:facet>
                 </b:panel>
 
-                <h2>AJAX and JavaScript  <b:badge value="since 0.8.0" /></h2>
+                <h2><a id="ajax_and_javascript">AJAX and JavaScript</a><b:badge value="since 0.8.0" /></h2>
                 <p>The <code>&lt;b:inputText &gt;</code> supports the full suite of JavaScript and AJAX events,
                 as described in <a href="ajax.jsf">the description of AJAX in BootsFaces</a>. Basically, each of the
                 many JavaScript callback handlers (the <code>on[event]</code> attributes) also supports AJAX.
                 To get familiar with BootsFaces AJAX, try the
                 <a target="#" href="https://github.com/stephanrauh/BootsFaces-Examples/tree/master/AJAX">BootsFaces AJAX demo project</a>.</p>
 
-                <h2>JSF 2.2 pass-through attributes</h2>
+                <h2><a id="jsf">JSF 2.2 pass-through attributes</a></h2>
                 <p>It's possible to use pass-through attributes with the <code>&lt;b:inputText</code> widget, but there's a twist: the attributes are added multiple times.
                 This is because there are several plausible places to put a pass-through attribute in, so we decided to leave it as it is.</p>
                 <p>For instance, consider this JSF snippet:</p>
@@ -358,8 +382,7 @@
 				<p>The generated HTML code looks like so:</p>
                <h:graphicImage library="passthrough" name="generatedHtml.png" />
 
-		    <a id="labels"></a>
-		    <h2>Labels, required fields and error messages <b:badge value="breaking change in 1.1.0" /></h2>
+		    <h2><a id="labels">Labels, required fields and error messages</a><b:badge value="breaking change in 1.1.0" /></h2>
 		    <p>You can add a label by adding the attribute <code>label</code>. The label is also used by the JSF messages. To give you maximum flexibility,
 		    you can suppress automatic rendering of labels by adding <code>renderLabel="false"</code>.
 		    </p>
@@ -477,7 +500,7 @@ public class UserBean {
             </f:facet>
         </b:panel>
             
-            <h2>Bean Validation API (JSR 303 and JSR 349) <b:badge value="since 1.1.0" /></h2>
+            <h2><a id="bean_validation_api">Bean Validation API (JSR 303 and JSR 349)</a><b:badge value="since 1.1.0" /></h2>
             
         <b:panel title="Live preview" look="info" collapsible="false">
             <b:form>
@@ -551,7 +574,7 @@ public class BeanValidationBean {
             </f:facet>
         </b:panel>
             
-            <h2>Inline forms <b:badge value="breaking change in 1.1.0"/></h2>
+            <h2><a id="inline_forms">Inline forms</a><b:badge value="breaking change in 1.1.0"/></h2>
             <p>To comply with the coding style recommended and supported by the Bootstrap team, we've decided to rework the
             concept of horizontal and inline forms from scratch in BootsFaces 1.1.0. If you're migrating from an
             earlier version of BootsFaces, and if you're using inline forms, you'll most likely want to replace them
@@ -646,7 +669,7 @@ public class BeanValidationBean {
              </b:tabView>
             
             
-            <h2>Configuring the default value of the <code>renderLabel</code> attribute</h2>
+            <h2><a id="configuring_the_default_value_of_the">Configuring the default value of the</a><code>renderLabel</code> attribute</h2>
             <p>Strictly speaking, BootsFaces adds a second meaning to an attribute that already exists. Standard JSF uses<code>label</code>
             to decorate <code>&lt;h:message /&gt;</code>. In order to minimize confusion, we decided to deactivate
             the label rendering feature of BootsFaces by default. However, at the end of the day, it's your application.
@@ -799,7 +822,7 @@ public class DefaultValuesBean implements Serializable {
             </f:facet>
         </b:panel>
 
-       <h2>Responsive design <b:badge value="since 0.9.0" /></h2>
+       <h2><a id="responsive_design">Responsive design</a><b:badge value="since 0.9.0" /></h2>
         <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
         also with <code>&lt;b:inputText /&gt;</code>. Note that this is equivalent to putting it into a
         <code>&lt;b:column /&gt;</code>. In particular, the CSS styles are inside the column div. Responsive design only applies to horizontal forms.
@@ -913,7 +936,7 @@ or in an horizontal Form:
         </b:panel>
         
 
-        <h2>Visibility depending on screen size <b:badge value="since 0.8.6/0.9.0" /></h2>
+        <h2><a id="visibility_depending_on_screen_size">Visibility depending on screen size</a><b:badge value="since 0.8.6/0.9.0" /></h2>
         <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
         <br/>
         <b:panel title="Live preview" look="info" collapsible="false">            
@@ -942,15 +965,13 @@ or in an horizontal Form:
             </f:facet>
         </b:panel>
 
-        <h2>Tags <b:badge value="since 0.9.0" /></h2>
+        <h2><a id="tags">Tags</a><b:badge value="since 0.9.0" /></h2>
         <p>By setting the attribute <code>tags="true"</code> you can display the input values as tag - similar to
         <code>&lt;b:badge /></code> or to price tags in the supermarket. The tags are separated by commas. Users can
         separate tags either by tying a comma or by hitting the <code>return</code> key.</p>
         <p>We've dedicated a special <h:link outcome="inputTextWithTags.jsf">showcase page to the input text tags</h:link>.</p>
 
-		<a id="mask">
-        <h2>Mask <b:badge value="since 1.1.2" /></h2>
-        </a>
+        <h2><a id="mask">Mask</a><b:badge value="since 1.1.2" /></h2>
         <p>
             An input mask can be set using the <code>mask</code> attribute.
             Default masking definitions:
@@ -1066,7 +1087,7 @@ or in an horizontal Form:
                     </f:facet>
                 </b:panel>
         
-        <h2>Reference section</h2>
+        <h2><a id="reference_section">Reference section</a></h2>
             <ui:include src="InputTextAttributes.xhtml" />
 
         <b:panel look="info">

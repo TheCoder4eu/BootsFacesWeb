@@ -8,18 +8,33 @@
                 xmlns:hf="http://highfaces.org"
                 xmlns:p="http://primefaces.org/ui">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#integration_with_highfaces" value="Integration with HighFaces" />
+    <b:navLink href="#prerequisites" value="Prerequisites" />
+    <b:navLink href="#example" value="Example" />
+    <b:navLink href="#interactive_example" value="Interactive example" />
+  </b:listLinks>
+</ui:define>
+
+
     <ui:define name="content">
         <style>
             .ui-growl {position:fixed;top:80px}
         </style>
         <style>td {padding: 8px;}</style>
-        <h1>Integration with HighFaces</h1>
+        <h1><a id="integration_with_highfaces">Integration with HighFaces</a></h1>
         <p><a target="#" href="http://www.highfaces.org">HighFaces</a> is a small JSF library focusing on charts. 
             It's based on <a target="#" href="">Highcharts.js</a>. Note that HighFaces is published under
             an Apache V2 license, but the base library, Highcharts.js, is not. It's free for non-commercial
             use, but you have to buy a license for commercial use.</p>
 
-        <h2>Example</h2>
+        <h2><a id="prerequisites">Prerequisites</a></h2>
+        <p>HighFaces requires Mojarra. It's not compatible with MyFaces.</p>
+        
+
+        <h2><a id="example">Example</a></h2>
         <p>HighFaces works with BootsFaces out-of-the-box. Just add the library to your project,
             add the </p>
         <b:panel title="Live preview" look="info" collapsible="false">
@@ -121,7 +136,7 @@ public class Birth {
             </f:facet>
         </b:panel>
 
-        <h2>Interactive example</h2>
+        <h2><a id="interactive_example">Interactive example</a></h2>
         <p>The charts play well with the AJAX API of BootsFaces:</p>
         <b:panel title="Live preview" look="info" collapsible="false">
             <h:form>

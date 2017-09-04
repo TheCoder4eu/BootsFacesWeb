@@ -7,16 +7,30 @@
 	xmlns:b="http://bootsfaces.net/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#image" value="Image (&lt;b:image /&gt;)" />
+    <b:navLink href="#basic_usage" value="Basic usage" />
+    <b:navLink href="#progress_bar" value="Progress bar" />
+    <b:navLink href="#advanced_usage" value="Advanced usage" />
+    <b:navLink href="#don" value="Don't use both" />
+    <b:navLink href="#responsive_attributes" value="Responsive attributes" />
+    <b:navLink href="#reference_section" value="Reference section" />
+  </b:listLinks>
+</ui:define>
+
+
 	<ui:define name="content">
 		<style>
 td {
 	padding: 8px;
 }
 </style>
-		<h1>Image (&lt;b:image /&gt;) <b:badge value="since 0.8.0" /></h1>
+		<h1><a id="image">Image (&lt;b:image /&gt;)</a><b:badge value="since 0.8.0" /></h1>
 		<p>The <code>&lt;b:image /&gt;</code> component is just that: an image. Plus the unified AJAX engine of BootsFaces, and Bootstrap tooltips.</p>
 				
-		<h3>Basic usage</h3>
+		<h2><a id="basic_usage">Basic usage</a></h2>
         
         <b:panel title="Live preview" look="info" collapsible="false">
             <b:image name="test" value="../bootstrap/carousel/Valladolid-parque-3.jpg"  tooltip="Ain't he a beauty?" tooltipPosition="right"/>
@@ -50,7 +64,7 @@ td {
             </f:facet>
         </b:panel>
         
-        <h3>Progress bar</h3>
+        <h2><a id="progress_bar">Progress bar</a></h2>
         <p>Sometime your images load slowly. BootsFaces offers a JavaScript API tracking the progress. You can use it to implement 
         a progress bar. If you benefit from a fast internet connection, the example below is to fast to show a progress bar.
         However, you can track the progress by opening your browser's web developer tools: </p>
@@ -87,7 +101,7 @@ td {
         </b:panel>
         
         
-        <h3>Advanced usage</h3>
+        <h2><a id="advanced_usage">Advanced usage</a></h2>
         <p>You can use the standard JavaScript callbacks to call both JavaScript function and Java methods (via AJAX).
         See <a target="#" href="http://www.angularfaces.net/BootsFacesChess-1.0.0-SNAPSHOT/">BootsFaces chess</a>
          for a full-blown demo. These following demonstrate how BootsFaces chess uses AJAX to implement drag and drop:</p>
@@ -119,13 +133,13 @@ td {
                       
         </b:well>
 
-        <h1>Don't use both <code>value</code> and <code>name/library</code></h1>
+        <h1><a id="don">Don't use both</a><code>value</code> and <code>name/library</code></h1>
         <p>Until BootsFaces 0.8.5, there was an error in the documentation which lead some developers to use both
         <code>name</code> and <code>value</code>. Both attributes belong to different resource loading mechanisms,
         so this caused <code>RES_NOT_FOUND</code> errors. Since BootsFaces 0.8.6, the value attributes is evaluated first.
         If both attributes are provided, BootsFaces displays a warning in the logfile (only in the development stage).</p>
 
-        <h1>Responsive attributes <b:badge value="since 0.9.0" /></h1>
+        <h1><a id="responsive_attributes">Responsive attributes</a><b:badge value="since 0.9.0" /></h1>
         <p>The image supports the full range of responsive attributes, such as <code>col-*</code>, <code>visible</code>
         and <code>hidden</code>:</p>
         
@@ -155,7 +169,7 @@ td {
 
 
 
-        <h3>Reference section</h3>
+        <h2><a id="reference_section">Reference section</a></h2>
         <ui:include src="ImageAttributes.xhtml" />
 		<b:panel look="info">
 			<f:facet name="heading">
