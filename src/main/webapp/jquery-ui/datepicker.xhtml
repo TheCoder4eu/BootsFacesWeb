@@ -7,9 +7,21 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#date_picker" value="Date Picker" />
+    <b:navLink href="#mandatory_dates" value="Mandatory Dates" />
+    <b:navLink href="#responsive_design" value="Responsive design" />
+    <b:navLink href="#visibility_depending_on_screen_size" value="Visibility depending on screen size" />
+    <b:navLink href="#reference_section" value="Reference section" />
+  </b:listLinks>
+</ui:define>
+
+
              <ui:define name="content">
                 <style>td {padding: 8px;}</style>
-                <h1>Date Picker <b:badge value="deprecated since 1.1.0" /></h1>
+                <h1><a id="date_picker">Date Picker</a><b:badge value="deprecated since 1.1.0" /></h1>
                 <p>BootsFaces derives the Date Picker component from jQuery UI's widget because of its ease of use and its configurability.</p>
                 <p><b>Caveat:</b> There's a new component, the <code>&lt;b:dateTimePicker /&gt;</code>, that doesn't need jQueryUI.
                 We recommend to use the new component. The <code>&lt;b:datepicker&gt;</code> is considered deprecated and will be removed in 
@@ -161,7 +173,7 @@
                     </f:facet>
                 </b:modal>
 
-    <h2>Mandatory Dates <b:badge value="since 0.9.0" /></h2>
+    <h2><a id="mandatory_dates">Mandatory Dates</a><b:badge value="since 0.9.0" /></h2>
     <p>
       Datepickers support the
       <code>required</code>
@@ -209,7 +221,7 @@
       </b:tab>
     </b:tabView>
 
-    <h2>Responsive design <b:badge value="since 0.9.0" /></h2>
+    <h2><a id="responsive_design">Responsive design</a><b:badge value="since 0.9.0" /></h2>
         <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
         also with <code>&lt;b:datepicker /&gt;</code>. Note that this is equivalent to putting it into a
         <code>&lt;b:column /&gt;</code>. In particular, the CSS styles are inside the column div.
@@ -258,7 +270,7 @@
           </b:tab>
         </b:tabView>
 
-        <h2>Visibility depending on screen size <b:badge tooltip="since 0.8.6/0.9.0" /></h2>
+        <h2><a id="visibility_depending_on_screen_size">Visibility depending on screen size</a><b:badge tooltip="since 0.8.6/0.9.0" /></h2>
         <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
         <br/>
         <b:tabView>
@@ -300,7 +312,7 @@
         </b:tabView>
 
     <br/>
-                <h2>Reference section</h2>
+                <h2><a id="reference_section">Reference section</a></h2>
                 <ui:include src="DatepickerAttributes.xhtml" />
             <b:panel look="info">
 				<f:facet name="heading">

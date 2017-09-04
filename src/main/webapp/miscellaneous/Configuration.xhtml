@@ -7,16 +7,30 @@
                 xmlns:b="http://bootsfaces.net/ui"
                 xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#configuration_" value="Configuration:" />
+    <b:navLink href="#mobile_support" value="Mobile support" />
+    <b:navLink href="#themes" value="Themes" />
+    <b:navLink href="#use_your_own_version_of_jquery" value="Use your own version of jQuery, jQueryUI, FontAwesome, or Bootstrap instead of using the version BootsFaces brings" />
+    <b:navLink href="#activate_or_deactivate_the_blockui_features" value="Activate or deactivate the BlockUI features (aka waitcursor)" />
+    <b:navLink href="#suppress_the_automatic_rendering_of_labels" value="Suppress the automatic rendering of labels" />
+    <b:navLink href="#activate_the_bootsfaces_tag_decorator" value="Activate the BootsFaces tag decorator" />
+  </b:listLinks>
+</ui:define>
+
+
     <ui:define name="content">
         <style>
             td {
                 padding: 8px;
             }
         </style>
-        <h1>Configuration: <code>web.xml</code> and <code>faces-config.xml</code> </h1>
+        <h1><a id="configuration_">Configuration:</a><code>web.xml</code> and <code>faces-config.xml</code> </h1>
         <p>You can tweak the behaviour of BootsFaces by a couple of global parameters in the <code>web.xml</code>.</p>
 
-        <h3>Mobile support</h3>
+        <h2><a id="mobile_support">Mobile support</a></h2>
         <p>By default, BootsFaces adds a viewport meta tag needed for a smooth experience on mobile devices:</p>
         <p><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code></p>
         <p>However, if this setting stands in your way, you can deactivate it by setting the context parameter
@@ -34,7 +48,7 @@
         </b:well>
 
 
-        <h3>Themes</h3>
+        <h2><a id="themes">Themes</a></h2>
         <p><code>BootsFaces_THEME</code> selects the Bootstrap theme your application uses. Defaults to (guess what) "default". Legal values
         are the name of the theme, "default" or "custom". This expression may contain EL expressions. It is evaluated
         each time a page is rendered.
@@ -61,7 +75,7 @@
              ]]></script>
         </b:well>
 
-        <h3>Use your own version of jQuery, jQueryUI, FontAwesome, or Bootstrap instead of using the version BootsFaces brings</h3>
+        <h2><a id="use_your_own_version_of_jquery">Use your own version of jQuery, jQueryUI, FontAwesome, or Bootstrap instead of using the version BootsFaces brings</a></h2>
         <p>These parameters allow you to replace the built-in version of these libraries by your own libary.
         For instance, you might prefer to load it from a CDN (hence the name). Setting these parameters to true
         stops BootsFaces from adding them itself. You have to care about that yourself.
@@ -95,7 +109,7 @@
                 ]]></script>
         </b:well>
 
-        <h3>Activate or deactivate the BlockUI features (aka waitcursor)</h3>
+        <h2><a id="activate_or_deactivate_the_blockui_features">Activate or deactivate the BlockUI features (aka waitcursor)</a></h2>
         <p>By default, BlockUI is not activated. You have to activate it by adding a context parameter to the
         <code>web.xml</code>. This parameter may contain EL expressions. It is evaluated once each time a JSF
         page is rendered. This allows you to activate or deactivate it on a per-page basis.
@@ -111,7 +125,7 @@
                  </context-param>
                 ]]></script>
         </b:well>
-        <h3>Suppress the automatic rendering of labels</h3>
+        <h2><a id="suppress_the_automatic_rendering_of_labels">Suppress the automatic rendering of labels</a></h2>
         <p>By default, BootsFaces renders a label if your provide the <code>label</code> attribute of an input
         field. However, the <code>label</code> is also used for error messages, so sometimes you need more flexibility.
         You can deactivate rendering labels globally by setting <code>net.bootsfaces.defaults.renderLabel</code>
@@ -128,7 +142,7 @@
                  </context-param>
                  ]]></script>
         </b:well>
-        <h3>Activate the BootsFaces tag decorator</h3>
+        <h2><a id="activate_the_bootsfaces_tag_decorator">Activate the BootsFaces tag decorator</a></h2>
         <p>The BootsFaces tag decorator allows you to use a relaxed, HTML5-like coding style in your JSF pages.
         This feature is described in detail <a href="http://127.0.0.1:8080/BootsFacesWeb/layout/div.jsf">here</a>.
         To activate the feature, you have to register the decorator in the <code>web.xml</code>:

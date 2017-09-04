@@ -9,8 +9,18 @@
 </h:head>
 <h:body style="padding-top: 60px">
   <ui:composition template="/applayout/pageTemplate.xhtml">
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#reporting_messages" value="Reporting messages" />
+    <b:navLink href="#search_expressions" value="Search Expressions" />
+    <b:navLink href="#variables" value="Variables" />
+  </b:listLinks>
+</ui:define>
+
+
     <ui:define name="content">
-        <h1>Reporting messages <b:badge value="since 0.8.5" /></h1>
+        <h1><a id="reporting_messages">Reporting messages</a><b:badge value="since 0.8.5" /></h1>
         <p>BootsFaces offers a short-hand API to report <code>FacesMessages</code>:</p>
 
         <b:panel>
@@ -24,7 +34,7 @@
         </b:panel>
 
 
-        <h2>Search Expressions <b:badge value="since 1.0" /></h2>
+        <h2><a id="search_expressions">Search Expressions</a><b:badge value="since 1.0" /></h2>
         <p>You can assign a <code>FacesMessage</code> to a particular field by providing its id. Alternatively,
         you can use a search expression describing one or more fields. This comes in handy because the Java
         backend shouldn't know much about the implementation details of the front-end, at least not if you're
@@ -56,7 +66,7 @@
             ]]></script>
        </b:panel>
 
-      <h2>Variables <b:badge value="since 1.0" /></h2>
+      <h2><a id="variables">Variables</a><b:badge value="since 1.0" /></h2>
       <p>The search expression <code>@property</code> allows you to use the variable name to define the <code>FacesMessage</code>.
       More precicly, <code>@property</code> find the JSF component by its EL expression (without the curly braces):</p>
 

@@ -4,6 +4,31 @@
   xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:b="http://bootsfaces.net/ui"
   xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#datatable" value="DataTable (&lt;b:dataTable /&gt;)" />
+    <b:navLink href="#basic_usage" value="Basic usage" />
+    <b:navLink href="#buttons_and_row_classes" value="Buttons and row classes" />
+    <b:navLink href="#autocompletion_" value="Autocompletion:" />
+    <b:navLink href="#defining_the_content_cells" value="Defining the content cells" />
+    <b:navLink href="#defining_the_header" value="Defining the header" />
+    <b:navLink href="#customizing_the_table" value="Customizing the table" />
+    <b:navLink href="#sorting_input_fields" value="Sorting input fields" />
+    <b:navLink href="#fine" value="Fine-tuning search and sort order" />
+    <b:navLink href="#setting_the_initial_search_filter" value="Setting the initial search filter" />
+    <b:navLink href="#updating_a_datatable_with_ajax" value="Updating a datatable with AJAX" />
+    <b:navLink href="#internationalization" value="Internationalization" />
+    <b:navLink href="#custom_options" value="Custom options" />
+    <b:navLink href="#unified_ajax_and_javascript_api" value="Unified AJAX and JavaScript API" />
+    <b:navLink href="#responsiveness" value="Responsiveness" />
+    <b:navLink href="#empty_data_table_" value="Empty data table" />
+    <b:navLink href="#inputfields" value="Inputfields, command buttons and AJAX" />
+    <b:navLink href="#reference_section" value="Reference section" />
+  </b:listLinks>
+</ui:define>
+
+
   <ui:define name="content">
     <style>
 td {
@@ -17,7 +42,7 @@ td {
 }
 </style>
 
-    <h1>DataTable (&lt;b:dataTable /&gt;)<b:badge value="since 0.8.0" /><b:badge value="breaking changes in 0.9.0" style="margin-left:10px; background-color:#f2dede;color:red" /></h1>
+    <h1><a id="datatable">DataTable (&lt;b:dataTable /&gt;)</a><b:badge value="since 0.8.0" /><b:badge value="breaking changes in 0.9.0" style="margin-left:10px; background-color:#f2dede;color:red" /></h1>
     <p>
       The
       <code>&lt;b:dataTable &gt;</code>
@@ -35,7 +60,7 @@ td {
     BootsFaces generates a variable based on the id of the <code>&lt;b:dataTable &gt;</code>. Following the tradition
     of Angular and other popular JS frameworks, the kebab-case of the id translates to a camelCase widgetVar.</p>
 
-    <h3>Basic usage</h3>
+    <h2><a id="basic_usage">Basic usage</a></h2>
     <p>Getting started with the BootsFaces datatable is pretty easy. Basically, it support the same syntax as its
     standard JSF counterpart <code>&lt;h:dataTable /&gt;</code>, but is also supports a more compact syntax. The
     simplest way to define a column is to simply use the <code>value</code> attribute. If you don't set a
@@ -76,7 +101,7 @@ td {
         </f:facet>
     </b:panel>
     
-    <h3>Buttons and row classes</h3>
+    <h2><a id="buttons_and_row_classes">Buttons and row classes</a></h2>
     <p>There are a couple of pre-defined buttons to export the table as an Excel file, as a CSV file, as a PDF file, to copy it to the clipboard
     ot the print it.</p>
     <p>You can also add CSS classes to the rows using the attribute <code>row-style-class</code>. This attribute may contain an EL expression.
@@ -134,7 +159,7 @@ td {
     </b:panel>
     
    
-    <h3>Autocompletion: <code>h:column</code> vs. <code>b:dataTableColumn</code></h3>
+    <h2><a id="autocompletion_">Autocompletion:</a><code>h:column</code> vs. <code>b:dataTableColumn</code></h2>
     <p>BootsFaces supports a couple of attributes lacking in standard JSF. If you want to benefit from autocompletion,
     or if you're using a strict IDE like NetBeans, you'll want to use <code>&lt;b:dataTableColumn /&gt;</code>.
     We couldn't use <code>&lt;b:column /&gt;</code> because this widget is already used for the grid system. However,
@@ -142,7 +167,7 @@ td {
     <code>&lt;b:column /&gt;</code> with the extra attributes of BootsFaces.</p>
 
   
-    <h3>Defining the content cells</h3>
+    <h2><a id="defining_the_content_cells">Defining the content cells</a></h2>
     <p>You can either use the <code>value</code> attribute as seen above, or you can put arbitray JSF into the column.
     For instance, the example below shows how to put an input field into the column.</p>
     
@@ -237,7 +262,7 @@ td {
         </f:facet>
     </b:panel>
     
-    <h3>Defining the header</h3>
+    <h2><a id="defining_the_header">Defining the header</a></h2>
     <p>You can use either the attribute <code>label</code> of the column, or you can define a facet named <code>"header"</code>
     inside the column. The latter option gives you more flexibility, because you can put arbitrary JSF code in a header.
     The example above shows how it's done.</p>
@@ -312,7 +337,7 @@ td {
         </f:facet>
     </b:panel>
     
-    <h3>Customizing the table</h3>
+    <h2><a id="customizing_the_table">Customizing the table</a></h2>
     <p>The datatable has a couple of options to configure it. Some of them are shown in the example below.</p>
     
             <b:panel title="Live preview" look="info" collapsible="false">            
@@ -515,7 +540,7 @@ td {
             </f:facet>
         </b:panel>
 
-    <h3>Sorting input fields</h3>
+    <h2><a id="sorting_input_fields">Sorting input fields</a></h2>
     <p>By default, the data table only sorts plain text. If you want to sort input field, checkboxes or comboboxes,
     you have to tell the column which the data type of the input field is:</p>
         <b:panel>
@@ -528,7 +553,7 @@ td {
           </b:panel>
     <p>You can see the effect in the example above.</p>
     
-    <h3>Fine-tuning search and sort order</h3>
+    <h2><a id="fine">Fine-tuning search and sort order</a></h2>
     <p>Sometimes specifying the data type isn't enough. For instance, in the table above, the age is a string, consisting
     of a numeric value and a fixed string. Another example is the time shown in the commit history of GitHub: it displays
     not the real date, but user-friendly texts like "just now", "5 minutes ago" or "last month". In such as case, you can
@@ -557,7 +582,7 @@ td {
              ]]></script>
     </b:panel>
     
-    <h3>Setting the initial search filter</h3>
+    <h2><a id="setting_the_initial_search_filter">Setting the initial search filter</a></h2>
     <p>You can set an initial search filter by adding the attribute <code>search-value</code> to the <code>&lt;dataTableColumn /&gt;</code>.</p>
     <ul>
     <li><code>search-value="red"</code> set the initial search value to the string. You can test this feature in the 
@@ -583,7 +608,7 @@ td {
 	    </script>
 	</b:panel>
     
-    <h3>Updating a datatable with AJAX</h3>
+    <h2><a id="updating_a_datatable_with_ajax">Updating a datatable with AJAX</a></h2>
     <p>If you want to update a datatable by an AJAX request, you must destroy the datatable before sending the AJAX request.
     You can do this using the widget variable. Currently (BootsFaces 1.0), there's no attribute <code>widgetVar</code> yet,
     so you best find out the name of the widget var using the developer tools of the browser. Basically, the name of the
@@ -598,7 +623,7 @@ td {
     </script>
         </b:panel>
 
-    <h3>Internationalization</h3>
+    <h2><a id="internationalization">Internationalization</a></h2>
     <p>
       This example below shows how to use the i18n support of
       <code>&lt;b:dataTable &gt;</code>. For i18n there are three ways:
@@ -628,7 +653,7 @@ td {
 	     </li>
      </ul> 
     
-    <h3>Custom options</h3>
+    <h2><a id="custom_options">Custom options</a></h2>
     <p>The JavaScript dataTable widgets has quite a few options. It's almost impossible to cover them all by a JSF
     component (see <a target="#" href="https://datatables.net/reference/option/">https://datatables.net/reference/option/</a>).
     Therefore, you can pass <code>custom-options</code> to both the dataTable and to each column. These options are
@@ -749,7 +774,7 @@ td {
             </f:facet>
         </b:panel>
        
-    <h3>Unified AJAX and JavaScript API</h3>
+    <h2><a id="unified_ajax_and_javascript_api">Unified AJAX and JavaScript API</a></h2>
     <p>The datatable offers a couple of JavaScript and jQuery events you can use to call your own JavaScript or
     even your own bean method on the backend. Currently, the BootsFaces datatable offers only a subset of the
     events of the underlying JavaScript widget (see <a target="#" href="https://datatables.net/reference/event/">https://datatables.net/reference/event</a>).</p>
@@ -891,7 +916,7 @@ public class CarPool implements Serializable {
 	For instance, <code>onclick="ajax:onSelect(car)"</code> calls the Java method <code>onSelect(Car car)</code>, and <code>onclick="ajax:onSelect(indexes)"</code>
 	calles the Java method <code>onSelect(String indexes)</code>.</p>
 
-    <h3>Responsiveness</h3>
+    <h2><a id="responsiveness">Responsiveness</a></h2>
     <p>
       Like most BootsFaces components, the datatable supports the responsive attributes like <code>col-*</code>,
       <code>visible</code> and <code>hidden</code>. If you want to update the datatable by an AJAX request,
@@ -950,7 +975,7 @@ public class CarPool implements Serializable {
 
 
 
-    <h3>Empty data table:</h3>
+    <h2><a id="empty_data_table_">Empty data table:</a></h2>
     
             <b:panel title="Live preview" look="info" collapsible="false">            
 <b:dataTable value="#{carPool.emptyCarPool}"
@@ -978,7 +1003,7 @@ public class CarPool implements Serializable {
             </f:facet>
         </b:panel>
 
-  <h3>Inputfields, command buttons and AJAX <b:badge value="since 1.0" style="margin-left:10px;" /></h3>
+  <h2><a id="inputfields">Inputfields, command buttons and AJAX</a><b:badge value="since 1.0" style="margin-left:10px;" /></h2>
     <p>The BootsFaces datatable also supports input fields, buttons and AJAX calls.</p>
     <p>The next demo shows how to switch a cell between text-only and editable mode on a button click.
     Some users observed that this feature may modify the sort order (i.e. the editable row becomes the
@@ -1043,7 +1068,7 @@ public class CarPool implements Serializable {
             </f:facet>
         </b:panel>
        
-    <h3>Reference section</h3>
+    <h2><a id="reference_section">Reference section</a></h2>
     <ui:include src="DataTableAttributes.xhtml" />
         <ui:include src="DataTableColumnAttributes.xhtml" />
     <b:panel look="info" rendered="false">

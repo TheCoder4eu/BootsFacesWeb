@@ -7,8 +7,17 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#wells" value="Wells" />
+    <b:navLink href="#reference_section" value="Reference section" />
+  </b:listLinks>
+</ui:define>
+
+
             <ui:define name="content">
-                <h1>Wells</h1>
+                <h1><a id="wells">Wells</a></h1>
                 <p>Use the well as a simple effect on an element to give it an inset effect.</p>
 
                 <b:panel title="Live preview" look="info" collapsible="false">
@@ -38,6 +47,7 @@
                 </b:panel>
                 <br/>
 
+				<h2><a id="reference_section">Reference section</a></h2>
              <ui:include src="WellAttributes.xhtml" />
 
              <b:panel look="info">

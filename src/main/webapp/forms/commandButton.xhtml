@@ -3,13 +3,33 @@
 <ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
     xmlns:b="http://bootsfaces.net/ui" xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#commandbutton" value="CommandButton" />
+    <b:navLink href="#basic_usage" value="Basic usage" />
+    <b:navLink href="#the_bootstrap_look" value="The Bootstrap look" />
+    <b:navLink href="#ajax_and_javascript" value="AJAX and JavaScript" />
+    <b:navLink href="#ajax" value="AJAX, mouse events and BlockUI" />
+    <b:navLink href="#icons" value="Icons" />
+    <b:navLink href="#icon_modifiers" value="Icon modifiers" />
+    <b:navLink href="#custom_icons_and_arbitrary_content_of_a_command_button" value="Custom icons and arbitrary content of a command button" />
+    <b:navLink href="#partial_processing_with_ajax" value="Partial processing with AJAX" />
+    <b:navLink href="#parameters" value="Parameters" />
+    <b:navLink href="#responsive_design" value="Responsive design" />
+    <b:navLink href="#visibility_depending_on_screen_size" value="Visibility depending on screen size" />
+    <b:navLink href="#reference_section" value="Reference section" />
+  </b:listLinks>
+</ui:define>
+
+
         <ui:define name="content">
             <style>td {padding: 8px;}</style>
-            <h1>CommandButton</h1>
+            <h1><a id="commandbutton">CommandButton</a></h1>
                  <p>The <code>&lt;b:commandButton /&gt;</code> tag extends the standard <code>&lt;h:commandButton /&gt;</code> with <a href="ajax.jsf">AJAX</a><A></A>, partial processing features
                 and <a href="searchExpressions.jsf">improved search expressions</a>. Last not least, it adds the Bootstrap style.</p>
 
-                <h3>Basic usage</h3>
+                <h2><a id="basic_usage">Basic usage</a></h2>
                 <p>The BootsFaces command button is used similarly to the PrimeFaces command button:</p>
                 <b:panel>
                 <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
@@ -31,7 +51,7 @@
                 attribute to reduce the number of input fields sent to the server.</li>
  				</ul>
 
-                <h3>The Bootstrap look</h3>
+                <h2><a id="the_bootstrap_look">The Bootstrap look</a></h2>
                 <p>By default, command buttons are gray (depending on your theme). You can configure them by using a different look:</p>
                 
                 <b:panel title="Live preview" look="info" collapsible="false">            
@@ -68,7 +88,7 @@
                 
                
 
-                <h3>AJAX and JavaScript  <b:badge value="since 0.8.0" /></h3>
+                <h2><a id="ajax_and_javascript">AJAX and JavaScript</a><b:badge value="since 0.8.0" /></h2>
                 <p>The <code>&lt;b:commandButton &gt;</code> supports the full suite of JavaScript and AJAX events,
                 as described in <a href="ajax.jsf">the description of AJAX in BootsFaces</a>. Basically, each of the
                 many JavaScript callback handlers (the <code>on[event]</code> attributes) also supports AJAX.
@@ -151,13 +171,13 @@
                 <p>To get familiar with BootsFaces AJAX, try the
                 <a target="#" href="https://github.com/stephanrauh/BootsFaces-Examples/tree/master/AJAX">BootsFaces AJAX demo project</a>.</p>
 
-                <h2>AJAX, mouse events and BlockUI</h2>
+                <h2><a id="ajax">AJAX, mouse events and BlockUI</a></h2>
                 <p>If BlockUI is active, every AJAX request triggers a <code>mouseOutEvent</code>. When the AJAX request has
                 been processed and the BlockUI overlay pane is hidden, a <code>mouseOverEvent</code> is triggered. Keep this
                 in mind if you need to use the mouse events. We had to deactivate the BlockUI in order to make the demo above work.</p>
 
 
-                <h3>Icons</h3>
+                <h2><a id="icons">Icons</a></h2>
                 <p>
                     Like Buttons, also CommandButtons can can have an icon adding the attribute
                     <code>icon</code>
@@ -407,7 +427,7 @@
             </f:facet>
         </b:panel>
 
-            <h2>Icon modifiers <b:badge value="since 0.9.0" /></h2>
+            <h2><a id="icon_modifiers">Icon modifiers</a><b:badge value="since 0.9.0" /></h2>
             <p>Both Fontawesome icons and Glyphicons can be decorated with modifiers:</p>
             
             <b:panel title="Live preview" look="info" collapsible="false">            
@@ -470,7 +490,7 @@
             
             
 
-           <h2>Custom icons and arbitrary content of a command button</h2>
+           <h2><a id="custom_icons_and_arbitrary_content_of_a_command_button">Custom icons and arbitrary content of a command button</a></h2>
            <p>You can put arbitrary content in the caption of the command button.
            You aren't limited to simple icons and text.</p>
            
@@ -502,7 +522,7 @@
             </f:facet>
         </b:panel>
 
-            <h2>Partial processing with AJAX <b:badge value="since 0.8.0" /></h2>
+            <h2><a id="partial_processing_with_ajax">Partial processing with AJAX</a><b:badge value="since 0.8.0" /></h2>
             <p>The lower row of the example above shows partial processing. Sometimes you don't want to submit an entire form to the server.
             In our example you can't send the first name unless you've filled the last name, too, because of the constraint violation
             which prevents the values from being sent to the server. Partial submit allows you to send parts of the form to the server
@@ -555,7 +575,7 @@
                 </f:facet>
             </b:panel>
             
-            <h1>Parameters <b:badge value="improved since 1.0" /></h1>
+            <h1><a id="parameters">Parameters</a><b:badge value="improved since 1.0" /></h1>
             <p>You can pass parameters to <code>&lt;b:commandButton /&gt;</code> in three different ways:</p>
             <ul>
             	<li>Pass it as an EL expression using the BootsFaces AJAX approach: &lt;b:commandButton onclick="ajax:myBean.myMethod(42);"</li>
@@ -602,7 +622,7 @@
             </b:panel>
 
         <a id="responsive" />
-        <h2>Responsive design <b:badge value="since 0.9.0" /> <b:badge value="breaking change in 1.1.0" /></h2>
+        <h2><a id="responsive_design">Responsive design</a><b:badge value="since 0.9.0" /> <b:badge value="breaking change in 1.1.0" /></h2>
         <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
         also with <code>&lt;b:commandButton /&gt;</code>. Note that this is equivalent to putting it into a
         <code>&lt;b:column /&gt;</code>. In particular, the the CSS styles are inside the column div.
@@ -657,7 +677,7 @@
             </f:facet>
         </b:panel>
        
-        <h2>Visibility depending on screen size <b:badge value="since 0.8.6/0.9.0" /></h2>
+        <h2><a id="visibility_depending_on_screen_size">Visibility depending on screen size</a><b:badge value="since 0.8.6/0.9.0" /></h2>
         <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
         
         <b:panel title="Live preview" look="info" collapsible="false">            
@@ -705,7 +725,7 @@
             </f:facet>
         </b:panel>
              
-             <h2>Reference section</h2>
+             <h2><a id="reference_section">Reference section</a></h2>
              <ui:include src="CommandButtonAttributes.xhtml" />
              <b:panel look="info">
 				<f:facet name="heading">

@@ -8,12 +8,21 @@
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:p="http://primefaces.org/ui">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#define_your_own_search_expressions" value="define your own search expressions" />
+    <b:navLink href="#step" value="step-by-step tutorial" />
+  </b:listLinks>
+</ui:define>
+
+
         <ui:define name="content">
-            <h1>Define your own Search Expressions <b:badge value="since 0.8.0" /></h1>
+            <h1><a id="define_your_own_search_expressions">Define your own Search Expressions</a><b:badge value="since 0.8.0" /></h1>
                 <p>It's fairly easy to define your own custom search expression. You create a class implementing 
                 a certain interface und call it just like the search expression. That's it!</p>
                 
-                <h2>Step-by-step tutorial</h2>
+                <h2><a id="step">Step-by-step tutorial</a></h2>
                 <p>BootsFaces uses a convention over configuration approach to define search expressions. The class
                 implementing the search expression must be in the package <code>net.bootsfaces.expressions</code>.
                 The name of the class is the name of the search expression, plus the suffix <code>ExpressionResolver</code>.

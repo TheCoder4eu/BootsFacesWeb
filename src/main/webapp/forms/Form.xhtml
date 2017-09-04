@@ -7,16 +7,27 @@
 	xmlns:b="http://bootsfaces.net/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#form" value="Form and FormGroup" />
+    <b:navLink href="#basic_usage" value="Basic usage" />
+    <b:navLink href="#b_formgroup" value="&lt;b:formGroup /&gt;" />
+    <b:navLink href="#reference_section" value="Reference section" />
+  </b:listLinks>
+</ui:define>
+
+
 	<ui:define name="content">
 		<style>
 td {
 	padding: 8px;
 }
 </style>
-		<h1>Form (&lt;b:form /&gt;) <b:badge value="since 1.0" /> and FormGroup <b:badge value="since 1.1.0" /></h1>
+		<h1><a id="form">Form (&lt;b:form /&gt;) <b:badge value="since 1.0" /> and FormGroup <b:badge value="since 1.1.0" /></a></h1>
 		<p>The <code>&lt;b:form&gt;</code> tag is an enhanced version of <code>&lt;h:form&gt;</code>.</p>
 
-		<h2>Basic usage</h2>
+		<h2><a id="basic_usage">Basic usage</a></h2>
 		<p>The <code>&lt;b:form&gt;</code> tag inherits all the <code>&lt;h:form&gt;</code> attributes and behavior plus some Bootstrap specific attributes.</p>
 		<p>With Bootstrap you can have three kind of layouts for your forms:</p>
 		<ul>
@@ -36,13 +47,14 @@ td {
 					new horizontal or inline forms.</li>
 		</ul>
 		
-		<h2>&lt;b:formGroup /&gt;</h2>
+		<h2><a id="b_formgroup">&lt;b:formGroup /&gt;</a></h2>
 		<p>If you want to put muliple JSF elements into the same line of a horizontal form, you need to add a
 		<code>&lt;b:formGroup /&gt;</code>. Otherwise, BootsFaces generates a <code>form-group</code> <code>div</code>
 		for each component, thus ruining the layout.
 		</p>
 		
 
+		<h2><a id="reference_section">Reference section</a></h2>
 		<ui:include src="FormAttributes.xhtml" />
 		<b:panel look="info">
 			<f:facet name="heading">

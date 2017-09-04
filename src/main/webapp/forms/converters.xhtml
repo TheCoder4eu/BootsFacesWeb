@@ -11,8 +11,17 @@
     </h:head>
 <h:body style="padding-top: 60px">
   <ui:composition template="/applayout/pageTemplate.xhtml">
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#jsf_converters" value="JSF converters" />
+    <b:navLink href="#converter_demo" value="Converter demo" />
+  </b:listLinks>
+</ui:define>
+
+
     <ui:define name="content">
-      <h1>JSF converters <b:badge value="Since 1.1.0" /></h1>
+      <h1><a id="jsf_converters">JSF converters</a><b:badge value="Since 1.1.0" /></h1>
       <p>Most form widgets of BootsFaces support the JSF converters. For some reason, this feature
       has been added to BootsFaces late, so chances are we've missed a component. If you encounter
       such a component, please open a but report at 
@@ -20,7 +29,7 @@
       <p>Converters are used the way you're used from standard JSF: either by defining a <code>&lt;f:converter /&gt;</code> tag,
       or by providing the id of the converter with the <code>converter</code> attribute of the input field.</p>
  
-        <h1>Converter demo</h1>
+        <h1><a id="converter_demo">Converter demo</a></h1>
         
         
         <b:panel title="Live preview" look="info" collapsible="false">

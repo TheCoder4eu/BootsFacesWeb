@@ -7,6 +7,20 @@
                 xmlns:b="http://bootsfaces.net/ui"
                 xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#tree" value="Tree" />
+    <b:navLink href="#basic_usage" value="Basic usage" />
+    <b:navLink href="#know_bugs_and_limitations" value="Know bugs and limitations" />
+    <b:navLink href="#advanced_usage" value="Advanced usage" />
+    <b:navLink href="#nodes_with_hyperlinks" value="Nodes with hyperlinks" />
+    <b:navLink href="#limiting_the_height_of_the_tree" value="Limiting the height of the tree" />
+    <b:navLink href="#reference_section" value="Reference section" />
+  </b:listLinks>
+</ui:define>
+
+
     <ui:define name="content">
         <style>
             td {
@@ -16,7 +30,7 @@
                 max-width: none !important;
             }
         </style>
-        <h1>Tree <b:badge value="incubating / since 0.8.5" /></h1>
+        <h1><a id="tree">Tree</a><b:badge value="incubating / since 0.8.5" /></h1>
         <p>
             Use <code>b:tree</code> to obtain a Tree component with basic functionalities.
             It's based on the <a target="#" href="https://github.com/jonmiles/bootstrap-treeview">Bootstrap treeview written by Jon Miles</a>,
@@ -28,7 +42,7 @@
         <p>Currently, the Tree component does not mantain its state so, if you refresh the
             page, the tree resets to its initial state. This happens because the
             component is rendered only client-side.</p>
-        <h3>Basic usage</h3>
+        <h2><a id="basic_usage">Basic usage</a></h2>
 
         <b:tabView activeIndex="1">
             <b:tab title="JSF markup">
@@ -57,7 +71,7 @@
             </b:tab>
         </b:tabView>
         <br/>
-        <h3>Know bugs and limitations</h3>
+        <h2><a id="know_bugs_and_limitations">Know bugs and limitations</a></h2>
             <ul>
             <li>You must put the tree into a <code>&lt;h:form /&gt;</code> tag. That's because
             it's able to perform AJAX calls.</li>
@@ -71,7 +85,7 @@
             <br/>
         </p>
 
-        <h3>Advanced usage</h3>
+        <h2><a id="advanced_usage">Advanced usage</a></h2>
         <p>In this case, we have defined a nodeSelectionListener that listen to selection and check events</p>
 
         <b:tabView activeIndex="1">
@@ -173,14 +187,14 @@
         </b:tabView>
         <br/>
         
-        <h2>Nodes with hyperlinks</h2>
+        <h2><a id="nodes_with_hyperlinks">Nodes with hyperlinks</a></h2>
         <p>If you click on one of the nodes in the example above, the page reloads. That's not a bug. It only shows what happens
         if you enable hyperlinks (<code>enableLinks="true"</code>) without provided an <code>href</code> attribute in the tree model.
         The node called "child 4" has an hyperlink pointing to the Italian Google search. The other nodes simply generate
         a default <code>href="#"</code>, causing the page to reload.
         </p>
 
-        <h2>Limiting the height of the tree</h2>
+        <h2><a id="limiting_the_height_of_the_tree">Limiting the height of the tree</a></h2>
         <p>Trees tends to become large if fully expanded. You can limit the height of the tree using an CSS class or an CSS inline style:</p>
         <b:tabView activeIndex="1">
             <b:tab title="JSF markup">
@@ -212,7 +226,7 @@
         </b:tabView>
 
 
-        <h2>Reference section</h2>
+        <h2><a id="reference_section">Reference section</a></h2>
         <ui:include src="TreeAttributes.xhtml" />
         <b:panel look="info" rendered="false">
             <f:facet name="heading">

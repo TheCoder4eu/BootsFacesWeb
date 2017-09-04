@@ -7,13 +7,22 @@
 	xmlns:b="http://bootsfaces.net/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#fly" value="Fly-out menu" />
+    <b:navLink href="#reference_section" value="Reference section" />
+  </b:listLinks>
+</ui:define>
+
+
 	<ui:define name="content">
 		<style>
 td {
 	padding: 8px;
 }
 </style>
-		<h1>Fly-out menu</h1>
+		<h1><a id="fly">Fly-out menu</a></h1>
 		<p>The fly-out menu is a hierarchical menu that puts the sub-menus
 			to the right-hand side of the parent menu. They "fly out" of the
 			parent menu.</p>
@@ -79,7 +88,7 @@ td {
             </f:facet>
         </b:panel>
         
-		<h2>Reference section</h2>
+		<h2><a id="reference_section">Reference section</a></h2>
 		<ui:include src="FlyOutMenuAttributes.xhtml" />
 		<b:panel look="info" rendered="false">
 			<f:facet name="heading">

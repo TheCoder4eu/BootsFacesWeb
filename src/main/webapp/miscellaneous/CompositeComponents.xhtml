@@ -8,17 +8,26 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:cc="http://java.sun.com/jsf/composite/customComponents">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#composite_components" value="Composite Components" />
+    <b:navLink href="#custom_components_in_a_data_table" value="Custom components in a data table" />
+  </b:listLinks>
+</ui:define>
+
+
 	<ui:define name="content">
 		<style>
 td {
 	padding: 8px;
 }
 </style>
-		<h1>Composite Components<b:badge value="since 1.0.1" /></h1>
+		<h1><a id="composite_components">Composite Components</a><b:badge value="since 1.0.1" /></h1>
 
 		<p>BootsFaces supports Composite Components, too.</p>
 		
-		<h1>Custom components in a data table</h1>
+		<h1><a id="custom_components_in_a_data_table">Custom components in a data table</a></h1>
 
        
         

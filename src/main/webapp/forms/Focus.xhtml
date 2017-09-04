@@ -7,16 +7,27 @@
                 xmlns:b="http://bootsfaces.net/ui"
                 xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#focus" value="Focus (&lt;b:focus /&gt;)" />
+    <b:navLink href="#basic_usage" value="Basic usage" />
+    <b:navLink href="#search_expressions" value="Search expressions" />
+    <b:navLink href="#reference_section" value="Reference section" />
+  </b:listLinks>
+</ui:define>
+
+
     <ui:define name="content">
         <style>
             td {
                 padding: 8px;
             }
         </style>
-        <h1>Focus (&lt;b:focus /&gt;)</h1>
+        <h1><a id="focus">Focus (&lt;b:focus /&gt;)</a></h1>
 
         <p><code>&lt;b:focus&gt;</code> allows you to define the field that gets the input focus when the page is loaded.</p>
-        <h1>Basic usage</h1>
+        <h1><a id="basic_usage">Basic usage</a></h1>
         <p>Simply add <code>&lt;b:focus target="someId" &gt;</code> somewhere in your JSF page. The input field bearing this
             id gets the input focus. The attribute <code>target</code> may also contain a search expression, as long as it
             results in a unique id.</p>
@@ -50,7 +61,7 @@
             </f:facet>
         </b:panel>
 
-       <h1>Search expressions</h1>
+       <h1><a id="search_expressions">Search expressions</a></h1>
         <p><code>&lt;b:focus /&gt;</code> also works with search expressions. This may allow you to get rid of the ids.</p>
          
         <b:panel title="Live preview" look="info" collapsible="false">            
@@ -74,7 +85,8 @@
             </f:facet>
         </b:panel>
 
-        <ui:include src="FocusAttributes.xhtml" />
+  		<h2><a id="reference_section">Reference section</a></h2>
+      <ui:include src="FocusAttributes.xhtml" />
 
         <script type="text/javascript">
             SyntaxHighlighter.all();
