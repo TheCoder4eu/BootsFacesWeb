@@ -8,13 +8,30 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#b_message" value="&lt;b:message /&gt;" />
+    <b:navLink href="#to_escape_or_not_to_escape" value="To escape or not to escape" />
+    <b:navLink href="#b_messages" value="&lt;b:messages /&gt;" />
+    <b:navLink href="#b_messages___the" value="&lt;b:messages /&gt;: the for attribute" />
+    <b:navLink href="#separators_between_messages" value="Separators between messages" />
+    <b:navLink href="#multiple_messages_and" value="Multiple messages" />
+    <b:navLink href="#responsive_design" value="Responsive design" />
+    <b:navLink href="#visibility_depending_on_screen_size" value="Visibility depending on screen size" />
+    <b:navLink href="#severity" value="Severity" />
+    <b:navLink href="#reference_section" value="Reference section" />
+  </b:listLinks>
+</ui:define>
+
+
 	<ui:define name="content">
 		<style>
 td {
 	padding: 8px;
 }
 </style>
-	<h1>&lt;b:message /&gt; <b:badge value="since 0.8.1" /></h1>
+	<h1><a id="b_message">&lt;b:message /&gt;</a><b:badge value="since 0.8.1" /></h1>
     <p>Displays the <code>FacesMessages</code> of a single field in Bootstrap style. Use the <code>for</code> attribute to indicate
     which input field the <code>&lt;b:message &gt;</code> refers to. If the <code>&lt;b:message &gt;</code> immediately
     follows the input field, you can omit the <code>for</code> attribute: the default value of <code>for</code>
@@ -109,7 +126,7 @@ td {
              </b:tab>
         </b:tabView>
 
-        <h1>To escape or not to escape <b:badge value="since 0.8.5" /></h1>
+        <h1><a id="to_escape_or_not_to_escape">To escape or not to escape</a><b:badge value="since 0.8.5" /></h1>
         <p>By public demand, we've added the <code>escape</code> attribute. It allows you to add HTML tags in your
         messages. Please note that this might be a security issue. You're responsible to make sure that
         hackers do not enter JavaScript code and have it executed when the page is rendered later. Therefore,
@@ -117,7 +134,7 @@ td {
         for the first time. This message can't be deactivated. We know that using HTML tags in your error messages
         is a useful features, but at the same time we want to make sure you're aware of the risk.</p>
 
-        <h1>&lt;b:messages /&gt; <b:badge value="since 0.7" /></h1>
+        <h1><a id="b_messages">&lt;b:messages /&gt;</a><b:badge value="since 0.7" /></h1>
 		<p>Displays <code>FacesMessages</code> in Bootstrap style.</p>
 
          <b:tabView activeIndex="1"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
@@ -149,7 +166,7 @@ td {
           </b:tab>
         </b:tabView>
 
-        <h1>&lt;b:messages /&gt;: the <code>for</code> attribute <b:badge value="since 0.9.0" /></h1>
+        <h1><a id="b_messages___the">&lt;b:messages /&gt;: the</a><code>for</code> attribute <b:badge value="since 0.9.0" /></h1>
         <p>The <code>for</code> attribute of BootsFaces is more flexible than the <code>for</code> of <code>h:messages</code>.
         You can use it to limit the list of error messages to a certain form. More precisely, you can show every
         error message of an arbitrary component and its children. To use this feature you have to set a second
@@ -195,7 +212,7 @@ td {
         </h:form>
 
 
-        <h1>Separators between messages <b:badge value="since 0.8.5" /></h1>
+        <h1><a id="separators_between_messages">Separators between messages</a><b:badge value="since 0.8.5" /></h1>
         <p>By default, the <code>&lt;b:message &gt;</code> tag separates multiple messages of a single input field
         with a <code>&lt;br /&gt;</code> tag. You can switch off this feature by setting <code>line-break="false"</code>,
         or you can customizing it by providing an arbitrary HTML snippet. Note that this snippet has to be escaped:</p>
@@ -252,7 +269,7 @@ td {
           </b:tabView>
         </h:form>
 
-        <h1>Multiple messages and <code>&lt;b:message /&gt;</code> <b:badge value="since 0.9.0" /></h1>
+        <h1><a id="multiple_messages_and">Multiple messages and</a><code>&lt;b:message /&gt;</code> <b:badge value="since 0.9.0" /></h1>
         <p>Standard JSF defines that <code>&lt;h:message /&gt;</code> displays only a single message. If there are
         multiple messages, a random message is displayed. By default, BootsFaces always displays every message
         that has been reported for the associated component. However, some developers need to be able to display
@@ -285,7 +302,7 @@ td {
           </b:tabView>
         </h:form>
 
-       <h2>Responsive design <b:badge value="since 1.1.0" /></h2>
+       <h2><a id="responsive_design">Responsive design</a><b:badge value="since 1.1.0" /></h2>
         <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
         also with <code>&lt;b:messages /&gt;</code>. Note that this is equivalent to putting it into a
         <code>&lt;b:column /&gt;</code>. In particular, the CSS styles are inside the column div.
@@ -336,7 +353,7 @@ td {
 	        </b:tabView>
         </h:form>
 
-        <h2>Visibility depending on screen size <b:badge value="since 1.1.0" /></h2>
+        <h2><a id="visibility_depending_on_screen_size">Visibility depending on screen size</a><b:badge value="since 1.1.0" /></h2>
         <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
         <br/>
         <h:form>
@@ -379,7 +396,7 @@ td {
 	        </b:tabView>
         </h:form>
 
-        <h2>Severity <b:badge value="since 1.1.2" /></h2>
+        <h2><a id="severity">Severity</a><b:badge value="since 1.1.2" /></h2>
         <p>
           You can filter the severities shown using the <code>severity</code> attribute.
           The attribute takes one or more comma separated lower case severity names.
@@ -427,7 +444,7 @@ td {
         </h:form>
 
         <br/>
-            <h2>Reference section</h2>
+            <h2><a id="reference_section">Reference section</a></h2>
             <ui:include src="MessageAttributes.xhtml" />
             <b:panel look="info" rendered="true">
             	<f:facet name="heading">

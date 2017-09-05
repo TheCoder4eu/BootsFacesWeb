@@ -6,8 +6,17 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#jumbotron" value="Jumbotron" />
+    <b:navLink href="#reference_section" value="Reference section" />
+  </b:listLinks>
+</ui:define>
+
+
             <ui:define name="content">
-                <h1>Jumbotron</h1>
+                <h1><a id="jumbotron">Jumbotron</a></h1>
                 <p>A lightweight, flexible component that can optional extend the entire viewport to showcase key content on your site.</p>
                 <p>To make the jumbotron full width, don't include it within a <code>b:container</code>. </p>
                 <p>Placing it within a container will keep it at the width of the rest of your content and provides rounded corners.</p>
@@ -31,7 +40,7 @@
                 </b:panel>
 
                 <br/>
-                <h2>Reference section</h2>
+                <h2><a id="reference_section">Reference section</a></h2>
                 <ui:include src="JumbotronAttributes.xhtml" />
                 <b:panel look="info" rendered="false">
 					<f:facet name="heading">

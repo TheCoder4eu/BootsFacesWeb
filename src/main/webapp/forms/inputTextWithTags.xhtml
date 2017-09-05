@@ -6,17 +6,31 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#inputtext_with_tags_and__or_typeahead" value="InputText with tags and / or typeahead (aka autocompletion)" />
+    <b:navLink href="#known_issues" value="Known issues" />
+    <b:navLink href="#tags__basic_usage" value="Tags: Basic usage" />
+    <b:navLink href="#simple_typeahead" value="Simple typeahead" />
+    <b:navLink href="#how_to_define_the_list_of_possible_values" value="How to define the list of possible values" />
+    <b:navLink href="#type_ahead_with_tags" value="Type ahead with tags" />
+    <b:navLink href="#reference_section" value="Reference section" />
+  </b:listLinks>
+</ui:define>
+
+
       <ui:define name="content">
         <style>td {padding: 8px;}</style>
 
         <h:form>
-          <h1>InputText with tags and / or typeahead (aka autocompletion) <b:badge value="since 0.9.0" /></h1>
+          <h1><a id="inputtext_with_tags_and__or_typeahead">InputText with tags and / or typeahead (aka autocompletion)</a><b:badge value="since 0.9.0" /></h1>
           <p>You can design your input texts more fancy by decorating them with little tags. Note that this is a late
           addition to <code>&lt;b:inputText /></code>. Most features of the basic input text component should work
           with the tags extension, but there's no guarantee. However, the alternative was to make it a component of
           its own, which seemed like overkill to us.</p>
 
-          <h2>Known issues</h2>
+          <h2><a id="known_issues">Known issues</a></h2>
           <p>The tag extension and the typeahead extension are recent additions. They are fully functional, but there
           are still a few known issues.</p>
           <ul>
@@ -40,7 +54,7 @@
           implemented the BootsFaces API. Currently you're limited to a fixed list of entries.</li>
           </ul>
 
-          <h2>Tags: Basic usage</h2>
+          <h2><a id="tags__basic_usage">Tags: Basic usage</a></h2>
           <p>By setting the attribute <code>tags="true"</code> you can display the input values as tag - similar to
           <code>&lt;b:badge /></code> or to price tags in the supermarket. The tags are separated by commas. Users can
           separate tags either by tying a comma or by hitting the <code>return</code> key.</p>
@@ -95,7 +109,7 @@
             </f:facet>
         </b:panel>
           
-         <h2>Simple typeahead</h2>
+         <h2><a id="simple_typeahead">Simple typeahead</a></h2>
           <p>By setting the attribute <code>tags="true"</code> you can display the input values as tag - similar to
           <code>&lt;b:badge /></code> or to price tags in the supermarket. The tags are separated by commas. Users can
           separate tags either by tying a comma or by hitting the <code>return</code> key.</p>
@@ -183,7 +197,7 @@
             </f:facet>
         </b:panel>
            
-           <h2>How to define the list of possible values</h2>
+           <h2><a id="how_to_define_the_list_of_possible_values">How to define the list of possible values</a></h2>
            <p>The example above show the three options to define the list of possible values:</p>
            <ul>
            	 <li><code>typeahead-values</code> may be a comma separated string.</li>
@@ -192,7 +206,7 @@
            </ul>
            
 
-        <h2>Type ahead with tags</h2>
+        <h2><a id="type_ahead_with_tags">Type ahead with tags</a></h2>
           <p>You can also combine tags and typeahead.</p>
           <p>Using tags and typeahead at the same time requires
           <a target="#" href="https://github.com/twitter/typeahead.js/blob/master/doc/bloodhound.md">Bloodhound</a>,
@@ -270,7 +284,7 @@
             </f:facet>
         </b:panel>
 
-              <h2>Reference section</h2>
+              <h2><a id="reference_section">Reference section</a></h2>
                   <ui:include src="InputTextAttributes.xhtml" />
 
               <b:panel look="info">

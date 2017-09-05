@@ -7,16 +7,26 @@
         xmlns:b="http://bootsfaces.net/ui"
         xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#kebab" value="Kebab (&lt;b:kebab /&gt;)" />
+    <b:navLink href="#basic_usage" value="Basic usage" />
+    <b:navLink href="#reference_section" value="Reference section" />
+  </b:listLinks>
+</ui:define>
+
+
         <ui:define name="content">
                 <style>
 td {
         padding: 8px;
 }
 </style>
-                <h1>Kebab (&lt;b:kebab /&gt;)</h1>
+                <h1><a id="kebab">Kebab (&lt;b:kebab /&gt;)</a></h1>
 
                 <p><code>&lt;b:kebab&gt;</code> are similar to DropMenu and support the same feature set.</p>
-                <h1>Basic usage</h1>
+                <h1><a id="basic_usage">Basic usage</a></h1>
                 <p>Kebabs are rendered as three vertical dots and will show a overflow menu when clicked.
                 The example below shows both the kebab menu, and what it looks like if it's content is disabled by setting <code>content-disabled="true"</code>:</p>
                 
@@ -131,7 +141,7 @@ td {
                 </b:panel>
                 <br/>
 
-<hr />
+		<h2><a id="reference_section">Reference section</a></h2>
                 <ui:include src="KebabAttributes.xhtml" />
                 <b:panel look="info">
                         <f:facet name="heading">

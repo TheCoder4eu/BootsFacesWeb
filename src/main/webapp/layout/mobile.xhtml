@@ -6,6 +6,16 @@
         xmlns:b="http://bootsfaces.net/ui"
         xmlns:ui="http://java.sun.com/jsf/facelets">
    
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#mobile_first" value="Mobile first!" />
+    <b:navLink href="#disabling_the_standard_setting" value="Disabling the standard setting" />
+    <b:navLink href="#overriding_the_viewport" value="Overriding the viewport" />
+  </b:listLinks>
+</ui:define>
+
+
  <ui:define name="content">
     <style>
         .show-grid [class^="col-"] {
@@ -18,13 +28,13 @@
         //Needed for TBS 3.0.1 (panel content overflow issue)
         .panel-body { margin: 0px 15px; }
     </style>
-    <h1>Mobile first! <b:badge value="since 0.8.5" /></h1>
+    <h1><a id="mobile_first">Mobile first!</a><b:badge value="since 0.8.5" /></h1>
     <p>BootsFaces targets both desktop and mobile platforms. In previous versions, developers faced difficulties
     because they weren't aware of the viewport meta tag. Since BootsFaces 0.8.5, this meta tag is added automatically
     to every BootsFaces page. It defaults to <code>width=device-width, initial-scale=1</code>.
     </p>
     
-    <h2>Disabling the standard setting</h2>
+    <h2><a id="disabling_the_standard_setting">Disabling the standard setting</a></h2>
     If you don't want a meta viewport tag at all, you can disable this behaviour by setting its context paramater to <code>false</code>.
     
     <b:panel>
@@ -39,7 +49,7 @@
     </b:panel>
     
     
-    <h2>Overriding the viewport</h2>
+    <h2><a id="overriding_the_viewport">Overriding the viewport</a></h2>
     <p>If you need a different viewport setting, simply add it to your <code>&lt;h:head&gt;</code> tag. BootsFaces adds
     the default viewport setting at the beginning of the HTML file, ensuring you can override it.</p>
    
