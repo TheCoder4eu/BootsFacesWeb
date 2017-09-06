@@ -6,6 +6,24 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#navlinks_and_navcommandlinks" value="NavLinks and NavCommandLinks" />
+    <b:navLink href="#tablinks" value="TabLinks" />
+    <b:navLink href="#pill_links" value="Pill links" />
+    <b:navLink href="#solitary_navlinks" value="Solitary navLinks" />
+    <b:navLink href="#opening_a_modal_dialog_in_a_navlink" value="Opening a modal dialog in a NavLink" />
+    <b:navLink href="#arbitrary_content_in_a" value="Arbitrary content in a" />
+    <b:navLink href="#icons_and_icon_modifiers" value="Icons and icon modifiers" />
+    <b:navLink href="#ajax" value="AJAX" />
+    <b:navLink href="#using_b_navlink_with_ajax" value="Using b:navLink with AJAX" />
+    <b:navLink href="#using_b_navcommandlink_with_ajax" value="Using b:navCommandLink with AJAX" />
+    <b:navLink href="#reference_section" value="Reference section" />
+  </b:listLinks>
+</ui:define>
+
+
              <ui:define name="content">
                 <style>
                     .panel-body .divider {
@@ -17,7 +35,7 @@
                     .panel-body .dropdown-header { padding: 3px 15px; }
                 </style>
 
-                <h1>NavLinks and NavCommandLinks</h1>
+                <h1><a id="navlinks_and_navcommandlinks">NavLinks and NavCommandLinks</a></h1>
                 <p>The NavLink is a very versatile component you can use for different purposes.</p>
                 <p>The <code>b:navLink</code> tag is a more powerful version of the standard JSF <code>h:link</code> tag.</p>
                 <p>This means that you can use the <code>outcome</code>, <code>fragment</code> and <code>href</code> attributes.</p>
@@ -147,7 +165,7 @@
                     </f:facet>
                 </b:panel>
 
-                <h2>TabLinks <b:badge value="since 0.8.5" /></h2>
+                <h2><a id="tablinks">TabLinks</a><b:badge value="since 0.8.5" /></h2>
                 <p><code>&lt;b:tabLinks /&gt;</code> comes in handy if you want to render a tab strip, but don't want to use
                 a <code>&lt;b:tabView /&gt;</code>. The example below renders five hyperlinks as <code>&lt;b:navLink /&gt;</code>
                 or <code>&lt;b:navCommandLink /&gt;</code>. The result looks like an ordinary <code>&lt;b:tabView /&gt;</code>,
@@ -197,7 +215,7 @@
                 <br />
 
 
-                <h2>Pill links <b:badge value="since 0.8.5" /></h2>
+                <h2><a id="pill_links">Pill links</a><b:badge value="since 0.8.5" /></h2>
                 <p>The <code>&lt;b:pillLinks /&gt;</code> component resembles the <code>&lt;b:tabLinks /&gt;</code>
                 component, but the layout is slightly different.</p>
                   <b:panel title="Live preview" look="info" collapsible="false">
@@ -244,7 +262,7 @@
                 <br />
 
 
-                <h2>Solitary navLinks</h2>
+                <h2><a id="solitary_navlinks">Solitary navLinks</a></h2>
                 <p>A <code>&lt;b:navLink /&gt;</code> can also be used as a solitary component. In that case,
                 it's replaces an ordinary <code>&lt;h:link /&gt;</code>. Similary, a <code>&lt;b:navCommandlink /&gt;</code>
                 can be used in place of an <code>&lt;h:commandLink /&gt;</code>. Note that the HTML code renders
@@ -303,7 +321,7 @@
                 </b:panel>
                 <br />
 
-				<h2>Opening a modal dialog in a NavLink</h2>
+				<h2><a id="opening_a_modal_dialog_in_a_navlink">Opening a modal dialog in a NavLink</a></h2>
 				<p>To open a modal dialog from a NavLink, don't use the attributes <code>data-target</code> and <code>data-toggle</code>. Use an <code>onclick</code> handler instead:</p>
 				<b:panel>
                         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
@@ -313,7 +331,7 @@
 						]]></script>
 				</b:panel>
 
-                <h2>Arbitrary content in a <code>&lt;b:navLink /&gt;</code><b:badge value="since 0.8.1" /></h2>
+                <h2><a id="arbitrary_content_in_a">Arbitrary content in a</a><code>&lt;b:navLink /&gt;</code><b:badge value="since 0.8.1" /></h2>
                 <p><code>&lt;b:navLink /&gt;</code> isn't limited to text and icons. You can add arbitrary widgets
                 as children of the <code>&lt;b:navLink /&gt;</code>:</p>
                 
@@ -382,7 +400,7 @@
                 in most cases you may want to consider moving the text and the icon (if there are any) into the nested
                 content. This way, the JSF source code looks a bit cleaner.</p>
 
-            <h2>Icons and icon modifiers <b:badge value="improved in 0.9.0" /></h2>
+            <h2><a id="icons_and_icon_modifiers">Icons and icon modifiers</a><b:badge value="improved in 0.9.0" /></h2>
             <p>You can add Fontawesome icons and Glyphicons to navLinks, navCommandLinks and dropmenus.
             These icons can be decorated with modifiers:</p>
             <h:form>
@@ -454,11 +472,11 @@
            </h:form>
 
 
-                <h2>AJAX <b:badge value="since 0.8.1" /></h2>
+                <h2><a id="ajax">AJAX</a><b:badge value="since 0.8.1" /></h2>
                 <p>Both <code>&lt;b:navCommandLink /&gt;</code> and <code>&lt;b:navLink /&gt;</code> support the new
                 unified AJAX API introduced with BootsFaces 0.8.1. <code>&lt;b:navCommandLink /&gt;</code> also supports
                 the traditional and the PrimeFaces AJAX API (to a certain extent).</p>
-                <h3>Using b:navLink with AJAX</h3>
+                <h2><a id="using_b_navlink_with_ajax">Using b:navLink with AJAX</a></h2>
                 
                 <b:panel title="Live preview" look="info" collapsible="false">
                         <b:panelGrid colSpans="6,6">
@@ -539,7 +557,7 @@ public class NavLinkBean implements Serializable {
                     </f:facet>
                 </b:panel>
 
-               <h3>Using b:navCommandLink with AJAX</h3>
+               <h2><a id="using_b_navcommandlink_with_ajax">Using b:navCommandLink with AJAX</a></h2>
                <p>Using <code>&lt;b:navCommandLink /&gt;</code> isn't much different from using  <code>&lt;b:navLink /&gt;</code>.
                You have to put it in a <code>&lt;h:form /&gt;</code>. On the plus side, you are rewarded with being allowed to use the attributes
                <code>action</code> and <code>actionListener</code>.</p>
@@ -626,7 +644,7 @@ public class NavLinkBean implements Serializable {
                     </f:facet>
                </b:panel>
 
-                <h2>Reference section</h2>
+                <h2><a id="reference_section">Reference section</a></h2>
                 <ui:include src="NavLinkAttributes.xhtml" />
                 <ui:include src="ListLinksAttributes.xhtml" />
                 <ui:include src="TabLinksAttributes.xhtml" />

@@ -4,8 +4,19 @@
   xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:b="http://bootsfaces.net/ui"
   xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#navigation_and_ajax" value="Navigation and AJAX" />
+    <b:navLink href="#resource_loading" value="Resource loading" />
+    <b:navLink href="#templates" value="Templates" />
+    <b:navLink href="#javascript_memory_leak" value="JavaScript memory leak" />
+  </b:listLinks>
+</ui:define>
+
+
   <ui:define name="content">
-    <h1>Navigation and AJAX</h1>
+    <h1><a id="navigation_and_ajax">Navigation and AJAX</a></h1>
     <p>
       <b:badge value="Since 0.8.0"></b:badge>
       Most JSF applications benefit tremendously from AJAX. This includes navigation between different JSF views of your
@@ -86,7 +97,7 @@
         </f:facet>
     </b:panel>
 
-    <h3>Resource loading</h3>
+    <h2><a id="resource_loading">Resource loading</a></h2>
     <p>BootsFaces tries to keep the memory footprint as low as possible. Among other things, this means that it only loads
     the CSS and JavaScript code required by the current JSF page. If you use AJAX to replace parts of your page,
     BootsFaces doesn't check if it has to load additional CSS or JavaScript files. This results in pages containing
@@ -103,7 +114,7 @@
     </b:panel>
 
 
-    <h3>Templates</h3>
+    <h2><a id="templates">Templates</a></h2>
     <p>Most JSF developers are used to use templates to embed their payload pages into a common application framework.
     For example, this showcase uses a template page to provide the main menu and the footer of each page.</p>
     <p>
@@ -183,7 +194,7 @@
     
      
 
-    <h3>JavaScript memory leak</h3>
+    <h2><a id="javascript_memory_leak">JavaScript memory leak</a></h2>
     <p>Many components of BootsFaces are jQuery components that should be removed when their HTML tags are removed by
     an AJAX request. We've already started to investigate the topic (see <a target="#" href="https://github.com/TheCoder4eu/BootsFaces-OSP/issues/220">Bug #220</a>)
     of our bug tracker). However, the memory leak should be small. Chances are your application has been closed by the user

@@ -7,20 +7,31 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#integration_with_primefaces" value="Integration with PrimeFaces" />
+    <b:navLink href="#configuration" value="Configuration" />
+    <b:navLink href="#example_for_scenario_1" value="Example for Scenario 1" />
+    <b:navLink href="#example_for_scenario_2" value="Example for Scenario 2" />
+  </b:listLinks>
+</ui:define>
+
+
             <ui:define name="content">
         <style>
         	.ui-growl {position:fixed;top:80px}
         	.label {color:#000;}
         </style>
                 <style>td {padding: 8px;}</style>
-                <h1>Integration with PrimeFaces</h1>
+                <h1><a id="integration_with_primefaces">Integration with PrimeFaces</a></h1>
                 <p>BootsFaces plays nicely with PrimeFaces. Both frameworks have a couple of components in common, so there are two interesting strategies:</p>
                 <ul>
                 <li>Use BootsFaces for defining the layout only. PrimeFaces contributes the input widgets.</li>
                 <li>Use the full wealth of BootsFaces components. In this case, PrimeFaces contributes the fancy widgets, such as the data table, tooltips, <code>prime:growl</code> or the chart widget.</li>
                 </ul>
 
-                <h2>Configuration</h2>
+                <h2><a id="configuration">Configuration</a></h2>
 			<b:tabView contentStyle="height:280px">
 				<b:tab title="Maven">
 					<p>Add these lines to your Maven pom.xml file:</p>
@@ -68,7 +79,7 @@
 				</b:tab>
 			</b:tabView>
                 
-                <h2>Example for Scenario 1</h2>
+                <h2><a id="example_for_scenario_1">Example for Scenario 1</a></h2>
                 <p>Even with the Bootstrap theme, PrimeFaces components don't blend into the Bootstrap look perfectly. On the other hand, PrimeFaces has a lot of advanced components BootsFaces doesn't provide - and probably never will.
                 So it's a good idea to use the "bread and butter" widgets of BootsFaces and use PrimeFaces for the advanced widgets:</p>
 				
@@ -143,7 +154,7 @@
                     </f:facet>
                 </b:panel>
 
-                <h2>Example for Scenario 2</h2>
+                <h2><a id="example_for_scenario_2">Example for Scenario 2</a></h2>
                 <p>The demo below is taken from the PrimeFaces showcase. We adapted it slightly to take advantage of the BootsFaces API.</p>
                 
                 <b:panel>
