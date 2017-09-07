@@ -24,7 +24,6 @@
   <ui:define name="content">
     <h1><a id="datetimepicker">DateTimePicker (&lt;b:dateTimePicker /&gt;)</a></h1>
      
-    <a id="basicUsage"></a>
     <h2><a id="basic_usage">Basic usage</a></h2>
     <p>The dateTimePicker is a responsive input field that allows you to input the date, the time or both.</p>
             
@@ -94,7 +93,6 @@
             </f:facet>
         </b:panel>
     
-    <a id="inline"></a>
     <h2><a id="mode">Mode="inline"</a><b:badge value="breaking change in 1.0.2"/></h2>
     <p>We've removed the option <code>mode="inline"</code> in favor of two more explicit options: <code>show-icon</code> and <code>icon-position</code>.</p>
     
@@ -128,7 +126,6 @@
             </f:facet>
         </b:panel> 
 
-	<a id="formattingAndLocale"></a>
     <h2><a id="formatting_and_locale">Formatting and locale</a></h2>
     <p>By default, the dateTimePicker tries to guess the proper format from your locale. You can customize this by three
     options:</p>
@@ -168,7 +165,6 @@
 
     <ui:include src="DateTimePickerCheatSheet.xhtml" /> 
     
-    <a id="overflow"></a>
     <h2><a id="datetimepicker_widget_inside_an_overflow_area">DateTimePicker widget inside an overflow area</a></h2>
     <p>By default, the popup widget of DateTimePicker goes inside the parent of the input component. This means that, if the component itself is too small to display
     the entire popup and has an hidden overflow, the popup will go under the component area. To prevent this behaviour, you can use the "widgetParent" attribute, that attach
@@ -225,7 +221,6 @@
             </f:facet>
         </b:panel>
     
-    <a id="labels"></a>
     <h2><a id="labels">Labels, required fields and error messages</a><b:badge value="breaking change in 1.1.0" /></h2>
     <p>You can add a label by adding the attribute <code>label</code>. The label is also used by the JSF messages. To give you maximum flexibility,
     you can suppress automatic rendering of labels by adding <code>renderLabel="false"</code>.
@@ -283,7 +278,6 @@
          </f:facet>
      </b:panel>
 
-    <a id="ajax" href="#ajax"></a>
     <h2><a id="datetimepicker_ajax">DateTimePicker AJAX</a><b:badge value="since 1.0" /> </h2>
     <p>DateTimePicker component also support AJAX events. In addition to the basic JavaScript events (click, blur, key*, mouse*), it supports also a custom event (dtchange) that is 
     called every time the datetime value changes. But you must pay attention! This event will be fired also during navigation of the popup widget, because it changes the date on the fly.
@@ -312,7 +306,6 @@
             </f:facet>
         </b:panel>
     
-    <a id="fieldId"></a>
     <h2><a id="id_and_field">id and field-id</a><b:badge value="since 1.0.1" /> </h2>
     <p>The datepicker widgets consists of the input field and some extra HTML code which makes it look like a datepicker. Both items
     have an id. The id of the outer HTML code is the standard <code>id</code> every JSF component has. The id of the input field
