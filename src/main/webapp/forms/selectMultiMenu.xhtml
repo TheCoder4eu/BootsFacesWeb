@@ -6,22 +6,42 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#multiple_choice_combobox" value="Multiple Choice Combobox (&lt;b:selectMultiMenu&gt;)" />
+    <b:navLink href="#license" value="License" />
+    <b:navLink href="#basic_usage" value="Basic usage" />
+    <b:navLink href="#ajax" value="AJAX" />
+    <b:navLink href="#options" value="Options" />
+    <b:navLink href="#append_and_prepend" value="Append and prepend" />
+    <b:navLink href="#objects_and_converters" value="Objects and converters" />
+    <b:navLink href="#arrays_and_hashmaps" value="Arrays and HashMaps" />
+    <b:navLink href="#labels_as_captions_above_the_combobox" value="Labels as captions above the combobox" />
+    <b:navLink href="#responsive_design" value="Responsive design" />
+    <b:navLink href="#visibility_depending_on_screen_size" value="Visibility depending on screen size" />
+    <b:navLink href="#tooltips" value="Tooltips" />
+    <b:navLink href="#reference_section" value="Reference section" />
+  </b:listLinks>
+</ui:define>
+
+
             <ui:define name="content">
                 <style>td {padding: 8px;}</style>
-                <h1>Multiple Choice Combobox (&lt;b:selectMultiMenu&gt;)</h1>
+                <h1><a id="multiple_choice_combobox">Multiple Choice Combobox (&lt;b:selectMultiMenu&gt;)</a></h1>
                 <p>This is a special combobox that allows you to select an arbitrary number of items without sacrificing a lot of screen estate.</p>
                 <p>Both the values and the labels of the items are expected to be strings. If the user selects more than one item,
                 the combobox displays every selected label separated by commas. Likewise, the value of the combobox is a comma-separated list
                 of the item values. You can see both effects in the live demo below.</p>
 
-                <h1>Kudos</h1>
+                <h3>Kudos</h3>
                 <p>This widget is based on the <a target="#" href="http://davidstutz.github.io/bootstrap-multiselect/">Bootstrap Multiselect</a> widget written by David Stutz.</p>
 
-                <h1>License</h1>
+                <h2><a id="license">License</a></h2>
                 <p>The original widget is available both under the Apache V2 license and the BSD 3-Clause License. Please note that this is a different license than BootsFaces itself,
                 which has been put under a GPL V3 license (or - at your option - any later version).</p>
 
-                <h1>Basic usage</h1>
+                <h2><a id="basic_usage">Basic usage</a></h2>
   		<h:form>     
             <b:tabView activeIndex="1">
                 <b:tab title="JSF markup">
@@ -87,7 +107,7 @@
         <p>The Java bean receives a comma-separated list of the selected values. Note that "no selection" results in an empty string. The
         attribute of the Java bean may contain a null value when the page is rendered, but requests never set null values.</p>
 
-        <h1>AJAX <b:badge value="since 1.0.2" /></h1>
+        <h2><a id="ajax">AJAX</a><b:badge value="since 1.0.2" /></h2>
         <p><code>&lt;b:selectMultiMenu /></code> supports many AJAX callbacks. However, many standard AJAX callbacks are not supported.
         For instance, there's no <code>onblur</code> event. As an alternative, this example uses <code>ondropdownhide</code>:</p>
        <h:form>
@@ -179,7 +199,7 @@
 		</ul>
 
 
-        <h1>Options</h1>
+        <h2><a id="options">Options</a></h2>
 		<h:form>
 		<b:panelGrid colSpans="3,3,6">
 			<h:outputText value="radiobuttons" />
@@ -336,7 +356,7 @@
 
 
 
-        <h1>Append and prepend</h1>
+        <h2><a id="append_and_prepend">Append and prepend</a></h2>
     <p>You can use the <code>prepend</code> facet to put an element seamlessly in front of the multiple choice combobox. However, the <code>append</code> facet
     doesn't work yet. It is displayed, but not seamlessly next to the combobox. In any case, both facets don't match the look and feel of the
     multi-selectbox exactly, so you need to apply some CSS code to improve it.</p>
@@ -382,11 +402,11 @@
        </b:tabView>
        </h:form>
 
-        <h1>Objects and converters</h1>
+        <h2><a id="objects_and_converters">Objects and converters</a></h2>
         <p><code>&lt;b:selectMultiMenu&gt;</code> only works with strings. The value must not be any other data type. So don't bother with converters -
         we officially don't support them.</p>
 
-        <h1>Arrays and HashMaps</h1>
+        <h2><a id="arrays_and_hashmaps">Arrays and HashMaps</a></h2>
         <p>The list of items can be defined as an <code>&lt;f:selectItems /&gt;</code> tag. BootsFaces uses a modified version of the
         algorithm PrimeFaces 5.1 uses to implement <code>&lt;f:selectItems /&gt;</code>. As a result, you can use <code>&lt;b:selectMultiMenu&gt;</code>
         almost the same way as <code>&lt;prime:selectOneMenu&gt;</code>. </p>
@@ -497,12 +517,12 @@ public class SemaphoreBean {
 
 
 
-                <h1>Labels as captions above the combobox</h1>
+                <h2><a id="labels_as_captions_above_the_combobox">Labels as captions above the combobox</a></h2>
                 <p>By default, BootsFaces displays the label above the input field. However, in the case of the multiple choice combobox,
                 we didn't implement this feature yet.</p>
 
                 <br/>
-                <h2>Responsive design <b:badge value="since 0.9.0" /></h2>
+                <h2><a id="responsive_design">Responsive design</a><b:badge value="since 0.9.0" /></h2>
                 <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
                 also with <code>&lt;b:icon /&gt;</code>:</p>
                 <h:form>
@@ -551,7 +571,7 @@ public class SemaphoreBean {
                 </b:tabView>
                 </h:form>
 
-                <h2>Visibility depending on screen size <b:badge value="since 0.8.6/0.9.0" /></h2>
+                <h2><a id="visibility_depending_on_screen_size">Visibility depending on screen size</a><b:badge value="since 0.8.6/0.9.0" /></h2>
                 <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
                 <br/>
                 <h:form>
@@ -594,7 +614,7 @@ public class SemaphoreBean {
                 </b:tabView>
                 </h:form>
 
-                <h2>Tooltips</h2>
+                <h2><a id="tooltips">Tooltips</a></h2>
                 <p><code>&lt;b:selectMultiMenu  /&gt;</code> supports tooltips:</p>
                 <br/>
                 <h:form>
@@ -617,7 +637,8 @@ public class SemaphoreBean {
 
 				<br />
 				<br />
-				<ui:include src="SelectMultiMenuAttributes.xhtml" />
+			<h2><a id="reference_section">Reference section</a></h2>
+			<ui:include src="SelectMultiMenuAttributes.xhtml" />
                 			<b:panel look="info">
 			</b:panel>
             <b:panel look="info">

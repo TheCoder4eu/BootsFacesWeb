@@ -7,13 +7,28 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:sourcecode="http://java.sun.com/jsf/composite/sourcecode">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#panels" value="Panels" />
+    <b:navLink href="#basic_example" value="Basic example" />
+    <b:navLink href="#collapsable_panels" value="Collapsable panels" />
+    <b:navLink href="#collapsable_panel_indicator" value="Collapsable panel indicator" />
+    <b:navLink href="#persistent_collapseexpand_state" value="Persistent collapse/expand state" />
+    <b:navLink href="#programmable_collapseexpand_state" value="Programmable collapse/expand state" />
+    <b:navLink href="#disabling_the_content" value="Disabling the content" />
+    <b:navLink href="#reference_section" value="Reference section" />
+  </b:listLinks>
+</ui:define>
+
+
   <ui:define name="content">
-    <h1>Panels</h1>
+    <h1><a id="panels">Panels</a></h1>
     <p>While not always necessary, sometimes you need to put your
       DOM in a box. For those situations, the panel component comes in
       handy.</p>
 
-    <h3>Basic example</h3>
+    <h2><a id="basic_example">Basic example</a></h2>
     <p>
       By default, all the <code>&lt;b:panel&gt;</code> does is apply some basic border and padding to contain some content.
     </p>
@@ -108,7 +123,7 @@
     </b:panel>
     
           
-    <h3>Collapsible panels</h3>
+    <h2><a id="collapsable_panels">Collapsable panels</a></h2>
     <p>
       By default, panels can be collapsed by clicking the title bar or
       the chevron at the right hand side of the title bar. If you don't
@@ -137,7 +152,7 @@
     </b:panel>
 
 
-    <h3>Collapsible panels indicator <b:badge value="since 0.9.0" /></h3>
+    <h2><a id="collapsable_panel_indicator">Collapsable panel indicator</a><b:badge value="since 0.9.0" /></h2>
     <p>BootsFaces can underline the panel title as a visual clue that the panel can be collapsed using the keyboard.
     You can activate it by setting <code>showCollapseLink="true"</code>:
     </p>
@@ -171,7 +186,7 @@
       
     </h:form>
 
-    <h3>Persistent collapse/expand state</h3>
+    <h2><a id="persistent_collapseexpand_state">Persistent collapse/expand state</a></h2>
     <p>By default, panels are not collapsed when the page is
       rendered. If they're outside a form, they are also expanded after
       a post request (i.e. after clicking a button) - even if the user
@@ -228,7 +243,7 @@
         </f:facet>
     </b:panel>
     
-    <h3>Programmable collapse/expand state</h3>
+    <h2><a id="programmable_collapseexpand_state">Programmable collapse/expand state</a></h2>
     <p>The collapse state can also be controlled by an attribute of
       a managed bean:</p>
     
@@ -440,7 +455,7 @@
         </f:facet>
     </b:panel>
 
-		<h2>Disabling the content <b:badge value="Since 1.1.0"/></h2>
+		<h2><a id="disabling_the_content">Disabling the content</a><b:badge value="Since 1.1.0"/></h2>
 		<p>By setting the flag <code>contentDisabled="true"</code> you can set each child element to disabled. More precisely,
 		the panels of the panel are wrapped in a disabled fieldset, which disables input fields, checkboxes and buttons, but
 		not every component. In particular, tabs and panels still work. You'll also have to be careful about
@@ -510,7 +525,7 @@
 
 
     <br />
-    <h2>Reference section</h2>
+    <h2><a id="reference_section">Reference section</a></h2>
     <ui:include src="PanelAttributes.xhtml" />
     <b:panel look="info">
       <f:facet name="heading">

@@ -6,11 +6,22 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#tooltips" value="Tooltips" />
+    <b:navLink href="#basic_usage" value="Basic usage" />
+    <b:navLink href="#reference_section" value="Reference section" />
+    <b:navLink href="#examples" value="Examples" />
+  </b:listLinks>
+</ui:define>
+
+
    <ui:define name="content">
       <style>td {padding: 8px;}</style>
-      <h1>Tooltips</h1>
+      <h1><a id="tooltips">Tooltips</a></h1>
       <p>You can add a tooltip to most BootsFaces components.</p>
-      <h3>Basic usage</h3>
+      <h2><a id="basic_usage">Basic usage</a></h2>
       <p>Simply add the attribute <code>tooltip="I'm a tooltip!"</code> to the attribute list of an (almost) arbitrary BootsFaces component. Optionally can you also
       define the position of the tooltip and a delay:</p>
       <b:well>
@@ -24,6 +35,9 @@
                 </b:well>
                 <p> At the bottom of this page you find examples for every BootsFaces component supporting tooltips.</p>
                 <br />
+
+            <h2><a id="reference_section">Reference section</a></h2>
+
       		<b:panel look="info">
 			<f:facet name="heading">
 				<b>Tooltip attributes</b>
@@ -73,7 +87,7 @@
 		</b:panel>
 
 
-      <strong>Examples</strong>
+		<h2><a id="examples">Examples</a></h2>
       <h:form>
       <table class="table table-bordered table-striped">
           <thead>

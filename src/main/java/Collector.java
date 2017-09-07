@@ -25,7 +25,7 @@ public class Collector {
 					String newFile = readFile(file.getAbsolutePath());
 					if (newFile != null) {
 						writeFile(file.getAbsolutePath(), newFile);
-						System.exit(1);
+						//System.exit(1);
 					}
 				}
 			}

@@ -6,13 +6,33 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#combobox" value="Combobox (&lt;b:selectOneMenu&gt;)" />
+    <b:navLink href="#basic_usage" value="Basic usage" />
+    <b:navLink href="#disabled_items" value="Disabled items" />
+    <b:navLink href="#a_note_on_ajax" value="A note on AJAX" />
+    <b:navLink href="#converters" value="Converters" />
+    <b:navLink href="#arrays_and_hashmaps" value="Arrays and HashMaps" />
+    <b:navLink href="#prepending_or_appending_facets" value="Prepending or appending facets" />
+    <b:navLink href="#labels" value="Labels, required fields and error messages" />
+    <b:navLink href="#ajax_and_javascript" value="AJAX and JavaScript" />
+    <b:navLink href="#responsive_design" value="Responsive design" />
+    <b:navLink href="#visibility_depending_on_screen_size" value="Visibility depending on screen size" />
+    <b:navLink href="#tooltips" value="Tooltips" />
+    <b:navLink href="#reference_section" value="Reference section" />
+  </b:listLinks>
+</ui:define>
+
+
             <ui:define name="content">
                 <style>td {padding: 8px;}</style>
-                <h1>Combobox (&lt;b:selectOneMenu&gt;)</h1>
+                <h1><a id="combobox">Combobox (&lt;b:selectOneMenu&gt;)</a></h1>
 
                 <p>Comboboxes give you a list of items to select from. As of Bootsfaces 1.1.0, comboboxes are not editable - they are pure drop-down menus.</p>
                 <p>&lt;b:selectOneMenu&gt; makes the Bootstrap style of displaying comboboxes available to JSF programmers.</p>
-                <h3>Basic usage</h3>
+                <h2><a id="basic_usage">Basic usage</a></h2>
 
         <b:panel title="Live preview" look="info" collapsible="false">         
 <b:form horizontal="true">
@@ -80,7 +100,7 @@
         </b:panel>
        
 
-    <h3>Disabled items</h3>
+    <h2><a id="disabled_items">Disabled items</a></h2>
 
     <p>Items can also be disabled. If so, they are grayed out, and they can't be selected.</p>
    
@@ -125,7 +145,7 @@
         </b:panel>
        
 
-        <h3>A note on AJAX</h3>
+        <h2><a id="a_note_on_ajax">A note on AJAX</a></h2>
         <p>Note that since BootsFaces 0.8.0, we favor an
         <a href="../forms/ajax.jsf">all-new approach to AJAX</a>. The standard JSF approach
         to AJAX we used in the example above is supported by us, too, but we recommend to adopt the new
@@ -136,7 +156,7 @@
         on our bug tracker</a>.</p>
 
 
-		<h2>Converters <b:badge value="(rarely) breaking change in 1.1.0" /></h2>
+		<h2><a id="converters">Converters</a><b:badge value="(rarely) breaking change in 1.1.0" /></h2>
 		<p>Since BootsFaces 1.1.0, you can use converters as defined by <a href="http://docs.oracle.com/javaee/6/tutorial/doc/bnaus.html" target="#">the JavaEE documentation</a>
 		and described by <a href="https://www.mkyong.com/jsf2/custom-converter-in-jsf-2-0/" target="#">M. K. Yong</a>.
 		In rare cases, this may turn out to be a breaking change. Previous versions of BootsFaces simply ignored the 
@@ -144,7 +164,7 @@
 		this can be surprising because JavaEE allows you to define converters via annotations. In this case, the converter
 		isn't mentioned by the <code>&lt;b:selectOneMenu /&gt;</code> declaration directly.</p>
 
-        <h2>Arrays and HashMaps <b:badge value="broken in 0.8.5" /></h2>
+        <h2><a id="arrays_and_hashmaps">Arrays and HashMaps</a><b:badge value="broken in 0.8.5" /></h2>
         <p>The list of items can be defined as an <code>&lt;f:selectItems /&gt;</code> tag. BootsFaces uses a modified version of the
         algorithm PrimeFaces 5.1 uses to implement <code>&lt;f:selectItems /&gt;</code>. As a result, you can use <code>&lt;b:selectOneMenu&gt;</code>
         almost the same way as <code>&lt;b:selectOneMenu&gt;</code>. </p>
@@ -254,7 +274,7 @@ public class SemaphoreBean {
             </f:facet>
         </b:panel>
 
-    <h3>Prepending or appending facets <b:badge value="since 0.8.5" /></h3>
+    <h2><a id="prepending_or_appending_facets">Prepending or appending facets</a><b:badge value="since 0.8.5" /></h2>
     <p>To help you enhance the user experience, BootsFaces comes in with a useful feature:</p>
     <p>You can easily prepend or append text to your InputTextareas and what you prepend and append will seem part
       of the input field.</p>
@@ -325,8 +345,7 @@ public class SemaphoreBean {
 
 
 	<a id="errorClasses" />
-		    <a id="labels"></a>
-		    <h3>Labels, required fields and error messages <b:badge value="breaking change in 1.1.0" /></h3>
+		    <h2><a id="labels">Labels, required fields and error messages</a><b:badge value="breaking change in 1.1.0" /></h2>
 		    <p>You can add a label by adding the attribute <code>label</code>. The label is also used by the JSF messages. To give you maximum flexibility,
 		    you can suppress automatic rendering of labels by adding <code>renderLabel="false"</code>.
 		    </p>
@@ -422,7 +441,7 @@ public class SemaphoreBean {
         </b:panel>
        
 
-                <h2>AJAX and JavaScript  <b:badge value="since 0.8.0" /></h2>
+                <h2><a id="ajax_and_javascript">AJAX and JavaScript</a><b:badge value="since 0.8.0" /></h2>
                 <p>The <code>&lt;b:selectBooleanCheckbox &gt;</code> supports the full suite of JavaScript and AJAX events,
                 as described in <a href="ajax.jsf">the description of AJAX in BootsFaces</a>. Basically, each of the
                 many JavaScript callback handlers (the <code>on[event]</code> attributes) also supports AJAX.
@@ -489,7 +508,7 @@ public class SemaphoreBean {
         </b:panel>
 
                 <br/>
-                <h2>Responsive design <b:badge value="since 0.9.0" /></h2>
+                <h2><a id="responsive_design">Responsive design</a><b:badge value="since 0.9.0" /></h2>
                 <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
                 also with <code>&lt;b:icon /&gt;</code>:</p>
                <b:panel title="Live preview" look="info" collapsible="false">            
@@ -535,7 +554,7 @@ public class SemaphoreBean {
             </f:facet>
         </b:panel>
 
-                <h3>Visibility depending on screen size <b:badge value="since 0.8.6/0.9.0" /></h3>
+                <h2><a id="visibility_depending_on_screen_size">Visibility depending on screen size</a><b:badge value="since 0.8.6/0.9.0" /></h2>
                 <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
                 <br/>
                 <b:panel title="Live preview" look="info" collapsible="false">            
@@ -564,7 +583,7 @@ public class SemaphoreBean {
             </f:facet>
         </b:panel>
 
-                <h3>Tooltips</h3>
+                <h2><a id="tooltips">Tooltips</a></h2>
                 <p><code>&lt;b:selectOneMenu  /&gt;</code> supports tooltips:</p>
                 <br/>
                 <b:panel title="Live preview" look="info" collapsible="false">            
@@ -585,7 +604,7 @@ public class SemaphoreBean {
             </f:facet>
         </b:panel>
 
-                <h3>Reference section</h3>
+                <h2><a id="reference_section">Reference section</a></h2>
                 <ui:include src="SelectOneMenuAttributes.xhtml" />
 
             <b:panel look="info">

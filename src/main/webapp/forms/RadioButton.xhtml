@@ -9,10 +9,23 @@
 </h:head>
 <h:body style="padding-top: 60px">
   <ui:composition template="/applayout/pageTemplate.xhtml">
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#radiobuttons" value="Radiobuttons" />
+    <b:navLink href="#required_fields" value="Required fields" />
+    <b:navLink href="#traditional_jsf_approach" value="Traditional JSF approach" />
+    <b:navLink href="#using_lists_and_hashmaps" value="Using lists and hashmaps" />
+    <b:navLink href="#ajax" value="AJAX" />
+    <b:navLink href="#reference_section" value="Reference section" />
+  </b:listLinks>
+</ui:define>
+
+
     <ui:define name="content">
     <style>label.disabled { color:#ccc}
     </style>
-        <h1>Radiobuttons <b:badge value="since 1.0" /></h1>
+        <h1><a id="radiobuttons">Radiobuttons</a><b:badge value="since 1.0" /></h1>
         <p>The BootsFaces radiobutton give you more flexibility to design your page layout than the standard JSF radiobutton.</p>
         <p>For the sake of compatibility, you can follow the traditional JSF approach using <code>&lt;f:selectItem /&gt;</code>
         or <code>&lt;f:selectItems /&gt;</code>. But that only allows for very simple
@@ -22,8 +35,8 @@
         We chose the <code>value</code> value attribute for this. So you have to repeat the <code>value</code> attribute 
         with every option of the radio button in order to indicate which buttons belong to a common group:</p>
         
-                               <b:panel title="Live preview" look="info" collapsible="false">
- <b:form>
+        <b:panel title="Live preview" look="info" collapsible="false">
+              <b:form>
                 <p>Which Java version do you use?</p>
                 <b:panelGrid size="xs" columns="4">
                     <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 6" itemValue="6" required="true" />
@@ -60,7 +73,7 @@
       are still stacked on each by default. That's why we wrapped them in a &lt;b:panelGrid /&gt; in the example
       above.</p>
       
-      <h2>Required fields</h2>
+      <h2><a id="required_fields">Required fields</a></h2>
       <p>You can declare a radiobutton group mandatory by adding the attribute <code>required="true"</code>
       to the first radiobutton. The label of the first radio button is used in the error message.
       If you want to show a custom error message, use the attribute <code>required-message</code>.</p>
@@ -73,7 +86,7 @@
       </p>
 
       
-      <h2>Traditional JSF approach</h2>
+      <h2><a id="traditional_jsf_approach">Traditional JSF approach</a></h2>
       <p>For the sake of convenience and back-ward compatibility, BootsFaces also supports the traditional
       JSF API using <code>&lt;f:selectItem /&gt;</code>. Of course, you loose a lot of flexibility.
       The radiobuttons are stacked on top of each other, and the only way to change this is using
@@ -115,7 +128,7 @@
         </b:panel>
        
 
-      <h2>Using lists and hashmaps</h2>
+      <h2><a id="using_lists_and_hashmaps">Using lists and hashmaps</a></h2>
       <p><code>&lt;f:selectItems /&gt;</code> allows you to generate the radio buttons from a list or a map:</p>
 
               <b:panel title="Live preview" look="info" collapsible="false">
@@ -193,7 +206,7 @@ public class RadiobuttonBean implements Serializable {
             </f:facet>
         </b:panel>
        
-        <h2>AJAX <b:badge value="since 1.1.0" /></h2>
+        <h2><a id="ajax">AJAX</a><b:badge value="since 1.1.0" /></h2>
         <p>Since BootsFaces 1.1.0, radio buttons also support AJAX. More precisely, it supports the click event. The attribute
         <code>update</code> must be repeated for each radio button of the radio button group.
         However, you can't define different update areas for each radio button. The first radiobutton decides which method is called
@@ -232,6 +245,7 @@ public class RadiobuttonBean implements Serializable {
         </b:panel>
        
       
+	  <h2><a id="reference_section">Reference section</a></h2>
       <ui:include src="RadiobuttonAttributes.xhtml" />
       <b:panel look="info">
         <f:facet name="heading">

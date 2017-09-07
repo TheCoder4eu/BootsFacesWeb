@@ -11,13 +11,25 @@
     </h:head>
     <h:body style="padding-top: 60px">
         <ui:composition template="/applayout/pageTemplate.xhtml">
-            <ui:define name="content">
-                <h1>Quick Start</h1>
 
-                <h3>Requirements</h3>
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#quick_start" value="Quick start and requirements" />
+	    <b:navLink href="#maven_developer_preview" value="Maven developer preview (for the curious one)" />
+    <b:navLink href="#starting_a_project" value="Starting a project" />
+    <b:navLink href="#theme_css_support" value="Theme CSS support" />
+    <b:navLink href="#building_the_bootsfaces" value="Building the BootsFaces.jar from source" />
+  </b:listLinks>
+</ui:define>
+
+
+            <ui:define name="content">
+                <h1><a id="quick_start">Quick start</a></h1>
+
+                <h2>Requirements</h2>
                 <p>Read the <h:link outcome="/requirements" value="requirements"/>.</p>
                 <hr/>
-                <h3>Download</h3>
+                <h2>Download</h2>
                 <b:tabView contentStyle="height:200px">
 					<b:tab title="Maven">
 						<p>Add these lines to your Maven pom.xml build file:</p>
@@ -49,7 +61,7 @@
                     </b:tab>
                 </b:tabView>
                 <hr/>
-                <h3>Maven developer preview (for the curious one)</h3>
+                <h2><a id="maven_developer_preview">Maven developer preview (for the curious one)</a></h2>
                 <p>Every once in a while, we publish a developer snapshot for testing and preview purposes. Note that these developer previews
                 are not suited for production. In fact, the main purpose of a developer preview is to give the early adopter of the community
                 an option to test and evaluate new features early, and to tell us about bugs. In other words: we know the previews are buggy,
@@ -74,7 +86,7 @@
                 <p>After that, add the dependency to the new version as shown in the first tab, this time adding the suffix <code>-SNAPSHOT</code>.</p>
 
 
-                <h3>Starting a project</h3>
+                <h2><a id="starting_a_project">Starting a project</a></h2>
                 <p>Probably the easiest way to get started is to grab one of the demo projects at <a target="#" href="https://github.com/stephanrauh/BootsFaces-Examples">
                 https://github.com/stephanrauh/BootsFaces-Examples</a>.</p>
                 <p>Alternatively, you can also start from scratch. Open your favorite IDE, start a new project and add the BootsFaces jar you've downloaded to your libraries.</p>
@@ -122,7 +134,7 @@
                    <h:link outcome="/examples/starter_template" value="starter template"/> in the <h:link outcome="/examples/index" value="Examples"/> section.</p>
                 <hr/>
 
-                <h3>Theme CSS support <b:badge value="revamped in BootsFaces 0.8.0" /></h3>
+                <h2><a id="theme_css_support">Theme CSS support</a><b:badge value="revamped in BootsFaces 0.8.0" /></h2>
 
                 <p>The BootsFaces_USETHEME context-param in your web.xml controls whether <code>theme.css</code> is loaded or not.</p>
                 <p>If you set the parameter to false, BootsFaces delivers a CSS file containing the basic layout instructions. This basic
@@ -152,7 +164,7 @@
                 <p>If you need more customization you can use the <code>custom</code> value.</p>
                 <p>Please refer to the <h:link value="Themes" outcome="/layout/themes" /> page for instructions on Custom Theme.</p>
                 <br/><hr/>
-                <h3>Building the BootsFaces.jar from source <b:badge value="revamped in BootsFaces 0.8.0" /></h3>
+                <h2><a id="building_the_bootsfaces">Building the BootsFaces.jar from source</a><b:badge value="revamped in BootsFaces 0.8.0" /></h2>
                 <p>Most of the time you're probably happy with the binaries available at Maven Central or at the download page. However, it's
                 also possible to build BootsFaces from source. This way, you get our latest bug fixes and the newest components,
                 and you can also contribute bug fixes or components yourself to the project. (Truth to tell you get also our newest bugs. Use at own risk).</p>
@@ -184,43 +196,6 @@
                 run "Gradle assemble" to build the BootsFaces-OSP.jar. You find the jar file in the <code>build</code> folder of your project.</p>
 
                 <br/><hr/>
-                <h3>Customization of the BootsFaces.jar</h3>
-                <p>Until there is a new version of the customizer, you can still customize the look and feel taking advantage of the build system.
-                    There are many Bootstrap customizers on the net, for example <a href="http://bootswatch.com/">Bootswatch</a> .
-                    What you need is a file with the variables to customize the build. Some customizers will provide you a .less file as well.</p>
-                <p>Put the files in the <code>BootsFaces/less</code> directory of the build and tweak the bs-* files to use your variables / .less file.</p>
-                <br/><hr/>
-                <h3>Roadmap <b:badge value="0.8.5 &#8594; 0.9 &#8594; 1.0" /></h3>
-                <p>The big tickets of the next versions are</p>
-                <ul>
-                <li>Going mobile with swipe gesture support</li>
-                <li>Making the library more orthogonal (i.e. adding similar attributes like <code>visible</code> and <code>hidden</code> to every component that might benefit from such a feature).</li>
-                <li>Improving the AJAX support, making every visible component AJAX-aware.</li>
-                <li>And - of course - support for Bootstrap 4.</li>
-                <li>Possibly we're also going to re-implement the customizer, allowing you to use a special version of BootsFaces with a small footprint
-                    (which you trade for a limited set of components).</li>
-                <li>Last, not least, we'd like to continue to improve the documentation.</li>
-                </ul>
-
-                <p>Minor (but still important) tickets are</p>
-                <ul>
-                <li>fixing bugs :)</li>
-                <li>adding components</li>
-                <li>client-side validation and JSR303 support</li>
-                </ul>
-                <p>In any case, we'd like to hear from you. Use the <a target="#" href="https://github.com/TheCoder4eu/BootsFaces-OSP/issues">bug tracker</a> to inform us about bugs you've discovered, components you'd like to see or contributions
-                you'd like to make. Your feedback is welcome!</p>
-
-                <script>
-                  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-                  ga('create', 'UA-46101875-1', 'bootsfaces.net');
-                  ga('send', 'pageview');
-
-                </script>
                 <script type="text/javascript">
                     SyntaxHighlighter.all();
                 </script>

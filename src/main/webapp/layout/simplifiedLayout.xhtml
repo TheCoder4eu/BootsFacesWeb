@@ -4,6 +4,16 @@
   xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:b="http://bootsfaces.net/ui"
   xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#simplified_layout" value="Simplified layout" />
+    <b:navLink href="#thePanelGrid" value="PanelGrid" />
+    <b:navLink href="#span" value="The span attribute" />
+  </b:listLinks>
+</ui:define>
+
+
   <ui:define name="content">
     <style>
 .show-grid [class^="col-"] {
@@ -19,7 +29,7 @@
 	margin: 0px 15px;
 }
 </style>
-    <h1>Simplified layout</h1>
+    <h1><a id="simplified_layout">Simplified layout</a></h1>
     <p>
       The BootsFaces approach to defining rows and columns using
       <code>&lt;b:row /&gt;</code>
@@ -28,7 +38,7 @@
       is a little simpler than the HTML-only Bootstrap approach, but BootsFaces doesn't stop there. There are two
       shortcuts you can take.
     </p>
-    <h2>The <code>&lt;b:panelGrid /&gt;</code></h2>
+    <h2><a id="thePanelGrid">The</a><code>&lt;b:panelGrid /&gt;</code></h2>
     <p>
       Use the
       <code>&lt;b:panelGrid /&gt;</code>
@@ -40,7 +50,7 @@
           /&gt;</code>.
       </a>
     </p>
-    <h2>The <code>span</code> attribute of most input fields</h2>
+    <h2><a id="span">The</a><code>span</code> attribute of most input fields</h2>
     <p>
       Many components have a
       <code>span</code>

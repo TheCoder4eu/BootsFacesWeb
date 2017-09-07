@@ -4,6 +4,15 @@
   xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:b="http://bootsfaces.net/ui"
   xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#rtl_support" value="RTL support" />
+    <b:navLink href="#using_the_default_direction_" value="Using the default direction:" />
+  </b:listLinks>
+</ui:define>
+
+
   <ui:define name="content">
     <link type="text/css" rel="stylesheet" href="../javax.faces.resource/bootstrap-rtl.css.jsf?ln=rtl"
       id="rtlStyleSheet" />
@@ -20,7 +29,7 @@
       <b:panel title="Live preview" look="info" collapsible="false">
           <b:row>
               <b:column span="12">
-                  <h1>RTL support</h1>
+                  <h1><a id="rtl_support">RTL support</a></h1>
               </b:column>
           </b:row>
           <b:row styleClass="rtlContent">
@@ -42,7 +51,7 @@
                                     <![CDATA[
      <b:row class="rtlContent">
         <b:column span="12">
-          <h1>RTL support</h1>
+          <h2><a id="rtl_support">RTL support</a></h2>
         </b:column>
       </b:row>
       <b:row class="rtlContent">
@@ -136,7 +145,7 @@ public class RtlBean implements Serializable {
           </p>
         </b:column>
       </b:row>
-      <h3>Using the default direction:</h3>
+      <h2><a id="using_the_default_direction_">Using the default direction:</a></h2>
       
       <b:panel title="Live preview" look="info" collapsible="false">
            <b:row style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black">

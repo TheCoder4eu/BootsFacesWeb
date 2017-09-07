@@ -6,8 +6,18 @@
 	xmlns:b="http://bootsfaces.net/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#panel_grids" value="Panel grids" />
+    <b:navLink href="#basic_example" value="Basic example" />
+    <b:navLink href="#reference_section" value="Reference section" />
+  </b:listLinks>
+</ui:define>
+
+
 		<ui:define name="content">
-			<h1>Panel grids</h1>
+			<h1><a id="panel_grids">Panel grids</a></h1>
 			<p>
 				Using a panel grid is a convenient way to display a couple of input
 				fields. BootsFaces aligns your input fields automatically. You don't
@@ -26,7 +36,7 @@
 				<code>col</code>
 				divs.
 			</p>
-			<h3>Basic example</h3>
+			<h2><a id="basic_example">Basic example</a></h2>
 			<p>
 				The attribute
 				<code>colSpan</code>
@@ -86,7 +96,7 @@
 				10 Bootstrap columns (83% of the available space).</p>
 
             <br/>
-            <h2>Reference section</h2>
+            <h2><a id="reference_section">Reference section</a></h2>
             <ui:include src="PanelGridAttributes.xhtml" />
 			<b:panel look="info">
 				<f:facet name="heading">

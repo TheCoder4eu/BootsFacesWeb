@@ -8,18 +8,35 @@
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:p="http://primefaces.org/ui">
 
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#search_expressions" value="Search Expressions" />
+    <b:navLink href="#state_of_the_art" value="State of the art" />
+    <b:navLink href="#basic_usage" value="Basic usage" />
+    <b:navLink href="#standard_jsf_search_expressions" value="Standard JSF search expressions" />
+    <b:navLink href="#primefaces_search_expressions_supported_by_bootsfaces" value="PrimeFaces search expressions supported by BootsFaces" />
+    <b:navLink href="#bootsfaces_search_expressions" value="BootsFaces search expressions" />
+    <b:navLink href="#primefaces_search_expressions_bootsfaces_does_not_support" value="PrimeFaces search expressions BootsFaces does not support" />
+    <b:navLink href="#classical_use_cases" value="Classical use cases" />
+    <b:navLink href="#more_advanced_live_demo" value="More advanced live demo" />
+    <b:navLink href="#all" value="All-in-One-Demo (aka cheat sheet)" />
+  </b:listLinks>
+</ui:define>
+
+
         <ui:define name="content">
-            <h1>Search Expressions <b:badge value="since 0.8.0" /></h1>
+            <h1><a id="search_expressions">Search Expressions</a><b:badge value="since 0.8.0" /></h1>
                 <p>Inspired by PrimeFaces, BootsFaces implements a couple of powerful search expressions to make your life easier.
                 In almost every case, you can get rid of ids. Use <code>@form</code>,
                 <code>@next</code>,<code>@previous</code>,<code>@parent</code> and even jQuery-Expressions like <code>@(.css-class)</code> instead.</p>
 
-                <h2>State of the art</h2>
+                <h2><a id="state_of_the_art">State of the art</a></h2>
                 <p>The search expressions can be used with the <code>update</code> and <code>process</code> attributes of the AJAX-enabled BootsFaces components.
                 For these components, the search expressions should also work with traditional <code>&lt;f:ajax /&gt;</code> facets (although we discourage
                 the use of these AJAX facets - in most cases you don't need them).</p>
 
-                <h2>Basic usage</h2>
+                <h2><a id="basic_usage">Basic usage</a></h2>
                 <p>Like in standard JSF, you can use ids to determine which region of the DOM to update:</p>
                 <b:panel>
 	                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1"><![CDATA[
@@ -40,7 +57,7 @@
 				<p>The preceding colon indicates that <code>:tabViewId</code> isn't inside the "naming container" - usually a form or a custom composite component -
 				but in the root of the JSF component tree. The <code>panelId</code> is direct descendant of the form, so it doesn't need a colon.</p>
 
-				<h2>Standard JSF search expressions</h2>
+				<h2><a id="standard_jsf_search_expressions">Standard JSF search expressions</a></h2>
 				<p>Standard JSF introduces several search expressions, basically shortcut allowing you to get rid of the ids in many cases:</p>
 				<ul>
 					<li>@form is the form surrounding the button.</li>
@@ -51,7 +68,7 @@
 					but don't want to display anything new on the client.</li>
 				</ul>
 
-				<h2>PrimeFaces search expressions supported by BootsFaces</h2>
+				<h2><a id="primefaces_search_expressions_supported_by_bootsfaces">PrimeFaces search expressions supported by BootsFaces</a></h2>
 				<p>PrimeFaces adds a couple of very useful search expressions, which are supported by BootsFaces, too. (Actually, @next and @previous originally were
 				contributed to PrimeFaces by one of the BootsFaces team members):</p>
 				<ul>
@@ -71,7 +88,7 @@
                     <li>@root is the root of the JSF tree. It's equivalent to the preceding colon.</li>
 				</ul>
 
-				<h2>BootsFaces search expressions</h2>
+				<h2><a id="bootsfaces_search_expressions">BootsFaces search expressions</a></h2>
 				<p>BootsFaces introduces several search expressions, basically shortcuts allowing you to get rid of the ids in many cases.
                 Note that most BootsFaces search expression scan the entire JSF tree recursively, which may result in a
                 performance penalty. If that's an issue, you can optimize the performance by limiting the
@@ -102,7 +119,7 @@
                     bearing a certain CSS style class. Note that this search expression scans the entire JSF tree.</li>
 				</ul>
 
-				<h2>PrimeFaces search expressions BootsFaces does not support</h2>
+				<h2><a id="primefaces_search_expressions_bootsfaces_does_not_support">PrimeFaces search expressions BootsFaces does not support</a></h2>
 				<p>There are a few PrimeFaces search expressions BootsFaces does not support:</p>
 				<ul>
 					<li>@namingcontainer</li>
@@ -112,7 +129,7 @@
 				</ul>
 
 
-<h2>Classical use cases</h2>
+<h2><a id="classical_use_cases">Classical use cases</a></h2>
     <p>The reason why one of us (Stephan) originally invented <code>@next</code> and <code>@previous</code> was that he'd
     observed that input fields typically occur as a triplet: a label, the input field itself and an error message.
     It's rather cumbersome and error-prone to implement this using ids, but it's pretty straightforward with
@@ -220,7 +237,7 @@ public class ImageGallery implements Serializable {
     <p>However, this example also shows that the validation logic of JSF usually gets in your way when you try to hide
     or show fields depending on other fields. Better use JavaScript instead.</p>
 
-                <h2>More advanced live demo</h2>
+                <h2><a id="more_advanced_live_demo">More advanced live demo</a></h2>
 				<p>This demo shows some of the options at a glance.</p>
                 
                 <b:panel title="Live preview" look="info" collapsible="false">
@@ -338,7 +355,7 @@ public class ImageGallery implements Serializable {
                 
                 
                 
-				<h2>All-in-One-Demo (aka cheat sheet)</h2>
+				<h2><a id="all">All-in-One-Demo (aka cheat sheet)</a></h2>
 				<p>This demo shows most options on a single screen. Most buttons modify the images. The buttons in the image row modify the image in the same row. The buttons below modify
 				the entire page. Some buttons also show the appearance of the button itself (by counting up the numbers). As you can see, you can freely combine every option
 				the search expression framework gives you.</p>

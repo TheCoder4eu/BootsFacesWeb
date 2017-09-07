@@ -9,8 +9,18 @@
 </h:head>
 <h:body style="padding-top: 60px">
   <ui:composition template="/applayout/pageTemplate.xhtml">
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#search_expressions_in_standard_jsf" value="Search Expressions in standard JSF" />
+    <b:navLink href="#basic_usage" value="Basic usage (also works without BootsFaces)" />
+    <b:navLink href="#advanced_usage" value="Advanced usage (only works with BootsFaces)" />
+  </b:listLinks>
+</ui:define>
+
+
     <ui:define name="content">
-        <h1>Search Expressions in standard JSF <b:badge value="since 1.0" /></h1>
+        <h1><a id="search_expressions_in_standard_jsf">Search Expressions in standard JSF</a><b:badge value="since 1.0" /></h1>
         <p>Neither the advanced search expressions of BootsFaces nor their PrimeFaces counterparts work with
         the components of the base libraries out-of-the-box. However, it's possible to define a JSF bean or
         an EL expression resolving the advanced search expressions. BootsFaces, in particular, provides an optional
@@ -18,7 +28,7 @@
         point of view, that's a fairly convoluted approach because the underlying base library (Mojarra or MyFaces)
         still doesn't support the search expressions, but from a user's perspective you won't notice the difference.</p>
 
-      <h2>Basic usage (also works without BootsFaces)</h2>
+      <h2><a id="basic_usage">Basic usage (also works without BootsFaces)</a></h2>
       <p>Let's start with the basic idea, which required a lot of keystrokes, but doesn't require you to configure
       the decorator. BootsFaces provides a JSF bean method resolving search expressions. All you have to do is to
       wrap the call to this method around your search expressions:</p>
@@ -139,7 +149,7 @@ public class SearchExpressionResolverBean {
         to your project. </p>
 
 
-      <h2>Advanced usage (only works with BootsFaces)</h2>
+      <h2><a id="advanced_usage">Advanced usage (only works with BootsFaces)</a></h2>
       <p>By configuring and activating the BootsFaces facelets decorator, you can use search expressions with the
       <code>for</code> attribute of many standard JSF components, such as <code>&lt;h:message /&gt;</code>,
       <code>&lt;h:messages /&gt;</code>, and <code>&lt;h:outputLabel /&gt;</code>. From a programmers perspective,

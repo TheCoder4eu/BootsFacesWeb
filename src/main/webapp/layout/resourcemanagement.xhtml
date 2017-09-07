@@ -6,8 +6,20 @@
         xmlns:b="http://bootsfaces.net/ui"
         xmlns:ui="http://java.sun.com/jsf/facelets">
    
+
+<ui:define name="content-navigator">
+  <b:listLinks>
+    <b:navLink href="#dealing_with_resource_files" value="Dealing with resource files" />
+    <b:navLink href="#jquery_and_jqueryui" value="jQuery and jQueryUI" />
+    <b:navLink href="#font_awesome" value="Font Awesome" />
+    <b:navLink href="#configuring_resources_via_the" value="Configuring resources via the" />
+    <b:navLink href="#defining_when_your_resource_files_are_loaded" value="Defining when your resource files are loaded" />
+  </b:listLinks>
+</ui:define>
+
+
      <ui:define name="content">
-        <h1>Dealing with resource files <b:badge value="improved in 0.8.0" /></h1>
+        <h1><a id="dealing_with_resource_files">Dealing with resource files</a><b:badge value="improved in 0.8.0" /></h1>
         <p>The BootsFaces jar contains many CSS and JavaScript files. You don't need external resource files to use BootsFaces. However,
         many developers and web designers aren't happy with that. These are basically the reasons for using external resources:
         </p>
@@ -22,7 +34,7 @@
         </ul>
         <p>To serve all these requirements, we've implemented quite a few options to influence which files are loaded and which are not.</p>  
         
-        <h3>jQuery and jQueryUI</h3>
+        <h2><a id="jquery_and_jqueryui">jQuery and jQueryUI</a></h2>
         <p>In general, BootsFaces goes into some lengths to decide which libraries to load, and when. Among other things, BootsFaces modifies the order of JavaScript
         libraries if need be:</p>
         <ul>
@@ -36,12 +48,12 @@
         <p>The some applies to jQueryUI. In this case, we check for the sub-string "jquery-ui".</p>
        
         
-        <h3>Font Awesome</h3>
+        <h2><a id="font_awesome">Font Awesome</a></h2>
         <p>If you provide your own version of FontAwesome, BootsFaces doesn't load its own version of FontAwesome. We're looking for resource files containing the
         sub-string "font-awesome" or "fontawesome" and ending with ".css". Again, we ignore the case.</p>
         <p>You can suppress Font Awesome on a per-page basis by adding the facet "no-fa" to the <code>&lt;h:head /&gt;</code> of your XHTML file.</p>
         
-        <h3>Configuring resources via the <code>web.xml</code></h3>
+        <h2><a id="configuring_resources_via_the">Configuring resources via the</a><code>web.xml</code></h2>
         <p>Alternatively, you can configure your <code>web.xml</code> to suppress certain resources:</p>
         <ul>
         <li>Setting the context parameter <code>net.bootsfaces.get_fontawesome_from_cdn</code> to "yes" or "true" allows you to provide your own Font Awesome file.</li>
@@ -59,7 +71,7 @@
         </ul>
         
         
-        <h3>Defining when your resource files are loaded</h3>
+        <h2><a id="defining_when_your_resource_files_are_loaded">Defining when your resource files are loaded</a></h2>
         <p>If you need to place your CSS or JS file before or after the other resource files, you can use the attribute <code>position</code> of the
         <code>&lt;h:outputStylesheet /&gt;</code>. This is a non-standard attribute, so chances are your IDE complains about it. If so, make it a pass-through attribute.
         </p>
