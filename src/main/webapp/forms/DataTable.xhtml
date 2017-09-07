@@ -792,6 +792,7 @@ td {
 	                     ondeselect="console.log(typeOfSelection + ' ' + indexes + ' has been deselected');ajax:carPool.onDeselect(car, typeOfSelection, indexes);"
 	                     select="true" 
 	                     selectionMode="multiple"
+	                     selectedRow="#{carPool.carPool.get(2)}"
 	                     update="@next">
 	            <b:dataTableColumn value="#{car.brand}" />
 	            <b:dataTableColumn value="#{car.type}" />
