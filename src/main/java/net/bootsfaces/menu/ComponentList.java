@@ -8,21 +8,18 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletContext;
 
-@ManagedBean
-@ApplicationScoped
 public class ComponentList {
 
 	static Map<String, String> docFiles = new HashMap<>();
-	
+
 	static String[] tags = null;
-	
+
 	static {
-		String root = ((ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext()).getRealPath("/");
+		String root = ((ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext())
+				.getRealPath("/");
 		scanFolder(new File(root), root.length());
 		Object[] keySet = docFiles.keySet().toArray();
 		Arrays.sort(keySet);
@@ -31,17 +28,17 @@ public class ComponentList {
 			tags[i] = (String) keySet[i];
 		}
 	}
-	
+
 	public static void scanFolder(File folder, int charactersToIgnore) {
 		File[] files = folder.listFiles();
-		for (File file: files) {
+		for (File file : files) {
 			if (file.isDirectory()) {
 				scanFolder(file, charactersToIgnore);
 			} else if (file.getName().endsWith(".xhtml")) {
 				if (!file.getName().endsWith("Attributes.xhtml")) {
 					readFile(file.getAbsolutePath(), charactersToIgnore);
 				}
- 			}
+			}
 		}
 	}
 
@@ -59,13 +56,13 @@ public class ComponentList {
 					int end = sCurrentLine.indexOf("Attributes.xhtml");
 					int start = sCurrentLine.lastIndexOf('"', end);
 					if (start >= 0) {
-						String tag = sCurrentLine.substring(start+1, end);
+						String tag = sCurrentLine.substring(start + 1, end);
 						if (tag.contains("/")) {
 							start = tag.indexOf("/");
-							tag = tag.substring(start+1);
+							tag = tag.substring(start + 1);
 						}
-						tag = tag.substring(0,  1).toLowerCase() + tag.substring(1);
-						
+						tag = tag.substring(0, 1).toLowerCase() + tag.substring(1);
+
 						String url = filename.substring(charactersToIgnore, filename.length());
 						url = url.replace("\\", "/").replace(".xhtml", ".jsf");
 						docFiles.put("<" + tag + ">", url);
@@ -89,14 +86,4 @@ public class ComponentList {
 			}
 		}
 	}
-	
-	public String[] getTags() {
-		return tags;
-	}
-	
-	public String url(String component) {
-		return docFiles.get(component);
-	}
-
-
 }

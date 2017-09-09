@@ -60,7 +60,7 @@
 			font-weight: 200;
 			font-size: 90%;
 		}
-		.site-navigation > .nav > li > a  {
+		.site-navigation > form > .nav > li > a  {
 			padding-top:0;
 			padding-bottom:5px;
 			color: #888888;
@@ -101,12 +101,7 @@
         <b:container fluid="true">
         		<b:row>
         			<b:column medium-screen="2" hidden="tiny-screen,small-screen" style-class="site-navigation">
-        				<b:inputText placeholder="search component" style="margin-top:22px" />
-	        			<b:listLinks>
-	        				<ui:repeat var="c" value="#{componentList.tags}">
-			             	<b:navLink href="#{request.contextPath}/#{componentList.url(c)}" value="#{c}" />
-			             </ui:repeat>
-		              </b:listLinks>
+        				<ui:include src="componentSidebar.xhtml" />
 	              </b:column>
 	              <b:column medium-screen="8">
 		            <ui:insert name="content"/>

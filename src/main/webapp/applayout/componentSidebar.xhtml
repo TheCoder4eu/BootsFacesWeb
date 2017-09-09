@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:b="http://bootsfaces.net/ui"
+  xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+  <ui:remove>
+    <!--
+	Hint to editors: The menus follow the Chicago style of capitalization. Please capitalize everything but the "smaller" words.
+    -->
+  </ui:remove>
+	<h:form>
+		<b:inputText placeholder="search component" style="margin-top:22px"
+		             value="#{componentListBean.filter}" 
+		             update="@next"
+		             onkeyup="ajax:componentListBean.updateFilter();"
+		             onkeydown="if (event) {if(event.keyCode == 13) { navigateToPage(); return false;}}"/>
+		       
+		<b:listLinks>
+			<ui:repeat var="c" value="#{componentListBean.tags}">	
+				<b:navLink href="#{request.contextPath}/#{componentListBean.url(c)}"
+					value="#{c}" />
+			</ui:repeat>
+		</b:listLinks>
+		<b:remoteCommand name="navigateToPage" actionListener="#{componentListBean.navigateToPage()}"></b:remoteCommand>
+	</h:form>
+
+</ui:fragment>
