@@ -14,6 +14,7 @@ public class Reindent {
 	static int parameterIndent = 0;
 	static boolean insideTag = false;
 	static boolean modified = false;
+	static boolean insideStyle = false;
 
 	public static void main(String[] args) throws IOException {
 		scanFolder(new File("src/main/webapp"));
@@ -63,19 +64,42 @@ public class Reindent {
 		if (currentIndent == 0 && modified) {
 			return result.toString();
 		}
+		if (modified) {
+			System.out.println("Failed at " + filename + " Indent = " + currentIndent);
+		}
 		return null;
 	}
 
 	private static String examineLine(String line) {
+		boolean startsWithClosingTag = false;
 		String originalLine = line;
 		line = line.trim();
 		if (line.length() == 0) {
 			return line;
 		}
-		String[] close = line.split("</b:|</h:|</p:|</ui:|</f:");
+		if (line.startsWith("}")) {
+			currentIndent--;
+			startsWithClosingTag = true;
+		}
+		String[] close = line.split("</b:|</h:|</p:|</ui:|</f:|</html|</style|</table|</th|</tr|</td");
 		currentIndent -= close.length - 1;
 		if (close.length>1) {
 			insideTag = false;
+		}
+		if (line.contains("</style")) {
+			insideStyle=false;
+		}
+		if (line.startsWith("<style>") && line.contains("</style")) {
+			currentIndent++;
+		}
+		if (line.startsWith("<tr>") && line.contains("</tr")) {
+			currentIndent++;
+		}
+		if (line.startsWith("<th>") && line.contains("</td")) {
+			currentIndent++;
+		}
+		if (line.startsWith("<td>") && line.contains("</td")) {
+			currentIndent++;
 		}
 		if (insideTag && (!line.startsWith("<"))) {
 			for (int i = 0; i < parameterIndent+1; i++) {
@@ -86,11 +110,20 @@ public class Reindent {
 				line = "  " + line;
 			}
 		}
-		System.out.println(currentIndent + line);
-		String[] open = line.split("<b:|<h:|<p:|<ui:|<f:");
+//		System.out.println(currentIndent + line);
+		String[] open = line.split("<b:|<h:|<p:|<ui:|<f:|<style|<table|<th|<tr|<td");
 		currentIndent += open.length - 1;
 		if (open.length>1) {
 			insideTag = true;
+		}
+		if (line.contains("<style")) {
+			insideStyle=true;
+		}
+		String[] openBraces = (line+"blub").split("\\{");
+		String[] closedBraces = (line+"blub").split("}");
+		currentIndent+= openBraces.length - closedBraces.length;
+		if (startsWithClosingTag) {
+			currentIndent++;
 		}
 		if (open[open.length-1].contains(">")) {
 			insideTag = false;
@@ -106,6 +139,18 @@ public class Reindent {
 		currentIndent -= close2.length - 1;
 		if (!originalLine.equals(line)) {
 			modified = true;
+		}
+		if (line.startsWith("<style>") && line.contains("</style")) {
+			currentIndent--;
+		}
+		if (line.startsWith("<tr>") && line.contains("</tr")) {
+			currentIndent--;
+		}
+		if (line.startsWith("<th>") && line.contains("</td")) {
+			currentIndent--;
+		}
+		if (line.startsWith("<td>") && line.contains("</td")) {
+			currentIndent--;
 		}
 		return line;
 	}
