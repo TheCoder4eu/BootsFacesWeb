@@ -3,16 +3,14 @@ package net.bootsfaces.menu;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.application.NavigationHandler;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 
 @ManagedBean
 @SessionScoped
 public class ComponentListBean {
 
-	private String filter = "hallo";
+	private String filter = null;
 	
 	private String[] filteredTags = ComponentList.tags;
 	
@@ -56,15 +54,5 @@ public class ComponentListBean {
 		this.filteredTags = filteredTags;
 	}
 	
-	public void updateFilter() {
-		
-	}
-	
-	public void navigateToPage() {
-		FacesContext context = FacesContext.getCurrentInstance();
-		NavigationHandler navigationHandler = context.getApplication().getNavigationHandler();
-		navigationHandler.handleNavigation(context, null, "forms/DataTable.jsf");
-	}
-
-
+	public void updateFilter() {	}
 }
