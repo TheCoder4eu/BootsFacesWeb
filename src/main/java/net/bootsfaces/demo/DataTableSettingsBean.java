@@ -18,9 +18,13 @@
 package net.bootsfaces.demo;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+
+import de.beyondjava.jsf.sample.carshop.Car;
 
 /** A simple bean for demo purposes. */
 @SessionScoped
@@ -64,6 +68,12 @@ public class DataTableSettingsBean implements Serializable {
 
 	private String selectionMode = "multiple";
 
+	private String selectedItems = null;
+
+	private boolean showInfo = true;
+
+	private boolean deselectOnBackdropClick = false;
+
 	private boolean fixedHeader = false;
 
 	private boolean searchable = true;
@@ -71,6 +81,19 @@ public class DataTableSettingsBean implements Serializable {
 	private String defaultColumnFilter = "";
 
 	private boolean paginated = true;
+
+	private boolean selectedRowsActive1 = false;
+
+	private boolean selectedRowsActive2 = false;
+
+	private Object selectedRows = "2,4,6";
+
+	private boolean selectedColumnsActive = false;
+
+	private String selectedColumns = "1,3";
+	
+	@ManagedProperty("#{carPool.carPool}")
+	private List<Car> carPool;
 
 	public boolean isSaveState() {
 		return saveState;
@@ -355,9 +378,9 @@ public class DataTableSettingsBean implements Serializable {
 			this.multiColumnSearchPosition = "bottom";
 		}
 	}
-	
+
 	public boolean isMultiColumnSearchPositionTop() {
-		return this.multiColumnSearchPosition=="top";
+		return this.multiColumnSearchPosition == "top";
 	}
 
 	public boolean isContentDisabled() {
@@ -366,5 +389,91 @@ public class DataTableSettingsBean implements Serializable {
 
 	public void setContentDisabled(boolean contentDisabled) {
 		this.contentDisabled = contentDisabled;
+	}
+
+	public boolean isDeselectOnBackdropClick() {
+		return deselectOnBackdropClick;
+	}
+
+	public void setDeselectOnBackdropClick(boolean deselectOnBackdropClick) {
+		this.deselectOnBackdropClick = deselectOnBackdropClick;
+	}
+
+	public boolean isShowInfo() {
+		return showInfo;
+	}
+
+	public void setShowInfo(boolean showInfo) {
+		this.showInfo = showInfo;
+	}
+
+	public String getSelectedItems() {
+		return selectedItems;
+	}
+
+	public boolean isSelectedRowsActive1() {
+		return selectedRowsActive1;
+	}
+
+	public void setSelectedRowsActive1(boolean selectedRowsActive) {
+		this.selectedRowsActive1 = selectedRowsActive;
+	}
+
+	public void setSelectedItems(String selectedItems) {
+		this.selectedItems = selectedItems;
+	}
+
+	public boolean isSelectedRowsActive2() {
+		return selectedRowsActive2;
+	}
+
+	public void setSelectedRowsActive2(boolean selectedRowsActive) {
+		this.selectedRowsActive2 = selectedRowsActive;
+	}
+
+	public String getSelectedColumns() {
+		if (!selectedColumnsActive) {
+			return null;
+		}
+		return selectedColumns;
+	}
+
+	public void setSelectedColumns(String selectedColumns) {
+		if (selectedColumnsActive) {
+			this.selectedColumns = selectedColumns;
+		}
+	}
+
+	public Object getSelectedRows() {
+		if (selectedRowsActive2) {
+			return this.carPool.get(2);
+		}
+		if (!selectedRowsActive1) {
+			return null;
+		}
+		
+		return selectedRows;
+	}
+
+	public void setSelectedRows(Object selectedRows) {
+		if (selectedRowsActive1) {
+			this.selectedRows = selectedRows;
+		}
+	}
+
+	public boolean isSelectedColumnsActive() {
+		return selectedColumnsActive;
+	}
+
+	public void setSelectedColumnsActive(boolean selectedColumnsActive) {
+		this.selectedColumnsActive = selectedColumnsActive;
+	}
+
+	public List<Car> getCarPool() {
+		return carPool;
+	}
+
+	public void setCarPool(List<Car> carPool) {
+		this.carPool = carPool;
 	}
 }

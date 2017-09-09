@@ -194,9 +194,19 @@ public class CarPool implements Serializable {
 	
 	public void onSelect(Car car, String typeOfSelection, String indexes) {
 		System.out.println("OnSelect:" + car + " typeOfSelection: " + typeOfSelection + " indexes: " + indexes);
+		
+		if (!"row".equals(typeOfSelection)) {
+			car = null; // it's an empty instance of Car, so we better get rid of it
+		}
+		if (indexes!=null && indexes.contains("[")) {
+			car = null; // JSF can't deal with arrays of parameters
+		}
 		if (null != car) {
 			getCurrentlySelectedCars().add(car);
-		} else if (null != indexes) {
+		} else if (null != indexes && "row".equals(typeOfSelection)) {
+			if (indexes.startsWith("[")) {
+				indexes = indexes.substring(1, indexes.length()-1);
+			}
 			String[] indexArray = indexes.split(",");
 			for (String index:indexArray) {
 				int i = Integer.valueOf(index);
@@ -210,9 +220,9 @@ public class CarPool implements Serializable {
 	
 	public void onDeselect(Car car, String typeOfSelection, String indexes) {
 		System.out.println("OnDeselect:" + car + " typeOfSelection: " + typeOfSelection + " indexes: " + indexes);
-		if (null != car) {
+		if (null != car && "row".equals(typeOfSelection)) {
 			getCurrentlySelectedCars().remove(car);
-		} else if (null != indexes) {
+		} else if (null != indexes && "row".equals(typeOfSelection)) {
 			String[] indexArray = indexes.split(",");
 			for (String index:indexArray) {
 				int i = Integer.valueOf(index);
@@ -220,6 +230,15 @@ public class CarPool implements Serializable {
 			}
 		}
 	}
+	
+	public void onSelectDemo2(Car car, String typeOfSelection, String indexes) {
+		System.out.println("OnSelect:" + car + " typeOfSelection: " + typeOfSelection + " indexes: " + indexes);
+	}
+	
+	public void onDeselectDemo2(Car car, String typeOfSelection, String indexes) {
+		System.out.println("OnDeselect:" + car + " typeOfSelection: " + typeOfSelection + " indexes: " + indexes);
+	}
+
 
 	public List<Car> getCurrentlySelectedCars() {
 		return currentlySelectedCars;

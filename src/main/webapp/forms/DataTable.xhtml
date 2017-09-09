@@ -20,6 +20,8 @@
     <b:navLink href="#updating_a_datatable_with_ajax" value="Updating a datatable with AJAX" />
     <b:navLink href="#internationalization" value="Internationalization" />
     <b:navLink href="#custom_options" value="Custom options" />
+    <b:navLink href="#selecting" value="Selecting rows, columns or cells" />
+    <b:navLink href="#selectingServer" value="Server-side selection API" />
     <b:navLink href="#unified_ajax_and_javascript_api" value="Unified AJAX and JavaScript API" />
     <b:navLink href="#responsiveness" value="Responsiveness" />
     <b:navLink href="#empty_data_table_" value="Empty data table" />
@@ -465,12 +467,6 @@ td {
                 onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                 update="basic-usage-id" />
 
-             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.select}" caption="select='true'"
-                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basic-usage-id" />
-             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.singleSelectionMode}" caption="select='single'"
-                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basic-usage-id" />
              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.customOptions}" caption="customOption='colReorder:true'"
                 onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                 update="basic-usage-id" />
@@ -618,7 +614,8 @@ td {
     <script type="syntaxhighlighter"
       class="brush: xml; toolbar: false;gutter: false; first-line: 1">
       <![CDATA[
-        <b:selectOneMenu onchange="i18nBcarPool2Widget.DataTable().destroy();ajax:carPool.onLanguageChange()" update="bcarPool2">
+        <b:selectOneMenu onchange="i18nBcarPool2Widget.DataTable().destroy();ajax:carPool.onLanguageChange()" 
+                         update="bcarPool2">
       ]]>
     </script>
         </b:panel>
@@ -774,6 +771,128 @@ td {
             </f:facet>
         </b:panel>
        
+    <h2><a id="selecting">Selecting rows, columns or cells</a><b:badge value="Improved in BootsFaces 1.2.0" /></h2>
+    <p>The datatable allows you to select either rows, columns or individual cells. By default, this feature is 
+    deactivated, so you have to activate it by setting <code>select="true"</code>. There are a couple of options:</p>
+    <ul>
+    		<li>selection-mode="single" or</li>
+    		<li>selection-mode="multiple" or</li>
+    		<li>selected-items="rows" or</li>
+    		<li>selected-items="columns" or</li>
+    		<li>selected-items="cells"</li>
+    		<li>selected-columns="2,3"</li>
+    		<li>selected-rows="2,4"</li>
+    		<li>selected-rows="#num;{some.el.expression()}"</li>
+    		<li>selected-rows=".jquery-expression"</li>
+    </ul>
+    <b:panel title="Live preview" look="info" collapsible="false">
+    <h:form>
+		<b:panelGrid col-spans="8,4">
+			<b:dataTable value="#{carPool.carPool}" 
+				var="car"
+				onselect="console.log( typeOfSelection + ' ' + indexes + ' has been selected');ajax:carPool.onSelectDemo2(car, typeOfSelection, indexes);"
+				ondeselect="console.log(typeOfSelection + ' ' + indexes + ' has been deselected');ajax:carPool.onDeselectDemo2(car, typeOfSelection, indexes);"
+				select="#{dataTableSettingsBean.select}" 
+				selection-mode="#{dataTableSettingsBean.selectionMode}" 
+				selected-items="#{dataTableSettingsBean.selectedItems}"
+				selection-info="#{dataTableSettingsBean.showInfo}" 
+				selected-row="#{dataTableSettingsBean.selectedRows}"
+				selected-column="#{dataTableSettingsBean.selectedColumns}"
+				deselect-on-backdrop-click="#{dataTableSettingsBean.deselectOnBackdropClick}"
+				widget-var="selectableTable">
+				<b:dataTableColumn value="#{car.brand}" />
+				<b:dataTableColumn value="#{car.type}" />
+				<b:dataTableColumn value="#{car.color}" />
+				<b:dataTableColumn value="#{car.year}" />
+				<b:dataTableColumn value="#{car.price}" />
+				<b:dataTableColumn value="#{car.enginePower}"
+					label="Engine Power (hp)" />
+			</b:dataTable>
+			<b:panel>
+		             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.select}" caption="select='true'"
+		                onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+		                update="@parent:@previous" />
+		             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.singleSelectionMode}" caption="select='single'"
+		                onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+		                update="@parent:@previous" />
+		             <h:outputLabel>selectedItems=</h:outputLabel>
+		             <b:radiobutton value="#{dataTableSettingsBean.selectedItems}" caption="selected-items='row'" 
+		                item-value="row"
+		                onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+		                update="@parent:@previous" />
+		             <b:radiobutton value="#{dataTableSettingsBean.selectedItems}" caption="selected-items='column'" 
+		                item-value="column"
+		                onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+		                update="@parent:@previous" />
+		             <b:radiobutton value="#{dataTableSettingsBean.selectedItems}" caption="selected-items='cell'" 
+		                item-value="cell"
+		                onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+		                update="@parent:@previous" />
+		             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.showInfo}" caption="showInfo"
+		                onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+		                update="@parent:@previous" />
+		             <b:panelGrid columns="2">
+			             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.selectedRowsActive1}" caption="selectedRows="
+			                onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+			                update="@parent:@parent:@previous" />
+		                	 <b:inputText value="#{dataTableSettingsBean.selectedRows}" update="@parent:@parent:@previous"
+		                	    onkeyup="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()" />
+		             </b:panelGrid>
+		             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.selectedRowsActive2}" caption="selectedRows=#num;{carPool.getCar(2)}"
+		                onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+		                update="@parent:@previous" />
+		             <b:panelGrid columns="2">
+			             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.selectedColumnsActive}" caption="selectedColumns="
+			                onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+			                update="@parent:@parent:@previous" />
+		                	 <b:inputText value="#{dataTableSettingsBean.selectedColumns}" update="@parent:@parent:@previous"
+		                	    onkeyup="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()" />
+		             </b:panelGrid>
+		             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.deselectOnBackdropClick}" caption="deselect-on-backdrop-click"
+		                onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+		                update="@parent:@previous" />
+			</b:panel>
+		</b:panelGrid>
+	  </h:form>
+      <f:facet name="footer">
+           <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+               <b:tab title="JSF markup">
+                   <b:panel>
+                       <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                       <![CDATA[
+			<b:dataTable value="#num;{carPool.carPool}" 
+				var="car"
+				onselect="console.log( typeOfSelection + ' ' + indexes + ' has been selected');ajax:carPool.onSelect(car, typeOfSelection, indexes);"
+				ondeselect="console.log(typeOfSelection + ' ' + indexes + ' has been deselected');ajax:carPool.onDeselect(car, typeOfSelection, indexes);"
+				select="#num;{dataTableSettingsBean.select}" 
+				selection-mode="#num;{dataTableSettingsBean.selectionMode}" 
+				selected-items="#num;{dataTableSettingsBean.selectedItems}"
+				selection-info="#num;{dataTableSettingsBean.showInfo}" 
+				selected-row="#num;{dataTableSettingsBean.selectedRows}"
+				selected-column="#num;{dataTableSettingsBean.selectedColumns}"
+				deselect-on-backdrop-click="#num;{dataTableSettingsBean.deselectOnBackdropClick}"
+				widget-var="selectableTable">
+				<b:dataTableColumn value="#num;{car.brand}" />
+				<b:dataTableColumn value="#num;{car.type}" />
+				<b:dataTableColumn value="#num;{car.color}" />
+				<b:dataTableColumn value="#num;{car.year}" />
+				<b:dataTableColumn value="#num;{car.price}" />
+				<b:dataTableColumn value="#num;{car.enginePower}"
+					label="Engine Power (hp)" />
+			</b:dataTable>
+                       ]]>
+                       </script>
+                   </b:panel>
+               </b:tab>
+           </b:tabView>
+        </f:facet>
+    </b:panel>
+    
+    <h2><a id="selectingServer">Server-side selection API</a><b:badge value="Breaking changes in BootsFaces 1.2.0" /></h2>
+    <p>To be described</p>
+    <p>Topics:</p>
+    <p><code>selected-row</code>, <code>selected-colum</code>, AJAX, multiple vs. single selection, row selection vs. column selection vs. cell selection</p>
+
     <h2><a id="unified_ajax_and_javascript_api">Unified AJAX and JavaScript API</a></h2>
     <p>The datatable offers a couple of JavaScript and jQuery events you can use to call your own JavaScript or
     even your own bean method on the backend. Currently, the BootsFaces datatable offers only a subset of the
@@ -791,8 +910,8 @@ td {
 	                     onselect="console.log(typeOfSelection + ' ' + indexes + ' has been selected');ajax:carPool.onSelect(car, typeOfSelection, indexes);"
 	                     ondeselect="console.log(typeOfSelection + ' ' + indexes + ' has been deselected');ajax:carPool.onDeselect(car, typeOfSelection, indexes);"
 	                     select="true" 
-	                     selectionMode="multiple"
-	                     selectedRow="#{carPool.carPool.get(2)}"
+	                     selectionMode="single"
+	                     selectedColumns="2,4"
 	                     update="@next">
 	            <b:dataTableColumn value="#{car.brand}" />
 	            <b:dataTableColumn value="#{car.type}" />

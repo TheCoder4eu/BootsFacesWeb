@@ -161,4 +161,11 @@ public class Car implements Serializable {
 		int currentYear = Calendar.getInstance().get(Calendar.YEAR);
 		return ((currentYear - year) * 12 +5) + " months";				
 	}
+
+	@Override
+	public String toString() {
+		return "Car [brand=" + brand + ", color=" + color + ", type=" + type + ", year=" + year + ", mileage=" + mileage
+				+ ", fuel=" + fuel + ", price=" + price + ", enginePower=" + enginePower + ", editable=" + editable
+				+ "]";
+	}
 }

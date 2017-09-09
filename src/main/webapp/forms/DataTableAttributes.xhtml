@@ -83,6 +83,11 @@
                 <td>Allows you to pass an arbitrary option to the datatable widget. Separate the options by a comma if you pass more than one. Note that this may cause incompatibilities when the next version of BootsFaces is released. Use at own risk.</td>
             </tr>
             <tr>
+                <td>deselect-on-backdrop-click<br />deselectOnBackdropClick (alternative writing)</td>
+                <td> false </td>
+                <td>If you set this option to true, the user can de-select rows by simply clicking outside the table. Defaults to false.</td>
+            </tr>
+            <tr>
                 <td>disabled</td>
                 <td>false</td>
                 <td>Boolean value to specify if the button is disabled.</td>
@@ -320,15 +325,30 @@
             <tr>
                 <td>select</td>
                 <td>false</td>
-                <td>Allows the user to select rows. Defaults to false.</td>
+                <td>Allows the user to select rows. Defaults to false. Is automatically set to true if selected-column, selected-row or selection-mode is set.</td>
+            </tr>
+            <tr>
+                <td>selected-column<br />selectedColumn (alternative writing)</td>
+                <td>(none)</td>
+                <td>Optional parameter defining which columns are selected when the datatable is initially rendered. If this attribute is an integer, it's the column index. If it's a string, it's a jQuery expression. Automatically sets selection='true' and selected-items='column'.</td>
+            </tr>
+            <tr>
+                <td>selected-items<br />selectedItems (alternative writing)</td>
+                <td>(none)</td>
+                <td>Determines whether rows, columns or individual cells are selected. Legal values are 'row', 'column', and 'cell'. The default value is 'row'. Automatically sets select='true'.</td>
             </tr>
             <tr>
                 <td>selected-row<br />selectedRow (alternative writing)</td>
                 <td>(none)</td>
-                <td>Optional parameter defining which rows are selected when the datatable is initially rendered. If this attribute is an integer, it's the row index. If it's a string, it's a jQuery expression. If it's another object, it's compared to the loop var.</td>
+                <td>Optional parameter defining which rows are selected when the datatable is initially rendered. If this attribute is an integer, it's the row index. If it's a string, it's a jQuery expression. If it's another object, it's compared to the loop var.  Automatically sets selection='true' and selected-items='row'.</td>
             </tr>
             <tr>
-                <td>selectionMode</td>
+                <td>selection-info<br />selectionInfo (alternative writing)</td>
+                <td> true </td>
+                <td>The datatable shows below the table how many rows are selected. Setting this option to false deactivates this feature. Defaults to true.</td>
+            </tr>
+            <tr>
+                <td>selection-mode<br />selectionMode (alternative writing)</td>
                 <td> multiple </td>
                 <td>Set this property to "single" if you want to prevent multiple selections. Default is "multiple".</td>
             </tr>
