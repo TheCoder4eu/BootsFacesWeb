@@ -1,357 +1,357 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:b="http://bootsfaces.net/ui"
-  xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
 
 
-<ui:define name="content-navigator">
-  <b:listLinks>
-    <b:navLink href="#rtl_support" value="RTL support" />
-    <b:navLink href="#using_the_default_direction_" value="Using the default direction:" />
-  </b:listLinks>
-</ui:define>
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#rtl_support" value="RTL support" />
+      <b:navLink href="#using_the_default_direction_" value="Using the default direction:" />
+    </b:listLinks>
+  </ui:define>
 
 
   <ui:define name="content">
     <link type="text/css" rel="stylesheet" href="../javax.faces.resource/bootstrap-rtl.css.jsf?ln=rtl"
-      id="rtlStyleSheet" />
+          id="rtlStyleSheet" />
     <script>
-		function toggleCSSStylesheet() {
-			if (document.getElementById('rtlStyleSheet').href
-					.indexOf('bootstrap-ltr.css') > 0)
-				document.getElementById('rtlStyleSheet').href = '../javax.faces.resource/bootstrap-rtl.css.jsf?ln=rtl';
-			else
-				document.getElementById('rtlStyleSheet').href = '../javax.faces.resource/bootstrap-ltr.css.jsf?ln=rtl';
-		}
-	</script>
-      
-      <b:panel title="Live preview" look="info" collapsible="false">
-          <b:row>
-              <b:column span="12">
-                  <h1><a id="rtl_support">RTL support</a></h1>
-              </b:column>
-          </b:row>
-          <b:row styleClass="rtlContent">
-              <b:column span="12">
-                  <b:switch label="View this page in" value="#{rtlBean.rtl}" onText="rtl" offText="ltr" offColor="success"
-                            onchange="ajax:rtlBean.toggleRTL()" update="@(.rtlContent)" oncomplete="toggleCSSStylesheet();" />
-              </b:column>
-          </b:row>
+    function toggleCSSStylesheet() {
+      if (document.getElementById('rtlStyleSheet').href
+      .indexOf('bootstrap-ltr.css') > 0)
+      document.getElementById('rtlStyleSheet').href = '../javax.faces.resource/bootstrap-rtl.css.jsf?ln=rtl';
+      else
+      document.getElementById('rtlStyleSheet').href = '../javax.faces.resource/bootstrap-ltr.css.jsf?ln=rtl';
+    }
+    </script>
 
-          <f:facet name="footer">
-<b:tabView contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
-                                
-                                <b:tab title="JSF Markup" dir="ltr">
-                                <p>Note that this tab always uses <code>dir="ltr"</code>. Otherwise, the sourcecode
-                                looks a bit corrupted.</p>
-                                
-                                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-
-                                    <![CDATA[
-     <b:row class="rtlContent">
-        <b:column span="12">
-          <h2><a id="rtl_support">RTL support</a></h2>
-        </b:column>
-      </b:row>
-      <b:row class="rtlContent">
-        <b:column span="12">
-          <b:switch label="View this page in" value="#num;{rtlBean.rtl}" onText="rtl" offText="ltr" offColor="success"
-            onchange="ajax:rtlBean.toggleRTL()" update="@(.rtlContent)" oncomplete="toggleCSSStylesheet();" />
-        </b:column>
-      </b:row>
-                                    
-                                    ]]></script>
-                                </b:tab>
-                             <b:tab title="JavaScript code"  dir="ltr">
-                                <p>Note that this tab always uses <code>dir="ltr"</code>. Otherwise, the sourcecode
-                                looks a bit corrupted.</p>
-                                <p>This script allows you to toggle between LTR and RTL without reloading the page.
-                                It is called by the <code>oncomplete</code> handler of an AJAX call.</p>
-                                
-                                    <script type="syntaxhighlighter" class="brush: js; toolbar: false;first-line: 0">
-                                    <![CDATA[
-    <script>
-		function toggleCSSStylesheet() {
-			if (document.getElementById('rtlStyleSheet').href
-					.indexOf('bootstrap-ltr.css') > 0)
-				document.getElementById('rtlStyleSheet').href = '/BootsFacesWeb/javax.faces.resource/bootstrap-rtl.css.jsf?ln=rtl';
-			else
-				document.getElementById('rtlStyleSheet').href = '/BootsFacesWeb/javax.faces.resource/bootstrap-ltr.css.jsf?ln=rtl';
-		}
-	&lt;/script>
-                                    ]]></script>
-                                </b:tab>
-                             <b:tab title="Java Bean"  dir="ltr">
-                                <p>Note that this tab always uses <code>dir="ltr"</code>. Otherwise, the sourcecode
-                                looks a bit corrupted.</p>
-                                
-                                    <script type="syntaxhighlighter" class="brush: java; toolbar: false;first-line: 0">
-
-                                    <![CDATA[
-@SessionScoped
-@ManagedBean
-public class RtlBean implements Serializable {
-	private static final long serialVersionUID = 1L;
-	private boolean rtl = false;
-
-	public boolean isRtl() {
-		return rtl;
-	}
-
-	public void setRtl(boolean rtl) {
-		this.rtl = rtl;
-	}
-
-	public String getDirection() {
-		return rtl ? "rtl" : "ltr";
-	}
-	
-	public void toggleRTL() {
-	}
-}
-                                    ]]></script>
-                                </b:tab>
-                            </b:tabView>
-          </f:facet>
-      </b:panel>
-
+    <b:panel title="Live preview" look="info" collapsible="false">
       <b:row>
         <b:column span="12">
-          <p>BootsFaces adds some limited support for RTL (right-to-left) languages. Many components offer a
-          <code>dir</code> attribute. Setting it to <code>rtl</code> activates the support for right-to-left languages
-          of your browser. You can read a good explanation of this feature here: <a target="#" href="http://www.i18nguy.com/markup/right-to-left.html">http://www.i18nguy.com/markup/right-to-left.html</a>.</p>
-          <p>
-          However, RTL isn't fully
-            supported by Bootstrap itself. So you need to add this library to fully active RTL support:
-            <a target="#" href="https://github.com/morteza/bootstrap-rtl">https://github.com/morteza/bootstrap-rtl</a>.
-          </p>
-          <p>There's a catch: activating this library makes RTL the default. You can't revert this effect by using
-          the <code>dir="ltr"</code> setting of the BootsFaces components. The RTL-to-LTR switcher of this page
-          circumvents this problem by activating and deactivating the CSS file when you toggle the switch.</p>
+          <h1><a id="rtl_support">RTL support</a></h1>
         </b:column>
       </b:row>
-      <b:row>
+      <b:row styleClass="rtlContent">
         <b:column span="12">
-          <h1 dir="#{rtlBean.direction}">Examples</h1>
-          <p dir="#{rtlBean.direction}">
-            This is an example I found at <a target="#" href="http://www.i18nguy.com/markup/right-to-left.html">http://www.i18nguy.com/markup/right-to-left.html</a>,
-            adapted to make use of
-            <code>&lt;b:column /&gt;</code>
-            and
-            <code>&lt;b:panelGrid /&gt;</code>
-            . As you can see, the CSS library <a target="#" href="https://github.com/morteza/bootstrap-rtl">https://github.com/morteza/bootstrap-rtl</a>
-            reverts the order of the columns:
-          </p>
+          <b:switch label="View this page in" value="#{rtlBean.rtl}" onText="rtl" offText="ltr" offColor="success"
+                    onchange="ajax:rtlBean.toggleRTL()" update="@(.rtlContent)" oncomplete="toggleCSSStylesheet();" />
         </b:column>
       </b:row>
-      <h2><a id="using_the_default_direction_">Using the default direction:</a></h2>
-      
-      <b:panel title="Live preview" look="info" collapsible="false">
-           <b:row style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black">
-        <b:column span="2" style="border:1px solid black">European Digits</b:column>
-        <b:column span="1" style="border:1px solid black">0</b:column>
-        <b:column span="1" style="border:1px solid black">1</b:column>
-        <b:column span="1" style="border:1px solid black">2</b:column>
-        <b:column span="1" style="border:1px solid black">3</b:column>
-        <b:column span="1" style="border:1px solid black">4</b:column>
-        <b:column span="1" style="border:1px solid black">5</b:column>
-        <b:column span="1" style="border:1px solid black">6</b:column>
-        <b:column span="1" style="border:1px solid black">7</b:column>
-        <b:column span="1" style="border:1px solid black">8</b:column>
-        <b:column span="1" style="border:1px solid black">9</b:column>
+
+      <f:facet name="footer">
+        <b:tabView contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+
+          <b:tab title="JSF Markup" dir="ltr">
+            <p>Note that this tab always uses <code>dir="ltr"</code>. Otherwise, the sourcecode
+            looks a bit corrupted.</p>
+
+            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+
+            <![CDATA[
+            <b:row class="rtlContent">
+              <b:column span="12">
+                <h2><a id="rtl_support">RTL support</a></h2>
+              </b:column>
+            </b:row>
+            <b:row class="rtlContent">
+              <b:column span="12">
+                <b:switch label="View this page in" value="#num;{rtlBean.rtl}" onText="rtl" offText="ltr" offColor="success"
+                          onchange="ajax:rtlBean.toggleRTL()" update="@(.rtlContent)" oncomplete="toggleCSSStylesheet();" />
+              </b:column>
+            </b:row>
+
+            ]]></script>
+          </b:tab>
+          <b:tab title="JavaScript code"  dir="ltr">
+            <p>Note that this tab always uses <code>dir="ltr"</code>. Otherwise, the sourcecode
+            looks a bit corrupted.</p>
+            <p>This script allows you to toggle between LTR and RTL without reloading the page.
+            It is called by the <code>oncomplete</code> handler of an AJAX call.</p>
+
+            <script type="syntaxhighlighter" class="brush: js; toolbar: false;first-line: 0">
+            <![CDATA[
+            <script>
+            function toggleCSSStylesheet() {
+              if (document.getElementById('rtlStyleSheet').href
+              .indexOf('bootstrap-ltr.css') > 0)
+              document.getElementById('rtlStyleSheet').href = '/BootsFacesWeb/javax.faces.resource/bootstrap-rtl.css.jsf?ln=rtl';
+              else
+              document.getElementById('rtlStyleSheet').href = '/BootsFacesWeb/javax.faces.resource/bootstrap-ltr.css.jsf?ln=rtl';
+            }
+            &lt;/script>
+            ]]></script>
+          </b:tab>
+          <b:tab title="Java Bean"  dir="ltr">
+            <p>Note that this tab always uses <code>dir="ltr"</code>. Otherwise, the sourcecode
+            looks a bit corrupted.</p>
+
+            <script type="syntaxhighlighter" class="brush: java; toolbar: false;first-line: 0">
+
+            <![CDATA[
+            @SessionScoped
+            @ManagedBean
+            public class RtlBean implements Serializable {
+              private static final long serialVersionUID = 1L;
+              private boolean rtl = false;
+
+              public boolean isRtl() {
+                return rtl;
+              }
+
+              public void setRtl(boolean rtl) {
+                this.rtl = rtl;
+              }
+
+              public String getDirection() {
+                return rtl ? "rtl" : "ltr";
+              }
+
+              public void toggleRTL() {
+              }
+            }
+            ]]></script>
+          </b:tab>
+        </b:tabView>
+      </f:facet>
+    </b:panel>
+
+    <b:row>
+      <b:column span="12">
+        <p>BootsFaces adds some limited support for RTL (right-to-left) languages. Many components offer a
+        <code>dir</code> attribute. Setting it to <code>rtl</code> activates the support for right-to-left languages
+        of your browser. You can read a good explanation of this feature here: <a target="#" href="http://www.i18nguy.com/markup/right-to-left.html">http://www.i18nguy.com/markup/right-to-left.html</a>.</p>
+        <p>
+        However, RTL isn't fully
+        supported by Bootstrap itself. So you need to add this library to fully active RTL support:
+        <a target="#" href="https://github.com/morteza/bootstrap-rtl">https://github.com/morteza/bootstrap-rtl</a>.
+        </p>
+        <p>There's a catch: activating this library makes RTL the default. You can't revert this effect by using
+        the <code>dir="ltr"</code> setting of the BootsFaces components. The RTL-to-LTR switcher of this page
+        circumvents this problem by activating and deactivating the CSS file when you toggle the switch.</p>
+      </b:column>
+    </b:row>
+    <b:row>
+      <b:column span="12">
+        <h1 dir="#{rtlBean.direction}">Examples</h1>
+        <p dir="#{rtlBean.direction}">
+        This is an example I found at <a target="#" href="http://www.i18nguy.com/markup/right-to-left.html">http://www.i18nguy.com/markup/right-to-left.html</a>,
+        adapted to make use of
+        <code>&lt;b:column /&gt;</code>
+        and
+        <code>&lt;b:panelGrid /&gt;</code>
+        . As you can see, the CSS library <a target="#" href="https://github.com/morteza/bootstrap-rtl">https://github.com/morteza/bootstrap-rtl</a>
+        reverts the order of the columns:
+        </p>
+      </b:column>
+    </b:row>
+    <h2><a id="using_the_default_direction_">Using the default direction:</a></h2>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <b:row style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black">
+      <b:column span="2" style="border:1px solid black">European Digits</b:column>
+      <b:column span="1" style="border:1px solid black">0</b:column>
+      <b:column span="1" style="border:1px solid black">1</b:column>
+      <b:column span="1" style="border:1px solid black">2</b:column>
+      <b:column span="1" style="border:1px solid black">3</b:column>
+      <b:column span="1" style="border:1px solid black">4</b:column>
+      <b:column span="1" style="border:1px solid black">5</b:column>
+      <b:column span="1" style="border:1px solid black">6</b:column>
+      <b:column span="1" style="border:1px solid black">7</b:column>
+      <b:column span="1" style="border:1px solid black">8</b:column>
+      <b:column span="1" style="border:1px solid black">9</b:column>
       </b:row>
       <b:row style="border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black">
-        <b:column span="2" style="border:1px solid black">Arabic Digits</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٠</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">١</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٢</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٣</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٤</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٥</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٦</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٧</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٨</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٩</b:column>
+      <b:column span="2" style="border:1px solid black">Arabic Digits</b:column>
+      <b:column span="1" lang="ar" style="border:1px solid black">٠</b:column>
+      <b:column span="1" lang="ar" style="border:1px solid black">١</b:column>
+      <b:column span="1" lang="ar" style="border:1px solid black">٢</b:column>
+      <b:column span="1" lang="ar" style="border:1px solid black">٣</b:column>
+      <b:column span="1" lang="ar" style="border:1px solid black">٤</b:column>
+      <b:column span="1" lang="ar" style="border:1px solid black">٥</b:column>
+      <b:column span="1" lang="ar" style="border:1px solid black">٦</b:column>
+      <b:column span="1" lang="ar" style="border:1px solid black">٧</b:column>
+      <b:column span="1" lang="ar" style="border:1px solid black">٨</b:column>
+      <b:column span="1" lang="ar" style="border:1px solid black">٩</b:column>
       </b:row>
-          
-          <f:facet name="footer">
-              <strong>JSF markup:</strong>
-              <b:panel dir="ltr">
-              <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
- <![CDATA[
-    <b:row style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black">
-        <b:column span="2" style="border:1px solid black">European Digits</b:column>
-        <b:column span="1" style="border:1px solid black">0</b:column>
-        <b:column span="1" style="border:1px solid black">1</b:column>
-        <b:column span="1" style="border:1px solid black">2</b:column>
-        <b:column span="1" style="border:1px solid black">3</b:column>
-        <b:column span="1" style="border:1px solid black">4</b:column>
-        <b:column span="1" style="border:1px solid black">5</b:column>
-        <b:column span="1" style="border:1px solid black">6</b:column>
-        <b:column span="1" style="border:1px solid black">7</b:column>
-        <b:column span="1" style="border:1px solid black">8</b:column>
-        <b:column span="1" style="border:1px solid black">9</b:column>
-      </b:row>
-      <b:row style="border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black">
-        <b:column span="2" style="border:1px solid black">Arabic Digits</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٠</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">١</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٢</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٣</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٤</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٥</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٦</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٧</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٨</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٩</b:column>
-      </b:row>
-                                    
-                                    ]]></script>
-            </b:panel>
-          </f:facet>
-      </b:panel>
-      
-     
-      <h3 dir="ltr">Always use LTR:</h3>
-      <p  dir="ltr">Setting <code>dir="ltr"</code> influences the text within the columns, but it doesn't change the column
-      ordering itself:</p>
-      
-      <b:panel title="Live preview" look="info" collapsible="false">
-          <b:row dir="ltr" style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black">
-              <b:column span="2" style="border:1px solid black">European Digits</b:column>
-              <b:column span="1" style="border:1px solid black">0</b:column>
-              <b:column span="1" style="border:1px solid black">1</b:column>
-              <b:column span="1" style="border:1px solid black">2</b:column>
-              <b:column span="1" style="border:1px solid black">3</b:column>
-              <b:column span="1" style="border:1px solid black">4</b:column>
-              <b:column span="1" style="border:1px solid black">5</b:column>
-              <b:column span="1" style="border:1px solid black">6</b:column>
-              <b:column span="1" style="border:1px solid black">7</b:column>
-              <b:column span="1" style="border:1px solid black">8</b:column>
-              <b:column span="1" style="border:1px solid black">9</b:column>
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel dir="ltr">
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:row style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black">
+          <b:column span="2" style="border:1px solid black">European Digits</b:column>
+          <b:column span="1" style="border:1px solid black">0</b:column>
+          <b:column span="1" style="border:1px solid black">1</b:column>
+          <b:column span="1" style="border:1px solid black">2</b:column>
+          <b:column span="1" style="border:1px solid black">3</b:column>
+          <b:column span="1" style="border:1px solid black">4</b:column>
+          <b:column span="1" style="border:1px solid black">5</b:column>
+          <b:column span="1" style="border:1px solid black">6</b:column>
+          <b:column span="1" style="border:1px solid black">7</b:column>
+          <b:column span="1" style="border:1px solid black">8</b:column>
+          <b:column span="1" style="border:1px solid black">9</b:column>
           </b:row>
-          <b:row dir="ltr" style="border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black">
-              <b:column span="2" style="border:1px solid black">Arabic Digits</b:column>
-              <b:column span="1" lang="ar" style="border:1px solid black">٠</b:column>
-              <b:column span="1" lang="ar" style="border:1px solid black">١</b:column>
-              <b:column span="1" lang="ar" style="border:1px solid black">٢</b:column>
-              <b:column span="1" lang="ar" style="border:1px solid black">٣</b:column>
-              <b:column span="1" lang="ar" style="border:1px solid black">٤</b:column>
-              <b:column span="1" lang="ar" style="border:1px solid black">٥</b:column>
-              <b:column span="1" lang="ar" style="border:1px solid black">٦</b:column>
-              <b:column span="1" lang="ar" style="border:1px solid black">٧</b:column>
-              <b:column span="1" lang="ar" style="border:1px solid black">٨</b:column>
-              <b:column span="1" lang="ar" style="border:1px solid black">٩</b:column>
+          <b:row style="border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black">
+          <b:column span="2" style="border:1px solid black">Arabic Digits</b:column>
+          <b:column span="1" lang="ar" style="border:1px solid black">٠</b:column>
+          <b:column span="1" lang="ar" style="border:1px solid black">١</b:column>
+          <b:column span="1" lang="ar" style="border:1px solid black">٢</b:column>
+          <b:column span="1" lang="ar" style="border:1px solid black">٣</b:column>
+          <b:column span="1" lang="ar" style="border:1px solid black">٤</b:column>
+          <b:column span="1" lang="ar" style="border:1px solid black">٥</b:column>
+          <b:column span="1" lang="ar" style="border:1px solid black">٦</b:column>
+          <b:column span="1" lang="ar" style="border:1px solid black">٧</b:column>
+          <b:column span="1" lang="ar" style="border:1px solid black">٨</b:column>
+          <b:column span="1" lang="ar" style="border:1px solid black">٩</b:column>
           </b:row>
-          
-          <f:facet name="footer">
-              <strong>JSF markup:</strong>
-              <b:panel dir="ltr">
-                  <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                                    <![CDATA[
+
+          ]]></script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+
+    <h3 dir="ltr">Always use LTR:</h3>
+    <p  dir="ltr">Setting <code>dir="ltr"</code> influences the text within the columns, but it doesn't change the column
+    ordering itself:</p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
       <b:row dir="ltr" style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black">
-        <b:column span="2" style="border:1px solid black">European Digits</b:column>
-        <b:column span="1" style="border:1px solid black">0</b:column>
-        <b:column span="1" style="border:1px solid black">1</b:column>
-        <b:column span="1" style="border:1px solid black">2</b:column>
-        <b:column span="1" style="border:1px solid black">3</b:column>
-        <b:column span="1" style="border:1px solid black">4</b:column>
-        <b:column span="1" style="border:1px solid black">5</b:column>
-        <b:column span="1" style="border:1px solid black">6</b:column>
-        <b:column span="1" style="border:1px solid black">7</b:column>
-        <b:column span="1" style="border:1px solid black">8</b:column>
-        <b:column span="1" style="border:1px solid black">9</b:column>
+      <b:column span="2" style="border:1px solid black">European Digits</b:column>
+      <b:column span="1" style="border:1px solid black">0</b:column>
+      <b:column span="1" style="border:1px solid black">1</b:column>
+      <b:column span="1" style="border:1px solid black">2</b:column>
+      <b:column span="1" style="border:1px solid black">3</b:column>
+      <b:column span="1" style="border:1px solid black">4</b:column>
+      <b:column span="1" style="border:1px solid black">5</b:column>
+      <b:column span="1" style="border:1px solid black">6</b:column>
+      <b:column span="1" style="border:1px solid black">7</b:column>
+      <b:column span="1" style="border:1px solid black">8</b:column>
+      <b:column span="1" style="border:1px solid black">9</b:column>
       </b:row>
       <b:row dir="ltr" style="border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black">
-        <b:column span="2" style="border:1px solid black">Arabic Digits</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٠</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">١</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٢</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٣</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٤</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٥</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٦</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٧</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٨</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٩</b:column>
+      <b:column span="2" style="border:1px solid black">Arabic Digits</b:column>
+      <b:column span="1" lang="ar" style="border:1px solid black">٠</b:column>
+      <b:column span="1" lang="ar" style="border:1px solid black">١</b:column>
+      <b:column span="1" lang="ar" style="border:1px solid black">٢</b:column>
+      <b:column span="1" lang="ar" style="border:1px solid black">٣</b:column>
+      <b:column span="1" lang="ar" style="border:1px solid black">٤</b:column>
+      <b:column span="1" lang="ar" style="border:1px solid black">٥</b:column>
+      <b:column span="1" lang="ar" style="border:1px solid black">٦</b:column>
+      <b:column span="1" lang="ar" style="border:1px solid black">٧</b:column>
+      <b:column span="1" lang="ar" style="border:1px solid black">٨</b:column>
+      <b:column span="1" lang="ar" style="border:1px solid black">٩</b:column>
       </b:row>
-                                    
-                                    ]]></script>
-              </b:panel>
-          </f:facet>
-      </b:panel>
-      
-      <h3 dir="rtl">:Always use RTL</h3>
-      <p  dir="rtl">:Analogously, setting <code>dir="rtl"</code> influences the text within the columns, but it doesn't change the column
-      ordering itself</p>
-      
-      <b:panel title="Live preview" look="info" collapsible="false">
-          <b:row dir="rtl" style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black">
-              <b:column span="2" style="border:1px solid black">European Digits</b:column>
-              <b:column span="1" style="border:1px solid black">0</b:column>
-              <b:column span="1" style="border:1px solid black">1</b:column>
-              <b:column span="1" style="border:1px solid black">2</b:column>
-              <b:column span="1" style="border:1px solid black">3</b:column>
-              <b:column span="1" style="border:1px solid black">4</b:column>
-              <b:column span="1" style="border:1px solid black">5</b:column>
-              <b:column span="1" style="border:1px solid black">6</b:column>
-              <b:column span="1" style="border:1px solid black">7</b:column>
-              <b:column span="1" style="border:1px solid black">8</b:column>
-              <b:column span="1" style="border:1px solid black">9</b:column>
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel dir="ltr">
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:row dir="ltr" style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black">
+          <b:column span="2" style="border:1px solid black">European Digits</b:column>
+          <b:column span="1" style="border:1px solid black">0</b:column>
+          <b:column span="1" style="border:1px solid black">1</b:column>
+          <b:column span="1" style="border:1px solid black">2</b:column>
+          <b:column span="1" style="border:1px solid black">3</b:column>
+          <b:column span="1" style="border:1px solid black">4</b:column>
+          <b:column span="1" style="border:1px solid black">5</b:column>
+          <b:column span="1" style="border:1px solid black">6</b:column>
+          <b:column span="1" style="border:1px solid black">7</b:column>
+          <b:column span="1" style="border:1px solid black">8</b:column>
+          <b:column span="1" style="border:1px solid black">9</b:column>
           </b:row>
-          <b:row dir="rtl" style="border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black">
-              <b:column span="2" style="border:1px solid black">Arabic Digits</b:column>
-              <b:column span="1" lang="ar" style="border:1px solid black">٠</b:column>
-              <b:column span="1" lang="ar" style="border:1px solid black">١</b:column>
-              <b:column span="1" lang="ar" style="border:1px solid black">٢</b:column>
-              <b:column span="1" lang="ar" style="border:1px solid black">٣</b:column>
-              <b:column span="1" lang="ar" style="border:1px solid black">٤</b:column>
-              <b:column span="1" lang="ar" style="border:1px solid black">٥</b:column>
-              <b:column span="1" lang="ar" style="border:1px solid black">٦</b:column>
-              <b:column span="1" lang="ar" style="border:1px solid black">٧</b:column>
-              <b:column span="1" lang="ar" style="border:1px solid black">٨</b:column>
-              <b:column span="1" lang="ar" style="border:1px solid black">٩</b:column>
+          <b:row dir="ltr" style="border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black">
+          <b:column span="2" style="border:1px solid black">Arabic Digits</b:column>
+          <b:column span="1" lang="ar" style="border:1px solid black">٠</b:column>
+          <b:column span="1" lang="ar" style="border:1px solid black">١</b:column>
+          <b:column span="1" lang="ar" style="border:1px solid black">٢</b:column>
+          <b:column span="1" lang="ar" style="border:1px solid black">٣</b:column>
+          <b:column span="1" lang="ar" style="border:1px solid black">٤</b:column>
+          <b:column span="1" lang="ar" style="border:1px solid black">٥</b:column>
+          <b:column span="1" lang="ar" style="border:1px solid black">٦</b:column>
+          <b:column span="1" lang="ar" style="border:1px solid black">٧</b:column>
+          <b:column span="1" lang="ar" style="border:1px solid black">٨</b:column>
+          <b:column span="1" lang="ar" style="border:1px solid black">٩</b:column>
           </b:row>
-          <f:facet name="footer">
-              <strong>JSF markup:</strong>
-              <b:panel>
-                  <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                                    <![CDATA[
+
+          ]]></script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+    <h3 dir="rtl">:Always use RTL</h3>
+    <p  dir="rtl">:Analogously, setting <code>dir="rtl"</code> influences the text within the columns, but it doesn't change the column
+    ordering itself</p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
       <b:row dir="rtl" style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black">
-        <b:column span="2" style="border:1px solid black">European Digits</b:column>
-        <b:column span="1" style="border:1px solid black">0</b:column>
-        <b:column span="1" style="border:1px solid black">1</b:column>
-        <b:column span="1" style="border:1px solid black">2</b:column>
-        <b:column span="1" style="border:1px solid black">3</b:column>
-        <b:column span="1" style="border:1px solid black">4</b:column>
-        <b:column span="1" style="border:1px solid black">5</b:column>
-        <b:column span="1" style="border:1px solid black">6</b:column>
-        <b:column span="1" style="border:1px solid black">7</b:column>
-        <b:column span="1" style="border:1px solid black">8</b:column>
-        <b:column span="1" style="border:1px solid black">9</b:column>
+      <b:column span="2" style="border:1px solid black">European Digits</b:column>
+      <b:column span="1" style="border:1px solid black">0</b:column>
+      <b:column span="1" style="border:1px solid black">1</b:column>
+      <b:column span="1" style="border:1px solid black">2</b:column>
+      <b:column span="1" style="border:1px solid black">3</b:column>
+      <b:column span="1" style="border:1px solid black">4</b:column>
+      <b:column span="1" style="border:1px solid black">5</b:column>
+      <b:column span="1" style="border:1px solid black">6</b:column>
+      <b:column span="1" style="border:1px solid black">7</b:column>
+      <b:column span="1" style="border:1px solid black">8</b:column>
+      <b:column span="1" style="border:1px solid black">9</b:column>
       </b:row>
       <b:row dir="rtl" style="border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black">
-        <b:column span="2" style="border:1px solid black">Arabic Digits</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٠</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">١</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٢</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٣</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٤</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٥</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٦</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٧</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٨</b:column>
-        <b:column span="1" lang="ar" style="border:1px solid black">٩</b:column>
+      <b:column span="2" style="border:1px solid black">Arabic Digits</b:column>
+      <b:column span="1" lang="ar" style="border:1px solid black">٠</b:column>
+      <b:column span="1" lang="ar" style="border:1px solid black">١</b:column>
+      <b:column span="1" lang="ar" style="border:1px solid black">٢</b:column>
+      <b:column span="1" lang="ar" style="border:1px solid black">٣</b:column>
+      <b:column span="1" lang="ar" style="border:1px solid black">٤</b:column>
+      <b:column span="1" lang="ar" style="border:1px solid black">٥</b:column>
+      <b:column span="1" lang="ar" style="border:1px solid black">٦</b:column>
+      <b:column span="1" lang="ar" style="border:1px solid black">٧</b:column>
+      <b:column span="1" lang="ar" style="border:1px solid black">٨</b:column>
+      <b:column span="1" lang="ar" style="border:1px solid black">٩</b:column>
       </b:row>
-                                    
-                                    ]]></script>
-              </b:panel>
-          </f:facet>
-      </b:panel>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:row dir="rtl" style="border-top:1px solid black;border-left:1px solid black;border-right:1px solid black">
+          <b:column span="2" style="border:1px solid black">European Digits</b:column>
+          <b:column span="1" style="border:1px solid black">0</b:column>
+          <b:column span="1" style="border:1px solid black">1</b:column>
+          <b:column span="1" style="border:1px solid black">2</b:column>
+          <b:column span="1" style="border:1px solid black">3</b:column>
+          <b:column span="1" style="border:1px solid black">4</b:column>
+          <b:column span="1" style="border:1px solid black">5</b:column>
+          <b:column span="1" style="border:1px solid black">6</b:column>
+          <b:column span="1" style="border:1px solid black">7</b:column>
+          <b:column span="1" style="border:1px solid black">8</b:column>
+          <b:column span="1" style="border:1px solid black">9</b:column>
+          </b:row>
+          <b:row dir="rtl" style="border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black">
+          <b:column span="2" style="border:1px solid black">Arabic Digits</b:column>
+          <b:column span="1" lang="ar" style="border:1px solid black">٠</b:column>
+          <b:column span="1" lang="ar" style="border:1px solid black">١</b:column>
+          <b:column span="1" lang="ar" style="border:1px solid black">٢</b:column>
+          <b:column span="1" lang="ar" style="border:1px solid black">٣</b:column>
+          <b:column span="1" lang="ar" style="border:1px solid black">٤</b:column>
+          <b:column span="1" lang="ar" style="border:1px solid black">٥</b:column>
+          <b:column span="1" lang="ar" style="border:1px solid black">٦</b:column>
+          <b:column span="1" lang="ar" style="border:1px solid black">٧</b:column>
+          <b:column span="1" lang="ar" style="border:1px solid black">٨</b:column>
+          <b:column span="1" lang="ar" style="border:1px solid black">٩</b:column>
+          </b:row>
+
+          ]]></script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
 
     <script type="text/javascript">
-					SyntaxHighlighter.all();
-	</script>
+    SyntaxHighlighter.all();
+    </script>
   </ui:define>
 </ui:composition>

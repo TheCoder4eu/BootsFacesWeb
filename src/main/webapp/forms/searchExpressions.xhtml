@@ -1,135 +1,135 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml"
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:b="http://bootsfaces.net/ui"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:p="http://primefaces.org/ui">
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
 
 
-<ui:define name="content-navigator">
-  <b:listLinks>
-    <b:navLink href="#search_expressions" value="Search Expressions" />
-    <b:navLink href="#state_of_the_art" value="State of the art" />
-    <b:navLink href="#basic_usage" value="Basic usage" />
-    <b:navLink href="#standard_jsf_search_expressions" value="Standard JSF search expressions" />
-    <b:navLink href="#primefaces_search_expressions_supported_by_bootsfaces" value="PrimeFaces search expressions supported by BootsFaces" />
-    <b:navLink href="#bootsfaces_search_expressions" value="BootsFaces search expressions" />
-    <b:navLink href="#primefaces_search_expressions_bootsfaces_does_not_support" value="PrimeFaces search expressions BootsFaces does not support" />
-    <b:navLink href="#classical_use_cases" value="Classical use cases" />
-    <b:navLink href="#more_advanced_live_demo" value="More advanced live demo" />
-    <b:navLink href="#all" value="All-in-One-Demo (aka cheat sheet)" />
-  </b:listLinks>
-</ui:define>
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#search_expressions" value="Search Expressions" />
+      <b:navLink href="#state_of_the_art" value="State of the art" />
+      <b:navLink href="#basic_usage" value="Basic usage" />
+      <b:navLink href="#standard_jsf_search_expressions" value="Standard JSF search expressions" />
+      <b:navLink href="#primefaces_search_expressions_supported_by_bootsfaces" value="PrimeFaces search expressions supported by BootsFaces" />
+      <b:navLink href="#bootsfaces_search_expressions" value="BootsFaces search expressions" />
+      <b:navLink href="#primefaces_search_expressions_bootsfaces_does_not_support" value="PrimeFaces search expressions BootsFaces does not support" />
+      <b:navLink href="#classical_use_cases" value="Classical use cases" />
+      <b:navLink href="#more_advanced_live_demo" value="More advanced live demo" />
+      <b:navLink href="#all" value="All-in-One-Demo (aka cheat sheet)" />
+    </b:listLinks>
+  </ui:define>
 
 
-        <ui:define name="content">
-            <h1><a id="search_expressions">Search Expressions</a><b:badge value="since 0.8.0" /></h1>
-                <p>Inspired by PrimeFaces, BootsFaces implements a couple of powerful search expressions to make your life easier.
-                In almost every case, you can get rid of ids. Use <code>@form</code>,
-                <code>@next</code>,<code>@previous</code>,<code>@parent</code> and even jQuery-Expressions like <code>@(.css-class)</code> instead.</p>
+  <ui:define name="content">
+    <h1><a id="search_expressions">Search Expressions</a><b:badge value="since 0.8.0" /></h1>
+    <p>Inspired by PrimeFaces, BootsFaces implements a couple of powerful search expressions to make your life easier.
+    In almost every case, you can get rid of ids. Use <code>@form</code>,
+    <code>@next</code>,<code>@previous</code>,<code>@parent</code> and even jQuery-Expressions like <code>@(.css-class)</code> instead.</p>
 
-                <h2><a id="state_of_the_art">State of the art</a></h2>
-                <p>The search expressions can be used with the <code>update</code> and <code>process</code> attributes of the AJAX-enabled BootsFaces components.
-                For these components, the search expressions should also work with traditional <code>&lt;f:ajax /&gt;</code> facets (although we discourage
-                the use of these AJAX facets - in most cases you don't need them).</p>
+    <h2><a id="state_of_the_art">State of the art</a></h2>
+    <p>The search expressions can be used with the <code>update</code> and <code>process</code> attributes of the AJAX-enabled BootsFaces components.
+    For these components, the search expressions should also work with traditional <code>&lt;f:ajax /&gt;</code> facets (although we discourage
+    the use of these AJAX facets - in most cases you don't need them).</p>
 
-                <h2><a id="basic_usage">Basic usage</a></h2>
-                <p>Like in standard JSF, you can use ids to determine which region of the DOM to update:</p>
-                <b:panel>
-	                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1"><![CDATA[
-	                   <h:body>
-	                     <b:tabView id="tabViewId">
-	                       <b:tab>
-	                         <h:form>
-	                            <b:panel id="panelId">
-	                              <b:commandButton update=":tabViewId" />
-	                              <b:commandButton update="panelId" />
-	                            </b:panel>
-	                          </h:form>
-	                       </b:tab>
-	                     </b:tabView>
-	                   </h:body>
-	                ]]></script>
-                </b:panel>
-				<p>The preceding colon indicates that <code>:tabViewId</code> isn't inside the "naming container" - usually a form or a custom composite component -
-				but in the root of the JSF component tree. The <code>panelId</code> is direct descendant of the form, so it doesn't need a colon.</p>
+    <h2><a id="basic_usage">Basic usage</a></h2>
+    <p>Like in standard JSF, you can use ids to determine which region of the DOM to update:</p>
+    <b:panel>
+      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1"><![CDATA[
+      <h:body>
+        <b:tabView id="tabViewId">
+          <b:tab>
+            <h:form>
+              <b:panel id="panelId">
+                <b:commandButton update=":tabViewId" />
+                <b:commandButton update="panelId" />
+              </b:panel>
+            </h:form>
+          </b:tab>
+        </b:tabView>
+      </h:body>
+      ]]></script>
+    </b:panel>
+    <p>The preceding colon indicates that <code>:tabViewId</code> isn't inside the "naming container" - usually a form or a custom composite component -
+    but in the root of the JSF component tree. The <code>panelId</code> is direct descendant of the form, so it doesn't need a colon.</p>
 
-				<h2><a id="standard_jsf_search_expressions">Standard JSF search expressions</a></h2>
-				<p>Standard JSF introduces several search expressions, basically shortcut allowing you to get rid of the ids in many cases:</p>
-				<ul>
-					<li>@form is the form surrounding the button.</li>
-					<li>@this the the command button itself.</li>
-					<li>@all is the entire JSF page. Note that BootsFaces doesn't support @all yet. In any case, use @all only in there's no other way: it's very
-					inefficient, because it forces every JavaScript library to reinitialize.</li>
-					<li>@none is an exotic special case. It doesn't update anything. You sometimes need it to trigger an action on the server,
-					but don't want to display anything new on the client.</li>
-				</ul>
+    <h2><a id="standard_jsf_search_expressions">Standard JSF search expressions</a></h2>
+    <p>Standard JSF introduces several search expressions, basically shortcut allowing you to get rid of the ids in many cases:</p>
+    <ul>
+      <li>@form is the form surrounding the button.</li>
+      <li>@this the the command button itself.</li>
+      <li>@all is the entire JSF page. Note that BootsFaces doesn't support @all yet. In any case, use @all only in there's no other way: it's very
+      inefficient, because it forces every JavaScript library to reinitialize.</li>
+      <li>@none is an exotic special case. It doesn't update anything. You sometimes need it to trigger an action on the server,
+      but don't want to display anything new on the client.</li>
+    </ul>
 
-				<h2><a id="primefaces_search_expressions_supported_by_bootsfaces">PrimeFaces search expressions supported by BootsFaces</a></h2>
-				<p>PrimeFaces adds a couple of very useful search expressions, which are supported by BootsFaces, too. (Actually, @next and @previous originally were
-				contributed to PrimeFaces by one of the BootsFaces team members):</p>
-				<ul>
-					<li>@previous finds the previous JSF element in the same level of the JSF tree. Note that this usually is different from the predecessor in the HMTL tree.</li>
-					<li>@next finds the next JSF element in the same level of the JSF tree.</li>
-					<li>@parent finds the parent element of the current widget in the JSF tree.</li>
-                    <li>@child(n) yields a certain child of the currently selected JSF subtree. However, I don't recommend using this search expression. It's extremely
-                    vulnerable to changes of your JSF view.</li>
-                    <li>@() jquery expressions. These expressions are evaluated on the client. The most useful application is <code>@(.css-class)</code> to find
-                    one or more elements with a given CSS class. The advantage of the jQuery expressions is that you aren't restricted to by the
-                    JSF tree. Instead, the jQuery expressions always searches the entires DOM tree. Be careful: sometimes this can result in
-                    unexpected results, such as sending multiple forms simultaneously to the server, which is forbidden by HTML. Note that the
-                    algorithm parsing the jQuery expression is very primitive. Don't add spaces to the jQuery expression. Otherwise, it is treated
-                    as two distinct jQuery expressions. Note that this search expression can only be used for the
-                    <code>update</code> and <code>process</code>. Every other attribute requires a search expression evaluated
-                    on the server-side, such as @styleClass.</li>
-                    <li>@root is the root of the JSF tree. It's equivalent to the preceding colon.</li>
-				</ul>
+    <h2><a id="primefaces_search_expressions_supported_by_bootsfaces">PrimeFaces search expressions supported by BootsFaces</a></h2>
+    <p>PrimeFaces adds a couple of very useful search expressions, which are supported by BootsFaces, too. (Actually, @next and @previous originally were
+    contributed to PrimeFaces by one of the BootsFaces team members):</p>
+    <ul>
+      <li>@previous finds the previous JSF element in the same level of the JSF tree. Note that this usually is different from the predecessor in the HMTL tree.</li>
+      <li>@next finds the next JSF element in the same level of the JSF tree.</li>
+      <li>@parent finds the parent element of the current widget in the JSF tree.</li>
+      <li>@child(n) yields a certain child of the currently selected JSF subtree. However, I don't recommend using this search expression. It's extremely
+      vulnerable to changes of your JSF view.</li>
+      <li>@() jquery expressions. These expressions are evaluated on the client. The most useful application is <code>@(.css-class)</code> to find
+        one or more elements with a given CSS class. The advantage of the jQuery expressions is that you aren't restricted to by the
+        JSF tree. Instead, the jQuery expressions always searches the entires DOM tree. Be careful: sometimes this can result in
+        unexpected results, such as sending multiple forms simultaneously to the server, which is forbidden by HTML. Note that the
+        algorithm parsing the jQuery expression is very primitive. Don't add spaces to the jQuery expression. Otherwise, it is treated
+        as two distinct jQuery expressions. Note that this search expression can only be used for the
+        <code>update</code> and <code>process</code>. Every other attribute requires a search expression evaluated
+      on the server-side, such as @styleClass.</li>
+      <li>@root is the root of the JSF tree. It's equivalent to the preceding colon.</li>
+    </ul>
 
-				<h2><a id="bootsfaces_search_expressions">BootsFaces search expressions</a></h2>
-				<p>BootsFaces introduces several search expressions, basically shortcuts allowing you to get rid of the ids in many cases.
-                Note that most BootsFaces search expression scan the entire JSF tree recursively, which may result in a
-                performance penalty. If that's an issue, you can optimize the performance by limiting the
-                search to a subtree. For instance, <code>@property("myBean.myProperty")</code> scans the entire JSF
-                tree, while <code>@form:@property("myBean.myProperty")</code> limits the search to the current form.</p>
-				<ul>
-                    <li>@after <b:badge value="since 0.9.0" /> is similar to @next, but it yields every JSF node following the current one. Very useful if one of more input fields
-                    are to be activated or deactivated depending on a checkbox. There's an example below.</li>
-                    <li>@before <b:badge value="since 0.9.0" /> is similar to @previous, but it yields every JSF node preceding the current one.</li>
-					<li>@findIdRecursive(id) find an id anywhere in the JSF tree below the currently select node. For instance, <code>@form:**:someId</code> looks for <code>someId</code>,
-					considering the entire form. <b:badge value="breaking change in 1.0.2"/> Since 1.0.2, this may result multiple ids. 
-					Until 1.0.1, this search expression only returned the first id in the JSF tree (if any).</li>
-					<li>** shortcut for @findIdRecursive</li>
-                    <li>@id and @findIdRecursively are synonyms of @findIdRecursive</li>
-					<li>@findId(id)  find an id, but restrict the search to the top-most level of the tree</li>
-					<li>*:id shortcut for @findId </li>
-					<li>@findPartialId(id)  find one or many ids, given by a wildcard expression: <code>*suffix</code>, <code>prefix*</code> or <code>prefix*suffix</code>.
-					Only the topmost level is considered.</li>
-					<li>*id shortcut for @findPartialId</li>
-					<li>@findPartialIdRecursive(id)  find one or many ids, given by a wildcard expression: <code>*suffix</code>, <code>prefix*</code> or <code>prefix*suffix</code>.
-					Searches the entire tree.</li>
-					<li>**:*id or **:id* or **:*id* shortcut for @findPartialIdRecursive </li>
-                    <li>@property(EL_Expression) <b:badge value="since 1.0.0" /> finds a JSF component by its EL expression. You can omit the curly braces and
-                    the "#". In other word, @property takes the fully qualified variable name as parameter. This search
-                    expression can return multiple ids if there's more than one input field with the same EL expression
-                    (e.g. on different tabs).</li>
-                    <li>@styleClass(class) <b:badge value="since 1.0.0" />  is a server-side variant of @(.class). It returns a list of the UI components
-                    bearing a certain CSS style class. Note that this search expression scans the entire JSF tree.</li>
-				</ul>
+    <h2><a id="bootsfaces_search_expressions">BootsFaces search expressions</a></h2>
+    <p>BootsFaces introduces several search expressions, basically shortcuts allowing you to get rid of the ids in many cases.
+    Note that most BootsFaces search expression scan the entire JSF tree recursively, which may result in a
+    performance penalty. If that's an issue, you can optimize the performance by limiting the
+    search to a subtree. For instance, <code>@property("myBean.myProperty")</code> scans the entire JSF
+    tree, while <code>@form:@property("myBean.myProperty")</code> limits the search to the current form.</p>
+    <ul>
+      <li>@after <b:badge value="since 0.9.0" /> is similar to @next, but it yields every JSF node following the current one. Very useful if one of more input fields
+      are to be activated or deactivated depending on a checkbox. There's an example below.</li>
+      <li>@before <b:badge value="since 0.9.0" /> is similar to @previous, but it yields every JSF node preceding the current one.</li>
+      <li>@findIdRecursive(id) find an id anywhere in the JSF tree below the currently select node. For instance, <code>@form:**:someId</code> looks for <code>someId</code>,
+        considering the entire form. <b:badge value="breaking change in 1.0.2"/> Since 1.0.2, this may result multiple ids.
+      Until 1.0.1, this search expression only returned the first id in the JSF tree (if any).</li>
+      <li>** shortcut for @findIdRecursive</li>
+      <li>@id and @findIdRecursively are synonyms of @findIdRecursive</li>
+      <li>@findId(id)  find an id, but restrict the search to the top-most level of the tree</li>
+      <li>*:id shortcut for @findId </li>
+      <li>@findPartialId(id)  find one or many ids, given by a wildcard expression: <code>*suffix</code>, <code>prefix*</code> or <code>prefix*suffix</code>.
+      Only the topmost level is considered.</li>
+      <li>*id shortcut for @findPartialId</li>
+      <li>@findPartialIdRecursive(id)  find one or many ids, given by a wildcard expression: <code>*suffix</code>, <code>prefix*</code> or <code>prefix*suffix</code>.
+      Searches the entire tree.</li>
+      <li>**:*id or **:id* or **:*id* shortcut for @findPartialIdRecursive </li>
+      <li>@property(EL_Expression) <b:badge value="since 1.0.0" /> finds a JSF component by its EL expression. You can omit the curly braces and
+        the "#". In other word, @property takes the fully qualified variable name as parameter. This search
+        expression can return multiple ids if there's more than one input field with the same EL expression
+      (e.g. on different tabs).</li>
+      <li>@styleClass(class) <b:badge value="since 1.0.0" />  is a server-side variant of @(.class). It returns a list of the UI components
+      bearing a certain CSS style class. Note that this search expression scans the entire JSF tree.</li>
+    </ul>
 
-				<h2><a id="primefaces_search_expressions_bootsfaces_does_not_support">PrimeFaces search expressions BootsFaces does not support</a></h2>
-				<p>There are a few PrimeFaces search expressions BootsFaces does not support:</p>
-				<ul>
-					<li>@namingcontainer</li>
-					<li>@composite</li>
-					<li>@row(n)</li>
-					<li>@widgetVar(name) (doesn't make sense in BootsFaces, because BootsFaces doesn't use the concept of client-side widgets)</li>
-				</ul>
+    <h2><a id="primefaces_search_expressions_bootsfaces_does_not_support">PrimeFaces search expressions BootsFaces does not support</a></h2>
+    <p>There are a few PrimeFaces search expressions BootsFaces does not support:</p>
+    <ul>
+      <li>@namingcontainer</li>
+      <li>@composite</li>
+      <li>@row(n)</li>
+      <li>@widgetVar(name) (doesn't make sense in BootsFaces, because BootsFaces doesn't use the concept of client-side widgets)</li>
+    </ul>
 
 
-<h2><a id="classical_use_cases">Classical use cases</a></h2>
+    <h2><a id="classical_use_cases">Classical use cases</a></h2>
     <p>The reason why one of us (Stephan) originally invented <code>@next</code> and <code>@previous</code> was that he'd
     observed that input fields typically occur as a triplet: a label, the input field itself and an error message.
     It's rather cumbersome and error-prone to implement this using ids, but it's pretty straightforward with
@@ -139,524 +139,524 @@
     server side.</p>
 
 
-        <b:panel title="Live preview" look="info" collapsible="false">
-            <h:form id="oneToTenFormId">
-                  <b:panelGrid columns="3">
-                    <p:outputLabel for="@next" value="Enter a number between 1 and 10:"/>
-                    <b:inputText value="#{imageGallery.oneToTen}" onkeyup="ajax:imageGallery.validateNumber()" update="@previous @next"
-                                 id="oneToTenId" render-label="false"/>
-                    <b:message for="@previous"/>
-					Also enter other numbers or texts to see the error messages.
-                  </b:panelGrid>
-            </h:form>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form id="oneToTenFormId">
+        <b:panelGrid columns="3">
+          <p:outputLabel for="@next" value="Enter a number between 1 and 10:"/>
+          <b:inputText value="#{imageGallery.oneToTen}" onkeyup="ajax:imageGallery.validateNumber()" update="@previous @next"
+                       id="oneToTenId" render-label="false"/>
+          <b:message for="@previous"/>
+          Also enter other numbers or texts to see the error messages.
+        </b:panelGrid>
+      </h:form>
 
-            <f:facet name="footer">
-                <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
-                    <b:tab title="JSF markup">
-                        <b:panel>
-                            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
- 			<![CDATA[
-          <b:panelGrid columns="3">
-            <p:outputLabel for="@next" value="Enter a number between 1 and 10"/>
-            <b:inputText value="#{imageGallery.oneToTen}" onkeyup="ajax:imageGallery.validateNumber()" update="@previous @next"
-                         id="oneToTenId"/>
-            <b:message for="@previous"/>
-          </b:panelGrid>
- 			]]></script> 
-                        </b:panel>
-                    </b:tab>
-                    <b:tab title="Java Bean">
-                        <b:panel>
-                            <script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1">
-  			<![CDATA[
-@ViewScoped
-@ManagedBean
-public class ImageGallery implements Serializable {
+      <f:facet name="footer">
+        <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+          <b:tab title="JSF markup">
+            <b:panel>
+              <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+              <![CDATA[
+              <b:panelGrid columns="3">
+                <p:outputLabel for="@next" value="Enter a number between 1 and 10"/>
+                <b:inputText value="#{imageGallery.oneToTen}" onkeyup="ajax:imageGallery.validateNumber()" update="@previous @next"
+                             id="oneToTenId"/>
+                <b:message for="@previous"/>
+              </b:panelGrid>
+              ]]></script>
+            </b:panel>
+          </b:tab>
+          <b:tab title="Java Bean">
+            <b:panel>
+              <script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1">
+              <![CDATA[
+              @ViewScoped
+              @ManagedBean
+              public class ImageGallery implements Serializable {
 
-	private int oneToTen;
+                private int oneToTen;
 
-	public void validateNumber() {
-		if (oneToTen>=1 && oneToTen <=10) {
-			FacesMessages.info("oneToTenFormId:oneToTenId", "", "Well done!");
-		} else if (oneToTen<1) {
-			FacesMessages.warning("oneToTenFormId:oneToTenId", "", "This number is smaller than 1.");
-		} else {
-			FacesMessages.warning("oneToTenFormId:oneToTenId", "", "This number is larger than 10.");
-		}
-	}
+                public void validateNumber() {
+                  if (oneToTen>=1 && oneToTen <=10) {
+                    FacesMessages.info("oneToTenFormId:oneToTenId", "", "Well done!");
+                  } else if (oneToTen<1) {
+                    FacesMessages.warning("oneToTenFormId:oneToTenId", "", "This number is smaller than 1.");
+                  } else {
+                    FacesMessages.warning("oneToTenFormId:oneToTenId", "", "This number is larger than 10.");
+                  }
+                }
 
-	public int getOneToTen() {
-		return oneToTen;
-	}
+                public int getOneToTen() {
+                  return oneToTen;
+                }
 
-	public void setOneToTen(int oneToTen) {
-		this.oneToTen = oneToTen;
-	}
-}
+                public void setOneToTen(int oneToTen) {
+                  this.oneToTen = oneToTen;
+                }
+              }
 
-  			]]></script>
-                        </b:panel>
-                    </b:tab>
-                </b:tabView>
-            </f:facet>
-        </b:panel>
-       
+              ]]></script>
+            </b:panel>
+          </b:tab>
+        </b:tabView>
+      </f:facet>
+    </b:panel>
 
-                <p><code>@after</code> comes in handy if you've got a complex form. Let's add a switch to the previous example.
+
+    <p><code>@after</code> comes in handy if you've got a complex form. Let's add a switch to the previous example.
     The input field is hidden until the switch is activated. Of course, both the label and the error message
     have to be hidden, too. You can achieve this with <code>update="@after"</code>:</p>
 
-        <b:panel title="Live preview" look="info" collapsible="false">            
-<h:form id="oneToTenFormId2">
-            <b:panelGrid colSpans="2,2,2,6">
-              <b:selectBooleanCheckbox value="#{imageGallery.showNumber}" onclick="ajax:imageGallery.validateNumber()"
-                        update="@after" caption="Show number"/>
-              <p:outputLabel for="@next" value="Enter a number between 1 and 10" styleClass="#{imageGallery.showNumber?'':'hidden'}"/>
-              <b:inputText value="#{imageGallery.oneToTen}" onkeyup="ajax:imageGallery.validateNumber()" update="@previous @next"
-                           id="oneToTenId" styleClass="#{imageGallery.showNumber?'':'hidden'}"/>
-              <b:message for="@previous" styleClass="#{imageGallery.showNumber?'':'hidden'}"/>
-            </b:panelGrid>
-          </h:form>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form id="oneToTenFormId2">
+        <b:panelGrid colSpans="2,2,2,6">
+          <b:selectBooleanCheckbox value="#{imageGallery.showNumber}" onclick="ajax:imageGallery.validateNumber()"
+                                   update="@after" caption="Show number"/>
+          <p:outputLabel for="@next" value="Enter a number between 1 and 10" styleClass="#{imageGallery.showNumber?'':'hidden'}"/>
+          <b:inputText value="#{imageGallery.oneToTen}" onkeyup="ajax:imageGallery.validateNumber()" update="@previous @next"
+                       id="oneToTenId" styleClass="#{imageGallery.showNumber?'':'hidden'}"/>
+          <b:message for="@previous" styleClass="#{imageGallery.showNumber?'':'hidden'}"/>
+        </b:panelGrid>
+      </h:form>
 
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
- 			<![CDATA[
-              <b:selectBooleanCheckbox value="#{imageGallery.showNumber}" onclick="ajax:imageGallery.validateNumber()"
-                        update="@after" caption="Show number"/>
-              <p:outputLabel for="@next" value="Enter a number between 1 and 10" styleClass="#{imageGallery.showNumber?'':'hidden'}"/>
-              <b:inputText value="#{imageGallery.oneToTen}" onkeyup="ajax:imageGallery.validateNumber()" update="@previous @next"
-                           id="oneToTenId" styleClass="#{imageGallery.showNumber?'':'hidden'}"/>
-              <b:message for="@previous" styleClass="#{imageGallery.showNumber?'':'hidden'}"/>
- 			]]></script>
-                </b:panel>
-            </f:facet>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <b:selectBooleanCheckbox value="#{imageGallery.showNumber}" onclick="ajax:imageGallery.validateNumber()"
+                                   update="@after" caption="Show number"/>
+          <p:outputLabel for="@next" value="Enter a number between 1 and 10" styleClass="#{imageGallery.showNumber?'':'hidden'}"/>
+          <b:inputText value="#{imageGallery.oneToTen}" onkeyup="ajax:imageGallery.validateNumber()" update="@previous @next"
+                       id="oneToTenId" styleClass="#{imageGallery.showNumber?'':'hidden'}"/>
+          <b:message for="@previous" styleClass="#{imageGallery.showNumber?'':'hidden'}"/>
+          ]]></script>
         </b:panel>
-     
+      </f:facet>
+    </b:panel>
+
     <p>However, this example also shows that the validation logic of JSF usually gets in your way when you try to hide
     or show fields depending on other fields. Better use JavaScript instead.</p>
 
-                <h2><a id="more_advanced_live_demo">More advanced live demo</a></h2>
-				<p>This demo shows some of the options at a glance.</p>
-                
-                <b:panel title="Live preview" look="info" collapsible="false">
+    <h2><a id="more_advanced_live_demo">More advanced live demo</a></h2>
+    <p>This demo shows some of the options at a glance.</p>
 
-                    <h:form id="simpleForm">
-                        	<b:panel>
-								<ui:repeat id="elements" var="image"
-									value="#{imageGallery.images}">
-									<b:panelGrid colSpans="3,2,1,2,2,2">
-										<b:commandButton value=":simpleForm:elements:graphic" ajax="true"
-											actionListener="#{imageGallery.chooseAnotherImage(image)}"
-											update=":simpleForm:elements:graphic"
-											tooltip="update=':simpleForm:elements:graphic'"
-                                            look="info"
-											/>
-										 <b:commandButton value="@form:**:graphic " ajax="true"
-											actionListener="#{imageGallery.chooseAnotherImage(image)}"
-											update="@form:**:graphic" 
-											tooltip="update='@form:**:graphic'"
-                                            look="info"/>	
-										<b:commandButton value="@next " ajax="true"
-											actionListener="#{imageGallery.chooseAnotherImage(image)}"
-											update="@next"
-											tooltip="update='@next'"
-                                            look="info"/>
-										<h:graphicImage url="#{image}" id="graphic" style="width:153; height:117px" />
-										<b:commandButton value="@previous " ajax="true"
-											actionListener="#{imageGallery.chooseAnotherImage(image)}"
-											update="@previous"
-											tooltip="update='@previous'"
-                                            look="info"/>
-                                        <b:commandButton value="@parent:@child(3)" ajax="true"
-                                        actionListener="#{imageGallery.chooseAnotherImage(image)}"
-                                        update="@parent:@child(3)"
-                                        tooltip="update='@parent:@child(3)'"
-                                        look="info"/>
-										
-									</b:panelGrid>
-								</ui:repeat>
-                <br />
-								<b:panel title="The buttons below change every image." look="info" >
-									<b:commandButton value=":simpleForm " ajax="true"
-                                                style="margin-right:10px"
-												actionListener="#{imageGallery.chooseEveryImage()}"
-												update=":simpleForm" 
-												tooltip=":simpleForm"
-                                                look="primary"/>
-									<b:commandButton value="@form"  ajax="true"
-                                                style="margin-right:10px"
-												actionListener="#{imageGallery.chooseEveryImage()}"
-												update="@form" 
-												tooltip="@form"
-                                                look="primary"/>
-									<b:commandButton value="@parent:@parent"  ajax="true"
-                                                style="margin-right:10px"
-												actionListener="#{imageGallery.chooseEveryImage()}"
-												update="@parent:@parent" 
-												tooltip="@parent:@parent = ui:repeat"
-                                                look="primary"/>
-								</b:panel>
-							</b:panel>
-			            </h:form>
-                    
-                    <f:facet name="footer">
-                        <strong>JSF markup:</strong>
-                        <b:panel>
-                            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-			           <h:form id="simpleForm">
-                        	<b:well>
-								<ui:repeat id="elements" var="image"
-									value="&num;{imageGallery.images}">
-									<b:panelGrid colSpans="3,2,1,2,4">
-										<b:commandButton value=":simpleForm:elements:graphic" ajax="true"
-											actionListener="&num;{imageGallery.chooseAnotherImage(image)}"
-											update=":simpleForm:elements:graphic"
-											tooltip="update=':simpleForm:elements:graphic'"
-											/>
-										 <b:commandButton value="@form:**:graphic " ajax="true"
-											actionListener="&num;{imageGallery.chooseAnotherImage(image)}"
-											update="@form:**:graphic" 
-											tooltip="update='@form:**:graphic'"/>	
-										<b:commandButton value="@next " ajax="true"
-											actionListener="&num;{imageGallery.chooseAnotherImage(image)}"
-											update="@next"
-											tooltip="update='@next'"/>
-										<h:graphicImage url="&num;{image}" id="graphic" style="width:153; height:117px" />
-										<b:commandButton value="@previous " ajax="true"
-											actionListener="&num;{imageGallery.chooseAnotherImage(image)}"
-											update="@previous"
-											tooltip="update='@previous'"/>
-										
-									</b:panelGrid>
-								</ui:repeat>
-								<b:panel title="The buttons below change every image." >
-									<b:commandButton value=":simpleForm " ajax="true"
-												actionListener="&num;{imageGallery.chooseEveryImage()}"
-												update=":simpleForm" 
-												tooltip=":simpleForm"/>
-									<b:commandButton value="@form"  ajax="true"
-												actionListener="&num;{imageGallery.chooseEveryImage()}"
-												update="@form" 
-												tooltip="@form"/>
-									<b:commandButton value="@parent:@parent"  ajax="true"
-												actionListener="&num;{imageGallery.chooseEveryImage()}"
-												update="@parent:@parent" 
-												tooltip="@parent:@parent = ui:repeat"/>
-								</b:panel>
-							</b:well>
- 			            </h:form>
-]]></script>
-                        </b:panel>
-                    </f:facet>
-                </b:panel>
-                
-                
-                
-				<h2><a id="all">All-in-One-Demo (aka cheat sheet)</a></h2>
-				<p>This demo shows most options on a single screen. Most buttons modify the images. The buttons in the image row modify the image in the same row. The buttons below modify
-				the entire page. Some buttons also show the appearance of the button itself (by counting up the numbers). As you can see, you can freely combine every option
-				the search expression framework gives you.</p>
-				
-                
-        <b:panel title="Live preview" look="info" collapsible="false">
-            
-            <h:form id="form">
-                        <b:well>
-								<ui:repeat id="some_elements" var="image"
-									value="#{imageGallery.images}">
-									<b:row>
-										<b:column span="12">
-											<b:commandButton value=":form:some_elements:graphic  #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseAnotherImage(image)}"
-												update=":form:some_elements:graphic"
-												tooltip="update=':form:some_elements:graphic'"
-												/>
-											<b:commandButton value="@form :@findIdRecursiveRecursive(some_elements) #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseAnotherImage(image)}"
-												update="@form:@findIdRecursive(some_elements):graphic" 
-												tooltip="update='@form :@findIdRecursive(some_elements)'"/>
-											<b:commandButton value="@form:**:some_elements:graphic  #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseAnotherImage(image)}"
-												update="@form:**:some_elements:graphic" 
-												tooltip="update='@form:**:some_elements:graphic'"/>
-											 <b:commandButton value="@form:**:graphic  #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseAnotherImage(image)}"
-												update="@form:**:graphic" 
-												tooltip="update='@form:**:graphic'"/>	
-											 <b:commandButton value="@form:**:graphic:@previous  #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseAnotherImage(image)}"
-												update="@form:**:graphic:@previous" 
-												tooltip="update='@form:**:graphic:@previous'"/>	
-											<b:commandButton value="@next,@this  #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseAnotherImage(image)}"
-												update="@next,@this"
-												tooltip="update='@next,@this'"/>
-											<b:commandButton value="@this,@previous  #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseAnotherImage(image)}"
-												update="@this,@previous"
-												tooltip="update='@this,@previous'"/>
-											<b:commandButton value="@this @next:@next  #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseAnotherImage(image)}"
-												update="@this @next:@next"
-												tooltip="update='@this @next:@next'"/>
-											<b:commandButton value="@next  #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseAnotherImage(image)}"
-												update="@next"
-												tooltip="update='@next'"/>
-											<h:graphicImage url="#{image}" id="graphic" style="width:153; height:117px" />
-										</b:column>
-									</b:row>
-								</ui:repeat>
-								<b:panel title="The buttons below change every image." >
-									<b:commandButton value=":form  #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseEveryImage()}"
-												update=":form" 
-												tooltip=":form"/>
-									<b:commandButton value="@form #{imageGallery.counter}"  ajax="true"
-												actionListener="#{imageGallery.chooseEveryImage()}"
-												update="@form" 
-												tooltip="@form"/>
-									<b:commandButton value="@all #{imageGallery.counter} (not implemented yet)"  ajax="true"
-												actionListener="#{imageGallery.chooseEveryImage()}"
-												update="@all" 
-												tooltip="@all"/>
-								</b:panel>
-								<b:panel title="Miscellaneous" >
-									<b:commandButton value="@this #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseEveryImage()}"
-												update="@this" 
-												tooltip="@this"/>
-									<b:commandButton value="@next #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseEveryImage()}"
-												update="@next" 
-												tooltip="@next"/>
-									<b:commandButton value="@none #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseEveryImage()}"
-												update="@none" 
-												tooltip="@none"/>
-									<b:commandButton value="@previous #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseEveryImage()}"
-												update="@previous" 
-												tooltip="@previous"/>
-									<b:commandButton value="@parent #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseEveryImage()}"
-												update="@parent" 
-												tooltip="@parent"/>			
-									<b:commandButton value="@parent:@parent #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseEveryImage()}"
-												update="@parent:@parent" 
-												tooltip="@parent:@parent"/>			
-									<b:commandButton value="@parent:@parent:@parent #{imageGallery.counter}" ajax="true"
-												actionListener="#{imageGallery.chooseEveryImage()}"
-												update="@parent:@parent:@parent" 
-												tooltip="@parent:@parent:@parent"/>			
-								</b:panel>
-						</b:well>
-            </h:form>
+    <b:panel title="Live preview" look="info" collapsible="false">
 
-            <f:facet name="footer">
-                <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
-                    <b:tab title="JSF markup">
-                        <b:panel>
-                            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-                            <h:form id="form">
-								<ui:repeat id="some_elements" var="image"
-									value="&num;{imageGallery.images}">
-									<b:row>
-										<b:column span="12">
-											<b:commandButton value=":form:some_elements:graphic  &num;{imageGallery.counter}" ajax="true"
-												actionListener="&num;{imageGallery.chooseAnotherImage(image)}"
-												update=":form:some_elements:graphic"
-												tooltip="update=':form:some_elements:graphic'"
-												/>
-											<b:commandButton value="@form :@findIdRecursive(some_elements) &num;{imageGallery.counter}" ajax="true"
-												actionListener="&num;{imageGallery.chooseAnotherImage(image)}"
-												update="@form:@findIdRecursive(some_elements):graphic" 
-												tooltip="update='@form :@findIdRecursive(some_elements)'"/>
-											<b:commandButton value="@form:**:some_elements:graphic  &num;{imageGallery.counter}" ajax="true"
-												actionListener="&num;{imageGallery.chooseAnotherImage(image)}"
-												update="@form:**:some_elements:graphic" 
-												tooltip="update='@form:**:some_elements:graphic'"/>
-											 <b:commandButton value="@form:**:graphic  &num;{imageGallery.counter}" ajax="true"
-												actionListener="&num;{imageGallery.chooseAnotherImage(image)}"
-												update="@form:**:graphic" 
-												tooltip="update='@form:**:graphic'"/>	
-											 <b:commandButton value="@form:**:graphic:@previous  &num;{imageGallery.counter}" ajax="true"
-												actionListener="&num;{imageGallery.chooseAnotherImage(image)}"
-												update="@form:**:graphic:@previous" 
-												tooltip="update='@form:**:graphic:@previous'"/>	
-											<b:commandButton value="@next,@this  &num;{imageGallery.counter}" ajax="true"
-												actionListener="&num;{imageGallery.chooseAnotherImage(image)}"
-												update="@next,@this"
-												tooltip="update='@next,@this'"/>
-											<b:commandButton value="@this,@previous  &num;{imageGallery.counter}" ajax="true"
-												actionListener="&num;{imageGallery.chooseAnotherImage(image)}"
-												update="@this,@previous"
-												tooltip="update='@this,@previous'"/>
-											<b:commandButton value="@this @next:@next  &num;{imageGallery.counter}" ajax="true"
-												actionListener="&num;{imageGallery.chooseAnotherImage(image)}"
-												update="@this @next:@next"
-												tooltip="update='@this @next:@next'"/>
-											<b:commandButton value="@next  &num;{imageGallery.counter}" ajax="true"
-												actionListener="&num;{imageGallery.chooseAnotherImage(image)}"
-												update="@next"
-												tooltip="update='@next'"/>
-											<h:graphicImage url="&num;{image}" id="graphic" style="width:153; height:117px" />
-										</b:column>
-									</b:row>
-								</ui:repeat>
-								<b:panel title="The buttons below change every image." >
-									<b:commandButton value=":form  &num;{imageGallery.counter}" ajax="true"
-												actionListener="&num;{imageGallery.chooseEveryImage()}"
-												update=":form" 
-												tooltip=":form"/>
-									<b:commandButton value="@form &num;{imageGallery.counter}"  ajax="true"
-												actionListener="&num;{imageGallery.chooseEveryImage()}"
-												update="@form" 
-												tooltip="@form"/>
-									<b:commandButton value="@all &num;{imageGallery.counter} (not implemented yet)"  ajax="true"
-												actionListener="&num;{imageGallery.chooseEveryImage()}"
-												update="@all" 
-												tooltip="@all"/>
-								</b:panel>
-								<b:panel title="Miscellaneous" >
-									<b:commandButton value="@this &num;{imageGallery.counter}" ajax="true"
-												actionListener="&num;{imageGallery.chooseEveryImage()}"
-												update="@this" 
-												tooltip="@this"/>
-									<b:commandButton value="@next &num;{imageGallery.counter}" ajax="true"
-												actionListener="&num;{imageGallery.chooseEveryImage()}"
-												update="@next" 
-												tooltip="@next"/>
-									<b:commandButton value="@none &num;{imageGallery.counter}" ajax="true"
-												actionListener="&num;{imageGallery.chooseEveryImage()}"
-												update="@none" 
-												tooltip="@none"/>
-									<b:commandButton value="@previous &num;{imageGallery.counter}" ajax="true"
-												actionListener="&num;{imageGallery.chooseEveryImage()}"
-												update="@previous" 
-												tooltip="@previous"/>
-									<b:commandButton value="@parent &num;{imageGallery.counter}" ajax="true"
-												actionListener="&num;{imageGallery.chooseEveryImage()}"
-												update="@parent" 
-												tooltip="@parent"/>			
-									<b:commandButton value="@parent:@parent &num;{imageGallery.counter}" ajax="true"
-												actionListener="&num;{imageGallery.chooseEveryImage()}"
-												update="@parent:@parent" 
-												tooltip="@parent:@parent"/>			
-									<b:commandButton value="@parent:@parent:@parent &num;{imageGallery.counter}" ajax="true"
-												actionListener="&num;{imageGallery.chooseEveryImage()}"
-												update="@parent:@parent:@parent" 
-												tooltip="@parent:@parent:@parent"/>			
-								</b:panel>
-                            </h:form>
- ]]>
-</script>
-                        </b:panel>
-                    </b:tab>
-                    <b:tab title="Java Bean">
-                        <b:panel>
-                                                <script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-@ViewScoped
-@ManagedBean
-public class ImageGallery implements Serializable {
-	private static final long serialVersionUID = 1L;
+      <h:form id="simpleForm">
+        <b:panel>
+          <ui:repeat id="elements" var="image"
+                     value="#{imageGallery.images}">
+            <b:panelGrid colSpans="3,2,1,2,2,2">
+              <b:commandButton value=":simpleForm:elements:graphic" ajax="true"
+                               actionListener="#{imageGallery.chooseAnotherImage(image)}"
+                               update=":simpleForm:elements:graphic"
+                               tooltip="update=':simpleForm:elements:graphic'"
+                               look="info"
+                               />
+              <b:commandButton value="@form:**:graphic " ajax="true"
+                               actionListener="#{imageGallery.chooseAnotherImage(image)}"
+                               update="@form:**:graphic"
+                               tooltip="update='@form:**:graphic'"
+                               look="info"/>
+              <b:commandButton value="@next " ajax="true"
+                               actionListener="#{imageGallery.chooseAnotherImage(image)}"
+                               update="@next"
+                               tooltip="update='@next'"
+                               look="info"/>
+              <h:graphicImage url="#{image}" id="graphic" style="width:153; height:117px" />
+              <b:commandButton value="@previous " ajax="true"
+                               actionListener="#{imageGallery.chooseAnotherImage(image)}"
+                               update="@previous"
+                               tooltip="update='@previous'"
+                               look="info"/>
+              <b:commandButton value="@parent:@child(3)" ajax="true"
+                               actionListener="#{imageGallery.chooseAnotherImage(image)}"
+                               update="@parent:@child(3)"
+                               tooltip="update='@parent:@child(3)'"
+                               look="info"/>
 
-	private int oneToTen;
-
-	private boolean showNumber;
-
-	private List<String> images = new ArrayList<String>() {
-		{
-			add("http://www.11pictures.com/foto/stories/Camargue_2013_Nature/framedPreview.png");
-			add("http://www.11pictures.com/foto/stories/Camargue_2013/framedPreview.png");
-			add("http://www.11pictures.com/foto/stories/GreenCevennes/framedPreview.png");
-		}
-		private static final long serialVersionUID = 1L;
-	};
-
-	private List<String> imagePool = new ArrayList<String>() {
-		{
-			add("http://www.11pictures.com/foto/stories/ValleeDeLaGrandMaison_2012/framedPreview.png");
-			add("http://www.11pictures.com/foto/stories/Clouds2/framedPreview.png");
-			add("http://www.11pictures.com/foto/stories/BretagneFog2003/framedPreview.png");
-			add("http://www.11pictures.com/foto/stories/LifeInWinter/framedPreview.png");
-			add("http://www.11pictures.com/foto/stories/Alpilles_2013/framedPreview.png");
-		}
-		private static final long serialVersionUID = 1L;
-	};
-
-	private int counter=0;
-
-	public int getCounter() {
-		return ++counter;
-	}
-
-	public List<String> getImages() {
-		return images;
-	}
-
-	public void chooseAnotherImage(String image) {
-		int index = images.indexOf(image);
-		String previousImage = images.get(index);
-		int random = (int) Math.floor(Math.random() * imagePool.size());
-		images.set(index, imagePool.get(random));
-		imagePool.set(random, previousImage);
-	}
-
-	public void chooseEveryImage() {
-		for (int index = 0; index < images.size(); index++) {
-			String previousImage = images.get(index);
-			int random = (int) Math.floor(Math.random() * imagePool.size());
-			images.set(index, imagePool.get(random));
-			imagePool.set(random, previousImage);
-		}
-	}
-
-	public void validateNumber() {
-		if (oneToTen>=1 && oneToTen <=10) {
-			FacesMessages.info("oneToTenFormId:oneToTenId", "", "Well done!");
-			FacesMessages.info("oneToTenFormId2:oneToTenId", "", "Well done!");
-		} else if (oneToTen<1) {
-			FacesMessages.warning("oneToTenFormId:oneToTenId", "", "This number is smaller than 1.");
-			FacesMessages.warning("oneToTenFormId2:oneToTenId", "", "This number is smaller than 1.");
-		}
-		 else {
-			FacesMessages.warning("oneToTenFormId:oneToTenId", "", "This number is larger than 10.");
-			FacesMessages.warning("oneToTenFormId2:oneToTenId", "", "This number is larger than 10.");
-		}
-	}
-
-	public int getOneToTen() {
-		return oneToTen;
-	}
-
-	public void setOneToTen(int oneToTen) {
-		this.oneToTen = oneToTen;
-	}
-
-	public boolean isShowNumber() {
-		return showNumber;
-	}
-
-	public void setShowNumber(boolean showNumber) {
-		this.showNumber = showNumber;
-	}
-}
-
-]]></script></b:panel>
-                    </b:tab>
-                </b:tabView>
-            </f:facet>
+            </b:panelGrid>
+          </ui:repeat>
+          <br />
+          <b:panel title="The buttons below change every image." look="info" >
+            <b:commandButton value=":simpleForm " ajax="true"
+                             style="margin-right:10px"
+                             actionListener="#{imageGallery.chooseEveryImage()}"
+                             update=":simpleForm"
+                             tooltip=":simpleForm"
+                             look="primary"/>
+            <b:commandButton value="@form"  ajax="true"
+                             style="margin-right:10px"
+                             actionListener="#{imageGallery.chooseEveryImage()}"
+                             update="@form"
+                             tooltip="@form"
+                             look="primary"/>
+            <b:commandButton value="@parent:@parent"  ajax="true"
+                             style="margin-right:10px"
+                             actionListener="#{imageGallery.chooseEveryImage()}"
+                             update="@parent:@parent"
+                             tooltip="@parent:@parent = ui:repeat"
+                             look="primary"/>
+          </b:panel>
         </b:panel>
+      </h:form>
 
-            <script type="text/javascript">
-                SyntaxHighlighter.all();
-            </script>
-        </ui:define>
-    </ui:composition>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:form id="simpleForm">
+            <b:well>
+              <ui:repeat id="elements" var="image"
+                         value="&num;{imageGallery.images}">
+                <b:panelGrid colSpans="3,2,1,2,4">
+                  <b:commandButton value=":simpleForm:elements:graphic" ajax="true"
+                                   actionListener="&num;{imageGallery.chooseAnotherImage(image)}"
+                                   update=":simpleForm:elements:graphic"
+                                   tooltip="update=':simpleForm:elements:graphic'"
+                                   />
+                  <b:commandButton value="@form:**:graphic " ajax="true"
+                                   actionListener="&num;{imageGallery.chooseAnotherImage(image)}"
+                                   update="@form:**:graphic"
+                                   tooltip="update='@form:**:graphic'"/>
+                  <b:commandButton value="@next " ajax="true"
+                                   actionListener="&num;{imageGallery.chooseAnotherImage(image)}"
+                                   update="@next"
+                                   tooltip="update='@next'"/>
+                  <h:graphicImage url="&num;{image}" id="graphic" style="width:153; height:117px" />
+                  <b:commandButton value="@previous " ajax="true"
+                                   actionListener="&num;{imageGallery.chooseAnotherImage(image)}"
+                                   update="@previous"
+                                   tooltip="update='@previous'"/>
+
+                </b:panelGrid>
+              </ui:repeat>
+              <b:panel title="The buttons below change every image." >
+                <b:commandButton value=":simpleForm " ajax="true"
+                                 actionListener="&num;{imageGallery.chooseEveryImage()}"
+                                 update=":simpleForm"
+                                 tooltip=":simpleForm"/>
+                <b:commandButton value="@form"  ajax="true"
+                                 actionListener="&num;{imageGallery.chooseEveryImage()}"
+                                 update="@form"
+                                 tooltip="@form"/>
+                <b:commandButton value="@parent:@parent"  ajax="true"
+                                 actionListener="&num;{imageGallery.chooseEveryImage()}"
+                                 update="@parent:@parent"
+                                 tooltip="@parent:@parent = ui:repeat"/>
+              </b:panel>
+            </b:well>
+          </h:form>
+          ]]></script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+
+
+    <h2><a id="all">All-in-One-Demo (aka cheat sheet)</a></h2>
+    <p>This demo shows most options on a single screen. Most buttons modify the images. The buttons in the image row modify the image in the same row. The buttons below modify
+    the entire page. Some buttons also show the appearance of the button itself (by counting up the numbers). As you can see, you can freely combine every option
+    the search expression framework gives you.</p>
+
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+
+      <h:form id="form">
+        <b:well>
+          <ui:repeat id="some_elements" var="image"
+                     value="#{imageGallery.images}">
+            <b:row>
+              <b:column span="12">
+                <b:commandButton value=":form:some_elements:graphic  #{imageGallery.counter}" ajax="true"
+                                 actionListener="#{imageGallery.chooseAnotherImage(image)}"
+                                 update=":form:some_elements:graphic"
+                                 tooltip="update=':form:some_elements:graphic'"
+                                 />
+                <b:commandButton value="@form :@findIdRecursiveRecursive(some_elements) #{imageGallery.counter}" ajax="true"
+                                 actionListener="#{imageGallery.chooseAnotherImage(image)}"
+                                 update="@form:@findIdRecursive(some_elements):graphic"
+                                 tooltip="update='@form :@findIdRecursive(some_elements)'"/>
+                <b:commandButton value="@form:**:some_elements:graphic  #{imageGallery.counter}" ajax="true"
+                                 actionListener="#{imageGallery.chooseAnotherImage(image)}"
+                                 update="@form:**:some_elements:graphic"
+                                 tooltip="update='@form:**:some_elements:graphic'"/>
+                <b:commandButton value="@form:**:graphic  #{imageGallery.counter}" ajax="true"
+                                 actionListener="#{imageGallery.chooseAnotherImage(image)}"
+                                 update="@form:**:graphic"
+                                 tooltip="update='@form:**:graphic'"/>
+                <b:commandButton value="@form:**:graphic:@previous  #{imageGallery.counter}" ajax="true"
+                                 actionListener="#{imageGallery.chooseAnotherImage(image)}"
+                                 update="@form:**:graphic:@previous"
+                                 tooltip="update='@form:**:graphic:@previous'"/>
+                <b:commandButton value="@next,@this  #{imageGallery.counter}" ajax="true"
+                                 actionListener="#{imageGallery.chooseAnotherImage(image)}"
+                                 update="@next,@this"
+                                 tooltip="update='@next,@this'"/>
+                <b:commandButton value="@this,@previous  #{imageGallery.counter}" ajax="true"
+                                 actionListener="#{imageGallery.chooseAnotherImage(image)}"
+                                 update="@this,@previous"
+                                 tooltip="update='@this,@previous'"/>
+                <b:commandButton value="@this @next:@next  #{imageGallery.counter}" ajax="true"
+                                 actionListener="#{imageGallery.chooseAnotherImage(image)}"
+                                 update="@this @next:@next"
+                                 tooltip="update='@this @next:@next'"/>
+                <b:commandButton value="@next  #{imageGallery.counter}" ajax="true"
+                                 actionListener="#{imageGallery.chooseAnotherImage(image)}"
+                                 update="@next"
+                                 tooltip="update='@next'"/>
+                <h:graphicImage url="#{image}" id="graphic" style="width:153; height:117px" />
+              </b:column>
+            </b:row>
+          </ui:repeat>
+          <b:panel title="The buttons below change every image." >
+            <b:commandButton value=":form  #{imageGallery.counter}" ajax="true"
+                             actionListener="#{imageGallery.chooseEveryImage()}"
+                             update=":form"
+                             tooltip=":form"/>
+            <b:commandButton value="@form #{imageGallery.counter}"  ajax="true"
+                             actionListener="#{imageGallery.chooseEveryImage()}"
+                             update="@form"
+                             tooltip="@form"/>
+            <b:commandButton value="@all #{imageGallery.counter} (not implemented yet)"  ajax="true"
+                             actionListener="#{imageGallery.chooseEveryImage()}"
+                             update="@all"
+                             tooltip="@all"/>
+          </b:panel>
+          <b:panel title="Miscellaneous" >
+            <b:commandButton value="@this #{imageGallery.counter}" ajax="true"
+                             actionListener="#{imageGallery.chooseEveryImage()}"
+                             update="@this"
+                             tooltip="@this"/>
+            <b:commandButton value="@next #{imageGallery.counter}" ajax="true"
+                             actionListener="#{imageGallery.chooseEveryImage()}"
+                             update="@next"
+                             tooltip="@next"/>
+            <b:commandButton value="@none #{imageGallery.counter}" ajax="true"
+                             actionListener="#{imageGallery.chooseEveryImage()}"
+                             update="@none"
+                             tooltip="@none"/>
+            <b:commandButton value="@previous #{imageGallery.counter}" ajax="true"
+                             actionListener="#{imageGallery.chooseEveryImage()}"
+                             update="@previous"
+                             tooltip="@previous"/>
+            <b:commandButton value="@parent #{imageGallery.counter}" ajax="true"
+                             actionListener="#{imageGallery.chooseEveryImage()}"
+                             update="@parent"
+                             tooltip="@parent"/>
+            <b:commandButton value="@parent:@parent #{imageGallery.counter}" ajax="true"
+                             actionListener="#{imageGallery.chooseEveryImage()}"
+                             update="@parent:@parent"
+                             tooltip="@parent:@parent"/>
+            <b:commandButton value="@parent:@parent:@parent #{imageGallery.counter}" ajax="true"
+                             actionListener="#{imageGallery.chooseEveryImage()}"
+                             update="@parent:@parent:@parent"
+                             tooltip="@parent:@parent:@parent"/>
+          </b:panel>
+        </b:well>
+      </h:form>
+
+      <f:facet name="footer">
+        <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+          <b:tab title="JSF markup">
+            <b:panel>
+              <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+              <![CDATA[
+              <h:form id="form">
+                <ui:repeat id="some_elements" var="image"
+                           value="&num;{imageGallery.images}">
+                  <b:row>
+                    <b:column span="12">
+                      <b:commandButton value=":form:some_elements:graphic  &num;{imageGallery.counter}" ajax="true"
+                                       actionListener="&num;{imageGallery.chooseAnotherImage(image)}"
+                                       update=":form:some_elements:graphic"
+                                       tooltip="update=':form:some_elements:graphic'"
+                                       />
+                      <b:commandButton value="@form :@findIdRecursive(some_elements) &num;{imageGallery.counter}" ajax="true"
+                                       actionListener="&num;{imageGallery.chooseAnotherImage(image)}"
+                                       update="@form:@findIdRecursive(some_elements):graphic"
+                                       tooltip="update='@form :@findIdRecursive(some_elements)'"/>
+                      <b:commandButton value="@form:**:some_elements:graphic  &num;{imageGallery.counter}" ajax="true"
+                                       actionListener="&num;{imageGallery.chooseAnotherImage(image)}"
+                                       update="@form:**:some_elements:graphic"
+                                       tooltip="update='@form:**:some_elements:graphic'"/>
+                      <b:commandButton value="@form:**:graphic  &num;{imageGallery.counter}" ajax="true"
+                                       actionListener="&num;{imageGallery.chooseAnotherImage(image)}"
+                                       update="@form:**:graphic"
+                                       tooltip="update='@form:**:graphic'"/>
+                      <b:commandButton value="@form:**:graphic:@previous  &num;{imageGallery.counter}" ajax="true"
+                                       actionListener="&num;{imageGallery.chooseAnotherImage(image)}"
+                                       update="@form:**:graphic:@previous"
+                                       tooltip="update='@form:**:graphic:@previous'"/>
+                      <b:commandButton value="@next,@this  &num;{imageGallery.counter}" ajax="true"
+                                       actionListener="&num;{imageGallery.chooseAnotherImage(image)}"
+                                       update="@next,@this"
+                                       tooltip="update='@next,@this'"/>
+                      <b:commandButton value="@this,@previous  &num;{imageGallery.counter}" ajax="true"
+                                       actionListener="&num;{imageGallery.chooseAnotherImage(image)}"
+                                       update="@this,@previous"
+                                       tooltip="update='@this,@previous'"/>
+                      <b:commandButton value="@this @next:@next  &num;{imageGallery.counter}" ajax="true"
+                                       actionListener="&num;{imageGallery.chooseAnotherImage(image)}"
+                                       update="@this @next:@next"
+                                       tooltip="update='@this @next:@next'"/>
+                      <b:commandButton value="@next  &num;{imageGallery.counter}" ajax="true"
+                                       actionListener="&num;{imageGallery.chooseAnotherImage(image)}"
+                                       update="@next"
+                                       tooltip="update='@next'"/>
+                      <h:graphicImage url="&num;{image}" id="graphic" style="width:153; height:117px" />
+                    </b:column>
+                  </b:row>
+                </ui:repeat>
+                <b:panel title="The buttons below change every image." >
+                  <b:commandButton value=":form  &num;{imageGallery.counter}" ajax="true"
+                                   actionListener="&num;{imageGallery.chooseEveryImage()}"
+                                   update=":form"
+                                   tooltip=":form"/>
+                  <b:commandButton value="@form &num;{imageGallery.counter}"  ajax="true"
+                                   actionListener="&num;{imageGallery.chooseEveryImage()}"
+                                   update="@form"
+                                   tooltip="@form"/>
+                  <b:commandButton value="@all &num;{imageGallery.counter} (not implemented yet)"  ajax="true"
+                                   actionListener="&num;{imageGallery.chooseEveryImage()}"
+                                   update="@all"
+                                   tooltip="@all"/>
+                </b:panel>
+                <b:panel title="Miscellaneous" >
+                  <b:commandButton value="@this &num;{imageGallery.counter}" ajax="true"
+                                   actionListener="&num;{imageGallery.chooseEveryImage()}"
+                                   update="@this"
+                                   tooltip="@this"/>
+                  <b:commandButton value="@next &num;{imageGallery.counter}" ajax="true"
+                                   actionListener="&num;{imageGallery.chooseEveryImage()}"
+                                   update="@next"
+                                   tooltip="@next"/>
+                  <b:commandButton value="@none &num;{imageGallery.counter}" ajax="true"
+                                   actionListener="&num;{imageGallery.chooseEveryImage()}"
+                                   update="@none"
+                                   tooltip="@none"/>
+                  <b:commandButton value="@previous &num;{imageGallery.counter}" ajax="true"
+                                   actionListener="&num;{imageGallery.chooseEveryImage()}"
+                                   update="@previous"
+                                   tooltip="@previous"/>
+                  <b:commandButton value="@parent &num;{imageGallery.counter}" ajax="true"
+                                   actionListener="&num;{imageGallery.chooseEveryImage()}"
+                                   update="@parent"
+                                   tooltip="@parent"/>
+                  <b:commandButton value="@parent:@parent &num;{imageGallery.counter}" ajax="true"
+                                   actionListener="&num;{imageGallery.chooseEveryImage()}"
+                                   update="@parent:@parent"
+                                   tooltip="@parent:@parent"/>
+                  <b:commandButton value="@parent:@parent:@parent &num;{imageGallery.counter}" ajax="true"
+                                   actionListener="&num;{imageGallery.chooseEveryImage()}"
+                                   update="@parent:@parent:@parent"
+                                   tooltip="@parent:@parent:@parent"/>
+                </b:panel>
+              </h:form>
+              ]]>
+              </script>
+            </b:panel>
+          </b:tab>
+          <b:tab title="Java Bean">
+            <b:panel>
+              <script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1">
+              <![CDATA[
+              @ViewScoped
+              @ManagedBean
+              public class ImageGallery implements Serializable {
+                private static final long serialVersionUID = 1L;
+
+                private int oneToTen;
+
+                private boolean showNumber;
+
+                private List<String> images = new ArrayList<String>() {
+                  {
+                    add("http://www.11pictures.com/foto/stories/Camargue_2013_Nature/framedPreview.png");
+                    add("http://www.11pictures.com/foto/stories/Camargue_2013/framedPreview.png");
+                    add("http://www.11pictures.com/foto/stories/GreenCevennes/framedPreview.png");
+                  }
+                  private static final long serialVersionUID = 1L;
+                };
+
+                private List<String> imagePool = new ArrayList<String>() {
+                  {
+                    add("http://www.11pictures.com/foto/stories/ValleeDeLaGrandMaison_2012/framedPreview.png");
+                    add("http://www.11pictures.com/foto/stories/Clouds2/framedPreview.png");
+                    add("http://www.11pictures.com/foto/stories/BretagneFog2003/framedPreview.png");
+                    add("http://www.11pictures.com/foto/stories/LifeInWinter/framedPreview.png");
+                    add("http://www.11pictures.com/foto/stories/Alpilles_2013/framedPreview.png");
+                  }
+                  private static final long serialVersionUID = 1L;
+                };
+
+                private int counter=0;
+
+                public int getCounter() {
+                  return ++counter;
+                }
+
+                public List<String> getImages() {
+                  return images;
+                }
+
+                public void chooseAnotherImage(String image) {
+                  int index = images.indexOf(image);
+                  String previousImage = images.get(index);
+                  int random = (int) Math.floor(Math.random() * imagePool.size());
+                  images.set(index, imagePool.get(random));
+                  imagePool.set(random, previousImage);
+                }
+
+                public void chooseEveryImage() {
+                  for (int index = 0; index < images.size(); index++) {
+                    String previousImage = images.get(index);
+                    int random = (int) Math.floor(Math.random() * imagePool.size());
+                    images.set(index, imagePool.get(random));
+                    imagePool.set(random, previousImage);
+                  }
+                }
+
+                public void validateNumber() {
+                  if (oneToTen>=1 && oneToTen <=10) {
+                    FacesMessages.info("oneToTenFormId:oneToTenId", "", "Well done!");
+                    FacesMessages.info("oneToTenFormId2:oneToTenId", "", "Well done!");
+                  } else if (oneToTen<1) {
+                    FacesMessages.warning("oneToTenFormId:oneToTenId", "", "This number is smaller than 1.");
+                    FacesMessages.warning("oneToTenFormId2:oneToTenId", "", "This number is smaller than 1.");
+                  }
+                  else {
+                    FacesMessages.warning("oneToTenFormId:oneToTenId", "", "This number is larger than 10.");
+                    FacesMessages.warning("oneToTenFormId2:oneToTenId", "", "This number is larger than 10.");
+                  }
+                }
+
+                public int getOneToTen() {
+                  return oneToTen;
+                }
+
+                public void setOneToTen(int oneToTen) {
+                  this.oneToTen = oneToTen;
+                }
+
+                public boolean isShowNumber() {
+                  return showNumber;
+                }
+
+                public void setShowNumber(boolean showNumber) {
+                  this.showNumber = showNumber;
+                }
+              }
+
+            ]]></script></b:panel>
+          </b:tab>
+        </b:tabView>
+      </f:facet>
+    </b:panel>
+
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+  </ui:define>
+</ui:composition>

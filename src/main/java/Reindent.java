@@ -17,7 +17,8 @@ public class Reindent {
 	static boolean insideStyle = false;
 
 	public static void main(String[] args) throws IOException {
-		scanFolder(new File("src/main/webapp"));
+		//readFile("src/main/webapp/bootstrap/dropbutton.xhtml");
+		scanFolder(new File("src/main/webapp/"));
 	}
 
 	public static void scanFolder(File folder) throws IOException {
@@ -74,6 +75,7 @@ public class Reindent {
 		boolean startsWithClosingTag = false;
 		String originalLine = line;
 		line = line.trim();
+		String trimLine = line;
 		if (line.length() == 0) {
 			return line;
 		}
@@ -81,7 +83,7 @@ public class Reindent {
 			currentIndent--;
 			startsWithClosingTag = true;
 		}
-		String[] close = line.split("</b:|</h:|</p:|</ui:|</f:|</html|</style|</table|</th|</tr|</td");
+		String[] close = line.split("</b:|</h:|</p:|</ui:|</f:|</html|</style|</table|</th|</tr|</td|</ul|</li");
 		currentIndent -= close.length - 1;
 		if (close.length>1) {
 			insideTag = false;
@@ -101,6 +103,15 @@ public class Reindent {
 		if (line.startsWith("<td>") && line.contains("</td")) {
 			currentIndent++;
 		}
+		if (line.startsWith("<ul>") && line.contains("</ul")) {
+			currentIndent++;
+		}
+		if (line.startsWith("<li>") && line.contains("</li")) {
+			currentIndent++;
+		}
+//		if (line.startsWith("<b:") && (line.contains("</b:") || line.contains("/>"))) {
+//			currentIndent++;
+//		}
 		if (insideTag && (!line.startsWith("<"))) {
 			for (int i = 0; i < parameterIndent+1; i++) {
 				line = " " + line;
@@ -111,7 +122,7 @@ public class Reindent {
 			}
 		}
 //		System.out.println(currentIndent + line);
-		String[] open = line.split("<b:|<h:|<p:|<ui:|<f:|<style|<table|<th|<tr|<td");
+		String[] open = line.split("<b:|<h:|<p:|<ui:|<f:|<style|<table|<th|<tr|<td|<ul|<li");
 		currentIndent += open.length - 1;
 		if (open.length>1) {
 			insideTag = true;
@@ -136,22 +147,40 @@ public class Reindent {
 		if (close2.length>1) {
 			insideTag = false;
 		}
+		for (String c: close2) {
+			// ignore special cases like <br />
+			if (c.trim().equals("<br")) {
+				currentIndent++;
+			}
+			if (c.startsWith("<img")) {
+				currentIndent++;
+			}
+		}
 		currentIndent -= close2.length - 1;
 		if (!originalLine.equals(line)) {
 			modified = true;
 		}
-		if (line.startsWith("<style>") && line.contains("</style")) {
+		if (trimLine.startsWith("<style>") && line.contains("</style")) {
 			currentIndent--;
 		}
-		if (line.startsWith("<tr>") && line.contains("</tr")) {
+		if (trimLine.startsWith("<tr>") && line.contains("</tr")) {
 			currentIndent--;
 		}
-		if (line.startsWith("<th>") && line.contains("</td")) {
+		if (trimLine.startsWith("<th>") && line.contains("</td")) {
 			currentIndent--;
 		}
-		if (line.startsWith("<td>") && line.contains("</td")) {
+		if (trimLine.startsWith("<td>") && line.contains("</td")) {
 			currentIndent--;
 		}
+		if (trimLine.startsWith("<ul>") && line.contains("</ul")) {
+			currentIndent--;
+		}
+		if (trimLine.startsWith("<li>") && line.contains("</li")) {
+			currentIndent--;
+		}
+//		if (trimLine.startsWith("<b:") && (line.contains("</b:") || line.contains("/>"))) {
+//			currentIndent--;
+//		}
 		return line;
 	}
 }

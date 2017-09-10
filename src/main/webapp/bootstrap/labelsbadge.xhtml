@@ -1,321 +1,321 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
 
 
-<ui:define name="content-navigator">
-  <b:listLinks>
-    <b:navLink href="#labels_and_badges" value="Labels and Badges" />
-    <b:navLink href="#labels_and_badges_showing_el_values" value="Labels and badges showing EL values" />
-    <b:navLink href="#responsive_design" value="Responsive design" />
-    <b:navLink href="#visibility_depending_on_screen_size" value="Visibility depending on screen size" />
-    <b:navLink href="#tooltips" value="Tooltips" />
-    <b:navLink href="#reference_section" value="Reference section" />
-  </b:listLinks>
-</ui:define>
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#labels_and_badges" value="Labels and Badges" />
+      <b:navLink href="#labels_and_badges_showing_el_values" value="Labels and badges showing EL values" />
+      <b:navLink href="#responsive_design" value="Responsive design" />
+      <b:navLink href="#visibility_depending_on_screen_size" value="Visibility depending on screen size" />
+      <b:navLink href="#tooltips" value="Tooltips" />
+      <b:navLink href="#reference_section" value="Reference section" />
+    </b:listLinks>
+  </ui:define>
 
 
-            <ui:define name="content">
-                <style>td {padding: 8px;}</style>
-                <h1><a id="labels_and_badges">Labels and Badges</a></h1>
-                <p><b>Caveat:</b> Bootstrap 4 is going to drop the labels and badges of Bootstrap 3. So there's a certain
-                risk this component won't be supported after migrating BootsFaces to Bootstrap 4.</p>
-                
-                <b:panel title="Live preview" look="info" collapsible="false">            
+  <ui:define name="content">
+    <style>td {padding: 8px;}</style>
+    <h1><a id="labels_and_badges">Labels and Badges</a></h1>
+    <p><b>Caveat:</b> Bootstrap 4 is going to drop the labels and badges of Bootstrap 3. So there's a certain
+    risk this component won't be supported after migrating BootsFaces to Bootstrap 4.</p>
 
-                    <b:panelGrid columns="4" size="xs">
-                        <h:outputText value="Label" />
-                        <h:outputText value="Badge" />
-                        <h:outputText value="Label" />
-                        <h:outputText value="Badge" />
-                        
-                        <b:label text="Default"/>
-                        <b:badge value="1"/>
-                        <b:label text="Success" severity="success"/>
-                        <b:badge value="7" />
-                        
-                        <b:label text="Warning" severity="warning"/>
-                        <b:badge value="9" />
-                        <b:label text="Danger" severity="danger"/>
-                        <b:badge value="4" />
-                        
-                        <b:label text="Info" severity="info"/>
-                        <b:badge value="12" />
-                        <b:label text="Primary" severity="primary"/>
-                        <b:badge value="3"/>
-                    </b:panelGrid>
+    <b:panel title="Live preview" look="info" collapsible="false">
 
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                            <![CDATA[
-                    <b:panelGrid columns="4">
-                        <h:outputText value="Label" />
-                        <h:outputText value="Badge" />
-                        <h:outputText value="Label" />
-                        <h:outputText value="Badge" />
-                        
-                        <b:label text="Default"/>
-                        <b:badge value="1"/>
-                        <b:label text="Success" severity="success"/>
-                        <b:badge value="7" />
-                        
-                        <b:label text="Warning" severity="warning"/>
-                        <b:badge value="9" />
-                        <b:label text="Danger" severity="danger"/>
-                        <b:badge value="4" />
-                        
-                        <b:label text="Info" severity="info"/>
-                        <b:badge value="12" />
-                        <b:label text="Primary" severity="primary"/>
-                        <b:badge value="3"/>
-                    </b:panelGrid>
-                            ]]></script>
-                </b:panel>
-            </f:facet>
+      <b:panelGrid columns="4" size="xs">
+        <h:outputText value="Label" />
+        <h:outputText value="Badge" />
+        <h:outputText value="Label" />
+        <h:outputText value="Badge" />
+
+        <b:label text="Default"/>
+        <b:badge value="1"/>
+        <b:label text="Success" severity="success"/>
+        <b:badge value="7" />
+
+        <b:label text="Warning" severity="warning"/>
+        <b:badge value="9" />
+        <b:label text="Danger" severity="danger"/>
+        <b:badge value="4" />
+
+        <b:label text="Info" severity="info"/>
+        <b:badge value="12" />
+        <b:label text="Primary" severity="primary"/>
+        <b:badge value="3"/>
+      </b:panelGrid>
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <b:panelGrid columns="4">
+            <h:outputText value="Label" />
+            <h:outputText value="Badge" />
+            <h:outputText value="Label" />
+            <h:outputText value="Badge" />
+
+            <b:label text="Default"/>
+            <b:badge value="1"/>
+            <b:label text="Success" severity="success"/>
+            <b:badge value="7" />
+
+            <b:label text="Warning" severity="warning"/>
+            <b:badge value="9" />
+            <b:label text="Danger" severity="danger"/>
+            <b:badge value="4" />
+
+            <b:label text="Info" severity="info"/>
+            <b:badge value="12" />
+            <b:label text="Primary" severity="primary"/>
+            <b:badge value="3"/>
+          </b:panelGrid>
+          ]]></script>
         </b:panel>
-                
-                <h2><a id="labels_and_badges_showing_el_values">Labels and badges showing EL values</a></h2>
-                
-                <b:panel title="Live preview" look="info" collapsible="false">            
+      </f:facet>
+    </b:panel>
 
-                    <b:panelGrid columns="4">
-                        <h:outputText value="Label" />
-                        <h:outputText value="Badge" />
-                        <h:outputText value="Label" />
-                        <h:outputText value="Badge" />
-                        
-                        <b:label text="#{testBean.label1}" severity="info"/>
-                        <b:badge value="#{testBean.val1}" />
-                        <b:label text="#{testBean.label2}" severity="success"/>
-                        <b:badge value="#{testBean.val2}" />
-                    </b:panelGrid>
+    <h2><a id="labels_and_badges_showing_el_values">Labels and badges showing EL values</a></h2>
 
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                            <![CDATA[
-                    <b:panelGrid columns="4">
-                        <h:outputText value="Label" />
-                        <h:outputText value="Badge" />
-                        <h:outputText value="Label" />
-                        <h:outputText value="Badge" />
-                        
-                        <b:label text="#{testBean.label1}" severity="info"/>
-                        <b:badge value="#{testBean.val1}" />
-                        <b:label text="#{testBean.label2}" severity="success"/>
-                        <b:badge value="#{testBean.val2}" />
-                    </b:panelGrid>
-                            ]]></script>
-                </b:panel>
-            </f:facet>
+    <b:panel title="Live preview" look="info" collapsible="false">
+
+      <b:panelGrid columns="4">
+        <h:outputText value="Label" />
+        <h:outputText value="Badge" />
+        <h:outputText value="Label" />
+        <h:outputText value="Badge" />
+
+        <b:label text="#{testBean.label1}" severity="info"/>
+        <b:badge value="#{testBean.val1}" />
+        <b:label text="#{testBean.label2}" severity="success"/>
+        <b:badge value="#{testBean.val2}" />
+      </b:panelGrid>
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <b:panelGrid columns="4">
+            <h:outputText value="Label" />
+            <h:outputText value="Badge" />
+            <h:outputText value="Label" />
+            <h:outputText value="Badge" />
+
+            <b:label text="#{testBean.label1}" severity="info"/>
+            <b:badge value="#{testBean.val1}" />
+            <b:label text="#{testBean.label2}" severity="success"/>
+            <b:badge value="#{testBean.val2}" />
+          </b:panelGrid>
+          ]]></script>
         </b:panel>
+      </f:facet>
+    </b:panel>
 
-                <h2><a id="responsive_design">Responsive design</a><b:badge value="since 0.9.0" /></h2>
-                <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
-                also with <code>&lt;b:badge /&gt;</code>:</p>
-                
-                <b:panel title="Live preview" look="info" collapsible="false">            
-                    Badges
-                    <b:row>
-                        <b:badge value="large-screen='full-width'" large-screen="full-width" />
-                    </b:row>
-                    <b:row style="padding-top:5px">
-                        <b:badge value="large-screen='one-third'" large-screen="one-third" />
-                        <b:badge value="large-screen='two-thirds'" large-screen="two-thirds" />
-                    </b:row>
-                    <b:row style="padding-top:5px">
-                        <b:badge value="small-screen='one-third'" small-screen="one-third" />
-                        <b:badge value="small-screen='two-thirds'" small-screen="two-thirds" />
-                    </b:row>
-                    <b:row style="padding-top:5px">
-                        <b:badge value="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
-                        <b:badge value="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
-                    </b:row>
-                    
-                    Labels
-                    <b:row>
-                        <b:label severity="primary" text="large-screen='full-width'" large-screen="full-width" />
-                    </b:row>
-                    <b:row style="padding-top:5px">
-                        <b:label severity="primary" text="large-screen='one-third'" large-screen="one-third" />
-                        <b:label severity="success" text="large-screen='two-thirds'" large-screen="two-thirds" />
-                    </b:row>
-                    <b:row style="padding-top:5px">
-                        <b:label severity="danger" text="small-screen='one-third'" small-screen="one-third" />
-                        <b:label severity="primary" text="small-screen='two-thirds'" small-screen="two-thirds" />
-                    </b:row>
-                    <b:row style="padding-top:5px">
-                        <b:label severity="primary" text="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
-                        <b:label severity="danger" text="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
-                    </b:row>
+    <h2><a id="responsive_design">Responsive design</a><b:badge value="since 0.9.0" /></h2>
+    <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
+    also with <code>&lt;b:badge /&gt;</code>:</p>
 
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-	          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-             <![CDATA[
-                    Badges
-                    <b:row>
-                        <b:badge value="large-screen='full-width'" large-screen="full-width" />
-                    </b:row>
-                    <b:row style="padding-top:5px">
-                        <b:badge value="large-screen='one-third'" large-screen="one-third" />
-                        <b:badge value="large-screen='two-thirds'" large-screen="two-thirds" />
-                    </b:row>
-                    <b:row style="padding-top:5px">
-                        <b:badge value="small-screen='one-third'" small-screen="one-third" />
-                        <b:badge value="small-screen='two-thirds'" small-screen="two-thirds" />
-                    </b:row>
-                    <b:row style="padding-top:5px">
-                        <b:badge value="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
-                        <b:badge value="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
-                    </b:row>
-                    
-                    Labels
-                    <b:row>
-                        <b:label severity="primary" text="large-screen='full-width'" large-screen="full-width" />
-                    </b:row>
-                    <b:row style="padding-top:5px">
-                        <b:label severity="primary" text="large-screen='one-third'" large-screen="one-third" />
-                        <b:label severity="success" text="large-screen='two-thirds'" large-screen="two-thirds" />
-                    </b:row>
-                    <b:row style="padding-top:5px">
-                        <b:label severity="danger" text="small-screen='one-third'" small-screen="one-third" />
-                        <b:label severity="primary" text="small-screen='two-thirds'" small-screen="two-thirds" />
-                    </b:row>
-                    <b:row style="padding-top:5px">
-                        <b:label severity="primary" text="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
-                        <b:label severity="danger" text="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
-                    </b:row>
-             ]]></script>
-                </b:panel>
-            </f:facet>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      Badges
+      <b:row>
+        <b:badge value="large-screen='full-width'" large-screen="full-width" />
+      </b:row>
+      <b:row style="padding-top:5px">
+        <b:badge value="large-screen='one-third'" large-screen="one-third" />
+        <b:badge value="large-screen='two-thirds'" large-screen="two-thirds" />
+      </b:row>
+      <b:row style="padding-top:5px">
+        <b:badge value="small-screen='one-third'" small-screen="one-third" />
+        <b:badge value="small-screen='two-thirds'" small-screen="two-thirds" />
+      </b:row>
+      <b:row style="padding-top:5px">
+        <b:badge value="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
+        <b:badge value="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
+      </b:row>
+
+      Labels
+      <b:row>
+        <b:label severity="primary" text="large-screen='full-width'" large-screen="full-width" />
+      </b:row>
+      <b:row style="padding-top:5px">
+        <b:label severity="primary" text="large-screen='one-third'" large-screen="one-third" />
+        <b:label severity="success" text="large-screen='two-thirds'" large-screen="two-thirds" />
+      </b:row>
+      <b:row style="padding-top:5px">
+        <b:label severity="danger" text="small-screen='one-third'" small-screen="one-third" />
+        <b:label severity="primary" text="small-screen='two-thirds'" small-screen="two-thirds" />
+      </b:row>
+      <b:row style="padding-top:5px">
+        <b:label severity="primary" text="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
+        <b:label severity="danger" text="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
+      </b:row>
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          Badges
+          <b:row>
+            <b:badge value="large-screen='full-width'" large-screen="full-width" />
+          </b:row>
+          <b:row style="padding-top:5px">
+            <b:badge value="large-screen='one-third'" large-screen="one-third" />
+            <b:badge value="large-screen='two-thirds'" large-screen="two-thirds" />
+          </b:row>
+          <b:row style="padding-top:5px">
+            <b:badge value="small-screen='one-third'" small-screen="one-third" />
+            <b:badge value="small-screen='two-thirds'" small-screen="two-thirds" />
+          </b:row>
+          <b:row style="padding-top:5px">
+            <b:badge value="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
+            <b:badge value="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
+          </b:row>
+
+          Labels
+          <b:row>
+            <b:label severity="primary" text="large-screen='full-width'" large-screen="full-width" />
+          </b:row>
+          <b:row style="padding-top:5px">
+            <b:label severity="primary" text="large-screen='one-third'" large-screen="one-third" />
+            <b:label severity="success" text="large-screen='two-thirds'" large-screen="two-thirds" />
+          </b:row>
+          <b:row style="padding-top:5px">
+            <b:label severity="danger" text="small-screen='one-third'" small-screen="one-third" />
+            <b:label severity="primary" text="small-screen='two-thirds'" small-screen="two-thirds" />
+          </b:row>
+          <b:row style="padding-top:5px">
+            <b:label severity="primary" text="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
+            <b:label severity="danger" text="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
+          </b:row>
+          ]]></script>
         </b:panel>
-                
-                <h2><a id="visibility_depending_on_screen_size">Visibility depending on screen size</a><b:badge value="since 0.8.6/0.9.0" /></h2>
-                <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
-                
-                <b:panel title="Live preview" look="info" collapsible="false">            
+      </f:facet>
+    </b:panel>
 
-<b:row>
-                          <b:label severity="primary" text="Badges" />
-                      </b:row>
-                      <b:panelGrid colSpans="3,9">
-                          <h:outputText value="Visible on &gt;= md:" />
-                          <b:badge value="Visible on medium or large screen" visible="md..." />
-                          <h:outputText value="Visible on &lt;= sm:" />
-                          <b:badge value="Visible on small-screen" visible="...sm"/>
-                          <h:outputText value="Visible on sm...lg:" />
-                          <b:badge value="Visible on small to large screen" visible="sm...lg"/>
-                          <h:outputText value="Visible on xs and md:" />
-                          <b:badge value="Visible on tiny and medium screen" visible="xs,md"/>
-                          <h:outputText value="Col-md-6, offset 2:" />
-                          <b:badge value="col-md-6, offset 2" col-md="6" offset="2" />
-                       </b:panelGrid>
-                      <b:row style="padding-top:15px">
-                          <b:label severity="primary" text="Labels" />
-                      </b:row>
-                      <b:panelGrid colSpans="3,9">
-                          <h:outputText value="Visible on &gt;= md:" />
-                          <b:label text="Visible on medium or large screen" severity="info" visible="md..." />
-                          <h:outputText value="Visible on &lt;= sm:" />
-                          <b:label text="Visible on small-screen" severity="success" visible="...sm"/>
-                          <h:outputText value="Visible on sm...lg:" />
-                          <b:label text="Visible on small to large screen" severity="success" visible="sm...lg"/>
-                          <h:outputText value="Visible on xs and md:" />
-                          <b:label text="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
-                          <h:outputText value="Col-md-6, offset 2:" />
-                          <b:label text="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
-                       </b:panelGrid>
+    <h2><a id="visibility_depending_on_screen_size">Visibility depending on screen size</a><b:badge value="since 0.8.6/0.9.0" /></h2>
+    <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
 
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-	          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-             <![CDATA[
-                      <b:row>
-                          <b:label severity="primary" text="Badges" />
-                      </b:row>
-                      <b:panelGrid colSpans="3,9">
-                          <h:outputText value="Visible on &gt;= md:" />
-                          <b:badge value="Visible on medium or large screen" visible="md..." />
-                          <h:outputText value="Visible on &lt;= sm:" />
-                          <b:badge value="Visible on small-screen" visible="...sm"/>
-                          <h:outputText value="Visible on sm...lg:" />
-                          <b:badge value="Visible on small to large screen" visible="sm...lg"/>
-                          <h:outputText value="Visible on xs and md:" />
-                          <b:badge value="Visible on tiny and medium screen" visible="xs,md"/>
-                          <h:outputText value="Col-md-6, offset 2:" />
-                          <b:badge value="col-md-6, offset 2" col-md="6" offset="2" />
-                       </b:panelGrid>
-                      <b:row style="padding-top:15px">
-                          <b:label severity="primary" text="Labels" />
-                      </b:row>
-                      <b:panelGrid colSpans="3,9">
-                          <h:outputText value="Visible on &gt;= md:" />
-                          <b:label text="Visible on medium or large screen" severity="info" visible="md..." />
-                          <h:outputText value="Visible on &lt;= sm:" />
-                          <b:label text="Visible on small-screen" severity="success" visible="...sm"/>
-                          <h:outputText value="Visible on sm...lg:" />
-                          <b:label text="Visible on small to large screen" severity="success" visible="sm...lg"/>
-                          <h:outputText value="Visible on xs and md:" />
-                          <b:label text="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
-                          <h:outputText value="Col-md-6, offset 2:" />
-                          <b:label text="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
-                       </b:panelGrid>
-             ]]></script>
-                </b:panel>
-            </f:facet>
+    <b:panel title="Live preview" look="info" collapsible="false">
+
+      <b:row>
+        <b:label severity="primary" text="Badges" />
+      </b:row>
+      <b:panelGrid colSpans="3,9">
+        <h:outputText value="Visible on &gt;= md:" />
+        <b:badge value="Visible on medium or large screen" visible="md..." />
+        <h:outputText value="Visible on &lt;= sm:" />
+        <b:badge value="Visible on small-screen" visible="...sm"/>
+        <h:outputText value="Visible on sm...lg:" />
+        <b:badge value="Visible on small to large screen" visible="sm...lg"/>
+        <h:outputText value="Visible on xs and md:" />
+        <b:badge value="Visible on tiny and medium screen" visible="xs,md"/>
+        <h:outputText value="Col-md-6, offset 2:" />
+        <b:badge value="col-md-6, offset 2" col-md="6" offset="2" />
+      </b:panelGrid>
+      <b:row style="padding-top:15px">
+        <b:label severity="primary" text="Labels" />
+      </b:row>
+      <b:panelGrid colSpans="3,9">
+        <h:outputText value="Visible on &gt;= md:" />
+        <b:label text="Visible on medium or large screen" severity="info" visible="md..." />
+        <h:outputText value="Visible on &lt;= sm:" />
+        <b:label text="Visible on small-screen" severity="success" visible="...sm"/>
+        <h:outputText value="Visible on sm...lg:" />
+        <b:label text="Visible on small to large screen" severity="success" visible="sm...lg"/>
+        <h:outputText value="Visible on xs and md:" />
+        <b:label text="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
+        <h:outputText value="Col-md-6, offset 2:" />
+        <b:label text="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
+      </b:panelGrid>
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:row>
+            <b:label severity="primary" text="Badges" />
+          </b:row>
+          <b:panelGrid colSpans="3,9">
+            <h:outputText value="Visible on &gt;= md:" />
+            <b:badge value="Visible on medium or large screen" visible="md..." />
+            <h:outputText value="Visible on &lt;= sm:" />
+            <b:badge value="Visible on small-screen" visible="...sm"/>
+            <h:outputText value="Visible on sm...lg:" />
+            <b:badge value="Visible on small to large screen" visible="sm...lg"/>
+            <h:outputText value="Visible on xs and md:" />
+            <b:badge value="Visible on tiny and medium screen" visible="xs,md"/>
+            <h:outputText value="Col-md-6, offset 2:" />
+            <b:badge value="col-md-6, offset 2" col-md="6" offset="2" />
+          </b:panelGrid>
+          <b:row style="padding-top:15px">
+            <b:label severity="primary" text="Labels" />
+          </b:row>
+          <b:panelGrid colSpans="3,9">
+            <h:outputText value="Visible on &gt;= md:" />
+            <b:label text="Visible on medium or large screen" severity="info" visible="md..." />
+            <h:outputText value="Visible on &lt;= sm:" />
+            <b:label text="Visible on small-screen" severity="success" visible="...sm"/>
+            <h:outputText value="Visible on sm...lg:" />
+            <b:label text="Visible on small to large screen" severity="success" visible="sm...lg"/>
+            <h:outputText value="Visible on xs and md:" />
+            <b:label text="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
+            <h:outputText value="Col-md-6, offset 2:" />
+            <b:label text="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
+          </b:panelGrid>
+          ]]></script>
         </b:panel>
+      </f:facet>
+    </b:panel>
 
-                <h2><a id="tooltips">Tooltips</a><b:badge value="since 0.8.6/0.9.0" /></h2>
-                <p>Both <code>&lt;b:badge /&gt;</code> and  <code>&lt;b:label /&gt;</code> support tooltips:</p>
-                
-                <b:panel title="Live preview" look="info" collapsible="false">            
+    <h2><a id="tooltips">Tooltips</a><b:badge value="since 0.8.6/0.9.0" /></h2>
+    <p>Both <code>&lt;b:badge /&gt;</code> and  <code>&lt;b:label /&gt;</code> support tooltips:</p>
 
-<b:badge value="Look at my tooltip!" tooltip="Ain't it a nice tooltip?"/>
-                      <br />
-                      <b:label text="Labels also support tooltips." severity="info" tooltip="... and they implement the BootsFaces tooltip API meticulously!"/>
+    <b:panel title="Live preview" look="info" collapsible="false">
 
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-	          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                  <![CDATA[
-                      <b:badge value="Look at my tooltip!" tooltip="Ain't it a nice tooltip?" />
-                      <br />
-                      <b:label text="Labels also support tooltips." severity="info" tooltip="... and they implement the BootsFaces tooltip API meticulously!" />
-                 ]]></script>
-                </b:panel>
-            </f:facet>
+      <b:badge value="Look at my tooltip!" tooltip="Ain't it a nice tooltip?"/>
+      <br />
+      <b:label text="Labels also support tooltips." severity="info" tooltip="... and they implement the BootsFaces tooltip API meticulously!"/>
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:badge value="Look at my tooltip!" tooltip="Ain't it a nice tooltip?" />
+          <br />
+          <b:label text="Labels also support tooltips." severity="info" tooltip="... and they implement the BootsFaces tooltip API meticulously!" />
+          ]]></script>
         </b:panel>
-                
-                <h2><a id="reference_section">Reference section</a></h2>
-                <ui:include src="LabelAttributes.xhtml" />
-                <ui:include src="BadgeAttributes.xhtml" />
-                <b:panel look="info" rendered="false">
-					<f:facet name="heading">
-						<b>Skinning</b>
-					</f:facet>
-					<ul>
-						<li>Tell the world which CSS classes can be used to change the
-						look of the component.</li>
-					</ul>
-				</b:panel>
+      </f:facet>
+    </b:panel>
 
-                <script type="text/javascript">
-                    SyntaxHighlighter.all();
-                </script>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-            </ui:define>
+    <h2><a id="reference_section">Reference section</a></h2>
+    <ui:include src="LabelAttributes.xhtml" />
+    <ui:include src="BadgeAttributes.xhtml" />
+    <b:panel look="info" rendered="false">
+      <f:facet name="heading">
+        <b>Skinning</b>
+      </f:facet>
+      <ul>
+        <li>Tell the world which CSS classes can be used to change the
+        look of the component.</li>
+      </ul>
+    </b:panel>
+
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+  </ui:define>
 </ui:composition>

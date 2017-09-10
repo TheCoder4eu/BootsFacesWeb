@@ -8,242 +8,242 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets">
 
 
-<ui:define name="content-navigator">
-  <b:listLinks>
-    <b:navLink href="#tree" value="Tree" />
-    <b:navLink href="#basic_usage" value="Basic usage" />
-    <b:navLink href="#know_bugs_and_limitations" value="Know bugs and limitations" />
-    <b:navLink href="#advanced_usage" value="Advanced usage" />
-    <b:navLink href="#nodes_with_hyperlinks" value="Nodes with hyperlinks" />
-    <b:navLink href="#limiting_the_height_of_the_tree" value="Limiting the height of the tree" />
-    <b:navLink href="#reference_section" value="Reference section" />
-  </b:listLinks>
-</ui:define>
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#tree" value="Tree" />
+      <b:navLink href="#basic_usage" value="Basic usage" />
+      <b:navLink href="#know_bugs_and_limitations" value="Know bugs and limitations" />
+      <b:navLink href="#advanced_usage" value="Advanced usage" />
+      <b:navLink href="#nodes_with_hyperlinks" value="Nodes with hyperlinks" />
+      <b:navLink href="#limiting_the_height_of_the_tree" value="Limiting the height of the tree" />
+      <b:navLink href="#reference_section" value="Reference section" />
+    </b:listLinks>
+  </ui:define>
 
 
-    <ui:define name="content">
-        <style>
-            td {
-                padding: 8px;
-            }
-            .table {
-                max-width: none !important;
-            }
-        </style>
-        <h1><a id="tree">Tree</a><b:badge value="incubating / since 0.8.5" /></h1>
-        <p>
-            Use <code>b:tree</code> to obtain a Tree component with basic functionalities.
-            It's based on the <a target="#" href="https://github.com/jonmiles/bootstrap-treeview">Bootstrap treeview written by Jon Miles</a>,
-            which is available under an Apache V2 license.
-        </p>
-        <p>The Tree component needs a backend model to provide the UI
-            structure. This means you must provide a value of type
-            net.bootsfaces.component.tree.model.Node.</p>
-        <p>Currently, the Tree component does not mantain its state so, if you refresh the
-            page, the tree resets to its initial state. This happens because the
-            component is rendered only client-side.</p>
-        <h2><a id="basic_usage">Basic usage</a></h2>
+  <ui:define name="content">
+    <style>
+      td {
+        padding: 8px;
+      }
+      .table {
+        max-width: none !important;
+      }
+    </style>
+    <h1><a id="tree">Tree</a><b:badge value="incubating / since 0.8.5" /></h1>
+    <p>
+    Use <code>b:tree</code> to obtain a Tree component with basic functionalities.
+    It's based on the <a target="#" href="https://github.com/jonmiles/bootstrap-treeview">Bootstrap treeview written by Jon Miles</a>,
+    which is available under an Apache V2 license.
+    </p>
+    <p>The Tree component needs a backend model to provide the UI
+    structure. This means you must provide a value of type
+    net.bootsfaces.component.tree.model.Node.</p>
+    <p>Currently, the Tree component does not mantain its state so, if you refresh the
+    page, the tree resets to its initial state. This happens because the
+    component is rendered only client-side.</p>
+    <h2><a id="basic_usage">Basic usage</a></h2>
 
-        <b:tabView activeIndex="1">
-            <b:tab title="JSF markup">
-                <b:well>
-                    <script type="syntaxhighlighter"
-                            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                                                <![CDATA[
-                                                <h:form prependId="false">
-                                                    <b:tree 
-                                                    render-root="false" 
-                                                    value="&num;{test.testModel1}"
-                                                    showCheckbox="true" 
-                                                    enableLinks="true"
-                                                    showBorder="true"  />
-                                                </h:form>
-                                                ]]></script>
-                </b:well>
-            </b:tab>
-            <b:tab title="displayed as"
-                   contentStyle="border:1px solid ;padding:10px">
-                <h:form prependId="false">
-                    <b:tree render-root="false" value="#{test.testModel1}"
-                            showCheckbox="true"
-                            enableLinks="true" showBorder="true"/>
-                </h:form>
-            </b:tab>
-        </b:tabView>
-        <br/>
-        <h2><a id="know_bugs_and_limitations">Know bugs and limitations</a></h2>
-            <ul>
-            <li>You must put the tree into a <code>&lt;h:form /&gt;</code> tag. That's because
-            it's able to perform AJAX calls.</li>
-            <li>The form must have the attribute <code>prependId="false"</code>. Otherwise, the tree isn't styled correctly.</li>
-            </ul>
-         <p>
-           
-            We will try to solve this limitation in the future version of the component.
-            <br/><br/>
-            This component is also not yet able to maintain it's state also after a page refresh (expansion level and checked items).
-            <br/>
-        </p>
+    <b:tabView activeIndex="1">
+      <b:tab title="JSF markup">
+        <b:well>
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:form prependId="false">
+            <b:tree
+render-root="false"
+value="&num;{test.testModel1}"
+showCheckbox="true"
+enableLinks="true"
+showBorder="true"  />
+          </h:form>
+          ]]></script>
+        </b:well>
+      </b:tab>
+      <b:tab title="displayed as"
+             contentStyle="border:1px solid ;padding:10px">
+        <h:form prependId="false">
+          <b:tree render-root="false" value="#{test.testModel1}"
+                  showCheckbox="true"
+                  enableLinks="true" showBorder="true"/>
+        </h:form>
+      </b:tab>
+    </b:tabView>
+    <br/>
+    <h2><a id="know_bugs_and_limitations">Know bugs and limitations</a></h2>
+    <ul>
+      <li>You must put the tree into a <code>&lt;h:form /&gt;</code> tag. That's because
+      it's able to perform AJAX calls.</li>
+      <li>The form must have the attribute <code>prependId="false"</code>. Otherwise, the tree isn't styled correctly.</li>
+    </ul>
+    <p>
 
-        <h2><a id="advanced_usage">Advanced usage</a></h2>
-        <p>In this case, we have defined a nodeSelectionListener that listen to selection and check events</p>
+    We will try to solve this limitation in the future version of the component.
+    <br/><br/>
+    This component is also not yet able to maintain it's state also after a page refresh (expansion level and checked items).
+    <br/>
+    </p>
 
-        <b:tabView activeIndex="1">
-            <b:tab title="JSF markup">
-                <b:well>
-                    <script type="syntaxhighlighter"
-                            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                                                <![CDATA[
-                                                <h:form prependId="false">
-                                                    <b:container id="treeContent">
-                                                        <b:row>
-                                                            <b:column>
-                                                                <b:tree render-root="false" value="&num;{test.treeModel}"
-                                                                node-selection-listener="&num;{test}" showCheckbox="true"
-                                                                enableLinks="true" showBorder="false" update="chkItems" />
-                                                            </b:column>
-                                                        </b:row>
-                                                        <b:row>
-                                                            <b:well id="messages">
-                                                                Last server-side events:
-                                                                <ul>
-                                                                    <ui:repeat var="message" value="#{test.messages}">
-                                                                        <li>#{message}</li>
-                                                                    </ui:repeat>
-                                                                </ul>
-                                                            </b:well>
-                                                        </b:row>
-                                                    </b:container>
-                                                </h:form>
-                                                ]]></script>
-                </b:well>
-            </b:tab>
-            <b:tab title="Bean Code">
-                <br/>
-                <p>To manage selection, check and expand events, you need to implement in your bean, the TreeNodeEventListener interface.
-                    This interface exposes some methods to manage the events in the backend. For example: </p>
-                <b:well>
-                    <script type="syntaxhighlighter"
-                            class="brush: java; toolbar: false;gutter: false; first-line: 1">
-                                                  <![CDATA[
-                                                @ViewScoped
-                                                @ManagedBean(name = "test")
-                                                public class TestBean implements TreeNodeEventListener {
-                                                [...]
+    <h2><a id="advanced_usage">Advanced usage</a></h2>
+    <p>In this case, we have defined a nodeSelectionListener that listen to selection and check events</p>
 
-                                                    @Override
-                                                    public void processValueSelected(TreeNodeSelectionEvent event) {
-                                                            if (event.isSelected())
-                                                                messages.add("Node selected: '" + event.getNode().getText() + "'");
-                                                            else
-                                                                messages.add("Node unselected: '" + event.getNode().getText() + "'");
-                                                    }
-
-                                                    @Override
-                                                    public void processValueChecked(TreeNodeCheckedEvent event) {
-                                                            if (event.isChecked())
-                                                                messages.add("Node checked: '" + event.getNode().getText() + "'");
-                                                            else
-                                                                messages.add("Node unchecked: '" + event.getNode().getText() + "'");
-                                                    }
-
-                                                    @Override
-                                                    public void processValueExpanded(TreeNodeExpandedEvent event) {
-                                                        if (event.isExpanded())
-                                                            messages.add("Node expanded: '" + event.getNode().getText() + "'");
-                                                        else
-                                                            messages.add("Node collapsed: '" + event.getNode().getText() + "'");
-                                                    }
-
-                                                [...]
-                                                }
-                                                ]]></script>
-                </b:well>
-            </b:tab>
-            <b:tab title="Displayed as"
-                   contentStyle="border:1px solid ;padding:10px">
-                <h:form prependId="false">
-                    <b:container id="treeContent" style="width: 100%">
-                        <b:row>
-                            <b:column>
-                                <b:tree render-root="false" value="#{test.treeModel}"
-                                        node-selection-listener="#{test}" showCheckbox="true"
-                                        enableLinks="true" showBorder="false" update="messages" />
-                            </b:column>
-                        </b:row>
-                        <b:row>
-                            <b:well id="messages">
-                                Last server-side events:
-                                <ul>
-                                    <ui:repeat var="message" value="#{test.messages}">
-                                        <li>#{message}</li>
-                                    </ui:repeat>
-                                </ul>
+    <b:tabView activeIndex="1">
+      <b:tab title="JSF markup">
+        <b:well>
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:form prependId="false">
+            <b:container id="treeContent">
+              <b:row>
+                <b:column>
+                  <b:tree render-root="false" value="&num;{test.treeModel}"
+                          node-selection-listener="&num;{test}" showCheckbox="true"
+                          enableLinks="true" showBorder="false" update="chkItems" />
+                </b:column>
+              </b:row>
+              <b:row>
+                <b:well id="messages">
+                  Last server-side events:
+                              <ul>
+                                        <ui:repeat var="message" value="#{test.messages}">
+                                            <li>#{message}</li>
+                                        </ui:repeat>
+                                  </ul>
                             </b:well>
-                        </b:row>
-                    </b:container>
-                </h:form>
-            </b:tab>
-        </b:tabView>
+              </b:row>
+            </b:container>
+          </h:form>
+          ]]></script>
+        </b:well>
+      </b:tab>
+      <b:tab title="Bean Code">
         <br/>
-        
-        <h2><a id="nodes_with_hyperlinks">Nodes with hyperlinks</a></h2>
-        <p>If you click on one of the nodes in the example above, the page reloads. That's not a bug. It only shows what happens
-        if you enable hyperlinks (<code>enableLinks="true"</code>) without provided an <code>href</code> attribute in the tree model.
-        The node called "child 4" has an hyperlink pointing to the Italian Google search. The other nodes simply generate
-        a default <code>href="#"</code>, causing the page to reload.
-        </p>
+        <p>To manage selection, check and expand events, you need to implement in your bean, the TreeNodeEventListener interface.
+        This interface exposes some methods to manage the events in the backend. For example: </p>
+        <b:well>
+          <script type="syntaxhighlighter"
+          class="brush: java; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          @ViewScoped
+          @ManagedBean(name = "test")
+          public class TestBean implements TreeNodeEventListener {
+            [...]
 
-        <h2><a id="limiting_the_height_of_the_tree">Limiting the height of the tree</a></h2>
-        <p>Trees tends to become large if fully expanded. You can limit the height of the tree using an CSS class or an CSS inline style:</p>
-        <b:tabView activeIndex="1">
-            <b:tab title="JSF markup">
-                <b:well>
-                    <script type="syntaxhighlighter"
-                            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                                                <![CDATA[
-                                                <h:form prependId="false">
-                                                    <b:tree 
-                                                    render-root="false" 
-                                                    value="&num;{test.testModel1}"
-                                                    showCheckbox="true" 
-                                                    enableLinks="true"
-                                                    showBorder="true"
-                                                    style="height:150px;overflow-y:scroll" />
-                                                </h:form>
-                                                ]]></script>
-                </b:well>
-            </b:tab>
-            <b:tab title="displayed as"
-                   contentStyle="border:1px solid ;padding:10px">
-                <h:form prependId="false">
-                    <b:tree render-root="false" value="#{test.testModel1}"
-                            showCheckbox="true"
-                            enableLinks="true" showBorder="true" 
-                            style="height:150px;overflow-y:scroll" />
-                </h:form>
-            </b:tab>
-        </b:tabView>
+            @Override
+            public void processValueSelected(TreeNodeSelectionEvent event) {
+              if (event.isSelected())
+              messages.add("Node selected: '" + event.getNode().getText() + "'");
+              else
+              messages.add("Node unselected: '" + event.getNode().getText() + "'");
+            }
+
+            @Override
+            public void processValueChecked(TreeNodeCheckedEvent event) {
+              if (event.isChecked())
+              messages.add("Node checked: '" + event.getNode().getText() + "'");
+              else
+              messages.add("Node unchecked: '" + event.getNode().getText() + "'");
+            }
+
+            @Override
+            public void processValueExpanded(TreeNodeExpandedEvent event) {
+              if (event.isExpanded())
+              messages.add("Node expanded: '" + event.getNode().getText() + "'");
+              else
+              messages.add("Node collapsed: '" + event.getNode().getText() + "'");
+            }
+
+            [...]
+          }
+          ]]></script>
+        </b:well>
+      </b:tab>
+      <b:tab title="Displayed as"
+             contentStyle="border:1px solid ;padding:10px">
+        <h:form prependId="false">
+          <b:container id="treeContent" style="width: 100%">
+            <b:row>
+              <b:column>
+                <b:tree render-root="false" value="#{test.treeModel}"
+                        node-selection-listener="#{test}" showCheckbox="true"
+                        enableLinks="true" showBorder="false" update="messages" />
+              </b:column>
+            </b:row>
+            <b:row>
+              <b:well id="messages">
+                Last server-side events:
+                            <ul>
+                                      <ui:repeat var="message" value="#{test.messages}">
+                                          <li>#{message}</li>
+                                      </ui:repeat>
+                                </ul>
+                          </b:well>
+            </b:row>
+          </b:container>
+        </h:form>
+      </b:tab>
+    </b:tabView>
+    <br/>
+
+    <h2><a id="nodes_with_hyperlinks">Nodes with hyperlinks</a></h2>
+    <p>If you click on one of the nodes in the example above, the page reloads. That's not a bug. It only shows what happens
+    if you enable hyperlinks (<code>enableLinks="true"</code>) without provided an <code>href</code> attribute in the tree model.
+    The node called "child 4" has an hyperlink pointing to the Italian Google search. The other nodes simply generate
+    a default <code>href="#"</code>, causing the page to reload.
+    </p>
+
+    <h2><a id="limiting_the_height_of_the_tree">Limiting the height of the tree</a></h2>
+    <p>Trees tends to become large if fully expanded. You can limit the height of the tree using an CSS class or an CSS inline style:</p>
+    <b:tabView activeIndex="1">
+      <b:tab title="JSF markup">
+        <b:well>
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:form prependId="false">
+            <b:tree
+render-root="false"
+value="&num;{test.testModel1}"
+showCheckbox="true"
+enableLinks="true"
+showBorder="true"
+style="height:150px;overflow-y:scroll" />
+          </h:form>
+          ]]></script>
+        </b:well>
+      </b:tab>
+      <b:tab title="displayed as"
+             contentStyle="border:1px solid ;padding:10px">
+        <h:form prependId="false">
+          <b:tree render-root="false" value="#{test.testModel1}"
+                  showCheckbox="true"
+                  enableLinks="true" showBorder="true"
+                  style="height:150px;overflow-y:scroll" />
+        </h:form>
+      </b:tab>
+    </b:tabView>
 
 
-        <h2><a id="reference_section">Reference section</a></h2>
-        <ui:include src="TreeAttributes.xhtml" />
-        <b:panel look="info" rendered="false">
-            <f:facet name="heading">
-                <b>Skinning</b>
-            </f:facet>
-            <ul>
-                <li>Tell the world which CSS classes can be used to change the
-                    look of the component.</li>
-            </ul>
-        </b:panel>
+    <h2><a id="reference_section">Reference section</a></h2>
+    <ui:include src="TreeAttributes.xhtml" />
+    <b:panel look="info" rendered="false">
+      <f:facet name="heading">
+        <b>Skinning</b>
+      </f:facet>
+      <ul>
+        <li>Tell the world which CSS classes can be used to change the
+        look of the component.</li>
+      </ul>
+    </b:panel>
 
-        <script type="text/javascript">
-            SyntaxHighlighter.all();
-        </script>
-        <br />
-        <br />
-        <br />
-        <br />
-    </ui:define>
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+    <br />
+    <br />
+    <br />
+    <br />
+  </ui:define>
 </ui:composition>

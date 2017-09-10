@@ -1,76 +1,76 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:b="http://bootsfaces.net/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
 
 
-<ui:define name="content-navigator">
-  <b:listLinks>
-    <b:navLink href="#shake" value="Shake (&lt;b:shake /&gt;)" />
-    <b:navLink href="#basic_usage" value="Basic usage" />
-    <b:navLink href="#live_demo" value="Live demo" />
-    <b:navLink href="#reference_section" value="Reference section" />
-  </b:listLinks>
-</ui:define>
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#shake" value="Shake (&lt;b:shake /&gt;)" />
+      <b:navLink href="#basic_usage" value="Basic usage" />
+      <b:navLink href="#live_demo" value="Live demo" />
+      <b:navLink href="#reference_section" value="Reference section" />
+    </b:listLinks>
+  </ui:define>
 
 
-	<ui:define name="content">
-		<style>
-td {
-	padding: 8px;
-}
-</style>
-		<h1><a id="shake">Shake (&lt;b:shake /&gt;)</a><b:badge value="planned for 0.9.0" /></h1>
+  <ui:define name="content">
+    <style>
+      td {
+        padding: 8px;
+      }
+    </style>
+    <h1><a id="shake">Shake (&lt;b:shake /&gt;)</a><b:badge value="planned for 0.9.0" /></h1>
 
-		<p><code>&lt;b:shake&gt;</code> is a JSF component that detects when your device is shaken.
-        It goes without saying that this only works on devices with a motion sensor. Typically, smartphones
-        and many tablet computers have such a sensor.</p>
-		<h2><a id="basic_usage">Basic usage</a></h2>
-		<p><code>&lt;b:shake /&gt;</code> only takes a singe parameter: <code>onshake</code>.
-        That's a JavaScript function.</p>
+    <p><code>&lt;b:shake&gt;</code> is a JSF component that detects when your device is shaken.
+    It goes without saying that this only works on devices with a motion sensor. Typically, smartphones
+    and many tablet computers have such a sensor.</p>
+    <h2><a id="basic_usage">Basic usage</a></h2>
+    <p><code>&lt;b:shake /&gt;</code> only takes a singe parameter: <code>onshake</code>.
+    That's a JavaScript function.</p>
 
-        <h2><a id="live_demo">Live demo</a></h2>
-        <p>Open this page on a mobile device and shake it. A JSF alert box should show. This is
-        the source code needed:</p>
-        <b:well>
-            <script type="syntaxhighlighter"
-                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                <![CDATA[
-        <h:form>
-          <b:shake onshake="alert('shaken!');"/>
-          <b:messages />
-        </h:form>
-            ]]></script>
-        </b:well>
+    <h2><a id="live_demo">Live demo</a></h2>
+    <p>Open this page on a mobile device and shake it. A JSF alert box should show. This is
+    the source code needed:</p>
+    <b:well>
+      <script type="syntaxhighlighter"
+      class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+      <![CDATA[
+      <h:form>
+        <b:shake onshake="alert('shaken!');"/>
+        <b:messages />
+      </h:form>
+      ]]></script>
+    </b:well>
 
-        <h:form>
-          <b:shake onshake="alert('shaken!');" />
-          <b:messages />
-        </h:form>
+    <h:form>
+      <b:shake onshake="alert('shaken!');" />
+      <b:messages />
+    </h:form>
 
- 		<h2><a id="reference_section">Reference section</a></h2>
-        <ui:include src="ShakeAttributes.xhtml" />
+    <h2><a id="reference_section">Reference section</a></h2>
+    <ui:include src="ShakeAttributes.xhtml" />
 
-		<b:panel look="info">
-			<f:facet name="heading">
-				<b>Skinning</b>
-			</f:facet>
-			<ul>
-				<li>Tell the world which CSS classes can be used to change the
-					look of the component.</li>
-			</ul>
-		</b:panel>
+    <b:panel look="info">
+      <f:facet name="heading">
+        <b>Skinning</b>
+      </f:facet>
+      <ul>
+        <li>Tell the world which CSS classes can be used to change the
+        look of the component.</li>
+      </ul>
+    </b:panel>
 
-		<script type="text/javascript">
-      		SyntaxHighlighter.all();
-    	</script>
-		<br />
-		<br />
-		<br />
-		<br />
-	</ui:define>
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+    <br />
+    <br />
+    <br />
+    <br />
+  </ui:define>
 </ui:composition>

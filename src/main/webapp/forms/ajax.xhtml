@@ -34,16 +34,16 @@
     <h2><a id="state_of_the_art">State of the art</a></h2>
     <p>The BootsFaces AJAX API is supported by many, but not by all BootsFaces components. Currently, these components include:</p>
     <ul>
-    <li><code>&lt;b:commandButton /&gt;</code></li>
-    <li><code>&lt;b:selectBooleanCheckbox /&gt;</code></li>
-    <li><code>&lt;b:selectOneMenu /&gt;</code></li>
-    <li><code>&lt;b:inputText /&gt;</code> and <code>&lt;b:inputSecret /&gt;</code></li>
-    <li><code>&lt;b:carousel /&gt;</code></li>
-    <li><code>&lt;b:panel /&gt;</code></li>
-    <li><code>&lt;b:tabView /&gt;</code></li>
-    <li><code>&lt;b:icon /&gt;</code></li>
-    <li><code>&lt;b:iconAwesome /&gt;</code></li>
-    <li><code>&lt;b:image /&gt;</code></li>
+      <li><code>&lt;b:commandButton /&gt;</code></li>
+      <li><code>&lt;b:selectBooleanCheckbox /&gt;</code></li>
+      <li><code>&lt;b:selectOneMenu /&gt;</code></li>
+      <li><code>&lt;b:inputText /&gt;</code> and <code>&lt;b:inputSecret /&gt;</code></li>
+      <li><code>&lt;b:carousel /&gt;</code></li>
+      <li><code>&lt;b:panel /&gt;</code></li>
+      <li><code>&lt;b:tabView /&gt;</code></li>
+      <li><code>&lt;b:icon /&gt;</code></li>
+      <li><code>&lt;b:iconAwesome /&gt;</code></li>
+      <li><code>&lt;b:image /&gt;</code></li>
     </ul>
 
     <h2><a id="basic_usage">Basic usage</a></h2>
@@ -116,11 +116,11 @@
     <h2><a id="corner_cases_">Corner cases:</a><code>onstart</code>,  <code>oncomplete</code>,  <code>onsuccess</code> and  <code>onerror</code></h2>
     <p>Strictly speaking, there are four events that can be triggerd during an AJAX request:</p>
     <ul>
-    <li><code>onstart</code> notifies your that an AJAX request is sent to the server.</li>
-    <li><code>onerror</code> is called when an exception happened on the server side.</li>
-    <li><code>onsuccess</code> is called when a request finished without exceptions.</li>
-    <li><code>oncomplete</code> is called when a request has finished, regardless of whether it was successful
-    or if an exception occurred.</li>
+      <li><code>onstart</code> notifies your that an AJAX request is sent to the server.</li>
+      <li><code>onerror</code> is called when an exception happened on the server side.</li>
+      <li><code>onsuccess</code> is called when a request finished without exceptions.</li>
+      <li><code>oncomplete</code> is called when a request has finished, regardless of whether it was successful
+      or if an exception occurred.</li>
     </ul>
     <p>From a technical perspective, almost every AJAXified component of BootsFaces supports
     all events except <code>onstart</code>. Unfortunately, the API hasn't been unlocked for every component
@@ -161,9 +161,9 @@
 
     <h2><a id="known_bugs_and_limitations">Known bugs and limitations</a></h2>
     <ul>
-    <li><code>update="@all"</code> doesn't work in BootsFaces 0.8.0.</li>
-    <li>The algorithm parsing jQuery expression in update statements (e.g. <code>update="@(body>*)"</code>) is very primitive. It fails if
-    there's a space in the jQuery expression.</li>
+      <li><code>update="@all"</code> doesn't work in BootsFaces 0.8.0.</li>
+      <li>The algorithm parsing jQuery expression in update statements (e.g. <code>update="@(body>*)"</code>) is very primitive. It fails if
+      there's a space in the jQuery expression.</li>
     </ul>
     <h2><a id="live_demo">Live demo</a></h2>
     <p>This demo shows some of the options at a glance.</p>
@@ -255,9 +255,9 @@ text="Which framework do you choose for desktop applications?" />
             <b:well id="messages">
               Last server-side events:
               <ul>
-              <ui:repeat var="message" value="#{ajaxBean.messages}">
-                <li>#{message}</li>
-              </ui:repeat>
+                <ui:repeat var="message" value="#{ajaxBean.messages}">
+                  <li>#{message}</li>
+                </ui:repeat>
               </ul>
             </b:well>
           </b:column>
@@ -352,9 +352,9 @@ text="Which framework do you choose for desktop applications?" />
                 <b:well id="messages">
                   Last server-side events:
                   <ul>
-                  <ui:repeat var="message" value="&num;{ajaxBean.messages}">
-                    <li>&num;{message}</li>
-                  </ui:repeat>
+                    <ui:repeat var="message" value="&num;{ajaxBean.messages}">
+                      <li>&num;{message}</li>
+                    </ui:repeat>
                   </ul>
                 </b:well>
               </b:column>
@@ -396,9 +396,9 @@ text="Which framework do you choose for desktop applications?" />
             <b:well id="messages">
               Last server-side events:
               <ul>
-              <ui:repeat var="message" value="#{ajaxBean.messages}">
-                <li>#{message}</li>
-              </ui:repeat>
+                <ui:repeat var="message" value="#{ajaxBean.messages}">
+                  <li>#{message}</li>
+                </ui:repeat>
               </ul>
             </b:well>
           </b:column>
@@ -432,9 +432,9 @@ text="Which framework do you choose for desktop applications?" />
                 <b:well id="messages">
                   Last server-side events:
                   <ul>
-                  <ui:repeat var="message" value="&num;{ajaxBean.messages}">
-                    <li>&num;{message}</li>
-                  </ui:repeat>
+                    <ui:repeat var="message" value="&num;{ajaxBean.messages}">
+                      <li>&num;{message}</li>
+                    </ui:repeat>
                   </ul>
                 </b:well>
               </b:column>

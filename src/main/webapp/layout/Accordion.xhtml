@@ -1,148 +1,148 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:b="http://bootsfaces.net/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
 
 
-<ui:define name="content-navigator">
-  <b:listLinks>
-    <b:navLink href="#accordion" value="Accordion (&lt;b:accordion /&gt;)" />
-    <b:navLink href="#basic_usage" value="Basic Usage" />
-    <b:navLink href="#disabling_the_content" value="Disabling the content" />
-    <b:navLink href="#reference_section" value="Reference section" />
-  </b:listLinks>
-</ui:define>
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#accordion" value="Accordion (&lt;b:accordion /&gt;)" />
+      <b:navLink href="#basic_usage" value="Basic Usage" />
+      <b:navLink href="#disabling_the_content" value="Disabling the content" />
+      <b:navLink href="#reference_section" value="Reference section" />
+    </b:listLinks>
+  </ui:define>
 
 
-	<ui:define name="content">
-		<style>
-		td {
-			padding: 8px;
-		}
-		</style>
-		<h1><a id="accordion">Accordion (&lt;b:accordion /&gt;)</a><b:badge value="since 0.8.5" /></h1>
+  <ui:define name="content">
+    <style>
+      td {
+        padding: 8px;
+      }
+    </style>
+    <h1><a id="accordion">Accordion (&lt;b:accordion /&gt;)</a><b:badge value="since 0.8.5" /></h1>
 
-		<p>The <code>&lt;b:accordion&gt;</code> component wrap one or more &lt;b:panel&gt; components to display them as an accordion.</p>
-		<h2><a id="basic_usage">Basic Usage</a></h2>
-		<p>
-			Essentially, accordion is only a wrapper for panels. The additional attribute that can be specified, is the expandedPanels that
-			provide the ability to make expanded by default, specified panels ids.
-		</p>
-		
-        <b:panel title="Live preview" look="info" collapsible="false">
-            <b:accordion expanded-panels="panel1,panel3">
-                <b:panel id="panel1" title="Item 1">Content 1</b:panel>
-                <b:panel id="panel2" title="Item 2">Content 2</b:panel>
-                <b:panel id="panel3">Content 3
-                  <f:facet name="heading">
-                    <h:outputText value="Panel heading with a facet in place of a title " />
-                    <b:badge style="margin-left:10px" value="since version 0.4" />
-                  </f:facet>
-                  <f:facet name="footer">
-                     Footer of panel 3
-                  </f:facet>
-                </b:panel>
-              </b:accordion>
-            
-            <f:facet name="footer">
-                <strong>JSF markup: </strong>
-                <b:panel>
-                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                        <![CDATA[
-                            <b:accordion expanded-panels="panel1,panel3">
-                                <b:panel id="panel1" title="Item 1">Content 1</b:panel>
-                                <b:panel id="panel2" title="Item 2">Content 2</b:panel>
-                                <b:panel id="panel3" title="Item 3">Content 3</b:panel>
-                            </b:accordion>
-                        ]]>
-                    </script>
-                </b:panel>
-            </f:facet>
+    <p>The <code>&lt;b:accordion&gt;</code> component wrap one or more &lt;b:panel&gt; components to display them as an accordion.</p>
+    <h2><a id="basic_usage">Basic Usage</a></h2>
+    <p>
+    Essentially, accordion is only a wrapper for panels. The additional attribute that can be specified, is the expandedPanels that
+    provide the ability to make expanded by default, specified panels ids.
+    </p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <b:accordion expanded-panels="panel1,panel3">
+      <b:panel id="panel1" title="Item 1">Content 1</b:panel>
+      <b:panel id="panel2" title="Item 2">Content 2</b:panel>
+        <b:panel id="panel3">Content 3
+          <f:facet name="heading">
+            <h:outputText value="Panel heading with a facet in place of a title " />
+            <b:badge style="margin-left:10px" value="since version 0.4" />
+          </f:facet>
+          <f:facet name="footer">
+            Footer of panel 3
+          </f:facet>
         </b:panel>
-        
-		<h2><a id="disabling_the_content">Disabling the content</a><b:badge value="Since 1.1.0"/></h2>
-		<p>By setting the flag <code>contentDisabled="true"</code> you can set each child element to disabled. More precisely,
-		the panels of the accordion are wrapped in a disabled fieldset, which disables input fields, checkboxes and buttons, but
-		not every component. In particular, tabs and panels still work. You'll also have to be careful about
-		links (everything that's using an <code>&lt;a&gt;</code> tag, like <code>&lt;button&gt;</code> and <code>&lt;b:navLink&gt;</code>.)
-		These elements will be shown as disbled, but still are accessible. In part, that's because this CSS property isn't fully
-		standardized yet. For instance, it isn't supported by Internet Explorer 11 and below, and Opera 18 and below.</p>
-		
-        <b:panel title="Live preview" look="info" collapsible="false">
-            <h:form>
-                <b:accordion contentDisabled="true">
-                    <b:panel title="Item 1"><b:inputText placeholder="You can't input anything here" label="b:inputText" />
-                        <b:datepicker label="Datepicker"  />
-                        <b:dateTimePicker label="DateTimerPicker" />
-                        <b:colorPicker label="ColorPicker" />
-                        <b:selectOneMenu label="SelectOneMenu" >
-                            <f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
-                            <f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
-                        </b:selectOneMenu>
-                        <b:selectMultiMenu label="SelectMultiMenu" >
-                            <f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
-                            <f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
-                        </b:selectMultiMenu>
-                    </b:panel>
-                    <b:panel title="Item 2"><b:button look="primary" value="You can't click me!"/></b:panel>
-                </b:accordion>
-            </h:form>
-            
-            <f:facet name="footer">
-                <strong>JSF markup: </strong>
-                <b:panel>
-<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-					<![CDATA[
-            <h:form>
-                <b:accordion contentDisabled="true">
-                    <b:panel title="Item 1"><b:inputText placeholder="You can't input anything here" label="b:inputText" />
-                        <b:datepicker label="Datepicker"  />
-                        <b:dateTimePicker label="DateTimerPicker" />
-                        <b:colorPicker label="ColorPicker" />
-                        <b:selectOneMenu label="SelectOneMenu" >
-                            <f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
-                            <f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
-                        </b:selectOneMenu>
-                        <b:selectMultiMenu label="SelectMultiMenu" >
-                            <f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
-                            <f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
-                        </b:selectMultiMenu>
-                    </b:panel>
-                    <b:panel title="Item 2"><b:button look="primary" value="You can't click me!"/></b:panel>
-                </b:accordion>
-            </h:form>
- 					]]>
-				</script>
-                </b:panel>
-            </f:facet>
+      </b:accordion>
+
+      <f:facet name="footer">
+        <strong>JSF markup: </strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:accordion expanded-panels="panel1,panel3">
+          <b:panel id="panel1" title="Item 1">Content 1</b:panel>
+          <b:panel id="panel2" title="Item 2">Content 2</b:panel>
+          <b:panel id="panel3" title="Item 3">Content 3</b:panel>
+          </b:accordion>
+          ]]>
+          </script>
         </b:panel>
-        
-			 
-		
+      </f:facet>
+    </b:panel>
 
-		<br/>
-        <h2><a id="reference_section">Reference section</a></h2>
-        <ui:include src="AccordionAttributes.xhtml" />
-		<b:panel look="info" rendered="false">
-			<f:facet name="heading">
-				<b>Skinning</b>
-			</f:facet>
-			<ul>
-				<li>Tell the world which CSS classes can be used to change the
-					look of the component.</li>
-			</ul>
-		</b:panel>
+    <h2><a id="disabling_the_content">Disabling the content</a><b:badge value="Since 1.1.0"/></h2>
+    <p>By setting the flag <code>contentDisabled="true"</code> you can set each child element to disabled. More precisely,
+    the panels of the accordion are wrapped in a disabled fieldset, which disables input fields, checkboxes and buttons, but
+    not every component. In particular, tabs and panels still work. You'll also have to be careful about
+    links (everything that's using an <code>&lt;a&gt;</code> tag, like <code>&lt;button&gt;</code> and <code>&lt;b:navLink&gt;</code>.)
+    These elements will be shown as disbled, but still are accessible. In part, that's because this CSS property isn't fully
+    standardized yet. For instance, it isn't supported by Internet Explorer 11 and below, and Opera 18 and below.</p>
 
-		<script type="text/javascript">
-      		SyntaxHighlighter.all();
-    	</script>
-		<br />
-		<br />
-		<br />
-		<br />
-	</ui:define>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form>
+        <b:accordion contentDisabled="true">
+          <b:panel title="Item 1"><b:inputText placeholder="You can't input anything here" label="b:inputText" />
+            <b:datepicker label="Datepicker"  />
+            <b:dateTimePicker label="DateTimerPicker" />
+            <b:colorPicker label="ColorPicker" />
+            <b:selectOneMenu label="SelectOneMenu" >
+            <f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
+            <f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
+            </b:selectOneMenu>
+            <b:selectMultiMenu label="SelectMultiMenu" >
+            <f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
+            <f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
+            </b:selectMultiMenu>
+          </b:panel>
+        <b:panel title="Item 2"><b:button look="primary" value="You can't click me!"/></b:panel>
+        </b:accordion>
+      </h:form>
+
+      <f:facet name="footer">
+        <strong>JSF markup: </strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <h:form>
+            <b:accordion contentDisabled="true">
+              <b:panel title="Item 1"><b:inputText placeholder="You can't input anything here" label="b:inputText" />
+                <b:datepicker label="Datepicker"  />
+                <b:dateTimePicker label="DateTimerPicker" />
+                <b:colorPicker label="ColorPicker" />
+                <b:selectOneMenu label="SelectOneMenu" >
+                <f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
+                <f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
+                </b:selectOneMenu>
+                <b:selectMultiMenu label="SelectMultiMenu" >
+                <f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
+                <f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
+                </b:selectMultiMenu>
+              </b:panel>
+            <b:panel title="Item 2"><b:button look="primary" value="You can't click me!"/></b:panel>
+            </b:accordion>
+          </h:form>
+          ]]>
+          </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+
+
+
+    <br/>
+    <h2><a id="reference_section">Reference section</a></h2>
+    <ui:include src="AccordionAttributes.xhtml" />
+    <b:panel look="info" rendered="false">
+      <f:facet name="heading">
+        <b>Skinning</b>
+      </f:facet>
+      <ul>
+        <li>Tell the world which CSS classes can be used to change the
+        look of the component.</li>
+      </ul>
+    </b:panel>
+
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+    <br />
+    <br />
+    <br />
+    <br />
+  </ui:define>
 </ui:composition>
