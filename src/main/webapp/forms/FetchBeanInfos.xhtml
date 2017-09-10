@@ -1,224 +1,224 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:b="http://bootsfaces.net/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
 
 
-<ui:define name="content-navigator">
-  <b:listLinks>
-    <b:navLink href="#fetchbeaninfos" value="FetchBeanInfos (&lt;b:fetchBeanInfos /&gt;)" />
-    <b:navLink href="#basic_usage" value="Basic usage" />
-    <b:navLink href="#caveat" value="Caveat" />
-    <b:navLink href="#advanced_usage" value="Advanced usage" />
-    <b:navLink href="#ajax" value="AJAX" />
-  </b:listLinks>
-</ui:define>
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#fetchbeaninfos" value="FetchBeanInfos (&lt;b:fetchBeanInfos /&gt;)" />
+      <b:navLink href="#basic_usage" value="Basic usage" />
+      <b:navLink href="#caveat" value="Caveat" />
+      <b:navLink href="#advanced_usage" value="Advanced usage" />
+      <b:navLink href="#ajax" value="AJAX" />
+    </b:listLinks>
+  </ui:define>
 
 
-	<ui:define name="content">
-		<style>
-td {
-	padding: 8px;
-}
-</style>
-		<h1><a id="fetchbeaninfos">FetchBeanInfos (&lt;b:fetchBeanInfos /&gt;)</a></h1>
+  <ui:define name="content">
+    <style>
+      td {
+        padding: 8px;
+      }
+    </style>
+    <h1><a id="fetchbeaninfos">FetchBeanInfos (&lt;b:fetchBeanInfos /&gt;)</a></h1>
 
-		<p><code>&lt;b:fetchBeanInfos&gt;</code> is a non-visual component. Its purpose is to make information about the server available to JavaScript.</p>
-		<p><code>&lt;b:fetchBeanInfos&gt;</code> sets the global JavaScript variable <code>validationFailed</code> after
-		processing a JSF event. If one of the validation constraints is violated, <code>validationFailed</code> is set to true, otherwise it's false.</p>
-        <p>It also sets five global JavaScript variables, allowing you to determine which was the highest severity
-        level, and which severity classes of messages have been generated during the last validation.</p>
+    <p><code>&lt;b:fetchBeanInfos&gt;</code> is a non-visual component. Its purpose is to make information about the server available to JavaScript.</p>
+    <p><code>&lt;b:fetchBeanInfos&gt;</code> sets the global JavaScript variable <code>validationFailed</code> after
+    processing a JSF event. If one of the validation constraints is violated, <code>validationFailed</code> is set to true, otherwise it's false.</p>
+    <p>It also sets five global JavaScript variables, allowing you to determine which was the highest severity
+    level, and which severity classes of messages have been generated during the last validation.</p>
 
-		<h1><a id="basic_usage">Basic usage</a></h1>
-		<p>A typical use case is to prevent modal dialogs from closing or opening until the input is valid.
-        In this example, the <code>&lt;b:commandButton /&gt;</code> page uses &lt;b:fetchBeanInfos /&gt; to open a modal dialog only
-        if every validation constraint is fulfilled:</p>
+    <h1><a id="basic_usage">Basic usage</a></h1>
+    <p>A typical use case is to prevent modal dialogs from closing or opening until the input is valid.
+    In this example, the <code>&lt;b:commandButton /&gt;</code> page uses &lt;b:fetchBeanInfos /&gt; to open a modal dialog only
+    if every validation constraint is fulfilled:</p>
 
-		<b:panel>
-		<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-           <h:form>
-              <h:panelGrid id="inform" columns="3" cellpadding="5">
-                <h:outputLabel for="firstname" value="Firstname: *" />
-                <b:inputText id="firstname" value="#{informBean.firstname}">
-                  <f:validateLength minimum="2" />
-                </b:inputText>
-				<b:fetchBeanInfos />
-              </h:panelGrid>
-           	  <b:column span="2">
-        	      <b:commandButton value="Ajax Modal" ajax="true" update="@form:inform" id="ajaxmodal" look="inverse"
-    	             oncomplete="if(validationFailed) alert('Please enter valid input before opening the modal'); else $('#amodal').modal('show')" />
-	          </b:column>
-           <h:form>
-]]></script>
-		</b:panel>
+    <b:panel>
+      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+      <![CDATA[
+      <h:form>
+        <h:panelGrid id="inform" columns="3" cellpadding="5">
+          <h:outputLabel for="firstname" value="Firstname: *" />
+          <b:inputText id="firstname" value="#{informBean.firstname}">
+            <f:validateLength minimum="2" />
+          </b:inputText>
+          <b:fetchBeanInfos />
+        </h:panelGrid>
+        <b:column span="2">
+          <b:commandButton value="Ajax Modal" ajax="true" update="@form:inform" id="ajaxmodal" look="inverse"
+                           oncomplete="if(validationFailed) alert('Please enter valid input before opening the modal'); else $('#amodal').modal('show')" />
+        </b:column>
+      </h:form>
+      ]]></script>
+    </b:panel>
 
-      <h1><a id="caveat">Caveat</a></h1>
-      <p>Please not that <code>validationFailed</code> indicates that the <strong>validation phase</strong> of the
-      JSF lifecycle has reported an error. It does not indicate that there's an error message. If you add error messages
-      in an action or actionListener, better check <code>bfHasError || bfHasFatalError</code> to get reliable results.</p>
+    <h1><a id="caveat">Caveat</a></h1>
+    <p>Please not that <code>validationFailed</code> indicates that the <strong>validation phase</strong> of the
+    JSF lifecycle has reported an error. It does not indicate that there's an error message. If you add error messages
+    in an action or actionListener, better check <code>bfHasError || bfHasFatalError</code> to get reliable results.</p>
 
-      <h1><a id="advanced_usage">Advanced usage</a></h1>
-      <p>&lt;b:fetchBeanInfos /&gt; populates six global JavaScript variables:</p>
-       <dl class="dl-horizontal">
-        <dt><code>validationFailed</code></dt><dd>is true if one of the JSF validators found an error during the validation phase of the JSF lifecycle</dd>
-        <dt><code>bfMaximumMessageSeverity</code></dt><dd>ordinal number of the most disturbing FacesMessage. 0=no message, 1=info, 2=warning, 3=error, 4=fatal error.</dd>
-        <dt><code>bfHasFatalError</code></dt><dd>Is there at least one fatal error message?</dd>
-        <dt><code>bfHasError</code></dt><dd>Is there at least one error message?</dd>
-        <dt><code>bfHasWarning</code></dt><dd>Is there at least one warning message?</dd>
-        <dt><code>bfHasInfo</code></dt><dd>Is there at least one info message?</dd>
-      </dl>
-      <p>You can see these variable in the example below. For technical reasons, the values of the variables are shown
-      in an alert box. Click the button to see it.</p>
+    <h1><a id="advanced_usage">Advanced usage</a></h1>
+    <p>&lt;b:fetchBeanInfos /&gt; populates six global JavaScript variables:</p>
+    <dl class="dl-horizontal">
+      <dt><code>validationFailed</code></dt><dd>is true if one of the JSF validators found an error during the validation phase of the JSF lifecycle</dd>
+      <dt><code>bfMaximumMessageSeverity</code></dt><dd>ordinal number of the most disturbing FacesMessage. 0=no message, 1=info, 2=warning, 3=error, 4=fatal error.</dd>
+      <dt><code>bfHasFatalError</code></dt><dd>Is there at least one fatal error message?</dd>
+      <dt><code>bfHasError</code></dt><dd>Is there at least one error message?</dd>
+      <dt><code>bfHasWarning</code></dt><dd>Is there at least one warning message?</dd>
+      <dt><code>bfHasInfo</code></dt><dd>Is there at least one info message?</dd>
+    </dl>
+    <p>You can see these variable in the example below. For technical reasons, the values of the variables are shown
+    in an alert box. Click the button to see it.</p>
 
-            <b:tabView activeIndex="1" contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
-          <b:tab title="JSF markup">
-            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-                <h:form id="messageForm">
-                  <b:fetchBeanInfos />
-                  <b:panelGrid colSpans="3,9">
-                    <b:selectBooleanCheckbox value="&num;{checkboxBean.cbxError}"
-                                    id="checkboxWithErrorMessage"
-                                    caption="click to toggle the error message"
-                                    label="Error"
-                                    onclick="ajax:checkboxBean.action();"
-                                    update="@form"
-                                    />
-                    <b:message />
-                    <b:selectBooleanCheckbox value="&num;{checkboxBean.cbxFatal}"
-                                    id="checkboxWithFatalMessage"
-                                    caption="click to toggle the fatal error message"
-                                    label="Fatal"
-                                    onclick="ajax:checkboxBean.action();"
-                                    update="@form"
-                                    />
-                    <b:message for="checkboxWithFatalMessage" />
-                    <b:selectBooleanCheckbox value="&num;{checkboxBean.cbxWarning}"
-                                    id="checkboxWithWarning"
-                                    caption="click to toggle the warning"
-                                    label="Warning"
-                                    onclick="ajax:checkboxBean.action();"
-                                    update="@form"
-                                    />
-                    <b:message for="@previous:@previous:@next" />
-                    <b:selectBooleanCheckbox value="&num;{checkboxBean.cbxInfo}"
-                                    id="checkboxWithInfoMessage"
-                                    caption="click to toggle the info message"
-                                    label="Info"
-                                    onclick="ajax:checkboxBean.action();"
-                                    update="@form"
-                                    />
-                    <b:message for="@form:**:checkboxWithInfoMessage"  escape="false" />
-                  </b:panelGrid>
-                  <b:row>
-                  <b:panel title="Validation result" look="primary">
-                    <b:button value="click to show the values of the JavaScript variables" look="primary"
-                               onclick="alert('bfMaximumMessageSeverity = ' + bfMaximumMessageSeverity + '\n'
-                                       + 'bfHasFatalError = ' + bfHasFatalError + '\n'
-                                       + 'bfHasError = ' + bfHasError + '\n'
-                                       + 'bfHasWarning = ' + bfHasWarning + '\n'
-                                       + 'bfHasInfo = ' + bfHasInfo + '\n'
-                                       + 'validationFailed = ' + validationFailed + '\n')" />
-                  </b:panel>
-                  </b:row>
-                </h:form>
- ]]>
-         </script>
-          </b:tab>
-          <b:tab title="displayed as">
-                 <h:form id="messageForm">
-                  <b:fetchBeanInfos />
-                  <b:panelGrid colSpans="3,9">
-                    <b:selectBooleanCheckbox value="#{checkboxBean.cbxError}"
-                                    id="checkboxWithErrorMessage"
-                                    caption="click to toggle the error message"
-                                    label="Error"
-                                    onclick="ajax:checkboxBean.action();"
-                                    update="@form"
-                                    />
-                    <b:message />
-                    <b:selectBooleanCheckbox value="#{checkboxBean.cbxFatal}"
-                                    id="checkboxWithFatalMessage"
-                                    caption="click to toggle the fatal error message"
-                                    label="Fatal"
-                                    onclick="ajax:checkboxBean.action();"
-                                    update="@form"
-                                    />
-                    <b:message for="checkboxWithFatalMessage" />
-                    <b:selectBooleanCheckbox value="#{checkboxBean.cbxWarning}"
-                                    id="checkboxWithWarning"
-                                    caption="click to toggle the warning"
-                                    label="Warning"
-                                    onclick="ajax:checkboxBean.action();"
-                                    update="@form"
-                                    />
-                    <b:message for="@previous:@previous:@next" />
-                    <b:selectBooleanCheckbox value="#{checkboxBean.cbxInfo}"
-                                    id="checkboxWithInfoMessage"
-                                    caption="click to toggle the info message"
-                                    label="Info"
-                                    onclick="ajax:checkboxBean.action();"
-                                    update="@form"
-                                    />
-                    <b:message for="@form:**:checkboxWithInfoMessage"  escape="false" />
-                  </b:panelGrid>
-                  <b:row>
-                  <b:panel title="Validation result" look="primary" small-screen="full">
-                    <b:button value="click to show the values of the JavaScript variables" look="primary"
-                               onclick="alert('bfMaximumMessageSeverity = ' + bfMaximumMessageSeverity + '\n'
-                                       + 'bfHasFatalError = ' + bfHasFatalError + '\n'
-                                       + 'bfHasError = ' + bfHasError + '\n'
-                                       + 'bfHasWarning = ' + bfHasWarning + '\n'
-                                       + 'bfHasInfo = ' + bfHasInfo + '\n'
-                                       + 'validationFailed = ' + validationFailed + '\n')" />
-                  </b:panel>
-                  </b:row>
-                </h:form>
-             </b:tab>
-        </b:tabView>
+    <b:tabView activeIndex="1" contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+      <b:tab title="JSF markup">
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+        <![CDATA[
+        <h:form id="messageForm">
+          <b:fetchBeanInfos />
+          <b:panelGrid colSpans="3,9">
+            <b:selectBooleanCheckbox value="&num;{checkboxBean.cbxError}"
+                                     id="checkboxWithErrorMessage"
+                                     caption="click to toggle the error message"
+                                     label="Error"
+                                     onclick="ajax:checkboxBean.action();"
+                                     update="@form"
+                                     />
+            <b:message />
+            <b:selectBooleanCheckbox value="&num;{checkboxBean.cbxFatal}"
+                                     id="checkboxWithFatalMessage"
+                                     caption="click to toggle the fatal error message"
+                                     label="Fatal"
+                                     onclick="ajax:checkboxBean.action();"
+                                     update="@form"
+                                     />
+            <b:message for="checkboxWithFatalMessage" />
+            <b:selectBooleanCheckbox value="&num;{checkboxBean.cbxWarning}"
+                                     id="checkboxWithWarning"
+                                     caption="click to toggle the warning"
+                                     label="Warning"
+                                     onclick="ajax:checkboxBean.action();"
+                                     update="@form"
+                                     />
+            <b:message for="@previous:@previous:@next" />
+            <b:selectBooleanCheckbox value="&num;{checkboxBean.cbxInfo}"
+                                     id="checkboxWithInfoMessage"
+                                     caption="click to toggle the info message"
+                                     label="Info"
+                                     onclick="ajax:checkboxBean.action();"
+                                     update="@form"
+                                     />
+            <b:message for="@form:**:checkboxWithInfoMessage"  escape="false" />
+          </b:panelGrid>
+          <b:row>
+            <b:panel title="Validation result" look="primary">
+              <b:button value="click to show the values of the JavaScript variables" look="primary"
+                        onclick="alert('bfMaximumMessageSeverity = ' + bfMaximumMessageSeverity + '\n'
+                        + 'bfHasFatalError = ' + bfHasFatalError + '\n'
+                        + 'bfHasError = ' + bfHasError + '\n'
+                        + 'bfHasWarning = ' + bfHasWarning + '\n'
+                        + 'bfHasInfo = ' + bfHasInfo + '\n'
+                        + 'validationFailed = ' + validationFailed + '\n')" />
+            </b:panel>
+          </b:row>
+        </h:form>
+        ]]>
+        </script>
+      </b:tab>
+      <b:tab title="displayed as">
+        <h:form id="messageForm">
+          <b:fetchBeanInfos />
+          <b:panelGrid colSpans="3,9">
+            <b:selectBooleanCheckbox value="#{checkboxBean.cbxError}"
+                                     id="checkboxWithErrorMessage"
+                                     caption="click to toggle the error message"
+                                     label="Error"
+                                     onclick="ajax:checkboxBean.action();"
+                                     update="@form"
+                                     />
+            <b:message />
+            <b:selectBooleanCheckbox value="#{checkboxBean.cbxFatal}"
+                                     id="checkboxWithFatalMessage"
+                                     caption="click to toggle the fatal error message"
+                                     label="Fatal"
+                                     onclick="ajax:checkboxBean.action();"
+                                     update="@form"
+                                     />
+            <b:message for="checkboxWithFatalMessage" />
+            <b:selectBooleanCheckbox value="#{checkboxBean.cbxWarning}"
+                                     id="checkboxWithWarning"
+                                     caption="click to toggle the warning"
+                                     label="Warning"
+                                     onclick="ajax:checkboxBean.action();"
+                                     update="@form"
+                                     />
+            <b:message for="@previous:@previous:@next" />
+            <b:selectBooleanCheckbox value="#{checkboxBean.cbxInfo}"
+                                     id="checkboxWithInfoMessage"
+                                     caption="click to toggle the info message"
+                                     label="Info"
+                                     onclick="ajax:checkboxBean.action();"
+                                     update="@form"
+                                     />
+            <b:message for="@form:**:checkboxWithInfoMessage"  escape="false" />
+          </b:panelGrid>
+          <b:row>
+            <b:panel title="Validation result" look="primary" small-screen="full">
+              <b:button value="click to show the values of the JavaScript variables" look="primary"
+                        onclick="alert('bfMaximumMessageSeverity = ' + bfMaximumMessageSeverity + '\n'
+                        + 'bfHasFatalError = ' + bfHasFatalError + '\n'
+                        + 'bfHasError = ' + bfHasError + '\n'
+                        + 'bfHasWarning = ' + bfHasWarning + '\n'
+                        + 'bfHasInfo = ' + bfHasInfo + '\n'
+                        + 'validationFailed = ' + validationFailed + '\n')" />
+            </b:panel>
+          </b:row>
+        </h:form>
+      </b:tab>
+    </b:tabView>
 
-        <p>By the way, the example also shows the effect of the validation phase of JSF. If you clear the first
-        checkbox, the messages below disappear. That's because the uppermost error is detected by a bean validation
-        constraint. The other messages are generated during the <code>INVOKE_APPLICATION</code> phase of the lifecycle.
-        However, the application is never invoked as long as JSF detects contraint violations.</p>
+    <p>By the way, the example also shows the effect of the validation phase of JSF. If you clear the first
+    checkbox, the messages below disappear. That's because the uppermost error is detected by a bean validation
+    constraint. The other messages are generated during the <code>INVOKE_APPLICATION</code> phase of the lifecycle.
+    However, the application is never invoked as long as JSF detects contraint violations.</p>
 
-		<h2><a id="ajax">AJAX</a></h2>
-		<p>If you're using AJAX, don't forget to include the <code>&lt;b:fetchBeanInfos&gt;</code> widget in the list of updated regions.</p>
+    <h2><a id="ajax">AJAX</a></h2>
+    <p>If you're using AJAX, don't forget to include the <code>&lt;b:fetchBeanInfos&gt;</code> widget in the list of updated regions.</p>
 
-		<b:panel look="info" rendered="false">
-			<f:facet name="heading">
-				<b>Attributes of &lt;b:fetchBeanInfos &gt;</b>
-			</f:facet>
-			<table class="table table-striped table-hover"
-				style="background-color: #fff">
-				<thead>
-					<tr>
-						<th>Attribute</th>
-						<th>Default value</th>
-						<th>Description</th>
-					</tr>
-				</thead>
-				<tbody>
-				</tbody>
-			</table>
-		</b:panel>
-		<b:panel look="info" rendered="false">
-			<f:facet name="heading">
-				<b>Skinning</b>
-			</f:facet>
-			<ul>
-				<li>Tell the world which CSS classes can be used to change the
-					look of the component.</li>
-			</ul>
-		</b:panel>
+    <b:panel look="info" rendered="false">
+      <f:facet name="heading">
+        <b>Attributes of &lt;b:fetchBeanInfos &gt;</b>
+      </f:facet>
+      <table class="table table-striped table-hover"
+             style="background-color: #fff">
+        <thead>
+          <tr>
+            <th>Attribute</th>
+            <th>Default value</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </b:panel>
+    <b:panel look="info" rendered="false">
+      <f:facet name="heading">
+        <b>Skinning</b>
+      </f:facet>
+      <ul>
+        <li>Tell the world which CSS classes can be used to change the
+        look of the component.</li>
+      </ul>
+    </b:panel>
 
-		<script type="text/javascript">
-      		SyntaxHighlighter.all();
-    	</script>
-	</ui:define>
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+  </ui:define>
 </ui:composition>

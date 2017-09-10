@@ -1,158 +1,158 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<ui:define name="content-navigator">
-  <b:listLinks>
-    <b:navLink href="#thumbnails" value="Thumbnails" />
-    <b:navLink href="#thumbnails-default" value="Default example" />
-    <b:navLink href="#thumbnails-custom-content" value="Custom content" />
-    <b:navLink href="#reference_section" value="Reference section" />
-  </b:listLinks>
-</ui:define>
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#thumbnails" value="Thumbnails" />
+      <b:navLink href="#thumbnails-default" value="Default example" />
+      <b:navLink href="#thumbnails-custom-content" value="Custom content" />
+      <b:navLink href="#reference_section" value="Reference section" />
+    </b:listLinks>
+  </ui:define>
 
 
-            <ui:define name="content">
-                <h:outputScript library="holder" name="holder.js" />
-                <h1><a id="thumbnails">Thumbnails</a></h1>
-                <p>You can take advantage of BootsFaces's layout system with the thumbnail component to easily display grids of images, videos, text, and more.</p>
-                
-                <h2><a id="thumbnails-default">Default example</a></h2>
-                <p>By default, the BootsFaces <code>&lt;b:thumbnail&gt;</code> tag is designed to showcase linked images with minimal required markup.</p>
-                <b:panel>
-                    <f:facet name="heading"><b>EXAMPLE</b></f:facet>
-                    <b:row>
-                        <b:column col-xs="6" col-md="3">
-                            <b:thumbnail>
-                                <img data-src="holder.js/100%x180/sky" alt="Generic placeholder thumbnail"/>
-                            </b:thumbnail>
-                        </b:column>
-                        <b:column col-xs="6" col-md="3">
-                            <b:thumbnail>
-                                <img data-src="holder.js/100%x180/vine" alt="Generic placeholder thumbnail"/>
-                            </b:thumbnail>
-                        </b:column>
-                        <b:column col-xs="6" col-md="3">
-                            <b:thumbnail>
-                                <img data-src="holder.js/100%x180/lava" alt="Generic placeholder thumbnail"/>
-                            </b:thumbnail>
-                        </b:column>
-                        <b:column col-xs="6" col-md="3">
-                            <b:thumbnail>
-                                <img data-src="holder.js/100%x180/social" alt="Generic placeholder thumbnail"/>
-                            </b:thumbnail>
-                        </b:column>
-                    </b:row>
-                    <f:facet name="footer">
-                        <strong>Markup:</strong><br/>
+  <ui:define name="content">
+    <h:outputScript library="holder" name="holder.js" />
+    <h1><a id="thumbnails">Thumbnails</a></h1>
+    <p>You can take advantage of BootsFaces's layout system with the thumbnail component to easily display grids of images, videos, text, and more.</p>
 
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                            <![CDATA[
-                            <b:row>
-                                <b:column col-xs="6" col-md="3">
-                                    <b:thumbnail>
-                                        <img data-src="holder.js/100%x180/sky" alt="Generic placeholder thumbnail"/>
-                                    </b:thumbnail>
-                                </b:column>
-                                ...
-                            </b:row>
-                            ]]></script>
-                    </f:facet>
-                </b:panel>
+    <h2><a id="thumbnails-default">Default example</a></h2>
+    <p>By default, the BootsFaces <code>&lt;b:thumbnail&gt;</code> tag is designed to showcase linked images with minimal required markup.</p>
+    <b:panel>
+    <f:facet name="heading"><b>EXAMPLE</b></f:facet>
+      <b:row>
+        <b:column col-xs="6" col-md="3">
+          <b:thumbnail>
+            <img data-src="holder.js/100%x180/sky" alt="Generic placeholder thumbnail"/>
+          </b:thumbnail>
+        </b:column>
+        <b:column col-xs="6" col-md="3">
+          <b:thumbnail>
+            <img data-src="holder.js/100%x180/vine" alt="Generic placeholder thumbnail"/>
+          </b:thumbnail>
+        </b:column>
+        <b:column col-xs="6" col-md="3">
+          <b:thumbnail>
+            <img data-src="holder.js/100%x180/lava" alt="Generic placeholder thumbnail"/>
+          </b:thumbnail>
+        </b:column>
+        <b:column col-xs="6" col-md="3">
+          <b:thumbnail>
+            <img data-src="holder.js/100%x180/social" alt="Generic placeholder thumbnail"/>
+          </b:thumbnail>
+        </b:column>
+      </b:row>
+      <f:facet name="footer">
+        <strong>Markup:</strong><br/>
 
-               <h2><a id="thumbnails-custom-content">Custom content</a></h2>
-                <p>With a bit of extra markup, it's possible to add any kind of HTML content like headings, paragraphs, or buttons into thumbnails.</p>
-                <p>Just add a facet with <code>name="caption"</code> to the component and add your content inside.</p>
-                <b:panel>
-                    <f:facet name="heading"><b>EXAMPLE - Thumbnail with custom content</b></f:facet>
-                    <b:row>
-                        <b:column col-sm="6" col-md="4">
-                            <b:thumbnail>
-                                <img data-src="holder.js/300x200/social" alt="Generic placeholder thumbnail"/>
-                                <f:facet name="caption">
-                                    <h3>Thumbnail label</h3>
-                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                    <p>
-                                        <b:button look="primary" value="Button"/>#{' '}
-                                        <b:button value="Button"/>
-                                    </p>
-                                </f:facet>
-                            </b:thumbnail>
-                        </b:column>
-                        <b:column col-sm="6" col-md="4">
-                            <b:thumbnail>
-                                <img data-src="holder.js/300x200/vine" alt="Generic placeholder thumbnail"/>
-                                <f:facet name="caption">
-                                    <h3>Thumbnail label</h3>
-                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                    <p>
-                                        <b:button look="primary" value="Button"/>#{' '}
-                                        <b:button value="Button"/>
-                                    </p>
-                                </f:facet>
-                            </b:thumbnail>
-                        </b:column>
-                        <b:column col-sm="6" col-md="4">
-                            <b:thumbnail>
-                                <img data-src="holder.js/300x200/lava" alt="Generic placeholder thumbnail"/>
-                                <f:facet name="caption">
-                                    <h3>Thumbnail label</h3>
-                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                    <p>
-                                        <b:button look="primary" value="Button"/>#{' '}
-                                        <b:button value="Button"/>
-                                    </p>
-                                </f:facet>
-                            </b:thumbnail>
-                        </b:column>
-                    </b:row>
-                    <f:facet name="footer">
-                        <strong>Markup:</strong><br/>
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+        <![CDATA[
+        <b:row>
+          <b:column col-xs="6" col-md="3">
+            <b:thumbnail>
+              <img data-src="holder.js/100%x180/sky" alt="Generic placeholder thumbnail"/>
+            </b:thumbnail>
+          </b:column>
+          ...
+        </b:row>
+        ]]></script>
+      </f:facet>
+    </b:panel>
 
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                            <![CDATA[
-                            <b:row>
-                                <b:column col-sm="6" col-md="4">
-                                    <b:thumbnail>
-                                        <img data-src="holder.js/300x200/social" alt="Generic placeholder thumbnail"/>
-                                        <f:facet name="caption">
-                                            <h3>Thumbnail label</h3>
-                                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                            <p>
-                                                <b:button look="primary" value="Button"/>
-                                                <b:button value="Button"/>
-                                            </p>
-                                        </f:facet>
-                                    </b:thumbnail>
-                                </b:column>
-                                ...
-                            </b:row>
-                            ]]></script>
-                    </f:facet>
-                </b:panel>
-                
-                <br/>
-                <h2><a id="reference_section">Reference section</a></h2>
-                <ui:include src="ThumbnailAttributes.xhtml" />
-                <b:panel look="info" rendered="false">
-					<f:facet name="heading">
-						<b>Skinning</b>
-					</f:facet>
-					<ul>
-						<li>Tell the world which CSS classes can be used to change the
-						look of the component.</li>
-					</ul>
-				</b:panel>
-                
+    <h2><a id="thumbnails-custom-content">Custom content</a></h2>
+    <p>With a bit of extra markup, it's possible to add any kind of HTML content like headings, paragraphs, or buttons into thumbnails.</p>
+    <p>Just add a facet with <code>name="caption"</code> to the component and add your content inside.</p>
+    <b:panel>
+    <f:facet name="heading"><b>EXAMPLE - Thumbnail with custom content</b></f:facet>
+      <b:row>
+        <b:column col-sm="6" col-md="4">
+          <b:thumbnail>
+            <img data-src="holder.js/300x200/social" alt="Generic placeholder thumbnail"/>
+            <f:facet name="caption">
+              <h3>Thumbnail label</h3>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <p>
+              <b:button look="primary" value="Button"/>#{' '}
+              <b:button value="Button"/>
+              </p>
+            </f:facet>
+          </b:thumbnail>
+        </b:column>
+        <b:column col-sm="6" col-md="4">
+          <b:thumbnail>
+            <img data-src="holder.js/300x200/vine" alt="Generic placeholder thumbnail"/>
+            <f:facet name="caption">
+              <h3>Thumbnail label</h3>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <p>
+              <b:button look="primary" value="Button"/>#{' '}
+              <b:button value="Button"/>
+              </p>
+            </f:facet>
+          </b:thumbnail>
+        </b:column>
+        <b:column col-sm="6" col-md="4">
+          <b:thumbnail>
+            <img data-src="holder.js/300x200/lava" alt="Generic placeholder thumbnail"/>
+            <f:facet name="caption">
+              <h3>Thumbnail label</h3>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <p>
+              <b:button look="primary" value="Button"/>#{' '}
+              <b:button value="Button"/>
+              </p>
+            </f:facet>
+          </b:thumbnail>
+        </b:column>
+      </b:row>
+      <f:facet name="footer">
+        <strong>Markup:</strong><br/>
 
-                <script type="text/javascript">
-                    SyntaxHighlighter.all();
-                </script>
-                <br/>
-                <br/>
-            </ui:define>
-        </ui:composition>
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+        <![CDATA[
+        <b:row>
+          <b:column col-sm="6" col-md="4">
+            <b:thumbnail>
+              <img data-src="holder.js/300x200/social" alt="Generic placeholder thumbnail"/>
+              <f:facet name="caption">
+                <h3>Thumbnail label</h3>
+                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                <p>
+                <b:button look="primary" value="Button"/>
+                <b:button value="Button"/>
+                </p>
+              </f:facet>
+            </b:thumbnail>
+          </b:column>
+          ...
+        </b:row>
+        ]]></script>
+      </f:facet>
+    </b:panel>
+
+    <br/>
+    <h2><a id="reference_section">Reference section</a></h2>
+    <ui:include src="ThumbnailAttributes.xhtml" />
+    <b:panel look="info" rendered="false">
+      <f:facet name="heading">
+        <b>Skinning</b>
+      </f:facet>
+      <ul>
+        <li>Tell the world which CSS classes can be used to change the
+        look of the component.</li>
+      </ul>
+    </b:panel>
+
+
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+    <br/>
+    <br/>
+  </ui:define>
+</ui:composition>

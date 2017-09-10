@@ -1,413 +1,414 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:ng="http://xmlns.jcp.org/jsf/passthrough">
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:ng="http://xmlns.jcp.org/jsf/passthrough">
 
-            <ui:define name="content-navigator">
-       			<b:listLinks>
-		             <b:navLink href="#overview" value="overview" />
-		             <b:navLink href="#sticky" value="sticky navbars" />
-		             <b:navLink href="#basic" value="basic usage" />
-		             <b:navLink href="#inverted" value="inverted navbars" />
-		             <b:navLink href="#links" value="links and command links" />
-		             <b:navLink href="#dropmenu" value="dropmenus" />
-		             <b:navLink href="#attributes" value="attributes" />
-	              </b:listLinks>
-            </ui:define>
-           <ui:define name="content">
-                <h1><a id="overview">Navbars</a></h1>
-                <p>The main use of the NavBar component is to place a navigation menu at top, bottom or both of your web application or web page.</p>
-                <p>The NavBar typically will have a brand, that could be, for example, the name of your project.</p>
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#overview" value="overview" />
+      <b:navLink href="#sticky" value="sticky navbars" />
+      <b:navLink href="#basic" value="basic usage" />
+      <b:navLink href="#inverted" value="inverted navbars" />
+      <b:navLink href="#links" value="links and command links" />
+      <b:navLink href="#dropmenu" value="dropmenus" />
+      <b:navLink href="#attributes" value="attributes" />
+    </b:listLinks>
+  </ui:define>
+  <ui:define name="content">
+    <h1><a id="overview">Navbars</a></h1>
+    <p>The main use of the NavBar component is to place a navigation menu at top, bottom or both of your web application or web page.</p>
+    <p>The NavBar typically will have a brand, that could be, for example, the name of your project.</p>
 
-                <b:panel title="Example">
-                    <b:navBar brand="Brand" brandHref="#" fluid="true">
-                        <b:navbarLinks>
-                            <b:navLink value="Link" href="#"></b:navLink>
-                            <b:navLink value="Link" href="#"></b:navLink>
-                            <b:dropMenu value="Dropdown" iconAwesome="birthday-cake">
-                                <b:navLink value="Action" href="#"></b:navLink>
-                                <b:navLink value="Another action" href="#"></b:navLink>
-                                <b:navLink value="Something else here" href="#"></b:navLink>
-                                <b:navLink></b:navLink>
-                                <b:navLink header="Nav header"></b:navLink>
-                                <b:navLink value="Separated link" href="#"></b:navLink>
-                                <b:dropMenu value="Nested submenu" iconAwesome="birthday-cake" iconAlign="right">
-                                	<b:navLink value="You can nest menus" href="#"></b:navLink>
-                                	<b:dropMenu value="Nested sub-submenu">
-	                                	<b:navLink value="... as deep as ..." href="#"></b:navLink>
-		                                <b:dropMenu value="Nested sub-sub-submenu">
-		                                	<b:navLink value="... you want!" href="#"></b:navLink>
-		                                </b:dropMenu>
-    	                            </b:dropMenu>
+    <b:panel title="Example">
+      <b:navBar brand="Brand" brandHref="#" fluid="true">
+        <b:navbarLinks>
+          <b:navLink value="Link" href="#"></b:navLink>
+          <b:navLink value="Link" href="#"></b:navLink>
+          <b:dropMenu value="Dropdown" iconAwesome="birthday-cake">
+            <b:navLink value="Action" href="#"></b:navLink>
+            <b:navLink value="Another action" href="#"></b:navLink>
+            <b:navLink value="Something else here" href="#"></b:navLink>
+            <b:navLink></b:navLink>
+            <b:navLink header="Nav header"></b:navLink>
+            <b:navLink value="Separated link" href="#"></b:navLink>
+            <b:dropMenu value="Nested submenu" iconAwesome="birthday-cake" iconAlign="right">
+              <b:navLink value="You can nest menus" href="#"></b:navLink>
+              <b:dropMenu value="Nested sub-submenu">
+                <b:navLink value="... as deep as ..." href="#"></b:navLink>
+                <b:dropMenu value="Nested sub-sub-submenu">
+                  <b:navLink value="... you want!" href="#"></b:navLink>
+                </b:dropMenu>
+              </b:dropMenu>
 
-                                </b:dropMenu>
-                                <b:navLink value="One more separated link" href="#"></b:navLink>
-                            </b:dropMenu>
-                        </b:navbarLinks>
-                        <form class="navbar-form navbar-left hidden-md hidden-sm hidden-xs" role="search">
-                            <div class="form-group">
-                                <input type="text" class="form-control" ng:placeholder="Search"/>
-                            </div>
-                            <button type="submit" class="btn btn-default">Submit</button>
-                        </form>
-                        <b:navbarLinks pull="right" styleClass="hidden-xs" style="margin-right:30px">
-                          <b:navLink value="Link" href="#"></b:navLink>
-                          <b:dropMenu value="Dropdown">
-                              <b:navLink value="Action" href="#"></b:navLink>
-                              <b:navLink value="Another action" href="#"></b:navLink>
-                              <b:navLink value="Something else here" href="#"></b:navLink>
-                              <b:navLink></b:navLink>
-                              <b:navLink header="Nav header"></b:navLink>
-                              <b:navLink value="Separated link" href="#"></b:navLink>
-                              <b:navLink value="One more separated link" href="#"></b:navLink>
-                          </b:dropMenu>
-                      </b:navbarLinks>
-                    </b:navBar>
-                    
-                    <f:facet name="footer">
-                        <strong>JSF markup:</strong>
-                <b:panel>
-        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-        <![CDATA[
-                   <b:navBar brand="Brand" brandHref="#" fluid="true">
-                        <b:navbarLinks>
-                            <b:navLink value="Link" href="#"></b:navLink>
-                            <b:navLink value="Link" href="#"></b:navLink>
-                            <b:dropMenu value="Dropdown" iconAwesome="birthday-cake">
-                                <b:navLink value="Action" href="#"></b:navLink>
-                                <b:navLink value="Another action" href="#"></b:navLink>
-                                <b:navLink value="Something else here" href="#"></b:navLink>
-                                <b:navLink></b:navLink>
-                                <b:navLink header="Nav header"></b:navLink>
-                                <b:navLink value="Separated link" href="#"></b:navLink>
-                                <b:dropMenu value="Nested submenu" iconAwesome="birthday-cake" iconAlign="right">
-                                	<b:navLink value="You can nest menus" href="#"></b:navLink>
-                                	<b:dropMenu value="Nested sub-submenu">
-	                                	<b:navLink value="... as deep as ..." href="#"></b:navLink>
-		                                <b:dropMenu value="Nested sub-sub-submenu">
-		                                	<b:navLink value="... you want!" href="#"></b:navLink>
-		                                </b:dropMenu>
-    	                            </b:dropMenu>
+            </b:dropMenu>
+            <b:navLink value="One more separated link" href="#"></b:navLink>
+          </b:dropMenu>
+        </b:navbarLinks>
+        <form class="navbar-form navbar-left hidden-md hidden-sm hidden-xs" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" ng:placeholder="Search"/>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        <b:navbarLinks pull="right" styleClass="hidden-xs" style="margin-right:30px">
+          <b:navLink value="Link" href="#"></b:navLink>
+          <b:dropMenu value="Dropdown">
+            <b:navLink value="Action" href="#"></b:navLink>
+            <b:navLink value="Another action" href="#"></b:navLink>
+            <b:navLink value="Something else here" href="#"></b:navLink>
+            <b:navLink></b:navLink>
+            <b:navLink header="Nav header"></b:navLink>
+            <b:navLink value="Separated link" href="#"></b:navLink>
+            <b:navLink value="One more separated link" href="#"></b:navLink>
+          </b:dropMenu>
+        </b:navbarLinks>
+      </b:navBar>
 
-                                </b:dropMenu>
-                                <b:navLink value="One more separated link" href="#"></b:navLink>
-                            </b:dropMenu>
-                        </b:navbarLinks>
-                        <form class="navbar-form navbar-left hidden-md hidden-sm hidden-xs" role="search">
-                            <div class="form-group">
-                                <input type="text" class="form-control" ng:placeholder="Search"/>
-                            </div>
-                            <button type="submit" class="btn btn-default">Submit</button>
-                        </form>
-                        <!-- Following line is needed for TBS 3.0.1 (panel content overflow issue) -->
-                        <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
-                          <b:navbarLinks pull="right" styleClass="hidden-xs">
-                            <b:navLink value="Link" href="#"></b:navLink>
-                            <b:dropMenu value="Dropdown">
-                                <b:navLink value="Action" href="#"></b:navLink>
-                                <b:navLink value="Another action" href="#"></b:navLink>
-                                <b:navLink value="Something else here" href="#"></b:navLink>
-                                <b:navLink></b:navLink>
-                                <b:navLink header="Nav header"></b:navLink>
-                                <b:navLink value="Separated link" href="#"></b:navLink>
-                                <b:navLink value="One more separated link" href="#"></b:navLink>
-                            </b:dropMenu>
-                        </b:navbarLinks>
-                    </b:navBar>
-        ]]>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <b:navBar brand="Brand" brandHref="#" fluid="true">
+            <b:navbarLinks>
+              <b:navLink value="Link" href="#"></b:navLink>
+              <b:navLink value="Link" href="#"></b:navLink>
+              <b:dropMenu value="Dropdown" iconAwesome="birthday-cake">
+                <b:navLink value="Action" href="#"></b:navLink>
+                <b:navLink value="Another action" href="#"></b:navLink>
+                <b:navLink value="Something else here" href="#"></b:navLink>
+                <b:navLink></b:navLink>
+                <b:navLink header="Nav header"></b:navLink>
+                <b:navLink value="Separated link" href="#"></b:navLink>
+                <b:dropMenu value="Nested submenu" iconAwesome="birthday-cake" iconAlign="right">
+                  <b:navLink value="You can nest menus" href="#"></b:navLink>
+                  <b:dropMenu value="Nested sub-submenu">
+                    <b:navLink value="... as deep as ..." href="#"></b:navLink>
+                    <b:dropMenu value="Nested sub-sub-submenu">
+                      <b:navLink value="... you want!" href="#"></b:navLink>
+                    </b:dropMenu>
+                  </b:dropMenu>
+
+                </b:dropMenu>
+                <b:navLink value="One more separated link" href="#"></b:navLink>
+              </b:dropMenu>
+            </b:navbarLinks>
+            <form class="navbar-form navbar-left hidden-md hidden-sm hidden-xs" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" ng:placeholder="Search"/>
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+            <!-- Following line is needed for TBS 3.0.1 (panel content overflow issue) -->
+          <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
+            <b:navbarLinks pull="right" styleClass="hidden-xs">
+              <b:navLink value="Link" href="#"></b:navLink>
+              <b:dropMenu value="Dropdown">
+                <b:navLink value="Action" href="#"></b:navLink>
+                <b:navLink value="Another action" href="#"></b:navLink>
+                <b:navLink value="Something else here" href="#"></b:navLink>
+                <b:navLink></b:navLink>
+                <b:navLink header="Nav header"></b:navLink>
+                <b:navLink value="Separated link" href="#"></b:navLink>
+                <b:navLink value="One more separated link" href="#"></b:navLink>
+              </b:dropMenu>
+            </b:navbarLinks>
+          </b:navBar>
+          ]]>
           </script>
-         </b:panel>
-                    </f:facet>
-                </b:panel>
+        </b:panel>
+      </f:facet>
+    </b:panel>
 
-                <h2><a id="sticky">Sticky vs. non-sticky navBars and navBar positions </a><b:badge value="updated in 0.8.5"></b:badge></h2>
-                <p>A navbar can be rendered in different ways, to fit in your page layout scheme.</p>
-                <p>The default NavBar appears as part of the page content, typically centered and at the beginning.</p>
-                <p>The two other ways a Navigation Bar can be rendered in the page are:</p>
-                <ul>
-                    <li><b>fixed</b> to the top or bottom of the page, without scrolling with the content, </li>
-                    <li><b>statically</b> on top of the page, scrolling away with the page.</li>
-                </ul>
-                <p>Starting with BootsFaces 0.8.5, there's the attribute <code>position</code> as a more expressive alternative:</p>
-                <table class="table table-striped table-hover table-bordered" style="background-color: #fff">
-                  <tr>
-                    <td><code>position="top" sticky="true"</code></td>
-                    <td><code>fixed="top" sticky="true"</code></td>
-                    <td>Sticky NavBar at the top. The page scrolls under the NavBar.</td>
-                  </tr>
-                  <tr>
-                    <td><code>position="top" sticky="false"</code></td>
-                    <td><code>fixed="top" sticky="false"</code></td>
-                    <td>NavBar at the top. The NavBar scrolls with the page.</td>
-                  </tr>
-                  <tr>
-                    <td><code>position="bottom" sticky="true"</code></td>
-                    <td><code>fixed="bottom" sticky="true"</code></td>
-                    <td>Sticky NavBar at the bottom. The page scrolls under the NavBar.</td>
-                  </tr>
-                  <tr>
-                    <td><code>position="bottom" sticky="false"</code></td>
-                    <td><code>fixed="non-sticky" sticky="false"</code></td>
-                    <td>Non-sticky NavBar at the bottom. The NavBar scrolls with the page.</td>
-                  </tr>
-                  <tr>
-                    <td><code>sticky="false"</code></td>
-                    <td><code>sticky="false"</code></td>
-                    <td>Non-sticky NavBar at the current position. The NavBar scrolls with the page.</td>
-                  </tr>
-                </table>
-
-
-                <p>To understand the different layouts better, just have a look at the <b:navLink value="NavBar examples" href="http://showcase.bootsfaces.net/Examples/navbar.jsf"/>.</p>
-                <br/>
-
-                <b:modal id="top" title="b:navBar demo 1" style="height:200px">
-                    <b:navBar brand="position=top" brandHref="#" position="top" fluid="true">
-                    </b:navBar>
-                    <p>This modal dialog has a navBar at the top and a lot of content, so it can scroll.</p>
-                    <p>This modal dialog has a navBar at the top and a lot of content, so it can scroll.</p>
-                    <p>This modal dialog has a navBar at the top and a lot of content, so it can scroll.</p>
-                    <p>This modal dialog has a navBar at the top and a lot of content, so it can scroll.</p>
-                    <p>This modal dialog has a navBar at the top and a lot of content, so it can scroll.</p>
-                    <p>This modal dialog has a navBar at the top and a lot of content, so it can scroll.</p>
-                    <p>This modal dialog has a navBar at the top and a lot of content, so it can scroll.</p>
-                    <p>This modal dialog has a navBar at the top and a lot of content, so it can scroll.</p>
-                    <f:facet name="footer">
-                        <b:button value="close" dismiss="modal" onclick="return false;"/>
-                        <b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"/>
-                    </f:facet>
-                </b:modal>
-                <b:modal id="bottom" title="b:navBar demo 2" style="height:200px">
-                    <b:navBar brand="position=bottom" brandHref="#" position="bottom" fluid="true">
-                    </b:navBar>
-                    <p>This modal dialog has a navBar at the bottom and a lot of content, so it can scroll.</p>
-                    <p>This modal dialog has a navBar at the bottom and a lot of content, so it can scroll.</p>
-                    <p>This modal dialog has a navBar at the bottom and a lot of content, so it can scroll.</p>
-                    <p>This modal dialog has a navBar at the bottom and a lot of content, so it can scroll.</p>
-                    <p>This modal dialog has a navBar at the bottom and a lot of content, so it can scroll.</p>
-                    <p>This modal dialog has a navBar at the bottom and a lot of content, so it can scroll.</p>
-                    <p>This modal dialog has a navBar at the bottom and a lot of content, so it can scroll.</p>
-                    <p>This modal dialog has a navBar at the bottom and a lot of content, so it can scroll.</p>
-                    <f:facet name="footer">
-                        <b:button value="close" dismiss="modal" onclick="return false;"/>
-                        <b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"/>
-                    </f:facet>
-                </b:modal>
-                <b:modal id="non-sticky" title="b:navBar demo 3" style="height:200px">
-                    <b:navBar brand="position=bottom sticky=false" brandHref="#" position="bottom" sticky="false" fluid="true">
-                    </b:navBar>
-                    <p>This modal dialog has a non-sticky navbar and a lot of content, so it can scroll.</p>
-                    <p>This modal dialog has a non-sticky navbar and a lot of content, so it can scroll.</p>
-                    <p>This modal dialog has a non-sticky navbar and a lot of content, so it can scroll.</p>
-                    <p>This modal dialog has a non-sticky navbar and a lot of content, so it can scroll.</p>
-                    <p>This modal dialog has a non-sticky navbar and a lot of content, so it can scroll.</p>
-                    <p>This modal dialog has a non-sticky navbar and a lot of content, so it can scroll.</p>
-                    <p>This modal dialog has a non-sticky navbar and a lot of content, so it can scroll.</p>
-                    <p>This modal dialog has a non-sticky navbar and a lot of content, so it can scroll.</p>
-                    <f:facet name="footer">
-                        <b:button value="close" dismiss="modal" onclick="return false;"/>
-                        <b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"/>
-                    </f:facet>
-                </b:modal>
-                <b:modal id="static" title="b:navBar demo 4" style="height:200px">
-                    <b:navBar brand="static=true" brandHref="#" static="true" fluid="true">
-                    </b:navBar>
-                    <p>This modal dialog has a static navBar and a lot of content, so it can scroll.</p>
-                    <p>This modal dialog has a static navBar and a lot of content, so it can scroll.</p>
-                    <p>This modal dialog has a static navBar and a lot of content, so it can scroll.</p>
-                    <p>This modal dialog has a static navBar and a lot of content, so it can scroll.</p>
-                    <p>This modal dialog has a static navBar and a lot of content, so it can scroll.</p>
-                    <p>This modal dialog has a static navBar and a lot of content, so it can scroll.</p>
-                    <p>This modal dialog has a static navBar and a lot of content, so it can scroll.</p>
-                    <p>This modal dialog has a static navBar and a lot of content, so it can scroll.</p>
-                    <f:facet name="footer">
-                        <b:button value="close" dismiss="modal" onclick="return false;"/>
-                        <b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"/>
-                    </f:facet>
-                </b:modal>
-                <b:row>
-                    <b:column span="3">
-                        <a class="btn btn-primary btn-md" href="#top" data-toggle="modal">position="top"</a>
-                    </b:column>
-                    <b:column span="3">
-                        <a class="btn btn-primary btn-md" href="#bottom" data-toggle="modal">position="bottom"</a>
-                    </b:column>
-                    <b:column span="3">
-                        <a class="btn btn-primary btn-md" href="#non-sticky" data-toggle="modal">position="bottom" sticky="false"</a>
-                    </b:column>
-                    <b:column span="3">
-                        <a class="btn btn-primary btn-md" href="#static" data-toggle="modal">static="true"</a>
-                    </b:column>
-                 </b:row>
-                 <!-- ********************************************************************************************* -->
-
-                <h2><a id="basic">Using the b:navbar tag</a></h2>
-                <p>Using the <code>b:navbar</code> tag is very straightforward, as you can see from the following table you need to specify few attributes:</p>
-
-                <strong>Widget attributes</strong>
-                <table class="table table-bordered table-striped">
-                    <caption>b:navbar</caption>
-                    <thead>
-                        <tr>
-                            <th>Attribute</th>
-                            <th>Type</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><code>brand</code></td>
-                            <td>String</td>
-                            <td>Brand for the Navbar.</td>
-                        </tr>
-                        <tr>
-                            <td><code>brandHref</code></td>
-                            <td>String</td>
-                            <td>Link URL for the Navbar Brand.</td>
-                        </tr>
-                        <tr>
-                            <td><code>static</code></td>
-                            <td>boolean</td>
-                            <td>If true, a full-width navbar that scrolls away with the page will be rendered. Can be true or false, default false.</td>
-                        </tr>
-                        <tr>
-                            <td><code>fixed</code></td>
-                            <td>String</td>
-                            <td>If specified, the Fixed Bar will be rendered on top or bottom of the page. Can be bottom or top.</td>
-                        </tr>
-                        <tr>
-                            <td><code>inverse</code></td>
-                            <td>boolean</td>
-                            <td>Boolean value to specify if Navbar should use inverse color scheme.</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <br/>
-                <h2><a id="inverted">Inverted Navbar</a></h2>
-                <p>Modify the look of the navbar by adding the <code>inverse</code> attribute:</p>
-                <b:panel title="Live preview" look="info" collapsible="false">
-                    <b:navBar brand="Brand" brandHref="#" inverse="true" fluid="true">
-                        <b:navbarLinks>
-                            <b:navLink value="Home" href="#"></b:navLink>
-                            <b:navLink value="Link" href="#"></b:navLink>
-                            <b:navLink value="Link" href="#"></b:navLink>
-                        </b:navbarLinks>
-                    </b:navBar>
-                    <f:facet name="footer">
-                        <strong>JSF markup:</strong><br/>
-
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
-                            <![CDATA[
-                            <b:navBar brand="Brand" brandHref="#" inverse="true">
-                                <b:navbarLinks>
-                                    <b:navLink value="Home" href="#"></b:navLink>
-                                    <b:navLink value="Link" href="#"></b:navLink>
-                                    <b:navLink value="Link" href="#"></b:navLink>
-                                </b:navbarLinks>
-                            </b:navBar>
-
-                            ]]></script>
-                    </f:facet>
-                </b:panel>
-                <br/>
-                <h2><a id="links">Navbar links and commandlinks</a></h2>
-                <strong>Navbar Links</strong>
-                <p>A NavBar will also contain a set of links. You can add the links to <code>b:navbar</code> using <code>b:navLink</code> as you do with <code>b:listLinks</code>.</p>
-                <p>The difference is that you nest the <code>b:navLink</code> elements inside a <code>b:navbarLinks</code> element instead of <code>b:listLinks</code> element.</p>
-                <br/>
-
-                <p>For some technical reason, the <code>&lt;b:navLink /&gt;</code> component can't call JSF action listeners. To circumvent this limitation, there's a second
-                component, <code>&lt;b:navCommandLink /&gt;</code> that's adds calls to JSF action listeners and a JSF action. </p>
-                <br/>
+    <h2><a id="sticky">Sticky vs. non-sticky navBars and navBar positions </a><b:badge value="updated in 0.8.5"></b:badge></h2>
+    <p>A navbar can be rendered in different ways, to fit in your page layout scheme.</p>
+    <p>The default NavBar appears as part of the page content, typically centered and at the beginning.</p>
+    <p>The two other ways a Navigation Bar can be rendered in the page are:</p>
+    <ul>
+      <li><b>fixed</b> to the top or bottom of the page, without scrolling with the content, </li>
+      <li><b>statically</b> on top of the page, scrolling away with the page.</li>
+    </ul>
+    <p>Starting with BootsFaces 0.8.5, there's the attribute <code>position</code> as a more expressive alternative:</p>
+    <table class="table table-striped table-hover table-bordered" style="background-color: #fff">
+      <tr>
+        <td><code>position="top" sticky="true"</code></td>
+        <td><code>fixed="top" sticky="true"</code></td>
+        <td>Sticky NavBar at the top. The page scrolls under the NavBar.</td>
+      </tr>
+      <tr>
+        <td><code>position="top" sticky="false"</code></td>
+        <td><code>fixed="top" sticky="false"</code></td>
+        <td>NavBar at the top. The NavBar scrolls with the page.</td>
+      </tr>
+      <tr>
+        <td><code>position="bottom" sticky="true"</code></td>
+        <td><code>fixed="bottom" sticky="true"</code></td>
+        <td>Sticky NavBar at the bottom. The page scrolls under the NavBar.</td>
+      </tr>
+      <tr>
+        <td><code>position="bottom" sticky="false"</code></td>
+        <td><code>fixed="non-sticky" sticky="false"</code></td>
+        <td>Non-sticky NavBar at the bottom. The NavBar scrolls with the page.</td>
+      </tr>
+      <tr>
+        <td><code>sticky="false"</code></td>
+        <td><code>sticky="false"</code></td>
+        <td>Non-sticky NavBar at the current position. The NavBar scrolls with the page.</td>
+      </tr>
+    </table>
 
 
-                <h2><a id="dropmenu">Drop Menus</a></h2>
-                <p>You can build up a rich menu bar using another useful element: <code>b:dropMenu</code>. It is another element where you can put your <code>b:navLink</code> elements.</p>
-                <p>You can have multiple <code>b:navbarLinks</code> and <code>b:dropMenu</code> elements in a navbar, just pay attention to the resulting layout. Starting with
-                BootsFaces 0.8.0, <code>b:dropMenu</code>s can also be nested. This way, you get menu of three or more levels. Of course, you shouldn't overdo it. Most of the
-                time, two levels is what users accept. They also accept a third level if it remains the exception. But adding a fourth level makes your application cumbersome.</p>
-                <b:panel title="Live preview" look="info" collapsible="false">
-                    <h:form>
-	                    <b:navBar brand="Brand" brandHref="#" id="dropMenuExample" contentDisabled="#{navBarBean.navBarDisabled}"  fluid="true">
-	                        <b:navbarLinks contentDisabled="#{navBarBean.navBarLinksDisabled}">
-	                            <b:navLink value="Home" href="#"></b:navLink>
-	                            <b:navLink value="Link" href="#"></b:navLink>
-	                            <b:navLink value="Link" href="#"></b:navLink>
-	                            <b:dropMenu value="Dropdown" contentDisabled="#{navBarBean.dropMenuDisabled}">
-	                                <b:navLink value="Action" href="#"></b:navLink>
-	                                <b:navLink value="Another action" href="#"></b:navLink>
-	                                <b:navLink value="Something else here" href="#"></b:navLink>
-	                                <b:navLink></b:navLink>
-	                                <b:navLink header="Nav header"></b:navLink>
-	                                <b:navLink value="Separated link" href="#"></b:navLink>
-	                                <b:navLink value="One more separated link" href="#"></b:navLink>
-	                            </b:dropMenu>
-	                        </b:navbarLinks>
-	                    </b:navBar>
-	                    <b:panel look="primary" title="Options">
-	                    	<b:panelGrid columns="3">
-		                     	<b:switch on-text="disabled" off-text="enabled" value="#{navBarBean.navBarDisabled}"
-		                     	          update="dropMenuExample" onchange="ajax:navBarBean.onChange()"
-		                     	          label="b:dropMenu contentDisabled=" />
-		                     	<b:switch on-text="disabled" off-text="enabled" value="#{navBarBean.navBarLinksDisabled}"
-		                     	          update="dropMenuExample" onchange="ajax:navBarBean.onChange()"
-		                     	          label="b:dropMenu contentDisabled=" />
-		                     	<b:switch on-text="disabled" off-text="enabled" value="#{navBarBean.dropMenuDisabled}"
-		                     	          update="dropMenuExample" onchange="ajax:navBarBean.onChange()"
-		                     	          label="b:dropMenu contentDisabled=" />
-               	            </b:panelGrid>
-	                    </b:panel>
-                    </h:form>
-                    <f:facet name="footer">
-                        <strong>JSF markup:</strong>
+    <p>To understand the different layouts better, just have a look at the <b:navLink value="NavBar examples" href="http://showcase.bootsfaces.net/Examples/navbar.jsf"/>.</p>
+    <br/>
 
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
-                            <![CDATA[
-	                    <b:navBar brand="Brand" brandHref="&num;" id="dropMenuExample" contentDisabled="&num;{navBarBean.navBarDisabled}">
-	                        <b:navbarLinks contentDisabled="&num;{navBarBean.navBarLinksDisabled}">
-	                            <b:navLink value="Home" href="&num;"></b:navLink>
-	                            <b:navLink value="Link" href="&num;"></b:navLink>
-	                            <b:navLink value="Link" href="&num;"></b:navLink>
-	                            <b:dropMenu value="Dropdown" contentDisabled="&num;{navBarBean.dropMenuDisabled}">
-	                                <b:navLink value="Action" href="&num;"></b:navLink>
-	                                <b:navLink value="Another action" href="&num;"></b:navLink>
-	                                <b:navLink value="Something else here" href="&num;"></b:navLink>
-	                                <b:navLink></b:navLink>
-	                                <b:navLink header="Nav header"></b:navLink>
-	                                <b:navLink value="Separated link" href="&num;"></b:navLink>
-	                                <b:navLink value="One more separated link" href="&num;"></b:navLink>
-	                            </b:dropMenu>
-	                        </b:navbarLinks>
-                            ]]></script>
-                    </f:facet>
-                </b:panel>
+    <b:modal id="top" title="b:navBar demo 1" style="height:200px">
+      <b:navBar brand="position=top" brandHref="#" position="top" fluid="true">
+      </b:navBar>
+      <p>This modal dialog has a navBar at the top and a lot of content, so it can scroll.</p>
+      <p>This modal dialog has a navBar at the top and a lot of content, so it can scroll.</p>
+      <p>This modal dialog has a navBar at the top and a lot of content, so it can scroll.</p>
+      <p>This modal dialog has a navBar at the top and a lot of content, so it can scroll.</p>
+      <p>This modal dialog has a navBar at the top and a lot of content, so it can scroll.</p>
+      <p>This modal dialog has a navBar at the top and a lot of content, so it can scroll.</p>
+      <p>This modal dialog has a navBar at the top and a lot of content, so it can scroll.</p>
+      <p>This modal dialog has a navBar at the top and a lot of content, so it can scroll.</p>
+      <f:facet name="footer">
+        <b:button value="close" dismiss="modal" onclick="return false;"/>
+        <b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"/>
+      </f:facet>
+    </b:modal>
+    <b:modal id="bottom" title="b:navBar demo 2" style="height:200px">
+      <b:navBar brand="position=bottom" brandHref="#" position="bottom" fluid="true">
+      </b:navBar>
+      <p>This modal dialog has a navBar at the bottom and a lot of content, so it can scroll.</p>
+      <p>This modal dialog has a navBar at the bottom and a lot of content, so it can scroll.</p>
+      <p>This modal dialog has a navBar at the bottom and a lot of content, so it can scroll.</p>
+      <p>This modal dialog has a navBar at the bottom and a lot of content, so it can scroll.</p>
+      <p>This modal dialog has a navBar at the bottom and a lot of content, so it can scroll.</p>
+      <p>This modal dialog has a navBar at the bottom and a lot of content, so it can scroll.</p>
+      <p>This modal dialog has a navBar at the bottom and a lot of content, so it can scroll.</p>
+      <p>This modal dialog has a navBar at the bottom and a lot of content, so it can scroll.</p>
+      <f:facet name="footer">
+        <b:button value="close" dismiss="modal" onclick="return false;"/>
+        <b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"/>
+      </f:facet>
+    </b:modal>
+    <b:modal id="non-sticky" title="b:navBar demo 3" style="height:200px">
+      <b:navBar brand="position=bottom sticky=false" brandHref="#" position="bottom" sticky="false" fluid="true">
+      </b:navBar>
+      <p>This modal dialog has a non-sticky navbar and a lot of content, so it can scroll.</p>
+      <p>This modal dialog has a non-sticky navbar and a lot of content, so it can scroll.</p>
+      <p>This modal dialog has a non-sticky navbar and a lot of content, so it can scroll.</p>
+      <p>This modal dialog has a non-sticky navbar and a lot of content, so it can scroll.</p>
+      <p>This modal dialog has a non-sticky navbar and a lot of content, so it can scroll.</p>
+      <p>This modal dialog has a non-sticky navbar and a lot of content, so it can scroll.</p>
+      <p>This modal dialog has a non-sticky navbar and a lot of content, so it can scroll.</p>
+      <p>This modal dialog has a non-sticky navbar and a lot of content, so it can scroll.</p>
+      <f:facet name="footer">
+        <b:button value="close" dismiss="modal" onclick="return false;"/>
+        <b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"/>
+      </f:facet>
+    </b:modal>
+    <b:modal id="static" title="b:navBar demo 4" style="height:200px">
+      <b:navBar brand="static=true" brandHref="#" static="true" fluid="true">
+      </b:navBar>
+      <p>This modal dialog has a static navBar and a lot of content, so it can scroll.</p>
+      <p>This modal dialog has a static navBar and a lot of content, so it can scroll.</p>
+      <p>This modal dialog has a static navBar and a lot of content, so it can scroll.</p>
+      <p>This modal dialog has a static navBar and a lot of content, so it can scroll.</p>
+      <p>This modal dialog has a static navBar and a lot of content, so it can scroll.</p>
+      <p>This modal dialog has a static navBar and a lot of content, so it can scroll.</p>
+      <p>This modal dialog has a static navBar and a lot of content, so it can scroll.</p>
+      <p>This modal dialog has a static navBar and a lot of content, so it can scroll.</p>
+      <f:facet name="footer">
+        <b:button value="close" dismiss="modal" onclick="return false;"/>
+        <b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"/>
+      </f:facet>
+    </b:modal>
+    <b:row>
+      <b:column span="3">
+        <a class="btn btn-primary btn-md" href="#top" data-toggle="modal">position="top"</a>
+      </b:column>
+      <b:column span="3">
+        <a class="btn btn-primary btn-md" href="#bottom" data-toggle="modal">position="bottom"</a>
+      </b:column>
+      <b:column span="3">
+        <a class="btn btn-primary btn-md" href="#non-sticky" data-toggle="modal">position="bottom" sticky="false"</a>
+      </b:column>
+      <b:column span="3">
+        <a class="btn btn-primary btn-md" href="#static" data-toggle="modal">static="true"</a>
+      </b:column>
+    </b:row>
+    <!-- ********************************************************************************************* -->
 
-                <br/>
-                <h2><a id="attributes">Reference section</a></h2>
-                <ui:include src="NavBarAttributes.xhtml" />
-                <ui:include src="NavbarLinksAttributes.xhtml" />
-                <ui:include src="NavLinkAttributes.xhtml" />
-                <ui:include src="NavCommandLinkAttributes.xhtml" />
-                <ui:include src="DropMenuAttributes.xhtml" />
+    <h2><a id="basic">Using the b:navbar tag</a></h2>
+    <p>Using the <code>b:navbar</code> tag is very straightforward, as you can see from the following table you need to specify few attributes:</p>
 
-                <b:panel look="info" rendered="false">
-					<f:facet name="heading">
-						<b>Skinning</b>
-					</f:facet>
-					<ul>
-						<li>Tell the world which CSS classes can be used to change the
-						look of the component.</li>
-					</ul>
-				</b:panel>
+    <strong>Widget attributes</strong>
+    <table class="table table-bordered table-striped">
+      <caption>b:navbar</caption>
+      <thead>
+        <tr>
+          <th>Attribute</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><code>brand</code></td>
+        <td>String</td>
+        <td>Brand for the Navbar.</td>
+      </tr>
+      <tr>
+        <td><code>brandHref</code></td>
+        <td>String</td>
+        <td>Link URL for the Navbar Brand.</td>
+      </tr>
+      <tr>
+        <td><code>static</code></td>
+        <td>boolean</td>
+        <td>If true, a full-width navbar that scrolls away with the page will be rendered. Can be true or false, default false.</td>
+      </tr>
+      <tr>
+        <td><code>fixed</code></td>
+        <td>String</td>
+        <td>If specified, the Fixed Bar will be rendered on top or bottom of the page. Can be bottom or top.</td>
+      </tr>
+      <tr>
+        <td><code>inverse</code></td>
+        <td>boolean</td>
+        <td>Boolean value to specify if Navbar should use inverse color scheme.</td>
+      </tr>
+      </tbody>
+    </table>
+    <br/>
+    <h2><a id="inverted">Inverted Navbar</a></h2>
+    <p>Modify the look of the navbar by adding the <code>inverse</code> attribute:</p>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <b:navBar brand="Brand" brandHref="#" inverse="true" fluid="true">
+        <b:navbarLinks>
+          <b:navLink value="Home" href="#"></b:navLink>
+          <b:navLink value="Link" href="#"></b:navLink>
+          <b:navLink value="Link" href="#"></b:navLink>
+        </b:navbarLinks>
+      </b:navBar>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong><br/>
+
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
+        <![CDATA[
+        <b:navBar brand="Brand" brandHref="#" inverse="true">
+          <b:navbarLinks>
+            <b:navLink value="Home" href="#"></b:navLink>
+            <b:navLink value="Link" href="#"></b:navLink>
+            <b:navLink value="Link" href="#"></b:navLink>
+          </b:navbarLinks>
+        </b:navBar>
+
+        ]]></script>
+      </f:facet>
+    </b:panel>
+    <br/>
+    <h2><a id="links">Navbar links and commandlinks</a></h2>
+    <strong>Navbar Links</strong>
+    <p>A NavBar will also contain a set of links. You can add the links to <code>b:navbar</code> using <code>b:navLink</code> as you do with <code>b:listLinks</code>.</p>
+    <p>The difference is that you nest the <code>b:navLink</code> elements inside a <code>b:navbarLinks</code> element instead of <code>b:listLinks</code> element.</p>
+    <br/>
+
+    <p>For some technical reason, the <code>&lt;b:navLink /&gt;</code> component can't call JSF action listeners. To circumvent this limitation, there's a second
+    component, <code>&lt;b:navCommandLink /&gt;</code> that's adds calls to JSF action listeners and a JSF action. </p>
+    <br/>
 
 
-                <br/><br/><br/>
-                <script type="text/javascript">
-                    SyntaxHighlighter.all();
-                </script>
-            </ui:define>
-        </ui:composition>
+    <h2><a id="dropmenu">Drop Menus</a></h2>
+    <p>You can build up a rich menu bar using another useful element: <code>b:dropMenu</code>. It is another element where you can put your <code>b:navLink</code> elements.</p>
+    <p>You can have multiple <code>b:navbarLinks</code> and <code>b:dropMenu</code> elements in a navbar, just pay attention to the resulting layout. Starting with
+    BootsFaces 0.8.0, <code>b:dropMenu</code>s can also be nested. This way, you get menu of three or more levels. Of course, you shouldn't overdo it. Most of the
+    time, two levels is what users accept. They also accept a third level if it remains the exception. But adding a fourth level makes your application cumbersome.</p>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form>
+        <b:navBar brand="Brand" brandHref="#" id="dropMenuExample" contentDisabled="#{navBarBean.navBarDisabled}"  fluid="true">
+          <b:navbarLinks contentDisabled="#{navBarBean.navBarLinksDisabled}">
+            <b:navLink value="Home" href="#"></b:navLink>
+            <b:navLink value="Link" href="#"></b:navLink>
+            <b:navLink value="Link" href="#"></b:navLink>
+            <b:dropMenu value="Dropdown" contentDisabled="#{navBarBean.dropMenuDisabled}">
+              <b:navLink value="Action" href="#"></b:navLink>
+              <b:navLink value="Another action" href="#"></b:navLink>
+              <b:navLink value="Something else here" href="#"></b:navLink>
+              <b:navLink></b:navLink>
+              <b:navLink header="Nav header"></b:navLink>
+              <b:navLink value="Separated link" href="#"></b:navLink>
+              <b:navLink value="One more separated link" href="#"></b:navLink>
+            </b:dropMenu>
+          </b:navbarLinks>
+        </b:navBar>
+        <b:panel look="primary" title="Options">
+          <b:panelGrid columns="3">
+            <b:switch on-text="disabled" off-text="enabled" value="#{navBarBean.navBarDisabled}"
+                      update="dropMenuExample" onchange="ajax:navBarBean.onChange()"
+                      label="b:dropMenu contentDisabled=" />
+            <b:switch on-text="disabled" off-text="enabled" value="#{navBarBean.navBarLinksDisabled}"
+                      update="dropMenuExample" onchange="ajax:navBarBean.onChange()"
+                      label="b:dropMenu contentDisabled=" />
+            <b:switch on-text="disabled" off-text="enabled" value="#{navBarBean.dropMenuDisabled}"
+                      update="dropMenuExample" onchange="ajax:navBarBean.onChange()"
+                      label="b:dropMenu contentDisabled=" />
+          </b:panelGrid>
+        </b:panel>
+      </h:form>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
+        <![CDATA[
+        <b:navBar brand="Brand" brandHref="&num;" id="dropMenuExample" contentDisabled="&num;{navBarBean.navBarDisabled}">
+          <b:navbarLinks contentDisabled="&num;{navBarBean.navBarLinksDisabled}">
+            <b:navLink value="Home" href="&num;"></b:navLink>
+            <b:navLink value="Link" href="&num;"></b:navLink>
+            <b:navLink value="Link" href="&num;"></b:navLink>
+            <b:dropMenu value="Dropdown" contentDisabled="&num;{navBarBean.dropMenuDisabled}">
+              <b:navLink value="Action" href="&num;"></b:navLink>
+              <b:navLink value="Another action" href="&num;"></b:navLink>
+              <b:navLink value="Something else here" href="&num;"></b:navLink>
+              <b:navLink></b:navLink>
+              <b:navLink header="Nav header"></b:navLink>
+              <b:navLink value="Separated link" href="&num;"></b:navLink>
+              <b:navLink value="One more separated link" href="&num;"></b:navLink>
+            </b:dropMenu>
+          </b:navbarLinks>
+        </b:navBar>
+        ]]></script>
+      </f:facet>
+    </b:panel>
+
+    <br/>
+    <h2><a id="attributes">Reference section</a></h2>
+    <ui:include src="NavBarAttributes.xhtml" />
+    <ui:include src="NavbarLinksAttributes.xhtml" />
+    <ui:include src="NavLinkAttributes.xhtml" />
+    <ui:include src="NavCommandLinkAttributes.xhtml" />
+    <ui:include src="DropMenuAttributes.xhtml" />
+
+    <b:panel look="info" rendered="false">
+      <f:facet name="heading">
+        <b>Skinning</b>
+      </f:facet>
+      <ul>
+        <li>Tell the world which CSS classes can be used to change the
+        look of the component.</li>
+      </ul>
+    </b:panel>
+
+
+    <br/><br/><br/>
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+  </ui:define>
+</ui:composition>

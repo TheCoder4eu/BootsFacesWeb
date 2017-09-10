@@ -25,603 +25,603 @@
 
   <ui:define name="content">
     <style>td {padding: 8px;}</style>
-      <h1><a id="commandbutton">CommandButton</a></h1>
-      <p>The <code>&lt;b:commandButton /&gt;</code> tag extends the standard <code>&lt;h:commandButton /&gt;</code> with <a href="ajax.jsf">AJAX</a><A></A>, partial processing features
-      and <a href="searchExpressions.jsf">improved search expressions</a>. Last not least, it adds the Bootstrap style.</p>
+    <h1><a id="commandbutton">CommandButton</a></h1>
+    <p>The <code>&lt;b:commandButton /&gt;</code> tag extends the standard <code>&lt;h:commandButton /&gt;</code> with <a href="ajax.jsf">AJAX</a><A></A>, partial processing features
+    and <a href="searchExpressions.jsf">improved search expressions</a>. Last not least, it adds the Bootstrap style.</p>
 
-      <h2><a id="basic_usage">Basic usage</a></h2>
-      <p>The BootsFaces command button is used similarly to the PrimeFaces command button:</p>
-      <b:panel>
-        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-        <![CDATA[
-        <b:commandButton value="click me!" ajax="true" update="@next"
-                         actionListener="&num;{myBean.listener}" action="&num;{myBean.navigate}" />
-        ]]> </script>
-      </b:panel>
-      <ul>
+    <h2><a id="basic_usage">Basic usage</a></h2>
+    <p>The BootsFaces command button is used similarly to the PrimeFaces command button:</p>
+    <b:panel>
+      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+      <![CDATA[
+      <b:commandButton value="click me!" ajax="true" update="@next"
+                       actionListener="&num;{myBean.listener}" action="&num;{myBean.navigate}" />
+      ]]> </script>
+    </b:panel>
+    <ul>
       <li>By default, AJAX is deactivated. You can activate it by setting <code>ajax="true"</code>.</li>
       <li>Instead of the <code>render</code> attribute of standard JSF, BootsFaces follows the
-      tradition coined by PrimeFaces, using the attribute <code>update</code> to define which region of
+        tradition coined by PrimeFaces, using the attribute <code>update</code> to define which region of
       the HTML page is to be updated.</li>
       <li>The <code>update</code> attributes supports the full range of BootsFaces search expressions,
-      such as <code>@next</code>, <code>@parent</code> and so on.
+        such as <code>@next</code>, <code>@parent</code> and so on.
       See <a href="searchExpressions.jsf">the page on improved search expressions</a> for more details.</li>
       <li>Similarly, the <code>process</code> attribute allows you to influence partial processing. In the case
-      of the command button, the default value is <code>@form</code>. You can use the <code>process</code>
+        of the command button, the default value is <code>@form</code>. You can use the <code>process</code>
       attribute to reduce the number of input fields sent to the server.</li>
-      </ul>
+    </ul>
 
-      <h2><a id="the_bootstrap_look">The Bootstrap look</a></h2>
-      <p>By default, command buttons are gray (depending on your theme). You can configure them by using a different look:</p>
+    <h2><a id="the_bootstrap_look">The Bootstrap look</a></h2>
+    <p>By default, command buttons are gray (depending on your theme). You can configure them by using a different look:</p>
 
-      <b:panel title="Live preview" look="info" collapsible="false">
-        <h:form>
-          <b:panelGrid columns="6" size="sm" >
-            <b:commandButton value="primary" ajax="true" update="@none" look="primary" />
-            <b:commandButton value="info" ajax="true" update="@none" look="info" style="width:80px"/>
-            <b:commandButton value="success" ajax="true" update="@none" look="success" style="width:80px"/>
-            <b:commandButton value="warning" ajax="true" update="@none" look="warning" style="width:80px"/>
-            <b:commandButton value="danger" ajax="true" update="@none" look="danger" style="width:80px"/>
-            <b:commandButton value="default" ajax="true" update="@none" style="width:80px"/>
-          </b:panelGrid>
-        </h:form>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form>
+        <b:panelGrid columns="6" size="sm" >
+          <b:commandButton value="primary" ajax="true" update="@none" look="primary" />
+          <b:commandButton value="info" ajax="true" update="@none" look="info" style="width:80px"/>
+          <b:commandButton value="success" ajax="true" update="@none" look="success" style="width:80px"/>
+          <b:commandButton value="warning" ajax="true" update="@none" look="warning" style="width:80px"/>
+          <b:commandButton value="danger" ajax="true" update="@none" look="danger" style="width:80px"/>
+          <b:commandButton value="default" ajax="true" update="@none" style="width:80px"/>
+        </b:panelGrid>
+      </h:form>
 
-        <f:facet name="footer">
-          <strong>JSF markup:</strong>
-          <b:panel>
-            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-            <![CDATA[
-            <h:form>
-              <b:panelGrid columns="6" size="sm" >
-                <b:commandButton value="primary" ajax="true" update="@none" look="primary" style="width:80px"/>
-                <b:commandButton value="info" ajax="true" update="@none" look="info" style="width:80px"/>
-                <b:commandButton value="success" ajax="true" update="@none" look="success" style="width:80px"/>
-                <b:commandButton value="warning" ajax="true" update="@none" look="warning" style="width:80px"/>
-                <b:commandButton value="danger" ajax="true" update="@none" look="danger" style="width:80px"/>
-                <b:commandButton value="default" ajax="true" update="@none" style="width:80px"/>
-              </b:panelGrid>
-            </h:form> ]]> </script>
-          </b:panel>
-        </f:facet>
-      </b:panel>
-
-
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:form>
+            <b:panelGrid columns="6" size="sm" >
+              <b:commandButton value="primary" ajax="true" update="@none" look="primary" style="width:80px"/>
+              <b:commandButton value="info" ajax="true" update="@none" look="info" style="width:80px"/>
+              <b:commandButton value="success" ajax="true" update="@none" look="success" style="width:80px"/>
+              <b:commandButton value="warning" ajax="true" update="@none" look="warning" style="width:80px"/>
+              <b:commandButton value="danger" ajax="true" update="@none" look="danger" style="width:80px"/>
+              <b:commandButton value="default" ajax="true" update="@none" style="width:80px"/>
+            </b:panelGrid>
+          </h:form> ]]> </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
 
 
-      <h2><a id="ajax_and_javascript">AJAX and JavaScript</a><b:badge value="since 0.8.0" /></h2>
-      <p>The <code>&lt;b:commandButton &gt;</code> supports the full suite of JavaScript and AJAX events,
-      as described in <a href="ajax.jsf">the description of AJAX in BootsFaces</a>. Basically, each of the
-      many JavaScript callback handlers (the <code>on[event]</code> attributes) also supports AJAX.
-      At the time of writing (Sept 25, 2015), the list of supported events is blur, change, click, dblclick, focus, keydown, keypress,
-      keyup, mousedown, mousemove, mouseout, mouseover, mouseup and select.
-      </p>
 
-      <p>Be careful with the <code>actionListener</code> and the <code>action</code> callback when using one of
-      the JavaScript event listeners to call AJAX. The <code>actionListener</code> and the <code>action</code>
-      are always called, no matter which event originally triggered the AJAX call. As for the call order: </p>
-      <ul>
+
+    <h2><a id="ajax_and_javascript">AJAX and JavaScript</a><b:badge value="since 0.8.0" /></h2>
+    <p>The <code>&lt;b:commandButton &gt;</code> supports the full suite of JavaScript and AJAX events,
+    as described in <a href="ajax.jsf">the description of AJAX in BootsFaces</a>. Basically, each of the
+    many JavaScript callback handlers (the <code>on[event]</code> attributes) also supports AJAX.
+    At the time of writing (Sept 25, 2015), the list of supported events is blur, change, click, dblclick, focus, keydown, keypress,
+    keyup, mousedown, mousemove, mouseout, mouseover, mouseup and select.
+    </p>
+
+    <p>Be careful with the <code>actionListener</code> and the <code>action</code> callback when using one of
+    the JavaScript event listeners to call AJAX. The <code>actionListener</code> and the <code>action</code>
+    are always called, no matter which event originally triggered the AJAX call. As for the call order: </p>
+    <ul>
       <li>The dedicated <code>on[event]</code>  is called first.
       </li>
       <li>The <code>actionListener</code> is called second. It's a Java method that may or may not take the <code>ActionEvent</code>
       as attribute.</li>
       <li>The <code>action</code> is called last. This is because it's the only Java method that may trigger a navigation to another page.
-      In order to trigger a navigation, this method may return a
-      String, which triggers a navigation to another page (unless it is null).
-      Note that navigations ignore the <code>update</code> attribute, if the command button is declared as an AJAX button.
-      That's because an AJAX navigation usually replaces the entire page. Therefore, AJAX navigations are
+        In order to trigger a navigation, this method may return a
+        String, which triggers a navigation to another page (unless it is null).
+        Note that navigations ignore the <code>update</code> attribute, if the command button is declared as an AJAX button.
+        That's because an AJAX navigation usually replaces the entire page. Therefore, AJAX navigations are
       always performed using <code>update="@all"</code></li>
-      </ul>
+    </ul>
 
-      <p>The command button allows you to freely mix JavaScript calls and AJAX calls in the JavaScript
-      callback attributes. The demo below uses this feature to suppress AJAX calls on simple click or on double clicks if the corresponding
-      check box is set. It also calls Java method when the mouse point enters the command button (<code>onmouseover</code>),
-      and when it leaves it again (<code>onmouseout</code>):</p>
+    <p>The command button allows you to freely mix JavaScript calls and AJAX calls in the JavaScript
+    callback attributes. The demo below uses this feature to suppress AJAX calls on simple click or on double clicks if the corresponding
+    check box is set. It also calls Java method when the mouse point enters the command button (<code>onmouseover</code>),
+    and when it leaves it again (<code>onmouseout</code>):</p>
 
-      <b:panel title="Live preview" look="info" collapsible="false">
-        <h:form id="form1">
-          <b:panelGrid columns="1">
-            <b:selectBooleanCheckbox value="#{commandButtonBean.suppressClick}" caption="suppress click (JavaScript)" id="click" />
-            <b:selectBooleanCheckbox value="#{commandButtonBean.suppressDoubleClick}" caption="suppress doubleclick (JavaScript)"
-                                     id="doubleclick" />
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form id="form1">
+        <b:panelGrid columns="1">
+          <b:selectBooleanCheckbox value="#{commandButtonBean.suppressClick}" caption="suppress click (JavaScript)" id="click" />
+          <b:selectBooleanCheckbox value="#{commandButtonBean.suppressDoubleClick}" caption="suppress doubleclick (JavaScript)"
+                                   id="doubleclick" />
 
-            <b:commandButton value="click me!" ajax="true" update="@(.message-well)"
-                             style="padding-left:20px"
-                             look="success"
-                             onclick="var disabled = document.getElementsByName('form1:click')[0].checked; if (disabled) return false; ajax:commandButtonBean.onAction();javascript:return false;"
-                             onmouseover="ajax:commandButtonBean.onMouseOver();"
-                             onmouseout="ajax:commandButtonBean.onMouseOut();"
-                             ondblclick="var disabled = document.getElementsByName('form1:doubleclick')[0].checked; if (disabled) return false;ajax:commandButtonBean.onDoubleClick()" />
-            <b:well id="message" styleClass="message-well" style="margin-top:10px">
-              <p>The last message processed by the server-side Java bean was:</p>
-              <p>#{commandButtonBean.message}</p>
-            </b:well>
-          </b:panelGrid>
-        </h:form>
-
-        <f:facet name="footer">
-          <strong>JSF markup:</strong>
-          <b:panel>
-            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-            <![CDATA[
-            <h:form id="form1">
-              <b:panelGrid columns="12">
-                <b:selectBooleanCheckbox value="&num;{commandButtonBean.suppressClick}" caption="suppress click (JavaScript)" id="click" />
-                <b:selectBooleanCheckbox value="&num;{commandButtonBean.suppressDoubleClick}" caption="suppress doubleclick (JavaScript)"
-                                         id="doubleclick" />
-
-                <b:commandButton value="click me!" ajax="true" update="@(.message-well)"
-                                 style="padding-left:20px"
-                                 look="success"
-                                 onclick="var disabled = document.getElementsByName('form1:click')[0].checked; if (disabled) return false; ajax:commandButtonBean.onAction();javascript:return false;"
-                                 onmouseover="ajax:commandButtonBean.onMouseOver();"
-                                 onmouseout="ajax:commandButtonBean.onMouseOut();"
-                                 ondblclick="var disabled = document.getElementsByName('form1:doubleclick')[0].checked; if (disabled) return false;ajax:commandButtonBean.onDoubleClick()" />
-                <b:well id="message" styleClass="message-well" style="margin-top:10px">
-                  <p>The last message processed by the server-side Java bean was:</p>
-                  <p>&num;{commandButtonBean.message}</p>
-                </b:well>
-              </b:panelGrid>
-            </h:form>
-            ]]> </script>
-          </b:panel>
-        </f:facet>
-      </b:panel>
-
-
-      <p>To get familiar with BootsFaces AJAX, try the
-      <a target="#" href="https://github.com/stephanrauh/BootsFaces-Examples/tree/master/AJAX">BootsFaces AJAX demo project</a>.</p>
-
-      <h2><a id="ajax">AJAX, mouse events and BlockUI</a></h2>
-      <p>If BlockUI is active, every AJAX request triggers a <code>mouseOutEvent</code>. When the AJAX request has
-      been processed and the BlockUI overlay pane is hidden, a <code>mouseOverEvent</code> is triggered. Keep this
-      in mind if you need to use the mouse events. We had to deactivate the BlockUI in order to make the demo above work.</p>
-
-
-      <h2><a id="icons">Icons</a></h2>
-      <p>
-      Like Buttons, also CommandButtons can can have an icon adding the attribute
-      <code>icon</code>
-      (on the left or right, default is left).
-      </p>
-      <p>
-      You can control the icon position by specifying it in the attribute
-      <code>iconAlign</code>
-      .
-      </p>
-      <p>
-      The Icon attribute will add a Glyphicon icon (Bootstrap's default), but now you can also use a Font Awesome icon using
-      the
-      <code>iconAwesome</code>
-      attribute instead of
-      <code>icon</code>
-      .
-      </p>
-      <p>
-      Both
-      <code>icon</code>
-      and
-      <code>iconAwesome</code>
-      attributes, require the icon name as value the icon name without the trailing <b>glyphicon-</b> prefix and <b>fa-</b>
-      prefix respectively.
-      </p>
-      <p>
-      In the example below, the rightmost button has the
-      <code>iconAwesome="thumbs-up"</code>
-      attribute.
-      </p>
-
-
-      <b:panel title="Live preview" look="info" collapsible="false">
-        <h:form id="form">
-
-          <b:well>
-            <h3>Personal Information</h3>
-            <h:panelGrid id="inform" columns="3">
-              <h:outputLabel for="firstname" value="Firstname: *" />
-              <b:inputText id="firstname" value="#{informBean.firstname}">
-                <f:validateLength minimum="2" />
-              </b:inputText>
-              <h:message for="firstname" />
-
-              <h:outputLabel for="familyname" value="Family (surname/last) name: *" />
-              <b:inputText id="familyname" value="#{informBean.familyname}" required="true" />
-              <h:message for="familyname" />
-            </h:panelGrid>
-            <b:fetchBeanInfos />
+          <b:commandButton value="click me!" ajax="true" update="@(.message-well)"
+                           style="padding-left:20px"
+                           look="success"
+                           onclick="var disabled = document.getElementsByName('form1:click')[0].checked; if (disabled) return false; ajax:commandButtonBean.onAction();javascript:return false;"
+                           onmouseover="ajax:commandButtonBean.onMouseOver();"
+                           onmouseout="ajax:commandButtonBean.onMouseOut();"
+                           ondblclick="var disabled = document.getElementsByName('form1:doubleclick')[0].checked; if (disabled) return false;ajax:commandButtonBean.onDoubleClick()" />
+          <b:well id="message" styleClass="message-well" style="margin-top:10px">
+            <p>The last message processed by the server-side Java bean was:</p>
+            <p>#{commandButtonBean.message}</p>
           </b:well>
-          <b:row>
-            <b:column col-sm="2">
-              <b:commandButton value="Non-Ajax Submit" />
-            </b:column>
-            <b:column col-sm="2">
-              <b:commandButton value="Ajax Submit" ajax="true" update="form:inform infoshow" look="primary" />
-            </b:column>
-            <b:column col-sm="2">
-              <b:commandButton value="With Icon" ajax="true" update="form:inform infoshow" icon="plus-sign"
-                               look="success" />
-            </b:column>
-            <b:column col-sm="2">
-              <b:commandButton value="Ajax Modal" ajax="true" update="form:inform amodal" look="inverse"
-                               oncomplete="if(validationFailed) alert('Please enter valid input before opening the modal'); else $('.modal-example').modal('show')" />
-            </b:column>
-            <b:column col-sm="1">
-              <b:commandButton ajax="true" update="form:inform infoshow" iconAwesome="thumbs-up"
-                               look="info" tooltip="Thumbs up!" />
-            </b:column>
-            <b:column col-sm="1">
-              <b:commandButton ajax="true" update="form:inform infoshow"
-                               style="padding: 0; border: none; background: none;color: #000"
-                               tooltip="This looks like an icon, but it's a commandButton">
-              <b:iconAwesome name="arrow-down"></b:iconAwesome>
-              </b:commandButton>
-            </b:column>
-            <b:column col-sm="2">
-              <b:commandButton value="I'm disabled" disabled="true" ajax="true"
-                               iconAwesome="thumbs-down" look="info" title="Disabled!" />
-            </b:column>
-          </b:row>
-          <b:row>
-            <b:column col-sm="2">
-              <p></p>
-              <p>Partial processing:</p>
-              <p></p>
-            </b:column>
-          </b:row>
-          <b:row>
-            <b:column col-sm="3">
-              <b:commandButton value="Submit first name" ajax="true" update="form:inform infoshow" process="@form:firstname" look="primary" />
-            </b:column>
-            <b:column col-sm="3">
-              <b:commandButton value="Submit surname" ajax="true" update="form:inform infoshow" process="@form:familyname" look="primary" />
-            </b:column>
-            <b:column col-sm="3">
-              <b:commandButton value="Submit both" ajax="true" update="form:inform infoshow" process="@form:firstname @form:familyname" look="primary" />
-            </b:column>
-          </b:row>
+        </b:panelGrid>
+      </h:form>
 
-          <b:well id="infoshow">
-            <strong>Submitted information:</strong>
-            <h:panelGrid columns="2">
-              <h:outputText value="Firstname: " />
-              <h:outputText value="#{informBean.firstname}" />
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:form id="form1">
+            <b:panelGrid columns="12">
+              <b:selectBooleanCheckbox value="&num;{commandButtonBean.suppressClick}" caption="suppress click (JavaScript)" id="click" />
+              <b:selectBooleanCheckbox value="&num;{commandButtonBean.suppressDoubleClick}" caption="suppress doubleclick (JavaScript)"
+                                       id="doubleclick" />
 
-              <h:outputText value="Family (surname/last) name: " />
-              <h:outputText value="#{informBean.familyname}" />
-            </h:panelGrid>
-          </b:well>
+              <b:commandButton value="click me!" ajax="true" update="@(.message-well)"
+                               style="padding-left:20px"
+                               look="success"
+                               onclick="var disabled = document.getElementsByName('form1:click')[0].checked; if (disabled) return false; ajax:commandButtonBean.onAction();javascript:return false;"
+                               onmouseover="ajax:commandButtonBean.onMouseOver();"
+                               onmouseout="ajax:commandButtonBean.onMouseOut();"
+                               ondblclick="var disabled = document.getElementsByName('form1:doubleclick')[0].checked; if (disabled) return false;ajax:commandButtonBean.onDoubleClick()" />
+              <b:well id="message" styleClass="message-well" style="margin-top:10px">
+                <p>The last message processed by the server-side Java bean was:</p>
+                <p>&num;{commandButtonBean.message}</p>
+              </b:well>
+            </b:panelGrid>
+          </h:form>
+          ]]> </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
 
-          <b:modal id="amodal" class="modal-example" title="Person">
-            <h:panelGrid columns="2">
-              <h:outputText value="Firstname: " />
-              <h:outputText value="#{informBean.firstname}" />
 
-              <h:outputText value="Family (surname/last) name: " />
-              <h:outputText value="#{informBean.familyname}" />
-            </h:panelGrid>
-            <f:facet name="footer">
-              <b:button value="close" dismiss="modal" onclick="return false;" />
-              <b:button value="Ok" look="primary" />
-            </f:facet>
-          </b:modal>
-        </h:form>
+    <p>To get familiar with BootsFaces AJAX, try the
+    <a target="#" href="https://github.com/stephanrauh/BootsFaces-Examples/tree/master/AJAX">BootsFaces AJAX demo project</a>.</p>
 
-        <f:facet name="footer">
-          <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
-            <b:tab title="JSF markup (buttons only)">
-              <b:panel>
-                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                <![CDATA[
-                <b:commandButton value="Non-Ajax Submit"/>
+    <h2><a id="ajax">AJAX, mouse events and BlockUI</a></h2>
+    <p>If BlockUI is active, every AJAX request triggers a <code>mouseOutEvent</code>. When the AJAX request has
+    been processed and the BlockUI overlay pane is hidden, a <code>mouseOverEvent</code> is triggered. Keep this
+    in mind if you need to use the mouse events. We had to deactivate the BlockUI in order to make the demo above work.</p>
 
-                <b:commandButton value="Ajax Submit" ajax="true" update="form:inform infoshow" look="primary" />
 
-                <b:commandButton value="With Icon" ajax="true" update="form:inform infoshow" icon="plus-sign" look="success" />
+    <h2><a id="icons">Icons</a></h2>
+    <p>
+    Like Buttons, also CommandButtons can can have an icon adding the attribute
+    <code>icon</code>
+    (on the left or right, default is left).
+    </p>
+    <p>
+    You can control the icon position by specifying it in the attribute
+    <code>iconAlign</code>
+    .
+    </p>
+    <p>
+    The Icon attribute will add a Glyphicon icon (Bootstrap's default), but now you can also use a Font Awesome icon using
+    the
+    <code>iconAwesome</code>
+    attribute instead of
+    <code>icon</code>
+    .
+    </p>
+    <p>
+    Both
+    <code>icon</code>
+    and
+    <code>iconAwesome</code>
+    attributes, require the icon name as value the icon name without the trailing <b>glyphicon-</b> prefix and <b>fa-</b>
+    prefix respectively.
+    </p>
+    <p>
+    In the example below, the rightmost button has the
+    <code>iconAwesome="thumbs-up"</code>
+    attribute.
+    </p>
 
-                <b:commandButton value="Ajax Modal" ajax="true" update="form:inform amodal" look="inverse"
-                                 oncomplete="if(validationFailed) alert('Please enter valid input before opening the modal'); else $('#amodal').modal('show')" />
 
-                <b:commandButton value="" ajax="true" update="form:inform infoshow" iconAwesome="thumbs-up" look="info" />
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form id="form">
 
-                <h:commandButton ajax="true" update="form:inform infoshow" tooltip="This looks like an icon, but it's a commandButton">
-                <b:iconAwesome name="arrow-down"></b:iconAwesome>
-                </h:commandButton>
+        <b:well>
+          <h3>Personal Information</h3>
+          <h:panelGrid id="inform" columns="3">
+            <h:outputLabel for="firstname" value="Firstname: *" />
+            <b:inputText id="firstname" value="#{informBean.firstname}">
+              <f:validateLength minimum="2" />
+            </b:inputText>
+            <h:message for="firstname" />
 
-                <b:commandButton value="I'm disabled" disabled="true" ajax="true" iconAwesome="thumbs-down" look="info" title="Disabled!" />
-
-                <b:commandButton value="Submit first name" ajax="true" update="form:inform infoshow" process="@form:firstname" look="primary" />
-
-                <b:commandButton value="Submit surname" ajax="true" update="form:inform infoshow" process="@form:familyname" look="primary" />
-
-                <b:commandButton value="Submit both" ajax="true" update="form:inform infoshow" process="@form:firstname @form:familyname" look="primary" />
-                ]]></script>
-              </b:panel>
-            </b:tab>
-            <b:tab title="JSF complete Markup">
-              <b:panel>
-                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                <![CDATA[
-                <b:well>
-                  <h3>Personal Information</h3>
-                  <h:panelGrid id="inform" columns="3">
-                    <h:outputLabel for="firstname" value="Firstname: *" />
-                    <b:inputText id="firstname" value="#{informBean.firstname}">
-                      <f:validateLength minimum="2" />
-                    </b:inputText>
-                    <h:message for="firstname" />
-
-                    <h:outputLabel for="familyname" value="Family (surname/last) name: *" />
-                    <b:inputText id="familyname" value="#{informBean.familyname}" required="true" />
-                    <h:message for="familyname" />
-                    <b:fetchBeanInfos />
-                  </h:panelGrid>
-                </b:well>
-                <b:row>
-                  <b:column span="2">
-                    <b:commandButton value="Non-Ajax Submit" />
-                  </b:column>
-                  <b:column span="2">
-                    <b:commandButton value="Ajax Submit" ajax="true" update="form:inform infoshow" look="primary" />
-                  </b:column>
-                  <b:column span="2">
-                    <b:commandButton value="With Icon" ajax="true" update="form:inform infoshow" icon="plus-sign"
-                                     look="success" />
-                  </b:column>
-                  <b:column span="2">
-                    <b:commandButton value="Ajax Modal" ajax="true" update="form:inform amodal" look="inverse"
-                                     oncomplete="if(validationFailed) alert('Please enter valid input before opening the modal'); else $('.modal-example').modal('show')" />
-                  </b:column>
-                  <b:column span="1">
-                    <b:commandButton ajax="true" update="form:inform infoshow" iconAwesome="thumbs-up"
-                                     look="info" tooltip="Thumbs up!" />
-                  </b:column>
-                  <b:column span="1">
-                    <b:commandButton ajax="true" update="form:inform infoshow"
-                                     style="padding: 0; border: none; background: none;color: #000"
-                                     tooltip="This looks like an icon, but it's a commandButton">
-                    <b:iconAwesome name="arrow-down"></b:iconAwesome>
-                    </b:commandButton>
-                  </b:column>
-                  <b:column span="2">
-                    <b:commandButton value="I'm disabled" disabled="true" ajax="true"
-                                     iconAwesome="thumbs-down" look="info" title="Disabled!" />
-                  </b:column>
-                </b:row>
-                <b:row>
-                  <b:column span="2">
-                    <b:commandButton value="Submit first name" ajax="true" update="form:inform infoshow" process="@form:firstname" look="primary" />
-                  </b:column>
-                  <b:column span="2">
-                    <b:commandButton value="Submit surname" ajax="true" update="form:inform infoshow" process="@form:familyname" look="primary" />
-                  </b:column>
-                  <b:column span="2">
-                    <b:commandButton value="Submit both" ajax="true" update="form:inform infoshow" process="@form:firstname @form:familyname" look="primary" />
-                  </b:column>
-                </b:row>
-                <b:well id="infoshow">
-                  <strong>Submitted information:</strong>
-                  <h:panelGrid columns="2">
-                    <h:outputText value="Firstname: " />
-                    <h:outputText value="#{informBean.firstname}" />
-
-                    <h:outputText value="Family (surname/last) name: " />
-                    <h:outputText value="#{informBean.familyname}" />
-                  </h:panelGrid>
-                </b:well>
-                <b:modal id="amodal" class="modal-example" title="Person">
-                  <h:panelGrid columns="2">
-                    <h:outputText value="Firstname: " />
-                    <h:outputText value="#{informBean.firstname}" />
-
-                    <h:outputText value="Family (surname/last) name: " />
-                    <h:outputText value="#{informBean.familyname}" />
-                  </h:panelGrid>
-                  <f:facet name="footer">
-                    <b:button value="close" dismiss="modal" onclick="return false;" />
-                    <b:button value="Ok" look="primary" />
-                  </f:facet>
-                </b:modal>
-                ]]></script>
-              </b:panel>
-            </b:tab>
-          </b:tabView>
-        </f:facet>
-      </b:panel>
-
-      <h2><a id="icon_modifiers">Icon modifiers</a><b:badge value="since 0.9.0" /></h2>
-      <p>Both Fontawesome icons and Glyphicons can be decorated with modifiers:</p>
-
-      <b:panel title="Live preview" look="info" collapsible="false">
-        <h:form>
-          <h:panelGrid columns="1">
-            <b:commandButton icon-spin="true" iconAwesome="thumbs-down"
-                             value="Thumbs up or thumbs down?" onclick="return false;"
-                             look="info" title="spin='true'" />
-            <b:commandButton icon-size="2x" iconAwesome="thumbs-up"
-                             value="big thumbs up!" onclick="return false;"
-                             look="info" title="icon-size='2x'" />
-            <b:commandButton icon-size="3x" iconAwesome="thumbs-up"
-                             value="even bigger thumbs up!" onclick="return false;"
-                             look="info" title="icon-size='3x'" />
-            <b:commandButton icon-flip="h" iconAwesome="thumbs-up"
-                             value="left-hand thumbs up" onclick="return false;"
-                             look="info" title="icon-flip='h'" />
-            <b:commandButton icon-rotate="l" iconAwesome="thumbs-up"
-                             value="go back" onclick="return false;"
-                             look="info" title="icon-rotate='l'" />
-            <b:commandButton icon-spin="true" icon="cd" icon-size="2x"
-                             value="Glyphicon" onclick="return false;"
-                             look="info" title="icon-spin='true' icon-size='2x'" />
+            <h:outputLabel for="familyname" value="Family (surname/last) name: *" />
+            <b:inputText id="familyname" value="#{informBean.familyname}" required="true" />
+            <h:message for="familyname" />
           </h:panelGrid>
-        </h:form>
+          <b:fetchBeanInfos />
+        </b:well>
+        <b:row>
+          <b:column col-sm="2">
+            <b:commandButton value="Non-Ajax Submit" />
+          </b:column>
+          <b:column col-sm="2">
+            <b:commandButton value="Ajax Submit" ajax="true" update="form:inform infoshow" look="primary" />
+          </b:column>
+          <b:column col-sm="2">
+            <b:commandButton value="With Icon" ajax="true" update="form:inform infoshow" icon="plus-sign"
+                             look="success" />
+          </b:column>
+          <b:column col-sm="2">
+            <b:commandButton value="Ajax Modal" ajax="true" update="form:inform amodal" look="inverse"
+                             oncomplete="if(validationFailed) alert('Please enter valid input before opening the modal'); else $('.modal-example').modal('show')" />
+          </b:column>
+          <b:column col-sm="1">
+            <b:commandButton ajax="true" update="form:inform infoshow" iconAwesome="thumbs-up"
+                             look="info" tooltip="Thumbs up!" />
+          </b:column>
+          <b:column col-sm="1">
+            <b:commandButton ajax="true" update="form:inform infoshow"
+                             style="padding: 0; border: none; background: none;color: #000"
+                             tooltip="This looks like an icon, but it's a commandButton">
+              <b:iconAwesome name="arrow-down"></b:iconAwesome>
+            </b:commandButton>
+          </b:column>
+          <b:column col-sm="2">
+            <b:commandButton value="I'm disabled" disabled="true" ajax="true"
+                             iconAwesome="thumbs-down" look="info" title="Disabled!" />
+          </b:column>
+        </b:row>
+        <b:row>
+          <b:column col-sm="2">
+            <p></p>
+            <p>Partial processing:</p>
+            <p></p>
+          </b:column>
+        </b:row>
+        <b:row>
+          <b:column col-sm="3">
+            <b:commandButton value="Submit first name" ajax="true" update="form:inform infoshow" process="@form:firstname" look="primary" />
+          </b:column>
+          <b:column col-sm="3">
+            <b:commandButton value="Submit surname" ajax="true" update="form:inform infoshow" process="@form:familyname" look="primary" />
+          </b:column>
+          <b:column col-sm="3">
+            <b:commandButton value="Submit both" ajax="true" update="form:inform infoshow" process="@form:firstname @form:familyname" look="primary" />
+          </b:column>
+        </b:row>
 
-        <f:facet name="footer">
-          <strong>JSF markup:</strong>
-          <b:panel>
-            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-            <![CDATA[
-            <h:form>
-              <h:panelGrid columns="1">
-                <b:commandButton icon-spin="true" iconAwesome="thumbs-down"
-                                 value="Thumbs up or thumbs down?" onclick="return false;"
-                                 look="info" title="spin='true'" />
-                <b:commandButton icon-size="2x" iconAwesome="thumbs-up"
-                                 value="big thumbs up!" onclick="return false;"
-                                 look="info" title="icon-size='2x'" />
-                <b:commandButton icon-size="3x" iconAwesome="thumbs-up"
-                                 value="even bigger thumbs up!" onclick="return false;"
-                                 look="info" title="icon-size='3x'" />
-                <b:commandButton icon-flip="h" iconAwesome="thumbs-up"
-                                 value="left-hand thumbs up" onclick="return false;"
-                                 look="info" title="icon-flip='h'" />
-                <b:commandButton icon-rotate="l" iconAwesome="thumbs-up"
-                                 value="go back" onclick="return false;"
-                                 look="info" title="icon-rotate='l'" />
-                <b:commandButton icon-spin="true" icon="cd" icon-size="2x"
-                                 value="Glyphicon" onclick="return false;"
-                                 look="info" title="icon-spin='true' icon-size='2x'" />
-              </h:panelGrid>
-            </h:form>
-            ]]>
-            </script>
-          </b:panel>
-        </f:facet>
-      </b:panel>
+        <b:well id="infoshow">
+          <strong>Submitted information:</strong>
+          <h:panelGrid columns="2">
+            <h:outputText value="Firstname: " />
+            <h:outputText value="#{informBean.firstname}" />
+
+            <h:outputText value="Family (surname/last) name: " />
+            <h:outputText value="#{informBean.familyname}" />
+          </h:panelGrid>
+        </b:well>
+
+        <b:modal id="amodal" class="modal-example" title="Person">
+          <h:panelGrid columns="2">
+            <h:outputText value="Firstname: " />
+            <h:outputText value="#{informBean.firstname}" />
+
+            <h:outputText value="Family (surname/last) name: " />
+            <h:outputText value="#{informBean.familyname}" />
+          </h:panelGrid>
+          <f:facet name="footer">
+            <b:button value="close" dismiss="modal" onclick="return false;" />
+            <b:button value="Ok" look="primary" />
+          </f:facet>
+        </b:modal>
+      </h:form>
+
+      <f:facet name="footer">
+        <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+          <b:tab title="JSF markup (buttons only)">
+            <b:panel>
+              <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+              <![CDATA[
+              <b:commandButton value="Non-Ajax Submit"/>
+
+              <b:commandButton value="Ajax Submit" ajax="true" update="form:inform infoshow" look="primary" />
+
+              <b:commandButton value="With Icon" ajax="true" update="form:inform infoshow" icon="plus-sign" look="success" />
+
+              <b:commandButton value="Ajax Modal" ajax="true" update="form:inform amodal" look="inverse"
+                               oncomplete="if(validationFailed) alert('Please enter valid input before opening the modal'); else $('#amodal').modal('show')" />
+
+              <b:commandButton value="" ajax="true" update="form:inform infoshow" iconAwesome="thumbs-up" look="info" />
+
+              <h:commandButton ajax="true" update="form:inform infoshow" tooltip="This looks like an icon, but it's a commandButton">
+                <b:iconAwesome name="arrow-down"></b:iconAwesome>
+              </h:commandButton>
+
+              <b:commandButton value="I'm disabled" disabled="true" ajax="true" iconAwesome="thumbs-down" look="info" title="Disabled!" />
+
+              <b:commandButton value="Submit first name" ajax="true" update="form:inform infoshow" process="@form:firstname" look="primary" />
+
+              <b:commandButton value="Submit surname" ajax="true" update="form:inform infoshow" process="@form:familyname" look="primary" />
+
+              <b:commandButton value="Submit both" ajax="true" update="form:inform infoshow" process="@form:firstname @form:familyname" look="primary" />
+              ]]></script>
+            </b:panel>
+          </b:tab>
+          <b:tab title="JSF complete Markup">
+            <b:panel>
+              <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+              <![CDATA[
+              <b:well>
+                <h3>Personal Information</h3>
+                <h:panelGrid id="inform" columns="3">
+                  <h:outputLabel for="firstname" value="Firstname: *" />
+                  <b:inputText id="firstname" value="#{informBean.firstname}">
+                    <f:validateLength minimum="2" />
+                  </b:inputText>
+                  <h:message for="firstname" />
+
+                  <h:outputLabel for="familyname" value="Family (surname/last) name: *" />
+                  <b:inputText id="familyname" value="#{informBean.familyname}" required="true" />
+                  <h:message for="familyname" />
+                  <b:fetchBeanInfos />
+                </h:panelGrid>
+              </b:well>
+              <b:row>
+                <b:column span="2">
+                  <b:commandButton value="Non-Ajax Submit" />
+                </b:column>
+                <b:column span="2">
+                  <b:commandButton value="Ajax Submit" ajax="true" update="form:inform infoshow" look="primary" />
+                </b:column>
+                <b:column span="2">
+                  <b:commandButton value="With Icon" ajax="true" update="form:inform infoshow" icon="plus-sign"
+                                   look="success" />
+                </b:column>
+                <b:column span="2">
+                  <b:commandButton value="Ajax Modal" ajax="true" update="form:inform amodal" look="inverse"
+                                   oncomplete="if(validationFailed) alert('Please enter valid input before opening the modal'); else $('.modal-example').modal('show')" />
+                </b:column>
+                <b:column span="1">
+                  <b:commandButton ajax="true" update="form:inform infoshow" iconAwesome="thumbs-up"
+                                   look="info" tooltip="Thumbs up!" />
+                </b:column>
+                <b:column span="1">
+                  <b:commandButton ajax="true" update="form:inform infoshow"
+                                   style="padding: 0; border: none; background: none;color: #000"
+                                   tooltip="This looks like an icon, but it's a commandButton">
+                    <b:iconAwesome name="arrow-down"></b:iconAwesome>
+                  </b:commandButton>
+                </b:column>
+                <b:column span="2">
+                  <b:commandButton value="I'm disabled" disabled="true" ajax="true"
+                                   iconAwesome="thumbs-down" look="info" title="Disabled!" />
+                </b:column>
+              </b:row>
+              <b:row>
+                <b:column span="2">
+                  <b:commandButton value="Submit first name" ajax="true" update="form:inform infoshow" process="@form:firstname" look="primary" />
+                </b:column>
+                <b:column span="2">
+                  <b:commandButton value="Submit surname" ajax="true" update="form:inform infoshow" process="@form:familyname" look="primary" />
+                </b:column>
+                <b:column span="2">
+                  <b:commandButton value="Submit both" ajax="true" update="form:inform infoshow" process="@form:firstname @form:familyname" look="primary" />
+                </b:column>
+              </b:row>
+              <b:well id="infoshow">
+                <strong>Submitted information:</strong>
+                <h:panelGrid columns="2">
+                  <h:outputText value="Firstname: " />
+                  <h:outputText value="#{informBean.firstname}" />
+
+                  <h:outputText value="Family (surname/last) name: " />
+                  <h:outputText value="#{informBean.familyname}" />
+                </h:panelGrid>
+              </b:well>
+              <b:modal id="amodal" class="modal-example" title="Person">
+                <h:panelGrid columns="2">
+                  <h:outputText value="Firstname: " />
+                  <h:outputText value="#{informBean.firstname}" />
+
+                  <h:outputText value="Family (surname/last) name: " />
+                  <h:outputText value="#{informBean.familyname}" />
+                </h:panelGrid>
+                <f:facet name="footer">
+                  <b:button value="close" dismiss="modal" onclick="return false;" />
+                  <b:button value="Ok" look="primary" />
+                </f:facet>
+              </b:modal>
+              ]]></script>
+            </b:panel>
+          </b:tab>
+        </b:tabView>
+      </f:facet>
+    </b:panel>
+
+    <h2><a id="icon_modifiers">Icon modifiers</a><b:badge value="since 0.9.0" /></h2>
+    <p>Both Fontawesome icons and Glyphicons can be decorated with modifiers:</p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form>
+        <h:panelGrid columns="1">
+          <b:commandButton icon-spin="true" iconAwesome="thumbs-down"
+                           value="Thumbs up or thumbs down?" onclick="return false;"
+                           look="info" title="spin='true'" />
+          <b:commandButton icon-size="2x" iconAwesome="thumbs-up"
+                           value="big thumbs up!" onclick="return false;"
+                           look="info" title="icon-size='2x'" />
+          <b:commandButton icon-size="3x" iconAwesome="thumbs-up"
+                           value="even bigger thumbs up!" onclick="return false;"
+                           look="info" title="icon-size='3x'" />
+          <b:commandButton icon-flip="h" iconAwesome="thumbs-up"
+                           value="left-hand thumbs up" onclick="return false;"
+                           look="info" title="icon-flip='h'" />
+          <b:commandButton icon-rotate="l" iconAwesome="thumbs-up"
+                           value="go back" onclick="return false;"
+                           look="info" title="icon-rotate='l'" />
+          <b:commandButton icon-spin="true" icon="cd" icon-size="2x"
+                           value="Glyphicon" onclick="return false;"
+                           look="info" title="icon-spin='true' icon-size='2x'" />
+        </h:panelGrid>
+      </h:form>
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:form>
+            <h:panelGrid columns="1">
+              <b:commandButton icon-spin="true" iconAwesome="thumbs-down"
+                               value="Thumbs up or thumbs down?" onclick="return false;"
+                               look="info" title="spin='true'" />
+              <b:commandButton icon-size="2x" iconAwesome="thumbs-up"
+                               value="big thumbs up!" onclick="return false;"
+                               look="info" title="icon-size='2x'" />
+              <b:commandButton icon-size="3x" iconAwesome="thumbs-up"
+                               value="even bigger thumbs up!" onclick="return false;"
+                               look="info" title="icon-size='3x'" />
+              <b:commandButton icon-flip="h" iconAwesome="thumbs-up"
+                               value="left-hand thumbs up" onclick="return false;"
+                               look="info" title="icon-flip='h'" />
+              <b:commandButton icon-rotate="l" iconAwesome="thumbs-up"
+                               value="go back" onclick="return false;"
+                               look="info" title="icon-rotate='l'" />
+              <b:commandButton icon-spin="true" icon="cd" icon-size="2x"
+                               value="Glyphicon" onclick="return false;"
+                               look="info" title="icon-spin='true' icon-size='2x'" />
+            </h:panelGrid>
+          </h:form>
+          ]]>
+          </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
 
 
 
 
-      <h2><a id="custom_icons_and_arbitrary_content_of_a_command_button">Custom icons and arbitrary content of a command button</a></h2>
-      <p>You can put arbitrary content in the caption of the command button.
-      You aren't limited to simple icons and text.</p>
+    <h2><a id="custom_icons_and_arbitrary_content_of_a_command_button">Custom icons and arbitrary content of a command button</a></h2>
+    <p>You can put arbitrary content in the caption of the command button.
+    You aren't limited to simple icons and text.</p>
 
-      <b:panel title="Live preview" look="info" collapsible="false">
-        <h:form>
-          <b:commandButton style="width:280px"
-                           look="info">
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form>
+        <b:commandButton style="width:280px"
+                         look="info">
+          This text
+          <b:image library="images"
+                   name="BSFLogo.png"
+                   style="width:20%" height="20%"/>
+          surrounds an image.
+        </b:commandButton>
+      </h:form>
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <b:commandButton style="width:280px" look="info">
             This text
-            <b:image library="images"
-                     name="BSFLogo.png"
-                     style="width:20%" height="20%"/>
+            <b:image library="images" name="BSFLogo.png" style="width:20%" height="20%"/>
             surrounds an image.
           </b:commandButton>
-        </h:form>
+          ]]></script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
 
-        <f:facet name="footer">
-          <strong>JSF markup:</strong>
-          <b:panel>
-            <script type="syntaxhighlighter"
-            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-            <![CDATA[
-            <b:commandButton style="width:280px" look="info">
-              This text
-              <b:image library="images" name="BSFLogo.png" style="width:20%" height="20%"/>
-              surrounds an image.
-            </b:commandButton>
-            ]]></script>
-          </b:panel>
-        </f:facet>
-      </b:panel>
+    <h2><a id="partial_processing_with_ajax">Partial processing with AJAX</a><b:badge value="since 0.8.0" /></h2>
+    <p>The lower row of the example above shows partial processing. Sometimes you don't want to submit an entire form to the server.
+    In our example you can't send the first name unless you've filled the last name, too, because of the constraint violation
+    which prevents the values from being sent to the server. Partial submit allows you to send parts of the form to the server
+    and to validate and process them independently from the rest of the form. Note that this example "forgets" the changes
+    of the "last name" input field when you submit the first name. Usually, you'll avoid this by using <code>update="@form:firstname"</code>
+    instead of updating the entire form.
+    </p>
 
-      <h2><a id="partial_processing_with_ajax">Partial processing with AJAX</a><b:badge value="since 0.8.0" /></h2>
-      <p>The lower row of the example above shows partial processing. Sometimes you don't want to submit an entire form to the server.
-      In our example you can't send the first name unless you've filled the last name, too, because of the constraint violation
-      which prevents the values from being sent to the server. Partial submit allows you to send parts of the form to the server
-      and to validate and process them independently from the rest of the form. Note that this example "forgets" the changes
-      of the "last name" input field when you submit the first name. Usually, you'll avoid this by using <code>update="@form:firstname"</code>
-      instead of updating the entire form.
-      </p>
+    <h1><code>immediate</code> <b:badge value="since 0.9.1" /></h1>
+    <p><code>&lt;b:commandButton /&gt;</code> supports the <code>immediate</code> attribute, both in AJAX and non-AJAX requests.
+    This allows you to call a backend bean method even if the violation constraints are violated. The example below
+    allows you to start a new game no matter if the input field contains a legal value or not. The BootsFaces
+    ajax methods like <code>onclick</code> execute the validations (but are executed even if there are validation
+    constraints), while the traditional <code>actionListeners</code>
+    bypass validation completely.</p>
+    <p>The classical usecase of the <code>immediate</code> flag is the "cancel" button. Obviously, you don't
+    want to force the user to input correct data before they can cancel their input.</p>
 
-      <h1><code>immediate</code> <b:badge value="since 0.9.1" /></h1>
-      <p><code>&lt;b:commandButton /&gt;</code> supports the <code>immediate</code> attribute, both in AJAX and non-AJAX requests.
-      This allows you to call a backend bean method even if the violation constraints are violated. The example below
-      allows you to start a new game no matter if the input field contains a legal value or not. The BootsFaces
-      ajax methods like <code>onclick</code> execute the validations (but are executed even if there are validation
-      constraints), while the traditional <code>actionListeners</code>
-      bypass validation completely.</p>
-      <p>The classical usecase of the <code>immediate</code> flag is the "cancel" button. Obviously, you don't
-      want to force the user to input correct data before they can cancel their input.</p>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form>
+        <p>Guess a number. It has to be between 1 and 10.</p>
+        <b:inputText value="#{numberGuessBean.guess}" label="Your guess"   />
+        <b:message for="@previous" />
+        <b:commandButton value="OK" actionListener="#{numberGuessBean.submitGuess}" look="success"/>
+        <b:commandButton value="New game" actionListener="#{numberGuessBean.newGame}" immediate="true" look="danger" />
+        <b:commandButton value="OK AJAX" onclick="ajax:numberGuessBean.submitGuess()" look="success" update="@form"/>
+        <b:commandButton value="New game AJAX (onclick)" onclick="ajax:numberGuessBean.newGame()" immediate="true" look="danger" update="@form"/>
+        <b:commandButton value="New game AJAX (actionListener)" actionListener="#{numberGuessBean.startNewGame}" immediate="true" look="info" update="@form"/>
+        <b:messages redisplay="false" />
+      </h:form>
 
-      <b:panel title="Live preview" look="info" collapsible="false">
-        <h:form>
-          <p>Guess a number. It has to be between 1 and 10.</p>
-          <b:inputText value="#{numberGuessBean.guess}" label="Your guess"   />
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <b:inputText value="&num;{numberGuessBean.guess}" label="Your guess"   />
           <b:message for="@previous" />
-          <b:commandButton value="OK" actionListener="#{numberGuessBean.submitGuess}" look="success"/>
-          <b:commandButton value="New game" actionListener="#{numberGuessBean.newGame}" immediate="true" look="danger" />
+          <b:commandButton value="OK" actionListener="&num;{numberGuessBean.submitGuess}" look="success"/>
+          <b:commandButton value="New game" actionListener="&num;{numberGuessBean.newGame}" immediate="true" look="danger" />
           <b:commandButton value="OK AJAX" onclick="ajax:numberGuessBean.submitGuess()" look="success" update="@form"/>
           <b:commandButton value="New game AJAX (onclick)" onclick="ajax:numberGuessBean.newGame()" immediate="true" look="danger" update="@form"/>
-          <b:commandButton value="New game AJAX (actionListener)" actionListener="#{numberGuessBean.startNewGame}" immediate="true" look="info" update="@form"/>
+          <b:commandButton value="New game AJAX (actionListener)" actionListener="&num;{numberGuessBean.startNewGame}" immediate="true" look="info" update="@form"/>
           <b:messages redisplay="false" />
-        </h:form>
+          ]]>
+          </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
 
-
-        <f:facet name="footer">
-          <strong>JSF markup:</strong>
-          <b:panel>
-            <script type="syntaxhighlighter"
-            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-            <![CDATA[
-            <b:inputText value="&num;{numberGuessBean.guess}" label="Your guess"   />
-            <b:message for="@previous" />
-            <b:commandButton value="OK" actionListener="&num;{numberGuessBean.submitGuess}" look="success"/>
-            <b:commandButton value="New game" actionListener="&num;{numberGuessBean.newGame}" immediate="true" look="danger" />
-            <b:commandButton value="OK AJAX" onclick="ajax:numberGuessBean.submitGuess()" look="success" update="@form"/>
-            <b:commandButton value="New game AJAX (onclick)" onclick="ajax:numberGuessBean.newGame()" immediate="true" look="danger" update="@form"/>
-            <b:commandButton value="New game AJAX (actionListener)" actionListener="&num;{numberGuessBean.startNewGame}" immediate="true" look="info" update="@form"/>
-            <b:messages redisplay="false" />
-            ]]>
-            </script>
-          </b:panel>
-        </f:facet>
-      </b:panel>
-
-      <h1><a id="parameters">Parameters</a><b:badge value="improved since 1.0" /></h1>
-      <p>You can pass parameters to <code>&lt;b:commandButton /&gt;</code> in three different ways:</p>
-      <ul>
+    <h1><a id="parameters">Parameters</a><b:badge value="improved since 1.0" /></h1>
+    <p>You can pass parameters to <code>&lt;b:commandButton /&gt;</code> in three different ways:</p>
+    <ul>
       <li>Pass it as an EL expression using the BootsFaces AJAX approach: &lt;b:commandButton onclick="ajax:myBean.myMethod(42);"</li>
       <li>Pass it as an EL expression using the JSF standard approach: &lt;b:commandButton actionListener="ajax:myBean.myMethod(42);"</li>
       <li>Pass it an an JSF standard &lt;f:param /&gt;.</li>
-      </ul>
+    </ul>
 
-      <b:panel title="Live preview" look="info" collapsible="false">
-        <p>Click a button to pass the parameter.</p>
-        <h:form>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <p>Click a button to pass the parameter.</p>
+      <h:form>
+        <b:panelGrid columns="4" size="sm">
+          <b:commandButton value="actionListener" actionListener="#{parameterBean.submitParameter(42)}" look="success" update="@form"/>
+          <b:commandButton value="ajax:onclick" onclick="ajax:parameterBean.submitParameter(24)" look="success" update="@form"/>
+          <b:commandButton value="f:param (GET Request)" actionListener="#{parameterBean.submitParameter}" look="danger">
+            <f:param name="myParameter" value="4711" />
+          </b:commandButton>
+          <b:commandButton value="f:param (AJAX)" actionListener="#{parameterBean.submitParameter}" look="danger" update="@form">
+            <f:param name="myParameter" value="4711" />
+          </b:commandButton>
+        </b:panelGrid>
+      </h:form>
+      <b:messages redisplay="true" />
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
           <b:panelGrid columns="4" size="sm">
-            <b:commandButton value="actionListener" actionListener="#{parameterBean.submitParameter(42)}" look="success" update="@form"/>
-            <b:commandButton value="ajax:onclick" onclick="ajax:parameterBean.submitParameter(24)" look="success" update="@form"/>
-            <b:commandButton value="f:param (GET Request)" actionListener="#{parameterBean.submitParameter}" look="danger">
-              <f:param name="myParameter" value="4711" />
-            </b:commandButton>
-            <b:commandButton value="f:param (AJAX)" actionListener="#{parameterBean.submitParameter}" look="danger" update="@form">
-              <f:param name="myParameter" value="4711" />
-            </b:commandButton>
+            <h:form>
+              <b:commandButton value="actionListener" actionListener="&num;{parameterBean.submitParameter(42)}" look="success" update="@form"/>
+              <b:commandButton value="ajax:onclick" onclick="ajax:parameterBean.submitParameter(24)" look="success" update="@form"/>
+              <b:commandButton value="f:param (GET Request)" actionListener="&num;{parameterBean.submitParameter}" look="danger">
+                <f:param name="myParameter" value="4711" />
+              </b:commandButton>
+              <b:commandButton value="f:param (AJAX)" actionListener="&num;{parameterBean.submitParameter}" look="danger" update="@form">
+                <f:param name="myParameter" value="4711" />
+              </b:commandButton>
+            </h:form>
           </b:panelGrid>
-        </h:form>
-        <b:messages redisplay="true" />
-        <f:facet name="footer">
-          <strong>JSF markup:</strong>
-          <b:panel>
-            <script type="syntaxhighlighter"
-            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-            <![CDATA[
-            <b:panelGrid columns="4" size="sm">
-              <h:form>
-                <b:commandButton value="actionListener" actionListener="&num;{parameterBean.submitParameter(42)}" look="success" update="@form"/>
-                <b:commandButton value="ajax:onclick" onclick="ajax:parameterBean.submitParameter(24)" look="success" update="@form"/>
-                <b:commandButton value="f:param (GET Request)" actionListener="&num;{parameterBean.submitParameter}" look="danger">
-                  <f:param name="myParameter" value="4711" />
-                </b:commandButton>
-                <b:commandButton value="f:param (AJAX)" actionListener="&num;{parameterBean.submitParameter}" look="danger" update="@form">
-                  <f:param name="myParameter" value="4711" />
-                </b:commandButton>
-              </h:form>
-            </b:panelGrid>
-            ]]></script>
-          </b:panel>
-        </f:facet>
-      </b:panel>
+          ]]></script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
 
-      <a id="responsive" />
+
     <h2><a id="responsive_design">Responsive design</a><b:badge value="since 0.9.0" /> <b:badge value="breaking change in 1.1.0" /></h2>
     <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
     also with <code>&lt;b:commandButton /&gt;</code>. Note that this is equivalent to putting it into a

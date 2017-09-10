@@ -43,18 +43,18 @@
                         value="Current time: #{pollDemoBean.currentTime}" />
         </h:form>
         <div>
-        <script type="syntaxhighlighter"
-        class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-        <![CDATA[
-        <h:form>
-          <b:poll interval="3000"
-                  update="worldTimeId"
-                  actionListener="&num;{pollDemoBean.listener}"/>
-          <h:outputText id="worldTimeId"
-                        value="Current time: &num;{pollDemoBean.currentTime}" />
-        </h:form>
-        ]]>
-        </script>
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:form>
+            <b:poll interval="3000"
+                    update="worldTimeId"
+                    actionListener="&num;{pollDemoBean.listener}"/>
+            <h:outputText id="worldTimeId"
+                          value="Current time: &num;{pollDemoBean.currentTime}" />
+          </h:form>
+          ]]>
+          </script>
         </div>
       </b:panelGrid>
     </b:panel>
@@ -107,42 +107,42 @@
                     disabled="#{pollDemoBean.stop}"/>
         </h:form>
         <div>
-        <script type="syntaxhighlighter"
-        class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-        <![CDATA[
-        <h:form>
-          <b:poll interval="3000"
-                  widgetVar="pollVar"
-                  stop="&num;{pollDemoBean.stop}"
-                  update="worldTimeId"
-                  execute="worldTimeId"
-                  actionListener="&num;{pollDemoBean.listener}"/>
-          <b:panelGrid colSpans="4,6,2" id="worldTimeId">
-            <h:outputText value="Current time:" />
-            <h:outputText value="&num;{pollDemoBean.currentTime}" />
-            <h:outputText value="Counter:" />
-            <h:inputText value="&num;{pollDemoBean.counter}" />
-            <h:outputText value="" />
-          </b:panelGrid>
-          <b:commandButton action="&num;{pollDemoBean.setStop(true)}"
-                           process="@this"
-                           update="@form"
-                           value="Ajax stop"
-                           disabled="&num;{pollDemoBean.stop}"/>
-          <b:commandButton action="&num;{pollDemoBean.setStop(false)}"
-                           process="@this"
-                           update="@form"
-                           value="Ajax start"
-                           disabled="&num;{not pollDemoBean.stop}"/>
-          <b:button onclick="pollVar.stop()"
-                    value="JS stop"
-                    disabled="&num;{pollDemoBean.stop}"/>
-          <b:button onclick="pollVar.start()"
-                    value="JS start"
-                    disabled="&num;{pollDemoBean.stop}"/>
-        </h:form>
-        ]]>
-        </script>
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:form>
+            <b:poll interval="3000"
+                    widgetVar="pollVar"
+                    stop="&num;{pollDemoBean.stop}"
+                    update="worldTimeId"
+                    execute="worldTimeId"
+                    actionListener="&num;{pollDemoBean.listener}"/>
+            <b:panelGrid colSpans="4,6,2" id="worldTimeId">
+              <h:outputText value="Current time:" />
+              <h:outputText value="&num;{pollDemoBean.currentTime}" />
+              <h:outputText value="Counter:" />
+              <h:inputText value="&num;{pollDemoBean.counter}" />
+              <h:outputText value="" />
+            </b:panelGrid>
+            <b:commandButton action="&num;{pollDemoBean.setStop(true)}"
+                             process="@this"
+                             update="@form"
+                             value="Ajax stop"
+                             disabled="&num;{pollDemoBean.stop}"/>
+            <b:commandButton action="&num;{pollDemoBean.setStop(false)}"
+                             process="@this"
+                             update="@form"
+                             value="Ajax start"
+                             disabled="&num;{not pollDemoBean.stop}"/>
+            <b:button onclick="pollVar.stop()"
+                      value="JS stop"
+                      disabled="&num;{pollDemoBean.stop}"/>
+            <b:button onclick="pollVar.start()"
+                      value="JS start"
+                      disabled="&num;{pollDemoBean.stop}"/>
+          </h:form>
+          ]]>
+          </script>
         </div>
       </b:panelGrid>
     </b:panel>

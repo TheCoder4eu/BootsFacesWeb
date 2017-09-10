@@ -5,202 +5,202 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-    <h:head>
-        <title>BootsFaces: next-gen JSF Framework</title>
-        <meta name="author" content="Riccardo Massera"></meta>
-    </h:head>
-    <h:body style="padding-top: 60px">
-        <ui:composition template="/applayout/pageTemplate.xhtml">
+  <h:head>
+    <title>BootsFaces: next-gen JSF Framework</title>
+  <meta name="author" content="Riccardo Massera"></meta>
+  </h:head>
+  <h:body style="padding-top: 60px">
+    <ui:composition template="/applayout/pageTemplate.xhtml">
 
-<ui:define name="content-navigator">
-  <b:listLinks>
-    <b:navLink href="#quick_start" value="Quick start and requirements" />
-	    <b:navLink href="#maven_developer_preview" value="Maven developer preview (for the curious one)" />
-    <b:navLink href="#starting_a_project" value="Starting a project" />
-    <b:navLink href="#theme_css_support" value="Theme CSS support" />
-    <b:navLink href="#building_the_bootsfaces" value="Building the BootsFaces.jar from source" />
-  </b:listLinks>
-</ui:define>
-
-
-            <ui:define name="content">
-                <h1><a id="quick_start">Quick start</a></h1>
-
-                <h2>Requirements</h2>
-                <p>Read the <h:link outcome="/requirements" value="requirements"/>.</p>
-                <hr/>
-                <h2>Download</h2>
-                <b:tabView contentStyle="height:200px">
-					<b:tab title="Maven">
-						<p>Add these lines to your Maven pom.xml build file:</p>
-						<b:well>
-                    		<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                            <![CDATA[
-                            		<dependency>
-                            			<groupId>net.bootsfaces</groupId>
-                            			<artifactId>bootsfaces</artifactId>
-                            			<version>1.1.0</version>
-                            			<scope>compile</scope>
-                            		</dependency>
-                            ]]>
-                            </script>
-                      	</b:well>
-                    </b:tab>
-                    <b:tab title="Gradle">
-						<p>Add this line to your .gradle build file:</p>
-                        <b:well>
-                            <script type="syntaxhighlighter" class="brush: groovy; toolbar: false;gutter: false; first-line: 1">
-                            <![CDATA[
-                            	compile 'net.bootsfaces:bootsfaces:1.1.0'
-                            ]]>
-                            </script>
-                     	</b:well>
-    				</b:tab>
-                    <b:tab title="Manual download">
-               			<p>If you have not downloaded BootsFaces yet, <h:link outcome="/download" value="click here"/>.</p>
-                    </b:tab>
-                </b:tabView>
-                <hr/>
-                <h2><a id="maven_developer_preview">Maven developer preview (for the curious one)</a></h2>
-                <p>Every once in a while, we publish a developer snapshot for testing and preview purposes. Note that these developer previews
-                are not suited for production. In fact, the main purpose of a developer preview is to give the early adopter of the community
-                an option to test and evaluate new features early, and to tell us about bugs. In other words: we know the previews are buggy,
-                and hope there are enthusiasts helping us to polish the software before it hits the market. The great thing is: usually there
-                are daring developers you give the preview version a try and report us back. More often than not, that boils down to being a
-                lot of work for us, but we really appreciate your help. Thanks, early adopters!</p>
-                <p>Now that you are aware of the risks, add these lines to your Maven pom.xml build file:</p>
-                <b:well>
-                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                            <![CDATA[
-                            <repositories>
-                                <repository>
-                                  <id>central</id>
-                                  <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-                                  <releases><enabled>false</enabled></releases>
-                                  <snapshots><enabled>true</enabled></snapshots>
-                                </repository>
-                            </repositories>
-                            ]]>
-                            </script>
-                </b:well>
-                <p>After that, add the dependency to the new version as shown in the first tab, this time adding the suffix <code>-SNAPSHOT</code>.</p>
+      <ui:define name="content-navigator">
+        <b:listLinks>
+          <b:navLink href="#quick_start" value="Quick start and requirements" />
+          <b:navLink href="#maven_developer_preview" value="Maven developer preview (for the curious one)" />
+          <b:navLink href="#starting_a_project" value="Starting a project" />
+          <b:navLink href="#theme_css_support" value="Theme CSS support" />
+          <b:navLink href="#building_the_bootsfaces" value="Building the BootsFaces.jar from source" />
+        </b:listLinks>
+      </ui:define>
 
 
-                <h2><a id="starting_a_project">Starting a project</a></h2>
-                <p>Probably the easiest way to get started is to grab one of the demo projects at <a target="#" href="https://github.com/stephanrauh/BootsFaces-Examples">
-                https://github.com/stephanrauh/BootsFaces-Examples</a>.</p>
-                <p>Alternatively, you can also start from scratch. Open your favorite IDE, start a new project and add the BootsFaces jar you've downloaded to your libraries.</p>
-                <p>Now, create a new JSF page and make the page header look as follows:</p>
-                <b:panel><!--div class="thumbnail"-->
-                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                        <![CDATA[
-                        <?xml version='1.0' encoding='UTF-8' ?>
-                        <!DOCTYPE html>
-                        <html xmlns="http://www.w3.org/1999/xhtml"
-                              xmlns:b="http://bootsfaces.net/ui"
-                              xmlns:h="http://java.sun.com/jsf/html"
-                              xmlns:f="http://java.sun.com/jsf/core">
-                        ]]></script>
-                </b:panel><!--/div-->
-                <p>Notice the <code>&lt;!DOCTYPE html&gt;</code> declaration, needed because BootsFaces makes use of certain HTML elements and CSS properties that require the use of the HTML5 doctype
-                    and the <code>xmlns:b="http://bootsfaces.net/ui"</code> namespace, that enables the use of BootsFaces tags in your JSF page.</p>
-                <p class="text-success">You are now ready to develop your project with BootsFaces!</p>
-                <p>This is a minimal BootsFaces page to get you started:</p>
-                <b:panel>
-                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                        <![CDATA[
-                        <?xml version='1.0' encoding='UTF-8' ?>
-                        <!DOCTYPE html>
-                        <html xmlns="http://www.w3.org/1999/xhtml"
-                              xmlns:b="http://bootsfaces.net/ui"
-                              xmlns:f="http://java.sun.com/jsf/core"
-                              xmlns:h="http://java.sun.com/jsf/html">
-                            <h:head>
-                                <title>BootsFaces Basic Page</title>
-                            </h:head>
-                            <h:body>
-                                <b:container>
-                                    <b:row>
-                                        <b:column>
-                                            <h1>Hello, world!</h1>
-                                        </b:column>
-                                    </b:row>
-                                </b:container>
-                            </h:body>
-                        </html>
-                        ]]></script>
-                </b:panel>
-                <p>However, we suggest you start reading the <h:link outcome="/layout/basic" value="Basic Layout"/> page and have a look at the
-                   <h:link outcome="/examples/starter_template" value="starter template"/> in the <h:link outcome="/examples/index" value="Examples"/> section.</p>
-                <hr/>
+      <ui:define name="content">
+        <h1><a id="quick_start">Quick start</a></h1>
 
-                <h2><a id="theme_css_support">Theme CSS support</a><b:badge value="revamped in BootsFaces 0.8.0" /></h2>
+        <h2>Requirements</h2>
+        <p>Read the <h:link outcome="/requirements" value="requirements"/>.</p>
+        <hr/>
+        <h2>Download</h2>
+        <b:tabView contentStyle="height:200px">
+          <b:tab title="Maven">
+            <p>Add these lines to your Maven pom.xml build file:</p>
+            <b:well>
+              <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+              <![CDATA[
+              <dependency>
+                <groupId>net.bootsfaces</groupId>
+                <artifactId>bootsfaces</artifactId>
+                <version>1.1.0</version>
+                <scope>compile</scope>
+              </dependency>
+              ]]>
+              </script>
+            </b:well>
+          </b:tab>
+          <b:tab title="Gradle">
+            <p>Add this line to your .gradle build file:</p>
+            <b:well>
+              <script type="syntaxhighlighter" class="brush: groovy; toolbar: false;gutter: false; first-line: 1">
+              <![CDATA[
+              compile 'net.bootsfaces:bootsfaces:1.1.0'
+              ]]>
+              </script>
+            </b:well>
+          </b:tab>
+          <b:tab title="Manual download">
+            <p>If you have not downloaded BootsFaces yet, <h:link outcome="/download" value="click here"/>.</p>
+          </b:tab>
+        </b:tabView>
+        <hr/>
+        <h2><a id="maven_developer_preview">Maven developer preview (for the curious one)</a></h2>
+        <p>Every once in a while, we publish a developer snapshot for testing and preview purposes. Note that these developer previews
+        are not suited for production. In fact, the main purpose of a developer preview is to give the early adopter of the community
+        an option to test and evaluate new features early, and to tell us about bugs. In other words: we know the previews are buggy,
+        and hope there are enthusiasts helping us to polish the software before it hits the market. The great thing is: usually there
+        are daring developers you give the preview version a try and report us back. More often than not, that boils down to being a
+        lot of work for us, but we really appreciate your help. Thanks, early adopters!</p>
+        <p>Now that you are aware of the risks, add these lines to your Maven pom.xml build file:</p>
+        <b:well>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <repositories>
+          <repository>
+        <id>central</id>
+        <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        <releases><enabled>false</enabled></releases>
+        <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+        </repositories>
+        ]]>
+        </script>
+      </b:well>
+      <p>After that, add the dependency to the new version as shown in the first tab, this time adding the suffix <code>-SNAPSHOT</code>.</p>
 
-                <p>The BootsFaces_USETHEME context-param in your web.xml controls whether <code>theme.css</code> is loaded or not.</p>
-                <p>If you set the parameter to false, BootsFaces delivers a CSS file containing the basic layout instructions. This basic
-                file doesn't contain shadows, decorations or colors, so it looks pretty boring. But it's a good starting point to implement your own
-                look and feel.</p>
-                <p>Setting the parameter to true causes BootsFaces to load <code>theme.css</code>, this is true for Bootstrap and Bootswatch Themes.</p>
-                <b:panel>
-                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                        <![CDATA[
-    <context-param>
-        <param-name>BootsFaces_USETHEME</param-name>
-        <param-value>true</param-value>
-    </context-param>
-                        ]]></script>
-                </b:panel>
 
-                <p>BootsFaces also contains all 16 BootsWatch themes. You can activate any of these by setting <code>BootsFaces_THEME</code> to the name of the theme:</p>
-                <b:panel>
-                 <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                        <![CDATA[
-    <context-param>
-        <param-name>BootsFaces_THEME</param-name>
-        <param-value>cerulean</param-value>
-    </context-param>
-                        ]]></script>
-                </b:panel>
-                <p>If you need more customization you can use the <code>custom</code> value.</p>
-                <p>Please refer to the <h:link value="Themes" outcome="/layout/themes" /> page for instructions on Custom Theme.</p>
-                <br/><hr/>
-                <h2><a id="building_the_bootsfaces">Building the BootsFaces.jar from source</a><b:badge value="revamped in BootsFaces 0.8.0" /></h2>
-                <p>Most of the time you're probably happy with the binaries available at Maven Central or at the download page. However, it's
-                also possible to build BootsFaces from source. This way, you get our latest bug fixes and the newest components,
-                and you can also contribute bug fixes or components yourself to the project. (Truth to tell you get also our newest bugs. Use at own risk).</p>
-                <p>The BootsFaces source code is hosted on a  <a href="https://github.com/TheCoder4eu/BootsFaces-OSP/"  target="_blank">GitHub repository</a>.
-                Clone the repository using git (or download the zip file and unpack it to a folder). This folder contains two build files: a Maven <code>pom.xml</code> and an
-                Gradle <code>build.gradle</code>. In fact, there are even two Gradle files: the subfolder <code>gradleResources</code> contains a Gradle build file of its
-                own, which is called by the Gradle build file of the parent project.</p>
-                <p>The Maven build file is the quick-and-easy solution for most developers. However, it depends on the results of the Gradle build. When the BootsFaces team (or
-                a committer sending us a pull request) changes one of the CSS or JavaScript files, they have to run the Gradle build first. The Gradle build prepares the
-                resources for Maven, which are committed to GitHub. That way, the Maven build is always up-to-date, even if it lacks important parts of the build process.</p>
-                <p>Cutting a long story short, you're free to use either the Maven or the Gradle build, unless you want to modify the CSS or JavaScript files of BootsFaces.</p>
-                <h4>The Maven build</h4>
-                <p>To build the jar, run <code>mvn clean install</code> on the command line. Most IDEs also offer decent support for Maven. For instance, Eclipse users
-                can import the project via "Import --&gt; Maven --&gt; Existing Maven project".</p>
-                <h4>The Gradle build from Command Line</h4>
-                <p>Building BootsFaces with Gradle is very straightforward, the only prerequisite is having java installed (JDK 7 or later),</p>
-                <p>there is no need to have Gradle installed, thanks to the Gradle wrapper.</p>
-                <p>Just change your directory to the root directory of the project and execute:</p>
-                <code>./gradlew</code>
-                <p>on *NIX systems or</p>
-                <code>gradlew.bat</code>
-                <p>on Windows systems.</p>
-                <p>After few seconds you should see the "BUILD SUCCESSFUL" message and will find the library</p>
-                <p>in the subdirectory build/libs .</p>
+      <h2><a id="starting_a_project">Starting a project</a></h2>
+      <p>Probably the easiest way to get started is to grab one of the demo projects at <a target="#" href="https://github.com/stephanrauh/BootsFaces-Examples">
+      https://github.com/stephanrauh/BootsFaces-Examples</a>.</p>
+      <p>Alternatively, you can also start from scratch. Open your favorite IDE, start a new project and add the BootsFaces jar you've downloaded to your libraries.</p>
+      <p>Now, create a new JSF page and make the page header look as follows:</p>
+      <b:panel><!--div class="thumbnail"-->
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+        <![CDATA[
+        <?xml version='1.0' encoding='UTF-8' ?>
+        <!DOCTYPE html>
+        <html xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:b="http://bootsfaces.net/ui"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:f="http://java.sun.com/jsf/core">
+          ]]></script>
+        </b:panel><!--/div-->
+        <p>Notice the <code>&lt;!DOCTYPE html&gt;</code> declaration, needed because BootsFaces makes use of certain HTML elements and CSS properties that require the use of the HTML5 doctype
+        and the <code>xmlns:b="http://bootsfaces.net/ui"</code> namespace, that enables the use of BootsFaces tags in your JSF page.</p>
+        <p class="text-success">You are now ready to develop your project with BootsFaces!</p>
+        <p>This is a minimal BootsFaces page to get you started:</p>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <?xml version='1.0' encoding='UTF-8' ?>
+          <!DOCTYPE html>
+          <html xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html">
+            <h:head>
+              <title>BootsFaces Basic Page</title>
+            </h:head>
+            <h:body>
+              <b:container>
+                <b:row>
+                  <b:column>
+                    <h1>Hello, world!</h1>
+                  </b:column>
+                </b:row>
+              </b:container>
+            </h:body>
+          </html>
+          ]]></script>
+        </b:panel>
+        <p>However, we suggest you start reading the <h:link outcome="/layout/basic" value="Basic Layout"/> page and have a look at the
+        <h:link outcome="/examples/starter_template" value="starter template"/> in the <h:link outcome="/examples/index" value="Examples"/> section.</p>
+        <hr/>
 
-                <h4>The Gradle build in your IDE</h4>
-                <p>Import the Gradle project into your IDE. Whether you import the subproject or not, is up to you. You don't need it. To build the project,
-                first run Gradle with the target <code>buildResources</code> (which is inherited from the subproject). After that,
-                run "Gradle assemble" to build the BootsFaces-OSP.jar. You find the jar file in the <code>build</code> folder of your project.</p>
+        <h2><a id="theme_css_support">Theme CSS support</a><b:badge value="revamped in BootsFaces 0.8.0" /></h2>
 
-                <br/><hr/>
-                <script type="text/javascript">
-                    SyntaxHighlighter.all();
-                </script>
-                <br/><br/><br/>
-            </ui:define>
-        </ui:composition>
-    </h:body>
+        <p>The BootsFaces_USETHEME context-param in your web.xml controls whether <code>theme.css</code> is loaded or not.</p>
+        <p>If you set the parameter to false, BootsFaces delivers a CSS file containing the basic layout instructions. This basic
+        file doesn't contain shadows, decorations or colors, so it looks pretty boring. But it's a good starting point to implement your own
+        look and feel.</p>
+        <p>Setting the parameter to true causes BootsFaces to load <code>theme.css</code>, this is true for Bootstrap and Bootswatch Themes.</p>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <context-param>
+          <param-name>BootsFaces_USETHEME</param-name>
+          <param-value>true</param-value>
+          </context-param>
+          ]]></script>
+        </b:panel>
+
+        <p>BootsFaces also contains all 16 BootsWatch themes. You can activate any of these by setting <code>BootsFaces_THEME</code> to the name of the theme:</p>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <context-param>
+          <param-name>BootsFaces_THEME</param-name>
+          <param-value>cerulean</param-value>
+          </context-param>
+          ]]></script>
+        </b:panel>
+        <p>If you need more customization you can use the <code>custom</code> value.</p>
+        <p>Please refer to the <h:link value="Themes" outcome="/layout/themes" /> page for instructions on Custom Theme.</p>
+        <br/><hr/>
+        <h2><a id="building_the_bootsfaces">Building the BootsFaces.jar from source</a><b:badge value="revamped in BootsFaces 0.8.0" /></h2>
+        <p>Most of the time you're probably happy with the binaries available at Maven Central or at the download page. However, it's
+        also possible to build BootsFaces from source. This way, you get our latest bug fixes and the newest components,
+        and you can also contribute bug fixes or components yourself to the project. (Truth to tell you get also our newest bugs. Use at own risk).</p>
+        <p>The BootsFaces source code is hosted on a  <a href="https://github.com/TheCoder4eu/BootsFaces-OSP/"  target="_blank">GitHub repository</a>.
+        Clone the repository using git (or download the zip file and unpack it to a folder). This folder contains two build files: a Maven <code>pom.xml</code> and an
+        Gradle <code>build.gradle</code>. In fact, there are even two Gradle files: the subfolder <code>gradleResources</code> contains a Gradle build file of its
+        own, which is called by the Gradle build file of the parent project.</p>
+        <p>The Maven build file is the quick-and-easy solution for most developers. However, it depends on the results of the Gradle build. When the BootsFaces team (or
+        a committer sending us a pull request) changes one of the CSS or JavaScript files, they have to run the Gradle build first. The Gradle build prepares the
+        resources for Maven, which are committed to GitHub. That way, the Maven build is always up-to-date, even if it lacks important parts of the build process.</p>
+        <p>Cutting a long story short, you're free to use either the Maven or the Gradle build, unless you want to modify the CSS or JavaScript files of BootsFaces.</p>
+        <h4>The Maven build</h4>
+        <p>To build the jar, run <code>mvn clean install</code> on the command line. Most IDEs also offer decent support for Maven. For instance, Eclipse users
+        can import the project via "Import --&gt; Maven --&gt; Existing Maven project".</p>
+        <h4>The Gradle build from Command Line</h4>
+        <p>Building BootsFaces with Gradle is very straightforward, the only prerequisite is having java installed (JDK 7 or later),</p>
+        <p>there is no need to have Gradle installed, thanks to the Gradle wrapper.</p>
+        <p>Just change your directory to the root directory of the project and execute:</p>
+        <code>./gradlew</code>
+        <p>on *NIX systems or</p>
+        <code>gradlew.bat</code>
+        <p>on Windows systems.</p>
+        <p>After few seconds you should see the "BUILD SUCCESSFUL" message and will find the library</p>
+        <p>in the subdirectory build/libs .</p>
+
+        <h4>The Gradle build in your IDE</h4>
+        <p>Import the Gradle project into your IDE. Whether you import the subproject or not, is up to you. You don't need it. To build the project,
+        first run Gradle with the target <code>buildResources</code> (which is inherited from the subproject). After that,
+        run "Gradle assemble" to build the BootsFaces-OSP.jar. You find the jar file in the <code>build</code> folder of your project.</p>
+
+        <br/><hr/>
+        <script type="text/javascript">
+        SyntaxHighlighter.all();
+        </script>
+        <br/><br/><br/>
+      </ui:define>
+    </ui:composition>
+  </h:body>
 </html>

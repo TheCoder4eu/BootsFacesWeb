@@ -1,488 +1,488 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
 
 
-<ui:define name="content-navigator">
-  <b:listLinks>
-    <b:navLink href="#buttons" value="Buttons" />
-    <b:navLink href="#button_size" value="Button size" />
-    <b:navLink href="#buttons_with_icons" value="Buttons with Icons" />
-    <b:navLink href="#icon_modifiers" value="Icon modifiers" />
-    <b:navLink href="#disabled_state" value="Disabled State" />
-    <b:navLink href="#button_functionality" value="Button functionality" />
-    <b:navLink href="#special_cases_" value="Special cases" />
-    <b:navLink href="#ajax_not_supported" value="AJAX not supported" />
-    <b:navLink href="#responsive_design" value="Responsive design" />
-    <b:navLink href="#visibility_depending_on_screen_size" value="Visibility depending on screen size" />
-    <b:navLink href="#reference_section" value="Reference section" />
-  </b:listLinks>
-</ui:define>
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#buttons" value="Buttons" />
+      <b:navLink href="#button_size" value="Button size" />
+      <b:navLink href="#buttons_with_icons" value="Buttons with Icons" />
+      <b:navLink href="#icon_modifiers" value="Icon modifiers" />
+      <b:navLink href="#disabled_state" value="Disabled State" />
+      <b:navLink href="#button_functionality" value="Button functionality" />
+      <b:navLink href="#special_cases_" value="Special cases" />
+      <b:navLink href="#ajax_not_supported" value="AJAX not supported" />
+      <b:navLink href="#responsive_design" value="Responsive design" />
+      <b:navLink href="#visibility_depending_on_screen_size" value="Visibility depending on screen size" />
+      <b:navLink href="#reference_section" value="Reference section" />
+    </b:listLinks>
+  </ui:define>
 
 
-             <ui:define name="content">
-                <style>td {padding: 8px;}</style>
-                <h1><a id="buttons">Buttons</a></h1>
-                <p><code>&lt;b:button&gt;</code>extends the standard JSF h:button component.</p>
+  <ui:define name="content">
+    <style>td {padding: 8px;}</style>
+    <h1><a id="buttons">Buttons</a></h1>
+    <p><code>&lt;b:button&gt;</code>extends the standard JSF h:button component.</p>
 
-                <strong>Button Look</strong>
-                <p>Button styles can be applied to anything with the <code>look</code> attribute:</p>
-                
-                        <b:panel title="Live preview" look="info" collapsible="false">            
+    <strong>Button Look</strong>
+    <p>Button styles can be applied to anything with the <code>look</code> attribute:</p>
 
-                            <table class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>b:button</th>
-                            <th><code>look</code> attribute</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><b:button value="Default" /></td>
-                            <td>missing</td>
-                            <td>Standard gray button with gradient</td>
-                        </tr>
-                        <tr>
-                            <td><b:button value="Primary" look="primary"/></td>
-                            <td><code>look="primary"</code></td>
-                            <td>Provides extra visual weight and identifies the primary action in a set of buttons</td>
-                        </tr>
-                        <tr>
-                            <td><b:button look="info" value="Info"/></td>
-                            <td><code>look="info"</code></td>
-                            <td>Used as an alternative to the default styles</td>
-                        </tr>
-                        <tr>
-                            <td><b:button look="success" value="Success"/></td>
-                            <td><code>look="success"</code></td>
-                            <td>Indicates a successful or positive action</td>
-                        </tr>
-                        <tr>
-                            <td><b:button look="warning" value="Warning"/></td>
-                            <td><code>look="warning"</code></td>
-                            <td>Indicates caution should be taken with this action</td>
-                        </tr>
-                        <tr>
-                            <td><b:button look="danger" value="Danger"/></td>
-                            <td><code>look="danger"</code></td>
-                            <td>Indicates a dangerous or potentially negative action</td>
-                        </tr>
-                        <tr>
-                            <td><b:button look="link" value="Link" /></td>
-                            <td><code>look="link"</code></td>
-                            <td>Alternate dark gray button, not tied to a semantic action or use</td>
-                        </tr>
+    <b:panel title="Live preview" look="info" collapsible="false">
 
-                    </tbody>
-                </table>
-                            
-                            <f:facet name="footer">
-                                <strong>JSF markup:</strong>
-                                <b:panel>
-                                     <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-                <table class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>b:button</th>
-                            <th><code>look</code> attribute</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><b:button value="Default" /></td>
-                            <td>missing</td>
-                            <td>Standard gray button with gradient</td>
-                        </tr>
-                        <tr>
-                            <td><b:button value="Primary" look="primary"/></td>
-                            <td><code>look="primary"</code></td>
-                            <td>Provides extra visual weight and identifies the primary action in a set of buttons</td>
-                        </tr>
-                        <tr>
-                            <td><b:button look="info" value="Info"/></td>
-                            <td><code>look="info"</code></td>
-                            <td>Used as an alternative to the default styles</td>
-                        </tr>
-                        <tr>
-                            <td><b:button look="success" value="Success"/></td>
-                            <td><code>look="success"</code></td>
-                            <td>Indicates a successful or positive action</td>
-                        </tr>
-                        <tr>
-                            <td><b:button look="warning" value="Warning"/></td>
-                            <td><code>look="warning"</code></td>
-                            <td>Indicates caution should be taken with this action</td>
-                        </tr>
-                        <tr>
-                            <td><b:button look="danger" value="Danger"/></td>
-                            <td><code>look="danger"</code></td>
-                            <td>Indicates a dangerous or potentially negative action</td>
-                        </tr>
-                        <tr>
-                            <td><b:button look="link" value="Link" /></td>
-                            <td><code>look="link"</code></td>
-                            <td>Alternate dark gray button, not tied to a semantic action or use</td>
-                        </tr>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>b:button</th>
+            <th><code>look</code> attribute</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><b:button value="Default" /></td>
+          <td>missing</td>
+          <td>Standard gray button with gradient</td>
+        </tr>
+        <tr>
+          <td><b:button value="Primary" look="primary"/></td>
+          <td><code>look="primary"</code></td>
+          <td>Provides extra visual weight and identifies the primary action in a set of buttons</td>
+        </tr>
+        <tr>
+          <td><b:button look="info" value="Info"/></td>
+          <td><code>look="info"</code></td>
+          <td>Used as an alternative to the default styles</td>
+        </tr>
+        <tr>
+          <td><b:button look="success" value="Success"/></td>
+          <td><code>look="success"</code></td>
+          <td>Indicates a successful or positive action</td>
+        </tr>
+        <tr>
+          <td><b:button look="warning" value="Warning"/></td>
+          <td><code>look="warning"</code></td>
+          <td>Indicates caution should be taken with this action</td>
+        </tr>
+        <tr>
+          <td><b:button look="danger" value="Danger"/></td>
+          <td><code>look="danger"</code></td>
+          <td>Indicates a dangerous or potentially negative action</td>
+        </tr>
+        <tr>
+          <td><b:button look="link" value="Link" /></td>
+          <td><code>look="link"</code></td>
+          <td>Alternate dark gray button, not tied to a semantic action or use</td>
+        </tr>
 
-                    </tbody>
-                </table>
-                ]]></script>
-                                </b:panel>
-                            </f:facet>
-                        </b:panel>
+        </tbody>
+      </table>
 
-                <h2><a id="button_size">Button size</a></h2>
-                <p>Fancy larger or smaller buttons? Add <code>size="lg"</code> (Large), <code>size="sm"</code> (Small), or <code>size="xs"</code> for additional sizes.</p>
-                
-                <b:panel title="Live preview" look="info" collapsible="false">            
-                    <h:panelGrid columns="2">
-                        <b:button value="Large button" look="primary" size="lg"/><b:button value="Large button" size="lg"/>
-                        <b:button value="Normal button" look="primary" /><b:button value="Normal button" />
-                        <b:button value="Small button" look="primary" size="sm"/><b:button value="Small button" size="sm"/>
-                        <b:button value="Extra small button" look="primary" size="xs"/><b:button value="Extra small button" size="xs"/>
-                    </h:panelGrid>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>b:button</th>
+                <th><code>look</code> attribute</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td><b:button value="Default" /></td>
+              <td>missing</td>
+              <td>Standard gray button with gradient</td>
+            </tr>
+            <tr>
+              <td><b:button value="Primary" look="primary"/></td>
+              <td><code>look="primary"</code></td>
+              <td>Provides extra visual weight and identifies the primary action in a set of buttons</td>
+            </tr>
+            <tr>
+              <td><b:button look="info" value="Info"/></td>
+              <td><code>look="info"</code></td>
+              <td>Used as an alternative to the default styles</td>
+            </tr>
+            <tr>
+              <td><b:button look="success" value="Success"/></td>
+              <td><code>look="success"</code></td>
+              <td>Indicates a successful or positive action</td>
+            </tr>
+            <tr>
+              <td><b:button look="warning" value="Warning"/></td>
+              <td><code>look="warning"</code></td>
+              <td>Indicates caution should be taken with this action</td>
+            </tr>
+            <tr>
+              <td><b:button look="danger" value="Danger"/></td>
+              <td><code>look="danger"</code></td>
+              <td>Indicates a dangerous or potentially negative action</td>
+            </tr>
+            <tr>
+              <td><b:button look="link" value="Link" /></td>
+              <td><code>look="link"</code></td>
+              <td>Alternate dark gray button, not tied to a semantic action or use</td>
+            </tr>
 
-                    <f:facet name="footer">
-                        <strong>JSF markup:</strong>
-                        <b:panel>
-                              <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-                    <h:panelGrid columns="2">
-                        <b:button value="Large button" look="primary" size="lg"/><b:button value="Large button" size="lg"/>
-                        <b:button value="Normal button" look="primary" /><b:button value="Normal button" />
-                        <b:button value="Small button" look="primary" size="sm"/><b:button value="Small button" size="sm"/>
-                        <b:button value="Extra small button" look="primary" size="xs"/><b:button value="Extra small button" size="xs"/>
-                    </h:panelGrid>
-                ]]></script>
-                        </b:panel>
-                    </f:facet>
-                </b:panel>
-       
-                
-
-                
-                
-                <h2><a id="buttons_with_icons">Buttons with Icons</a></h2>
-                <p>Buttons can can have an icon adding the attribute <code>icon</code> (on the left or right, default is left).</p>
-                <p>You can control the icon position by specifying it in the attribute <code>iconAlign</code>.</p>
-                <p>The Icon attribute will add a Glyphicon icon (Bootstrap's default), but now you can also use a Font Awesome icon using the <code>iconAwesome</code> attribute instead of <code>icon</code>.</p>
-                <p>Both <code>icon</code> and <code>iconAwesome</code> attributes, require the icon name as value the icon name without the trailing <b>glyphicon-</b> prefix and <b>fa-</b> prefix respectively.</p>
-                
-                <b:panel title="Live preview" look="info" collapsible="false">            
-
-                    <h:panelGrid columns="2">
-                        <h:outputText value="Default(Glyphicons)" style="font-weight:bolder"/><h:outputText value="Font Awesome" style="font-weight:bolder"/>
-                        <b:button value="download" icon="download" /><b:button value="cloud-download" iconAwesome="cloud-download" />
-                        <b:button value="download" icon="download" look="warning"/><b:button value="cloud-download" iconAwesome="cloud-download" look="warning"/>
-                        <b:button value="cog (icon Right)" icon="cog" look="primary" iconAlign="right"/><b:button value="cogs (icon Right)" iconAwesome="cogs" look="primary" iconAlign="right"/>
-                        <b:button value="stats" icon="stats" look="info"/><b:button value="bar-chart" iconAwesome="bar-chart" look="info"/>
-                        <b:button value="shopping-cart (size lg)" icon="shopping-cart" look="success" size="lg"/><b:button value="cart-plus (size lg)" iconAwesome="cart-plus" look="success" size="lg"/>
-                    </h:panelGrid>
-                    
-                    <f:facet name="footer">
-                        <strong>JSF markup:</strong>
-                        <b:panel>
-                             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-                    <h:panelGrid columns="2">
-                        <h:outputText value="Default(Glyphicons)" style="font-weight:bolder"/><h:outputText value="Font Awesome" style="font-weight:bolder"/>
-                        <b:button value="download" icon="download" /><b:button value="cloud-download" iconAwesome="cloud-download" />
-                        <b:button value="download" icon="download" look="warning"/><b:button value="cloud-download" iconAwesome="cloud-download" look="warning"/>
-                        <b:button value="cog (icon Right)" icon="cog" look="primary" iconAlign="right"/><b:button value="cogs (icon Right)" iconAwesome="cogs" look="primary" iconAlign="right"/>
-                        <b:button value="stats" icon="stats" look="info"/><b:button value="bar-chart" iconAwesome="bar-chart" look="info"/>
-                        <b:button value="shopping-cart (size lg)" icon="shopping-cart" look="success" size="lg"/><b:button value="cart-plus (size lg)" iconAwesome="cart-plus" look="success" size="lg"/>
-                    </h:panelGrid>
-                ]]></script>
-                        </b:panel>
-                    </f:facet>
-                </b:panel>
-
-
-            <h2><a id="icon_modifiers">Icon modifiers</a><b:badge value="since 0.9.0" /></h2>
-            <p>Both Fontawesome icons and Glyphicons can be decorated with modifiers:</p>
-            
-             <b:panel title="Live preview" look="info" collapsible="false">            
-
-                 <h:panelGrid columns="1">
-                     <b:button icon-spin="true" iconAwesome="thumbs-down"
-                               value="Thumbs up or thumbs down?" onclick="return false;"
-                               look="info" title="spin='true'" />
-                     <b:button icon-size="2x" iconAwesome="thumbs-up"
-                               value="big thumbs up!" onclick="return false;"
-                               look="info" title="icon-size='2x'" />
-                     <b:button icon-size="3x" iconAwesome="thumbs-up"
-                               value="even bigger thumbs up!" onclick="return false;"
-                               look="info" title="icon-size='3x'" />
-                     <b:button icon-flip="h" iconAwesome="thumbs-up"
-                               value="left-hand thumbs up" onclick="return false;"
-                               look="info" title="icon-flip='h'" />
-                     <b:button icon-rotate="l" iconAwesome="thumbs-up"
-                               value="go back" onclick="return false;"
-                               look="info" title="icon-rotate='l'" />
-                     <b:button icon-spin="true" icon="cd" icon-size="2x"
-                               value="Glyphicon" onclick="return false;"
-                               look="info" title="icon-spin='true' icon-size='2x'" />
-                 </h:panelGrid>
-                 
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-                 <h:panelGrid columns="1">
-                     <b:button icon-spin="true" iconAwesome="thumbs-down"
-                               value="Thumbs up or thumbs down?" onclick="return false;"
-                               look="info" title="spin='true'" />
-                     <b:button icon-size="2x" iconAwesome="thumbs-up"
-                               value="big thumbs up!" onclick="return false;"
-                               look="info" title="icon-size='2x'" />
-                     <b:button icon-size="3x" iconAwesome="thumbs-up"
-                               value="even bigger thumbs up!" onclick="return false;"
-                               look="info" title="icon-size='3x'" />
-                     <b:button icon-flip="h" iconAwesome="thumbs-up"
-                               value="left-hand thumbs up" onclick="return false;"
-                               look="info" title="icon-flip='h'" />
-                     <b:button icon-rotate="l" iconAwesome="thumbs-up"
-                               value="go back" onclick="return false;"
-                               look="info" title="icon-rotate='l'" />
-                     <b:button icon-spin="true" icon="cd" icon-size="2x"
-                               value="Glyphicon" onclick="return false;"
-                               look="info" title="icon-spin='true' icon-size='2x'" />
-                 </h:panelGrid>
-]]></script>
-                    
-                  
-                </b:panel>
-            </f:facet>
+            </tbody>
+          </table>
+          ]]></script>
         </b:panel>
+      </f:facet>
+    </b:panel>
 
-                <h2><a id="disabled_state">Disabled State</a></h2>
-                <p>Make buttons look unclickable by fading them by 50%.</p>
-                
-                <b:panel title="Live preview" look="info" collapsible="false">            
-                    <h:panelGrid columns="2">
-                        <b:button value="Primary button" look="primary" disabled="true"/>
-                        <b:button value="Button" disabled="true" />
-                    </h:panelGrid>
-                    
-                    <f:facet name="footer">
-                        <strong>JSF markup:</strong>
-                        <b:panel>
-                            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                            <![CDATA[
-                    <h:panelGrid columns="2">
-                        <b:button value="Primary button" look="primary" disabled="true"/>
-                        <b:button value="Button" disabled="true" />
-                    </h:panelGrid>
-                            ]]></script>
-                        </b:panel>
-                    </f:facet>
-                </b:panel>
-       
-                
-                <br/>
-                <h2><a id="button_functionality">Button functionality</a></h2>
-                <p>Just like h:button, <code>&lt;b:button&gt;</code> does GET requests targeting bookmarkable URLs.</p>
-                <p>If you don't want to trigger a navigation, but simply call an AJAX or JavaScript method, omit the outcome.
-                You can make your intention more explicit by writing <code>outcome="@none"</code>.</p>
+    <h2><a id="button_size">Button size</a></h2>
+    <p>Fancy larger or smaller buttons? Add <code>size="lg"</code> (Large), <code>size="sm"</code> (Small), or <code>size="xs"</code> for additional sizes.</p>
 
-                <h2><a id="special_cases_">Special cases:</a><code>href</code> and <code>target</code><b:badge value="Since 1.1.0" /></h2>
-                <p>You can also use <code>&lt;b:button /&gt;</code> with the attributes <code>href</code>
-                and / or <code>target</code>. Both attributes are not supported by traditional HTML buttons.
-                Hence, they are rendered as an HTML anchor tag.</p>
-                
-                <b:panel title="Live example">
-                    <b:panelGrid columns="3" size="md">
-                       <b:button href="http://www.bootsfaces.net" 
-                                 look="primary"
-                                 value="BootsFaces project page" icon="bookmark" />
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:panelGrid columns="2">
+        <b:button value="Large button" look="primary" size="lg"/><b:button value="Large button" size="lg"/>
+        <b:button value="Normal button" look="primary" /><b:button value="Normal button" />
+        <b:button value="Small button" look="primary" size="sm"/><b:button value="Small button" size="sm"/>
+        <b:button value="Extra small button" look="primary" size="xs"/><b:button value="Extra small button" size="xs"/>
+      </h:panelGrid>
 
-                        <b:button href="http://www.bootsfaces.net" target="#" 
-                                  look="success" 
-                                  value="BootsFaces project page in a new window" icon="envelope"/>
-                    </b:panelGrid>
-                    <br />
-                    <f:facet name="footer">
-                <strong>JSF Markup:</strong>
-
-                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
-                <![CDATA[
-                <b:panelGrid columns="3">
-                       <b:button href="http://www.bootsfaces.net" 
-                                 look="primary"
-                                 value="BootsFaces project page" icon="bookmark" />
-
-                        <b:button href="http://www.bootsfaces.net" target="#" 
-                                  look="success"
-                                  value="BootsFaces project page in a new window" icon="envelope"/>
-                </b:panelGrid>
-                ]]></script>
-                    </f:facet>
-                </b:panel>
-                
-                <h2><a id="ajax_not_supported">AJAX not supported</a></h2>
-                <p>AJAX isn't supported because <code>&lt;b:button /&gt;</code> doesn't send POST requests to the server. If you need 
-                    to communicate with the server (with or without AJAX), use <code><b:navLink outcome="commandButton" value="&lt;b:commandButton/&gt;" /></code>
-                    or <code><b:navLink outcome="RemoteCommand" value="&lt;b:remoteCommand /&gt;" /></code>.</p>
-                <b:panel title="Live preview" look="info" collapsible="false">
-                    <h:panelGrid columns="4">
-                        <b:button outcome="testButton" value="Bookmark" icon="bookmark">
-                            <f:param name="testId" value="11" />
-                        </b:button>
-
-                        <b:button outcome="testButton" value="With Icon" icon="envelope">
-                            <f:param name="testId" value="22" />
-                        </b:button>
-
-                        <b:button outcome="testButton" icon="envelope">
-                            <f:param name="testId" value="33" />
-                        </b:button>
-
-                        <b:button outcome="testButton" value="Bookmark" icon="envelope" disabled="true">
-                            <f:param name="testId" value="44" />
-                        </b:button>
-                    </h:panelGrid>
-                    <f:facet name="footer">
-                <strong>JSF markup:</strong><br/>
-
-                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
-                <![CDATA[
-                <h:panelGrid columns="4">
-                    <b:button outcome="testButton" value="Bookmark" icon="bookmark">
-                        <f:param name="testId" value="11" />
-                    </b:button>
-
-                    <b:button outcome="testButton" value="With Icon" icon="envelope">
-                        <f:param name="testId" value="22" />
-                    </b:button>
-
-                    <b:button outcome="testButton" icon="envelope">
-                        <f:param name="testId" value="33" />
-                    </b:button>
-
-                    <b:button outcome="testButton" value="Bookmark" icon="envelope" disabled="true">
-                        <f:param name="testId" value="44" />
-                    </b:button>
-                </h:panelGrid>
-                ]]></script>
-                    </f:facet>
-                </b:panel>
-                
-                
-                
-        <h2><a id="responsive_design">Responsive design</a> <b:badge value="since 0.9.0" /> <b:badge value="breaking change in 1.1.0" /></h2>
-        <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
-        also with <code>&lt;b:button /&gt;</code>. Note that this is equivalent to putting it into a
-        <code>&lt;b:column /&gt;</code>. In particular, the the CSS styles are inside the column div.
-        </p>
-        <p><b>Breaking change with version 1.1.0:</b> Until BootsFaces 1.0.2, the generated HTML code
-        didn't comply to the rules of Bootstrap. This approach worked, but the buttons bleed into the padding
-        of their container. In other words, the buttons were to wide. BootsFaces 1.1.0 fixes this. If your CSS
-        rules use the id of the button, you might have to modify the selector of the rule to <code>#id > button</code>.</p>
-        
-        <b:panel title="Live preview" look="info" collapsible="false">            
-                <b:row>
-	                <b:button value="large-screen='full-width'" large-screen="full-width" />
-	             </b:row>
-	             <b:row style="padding-top:5px">
-	                <b:button value="large-screen='one-third'" large-screen="one-third" />
-	                <b:button value="large-screen='two-thirds'" large-screen="two-thirds" />
-	             </b:row>
-	             <b:row style="padding-top:5px">
-	                <b:button value="small-screen='one-third'" small-screen="one-third" />
-	                <b:button value="small-screen='two-thirds'" small-screen="two-thirds" />
-	             </b:row>
-	             <b:row style="padding-top:5px">
-	                <b:button value="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
-	                <b:button value="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
-	             </b:row>
-            
-            
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-             <![CDATA[
-             <b:row>
-                <b:button value="large-screen='full-width'" large-screen="full-width" />
-             </b:row>
-             <b:row style="padding-top:5px">
-                <b:button value="large-screen='one-third'" large-screen="one-third" />
-                <b:button value="large-screen='two-thirds'" large-screen="two-thirds" />
-             </b:row>
-             <b:row style="padding-top:5px">
-                <b:button value="small-screen='one-third'" small-screen="one-third" />
-                <b:button value="small-screen='two-thirds'" small-screen="two-thirds" />
-             </b:row>
-             <b:row style="padding-top:5px">
-                <b:button value="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
-                <b:button value="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
-             </b:row>
-             ]]></script>
-                </b:panel>
-            </f:facet>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:panelGrid columns="2">
+            <b:button value="Large button" look="primary" size="lg"/><b:button value="Large button" size="lg"/>
+            <b:button value="Normal button" look="primary" /><b:button value="Normal button" />
+            <b:button value="Small button" look="primary" size="sm"/><b:button value="Small button" size="sm"/>
+            <b:button value="Extra small button" look="primary" size="xs"/><b:button value="Extra small button" size="xs"/>
+          </h:panelGrid>
+          ]]></script>
         </b:panel>
-        
-        <h2><a id="visibility_depending_on_screen_size">Visibility depending on screen size</a> <b:badge value="since 0.8.6/0.9.0" /></h2>
-        <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
-        
-        <b:panel title="Live preview" look="info" collapsible="false">            
-                    <b:panelGrid colSpans="3,9">
-	                  <h:outputText value="Visible on &gt;= md:" />
-	                  <b:button value="Visible on medium or large screen" look="info" visible="md..." />
-	                  <h:outputText value="Visible on &lt;= sm:" />
-	                  <b:button value="Visible on small-screen" look="success" visible="...sm"/>
-	                  <h:outputText value="Visible on sm...lg:" />
-	                  <b:button value="Visible on small to large screen" look="success" visible="sm...lg"/>
-	                  <h:outputText value="Visible on xs and md:" />
-	                  <b:button value="Visible on tiny and medium screen" look="success" visible="xs,md"/>
-	                  <h:outputText value="Col-md-6, offset 2:" />
-	                  <b:button value="col-md-6, offset 2" look="success" col-md="6" offset="2" />
-	               </b:panelGrid>
-            
-            
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-             <![CDATA[
-               <b:panelGrid colSpans="3,9">
-                  <h:outputText value="Visible on &gt;= md:" />
-                  <b:button value="Visible on medium or large screen" look="info" visible="md..." />
-                  <h:outputText value="Visible on &lt;= sm:" />
-                  <b:button value="Visible on small-screen" look="success" visible="...sm"/>
-                  <h:outputText value="Visible on sm...lg:" />
-                  <b:button value="Visible on small to large screen" look="success" visible="sm...lg"/>
-                  <h:outputText value="Visible on xs and md:" />
-                  <b:button value="Visible on tiny and medium screen" look="success" visible="xs,md"/>
-                  <h:outputText value="Col-md-6, offset 2:" />
-                  <b:button value="col-md-6, offset 2" look="success" col-md="6" offset="2" />
-               </b:panelGrid>
-             ]]></script>
-                </b:panel>
-            </f:facet>
-        </b:panel>
-       
-        
-                
-        <br/>
-        <h2><a id="reference_section">Reference section</a></h2>
-        <ui:include src="ButtonAttributes.xhtml" />
+      </f:facet>
+    </b:panel>
 
-        <script type="text/javascript">
-         SyntaxHighlighter.all();
-        </script>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-    </ui:define>
+
+
+
+
+    <h2><a id="buttons_with_icons">Buttons with Icons</a></h2>
+    <p>Buttons can can have an icon adding the attribute <code>icon</code> (on the left or right, default is left).</p>
+    <p>You can control the icon position by specifying it in the attribute <code>iconAlign</code>.</p>
+    <p>The Icon attribute will add a Glyphicon icon (Bootstrap's default), but now you can also use a Font Awesome icon using the <code>iconAwesome</code> attribute instead of <code>icon</code>.</p>
+    <p>Both <code>icon</code> and <code>iconAwesome</code> attributes, require the icon name as value the icon name without the trailing <b>glyphicon-</b> prefix and <b>fa-</b> prefix respectively.</p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+
+      <h:panelGrid columns="2">
+        <h:outputText value="Default(Glyphicons)" style="font-weight:bolder"/><h:outputText value="Font Awesome" style="font-weight:bolder"/>
+        <b:button value="download" icon="download" /><b:button value="cloud-download" iconAwesome="cloud-download" />
+        <b:button value="download" icon="download" look="warning"/><b:button value="cloud-download" iconAwesome="cloud-download" look="warning"/>
+        <b:button value="cog (icon Right)" icon="cog" look="primary" iconAlign="right"/><b:button value="cogs (icon Right)" iconAwesome="cogs" look="primary" iconAlign="right"/>
+        <b:button value="stats" icon="stats" look="info"/><b:button value="bar-chart" iconAwesome="bar-chart" look="info"/>
+        <b:button value="shopping-cart (size lg)" icon="shopping-cart" look="success" size="lg"/><b:button value="cart-plus (size lg)" iconAwesome="cart-plus" look="success" size="lg"/>
+      </h:panelGrid>
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:panelGrid columns="2">
+            <h:outputText value="Default(Glyphicons)" style="font-weight:bolder"/><h:outputText value="Font Awesome" style="font-weight:bolder"/>
+            <b:button value="download" icon="download" /><b:button value="cloud-download" iconAwesome="cloud-download" />
+            <b:button value="download" icon="download" look="warning"/><b:button value="cloud-download" iconAwesome="cloud-download" look="warning"/>
+            <b:button value="cog (icon Right)" icon="cog" look="primary" iconAlign="right"/><b:button value="cogs (icon Right)" iconAwesome="cogs" look="primary" iconAlign="right"/>
+            <b:button value="stats" icon="stats" look="info"/><b:button value="bar-chart" iconAwesome="bar-chart" look="info"/>
+            <b:button value="shopping-cart (size lg)" icon="shopping-cart" look="success" size="lg"/><b:button value="cart-plus (size lg)" iconAwesome="cart-plus" look="success" size="lg"/>
+          </h:panelGrid>
+          ]]></script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+
+    <h2><a id="icon_modifiers">Icon modifiers</a><b:badge value="since 0.9.0" /></h2>
+    <p>Both Fontawesome icons and Glyphicons can be decorated with modifiers:</p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+
+      <h:panelGrid columns="1">
+        <b:button icon-spin="true" iconAwesome="thumbs-down"
+                  value="Thumbs up or thumbs down?" onclick="return false;"
+                  look="info" title="spin='true'" />
+        <b:button icon-size="2x" iconAwesome="thumbs-up"
+                  value="big thumbs up!" onclick="return false;"
+                  look="info" title="icon-size='2x'" />
+        <b:button icon-size="3x" iconAwesome="thumbs-up"
+                  value="even bigger thumbs up!" onclick="return false;"
+                  look="info" title="icon-size='3x'" />
+        <b:button icon-flip="h" iconAwesome="thumbs-up"
+                  value="left-hand thumbs up" onclick="return false;"
+                  look="info" title="icon-flip='h'" />
+        <b:button icon-rotate="l" iconAwesome="thumbs-up"
+                  value="go back" onclick="return false;"
+                  look="info" title="icon-rotate='l'" />
+        <b:button icon-spin="true" icon="cd" icon-size="2x"
+                  value="Glyphicon" onclick="return false;"
+                  look="info" title="icon-spin='true' icon-size='2x'" />
+      </h:panelGrid>
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:panelGrid columns="1">
+            <b:button icon-spin="true" iconAwesome="thumbs-down"
+                      value="Thumbs up or thumbs down?" onclick="return false;"
+                      look="info" title="spin='true'" />
+            <b:button icon-size="2x" iconAwesome="thumbs-up"
+                      value="big thumbs up!" onclick="return false;"
+                      look="info" title="icon-size='2x'" />
+            <b:button icon-size="3x" iconAwesome="thumbs-up"
+                      value="even bigger thumbs up!" onclick="return false;"
+                      look="info" title="icon-size='3x'" />
+            <b:button icon-flip="h" iconAwesome="thumbs-up"
+                      value="left-hand thumbs up" onclick="return false;"
+                      look="info" title="icon-flip='h'" />
+            <b:button icon-rotate="l" iconAwesome="thumbs-up"
+                      value="go back" onclick="return false;"
+                      look="info" title="icon-rotate='l'" />
+            <b:button icon-spin="true" icon="cd" icon-size="2x"
+                      value="Glyphicon" onclick="return false;"
+                      look="info" title="icon-spin='true' icon-size='2x'" />
+          </h:panelGrid>
+          ]]></script>
+
+
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+    <h2><a id="disabled_state">Disabled State</a></h2>
+    <p>Make buttons look unclickable by fading them by 50%.</p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:panelGrid columns="2">
+        <b:button value="Primary button" look="primary" disabled="true"/>
+        <b:button value="Button" disabled="true" />
+      </h:panelGrid>
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:panelGrid columns="2">
+            <b:button value="Primary button" look="primary" disabled="true"/>
+            <b:button value="Button" disabled="true" />
+          </h:panelGrid>
+          ]]></script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+
+    <br/>
+    <h2><a id="button_functionality">Button functionality</a></h2>
+    <p>Just like h:button, <code>&lt;b:button&gt;</code> does GET requests targeting bookmarkable URLs.</p>
+    <p>If you don't want to trigger a navigation, but simply call an AJAX or JavaScript method, omit the outcome.
+    You can make your intention more explicit by writing <code>outcome="@none"</code>.</p>
+
+    <h2><a id="special_cases_">Special cases:</a><code>href</code> and <code>target</code><b:badge value="Since 1.1.0" /></h2>
+    <p>You can also use <code>&lt;b:button /&gt;</code> with the attributes <code>href</code>
+    and / or <code>target</code>. Both attributes are not supported by traditional HTML buttons.
+    Hence, they are rendered as an HTML anchor tag.</p>
+
+    <b:panel title="Live example">
+      <b:panelGrid columns="3" size="md">
+        <b:button href="http://www.bootsfaces.net"
+                  look="primary"
+                  value="BootsFaces project page" icon="bookmark" />
+
+        <b:button href="http://www.bootsfaces.net" target="#"
+                  look="success"
+                  value="BootsFaces project page in a new window" icon="envelope"/>
+      </b:panelGrid>
+      <br />
+      <f:facet name="footer">
+        <strong>JSF Markup:</strong>
+
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
+        <![CDATA[
+        <b:panelGrid columns="3">
+          <b:button href="http://www.bootsfaces.net"
+                    look="primary"
+                    value="BootsFaces project page" icon="bookmark" />
+
+          <b:button href="http://www.bootsfaces.net" target="#"
+                    look="success"
+                    value="BootsFaces project page in a new window" icon="envelope"/>
+        </b:panelGrid>
+        ]]></script>
+      </f:facet>
+    </b:panel>
+
+    <h2><a id="ajax_not_supported">AJAX not supported</a></h2>
+    <p>AJAX isn't supported because <code>&lt;b:button /&gt;</code> doesn't send POST requests to the server. If you need
+    to communicate with the server (with or without AJAX), use <code><b:navLink outcome="commandButton" value="&lt;b:commandButton/&gt;" /></code>
+    or <code><b:navLink outcome="RemoteCommand" value="&lt;b:remoteCommand /&gt;" /></code>.</p>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:panelGrid columns="4">
+        <b:button outcome="testButton" value="Bookmark" icon="bookmark">
+          <f:param name="testId" value="11" />
+        </b:button>
+
+        <b:button outcome="testButton" value="With Icon" icon="envelope">
+          <f:param name="testId" value="22" />
+        </b:button>
+
+        <b:button outcome="testButton" icon="envelope">
+          <f:param name="testId" value="33" />
+        </b:button>
+
+        <b:button outcome="testButton" value="Bookmark" icon="envelope" disabled="true">
+          <f:param name="testId" value="44" />
+        </b:button>
+      </h:panelGrid>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong><br/>
+
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
+        <![CDATA[
+        <h:panelGrid columns="4">
+          <b:button outcome="testButton" value="Bookmark" icon="bookmark">
+            <f:param name="testId" value="11" />
+          </b:button>
+
+          <b:button outcome="testButton" value="With Icon" icon="envelope">
+            <f:param name="testId" value="22" />
+          </b:button>
+
+          <b:button outcome="testButton" icon="envelope">
+            <f:param name="testId" value="33" />
+          </b:button>
+
+          <b:button outcome="testButton" value="Bookmark" icon="envelope" disabled="true">
+            <f:param name="testId" value="44" />
+          </b:button>
+        </h:panelGrid>
+        ]]></script>
+      </f:facet>
+    </b:panel>
+
+
+
+    <h2><a id="responsive_design">Responsive design</a> <b:badge value="since 0.9.0" /> <b:badge value="breaking change in 1.1.0" /></h2>
+    <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
+    also with <code>&lt;b:button /&gt;</code>. Note that this is equivalent to putting it into a
+    <code>&lt;b:column /&gt;</code>. In particular, the the CSS styles are inside the column div.
+    </p>
+    <p><b>Breaking change with version 1.1.0:</b> Until BootsFaces 1.0.2, the generated HTML code
+    didn't comply to the rules of Bootstrap. This approach worked, but the buttons bleed into the padding
+    of their container. In other words, the buttons were to wide. BootsFaces 1.1.0 fixes this. If your CSS
+    rules use the id of the button, you might have to modify the selector of the rule to <code>#id > button</code>.</p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <b:row>
+        <b:button value="large-screen='full-width'" large-screen="full-width" />
+      </b:row>
+      <b:row style="padding-top:5px">
+        <b:button value="large-screen='one-third'" large-screen="one-third" />
+        <b:button value="large-screen='two-thirds'" large-screen="two-thirds" />
+      </b:row>
+      <b:row style="padding-top:5px">
+        <b:button value="small-screen='one-third'" small-screen="one-third" />
+        <b:button value="small-screen='two-thirds'" small-screen="two-thirds" />
+      </b:row>
+      <b:row style="padding-top:5px">
+        <b:button value="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
+        <b:button value="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
+      </b:row>
+
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:row>
+            <b:button value="large-screen='full-width'" large-screen="full-width" />
+          </b:row>
+          <b:row style="padding-top:5px">
+            <b:button value="large-screen='one-third'" large-screen="one-third" />
+            <b:button value="large-screen='two-thirds'" large-screen="two-thirds" />
+          </b:row>
+          <b:row style="padding-top:5px">
+            <b:button value="small-screen='one-third'" small-screen="one-third" />
+            <b:button value="small-screen='two-thirds'" small-screen="two-thirds" />
+          </b:row>
+          <b:row style="padding-top:5px">
+            <b:button value="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
+            <b:button value="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
+          </b:row>
+          ]]></script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+    <h2><a id="visibility_depending_on_screen_size">Visibility depending on screen size</a> <b:badge value="since 0.8.6/0.9.0" /></h2>
+    <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <b:panelGrid colSpans="3,9">
+        <h:outputText value="Visible on &gt;= md:" />
+        <b:button value="Visible on medium or large screen" look="info" visible="md..." />
+        <h:outputText value="Visible on &lt;= sm:" />
+        <b:button value="Visible on small-screen" look="success" visible="...sm"/>
+        <h:outputText value="Visible on sm...lg:" />
+        <b:button value="Visible on small to large screen" look="success" visible="sm...lg"/>
+        <h:outputText value="Visible on xs and md:" />
+        <b:button value="Visible on tiny and medium screen" look="success" visible="xs,md"/>
+        <h:outputText value="Col-md-6, offset 2:" />
+        <b:button value="col-md-6, offset 2" look="success" col-md="6" offset="2" />
+      </b:panelGrid>
+
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:panelGrid colSpans="3,9">
+            <h:outputText value="Visible on &gt;= md:" />
+            <b:button value="Visible on medium or large screen" look="info" visible="md..." />
+            <h:outputText value="Visible on &lt;= sm:" />
+            <b:button value="Visible on small-screen" look="success" visible="...sm"/>
+            <h:outputText value="Visible on sm...lg:" />
+            <b:button value="Visible on small to large screen" look="success" visible="sm...lg"/>
+            <h:outputText value="Visible on xs and md:" />
+            <b:button value="Visible on tiny and medium screen" look="success" visible="xs,md"/>
+            <h:outputText value="Col-md-6, offset 2:" />
+            <b:button value="col-md-6, offset 2" look="success" col-md="6" offset="2" />
+          </b:panelGrid>
+          ]]></script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+
+
+    <br/>
+    <h2><a id="reference_section">Reference section</a></h2>
+    <ui:include src="ButtonAttributes.xhtml" />
+
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+  </ui:define>
 </ui:composition>

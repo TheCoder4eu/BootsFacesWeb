@@ -7,30 +7,30 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head></h:head>
-<h:body>
-  <h1>Automated test results</h1>
-  <h:form>
-    <b:dataTable value="#{testSuite.results}" var="test" styleClass="table table-striped table-bordered"
-      style="width:100%">
-      <h:column>
-        <f:facet name="header">
-          <h:outputText value="Widget" />
-        </f:facet>
-        <h:outputText value="#{test.widget}" />
-      </h:column>
-      <h:column>
-        <f:facet name="header">
-          <h:outputText value="Result" />
-        </f:facet>
-        <h:outputText value="#{test.result}" />
-      </h:column>
-      <h:column>
-        <f:facet name="header">
-          <h:outputText value="Action" />
-        </f:facet>
-        <b:commandButton value="record test result" action="ajax:testSuite.record(test)" update="@form" />
-      </h:column>
-    </b:dataTable>
-  </h:form>
-</h:body>
+  <h:body>
+    <h1>Automated test results</h1>
+    <h:form>
+      <b:dataTable value="#{testSuite.results}" var="test" styleClass="table table-striped table-bordered"
+                   style="width:100%">
+        <h:column>
+          <f:facet name="header">
+            <h:outputText value="Widget" />
+          </f:facet>
+          <h:outputText value="#{test.widget}" />
+        </h:column>
+        <h:column>
+          <f:facet name="header">
+            <h:outputText value="Result" />
+          </f:facet>
+          <h:outputText value="#{test.result}" />
+        </h:column>
+        <h:column>
+          <f:facet name="header">
+            <h:outputText value="Action" />
+          </f:facet>
+          <b:commandButton value="record test result" action="ajax:testSuite.record(test)" update="@form" />
+        </h:column>
+      </b:dataTable>
+    </h:form>
+  </h:body>
 </html>

@@ -1,116 +1,116 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:b="http://bootsfaces.net/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
 
 
-<ui:define name="content-navigator">
-  <b:listLinks>
-    <b:navLink href="#socialshare" value="SocialShare (&lt;b:socialShare /&gt;)" />
-    <b:navLink href="#basic_usage" value="Basic usage" />
-    <b:navLink href="#legal_considerations" value="Legal considerations" />
-  </b:listLinks>
-</ui:define>
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#socialshare" value="SocialShare (&lt;b:socialShare /&gt;)" />
+      <b:navLink href="#basic_usage" value="Basic usage" />
+      <b:navLink href="#legal_considerations" value="Legal considerations" />
+    </b:listLinks>
+  </ui:define>
 
 
-	<ui:define name="content">
-		<style>
-		td {
-			padding: 8px;
-		}
-		</style>
-		<h1><a id="socialshare">SocialShare (&lt;b:socialShare /&gt;)</a></h1>
+  <ui:define name="content">
+    <style>
+      td {
+        padding: 8px;
+      }
+    </style>
+    <h1><a id="socialshare">SocialShare (&lt;b:socialShare /&gt;)</a></h1>
 
-		<p>SocialShare is a simple component that display a list of social button to share your content on these systems.</p>
-		<br/>
-		<h2><a id="basic_usage">Basic usage</a></h2>
-		<p>The usage is very simple: You can set a list of shares and than provide a custom text to share or an url. If you do not provide this informations, it takes the current url. 
-		You can also show label and counts about your share.</p>
-			
-		<br/>
-		<b:tabView activeIndex="1">
-			<b:tab title="JSF markup">
-				<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-						<![CDATA[
-							<b>Full configuration with data protection (see below)</b><br/>
-					        <b:socialShare shares="twitter,linkedin,facebook"  
-                                           showLabel="true" show-count="false" 
-                                           text="BootsFaces rocks!" block-message="Click to unblock the share buttons" />
-					        <br/>
-					        <b>Basic configuration</b><br/>
-					        <b:socialShare shares="twitter,linkedin" 
-                                           disable-block="true" />
-						]]>
-				</script>
-			</b:tab>
-			<b:tab title="displayed as" contentStyle="border:1px solid ;padding:10px">
-				<b:well>
-							<b>Configuration with data protection (see below)</b><br/>
-					        <b:socialShare shares="twitter,linkedin,facebook"  
-                                           showLabel="true" show-count="false" 
-                                           text="BootsFaces rocks!" block-message="Click to unblock the share buttons" />
-					        <br/>
-					        <b>Basic configuration</b><br/>
-					        <b:socialShare shares="twitter,linkedin,facebook" 
-					                       show-count="false"
-                                           disable-block="true" />
-				</b:well>
-			</b:tab>
-		</b:tabView>
-		<br/>
-		<br/>
+    <p>SocialShare is a simple component that display a list of social button to share your content on these systems.</p>
+    <br/>
+    <h2><a id="basic_usage">Basic usage</a></h2>
+    <p>The usage is very simple: You can set a list of shares and than provide a custom text to share or an url. If you do not provide this informations, it takes the current url.
+    You can also show label and counts about your share.</p>
 
-		<h2><a id="legal_considerations">Legal considerations, privacy, data protection and "Datensparsamkeit"</a></h2>
-		<p>By default, already showing a social share button sends a request to the social media platform. At least, that's the case with FaceBook. Plus,
-		many people are not aware that clicking a social share button informs the social media platform what they are doing. Thus, the social media platform
-		gathers data about what you're doing in the web without giving you the option to opt out.</p>
-		<p>That, in turn, is illegal in many countries, especially in the EU.</p>
-		<p>To solve the problem, we've implemented a two-click solution. By default, the social share button is blocked by an overlay, as you can see below.
-		Clicking the button unlocks it functionality. A second click opens the "share" window.</p>
-		<p>However, please double-check if a request is sent to the server at page load time. Among other things, it's easy to forget to set <code>show-count</code>
-		to false. Data protection also requires you to set the <code>count</code> attribute to false because the fetching the number of share also amount to sending
-		an http request to the social media platform.</p>
-		
-		<p>NB. If you want to use the default blocking functionality, you must activate the blockUI plugin of the Bootsfaces Project, 
-		using the web.xml parameter <code>net.bootsfaces.blockUI</code>(See page: <a href="../miscellaneous/Configuration.jsf">Configuration</a>)</p>
-		<b:tabView activeIndex="1">
-			<b:tab title="JSF markup">
-				<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-						<![CDATA[
-							<b>Full configuration</b><br/>
-					        <b:socialShare shares="twitter,linkedin"  
-                                           showLabel="true" show-count="false" 
-                                           text="BootsFaces rocks!" block-message="Click to unblock the share buttons" />
-					        <br/>
-						]]>
-				</script>
-			</b:tab>
-			<b:tab title="displayed as" contentStyle="border:1px solid ;padding:10px">
-				<b:well>
-					<b>Full configuration</b><br/>
-				        <b:socialShare shares="twitter,linkedin"  
-	                                         showLabel="true" show-count="false" 
-	                                         text="BootsFaces rocks!" block-message="Click to unblock the share buttons" />
-					<br/>
-				</b:well>
-			</b:tab>
-		</b:tabView>
-		
-		<br/>
-		<br/>
-		
-		<ui:include src="SocialShareAttributes.xhtml" />
+    <br/>
+    <b:tabView activeIndex="1">
+      <b:tab title="JSF markup">
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+        <![CDATA[
+        <b>Full configuration with data protection (see below)</b><br/>
+        <b:socialShare shares="twitter,linkedin,facebook"
+                       showLabel="true" show-count="false"
+                       text="BootsFaces rocks!" block-message="Click to unblock the share buttons" />
+        <br/>
+        <b>Basic configuration</b><br/>
+        <b:socialShare shares="twitter,linkedin"
+                       disable-block="true" />
+        ]]>
+        </script>
+      </b:tab>
+      <b:tab title="displayed as" contentStyle="border:1px solid ;padding:10px">
+        <b:well>
+          <b>Configuration with data protection (see below)</b><br/>
+          <b:socialShare shares="twitter,linkedin,facebook"
+                         showLabel="true" show-count="false"
+                         text="BootsFaces rocks!" block-message="Click to unblock the share buttons" />
+          <br/>
+          <b>Basic configuration</b><br/>
+          <b:socialShare shares="twitter,linkedin,facebook"
+                         show-count="false"
+                         disable-block="true" />
+        </b:well>
+      </b:tab>
+    </b:tabView>
+    <br/>
+    <br/>
 
-		<script type="text/javascript">
-      		SyntaxHighlighter.all();
-    	</script>
-		<br />
-		<br />
-		<br />
-		<br />
-	</ui:define>
+    <h2><a id="legal_considerations">Legal considerations, privacy, data protection and "Datensparsamkeit"</a></h2>
+    <p>By default, already showing a social share button sends a request to the social media platform. At least, that's the case with FaceBook. Plus,
+    many people are not aware that clicking a social share button informs the social media platform what they are doing. Thus, the social media platform
+    gathers data about what you're doing in the web without giving you the option to opt out.</p>
+    <p>That, in turn, is illegal in many countries, especially in the EU.</p>
+    <p>To solve the problem, we've implemented a two-click solution. By default, the social share button is blocked by an overlay, as you can see below.
+    Clicking the button unlocks it functionality. A second click opens the "share" window.</p>
+    <p>However, please double-check if a request is sent to the server at page load time. Among other things, it's easy to forget to set <code>show-count</code>
+    to false. Data protection also requires you to set the <code>count</code> attribute to false because the fetching the number of share also amount to sending
+    an http request to the social media platform.</p>
+
+    <p>NB. If you want to use the default blocking functionality, you must activate the blockUI plugin of the Bootsfaces Project,
+    using the web.xml parameter <code>net.bootsfaces.blockUI</code>(See page: <a href="../miscellaneous/Configuration.jsf">Configuration</a>)</p>
+    <b:tabView activeIndex="1">
+      <b:tab title="JSF markup">
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+        <![CDATA[
+        <b>Full configuration</b><br/>
+        <b:socialShare shares="twitter,linkedin"
+                       showLabel="true" show-count="false"
+                       text="BootsFaces rocks!" block-message="Click to unblock the share buttons" />
+        <br/>
+        ]]>
+        </script>
+      </b:tab>
+      <b:tab title="displayed as" contentStyle="border:1px solid ;padding:10px">
+        <b:well>
+          <b>Full configuration</b><br/>
+          <b:socialShare shares="twitter,linkedin"
+                         showLabel="true" show-count="false"
+                         text="BootsFaces rocks!" block-message="Click to unblock the share buttons" />
+          <br/>
+        </b:well>
+      </b:tab>
+    </b:tabView>
+
+    <br/>
+    <br/>
+
+    <ui:include src="SocialShareAttributes.xhtml" />
+
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+    <br />
+    <br />
+    <br />
+    <br />
+  </ui:define>
 </ui:composition>

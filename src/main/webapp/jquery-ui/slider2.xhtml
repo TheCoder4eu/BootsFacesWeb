@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
- 
-             <ui:define name="content">
-                <h1>Fancy sliders</h1>
-                <h3>Options and Examples</h3>
-                <p>You can use more than one slider to get input for complex values, like the Time:</p>
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:define name="content">
+    <h1>Fancy sliders</h1>
+    <h3>Options and Examples</h3>
+    <p>You can use more than one slider to get input for complex values, like the Time:</p>
     <h:form prependId="false" addLabels="false">
       <b:tabView>
         <b:tab title="EXAMPLE - Time slider" id="time">
@@ -18,195 +18,195 @@
               <b:row>
                 <b:column>
                   <b:slider id="hourID" min="0" max="23"
-                    value="#{clockBean.hour}" label="HH" />
+                            value="#{clockBean.hour}" label="HH" />
                 </b:column>
               </b:row>
               <b:row>
                 <b:column>
                   <b:slider id="minuteID" min="0" max="59"
-                    value="#{clockBean.minute}" label="MM" />
+                            value="#{clockBean.minute}" label="MM" />
                 </b:column>
               </b:row>
               <b:row>
                 <br />
                 <b:column>
                   <b:commandButton value="Submit" update="@form:@styleClass(amodal)"
-                    id="modalcb" ajax="true" look="primary"
-                    oncomplete="$('.amodal').modal('show');" />
+                                   id="modalcb" ajax="true" look="primary"
+                                   oncomplete="$('.amodal').modal('show');" />
                 </b:column>
               </b:row>
             </b:column>
             <b:column col-lg="4">
               <style>
-#face {
-	stroke-width: 2px;
-	stroke: #fff;
-}
+                #face {
+                  stroke-width: 2px;
+                  stroke: #fff;
+                }
 
-#hour, #min, #sec {
-	stroke-width: 1px;
-	fill: #333;
-	stroke: #555;
-}
+                #hour, #min, #sec {
+                  stroke-width: 1px;
+                  fill: #333;
+                  stroke: #555;
+                }
 
-#sec {
-	stroke: #f55;
-}
-</style>
+                #sec {
+                  stroke: #f55;
+                }
+              </style>
               <svg id="clock" viewBox="0 0 100 100">
-									<circle id="face" cx="50" cy="50" r="45" />
-									<g id="hands">
-										<rect id="hour" x="48.5" y="12.5" width="5" height="40"
-                  rx="2.5" ry="2.55" />
-										<rect id="min" x="48" y="12.5" width="3" height="40" rx="2"
-                  ry="2" />
-										<line id="sec" x1="50" y1="50" x2="50" y2="16" />
-									</g>
-								</svg>
+                <circle id="face" cx="50" cy="50" r="45" />
+                <g id="hands">
+                  <rect id="hour" x="48.5" y="12.5" width="5" height="40"
+                        rx="2.5" ry="2.55" />
+                  <rect id="min" x="48" y="12.5" width="3" height="40" rx="2"
+                        ry="2" />
+                  <line id="sec" x1="50" y1="50" x2="50" y2="16" />
+                </g>
+              </svg>
             </b:column>
           </b:row>
 
 
           <b:row>
             <b:column>
-                        		Clock inspired by <a target="#"
-                href="http://demosthenes.info/blog/943/An-SVG-Analog-Clock-In-6-Lines-of-JavaScript">demosthenes.info/blog/943/An-SVG-Analog-Clock-In-6-Lines-of-JavaScript</a>.
-                        	</b:column>
+              Clock inspired by <a target="#"
+              href="http://demosthenes.info/blog/943/An-SVG-Analog-Clock-In-6-Lines-of-JavaScript">demosthenes.info/blog/943/An-SVG-Analog-Clock-In-6-Lines-of-JavaScript</a>.
+            </b:column>
           </b:row>
         </b:tab>
         <b:tab title="JSF Markup">
           <script type="syntaxhighlighter"
-            class="brush: xml; toolbar: false;gutter:true;first-line: 0">
-                        <![CDATA[
-                        <b:row>
-                        	<b:column col-lg="6">
-		                        <b:row>
-		                            <b:column>
-		                                <b:slider id="hourID" min="0" max="23" value="#{clockBean.hour}" label="HH"/>
-		                            </b:column>
-		                        </b:row>
-		                        <b:row>
-		                            <b:column>
-		                                <b:slider id="minuteID" min="0" max="59" value="#{clockBean.minute}" label="MM"/>
-		                            </b:column>
-		                        </b:row>
-		                        <b:row>
-		                            <br/>
-		                            <b:column><b:commandButton value="Submit" update="amodal" id="modalcb" ajax="true"
-		                                             look="primary" oncomplete="$('#amodal').modal('show');"/></b:column>
-		                        </b:row>
-		                    </b:column>
-	                        <b:column col-lg="4">
-	                            <style>
-									#face { stroke-width: 2px; stroke: #fff; }
-									#hour, #min, #sec { stroke-width: 1px; fill: #333; stroke: #555; }
-									#sec { stroke: #f55; }	          
-				                </style>
-		                        <svg id="clock" viewBox="0 0 100 100">
-									<circle id="face" cx="50" cy="50" r="45"/>
-									<g id="hands">
-										<rect id="hour" x="48.5" y="12.5" width="5" height="40" rx="2.5" ry="2.55" />
-										<rect id="min" x="48" y="12.5" width="3" height="40" rx="2" ry="2"/>
-										<line id="sec" x1="50" y1="50" x2="50" y2="16" />
-									</g>
-								</svg>
-	                        </b:column>
-	                     </b:row>
-                        ]]></script>
+          class="brush: xml; toolbar: false;gutter:true;first-line: 0">
+          <![CDATA[
+          <b:row>
+            <b:column col-lg="6">
+              <b:row>
+                <b:column>
+                  <b:slider id="hourID" min="0" max="23" value="#{clockBean.hour}" label="HH"/>
+                </b:column>
+              </b:row>
+              <b:row>
+                <b:column>
+                  <b:slider id="minuteID" min="0" max="59" value="#{clockBean.minute}" label="MM"/>
+                </b:column>
+              </b:row>
+              <b:row>
+                <br/>
+                <b:column><b:commandButton value="Submit" update="amodal" id="modalcb" ajax="true"
+                  look="primary" oncomplete="$('#amodal').modal('show');"/></b:column>
+              </b:row>
+            </b:column>
+            <b:column col-lg="4">
+              <style>
+                #face { stroke-width: 2px; stroke: #fff; }
+                #hour, #min, #sec { stroke-width: 1px; fill: #333; stroke: #555; }
+                #sec { stroke: #f55; }
+              </style>
+              <svg id="clock" viewBox="0 0 100 100">
+                <circle id="face" cx="50" cy="50" r="45"/>
+                <g id="hands">
+                  <rect id="hour" x="48.5" y="12.5" width="5" height="40" rx="2.5" ry="2.55" />
+                  <rect id="min" x="48" y="12.5" width="3" height="40" rx="2" ry="2"/>
+                  <line id="sec" x1="50" y1="50" x2="50" y2="16" />
+                </g>
+              </svg>
+            </b:column>
+          </b:row>
+          ]]></script>
         </b:tab>
         <b:tab title="JavaScript source code">
           <script type="syntaxhighlighter"
-            class="brush: javascript toolbar: false;gutter:true;first-line: 0">
-                        <![CDATA[
-                    setInterval(function() {
-	                    function r(el, deg) {
-		                    el.setAttribute('transform', 'rotate('+ deg +' 50 50)')
-	                    }
-	                    var d = new Date();
-	                    var hours = $("[name='time\\:hourID']").val();
-	                    var minutes=$("[name='time\\:minuteID']").val();
-	                    if (d.getSeconds()==0) {
-	                       minutes++;
-	                       if (minutes>=60) {
-	                          hours++;
-	                          minutes=0;
-	                          if (hours>=24) {
-	                             hours=0;
-	                          }
-	                          $("[name='hourID']").val(hours);
-		                       $('span[id="hourID_badge"]').text( hours );
-	                           $( "#hourID_slider" ).slider( "option", "value", hours );
-	                       }
-	                       $("[name='minuteID']").val(minutes);
-	                       $('span[id="minuteID_badge"]').text( minutes );
-                           $( "#minuteID_slider" ).slider( "option", "value", minutes );
-	                    }
-	                    r(sec, 6*d.getSeconds())
-	                    r(min, 6*minutes)
-	                    r(hour, 30*(hours%12) + minutes/2)
-                    }, 1000)
+          class="brush: javascript toolbar: false;gutter:true;first-line: 0">
+          <![CDATA[
+          setInterval(function() {
+            function r(el, deg) {
+              el.setAttribute('transform', 'rotate('+ deg +' 50 50)')
+            }
+            var d = new Date();
+            var hours = $("[name='time\\:hourID']").val();
+            var minutes=$("[name='time\\:minuteID']").val();
+            if (d.getSeconds()==0) {
+              minutes++;
+              if (minutes>=60) {
+                hours++;
+                minutes=0;
+                if (hours>=24) {
+                  hours=0;
+                }
+                $("[name='hourID']").val(hours);
+                $('span[id="hourID_badge"]').text( hours );
+                $( "#hourID_slider" ).slider( "option", "value", hours );
+              }
+              $("[name='minuteID']").val(minutes);
+              $('span[id="minuteID_badge"]').text( minutes );
+              $( "#minuteID_slider" ).slider( "option", "value", minutes );
+            }
+            r(sec, 6*d.getSeconds())
+            r(min, 6*minutes)
+            r(hour, 30*(hours%12) + minutes/2)
+          }, 1000)
 
-                        ]]></script>
-                        </b:tab>
-                      </b:tabView>
-                
-                      <b:modal style-class="amodal" title="Slider">
-                        <strong>Submitted values:</strong>
-                        <h:panelGrid columns="2">
-                          <h:outputText value="Hour(0-24): " />
-                          <h:outputText value="#{clockBean.hour}" />
-                
-                          <h:outputText value="Minutes(step 5 min): " />
-                          <h:outputText value="#{clockBean.minute}" />
-                        </h:panelGrid>
-                        <f:facet name="footer">
-                          <b:button value="close" dismiss="modal"
-                            onclick="return false;" />
-                          <b:button value="Ok" look="primary" dismiss="modal"
-                            onclick="return false;" />
-                        </f:facet>
-                      </b:modal>
-                
-                    </h:form>
-                
-                
-                    <script type="text/javascript">
-					SyntaxHighlighter.all();
-					setInterval(function() {
-						function r(el, deg) {
-							el.setAttribute('transform', 'rotate(' + deg
-									+ ' 50 50)')
-						}
-						var d = new Date();
-						var hours = $("[name='time\\:hourID']").val();
-						var minutes = $("[name='time\\:minuteID']").val();
-						if (d.getSeconds() == 0) {
-							minutes++;
-							if (minutes >= 60) {
-								hours++;
-								minutes = 0;
-								if (hours >= 24) {
-									hours = 0;
-								}
-								$("[name='time\\:hourID']").val(hours);
-								$('span[id="time\\:hourID_badge"]').text(hours);
-								$("#time\\:hourID_slider").slider("option", "value",
-										hours);
-							}
-							$("[name='time\\:minuteID']").val(minutes);
-							$('span[id="time\\:minuteID_badge"]').text(minutes);
-							$("#time\\:minuteID_slider").slider("option", "value",
-									minutes);
-						}
-						r(sec, 6 * d.getSeconds())
-						r(min, 6 * minutes)
-						r(hour, 30 * (hours % 12) + minutes / 2)
-					}, 1000)
-				</script>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
+          ]]></script>
+        </b:tab>
+      </b:tabView>
 
-            </ui:define>
-        </ui:composition>
+      <b:modal style-class="amodal" title="Slider">
+        <strong>Submitted values:</strong>
+        <h:panelGrid columns="2">
+          <h:outputText value="Hour(0-24): " />
+          <h:outputText value="#{clockBean.hour}" />
+
+          <h:outputText value="Minutes(step 5 min): " />
+          <h:outputText value="#{clockBean.minute}" />
+        </h:panelGrid>
+        <f:facet name="footer">
+          <b:button value="close" dismiss="modal"
+                    onclick="return false;" />
+          <b:button value="Ok" look="primary" dismiss="modal"
+                    onclick="return false;" />
+        </f:facet>
+      </b:modal>
+
+    </h:form>
+
+
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    setInterval(function() {
+      function r(el, deg) {
+        el.setAttribute('transform', 'rotate(' + deg
+        + ' 50 50)')
+      }
+      var d = new Date();
+      var hours = $("[name='time\\:hourID']").val();
+      var minutes = $("[name='time\\:minuteID']").val();
+      if (d.getSeconds() == 0) {
+        minutes++;
+        if (minutes >= 60) {
+          hours++;
+          minutes = 0;
+          if (hours >= 24) {
+            hours = 0;
+          }
+          $("[name='time\\:hourID']").val(hours);
+          $('span[id="time\\:hourID_badge"]').text(hours);
+          $("#time\\:hourID_slider").slider("option", "value",
+          hours);
+        }
+        $("[name='time\\:minuteID']").val(minutes);
+        $('span[id="time\\:minuteID_badge"]').text(minutes);
+        $("#time\\:minuteID_slider").slider("option", "value",
+        minutes);
+      }
+      r(sec, 6 * d.getSeconds())
+      r(min, 6 * minutes)
+      r(hour, 30 * (hours % 12) + minutes / 2)
+    }, 1000)
+    </script>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+  </ui:define>
+</ui:composition>

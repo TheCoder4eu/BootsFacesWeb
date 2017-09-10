@@ -1,37 +1,37 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:b="http://bootsfaces.net/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
 
 
-<ui:define name="content-navigator">
-  <b:listLinks>
-    <b:navLink href="#b_message" value="&lt;b:message /&gt;" />
-    <b:navLink href="#to_escape_or_not_to_escape" value="To escape or not to escape" />
-    <b:navLink href="#b_messages" value="&lt;b:messages /&gt;" />
-    <b:navLink href="#b_messages___the" value="&lt;b:messages /&gt;: the for attribute" />
-    <b:navLink href="#separators_between_messages" value="Separators between messages" />
-    <b:navLink href="#multiple_messages_and" value="Multiple messages" />
-    <b:navLink href="#responsive_design" value="Responsive design" />
-    <b:navLink href="#visibility_depending_on_screen_size" value="Visibility depending on screen size" />
-    <b:navLink href="#severity" value="Severity" />
-    <b:navLink href="#reference_section" value="Reference section" />
-  </b:listLinks>
-</ui:define>
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#b_message" value="&lt;b:message /&gt;" />
+      <b:navLink href="#to_escape_or_not_to_escape" value="To escape or not to escape" />
+      <b:navLink href="#b_messages" value="&lt;b:messages /&gt;" />
+      <b:navLink href="#b_messages___the" value="&lt;b:messages /&gt;: the for attribute" />
+      <b:navLink href="#separators_between_messages" value="Separators between messages" />
+      <b:navLink href="#multiple_messages_and" value="Multiple messages" />
+      <b:navLink href="#responsive_design" value="Responsive design" />
+      <b:navLink href="#visibility_depending_on_screen_size" value="Visibility depending on screen size" />
+      <b:navLink href="#severity" value="Severity" />
+      <b:navLink href="#reference_section" value="Reference section" />
+    </b:listLinks>
+  </ui:define>
 
 
-	<ui:define name="content">
-		<style>
-td {
-	padding: 8px;
-}
-</style>
-	<h1><a id="b_message">&lt;b:message /&gt;</a><b:badge value="since 0.8.1" /></h1>
+  <ui:define name="content">
+    <style>
+      td {
+        padding: 8px;
+      }
+    </style>
+    <h1><a id="b_message">&lt;b:message /&gt;</a><b:badge value="since 0.8.1" /></h1>
     <p>Displays the <code>FacesMessages</code> of a single field in Bootstrap style. Use the <code>for</code> attribute to indicate
     which input field the <code>&lt;b:message &gt;</code> refers to. If the <code>&lt;b:message &gt;</code> immediately
     follows the input field, you can omit the <code>for</code> attribute: the default value of <code>for</code>
@@ -42,443 +42,443 @@ td {
     around the page or to use copy and paste if you don't use IDs.</p>
 
 
-         <b:tabView activeIndex="1" contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
-          <b:tab title="JSF markup">
-            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-                 <h:form id="messageForm">
-                  <b:panelGrid colSpans="3,9">
-                    <b:selectBooleanCheckbox value="#num;{checkboxBean.cbxError}"
-                                    id="checkboxWithErrorMessage"
-                                    caption="click to toggle the error message"
-                                    label="error"
-                                    onclick="ajax:checkboxBean.action();"
-                                    update="@form"
-                                    />
-                    <b:message />
-                    <b:selectBooleanCheckbox value="#num;{checkboxBean.cbxFatal}"
-                                    id="checkboxWithFatalMessage"
-                                    caption="click to toggle the fatal error message"
-                                    label="fatal"
-                                    onclick="ajax:checkboxBean.action();"
-                                    update="@form"
-                                    />
-                    <b:message for="checkboxWithFatalMessage" />
-                    <b:selectBooleanCheckbox value="#num;{checkboxBean.cbxWarning}"
-                                    id="checkboxWithWarning"
-                                    caption="click to toggle the warning"
-                                    label="warning"
-                                    onclick="ajax:checkboxBean.action();"
-                                    update="@form"
-                                    />
-                    <b:message for="@previous:@previous:@next" />
-                    <b:selectBooleanCheckbox value="#num;{checkboxBean.cbxInfo}"
-                                    id="checkboxWithInfoMessage"
-                                    caption="click to toggle the info message"
-                                    label="info"
-                                    onclick="ajax:checkboxBean.action();"
-                                    update="@form"
-                                    />
-                    <b:message for="@form:**:checkboxWithInfoMessage" escape="false" />
-                  </b:panelGrid>
-                </h:form>
- ]]>
-   			 </script>
-          </b:tab>
-          <b:tab title="displayed as">
-                 <h:form id="messageForm">
-                  <b:panelGrid colSpans="3,9">
-                    <b:selectBooleanCheckbox value="#{checkboxBean.cbxError}"
-                                    id="checkboxWithErrorMessage"
-                                    caption="click to toggle the error message"
-                                    label="Error"
-                                    onclick="ajax:checkboxBean.action();"
-                                    update="@form"
-                                    />
-                    <b:message />
-                    <b:selectBooleanCheckbox value="#{checkboxBean.cbxFatal}"
-                                    id="checkboxWithFatalMessage"
-                                    caption="click to toggle the fatal error message"
-                                    label="Fatal"
-                                    onclick="ajax:checkboxBean.action();"
-                                    update="@form"
-                                    />
-                    <b:message for="checkboxWithFatalMessage" />
-                    <b:selectBooleanCheckbox value="#{checkboxBean.cbxWarning}"
-                                    id="checkboxWithWarning"
-                                    caption="click to toggle the warning"
-                                    label="Warning"
-                                    onclick="ajax:checkboxBean.action();"
-                                    update="@form"
-                                    />
-                    <b:message for="@previous:@previous:@next" />
-                    <b:selectBooleanCheckbox value="#{checkboxBean.cbxInfo}"
-                                    id="checkboxWithInfoMessage"
-                                    caption="click to toggle the info message"
-                                    label="Info"
-                                    onclick="ajax:checkboxBean.action();"
-                                    update="@form"
-                                    />
-
-                    <b:message for="@form:**:checkboxWithInfoMessage"  escape="false" />
-                  </b:panelGrid>
-                </h:form>
-             </b:tab>
-        </b:tabView>
-
-        <h1><a id="to_escape_or_not_to_escape">To escape or not to escape</a><b:badge value="since 0.8.5" /></h1>
-        <p>By public demand, we've added the <code>escape</code> attribute. It allows you to add HTML tags in your
-        messages. Please note that this might be a security issue. You're responsible to make sure that
-        hackers do not enter JavaScript code and have it executed when the page is rendered later. Therefore,
-        BootsFaces prints a message to the console when it renders a message with <code>escape="false"</code>
-        for the first time. This message can't be deactivated. We know that using HTML tags in your error messages
-        is a useful features, but at the same time we want to make sure you're aware of the risk.</p>
-
-        <h1><a id="b_messages">&lt;b:messages /&gt;</a><b:badge value="since 0.7" /></h1>
-		<p>Displays <code>FacesMessages</code> in Bootstrap style.</p>
-
-         <b:tabView activeIndex="1"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
-          <b:tab title="JSF markup">
-            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-			<p:commandButton value="Info" actionListener="&num;{messagesBean.info}" update="@form"/>
-			<p:commandButton value="Warn" actionListener="&num;{messagesBean.warn}" update="@form"/>
-			<p:commandButton value="Error" actionListener="&num;{messagesBean.error}" update="@form"/>
-			<p:commandButton value="Fatal" actionListener="&num;{messagesBean.fatal}" update="@form"/>
-            <p>Default setting:</p>
-            <b:messages/>
-            <p>Unsafe setting (<code>escape="false"</code>):</p>
-            <b:messages escape="false"/>
-]]>
-         </script>
-          </b:tab>
-          <b:tab title="displayed as">
-            <h:form>
-            <p:commandButton value="Info" actionListener="#{messagesBean.info}" update="@form"/>
-            <p:commandButton value="Warn" actionListener="#{messagesBean.warn}" update="@form"/>
-            <p:commandButton value="Error" actionListener="#{messagesBean.error}" update="@form"/>
-            <p:commandButton value="Fatal and multiple messages" actionListener="#{messagesBean.fatal}" update="@form"/>
-            <p>Default setting:</p>
-            <b:messages line-break-tag="&lt;p&gt;&lt;hr /&gt;&lt;/p&gt;"/>
-            <p>Unsafe setting (<code>escape="false"</code>):</p>
-            <b:messages escape="false" line-break-tag="&lt;p&gt;&lt;hr /&gt;&lt;/p&gt;"/>
-     		</h:form>
-          </b:tab>
-        </b:tabView>
-
-        <h1><a id="b_messages___the">&lt;b:messages /&gt;: the</a><code>for</code> attribute <b:badge value="since 0.9.0" /></h1>
-        <p>The <code>for</code> attribute of BootsFaces is more flexible than the <code>for</code> of <code>h:messages</code>.
-        You can use it to limit the list of error messages to a certain form. More precisely, you can show every
-        error message of an arbitrary component and its children. To use this feature you have to set a second
-        attribute <code>recursive="true"</code>. By default, the for attribute only checks the component it points to,
-        ignoring the children.</p>
-        <p>You can see the effect in the example below. The error messages in the live demo are updated as you type.</p>
-          <h:form>
-            <b:tabView contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px"
-                       onshow="ajax:messagesBean.update()" update="leftmessages rightmessages">
-              <b:tab title="JSF markup">
-                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-                <b:panelGrid columns="2">
-                  <b:panel title="Who are you?" look="primary">
-                    <b:inputText value="#{messagesBean.firstName}" label="First name"  onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages" />
-                    <b:inputText value="#{messagesBean.lastName}" label="Last name"  onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages"  />
-                    <b:messages styleClass="msgs" redisplay="true" for="@parent" recursive="true" id="leftmessages"/>
-                  </b:panel>
-                  <b:panel title="How old are you?" look="primary">
-                    <b:inputText value="#{messagesBean.age}" label="Age"  onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages"  />
-                    <b:dateTimePicker value="#{messagesBean.birthday}" label="Birthdate"  onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages"  />
-                    <b:messages styleClass="msgs" redisplay="true" for="@parent" recursive="true" id="rightmessages"/>
-                  </b:panel>
-                </b:panelGrid>
-]]>
-         </script>
-              </b:tab>
-              <b:tab title="displayed as" >
-                 <b:panelGrid columns="2">
-                  <b:panel title="Who are you?" look="primary">
-                    <b:inputText value="#{messagesBean.firstName}" label="First name"  onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages" />
-                    <b:inputText value="#{messagesBean.lastName}" label="Last name"  onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages"  />
-                    <b:messages styleClass="msgs" redisplay="true" for="@parent" recursive="true" id="leftmessages"/>
-                  </b:panel>
-                  <b:panel title="How old are you?" look="primary">
-                    <b:inputText value="#{messagesBean.age}" label="Age"  onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages"  />
-                    <b:dateTimePicker value="#{messagesBean.birthday}" label="Birthdate"  onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages"  />
-                    <b:messages styleClass="msgs" redisplay="true" for="@parent" recursive="true" id="rightmessages"/>
-                  </b:panel>
-                </b:panelGrid>
-              </b:tab>
-          </b:tabView>
+    <b:tabView activeIndex="1" contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+      <b:tab title="JSF markup">
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+        <![CDATA[
+        <h:form id="messageForm">
+          <b:panelGrid colSpans="3,9">
+            <b:selectBooleanCheckbox value="#num;{checkboxBean.cbxError}"
+                                     id="checkboxWithErrorMessage"
+                                     caption="click to toggle the error message"
+                                     label="error"
+                                     onclick="ajax:checkboxBean.action();"
+                                     update="@form"
+                                     />
+            <b:message />
+            <b:selectBooleanCheckbox value="#num;{checkboxBean.cbxFatal}"
+                                     id="checkboxWithFatalMessage"
+                                     caption="click to toggle the fatal error message"
+                                     label="fatal"
+                                     onclick="ajax:checkboxBean.action();"
+                                     update="@form"
+                                     />
+            <b:message for="checkboxWithFatalMessage" />
+            <b:selectBooleanCheckbox value="#num;{checkboxBean.cbxWarning}"
+                                     id="checkboxWithWarning"
+                                     caption="click to toggle the warning"
+                                     label="warning"
+                                     onclick="ajax:checkboxBean.action();"
+                                     update="@form"
+                                     />
+            <b:message for="@previous:@previous:@next" />
+            <b:selectBooleanCheckbox value="#num;{checkboxBean.cbxInfo}"
+                                     id="checkboxWithInfoMessage"
+                                     caption="click to toggle the info message"
+                                     label="info"
+                                     onclick="ajax:checkboxBean.action();"
+                                     update="@form"
+                                     />
+            <b:message for="@form:**:checkboxWithInfoMessage" escape="false" />
+          </b:panelGrid>
         </h:form>
+        ]]>
+        </script>
+      </b:tab>
+      <b:tab title="displayed as">
+        <h:form id="messageForm">
+          <b:panelGrid colSpans="3,9">
+            <b:selectBooleanCheckbox value="#{checkboxBean.cbxError}"
+                                     id="checkboxWithErrorMessage"
+                                     caption="click to toggle the error message"
+                                     label="Error"
+                                     onclick="ajax:checkboxBean.action();"
+                                     update="@form"
+                                     />
+            <b:message />
+            <b:selectBooleanCheckbox value="#{checkboxBean.cbxFatal}"
+                                     id="checkboxWithFatalMessage"
+                                     caption="click to toggle the fatal error message"
+                                     label="Fatal"
+                                     onclick="ajax:checkboxBean.action();"
+                                     update="@form"
+                                     />
+            <b:message for="checkboxWithFatalMessage" />
+            <b:selectBooleanCheckbox value="#{checkboxBean.cbxWarning}"
+                                     id="checkboxWithWarning"
+                                     caption="click to toggle the warning"
+                                     label="Warning"
+                                     onclick="ajax:checkboxBean.action();"
+                                     update="@form"
+                                     />
+            <b:message for="@previous:@previous:@next" />
+            <b:selectBooleanCheckbox value="#{checkboxBean.cbxInfo}"
+                                     id="checkboxWithInfoMessage"
+                                     caption="click to toggle the info message"
+                                     label="Info"
+                                     onclick="ajax:checkboxBean.action();"
+                                     update="@form"
+                                     />
 
+            <b:message for="@form:**:checkboxWithInfoMessage"  escape="false" />
+          </b:panelGrid>
+        </h:form>
+      </b:tab>
+    </b:tabView>
 
-        <h1><a id="separators_between_messages">Separators between messages</a><b:badge value="since 0.8.5" /></h1>
-        <p>By default, the <code>&lt;b:message &gt;</code> tag separates multiple messages of a single input field
-        with a <code>&lt;br /&gt;</code> tag. You can switch off this feature by setting <code>line-break="false"</code>,
-        or you can customizing it by providing an arbitrary HTML snippet. Note that this snippet has to be escaped:</p>
+    <h1><a id="to_escape_or_not_to_escape">To escape or not to escape</a><b:badge value="since 0.8.5" /></h1>
+    <p>By public demand, we've added the <code>escape</code> attribute. It allows you to add HTML tags in your
+    messages. Please note that this might be a security issue. You're responsible to make sure that
+    hackers do not enter JavaScript code and have it executed when the page is rendered later. Therefore,
+    BootsFaces prints a message to the console when it renders a message with <code>escape="false"</code>
+    for the first time. This message can't be deactivated. We know that using HTML tags in your error messages
+    is a useful features, but at the same time we want to make sure you're aware of the risk.</p>
+
+    <h1><a id="b_messages">&lt;b:messages /&gt;</a><b:badge value="since 0.7" /></h1>
+    <p>Displays <code>FacesMessages</code> in Bootstrap style.</p>
+
+    <b:tabView activeIndex="1"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+      <b:tab title="JSF markup">
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+        <![CDATA[
+        <p:commandButton value="Info" actionListener="&num;{messagesBean.info}" update="@form"/>
+        <p:commandButton value="Warn" actionListener="&num;{messagesBean.warn}" update="@form"/>
+        <p:commandButton value="Error" actionListener="&num;{messagesBean.error}" update="@form"/>
+        <p:commandButton value="Fatal" actionListener="&num;{messagesBean.fatal}" update="@form"/>
+        <p>Default setting:</p>
+        <b:messages/>
+        <p>Unsafe setting (<code>escape="false"</code>):</p>
+        <b:messages escape="false"/>
+        ]]>
+        </script>
+      </b:tab>
+      <b:tab title="displayed as">
         <h:form>
-          <b:tabView active-index="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
-            <b:tab title="JSF markup (message only)">
-              <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-              <b:message for="password" line-break-tag="&amp;lt;p&amp;gt;&amp;lt;hr /&amp;gt;&amp;lt;/p&amp;gt;"/>
-]]>
-         </script>
-           </b:tab>
-           <b:tab title="JSF markup (complete demo)">
-              <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-           <b:row tooltip="This password has fancy error messages.">
-                <b:column medium-screen="2">
-                  <h:outputText value="Password:" />
-                </b:column>
-                <b:column medium-screen="4">
-                  <b:inputSecret placeholder="Password" id="password" value="#{loginBean.password}"
-                                 ajax="true" autocomplete="false" update="@(.message)" onkeyup="ajax:loginBean.update()">
-                    <f:facet name="prepend">
-                      <b:iconAwesome name="key" />
-                    </f:facet>
-                  </b:inputSecret>
-                </b:column>
-                <b:column medium-screen="6" styleClass="message">
-                  <b:message for="password" line-break-tag="&lt;p&gt;&lt;hr /&gt;&lt;/p&gt;"/>
-                </b:column>
-              </b:row>
-]]>
-         </script>
-           </b:tab>
-            <b:tab title="displayed as">
-            <p>Type some text to see a single error message. Clear the password again to see multiple messages.</p>
-              <b:row tooltip="This password has fancy error messages.">
-                <b:column medium-screen="2">
-                  <h:outputText value="Password:" />
-                </b:column>
-                <b:column medium-screen="4">
-                  <b:inputSecret placeholder="Password" id="password" value="#{loginBean.password}"
-                                 ajax="true" autocomplete="false" update="@(.message)" onkeyup="ajax:loginBean.update()">
-                    <f:facet name="prepend">
-                      <b:iconAwesome name="key" />
-                    </f:facet>
-                  </b:inputSecret>
-                </b:column>
-                <b:column medium-screen="6" styleClass="message">
-                  <b:message for="password" line-break-tag="&lt;p&gt;&lt;hr /&gt;&lt;/p&gt;"/>
-                </b:column>
-              </b:row>
-             </b:tab>
-          </b:tabView>
+          <p:commandButton value="Info" actionListener="#{messagesBean.info}" update="@form"/>
+          <p:commandButton value="Warn" actionListener="#{messagesBean.warn}" update="@form"/>
+          <p:commandButton value="Error" actionListener="#{messagesBean.error}" update="@form"/>
+          <p:commandButton value="Fatal and multiple messages" actionListener="#{messagesBean.fatal}" update="@form"/>
+          <p>Default setting:</p>
+          <b:messages line-break-tag="&lt;p&gt;&lt;hr /&gt;&lt;/p&gt;"/>
+          <p>Unsafe setting (<code>escape="false"</code>):</p>
+          <b:messages escape="false" line-break-tag="&lt;p&gt;&lt;hr /&gt;&lt;/p&gt;"/>
         </h:form>
+      </b:tab>
+    </b:tabView>
 
-        <h1><a id="multiple_messages_and">Multiple messages and</a><code>&lt;b:message /&gt;</code> <b:badge value="since 0.9.0" /></h1>
-        <p>Standard JSF defines that <code>&lt;h:message /&gt;</code> displays only a single message. If there are
-        multiple messages, a random message is displayed. By default, BootsFaces always displays every message
-        that has been reported for the associated component. However, some developers need to be able to display
-        a single message. If so, activate the attribute <code>only-most-severe</code>. Setting it to true makes
-        BootsFaces find the message with the highest severity level and displays it. If there are multiple messages
-        with identical severity level, a random message is displayed.</p>
-         <h:form id="twoMessagesFormId">
-            <b:tabView contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px"
-                       activeIndex="1">
-              <b:tab title="JSF markup">
-                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-                  <b:inputText value="#{messagesBean.twoMessages}" label="Two messages"
-                               id="twoMessagesId" rendered="false" />
-                  <p>Default <code>&lt;b:message &gt;</code>:</p>
-                  <b:message redisplay="true" for="twoMessagesId" /><br />
-                  <p><code>&lt;b:message only-most-severe="true" &gt;</code>:</p>
-                  <b:message redisplay="true" for="twoMessagesId" only-most-severe="true" />
-]]>
-         </script>
-              </b:tab>
-              <b:tab title="displayed as" >
-                  <b:inputText value="#{messagesBean.twoMessages}" label="Two messages"
-                               id="twoMessagesId" rendered="false" />
-                  <p>Default <code>&lt;b:message &gt;</code>:</p>
-                  <b:message redisplay="true" for="twoMessagesId" /><br />
-                  <p><code>&lt;b:message only-most-severe="true" &gt;</code>:</p>
-                  <b:message redisplay="true" for="twoMessagesId" only-most-severe="true" />
-              </b:tab>
-          </b:tabView>
-        </h:form>
-
-       <h2><a id="responsive_design">Responsive design</a><b:badge value="since 1.1.0" /></h2>
-        <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
-        also with <code>&lt;b:messages /&gt;</code>. Note that this is equivalent to putting it into a
-        <code>&lt;b:column /&gt;</code>. In particular, the CSS styles are inside the column div.
-        </p>
-        <h:form>
-	       <b:tabView>
-	          <b:tab title="live preview">
-	          <b:well>
-	             <b:row>
-	                <b:messages only-most-severe="true" value="large-screen='full-width'" large-screen="full-width" />
-	             </b:row>
-	             <b:row style="padding-top:5px">
-	                <b:messages only-most-severe="true" value="large-screen='one-third'" large-screen="one-third" />
-	                <b:messages only-most-severe="true" value="large-screen='two-thirds'" large-screen="two-thirds" />
-	             </b:row>
-	             <b:row style="padding-top:5px">
-	                <b:messages only-most-severe="true" value="small-screen='one-third'" small-screen="one-third" />
-	                <b:messages only-most-severe="true" value="small-screen='two-thirds'" small-screen="two-thirds" />
-	             </b:row>
-	             <b:row style="padding-top:5px">
-	                <b:messages only-most-severe="true" value="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
-	                <b:messages only-most-severe="true" value="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
-	             </b:row>
-	          </b:well>
-	          </b:tab>
-	          <b:tab title="JSF markup">
-	          <b:well>
-	          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-             <![CDATA[
-             <b:row>
-                <b:messages only-most-severe="true" value="large-screen='full-width'" large-screen="full-width" />
-             </b:row>
-             <b:row style="padding-top:5px">
-                <b:messages only-most-severe="true" value="large-screen='one-third'" large-screen="one-third" />
-                <b:messages only-most-severe="true" value="large-screen='two-thirds'" large-screen="two-thirds" />
-             </b:row>
-             <b:row style="padding-top:5px">
-                <b:messages only-most-severe="true" value="small-screen='one-third'" small-screen="one-third" />
-                <b:messages only-most-severe="true" value="small-screen='two-thirds'" small-screen="two-thirds" />
-             </b:row>
-             <b:row style="padding-top:5px">
-                <b:messages only-most-severe="true" value="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
-                <b:messages only-most-severe="true" value="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
-             </b:row>
-             ]]></script>
-	          </b:well>
-	          </b:tab>
-	        </b:tabView>
-        </h:form>
-
-        <h2><a id="visibility_depending_on_screen_size">Visibility depending on screen size</a><b:badge value="since 1.1.0" /></h2>
-        <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
-        <br/>
-        <h:form>
-	        <b:tabView>
-	          <b:tab title="live preview">
-	          <b:well>
-	               <b:panelGrid colSpans="3,9">
-	                  <h:outputText value="Visible on &gt;= md:" />
-	                  <b:messages only-most-severe="true" value="Visible on medium or large screen" severity="info" visible="md..." />
-	                  <h:outputText value="Visible on &lt;= sm:" />
-	                  <b:messages only-most-severe="true" value="Visible on small-screen" severity="success" visible="...sm"/>
-	                  <h:outputText value="Visible on sm...lg:" />
-	                  <b:messages only-most-severe="true" value="Visible on small to large screen" severity="success" visible="sm...lg"/>
-	                  <h:outputText value="Visible on xs and md:" />
-	                  <b:messages only-most-severe="true" value="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
-	                  <h:outputText value="Col-md-6, offset 2:" />
-	                  <b:messages only-most-severe="true" value="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
-	               </b:panelGrid>
-	         </b:well>
-	          </b:tab>
-	          <b:tab title="JSF markup">
-	          <b:well>
-	          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-             <![CDATA[
-               <b:panelGrid colSpans="3,9">
-                  <h:outputText value="Visible on &gt;= md:" />
-                  <b:messages only-most-severe="true" value="Visible on medium or large screen" severity="info" visible="md..." />
-                  <h:outputText value="Visible on &lt;= sm:" />
-                  <b:messages only-most-severe="true" value="Visible on small-screen" severity="success" visible="...sm"/>
-                  <h:outputText value="Visible on sm...lg:" />
-                  <b:messages only-most-severe="true" value="Visible on small to large screen" severity="success" visible="sm...lg"/>
-                  <h:outputText value="Visible on xs and md:" />
-                  <b:messages only-most-severe="true" value="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
-                  <h:outputText value="Col-md-6, offset 2:" />
-                  <b:messages only-most-severe="true" value="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
-               </b:panelGrid>
-             ]]></script>
-	          </b:well>
-	          </b:tab>
-	        </b:tabView>
-        </h:form>
-
-        <h2><a id="severity">Severity</a><b:badge value="since 1.1.2" /></h2>
-        <p>
-          You can filter the severities shown using the <code>severity</code> attribute.
-          The attribute takes one or more comma separated lower case severity names.
-          This can be useful if you want to distinguish between error messages and info messages. For instance,
-          <code>severity</code> allows you to use a <a href="./Growl.jsf"><code>b:growl</code></a> for info messages and
-          this component for error messages.<br />
-          Allowed severity names are: <code>info</code>, <code>warn</code>, <code>error</code>, <code>fatal</code>.
-        </p>
-        <br/>
-        <h:form>
-          <b:tabView>
-            <b:tab title="live preview">
-              <b:well>
-                <b:messages id="messages"
-                            globalOnly="true"
-                            escape="false"
-                            severity="error,fatal"/>
-                <b:growl id="growl"
-                         globalOnly="true"
-                         showDetail="true"
-                         severity="info,warn"/>
-                <b:commandButton value="Demo"
-                                 action="#{messagesBean.messageOfEachSeverity()}"
-                                 update="messages growl" />
-              </b:well>
-            </b:tab>
-            <b:tab title="JSF markup">
-              <b:well>
-                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                  <![CDATA[
-                    <b:messages id="messages"
-                                globalOnly="true"
-                                severity="error,fatal"/>
-                    <b:growl id="growl"
-                             globalOnly="true"
-                             showDetail="true"
-                             severity="info,warn"/>
-                    <b:commandButton value="Demo"
-                                     action="&num;{messagesBean.messageOfEachSeverity()}"
-                                     update="messages growl" />
-                  ]]></script>
-              </b:well>
-            </b:tab>
-          </b:tabView>
-        </h:form>
-
-        <br/>
-            <h2><a id="reference_section">Reference section</a></h2>
-            <ui:include src="MessageAttributes.xhtml" />
-            <b:panel look="info" rendered="true">
-            	<f:facet name="heading">
-            		<b>Skinning of b:message</b>
-            	</f:facet>
-            	<ul>
-            		<li><code>bf-message</code> This CSS class applies to the entire <code>&lt;b:message &gt;</code>.</li>
-                    <li><code>bf-message-icon</code> This CSS class applies to the <code>span</code>code> tag surrounding the optional icon of the message.</li>
-                    <li><code>bf-message-summary</code> This CSS class applies to the <code>span</code>code> tag surrounding the summary of the error message.</li>
-                    <li><code>bf-message-detail</code> This CSS class applies to the <code>span</code>code> tag surrounding the detail of the error message.</li>
-            	</ul>
+    <h1><a id="b_messages___the">&lt;b:messages /&gt;: the</a><code>for</code> attribute <b:badge value="since 0.9.0" /></h1>
+    <p>The <code>for</code> attribute of BootsFaces is more flexible than the <code>for</code> of <code>h:messages</code>.
+    You can use it to limit the list of error messages to a certain form. More precisely, you can show every
+    error message of an arbitrary component and its children. To use this feature you have to set a second
+    attribute <code>recursive="true"</code>. By default, the for attribute only checks the component it points to,
+    ignoring the children.</p>
+    <p>You can see the effect in the example below. The error messages in the live demo are updated as you type.</p>
+    <h:form>
+      <b:tabView contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px"
+                 onshow="ajax:messagesBean.update()" update="leftmessages rightmessages">
+        <b:tab title="JSF markup">
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <b:panelGrid columns="2">
+            <b:panel title="Who are you?" look="primary">
+              <b:inputText value="#{messagesBean.firstName}" label="First name"  onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages" />
+              <b:inputText value="#{messagesBean.lastName}" label="Last name"  onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages"  />
+              <b:messages styleClass="msgs" redisplay="true" for="@parent" recursive="true" id="leftmessages"/>
             </b:panel>
-            <ui:include src="MessagesAttributes.xhtml" />
-            <b:panel look="info" rendered="true">
-              <f:facet name="heading">
-                <b>Skinning of b:messages</b>
-              </f:facet>
-              <ul>
-                <li><code>bf-message</code> This CSS class applies to the entire <code>&lt;b:messages &gt;</code> tag (i.e. to the entire collection of messages).</li>
-                <li><code>bf-message</code> This CSS class applies to the <code>span</code>code> tag surrounding a single message.</li>
-                <li><code>bf-message-icon</code> This CSS class applies to the <code>span</code>code> tag surrounding the optional icon of the message.</li>
-                <li><code>bf-message-summary</code> This CSS class applies to the <code>span</code>code> tag surrounding the summary of the message.</li>
-                <li><code>bf-message-detail</code> This CSS class applies to the <code>span</code>code> tag surrounding the detail of the message.</li>
-              </ul>
+            <b:panel title="How old are you?" look="primary">
+              <b:inputText value="#{messagesBean.age}" label="Age"  onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages"  />
+              <b:dateTimePicker value="#{messagesBean.birthday}" label="Birthdate"  onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages"  />
+              <b:messages styleClass="msgs" redisplay="true" for="@parent" recursive="true" id="rightmessages"/>
             </b:panel>
+          </b:panelGrid>
+          ]]>
+          </script>
+        </b:tab>
+        <b:tab title="displayed as" >
+          <b:panelGrid columns="2">
+            <b:panel title="Who are you?" look="primary">
+              <b:inputText value="#{messagesBean.firstName}" label="First name"  onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages" />
+              <b:inputText value="#{messagesBean.lastName}" label="Last name"  onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages"  />
+              <b:messages styleClass="msgs" redisplay="true" for="@parent" recursive="true" id="leftmessages"/>
+            </b:panel>
+            <b:panel title="How old are you?" look="primary">
+              <b:inputText value="#{messagesBean.age}" label="Age"  onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages"  />
+              <b:dateTimePicker value="#{messagesBean.birthday}" label="Birthdate"  onkeyup="ajax:messagesBean.update()" update="leftmessages rightmessages"  />
+              <b:messages styleClass="msgs" redisplay="true" for="@parent" recursive="true" id="rightmessages"/>
+            </b:panel>
+          </b:panelGrid>
+        </b:tab>
+      </b:tabView>
+    </h:form>
 
-		<br />
-		<script type="text/javascript">
-      SyntaxHighlighter.all();
+
+    <h1><a id="separators_between_messages">Separators between messages</a><b:badge value="since 0.8.5" /></h1>
+    <p>By default, the <code>&lt;b:message &gt;</code> tag separates multiple messages of a single input field
+    with a <code>&lt;br /&gt;</code> tag. You can switch off this feature by setting <code>line-break="false"</code>,
+    or you can customizing it by providing an arbitrary HTML snippet. Note that this snippet has to be escaped:</p>
+    <h:form>
+      <b:tabView active-index="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+        <b:tab title="JSF markup (message only)">
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <b:message for="password" line-break-tag="&amp;lt;p&amp;gt;&amp;lt;hr /&amp;gt;&amp;lt;/p&amp;gt;"/>
+          ]]>
+          </script>
+        </b:tab>
+        <b:tab title="JSF markup (complete demo)">
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <b:row tooltip="This password has fancy error messages.">
+            <b:column medium-screen="2">
+              <h:outputText value="Password:" />
+            </b:column>
+            <b:column medium-screen="4">
+              <b:inputSecret placeholder="Password" id="password" value="#{loginBean.password}"
+                             ajax="true" autocomplete="false" update="@(.message)" onkeyup="ajax:loginBean.update()">
+                <f:facet name="prepend">
+                  <b:iconAwesome name="key" />
+                </f:facet>
+              </b:inputSecret>
+            </b:column>
+            <b:column medium-screen="6" styleClass="message">
+              <b:message for="password" line-break-tag="&lt;p&gt;&lt;hr /&gt;&lt;/p&gt;"/>
+            </b:column>
+          </b:row>
+          ]]>
+          </script>
+        </b:tab>
+        <b:tab title="displayed as">
+          <p>Type some text to see a single error message. Clear the password again to see multiple messages.</p>
+          <b:row tooltip="This password has fancy error messages.">
+            <b:column medium-screen="2">
+              <h:outputText value="Password:" />
+            </b:column>
+            <b:column medium-screen="4">
+              <b:inputSecret placeholder="Password" id="password" value="#{loginBean.password}"
+                             ajax="true" autocomplete="false" update="@(.message)" onkeyup="ajax:loginBean.update()">
+                <f:facet name="prepend">
+                  <b:iconAwesome name="key" />
+                </f:facet>
+              </b:inputSecret>
+            </b:column>
+            <b:column medium-screen="6" styleClass="message">
+              <b:message for="password" line-break-tag="&lt;p&gt;&lt;hr /&gt;&lt;/p&gt;"/>
+            </b:column>
+          </b:row>
+        </b:tab>
+      </b:tabView>
+    </h:form>
+
+    <h1><a id="multiple_messages_and">Multiple messages and</a><code>&lt;b:message /&gt;</code> <b:badge value="since 0.9.0" /></h1>
+    <p>Standard JSF defines that <code>&lt;h:message /&gt;</code> displays only a single message. If there are
+    multiple messages, a random message is displayed. By default, BootsFaces always displays every message
+    that has been reported for the associated component. However, some developers need to be able to display
+    a single message. If so, activate the attribute <code>only-most-severe</code>. Setting it to true makes
+    BootsFaces find the message with the highest severity level and displays it. If there are multiple messages
+    with identical severity level, a random message is displayed.</p>
+    <h:form id="twoMessagesFormId">
+      <b:tabView contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px"
+                 activeIndex="1">
+        <b:tab title="JSF markup">
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <b:inputText value="#{messagesBean.twoMessages}" label="Two messages"
+                       id="twoMessagesId" rendered="false" />
+          <p>Default <code>&lt;b:message &gt;</code>:</p>
+          <b:message redisplay="true" for="twoMessagesId" /><br />
+          <p><code>&lt;b:message only-most-severe="true" &gt;</code>:</p>
+          <b:message redisplay="true" for="twoMessagesId" only-most-severe="true" />
+          ]]>
+          </script>
+        </b:tab>
+        <b:tab title="displayed as" >
+          <b:inputText value="#{messagesBean.twoMessages}" label="Two messages"
+                       id="twoMessagesId" rendered="false" />
+          <p>Default <code>&lt;b:message &gt;</code>:</p>
+          <b:message redisplay="true" for="twoMessagesId" /><br />
+          <p><code>&lt;b:message only-most-severe="true" &gt;</code>:</p>
+          <b:message redisplay="true" for="twoMessagesId" only-most-severe="true" />
+        </b:tab>
+      </b:tabView>
+    </h:form>
+
+    <h2><a id="responsive_design">Responsive design</a><b:badge value="since 1.1.0" /></h2>
+    <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
+    also with <code>&lt;b:messages /&gt;</code>. Note that this is equivalent to putting it into a
+    <code>&lt;b:column /&gt;</code>. In particular, the CSS styles are inside the column div.
+    </p>
+    <h:form>
+      <b:tabView>
+        <b:tab title="live preview">
+          <b:well>
+            <b:row>
+              <b:messages only-most-severe="true" value="large-screen='full-width'" large-screen="full-width" />
+            </b:row>
+            <b:row style="padding-top:5px">
+              <b:messages only-most-severe="true" value="large-screen='one-third'" large-screen="one-third" />
+              <b:messages only-most-severe="true" value="large-screen='two-thirds'" large-screen="two-thirds" />
+            </b:row>
+            <b:row style="padding-top:5px">
+              <b:messages only-most-severe="true" value="small-screen='one-third'" small-screen="one-third" />
+              <b:messages only-most-severe="true" value="small-screen='two-thirds'" small-screen="two-thirds" />
+            </b:row>
+            <b:row style="padding-top:5px">
+              <b:messages only-most-severe="true" value="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
+              <b:messages only-most-severe="true" value="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
+            </b:row>
+          </b:well>
+        </b:tab>
+        <b:tab title="JSF markup">
+          <b:well>
+            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+            <![CDATA[
+            <b:row>
+              <b:messages only-most-severe="true" value="large-screen='full-width'" large-screen="full-width" />
+            </b:row>
+            <b:row style="padding-top:5px">
+              <b:messages only-most-severe="true" value="large-screen='one-third'" large-screen="one-third" />
+              <b:messages only-most-severe="true" value="large-screen='two-thirds'" large-screen="two-thirds" />
+            </b:row>
+            <b:row style="padding-top:5px">
+              <b:messages only-most-severe="true" value="small-screen='one-third'" small-screen="one-third" />
+              <b:messages only-most-severe="true" value="small-screen='two-thirds'" small-screen="two-thirds" />
+            </b:row>
+            <b:row style="padding-top:5px">
+              <b:messages only-most-severe="true" value="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
+              <b:messages only-most-severe="true" value="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
+            </b:row>
+            ]]></script>
+          </b:well>
+        </b:tab>
+      </b:tabView>
+    </h:form>
+
+    <h2><a id="visibility_depending_on_screen_size">Visibility depending on screen size</a><b:badge value="since 1.1.0" /></h2>
+    <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
+    <br/>
+    <h:form>
+      <b:tabView>
+        <b:tab title="live preview">
+          <b:well>
+            <b:panelGrid colSpans="3,9">
+              <h:outputText value="Visible on &gt;= md:" />
+              <b:messages only-most-severe="true" value="Visible on medium or large screen" severity="info" visible="md..." />
+              <h:outputText value="Visible on &lt;= sm:" />
+              <b:messages only-most-severe="true" value="Visible on small-screen" severity="success" visible="...sm"/>
+              <h:outputText value="Visible on sm...lg:" />
+              <b:messages only-most-severe="true" value="Visible on small to large screen" severity="success" visible="sm...lg"/>
+              <h:outputText value="Visible on xs and md:" />
+              <b:messages only-most-severe="true" value="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
+              <h:outputText value="Col-md-6, offset 2:" />
+              <b:messages only-most-severe="true" value="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
+            </b:panelGrid>
+          </b:well>
+        </b:tab>
+        <b:tab title="JSF markup">
+          <b:well>
+            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+            <![CDATA[
+            <b:panelGrid colSpans="3,9">
+              <h:outputText value="Visible on &gt;= md:" />
+              <b:messages only-most-severe="true" value="Visible on medium or large screen" severity="info" visible="md..." />
+              <h:outputText value="Visible on &lt;= sm:" />
+              <b:messages only-most-severe="true" value="Visible on small-screen" severity="success" visible="...sm"/>
+              <h:outputText value="Visible on sm...lg:" />
+              <b:messages only-most-severe="true" value="Visible on small to large screen" severity="success" visible="sm...lg"/>
+              <h:outputText value="Visible on xs and md:" />
+              <b:messages only-most-severe="true" value="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
+              <h:outputText value="Col-md-6, offset 2:" />
+              <b:messages only-most-severe="true" value="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
+            </b:panelGrid>
+            ]]></script>
+          </b:well>
+        </b:tab>
+      </b:tabView>
+    </h:form>
+
+    <h2><a id="severity">Severity</a><b:badge value="since 1.1.2" /></h2>
+    <p>
+    You can filter the severities shown using the <code>severity</code> attribute.
+    The attribute takes one or more comma separated lower case severity names.
+    This can be useful if you want to distinguish between error messages and info messages. For instance,
+    <code>severity</code> allows you to use a <a href="./Growl.jsf"><code>b:growl</code></a> for info messages and
+    this component for error messages.<br />
+    Allowed severity names are: <code>info</code>, <code>warn</code>, <code>error</code>, <code>fatal</code>.
+    </p>
+    <br/>
+    <h:form>
+      <b:tabView>
+        <b:tab title="live preview">
+          <b:well>
+            <b:messages id="messages"
+                        globalOnly="true"
+                        escape="false"
+                        severity="error,fatal"/>
+            <b:growl id="growl"
+                     globalOnly="true"
+                     showDetail="true"
+                     severity="info,warn"/>
+            <b:commandButton value="Demo"
+                             action="#{messagesBean.messageOfEachSeverity()}"
+                             update="messages growl" />
+          </b:well>
+        </b:tab>
+        <b:tab title="JSF markup">
+          <b:well>
+            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+            <![CDATA[
+            <b:messages id="messages"
+                        globalOnly="true"
+                        severity="error,fatal"/>
+            <b:growl id="growl"
+                     globalOnly="true"
+                     showDetail="true"
+                     severity="info,warn"/>
+            <b:commandButton value="Demo"
+                             action="&num;{messagesBean.messageOfEachSeverity()}"
+                             update="messages growl" />
+            ]]></script>
+          </b:well>
+        </b:tab>
+      </b:tabView>
+    </h:form>
+
+    <br/>
+    <h2><a id="reference_section">Reference section</a></h2>
+    <ui:include src="MessageAttributes.xhtml" />
+    <b:panel look="info" rendered="true">
+      <f:facet name="heading">
+        <b>Skinning of b:message</b>
+      </f:facet>
+      <ul>
+        <li><code>bf-message</code> This CSS class applies to the entire <code>&lt;b:message &gt;</code>.</li>
+        <li><code>bf-message-icon</code> This CSS class applies to the <code>span</code>code> tag surrounding the optional icon of the message.</li>
+        <li><code>bf-message-summary</code> This CSS class applies to the <code>span</code>code> tag surrounding the summary of the error message.</li>
+        <li><code>bf-message-detail</code> This CSS class applies to the <code>span</code>code> tag surrounding the detail of the error message.</li>
+      </ul>
+    </b:panel>
+    <ui:include src="MessagesAttributes.xhtml" />
+    <b:panel look="info" rendered="true">
+      <f:facet name="heading">
+        <b>Skinning of b:messages</b>
+      </f:facet>
+      <ul>
+        <li><code>bf-message</code> This CSS class applies to the entire <code>&lt;b:messages &gt;</code> tag (i.e. to the entire collection of messages).</li>
+        <li><code>bf-message</code> This CSS class applies to the <code>span</code>code> tag surrounding a single message.</li>
+        <li><code>bf-message-icon</code> This CSS class applies to the <code>span</code>code> tag surrounding the optional icon of the message.</li>
+        <li><code>bf-message-summary</code> This CSS class applies to the <code>span</code>code> tag surrounding the summary of the message.</li>
+        <li><code>bf-message-detail</code> This CSS class applies to the <code>span</code>code> tag surrounding the detail of the message.</li>
+      </ul>
+    </b:panel>
+
+    <br />
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
     </script>
 
-		<br />
-		<br />
-		<br />
-		<br />
-	</ui:define>
+    <br />
+    <br />
+    <br />
+    <br />
+  </ui:define>
 </ui:composition>

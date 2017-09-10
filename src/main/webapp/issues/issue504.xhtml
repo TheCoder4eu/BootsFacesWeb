@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:b="http://bootsfaces.net/ui">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
 <h:head></h:head>
-<h:body>
-            <h:form>
-                <b:carousel id="wizard" styleClass="wizardPseudoClass"
-     style="width:400px;height:350px;padding-top:20px"
-     startAnimation="false"
-     showIndicators="false"
-     wrap="false">
-     <b:carouselItem style="width:400px;height:230px">
-       <b:panel title="Step 1" look="primary">
-         <b:inputText label="Number One" value="#{issue504Bean.number1}" />
-       </b:panel>
-     </b:carouselItem>
-     <b:carouselItem style="width:400px;height:230px">
-       <b:panel title="Step 2" look="danger  ">
-         <b:inputText label="Number Two" value="#{issue504Bean.number2}" />
-       </b:panel>
-     </b:carouselItem>
-     <b:carouselItem style="width:400px;height:230px">
-       <b:panel title="Step 3" look="success">
-         <b:inputText label="Summary" value="#{issue504Bean.sum}"  id="summary-id"/>
-       </b:panel>
-     </b:carouselItem>
-     <b:carouselControl direction="right" >
-         <b:commandButton value="previous step" role="button"
-           onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause'); return false;"
-           look="info" />
-     </b:carouselControl>
-     <b:carouselControl direction="left">
-         <b:commandButton value="next step" role="button" style="position:absolute;right:0px" action="#{issue504Bean.actionAdd}" 
-                          oncomplete="console.log('oncomplete');$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause'); return false;"
-                          update="summary-id"
-                          look="success" ajax="true"/>
-     </b:carouselControl>
-    </b:carousel>               
-            </h:form>
-</h:body>
+  <h:body>
+    <h:form>
+      <b:carousel id="wizard" styleClass="wizardPseudoClass"
+                  style="width:400px;height:350px;padding-top:20px"
+                  startAnimation="false"
+                  showIndicators="false"
+                  wrap="false">
+        <b:carouselItem style="width:400px;height:230px">
+          <b:panel title="Step 1" look="primary">
+            <b:inputText label="Number One" value="#{issue504Bean.number1}" />
+          </b:panel>
+        </b:carouselItem>
+        <b:carouselItem style="width:400px;height:230px">
+          <b:panel title="Step 2" look="danger  ">
+            <b:inputText label="Number Two" value="#{issue504Bean.number2}" />
+          </b:panel>
+        </b:carouselItem>
+        <b:carouselItem style="width:400px;height:230px">
+          <b:panel title="Step 3" look="success">
+            <b:inputText label="Summary" value="#{issue504Bean.sum}"  id="summary-id"/>
+          </b:panel>
+        </b:carouselItem>
+        <b:carouselControl direction="right" >
+          <b:commandButton value="previous step" role="button"
+                           onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause'); return false;"
+                           look="info" />
+        </b:carouselControl>
+        <b:carouselControl direction="left">
+          <b:commandButton value="next step" role="button" style="position:absolute;right:0px" action="#{issue504Bean.actionAdd}"
+                           oncomplete="console.log('oncomplete');$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause'); return false;"
+                           update="summary-id"
+                           look="success" ajax="true"/>
+        </b:carouselControl>
+      </b:carousel>
+    </h:form>
+  </h:body>
 </html>

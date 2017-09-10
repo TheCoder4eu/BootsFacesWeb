@@ -1,632 +1,632 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:b="http://bootsfaces.net/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	template="/applayout/pageTemplate.xhtml"
-	xmlns:jsf="http://xmlns.jcp.org/jsf">
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/applayout/pageTemplate.xhtml"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
 
 
-<ui:define name="content-navigator">
-  <b:listLinks>
-    <b:navLink href="#tabview_and_tab" value="TabView and Tab" />
-    <b:navLink href="#updating_the_tab_index_in_the_java_bean" value="Updating the tab index in the Java bean" />
-    <b:navLink href="#persistent_tab_selection" value="Persistent tab selection" />
-    <b:navLink href="#tabs_with_borders" value="Tabs with borders" />
-    <b:navLink href="#dynamic_tabs" value="Dynamic tabs" />
-    <b:navLink href="#tab_pills" value="Tab pills" />
-    <b:navLink href="#tab_position" value="Tab position" />
-    <b:navLink href="#bottom_tab" value="Bottom Tab" />
-    <b:navLink href="#left_tab" value="Left Tab" />
-    <b:navLink href="#right_tab" value="Right Tab" />
-    <b:navLink href="#disabled_and_hidden_tabs_and_tabviews" value="Disabled and hidden tabs and tabViews" />
-    <b:navLink href="#ajax_and_javascript" value="AJAX and JavaScript" />
-    <b:navLink href="#reference_section" value="Reference section" />
-  </b:listLinks>
-</ui:define>
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#tabview_and_tab" value="TabView and Tab" />
+      <b:navLink href="#updating_the_tab_index_in_the_java_bean" value="Updating the tab index in the Java bean" />
+      <b:navLink href="#persistent_tab_selection" value="Persistent tab selection" />
+      <b:navLink href="#tabs_with_borders" value="Tabs with borders" />
+      <b:navLink href="#dynamic_tabs" value="Dynamic tabs" />
+      <b:navLink href="#tab_pills" value="Tab pills" />
+      <b:navLink href="#tab_position" value="Tab position" />
+      <b:navLink href="#bottom_tab" value="Bottom Tab" />
+      <b:navLink href="#left_tab" value="Left Tab" />
+      <b:navLink href="#right_tab" value="Right Tab" />
+      <b:navLink href="#disabled_and_hidden_tabs_and_tabviews" value="Disabled and hidden tabs and tabViews" />
+      <b:navLink href="#ajax_and_javascript" value="AJAX and JavaScript" />
+      <b:navLink href="#reference_section" value="Reference section" />
+    </b:listLinks>
+  </ui:define>
 
 
-	<ui:define name="content">
-		<h1><a id="tabview_and_tab">TabView and Tab</a></h1>
-		<p>Add quick, dynamic tab functionality to transition through
-			panes of local content. You can also have complex content in your tabs like the
-			thumbnail in the third tab:</p>
-		<h:form id="tabform">
-          <b:row>
-	       <b:column colSpan="12">
-    		<b:tabView activeIndex="#{testBean.index}"
-				content-style="height:360px" onclick="ajax:testBean.onClick()" update="tabInfoId">
-				<b:tab title="First tab"
-					contentStyle="padding:20px;border-right:1px solid;border-left:1px solid;border-bottom:1px solid;border-color:#e8e8e8">
-					<p>This is the first tab.</p>
-					<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-						Donec id elit non mi porta gravida at eget metus. Nullam id dolor
-						id nibh ultricies vehicula ut id elit.</p>
-				</b:tab>
-				<b:tab title="Another tab"
-					contentStyle="padding:20px;border-right:1px solid;border-left:1px solid;border-bottom:1px solid;border-color:#e8e8e8">
-					<p>This is the second tab.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-						do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-					<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco
-						laboris nisi ut aliquip ex ea commodo consequat.</p>
-					<p>Duis aute irure dolor in reprehenderit in voluptate velit
-						esse cillum dolore eu fugiat nulla pariatur.</p>
-					<p>Excepteur sint occaecat cupidatat non proident, sunt in
-						culpa qui officia deserunt mollit anim id est laborum.</p>
-				</b:tab>
-				<!-- The next tab shows tabs aren't limited to text. You can put anything in a tab. -->
-				<b:tab title="Image tab">
-				      <b:commandButton action="#{testBean.nextTab}" value="next tab"
-        ajax="true" update="@form" />
-					<b:thumbnail>
-						<div style="float: left; padding-left: 20px;padding-top:10px;padding-right:20px">
-							<img width="450" height="300"
-								src="https://farm4.staticflickr.com/3093/2573064842_d497899887_z.jpg?zz=1"
-								alt="2008-0608 (7119) Ulun Danu Temple by Jennifer, on Flickr" />
-						</div>
-						<div style="height: 300px">
-							<h3>Ulun Danu Beratan Temple</h3>
-							<p>Ulun Danu Temple is a Balinese Hindu Temple located at
-								Candi Kuning countryside. It is set at lakeside of Beratan with
-								beautiful lake view and hills surround it. It is situated in the
-								plateau area with cool atmosphere surround it and hills as a
-								backdrop.</p>
-						</div>
-					</b:thumbnail>
-				</b:tab>
-				<b:tab title="Fancy tab"
-					contentStyle="padding:20px;border-right:1px solid;border-left:1px solid;border-bottom:1px solid;border-color:#e8e8e8">
-					<f:facet name="anchor">
-						<b:iconAwesome name="cog" spin="true" />
-					</f:facet>
-					<p>This is the fourth tab. As you can see, you can add
-						arbitrary content to the tab title. In particular, you can add
-						images.</p>
-					<p>
-						You can achieve this by defining a facet called
-						<code>anchor</code>
-						:
-					</p>
-					<b:well>
-&lt;b:tab title="Fancy tab"><br />
-<span style="padding-left:20px">  &lt;f:facet name="anchor">&lt;b:iconAwesome name="cog" spin="true" />&lt;/f:facet></span><br />
-<span style="padding-left:20px">  Content of the tab.</span><br />
-&lt;/b:tab><br />
-					</b:well>
-					<p>However, this fancy tab is an example how to create an
-						unruly design. Don't use too many visual effects.</p>
-				</b:tab>
+  <ui:define name="content">
+    <h1><a id="tabview_and_tab">TabView and Tab</a></h1>
+    <p>Add quick, dynamic tab functionality to transition through
+    panes of local content. You can also have complex content in your tabs like the
+    thumbnail in the third tab:</p>
+    <h:form id="tabform">
+      <b:row>
+        <b:column colSpan="12">
+          <b:tabView activeIndex="#{testBean.index}"
+                     content-style="height:360px" onclick="ajax:testBean.onClick()" update="tabInfoId">
+            <b:tab title="First tab"
+                   contentStyle="padding:20px;border-right:1px solid;border-left:1px solid;border-bottom:1px solid;border-color:#e8e8e8">
+              <p>This is the first tab.</p>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+              Donec id elit non mi porta gravida at eget metus. Nullam id dolor
+              id nibh ultricies vehicula ut id elit.</p>
+            </b:tab>
+            <b:tab title="Another tab"
+                   contentStyle="padding:20px;border-right:1px solid;border-left:1px solid;border-bottom:1px solid;border-color:#e8e8e8">
+              <p>This is the second tab.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+              do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco
+              laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <p>Duis aute irure dolor in reprehenderit in voluptate velit
+              esse cillum dolore eu fugiat nulla pariatur.</p>
+              <p>Excepteur sint occaecat cupidatat non proident, sunt in
+              culpa qui officia deserunt mollit anim id est laborum.</p>
+            </b:tab>
+            <!-- The next tab shows tabs aren't limited to text. You can put anything in a tab. -->
+            <b:tab title="Image tab">
+              <b:commandButton action="#{testBean.nextTab}" value="next tab"
+                               ajax="true" update="@form" />
+              <b:thumbnail>
+                <div style="float: left; padding-left: 20px;padding-top:10px;padding-right:20px">
+                  <img width="450" height="300"
+                    src="https://farm4.staticflickr.com/3093/2573064842_d497899887_z.jpg?zz=1"
+                    alt="2008-0608 (7119) Ulun Danu Temple by Jennifer, on Flickr" />
+                </div>
+                <div style="height: 300px">
+                  <h3>Ulun Danu Beratan Temple</h3>
+                  <p>Ulun Danu Temple is a Balinese Hindu Temple located at
+                  Candi Kuning countryside. It is set at lakeside of Beratan with
+                  beautiful lake view and hills surround it. It is situated in the
+                  plateau area with cool atmosphere surround it and hills as a
+                  backdrop.</p>
+                </div>
+              </b:thumbnail>
+            </b:tab>
+            <b:tab title="Fancy tab"
+                   contentStyle="padding:20px;border-right:1px solid;border-left:1px solid;border-bottom:1px solid;border-color:#e8e8e8">
+              <f:facet name="anchor">
+                <b:iconAwesome name="cog" spin="true" />
+              </f:facet>
+              <p>This is the fourth tab. As you can see, you can add
+              arbitrary content to the tab title. In particular, you can add
+              images.</p>
+              <p>
+              You can achieve this by defining a facet called
+              <code>anchor</code>
+              :
+              </p>
+              <b:well>
+                &lt;b:tab title="Fancy tab"><br />
+                <span style="padding-left:20px">  &lt;f:facet name="anchor">&lt;b:iconAwesome name="cog" spin="true" /&gt;&lt;/f:facet></span><br />
+                <span style="padding-left:20px">  Content of the tab.</span><br />
+                &lt;/b:tab><br />
+              </b:well>
+              <p>However, this fancy tab is an example how to create an
+              unruly design. Don't use too many visual effects.</p>
+            </b:tab>
 
-			</b:tabView>
+          </b:tabView>
         </b:column>
-	  </b:row>
+      </b:row>
       <b:row>
         <b:column colSpan="12" id="tabInfoId">
-			<p>
-				Optionally, your server-side bean can define which tab is shown. You
-				can achieve this by using the property
-				<code>activeIndex</code>
-				. For instance, the example above uses
-				<code>activeIndex="# {testBean.index}"</code>
-				, which enables use to open the next tab by clicking a command
-				button. When you click a tab, the index is update: <code>"#{testBean.index}"</code>.</p>
-			<p>You can also use a negative tab index. In this case, the tabs are counted from the right hand side. For instance, <code>activeIndex="-1"</code>
-			activates the right-most tab.</p>
+          <p>
+          Optionally, your server-side bean can define which tab is shown. You
+          can achieve this by using the property
+          <code>activeIndex</code>
+          . For instance, the example above uses
+          <code>activeIndex="# {testBean.index}"</code>
+          , which enables use to open the next tab by clicking a command
+          button. When you click a tab, the index is update: <code>"#{testBean.index}"</code>.</p>
+          <p>You can also use a negative tab index. In this case, the tabs are counted from the right hand side. For instance, <code>activeIndex="-1"</code>
+          activates the right-most tab.</p>
         </b:column>
       </b:row>
       <b:commandButton action="#{testBean.nextTab}" value="next tab"
-        ajax="true" update="@form" />
-		</h:form>
+                       ajax="true" update="@form" />
+    </h:form>
 
-		<h2><a id="updating_the_tab_index_in_the_java_bean">Updating the tab index in the Java bean</a><b:badge value="since 1.0.1"/></h2>
-		<p>In the example above the active tab index is defined by an attribute of a Java bean: <code>activeIndex="# {testBean.index}"</code>.
-		BootsFaces updates the value of the attribute of the Java bean on any request. However, BootsFaces can't do that if you
-		use a method or a constant to define the active index, such as <code>activeIndex="# {testBean.getIndex()}"</code> or <code>activeIndex="1"</code>.
-		In this case, the default value is overriden by the user's click, and the connection between the back-end and the active tab index is lost.
-		</p>
-
-
-		<h2><a id="persistent_tab_selection">Persistent tab selection</a></h2>
-		<p>
-			By default, the first tab is opened, or the tab defined by
-			<code>activeIndex</code>
-			. This also holds true after a postback (i.e. after clicking a
-			command button that shows the current JSF page again), unless you put
-			the
-			<code>&lt;b:tabView /&gt;</code>
-			into the same form as the button.
-		</p>
-		<p>
-			After a page reload (
-			<kbd>F5</kbd>
-			or
-			<kbd>CTRL+R</kbd>
-			) the initial state is always shown. That's because JSF considers
-			page reloads as a sort of a reset. Everything that's stored in the
-			<code>ViewScope</code>
-			is lost.
-		</p>
-
-		<b:panel look="info">
-			<f:facet name="heading">
-				<b>Markup:</b>
-			</f:facet>
-			<script type="syntaxhighlighter"
-				class="brush: xml; toolbar: false;first-line: 1">
-                            <![CDATA[
-                            <b:tabView activeIndex="2">
-                                <b:tab title="First Tab">
-                                    <p>This is the first tab.</p>
-                                </b:tab>
-                                <b:tab title="Another Tab">
-                                    <p>This is the second tab.</p>
-                                </b:tab>
-                                <!-- The next tab shows tabs aren't limited to text. You can put anything in a tab. -->
-								<b:tab title="Image Tab">
-                                  ...
-                                </b:tab>
-								<b:tab title="Fancy tab">
-			   						<f:facet name="anchor"><b:iconAwesome name="cog" spin="true" /></f:facet>
-                                    <p>This is fancy tab with a spinning image.</p>
-                                </b:tab>
-
-                            </b:tabView>
+    <h2><a id="updating_the_tab_index_in_the_java_bean">Updating the tab index in the Java bean</a><b:badge value="since 1.0.1"/></h2>
+    <p>In the example above the active tab index is defined by an attribute of a Java bean: <code>activeIndex="# {testBean.index}"</code>.
+    BootsFaces updates the value of the attribute of the Java bean on any request. However, BootsFaces can't do that if you
+    use a method or a constant to define the active index, such as <code>activeIndex="# {testBean.getIndex()}"</code> or <code>activeIndex="1"</code>.
+    In this case, the default value is overriden by the user's click, and the connection between the back-end and the active tab index is lost.
+    </p>
 
 
-                            ]]></script>
-		</b:panel>
+    <h2><a id="persistent_tab_selection">Persistent tab selection</a></h2>
+    <p>
+    By default, the first tab is opened, or the tab defined by
+    <code>activeIndex</code>
+    . This also holds true after a postback (i.e. after clicking a
+    command button that shows the current JSF page again), unless you put
+    the
+    <code>&lt;b:tabView /&gt;</code>
+    into the same form as the button.
+    </p>
+    <p>
+    After a page reload (
+    <kbd>F5</kbd>
+    or
+    <kbd>CTRL+R</kbd>
+    ) the initial state is always shown. That's because JSF considers
+    page reloads as a sort of a reset. Everything that's stored in the
+    <code>ViewScope</code>
+    is lost.
+    </p>
 
-		<h2><a id="tabs_with_borders">Tabs with borders</a></h2>
-		<p>You can use add some CSS commands to convert the tab into a
-			more traditional tab with borders:</p>
-		<h:form>
-			<b:tabView
-				contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
-				<b:tab title="JSF markup">
-					<script type="syntaxhighlighter"
-						class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
+    <b:panel look="info">
+      <f:facet name="heading">
+        <b>Markup:</b>
+      </f:facet>
+      <script type="syntaxhighlighter"
+      class="brush: xml; toolbar: false;first-line: 1">
+      <![CDATA[
+      <b:tabView activeIndex="2">
+        <b:tab title="First Tab">
+          <p>This is the first tab.</p>
+        </b:tab>
+        <b:tab title="Another Tab">
+          <p>This is the second tab.</p>
+        </b:tab>
+        <!-- The next tab shows tabs aren't limited to text. You can put anything in a tab. -->
+        <b:tab title="Image Tab">
+          ...
+        </b:tab>
+        <b:tab title="Fancy tab">
+        <f:facet name="anchor"><b:iconAwesome name="cog" spin="true" /></f:facet>
+          <p>This is fancy tab with a spinning image.</p>
+        </b:tab>
+
+      </b:tabView>
+
+
+      ]]></script>
+    </b:panel>
+
+    <h2><a id="tabs_with_borders">Tabs with borders</a></h2>
+    <p>You can use add some CSS commands to convert the tab into a
+    more traditional tab with borders:</p>
+    <h:form>
+      <b:tabView
+         contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+        <b:tab title="JSF markup">
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:form>
+            <b:tabView contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+              <b:tab title="JSF markup">
+                ...
+              </b:tab>
+              <b:tab title="second tab">
+                Put some text here.
+              </b:tab>
+            </b:tabView>
+          </h:form>
+          ]]>
+          </script>
+        </b:tab>
+        <b:tab title="second tab">
+          Put some text here.
+        </b:tab>
+      </b:tabView>
+    </h:form>
+
+    <h2><a id="dynamic_tabs">Dynamic tabs</a><b:badge value="since 1.2.0" /></h2>
+    <p>If you attach a list of values to the tab, multiple tabs are rendered, one for each entry
+    of the list. Basically, this functionality is derived from <code>&lt;ui:repeat /&gt;</code>,
+    so you can use the same attributes. In particular, the list is stored in the
+    attribute <code>value</code> and the current entry is stored in the attribute <code>var</code>.
+    </p>
+    <p><strong>Caveat:</strong> The tabs consist of two parts which are rendered independently.
+    So the array is iterated twice. Please don't implement any time-consuming algorithms
+    in the getter. Otherwise, this algorithm is called multiple times, resulting in
+    mediocre performance.
+    </p>
+    <b:panel title="live preview">
       <h:form>
-        <b:tabView contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
-          <b:tab title="JSF markup">
-			...
+        <b:tabView contentStyle="border: 1px solid #ddd;padding:10px;"
+                   content-disabled="#{testBean.contentDisabled}"
+                   active-index="-2">
+          <b:tab title="static tab">
+            This tab is static. It's content is static, too.
           </b:tab>
-          <b:tab title="second tab">
-              Put some text here.
+          <b:tab title="dynamic tab #{status.index}" value="#{testBean.tabs}" var="currentTab" varStatus="status">
+            <b:panelGrid columns="3" size="xs">
+              <b:inputText label="Value 1" value="#{currentTab.summand1}" />
+              <b:inputText label="Value 2" value="#{currentTab.summand2}" onkeyup="ajax:currentTab.add()" update="result"/>
+              <div jsf:id="result">
+                Sum: #{currentTab.sum}
+              </div>
+              <b:commandButton onclick="ajax:currentTab.add()" update="result">add</b:commandButton>
+            </b:panelGrid>
           </b:tab>
-         </b:tabView>
-     </h:form>
- ]]>
-         </script>
-				</b:tab>
-				<b:tab title="second tab">
-              Put some text here.
-            </b:tab>
-			</b:tabView>
-		</h:form>
-		
-		<h2><a id="dynamic_tabs">Dynamic tabs</a><b:badge value="since 1.2.0" /></h2>
-		<p>If you attach a list of values to the tab, multiple tabs are rendered, one for each entry
-		of the list. Basically, this functionality is derived from <code>&lt;ui:repeat /&gt;</code>,
-		so you can use the same attributes. In particular, the list is stored in the 
-		attribute <code>value</code> and the current entry is stored in the attribute <code>var</code>.
-		</p>
-		<p><strong>Caveat:</strong> The tabs consist of two parts which are rendered independently.
-		So the array is iterated twice. Please don't implement any time-consuming algorithms
-		in the getter. Otherwise, this algorithm is called multiple times, resulting in
-		mediocre performance.
-		</p>
-			<b:panel title="live preview">
-			  <h:form>
-				<b:tabView contentStyle="border: 1px solid #ddd;padding:10px;"
-				    content-disabled="#{testBean.contentDisabled}"
-				    active-index="-2">
-				    <b:tab title="static tab">
-				    		This tab is static. It's content is static, too.
-				    </b:tab>
-					<b:tab title="dynamic tab #{status.index}" value="#{testBean.tabs}" var="currentTab" varStatus="status">
-						<b:panelGrid columns="3" size="xs">
-			              	<b:inputText label="Value 1" value="#{currentTab.summand1}" />
-			              	<b:inputText label="Value 2" value="#{currentTab.summand2}" onkeyup="ajax:currentTab.add()" update="result"/>
-			             	<div jsf:id="result">
-			             		Sum: #{currentTab.sum}
-			             	</div>
-			              	<b:commandButton onclick="ajax:currentTab.add()" update="result">add</b:commandButton>
-		              	</b:panelGrid>
-	 				</b:tab>
-	 				<b:tab title="final static tab">
-				    		This final tab is static. It's content is no quite so static.
-						<b:panelGrid columns="3" size="xs">
-			              	<b:inputText label="Value 1" value="#{testBean.calc.summand1}" />
-			              	<b:inputText label="Value 2" value="#{testBean.calc.summand2}" onkeyup="ajax:testBean.calc.add()" update="result"/>
-			             	<div jsf:id="result">
-			             		Sum: #{testBean.calc.sum}
-			             	</div>
-			              	<b:commandButton onclick="ajax:testBean.calc.add()" update="result">add</b:commandButton>
-		              	</b:panelGrid>
-				    </b:tab>
-				</b:tabView>
- 		      </h:form>
-              <f:facet name="footer">
-                     <strong>JSF markup:</strong>
-                     <b:panel>
-                          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                          <![CDATA[
-				<b:tabView contentStyle="border: 1px solid #ddd;padding:10px;"
-				    content-disabled="#{testBean.contentDisabled}"
-                    active-index="-2">
-				    <b:tab title="static tab">
-				    		This tab is static. It's content is static, too.
-				    </b:tab>
-					<b:tab title="dynamic tab #{status.index}" value="&num;{testBean.tabs}" var="currentTab" varStatus="status">
-						<b:panelGrid columns="3" size="xs">
-		              	<b:inputText label="Value 1" value="&num;{currentTab.summand1}" />
-		              	<b:inputText label="Value 2" value="&num;{currentTab.summand2}" onkeyup="ajax:currentTab.add()" update="result"/>
-		             	<div jsf:id="result">
-		             		Sum: &num;{currentTab.sum}
-		             	</div>
-		              	<b:commandButton onclick="ajax:currentTab.add()" update="result">add</b:commandButton>
-		              	</b:panelGrid>
-	 				</b:tab>
-	 				<b:tab title="final static tab">
-				    		This final tab is static. It's content is static, too.
-				    </b:tab>
-				</b:tabView>
-                          ]]></script>
-                        </b:panel>
-                    </f:facet>
-                </b:panel>
-
-		<h2><a id="tab_pills">Tab pills</a><b:badge value="since 0.8.5" /></h2>
-		<p>You can use the pills setting to render pills instead of tabs:</p>
-		<h:form>
-			<b:tabView pills="true"
-				contentStyle="border: 1px solid #ddd;padding:10px">
-				<b:tab title="JSF markup">
-					<script type="syntaxhighlighter"
-						class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-      <h:form>
-        <b:tabView pills="true" contentStyle="border: 1px solid #ddd;padding:10px">
-          <b:tab title="JSF markup">
-			...
-          </b:tab>
-          <b:tab title="second tab">
-              Put some text here.
-          </b:tab>
-         </b:tabView>
-     </h:form>
- ]]>
-         </script>
-				</b:tab>
-				<b:tab title="second tab">
-              Put some text here.
-            </b:tab>
-			</b:tabView>
-		</h:form>
-
-		<h2><a id="tab_position">Tab position</a><b:badge value="since 0.8.5" /></h2>
-		<p>You can also set the tab position to 'top', 'left', 'right' and
-			'bottom'. The left and right setting, force the use of pills to
-			manage also the nav-stacked style when the page resize.</p>
-		<br />
-		<h2><a id="bottom_tab">Bottom Tab</a></h2>
-		<h:form>
-			<b:tabView tabPosition="bottom"
-				contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-top: 1px solid #ddd;padding:10px">
-				<b:tab title="JSF markup">
-					<script type="syntaxhighlighter"
-						class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-      <h:form>
-        <b:tabView tabPosition="bottom" contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-top: 1px solid #ddd;padding:10px">
-          <b:tab title="JSF markup">
-			...
-          </b:tab>
-          <b:tab title="second tab">
-              Put some text here.
-          </b:tab>
-         </b:tabView>
-     </h:form>
- ]]>
-         </script>
-				</b:tab>
-				<b:tab title="second tab">
-              Put some text here.
-            </b:tab>
-			</b:tabView>
-
-			<br />
-			<br />
-			<h2><a id="left_tab">Left Tab</a></h2>
-
-			<b:tabView tabPosition="left"
-				contentStyle="border: 1px solid #ddd;padding:10px">
-				<b:tab title="JSF markup">
-					<script type="syntaxhighlighter"
-						class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-<h:form>
-<b:tabView tabPosition="left" contentStyle="border: 1px solid #ddd;padding:10px">
-<b:tab title="JSF markup">
-...
-</b:tab>
-<b:tab title="second tab">
-    Put some text here.
-</b:tab>
-</b:tabView>
-</h:form>
-]]>
-	</script>
-				</b:tab>
-				<b:tab title="second tab">
-			    Put some text here.
-			 </b:tab>
-			</b:tabView>
-
-			<br />
-			<br />
-			<h2><a id="right_tab">Right Tab</a></h2>
-			<b:tabView tabPosition="right"
-				contentStyle="border: 1px solid #ddd;padding:10px">
-				<b:tab title="JSF markup">
-					<script type="syntaxhighlighter"
-						class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-<h:form>
-<b:tabView tabPosition="right" contentStyle="border: 1px solid #ddd;padding:10px">
-<b:tab title="JSF markup">
-...
-</b:tab>
-<b:tab title="second tab">
-    Put some text here.
-</b:tab>
-</b:tabView>
-</h:form>
-]]>
-</script>
-				</b:tab>
-				<b:tab title="second tab">
-    Put some text here.
- </b:tab>
-			</b:tabView>
-		</h:form>
-
-		
-		<h2><a id="disabled_and_hidden_tabs_and_tabviews">Disabled and hidden tabs and tabViews</a><b:badge value="since 1.0.1" /></h2>
-		<p>You can use the attribute <code>rendered="false"</code> to hide both the entire TabView or an individual tab. Similarly, you can use the attribute
-		<code>disabled="true"</code> to gray out the entire TabView or an individual tab.</p>
-		<br />
-		
-		<h4>Disabling the entire TabView</h4>
-		<p>That's a pretty radical step. You can't activate any of the tabs. Nor is the content of any of the tabs ever shown.</p>
-		<h:form>
-			<b:tabView disabled="true"
-				contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-top: 1px solid #ddd;padding:10px">
-				<b:tab title="JSF markup">
-					<script type="syntaxhighlighter"
-						class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-      <h:form>
-        <b:tabView disabled="true" contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-top: 1px solid #ddd;padding:10px">
-          <b:tab title="JSF markup">
-			...
-          </b:tab>
-          <b:tab title="second tab">
-              Put some text here.
-          </b:tab>
-         </b:tabView>
-     </h:form>
- ]]>
-         </script>
-				</b:tab>
-				<b:tab title="second tab">
-              Put some text here.
-            </b:tab>
-			</b:tabView>
-		</h:form>
-		
-		<h4>Disabling and hiding individual tabs</h4>
-		<p>Inactive tabs can't be activated by clicking. If the currently active tab is disabled, the next tab is activated, until an enabled tab is found.
-		In the example below, the first tab is initially active. However, it's disabled, so the next tab is activated. It's an enabled tab, so it's rendered
-		as active. If none of the tabs were enabled, there's no active tab - just like in the example above.</p>
-		<p>If the active index is defined by an bean attribute, such as <code>activeIndex="# {testBean.index}</code>, the bean attribute value
-		if updated to the real index during the rendering phase. If every tab is disabled, the bean attribute is set to <code>Integer.MAX_VALUE</code>.</p>
-		<h:form>
-			<b:tabView activeIndex="-5"
-				contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-top: 1px solid #ddd;padding:10px">
-			<b:tab title="first tab (disabled)" disabled="true">
-              This tab is disabled.
-            </b:tab>
-				<b:tab title="JSF markup">
-					<script type="syntaxhighlighter"
-						class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-      <h:form>
-        <b:tabView disabled="true" contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-top: 1px solid #ddd;padding:10px">
-			<b:tab title="first tab (disabled)" disabled="true">
-              This tab is disabled.
-            </b:tab>
-          <b:tab title="JSF markup">
-			...
-          </b:tab>
-			<b:tab title="invisible tab" rendered="false">
-              This tab is not rendered.
-            </b:tab>
-			<b:tab title="third tab">
-              Put some text here.
-            </b:tab>
-			<b:tab title="fourth tab (disabled)" disabled="true">
-              This tab is disabled.
-            </b:tab>
-         </b:tabView>
-     </h:form>
- ]]>
-         </script>
-			</b:tab>
-			<b:tab title="invisible tab" rendered="false">
-              This tab is not rendered.
-            </b:tab>
-			<b:tab title="third tab">
-              Put some text here.
-            </b:tab>
-			<b:tab title="fourth tab (disabled)" disabled="true">
-              This tab is disabled.
-            </b:tab>
-			</b:tabView>
-		</h:form>
-
-		<h4>Hiding the entire TabView</h4>
-		<p>This demo is sort of hard to demonstrate, but we included it for testing purposes nonetheless. Below you see (or rather: you don't see)
-		a tabView with <code>rendered="false"</code>.</p>
-		<h:form>
-			<b:tabView rendered="false">
-				<b:tab title="first tab">
-					Content of the first tab.
- 				</b:tab>
-				<b:tab title="second tab">
-	              	Put some text here.
-	            </b:tab>
-			</b:tabView>
-					<script type="syntaxhighlighter"
-						class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-			<b:tabView rendered="false">
-				<b:tab title="first tab">
-					Content of the first tab.
- 				</b:tab>
-				<b:tab title="second tab">
-	              	Put some text here.
-	            </b:tab>
-			</b:tabView>
- ]]>
-        </script>
- 		</h:form>
-
-		<h4>Disabling the content of a tab <b:badge value="since 1.1.0" /></h4>
-		<p>This demo is sort of hard to demonstrate, but we included it for testing purposes nonetheless. Below you see (or rather: you don't see)
-		a tabView with <code>rendered="false"</code>.</p>
-		<h:form>
-			<b:panelGrid columns="2">
-				<b:panel title="live preview" id="contentDisabledDemoId">
-					<b:tabView contentStyle="border: 1px solid #ddd;padding:10px;"
-					    content-disabled="#{testBean.contentDisabled}">
-						<b:tab title="content-disabled=#{testBean.contentDisabled}">
-			              	<b:datepicker label="Datepicker"  />
-				            <b:dateTimePicker label="DateTimerPicker" />
-				            <b:colorPicker label="ColorPicker" />
-		 				</b:tab>
-						<b:tab title="content-disabled=true" content-disabled="true">
-			              	<b:datepicker label="Datepicker"  />
-				            <b:dateTimePicker label="DateTimerPicker" />
-				            <b:colorPicker label="ColorPicker" />
-			            </b:tab>
-					</b:tabView>
-				</b:panel>
-				<b:panel title="disable the entire tabView">
-					<b:selectBooleanCheckbox value="#{testBean.contentDisabled}" caption="content-disabled=true"
-							                 onclick="ajax:testBean.onClick()"
-							                 update="contentDisabledDemoId" />
-				</b:panel>
-				
-			</b:panelGrid>
-					<script type="syntaxhighlighter"
-						class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-			<b:tabView rendered="false">
-				<b:tab title="first tab">
-	              	<b:datepicker label="Datepicker"  />
-		            <b:dateTimePicker label="DateTimerPicker" />
-		            <b:colorPicker label="ColorPicker" />
- 				</b:tab>
-				<b:tab title="second tab" content-disabled="true">
-	              	<b:datepicker label="Datepicker"  />
-		            <b:dateTimePicker label="DateTimerPicker" />
-		            <b:colorPicker label="ColorPicker" />
-	            </b:tab>
-			</b:tabView>
- ]]>
-        </script>
- </h:form>
-
-
-
-		<h2><a id="ajax_and_javascript">AJAX and JavaScript</a><b:badge value="since 0.8.0" /></h2>
-		<p>
-			<code>&lt;b:tabView &gt;</code>
-			and
-			<code>&lt;b:tab &gt;</code>
-			support many JavaScript and AJAX events, as described in <a
-				href="ajax.jsf">the description of AJAX in BootsFaces</a>.
-			Basically, each of the many JavaScript callback handlers (the
-			<code>on[event]</code>
-			attributes) also supports AJAX. To get familiar with BootsFaces AJAX,
-			try the <a target="#"
-				href="https://github.com/stephanrauh/BootsFaces-Examples/tree/master/AJAX">BootsFaces
-				AJAX demo project</a>.
-
-		</p>
-        <b:tabView onhide="console.log('hide ' + event.target);" onhidden="console.log('hidden')" onshow="console.log('show')" onshown="console.log('shown')">
-          <b:tab title="first tab">
-           first tab
-          </b:tab>
-          <b:tab title="second tab">
-           second tab
+          <b:tab title="final static tab">
+            This final tab is static. It's content is no quite so static.
+            <b:panelGrid columns="3" size="xs">
+              <b:inputText label="Value 1" value="#{testBean.calc.summand1}" />
+              <b:inputText label="Value 2" value="#{testBean.calc.summand2}" onkeyup="ajax:testBean.calc.add()" update="result"/>
+              <div jsf:id="result">
+                Sum: #{testBean.calc.sum}
+              </div>
+              <b:commandButton onclick="ajax:testBean.calc.add()" update="result">add</b:commandButton>
+            </b:panelGrid>
           </b:tab>
         </b:tabView>
+      </h:form>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <b:tabView contentStyle="border: 1px solid #ddd;padding:10px;"
+                     content-disabled="#{testBean.contentDisabled}"
+                     active-index="-2">
+            <b:tab title="static tab">
+              This tab is static. It's content is static, too.
+            </b:tab>
+            <b:tab title="dynamic tab #{status.index}" value="&num;{testBean.tabs}" var="currentTab" varStatus="status">
+              <b:panelGrid columns="3" size="xs">
+                <b:inputText label="Value 1" value="&num;{currentTab.summand1}" />
+                <b:inputText label="Value 2" value="&num;{currentTab.summand2}" onkeyup="ajax:currentTab.add()" update="result"/>
+                <div jsf:id="result">
+                  Sum: &num;{currentTab.sum}
+                </div>
+                <b:commandButton onclick="ajax:currentTab.add()" update="result">add</b:commandButton>
+              </b:panelGrid>
+            </b:tab>
+            <b:tab title="final static tab">
+              This final tab is static. It's content is static, too.
+            </b:tab>
+          </b:tabView>
+          ]]></script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+    <h2><a id="tab_pills">Tab pills</a><b:badge value="since 0.8.5" /></h2>
+    <p>You can use the pills setting to render pills instead of tabs:</p>
+    <h:form>
+      <b:tabView pills="true"
+                 contentStyle="border: 1px solid #ddd;padding:10px">
+        <b:tab title="JSF markup">
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:form>
+            <b:tabView pills="true" contentStyle="border: 1px solid #ddd;padding:10px">
+              <b:tab title="JSF markup">
+                ...
+              </b:tab>
+              <b:tab title="second tab">
+                Put some text here.
+              </b:tab>
+            </b:tabView>
+          </h:form>
+          ]]>
+          </script>
+        </b:tab>
+        <b:tab title="second tab">
+          Put some text here.
+        </b:tab>
+      </b:tabView>
+    </h:form>
+
+    <h2><a id="tab_position">Tab position</a><b:badge value="since 0.8.5" /></h2>
+    <p>You can also set the tab position to 'top', 'left', 'right' and
+    'bottom'. The left and right setting, force the use of pills to
+    manage also the nav-stacked style when the page resize.</p>
+    <br />
+    <h2><a id="bottom_tab">Bottom Tab</a></h2>
+    <h:form>
+      <b:tabView tabPosition="bottom"
+                 contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-top: 1px solid #ddd;padding:10px">
+        <b:tab title="JSF markup">
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:form>
+            <b:tabView tabPosition="bottom" contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-top: 1px solid #ddd;padding:10px">
+              <b:tab title="JSF markup">
+                ...
+              </b:tab>
+              <b:tab title="second tab">
+                Put some text here.
+              </b:tab>
+            </b:tabView>
+          </h:form>
+          ]]>
+          </script>
+        </b:tab>
+        <b:tab title="second tab">
+          Put some text here.
+        </b:tab>
+      </b:tabView>
+
+      <br />
+      <br />
+      <h2><a id="left_tab">Left Tab</a></h2>
+
+      <b:tabView tabPosition="left"
+                 contentStyle="border: 1px solid #ddd;padding:10px">
+        <b:tab title="JSF markup">
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:form>
+            <b:tabView tabPosition="left" contentStyle="border: 1px solid #ddd;padding:10px">
+              <b:tab title="JSF markup">
+                ...
+              </b:tab>
+              <b:tab title="second tab">
+                Put some text here.
+              </b:tab>
+            </b:tabView>
+          </h:form>
+          ]]>
+          </script>
+        </b:tab>
+        <b:tab title="second tab">
+          Put some text here.
+        </b:tab>
+      </b:tabView>
+
+      <br />
+      <br />
+      <h2><a id="right_tab">Right Tab</a></h2>
+      <b:tabView tabPosition="right"
+                 contentStyle="border: 1px solid #ddd;padding:10px">
+        <b:tab title="JSF markup">
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:form>
+            <b:tabView tabPosition="right" contentStyle="border: 1px solid #ddd;padding:10px">
+              <b:tab title="JSF markup">
+                ...
+              </b:tab>
+              <b:tab title="second tab">
+                Put some text here.
+              </b:tab>
+            </b:tabView>
+          </h:form>
+          ]]>
+          </script>
+        </b:tab>
+        <b:tab title="second tab">
+          Put some text here.
+        </b:tab>
+      </b:tabView>
+    </h:form>
 
 
-		<h2><a id="reference_section">Reference section</a></h2>
-		<ui:include src="TabViewAttributes.xhtml" />
-		<ui:include src="TabAttributes.xhtml" />
+    <h2><a id="disabled_and_hidden_tabs_and_tabviews">Disabled and hidden tabs and tabViews</a><b:badge value="since 1.0.1" /></h2>
+    <p>You can use the attribute <code>rendered="false"</code> to hide both the entire TabView or an individual tab. Similarly, you can use the attribute
+    <code>disabled="true"</code> to gray out the entire TabView or an individual tab.</p>
+    <br />
+
+    <h4>Disabling the entire TabView</h4>
+    <p>That's a pretty radical step. You can't activate any of the tabs. Nor is the content of any of the tabs ever shown.</p>
+    <h:form>
+      <b:tabView disabled="true"
+                 contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-top: 1px solid #ddd;padding:10px">
+        <b:tab title="JSF markup">
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:form>
+            <b:tabView disabled="true" contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-top: 1px solid #ddd;padding:10px">
+              <b:tab title="JSF markup">
+                ...
+              </b:tab>
+              <b:tab title="second tab">
+                Put some text here.
+              </b:tab>
+            </b:tabView>
+          </h:form>
+          ]]>
+          </script>
+        </b:tab>
+        <b:tab title="second tab">
+          Put some text here.
+        </b:tab>
+      </b:tabView>
+    </h:form>
+
+    <h4>Disabling and hiding individual tabs</h4>
+    <p>Inactive tabs can't be activated by clicking. If the currently active tab is disabled, the next tab is activated, until an enabled tab is found.
+    In the example below, the first tab is initially active. However, it's disabled, so the next tab is activated. It's an enabled tab, so it's rendered
+    as active. If none of the tabs were enabled, there's no active tab - just like in the example above.</p>
+    <p>If the active index is defined by an bean attribute, such as <code>activeIndex="# {testBean.index}</code>, the bean attribute value
+    if updated to the real index during the rendering phase. If every tab is disabled, the bean attribute is set to <code>Integer.MAX_VALUE</code>.</p>
+    <h:form>
+      <b:tabView activeIndex="-5"
+                 contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-top: 1px solid #ddd;padding:10px">
+        <b:tab title="first tab (disabled)" disabled="true">
+          This tab is disabled.
+        </b:tab>
+        <b:tab title="JSF markup">
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:form>
+            <b:tabView disabled="true" contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-top: 1px solid #ddd;padding:10px">
+              <b:tab title="first tab (disabled)" disabled="true">
+                This tab is disabled.
+              </b:tab>
+              <b:tab title="JSF markup">
+                ...
+              </b:tab>
+              <b:tab title="invisible tab" rendered="false">
+                This tab is not rendered.
+              </b:tab>
+              <b:tab title="third tab">
+                Put some text here.
+              </b:tab>
+              <b:tab title="fourth tab (disabled)" disabled="true">
+                This tab is disabled.
+              </b:tab>
+            </b:tabView>
+          </h:form>
+          ]]>
+          </script>
+        </b:tab>
+        <b:tab title="invisible tab" rendered="false">
+          This tab is not rendered.
+        </b:tab>
+        <b:tab title="third tab">
+          Put some text here.
+        </b:tab>
+        <b:tab title="fourth tab (disabled)" disabled="true">
+          This tab is disabled.
+        </b:tab>
+      </b:tabView>
+    </h:form>
+
+    <h4>Hiding the entire TabView</h4>
+    <p>This demo is sort of hard to demonstrate, but we included it for testing purposes nonetheless. Below you see (or rather: you don't see)
+    a tabView with <code>rendered="false"</code>.</p>
+    <h:form>
+      <b:tabView rendered="false">
+        <b:tab title="first tab">
+          Content of the first tab.
+        </b:tab>
+        <b:tab title="second tab">
+          Put some text here.
+        </b:tab>
+      </b:tabView>
+      <script type="syntaxhighlighter"
+      class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+      <![CDATA[
+      <b:tabView rendered="false">
+        <b:tab title="first tab">
+          Content of the first tab.
+        </b:tab>
+        <b:tab title="second tab">
+          Put some text here.
+        </b:tab>
+      </b:tabView>
+      ]]>
+      </script>
+    </h:form>
+
+    <h4>Disabling the content of a tab <b:badge value="since 1.1.0" /></h4>
+    <p>This demo is sort of hard to demonstrate, but we included it for testing purposes nonetheless. Below you see (or rather: you don't see)
+    a tabView with <code>rendered="false"</code>.</p>
+    <h:form>
+      <b:panelGrid columns="2">
+        <b:panel title="live preview" id="contentDisabledDemoId">
+          <b:tabView contentStyle="border: 1px solid #ddd;padding:10px;"
+                     content-disabled="#{testBean.contentDisabled}">
+            <b:tab title="content-disabled=#{testBean.contentDisabled}">
+              <b:datepicker label="Datepicker"  />
+              <b:dateTimePicker label="DateTimerPicker" />
+              <b:colorPicker label="ColorPicker" />
+            </b:tab>
+            <b:tab title="content-disabled=true" content-disabled="true">
+              <b:datepicker label="Datepicker"  />
+              <b:dateTimePicker label="DateTimerPicker" />
+              <b:colorPicker label="ColorPicker" />
+            </b:tab>
+          </b:tabView>
+        </b:panel>
+        <b:panel title="disable the entire tabView">
+          <b:selectBooleanCheckbox value="#{testBean.contentDisabled}" caption="content-disabled=true"
+                                   onclick="ajax:testBean.onClick()"
+                                   update="contentDisabledDemoId" />
+        </b:panel>
+
+      </b:panelGrid>
+      <script type="syntaxhighlighter"
+      class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+      <![CDATA[
+      <b:tabView rendered="false">
+        <b:tab title="first tab">
+          <b:datepicker label="Datepicker"  />
+          <b:dateTimePicker label="DateTimerPicker" />
+          <b:colorPicker label="ColorPicker" />
+        </b:tab>
+        <b:tab title="second tab" content-disabled="true">
+          <b:datepicker label="Datepicker"  />
+          <b:dateTimePicker label="DateTimerPicker" />
+          <b:colorPicker label="ColorPicker" />
+        </b:tab>
+      </b:tabView>
+      ]]>
+      </script>
+    </h:form>
 
 
-		<b:panel look="info">
-			<f:facet name="heading">
-				<b>Skinning</b>
-			</f:facet>
-			<p>
-				&lt;b:tabView&gt; and &lt;b:tab&gt; use the standard Bootstrap CSS
-				classes as defined by <a target="#"
-					href="http://getbootstrap.com/javascript/#tabs">the Bootstrap
-					documentation</a>:
-			</p>
-			<p>
-				The entire tab (tab strip and content area) is surrounded by a div
-				bearing the CSS class
-				<code>tab-panel</code>
-				.
-			</p>
-			<p>
-				The tab area bears the CSS classes
-				<code>nav</code>
-				and
-				<code>nav-tabs</code>
-				.
-			</p>
-			<p>
-				The content area bears the CSS class
-				<code>tab-content</code>
-				.
-			</p>
-			<p>
-				The individual tab panes in the content area bear the CSS class
-				<code>tab-pane</code>
-				.
-			</p>
-		</b:panel>
+
+    <h2><a id="ajax_and_javascript">AJAX and JavaScript</a><b:badge value="since 0.8.0" /></h2>
+    <p>
+    <code>&lt;b:tabView &gt;</code>
+    and
+    <code>&lt;b:tab &gt;</code>
+    support many JavaScript and AJAX events, as described in <a
+    href="ajax.jsf">the description of AJAX in BootsFaces</a>.
+    Basically, each of the many JavaScript callback handlers (the
+    <code>on[event]</code>
+    attributes) also supports AJAX. To get familiar with BootsFaces AJAX,
+    try the <a target="#"
+    href="https://github.com/stephanrauh/BootsFaces-Examples/tree/master/AJAX">BootsFaces
+    AJAX demo project</a>.
+
+    </p>
+    <b:tabView onhide="console.log('hide ' + event.target);" onhidden="console.log('hidden')" onshow="console.log('show')" onshown="console.log('shown')">
+      <b:tab title="first tab">
+        first tab
+      </b:tab>
+      <b:tab title="second tab">
+        second tab
+      </b:tab>
+    </b:tabView>
 
 
-		<script type="text/javascript">
-			SyntaxHighlighter.all();
-		</script>
-		<br />
-		<br />
-		<br />
-		<br />
+    <h2><a id="reference_section">Reference section</a></h2>
+    <ui:include src="TabViewAttributes.xhtml" />
+    <ui:include src="TabAttributes.xhtml" />
 
-	</ui:define>
+
+    <b:panel look="info">
+      <f:facet name="heading">
+        <b>Skinning</b>
+      </f:facet>
+      <p>
+      &lt;b:tabView&gt; and &lt;b:tab&gt; use the standard Bootstrap CSS
+      classes as defined by <a target="#"
+      href="http://getbootstrap.com/javascript/#tabs">the Bootstrap
+      documentation</a>:
+      </p>
+      <p>
+      The entire tab (tab strip and content area) is surrounded by a div
+      bearing the CSS class
+      <code>tab-panel</code>
+      .
+      </p>
+      <p>
+      The tab area bears the CSS classes
+      <code>nav</code>
+      and
+      <code>nav-tabs</code>
+      .
+      </p>
+      <p>
+      The content area bears the CSS class
+      <code>tab-content</code>
+      .
+      </p>
+      <p>
+      The individual tab panes in the content area bear the CSS class
+      <code>tab-pane</code>
+      .
+      </p>
+    </b:panel>
+
+
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+    <br />
+    <br />
+    <br />
+    <br />
+
+  </ui:define>
 </ui:composition>

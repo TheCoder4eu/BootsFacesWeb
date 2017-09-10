@@ -1,25 +1,25 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
-  xmlns:b="http://bootsfaces.net/ui" xmlns:jsf="http://xmlns.jcp.org/jsf"
-  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough" xmlns:ui="http://java.sun.com/jsf/facelets">
-<h:head>
-  <title>BootsFaces: next-gen JSF Framework</title>
+      xmlns:b="http://bootsfaces.net/ui" xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough" xmlns:ui="http://java.sun.com/jsf/facelets">
+  <h:head>
+    <title>BootsFaces: next-gen JSF Framework</title>
   <meta name="author" content="Riccardo Massera"></meta>
-</h:head>
-<h:body style="padding-top: 60px">
-  <ui:composition template="/applayout/pageTemplate.xhtml">
+  </h:head>
+  <h:body style="padding-top: 60px">
+    <ui:composition template="/applayout/pageTemplate.xhtml">
 
-<ui:define name="content-navigator">
-  <b:listLinks>
-    <b:navLink href="#search_expressions_in_standard_jsf" value="Search Expressions in standard JSF" />
-    <b:navLink href="#basic_usage" value="Basic usage (also works without BootsFaces)" />
-    <b:navLink href="#advanced_usage" value="Advanced usage (only works with BootsFaces)" />
-  </b:listLinks>
-</ui:define>
+      <ui:define name="content-navigator">
+        <b:listLinks>
+          <b:navLink href="#search_expressions_in_standard_jsf" value="Search Expressions in standard JSF" />
+          <b:navLink href="#basic_usage" value="Basic usage (also works without BootsFaces)" />
+          <b:navLink href="#advanced_usage" value="Advanced usage (only works with BootsFaces)" />
+        </b:listLinks>
+      </ui:define>
 
 
-    <ui:define name="content">
+      <ui:define name="content">
         <h1><a id="search_expressions_in_standard_jsf">Search Expressions in standard JSF</a><b:badge value="since 1.0" /></h1>
         <p>Neither the advanced search expressions of BootsFaces nor their PrimeFaces counterparts work with
         the components of the base libraries out-of-the-box. However, it's possible to define a JSF bean or
@@ -28,216 +28,216 @@
         point of view, that's a fairly convoluted approach because the underlying base library (Mojarra or MyFaces)
         still doesn't support the search expressions, but from a user's perspective you won't notice the difference.</p>
 
-      <h2><a id="basic_usage">Basic usage (also works without BootsFaces)</a></h2>
-      <p>Let's start with the basic idea, which required a lot of keystrokes, but doesn't require you to configure
-      the decorator. BootsFaces provides a JSF bean method resolving search expressions. All you have to do is to
-      wrap the call to this method around your search expressions:</p>
-      
-      
-        <b:panel title="Live preview" look="info" collapsible="false">
-            <h:form>
-            <h:outputLabel for="#{searchExpressionResolverBean.resolve(component, '@next')}"
-                               value="Enter a number between 1 and 10:"
-                               style="padding-right:10px" />
-                <h:inputText value="#{numberGuessBean.guess}" styleClass="guess" />
-                <h:message for="#{searchExpressionResolverBean.resolve(component, '@previous')}"
-                showDetail="true"  showSummary="true" />
-                <br />
-                <h:commandButton value="submit your guess">
-                  <f:ajax render="#{searchExpressionResolverBean.resolve(component, '@parent')}"
-                          execute="#{searchExpressionResolverBean.resolve(component, '@form')}"
-                          listener="#{numberGuessBean.submitGuess}"/>
-                </h:commandButton>
-            </h:form>
+        <h2><a id="basic_usage">Basic usage (also works without BootsFaces)</a></h2>
+        <p>Let's start with the basic idea, which required a lot of keystrokes, but doesn't require you to configure
+        the decorator. BootsFaces provides a JSF bean method resolving search expressions. All you have to do is to
+        wrap the call to this method around your search expressions:</p>
 
-            <f:facet name="footer">
-                <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
-                    <b:tab title="JSF markup">
-                        <b:panel>
-                            <script type="syntaxhighlighter"
+
+        <b:panel title="Live preview" look="info" collapsible="false">
+          <h:form>
+            <h:outputLabel for="#{searchExpressionResolverBean.resolve(component, '@next')}"
+                           value="Enter a number between 1 and 10:"
+                           style="padding-right:10px" />
+            <h:inputText value="#{numberGuessBean.guess}" styleClass="guess" />
+            <h:message for="#{searchExpressionResolverBean.resolve(component, '@previous')}"
+                       showDetail="true"  showSummary="true" />
+            <br />
+            <h:commandButton value="submit your guess">
+              <f:ajax render="#{searchExpressionResolverBean.resolve(component, '@parent')}"
+                      execute="#{searchExpressionResolverBean.resolve(component, '@form')}"
+                      listener="#{numberGuessBean.submitGuess}"/>
+            </h:commandButton>
+          </h:form>
+
+          <f:facet name="footer">
+            <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+              <b:tab title="JSF markup">
+                <b:panel>
+                  <script type="syntaxhighlighter"
                   class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                <![CDATA[
-            <h:form>
-                <h:outputLabel for="&num;{searchExpressionResolverBean.resolve(component, '@next')}"
-                               value="Enter a number between 1 and 10:"
-                               style="padding-right:10px" />
-                <h:inputText value="&num;{numberGuessBean.guess}" styleClass="guess" />
-                <h:message for="&num;{searchExpressionResolverBean.resolve(component, '@previous')}"
-                showDetail="true"  showSummary="true" />
-                <br />
-                <h:commandButton value="submit your guess">
-                  <f:ajax render="&num;{searchExpressionResolverBean.resolve(component, '@parent')}"
-                          execute="&num;{searchExpressionResolverBean.resolve(component, '@form')}"
-                          listener="&num;{numberGuessBean.submitGuess}"/>
-                </h:commandButton>
-            <h:form>
-                ]]></script>
-                        </b:panel>
-                    </b:tab>
-                    <b:tab title="Java Bean (NumberGuess)">
-                        <b:panel>
-                            <script type="syntaxhighlighter"
+                  <![CDATA[
+                  <h:form>
+                    <h:outputLabel for="&num;{searchExpressionResolverBean.resolve(component, '@next')}"
+                                   value="Enter a number between 1 and 10:"
+                                   style="padding-right:10px" />
+                    <h:inputText value="&num;{numberGuessBean.guess}" styleClass="guess" />
+                    <h:message for="&num;{searchExpressionResolverBean.resolve(component, '@previous')}"
+                               showDetail="true"  showSummary="true" />
+                    <br />
+                    <h:commandButton value="submit your guess">
+                      <f:ajax render="&num;{searchExpressionResolverBean.resolve(component, '@parent')}"
+                              execute="&num;{searchExpressionResolverBean.resolve(component, '@form')}"
+                              listener="&num;{numberGuessBean.submitGuess}"/>
+                    </h:commandButton>
+                  </h:form>
+                  ]]></script>
+                </b:panel>
+              </b:tab>
+              <b:tab title="Java Bean (NumberGuess)">
+                <b:panel>
+                  <script type="syntaxhighlighter"
                   class="brush: java; toolbar: false;gutter: false; first-line: 1">
-                <![CDATA[
-@ManagedBean
-@ViewScoped
-public class NumberGuessBean  implements Serializable {
- 
- private static final long serialVersionUID = 1L;
- 
- private int counter = 1;
- 
- private int target=5;
- 
- @Min(1)
- @Max(10)
- private int guess=2;
- 
- public int getGuess() {
-     return guess;
- }
- 
- public void setGuess(int guess) {
-     this.guess = guess;
- }
- 
- public void submitGuess() {
-     String summary="Wrong guess:";
-     String msg = "Guess #" + counter++;
-     if (guess > target) {
-         msg += " is to high.";
-     } else if (guess < target) {
-         msg += " is to small.";
-     } else {
-         msg += " is correct!";
-         summary="Congratulations!";
-     }
-     FacesMessages.info("@property(numberGuessBean.guess)", summary, msg);
- 
- }
-}
-                ]]></script>
-                        </b:panel>
-                    </b:tab><b:tab title="Java Bean (SearchExpressionResolver)">
-                        <b:panel>
-                            <script type="syntaxhighlighter"
+                  <![CDATA[
+                  @ManagedBean
+                  @ViewScoped
+                  public class NumberGuessBean  implements Serializable {
+
+                    private static final long serialVersionUID = 1L;
+
+                    private int counter = 1;
+
+                    private int target=5;
+
+                    @Min(1)
+                    @Max(10)
+                    private int guess=2;
+
+                    public int getGuess() {
+                      return guess;
+                    }
+
+                    public void setGuess(int guess) {
+                      this.guess = guess;
+                    }
+
+                    public void submitGuess() {
+                      String summary="Wrong guess:";
+                      String msg = "Guess #" + counter++;
+                      if (guess > target) {
+                        msg += " is to high.";
+                      } else if (guess < target) {
+                        msg += " is to small.";
+                      } else {
+                        msg += " is correct!";
+                        summary="Congratulations!";
+                      }
+                      FacesMessages.info("@property(numberGuessBean.guess)", summary, msg);
+
+                    }
+                  }
+                  ]]></script>
+                </b:panel>
+                </b:tab><b:tab title="Java Bean (SearchExpressionResolver)">
+                <b:panel>
+                  <script type="syntaxhighlighter"
                   class="brush: java; toolbar: false;gutter: false; first-line: 1">
-                <![CDATA[
-@ManagedBean
-@RequestScoped
-public class SearchExpressionResolverBean {
-	public String resolve(UIComponent component, String expression) {
-		String componentIDs = ExpressionResolver.getComponentIDs(FacesContext.getCurrentInstance(), component, expression);
-		if (componentIDs.indexOf(' ')>=0) {
-			// multiple component ids
-			componentIDs = componentIDs.replace(" ", " :");
-		}
-		return ":"+componentIDs;
-	}
-}
-                ]]></script>
-                        </b:panel>
-                    </b:tab>
-                </b:tabView>
-            </f:facet>
+                  <![CDATA[
+                  @ManagedBean
+                  @RequestScoped
+                  public class SearchExpressionResolverBean {
+                    public String resolve(UIComponent component, String expression) {
+                      String componentIDs = ExpressionResolver.getComponentIDs(FacesContext.getCurrentInstance(), component, expression);
+                      if (componentIDs.indexOf(' ')>=0) {
+                        // multiple component ids
+                        componentIDs = componentIDs.replace(" ", " :");
+                      }
+                      return ":"+componentIDs;
+                    }
+                  }
+                  ]]></script>
+                </b:panel>
+              </b:tab>
+            </b:tabView>
+          </f:facet>
         </b:panel>
-       
-      
+
+
         <p>This even works without BootsFaces if you copy the folder
         <a target="#" href="https://github.com/TheCoder4eu/BootsFaces-OSP/tree/master/src/main/java/net/bootsfaces/expressions">
         https://github.com/TheCoder4eu/BootsFaces-OSP/tree/master/src/main/java/net/bootsfaces/expressions</a>
         to your project. </p>
 
 
-      <h2><a id="advanced_usage">Advanced usage (only works with BootsFaces)</a></h2>
-      <p>By configuring and activating the BootsFaces facelets decorator, you can use search expressions with the
-      <code>for</code> attribute of many standard JSF components, such as <code>&lt;h:message /&gt;</code>,
-      <code>&lt;h:messages /&gt;</code>, and <code>&lt;h:outputLabel /&gt;</code>. From a programmers perspective,
-      you won't see much of a difference between the two classes of components. The only difference is that
-      some of BootsFaces search expressions are very powerful, which makes them slower than a simple id.</p>
+        <h2><a id="advanced_usage">Advanced usage (only works with BootsFaces)</a></h2>
+        <p>By configuring and activating the BootsFaces facelets decorator, you can use search expressions with the
+        <code>for</code> attribute of many standard JSF components, such as <code>&lt;h:message /&gt;</code>,
+        <code>&lt;h:messages /&gt;</code>, and <code>&lt;h:outputLabel /&gt;</code>. From a programmers perspective,
+        you won't see much of a difference between the two classes of components. The only difference is that
+        some of BootsFaces search expressions are very powerful, which makes them slower than a simple id.</p>
 
-      <p>For some reason, the facelets decorator does not work with the <code>&lt;f:ajax /&gt;</code> facet, so you
-      have to resolve the search expressions yourself, as shown below:</p>
+        <p>For some reason, the facelets decorator does not work with the <code>&lt;f:ajax /&gt;</code> facet, so you
+        have to resolve the search expressions yourself, as shown below:</p>
         <ui:fragment bootsFacesDecorator="true">
 
 
-        <b:panel title="Live preview" look="info" collapsible="false">
+          <b:panel title="Live preview" look="info" collapsible="false">
             <h:form>
-                    <h:outputLabel for="@next"
-                                   value="Enter a number between 1 and 10:"
-                                   style="padding-right:10px" />
-                    <h:inputText value="#{numberGuessBean.guess}" styleClass="guess" />
-                    <h:message for="@previous"
-                    showDetail="true"  showSummary="true" />
-                    <br />
-                    <h:commandButton value="submit your guess">
-                    <f:ajax render="#{searchExpressionResolverBean.resolve(component, '@parent')}"
-                            execute="#{searchExpressionResolverBean.resolve(component, '@form')}"
-                            listener="#{numberGuessBean.submitGuess}"/>
-                    </h:commandButton>
+              <h:outputLabel for="@next"
+                             value="Enter a number between 1 and 10:"
+                             style="padding-right:10px" />
+              <h:inputText value="#{numberGuessBean.guess}" styleClass="guess" />
+              <h:message for="@previous"
+                         showDetail="true"  showSummary="true" />
+              <br />
+              <h:commandButton value="submit your guess">
+                <f:ajax render="#{searchExpressionResolverBean.resolve(component, '@parent')}"
+                        execute="#{searchExpressionResolverBean.resolve(component, '@form')}"
+                        listener="#{numberGuessBean.submitGuess}"/>
+              </h:commandButton>
             </h:form>
 
             <f:facet name="footer">
-                <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
-                    <b:tab title="JSF markup">
-                        <b:panel>
-                            <script type="syntaxhighlighter"
-                      class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                    <![CDATA[
-                <h:form>
-                    <h:outputLabel for="@next"
-                                   value="Enter a number between 1 and 10:"
-                                   style="padding-right:10px" />
-                    <h:inputText value="&num;{numberGuessBean.guess}" styleClass="guess" />
-                    <h:message for="@previous"
-                    showDetail="true" showSummary="true" />
-                    <br />
-                    <h:commandButton value="submit your guess">
-                    <f:ajax render="&num;{searchExpressionResolverBean.resolve(component, '@parent')}"
-                            execute="&num;{searchExpressionResolverBean.resolve(component, '@form')}"
-                            listener="&num;{numberGuessBean.submitGuess}"/>
-                    </h:commandButton>
-                <h:form>                
-    ]]></script>
-                        </b:panel>
-                    </b:tab>
-                    <b:tab title="web.xml">
-                        <b:panel>
-                            <script type="syntaxhighlighter"
-                      class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                    <![CDATA[
-    <context-param>
-      <param-name>javax.faces.FACELETS_DECORATORS</param-name>
-      <param-value>
-          net.bootsfaces.expressions.decorator.SearchExpressionsTagDecorator
-      </param-value>
-    </context-param>
-                    ]]></script>
-                        </b:panel>
-
-or
-<b:panel>
+              <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+                <b:tab title="JSF markup">
+                  <b:panel>
                     <script type="syntaxhighlighter"
-                      class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
                     <![CDATA[
-    <context-param>
-      <param-name>javax.faces.FACELETS_DECORATORS</param-name>
-      <param-value>
-          net.bootsfaces.decorator.BootsFacesTagDecorator
-      </param-value>
-    </context-param>
+                    <h:form>
+                      <h:outputLabel for="@next"
+                                     value="Enter a number between 1 and 10:"
+                                     style="padding-right:10px" />
+                      <h:inputText value="&num;{numberGuessBean.guess}" styleClass="guess" />
+                      <h:message for="@previous"
+                                 showDetail="true" showSummary="true" />
+                      <br />
+                      <h:commandButton value="submit your guess">
+                        <f:ajax render="&num;{searchExpressionResolverBean.resolve(component, '@parent')}"
+                                execute="&num;{searchExpressionResolverBean.resolve(component, '@form')}"
+                                listener="&num;{numberGuessBean.submitGuess}"/>
+                      </h:commandButton>
+                    </h:form>
                     ]]></script>
-</b:panel>
-                    </b:tab>
-                </b:tabView>
+                  </b:panel>
+                </b:tab>
+                <b:tab title="web.xml">
+                  <b:panel>
+                    <script type="syntaxhighlighter"
+                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                    <![CDATA[
+                    <context-param>
+                    <param-name>javax.faces.FACELETS_DECORATORS</param-name>
+                    <param-value>
+                    net.bootsfaces.expressions.decorator.SearchExpressionsTagDecorator
+                    </param-value>
+                    </context-param>
+                    ]]></script>
+                  </b:panel>
+
+                  or
+                  <b:panel>
+                    <script type="syntaxhighlighter"
+                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                    <![CDATA[
+                    <context-param>
+                    <param-name>javax.faces.FACELETS_DECORATORS</param-name>
+                    <param-value>
+                    net.bootsfaces.decorator.BootsFacesTagDecorator
+                    </param-value>
+                    </context-param>
+                    ]]></script>
+                  </b:panel>
+                </b:tab>
+              </b:tabView>
             </f:facet>
         </b:panel></ui:fragment>
 
-      <script type="text/javascript">
-							SyntaxHighlighter.all();
-						</script>
+        <script type="text/javascript">
+        SyntaxHighlighter.all();
+        </script>
 
-    </ui:define>
-  </ui:composition>
-</h:body>
+      </ui:define>
+    </ui:composition>
+  </h:body>
 </html>

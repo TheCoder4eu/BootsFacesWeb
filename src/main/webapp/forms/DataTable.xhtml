@@ -1,58 +1,58 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:b="http://bootsfaces.net/ui"
-  xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
 
 
-<ui:define name="content-navigator">
-  <b:listLinks>
-    <b:navLink href="#datatable" value="DataTable (&lt;b:dataTable /&gt;)" />
-    <b:navLink href="#basic_usage" value="Basic usage" />
-    <b:navLink href="#buttons_and_row_classes" value="Buttons and row classes" />
-    <b:navLink href="#autocompletion_" value="Autocompletion:" />
-    <b:navLink href="#defining_the_content_cells" value="Defining the content cells" />
-    <b:navLink href="#defining_the_header" value="Defining the header" />
-    <b:navLink href="#customizing_the_table" value="Customizing the table" />
-    <b:navLink href="#sorting_input_fields" value="Sorting input fields" />
-    <b:navLink href="#fine" value="Fine-tuning search and sort order" />
-    <b:navLink href="#setting_the_initial_search_filter" value="Setting the initial search filter" />
-    <b:navLink href="#updating_a_datatable_with_ajax" value="Updating a datatable with AJAX" />
-    <b:navLink href="#internationalization" value="Internationalization" />
-    <b:navLink href="#custom_options" value="Custom options" />
-    <b:navLink href="#selecting" value="Selecting rows, columns or cells" />
-    <b:navLink href="#selectingServer" value="Server-side selection API" />
-    <b:navLink href="#unified_ajax_and_javascript_api" value="Unified AJAX and JavaScript API" />
-    <b:navLink href="#responsiveness" value="Responsiveness" />
-    <b:navLink href="#empty_data_table_" value="Empty data table" />
-    <b:navLink href="#inputfields" value="Inputfields, command buttons and AJAX" />
-    <b:navLink href="#reference_section" value="Reference section" />
-  </b:listLinks>
-</ui:define>
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#datatable" value="DataTable (&lt;b:dataTable /&gt;)" />
+      <b:navLink href="#basic_usage" value="Basic usage" />
+      <b:navLink href="#buttons_and_row_classes" value="Buttons and row classes" />
+      <b:navLink href="#autocompletion_" value="Autocompletion:" />
+      <b:navLink href="#defining_the_content_cells" value="Defining the content cells" />
+      <b:navLink href="#defining_the_header" value="Defining the header" />
+      <b:navLink href="#customizing_the_table" value="Customizing the table" />
+      <b:navLink href="#sorting_input_fields" value="Sorting input fields" />
+      <b:navLink href="#fine" value="Fine-tuning search and sort order" />
+      <b:navLink href="#setting_the_initial_search_filter" value="Setting the initial search filter" />
+      <b:navLink href="#updating_a_datatable_with_ajax" value="Updating a datatable with AJAX" />
+      <b:navLink href="#internationalization" value="Internationalization" />
+      <b:navLink href="#custom_options" value="Custom options" />
+      <b:navLink href="#selecting" value="Selecting rows, columns or cells" />
+      <b:navLink href="#selectingServer" value="Server-side selection API" />
+      <b:navLink href="#unified_ajax_and_javascript_api" value="Unified AJAX and JavaScript API" />
+      <b:navLink href="#responsiveness" value="Responsiveness" />
+      <b:navLink href="#empty_data_table_" value="Empty data table" />
+      <b:navLink href="#inputfields" value="Inputfields, command buttons and AJAX" />
+      <b:navLink href="#reference_section" value="Reference section" />
+    </b:listLinks>
+  </ui:define>
 
 
   <ui:define name="content">
     <style>
-td {
-	padding: 8px;
-}
-.light-power {
-  color: #F00;
-}
-.dark-power {
-  color: #A00;
-}
-</style>
+      td {
+        padding: 8px;
+      }
+      .light-power {
+        color: #F00;
+      }
+      .dark-power {
+        color: #A00;
+      }
+    </style>
 
     <h1><a id="datatable">DataTable (&lt;b:dataTable /&gt;)</a><b:badge value="since 0.8.0" /><b:badge value="breaking changes in 0.9.0" style="margin-left:10px; background-color:#f2dede;color:red" /></h1>
     <p>
-      The
-      <code>&lt;b:dataTable &gt;</code>
-      is a convenient component rendering the table mostly on the client. This, in turn, imposes certain limitations
-      over server-side datatables. For instance, user interactions don't use AJAX to redraw the table, so you can't
-      easily implement lazy loading. On the plus side is the speed of the data table. Only very large tables may suffer
-      from long initial load times. Once the table is loaded, it's completely available on the client, which makes
-      filtering and pagination very fast.
+    The
+    <code>&lt;b:dataTable &gt;</code>
+    is a convenient component rendering the table mostly on the client. This, in turn, imposes certain limitations
+    over server-side datatables. For instance, user interactions don't use AJAX to redraw the table, so you can't
+    easily implement lazy loading. On the plus side is the speed of the data table. Only very large tables may suffer
+    from long initial load times. Once the table is loaded, it's completely available on the client, which makes
+    filtering and pagination very fast.
     </p>
     <p>The BootsFaces data table is based on the jQuery plugin <a target="#" href="https://datatables.net/">DataTables.net</a>,
     which has been published under a MIT licence.
@@ -67,42 +67,42 @@ td {
     standard JSF counterpart <code>&lt;h:dataTable /&gt;</code>, but is also supports a more compact syntax. The
     simplest way to define a column is to simply use the <code>value</code> attribute. If you don't set a
     header, it's automatically derived from the variable name of the value.</p>
-    
-    <b:panel title="Live preview" look="info" collapsible="false">            
-        <h:form>
-            <b:dataTable value="#{carPool.carPool}"
-                         var="car">
-                <b:dataTableColumn value="#{car.brand}" />
-                <b:dataTableColumn value="#{car.type}" />
-                <b:dataTableColumn value="#{car.color}" />
-                <b:dataTableColumn value="#{car.year}"  order="asc" />
-                <b:dataTableColumn value="#{car.price}" />
-                <b:dataTableColumn value="#{car.enginePower}" label="Engine Power (hp)" />
-            </b:dataTable>
-        </h:form>
-        <f:facet name="footer">
-            <strong>JSF markup:</strong>
-            <b:panel>
-                   <script type="syntaxhighlighter"
-            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-            <![CDATA[
-    <h:form>
-        <b:dataTable value="&num;{carPool.carPool}" 
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form>
+        <b:dataTable value="#{carPool.carPool}"
                      var="car">
-            <b:dataTableColumn value="&num;{car.brand}" />
-            <b:dataTableColumn value="&num;{car.type}" />
-            <b:dataTableColumn value="&num;{car.color}" />
-            <b:dataTableColumn value="&num;{car.year}"  order="asc"/>
-            <b:dataTableColumn value="&num;{car.price}" />
-            <b:dataTableColumn value="&num;{car.enginePower}" label="Engine Power (hp)" />
+          <b:dataTableColumn value="#{car.brand}" />
+          <b:dataTableColumn value="#{car.type}" />
+          <b:dataTableColumn value="#{car.color}" />
+          <b:dataTableColumn value="#{car.year}"  order="asc" />
+          <b:dataTableColumn value="#{car.price}" />
+          <b:dataTableColumn value="#{car.enginePower}" label="Engine Power (hp)" />
         </b:dataTable>
-    </h:form>
-      ]]>
-      </script>
-            </b:panel>
-        </f:facet>
+      </h:form>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:form>
+            <b:dataTable value="&num;{carPool.carPool}"
+                         var="car">
+              <b:dataTableColumn value="&num;{car.brand}" />
+              <b:dataTableColumn value="&num;{car.type}" />
+              <b:dataTableColumn value="&num;{car.color}" />
+              <b:dataTableColumn value="&num;{car.year}"  order="asc"/>
+              <b:dataTableColumn value="&num;{car.price}" />
+              <b:dataTableColumn value="&num;{car.enginePower}" label="Engine Power (hp)" />
+            </b:dataTable>
+          </h:form>
+          ]]>
+          </script>
+        </b:panel>
+      </f:facet>
     </b:panel>
-    
+
     <h2><a id="buttons_and_row_classes">Buttons and row classes</a></h2>
     <p>There are a couple of pre-defined buttons to export the table as an Excel file, as a CSV file, as a PDF file, to copy it to the clipboard
     ot the print it.</p>
@@ -110,34 +110,10 @@ td {
     It may also contain a comma-separated list of CSS classes. In this case, the CSS classes are cyclically assigned to the rows.
     There's a caveat: if the client reorders the rows, the order of the `row-style-classes` is not updated. You can see the effect
     in the example below.</p>
-    
-    <b:panel title="Live preview" look="info" collapsible="false">            
-        <h:form>
-            <b:dataTable value="#{carPool.carPool}"
-                         var="car"
-                         excel="true"
-                         csv="true"
-                         pdf="true"
-                         columnVisibility="true"
-                         copy="true"
-                         print="true"
-                         row-style-class="#{car.enginePower>100?'light-power':'light'}, #{car.enginePower>100?'dark-power':'dark'} ">
-                <b:dataTableColumn value="#{car.brand}" />
-                <b:dataTableColumn value="#{car.type}" />
-                <b:dataTableColumn value="#{car.color}" />
-                <b:dataTableColumn value="#{car.year}"  order="asc" />
-                <b:dataTableColumn value="#{car.price}" />
-                <b:dataTableColumn value="#{car.enginePower}" label="Engine Power (hp)" />
-            </b:dataTable>
-        </h:form>
-        <f:facet name="footer">
-            <strong>JSF markup:</strong>
-            <b:panel>
-                   <script type="syntaxhighlighter"
-            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-            <![CDATA[
-    <h:form>
-        <b:dataTable value="&num;{carPool.carPool}" 
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form>
+        <b:dataTable value="#{carPool.carPool}"
                      var="car"
                      excel="true"
                      csv="true"
@@ -145,22 +121,46 @@ td {
                      columnVisibility="true"
                      copy="true"
                      print="true"
-                     row-style-class="&num;{car.enginePower>100?'light-power':'light'}, &num;{car.enginePower>100?'dark-power':'dark'} ">
-            <b:dataTableColumn value="&num;{car.brand}" />
-            <b:dataTableColumn value="&num;{car.type}" />
-            <b:dataTableColumn value="&num;{car.color}" />
-            <b:dataTableColumn value="&num;{car.year}"  order="asc"/>
-            <b:dataTableColumn value="&num;{car.price}" />
-            <b:dataTableColumn value="&num;{car.enginePower}" label="Engine Power (hp)" />
+                     row-style-class="#{car.enginePower>100?'light-power':'light'}, #{car.enginePower>100?'dark-power':'dark'} ">
+          <b:dataTableColumn value="#{car.brand}" />
+          <b:dataTableColumn value="#{car.type}" />
+          <b:dataTableColumn value="#{car.color}" />
+          <b:dataTableColumn value="#{car.year}"  order="asc" />
+          <b:dataTableColumn value="#{car.price}" />
+          <b:dataTableColumn value="#{car.enginePower}" label="Engine Power (hp)" />
         </b:dataTable>
-    </h:form>
-      ]]>
-      </script>
-            </b:panel>
-        </f:facet>
+      </h:form>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:form>
+            <b:dataTable value="&num;{carPool.carPool}"
+                         var="car"
+                         excel="true"
+                         csv="true"
+                         pdf="true"
+                         columnVisibility="true"
+                         copy="true"
+                         print="true"
+                         row-style-class="&num;{car.enginePower>100?'light-power':'light'}, &num;{car.enginePower>100?'dark-power':'dark'} ">
+              <b:dataTableColumn value="&num;{car.brand}" />
+              <b:dataTableColumn value="&num;{car.type}" />
+              <b:dataTableColumn value="&num;{car.color}" />
+              <b:dataTableColumn value="&num;{car.year}"  order="asc"/>
+              <b:dataTableColumn value="&num;{car.price}" />
+              <b:dataTableColumn value="&num;{car.enginePower}" label="Engine Power (hp)" />
+            </b:dataTable>
+          </h:form>
+          ]]>
+          </script>
+        </b:panel>
+      </f:facet>
     </b:panel>
-    
-   
+
+
     <h2><a id="autocompletion_">Autocompletion:</a><code>h:column</code> vs. <code>b:dataTableColumn</code></h2>
     <p>BootsFaces supports a couple of attributes lacking in standard JSF. If you want to benefit from autocompletion,
     or if you're using a strict IDE like NetBeans, you'll want to use <code>&lt;b:dataTableColumn /&gt;</code>.
@@ -168,442 +168,442 @@ td {
     if you don't mind your IDE complaining, you can use <code>&lt;h:column /&gt;</code> and even
     <code>&lt;b:column /&gt;</code> with the extra attributes of BootsFaces.</p>
 
-  
+
     <h2><a id="defining_the_content_cells">Defining the content cells</a></h2>
     <p>You can either use the <code>value</code> attribute as seen above, or you can put arbitray JSF into the column.
     For instance, the example below shows how to put an input field into the column.</p>
-    
-        <b:panel title="Live preview" look="info" collapsible="false">            
-        <h:form>
-            <b:dataTable value="#{carPool.carPool}"
-                         var="car"
-                         page-length="5"
-                         page-length-menu="5,10,20">
-               <b:dataTableColumn>
-                	<f:facet name="header">
-					     <ul style="margin-bottom:0;list-style-type:none;padding-left:0">
-					       <li>Brand</li>
-					       <li>Type</li>
-					     </ul>
-					</f:facet>
-                  #{car.brand}
-                  <br />
-                  #{car.type}
-                </b:dataTableColumn>
-                <b:dataTableColumn>
-                	<f:facet name="header">
-					     <ul style="margin-bottom:0;list-style-type:none;padding-left:0">
-					       <li>Color</li>
-					       <li>Year</li>
-					     </ul>
-					</f:facet>
-                  #{car.color}
-                  <br />
-                  #{car.year}
-                </b:dataTableColumn>
-                <b:dataTableColumn>
-                	<f:facet name="header">
-					     <ul style="margin-bottom:0;list-style-type:none;padding-left:0">
-					       <li>Price</li>
-					       <li>Engine Power</li>
-					     </ul>
-					</f:facet>
-                  € #{car.price}
-                  <br />
-                  #{car.enginePowerKW} KW (#{car.enginePower} hp) 
-                </b:dataTableColumn>
-             </b:dataTable>
-        </h:form>
-        <f:facet name="footer">
-            <strong>JSF markup:</strong>
-            <b:panel>
-                   <script type="syntaxhighlighter"
-            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-            <![CDATA[
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form>
+        <b:dataTable value="#{carPool.carPool}"
+                     var="car"
+                     page-length="5"
+                     page-length-menu="5,10,20">
+          <b:dataTableColumn>
+            <f:facet name="header">
+              <ul style="margin-bottom:0;list-style-type:none;padding-left:0">
+                <li>Brand</li>
+                <li>Type</li>
+              </ul>
+            </f:facet>
+            #{car.brand}
+            <br />
+            #{car.type}
+          </b:dataTableColumn>
+          <b:dataTableColumn>
+            <f:facet name="header">
+              <ul style="margin-bottom:0;list-style-type:none;padding-left:0">
+                <li>Color</li>
+                <li>Year</li>
+              </ul>
+            </f:facet>
+            #{car.color}
+            <br />
+            #{car.year}
+          </b:dataTableColumn>
+          <b:dataTableColumn>
+            <f:facet name="header">
+              <ul style="margin-bottom:0;list-style-type:none;padding-left:0">
+                <li>Price</li>
+                <li>Engine Power</li>
+              </ul>
+            </f:facet>
+            € #{car.price}
+            <br />
+            #{car.enginePowerKW} KW (#{car.enginePower} hp)
+          </b:dataTableColumn>
+        </b:dataTable>
+      </h:form>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
           <h:form>
             <b:dataTable value="&num;{carPool.carPool}"
                          var="car">
-               <b:dataTableColumn>
-                	<f:facet name="header">
-					     <ul style="margin-bottom:0;list-style-type:none;padding-left:0">
-					       <li>Brand</li>
-					       <li>Type</li>
-					     </ul>
-					</f:facet>
-                  &num;{car.brand}
-                  <br />
-                  &num;{car.type}
-                </b:dataTableColumn>
-                <b:dataTableColumn>
-                	<f:facet name="header">
-					     <ul style="margin-bottom:0;list-style-type:none;padding-left:0">
-					       <li>Color</li>
-					       <li>Year</li>
-					     </ul>
-					</f:facet>
-                  &num;{car.color}
-                  <br />
-                  &num;{car.year}
-                </b:dataTableColumn>
-                <b:dataTableColumn>
-                	<f:facet name="header">
-					     <ul style="margin-bottom:0;list-style-type:none;padding-left:0">
-					       <li>Price</li>
-					       <li>Engine Power</li>
-					     </ul>
-					</f:facet>
-                  € &num;{car.price}
-                  <br />
-                  &num;{car.enginePowerKW} KW (&num;{car.enginePower} hp) 
-                </b:dataTableColumn>
-             </b:dataTable>
-           </h:form>
-      ]]>
-      </script>
-            </b:panel>
-        </f:facet>
+              <b:dataTableColumn>
+                <f:facet name="header">
+                  <ul style="margin-bottom:0;list-style-type:none;padding-left:0">
+                    <li>Brand</li>
+                    <li>Type</li>
+                  </ul>
+                </f:facet>
+                &num;{car.brand}
+                <br />
+                &num;{car.type}
+              </b:dataTableColumn>
+              <b:dataTableColumn>
+                <f:facet name="header">
+                  <ul style="margin-bottom:0;list-style-type:none;padding-left:0">
+                    <li>Color</li>
+                    <li>Year</li>
+                  </ul>
+                </f:facet>
+                &num;{car.color}
+                <br />
+                &num;{car.year}
+              </b:dataTableColumn>
+              <b:dataTableColumn>
+                <f:facet name="header">
+                  <ul style="margin-bottom:0;list-style-type:none;padding-left:0">
+                    <li>Price</li>
+                    <li>Engine Power</li>
+                  </ul>
+                </f:facet>
+                € &num;{car.price}
+                <br />
+                &num;{car.enginePowerKW} KW (&num;{car.enginePower} hp)
+              </b:dataTableColumn>
+            </b:dataTable>
+          </h:form>
+          ]]>
+          </script>
+        </b:panel>
+      </f:facet>
     </b:panel>
-    
+
     <h2><a id="defining_the_header">Defining the header</a></h2>
     <p>You can use either the attribute <code>label</code> of the column, or you can define a facet named <code>"header"</code>
     inside the column. The latter option gives you more flexibility, because you can put arbitrary JSF code in a header.
     The example above shows how it's done.</p>
     <p>Note that the header is always embedded in a table header tag (i.e. in a <code>&lt;tr&gt;&lt;th&gt;</code>code> tag).
     So you can <b>not</b> use attributes like <code>colspan</code> or <code>rowspan</code>. If you need that,
-    you can define a header for the entire table. In this case, the column headers are not rendered. You have to make sure that the 
+    you can define a header for the entire table. In this case, the column headers are not rendered. You have to make sure that the
     number of header columns matches the number of the columns of the data table. The example below shows how do to it:</p>
-    
-    <b:panel title="Live preview" look="info" collapsible="false">            
-        <h:form>
-            <b:dataTable value="#{carPool.carPool}"
-                         var="car"
-                         page-length="5"
-                         page-length-menu="5,10,20">
-              <f:facet name="header">
-                 <tr>
-	                <th rowspan="2">Car</th>
-	                <th colspan="2">Appearance</th>
-	                <th colspan="2">Technical Data</th>
-	            </tr>
-	            <tr>
-	                <th>Color</th>
-	                <th>Year</th>
-	                <th>Price</th>
-	                <th>Power</th>
-		         </tr>
-           	   </f:facet>
-               <b:dataTableColumn>
-               		#{car.brand}	#{car.type}
-            	</b:dataTableColumn>
-               <b:dataTableColumn value="#{car.color}" />
-               <b:dataTableColumn value="#{car.year}"  order="asc" />
-               <b:dataTableColumn value="#{car.price}" />
-               <b:dataTableColumn value="#{car.enginePower}"/>
-             </b:dataTable>
-        </h:form>
-        <f:facet name="footer">
-            <strong>JSF markup:</strong>
-            <b:panel>
-                   <script type="syntaxhighlighter"
-            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-            <![CDATA[
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form>
+        <b:dataTable value="#{carPool.carPool}"
+                     var="car"
+                     page-length="5"
+                     page-length-menu="5,10,20">
+          <f:facet name="header">
+            <tr>
+            <th rowspan="2">Car</th>
+            <th colspan="2">Appearance</th>
+            <th colspan="2">Technical Data</th>
+            </tr>
+            <tr>
+              <th>Color</th>
+              <th>Year</th>
+              <th>Price</th>
+              <th>Power</th>
+            </tr>
+          </f:facet>
+          <b:dataTableColumn>
+            #{car.brand}	#{car.type}
+          </b:dataTableColumn>
+          <b:dataTableColumn value="#{car.color}" />
+          <b:dataTableColumn value="#{car.year}"  order="asc" />
+          <b:dataTableColumn value="#{car.price}" />
+          <b:dataTableColumn value="#{car.enginePower}"/>
+        </b:dataTable>
+      </h:form>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
           <h:form>
             <b:dataTable value="&num;{carPool.carPool}"
                          var="car"
                          page-length="5"
                          page-length-menu="5,10,20">
               <f:facet name="header">
-                 <tr>
-	                <th colspan="2" rowspan="2">Car</th>
-	                <th colspan="2">Appearance</th>
-	                <th colspan="2">Technical Data</th>
-	            </tr>
-	            <tr>
-	                <th>Color</th>
-	                <th>Year</th>
-	                <th>Price</th>
-	                <th>Power</th>
-		         </tr>
-           	   </f:facet>
-               <b:dataTableColumn value="&num;{car.brand}" />
-               <b:dataTableColumn value="&num;{car.type}" />
-               <b:dataTableColumn value="&num;{car.color}" />
-               <b:dataTableColumn value="&num;{car.year}"  order="asc" />
-               <b:dataTableColumn value="&num;{car.price}" />
-               <b:dataTableColumn value="&num;{car.enginePower}"/>
-             </b:dataTable>
-           </h:form>
-      ]]>
-      </script>
-            </b:panel>
-        </f:facet>
+                <tr>
+                <th colspan="2" rowspan="2">Car</th>
+                <th colspan="2">Appearance</th>
+                <th colspan="2">Technical Data</th>
+                </tr>
+                <tr>
+                  <th>Color</th>
+                  <th>Year</th>
+                  <th>Price</th>
+                  <th>Power</th>
+                </tr>
+              </f:facet>
+              <b:dataTableColumn value="&num;{car.brand}" />
+              <b:dataTableColumn value="&num;{car.type}" />
+              <b:dataTableColumn value="&num;{car.color}" />
+              <b:dataTableColumn value="&num;{car.year}"  order="asc" />
+              <b:dataTableColumn value="&num;{car.price}" />
+              <b:dataTableColumn value="&num;{car.enginePower}"/>
+            </b:dataTable>
+          </h:form>
+          ]]>
+          </script>
+        </b:panel>
+      </f:facet>
     </b:panel>
-    
+
     <h2><a id="customizing_the_table">Customizing the table</a></h2>
     <p>The datatable has a couple of options to configure it. Some of them are shown in the example below.</p>
-    
-            <b:panel title="Live preview" look="info" collapsible="false">            
-                <h:form id="table-form">
-           <b:row>
-            <b:column small-screen="half">
-              <b:dataTable value="#{carPool.carPool}"
-                var="car"
-                id="basic-usage-id"
-                border="#{dataTableSettingsBean.border}"
-                content-disabled="#{dataTableSettingsBean.contentDisabled}"
-                custom-options="#{dataTableSettingsBean.customOptionsValue}"
-                fixedHeader="#{dataTableSettingsBean.fixedHeader}"
-                lang="#{dataTableSettingsBean.language}"
-                multi-column-search="#{dataTableSettingsBean.multiColumnSearch}"
-                multi-column-search-position="#{dataTableSettingsBean.multiColumnSearchPosition}"
-                page-length="5"
-                page-length-menu="5,10,20"
-                row-highlight="#{dataTableSettingsBean.rowHighlight}"
-                save-state="#{dataTableSettingsBean.saveState}"
-                searching="#{dataTableSettingsBean.searching}"
-                select="#{dataTableSettingsBean.select}"
-                selectionMode="#{dataTableSettingsBean.selectionMode}"
-                striped="#{dataTableSettingsBean.striped}"
-                paginated="#{dataTableSettingsBean.paginated}"
-                >
-                <b:dataTableColumn value="#{car.brand}" />
-                <b:dataTableColumn order-by="dom-text" data-type="text" searchable="#{dataTableSettingsBean.searchable}">
-                  <f:facet name="header">
-                    <h:outputText value="Type"/>
-                  </f:facet>
-                  <h:inputText value="#{car.type}" size="10"/>
-                </b:dataTableColumn>
-                <b:dataTableColumn label="Color"
-                                   orderable="#{dataTableSettingsBean.orderable}"
-                                   content-style="#{dataTableSettingsBean.contentCSS}"
-                                   style="#{dataTableSettingsBean.CSS}"
-                                   content-style-class="#{dataTableSettingsBean.contentStyleClassName}"
-                                   style-class="#{dataTableSettingsBean.styleClassName}"
-                                   footer-style="#{dataTableSettingsBean.footerCSS}"
-                                   footer-style-class="#{dataTableSettingsBean.footerStyleClassName}"
-                                   header-style="#{dataTableSettingsBean.headerCSS}"
-                                   header-style-class="#{dataTableSettingsBean.headerStyleClassName}"
-                                   custom-options="someColumnOption:true"
-                                   searchable="#{dataTableSettingsBean.searchable}"
-                                   search-value="#{dataTableSettingsBean.defaultColumnFilter}"
-                                   >
-                  <h:outputText value="#{car.color}" />
-                </b:dataTableColumn>
-                <b:dataTableColumn value="#{car.age}" order="asc" data-order="#{-car.year}" data-search="#{car.year} #{car.age}" />
-              </b:dataTable>
-              <br />
-              <br />
-              <p>Note that the search has an interesting twist: it's a full-text search allowing to search for the 
-              construction year, also this column isn't shown.</p>
-            </b:column>
-            <b:panelGrid columns="1" small-screen="3">
-             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.saveState}" caption="save-state='true'"
-                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basic-usage-id" />
-              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.headerStyle}" caption="header-style='color:red'"
-                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basic-usage-id" />
-              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.headerStyleClass}" caption="header-style-class='hidden'"
-                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basic-usage-id" />
-             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.contentDisabled}" caption="content-disabled=true"
-                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basic-usage-id" />
-             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.contentStyle}" caption="content-style='color:red'"
-                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basic-usage-id" />
-             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.style}" caption="style='color:blue'"
-                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basic-usage-id" />
-             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.contentStyleClass}" caption="content-style-class='hidden'"
-                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basic-usage-id" />
-             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.styleClass}" caption="style-class='hidden'"
-                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basic-usage-id" />
-             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.footerStyle}" caption="footer-style='color:red'"
-                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basic-usage-id" />
-             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.footerStyleClass}" caption="footer-style-class='hidden'"
-                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basic-usage-id" />
-              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.searching}" caption="searching='true'"
-                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basic-usage-id @next @next:@next" />
-             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.multiColumnSearch}" caption="multi-column-search='true' (requires searching='true')"
-                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                disabled="#{!dataTableSettingsBean.searching}"
-                update="basic-usage-id @next" />
-             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.multiColumnSearchPositionTop}" caption="multi-column-search-position='top' (requires searching='true')"
-                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                disabled="#{!dataTableSettingsBean.searching}"
-                update="basic-usage-id @next" />
-             <b:inputText value="#{dataTableSettingsBean.defaultColumnFilter}" label="default search filter for the color:"
-                onkeyup="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basic-usage-id"  
-                styleClass="#{dataTableSettingsBean.multiColumnSearch and dataTableSettingsBean.searching?'':'hidden'}"
-                labelStyleClass="#{dataTableSettingsBean.multiColumnSearch and dataTableSettingsBean.searching?'':'hidden'}"
-                />
-             </b:panelGrid>
-             <b:panelGrid columns="1" small-screen="3">
-             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.searchable}" caption="searchable='true' (2nd and 3rd column only)"
-                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basic-usage-id" />
-             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.striped}" caption="striped='true'"
-                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basic-usage-id" />
-             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.border}" caption="border='true'"
-                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basic-usage-id" />
-             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.rowHighlight}" caption="row-highlight='true'"
-                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basic-usage-id" />
 
-             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.languageIsEs}" caption="language='es'"
-                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basic-usage-id" />
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form id="table-form">
+        <b:row>
+          <b:column small-screen="half">
+            <b:dataTable value="#{carPool.carPool}"
+                         var="car"
+                         id="basic-usage-id"
+                         border="#{dataTableSettingsBean.border}"
+                         content-disabled="#{dataTableSettingsBean.contentDisabled}"
+                         custom-options="#{dataTableSettingsBean.customOptionsValue}"
+                         fixedHeader="#{dataTableSettingsBean.fixedHeader}"
+                         lang="#{dataTableSettingsBean.language}"
+                         multi-column-search="#{dataTableSettingsBean.multiColumnSearch}"
+                         multi-column-search-position="#{dataTableSettingsBean.multiColumnSearchPosition}"
+                         page-length="5"
+                         page-length-menu="5,10,20"
+                         row-highlight="#{dataTableSettingsBean.rowHighlight}"
+                         save-state="#{dataTableSettingsBean.saveState}"
+                         searching="#{dataTableSettingsBean.searching}"
+                         select="#{dataTableSettingsBean.select}"
+                         selectionMode="#{dataTableSettingsBean.selectionMode}"
+                         striped="#{dataTableSettingsBean.striped}"
+                         paginated="#{dataTableSettingsBean.paginated}"
+                         >
+              <b:dataTableColumn value="#{car.brand}" />
+              <b:dataTableColumn order-by="dom-text" data-type="text" searchable="#{dataTableSettingsBean.searchable}">
+                <f:facet name="header">
+                  <h:outputText value="Type"/>
+                </f:facet>
+                <h:inputText value="#{car.type}" size="10"/>
+              </b:dataTableColumn>
+              <b:dataTableColumn label="Color"
+                                 orderable="#{dataTableSettingsBean.orderable}"
+                                 content-style="#{dataTableSettingsBean.contentCSS}"
+                                 style="#{dataTableSettingsBean.CSS}"
+                                 content-style-class="#{dataTableSettingsBean.contentStyleClassName}"
+                                 style-class="#{dataTableSettingsBean.styleClassName}"
+                                 footer-style="#{dataTableSettingsBean.footerCSS}"
+                                 footer-style-class="#{dataTableSettingsBean.footerStyleClassName}"
+                                 header-style="#{dataTableSettingsBean.headerCSS}"
+                                 header-style-class="#{dataTableSettingsBean.headerStyleClassName}"
+                                 custom-options="someColumnOption:true"
+                                 searchable="#{dataTableSettingsBean.searchable}"
+                                 search-value="#{dataTableSettingsBean.defaultColumnFilter}"
+                                 >
+                <h:outputText value="#{car.color}" />
+              </b:dataTableColumn>
+              <b:dataTableColumn value="#{car.age}" order="asc" data-order="#{-car.year}" data-search="#{car.year} #{car.age}" />
+            </b:dataTable>
+            <br />
+            <br />
+            <p>Note that the search has an interesting twist: it's a full-text search allowing to search for the
+            construction year, also this column isn't shown.</p>
+          </b:column>
+          <b:panelGrid columns="1" small-screen="3">
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.saveState}" caption="save-state='true'"
+                                     onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                     update="basic-usage-id" />
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.headerStyle}" caption="header-style='color:red'"
+                                     onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                     update="basic-usage-id" />
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.headerStyleClass}" caption="header-style-class='hidden'"
+                                     onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                     update="basic-usage-id" />
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.contentDisabled}" caption="content-disabled=true"
+                                     onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                     update="basic-usage-id" />
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.contentStyle}" caption="content-style='color:red'"
+                                     onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                     update="basic-usage-id" />
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.style}" caption="style='color:blue'"
+                                     onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                     update="basic-usage-id" />
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.contentStyleClass}" caption="content-style-class='hidden'"
+                                     onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                     update="basic-usage-id" />
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.styleClass}" caption="style-class='hidden'"
+                                     onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                     update="basic-usage-id" />
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.footerStyle}" caption="footer-style='color:red'"
+                                     onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                     update="basic-usage-id" />
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.footerStyleClass}" caption="footer-style-class='hidden'"
+                                     onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                     update="basic-usage-id" />
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.searching}" caption="searching='true'"
+                                     onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                     update="basic-usage-id @next @next:@next" />
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.multiColumnSearch}" caption="multi-column-search='true' (requires searching='true')"
+                                     onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                     disabled="#{!dataTableSettingsBean.searching}"
+                                     update="basic-usage-id @next" />
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.multiColumnSearchPositionTop}" caption="multi-column-search-position='top' (requires searching='true')"
+                                     onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                     disabled="#{!dataTableSettingsBean.searching}"
+                                     update="basic-usage-id @next" />
+            <b:inputText value="#{dataTableSettingsBean.defaultColumnFilter}" label="default search filter for the color:"
+                         onkeyup="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                         update="basic-usage-id"
+                         styleClass="#{dataTableSettingsBean.multiColumnSearch and dataTableSettingsBean.searching?'':'hidden'}"
+                         labelStyleClass="#{dataTableSettingsBean.multiColumnSearch and dataTableSettingsBean.searching?'':'hidden'}"
+                         />
+          </b:panelGrid>
+          <b:panelGrid columns="1" small-screen="3">
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.searchable}" caption="searchable='true' (2nd and 3rd column only)"
+                                     onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                     update="basic-usage-id" />
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.striped}" caption="striped='true'"
+                                     onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                     update="basic-usage-id" />
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.border}" caption="border='true'"
+                                     onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                     update="basic-usage-id" />
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.rowHighlight}" caption="row-highlight='true'"
+                                     onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                     update="basic-usage-id" />
 
-             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.orderable}" caption="orderable='true' (last column only)"
-                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basic-usage-id" />
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.languageIsEs}" caption="language='es'"
+                                     onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                     update="basic-usage-id" />
 
-             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.customOptions}" caption="customOption='colReorder:true'"
-                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basic-usage-id" />
-             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.fixedHeader}" caption="fixedHeader='true'"
-                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basic-usage-id" />
-             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.paginated}" caption="paginated='true'"
-                onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-                update="basic-usage-id" />
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.orderable}" caption="orderable='true' (last column only)"
+                                     onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                     update="basic-usage-id" />
 
-            </b:panelGrid>
-          </b:row>
-          </h:form>
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-                   <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-				    <![CDATA[
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.customOptions}" caption="customOption='colReorder:true'"
+                                     onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                     update="basic-usage-id" />
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.fixedHeader}" caption="fixedHeader='true'"
+                                     onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                     update="basic-usage-id" />
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.paginated}" caption="paginated='true'"
+                                     onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                     update="basic-usage-id" />
+
+          </b:panelGrid>
+        </b:row>
+      </h:form>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
           <h:form id="table-form">
-              <b:dataTable value="&num;{carPool.carPool}"
-                var="car"
-                id="basic-usage-id"
-                border="&num;{dataTableSettingsBean.border}"
-                custom-options="&num;{dataTableSettingsBean.customOptionsValue}"
-                fixedHeader="&num;{dataTableSettingsBean.fixedHeader}"
-                lang="&num;{dataTableSettingsBean.language}"
-                multi-column-search="&num;{dataTableSettingsBean.multiColumnSearch}"
-                multi-column-search-position="&num;{dataTableSettingsBean.multiColumnSearchPosition}"
-                page-length="5"
-                page-length-menu="5,10,20"
-                row-highlight="&num;{dataTableSettingsBean.rowHighlight}"
-                save-state="&num;{dataTableSettingsBean.saveState}"
-                searching="&num;{dataTableSettingsBean.searching}"
-                select="&num;{dataTableSettingsBean.select}"
-                selectionMode="&num;{dataTableSettingsBean.selectionMode}"
-                striped="&num;{dataTableSettingsBean.striped}"
-                paginated="&num;{dataTableSettingsBean.paginated}"
-                >
-                <b:dataTableColumn value="&num;{car.brand}" />
-                <b:dataTableColumn order-by="dom-text" data-type="text" searchable="&num;{dataTableSettingsBean.searchable}">
-                  <f:facet name="header">
-                    <h:outputText value="Type"/>
-                  </f:facet>
-                  <h:inputText value="&num;{car.type}" />
-                </b:dataTableColumn>
-                <b:dataTableColumn label="Color"
-                                   orderable="&num;{dataTableSettingsBean.orderable}"
-                                   content-style="&num;{dataTableSettingsBean.contentCSS}"
-                                   style="&num;{dataTableSettingsBean.CSS}"
-                                   content-style-class="&num;{dataTableSettingsBean.contentStyleClassName}"
-                                   style-class="&num;{dataTableSettingsBean.styleClass}"
-                                   footer-style="&num;{dataTableSettingsBean.footerCSS}"
-                                   footer-style-class="&num;{dataTableSettingsBean.footerStyleClassName}"
-                                   header-style="&num;{dataTableSettingsBean.headerCSS}"
-                                   header-style-class="&num;{dataTableSettingsBean.headerStyleClassName}"
-                                   custom-options="someColumnOption:true"
-                                   searchable="&num;{dataTableSettingsBean.searchable}"
-                                   search-value="&num;{dataTableSettingsBean.defaultColumnFilter}"
-                                   >
-                  <h:outputText value="&num;{car.color}" />
-                </b:dataTableColumn>
-                <b:dataTableColumn value="&num;{car.age}" order="asc" data-order="&num;{-car.year}" data-search="&num;{car.year} &num;{car.age}" />
-              </b:dataTable>
+            <b:dataTable value="&num;{carPool.carPool}"
+                         var="car"
+                         id="basic-usage-id"
+                         border="&num;{dataTableSettingsBean.border}"
+                         custom-options="&num;{dataTableSettingsBean.customOptionsValue}"
+                         fixedHeader="&num;{dataTableSettingsBean.fixedHeader}"
+                         lang="&num;{dataTableSettingsBean.language}"
+                         multi-column-search="&num;{dataTableSettingsBean.multiColumnSearch}"
+                         multi-column-search-position="&num;{dataTableSettingsBean.multiColumnSearchPosition}"
+                         page-length="5"
+                         page-length-menu="5,10,20"
+                         row-highlight="&num;{dataTableSettingsBean.rowHighlight}"
+                         save-state="&num;{dataTableSettingsBean.saveState}"
+                         searching="&num;{dataTableSettingsBean.searching}"
+                         select="&num;{dataTableSettingsBean.select}"
+                         selectionMode="&num;{dataTableSettingsBean.selectionMode}"
+                         striped="&num;{dataTableSettingsBean.striped}"
+                         paginated="&num;{dataTableSettingsBean.paginated}"
+                         >
+              <b:dataTableColumn value="&num;{car.brand}" />
+              <b:dataTableColumn order-by="dom-text" data-type="text" searchable="&num;{dataTableSettingsBean.searchable}">
+                <f:facet name="header">
+                  <h:outputText value="Type"/>
+                </f:facet>
+                <h:inputText value="&num;{car.type}" />
+              </b:dataTableColumn>
+              <b:dataTableColumn label="Color"
+                                 orderable="&num;{dataTableSettingsBean.orderable}"
+                                 content-style="&num;{dataTableSettingsBean.contentCSS}"
+                                 style="&num;{dataTableSettingsBean.CSS}"
+                                 content-style-class="&num;{dataTableSettingsBean.contentStyleClassName}"
+                                 style-class="&num;{dataTableSettingsBean.styleClass}"
+                                 footer-style="&num;{dataTableSettingsBean.footerCSS}"
+                                 footer-style-class="&num;{dataTableSettingsBean.footerStyleClassName}"
+                                 header-style="&num;{dataTableSettingsBean.headerCSS}"
+                                 header-style-class="&num;{dataTableSettingsBean.headerStyleClassName}"
+                                 custom-options="someColumnOption:true"
+                                 searchable="&num;{dataTableSettingsBean.searchable}"
+                                 search-value="&num;{dataTableSettingsBean.defaultColumnFilter}"
+                                 >
+                <h:outputText value="&num;{car.color}" />
+              </b:dataTableColumn>
+              <b:dataTableColumn value="&num;{car.age}" order="asc" data-order="&num;{-car.year}" data-search="&num;{car.year} &num;{car.age}" />
+            </b:dataTable>
           </h:form>
-      	    ]]></script>
-                </b:panel>
-            </f:facet>
+          ]]></script>
         </b:panel>
+      </f:facet>
+    </b:panel>
 
     <h2><a id="sorting_input_fields">Sorting input fields</a></h2>
     <p>By default, the data table only sorts plain text. If you want to sort input field, checkboxes or comboboxes,
     you have to tell the column which the data type of the input field is:</p>
-        <b:panel>
-            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-            <![CDATA[
-                  <b:dataTableColumn order-by="dom-text" data-type="text">
-                      <h:inputText value="&num;{car.type}" />
-                  </b:dataTableColumn>
-             ]]></script>
-          </b:panel>
+    <b:panel>
+      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+      <![CDATA[
+      <b:dataTableColumn order-by="dom-text" data-type="text">
+        <h:inputText value="&num;{car.type}" />
+      </b:dataTableColumn>
+      ]]></script>
+    </b:panel>
     <p>You can see the effect in the example above.</p>
-    
+
     <h2><a id="fine">Fine-tuning search and sort order</a></h2>
     <p>Sometimes specifying the data type isn't enough. For instance, in the table above, the age is a string, consisting
     of a numeric value and a fixed string. Another example is the time shown in the commit history of GitHub: it displays
     not the real date, but user-friendly texts like "just now", "5 minutes ago" or "last month". In such as case, you can
     specify a second, hidden, field indicating the order of the rows. In the table above, that's the year when the car
-    was constructed. In the GitHub commit history, this would be the commit date. You specify this hint in a 
+    was constructed. In the GitHub commit history, this would be the commit date. You specify this hint in a
     <code>/lt;b:dataTableColumn /&gt;</code> using the attribute <code>data-order</code>:</p>
     <b:panel>
-        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-            <![CDATA[
-                   <b:dataTableColumn value="&num;{car.age}" 
-                                      order="asc" 
-                                      data-order="&num;{car.year}" />
-             ]]></script>
+      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+      <![CDATA[
+      <b:dataTableColumn value="&num;{car.age}"
+                         order="asc"
+                         data-order="&num;{car.year}" />
+      ]]></script>
     </b:panel>
-    
+
     <p>A similar challenge sometimes occurs with search. The table above allows you to search both for the visible age in months
-    and for the (invisible) construction date. Another interesting use case might be to allow search for both American and 
+    and for the (invisible) construction date. Another interesting use case might be to allow search for both American and
     your local date format. In both cases, you provide a <code>data-search</code> attribute and populate it with both
     texts:</p>
     <b:panel>
-        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-            <![CDATA[
-                   <b:dataTableColumn value="&num;{car.age}" 
-                                      order="asc" 
-                                      data-search="&num;{car.year} &num;{car.age}" />
-             ]]></script>
+      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+      <![CDATA[
+      <b:dataTableColumn value="&num;{car.age}"
+                         order="asc"
+                         data-search="&num;{car.year} &num;{car.age}" />
+      ]]></script>
     </b:panel>
-    
+
     <h2><a id="setting_the_initial_search_filter">Setting the initial search filter</a></h2>
     <p>You can set an initial search filter by adding the attribute <code>search-value</code> to the <code>&lt;dataTableColumn /&gt;</code>.</p>
     <ul>
-    <li><code>search-value="red"</code> set the initial search value to the string. You can test this feature in the 
-    example above by filling the input field below the checkbox "multi-column-search".</li>
-    <li><code>search-value=""</code> resets the search filter. This comes in handy if you want to remove the filters after an AJAX request.</li>
-    <li><code>search-value="#{null}"</code> doesn't modify the search filter. If you've activated the flag <code>save-state='true'</code>,
-    the old filter is restored after an AJAX request. Note that this feature only works with <code>&lt;dataTableColumn /&gt;</code>.
-    The standard JSF <code>&lt;h:column /&gt;</code> doesn't distinguish between null and empty strings. Therefore, the filter is always
-    removed if you set <code>search-value="#{null}"</code> on an <code>&lt;h:column /&gt;</code>.</li>
+      <li><code>search-value="red"</code> set the initial search value to the string. You can test this feature in the
+      example above by filling the input field below the checkbox "multi-column-search".</li>
+      <li><code>search-value=""</code> resets the search filter. This comes in handy if you want to remove the filters after an AJAX request.</li>
+      <li><code>search-value="#{null}"</code> doesn't modify the search filter. If you've activated the flag <code>save-state='true'</code>,
+        the old filter is restored after an AJAX request. Note that this feature only works with <code>&lt;dataTableColumn /&gt;</code>.
+        The standard JSF <code>&lt;h:column /&gt;</code> doesn't distinguish between null and empty strings. Therefore, the filter is always
+      removed if you set <code>search-value="#{null}"</code> on an <code>&lt;h:column /&gt;</code>.</li>
     </ul>
     <p>Note that the example above maps an empty filter to a null value. We chose to do so in order to be able to demonstrate the effect of <code>save-state</code>:</p>
     <b:panel>
-	    <script type="syntaxhighlighter"
-	      class="brush: java; toolbar: false;gutter: false; first-line: 1">
-      	<![CDATA[
-            public String getDefaultColumnFilter() {
-            	if ("".equals(defaultColumnFilter)) {
-            		return null;
-            	}
-            	return defaultColumnFilter;
-            }
-      	]]>
-	    </script>
-	</b:panel>
-    
+      <script type="syntaxhighlighter"
+      class="brush: java; toolbar: false;gutter: false; first-line: 1">
+      <![CDATA[
+      public String getDefaultColumnFilter() {
+        if ("".equals(defaultColumnFilter)) {
+          return null;
+        }
+        return defaultColumnFilter;
+      }
+      ]]>
+      </script>
+    </b:panel>
+
     <h2><a id="updating_a_datatable_with_ajax">Updating a datatable with AJAX</a></h2>
     <p>If you want to update a datatable by an AJAX request, you must destroy the datatable before sending the AJAX request.
     You can do this using the widget variable. Currently (BootsFaces 1.0), there's no attribute <code>widgetVar</code> yet,
@@ -611,45 +611,45 @@ td {
     widget variable is the id of the datatable without the colons, plus the suffix <code>Widget</code>. For instance,
     the id of the datatable below is <code>i18n:bcarPool2</code>, so the code to call an AJAX request looks like so:</p>
     <b:panel>
-    <script type="syntaxhighlighter"
+      <script type="syntaxhighlighter"
       class="brush: xml; toolbar: false;gutter: false; first-line: 1">
       <![CDATA[
-        <b:selectOneMenu onchange="i18nBcarPool2Widget.DataTable().destroy();ajax:carPool.onLanguageChange()" 
-                         update="bcarPool2">
+      <b:selectOneMenu onchange="i18nBcarPool2Widget.DataTable().destroy();ajax:carPool.onLanguageChange()"
+                       update="bcarPool2" />
       ]]>
-    </script>
-        </b:panel>
+      </script>
+    </b:panel>
 
     <h2><a id="internationalization">Internationalization</a></h2>
     <p>
-      This example below shows how to use the i18n support of
-      <code>&lt;b:dataTable &gt;</code>. For i18n there are three ways:
+    This example below shows how to use the i18n support of
+    <code>&lt;b:dataTable &gt;</code>. For i18n there are three ways:
     </p>
-     <ul>
-	     <li>BootsFaces comes with a limited set of predefined translation files: English, German, Spanish, French, Hungarian, Italian, Polish and Russian.
-	     You can either rely on the browser's default setting, or you can override the browser's language choice using the <code>lang</code> attribute.</li>
-	     <li>Use other translations using a remote URL (e.g. a CDN):
-             <b:panel>
-                 <script type="syntaxhighlighter"
-	           class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-            <![CDATA[
-	          <b:dataTable customLangUrl="//cdn.datatables.net/plug-ins/1.10.12/i18n/Portuguese-Brasil.json">
-            ]]>
-			</script>
-             </b:panel>
-	     </li>
-	     <li>Use your own translation using a local resource file:
-             <b:panel>
-                 <script type="syntaxhighlighter"
-	           class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-            <![CDATA[
-	          <b:dataTable customLangUrl="&num;{resource['/pt-br.json']}">
-            ]]>
-		  </script>
-             </b:panel>
-	     </li>
-     </ul> 
-    
+    <ul>
+      <li>BootsFaces comes with a limited set of predefined translation files: English, German, Spanish, French, Hungarian, Italian, Polish and Russian.
+      You can either rely on the browser's default setting, or you can override the browser's language choice using the <code>lang</code> attribute.</li>
+      <li>Use other translations using a remote URL (e.g. a CDN):
+        <b:panel>
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <b:dataTable customLangUrl="//cdn.datatables.net/plug-ins/1.10.12/i18n/Portuguese-Brasil.json" />
+          ]]>
+          </script>
+        </b:panel>
+      </li>
+      <li>Use your own translation using a local resource file:
+        <b:panel>
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <b:dataTable customLangUrl="&num;{resource['/pt-br.json']}" />
+          ]]>
+          </script>
+        </b:panel>
+      </li>
+    </ul>
+
     <h2><a id="custom_options">Custom options</a></h2>
     <p>The JavaScript dataTable widgets has quite a few options. It's almost impossible to cover them all by a JSF
     component (see <a target="#" href="https://datatables.net/reference/option/">https://datatables.net/reference/option/</a>).
@@ -658,16 +658,16 @@ td {
     <p>Note that this feature may lead to incompatibilities in future versions of BoofsFaces. In particular, if
     your custom option is added to the <code>&lt;b:dataTable /&gt;</code> component, it may be added twice.</p>
 
-    
-        <b:panel title="Live preview" look="info" collapsible="false">
-            <h:form id="i18n">
-            <b:selectOneMenu value="#{carPool.language}" onchange="i18nBcarPool2Widget.DataTable().destroy();ajax:carPool.onLanguageChange()" update="bcarPool2">
-             <f:selectItem itemLabel="Browser default" itemValue="#{null}"/>
-             <f:selectItem itemLabel="Italian" itemValue="Italian"/>
-             <f:selectItem itemLabel="Brazilian Portuguese" itemValue="Brazilian Portuguese"/>
-             <f:selectItem itemLabel="Norwegian (Bokmal)" itemValue="Norwegian"/>
-         </b:selectOneMenu>
-         <br />
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form id="i18n">
+        <b:selectOneMenu value="#{carPool.language}" onchange="i18nBcarPool2Widget.DataTable().destroy();ajax:carPool.onLanguageChange()" update="bcarPool2">
+          <f:selectItem itemLabel="Browser default" itemValue="#{null}"/>
+          <f:selectItem itemLabel="Italian" itemValue="Italian"/>
+          <f:selectItem itemLabel="Brazilian Portuguese" itemValue="Brazilian Portuguese"/>
+          <f:selectItem itemLabel="Norwegian (Bokmal)" itemValue="Norwegian"/>
+        </b:selectOneMenu>
+        <br />
         <b:dataTable value="#{carPool.carPool}"
                      var="car"
                      id="bcarPool2"
@@ -678,216 +678,216 @@ td {
                      lang="#{carPool.lang}"
                      custom-lang-url="#{carPool.customLangUrl}"
                      searching="false">
-            <b:dataTableColumn value="#{car.brand}" />
-            <b:dataTableColumn value="#{car.type}" />
-            <b:dataTableColumn value="#{car.color}" />
-            <b:dataTableColumn value="#{car.year}" />
-            <b:dataTableColumn value="#{car.brand}" />
-            <b:dataTableColumn value="#{car.type}" />
-            <b:dataTableColumn value="#{car.color}" />
-            <b:dataTableColumn value="#{car.year}" />
+          <b:dataTableColumn value="#{car.brand}" />
+          <b:dataTableColumn value="#{car.type}" />
+          <b:dataTableColumn value="#{car.color}" />
+          <b:dataTableColumn value="#{car.year}" />
+          <b:dataTableColumn value="#{car.brand}" />
+          <b:dataTableColumn value="#{car.type}" />
+          <b:dataTableColumn value="#{car.color}" />
+          <b:dataTableColumn value="#{car.year}" />
         </b:dataTable>
-</h:form>
-            <f:facet name="footer">
-                <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
-                    <b:tab title="JSF markup">
-                        <b:panel>
-                          <script type="syntaxhighlighter"
-            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-            <![CDATA[
-        <h:form id="i18n">
-            <b:selectOneMenu value="&num;{carPool.language}" onchange="i18nBcarPool2Widget.DataTable().destroy();ajax:carPool.onLanguageChange()" update="bcarPool2">
-                 <f:selectItem itemLabel="Browser default" itemValue="&num;{null}"/>
-                 <f:selectItem itemLabel="Italian" itemValue="Italian"/>
-                 <f:selectItem itemLabel="Brazilian Portuguese" itemValue="Brazilian Portuguese"/>
-                 <f:selectItem itemLabel="Norwegian (Bokmal)" itemValue="Norwegian"/>
-            </b:selectOneMenu>
-            <br />
-            <b:dataTable value="&num;{carPool.carPool}"
-                     var="car"
-                     id="bcarPool2"
-                     fixedHeader="true"
-                     scroll-size="400px"
-                     scroll-x="false"
-                     responsive="true"
-                     lang="&num;{carPool.lang}"
-                     custom-lang-url="&num;{carPool.customLangUrl}"
-                     searching="false">
-                <b:dataTableColumn value="&num;{car.brand}" />
-                <b:dataTableColumn value="&num;{car.type}" />
-                <b:dataTableColumn value="&num;{car.color}" />
-                <b:dataTableColumn value="&num;{car.year}" />
-                <b:dataTableColumn value="&num;{car.brand}" />
-                <b:dataTableColumn value="&num;{car.type}" />
-                <b:dataTableColumn value="&num;{car.color}" />
-                <b:dataTableColumn value="&num;{car.year}" />
-            </b:datatable>
-        </h:form>]]>
-			</script>
-                        </b:panel>
-                    </b:tab>
-                    <b:tab title="Java Bean (extract)">
-                        <b:panel>
-                            <script type="syntaxhighlighter"
-            class="brush: java; toolbar: false;gutter: false; first-line: 1">
-            <![CDATA[
+      </h:form>
+      <f:facet name="footer">
+        <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+          <b:tab title="JSF markup">
+            <b:panel>
+              <script type="syntaxhighlighter"
+              class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+              <![CDATA[
+              <h:form id="i18n">
+                <b:selectOneMenu value="&num;{carPool.language}" onchange="i18nBcarPool2Widget.DataTable().destroy();ajax:carPool.onLanguageChange()" update="bcarPool2">
+                  <f:selectItem itemLabel="Browser default" itemValue="&num;{null}"/>
+                  <f:selectItem itemLabel="Italian" itemValue="Italian"/>
+                  <f:selectItem itemLabel="Brazilian Portuguese" itemValue="Brazilian Portuguese"/>
+                  <f:selectItem itemLabel="Norwegian (Bokmal)" itemValue="Norwegian"/>
+                </b:selectOneMenu>
+                <br />
+                <b:dataTable value="&num;{carPool.carPool}"
+                             var="car"
+                             id="bcarPool2"
+                             fixedHeader="true"
+                             scroll-size="400px"
+                             scroll-x="false"
+                             responsive="true"
+                             lang="&num;{carPool.lang}"
+                             custom-lang-url="&num;{carPool.customLangUrl}"
+                             searching="false">
+                  <b:dataTableColumn value="&num;{car.brand}" />
+                  <b:dataTableColumn value="&num;{car.type}" />
+                  <b:dataTableColumn value="&num;{car.color}" />
+                  <b:dataTableColumn value="&num;{car.year}" />
+                  <b:dataTableColumn value="&num;{car.brand}" />
+                  <b:dataTableColumn value="&num;{car.type}" />
+                  <b:dataTableColumn value="&num;{car.color}" />
+                  <b:dataTableColumn value="&num;{car.year}" />
+                </b:datatable>
+              </h:form>]]>
+              </script>
+            </b:panel>
+          </b:tab>
+          <b:tab title="Java Bean (extract)">
+            <b:panel>
+              <script type="syntaxhighlighter"
+              class="brush: java; toolbar: false;gutter: false; first-line: 1">
+              <![CDATA[
               @ManagedBean
               @SessionScoped
               public class CarPool implements Serializable {
-              	private static final long serialVersionUID = 1L;
-              
-              	private final static int SIZE_OF_INITIAL_CAR_POOL = 15;
-              	
-              	private String language="Italian";
-              	public String getLanguage() {
-              		return language;
-              	}
-              
-              	public void setLanguage(String language) {
-              		this.language = language;
-              	}
-              	public String getLang() {
-              		if ("Italian".equals(language))
-              			return "it";
-              		return null;
-              	}
-              	
-              	public String getCustomLangUrl() {
-              		if ("Brazilian Portuguese".equals(language))
-              			return "//cdn.datatables.net/plug-ins/1.10.12/i18n/Portuguese-Brasil.json";
-              		if ("Norwegian".equals(language))
-              			return "//cdn.datatables.net/plug-ins/1.10.12/i18n/Norwegian-Bokmal.json";
-              		return null;
-              	}
-              	
-              	public void onLanguageChange() {
-              	}
+                private static final long serialVersionUID = 1L;
+
+                private final static int SIZE_OF_INITIAL_CAR_POOL = 15;
+
+                private String language="Italian";
+                public String getLanguage() {
+                  return language;
+                }
+
+                public void setLanguage(String language) {
+                  this.language = language;
+                }
+                public String getLang() {
+                  if ("Italian".equals(language))
+                  return "it";
+                  return null;
+                }
+
+                public String getCustomLangUrl() {
+                  if ("Brazilian Portuguese".equals(language))
+                  return "//cdn.datatables.net/plug-ins/1.10.12/i18n/Portuguese-Brasil.json";
+                  if ("Norwegian".equals(language))
+                  return "//cdn.datatables.net/plug-ins/1.10.12/i18n/Norwegian-Bokmal.json";
+                  return null;
+                }
+
+                public void onLanguageChange() {
+                }
               }
- 			]]>
-			</script>
-                        </b:panel>
-                    </b:tab>
-                </b:tabView>
-            </f:facet>
-        </b:panel>
-       
+              ]]>
+              </script>
+            </b:panel>
+          </b:tab>
+        </b:tabView>
+      </f:facet>
+    </b:panel>
+
     <h2><a id="selecting">Selecting rows, columns or cells</a><b:badge value="Improved in BootsFaces 1.2.0" /></h2>
-    <p>The datatable allows you to select either rows, columns or individual cells. By default, this feature is 
+    <p>The datatable allows you to select either rows, columns or individual cells. By default, this feature is
     deactivated, so you have to activate it by setting <code>select="true"</code>. There are a couple of options:</p>
     <ul>
-    		<li>selection-mode="single" or</li>
-    		<li>selection-mode="multiple" or</li>
-    		<li>selected-items="rows" or</li>
-    		<li>selected-items="columns" or</li>
-    		<li>selected-items="cells"</li>
-    		<li>selected-columns="2,3"</li>
-    		<li>selected-rows="2,4"</li>
-    		<li>selected-rows="#num;{some.el.expression()}"</li>
-    		<li>selected-rows=".jquery-expression"</li>
+      <li>selection-mode="single" or</li>
+      <li>selection-mode="multiple" or</li>
+      <li>selected-items="rows" or</li>
+      <li>selected-items="columns" or</li>
+      <li>selected-items="cells"</li>
+      <li>selected-columns="2,3"</li>
+      <li>selected-rows="2,4"</li>
+      <li>selected-rows="#num;{some.el.expression()}"</li>
+      <li>selected-rows=".jquery-expression"</li>
     </ul>
     <b:panel title="Live preview" look="info" collapsible="false">
-    <h:form>
-		<b:panelGrid col-spans="8,4">
-			<b:dataTable value="#{carPool.carPool}" 
-				var="car"
-				onselect="console.log( typeOfSelection + ' ' + indexes + ' has been selected');ajax:carPool.onSelectDemo2(car, typeOfSelection, indexes);"
-				ondeselect="console.log(typeOfSelection + ' ' + indexes + ' has been deselected');ajax:carPool.onDeselectDemo2(car, typeOfSelection, indexes);"
-				select="#{dataTableSettingsBean.select}" 
-				selection-mode="#{dataTableSettingsBean.selectionMode}" 
-				selected-items="#{dataTableSettingsBean.selectedItems}"
-				selection-info="#{dataTableSettingsBean.showInfo}" 
-				selected-row="#{dataTableSettingsBean.selectedRows}"
-				selected-column="#{dataTableSettingsBean.selectedColumns}"
-				deselect-on-backdrop-click="#{dataTableSettingsBean.deselectOnBackdropClick}"
-				widget-var="selectableTable">
-				<b:dataTableColumn value="#{car.brand}" />
-				<b:dataTableColumn value="#{car.type}" />
-				<b:dataTableColumn value="#{car.color}" />
-				<b:dataTableColumn value="#{car.year}" />
-				<b:dataTableColumn value="#{car.price}" />
-				<b:dataTableColumn value="#{car.enginePower}"
-					label="Engine Power (hp)" />
-			</b:dataTable>
-			<b:panel>
-		             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.select}" caption="select='true'"
-		                onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-		                update="@parent:@previous" />
-		             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.singleSelectionMode}" caption="select='single'"
-		                onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-		                update="@parent:@previous" />
-		             <h:outputLabel>selectedItems=</h:outputLabel>
-		             <b:radiobutton value="#{dataTableSettingsBean.selectedItems}" caption="selected-items='row'" 
-		                item-value="row"
-		                onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-		                update="@parent:@previous" />
-		             <b:radiobutton value="#{dataTableSettingsBean.selectedItems}" caption="selected-items='column'" 
-		                item-value="column"
-		                onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-		                update="@parent:@previous" />
-		             <b:radiobutton value="#{dataTableSettingsBean.selectedItems}" caption="selected-items='cell'" 
-		                item-value="cell"
-		                onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-		                update="@parent:@previous" />
-		             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.showInfo}" caption="showInfo"
-		                onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-		                update="@parent:@previous" />
-		             <b:panelGrid columns="2">
-			             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.selectedRowsActive1}" caption="selectedRows="
-			                onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-			                update="@parent:@parent:@previous" />
-		                	 <b:inputText value="#{dataTableSettingsBean.selectedRows}" update="@parent:@parent:@previous"
-		                	    onkeyup="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()" />
-		             </b:panelGrid>
-		             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.selectedRowsActive2}" caption="selectedRows=#num;{carPool.getCar(2)}"
-		                onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-		                update="@parent:@previous" />
-		             <b:panelGrid columns="2">
-			             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.selectedColumnsActive}" caption="selectedColumns="
-			                onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-			                update="@parent:@parent:@previous" />
-		                	 <b:inputText value="#{dataTableSettingsBean.selectedColumns}" update="@parent:@parent:@previous"
-		                	    onkeyup="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()" />
-		             </b:panelGrid>
-		             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.deselectOnBackdropClick}" caption="deselect-on-backdrop-click"
-		                onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
-		                update="@parent:@previous" />
-			</b:panel>
-		</b:panelGrid>
-	  </h:form>
+      <h:form>
+        <b:panelGrid col-spans="8,4">
+          <b:dataTable value="#{carPool.carPool}"
+                       var="car"
+                       onselect="console.log( typeOfSelection + ' ' + indexes + ' has been selected');ajax:carPool.onSelectDemo2(car, typeOfSelection, indexes);"
+                       ondeselect="console.log(typeOfSelection + ' ' + indexes + ' has been deselected');ajax:carPool.onDeselectDemo2(car, typeOfSelection, indexes);"
+                       select="#{dataTableSettingsBean.select}"
+                       selection-mode="#{dataTableSettingsBean.selectionMode}"
+                       selected-items="#{dataTableSettingsBean.selectedItems}"
+                       selection-info="#{dataTableSettingsBean.showInfo}"
+                       selected-row="#{dataTableSettingsBean.selectedRows}"
+                       selected-column="#{dataTableSettingsBean.selectedColumns}"
+                       deselect-on-backdrop-click="#{dataTableSettingsBean.deselectOnBackdropClick}"
+                       widget-var="selectableTable">
+            <b:dataTableColumn value="#{car.brand}" />
+            <b:dataTableColumn value="#{car.type}" />
+            <b:dataTableColumn value="#{car.color}" />
+            <b:dataTableColumn value="#{car.year}" />
+            <b:dataTableColumn value="#{car.price}" />
+            <b:dataTableColumn value="#{car.enginePower}"
+                               label="Engine Power (hp)" />
+          </b:dataTable>
+          <b:panel>
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.select}" caption="select='true'"
+                                     onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                     update="@parent:@previous" />
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.singleSelectionMode}" caption="select='single'"
+                                     onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                     update="@parent:@previous" />
+          <h:outputLabel>selectedItems=</h:outputLabel>
+            <b:radiobutton value="#{dataTableSettingsBean.selectedItems}" caption="selected-items='row'"
+                           item-value="row"
+                           onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                           update="@parent:@previous" />
+            <b:radiobutton value="#{dataTableSettingsBean.selectedItems}" caption="selected-items='column'"
+                           item-value="column"
+                           onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                           update="@parent:@previous" />
+            <b:radiobutton value="#{dataTableSettingsBean.selectedItems}" caption="selected-items='cell'"
+                           item-value="cell"
+                           onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                           update="@parent:@previous" />
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.showInfo}" caption="showInfo"
+                                     onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                     update="@parent:@previous" />
+            <b:panelGrid columns="2">
+              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.selectedRowsActive1}" caption="selectedRows="
+                                       onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                       update="@parent:@parent:@previous" />
+              <b:inputText value="#{dataTableSettingsBean.selectedRows}" update="@parent:@parent:@previous"
+                           onkeyup="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()" />
+            </b:panelGrid>
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.selectedRowsActive2}" caption="selectedRows=#num;{carPool.getCar(2)}"
+                                     onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                     update="@parent:@previous" />
+            <b:panelGrid columns="2">
+              <b:selectBooleanCheckbox value="#{dataTableSettingsBean.selectedColumnsActive}" caption="selectedColumns="
+                                       onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                       update="@parent:@parent:@previous" />
+              <b:inputText value="#{dataTableSettingsBean.selectedColumns}" update="@parent:@parent:@previous"
+                           onkeyup="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()" />
+            </b:panelGrid>
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.deselectOnBackdropClick}" caption="deselect-on-backdrop-click"
+                                     onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                     update="@parent:@previous" />
+          </b:panel>
+        </b:panelGrid>
+      </h:form>
       <f:facet name="footer">
-           <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
-               <b:tab title="JSF markup">
-                   <b:panel>
-                       <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                       <![CDATA[
-			<b:dataTable value="#num;{carPool.carPool}" 
-				var="car"
-				onselect="console.log( typeOfSelection + ' ' + indexes + ' has been selected');ajax:carPool.onSelect(car, typeOfSelection, indexes);"
-				ondeselect="console.log(typeOfSelection + ' ' + indexes + ' has been deselected');ajax:carPool.onDeselect(car, typeOfSelection, indexes);"
-				select="#num;{dataTableSettingsBean.select}" 
-				selection-mode="#num;{dataTableSettingsBean.selectionMode}" 
-				selected-items="#num;{dataTableSettingsBean.selectedItems}"
-				selection-info="#num;{dataTableSettingsBean.showInfo}" 
-				selected-row="#num;{dataTableSettingsBean.selectedRows}"
-				selected-column="#num;{dataTableSettingsBean.selectedColumns}"
-				deselect-on-backdrop-click="#num;{dataTableSettingsBean.deselectOnBackdropClick}"
-				widget-var="selectableTable">
-				<b:dataTableColumn value="#num;{car.brand}" />
-				<b:dataTableColumn value="#num;{car.type}" />
-				<b:dataTableColumn value="#num;{car.color}" />
-				<b:dataTableColumn value="#num;{car.year}" />
-				<b:dataTableColumn value="#num;{car.price}" />
-				<b:dataTableColumn value="#num;{car.enginePower}"
-					label="Engine Power (hp)" />
-			</b:dataTable>
-                       ]]>
-                       </script>
-                   </b:panel>
-               </b:tab>
-           </b:tabView>
-        </f:facet>
+        <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+          <b:tab title="JSF markup">
+            <b:panel>
+              <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+              <![CDATA[
+              <b:dataTable value="#num;{carPool.carPool}"
+                           var="car"
+                           onselect="console.log( typeOfSelection + ' ' + indexes + ' has been selected');ajax:carPool.onSelect(car, typeOfSelection, indexes);"
+                           ondeselect="console.log(typeOfSelection + ' ' + indexes + ' has been deselected');ajax:carPool.onDeselect(car, typeOfSelection, indexes);"
+                           select="#num;{dataTableSettingsBean.select}"
+                           selection-mode="#num;{dataTableSettingsBean.selectionMode}"
+                           selected-items="#num;{dataTableSettingsBean.selectedItems}"
+                           selection-info="#num;{dataTableSettingsBean.showInfo}"
+                           selected-row="#num;{dataTableSettingsBean.selectedRows}"
+                           selected-column="#num;{dataTableSettingsBean.selectedColumns}"
+                           deselect-on-backdrop-click="#num;{dataTableSettingsBean.deselectOnBackdropClick}"
+                           widget-var="selectableTable">
+                <b:dataTableColumn value="#num;{car.brand}" />
+                <b:dataTableColumn value="#num;{car.type}" />
+                <b:dataTableColumn value="#num;{car.color}" />
+                <b:dataTableColumn value="#num;{car.year}" />
+                <b:dataTableColumn value="#num;{car.price}" />
+                <b:dataTableColumn value="#num;{car.enginePower}"
+                                   label="Engine Power (hp)" />
+              </b:dataTable>
+              ]]>
+              </script>
+            </b:panel>
+          </b:tab>
+        </b:tabView>
+      </f:facet>
     </b:panel>
-    
+
     <h2><a id="selectingServer">Server-side selection API</a><b:badge value="Breaking changes in BootsFaces 1.2.0" /></h2>
     <p>To be described</p>
     <p>Topics:</p>
@@ -897,47 +897,10 @@ td {
     <p>The datatable offers a couple of JavaScript and jQuery events you can use to call your own JavaScript or
     even your own bean method on the backend. Currently, the BootsFaces datatable offers only a subset of the
     events of the underlying JavaScript widget (see <a target="#" href="https://datatables.net/reference/event/">https://datatables.net/reference/event</a>).</p>
-    <p>Note that the standard JavaScript callbacks like <code>onclick</code> and <code>ondblclick</code> are also there, but they don't 
+    <p>Note that the standard JavaScript callbacks like <code>onclick</code> and <code>ondblclick</code> are also there, but they don't
     distinguish between the rows and columns. To know which row and/or column has been clicked, either use the jQuery callbacks <code>onselect</code>
     and <code>ondeselect</code> or add <code>onclick</code> listeners to the individual columns.</p>
-            <b:panel title="Live preview" look="info" collapsible="false">
-            <h:form>
-	      <b:dataTable value="#{carPool.carPool}"
-	                     var="car"
-	                     onorder="console.log('order');"
-	                     onpage="console.log('page');"
-	                     onsearch="console.log('search');"
-	                     onselect="console.log(typeOfSelection + ' ' + indexes + ' has been selected');ajax:carPool.onSelect(car, typeOfSelection, indexes);"
-	                     ondeselect="console.log(typeOfSelection + ' ' + indexes + ' has been deselected');ajax:carPool.onDeselect(car, typeOfSelection, indexes);"
-	                     select="true" 
-	                     selectionMode="single"
-	                     selectedColumns="2,4"
-	                     update="@next">
-	            <b:dataTableColumn value="#{car.brand}" />
-	            <b:dataTableColumn value="#{car.type}" />
-	            <b:dataTableColumn value="#{car.color}" />
-	            <b:dataTableColumn value="#{car.year}" />
-	            <b:dataTableColumn value="#{car.price}" />
-	            <b:dataTableColumn value="#{car.enginePower}" label="Engine Power (hp)" />
-	        </b:dataTable>
-	        <b:panel title="Currently selected cars" class="selectedCarsPanel">
-	        	#{null==carPool.currentlySelectedCars || 0==carPool.currentlySelectedCars.size()?"none":""}
-	        	<h:panelGroup layout="block" rendered="#{carPool.currentlySelectedCars != null}">
-		        	<ui:repeat var="car" value="#{carPool.currentlySelectedCars}">
-		        		<p>#{car.brand} #{car.type} of #{car.year}</p>
-		        	</ui:repeat>
-	        	</h:panelGroup>
-	        </b:panel>
-	        
-          </h:form>
-
-            <f:facet name="footer">
-                <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
-                    <b:tab title="JSF markup">
-                        <b:panel>
-                            <script type="syntaxhighlighter"
-            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-            <![CDATA[
+    <b:panel title="Live preview" look="info" collapsible="false">
       <h:form>
         <b:dataTable value="#{carPool.carPool}"
                      var="car"
@@ -946,263 +909,300 @@ td {
                      onsearch="console.log('search');"
                      onselect="console.log(typeOfSelection + ' ' + indexes + ' has been selected');ajax:carPool.onSelect(car, typeOfSelection, indexes);"
                      ondeselect="console.log(typeOfSelection + ' ' + indexes + ' has been deselected');ajax:carPool.onDeselect(car, typeOfSelection, indexes);"
-                     select="true" 
-                     selectionMode="multiple"
-                     >
-            <b:dataTableColumn value="&num;{car.brand}" />
-            <b:dataTableColumn value="&num;{car.type}" />
-            <b:dataTableColumn value="&num;{car.color}" />
-            <b:dataTableColumn value="&num;{car.year}" />
-            <b:dataTableColumn value="&num;{car.price}" />
-            <b:dataTableColumn value="&num;{car.enginePower}" label="Engine Power (hp)" />
+                     select="true"
+                     selectionMode="single"
+                     selectedColumns="2,4"
+                     update="@next">
+          <b:dataTableColumn value="#{car.brand}" />
+          <b:dataTableColumn value="#{car.type}" />
+          <b:dataTableColumn value="#{car.color}" />
+          <b:dataTableColumn value="#{car.year}" />
+          <b:dataTableColumn value="#{car.price}" />
+          <b:dataTableColumn value="#{car.enginePower}" label="Engine Power (hp)" />
         </b:dataTable>
-      </h:form>
-      ]]>
-      </script>
-                        </b:panel>
-                    </b:tab>
-                    <b:tab title="Java Bean">
-                        <b:panel>
-                            <script type="syntaxhighlighter"
-            class="brush: java; toolbar: false;gutter: false; first-line: 1">
-            <![CDATA[
-@ManagedBean
-@SessionScoped
-public class CarPool implements Serializable {
-	private static final long serialVersionUID = 1L;
-
-	private List<Car> currentlySelectedCars = new ArrayList<>();
-
-	public List<Car> getCurrentlySelectedCars() {
-		return currentlySelectedCars;
-	}
-
-	private List<Car> carPool = ...; // add 50 cars here
-
-	public List<Car> getCarPool() {
-		return carPool;
-	}
-
-	public void setCurrentlySelectedCars(List<Car> currentlySelectedCars) {
-		this.currentlySelectedCars = currentlySelectedCars;
-	}
-
-	public void onSelect(Car car, String typeOfSelection, String indexes) {
-		System.out.println("OnSelect:" + car + " typeOfSelection: " + typeOfSelection + " indexes: " + indexes);
-		if (null != car) {
-			getCurrentlySelectedCars().add(car);
-		} else if (null != indexes) {
-			String[] indexArray = indexes.split(",");
-			for (String index:indexArray) {
-				int i = Integer.valueOf(index);
-				Car newCar=carPool.get(i);
-				if (!currentlySelectedCars.contains(newCar)) {
-					getCurrentlySelectedCars().add(newCar);
-				}
-			}
-		}
-	}
-	
-	public void onDeselect(Car car, String typeOfSelection, String indexes) {
-		System.out.println("OnDeselect:" + car + " typeOfSelection: " + typeOfSelection + " indexes: " + indexes);
-		if (null != car) {
-			getCurrentlySelectedCars().remove(car);
-		} else if (null != indexes) {
-			String[] indexArray = indexes.split(",");
-			for (String index:indexArray) {
-				int i = Integer.valueOf(index);
-				getCurrentlySelectedCars().remove(carPool.get(i));
-			}
-		}
-	}
-}
-      ]]>
-      </script>
-                        </b:panel>
-                    </b:tab>
-                </b:tabView>
-            </f:facet>
+        <b:panel title="Currently selected cars" class="selectedCarsPanel">
+          #{null==carPool.currentlySelectedCars || 0==carPool.currentlySelectedCars.size()?"none":""}
+          <h:panelGroup layout="block" rendered="#{carPool.currentlySelectedCars != null}">
+            <ui:repeat var="car" value="#{carPool.currentlySelectedCars}">
+              <p>#{car.brand} #{car.type} of #{car.year}</p>
+            </ui:repeat>
+          </h:panelGroup>
         </b:panel>
-	<br />
-	<p>As the example above shows, <code>onselect</code> usually tells you which rows have been added. However, if the users selects an entire range using SHIFT+click,
-	the parameter <code>indexes</code> also contains rows that were already selected. Hence, you have to be careful not to add rows twice. In our example, we 
-	added an <code>if</code> statement to make the problem explicit. In general, you could replace the <code>ArrayList</code> by a <code>Set</code>.</p>
-	<p>If the user adds a single row, the parameter matching the loop variable (i.e. <code>car</code> in our example) contains the selected object.</p>
-	<p>If the user adds multiple rows in a single AJAX request, the parameter matching the loop variable is null. In this case the parameter <code>indexes</code>
-	tells you which rows have been selected. <code>indexes</code> is a comma-separated list of integers, each indicating the index of the selected row.
-	The index always corresponds to the array index of the array in the Java bean. If the users filters or re-orders the table, the row number may be different
-	from the array index. However, the API has been designed in such a way that you won't notice this.</p>
-	<p>Each of the three parameters of the Java bean method is optional. You can omit one or several of them in the <code>onclick</code> listener.
-	For instance, <code>onclick="ajax:onSelect(car)"</code> calls the Java method <code>onSelect(Car car)</code>, and <code>onclick="ajax:onSelect(indexes)"</code>
-	calles the Java method <code>onSelect(String indexes)</code>.</p>
+
+      </h:form>
+
+      <f:facet name="footer">
+        <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+          <b:tab title="JSF markup">
+            <b:panel>
+              <script type="syntaxhighlighter"
+              class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+              <![CDATA[
+              <h:form>
+                <b:dataTable value="#{carPool.carPool}"
+                             var="car"
+                             onorder="console.log('order');"
+                             onpage="console.log('page');"
+                             onsearch="console.log('search');"
+                             onselect="console.log(typeOfSelection + ' ' + indexes + ' has been selected');ajax:carPool.onSelect(car, typeOfSelection, indexes);"
+                             ondeselect="console.log(typeOfSelection + ' ' + indexes + ' has been deselected');ajax:carPool.onDeselect(car, typeOfSelection, indexes);"
+                             select="true"
+                             selectionMode="multiple"
+                             >
+                  <b:dataTableColumn value="&num;{car.brand}" />
+                  <b:dataTableColumn value="&num;{car.type}" />
+                  <b:dataTableColumn value="&num;{car.color}" />
+                  <b:dataTableColumn value="&num;{car.year}" />
+                  <b:dataTableColumn value="&num;{car.price}" />
+                  <b:dataTableColumn value="&num;{car.enginePower}" label="Engine Power (hp)" />
+                </b:dataTable>
+              </h:form>
+              ]]>
+              </script>
+            </b:panel>
+          </b:tab>
+          <b:tab title="Java Bean">
+            <b:panel>
+              <script type="syntaxhighlighter"
+              class="brush: java; toolbar: false;gutter: false; first-line: 1">
+              <![CDATA[
+              @ManagedBean
+              @SessionScoped
+              public class CarPool implements Serializable {
+                private static final long serialVersionUID = 1L;
+
+                private List<Car> currentlySelectedCars = new ArrayList<>();
+
+                public List<Car> getCurrentlySelectedCars() {
+                  return currentlySelectedCars;
+                }
+
+                private List<Car> carPool = ...; // add 50 cars here
+
+                public List<Car> getCarPool() {
+                  return carPool;
+                }
+
+                public void setCurrentlySelectedCars(List<Car> currentlySelectedCars) {
+                  this.currentlySelectedCars = currentlySelectedCars;
+                }
+
+                public void onSelect(Car car, String typeOfSelection, String indexes) {
+                  System.out.println("OnSelect:" + car + " typeOfSelection: " + typeOfSelection + " indexes: " + indexes);
+                  if (null != car) {
+                    getCurrentlySelectedCars().add(car);
+                  } else if (null != indexes) {
+                    String[] indexArray = indexes.split(",");
+                    for (String index:indexArray) {
+                      int i = Integer.valueOf(index);
+                      Car newCar=carPool.get(i);
+                      if (!currentlySelectedCars.contains(newCar)) {
+                        getCurrentlySelectedCars().add(newCar);
+                      }
+                    }
+                  }
+                }
+
+                public void onDeselect(Car car, String typeOfSelection, String indexes) {
+                  System.out.println("OnDeselect:" + car + " typeOfSelection: " + typeOfSelection + " indexes: " + indexes);
+                  if (null != car) {
+                    getCurrentlySelectedCars().remove(car);
+                  } else if (null != indexes) {
+                    String[] indexArray = indexes.split(",");
+                    for (String index:indexArray) {
+                      int i = Integer.valueOf(index);
+                      getCurrentlySelectedCars().remove(carPool.get(i));
+                    }
+                  }
+                }
+              }
+              ]]>
+              </script>
+            </b:panel>
+          </b:tab>
+        </b:tabView>
+      </f:facet>
+    </b:panel>
+    <br />
+    <p>As the example above shows, <code>onselect</code> usually tells you which rows have been added. However, if the users selects an entire range using SHIFT+click,
+    the parameter <code>indexes</code> also contains rows that were already selected. Hence, you have to be careful not to add rows twice. In our example, we
+    added an <code>if</code> statement to make the problem explicit. In general, you could replace the <code>ArrayList</code> by a <code>Set</code>.</p>
+    <p>If the user adds a single row, the parameter matching the loop variable (i.e. <code>car</code> in our example) contains the selected object.</p>
+    <p>If the user adds multiple rows in a single AJAX request, the parameter matching the loop variable is null. In this case the parameter <code>indexes</code>
+    tells you which rows have been selected. <code>indexes</code> is a comma-separated list of integers, each indicating the index of the selected row.
+    The index always corresponds to the array index of the array in the Java bean. If the users filters or re-orders the table, the row number may be different
+    from the array index. However, the API has been designed in such a way that you won't notice this.</p>
+    <p>Each of the three parameters of the Java bean method is optional. You can omit one or several of them in the <code>onclick</code> listener.
+    For instance, <code>onclick="ajax:onSelect(car)"</code> calls the Java method <code>onSelect(Car car)</code>, and <code>onclick="ajax:onSelect(indexes)"</code>
+    calles the Java method <code>onSelect(String indexes)</code>.</p>
 
     <h2><a id="responsiveness">Responsiveness</a></h2>
     <p>
-      Like most BootsFaces components, the datatable supports the responsive attributes like <code>col-*</code>,
-      <code>visible</code> and <code>hidden</code>. If you want to update the datatable by an AJAX request,
-      you should wrap it in a <code>b:column</code> nonetheless. For technical reasons, the id does not belong
-      to the <code>div</code> bearing the CSS style classes for responsiveness. Instead, it belong to the <code>table</code>.
-      So updating the table by its id means it's wrapped into another <code>div</code> each time it's updated by an
-      AJAX request.
+    Like most BootsFaces components, the datatable supports the responsive attributes like <code>col-*</code>,
+    <code>visible</code> and <code>hidden</code>. If you want to update the datatable by an AJAX request,
+    you should wrap it in a <code>b:column</code> nonetheless. For technical reasons, the id does not belong
+    to the <code>div</code> bearing the CSS style classes for responsiveness. Instead, it belong to the <code>table</code>.
+    So updating the table by its id means it's wrapped into another <code>div</code> each time it's updated by an
+    AJAX request.
     </p>
     <p>If there's not enough screen estate to display the table, the last couple of columns are hidden, as you can see
     in this example:</p>
 
-                <b:panel title="Live preview" look="info" collapsible="false">            
+    <b:panel title="Live preview" look="info" collapsible="false">
 
-        <b:dataTable value="#{carPool.carPool}"
-                     var="car"
-                     id="bcarPool2"
-                     fixedHeader="true"
-                     scroll-size="400px"
-                     scroll-x="false"
-                     responsive="true"
-                     lang="it"
-                     searching="false">
-            <b:dataTableColumn value="#{car.brand}" />
-            <b:dataTableColumn value="#{car.type}" />
-            <b:dataTableColumn value="#{car.color}" />
-            <b:dataTableColumn value="#{car.year}" />
-            <b:dataTableColumn value="#{car.price}" />
-        </b:dataTable>
+      <b:dataTable value="#{carPool.carPool}"
+                   var="car"
+                   id="bcarPool2"
+                   fixedHeader="true"
+                   scroll-size="400px"
+                   scroll-x="false"
+                   responsive="true"
+                   lang="it"
+                   searching="false">
+        <b:dataTableColumn value="#{car.brand}" />
+        <b:dataTableColumn value="#{car.type}" />
+        <b:dataTableColumn value="#{car.color}" />
+        <b:dataTableColumn value="#{car.year}" />
+        <b:dataTableColumn value="#{car.price}" />
+      </b:dataTable>
 
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
- <script type="syntaxhighlighter"
-            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-            <![CDATA[
-        <b:dataTable value="&num;{carPool.carPool}"
-                      var="car"
-                     id="bcarPool2"
-                     fixedHeader="true"
-                     scroll-size="400px"
-                     scroll-x="false"
-                     responsive="true"
-                     lang="it"
-                     searching="false">
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <b:dataTable value="&num;{carPool.carPool}"
+                       var="car"
+                       id="bcarPool2"
+                       fixedHeader="true"
+                       scroll-size="400px"
+                       scroll-x="false"
+                       responsive="true"
+                       lang="it"
+                       searching="false">
             <b:dataTableColumn value="&num;{car.brand}" />
             <b:dataTableColumn value="&num;{car.type}" />
             <b:dataTableColumn value="&num;{car.color}" />
             <b:dataTableColumn value="&num;{car.year}" />
             <b:dataTableColumn value="&num;{car.price}" />
-        </b:dataTable>
-      ]]>
-      </script>
-                </b:panel>
-            </f:facet>
+          </b:dataTable>
+          ]]>
+          </script>
         </b:panel>
+      </f:facet>
+    </b:panel>
 
 
 
     <h2><a id="empty_data_table_">Empty data table:</a></h2>
-    
-            <b:panel title="Live preview" look="info" collapsible="false">            
-<b:dataTable value="#{carPool.emptyCarPool}"
-              var="car">
-               <b:dataTableColumn value="#{car.brand}" />
-               <b:dataTableColumn value="#{car.type}" />
-               <b:dataTableColumn value="#{car.color}" />
-               <b:dataTableColumn value="#{car.year}" />
-            </b:dataTable>
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-<script type="syntaxhighlighter"
-                class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                <![CDATA[
-            <b:dataTable value="&num;{carPool.emptyCarPool}" var="car">
-               <b:dataTableColumn value="&num;{car.brand}" />
-               <b:dataTableColumn value="&num;{car.type}" />
-               <b:dataTableColumn value="&num;{car.color}" />
-               <b:dataTableColumn value="&num;{car.year}" />
-            </b:dataTable>
-                ]]>
-            </script>
-                </b:panel>
-            </f:facet>
-        </b:panel>
 
-  <h2><a id="inputfields">Inputfields, command buttons and AJAX</a><b:badge value="since 1.0" style="margin-left:10px;" /></h2>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <b:dataTable value="#{carPool.emptyCarPool}"
+                   var="car">
+        <b:dataTableColumn value="#{car.brand}" />
+        <b:dataTableColumn value="#{car.type}" />
+        <b:dataTableColumn value="#{car.color}" />
+        <b:dataTableColumn value="#{car.year}" />
+      </b:dataTable>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <b:dataTable value="&num;{carPool.emptyCarPool}" var="car">
+            <b:dataTableColumn value="&num;{car.brand}" />
+            <b:dataTableColumn value="&num;{car.type}" />
+            <b:dataTableColumn value="&num;{car.color}" />
+            <b:dataTableColumn value="&num;{car.year}" />
+          </b:dataTable>
+          ]]>
+          </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+    <h2><a id="inputfields">Inputfields, command buttons and AJAX</a><b:badge value="since 1.0" style="margin-left:10px;" /></h2>
     <p>The BootsFaces datatable also supports input fields, buttons and AJAX calls.</p>
     <p>The next demo shows how to switch a cell between text-only and editable mode on a button click.
     Some users observed that this feature may modify the sort order (i.e. the editable row becomes the
     first row of the table, although it shouldn't be there according to the sort order). For instance,
     this happens if every cell in a row is made editable. In this case you can enforce the correct
     sort order by adding the attribute <code>data-order</code>, as described <a href="#dataOrder">above</a>.</p>
-    
-                    <b:panel title="Live preview" look="info" collapsible="false">            
-          <h:form>
-                <b:dataTable value="#{carPool.carPool}" var="car" class="editableCarTable">
-                  <b:dataTableColumn value="#{car.brand}" />
-                  <b:dataTableColumn value="#{car.type}" />
-                  <b:dataTableColumn value="#{car.color}" />
-                  <b:dataTableColumn value="#{car.year}"  order="asc" />
-                  <b:dataTableColumn label="Price">
-                      <b:inputText value="#{car.price}" rendered="#{car.editable}" />
-                      <h:outputText value="#{car.price}" rendered="#{not car.editable}" />
-                  </b:dataTableColumn>
-                  <b:dataTableColumn>
-                      <b:commandButton value="edit" icon="edit" ajax="true" update="@(.editableCarTable)"
-                          onclick="ajax:car.edit()" >
-                      </b:commandButton>
-                   
-                 </b:dataTableColumn>
-                 <b:dataTableColumn>
-                 	<b:commandButton value="Delete" iconAwesome="trash"
-					    action="#{car.edit}"
-					    onclick="debugger">
-					    <f:ajax execute="@this" render="@form" />
-					</b:commandButton>
-				</b:dataTableColumn>
-              </b:dataTable>
-          </h:form>
 
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
- <script type="syntaxhighlighter"
-            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-            <![CDATA[
-    <h:form>
-        <b:dataTable value="&num;{carPool.carPool}" var="car" class="editableCarTable">
-            <b:dataTableColumn value="&num;{car.brand}" />
-            <b:dataTableColumn value="&num;{car.type}" />
-            <b:dataTableColumn value="&num;{car.color}" />
-            <b:dataTableColumn value="&num;{car.year}" order="asc" />
-            <b:dataTableColumn label="Price">
-            	<b:inputText value="&num;{car.price}" rendered="&num;{car.editable}" />
-            	<h:outputText value="&num;{car.price}" rendered="&num;{not car.editable}" />
-            </b:dataTableColumn>
-            <b:dataTableColumn>
-                <b:commandButton value="edit" icon="edit" ajax="true" update="@(.editableCarTable)"
-                    onclick="ajax:car.edit()" >
-                </b:commandButton>
-           </b:dataTableColumn>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form>
+        <b:dataTable value="#{carPool.carPool}" var="car" class="editableCarTable">
+          <b:dataTableColumn value="#{car.brand}" />
+          <b:dataTableColumn value="#{car.type}" />
+          <b:dataTableColumn value="#{car.color}" />
+          <b:dataTableColumn value="#{car.year}"  order="asc" />
+          <b:dataTableColumn label="Price">
+            <b:inputText value="#{car.price}" rendered="#{car.editable}" />
+            <h:outputText value="#{car.price}" rendered="#{not car.editable}" />
+          </b:dataTableColumn>
+          <b:dataTableColumn>
+            <b:commandButton value="edit" icon="edit" ajax="true" update="@(.editableCarTable)"
+                             onclick="ajax:car.edit()" >
+            </b:commandButton>
+
+          </b:dataTableColumn>
+          <b:dataTableColumn>
+            <b:commandButton value="Delete" iconAwesome="trash"
+                             action="#{car.edit}"
+                             onclick="debugger">
+              <f:ajax execute="@this" render="@form" />
+            </b:commandButton>
+          </b:dataTableColumn>
         </b:dataTable>
-    </h:form>
-      ]]>
-      </script>
+      </h:form>
 
-                </b:panel>
-            </f:facet>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:form>
+            <b:dataTable value="&num;{carPool.carPool}" var="car" class="editableCarTable">
+              <b:dataTableColumn value="&num;{car.brand}" />
+              <b:dataTableColumn value="&num;{car.type}" />
+              <b:dataTableColumn value="&num;{car.color}" />
+              <b:dataTableColumn value="&num;{car.year}" order="asc" />
+              <b:dataTableColumn label="Price">
+                <b:inputText value="&num;{car.price}" rendered="&num;{car.editable}" />
+                <h:outputText value="&num;{car.price}" rendered="&num;{not car.editable}" />
+              </b:dataTableColumn>
+              <b:dataTableColumn>
+                <b:commandButton value="edit" icon="edit" ajax="true" update="@(.editableCarTable)"
+                                 onclick="ajax:car.edit()" >
+                </b:commandButton>
+              </b:dataTableColumn>
+            </b:dataTable>
+          </h:form>
+          ]]>
+          </script>
+
         </b:panel>
-       
+      </f:facet>
+    </b:panel>
+
     <h2><a id="reference_section">Reference section</a></h2>
     <ui:include src="DataTableAttributes.xhtml" />
-        <ui:include src="DataTableColumnAttributes.xhtml" />
+    <ui:include src="DataTableColumnAttributes.xhtml" />
     <b:panel look="info" rendered="false">
       <f:facet name="heading">
         <b>Skinning</b>
       </f:facet>
       <ul>
         <li>Tell the world which CSS classes can be used to change the
-          look of the component.</li>
+        look of the component.</li>
       </ul>
     </b:panel>
 
     <script type="text/javascript">
-      SyntaxHighlighter.all();
+    SyntaxHighlighter.all();
     </script>
 
   </ui:define>

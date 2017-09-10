@@ -1,116 +1,116 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:b="http://bootsfaces.net/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
 
 
-<ui:define name="content-navigator">
-  <b:listLinks>
-    <b:navLink href="#growl" value="Growl (&lt;b:growl /&gt;)" />
-    <b:navLink href="#animations" value="Animations" />
-    <b:navLink href="#severity" value="Severity" />
-    <b:navLink href="#to_escape_or_not_to_escape" value="To escape or not to escape" />
-    <b:navLink href="#reference_section" value="Reference section" />
-  </b:listLinks>
-</ui:define>
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#growl" value="Growl (&lt;b:growl /&gt;)" />
+      <b:navLink href="#animations" value="Animations" />
+      <b:navLink href="#severity" value="Severity" />
+      <b:navLink href="#to_escape_or_not_to_escape" value="To escape or not to escape" />
+      <b:navLink href="#reference_section" value="Reference section" />
+    </b:listLinks>
+  </ui:define>
 
 
-	<ui:define name="content">
-		<style>
-		td {
-			padding: 8px;
-		}
-		</style>
-		<h1><a id="growl">Growl (&lt;b:growl /&gt;)</a><b:badge value="since 0.8.5" />	</h1>
-		<p>
-			Displays <code>FacesMessages</code> in Bootstrap Growl style. The widget is based on <a target="#" href="http://bootstrap-notify.remabledesigns.com/">Bootstrap notify</a>
-			by Robert McIntosh, which is available under the MIT license.
-		</p>
-		<br/><br/>
-		<b:panel>
-			<h:form id="growlForm">
-				<p:commandButton value="Info" actionListener="#{messagesBean.info}"
-					update="@form" />
-				<p:commandButton value="Warn" actionListener="#{messagesBean.warn}"
-					update="@form" />
-				<p:commandButton value="Error"
-					actionListener="#{messagesBean.error}" update="@form" />
-				<p:commandButton value="Fatal"
-					actionListener="#{messagesBean.fatal}" update="@form" />
+  <ui:define name="content">
+    <style>
+      td {
+        padding: 8px;
+      }
+    </style>
+    <h1><a id="growl">Growl (&lt;b:growl /&gt;)</a><b:badge value="since 0.8.5" />	</h1>
+    <p>
+    Displays <code>FacesMessages</code> in Bootstrap Growl style. The widget is based on <a target="#" href="http://bootstrap-notify.remabledesigns.com/">Bootstrap notify</a>
+    by Robert McIntosh, which is available under the MIT license.
+    </p>
+    <br/><br/>
+    <b:panel>
+      <h:form id="growlForm">
+        <p:commandButton value="Info" actionListener="#{messagesBean.info}"
+                         update="@form" />
+        <p:commandButton value="Warn" actionListener="#{messagesBean.warn}"
+                         update="@form" />
+        <p:commandButton value="Error"
+                         actionListener="#{messagesBean.error}" update="@form" />
+        <p:commandButton value="Fatal"
+                         actionListener="#{messagesBean.fatal}" update="@form" />
 
-				<p:commandButton id="ref" value="Specific (With custom animation)"
-					actionListener="#{messagesBean.specificInfo}" update="@form" />
+        <p:commandButton id="ref" value="Specific (With custom animation)"
+                         actionListener="#{messagesBean.specificInfo}" update="@form" />
 
-				<b:growl id="growlMsg" globalOnly="true" placementFrom="bottom"
-					show-detail="true" show-summary="false" allowDismiss="true"
-					delay="10000" escape="true" />
+        <b:growl id="growlMsg" globalOnly="true" placementFrom="bottom"
+                 show-detail="true" show-summary="false" allowDismiss="true"
+                 delay="10000" escape="true" />
 
-				<b:growl for="ref" id="growlSpecific" placementFrom="top" show-detail="true"
-					global-only="false"
-					show-summary="true" allow-dismiss="true"
-					animation-enter="animated bounceInDown"
-					animation-exit="animated flipOutX"
-					escape="true" />
-			</h:form>
-		</b:panel>
+        <b:growl for="ref" id="growlSpecific" placementFrom="top" show-detail="true"
+                 global-only="false"
+                 show-summary="true" allow-dismiss="true"
+                 animation-enter="animated bounceInDown"
+                 animation-exit="animated flipOutX"
+                 escape="true" />
+      </h:form>
+    </b:panel>
 
-		<b:well>
-			<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-			<p:commandButton value="Info" actionListener="&num;{messagesBean.info}" update="@form"/>
-			<p:commandButton value="Warn" actionListener="&num;{messagesBean.warn}" update="@form"/>
-			<p:commandButton value="Error" actionListener="&num;{messagesBean.error}" update="@form"/>
-			<p:commandButton value="Fatal" actionListener="&num;{messagesBean.fatal}" update="@form"/>
+    <b:well>
+      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+      <![CDATA[
+      <p:commandButton value="Info" actionListener="&num;{messagesBean.info}" update="@form"/>
+      <p:commandButton value="Warn" actionListener="&num;{messagesBean.warn}" update="@form"/>
+      <p:commandButton value="Error" actionListener="&num;{messagesBean.error}" update="@form"/>
+      <p:commandButton value="Fatal" actionListener="&num;{messagesBean.fatal}" update="@form"/>
 
-			<p:commandButton id="ref" value="Specific"
-					actionListener="&num;{messagesBean.specificInfo}" update="@form" />
+      <p:commandButton id="ref" value="Specific"
+                       actionListener="&num;{messagesBean.specificInfo}" update="@form" />
 
-			<b:growl id="growlMsg" globalOnly="true" placementFrom="bottom"
-					show-detail="true" show-summary="false" allowDismiss="true"
-					delay="10000" escape="true" />
+      <b:growl id="growlMsg" globalOnly="true" placementFrom="bottom"
+               show-detail="true" show-summary="false" allowDismiss="true"
+               delay="10000" escape="true" />
 
-			<b:growl for="ref" id="growlSpecific" placementFrom="top" show-detail="true"
-					global-only="false"
-					show-summary="true" allow-dismiss="true"
-					animation-enter="animated bounceInDown"
-					animation-exit="animated flipOutX"
-					escape="true" />
-]]>
-        	</script>
-		</b:well>
-		<br />
-		<br />
+      <b:growl for="ref" id="growlSpecific" placementFrom="top" show-detail="true"
+               global-only="false"
+               show-summary="true" allow-dismiss="true"
+               animation-enter="animated bounceInDown"
+               animation-exit="animated flipOutX"
+               escape="true" />
+      ]]>
+      </script>
+    </b:well>
+    <br />
+    <br />
 
-		<p>
-			Basically, Growl is an extension of standard JSF messages, with the ability to display a message in growl style.
-			You can configure the growl position in any of the window corner and a lot of other settings to customize your growl experience.
-		</p>
-		<b:well style="text-align: center;">
-			<h:graphicImage library="images" name="position.jpg" width="90%" />
-		</b:well>
-		<br />
+    <p>
+    Basically, Growl is an extension of standard JSF messages, with the ability to display a message in growl style.
+    You can configure the growl position in any of the window corner and a lot of other settings to customize your growl experience.
+    </p>
+    <b:well style="text-align: center;">
+      <h:graphicImage library="images" name="position.jpg" width="90%" />
+    </b:well>
+    <br />
 
     <h2><a id="animations">Animations</a></h2>
     <p>
-      <code>&lt;b.growl /&gt;</code> used the <a target="#" href="https://daneden.github.io/animate.css/">Animate.css</a>
-      framework by Daniel Eden to (optionally) add animations to the growl. See his website for a complete list of the animations.
+    <code>&lt;b.growl /&gt;</code> used the <a target="#" href="https://daneden.github.io/animate.css/">Animate.css</a>
+    framework by Daniel Eden to (optionally) add animations to the growl. See his website for a complete list of the animations.
     </p>
 
     <h2><a id="severity">Severity</a><b:badge value="since 1.1.2" /></h2>
     <p>
-      You can filter the severities shown using the <code>severity</code> attribute.
-      The attribute takes one or more comma separated lower case severity names.
-      This can be useful if you want to distinguish between error messages and info messages. For instance,
-      <code>severity</code> allows you to use this component for info messages and a
-      <a href="./messages.jsf"><code>b:messages</code></a> for error messages.<br />
-      Allowed severity names are: <code>info</code>, <code>warn</code>, <code>error</code>, <code>fatal</code>.
+    You can filter the severities shown using the <code>severity</code> attribute.
+    The attribute takes one or more comma separated lower case severity names.
+    This can be useful if you want to distinguish between error messages and info messages. For instance,
+    <code>severity</code> allows you to use this component for info messages and a
+    <a href="./messages.jsf"><code>b:messages</code></a> for error messages.<br />
+    Allowed severity names are: <code>info</code>, <code>warn</code>, <code>error</code>, <code>fatal</code>.
     </p>
-    
+
     <br/>
     <h:form>
       <b:tabView>
@@ -132,50 +132,50 @@
         <b:tab title="JSF markup">
           <b:well>
             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-              <![CDATA[
-                    <b:messages id="messages"
-                                globalOnly="true"
-                                escape="false"
-                                severity="error,fatal"/>
-                    <b:growl id="growl"
-                             globalOnly="true"
-                             showDetail="true"
-                             severity="info,warn"/>
-                    <b:commandButton value="Demo"
-                                     action="&num;{messagesBean.messageOfEachSeverity()}"
-                                     update="messages growl" />
-                  ]]></script>
-              </b:well>
-            </b:tab>
-          </b:tabView>
-        </h:form>
+            <![CDATA[
+            <b:messages id="messages"
+                        globalOnly="true"
+                        escape="false"
+                        severity="error,fatal"/>
+            <b:growl id="growl"
+                     globalOnly="true"
+                     showDetail="true"
+                     severity="info,warn"/>
+            <b:commandButton value="Demo"
+                             action="&num;{messagesBean.messageOfEachSeverity()}"
+                             update="messages growl" />
+            ]]></script>
+          </b:well>
+        </b:tab>
+      </b:tabView>
+    </h:form>
 
-        <h2><a id="to_escape_or_not_to_escape">To escape or not to escape</a><b:badge value="since 0.8.5" /></h2>
-        <p>By public demand, we've added the <code>escape</code> attribute. It allows you to add HTML tags in your
-        messages. Please note that this might be a security issue. You're responsible to make sure that
-        hackers do not enter JavaScript code and have it executed when the page is rendered later. Therefore,
-        BootsFaces prints a message to the console when it renders a message with <code>escape="false"</code>
-        for the first time. This message can't be deactivated. We know that using HTML tags in your error messages
-        is a useful features, but at the same time we want to make sure you're aware of the risk.</p>
+    <h2><a id="to_escape_or_not_to_escape">To escape or not to escape</a><b:badge value="since 0.8.5" /></h2>
+    <p>By public demand, we've added the <code>escape</code> attribute. It allows you to add HTML tags in your
+    messages. Please note that this might be a security issue. You're responsible to make sure that
+    hackers do not enter JavaScript code and have it executed when the page is rendered later. Therefore,
+    BootsFaces prints a message to the console when it renders a message with <code>escape="false"</code>
+    for the first time. This message can't be deactivated. We know that using HTML tags in your error messages
+    is a useful features, but at the same time we want to make sure you're aware of the risk.</p>
 
-		<h2><a id="reference_section">Reference section</a></h2>
-		<ui:include src="GrowlAttributes.xhtml" />
-		<b:panel look="info" rendered="false">
-			<f:facet name="heading">
-				<b>Skinning</b>
-			</f:facet>
-			<ul>
-				<li>Tell the world which CSS classes can be used to change the
-					look of the component.</li>
-			</ul>
-		</b:panel>
+    <h2><a id="reference_section">Reference section</a></h2>
+    <ui:include src="GrowlAttributes.xhtml" />
+    <b:panel look="info" rendered="false">
+      <f:facet name="heading">
+        <b>Skinning</b>
+      </f:facet>
+      <ul>
+        <li>Tell the world which CSS classes can be used to change the
+        look of the component.</li>
+      </ul>
+    </b:panel>
 
-		<script type="text/javascript">
-      		SyntaxHighlighter.all();
-    	</script>
-		<br />
-		<br />
-		<br />
-		<br />
-	</ui:define>
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+    <br />
+    <br />
+    <br />
+    <br />
+  </ui:define>
 </ui:composition>
