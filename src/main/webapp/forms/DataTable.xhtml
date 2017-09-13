@@ -775,16 +775,37 @@
     <p>The datatable allows you to select either rows, columns or individual cells. By default, this feature is
     deactivated, so you have to activate it by setting <code>select="true"</code>. There are a couple of options:</p>
     <ul>
-      <li>selection-mode="single" or</li>
-      <li>selection-mode="multiple" or</li>
-      <li>selected-items="rows" or</li>
-      <li>selected-items="columns" or</li>
-      <li>selected-items="cells"</li>
-      <li>selected-columns="2,3"</li>
-      <li>selected-rows="2,4"</li>
-      <li>selected-rows="#num;{some.el.expression()}"</li>
-      <li>selected-rows=".jquery-expression"</li>
+      <li><code>selection-mode="single"</code>  vs. <code>selection-mode="multiple"</code>
+      Determines how many rows the user can select. Setting the <code>selection-mode</code> to <code>"multiple"</code>
+      allows them to select multiple rows using the <code>SHIFT</code> and <code>CTRL</code> key, pretty much
+      the way they're used from their operating system. The underlying JavaScript library (datatables.net)
+      supports more options than <code>single</code> and <code>multiple</code>, but we omitted them for the
+      sake of simplicity.
+      
+      </li>
+      <li style="padding-top:11px"><code>selected-items="rows"</code> In most cases, you want to select rows.
+      Plus, JSF supports selecting rows better than the other options because the loop variable <code>var</code> represents a row.. So we 
+      made this the default. Clicking somewhere in the datatable highlights the surrounding row. However, there are two other options:</li>
+      <li><code>selected-items="columns"</code> Clicking a cell highlights the surrounding column.</li>
+      <li><code>selected-items="cells"</code>  Clicking a cell highlights the surrounding cell.</li>
+      </ul>
+      <p>You can optionally define which cells of the datatable are selected when the table is initially rendered:</p>
+      <ul>
+      <li><code>selected-columns="2,3"</code> Determine the selected columns by providing the numerical index of the selected column 
+      or by providing a comma-separated list of the column indexes.</li>
+      <li><code>selected-rows="2,4"</code>Determine the selected rows by providing the numerical index of the selected row 
+      or by providing a comma-separated list of the row indexes.</li>
+      <li><code>selected-rows="# {some.el.expression()}"</code> Determine the (single) selected row by passing the object representing
+      the selected row. </li>
+      <li><code>selected-rows=".jquery-expression"</code> You can also use a jQuery expression to select the 
+      selected rows. This also allows you to select multiple rows.</li>
+      <li>Row bearing the CSS class <code>bf-selected-row</code> are also selected 
+      unless the attribute <code>selected-rows</code> overrides this defaults selection.</li>
     </ul>
+    <p>The example below demonstrates most of these options. It even allows you to experiment with pathological
+    combinations, such as activating both <code>selected-columns</code> and <code>selected-rows</code>. Note
+    that you have to check the checkbox <code>select="true"</code> to enable selecting. In real-world application,
+    you hardly ever have to do that. It's a peculiarity of this demo.</p>
     <b:panel title="Live preview" look="info" collapsible="false">
       <h:form>
         <b:panelGrid col-spans="8,4">
@@ -889,9 +910,26 @@
     </b:panel>
 
     <h2><a id="selectingServer">Server-side selection API</a><b:badge value="Breaking changes in BootsFaces 1.2.0" /></h2>
-    <p>To be described</p>
-    <p>Topics:</p>
-    <p><code>selected-row</code>, <code>selected-colum</code>, AJAX, multiple vs. single selection, row selection vs. column selection vs. cell selection</p>
+    <p>There are two JavaScript callback functions you can use to react to select events:</p>
+    <ul>
+    <li><code>select</code> is called if a row, a cell or an item is selected.</li>
+    <li><code>deleselect</code> is called if a row, a cell or an item is deselected.</li>
+    </ul>
+    <p>As usual, you can pass these events to the server by jotting down a method name, preceeded by the prefix <code>ajax:</code>.
+    You can pass three predefined variables to this method:</p>
+    <ul>
+    <li>The loop variable. In our example, that's <code>car</code>. This parameter only works if the attribute
+    <code>selected-items</code> is set to <code>rows</code>. Caveat: if you activate column or cell select mode,
+    this parameter is still passed to the server, and it seems to be valid. However, every attribute of this
+    object is null.</li>
+    <li><code>typeOfSelection</code>. This is either <code>row</code>, <code>column</code> or <code>item</code>.
+    It determines what the user has selected. That, in turn, is determined by the attribute <code>selected-items</code>,
+    so you hardly ever have to use this parameter. Just omit it from the parameter list.</li>
+    <li><code>indexes</code> tells the JSF bean which rows, columns or cells have been selected.
+    Note that in the first two cases this is either an individual number or - if multiple items have been selected - a 
+    comma separated list. If you've set <code>selected-items="cell"</code>, <code>indexes</code> is a comma-separated
+    list of objects containing the row and column index.</li>
+    </ul>
 
     <h2><a id="unified_ajax_and_javascript_api">Unified AJAX and JavaScript API</a></h2>
     <p>The datatable offers a couple of JavaScript and jQuery events you can use to call your own JavaScript or
