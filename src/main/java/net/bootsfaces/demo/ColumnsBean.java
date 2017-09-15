@@ -12,6 +12,9 @@ public class ColumnsBean implements Serializable {
 	private boolean containerDisabled = false;
 	private boolean rowDisabled = false;
 	private boolean columnDisabled = false;
+	private int columns = 3;
+	private String colspan = "4,8";
+	private String size = "lg";
 
 	public boolean isContainerDisabled() {
 		return containerDisabled;
@@ -38,4 +41,28 @@ public class ColumnsBean implements Serializable {
 	}
 	
 	public void onChange() {}
+
+	public int getColumns() {
+		return columns;
+	}
+
+	public void setColumns(int columns) {
+		this.columns = columns;
+	}
+
+	public String getColspan() {
+		return colspan;
+	}
+
+	public void setColspan(String colspan) {
+		this.colspan = colspan;
+	}
+
+	public String getSize() {
+		return size;
+	}
+
+	public void setSize(String size) {
+		this.size = size;
+	}
 }
