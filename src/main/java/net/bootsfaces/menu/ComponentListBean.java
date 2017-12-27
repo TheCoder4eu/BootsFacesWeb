@@ -31,6 +31,7 @@ public class ComponentListBean {
 			filteredTags = ComponentList.tags;
 			this.filter = filter;
 		} else {
+			filter = filter.replace("<b:", "<");
 			if (filter.equals(this.filter)) {
 				return;
 			}
@@ -55,4 +56,10 @@ public class ComponentListBean {
 	}
 	
 	public void updateFilter() {	}
+	
+	public String getDisplayName(String c) {
+		c = c.replace("<", "").replace(">", "");
+		c = c.substring(0, 1).toUpperCase() + c.substring(1);
+		return c;
+	}
 }

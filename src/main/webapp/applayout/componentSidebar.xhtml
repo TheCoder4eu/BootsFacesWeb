@@ -30,7 +30,14 @@
 	    		padding-bottom:2px;
 	    		margin-left:1.5em;
 	    		font-size:90%;
+	       color: #888888;
 	    	}
+	    	ul.navbar-sidebar>li >ul > li > a:hover, 
+	    	ul.navbar-sidebar>li >ul > li > a:focus {
+	        color: #007bff;
+	        background-color: unset;
+	    	}
+	    	
     </style>
 	<h:form prependId="false">
 		<b:inputText placeholder="search component" style="margin-top:22px"
@@ -55,7 +62,7 @@
 					<ui:repeat var="c" value="#{componentListBean.tags}">
 						<b:navLink
 							href="#{request.contextPath}/#{componentListBean.url(c)}"
-							value="#{c}" />
+							value="#{componentListBean.getDisplayName(c)}" />
 					</ui:repeat>
 				</b:listLinks>
 			</li>
