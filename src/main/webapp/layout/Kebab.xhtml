@@ -82,17 +82,16 @@
     <hr />
     <br/>
     <strong>Using the Kebab in a Navbar</strong>
-    <p>It is possible tu use the Kebab in a Navbar:</p>
+    <p>It's also possible to use the Kebab in a Navbar, you may need to use the <code>fluid="true"</code> option in the navBar tag for its correct positioning:</p>
     <b:panel title="Live preview" look="info" collapsible="false">
-      <b:navBar brand="Brand" brandHref="#">
+      <b:navBar brand="Brand" brandHref="#" fluid="true">
         <b:navbarLinks>
           <b:navLink value="Home" href="#"></b:navLink>
           <b:navLink value="Link" href="#"></b:navLink>
           <b:navLink value="Link" href="#"></b:navLink>
         </b:navbarLinks>
-        <!-- Following line is needed for TBS 3.x (panel content overflow issue) -->
-      <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
-      <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
+        <!-- Following line is needed for TBS 3.x (panel content overflow issue) >
+      <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks -->
         <b:navbarLinks pull="right">
           <b:kebab>
             <b:listLinks>
@@ -112,7 +111,7 @@
 
         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
         <![CDATA[
-        <b:navBar brand="Brand" brandHref="#">
+        <b:navBar brand="Brand" brandHref="#" fluid="true">
           <b:navbarLinks>
             <b:navLink value="Home" href="#"></b:navLink>
             <b:navLink value="Link" href="#"></b:navLink>
