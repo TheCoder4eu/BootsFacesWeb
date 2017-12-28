@@ -61,7 +61,7 @@
 					id="components-navigation" styleClass="collapse in">
 					<ui:repeat var="c" value="#{componentListBean.tags}">
 						<b:navLink
-							href="#{request.contextPath}/#{componentListBean.url(c)}"
+							href="#{request.contextPath}#{componentListBean.url(c)}"
 							value="#{componentListBean.getDisplayName(c)}" />
 					</ui:repeat>
 				</b:listLinks>
