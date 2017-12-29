@@ -62,4 +62,11 @@ public class ComponentListBean {
 		c = c.substring(0, 1).toUpperCase() + c.substring(1);
 		return c;
 	}
+	
+	public String addSlashIfNecessary(String path) {
+		if (path.endsWith("/")) {
+			return path;
+		}
+		return path + "/";
+	}
 }
