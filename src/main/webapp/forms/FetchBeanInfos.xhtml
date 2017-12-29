@@ -74,10 +74,61 @@
     </dl>
     <p>You can see these variable in the example below. For technical reasons, the values of the variables are shown
     in an alert box. Click the button to see it.</p>
-
-    <b:tabView activeIndex="1" contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
-      <b:tab title="JSF markup">
-        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+    
+    <b:panel title="Live preview" look="info" collapsible="false">
+        <h:form id="messageForm">
+          <b:fetchBeanInfos />
+          <b:panelGrid colSpans="3,9">
+            <b:selectBooleanCheckbox value="#{checkboxBean.cbxError}"
+                                     id="checkboxWithErrorMessage"
+                                     caption="click to toggle the error message"
+                                     label="Error"
+                                     onclick="ajax:checkboxBean.action();"
+                                     update="@form"
+                                     />
+            <b:message />
+            <b:selectBooleanCheckbox value="#{checkboxBean.cbxFatal}"
+                                     id="checkboxWithFatalMessage"
+                                     caption="click to toggle the fatal error message"
+                                     label="Fatal"
+                                     onclick="ajax:checkboxBean.action();"
+                                     update="@form"
+                                     />
+            <b:message for="checkboxWithFatalMessage" />
+            <b:selectBooleanCheckbox value="#{checkboxBean.cbxWarning}"
+                                     id="checkboxWithWarning"
+                                     caption="click to toggle the warning"
+                                     label="Warning"
+                                     onclick="ajax:checkboxBean.action();"
+                                     update="@form"
+                                     />
+            <b:message for="@previous:@previous:@next" />
+            <b:selectBooleanCheckbox value="#{checkboxBean.cbxInfo}"
+                                     id="checkboxWithInfoMessage"
+                                     caption="click to toggle the info message"
+                                     label="Info"
+                                     onclick="ajax:checkboxBean.action();"
+                                     update="@form"
+                                     />
+            <b:message for="@form:**:checkboxWithInfoMessage"  escape="false" />
+          </b:panelGrid>
+          <b:row>
+            <b:panel title="Validation result" look="primary" small-screen="full">
+              <b:button value="click to show the values of the JavaScript variables" look="primary"
+                        onclick="alert('bfMaximumMessageSeverity = ' + bfMaximumMessageSeverity + '\n'
+                        + 'bfHasFatalError = ' + bfHasFatalError + '\n'
+                        + 'bfHasError = ' + bfHasError + '\n'
+                        + 'bfHasWarning = ' + bfHasWarning + '\n'
+                        + 'bfHasInfo = ' + bfHasInfo + '\n'
+                        + 'validationFailed = ' + validationFailed + '\n')" />
+            </b:panel>
+          </b:row>
+        </h:form>
+        
+        <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
         <![CDATA[
         <h:form id="messageForm">
           <b:fetchBeanInfos />
@@ -129,58 +180,17 @@
         </h:form>
         ]]>
         </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+    <!-- b:tabView activeIndex="1" contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+      <b:tab title="JSF markup">
+        
       </b:tab>
       <b:tab title="displayed as">
-        <h:form id="messageForm">
-          <b:fetchBeanInfos />
-          <b:panelGrid colSpans="3,9">
-            <b:selectBooleanCheckbox value="#{checkboxBean.cbxError}"
-                                     id="checkboxWithErrorMessage"
-                                     caption="click to toggle the error message"
-                                     label="Error"
-                                     onclick="ajax:checkboxBean.action();"
-                                     update="@form"
-                                     />
-            <b:message />
-            <b:selectBooleanCheckbox value="#{checkboxBean.cbxFatal}"
-                                     id="checkboxWithFatalMessage"
-                                     caption="click to toggle the fatal error message"
-                                     label="Fatal"
-                                     onclick="ajax:checkboxBean.action();"
-                                     update="@form"
-                                     />
-            <b:message for="checkboxWithFatalMessage" />
-            <b:selectBooleanCheckbox value="#{checkboxBean.cbxWarning}"
-                                     id="checkboxWithWarning"
-                                     caption="click to toggle the warning"
-                                     label="Warning"
-                                     onclick="ajax:checkboxBean.action();"
-                                     update="@form"
-                                     />
-            <b:message for="@previous:@previous:@next" />
-            <b:selectBooleanCheckbox value="#{checkboxBean.cbxInfo}"
-                                     id="checkboxWithInfoMessage"
-                                     caption="click to toggle the info message"
-                                     label="Info"
-                                     onclick="ajax:checkboxBean.action();"
-                                     update="@form"
-                                     />
-            <b:message for="@form:**:checkboxWithInfoMessage"  escape="false" />
-          </b:panelGrid>
-          <b:row>
-            <b:panel title="Validation result" look="primary" small-screen="full">
-              <b:button value="click to show the values of the JavaScript variables" look="primary"
-                        onclick="alert('bfMaximumMessageSeverity = ' + bfMaximumMessageSeverity + '\n'
-                        + 'bfHasFatalError = ' + bfHasFatalError + '\n'
-                        + 'bfHasError = ' + bfHasError + '\n'
-                        + 'bfHasWarning = ' + bfHasWarning + '\n'
-                        + 'bfHasInfo = ' + bfHasInfo + '\n'
-                        + 'validationFailed = ' + validationFailed + '\n')" />
-            </b:panel>
-          </b:row>
-        </h:form>
+        
       </b:tab>
-    </b:tabView>
+    </b:tabView -->
 
     <p>By the way, the example also shows the effect of the validation phase of JSF. If you clear the first
     checkbox, the messages below disappear. That's because the uppermost error is detected by a bean validation

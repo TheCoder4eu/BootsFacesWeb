@@ -41,8 +41,91 @@
     the <code>FacesMessage</code>. In general, we recommend to avoid IDs. It's easier to move components
     around the page or to use copy and paste if you don't use IDs.</p>
 
+    <b:panel title="Live preview" look="info" collapsible="false">
+        <h:form id="messageForm">
+          <b:panelGrid colSpans="3,9">
+            <b:selectBooleanCheckbox value="#{checkboxBean.cbxError}"
+                                     id="checkboxWithErrorMessage"
+                                     caption="click to toggle the error message"
+                                     label="Error"
+                                     onclick="ajax:checkboxBean.action();"
+                                     update="@form"
+                                     />
+            <b:message />
+            <b:selectBooleanCheckbox value="#{checkboxBean.cbxFatal}"
+                                     id="checkboxWithFatalMessage"
+                                     caption="click to toggle the fatal error message"
+                                     label="Fatal"
+                                     onclick="ajax:checkboxBean.action();"
+                                     update="@form"
+                                     />
+            <b:message for="checkboxWithFatalMessage" />
+            <b:selectBooleanCheckbox value="#{checkboxBean.cbxWarning}"
+                                     id="checkboxWithWarning"
+                                     caption="click to toggle the warning"
+                                     label="Warning"
+                                     onclick="ajax:checkboxBean.action();"
+                                     update="@form"
+                                     />
+            <b:message for="@previous:@previous:@next" />
+            <b:selectBooleanCheckbox value="#{checkboxBean.cbxInfo}"
+                                     id="checkboxWithInfoMessage"
+                                     caption="click to toggle the info message"
+                                     label="Info"
+                                     onclick="ajax:checkboxBean.action();"
+                                     update="@form"
+                                     />
 
-    <b:tabView activeIndex="1" contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+            <b:message for="@form:**:checkboxWithInfoMessage"  escape="false" />
+          </b:panelGrid>
+        </h:form>
+        <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+        <h:form id="messageForm">
+          <b:panelGrid colSpans="3,9">
+            <b:selectBooleanCheckbox value="#num;{checkboxBean.cbxError}"
+                                     id="checkboxWithErrorMessage"
+                                     caption="click to toggle the error message"
+                                     label="error"
+                                     onclick="ajax:checkboxBean.action();"
+                                     update="@form"
+                                     />
+            <b:message />
+            <b:selectBooleanCheckbox value="#num;{checkboxBean.cbxFatal}"
+                                     id="checkboxWithFatalMessage"
+                                     caption="click to toggle the fatal error message"
+                                     label="fatal"
+                                     onclick="ajax:checkboxBean.action();"
+                                     update="@form"
+                                     />
+            <b:message for="checkboxWithFatalMessage" />
+            <b:selectBooleanCheckbox value="#num;{checkboxBean.cbxWarning}"
+                                     id="checkboxWithWarning"
+                                     caption="click to toggle the warning"
+                                     label="warning"
+                                     onclick="ajax:checkboxBean.action();"
+                                     update="@form"
+                                     />
+            <b:message for="@previous:@previous:@next" />
+            <b:selectBooleanCheckbox value="#num;{checkboxBean.cbxInfo}"
+                                     id="checkboxWithInfoMessage"
+                                     caption="click to toggle the info message"
+                                     label="info"
+                                     onclick="ajax:checkboxBean.action();"
+                                     update="@form"
+                                     />
+            <b:message for="@form:**:checkboxWithInfoMessage" escape="false" />
+          </b:panelGrid>
+        </h:form>
+            ]]>
+        </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+    <!-- b:tabView activeIndex="1" contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
       <b:tab title="JSF markup">
         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
         <![CDATA[
@@ -124,7 +207,7 @@
           </b:panelGrid>
         </h:form>
       </b:tab>
-    </b:tabView>
+    </b:tabView -->
 
     <h1><a id="to_escape_or_not_to_escape">To escape or not to escape</a><b:badge value="since 0.8.5" /></h1>
     <p>By public demand, we've added the <code>escape</code> attribute. It allows you to add HTML tags in your
