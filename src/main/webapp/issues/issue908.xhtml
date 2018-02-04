@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
+  <h:head>
+  </h:head>
+  <h:body style="padding-top: 60px">
+  <b:container>
+  <b:row>
+  <b:column col-xs="12">
+  <b:form>
+	<!-- Set param beforehand -->
+	
+	<b:selectBooleanCheckbox label="combobox disabled:" value="#{cartaportesController.disabled}"
+	   update="panel1" />
+	   
+	
+	<f:param name="disabledToggle" value="true"/>
+	<b:commandButton look="info" value="Enabled Menu" ajax="true" process="@this"
+	     actionListener="#{cartaportesController.populateMap()}" update="panel1">
+	</b:commandButton>
+	
+	<b:panelGrid id="panel1" columns="1">
+	     <b:selectOneMenu value="#{cartaportesController.flete}" label="Flete:"
+	          readonly="#{cartaportesController.disabled}" update="@next">
+	          <f:selectItems value="#{cartaportesController.fletesMap}"/>
+	          <f:converter converterId="cartaportesFletConv"/>
+	     </b:selectOneMenu>
+	     <h:outputText value="flete elegido: #{cartaportesController.flete==null?'':cartaportesController.flete.name}" />
+	</b:panelGrid>
+  </b:form>
+  </b:column>
+  </b:row>
+  </b:container>
+
+
+  </h:body>
+</html>
