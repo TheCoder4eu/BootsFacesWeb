@@ -29,7 +29,7 @@
 	          <f:selectItems value="#{cartaportesController.fletesMap}"/>
 	          <f:converter converterId="cartaportesFletConv"/>
 	     </b:selectOneMenu>
-	     <h:outputText value="flete elegido: #{cartaportesController.flete==null?'':cartaportesController.flete.name}" />
+	     <h:outputText id="outputId" value="flete elegido: #{cartaportesController.flete==null?'':cartaportesController.flete.name}" />
 	</b:panelGrid>
   </b:form>
   </b:column>

@@ -20,15 +20,14 @@ public class CartaportesController implements Serializable {
 	private Map<String, Flete> fletesMap = new HashMap<>();
 	
 	public CartaportesController() {
-		populateMap();
+        fletesMap.put("- Selecciona -", null);
+        fletesMap.put("Metal", new Flete(1, "Metal"));
+        fletesMap.put("Wood", new Flete(2, "Wood"));
+        fletesMap.put("Plastic", new Flete(3, "Plastic"));
 	}
 	
 	public void populateMap() {
-        fletesMap.put("- Selecciona -", null);
-        fletesMap.put("1", new Flete(1, "Metal"));
-        fletesMap.put("2", new Flete(2, "Wood"));
-        fletesMap.put("3", new Flete(3, "Plastic"));
-        flete = fletesMap.get("2");
+        flete = fletesMap.get("Wood");
      }
 
 
