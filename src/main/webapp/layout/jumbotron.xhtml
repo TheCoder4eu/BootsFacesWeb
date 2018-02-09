@@ -1,51 +1,60 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
 
-            <ui:define name="content">
-                <h1>Jumbotron</h1>
-                <p>A lightweight, flexible component that can optional extend the entire viewport to showcase key content on your site.</p>
-                <p>To make the jumbotron full width, don't include it within a <code>b:container</code>. </p>
-                <p>Placing it within a container will keep it at the width of the rest of your content and provides rounded corners.</p>
-                <b:panel title="Live preview" look="info" collapsible="false">
-                    <b:jumbotron>
-                        <h1>Hello, world!</h1>
-                        <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-                        <p><a class="btn btn-primary btn-lg">Learn more</a></p>
-                    </b:jumbotron>
-                    <f:facet name="footer">
-                        <strong>JSF markup:</strong><br/>
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                        <![CDATA[
-                        <b:jumbotron>
-                            <h1>Hello, world!</h1>
-                            <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-                            <p><a class="btn btn-primary btn-lg">Learn more</a></p>
-                        </b:jumbotron>
-                        ]]></script>
-                    </f:facet>
-                </b:panel>
 
-                <br/>
-                <h2>Reference section</h2>
-                <ui:include src="JumbotronAttributes.xhtml" />
-                <b:panel look="info" rendered="false">
-					<f:facet name="heading">
-						<b>Skinning</b>
-					</f:facet>
-					<ul>
-						<li>Tell the world which CSS classes can be used to change the
-						look of the component.</li>
-					</ul>
-				</b:panel>
-                
-                <script type="text/javascript">
-                    SyntaxHighlighter.all();
-                </script>
-                <br/><br/><br/>
-            </ui:define>
-        </ui:composition>
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#jumbotron" value="Jumbotron" />
+      <b:navLink href="#reference_section" value="Reference section" />
+    </b:listLinks>
+  </ui:define>
+
+
+  <ui:define name="content">
+    <h1><a id="jumbotron">Jumbotron</a></h1>
+    <p>A lightweight, flexible component that can optional extend the entire viewport to showcase key content on your site.</p>
+    <p>To make the jumbotron full width, don't include it within a <code>b:container</code>. </p>
+    <p>Placing it within a container will keep it at the width of the rest of your content and provides rounded corners.</p>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <b:jumbotron>
+        <h1>Hello, world!</h1>
+        <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <p><a class="btn btn-primary btn-lg">Learn more</a></p>
+      </b:jumbotron>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong><br/>
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+        <![CDATA[
+        <b:jumbotron>
+          <h1>Hello, world!</h1>
+          <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+          <p><a class="btn btn-primary btn-lg">Learn more</a></p>
+        </b:jumbotron>
+        ]]></script>
+      </f:facet>
+    </b:panel>
+
+    <br/>
+    <h2><a id="reference_section">Reference section</a></h2>
+    <ui:include src="JumbotronAttributes.xhtml" />
+    <b:panel look="info" rendered="false">
+      <f:facet name="heading">
+        <b>Skinning</b>
+      </f:facet>
+      <ul>
+        <li>Tell the world which CSS classes can be used to change the
+        look of the component.</li>
+      </ul>
+    </b:panel>
+
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+    <br/><br/><br/>
+  </ui:define>
+</ui:composition>

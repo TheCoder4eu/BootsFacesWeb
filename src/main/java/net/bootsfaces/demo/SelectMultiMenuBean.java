@@ -18,14 +18,13 @@
 package net.bootsfaces.demo;
 
 import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-import net.bootsfaces.expressions.ExpressionResolver;
 import net.bootsfaces.utils.FacesMessages;
 
 /** A simple bean for demo purposes. */

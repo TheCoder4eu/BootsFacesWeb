@@ -5,157 +5,166 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-    <h:head>
-        <title>BootsFaces: next-gen JSF Framework</title>
-        <meta name="author" content="Riccardo Massera"></meta>
-    </h:head>
-<h:body style="padding-top: 60px">
-  <ui:composition template="/applayout/pageTemplate.xhtml">
-    <ui:define name="content">
-      <h1>JSF converters <b:badge value="Since 1.1.0" /></h1>
-      <p>Most form widgets of BootsFaces support the JSF converters. For some reason, this feature
-      has been added to BootsFaces late, so chances are we've missed a component. If you encounter
-      such a component, please open a but report at 
-      <a target="#" href="https://github.com/TheCoder4eu/BootsFaces-OSP/issues">https://github.com/TheCoder4eu/BootsFaces-OSP/issues</a>.</p>
-      <p>Converters are used the way you're used from standard JSF: either by defining a <code>&lt;f:converter /&gt;</code> tag,
-      or by providing the id of the converter with the <code>converter</code> attribute of the input field.</p>
- 
-        <h1>Converter demo</h1>
-        
-        
+  <h:head>
+    <title>BootsFaces: next-gen JSF Framework</title>
+  <meta name="author" content="Riccardo Massera"></meta>
+  </h:head>
+  <h:body style="padding-top: 60px">
+    <ui:composition template="/applayout/pageTemplate.xhtml">
+
+      <ui:define name="content-navigator">
+        <b:listLinks>
+          <b:navLink href="#jsf_converters" value="JSF converters" />
+          <b:navLink href="#converter_demo" value="Converter demo" />
+        </b:listLinks>
+      </ui:define>
+
+
+      <ui:define name="content">
+        <h1><a id="jsf_converters">JSF converters</a><b:badge value="Since 1.1.0" /></h1>
+        <p>Most form widgets of BootsFaces support the JSF converters. For some reason, this feature
+        has been added to BootsFaces late, so chances are we've missed a component. If you encounter
+        such a component, please open a but report at
+        <a target="#" href="https://github.com/TheCoder4eu/BootsFaces-OSP/issues">https://github.com/TheCoder4eu/BootsFaces-OSP/issues</a>.</p>
+        <p>Converters are used the way you're used from standard JSF: either by defining a <code>&lt;f:converter /&gt;</code> tag,
+        or by providing the id of the converter with the <code>converter</code> attribute of the input field.</p>
+
+        <h1><a id="converter_demo">Converter demo</a></h1>
+
+
         <b:panel title="Live preview" look="info" collapsible="false">
-              <h:form>
-		          <b:panelGrid columns="2">
-		            <b:inputText value="#{bookshopBean.price}" required="true" label="price"  
-		              onchange="ajax:bookshopBean.calculate()" update="result @this">
-		              <f:convertNumber />
-		            </b:inputText>
+          <h:form>
+            <b:panelGrid columns="2">
+              <b:inputText value="#{bookshopBean.price}" required="true" label="price"
+                           onchange="ajax:bookshopBean.calculate()" update="result @this">
+                <f:convertNumber />
+              </b:inputText>
 
-		            <b:inputText value="#{bookshopBean.discount}" required="true" label="discount" 
-		              onchange="ajax:bookshopBean.calculate()" update="result">
-		              <f:convertNumber />
-		            </b:inputText>
-		            <b:inputText value="#{bookshopBean.quantity}" required="true" label="number of books" 
-		              onchange="ajax:bookshopBean.calculate()" update="result">
-		              <f:convertNumber integerOnly="true" />
-		            </b:inputText>
-		            <b:selectBooleanCheckbox value="#{bookshopBean.vat}" ajax="true" process="@this" label="add VAT" 
-		                onchange="ajax:bookshopBean.calculate()" update="result @this"
-		                converter="de.beyondjava.vatConverter"  />
+              <b:inputText value="#{bookshopBean.discount}" required="true" label="discount"
+                           onchange="ajax:bookshopBean.calculate()" update="result">
+                <f:convertNumber />
+              </b:inputText>
+              <b:inputText value="#{bookshopBean.quantity}" required="true" label="number of books"
+                           onchange="ajax:bookshopBean.calculate()" update="result">
+                <f:convertNumber integerOnly="true" />
+              </b:inputText>
+              <b:selectBooleanCheckbox value="#{bookshopBean.vat}" ajax="true" process="@this" label="add VAT"
+                                       onchange="ajax:bookshopBean.calculate()" update="result @this"
+                                       converter="de.beyondjava.vatConverter"  />
 
-		            <b:inputText value="#{bookshopBean.total}" disabled="true" label="total"  id="result">
-		              <f:convertNumber />
-		            </b:inputText>
-		            <b:commandButton value="calculate" actionListener="#{bookshopBean.calculate}"
-		                             onclick="ajax:bookshopBean.calculate()" update="result" />
-		            <b:messages />
-		         </b:panelGrid> 
-                </h:form>
+              <b:inputText value="#{bookshopBean.total}" disabled="true" label="total"  id="result">
+                <f:convertNumber />
+              </b:inputText>
+              <b:commandButton value="calculate" actionListener="#{bookshopBean.calculate}"
+                               onclick="ajax:bookshopBean.calculate()" update="result" />
+              <b:messages />
+            </b:panelGrid>
+          </h:form>
 
-            <f:facet name="footer">
-                <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
-                            <b:tab title="JSF markup">
-                        <b:panel>
-                            <script type="syntaxhighlighter"
-                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <f:facet name="footer">
+            <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+              <b:tab title="JSF markup">
+                <b:panel>
+                  <script type="syntaxhighlighter"
+                  class="brush: xml; toolbar: false;gutter: false; first-line: 1">
                   <![CDATA[
                   <h:form>
                     <b:panelGrid columns="2">
-                      <b:inputText value="&num;{bookshopBean.price}" required="true" label="price"  
-                        onchange="ajax:bookshopBean.calculate()" update="result @this">
+                      <b:inputText value="&num;{bookshopBean.price}" required="true" label="price"
+                                   onchange="ajax:bookshopBean.calculate()" update="result @this">
                         <f:convertNumber />
                       </b:inputText>
-		              <b:inputText value="&num;{bookshopBean.discount}" required="true" label="discount" 
-		                onchange="ajax:bookshopBean.calculate()" update="result">
-		                <f:convertNumber />
-  		              </b:inputText>
-  		              <b:inputText value="&num;{bookshopBean.quantity}" required="true" label="number of books" 
-		                onchange="ajax:bookshopBean.calculate()" update="result">
-		                <f:convertNumber integerOnly="true" />
-		              </b:inputText>
-		              <b:selectBooleanCheckbox value="&num;{bookshopBean.vat}" ajax="true" process="@this" label="add VAT" 
-		                  onchange="ajax:bookshopBean.calculate()" update="result @this"
-		                  converter="de.beyondjava.vatConverter" />
+                      <b:inputText value="&num;{bookshopBean.discount}" required="true" label="discount"
+                                   onchange="ajax:bookshopBean.calculate()" update="result">
+                        <f:convertNumber />
+                      </b:inputText>
+                      <b:inputText value="&num;{bookshopBean.quantity}" required="true" label="number of books"
+                                   onchange="ajax:bookshopBean.calculate()" update="result">
+                        <f:convertNumber integerOnly="true" />
+                      </b:inputText>
+                      <b:selectBooleanCheckbox value="&num;{bookshopBean.vat}" ajax="true" process="@this" label="add VAT"
+                                               onchange="ajax:bookshopBean.calculate()" update="result @this"
+                                               converter="de.beyondjava.vatConverter" />
 
-		              <b:inputText value="&num;{bookshopBean.total}" disabled="true" label="total"  id="result">
-		                <f:convertNumber />
-		              </b:inputText>
-		              <b:commandButton value="calculate" actionListener="&num;{bookshopBean.calculate}"
+                      <b:inputText value="&num;{bookshopBean.total}" disabled="true" label="total"  id="result">
+                        <f:convertNumber />
+                      </b:inputText>
+                      <b:commandButton value="calculate" actionListener="&num;{bookshopBean.calculate}"
                                        onclick="ajax:bookshopBean.calculate()" update="result" />
-		              <b:messages />
-		            </b:panelGrid>
+                      <b:messages />
+                    </b:panelGrid>
                   </h:form>
-                 ]]>
-                 </script>
-                        </b:panel>
-                    </b:tab>
-                    <b:tab title="Custom converter">
-                        <b:panel>
-                            <script type="syntaxhighlighter"
-	                class="brush: java; toolbar: false;gutter: false; first-line: 1">
+                  ]]>
+                  </script>
+                </b:panel>
+              </b:tab>
+              <b:tab title="Custom converter">
+                <b:panel>
+                  <script type="syntaxhighlighter"
+                  class="brush: java; toolbar: false;gutter: false; first-line: 1">
                   <![CDATA[
-@FacesConverter("de.beyondjava.vatConverter")
-public class VatConverter implements Converter {
+                  @FacesConverter("de.beyondjava.vatConverter")
+                  public class VatConverter implements Converter {
 
-	@Override
-	public Object getAsObject(FacesContext context, UIComponent component, String value) {
+                    @Override
+                    public Object getAsObject(FacesContext context, UIComponent component, String value) {
 
-		if (null == value)
-			return null;
-		if (value.equals("false")){
-			return 0;
-		}
-		return 7;
-	}
+                      if (null == value)
+                      return null;
+                      if (value.equals("false")){
+                        return 0;
+                      }
+                      return 7;
+                    }
 
-	@Override
-	public String getAsString(FacesContext context, UIComponent component, Object value) {
-		if (null == value)
-			return null;
-		if (value instanceof Number) {
-			int v = ((Number)value).intValue();
-			if (v==0) return "false";
-			return "true";
-		}
-		return null;
+                    @Override
+                    public String getAsString(FacesContext context, UIComponent component, Object value) {
+                      if (null == value)
+                      return null;
+                      if (value instanceof Number) {
+                        int v = ((Number)value).intValue();
+                        if (v==0) return "false";
+                        return "true";
+                      }
+                      return null;
 
-	}
-}
-                 ]]>
-                 </script>
-                        </b:panel>
-                    </b:tab>
-                    <b:tab title="Java Bean">
-                        <b:panel>
-                            <script type="syntaxhighlighter"
-	                class="brush: java; toolbar: false;gutter: false; first-line: 1">
+                    }
+                  }
+                  ]]>
+                  </script>
+                </b:panel>
+              </b:tab>
+              <b:tab title="Java Bean">
+                <b:panel>
+                  <script type="syntaxhighlighter"
+                  class="brush: java; toolbar: false;gutter: false; first-line: 1">
                   <![CDATA[
-@ManagedBean
-@ViewScoped
-public class BookshopBean implements Serializable {
-	private static final long serialVersionUID = 1L;
-	private double discount=10.5;
-	private double price=34.90;
-	private int quantity=1;
-	private double vat = 7;
-	private double total=0;
+                  @ManagedBean
+                  @ViewScoped
+                  public class BookshopBean implements Serializable {
+                    private static final long serialVersionUID = 1L;
+                    private double discount=10.5;
+                    private double price=34.90;
+                    private int quantity=1;
+                    private double vat = 7;
+                    private double total=0;
 
-	public void calculate() {
-		total = quantity * (price * (100.0-discount)/100.0) * (100.0+vat)/100.0;
-	}
+                    public void calculate() {
+                      total = quantity * (price * (100.0-discount)/100.0) * (100.0+vat)/100.0;
+                    }
 
-	// getters and setters omitted for the sake of brevity
-}                 ]]>
-                 </script>
-                        </b:panel>
-                    </b:tab>
-                </b:tabView>
-            </f:facet>
+                    // getters and setters omitted for the sake of brevity
+                  }                 ]]>
+                  </script>
+                </b:panel>
+              </b:tab>
+            </b:tabView>
+          </f:facet>
         </b:panel>
-   	<script type="text/javascript">
-                SyntaxHighlighter.all();
-            </script>
-    </ui:define>
-  </ui:composition>
-</h:body>
+        <script type="text/javascript">
+        SyntaxHighlighter.all();
+        </script>
+      </ui:define>
+    </ui:composition>
+  </h:body>
 </html>

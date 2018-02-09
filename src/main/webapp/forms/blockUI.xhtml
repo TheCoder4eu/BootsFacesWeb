@@ -1,142 +1,232 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
-<ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:b="http://bootsfaces.net/ui"
-  xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/applayout/pageTemplate.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#overview" value="overview" />
+      <b:navLink href="#basic" value="basic usage" />
+      <b:navLink href="#conditional" value="conditional activation" />
+      <b:navLink href="#perrequest" value="de-activation per request" />
+      <b:navLink href="#ajax" value="ajax" />
+      <b:navLink href="#livedemo" value="live demo" />
+      <b:navLink href="#customizing" value="customizing" />
+      <b:navLink href="#primefaces" value="PrimeFaces" />
+    </b:listLinks>
+  </ui:define>
 
   <ui:define name="content">
-    <h1>
-      BlockUI
-      <b:badge value="since 0.8.1" />
-    </h1>
-    <p>While supporting the traditional AJAX style of JSF, BootsFaces also implements a new AJAX API that's a little
-      simpler to use. Among other things, this includes a fairly opinionated BlockUI component. Our theory is you
-      want to activate BlockUI with every AJAX request, so you only have to configure it. Other than other frameworks
-      BootsFaces doesn't require you to activate BlockUI on every AJAX requests individually.</p>
-      <p>Most likely you've already suffered from mysterious errors caused by double-clicks. If you don't take
-      precautions, JSF interprets the double-click as two individual clicks, and sends two requests to the server.
-      Thing is, most users have learned over time that you can do everything with a double-click, and it hardly ever
-      hurts. So they use the double-click even when it's superfluous.</p>
-      <p>As a solution, you can activate BlockUI. That's a component that prevents user interactions when an AJAX
-      request has been started. The screen is darkened, and BootsFaces also shows a waitcursor by default. When the
-      AJAX request has been completed, the screen is unlocked again.</p>
-      <p> BlockUI is based on the
-<a target="#" href="http://malsup.com/jquery/block/#overview">jQuery blockUI plugin.</a></p>
+    <h1><a id="overview">BlockUI</a><b:badge value="since 0.8.1" /></h1>
+    <p>While supporting the traditional AJAX style of JSF, BootsFaces
+    also implements a new AJAX API that's a little simpler to use. Among
+    other things, this includes a fairly opinionated BlockUI component.
+    Our theory is you want to activate BlockUI with every AJAX request,
+    so you only have to configure it. Other than other frameworks
+    BootsFaces doesn't require you to activate BlockUI on every AJAX
+    requests individually.</p>
+    <p>Most likely you've already suffered from mysterious errors
+    caused by double-clicks. If you don't take precautions, JSF
+    interprets the double-click as two individual clicks, and sends two
+    requests to the server. Thing is, most users have learned over time
+    that you can do everything with a double-click, and it hardly ever
+    hurts. So they use the double-click even when it's superfluous.</p>
+    <p>As a solution, you can activate BlockUI. That's a component
+    that prevents user interactions when an AJAX request has been
+    started. The screen is darkened, and BootsFaces also shows a
+    waitcursor by default. When the AJAX request has been completed, the
+    screen is unlocked again.</p>
+    <p>
+    BlockUI is based on the <a target="#"
+    href="http://malsup.com/jquery/block/#overview">jQuery blockUI
+    plugin.</a>
+    </p>
 
-    <h2>Basic usage</h2>
-    <p>To activate BootsFaces BlockUI, add a context parameter to your application's <code>web.xml</code>:</p>
+    <h2><a id="basic">Basic usage</a></h2>
+    <p>
+    To activate BootsFaces BlockUI, add a context parameter to your
+    application's
+    <code>web.xml</code>
+    :
+    </p>
     <b:panel>
-        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-     <!-- Activates the waitcursor and the double-click protection -->
-    <context-param>
+      <script type="syntaxhighlighter"
+      class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+      <![CDATA[
+      <!-- Activates the waitcursor and the double-click protection -->
+      <context-param>
       <param-name>net.bootsfaces.blockUI</param-name>
       <param-value>true</param-value>
-    </context-param>
-]]>
-       </script>
+      </context-param>
+      ]]>
+      </script>
     </b:panel>
-       
-    <h2>Conditional activation and deactivation</h2>
-       <p>Once you've activated BootsFaces BlockUI, every AJAX request triggered by a BootsFaces component activates
-       the waitcursor and prevents the user from doing further input until the request has been completed. This way,
-       you get a fairly good protection against accidential double-clicks.</p>
-       <p>If you don't want to activate BlockUI generally, you can control it via an EL expression. Note that this expression
-       is read when the page is rendered, and it's only read on non-AJAX requests.</p>
-       
+
+    <h2><a id="conditional">Conditional activation and deactivation</a></h2>
+    <p>Once you've activated BootsFaces BlockUI, every AJAX request
+    triggered by a BootsFaces component activates the waitcursor and
+    prevents the user from doing further input until the request has been
+    completed. This way, you get a fairly good protection against
+    accidential double-clicks.</p>
+    <p>If you don't want to activate BlockUI generally, you can
+    control it via an EL expression. Note that this expression is read
+    when the page is rendered, and it's only read on non-AJAX requests.</p>
+
     <b:panel>
-   <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-     <!-- Activates the waitcursor and the double-click protection -->
-    <context-param>
+      <script type="syntaxhighlighter"
+      class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+      <![CDATA[
+      <!-- Activates the waitcursor and the double-click protection -->
+      <context-param>
       <param-name>net.bootsfaces.blockUI</param-name>
       <param-value>#{blockUIBean.isBlockUIActive()}</param-value>
-    </context-param>
-]]>
-       </script>
-        </b:panel>
-
-    <h2>AJAX, mouse events and BlockUI</h2>
-    <p>If blockUI is active, every AJAX request triggers a <code>mouseOutEvent</code>. When the AJAX request has
-    been processed and the BlockUI overlay pane is hidden, a <code>mouseOverEvent</code> is triggered. Keep this
-    in mind if you need to use the mouse events.</p>
-
-    <h2>Live demo</h2>
-    
-    <b:panel title="Live preview" look="info" collapsible="false">
-        <h:form>
-            <b:commandButton value="Wait 5 seconds" onclick="ajax:blockUIBean.waitFiveSeconds()" look="primary"/>
-          </h:form>
-        
-        <f:facet name="footer">
-            <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
-                    <b:tab title="JSF markup">
-                         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-    <h:form>
-        <b:commandButton value="Wait 5 seconds" onclick="ajax:blockUIBean.waitFiveSeconds()" look="primary"/>
-    </h:form>
-]]>
-       </script>
-                    </b:tab>
-                    <b:tab title="Java Bean">
-                        <script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-@ManagedBean
-@ViewScoped
-public class BlockUIBean implements Serializable {
-	private static final long serialVersionUID = 1L;
-
-	public void waitFiveSeconds() {
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-		}
-	}
-	
-	public boolean isBlockUIActive() {
-		String viewId = FacesContext.getCurrentInstance().getViewRoot().getViewId();
-		if ("/forms/blockUI.xhtml".equals(viewId))
-			return true;
-		if("/pages/test_newcomp.xhtml".equals(viewId))
-			return true;
-		if("/bootstrap/SocialShare.xhtml".equals(viewId))
-			return true;
-		return false;
-	}
-
-}
-]]>
-       </script>
-                    </b:tab>
-            </b:tabView>             
-        </f:facet>
+      </context-param>
+      ]]>
+      </script>
     </b:panel>
 
-    <h2>Customizing</h2>
-    <p>Use <code>$.blockUI.defaults</code> to configure BootsFaces BlockUI, as decribed <a target="#" href="http://malsup.com/jquery/block/#options">here.</a>
-    For instance, these lines deactive the gray-out-effect, and show the waitcursor of BootsFaces.</p>
+    <h2><a id="perrequest">Activation and deactivation on a per-request basis</a></h2>
+    <p>Setting the parameter <code>&lt; f:param name="blockui.disabled" value="true"/&gt;/f:param></code>
+    of a commandbutton deactivates BlockUI for this particular button. You can observe this in the next
+    demo if you open the web developer tools of your browser. Both requests take five seconds,
+    even if the first request doesn't show the waitcursor.</p>
+
+    <b:panel look="info" collapsible="false">
+      <h:form>
+        <b:panelGrid columns="3">
+          <b:commandButton value="Wait 5 seconds without BlockUI"
+                           onclick="ajax:blockUIBean.waitFiveSeconds()" look="danger">
+            <f:param name="blockui.disabled" value="true" />
+          </b:commandButton>
+          <b:commandButton value="Wait 5 seconds with BlockUI"
+                           onclick="ajax:blockUIBean.waitFiveSeconds()" look="success" />
+        </b:panelGrid>
+      </h:form>
+      <f:facet name="footer">
+        <script type="syntaxhighlighter"
+        class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+        <![CDATA[
+        <b:commandButton value="Wait 5 seconds without BlockUI"
+                         onclick="ajax:blockUIBean.waitFiveSeconds()" look="danger">
+          <f:param name="blockui.disabled" value="true" />
+        </b:commandButton>
+        <b:commandButton value="Wait 5 seconds with BlockUI"
+                         onclick="ajax:blockUIBean.waitFiveSeconds()" look="success"/>
+        ]]>
+        </script>
+      </f:facet>
+    </b:panel>
+
+
+    <h2><a id="ajax">AJAX, mouse events and BlockUI</a></h2>
+    <p>
+    If blockUI is active, every AJAX request triggers a
+    <code>mouseOutEvent</code>
+    . When the AJAX request has been processed and the BlockUI overlay
+    pane is hidden, a
+    <code>mouseOverEvent</code>
+    is triggered. Keep this in mind if you need to use the mouse events.
+    </p>
+
+    <h2><a id="livedemo">Live demo</a></h2>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form>
+        <b:commandButton value="Wait 5 seconds"
+                         onclick="ajax:blockUIBean.waitFiveSeconds()" look="primary" />
+      </h:form>
+
+      <f:facet name="footer">
+        <b:tabView activeIndex="0"
+                   contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+          <b:tab title="JSF markup">
+            <script type="syntaxhighlighter"
+            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+            <h:form>
+              <b:commandButton value="Wait 5 seconds" onclick="ajax:blockUIBean.waitFiveSeconds()" look="primary"/>
+            </h:form>
+            ]]>
+            </script>
+          </b:tab>
+          <b:tab title="Java Bean">
+            <script type="syntaxhighlighter"
+            class="brush: java; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+            @ManagedBean
+            @ViewScoped
+            public class BlockUIBean implements Serializable {
+              private static final long serialVersionUID = 1L;
+
+              public void waitFiveSeconds() {
+                try {
+                  Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                }
+              }
+
+              public boolean isBlockUIActive() {
+                String viewId = FacesContext.getCurrentInstance().getViewRoot().getViewId();
+                if ("/forms/blockUI.xhtml".equals(viewId))
+                return true;
+                if("/bootstrap/SocialShare.xhtml".equals(viewId))
+                return true;
+                return false;
+              }
+
+            }
+            ]]>
+            </script>
+          </b:tab>
+        </b:tabView>
+      </f:facet>
+    </b:panel>
+
+
+    <h2><a id="customizing">Customizing</a></h2>
+    <p>
+    Use
+    <code>$.blockUI.defaults</code>
+    to configure BootsFaces BlockUI, as decribed <a target="#"
+    href="http://malsup.com/jquery/block/#options">here.</a> For
+    instance, these lines deactive the gray-out-effect, and show the
+    waitcursor of BootsFaces.
+    </p>
     <b:panel>
-   <script type="syntaxhighlighter" class="brush: javascript; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-        &lt;script>
-          $.blockUI.defaults.overlayCSS.opacity=0;
-          $.blockUI.defaults.message='<h1><img src="javax.faces.resource/images/waitcursor.gif.jsf?ln=bsf" /></h1>';
-        &lt;/script>         
-]]>
-       </script>
-        </b:panel>
-        
-    <p><b:badge value="Hint" />
-    There's a catch: the path of the image is relative to the URL of the current page. If you use nested folders, it
-    may be difficult to guess the correct path.</p>
-    
-    <h2>PrimeFaces and other third-party-frameworks</h2>
-    <p>BootsFaces doesn't trigger BlockUI on PrimeFaces components. You'll have to use the <code>&lt;p:blockUI /&gt;</code>
-    component of PrimeFaces.</p>
+      <script type="syntaxhighlighter"
+      class="brush: javascript; toolbar: false;gutter: false; first-line: 1">
+      <![CDATA[
+      &lt;script>
+      $.blockUI.defaults.overlayCSS.opacity=0;
+      $.blockUI.defaults.message='<h1><img src="javax.faces.resource/images/waitcursor.gif.jsf?ln=bsf" /></h1>';
+      &lt;/script>
+      ]]>
+      </script>
+    </b:panel>
+
+    <p>
+    <b:badge value="Hint" />
+    There's a catch: the path of the image is relative to the URL of the
+    current page. If you use nested folders, it may be difficult to guess
+    the correct path.
+    </p>
+
+
+    <h2><a id="primefaces">PrimeFaces and other third-party-frameworks</a></h2>
+    <p>
+    BootsFaces doesn't trigger BlockUI on PrimeFaces components. You'll
+    have to use the
+    <code>&lt;p:blockUI /&gt;</code>
+    component of PrimeFaces.
+    </p>
 
     <script type="text/javascript">
-					SyntaxHighlighter.all();
-				</script>
+    SyntaxHighlighter.all();
+    </script>
   </ui:define>
 </ui:composition>

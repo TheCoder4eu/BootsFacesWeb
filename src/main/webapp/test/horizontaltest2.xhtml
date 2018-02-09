@@ -6,621 +6,621 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough" >
-    <h:head>
-        <title>BootsFaces rocks!</title>
-        <meta name="author" content="Stephan Rauh"></meta>
-    </h:head>
-    <h:body>
-    	<b:container>
-    		<b:panelGrid columns="2">
-	    		<b:panel title="inline form" look="success">
-			    	<b:form inline="true">
-			    		<b:row>
-			    			<b:column medium-screen="full">
-								<b:inputText small-screen="9" style="width:170px" label="b:inputText" render-label="false" label-style="width:150px"
-								             value="#{formBean.inputText}" onmouseover="ajax:formBean.updateInputText()" update="@this"
-								             tooltip="tooltip of the inputtext"/>
-							</b:column>
-			    			<b:column medium-screen="full">
-								<b:inputTextarea small-screen="9" style="width:170px" label="b:inputTextarea" render-label="false" label-style="width:150px"
-								             value="#{formBean.inputTextarea}" onmouseover="ajax:formBean.updateInputTextarea()" update="@this"
-								             tooltip="tooltip of the inputtextarea"/>
-							</b:column>
-			    			<b:column medium-screen="full">
-								<b:colorPicker small-screen="9" style="width:170px" label="b:colorPicker" render-label="false" label-style="width:150px"
-								               value="#{formBean.color}" onmouseover="ajax:formBean.updateColor()" update="@this"
-								               tooltip="tooltip of the colorpicker"/>
-							</b:column>
-			    			<b:column medium-screen="full">
-								<b:selectOneMenu small-screen="9" style="width:170px" label="b:selectOneMenu" render-label="false" label-style="width:150px"
-								                 value="#{formBean.combobox}" onmouseover="ajax:formBean.updateCombobox()" update="@this"
-								                 tooltip="tooltip of the selectonemenu">
-									<f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
-									<f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
-									<f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
-								</b:selectOneMenu>
-			    			
-							</b:column>
-			    			<b:column medium-screen="full" >
-								<b:selectMultiMenu small-screen="9" style="width:170px" button-width="170" label="b:selectMultiMenu" render-label="false" label-style="width:150px"
-								    value="#{formBean.combobox}" onclick="ajax:formBean.updateCombobox()" update="@this"
-								    tooltip="tooltip of the selectmultimenu">
-									<f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
-									<f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
-									<f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
-								</b:selectMultiMenu>
-								<b:commandButton value="AJAX" onclick="ajax:formBean.updateCombobox()" update="@previous" process="@previous @this" />
-		  					</b:column>
-			    			<b:column medium-screen="full">
-								<b:datepicker small-screen="9" style="width:170px" label="b:datepicker" inline="true" render-label="false" label-style="width:150px"
-								              value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"
-								              tooltip="tooltip of the datepicker"/>
-								<b:commandButton value="AJAX" onclick="ajax:formBean.updateDate()" update="@previous" process="@previous @this" />
-		  					</b:column>
-			    			<b:column medium-screen="full">
-								<b:dateTimePicker small-screen="9" style="width:170px" label="b:dateTimePicker" inline="true" render-label="false" label-style="width:150px"
-								                  value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"
-								                  tooltip="tooltip of the datetimepicker"/>
-		  					</b:column>
-			    			
-			    		</b:row>
-		    		</b:form>
-	    		</b:panel>
-	    		<b:panel title="regular BootsFaces b:form (stacked)" look="success">
-			    	<b:form>
-			    		<b:row>
-			    			<b:column medium-screen="full">
-								<b:inputText style="width: 250px;" label="b:inputText" render-label="false" label-style="width:150px" 
-								             value="#{formBean.inputText}" onmouseover="ajax:formBean.updateInputText()" update="@this"
-								             tooltip="tooltip of the inputText"/>
-							</b:column>
-			    			<b:column medium-screen="full">
-								<b:inputTextarea style="width: 250px;" label="b:inputTextarea" render-label="false" label-style="width:150px" 
-								             value="#{formBean.inputTextarea}" onmouseover="ajax:formBean.updateInputTextarea()" update="@this"
-								             tooltip="tooltip of the inputTextarea"/>
-							</b:column>
-			    			<b:column medium-screen="full">
-								<b:colorPicker style="width: 250px;" label="b:colorPicker" render-label="false" label-style="width:150px"
-								               value="#{formBean.color}" onmouseover="ajax:formBean.updateColor()" update="@this"
-								               tooltip="tooltip of the colorPicker"/>
-							</b:column>
-			    			<b:column medium-screen="full">
-								<b:selectOneMenu style="width: 250px;" label="b:selectOneMenu" render-label="false" label-style="width:150px"
-								                 value="#{formBean.combobox}" onmouseover="ajax:formBean.updateCombobox()" update="@this"
-								                 tooltip="tooltip of the selectOneMenu">
-									<f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
-									<f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
-									<f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
-								</b:selectOneMenu>
-			    			
-							</b:column>
-			    			<b:column medium-screen="full" >
-								<b:selectMultiMenu  style="width: 250px;" button-width="250" label="b:selectMultiMenu" render-label="false" label-style="width:150px"
-								    value="#{formBean.combobox}" onclick="ajax:formBean.updateCombobox()" update="@this"
-								    tooltip="tooltip of the selectMultiMenu">
-									<f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
-									<f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
-									<f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
-								</b:selectMultiMenu>
-		  					</b:column>
-			    			<b:column medium-screen="full">
-								<b:datepicker  style="width: 250px;" label="b:datepicker" inline="true" render-label="false" label-style="width:150px"
-								              value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"
-								              tooltip="tooltip of the datePicker"/>
-		  					</b:column>
-			    			<b:column medium-screen="full">
-								<b:dateTimePicker  style="width: 250px;" label="b:dateTimePicker" inline="true" render-label="false" label-style="width:150px"
-								              value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"
-								              tooltip="tooltip of the dateTimePicker"/>
-		  					</b:column>
-			    		</b:row>
-		    		</b:form>
-	    		</b:panel>
-	    		<b:panel title="horizontal form" look="success">
-			    	<b:form horizontal="true">
-			    		<b:row>
-			    			<b:column medium-screen="full" rendered="true">
-								<b:inputText label-small-screen="4" small-screen="8"  label="b:inputText" render-label="false"
-								             value="#{formBean.inputText}" onmouseover="ajax:formBean.updateInputText()" update="@this"
-								             tooltip="tooltip of the inputText"/>
-							</b:column>
-			    			<b:column medium-screen="full" rendered="true">
-								<b:inputTextarea label-small-screen="4" small-screen="8"  label="b:inputText" render-label="false"
-								             value="#{formBean.inputTextarea}" onmouseover="ajax:formBean.updateInputTextarea()" update="@this"
-								             tooltip="tooltip of the inputTextarea"/>
-							</b:column>
-			    			<b:column medium-screen="full" rendered="true">
-								<b:inputTextarea label-small-screen="4" small-screen="8"  label="b:inputTextarea" render-label="false"
-								             value="#{formBean.inputTextarea}" onmouseover="ajax:formBean.updateInputTextarea()" update="@this"
-								             tooltip="tooltip of the inputTextarea"/>
-							</b:column>
-			    			<b:column medium-screen="full" rendered="true">
-								<b:colorPicker label-small-screen="4" small-screen="8"  label="b:colorPicker" render-label="false"
-								               value="#{formBean.color}" onmouseover="ajax:formBean.updateColor()" update="@this"
-								               tooltip="tooltip of the colorPicker"/>
-							</b:column>
-			    			<b:column medium-screen="full"  rendered="true">
-								<b:selectOneMenu label-small-screen="4" small-screen="8"  label="b:selectOneMenu" render-label="false"
-								                 value="#{formBean.combobox}" onmouseover="ajax:formBean.updateCombobox()" update="@this"
-								                 tooltip="tooltip of the selectOneMenu">
-									<f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
-									<f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
-									<f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
-								</b:selectOneMenu>
-			    			
-							</b:column>
-			    			<b:column medium-screen="full"  rendered="true">
-								<b:selectMultiMenu label-small-screen="4" small-screen="8"  button-width="250" label="b:selectMultiMenu" render-label="false"
-								                   value="#{formBean.combobox}" onmouseover="ajax:formBean.updateCombobox()" update="@this"
-								                   tooltip="tooltip of the selectMultiMenu">
-									<f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
-									<f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
-									<f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
-								</b:selectMultiMenu>
-		  					</b:column>
-			    			<b:column medium-screen="full"  rendered="true">
-								<b:datepicker  label-small-screen="4" small-screen="8"  label="b:datepicker" inline="true" render-label="false"
-								                  value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"
-								                  tooltip="tooltip of the datepicker"/>
-		  					</b:column>
-			    			<b:column medium-screen="full">
-								<b:dateTimePicker label-small-screen="4" small-screen="8" label="b:dateTimePicker" inline="true" render-label="false"
-								                  value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"
-								                  tooltip="tooltip of the dateTimePicker"/>
-		  					</b:column>
-			    			
-			    		</b:row>
-		    		</b:form>
-	    		</b:panel>
-	    		<b:panel title="standard h:form (stacked)" look="success">
-			    	<h:form>
-			    		<b:row>
-			    			<b:column medium-screen="full">
-								<b:inputText style="width: 250px;" label="b:inputText" render-label="false" label-style="width:150px"
-								             value="#{formBean.inputText}" onmouseover="ajax:formBean.updateInputText()" update="@this"
-								             tooltip="tooltip of the inputText"/>
-							</b:column>
-			    			<b:column medium-screen="full">
-								<b:inputTextarea style="width: 250px;" label="b:inputText" render-label="false" label-style="width:150px"
-								             value="#{formBean.inputTextarea}" onmouseover="ajax:formBean.updateInputTextarea()" update="@this"
-								             tooltip="tooltip of the inputTextarea"/>
-							</b:column>
-			    			<b:column medium-screen="full">
-								<b:colorPicker style="width: 250px;" label="b:colorPicker" render-label="false" label-style="width:150px"
-								               value="#{formBean.color}" onmouseover="ajax:formBean.updateColor()" update="@this"
-								               tooltip="tooltip of the colorPicker"/>
-							</b:column>
-			    			<b:column medium-screen="full">
-								<b:selectOneMenu style="width: 250px;" label="b:selectOneMenu" render-label="false" label-style="width:150px"
-								                 value="#{formBean.combobox}" onmouseover="ajax:formBean.updateCombobox()" update="@this"
-								                 tooltip="tooltip of the selectOneMenu">
-									<f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
-									<f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
-									<f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
-								</b:selectOneMenu>
-			    			
-							</b:column>
-			    			<b:column medium-screen="full" >
-								<b:selectMultiMenu  style="width: 250px;" button-width="250" label="b:selectMultiMenu" render-label="false" label-style="width:150px"
-								                   value="#{formBean.combobox}" onmouseover="ajax:formBean.updateCombobox()" update="@this"
-								                   tooltip="tooltip of the selectMultiMenu">
-									<f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
-									<f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
-									<f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
-								</b:selectMultiMenu>
-		  					</b:column>
-			    			<b:column medium-screen="full">
-								<b:datepicker  style="width: 250px;" label="b:datepicker" inline="true" render-label="false" label-style="width:150px"
-								               value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"
-								               tooltip="tooltip of the datepicker"/>
-		  					</b:column>
-			    			<b:column medium-screen="full">
-								<b:dateTimePicker style="width: 250px;" label="b:dateTimePicker" inline="true" render-label="false" label-style="width:150px"
-								                  value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"
-								                  tooltip="tooltip of the dateTimePicker"/>
-		  					</b:column>
-			    			
-			    		</b:row>
-		    		</h:form>
-	    		</b:panel>
- 	    		<b:panel title="inline BootsFaces b:form (with facets)" look="success">
-			    	<b:form>
-			    		<b:row>
-			    			<b:column medium-screen="full">
-								<b:inputText small-screen="9" label="b:inputText" render-label="false" label-style="width:150px"
-								             value="#{formBean.inputText}" onmouseover="ajax:formBean.updateInputText()" update="@this"
-								             tooltip="tooltip of the inputText">
-									<f:facet name="prepend">
-						                <h:outputText value="$" />
-						            </f:facet>
-						            <f:facet name="append">
-						                <h:outputText value=".00" />
-						            </f:facet>
-								</b:inputText>
-							</b:column>
-			    			<b:column medium-screen="full">
-								<b:inputTextarea small-screen="9" label="b:inputTextarea" render-label="false" label-style="width:150px"
-								             value="#{formBean.inputTextarea}" onmouseover="ajax:formBean.updateInputTextarea()" update="@this"
-								             tooltip="tooltip of the inputText">
-									<f:facet name="prepend">
-						                <h:outputText value="$" />
-						            </f:facet>
-						            <f:facet name="append">
-						                <h:outputText value=".00" />
-						            </f:facet>
-								</b:inputTextarea>
-							</b:column>
-			    			<b:column medium-screen="full">
-								<b:colorPicker small-screen="9" label="b:colorPicker" render-label="false" label-style="width:150px"
-								               value="#{formBean.color}" onmouseover="ajax:formBean.updateColor()" update="@this"
-								               tooltip="tooltip of the colorPicker">
-									<f:facet name="prepend">
-						                <h:outputText value="$" />
-						            </f:facet>
-						            <f:facet name="append">
-						                <h:outputText value=".00" />
-						            </f:facet>
-								</b:colorPicker>								
-							</b:column>
-			    			<b:column medium-screen="full">
-								<b:selectOneMenu small-screen="9" label="b:selectOneMenu" render-label="false" label-style="width:150px"
-								                 value="#{formBean.combobox}" onmouseover="ajax:formBean.updateCombobox()" update="@this"
-								                 tooltip="tooltip of the selectOneMenu">
-									<f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
-									<f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
-									<f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
-									<f:facet name="prepend">
-						                <h:outputText value="$" />
-						            </f:facet>
-						            <f:facet name="append">
-						                <h:outputText value=".00" />
-						            </f:facet>
-								</b:selectOneMenu>
-			    			
-							</b:column>
-			    			<b:column medium-screen="full" >
-								<b:selectMultiMenu small-screen="9" button-width="170" label="b:selectMultiMenu" render-label="false" label-style="width:150px"
-								                   value="#{formBean.combobox}" onmouseover="ajax:formBean.updateCombobox()" update="@this"
-								                   tooltip="tooltip of the selectMultiMenu">
-									<f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
-									<f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
-									<f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
-									<f:facet name="prepend">
-						                <h:outputText value="$" />
-						            </f:facet>
-						            <f:facet name="append">
-						                <h:outputText value=".00" />
-						            </f:facet>
-								</b:selectMultiMenu>								
-		  					</b:column>
-			    			<b:column medium-screen="full">
-								<b:datepicker small-screen="9" label="b:datepicker" inline="true" render-label="false" label-style="width:150px"
-								              value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"
-								              tooltip="tooltip of the datepicker">
-									<f:facet name="prepend">
-						                <h:outputText value="$" />
-						            </f:facet>
-						            <f:facet name="append">
-						                <h:outputText value=".00" />
-						            </f:facet>
-								</b:datepicker>
-		  					</b:column>
-			    			<b:column medium-screen="full">
-								<b:dateTimePicker small-screen="9" label="b:dateTimePicker" inline="true" render-label="false" label-style="width:150px"
-								                  value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"
-								                  tooltip="tooltip of the dateTimePicker">
-									<f:facet name="prepend">
-						                <h:outputText value="$" />
-						            </f:facet>
-						            <f:facet name="append">
-						                <h:outputText value=".00" />
-						            </f:facet>
-								</b:dateTimePicker>
-		  					</b:column>
-			    		</b:row>
-		    		</b:form>
-	    		</b:panel>
-	    		<b:panel title="regular BootsFaces b:form (stacked / with facets)" look="success">
-			    	<b:form>
-			    		<b:row>
-			    			<b:column medium-screen="full">
-								<b:inputText label="b:inputText" render-label="false" label-style="width:150px"
-								             value="#{formBean.inputText}" onmouseover="ajax:formBean.updateInputText()" update="@this"
-								             tooltip="tooltip of the inputText">
-									<f:facet name="prepend">
-						                <h:outputText value="$" />
-						            </f:facet>
-						            <f:facet name="append">
-						                <h:outputText value=".00" />
-						            </f:facet>
-								</b:inputText>
-							</b:column>
-			    			<b:column medium-screen="full">
-								<b:inputTextarea label="b:inputTextarea" render-label="false" label-style="width:150px"
-								             value="#{formBean.inputTextarea}" onmouseover="ajax:formBean.updateInputTextarea()" update="@this"
-								             tooltip="tooltip of the inputTextarea">
-									<f:facet name="prepend">
-						                <h:outputText value="$" />
-						            </f:facet>
-						            <f:facet name="append">
-						                <h:outputText value=".00" />
-						            </f:facet>
-								</b:inputTextarea>
-							</b:column>
-			    			<b:column medium-screen="full">
-								<b:colorPicker label="b:colorPicker" render-label="false" label-style="width:150px"
-								               value="#{formBean.color}" onmouseover="ajax:formBean.updateColor()" update="@this"
-								               tooltip="tooltip of the colorPicker">
-									<f:facet name="prepend">
-						                <h:outputText value="$" />
-						            </f:facet>
-						            <f:facet name="append">
-						                <h:outputText value=".00" />
-						            </f:facet>
-								</b:colorPicker>								
-							</b:column>
-			    			<b:column medium-screen="full">
-								<b:selectOneMenu label="b:selectOneMenu" render-label="false" label-style="width:150px"
-								                 value="#{formBean.combobox}" onmouseover="ajax:formBean.updateCombobox()" update="@this"
-								                 tooltip="tooltip of the selectOneMenu">
-									<f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
-									<f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
-									<f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
-									<f:facet name="prepend">
-						                <h:outputText value="$" />
-						            </f:facet>
-						            <f:facet name="append">
-						                <h:outputText value=".00" />
-						            </f:facet>
-								</b:selectOneMenu>
-			    			
-							</b:column>
-			    			<b:column medium-screen="full" >
-								<b:selectMultiMenu button-width="250" label="b:selectMultiMenu" render-label="false" label-style="width:150px"
-								                   value="#{formBean.combobox}" onmouseover="ajax:formBean.updateCombobox()" update="@this"
-								                   tooltip="tooltip of the selectMultiMenu">
-									<f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
-									<f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
-									<f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
-									<f:facet name="prepend">
-						                <h:outputText value="$" />
-						            </f:facet>
-						            <f:facet name="append">
-						                <h:outputText value=".00" />
-						            </f:facet>
-								</b:selectMultiMenu>								
-		  					</b:column>
-			    			<b:column medium-screen="full">
-								<b:datepicker label="b:datepicker" inline="true" render-label="false" label-style="width:150px"
-								              value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"
-								              tooltip="tooltip of the datepicker">
-									<f:facet name="prepend">
-						                <h:outputText value="$" />
-						            </f:facet>
-						            <f:facet name="append">
-						                <h:outputText value=".00" />
-						            </f:facet>
-								</b:datepicker>
-		  					</b:column>
-			    			<b:column medium-screen="full">
-								<b:dateTimePicker label="b:dateTimePicker" inline="true" render-label="false" label-style="width:150px"
-								                  value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"
-								                  tooltip="tooltip of the dateTimePicker">
-									<f:facet name="prepend">
-						                <h:outputText value="$" />
-						            </f:facet>
-						            <f:facet name="append">
-						                <h:outputText value=".00" />
-						            </f:facet>
-								</b:dateTimePicker>
-		  					</b:column>
-			    		</b:row>
-		    		</b:form>
-	    		</b:panel>
-	    		<b:panel title="horizontal BootsFaces b:form (stacked / with facets)" look="success">
-			    	<b:form horizontal="true">
-			    		<b:row>
-			    			<b:column medium-screen="full">
-								<b:inputText label-small-screen="4" small-screen="8" label="b:inputText" render-label="false"
-								             value="#{formBean.inputText}" onmouseover="ajax:formBean.updateInputText()" update="@this"
-								             tooltip="tooltip of the inputText">
-									<f:facet name="prepend">
-						                <h:outputText value="$" />
-						            </f:facet>
-						            <f:facet name="append">
-						                <h:outputText value=".00" />
-						            </f:facet>
-								</b:inputText>
-							</b:column>
-			    			<b:column medium-screen="full">
-								<b:inputTextarea label-small-screen="4" small-screen="8" label="b:inputTextarea" render-label="false"
-								             value="#{formBean.inputTextarea}" onmouseover="ajax:formBean.updateInputTextarea()" update="@this"
-								             tooltip="tooltip of the inputTextarea">
-									<f:facet name="prepend">
-						                <h:outputText value="$" />
-						            </f:facet>
-						            <f:facet name="append">
-						                <h:outputText value=".00" />
-						            </f:facet>
-								</b:inputTextarea>
-							</b:column>
-			    			<b:column medium-screen="full">
-								<b:colorPicker label-small-screen="4" small-screen="8" label="b:colorPicker" render-label="false"
-								               value="#{formBean.color}" onmouseover="ajax:formBean.updateColor()" update="@this"
-								               tooltip="tooltip of the colorPicker">
-									<f:facet name="prepend">
-						                <h:outputText value="$" />
-						            </f:facet>
-						            <f:facet name="append">
-						                <h:outputText value=".00" />
-						            </f:facet>
-								</b:colorPicker>								
-							</b:column>
-			    			<b:column medium-screen="full">
-								<b:selectOneMenu label-small-screen="4" small-screen="8" label="b:selectOneMenu" render-label="false"
-								                 value="#{formBean.combobox}" onmouseover="ajax:formBean.updateCombobox()" update="@this"
-								                 tooltip="tooltip of the selectOneMenu">
-									<f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
-									<f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
-									<f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
-									<f:facet name="prepend">
-						                <h:outputText value="$" />
-						            </f:facet>
-						            <f:facet name="append">
-						                <h:outputText value=".00" />
-						            </f:facet>
-								</b:selectOneMenu>
-			    			
-							</b:column>
-			    			<b:column medium-screen="full" >
-								<b:selectMultiMenu label-small-screen="4" small-screen="8" button-width="250" label="b:selectMultiMenu" render-label="false"
-								                 value="#{formBean.combobox}" onmouseover="ajax:formBean.updateCombobox()" update="@this"
-								                 id="selectMultiHorizontalFacets"
-								                 tooltip="tooltip of the selectMultiMenu">
-									<f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
-									<f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
-									<f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
-									<f:facet name="prepend">
-						                <h:outputText value="$" />
-						            </f:facet>
-						            <f:facet name="append">
-						                <h:outputText value=".00" />
-						            </f:facet>
-								</b:selectMultiMenu>								
-		  					</b:column>
-			    			<b:column medium-screen="full">
-								<b:datepicker label-small-screen="4" small-screen="8" label="b:datepicker" inline="true" render-label="false"
-								                  value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"
-								                  id="datePickerHorizontalFacets"
-								                  tooltip="tooltip of the datepicker">
-									<f:facet name="prepend">
-						                <h:outputText value="$" />
-						            </f:facet>
-						            <f:facet name="append">
-						                <h:outputText value=".00" />
-						            </f:facet>
-								</b:datepicker>
-		  					</b:column>
-			    			<b:column medium-screen="full">
-								<b:dateTimePicker label-small-screen="4" small-screen="8" label="b:dateTimePicker" inline="true" render-label="false"
-								                  value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this" process="@this"
-								                  tooltip="tooltip of the dateTimePicker">
-									<f:facet name="prepend">
-						                <h:outputText value="$" />
-						            </f:facet>
-						            <f:facet name="append">
-						                <h:outputText value=".00" />
-						            </f:facet>
-								</b:dateTimePicker>
-		  					</b:column>
-			    		</b:row>
-			    		<b:row>
-			    			<b:column medium-screen="full">
-			    				<b:commandButton value="update datepicker" onclick="ajax:formBean.updateDate()" update="datePickerHorizontalFacets" process="@this datePickerHorizontalFacets"/>
-			    				<b:commandButton value="update multiselect" onclick="ajax:formBean.updateCombobox()" update="selectMultiHorizontalFacets" process="@this selectMultiHorizontalFacets"/>
-			    			
-			    			</b:column>
-			    		</b:row>
-		    		</b:form>
-	    		</b:panel>
-	    		<b:panel title="standard h:form (stacked / with facets)" look="success">
-			    	<h:form>
-			    		<b:row>
-			    			<b:column medium-screen="full">
-								<b:inputText label="b:inputText" render-label="false" label-style="width:150px"
-								             value="#{formBean.inputText}" onmouseover="ajax:formBean.updateInputText()" update="@this"
-								             tooltip="tooltip of the inputText">
-									<f:facet name="prepend">
-						                <h:outputText value="$" />
-						            </f:facet>
-						            <f:facet name="append">
-						                <h:outputText value=".00" />
-						            </f:facet>
-								</b:inputText>
-							</b:column>
-			    			<b:column medium-screen="full">
-								<b:inputTextarea label="b:inputTextarea" render-label="false" label-style="width:150px"
-								             value="#{formBean.inputTextarea}" onmouseover="ajax:formBean.updateInputTextarea()" update="@this"
-								             tooltip="tooltip of the inputTextarea">
-									<f:facet name="prepend">
-						                <h:outputText value="$" />
-						            </f:facet>
-						            <f:facet name="append">
-						                <h:outputText value=".00" />
-						            </f:facet>
-								</b:inputTextarea>
-							</b:column>
-			    			<b:column medium-screen="full">
-								<b:colorPicker label="b:colorPicker" render-label="false" label-style="width:150px"
-								               value="#{formBean.color}" onmouseover="ajax:formBean.updateColor()" update="@this"
-								               tooltip="tooltip of the colorPicker">
-									<f:facet name="prepend">
-						                <h:outputText value="$" />
-						            </f:facet>
-						            <f:facet name="append">
-						                <h:outputText value=".00" />
-						            </f:facet>
-								</b:colorPicker>								
-							</b:column>
-			    			<b:column medium-screen="full">
-								<b:selectOneMenu label="b:selectOneMenu" render-label="false" label-style="width:150px"
-								                 value="#{formBean.combobox}" onmouseover="ajax:formBean.updateCombobox()" update="@this"
-								                 tooltip="tooltip of the selectOneMenu">
-									<f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
-									<f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
-									<f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
-									<f:facet name="prepend">
-						                <h:outputText value="$" />
-						            </f:facet>
-						            <f:facet name="append">
-						                <h:outputText value=".00" />
-						            </f:facet>
-								</b:selectOneMenu>
-			    			
-							</b:column>
-			    			<b:column medium-screen="full" >
-								<b:selectMultiMenu button-width="250" label="b:selectMultiMenu" render-label="false" label-style="width:150px"
-								                 value="#{formBean.combobox}" onmouseover="ajax:formBean.updateCombobox()" update="@this"
-								                 tooltip="tooltip of the selectMultiMenu">
-									<f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
-									<f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
-									<f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
-									<f:facet name="prepend">
-						                <h:outputText value="$" />
-						            </f:facet>
-						            <f:facet name="append">
-						                <h:outputText value=".00" />
-						            </f:facet>
-								</b:selectMultiMenu>								
-		  					</b:column>
-			    			<b:column medium-screen="full">
-								<b:datepicker label="b:datepicker" inline="true" render-label="false" label-style="width:150px"
-								                  value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"
-								                  tooltip="tooltip of the datepicker">
-									<f:facet name="prepend">
-						                <h:outputText value="$" />
-						            </f:facet>
-						            <f:facet name="append">
-						                <h:outputText value=".00" />
-						            </f:facet>
-								</b:datepicker>
-		  					</b:column>
-			    			<b:column medium-screen="full">
-								<b:dateTimePicker label="b:dateTimePicker" inline="true" render-label="false" label-style="width:150px"
-								                  value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"
-								                  tooltip="tooltip of the dateTimePicker">
-									<f:facet name="prepend">
-						                <h:outputText value="$" />
-						            </f:facet>
-						            <f:facet name="append">
-						                <h:outputText value=".00" />
-						            </f:facet>
-								</b:dateTimePicker>
-		  					</b:column>
-			    		</b:row>
-		    		</h:form>
-	    		</b:panel>
-    		</b:panelGrid>
-    	</b:container>
-    </h:body>
+  <h:head>
+    <title>BootsFaces rocks!</title>
+  <meta name="author" content="Stephan Rauh"></meta>
+  </h:head>
+  <h:body>
+    <b:container>
+      <b:panelGrid columns="2">
+        <b:panel title="inline form" look="success">
+          <b:form inline="true">
+            <b:row>
+              <b:column medium-screen="full">
+                <b:inputText small-screen="9" style="width:170px" label="b:inputText" render-label="false" label-style="width:150px"
+                             value="#{formBean.inputText}" onmouseover="ajax:formBean.updateInputText()" update="@this"
+                             tooltip="tooltip of the inputtext"/>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:inputTextarea small-screen="9" style="width:170px" label="b:inputTextarea" render-label="false" label-style="width:150px"
+                                 value="#{formBean.inputTextarea}" onmouseover="ajax:formBean.updateInputTextarea()" update="@this"
+                                 tooltip="tooltip of the inputtextarea"/>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:colorPicker small-screen="9" style="width:170px" label="b:colorPicker" render-label="false" label-style="width:150px"
+                               value="#{formBean.color}" onmouseover="ajax:formBean.updateColor()" update="@this"
+                               tooltip="tooltip of the colorpicker"/>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:selectOneMenu small-screen="9" style="width:170px" label="b:selectOneMenu" render-label="false" label-style="width:150px"
+                                 value="#{formBean.combobox}" onmouseover="ajax:formBean.updateCombobox()" update="@this"
+                                 tooltip="tooltip of the selectonemenu">
+                <f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
+                <f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
+                <f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
+                </b:selectOneMenu>
+
+              </b:column>
+              <b:column medium-screen="full" >
+                <b:selectMultiMenu small-screen="9" style="width:170px" button-width="170" label="b:selectMultiMenu" render-label="false" label-style="width:150px"
+                                   value="#{formBean.combobox}" onclick="ajax:formBean.updateCombobox()" update="@this"
+                                   tooltip="tooltip of the selectmultimenu">
+                <f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
+                <f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
+                <f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
+                </b:selectMultiMenu>
+                <b:commandButton value="AJAX" onclick="ajax:formBean.updateCombobox()" update="@previous" process="@previous @this" />
+              </b:column>
+              <b:column medium-screen="full">
+                <b:datepicker small-screen="9" style="width:170px" label="b:datepicker" inline="true" render-label="false" label-style="width:150px"
+                              value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"
+                              tooltip="tooltip of the datepicker"/>
+                <b:commandButton value="AJAX" onclick="ajax:formBean.updateDate()" update="@previous" process="@previous @this" />
+              </b:column>
+              <b:column medium-screen="full">
+                <b:dateTimePicker small-screen="9" style="width:170px" label="b:dateTimePicker" inline="true" render-label="false" label-style="width:150px"
+                                  value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"
+                                  tooltip="tooltip of the datetimepicker"/>
+              </b:column>
+
+            </b:row>
+          </b:form>
+        </b:panel>
+        <b:panel title="regular BootsFaces b:form (stacked)" look="success">
+          <b:form>
+            <b:row>
+              <b:column medium-screen="full">
+                <b:inputText style="width: 250px;" label="b:inputText" render-label="false" label-style="width:150px"
+                             value="#{formBean.inputText}" onmouseover="ajax:formBean.updateInputText()" update="@this"
+                             tooltip="tooltip of the inputText"/>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:inputTextarea style="width: 250px;" label="b:inputTextarea" render-label="false" label-style="width:150px"
+                                 value="#{formBean.inputTextarea}" onmouseover="ajax:formBean.updateInputTextarea()" update="@this"
+                                 tooltip="tooltip of the inputTextarea"/>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:colorPicker style="width: 250px;" label="b:colorPicker" render-label="false" label-style="width:150px"
+                               value="#{formBean.color}" onmouseover="ajax:formBean.updateColor()" update="@this"
+                               tooltip="tooltip of the colorPicker"/>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:selectOneMenu style="width: 250px;" label="b:selectOneMenu" render-label="false" label-style="width:150px"
+                                 value="#{formBean.combobox}" onmouseover="ajax:formBean.updateCombobox()" update="@this"
+                                 tooltip="tooltip of the selectOneMenu">
+                <f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
+                <f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
+                <f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
+                </b:selectOneMenu>
+
+              </b:column>
+              <b:column medium-screen="full" >
+                <b:selectMultiMenu  style="width: 250px;" button-width="250" label="b:selectMultiMenu" render-label="false" label-style="width:150px"
+                                   value="#{formBean.combobox}" onclick="ajax:formBean.updateCombobox()" update="@this"
+                                   tooltip="tooltip of the selectMultiMenu">
+                <f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
+                <f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
+                <f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
+                </b:selectMultiMenu>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:datepicker  style="width: 250px;" label="b:datepicker" inline="true" render-label="false" label-style="width:150px"
+                              value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"
+                              tooltip="tooltip of the datePicker"/>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:dateTimePicker  style="width: 250px;" label="b:dateTimePicker" inline="true" render-label="false" label-style="width:150px"
+                                  value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"
+                                  tooltip="tooltip of the dateTimePicker"/>
+              </b:column>
+            </b:row>
+          </b:form>
+        </b:panel>
+        <b:panel title="horizontal form" look="success">
+          <b:form horizontal="true">
+            <b:row>
+              <b:column medium-screen="full" rendered="true">
+                <b:inputText label-small-screen="4" small-screen="8"  label="b:inputText" render-label="false"
+                             value="#{formBean.inputText}" onmouseover="ajax:formBean.updateInputText()" update="@this"
+                             tooltip="tooltip of the inputText"/>
+              </b:column>
+              <b:column medium-screen="full" rendered="true">
+                <b:inputTextarea label-small-screen="4" small-screen="8"  label="b:inputText" render-label="false"
+                                 value="#{formBean.inputTextarea}" onmouseover="ajax:formBean.updateInputTextarea()" update="@this"
+                                 tooltip="tooltip of the inputTextarea"/>
+              </b:column>
+              <b:column medium-screen="full" rendered="true">
+                <b:inputTextarea label-small-screen="4" small-screen="8"  label="b:inputTextarea" render-label="false"
+                                 value="#{formBean.inputTextarea}" onmouseover="ajax:formBean.updateInputTextarea()" update="@this"
+                                 tooltip="tooltip of the inputTextarea"/>
+              </b:column>
+              <b:column medium-screen="full" rendered="true">
+                <b:colorPicker label-small-screen="4" small-screen="8"  label="b:colorPicker" render-label="false"
+                               value="#{formBean.color}" onmouseover="ajax:formBean.updateColor()" update="@this"
+                               tooltip="tooltip of the colorPicker"/>
+              </b:column>
+              <b:column medium-screen="full"  rendered="true">
+                <b:selectOneMenu label-small-screen="4" small-screen="8"  label="b:selectOneMenu" render-label="false"
+                                 value="#{formBean.combobox}" onmouseover="ajax:formBean.updateCombobox()" update="@this"
+                                 tooltip="tooltip of the selectOneMenu">
+                <f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
+                <f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
+                <f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
+                </b:selectOneMenu>
+
+              </b:column>
+              <b:column medium-screen="full"  rendered="true">
+                <b:selectMultiMenu label-small-screen="4" small-screen="8"  button-width="250" label="b:selectMultiMenu" render-label="false"
+                                   value="#{formBean.combobox}" onmouseover="ajax:formBean.updateCombobox()" update="@this"
+                                   tooltip="tooltip of the selectMultiMenu">
+                <f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
+                <f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
+                <f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
+                </b:selectMultiMenu>
+              </b:column>
+              <b:column medium-screen="full"  rendered="true">
+                <b:datepicker  label-small-screen="4" small-screen="8"  label="b:datepicker" inline="true" render-label="false"
+                              value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"
+                              tooltip="tooltip of the datepicker"/>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:dateTimePicker label-small-screen="4" small-screen="8" label="b:dateTimePicker" inline="true" render-label="false"
+                                  value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"
+                                  tooltip="tooltip of the dateTimePicker"/>
+              </b:column>
+
+            </b:row>
+          </b:form>
+        </b:panel>
+        <b:panel title="standard h:form (stacked)" look="success">
+          <h:form>
+            <b:row>
+              <b:column medium-screen="full">
+                <b:inputText style="width: 250px;" label="b:inputText" render-label="false" label-style="width:150px"
+                             value="#{formBean.inputText}" onmouseover="ajax:formBean.updateInputText()" update="@this"
+                             tooltip="tooltip of the inputText"/>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:inputTextarea style="width: 250px;" label="b:inputText" render-label="false" label-style="width:150px"
+                                 value="#{formBean.inputTextarea}" onmouseover="ajax:formBean.updateInputTextarea()" update="@this"
+                                 tooltip="tooltip of the inputTextarea"/>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:colorPicker style="width: 250px;" label="b:colorPicker" render-label="false" label-style="width:150px"
+                               value="#{formBean.color}" onmouseover="ajax:formBean.updateColor()" update="@this"
+                               tooltip="tooltip of the colorPicker"/>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:selectOneMenu style="width: 250px;" label="b:selectOneMenu" render-label="false" label-style="width:150px"
+                                 value="#{formBean.combobox}" onmouseover="ajax:formBean.updateCombobox()" update="@this"
+                                 tooltip="tooltip of the selectOneMenu">
+                <f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
+                <f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
+                <f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
+                </b:selectOneMenu>
+
+              </b:column>
+              <b:column medium-screen="full" >
+                <b:selectMultiMenu  style="width: 250px;" button-width="250" label="b:selectMultiMenu" render-label="false" label-style="width:150px"
+                                   value="#{formBean.combobox}" onmouseover="ajax:formBean.updateCombobox()" update="@this"
+                                   tooltip="tooltip of the selectMultiMenu">
+                <f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
+                <f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
+                <f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
+                </b:selectMultiMenu>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:datepicker  style="width: 250px;" label="b:datepicker" inline="true" render-label="false" label-style="width:150px"
+                              value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"
+                              tooltip="tooltip of the datepicker"/>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:dateTimePicker style="width: 250px;" label="b:dateTimePicker" inline="true" render-label="false" label-style="width:150px"
+                                  value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"
+                                  tooltip="tooltip of the dateTimePicker"/>
+              </b:column>
+
+            </b:row>
+          </h:form>
+        </b:panel>
+        <b:panel title="inline BootsFaces b:form (with facets)" look="success">
+          <b:form>
+            <b:row>
+              <b:column medium-screen="full">
+                <b:inputText small-screen="9" label="b:inputText" render-label="false" label-style="width:150px"
+                             value="#{formBean.inputText}" onmouseover="ajax:formBean.updateInputText()" update="@this"
+                             tooltip="tooltip of the inputText">
+                  <f:facet name="prepend">
+                    <h:outputText value="$" />
+                  </f:facet>
+                  <f:facet name="append">
+                    <h:outputText value=".00" />
+                  </f:facet>
+                </b:inputText>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:inputTextarea small-screen="9" label="b:inputTextarea" render-label="false" label-style="width:150px"
+                                 value="#{formBean.inputTextarea}" onmouseover="ajax:formBean.updateInputTextarea()" update="@this"
+                                 tooltip="tooltip of the inputText">
+                  <f:facet name="prepend">
+                    <h:outputText value="$" />
+                  </f:facet>
+                  <f:facet name="append">
+                    <h:outputText value=".00" />
+                  </f:facet>
+                </b:inputTextarea>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:colorPicker small-screen="9" label="b:colorPicker" render-label="false" label-style="width:150px"
+                               value="#{formBean.color}" onmouseover="ajax:formBean.updateColor()" update="@this"
+                               tooltip="tooltip of the colorPicker">
+                  <f:facet name="prepend">
+                    <h:outputText value="$" />
+                  </f:facet>
+                  <f:facet name="append">
+                    <h:outputText value=".00" />
+                  </f:facet>
+                </b:colorPicker>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:selectOneMenu small-screen="9" label="b:selectOneMenu" render-label="false" label-style="width:150px"
+                                 value="#{formBean.combobox}" onmouseover="ajax:formBean.updateCombobox()" update="@this"
+                                 tooltip="tooltip of the selectOneMenu">
+                <f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
+                <f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
+                <f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
+                  <f:facet name="prepend">
+                    <h:outputText value="$" />
+                  </f:facet>
+                  <f:facet name="append">
+                    <h:outputText value=".00" />
+                  </f:facet>
+                </b:selectOneMenu>
+
+              </b:column>
+              <b:column medium-screen="full" >
+                <b:selectMultiMenu small-screen="9" button-width="170" label="b:selectMultiMenu" render-label="false" label-style="width:150px"
+                                   value="#{formBean.combobox}" onmouseover="ajax:formBean.updateCombobox()" update="@this"
+                                   tooltip="tooltip of the selectMultiMenu">
+                <f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
+                <f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
+                <f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
+                  <f:facet name="prepend">
+                    <h:outputText value="$" />
+                  </f:facet>
+                  <f:facet name="append">
+                    <h:outputText value=".00" />
+                  </f:facet>
+                </b:selectMultiMenu>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:datepicker small-screen="9" label="b:datepicker" inline="true" render-label="false" label-style="width:150px"
+                              value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"
+                              tooltip="tooltip of the datepicker">
+                  <f:facet name="prepend">
+                    <h:outputText value="$" />
+                  </f:facet>
+                  <f:facet name="append">
+                    <h:outputText value=".00" />
+                  </f:facet>
+                </b:datepicker>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:dateTimePicker small-screen="9" label="b:dateTimePicker" inline="true" render-label="false" label-style="width:150px"
+                                  value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"
+                                  tooltip="tooltip of the dateTimePicker">
+                  <f:facet name="prepend">
+                    <h:outputText value="$" />
+                  </f:facet>
+                  <f:facet name="append">
+                    <h:outputText value=".00" />
+                  </f:facet>
+                </b:dateTimePicker>
+              </b:column>
+            </b:row>
+          </b:form>
+        </b:panel>
+        <b:panel title="regular BootsFaces b:form (stacked / with facets)" look="success">
+          <b:form>
+            <b:row>
+              <b:column medium-screen="full">
+                <b:inputText label="b:inputText" render-label="false" label-style="width:150px"
+                             value="#{formBean.inputText}" onmouseover="ajax:formBean.updateInputText()" update="@this"
+                             tooltip="tooltip of the inputText">
+                  <f:facet name="prepend">
+                    <h:outputText value="$" />
+                  </f:facet>
+                  <f:facet name="append">
+                    <h:outputText value=".00" />
+                  </f:facet>
+                </b:inputText>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:inputTextarea label="b:inputTextarea" render-label="false" label-style="width:150px"
+                                 value="#{formBean.inputTextarea}" onmouseover="ajax:formBean.updateInputTextarea()" update="@this"
+                                 tooltip="tooltip of the inputTextarea">
+                  <f:facet name="prepend">
+                    <h:outputText value="$" />
+                  </f:facet>
+                  <f:facet name="append">
+                    <h:outputText value=".00" />
+                  </f:facet>
+                </b:inputTextarea>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:colorPicker label="b:colorPicker" render-label="false" label-style="width:150px"
+                               value="#{formBean.color}" onmouseover="ajax:formBean.updateColor()" update="@this"
+                               tooltip="tooltip of the colorPicker">
+                  <f:facet name="prepend">
+                    <h:outputText value="$" />
+                  </f:facet>
+                  <f:facet name="append">
+                    <h:outputText value=".00" />
+                  </f:facet>
+                </b:colorPicker>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:selectOneMenu label="b:selectOneMenu" render-label="false" label-style="width:150px"
+                                 value="#{formBean.combobox}" onmouseover="ajax:formBean.updateCombobox()" update="@this"
+                                 tooltip="tooltip of the selectOneMenu">
+                <f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
+                <f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
+                <f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
+                  <f:facet name="prepend">
+                    <h:outputText value="$" />
+                  </f:facet>
+                  <f:facet name="append">
+                    <h:outputText value=".00" />
+                  </f:facet>
+                </b:selectOneMenu>
+
+              </b:column>
+              <b:column medium-screen="full" >
+                <b:selectMultiMenu button-width="250" label="b:selectMultiMenu" render-label="false" label-style="width:150px"
+                                   value="#{formBean.combobox}" onmouseover="ajax:formBean.updateCombobox()" update="@this"
+                                   tooltip="tooltip of the selectMultiMenu">
+                <f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
+                <f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
+                <f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
+                  <f:facet name="prepend">
+                    <h:outputText value="$" />
+                  </f:facet>
+                  <f:facet name="append">
+                    <h:outputText value=".00" />
+                  </f:facet>
+                </b:selectMultiMenu>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:datepicker label="b:datepicker" inline="true" render-label="false" label-style="width:150px"
+                              value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"
+                              tooltip="tooltip of the datepicker">
+                  <f:facet name="prepend">
+                    <h:outputText value="$" />
+                  </f:facet>
+                  <f:facet name="append">
+                    <h:outputText value=".00" />
+                  </f:facet>
+                </b:datepicker>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:dateTimePicker label="b:dateTimePicker" inline="true" render-label="false" label-style="width:150px"
+                                  value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"
+                                  tooltip="tooltip of the dateTimePicker">
+                  <f:facet name="prepend">
+                    <h:outputText value="$" />
+                  </f:facet>
+                  <f:facet name="append">
+                    <h:outputText value=".00" />
+                  </f:facet>
+                </b:dateTimePicker>
+              </b:column>
+            </b:row>
+          </b:form>
+        </b:panel>
+        <b:panel title="horizontal BootsFaces b:form (stacked / with facets)" look="success">
+          <b:form horizontal="true">
+            <b:row>
+              <b:column medium-screen="full">
+                <b:inputText label-small-screen="4" small-screen="8" label="b:inputText" render-label="false"
+                             value="#{formBean.inputText}" onmouseover="ajax:formBean.updateInputText()" update="@this"
+                             tooltip="tooltip of the inputText">
+                  <f:facet name="prepend">
+                    <h:outputText value="$" />
+                  </f:facet>
+                  <f:facet name="append">
+                    <h:outputText value=".00" />
+                  </f:facet>
+                </b:inputText>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:inputTextarea label-small-screen="4" small-screen="8" label="b:inputTextarea" render-label="false"
+                                 value="#{formBean.inputTextarea}" onmouseover="ajax:formBean.updateInputTextarea()" update="@this"
+                                 tooltip="tooltip of the inputTextarea">
+                  <f:facet name="prepend">
+                    <h:outputText value="$" />
+                  </f:facet>
+                  <f:facet name="append">
+                    <h:outputText value=".00" />
+                  </f:facet>
+                </b:inputTextarea>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:colorPicker label-small-screen="4" small-screen="8" label="b:colorPicker" render-label="false"
+                               value="#{formBean.color}" onmouseover="ajax:formBean.updateColor()" update="@this"
+                               tooltip="tooltip of the colorPicker">
+                  <f:facet name="prepend">
+                    <h:outputText value="$" />
+                  </f:facet>
+                  <f:facet name="append">
+                    <h:outputText value=".00" />
+                  </f:facet>
+                </b:colorPicker>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:selectOneMenu label-small-screen="4" small-screen="8" label="b:selectOneMenu" render-label="false"
+                                 value="#{formBean.combobox}" onmouseover="ajax:formBean.updateCombobox()" update="@this"
+                                 tooltip="tooltip of the selectOneMenu">
+                <f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
+                <f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
+                <f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
+                  <f:facet name="prepend">
+                    <h:outputText value="$" />
+                  </f:facet>
+                  <f:facet name="append">
+                    <h:outputText value=".00" />
+                  </f:facet>
+                </b:selectOneMenu>
+
+              </b:column>
+              <b:column medium-screen="full" >
+                <b:selectMultiMenu label-small-screen="4" small-screen="8" button-width="250" label="b:selectMultiMenu" render-label="false"
+                                   value="#{formBean.combobox}" onmouseover="ajax:formBean.updateCombobox()" update="@this"
+                                   id="selectMultiHorizontalFacets"
+                                   tooltip="tooltip of the selectMultiMenu">
+                <f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
+                <f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
+                <f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
+                  <f:facet name="prepend">
+                    <h:outputText value="$" />
+                  </f:facet>
+                  <f:facet name="append">
+                    <h:outputText value=".00" />
+                  </f:facet>
+                </b:selectMultiMenu>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:datepicker label-small-screen="4" small-screen="8" label="b:datepicker" inline="true" render-label="false"
+                              value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"
+                              id="datePickerHorizontalFacets"
+                              tooltip="tooltip of the datepicker">
+                  <f:facet name="prepend">
+                    <h:outputText value="$" />
+                  </f:facet>
+                  <f:facet name="append">
+                    <h:outputText value=".00" />
+                  </f:facet>
+                </b:datepicker>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:dateTimePicker label-small-screen="4" small-screen="8" label="b:dateTimePicker" inline="true" render-label="false"
+                                  value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this" process="@this"
+                                  tooltip="tooltip of the dateTimePicker">
+                  <f:facet name="prepend">
+                    <h:outputText value="$" />
+                  </f:facet>
+                  <f:facet name="append">
+                    <h:outputText value=".00" />
+                  </f:facet>
+                </b:dateTimePicker>
+              </b:column>
+            </b:row>
+            <b:row>
+              <b:column medium-screen="full">
+                <b:commandButton value="update datepicker" onclick="ajax:formBean.updateDate()" update="datePickerHorizontalFacets" process="@this datePickerHorizontalFacets"/>
+                <b:commandButton value="update multiselect" onclick="ajax:formBean.updateCombobox()" update="selectMultiHorizontalFacets" process="@this selectMultiHorizontalFacets"/>
+
+              </b:column>
+            </b:row>
+          </b:form>
+        </b:panel>
+        <b:panel title="standard h:form (stacked / with facets)" look="success">
+          <h:form>
+            <b:row>
+              <b:column medium-screen="full">
+                <b:inputText label="b:inputText" render-label="false" label-style="width:150px"
+                             value="#{formBean.inputText}" onmouseover="ajax:formBean.updateInputText()" update="@this"
+                             tooltip="tooltip of the inputText">
+                  <f:facet name="prepend">
+                    <h:outputText value="$" />
+                  </f:facet>
+                  <f:facet name="append">
+                    <h:outputText value=".00" />
+                  </f:facet>
+                </b:inputText>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:inputTextarea label="b:inputTextarea" render-label="false" label-style="width:150px"
+                                 value="#{formBean.inputTextarea}" onmouseover="ajax:formBean.updateInputTextarea()" update="@this"
+                                 tooltip="tooltip of the inputTextarea">
+                  <f:facet name="prepend">
+                    <h:outputText value="$" />
+                  </f:facet>
+                  <f:facet name="append">
+                    <h:outputText value=".00" />
+                  </f:facet>
+                </b:inputTextarea>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:colorPicker label="b:colorPicker" render-label="false" label-style="width:150px"
+                               value="#{formBean.color}" onmouseover="ajax:formBean.updateColor()" update="@this"
+                               tooltip="tooltip of the colorPicker">
+                  <f:facet name="prepend">
+                    <h:outputText value="$" />
+                  </f:facet>
+                  <f:facet name="append">
+                    <h:outputText value=".00" />
+                  </f:facet>
+                </b:colorPicker>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:selectOneMenu label="b:selectOneMenu" render-label="false" label-style="width:150px"
+                                 value="#{formBean.combobox}" onmouseover="ajax:formBean.updateCombobox()" update="@this"
+                                 tooltip="tooltip of the selectOneMenu">
+                <f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
+                <f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
+                <f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
+                  <f:facet name="prepend">
+                    <h:outputText value="$" />
+                  </f:facet>
+                  <f:facet name="append">
+                    <h:outputText value=".00" />
+                  </f:facet>
+                </b:selectOneMenu>
+
+              </b:column>
+              <b:column medium-screen="full" >
+                <b:selectMultiMenu button-width="250" label="b:selectMultiMenu" render-label="false" label-style="width:150px"
+                                   value="#{formBean.combobox}" onmouseover="ajax:formBean.updateCombobox()" update="@this"
+                                   tooltip="tooltip of the selectMultiMenu">
+                <f:selectItem itemValue="0" itemLabel="red"></f:selectItem>
+                <f:selectItem itemValue="1" itemLabel="yellow"></f:selectItem>
+                <f:selectItem itemValue="2" itemLabel="green"></f:selectItem>
+                  <f:facet name="prepend">
+                    <h:outputText value="$" />
+                  </f:facet>
+                  <f:facet name="append">
+                    <h:outputText value=".00" />
+                  </f:facet>
+                </b:selectMultiMenu>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:datepicker label="b:datepicker" inline="true" render-label="false" label-style="width:150px"
+                              value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"
+                              tooltip="tooltip of the datepicker">
+                  <f:facet name="prepend">
+                    <h:outputText value="$" />
+                  </f:facet>
+                  <f:facet name="append">
+                    <h:outputText value=".00" />
+                  </f:facet>
+                </b:datepicker>
+              </b:column>
+              <b:column medium-screen="full">
+                <b:dateTimePicker label="b:dateTimePicker" inline="true" render-label="false" label-style="width:150px"
+                                  value="#{formBean.date}" onmouseover="ajax:formBean.updateDate()" update="@this"
+                                  tooltip="tooltip of the dateTimePicker">
+                  <f:facet name="prepend">
+                    <h:outputText value="$" />
+                  </f:facet>
+                  <f:facet name="append">
+                    <h:outputText value=".00" />
+                  </f:facet>
+                </b:dateTimePicker>
+              </b:column>
+            </b:row>
+          </h:form>
+        </b:panel>
+      </b:panelGrid>
+    </b:container>
+  </h:body>
 </html>

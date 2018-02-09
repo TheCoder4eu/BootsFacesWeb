@@ -1,280 +1,294 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
- 
-             <ui:define name="content">
-                <h1>Button Groups and Toolbars</h1>
-                <p>BootsFaces lets you group a series of buttons together on a single line using the <code>&lt;b:buttonGroup&gt;</code> component.</p>
-                <h3>Basic example</h3>
-                <p>Wrap a series of <code>&lt;b:button&gt;</code>s or <code>&lt;b:commandButton&gt;</code>s by enclosing them in a <code>&lt;b:buttonGroup&gt;</code> .</p>
-                <b:panel title="Live preview" look="info" collapsible="false">
-                        <b:buttonGroup>
-                            <b:button value="Left" />
-                            <b:button value="Middle" />
-                            <b:button value="Right" />
-                        </b:buttonGroup>
-                    <f:facet name="footer">
-                        <strong>JSF markup:</strong>
-                        <b:panel>
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;">
-                        <![CDATA[
-                        <b:buttonGroup>
-                            <b:button value="Left" />
-                            <b:button value="Middle" />
-                            <b:button value="Right" />
-                        </b:buttonGroup>
-                        ]]></script>
-                        </b:panel>
-                    </f:facet>
-                </b:panel>
-                
-                <h3>Button toolbar</h3>
-                <p>You can go further and obtain a Toolbar combining sets of <code>&lt;b:buttonGroup&gt;</code>s inside a <code>&lt;b:buttonToolbar&gt;</code></p>
-                <b:panel title="Live preview" look="info" collapsible="false">
-                    <b:buttonToolbar>
-                        <b:buttonGroup>
-                            <b:button value="1" />
-                            <b:button value="2" />
-                            <b:button value="3" />
-                            <b:button value="4" />
-                        </b:buttonGroup>
-                        <b:buttonGroup>
-                            <b:button value="5" />
-                            <b:button value="6" />
-                            <b:button value="7" />
-                        </b:buttonGroup>
-                        <b:buttonGroup>
-                            <b:button value="8" />
-                            <b:button value="9" />
-                        </b:buttonGroup>
-                    </b:buttonToolbar>
-                    <f:facet name="footer">
-                        <strong>JSF markup:</strong><br/>
-                        <b:panel>
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;">
-                        <![CDATA[
-                        <b:buttonToolbar>
-                            <b:buttonGroup>
-                                <b:button value="1" />
-                                <b:button value="2" />
-                                <b:button value="3" />
-                                <b:button value="4" />
-                            </b:buttonGroup>
-                            <b:buttonGroup>
-                                <b:button value="5" />
-                                <b:button value="6" />
-                                <b:button value="7" />
-                            </b:buttonGroup>
-                            <b:buttonGroup>
-                                <b:button value="8" />
-                                <b:button value="9" />
-                            </b:buttonGroup>
-                        </b:buttonToolbar>
-                        ]]></script>
-                            </b:panel>
-                    </f:facet>
-                </b:panel>
-                <h3>Sizing</h3>
-                <p>Instead of applying button size attribute to every button in a group, just add the size attribute to the <code>&lt;b:buttonGroup&gt;</code>.</p>
-                <b:panel title="Live preview" look="info" collapsible="false">
-                        <b:buttonGroup size="lg">
-                            <b:button value="Left" />
-                            <b:button value="Middle" />
-                            <b:button value="Right" />
-                        </b:buttonGroup> <p/>
-                        <b:buttonGroup>
-                            <b:button value="Left" />
-                            <b:button value="Middle" />
-                            <b:button value="Right" />
-                        </b:buttonGroup> <p/>
-                        <b:buttonGroup size="sm">
-                            <b:button value="Left" />
-                            <b:button value="Middle" />
-                            <b:button value="Right" />
-                        </b:buttonGroup> <p/>
-                        <b:buttonGroup size="xs">
-                            <b:button value="Left" />
-                            <b:button value="Middle" />
-                            <b:button value="Right" />
-                        </b:buttonGroup>
-                    <f:facet name="footer">
-                        <strong>JSF markup:</strong><br/>
-                        <b:panel>
-                            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;">
-                        <![CDATA[
-                        <b:buttonGroup size="lg">
-                            <b:button value="Left" />
-                            <b:button value="Middle" />
-                            <b:button value="Right" />
-                        </b:buttonGroup> <p/>
-                        <b:buttonGroup>
-                            <b:button value="Left" />
-                            <b:button value="Middle" />
-                            <b:button value="Right" />
-                        </b:buttonGroup> <p/>
-                        <b:buttonGroup size="sm">
-                            <b:button value="Left" />
-                            <b:button value="Middle" />
-                            <b:button value="Right" />
-                        </b:buttonGroup> <p/>
-                        <b:buttonGroup size="xs">
-                            <b:button value="Left" />
-                            <b:button value="Middle" />
-                            <b:button value="Right" />
-                        </b:buttonGroup>
-                        ]]></script>
-                        </b:panel>
-                    </f:facet>
-                </b:panel>
-                <h3>Mixed Button Groups</h3>
-                <p>If you want dropdown menus mixed with a series of buttons, just add the <code>&lt;b:dropButton&gt;</code> inside the <code>&lt;b:buttonGroup&gt;</code>.</p>
-                <p>You can even use <b>different looks</b> and/or <b>icons</b> for your buttons, if you need to.</p>
-                <b:panel title="Live preview" look="info" collapsible="false">
-                    <h:form>
-	                    <b:row>
-	                      <b:column span="8">
-	                      	<b:panel look="primary" title="b:buttonGroup">
-		                      <b:buttonGroup contentDisabled="#{buttonGroupsBean.contentDisabled}">
-		                        <b:button look="success" value="1" />
-		                        <b:button look="primary" icon="print" value="" />
-		                        <b:dropButton look="warning" value="DropButton" contentDisabled="#{buttonGroupsBean.dropButtonDisabled}">
-		                            <b:navLink value="Action" href="#" disabled="#{buttonGroupsBean.invidualLinksDisabled}"></b:navLink>
-		                            <b:navLink value="Another action" href="#" disabled="#{buttonGroupsBean.invidualLinksDisabled}"></b:navLink>
-		                            <b:navLink value="Something else here" href="#" disabled="#{buttonGroupsBean.invidualLinksDisabled}"></b:navLink>
-		                            <b:navLink></b:navLink>
-		                            <b:navLink header="Nav header"></b:navLink>
-		                            <b:navLink value="Separated link" href="#" disabled="#{buttonGroupsBean.invidualLinksDisabled}"></b:navLink>
-		                            <b:navLink value="One more separated link" href="#" disabled="#{buttonGroupsBean.invidualLinksDisabled}"></b:navLink>
-		                        </b:dropButton>
-		                      </b:buttonGroup>
-		                    </b:panel>
-		                    </b:column>
-	                        <b:column span="4">
-	                            <b:panel look="primary" title="Options">
-	                            	<b:switch on-text="true" off-text="default" value="#{buttonGroupsBean.contentDisabled}"
-	                            	          update="@form" onchange="ajax:buttonGroupsBean.onChange()" 
-	                            	          label="b:buttonGroup contentDisabled=" />
-	                            	<b:switch on-text="disabled" off-text="default" value="#{buttonGroupsBean.dropButtonDisabled}"
-	                            	          update="@form" onchange="ajax:buttonGroupsBean.onChange()" 
-	                            	          label="b:dropButton contentDisabled=" />
-	                            	<b:switch on-text="disabled" off-text="default" value="#{buttonGroupsBean.invidualLinksDisabled}"
-	                            	          update="@form" onchange="ajax:buttonGroupsBean.onChange()" 
-	                            	          label="individual links disabled" />
-	                            </b:panel>
-		                    </b:column>
-	                      </b:row>
-                    </h:form>
-                    <f:facet name="footer">
-                        <strong>JSF markup:</strong><br/>
-                        <b:panel>
-                            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;">
-                        <![CDATA[
-	                    <b:row>
-	                      <b:column span="8">
-	                      	<b:panel look="primary" title="b:buttonGroup">
-		                      <b:buttonGroup contentDisabled="&num;{buttonGroupsBean.contentDisabled}">
-		                        <b:button look="success" value="1" />
-		                        <b:button look="primary" icon="print" value="" />
-		                        <b:dropButton look="warning" value="DropButton" contentDisabled="&num;{buttonGroupsBean.dropButtonDisabled}">
-		                            <b:navLink value="Action" href="&num;" disabled="&num;{buttonGroupsBean.invidualLinksDisabled}"></b:navLink>
-		                            <b:navLink value="Another action" href="&num;" disabled="&num;{buttonGroupsBean.invidualLinksDisabled}"></b:navLink>
-		                            <b:navLink value="Something else here" href="&num;" disabled="&num;{buttonGroupsBean.invidualLinksDisabled}"></b:navLink>
-		                            <b:navLink></b:navLink>
-		                            <b:navLink header="Nav header"></b:navLink>
-		                            <b:navLink value="Separated link" href="&num;" disabled="&num;{buttonGroupsBean.invidualLinksDisabled}"></b:navLink>
-		                            <b:navLink value="One more separated link" href="&num;" disabled="&num;{buttonGroupsBean.invidualLinksDisabled}"></b:navLink>
-		                        </b:dropButton>
-		                      </b:buttonGroup>
-		                    </b:panel>
-		                    </b:column>
-	                        <b:column span="4">
-	                            <b:panel look="primary" title="Options">
-	                            	<b:switch on-text="true" off-text="default" value="&num;{buttonGroupsBean.contentDisabled}"
-	                            	          update="@form" onchange="ajax:buttonGroupsBean.onChange()" 
-	                            	          label="b:buttonGroup contentDisabled=" />
-	                            	<b:switch on-text="disabled" off-text="default" value="&num;{buttonGroupsBean.dropButtonDisabled}"
-	                            	          update="@form" onchange="ajax:buttonGroupsBean.onChange()" 
-	                            	          label="b:dropButton contentDisabled=" />
-	                            	<b:switch on-text="disabled" off-text="default" value="&num;{buttonGroupsBean.invidualLinksDisabled}"
-	                            	          update="@form" onchange="ajax:buttonGroupsBean.onChange()" 
-	                            	          label="individual links disabled" />
-	                            </b:panel>
-		                    </b:column>
-	                      </b:row>
-                        ]]></script>
-                        </b:panel>
-                    </f:facet>
-                </b:panel>
-                <h3>Vertical variation</h3>
-                <p>Make a set of buttons appear vertically stacked rather than horizontally, using the <code>orientation="vertical"</code> attribute.</p>
-                <b:panel title="Live preview" look="info" collapsible="false">
-                    <b:buttonGroup orientation="vertical">
-                            <b:button value="Button" />
-                            <b:button value="Button" />
-                            <b:dropButton value="DropButton">
-                                <b:navLink value="Action" href="#"></b:navLink>
-                                <b:navLink value="Another action" href="#"></b:navLink>
-                                <b:navLink value="Something else here" href="#"></b:navLink>
-                                <b:navLink></b:navLink>
-                                <b:navLink header="Nav header"></b:navLink>
-                                <b:navLink value="Separated link" href="#"></b:navLink>
-                                <b:navLink value="One more separated link" href="#"></b:navLink>
-                            </b:dropButton>
-                            <b:button value="Button" />
-                            <b:button value="Button" />
-                            <b:dropButton value="DropButton">
-                                <b:navLink value="Action" href="#"></b:navLink>
-                                <b:navLink value="Another action" href="#"></b:navLink>
-                                <b:navLink value="Something else here" href="#"></b:navLink>
-                                <b:navLink></b:navLink>
-                                <b:navLink header="Nav header"></b:navLink>
-                                <b:navLink value="Separated link" href="#"></b:navLink>
-                                <b:navLink value="One more separated link" href="#"></b:navLink>
-                            </b:dropButton>
-                            <b:dropButton value="DropButton">
-                                <b:navLink value="Action" href="#"></b:navLink>
-                                <b:navLink value="Another action" href="#"></b:navLink>
-                                <b:navLink value="Something else here" href="#"></b:navLink>
-                                <b:navLink></b:navLink>
-                                <b:navLink header="Nav header"></b:navLink>
-                                <b:navLink value="Separated link" href="#"></b:navLink>
-                                <b:navLink value="One more separated link" href="#"></b:navLink>
-                            </b:dropButton>
-                        </b:buttonGroup>
-                    <f:facet name="footer">
-                        <strong>Markup:</strong><br/>
-                        <b:panel>
-                            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;">
-                        <![CDATA[
-                        <b:buttonGroup orientation="vertical">
-                            ...
-                        </b:buttonGroup>
-                        ]]></script>
-                        </b:panel>
-                    </f:facet>
-                </b:panel>
-                
-                <br/>
-                <h2>Reference section</h2>
-                <ui:include src="ButtonAttributes.xhtml" />
-                <ui:include src="ButtonGroupAttributes.xhtml" />
-                <b:panel look="info" rendered="false">
-					<f:facet name="heading">
-						<b>Skinning</b>
-					</f:facet>
-					<ul>
-						<li>Tell the world which CSS classes can be used to change the
-						look of the component.</li>
-					</ul>
-				</b:panel>
-                
-                
-                <script type="text/javascript">
-                    SyntaxHighlighter.all();
-                </script>
-            </ui:define>
-        </ui:composition>
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#button_groups_and_toolbars" value="Button Groups and Toolbars" />
+      <b:navLink href="#basic_example" value="Basic example" />
+      <b:navLink href="#button_toolbar" value="Button toolbar" />
+      <b:navLink href="#sizing" value="Sizing" />
+      <b:navLink href="#mixed_button_groups" value="Mixed Button Groups" />
+      <b:navLink href="#vertical_variation" value="Vertical variation" />
+      <b:navLink href="#reference_section" value="Reference section" />
+    </b:listLinks>
+  </ui:define>
+
+
+  <ui:define name="content">
+    <h1><a id="button_groups_and_toolbars">Button Groups and Toolbars</a></h1>
+    <p>BootsFaces lets you group a series of buttons together on a single line using the <code>&lt;b:buttonGroup&gt;</code> component.</p>
+    <h2><a id="basic_example">Basic example</a></h2>
+    <p>Wrap a series of <code>&lt;b:button&gt;</code>s or <code>&lt;b:commandButton&gt;</code>s by enclosing them in a <code>&lt;b:buttonGroup&gt;</code> .</p>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <b:buttonGroup>
+        <b:button value="Left" />
+        <b:button value="Middle" />
+        <b:button value="Right" />
+      </b:buttonGroup>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;">
+          <![CDATA[
+          <b:buttonGroup>
+            <b:button value="Left" />
+            <b:button value="Middle" />
+            <b:button value="Right" />
+          </b:buttonGroup>
+          ]]></script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+    <h2><a id="button_toolbar">Button toolbar</a></h2>
+    <p>You can go further and obtain a Toolbar combining sets of <code>&lt;b:buttonGroup&gt;</code>s inside a <code>&lt;b:buttonToolbar&gt;</code></p>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <b:buttonToolbar>
+        <b:buttonGroup>
+          <b:button value="1" />
+          <b:button value="2" />
+          <b:button value="3" />
+          <b:button value="4" />
+        </b:buttonGroup>
+        <b:buttonGroup>
+          <b:button value="5" />
+          <b:button value="6" />
+          <b:button value="7" />
+        </b:buttonGroup>
+        <b:buttonGroup>
+          <b:button value="8" />
+          <b:button value="9" />
+        </b:buttonGroup>
+      </b:buttonToolbar>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong><br/>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;">
+          <![CDATA[
+          <b:buttonToolbar>
+            <b:buttonGroup>
+              <b:button value="1" />
+              <b:button value="2" />
+              <b:button value="3" />
+              <b:button value="4" />
+            </b:buttonGroup>
+            <b:buttonGroup>
+              <b:button value="5" />
+              <b:button value="6" />
+              <b:button value="7" />
+            </b:buttonGroup>
+            <b:buttonGroup>
+              <b:button value="8" />
+              <b:button value="9" />
+            </b:buttonGroup>
+          </b:buttonToolbar>
+          ]]></script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+    <h2><a id="sizing">Sizing</a></h2>
+    <p>Instead of applying button size attribute to every button in a group, just add the size attribute to the <code>&lt;b:buttonGroup&gt;</code>.</p>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <b:buttonGroup size="lg">
+        <b:button value="Left" />
+        <b:button value="Middle" />
+        <b:button value="Right" />
+      </b:buttonGroup> <p/>
+      <b:buttonGroup>
+        <b:button value="Left" />
+        <b:button value="Middle" />
+        <b:button value="Right" />
+      </b:buttonGroup> <p/>
+      <b:buttonGroup size="sm">
+        <b:button value="Left" />
+        <b:button value="Middle" />
+        <b:button value="Right" />
+      </b:buttonGroup> <p/>
+      <b:buttonGroup size="xs">
+        <b:button value="Left" />
+        <b:button value="Middle" />
+        <b:button value="Right" />
+      </b:buttonGroup>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong><br/>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;">
+          <![CDATA[
+          <b:buttonGroup size="lg">
+            <b:button value="Left" />
+            <b:button value="Middle" />
+            <b:button value="Right" />
+          </b:buttonGroup> <p/>
+          <b:buttonGroup>
+            <b:button value="Left" />
+            <b:button value="Middle" />
+            <b:button value="Right" />
+          </b:buttonGroup> <p/>
+          <b:buttonGroup size="sm">
+            <b:button value="Left" />
+            <b:button value="Middle" />
+            <b:button value="Right" />
+          </b:buttonGroup> <p/>
+          <b:buttonGroup size="xs">
+            <b:button value="Left" />
+            <b:button value="Middle" />
+            <b:button value="Right" />
+          </b:buttonGroup>
+          ]]></script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+    <h2><a id="mixed_button_groups">Mixed Button Groups</a></h2>
+    <p>If you want dropdown menus mixed with a series of buttons, just add the <code>&lt;b:dropButton&gt;</code> inside the <code>&lt;b:buttonGroup&gt;</code>.</p>
+    <p>You can even use <b>different looks</b> and/or <b>icons</b> for your buttons, if you need to.</p>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form>
+        <b:row>
+          <b:column span="8">
+            <b:panel look="primary" title="b:buttonGroup">
+              <b:buttonGroup contentDisabled="#{buttonGroupsBean.contentDisabled}">
+                <b:button look="success" value="1" />
+                <b:button look="primary" icon="print" value="" />
+                <b:dropButton look="warning" value="DropButton" contentDisabled="#{buttonGroupsBean.dropButtonDisabled}">
+                  <b:navLink value="Action" href="#" disabled="#{buttonGroupsBean.invidualLinksDisabled}"></b:navLink>
+                  <b:navLink value="Another action" href="#" disabled="#{buttonGroupsBean.invidualLinksDisabled}"></b:navLink>
+                  <b:navLink value="Something else here" href="#" disabled="#{buttonGroupsBean.invidualLinksDisabled}"></b:navLink>
+                  <b:navLink></b:navLink>
+                  <b:navLink header="Nav header"></b:navLink>
+                  <b:navLink value="Separated link" href="#" disabled="#{buttonGroupsBean.invidualLinksDisabled}"></b:navLink>
+                  <b:navLink value="One more separated link" href="#" disabled="#{buttonGroupsBean.invidualLinksDisabled}"></b:navLink>
+                </b:dropButton>
+              </b:buttonGroup>
+            </b:panel>
+          </b:column>
+          <b:column span="4">
+            <b:panel look="primary" title="Options">
+              <b:switch on-text="true" off-text="default" value="#{buttonGroupsBean.contentDisabled}"
+                        update="@form" onchange="ajax:buttonGroupsBean.onChange()"
+                        label="b:buttonGroup contentDisabled=" />
+              <b:switch on-text="disabled" off-text="default" value="#{buttonGroupsBean.dropButtonDisabled}"
+                        update="@form" onchange="ajax:buttonGroupsBean.onChange()"
+                        label="b:dropButton contentDisabled=" />
+              <b:switch on-text="disabled" off-text="default" value="#{buttonGroupsBean.invidualLinksDisabled}"
+                        update="@form" onchange="ajax:buttonGroupsBean.onChange()"
+                        label="individual links disabled" />
+            </b:panel>
+          </b:column>
+        </b:row>
+      </h:form>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong><br/>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;">
+          <![CDATA[
+          <b:row>
+            <b:column span="8">
+              <b:panel look="primary" title="b:buttonGroup">
+                <b:buttonGroup contentDisabled="&num;{buttonGroupsBean.contentDisabled}">
+                  <b:button look="success" value="1" />
+                  <b:button look="primary" icon="print" value="" />
+                  <b:dropButton look="warning" value="DropButton" contentDisabled="&num;{buttonGroupsBean.dropButtonDisabled}">
+                    <b:navLink value="Action" href="&num;" disabled="&num;{buttonGroupsBean.invidualLinksDisabled}"></b:navLink>
+                    <b:navLink value="Another action" href="&num;" disabled="&num;{buttonGroupsBean.invidualLinksDisabled}"></b:navLink>
+                    <b:navLink value="Something else here" href="&num;" disabled="&num;{buttonGroupsBean.invidualLinksDisabled}"></b:navLink>
+                    <b:navLink></b:navLink>
+                    <b:navLink header="Nav header"></b:navLink>
+                    <b:navLink value="Separated link" href="&num;" disabled="&num;{buttonGroupsBean.invidualLinksDisabled}"></b:navLink>
+                    <b:navLink value="One more separated link" href="&num;" disabled="&num;{buttonGroupsBean.invidualLinksDisabled}"></b:navLink>
+                  </b:dropButton>
+                </b:buttonGroup>
+              </b:panel>
+            </b:column>
+            <b:column span="4">
+              <b:panel look="primary" title="Options">
+                <b:switch on-text="true" off-text="default" value="&num;{buttonGroupsBean.contentDisabled}"
+                          update="@form" onchange="ajax:buttonGroupsBean.onChange()"
+                          label="b:buttonGroup contentDisabled=" />
+                <b:switch on-text="disabled" off-text="default" value="&num;{buttonGroupsBean.dropButtonDisabled}"
+                          update="@form" onchange="ajax:buttonGroupsBean.onChange()"
+                          label="b:dropButton contentDisabled=" />
+                <b:switch on-text="disabled" off-text="default" value="&num;{buttonGroupsBean.invidualLinksDisabled}"
+                          update="@form" onchange="ajax:buttonGroupsBean.onChange()"
+                          label="individual links disabled" />
+              </b:panel>
+            </b:column>
+          </b:row>
+          ]]></script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+    <h2><a id="vertical_variation">Vertical variation</a></h2>
+    <p>Make a set of buttons appear vertically stacked rather than horizontally, using the <code>orientation="vertical"</code> attribute.</p>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <b:buttonGroup orientation="vertical">
+        <b:button value="Button" />
+        <b:button value="Button" />
+        <b:dropButton value="DropButton">
+          <b:navLink value="Action" href="#"></b:navLink>
+          <b:navLink value="Another action" href="#"></b:navLink>
+          <b:navLink value="Something else here" href="#"></b:navLink>
+          <b:navLink></b:navLink>
+          <b:navLink header="Nav header"></b:navLink>
+          <b:navLink value="Separated link" href="#"></b:navLink>
+          <b:navLink value="One more separated link" href="#"></b:navLink>
+        </b:dropButton>
+        <b:button value="Button" />
+        <b:button value="Button" />
+        <b:dropButton value="DropButton">
+          <b:navLink value="Action" href="#"></b:navLink>
+          <b:navLink value="Another action" href="#"></b:navLink>
+          <b:navLink value="Something else here" href="#"></b:navLink>
+          <b:navLink></b:navLink>
+          <b:navLink header="Nav header"></b:navLink>
+          <b:navLink value="Separated link" href="#"></b:navLink>
+          <b:navLink value="One more separated link" href="#"></b:navLink>
+        </b:dropButton>
+        <b:dropButton value="DropButton">
+          <b:navLink value="Action" href="#"></b:navLink>
+          <b:navLink value="Another action" href="#"></b:navLink>
+          <b:navLink value="Something else here" href="#"></b:navLink>
+          <b:navLink></b:navLink>
+          <b:navLink header="Nav header"></b:navLink>
+          <b:navLink value="Separated link" href="#"></b:navLink>
+          <b:navLink value="One more separated link" href="#"></b:navLink>
+        </b:dropButton>
+      </b:buttonGroup>
+      <f:facet name="footer">
+        <strong>Markup:</strong><br/>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;">
+          <![CDATA[
+          <b:buttonGroup orientation="vertical">
+            ...
+          </b:buttonGroup>
+          ]]></script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+    <br/>
+    <h2><a id="reference_section">Reference section</a></h2>
+    <ui:include src="ButtonAttributes.xhtml" />
+    <ui:include src="ButtonGroupAttributes.xhtml" />
+    <b:panel look="info" rendered="false">
+      <f:facet name="heading">
+        <b>Skinning</b>
+      </f:facet>
+      <ul>
+        <li>Tell the world which CSS classes can be used to change the
+        look of the component.</li>
+      </ul>
+    </b:panel>
+
+
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+  </ui:define>
+</ui:composition>

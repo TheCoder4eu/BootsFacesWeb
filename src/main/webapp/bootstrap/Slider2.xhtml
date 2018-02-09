@@ -1,565 +1,600 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
-
-            <ui:define name="content">
-	            <style>
-		        .tooltip-inner {
-				    width: auto !important;
-				}
-				</style>
-                <h1>Bootstrap Slider <b:badge value="Since 1.0.0" /></h1>
-                <p>This widget is going to replace the traditional <code>&lt;b:slider /&gt;</code> of BootsFaces. The old component is
-                a jQueryUI widget. This dependency, in turn, causes many incompatibilities, so we searched for a slider component that
-                doesn't use jQueryUI. The new <code>&lt;b:slider2 /&gt;</code> widget is based on <a target="#" href="http://seiyria.com/bootstrap-slider/">
-                http://seiyria.com/bootstrap-slider/</a> which is available at an MIT license.</p>
-                <p>You can use the attributes <code>min</code>, <code>max</code>, <code>orientation</code> and <code>step</code>.</p>
-                <br/>
-                <p>There are three modes available that you can choose from with the <code>mode</code> attribute: basic, badge and edit.</p>
-                <p>In <b>basic mode</b>, only the slider and the label(if present) will be shown and the slider value will be hidden.</p>
-                <p>In <b>badge mode</b>, the default, the slider value will be shown in a badge. This is the default mode.</p>
-                <p>In <b>edit mode</b>, an editable input field showing the slider value will be shown;
-                   in this mode you can change the value by sliding or editing the value in the field.</p>
-                <br/>
-
-                <h:form>
-                <br/>
-                <h4>Basic Mode</h4>
-                <p>The most simple slider is horizontal and has a single handle that can be moved with the mouse or by using the arrow keys(once you click on it).</p>
-
-                <b:row><b:column><b:slider2 mode="basic" label="Basic Slider:" value="#{sliderBean.value1}"/></b:column></b:row>
-                <br/>
-                <h4>Edit Mode</h4>
-                <p>Use the edit mode when you want to allow the user to change the value editing it in an input field.</p>
-                <b:row><b:column><b:slider2 mode="edit" label="Editable Slider:" value="#{sliderBean.value2}"/></b:column></b:row>
-                <p>Notice how the slide handle positions itself as you type in the input box to reflect the current value and how the value in the input box changes when you slide.</p>
-                <br/>
-                <h4>Badge Mode</h4>
-                <p>In this mode, the slider value will be shown in a badge.</p>
-                <b:row><b:column><b:slider2 mode="badge" label="Badge Slider:" value="#{sliderBean.value3}"/></b:column></b:row>
-                </h:form>
-                <h3>Options and Examples</h3>
-                <h4>Horizontal sliders width</h4>
-                <p>You can use the <code>span</code> attribute to control the width, in terms of Bootstrap's grid columns:</p>
-                <b:row><b:column><b:slider2 mode="basic" label="Full width(12 columns default):"/></b:column></b:row>
-                <b:row><b:column><b:slider2 mode="basic" span="6" label="Slider (span=6):"/></b:column></b:row>
-                <b:row><b:column><b:slider2 mode="basic" span="4" label="Slider (span=4):"/></b:column></b:row>
-                <p>If you omit the <code>span</code> attribute, the component will take the full width of the parent container.</p>
-                <br/>
-                <p>You can use more than one slider to get input for complex values, like the Time:</p>
-                <h:form id="fslider">
-                    <b:panel look="info">
-                        <f:facet name="heading"><b>EXAMPLE - <span class="glyphicon glyphicon-time"></span> Time slider</b></f:facet>
-                        <b:row>
-                            <b:column>
-                                <b:slider2 min="0" max="24" span="7" value="#{sliderBean.value5}" label="HH"/>
-                            </b:column>
-                        </b:row>
-                        <b:row>
-                            <b:column>
-                                <b:slider2 min="0" max="60" step="5" value="#{sliderBean.value6}" label="MM (step 5)"/>
-                            </b:column>
-                        </b:row>
-                        <b:row>
-                            <br/>
-                            <b:column><b:commandButton value="Submit" update="amodal" id="modalcb" ajax="true"
-                                             look="primary" oncomplete="$('#amodal').modal('show');"/></b:column>
-                        </b:row>
-                        <f:facet name="footer">
-                        <strong>Markup:</strong><br/>
-
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                        <![CDATA[
-                        <b:row>
-                            <b:column>
-                                <b:slider2 min="0" max="24" span="7" value="#{'#'}{testBean.val5}" label="HH"/>
-                            </b:column>
-                        </b:row>
-                        <b:row>
-                            <b:column>
-                                <b:slider2 min="0" max="60" step="5" value="#{'#'}{testBean.val6}" label="MM"/>
-                            </b:column>
-                        </b:row>
-                        <b:row>
-                            <br/>
-                            <b:column><b:commandButton value="Submit" update="amodal" id="modalcb" ajax="true"
-                                             look="primary" oncomplete="$('#amodal').modal('show');"/></b:column>
-                        </b:row>
-                        ]]></script>
-                        </f:facet>
-                    </b:panel>
-                    </h:form>
-                    <p>You can use the <code>orientation</code> attribute to obtain a vertical slider.</p>
-                    <p>If you specify <code>orientation="vertical"</code>, the Label is rendered on top, then the value and the slider on the bottom.</p>
-                    <p>If <code>orientation="vertical-bottom"</code> is used, the slider is rendered on top, then the value and the Label on the bottom.</p>
-                    <b:panel look="info">
-                        <f:facet name="heading"><b>EXAMPLE - Vertical sliders</b></f:facet>
-                        <h:form>
-                        <b:row>
-                            <b:column span="4" col-sm="4" col-xs="4">#{' '}</b:column>
-                            <b:column span="2" col-sm="2" col-xs="2">
-                                <b:slider2 orientation="vertical" value="#{sliderBean.value1}" label="Value (0-100)">
-                                </b:slider2>
-                            </b:column>
-                            <b:column span="2" col-sm="2" col-xs="2">
-                                <b:slider2 orientation="vertical-bottom" value="#{sliderBean.value1}" label="Value (0-100)"></b:slider2>
-                            </b:column>
-                            <b:column span="4" col-sm="4" col-xs="4">#{' '}</b:column>
-                        </b:row>
-                        </h:form>
-                        <f:facet name="footer">
-                        <strong>Markup:</strong><br/>
-
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                        <![CDATA[
-                        <b:row>
-                            <b:column span="4" col-sm="4" col-xs="4">#{'#'}{' '}</b:column>
-                            <b:column span="2" col-sm="2" col-xs="2">
-                                <b:slider2 orientation="vertical" value="#{'#'}{testBean.val1}" label="Value (0-100)"></b:slider2>
-                            </b:column>
-                            <b:column span="2" col-sm="2" col-xs="2">
-                                <b:slider2 orientation="vertical-bottom" value="#{'#'}{testBean.val1}" label="Value (0-100)"></b:slider2>
-                            </b:column>
-                            <b:column span="4" col-sm="4" col-xs="4">#{'#'}{' '}</b:column>
-                        </b:row>
-                        ]]></script>
-                        </f:facet>
-                    </b:panel>
-
-                    <h2>Styles and style-classes <b:badge value="Breaking change in 1.1.0" /></h2>
-                    <p>Until version 1.0.2 of BootsFaces, the <code>style</code> and <code>style-class</code> attributes applied only
-                    the the optional badge.</p>
-                    <p>Since 1.1.0, there are three separate pairs of options:</p>
-                    <ul>
-	                    <li><code>style</code> and <code>style-class</code> apply to the entire slider.</li>
-	                    <li><code>label-style</code> and <code>label-style-class</code> apply to the optional label.</li>
-	                    <li><code>badge-style</code> and <code>badge-style-class</code> apply to the optional badge or to the optional input field.</li>
-                    </ul>
-                    <b:panel look="info">
-                        <f:facet name="heading"><b>EXAMPLE - stylish sliders</b></f:facet>
-                        <h:form>
-                        <b:row>
-                            <b:column span="2" col-sm="2" col-xs="2">
-                                <b:slider2 orientation="vertical" value="#{sliderBean.value1}" label="Value (0-100)"
-                                           label-style="color:green"
-                                           label-style-class="myLabelClass"
-                                           style="border:1px solid green"
-                                           styleClass="mySliderClass"
-                                           badge-style="background-color:green"
-                                           badge-style-class="myBadgeClass" />
-                            </b:column>
-                            <b:column span="2" col-sm="2" col-xs="2">
-                                <b:slider2 orientation="vertical-bottom" value="#{sliderBean.value1}" label="Value (0-100)"
-                                           label-style="color:green"
-                                           label-style-class="myLabelClass"
-                                           style="border:1px solid green"
-                                           styleClass="mySliderClass"
-                                           badge-style="background-color:green"
-                                           badge-style-class="myBadgeClass" />
-                            </b:column>
-                            <b:column span="8" col-sm="8" col-xs="8">
-                                <b:slider2 value="#{sliderBean.value1}" label="Value (0-100)"
-                                           label-style="color:green"
-                                           label-style-class="myLabelClass"
-                                           style="border:1px solid green"
-                                           styleClass="mySliderClass"
-                                           badge-style="background-color:green"
-                                           badge-style-class="myBadgeClass" />
-                            </b:column>
-                        </b:row>
-                        </h:form>
-                        <f:facet name="footer">
-                        <strong>Markup:</strong><br/>
-
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                        <![CDATA[
-                        <b:row>
-                           <b:column span="2" col-sm="2" col-xs="2">
-                                <b:slider2 orientation="vertical" value="&num;{sliderBean.value1}" label="Value (0-100)"
-                                           label-style="color:green"
-                                           label-style-class="myLabelClass"
-                                           style="border:1px solid green"
-                                           styleClass="mySliderClass"
-                                           badge-style="background-color:green"
-                                           badge-style-class="myBadgeClass" />
-                            </b:column>
-                            <b:column span="2" col-sm="2" col-xs="2">
-                                <b:slider2 orientation="vertical-bottom" value="&num;{sliderBean.value1}" label="Value (0-100)"
-                                           label-style="color:green"
-                                           label-style-class="myLabelClass"
-                                           style="border:1px solid green"
-                                           styleClass="mySliderClass"
-                                           badge-style="background-color:green"
-                                           badge-style-class="myBadgeClass" />
-                            </b:column>
-                            <b:column span="8" col-sm="8" col-xs="8">
-                                <b:slider2 value="&num;{sliderBean.value1}" label="Value (0-100)"
-                                           label-style="color:green"
-                                           label-style-class="myLabelClass"
-                                           style="border:1px solid green"
-                                           styleClass="mySliderClass"
-                                           badge-style="background-color:green"
-                                           badge-style-class="myBadgeClass" />
-                            </b:column>
-                        </b:row>
-                        ]]></script>
-                        </f:facet>
-                    </b:panel>
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
 
 
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#bootstrap_slider" value="Bootstrap Slider" />
+      <b:navLink href="#options_and_examples" value="Options and Examples" />
+      <b:navLink href="#styles_and_style" value="Styles and style-classes" />
+      <b:navLink href="#slider_handle_options" value="Slider Handle options" />
+      <b:navLink href="#labels" value="Labels, required fields and error messages" />
+      <b:navLink href="#reference_section" value="Reference section" />
+    </b:listLinks>
+  </ui:define>
 
-                    <p>The Slider component has been developed so that it fits well both in forms and in Bootstrap Grid system.</p>
-                    <p>This allows you to obtain complex input interfaces that adapt to all media screen sizes, taking advantage of the responsive features of the Grid system.</p>
-                    <b:panel look="info">
-                        <f:facet name="heading"><b>EXAMPLE - <span class="glyphicon glyphicon-signal"></span> Equalizer</b></f:facet>
-                        <h:form>
-                        <b:row>
-                            <b:column span="3" col-sm="3" col-xs="1">#{' '}</b:column>
-                            <b:column span="1" col-sm="1" col-xs="2">
-                                <b:slider2 mode="basic" orientation="vertical-bottom" value="70" label="62"></b:slider2>
-                            </b:column>
-                            <b:column span="1" col-sm="1" col-xs="2">
-                                <b:slider2 mode="basic" orientation="vertical-bottom" value="80" label="250"></b:slider2>
-                            </b:column>
-                            <b:column span="1" col-sm="1" col-xs="2">
-                                <b:slider2 mode="basic" orientation="vertical-bottom" value="60" label="1K"></b:slider2>
-                            </b:column>
-                            <b:column span="1" col-sm="1" col-xs="2">
-                                <b:slider2 mode="basic" orientation="vertical-bottom" value="90" label="4K"></b:slider2>
-                            </b:column>
-                            <b:column span="1" col-sm="1" col-xs="2">
-                                <b:slider2 mode="basic" orientation="vertical-bottom" value="75" label="16K"></b:slider2>
-                            </b:column>
-                            <b:column span="3" col-sm="3" col-xs="1">#{' '}</b:column>
-                        </b:row>
-                        </h:form>
-                        <f:facet name="footer">
-                        <strong>Markup:</strong><br/>
 
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                        <![CDATA[
-                        <b:row>
-                            <b:column span="3" col-sm="3" col-xs="1">#{'#'}{' '}</b:column>
-                            <b:column span="1" col-sm="1" col-xs="2">
-                                <b:slider2 mode="basic" orientation="vertical-bottom" value="70" label="62"></b:slider2>
-                            </b:column>
-                            <b:column span="1" col-sm="1" col-xs="2">
-                                <b:slider2 mode="basic" orientation="vertical-bottom" value="80" label="250"></b:slider2>
-                            </b:column>
-                            <b:column span="1" col-sm="1" col-xs="2">
-                                <b:slider2 mode="basic" orientation="vertical-bottom" value="60" label="1K"></b:slider2>
-                            </b:column>
-                            <b:column span="1" col-sm="1" col-xs="2">
-                                <b:slider2 mode="basic" orientation="vertical-bottom" value="90" label="4K"></b:slider2>
-                            </b:column>
-                            <b:column span="1" col-sm="1" col-xs="2">
-                                <b:slider2 mode="basic" orientation="vertical-bottom" value="75" label="16K"></b:slider2>
-                            </b:column>
-                            <b:column span="3" col-sm="3" col-xs="1">#{'#'}{' '}</b:column>
-                        </b:row>
-                        ]]></script>
-                        </f:facet>
-                    </b:panel>
-                <h3>Slider Handle options</h3>
-                <h4>Handle Size</h4>
-                <p>If you are targeting Mobile, it can be useful to have a bigger handle.</p>
-                <p>You can control the handle size adding the <code>handleShape</code> attribute, using the <code>md</code> or <code>lg</code> values for a Medium sized handle and a Large sized handle respectively.</p>
-                <h:form>
-                    <b:panel look="info">
-                        <f:facet name="heading"><b>EXAMPLE - Handle Size</b></f:facet>
-                        <b:row>
-                            <b:column>
-                                <b:slider2 min="0" max="100" step="5" value="25" label="Default size"/>
-                            </b:column>
-                        </b:row>
-                        <b:row>
-                            <b:column>
-                                <b:slider2 handleShape="md" min="0" max="100" value="50" label="Medium handle (md)" />
-                            </b:column>
-                        </b:row>
-                        <b:row>
-                            <b:column>
-                                <b:slider2 handleShape="lg" min="0" max="100" step="5" value="75" label="Large handle (lg)"/>
-                            </b:column>
-                        </b:row>
+  <ui:define name="content">
+    <style>
+      .tooltip-inner {
+        width: auto !important;
+      }
+    </style>
+    <h1><a id="bootstrap_slider">Bootstrap Slider</a><b:badge value="Since 1.0.0" /></h1>
+    <p>This widget is going to replace the traditional <code>&lt;b:slider /&gt;</code> of BootsFaces. The old component is
+    a jQueryUI widget. This dependency, in turn, causes many incompatibilities, so we searched for a slider component that
+    doesn't use jQueryUI. The new <code>&lt;b:slider2 /&gt;</code> widget is based on <a target="#" href="http://seiyria.com/bootstrap-slider/">
+    http://seiyria.com/bootstrap-slider/</a> which is available at an MIT license.</p>
+    <p>You can use the attributes <code>min</code>, <code>max</code>, <code>orientation</code> and <code>step</code>.</p>
+    <br/>
+    <p>There are three modes available that you can choose from with the <code>mode</code> attribute: basic, badge and edit.</p>
+    <p>In <b>basic mode</b>, only the slider and the label(if present) will be shown and the slider value will be hidden.</p>
+    <p>In <b>badge mode</b>, the default, the slider value will be shown in a badge. This is the default mode.</p>
+    <p>In <b>edit mode</b>, an editable input field showing the slider value will be shown;
+    in this mode you can change the value by sliding or editing the value in the field.</p>
+    <br/>
 
-                        <f:facet name="footer">
-                        <strong>Markup:</strong><br/>
+    <h:form>
+      <br/>
+      <h4>Basic Mode</h4>
+      <p>The most simple slider is horizontal and has a single handle that can be moved with the mouse or by using the arrow keys(once you click on it).</p>
 
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                        <![CDATA[
-                        <b:row>
-                            <b:column>
-                                <b:slider2 min="0" max="100" step="5" value="25" label="Default size"/>
-                            </b:column>
-                        </b:row>
-                        <b:row>
-                            <b:column>
-                                <b:slider2 handleShape="md" min="0" max="100" value="50" label="Medium handle (md)" />
-                            </b:column>
-                        </b:row>
-                        <b:row>
-                            <b:column>
-                                <b:slider2 handleShape="lg" min="0" max="100" step="5" value="75" label="Large handle (lg)"/>
-                            </b:column>
-                        </b:row>
-                        ]]></script>
-                        </f:facet>
-                    </b:panel>
-                </h:form>
-                <p class="text-success">Note: the same applies to Vertical Sliders.</p>
+      <b:row>
+        <b:column>
+          <b:slider2 mode="basic" label="Basic Slider:"
+                     value="#{sliderBean.value1}" />
+        </b:column>
+      </b:row>
+      <br/>
+      <h4>Edit Mode</h4>
+      <p>Use the edit mode when you want to allow the user to change the value editing it in an input field.</p>
+      <b:row>
+        <b:column>
+          <b:slider2 mode="edit" label="Editable Slider:"
+                     value="#{sliderBean.value2}" />
+        </b:column>
+      </b:row>
+      <p>Notice how the slide handle positions itself as you type in the input box to reflect the current value and how the value in the input box changes when you slide.</p>
+      <br/>
+      <h4>Badge Mode</h4>
+      <p>In this mode, the slider value will be shown in a badge.</p>
+    <b:row><b:column><b:slider2 mode="badge" label="Badge Slider:" value="#{sliderBean.value3}"/></b:column></b:row>
+    </h:form>
+    <h2><a id="options_and_examples">Options and Examples</a></h2>
+    <h4>Horizontal sliders width</h4>
+    <p>You can use the <code>span</code> attribute to control the width, in terms of Bootstrap's grid columns:</p>
+    <b:row>
+      <b:column>
+        <b:slider2 mode="basic" label="Full width(12 columns default):" />
+      </b:column>
+    </b:row>
+    <b:row>
+      <b:column>
+        <b:slider2 mode="basic" span="6" label="Slider (span=6):" />
+      </b:column>
+    </b:row>
+    <b:row>
+      <b:column>
+        <b:slider2 mode="basic" span="4" label="Slider (span=4):" />
+      </b:column>
+    </b:row>
+    <p>If you omit the <code>span</code> attribute, the component will take the full width of the parent container.</p>
+    <br/>
+    <p>You can use more than one slider to get input for complex values, like the Time:</p>
+    <h:form id="fslider">
+      <b:panel look="info">
+      <f:facet name="heading"><b>EXAMPLE - <span class="glyphicon glyphicon-time"></span> Time slider</b></f:facet>
+        <b:row>
+          <b:column>
+            <b:slider2 min="0" max="24" span="7" value="#{sliderBean.value5}" label="HH"/>
+          </b:column>
+        </b:row>
+        <b:row>
+          <b:column>
+            <b:slider2 min="0" max="60" step="5" value="#{sliderBean.value6}" label="MM (step 5)"/>
+          </b:column>
+        </b:row>
+        <b:row>
+          <br/>
+          <b:column><b:commandButton value="Submit" update="amodal" id="modalcb" ajax="true"
+            look="primary" oncomplete="$('#amodal').modal('show');"/></b:column>
+        </b:row>
+        <f:facet name="footer">
+          <strong>Markup:</strong><br/>
 
-                <h4>Handle Shape</h4>
-                <p>The default handle has a rounded shape.</p>
-                <p>If you prefer a square or triangle handle you can add the <code>handleShape="square"</code> or <code>handleShape="triangle"</code> attribute.</p>
-                <h:form>
-                    <b:panel look="info">
-                        <f:facet name="heading"><b>EXAMPLE - Handle Shape</b></f:facet>
-                        <b:row>
-                            <b:column>
-                                <b:slider2 handleShape="round" min="0" max="100" step="5" value="25" label="Default (round)"/>
-                            </b:column>
-                        </b:row>
-                        <b:row>
-                            <b:column>
-                                <b:slider2 handleShape="square" min="0" max="100" value="75" label="Round handle" />
-                            </b:column>
-                        </b:row>
-                        <b:row>
-                            <b:column>
-                                <b:slider2 handleShape="triangle" min="0" max="100" step="5" value="50" label="Triangle handle"/>
-                            </b:column>
-                        </b:row>
-
-                        <f:facet name="footer">
-                        <strong>Markup:</strong><br/>
-
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                        <![CDATA[
-                        <b:row>
-                            <b:column>
-                                <b:slider2 handleShape="round" min="0" max="100" step="5" value="25" label="Default (round)"/>
-                            </b:column>
-                        </b:row>
-                        <b:row>
-                            <b:column>
-                                <b:slider2 handleShape="square" min="0" max="100" value="75" label="Round handle" />
-                            </b:column>
-                        </b:row>
-                        <b:row>
-                            <b:column>
-                                <b:slider2 handleShape="triangle" min="0" max="100" step="5" value="50" label="Triangle handle"/>
-                            </b:column>
-                        </b:row>
-                        ]]></script>
-                        </f:facet>
-                    </b:panel>
-                </h:form>
-                <p class="text-success">Note: the same applies to Vertical Sliders.</p>
-                <h4>Read only / disabled</h4>
-                <p>The attributes <code>readonly</code> and <code>disabled</code> can also be applied to sliders.</p>
-                <h:form>
-                    <b:panel look="info">
-                        <f:facet name="heading"><b>Disabled and readonly</b></f:facet>
-                        <b:row>
-                            <b:column>
-                                <b:slider2 handle-shape="round" min="0" max="100"
-                                          step="5" value="25" label="Default (editable)"
-                                           mode="edit"
-                                />
-                            </b:column>
-                        </b:row>
-                        <b:row>
-                            <b:column>
-                                <b:slider2 handle-shape="round" min="0" max="100"
-                                          step="5" value="25" label="Disabled"
-                                          disabled="true"
-                                           mode="edit"
-                                />
-                            </b:column>
-                        </b:row>
-                        <b:row>
-                            <b:column>
-                                <b:slider2 handle-shape="round" min="0" max="100"
-                                          step="5" value="25" label="Readonly"
-                                          readonly="true"
-                                          mode="edit"
-                                />
-                            </b:column>
-                        </b:row>
-
-                        <f:facet name="footer">
-                        <strong>Markup:</strong><br/>
-
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                        <![CDATA[
-                        <b:row>
-                            <b:column>
-                                <b:slider2 handle-shape="round" min="0" max="100"
-                                          step="5" value="25" label="Default (editable)"
-                                           mode="edit"
-                               />
-                            </b:column>
-                        </b:row>
-                        <b:row>
-                            <b:column>
-                                <b:slider2 handle-shape="round" min="0" max="100"
-                                          step="5" value="25" label="Disabled"
-                                          mode="edit"
-                                          disabled="true"
-                                />
-                            </b:column>
-                        </b:row>
-                        <b:row>
-                            <b:column>
-                                <b:slider2 handle-shape="round" min="0" max="100"
-                                          step="5" value="25" label="Readonly"
-                                          mode="edit"
-                                          readonly="true"
-                                />
-                            </b:column>
-                        </b:row>
-                        ]]></script>
-                        </f:facet>
-                    </b:panel>
-                </h:form>
-
-                <b:modal id="amodal" title="Slider">
-                    <strong>Submitted values:</strong>
-                    <h:panelGrid columns="2">
-                        <h:outputText value="Hour(0-24): " />
-                        <h:outputText value="#{sliderBean.value5}" />
-
-                        <h:outputText value="Minutes(step 5 min): " />
-                        <h:outputText value="#{sliderBean.value6}" />
-                    </h:panelGrid>
-                    <f:facet name="footer">
-                        <b:button value="close" dismiss="modal" onclick="return false;"/>
-                        <b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"/>
-                    </f:facet>
-                </b:modal>
-
- 		    <a id="labels"></a>
-		    <h2>Labels, required fields and error messages <b:badge value="breaking change in 1.1.0" /></h2>
-		    <p>You can add a label by adding the attribute <code>label</code>. The label is also used by the JSF messages. To give you maximum flexibility,
-		    you can suppress automatic rendering of labels by adding <code>renderLabel="false"</code>.
-		    </p>
-		    <h5>BootsFaces 1.0.2 and below:</h5>
-		    <p>Required inputs fields and their labels both bear the CSS class <code>bf-required</code>. By default, this adds an asterisk to the label.</p>
-		    <p>If the field has a FacesMessage, one of the CSS classes <code>bf-info</code>, <code>bf-warning</code>,
-		        <code>bf-error</code> or <code>bf-fatal</code>, depending on which error severity the message has.
-		        The latter two classes color the label red.</p>
-		     <p>If there's no message,
-		        the field and its label bear the pseudo CSS class <code>bf-no-message</code>  and <code>has-success</code>. The latter colors the label green by default.
-		    </p>
-		    <h5>BootsFaces 1.1.0:</h5>
-		    <p><code>bf-info</code>, <code>bf-warning</code>,
-	        <code>bf-error</code> or <code>bf-fatal</code> have been dropped in favor of the standard Bootstrap CSS classes <code>has-success</code>,
-	        <code>has-warning</code> and <code>has-error</code>. Plus, they are applied to the <code>form-group</code> instead of the labels and input fields.</p>
-	        <h5>Compatibility settings</h5>
-	        <p>If your application depends on the old HTML code, activate the context parameter <code>net.bootsfaces.legacy_error_classes</code>
-	        in the web.xml.</p>
-
-            <b:tabView>
-              <b:tab title="displayed as">
-              <b:well>
-                <h:form>
-	             <b:panelGrid columns="2" size="sm">
-					<h:panelGroup display="block">
-              <div class="container">
-	                  <b:slider2 orientation="horizontal" value="#{sliderBean.age}" label="Enter your age (18-65)"
-                                 mode="edit" id="age" />
-	                  <b:message for="age" />
-	                  <b:commandButton update="@form" value="Validate constraints" />
-              </div>
-          </h:panelGroup>
-          <h:panelGroup display="block">
-						<b:switch value="#{messageStyleBean.useLegacyBootsFacesStyle}"
-						    immediate="true"
-		                    caption="use legacy BootsFaces CSS classes"
-		                    label="compatibility settings" 
-		                    onchange="ajax:messageStyleBean.toggleSettings();"
-		                    update="@form"
-		                    />
-
-					</h:panelGroup>
-				  </b:panelGrid>
-                </h:form>
-                </b:well>
-              </b:tab>
-              <b:tab title="JSF markup">
-                <b:well>
-                  <script type="syntaxhighlighter"
-                    class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-				  <![CDATA[
-                     <h:form>
-                        <b:inputTextarea rows="3" id="name" value="&num;{userBean.name}" label="Enter your name"
-								     required="true"    />
-                         <h:message for="age" />
-                         <b:inputTextarea rows="3" id="age" value="&num;{userBean.age}" label="What's your age?"
-                                       />
-                         <h:message for="age" />
-                         <b:commandButton update="@form" value="Validate constraints" />
-                     </h:form>
-                  ]]>
-                 </script>
-                </b:well>
-              </b:tab>
-            </b:tabView>
-
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:row>
+            <b:column>
+              <b:slider2 min="0" max="24" span="7" value="#{'#'}{testBean.val5}" label="HH"/>
+            </b:column>
+          </b:row>
+          <b:row>
+            <b:column>
+              <b:slider2 min="0" max="60" step="5" value="#{'#'}{testBean.val6}" label="MM"/>
+            </b:column>
+          </b:row>
+          <b:row>
             <br/>
-            <!-- TODO in 1.5.0 -->
-            <!-- h:form>
-            <h4>Float Values</h4>
-            <p>Another feature is the option to use Float values to with the Slider. Use the <code>precision</code> attribute to specify the precision to use.</p>
+            <b:column><b:commandButton value="Submit" update="amodal" id="modalcb" ajax="true"
+              look="primary" oncomplete="$('#amodal').modal('show');"/></b:column>
+          </b:row>
+          ]]></script>
+        </f:facet>
+      </b:panel>
+    </h:form>
+    <p>You can use the <code>orientation</code> attribute to obtain a vertical slider.</p>
+    <p>If you specify <code>orientation="vertical"</code>, the Label is rendered on top, then the value and the slider on the bottom.</p>
+    <p>If <code>orientation="vertical-bottom"</code> is used, the slider is rendered on top, then the value and the Label on the bottom.</p>
+    <b:panel look="info">
+    <f:facet name="heading"><b>EXAMPLE - Vertical sliders</b></f:facet>
+      <h:form>
+        <b:row>
+          <b:column span="4" col-sm="4" col-xs="4">#{' '}</b:column>
+          <b:column span="2" col-sm="2" col-xs="2">
+            <b:slider2 orientation="vertical" value="#{sliderBean.value1}" label="Value (0-100)">
+            </b:slider2>
+          </b:column>
+          <b:column span="2" col-sm="2" col-xs="2">
+            <b:slider2 orientation="vertical-bottom" value="#{sliderBean.value1}" label="Value (0-100)"></b:slider2>
+          </b:column>
+          <b:column span="4" col-sm="4" col-xs="4">#{' '}</b:column>
+        </b:row>
+      </h:form>
+      <f:facet name="footer">
+        <strong>Markup:</strong><br/>
 
-              <b:row>
-                <b:column>
-                  <b:slider2 id="sdl" mode="basic" label="Double Slider:" value="{sliderBean.valueDouble}" precision="2" min="0" max="30" step="0.5"/>
-                </b:column>
-              </b:row>
-              <b:commandButton id="button1" actionListener="{sliderBean.button1}" value="Send Value" ajax="true" update="sdl" />
-            </h:form -->
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+        <![CDATA[
+        <b:row>
+          <b:column span="4" col-sm="4" col-xs="4">#{'#'}{' '}</b:column>
+          <b:column span="2" col-sm="2" col-xs="2">
+            <b:slider2 orientation="vertical" value="#{'#'}{testBean.val1}" label="Value (0-100)"></b:slider2>
+          </b:column>
+          <b:column span="2" col-sm="2" col-xs="2">
+            <b:slider2 orientation="vertical-bottom" value="#{'#'}{testBean.val1}" label="Value (0-100)"></b:slider2>
+          </b:column>
+          <b:column span="4" col-sm="4" col-xs="4">#{'#'}{' '}</b:column>
+        </b:row>
+        ]]></script>
+      </f:facet>
+    </b:panel>
 
-          <h2>Reference section</h2>
-          <ui:include src="Slider2Attributes.xhtml" />
-          <b:panel look="info" rendered="true">
-					<f:facet name="heading">
-						<b>Skinning</b>
-					</f:facet>
-					<ul>
-					<li>
-				   		If the attribute <code>required</code> is true, the pseudo CSS class <code>bf-required</code> is added. Thus you can define your custom style for required fields.
-				   </li>
-                   <li>
-                   if theres a <code>FacesMessage</code>, the input field is bears one of the pseudo CSS classes
-                   <code>bf-info</code>, <code>bf-warning</code>, <code>bf-error</code> or <code>bf-fatal</code>. If there are no messages,
-                   the input field bears the pseudo CSS class <code>bf-no-message</code>  and <code>has-success</code>. The latter colors the label green by default.
-                   </li>
-                   <li>If there's a label, it bears the CSS class <code>required</code>, if it's a mandatory field.
-                   This class adds an asterisk to the label text. You can override the CSS class to remove the asterisk
-                   or to replace it by something else.</li>
-                   <li>If there's a label, it bears the CSS classes <code>bf-info</code>, <code>bf-warning</code>,
-                   <code>bf-error</code> or <code>bf-fatal</code>, depending on which error message the input field has.
-                   The latter two classes color the label red.<br />
-                   If there's no message,
-                   the label bears the pseudo CSS class <code>bf-no-message</code>  and <code>has-success</code>. The latter colors the label green by default.
-                   </li>
+    <h2><a id="styles_and_style">Styles and style-classes</a><b:badge value="Breaking change in 1.1.0" /></h2>
+    <p>Until version 1.0.2 of BootsFaces, the <code>style</code> and <code>style-class</code> attributes applied only
+    the the optional badge.</p>
+    <p>Since 1.1.0, there are three separate pairs of options:</p>
+    <ul>
+      <li><code>style</code> and <code>style-class</code> apply to the entire slider.</li>
+      <li><code>label-style</code> and <code>label-style-class</code> apply to the optional label.</li>
+      <li><code>badge-style</code> and <code>badge-style-class</code> apply to the optional badge or to the optional input field.</li>
+    </ul>
+    <b:panel look="info">
+    <f:facet name="heading"><b>EXAMPLE - stylish sliders</b></f:facet>
+      <h:form>
+        <b:row>
+          <b:column span="2" col-sm="2" col-xs="2">
+            <b:slider2 orientation="vertical" value="#{sliderBean.value1}" label="Value (0-100)"
+                       label-style="color:green"
+                       label-style-class="myLabelClass"
+                       style="border:1px solid green"
+                       styleClass="mySliderClass"
+                       badge-style="background-color:green"
+                       badge-style-class="myBadgeClass" />
+          </b:column>
+          <b:column span="2" col-sm="2" col-xs="2">
+            <b:slider2 orientation="vertical-bottom" value="#{sliderBean.value1}" label="Value (0-100)"
+                       label-style="color:green"
+                       label-style-class="myLabelClass"
+                       style="border:1px solid green"
+                       styleClass="mySliderClass"
+                       badge-style="background-color:green"
+                       badge-style-class="myBadgeClass" />
+          </b:column>
+          <b:column span="8" col-sm="8" col-xs="8">
+            <b:slider2 value="#{sliderBean.value1}" label="Value (0-100)"
+                       label-style="color:green"
+                       label-style-class="myLabelClass"
+                       style="border:1px solid green"
+                       styleClass="mySliderClass"
+                       badge-style="background-color:green"
+                       badge-style-class="myBadgeClass" />
+          </b:column>
+        </b:row>
+      </h:form>
+      <f:facet name="footer">
+        <strong>Markup:</strong><br/>
 
-					</ul>
-				</b:panel>
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+        <![CDATA[
+        <b:row>
+          <b:column span="2" col-sm="2" col-xs="2">
+            <b:slider2 orientation="vertical" value="&num;{sliderBean.value1}" label="Value (0-100)"
+                       label-style="color:green"
+                       label-style-class="myLabelClass"
+                       style="border:1px solid green"
+                       styleClass="mySliderClass"
+                       badge-style="background-color:green"
+                       badge-style-class="myBadgeClass" />
+          </b:column>
+          <b:column span="2" col-sm="2" col-xs="2">
+            <b:slider2 orientation="vertical-bottom" value="&num;{sliderBean.value1}" label="Value (0-100)"
+                       label-style="color:green"
+                       label-style-class="myLabelClass"
+                       style="border:1px solid green"
+                       styleClass="mySliderClass"
+                       badge-style="background-color:green"
+                       badge-style-class="myBadgeClass" />
+          </b:column>
+          <b:column span="8" col-sm="8" col-xs="8">
+            <b:slider2 value="&num;{sliderBean.value1}" label="Value (0-100)"
+                       label-style="color:green"
+                       label-style-class="myLabelClass"
+                       style="border:1px solid green"
+                       styleClass="mySliderClass"
+                       badge-style="background-color:green"
+                       badge-style-class="myBadgeClass" />
+          </b:column>
+        </b:row>
+        ]]></script>
+      </f:facet>
+    </b:panel>
 
-                <script type="text/javascript">
-                    SyntaxHighlighter.all();
-                </script>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
 
-            </ui:define>
-        </ui:composition>
+
+    <p>The Slider component has been developed so that it fits well both in forms and in Bootstrap Grid system.</p>
+    <p>This allows you to obtain complex input interfaces that adapt to all media screen sizes, taking advantage of the responsive features of the Grid system.</p>
+    <b:panel look="info">
+    <f:facet name="heading"><b>EXAMPLE - <span class="glyphicon glyphicon-signal"></span> Equalizer</b></f:facet>
+      <h:form>
+        <b:row>
+          <b:column span="3" col-sm="3" col-xs="1">#{' '}</b:column>
+          <b:column span="1" col-sm="1" col-xs="2">
+            <b:slider2 mode="basic" orientation="vertical-bottom" value="70" label="62"></b:slider2>
+          </b:column>
+          <b:column span="1" col-sm="1" col-xs="2">
+            <b:slider2 mode="basic" orientation="vertical-bottom" value="80" label="250"></b:slider2>
+          </b:column>
+          <b:column span="1" col-sm="1" col-xs="2">
+            <b:slider2 mode="basic" orientation="vertical-bottom" value="60" label="1K"></b:slider2>
+          </b:column>
+          <b:column span="1" col-sm="1" col-xs="2">
+            <b:slider2 mode="basic" orientation="vertical-bottom" value="90" label="4K"></b:slider2>
+          </b:column>
+          <b:column span="1" col-sm="1" col-xs="2">
+            <b:slider2 mode="basic" orientation="vertical-bottom" value="75" label="16K"></b:slider2>
+          </b:column>
+          <b:column span="3" col-sm="3" col-xs="1">#{' '}</b:column>
+        </b:row>
+      </h:form>
+      <f:facet name="footer">
+        <strong>Markup:</strong><br/>
+
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+        <![CDATA[
+        <b:row>
+          <b:column span="3" col-sm="3" col-xs="1">#{'#'}{' '}</b:column>
+          <b:column span="1" col-sm="1" col-xs="2">
+            <b:slider2 mode="basic" orientation="vertical-bottom" value="70" label="62"></b:slider2>
+          </b:column>
+          <b:column span="1" col-sm="1" col-xs="2">
+            <b:slider2 mode="basic" orientation="vertical-bottom" value="80" label="250"></b:slider2>
+          </b:column>
+          <b:column span="1" col-sm="1" col-xs="2">
+            <b:slider2 mode="basic" orientation="vertical-bottom" value="60" label="1K"></b:slider2>
+          </b:column>
+          <b:column span="1" col-sm="1" col-xs="2">
+            <b:slider2 mode="basic" orientation="vertical-bottom" value="90" label="4K"></b:slider2>
+          </b:column>
+          <b:column span="1" col-sm="1" col-xs="2">
+            <b:slider2 mode="basic" orientation="vertical-bottom" value="75" label="16K"></b:slider2>
+          </b:column>
+          <b:column span="3" col-sm="3" col-xs="1">#{'#'}{' '}</b:column>
+        </b:row>
+        ]]></script>
+      </f:facet>
+    </b:panel>
+    <h2><a id="slider_handle_options">Slider Handle options</a></h2>
+    <h4>Handle Size</h4>
+    <p>If you are targeting Mobile, it can be useful to have a bigger handle.</p>
+    <p>You can control the handle size adding the <code>handleShape</code> attribute, using the <code>md</code> or <code>lg</code> values for a Medium sized handle and a Large sized handle respectively.</p>
+    <h:form>
+      <b:panel look="info">
+      <f:facet name="heading"><b>EXAMPLE - Handle Size</b></f:facet>
+        <b:row>
+          <b:column>
+            <b:slider2 min="0" max="100" step="5" value="25" label="Default size"/>
+          </b:column>
+        </b:row>
+        <b:row>
+          <b:column>
+            <b:slider2 handleShape="md" min="0" max="100" value="50" label="Medium handle (md)" />
+          </b:column>
+        </b:row>
+        <b:row>
+          <b:column>
+            <b:slider2 handleShape="lg" min="0" max="100" step="5" value="75" label="Large handle (lg)"/>
+          </b:column>
+        </b:row>
+
+        <f:facet name="footer">
+          <strong>Markup:</strong><br/>
+
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:row>
+            <b:column>
+              <b:slider2 min="0" max="100" step="5" value="25" label="Default size"/>
+            </b:column>
+          </b:row>
+          <b:row>
+            <b:column>
+              <b:slider2 handleShape="md" min="0" max="100" value="50" label="Medium handle (md)" />
+            </b:column>
+          </b:row>
+          <b:row>
+            <b:column>
+              <b:slider2 handleShape="lg" min="0" max="100" step="5" value="75" label="Large handle (lg)"/>
+            </b:column>
+          </b:row>
+          ]]></script>
+        </f:facet>
+      </b:panel>
+    </h:form>
+    <p class="text-success">Note: the same applies to Vertical Sliders.</p>
+
+    <h4>Handle Shape</h4>
+    <p>The default handle has a rounded shape.</p>
+    <p>If you prefer a square or triangle handle you can add the <code>handleShape="square"</code> or <code>handleShape="triangle"</code> attribute.</p>
+    <h:form>
+      <b:panel look="info">
+      <f:facet name="heading"><b>EXAMPLE - Handle Shape</b></f:facet>
+        <b:row>
+          <b:column>
+            <b:slider2 handleShape="round" min="0" max="100" step="5" value="25" label="Default (round)"/>
+          </b:column>
+        </b:row>
+        <b:row>
+          <b:column>
+            <b:slider2 handleShape="square" min="0" max="100" value="75" label="Round handle" />
+          </b:column>
+        </b:row>
+        <b:row>
+          <b:column>
+            <b:slider2 handleShape="triangle" min="0" max="100" step="5" value="50" label="Triangle handle"/>
+          </b:column>
+        </b:row>
+
+        <f:facet name="footer">
+          <strong>Markup:</strong><br/>
+
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:row>
+            <b:column>
+              <b:slider2 handleShape="round" min="0" max="100" step="5" value="25" label="Default (round)"/>
+            </b:column>
+          </b:row>
+          <b:row>
+            <b:column>
+              <b:slider2 handleShape="square" min="0" max="100" value="75" label="Round handle" />
+            </b:column>
+          </b:row>
+          <b:row>
+            <b:column>
+              <b:slider2 handleShape="triangle" min="0" max="100" step="5" value="50" label="Triangle handle"/>
+            </b:column>
+          </b:row>
+          ]]></script>
+        </f:facet>
+      </b:panel>
+    </h:form>
+    <p class="text-success">Note: the same applies to Vertical Sliders.</p>
+    <h4>Read only / disabled</h4>
+    <p>The attributes <code>readonly</code> and <code>disabled</code> can also be applied to sliders.</p>
+    <h:form>
+      <b:panel look="info">
+      <f:facet name="heading"><b>Disabled and readonly</b></f:facet>
+        <b:row>
+          <b:column>
+            <b:slider2 handle-shape="round" min="0" max="100"
+                       step="5" value="25" label="Default (editable)"
+                       mode="edit"
+                       />
+          </b:column>
+        </b:row>
+        <b:row>
+          <b:column>
+            <b:slider2 handle-shape="round" min="0" max="100"
+                       step="5" value="25" label="Disabled"
+                       disabled="true"
+                       mode="edit"
+                       />
+          </b:column>
+        </b:row>
+        <b:row>
+          <b:column>
+            <b:slider2 handle-shape="round" min="0" max="100"
+                       step="5" value="25" label="Readonly"
+                       readonly="true"
+                       mode="edit"
+                       />
+          </b:column>
+        </b:row>
+
+        <f:facet name="footer">
+          <strong>Markup:</strong><br/>
+
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:row>
+            <b:column>
+              <b:slider2 handle-shape="round" min="0" max="100"
+                         step="5" value="25" label="Default (editable)"
+                         mode="edit"
+                         />
+            </b:column>
+          </b:row>
+          <b:row>
+            <b:column>
+              <b:slider2 handle-shape="round" min="0" max="100"
+                         step="5" value="25" label="Disabled"
+                         mode="edit"
+                         disabled="true"
+                         />
+            </b:column>
+          </b:row>
+          <b:row>
+            <b:column>
+              <b:slider2 handle-shape="round" min="0" max="100"
+                         step="5" value="25" label="Readonly"
+                         mode="edit"
+                         readonly="true"
+                         />
+            </b:column>
+          </b:row>
+          ]]></script>
+        </f:facet>
+      </b:panel>
+    </h:form>
+
+    <b:modal id="amodal" title="Slider">
+      <strong>Submitted values:</strong>
+      <h:panelGrid columns="2">
+        <h:outputText value="Hour(0-24): " />
+        <h:outputText value="#{sliderBean.value5}" />
+
+        <h:outputText value="Minutes(step 5 min): " />
+        <h:outputText value="#{sliderBean.value6}" />
+      </h:panelGrid>
+      <f:facet name="footer">
+        <b:button value="close" dismiss="modal" onclick="return false;"/>
+        <b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"/>
+      </f:facet>
+    </b:modal>
+
+    <a id="labels"></a>
+    <h2><a id="labels">Labels, required fields and error messages</a><b:badge value="breaking change in 1.1.0" /></h2>
+    <p>You can add a label by adding the attribute <code>label</code>. The label is also used by the JSF messages. To give you maximum flexibility,
+    you can suppress automatic rendering of labels by adding <code>renderLabel="false"</code>.
+    </p>
+    <h5>BootsFaces 1.0.2 and below:</h5>
+    <p>Required inputs fields and their labels both bear the CSS class <code>bf-required</code>. By default, this adds an asterisk to the label.</p>
+    <p>If the field has a FacesMessage, one of the CSS classes <code>bf-info</code>, <code>bf-warning</code>,
+    <code>bf-error</code> or <code>bf-fatal</code>, depending on which error severity the message has.
+    The latter two classes color the label red.</p>
+    <p>If there's no message,
+    the field and its label bear the pseudo CSS class <code>bf-no-message</code>  and <code>has-success</code>. The latter colors the label green by default.
+    </p>
+    <h5>BootsFaces 1.1.0:</h5>
+    <p><code>bf-info</code>, <code>bf-warning</code>,
+    <code>bf-error</code> or <code>bf-fatal</code> have been dropped in favor of the standard Bootstrap CSS classes <code>has-success</code>,
+    <code>has-warning</code> and <code>has-error</code>. Plus, they are applied to the <code>form-group</code> instead of the labels and input fields.</p>
+    <h5>Compatibility settings</h5>
+    <p>If your application depends on the old HTML code, activate the context parameter <code>net.bootsfaces.legacy_error_classes</code>
+    in the web.xml.</p>
+
+    <b:tabView>
+      <b:tab title="displayed as">
+        <b:well>
+          <h:form>
+            <b:panelGrid columns="2" size="sm">
+              <h:panelGroup display="block">
+                <div class="container">
+                  <b:slider2 orientation="horizontal" value="#{sliderBean.age}" label="Enter your age (18-65)"
+                             mode="edit" id="age" />
+                  <b:message for="age" />
+                  <b:commandButton update="@form" value="Validate constraints" />
+                </div>
+              </h:panelGroup>
+              <h:panelGroup display="block">
+                <b:switch value="#{messageStyleBean.useLegacyBootsFacesStyle}"
+                          immediate="true"
+                          caption="use legacy BootsFaces CSS classes"
+                          label="compatibility settings"
+                          onchange="ajax:messageStyleBean.toggleSettings();"
+                          update="@form"
+                          />
+
+              </h:panelGroup>
+            </b:panelGrid>
+          </h:form>
+        </b:well>
+      </b:tab>
+      <b:tab title="JSF markup">
+        <b:well>
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:form>
+            <b:inputTextarea rows="3" id="name" value="&num;{userBean.name}" label="Enter your name"
+                             required="true"    />
+            <h:message for="age" />
+            <b:inputTextarea rows="3" id="age" value="&num;{userBean.age}" label="What's your age?"
+                             />
+            <h:message for="age" />
+            <b:commandButton update="@form" value="Validate constraints" />
+          </h:form>
+          ]]>
+          </script>
+        </b:well>
+      </b:tab>
+    </b:tabView>
+
+    <br/>
+    <!-- TODO in 1.5.0 -->
+    <!-- <h:form>
+      <h4>Float Values</h4>
+      <p>Another feature is the option to use Float values to with the Slider. Use the <code>precision</code> attribute to specify the precision to use.</p>
+
+      <b:row>
+        <b:column>
+          <b:slider2 id="sdl" mode="basic" label="Double Slider:" value="{sliderBean.valueDouble}" precision="2" min="0" max="30" step="0.5"/>
+        </b:column>
+      </b:row>
+      <b:commandButton id="button1" actionListener="{sliderBean.button1}" value="Send Value" ajax="true" update="sdl" />
+    </h:form -->
+
+    <h2><a id="reference_section">Reference section</a></h2>
+    <ui:include src="Slider2Attributes.xhtml" />
+    <b:panel look="info" rendered="true">
+      <f:facet name="heading">
+        <b>Skinning</b>
+      </f:facet>
+      <ul>
+        <li>
+          If the attribute <code>required</code> is true, the pseudo CSS class <code>bf-required</code> is added. Thus you can define your custom style for required fields.
+        </li>
+        <li>
+          if theres a <code>FacesMessage</code>, the input field is bears one of the pseudo CSS classes
+          <code>bf-info</code>, <code>bf-warning</code>, <code>bf-error</code> or <code>bf-fatal</code>. If there are no messages,
+          the input field bears the pseudo CSS class <code>bf-no-message</code>  and <code>has-success</code>. The latter colors the label green by default.
+        </li>
+        <li>If there's a label, it bears the CSS class <code>required</code>, if it's a mandatory field.
+          This class adds an asterisk to the label text. You can override the CSS class to remove the asterisk
+        or to replace it by something else.</li>
+        <li>If there's a label, it bears the CSS classes <code>bf-info</code>, <code>bf-warning</code>,
+          <code>bf-error</code> or <code>bf-fatal</code>, depending on which error message the input field has.
+          The latter two classes color the label red.<br />
+          If there's no message,
+          the label bears the pseudo CSS class <code>bf-no-message</code>  and <code>has-success</code>. The latter colors the label green by default.
+        </li>
+
+      </ul>
+    </b:panel>
+
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+  </ui:define>
+</ui:composition>

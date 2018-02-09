@@ -1,243 +1,354 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 
-            <ui:define name="content">
-                <h1>Modals</h1>
-                <p>Modals are streamlined, but flexible, dialog prompts with the minimum required functionality and smart defaults.</p>
-                <p><strong>Modal options</strong></p>
-                <p>You can specify a header with the <code>title</code> attribute. Modals have a dismiss button(a cross) in the upper right corner by default.</p>
-                <p>The <code>&lt;b:modal&gt;</code> tag has also a facet with name <code>footer</code> where you can add buttons for dismissing the modal or for other actions.</p>
-                <p>Notice that the <code>&lt;b:button&gt;</code> tag must have the <code>dismiss="modal"</code> attribute in order to dismiss the modal when clicked.</p>
-
-                <h3>Triggering Modals</h3>
-                <p>You have four ways to create a Button that triggers a Modal:</p>
-                <ul>
-                    <li>Using HTML markup - a styled <code>&lt;a&gt;</code> tag with href and data attributes.</li>
-                    <li>Using HTML markup - a styled <code>&lt;button&gt;</code> tag with two data attributes.</li>
-                    <li>Using JSF BootsFaces markup - a <code>&lt;b:button&gt;</code> tag with passthrough data attributes and a little javascript to prevent click event.</li>
-                    <li>Using JavaScript. This is the most flexible version: you can use arbitrary jQuery selectors instead of ids, and you aren't limited to buttons.</li>
-                </ul>
-                <p>Note: if your intended use is to trigger a data submission that shows the results in a Modal, then have a look at the <h:link outcome="/forms/commandButton" value="commandButton"/> documentation.</p>
-                <p>The following example shows you how to use the four kinds of triggers.</p>
-                <p class="text-warning"><b>Overlapping modals are not supported:</b> be sure not to open a modal while another is still visible. Showing more than one modal at a time requires custom code.</p>
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#modals" value="modals" />
+      <b:navLink href="#triggering" value="triggering modals" />
+      <b:navLink href="#troubleshooting" value="troubleshooting" />
+      <b:navLink href="#closable" value="closable and backdrop" />
+      <b:navLink href="#datatables" value="datatables" />
+      <b:navLink href="#attributes" value="attributes" />
+    </b:listLinks>
+  </ui:define>
 
 
-                        <b:panel title="Live preview" look="info" collapsible="false">         
+  <ui:define name="content">
+    <h1><a id="modals">Modals</a></h1>
+    <p>Modals are streamlined, but flexible, dialog prompts with the minimum required functionality and smart defaults.</p>
+    <p><strong>Modal options</strong></p>
+    <p>You can specify a header with the <code>title</code> attribute. Modals have a dismiss button(a cross) in the upper right corner by default.</p>
+    <p>The <code>&lt;b:modal&gt;</code> tag has also a facet with name <code>footer</code> where you can add buttons for dismissing the modal or for other actions.</p>
+    <p>Notice that the <code>&lt;b:button&gt;</code> tag must have the <code>dismiss="modal"</code> attribute in order to dismiss the modal when clicked.</p>
 
-<b:modal id="amodal" title="Modal Example" styleClass="modalPseudoClass">
-                        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-                        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-                        <f:facet name="footer">
-                            <b:button value="Close" dismiss="modal" />
-                            <b:button value="Ok" look="primary" dismiss="modal" />
-                        </f:facet>
-                    </b:modal>
-                    <b:row>
-                        <b:column span="3">
-                            <a id="atrigger" class="btn btn-primary btn-lg" href="#amodal" data-toggle="modal">Trigger (HTML A tag)</a>
-                        </b:column>
-                        <b:column span="3">
-                            <button id="btrigger" class="btn btn-info btn-lg" data-target="#amodal" data-toggle="modal">Trigger (HTML Button)</button>
-                        </b:column>
-                        <b:column span="3">
-                            <b:button value="Trigger (JSF passthrough)" look="warning" p:data-target="#amodal" p:data-toggle="modal" size="lg"/>
-                        </b:column>
-                        <b:column span="3">
-                            <b:button value="Trigger (JavaScript)" look="success" onclick="$('.modalPseudoClass').modal()" size="lg"/>
-                        </b:column>
-                    </b:row>
+    <h2><a id="triggering">Triggering Modals</a></h2>
+    <p>You have four ways to create a Button that triggers a Modal:</p>
+    <ul>
+      <li>Using HTML markup - a styled <code>&lt;a&gt;</code> tag with href and data attributes.</li>
+      <li>Using HTML markup - a styled <code>&lt;button&gt;</code> tag with two data attributes.</li>
+      <li>Using JSF BootsFaces markup - a <code>&lt;b:button&gt;</code> tag with passthrough data attributes and a little javascript to prevent click event.</li>
+      <li>Using JavaScript. This is the most flexible version: you can use arbitrary jQuery selectors instead of ids, and you aren't limited to buttons.</li>
+    </ul>
+    <p>Note: if your intended use is to trigger a data submission that shows the results in a Modal, then have a look at the <h:link outcome="/forms/commandButton" value="commandButton"/> documentation.</p>
+    <p>The following example shows you how to use the four kinds of triggers.</p>
+    <p class="text-warning"><b>Overlapping modals are not supported:</b> be sure not to open a modal while another is still visible. Showing more than one modal at a time requires custom code.</p>
 
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+
+      <b:modal id="amodal" title="Modal Example" styleClass="modalPseudoClass">
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <f:facet name="footer">
+          <b:button value="Close" dismiss="modal" />
+          <b:button value="Ok" look="primary" dismiss="modal" />
+        </f:facet>
+      </b:modal>
+      <b:row>
+        <b:column span="3">
+          <a id="atrigger" class="btn btn-primary btn-lg" href="#amodal" data-toggle="modal">Trigger (HTML A tag)</a>
+        </b:column>
+        <b:column span="3">
+          <button id="btrigger" class="btn btn-info btn-lg" data-target="#amodal" data-toggle="modal">Trigger (HTML Button)</button>
+        </b:column>
+        <b:column span="3">
+          <b:button value="Trigger (JSF passthrough)" look="warning" p:data-target="#amodal" p:data-toggle="modal" size="lg"/>
+        </b:column>
+        <b:column span="3">
+          <b:button value="Trigger (JavaScript)" look="success" onclick="$('.modalPseudoClass').modal()" size="lg"/>
+        </b:column>
+      </b:row>
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:modal id="amodal" title="Modal Example" styleClass="modalPseudoClass">
+            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
             <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                            <![CDATA[
-                    <b:modal id="amodal" title="Modal Example" styleClass="modalPseudoClass">
-                        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-                        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-                        <f:facet name="footer">
-                            <b:button value="Close" dismiss="modal" />
-                            <b:button value="Ok" look="primary" dismiss="modal" />
-                        </f:facet>
-                    </b:modal>
-                    <b:row>
-                        <b:column span="3">
-                            <a id="atrigger" class="btn btn-primary btn-lg" href="#amodal" data-toggle="modal">Trigger (HTML A tag)</a>
-                        </b:column>
-                        <b:column span="3">
-                            <button id="btrigger" class="btn btn-info btn-lg" data-target="#amodal" data-toggle="modal">Trigger (HTML Button)</button>
-                        </b:column>
-                        <b:column span="3">
-                            <b:button value="Trigger (JSF passthrough)" look="warning" p:data-target="#amodal" p:data-toggle="modal" size="lg"/>
-                        </b:column>
-                        <b:column span="3">
-                            <b:button value="Trigger (JavaScript)" look="success" onclick="$('.modalPseudoClass').modal()" size="lg"/>
-                        </b:column>
-                    </b:row>
-                            ]]></script>
-                </b:panel>
+              <b:button value="Close" dismiss="modal" />
+              <b:button value="Ok" look="primary" dismiss="modal" />
             </f:facet>
+          </b:modal>
+          <b:row>
+            <b:column span="3">
+              <a id="atrigger" class="btn btn-primary btn-lg" href="#amodal" data-toggle="modal">Trigger (HTML A tag)</a>
+            </b:column>
+            <b:column span="3">
+              <button id="btrigger" class="btn btn-info btn-lg" data-target="#amodal" data-toggle="modal">Trigger (HTML Button)</button>
+            </b:column>
+            <b:column span="3">
+              <b:button value="Trigger (JSF passthrough)" look="warning" p:data-target="#amodal" p:data-toggle="modal" size="lg"/>
+            </b:column>
+            <b:column span="3">
+              <b:button value="Trigger (JavaScript)" look="success" onclick="$('.modalPseudoClass').modal()" size="lg"/>
+            </b:column>
+          </b:row>
+          ]]></script>
         </b:panel>
-       
+      </f:facet>
+    </b:panel>
 
-                <h3>Troubleshooting</h3>
-                <p>Using <code>ids</code> is always a bit tricky in JSF.
-                Don't put your modal dialog into a form. If you do, be aware that the id is modified. The <code>href</code> of the <code>b:button</code> refers
-                to the <code>id</code> in the HTML code, not to the <code>id</code> of the source code. JSF prepends the ids of the parent containers
-                to the <code>id</code> of <code>b:modal</code>.</p>
-                <p>In general, it's a better idea to use a pseudo CSS class instead of an <code>id</code>. That's a <code>styleClass</code> that may or may not have
-                CSS instructions applied to it. Pure pseudo CSS classes don't influence the layout at all. They are simply a convenient alternative to ids. Instead
-                of writing <code>href="#someId"</code> you can write <code>href=".somePseudoClass"</code>. JSF never modifies CSS class names, so they are a good
-                alternative to using <code>ids</code>. However, you have to use some JavaScript to activate the modal dialog using a CSS pseudo class, as the following example shows: </p>
+    <h2><a id="troubleshooting">Troubleshooting: Modal and AJAX</a></h2>
+    <p>Sometimes developers report that the modal dialog is closed after clicking the "OK" button,
+    but the screen remains gray and inactive. This usually happens if you're using an AJAX update
+    replacing the modal. So the JavaScript variables point to a modal window which ceased to exist.</p>
+    <p>
+    You can solve the bug by reducing the update region. Make sure that the AJAX update only updates
+    the content of the modal. You can also update regions outside the modal. The bottom line is that
+    the modal itself remains unchanged.
+    </p>
 
-                        <b:panel title="Live preview" look="info" collapsible="false">         
+    <h3>Troubleshooting: use CSS classes instead of ids</h3>
+    <p>Using <code>ids</code> is always a bit tricky in JSF.
+    Don't put your modal dialog into a form. If you do, be aware that the id is modified. The <code>href</code> of the <code>b:button</code> refers
+    to the <code>id</code> in the HTML code, not to the <code>id</code> of the source code. JSF prepends the ids of the parent containers
+    to the <code>id</code> of <code>b:modal</code>.</p>
+    <p>In general, it's a better idea to use a pseudo CSS class instead of an <code>id</code>. That's a <code>styleClass</code> that may or may not have
+    CSS instructions applied to it. Pure pseudo CSS classes don't influence the layout at all. They are simply a convenient alternative to ids. Instead
+    of writing <code>href="#someId"</code> you can write <code>href=".somePseudoClass"</code>. JSF never modifies CSS class names, so they are a good
+    alternative to using <code>ids</code>. However, you have to use some JavaScript to activate the modal dialog using a CSS pseudo class, as the following example shows: </p>
 
-<h:form id="myFormID">
-	                    <b:modal id="amodal2" title="Modal Example" styleClass="modalPseudoClass2"
-	                             closable="false"  close-on-escape="false" backdrop="false">
-	                        <p>Far far away, behind the word mountains, far from the
-								countries Vokalia and Consonantia, there live the blind texts.
-								Separated they live in Bookmarksgrove right at the coast of the
-								Semantics, a large language ocean. A small river named Duden flows
-								by their place and supplies it with the necessary regelialia. It
-								is a paradisematic country, in which roasted parts of sentences
-								fly into your mouth. Even the all-powerful Pointing has no control
-								about the blind texts it is an almost unorthographic life. One day
-								however a small line of blind text by the name of Lorem Ipsum
-								decided to leave for the far World of Grammar. The Big Oxmox
-								advised her not to do so, because there were thousands of bad
-								Commas, wild Question Marks and devious Semikoli, but the Little
-								Blind Text didn’t listen. She packed her seven versalia, put her
-								initial into the belt and made herself on the way. When she
-								reached the first hills of the Italic Mountains, she had a last
-								view back on the skyline of her hometown Bookmarksgrove, the
-								headline of Alphabet Village and the subline of her own road, the
-								Line Lane.
-							</p>
-	                        <f:facet name="footer">
-	                            <b:button value="Close" dismiss="modal" />
-	                            <b:button value="Ok" look="primary" dismiss="modal" />
-	                        </f:facet>
-	                    </b:modal>
-                    </h:form>
-                    <b:row>
-                        <b:column span="3">
-                            <b:button value="Trigger (JavaScript)" look="success" onclick="$('.modalPseudoClass2').modal()" size="lg"/>
-                        </b:column>
-                    </b:row>
+    <b:panel title="Live preview" look="info" collapsible="false">
 
+      <h:form id="myFormID">
+        <b:modal id="amodal2" title="Modal Example" styleClass="modalPseudoClass2"
+                 closable="false"  close-on-escape="false" backdrop="false">
+          <p>Far far away, behind the word mountains, far from the
+          countries Vokalia and Consonantia, there live the blind texts.
+          Separated they live in Bookmarksgrove right at the coast of the
+          Semantics, a large language ocean. A small river named Duden flows
+          by their place and supplies it with the necessary regelialia. It
+          is a paradisematic country, in which roasted parts of sentences
+          fly into your mouth. Even the all-powerful Pointing has no control
+          about the blind texts it is an almost unorthographic life. One day
+          however a small line of blind text by the name of Lorem Ipsum
+          decided to leave for the far World of Grammar. The Big Oxmox
+          advised her not to do so, because there were thousands of bad
+          Commas, wild Question Marks and devious Semikoli, but the Little
+          Blind Text didn’t listen. She packed her seven versalia, put her
+          initial into the belt and made herself on the way. When she
+          reached the first hills of the Italic Mountains, she had a last
+          view back on the skyline of her hometown Bookmarksgrove, the
+          headline of Alphabet Village and the subline of her own road, the
+          Line Lane.
+          </p>
+          <f:facet name="footer">
+            <b:button value="Close" dismiss="modal" />
+            <b:button value="Ok" look="primary" dismiss="modal" />
+          </f:facet>
+        </b:modal>
+      </h:form>
+      <b:row>
+        <b:column span="3">
+          <b:button value="Trigger (JavaScript)" look="success" onclick="$('.modalPseudoClass2').modal()" size="lg"/>
+        </b:column>
+      </b:row>
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <h:form id="myFormID">
+            <b:modal id="amodal2" title="Modal Example" styleClass="modalPseudoClass2"
+                     closable="false"  close-on-escape="false" backdrop="false">
+              <p>Far far away, behind the word mountains, far from the
+              countries Vokalia and Consonantia, there live the blind texts.
+              Separated they live in Bookmarksgrove right at the coast of the
+              Semantics, a large language ocean. A small river named Duden flows
+              by their place and supplies it with the necessary regelialia. It
+              is a paradisematic country, in which roasted parts of sentences
+              fly into your mouth. Even the all-powerful Pointing has no control
+              about the blind texts it is an almost unorthographic life. One day
+              however a small line of blind text by the name of Lorem Ipsum
+              decided to leave for the far World of Grammar. The Big Oxmox
+              advised her not to do so, because there were thousands of bad
+              Commas, wild Question Marks and devious Semikoli, but the Little
+              Blind Text didn’t listen. She packed her seven versalia, put her
+              initial into the belt and made herself on the way. When she
+              reached the first hills of the Italic Mountains, she had a last
+              view back on the skyline of her hometown Bookmarksgrove, the
+              headline of Alphabet Village and the subline of her own road, the
+              Line Lane.
+              </p>
+              <f:facet name="footer">
+                <b:button value="Close" dismiss="modal" />
+                <b:button value="Ok" look="primary" dismiss="modal" />
+              </f:facet>
+            </b:modal>
+          </h:form>
+          <b:row>
+            <b:column span="3">
+              <b:button value="Trigger (JavaScript)" look="success" onclick="$('.modalPseudoClass2').modal()" size="lg"/>
+            </b:column>
+          </b:row>
+          ]]></script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+
+    <h2><a id="closable"><code>closable</code> and <code>backdrop</code></a></h2>
+    <p>By default, there's an x symbol which allows the user to close the modal. Set <code>closable="false"</code> to suppress the close icon.
+    Users can close modal dialogs by hitting the ESC key unless you set <code>close-on-escape="false"</code>.
+    Another default behavior of modal is that you can close a modal dialog by clicking somewhere outside the modal. Set <code>backdrop="false"</code> to disable this feature.
+    </p>
+
+    <h3>Opening a modal dialog when entering the JSF view</h3>
+    <p>If you don't want to open the modal dialog when a button is clicked, but already when the JSF view is opened, you can use an inline script to open the dialog programmatically:</p>
+    <b:panel>
+      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+      <![CDATA[
+      &lt;script type="text/javascript">
+      $(window).load(function(){ $('.modalPseudoClass').modal('show'); });
+      &lt;/script>
+      ]]>
+      </script>
+    </b:panel>
+    Alternatively, you can use the pass-through attributes that have been introduced with JSF 2.2:
+    <b:panel>
+      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+      <![CDATA[
+      <?xml version='1.0' encoding='UTF-8' ?>
+      <!DOCTYPE html>
+      <html xmlns="http://www.w3.org/1999/xhtml"
+            xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core"
+            xmlns:b="http://bootsfaces.net/ui"
+            xmlns:ui="http://java.sun.com/jsf/facelets"
+            xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+            >
+        <h:head />
+        <h:body pt:onload="$('.modalPseudoClass').modal('show');">
+          ...
+        </h:body>
+      </html>
+      ]]>
+      </script>
+    </b:panel>
+    <p>Just in case you wonder why it doesn't suffice to add the pass-through attribute <code>pt:data-show="true"</code> to the <code>b:modal</code>:
+    By default, this attribute is already set to <code>true</code>. It influences what happens when you call
+    <code>$('.modalPseudoClass').modal();</code> (i.e. omitting the attribute <code>'show'</code>). If <code>pt:data-show="false"</code>,
+    the data structure of the modal is initialized, but it remains invisible. If <code>pt:data-show="true"</code>, the modal is also shown.
+    Calling <code>$('.modalPseudoClass').modal('show');</code> or <code>$('.modalPseudoClass').modal('hide');</code> overrides the default
+    setting defined by <code>pt:data-show="true"</code>.</p>
+    <br />
+
+    <h2><a id="datatables">Datatables in a modal</a></h2>
+    <p>By default, modals are hidden. As a consequence, any <code>&lt;b:dataTable /&gt;</code> inside the modal is rendered incorrectly.
+    You can fix that by recalculating the datatable after showing the modal. You need the JavaScript approach for that. Just add the line
+    <code>myDataTableWidgetVar.DataTable().responsive.recalc();</code> as shown in the example below.</p>
+    <p>If simpler approach is to set the flag <code>scroll-horizontally="true"</code>. This adds a scrollbar to the table.
+    The advantage of this approach is that it works without JavaScript. The disadvantage is that it doesn't work with reponsive tables
+    using <code>responsive="true"</code>. You can see the difference in the example below.</p>
+    <b:panel title="Live preview" look="info" collapsible="false">
+
+      <b:modal title="Modal Example" styleClass="responsiveModalPseudoClass"
+               id="responsiveModal">
+        <b:dataTable value="#{carPool.carPool}"
+                     var="car"
+                     widgetVar="myResponsiveDataTableWidgetVar"
+                     responsive="true"
+                     scroll-horizontally="true">
+          <b:dataTableColumn value="#{car.brand}" />
+          <b:dataTableColumn value="#{car.type}" />
+          <b:dataTableColumn value="#{car.color}" />
+          <b:dataTableColumn value="#{car.year}"  order="asc" />
+          <b:dataTableColumn value="#{car.price}" />
+          <b:dataTableColumn value="#{car.enginePower}" label="Engine Power (hp)" />
+          <b:dataTableColumn value="#{car.brand}" />
+          <b:dataTableColumn value="#{car.type}" />
+          <b:dataTableColumn value="#{car.color}" />
+        </b:dataTable>
+        <f:facet name="footer">
+          <b:button value="Close" dismiss="modal" />
+          <b:button value="Ok" look="primary" dismiss="modal" />
+        </f:facet>
+      </b:modal>
+      <b:column span="3">
+        <a class="btn btn-primary btn-lg" href="#responsiveModal" data-toggle="modal">Trigger (HTML A tag)</a>
+      </b:column>
+      <b:row>
+        <b:column span="3">
+          <b:button value="Trigger (JavaScript)" look="success" onclick="$('.responsiveModalPseudoClass').modal();myResponsiveDataTableWidgetVar.DataTable().responsive.recalc();" size="lg"/>
+        </b:column>
+      </b:row>
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:modal title="Modal Example" styleClass="responsiveModalPseudoClass"
+                   id="responsiveModal">
+            <b:dataTable value="&num;{carPool.carPool}"
+                         var="car"
+                         widgetVar="tableWidgetVar"
+                         responsive="true"
+                         scroll-horizontally="true">
+              <b:dataTableColumn value="&num;{car.brand}" />
+              <b:dataTableColumn value="&num;{car.type}" />
+              <b:dataTableColumn value="&num;{car.color}" />
+              <b:dataTableColumn value="&num;{car.year}"  order="asc" />
+              <b:dataTableColumn value="&num;{car.price}" />
+              <b:dataTableColumn value="&num;{car.enginePower}" label="Engine Power (hp)" />
+              <b:dataTableColumn value="&num;{car.brand}" />
+              <b:dataTableColumn value="&num;{car.type}" />
+              <b:dataTableColumn value="&num;{car.color}" />
+            </b:dataTable>
             <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                            <![CDATA[
-                    <h:form id="myFormID">
-	                    <b:modal id="amodal2" title="Modal Example" styleClass="modalPseudoClass2"
-	                             closable="false"  close-on-escape="false" backdrop="false">
-	                        <p>Far far away, behind the word mountains, far from the
-								countries Vokalia and Consonantia, there live the blind texts.
-								Separated they live in Bookmarksgrove right at the coast of the
-								Semantics, a large language ocean. A small river named Duden flows
-								by their place and supplies it with the necessary regelialia. It
-								is a paradisematic country, in which roasted parts of sentences
-								fly into your mouth. Even the all-powerful Pointing has no control
-								about the blind texts it is an almost unorthographic life. One day
-								however a small line of blind text by the name of Lorem Ipsum
-								decided to leave for the far World of Grammar. The Big Oxmox
-								advised her not to do so, because there were thousands of bad
-								Commas, wild Question Marks and devious Semikoli, but the Little
-								Blind Text didn’t listen. She packed her seven versalia, put her
-								initial into the belt and made herself on the way. When she
-								reached the first hills of the Italic Mountains, she had a last
-								view back on the skyline of her hometown Bookmarksgrove, the
-								headline of Alphabet Village and the subline of her own road, the
-								Line Lane.
-							</p>
-	                        <f:facet name="footer">
-	                            <b:button value="Close" dismiss="modal" />
-	                            <b:button value="Ok" look="primary" dismiss="modal" />
-	                        </f:facet>
-	                    </b:modal>
-                    </h:form>
-                    <b:row>
-                        <b:column span="3">
-                            <b:button value="Trigger (JavaScript)" look="success" onclick="$('.modalPseudoClass2').modal()" size="lg"/>
-                        </b:column>
-                    </b:row>
-                            ]]></script>
-                </b:panel>
+              <b:button value="Close" dismiss="modal" />
+              <b:button value="Ok" look="primary" dismiss="modal" />
             </f:facet>
+          </b:modal>
+          <b:row>
+            <b:column span="3">
+              <a class="btn btn-primary btn-lg" href="#responsiveModal" data-toggle="modal">Trigger (HTML A tag)</a>
+            </b:column>
+            <b:column span="3">
+              <b:button value="Trigger (JavaScript)" look="success"
+                        onclick="$('.responsiveModalPseudoClass').modal();tableWidgetVar.DataTable().responsive.recalc();"
+                        size="lg"/>
+            </b:column>
+          </b:row>
+          ]]>
+          </script>
         </b:panel>
-       
+      </f:facet>
+    </b:panel>
 
-                <h3><code>closable</code> and <code>backdrop</code></h3>
-                <p>By default, there's an x symbol which allows the user to close the modal. Set <code>closable="false"</code> to suppress the close icon.
-                Users can close modal dialogs by hitting the ESC key unless you set <code>close-on-escape="false"</code>.
-                Another default behavior of modal is that you can close a modal dialog by clicking somewhere outside the modal. Set <code>backdrop="false"</code> to disable this feature.
-                </p>
+    <h2><a id="attributes">Reference section</a></h2>
+  <ui:include src="ModalAttributes.xhtml"></ui:include>
 
-                <h3>Opening a modal dialog when entering the JSF view</h3>
-                <p>If you don't want to open the modal dialog when a button is clicked, but already when the JSF view is opened, you can use an inline script to open the dialog programmatically:</p>
-                <b:panel>
-                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                <![CDATA[
-					&lt;script type="text/javascript">
-                          $(window).load(function(){ $('.modalPseudoClass').modal('show'); });
-                    &lt;/script>
-                ]]>
-				</script>
-                    </b:panel>
-				Alternatively, you can use the pass-through attributes that have been introduced with JSF 2.2:
-                <b:panel>
-                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                <![CDATA[
-                    <?xml version='1.0' encoding='UTF-8' ?>
-                    <!DOCTYPE html>
-                    <html xmlns="http://www.w3.org/1999/xhtml"
-                          xmlns:h="http://java.sun.com/jsf/html"
-                          xmlns:f="http://java.sun.com/jsf/core"
-                          xmlns:b="http://bootsfaces.net/ui"
-                          xmlns:ui="http://java.sun.com/jsf/facelets"
-                          xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-                          >
-                        <h:head />
-                        <h:body pt:onload="alert(1)">
-                    		...
-                        </h:body>
-                    </html>
-                ]]>
-				</script>
-                    </b:panel>
-                    <p>However, adding the pass-through attribute <code>pt:data-show="true"</code> to the <code>b:modal</code> doesn't work at the moment (BootsFaces 0.6.7).</p>
+    <b:panel look="info">
+      <f:facet name="heading">
+        <b>Facets of &lt;b:modal &gt;</b>
+      </f:facet>
+      <p>The optional facet <code>footer</code> can be used to display buttons below a horizontal ruler, as shown in the example above.</p>
+    </b:panel>
 
-			<ui:include src="ModalAttributes.xhtml"></ui:include>
+    <br/> <br/>
 
-            <b:panel look="info">
-				<f:facet name="heading">
-					<b>Facets of &lt;b:modal &gt;</b>
-				</f:facet>
-					<p>The optional facet <code>footer</code> can be used to display buttons below a horizontal ruler, as shown in the example above.</p>
-			</b:panel>
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
 
-                <br/> <br/>
-
-                <script type="text/javascript">
-                    SyntaxHighlighter.all();
-                </script>
-
-            </ui:define>
+  </ui:define>
 </ui:composition>

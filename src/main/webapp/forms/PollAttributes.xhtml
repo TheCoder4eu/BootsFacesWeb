@@ -44,8 +44,13 @@
             </tr>
             <tr>
                 <td>interval</td>
-                <td>(none)</td>
+                <td>0 </td>
                 <td>How often is the poll action to be called? Denotes the number of milliseconds between polls. Default value is 1000.</td>
+            </tr>
+            <tr>
+                <td>once</td>
+                <td>false</td>
+                <td>If true, the poll is called only once. Default value: false.</td>
             </tr>
             <tr>
                 <td>rendered</td>
@@ -53,9 +58,19 @@
                 <td>Boolean value to specify the rendering of the component, when set to false the component will not be rendered.</td>
             </tr>
             <tr>
+                <td>stop</td>
+                <td>false</td>
+                <td>If true, the poll will stop. Default value: false.</td>
+            </tr>
+            <tr>
                 <td>update</td>
                 <td>(none)</td>
                 <td>Which region of the screen is to be updated? Default value: @form</td>
+            </tr>
+            <tr>
+                <td>widgetVar</td>
+                <td>(none)</td>
+                <td>Optional widget variable to access the datatable widget in JavaScript code.</td>
             </tr>
           </tbody>
         </table>

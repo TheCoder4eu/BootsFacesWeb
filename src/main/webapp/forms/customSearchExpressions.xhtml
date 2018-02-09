@@ -1,53 +1,62 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
-<ui:composition template="/applayout/pageTemplate.xhtml"   
-    xmlns="http://www.w3.org/1999/xhtml" 
-    xmlns:h="http://java.sun.com/jsf/html" 
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:b="http://bootsfaces.net/ui" 
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/applayout/pageTemplate.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
 
-        <ui:define name="content">
-            <h1>Define your own Search Expressions <b:badge value="since 0.8.0" /></h1>
-                <p>It's fairly easy to define your own custom search expression. You create a class implementing 
-                a certain interface und call it just like the search expression. That's it!</p>
-                
-                <h2>Step-by-step tutorial</h2>
-                <p>BootsFaces uses a convention over configuration approach to define search expressions. The class
-                implementing the search expression must be in the package <code>net.bootsfaces.expressions</code>.
-                The name of the class is the name of the search expression, plus the suffix <code>ExpressionResolver</code>.
-                As usual, the first letter of the class has to be upper case.</p>
-                <p>For example, to implement a search expression giving you the parent element of the current element 
-                in the JSF tree, use this code to implement <code>@parent</code>:</p>
-                
-                <b:panel>
-	                <script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1"><![CDATA[
-package net.bootsfaces.expressions;
 
-/** import statements omitted for brevity */
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#define_your_own_search_expressions" value="define your own search expressions" />
+      <b:navLink href="#step" value="step-by-step tutorial" />
+    </b:listLinks>
+  </ui:define>
 
-public class ParentExpressionResolver implements AbstractExpressionResolver {
-	public List<UIComponent> resolve(UIComponent component, List<UIComponent> parentComponents, String currentId,
-			String originalExpression, String[] parameters) {
-		List<UIComponent> result = new ArrayList<UIComponent>();
-		for (UIComponent parent : parentComponents) {
-			if (parent.getParent() != null) {
-				result.add(parent.getParent());
-			}
-		}
-		if (result.size() > 0) {
-			return result;
-		}
-		throw new FacesException("Invalid search expression - the component isn't inside a form " + originalExpression);
-	}
-}
-	                ]]></script>
-                </b:panel>
-				<p>Of course, <code>@parent</code> is already a BootsFaces search expression,
-                but you get the idea.</p>
-            <script type="text/javascript">
-                SyntaxHighlighter.all();
-            </script>
-        </ui:define>
-    </ui:composition>
+
+  <ui:define name="content">
+    <h1><a id="define_your_own_search_expressions">Define your own Search Expressions</a><b:badge value="since 0.8.0" /></h1>
+    <p>It's fairly easy to define your own custom search expression. You create a class implementing
+    a certain interface und call it just like the search expression. That's it!</p>
+
+    <h2><a id="step">Step-by-step tutorial</a></h2>
+    <p>BootsFaces uses a convention over configuration approach to define search expressions. The class
+    implementing the search expression must be in the package <code>net.bootsfaces.expressions</code>.
+    The name of the class is the name of the search expression, plus the suffix <code>ExpressionResolver</code>.
+    As usual, the first letter of the class has to be upper case.</p>
+    <p>For example, to implement a search expression giving you the parent element of the current element
+    in the JSF tree, use this code to implement <code>@parent</code>:</p>
+
+    <b:panel>
+      <script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1"><![CDATA[
+      package net.bootsfaces.expressions;
+
+      /** import statements omitted for brevity */
+
+      public class ParentExpressionResolver implements AbstractExpressionResolver {
+        public List<UIComponent> resolve(UIComponent component, List<UIComponent> parentComponents, String currentId,
+        String originalExpression, String[] parameters) {
+          List<UIComponent> result = new ArrayList<UIComponent>();
+          for (UIComponent parent : parentComponents) {
+            if (parent.getParent() != null) {
+              result.add(parent.getParent());
+            }
+          }
+          if (result.size() > 0) {
+            return result;
+          }
+          throw new FacesException("Invalid search expression - the component isn't inside a form " + originalExpression);
+        }
+      }
+      ]]></script>
+    </b:panel>
+    <p>Of course, <code>@parent</code> is already a BootsFaces search expression,
+    but you get the idea.</p>
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+  </ui:define>
+</ui:composition>

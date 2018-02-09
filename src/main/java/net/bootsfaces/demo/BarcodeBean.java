@@ -17,6 +17,7 @@
 package net.bootsfaces.demo;
 
 import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.view.ViewScoped;

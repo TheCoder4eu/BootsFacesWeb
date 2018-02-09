@@ -1,163 +1,175 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:b="http://bootsfaces.net/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<ui:define name="content">
-		<style>
-td {
-	padding: 8px;
-}
-</style>
-		<h1>RemoteCommand (&lt;b:remoteCommand /&gt;) <b:badge value="since 1.0.1" /></h1>
 
-		<p>The <code>&lt;b:remoteCommand&gt;</code> is an invisible component allowing you to call a Java backend method from JavaScript.</p>
-		<h2>Basic usage</h2>
-		<p>The API of <code>&lt;b:remoteCommand&gt;</code>  resembles the <code>&lt;b:commandButton&gt;</code>, the PrimeFaces <code>&lt;p:remoteCommand&gt;</code>)
-		or the <code>&lt;o:commandScript /&gt;</code> of OmniFaces.</p>
-		
-		<h:form>
-			<b:tabView active-index="2">
-				<b:tab title="JSF code">
-        <b:well>
-          <script type="syntaxhighlighter"
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#remotecommand" value="RemoteCommand (&lt;b:remoteCommand /&gt;)" />
+      <b:navLink href="#basic_usage" value="Basic usage" />
+      <b:navLink href="#parameters" value="Parameters" />
+      <b:navLink href="#reference_section" value="Reference section" />
+    </b:listLinks>
+  </ui:define>
+
+
+  <ui:define name="content">
+    <style>
+      td {
+        padding: 8px;
+      }
+    </style>
+    <h1><a id="remotecommand">RemoteCommand (&lt;b:remoteCommand /&gt;)</a><b:badge value="since 1.0.1" /></h1>
+
+    <p>The <code>&lt;b:remoteCommand&gt;</code> is an invisible component allowing you to call a Java backend method from JavaScript.</p>
+    <h2><a id="basic_usage">Basic usage</a></h2>
+    <p>The API of <code>&lt;b:remoteCommand&gt;</code>  resembles the <code>&lt;b:commandButton&gt;</code>, the PrimeFaces <code>&lt;p:remoteCommand&gt;</code>)
+    or the <code>&lt;o:commandScript /&gt;</code> of OmniFaces.</p>
+
+    <h:form>
+      <b:tabView active-index="2">
+        <b:tab title="JSF code">
+          <b:well>
+            <script type="syntaxhighlighter"
             class="brush: xml; toolbar: false;gutter: false; first-line: 1">
             <![CDATA[
-					<b:panel title="RemoteCommand demo">
-						<b:button onclick="countRemotely()" value="increment remote counter" look="success"/>
-						<b:remoteCommand name="countRemotely" id="remoteCommand" actionListener="&num;{remoteCommandBean.count}" update="@(.counter)" />
-						<h:panelGroup id="counterId" layout="block" class="counter">
-                           <br />
-                           You've triggered the remoteCommand &num;{remoteCommandBean.counter} times.
-                         </h:panelGroup>
-					</b:panel>
-      ]]>
-      </script>
-        </b:well>
-				</b:tab>
-				<b:tab title="Java Bean">
-        <b:well>
-          <script type="syntaxhighlighter"
+            <b:panel title="RemoteCommand demo">
+              <b:button onclick="countRemotely()" value="increment remote counter" look="success"/>
+              <b:remoteCommand name="countRemotely" id="remoteCommand" actionListener="&num;{remoteCommandBean.count}" update="@(.counter)" />
+              <h:panelGroup id="counterId" layout="block" class="counter">
+                <br />
+                You've triggered the remoteCommand &num;{remoteCommandBean.counter} times.
+              </h:panelGroup>
+            </b:panel>
+            ]]>
+            </script>
+          </b:well>
+        </b:tab>
+        <b:tab title="Java Bean">
+          <b:well>
+            <script type="syntaxhighlighter"
             class="brush: java; toolbar: false;gutter: false; first-line: 1">
             <![CDATA[
-@ManagedBean
-@ViewScoped
-public class RemoteCommandBean implements Serializable{
-	private static final long serialVersionUID = 1L;
-	
-	private int counter=0;
+            @ManagedBean
+            @ViewScoped
+            public class RemoteCommandBean implements Serializable{
+              private static final long serialVersionUID = 1L;
 
-	public int getCounter() {
-		return counter;
-	}
+              private int counter=0;
 
-	public void setCounter(int counter) {
-		this.counter = counter;
-	}
-	
-	public void count(ActionEvent event) {
-		counter++;
-	}
-}      ]]>
-      </script>
-        </b:well>
-				</b:tab>
-				<b:tab title="live demo">
-					<b:panel title="RemoteCommand demo">
-						<b:button onclick="countRemotely()" value="increment remote counter" look="success"/>
-						<b:remoteCommand name="countRemotely" id="remoteCommand" actionListener="#{remoteCommandBean.count}" update="@(.counter)" />
-						<h:panelGroup id="counterId" layout="block" class="counter"><br />You've triggered the remoteCommand #{remoteCommandBean.counter} times.</h:panelGroup>
-					</b:panel>
-				</b:tab>
-			</b:tabView>
-		</h:form>
-		
-		<h2>Parameters</h2>
-		<p>To pass one or more parameter, simply declare them in the attribute <code>parameters</code> just the way you want to see them defined in the
-		generated JavaScript function. E.g.</p>
-		<ul>
-			<li><code>&lt;b:remoteCommand name="setCounter" parameters="initialValue" /&gt;</code> generates the JavaScript function <code>setCounter(initialValue)</code>.</li>
-			<li><code>&lt;b:remoteCommand name="setCounter" parameters="initialValue,step" /&gt;</code> generates the JavaScript function <code>setCounter(initialValue,step)</code>.</li>
-		</ul>
+              public int getCounter() {
+                return counter;
+              }
 
-		<h:form>
-			<b:tabView active-index="2">
-				<b:tab title="JSF code">
-        <b:well>
-          <script type="syntaxhighlighter"
+              public void setCounter(int counter) {
+                this.counter = counter;
+              }
+
+              public void count(ActionEvent event) {
+                counter++;
+              }
+            }      ]]>
+            </script>
+          </b:well>
+        </b:tab>
+        <b:tab title="live demo">
+          <b:panel title="RemoteCommand demo">
+            <b:button onclick="countRemotely()" value="increment remote counter" look="success"/>
+            <b:remoteCommand name="countRemotely" id="remoteCommand" actionListener="#{remoteCommandBean.count}" update="@(.counter)" />
+          <h:panelGroup id="counterId" layout="block" class="counter"><br />You've triggered the remoteCommand #{remoteCommandBean.counter} times.</h:panelGroup>
+          </b:panel>
+        </b:tab>
+      </b:tabView>
+    </h:form>
+
+    <h2><a id="parameters">Parameters</a></h2>
+    <p>To pass one or more parameter, simply declare them in the attribute <code>parameters</code> just the way you want to see them defined in the
+    generated JavaScript function. E.g.</p>
+    <ul>
+      <li><code>&lt;b:remoteCommand name="setCounter" parameters="initialValue" /&gt;</code> generates the JavaScript function <code>setCounter(initialValue)</code>.</li>
+      <li><code>&lt;b:remoteCommand name="setCounter" parameters="initialValue,step" /&gt;</code> generates the JavaScript function <code>setCounter(initialValue,step)</code>.</li>
+    </ul>
+
+    <h:form>
+      <b:tabView active-index="2">
+        <b:tab title="JSF code">
+          <b:well>
+            <script type="syntaxhighlighter"
             class="brush: xml; toolbar: false;gutter: false; first-line: 1">
             <![CDATA[
-						<b:button onclick="setCounter(0)" value="set counter to zero" look="success"/>
-						<b:button onclick="setCounter(10)" value="set counter to ten" look="success"/>
-						<b:remoteCommand name="setCounter" id="remoteCommand2" 
-                                         actionListener="&num;{remoteCommandBean.setCounter}" 
-                                         update="@(.counter)" parameters="initialValue" />
-						<h:panelGroup id="counterId" layout="block" class="counter">
-                          <br />
-                          You've set the remoteCommand counter to &num;{remoteCommandBean.counter}.
-                        </h:panelGroup>
-      ]]>
-      </script>
-        </b:well>
-				</b:tab>
-				<b:tab title="Java Bean">
-        <b:well>
-          <script type="syntaxhighlighter"
+            <b:button onclick="setCounter(0)" value="set counter to zero" look="success"/>
+            <b:button onclick="setCounter(10)" value="set counter to ten" look="success"/>
+            <b:remoteCommand name="setCounter" id="remoteCommand2"
+                             actionListener="&num;{remoteCommandBean.setCounter}"
+                             update="@(.counter)" parameters="initialValue" />
+            <h:panelGroup id="counterId" layout="block" class="counter">
+              <br />
+              You've set the remoteCommand counter to &num;{remoteCommandBean.counter}.
+            </h:panelGroup>
+            ]]>
+            </script>
+          </b:well>
+        </b:tab>
+        <b:tab title="Java Bean">
+          <b:well>
+            <script type="syntaxhighlighter"
             class="brush: java; toolbar: false;gutter: false; first-line: 1">
             <![CDATA[
-@ManagedBean
-@ViewScoped
-public class RemoteCommandBean implements Serializable{
-	private static final long serialVersionUID = 1L;
-	
-	private int counter=0;
+            @ManagedBean
+            @ViewScoped
+            public class RemoteCommandBean implements Serializable{
+              private static final long serialVersionUID = 1L;
 
-	public int getCounter() {
-		return counter;
-	}
+              private int counter=0;
 
-	public void setCounter(int counter) {
-		this.counter = counter;
-	}
-	
-	public void count(ActionEvent event) {
-		counter++;
-	}
-	
-	public void setCounter() {
-		String initialValue = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("initialValue");
-		if (null != initialValue) {
-			counter = Integer.valueOf(initialValue);
-		}
-	}
-}
-      ]]>
-      </script>
-        </b:well>
-				</b:tab>
-				<b:tab title="live demo">
-					<b:panel title="RemoteCommand demo">
-						<b:button onclick="setCounter(0)" value="set counter to zero" look="success"/>
-						<b:button onclick="setCounter(10)" value="set counter to ten" look="success"/>
-						<b:remoteCommand name="setCounter" id="remoteCommand2" actionListener="#{remoteCommandBean.setCounter}" update="@(.counter)" parameters="initialValue" />
-						<h:panelGroup id="counterId" layout="block" class="counter"><br />You've set the remoteCommand counter to #{remoteCommandBean.counter}.</h:panelGroup>
-					</b:panel>
-				</b:tab>
-			</b:tabView>
-		</h:form>
-		
-		<ui:include src="RemoteCommandAttributes.xhtml" />
+              public int getCounter() {
+                return counter;
+              }
 
-		<script type="text/javascript">
-      		SyntaxHighlighter.all();
-    	</script>
-		<br />
-		<br />
-		<br />
-		<br />
-	</ui:define>
+              public void setCounter(int counter) {
+                this.counter = counter;
+              }
+
+              public void count(ActionEvent event) {
+                counter++;
+              }
+
+              public void setCounter() {
+                String initialValue = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("initialValue");
+                if (null != initialValue) {
+                  counter = Integer.valueOf(initialValue);
+                }
+              }
+            }
+            ]]>
+            </script>
+          </b:well>
+        </b:tab>
+        <b:tab title="live demo">
+          <b:panel title="RemoteCommand demo">
+            <b:button onclick="setCounter(0)" value="set counter to zero" look="success"/>
+            <b:button onclick="setCounter(10)" value="set counter to ten" look="success"/>
+            <b:remoteCommand name="setCounter" id="remoteCommand2" actionListener="#{remoteCommandBean.setCounter}" update="@(.counter)" parameters="initialValue" />
+          <h:panelGroup id="counterId" layout="block" class="counter"><br />You've set the remoteCommand counter to #{remoteCommandBean.counter}.</h:panelGroup>
+          </b:panel>
+        </b:tab>
+      </b:tabView>
+    </h:form>
+
+    <h2><a id="reference_section">Reference section</a></h2>
+    <ui:include src="RemoteCommandAttributes.xhtml" />
+
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+    <br />
+    <br />
+    <br />
+    <br />
+  </ui:define>
 </ui:composition>

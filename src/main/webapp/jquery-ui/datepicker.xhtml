@@ -1,330 +1,343 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
 
-             <ui:define name="content">
-                <style>td {padding: 8px;}</style>
-                <h1>Date Picker <b:badge value="deprecated since 1.1.0" /></h1>
-                <p>BootsFaces derives the Date Picker component from jQuery UI's widget because of its ease of use and its configurability.</p>
-                <p><b>Caveat:</b> There's a new component, the <code>&lt;b:dateTimePicker /&gt;</code>, that doesn't need jQueryUI.
-                We recommend to use the new component. The <code>&lt;b:datepicker&gt;</code> is considered deprecated and will be removed in 
-                one of the next versions of BootsFaces.</p>
 
-                <strong>Date Picker modes</strong>
-                <p>The <code>&lt;b:datepicker&gt;</code> supports six modes for displaying the widget, specified with the attribute<code>mode</code>:</p>
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#date_picker" value="Date Picker" />
+      <b:navLink href="#mandatory_dates" value="Mandatory Dates" />
+      <b:navLink href="#responsive_design" value="Responsive design" />
+      <b:navLink href="#visibility_depending_on_screen_size" value="Visibility depending on screen size" />
+      <b:navLink href="#reference_section" value="Reference section" />
+    </b:listLinks>
+  </ui:define>
 
-                <h:form>
-                <table class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th style="width: 230px;">b:datepicker</th>
-                            <th><code>mode</code> attribute</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><b:datepicker mode="popup" placeholder="Click here"/></td>
-                            <td>popup</td>
-                            <td>In this mode, the Date picker is triggered only when the user clicks in the field.</td>
-                        </tr>
-                        <tr>
-                            <td><b:datepicker mode="popup-icon" placeholder="Select a Date"/></td>
-                            <td>popup-icon</td>
-                            <td>In this mode, the Date picker is triggered either when the user clicks in the field, or when the user clicks on the calendar icon. The icon is positioned on the right of the input.</td>
-                        </tr>
-                        <tr>
-                            <td><b:datepicker mode="icon-popup" placeholder="Select a Date"/></td>
-                            <td>icon-popup</td>
-                            <td>Same as above, but the icon is positioned on the left of the input.</td>
-                        </tr>
-                        <tr>
-                            <td><b:datepicker mode="toggle-icon"/></td>
-                            <td>toggle-icon</td>
-                            <td>This is the default mode. In this mode, the Date picker is triggered only when the user clicks on the calendar icon. The icon is positioned on the right of the input.</td>
-                        </tr>
-                        <tr>
-                            <td><b:datepicker mode="icon-toggle"/></td>
-                            <td>icon-toggle</td>
-                            <td>Same as above, but the icon is positioned on the left of the input.</td>
-                        </tr>
-                        <tr>
-                            <td><b:datepicker mode="inline"/></td>
-                            <td>inline</td>
-                            <td>In this mode, the Date picker is displayed directly inline and no input field is shown.</td>
-                        </tr>
-                    </tbody>
-                </table>
-                </h:form>
 
-                <strong>Widget options</strong>
-                <p>BootsFaces <code>&lt;b:datepicker&gt;</code> tag supports jQuery UI's widget most relevant options:</p>
+  <ui:define name="content">
+    <style>td {padding: 8px;}</style>
+    <h1><a id="date_picker">Date Picker</a><b:badge value="deprecated since 1.1.0" /></h1>
+    <p>BootsFaces derives the Date Picker component from jQuery UI's widget because of its ease of use and its configurability.</p>
+    <p><b>Caveat:</b> There's a new component, the <code>&lt;b:dateTimePicker /&gt;</code>, that doesn't need jQueryUI.
+    We recommend to use the new component. The <code>&lt;b:datepicker&gt;</code> is considered deprecated and will be removed in
+    one of the next versions of BootsFaces.</p>
 
-                <table class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>Option</th>
-                            <th>Type</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><code>changeMonth</code></td>
-                            <td>boolean</td>
-                            <td>Boolean value to specify if month selector should be shown.</td>
-                        </tr>
-                        <tr>
-                            <td><code>changeYear</code></td>
-                            <td>boolean</td>
-                            <td>Boolean value to specify if year selector should be shown.</td>
-                        </tr>
-                        <tr>
-                            <td><code>firstDay</code></td>
-                            <td>int</td>
-                            <td>Set the first day of the week: Sunday is 0, Monday is 1, etc. Default is 0 (Sunday).</td>
-                        </tr>
-                        <tr>
-                            <td><code>numberOfMonths</code></td>
-                            <td>int</td>
-                            <td>Number of months to show.</td>
-                        </tr>
-                        <tr>
-                            <td><code>showButtonPanel</code></td>
-                            <td>boolean</td>
-                            <td>Boolean value to specify if row Buttons to the bottom of calendar should be shown.</td>
-                        </tr>
-                        <tr>
-                            <td><code>showWeek</code></td>
-                            <td>boolean</td>
-                            <td>Boolean value to specify if Week number should be shown.</td>
-                        </tr>
-                    </tbody>
-                </table>
+    <strong>Date Picker modes</strong>
+    <p>The <code>&lt;b:datepicker&gt;</code> supports six modes for displaying the widget, specified with the attribute<code>mode</code>:</p>
 
-                <h:form>
-                    <b:well>
-                        <strong>Date Picker examples</strong>
-                        <h:panelGrid columns="4" cellpadding="5" id="fpickdt">
-                            <h:outputText value="Date:" />
-                            <b:datepicker id="adate" showButtonPanel="true" changeMonth="true" lang="it"
-                                          changeYear="true" placeholder="Select a Date"
-                                          value="#{dateBean.adate}" /><h:message for="adate" />
-                            <h:panelGroup>Date Picker with <code>showButtonPanel</code>, <code>changeMonth</code>, <code>changeYear</code> set to true.</h:panelGroup>
-                            <h:outputText value="Date(3 months):" />
-                            <b:datepicker id="bdate" numberOfMonths="3" mode="icon-popup"
-                                          placeholder="Choose a Date" value="#{dateBean.bdate}"/>
-                            <h:message for="bdate" />
-                            <h:panelGroup>Date Picker with <code>numberOfMonths="3"</code> .</h:panelGroup>
-                            <h:outputText value="Inline:" />
-                            <b:datepicker id="cdate" mode="inline" showWeek="true" firstDay="1" value="#{dateBean.cdate}"/>
-                            <h:message for="cdate" />
-                            <h:panelGroup>Inline Date Picker with <code>showWeek="true"</code> and <code>firstDay="1"</code> .</h:panelGroup>
+    <h:form>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+          <th style="width: 230px;">b:datepicker</th>
+            <th><code>mode</code> attribute</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><b:datepicker mode="popup" placeholder="Click here"/></td>
+          <td>popup</td>
+          <td>In this mode, the Date picker is triggered only when the user clicks in the field.</td>
+        </tr>
+        <tr>
+          <td><b:datepicker mode="popup-icon" placeholder="Select a Date"/></td>
+          <td>popup-icon</td>
+          <td>In this mode, the Date picker is triggered either when the user clicks in the field, or when the user clicks on the calendar icon. The icon is positioned on the right of the input.</td>
+        </tr>
+        <tr>
+          <td><b:datepicker mode="icon-popup" placeholder="Select a Date"/></td>
+          <td>icon-popup</td>
+          <td>Same as above, but the icon is positioned on the left of the input.</td>
+        </tr>
+        <tr>
+          <td><b:datepicker mode="toggle-icon"/></td>
+          <td>toggle-icon</td>
+          <td>This is the default mode. In this mode, the Date picker is triggered only when the user clicks on the calendar icon. The icon is positioned on the right of the input.</td>
+        </tr>
+        <tr>
+          <td><b:datepicker mode="icon-toggle"/></td>
+          <td>icon-toggle</td>
+          <td>Same as above, but the icon is positioned on the left of the input.</td>
+        </tr>
+        <tr>
+          <td><b:datepicker mode="inline"/></td>
+          <td>inline</td>
+          <td>In this mode, the Date picker is displayed directly inline and no input field is shown.</td>
+        </tr>
+        </tbody>
+      </table>
+    </h:form>
 
-                        </h:panelGrid>
-                        <b:row>
-                           <b:column span="2" offset="3">
-                        <b:commandButton value="Submit" update="fpickdt amodal" id="ajaxcb" ajax="true"
-                                             look="primary" oncomplete="$('#amodal').modal('show');"/>
-                        </b:column>
-                        </b:row>
+    <strong>Widget options</strong>
+    <p>BootsFaces <code>&lt;b:datepicker&gt;</code> tag supports jQuery UI's widget most relevant options:</p>
 
-                    </b:well>
-                </h:form>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Option</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><code>changeMonth</code></td>
+        <td>boolean</td>
+        <td>Boolean value to specify if month selector should be shown.</td>
+      </tr>
+      <tr>
+        <td><code>changeYear</code></td>
+        <td>boolean</td>
+        <td>Boolean value to specify if year selector should be shown.</td>
+      </tr>
+      <tr>
+        <td><code>firstDay</code></td>
+        <td>int</td>
+        <td>Set the first day of the week: Sunday is 0, Monday is 1, etc. Default is 0 (Sunday).</td>
+      </tr>
+      <tr>
+        <td><code>numberOfMonths</code></td>
+        <td>int</td>
+        <td>Number of months to show.</td>
+      </tr>
+      <tr>
+        <td><code>showButtonPanel</code></td>
+        <td>boolean</td>
+        <td>Boolean value to specify if row Buttons to the bottom of calendar should be shown.</td>
+      </tr>
+      <tr>
+        <td><code>showWeek</code></td>
+        <td>boolean</td>
+        <td>Boolean value to specify if Week number should be shown.</td>
+      </tr>
+      </tbody>
+    </table>
 
-                <b:modal id="amodal" title="Submitted Dates">
-                    <h:panelGrid columns="3" cellpadding="5">
-                        <h:outputText value="Date: " />
-                        <h:outputText value="#{dateBean.adate}">
-                            <f:convertDateTime pattern="dd/MM/yyyy"/>
-                        </h:outputText>
-                        <h:panelGroup>converted with <code>&lt;f:convertDateTime pattern="dd/MM/yyyy"/&gt;</code></h:panelGroup>
+    <h:form>
+      <b:well>
+        <strong>Date Picker examples</strong>
+        <h:panelGrid columns="4" cellpadding="5" id="fpickdt">
+          <h:outputText value="Date:" />
+          <b:datepicker id="adate" showButtonPanel="true" changeMonth="true" lang="it"
+                        changeYear="true" placeholder="Select a Date"
+                        value="#{dateBean.adate}" /><h:message for="adate" />
+        <h:panelGroup>Date Picker with <code>showButtonPanel</code>, <code>changeMonth</code>, <code>changeYear</code> set to true.</h:panelGroup>
+          <h:outputText value="Date(3 months):" />
+          <b:datepicker id="bdate" numberOfMonths="3" mode="icon-popup"
+                        placeholder="Choose a Date" value="#{dateBean.bdate}"/>
+          <h:message for="bdate" />
+        <h:panelGroup>Date Picker with <code>numberOfMonths="3"</code> .</h:panelGroup>
+          <h:outputText value="Inline:" />
+          <b:datepicker id="cdate" mode="inline" showWeek="true" firstDay="1" value="#{dateBean.cdate}"/>
+          <h:message for="cdate" />
+        <h:panelGroup>Inline Date Picker with <code>showWeek="true"</code> and <code>firstDay="1"</code> .</h:panelGroup>
 
-                        <h:outputText value="Date (3 months):" />
-                        <h:outputText value="#{dateBean.bdate}"/>
-                        <h:outputText value="no conversion" />
+        </h:panelGrid>
+        <b:row>
+          <b:column span="2" offset="3">
+            <b:commandButton value="Submit" update="fpickdt amodal" id="ajaxcb" ajax="true"
+                             look="primary" oncomplete="$('#amodal').modal('show');"/>
+          </b:column>
+        </b:row>
 
-                        <h:outputText value="Inline:" />
-                        <h:outputText value="#{dateBean.cdate}">
-                            <f:convertDateTime pattern="MM/dd/yy"/>
-                        </h:outputText>
-                        <h:panelGroup>converted with <code>&lt;f:convertDateTime pattern="MM/dd/yy"/&gt;</code></h:panelGroup>
-                    </h:panelGrid>
-                    <f:facet name="footer">
-                        <b:button value="close" dismiss="modal" onclick="return false;"/>
-                        <b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"/>
-                    </f:facet>
-                </b:modal>
+      </b:well>
+    </h:form>
 
-    <h2>Mandatory Dates <b:badge value="since 0.9.0" /></h2>
+    <b:modal id="amodal" title="Submitted Dates">
+      <h:panelGrid columns="3" cellpadding="5">
+        <h:outputText value="Date: " />
+        <h:outputText value="#{dateBean.adate}">
+          <f:convertDateTime pattern="dd/MM/yyyy"/>
+        </h:outputText>
+      <h:panelGroup>converted with <code>&lt;f:convertDateTime pattern="dd/MM/yyyy"/&gt;</code></h:panelGroup>
+
+        <h:outputText value="Date (3 months):" />
+        <h:outputText value="#{dateBean.bdate}"/>
+        <h:outputText value="no conversion" />
+
+        <h:outputText value="Inline:" />
+        <h:outputText value="#{dateBean.cdate}">
+          <f:convertDateTime pattern="MM/dd/yy"/>
+        </h:outputText>
+      <h:panelGroup>converted with <code>&lt;f:convertDateTime pattern="MM/dd/yy"/&gt;</code></h:panelGroup>
+      </h:panelGrid>
+      <f:facet name="footer">
+        <b:button value="close" dismiss="modal" onclick="return false;"/>
+        <b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"/>
+      </f:facet>
+    </b:modal>
+
+    <h2><a id="mandatory_dates">Mandatory Dates</a><b:badge value="since 0.9.0" /></h2>
     <p>
-      Datepickers support the
-      <code>required</code>
-      attribute:
+    Datepickers support the
+    <code>required</code>
+    attribute:
     </p>
     <b:tabView>
       <b:tab title="live preview">
         <b:well>
-	        <b:form horizontal="true">
-	        	<b:row>
-					<b:datepicker id="cdate3" mode="toggle-icon" showWeek="true"
-						firstDay="1" value="#{dateBean.cdate}" required="true"
-						label="Date" label-col-sm="4" label-col-md="2" col-md="2" col-sm="4" 
-						/>
-					<b:message for="cdate3" col-sm="8" col-md="4" show-summary="false" />
-				</b:row>
-				<b:row>
-					<b:column col-sm="3">
-						<b:commandButton value="submit" update="@form"
-						look="success" onclick="ajax:dateBean.onSubmitDate3()" />
-					</b:column>
-				</b:row>
-			</b:form>
+          <b:form horizontal="true">
+            <b:row>
+              <b:datepicker id="cdate3" mode="toggle-icon" showWeek="true"
+                            firstDay="1" value="#{dateBean.cdate}" required="true"
+                            label="Date" label-col-sm="4" label-col-md="2" col-md="2" col-sm="4"
+                            />
+              <b:message for="cdate3" col-sm="8" col-md="4" show-summary="false" />
+            </b:row>
+            <b:row>
+              <b:column col-sm="3">
+                <b:commandButton value="submit" update="@form"
+                                 look="success" onclick="ajax:dateBean.onSubmitDate3()" />
+              </b:column>
+            </b:row>
+          </b:form>
         </b:well>
       </b:tab>
       <b:tab title="JSF markup">
         <b:well>
           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-             <![CDATA[
+          <![CDATA[
           <h:form>
-				<b:row>
-					<b:datepicker id="cdate3" mode="toggle-icon" showWeek="true"
-						firstDay="1" value="&num;{dateBean.cdate}" required="true"
-						label="Date:" label-col-sm="4" col-sm="4"  />
-					<b:message for="cdate3" col-sm="6" />
-				</b:row>
-				<b:row>
-					<b:col
-					<b:commandButton value="submit" update="@form" col-sm="2"
-						look="success" onclick="ajax:dateBean.onSubmitDate3()" />
-				</b:row>
+            <b:row>
+              <b:datepicker id="cdate3" mode="toggle-icon" showWeek="true"
+                            firstDay="1" value="&num;{dateBean.cdate}" required="true"
+                            label="Date:" label-col-sm="4" col-sm="4"  />
+              <b:message for="cdate3" col-sm="6" />
+            </b:row>
+            <b:row>
+              <b:column col-sm="3">
+                <b:commandButton value="submit" update="@form" col-sm="2"
+                                 look="success" onclick="ajax:dateBean.onSubmitDate3()" />
+              </b:column>
+            </b:row>
           </h:form>
-             ]]></script>
+          ]]></script>
         </b:well>
       </b:tab>
     </b:tabView>
 
-    <h2>Responsive design <b:badge value="since 0.9.0" /></h2>
-        <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
-        also with <code>&lt;b:datepicker /&gt;</code>. Note that this is equivalent to putting it into a
-        <code>&lt;b:column /&gt;</code>. In particular, the CSS styles are inside the column div.
-        </p>
-       <b:tabView>
-          <b:tab title="live preview">
-          <b:well>
-             <b:row>
-                <b:datepicker tooltip="large-screen='full-width'" large-screen="full-width" />
-             </b:row>
-             <b:row style="padding-top:5px">
-                <b:datepicker tooltip="large-screen='one-third'" large-screen="one-third" />
-                <b:datepicker tooltip="large-screen='two-thirds'" large-screen="two-thirds" />
-             </b:row>
-             <b:row style="padding-top:5px">
-                <b:datepicker tooltip="small-screen='one-third'" small-screen="one-third" />
-                <b:datepicker tooltip="small-screen='two-thirds'" small-screen="two-thirds" />
-             </b:row>
-             <b:row style="padding-top:5px">
-                <b:datepicker tooltip="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
-                <b:datepicker tooltip="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
-             </b:row>
-          </b:well>
-          </b:tab>
-          <b:tab title="JSF markup">
-          <b:well>
+    <h2><a id="responsive_design">Responsive design</a><b:badge value="since 0.9.0" /></h2>
+    <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
+    also with <code>&lt;b:datepicker /&gt;</code>. Note that this is equivalent to putting it into a
+    <code>&lt;b:column /&gt;</code>. In particular, the CSS styles are inside the column div.
+    </p>
+    <b:tabView>
+      <b:tab title="live preview">
+        <b:well>
+          <b:row>
+            <b:datepicker tooltip="large-screen='full-width'" large-screen="full-width" />
+          </b:row>
+          <b:row style="padding-top:5px">
+            <b:datepicker tooltip="large-screen='one-third'" large-screen="one-third" />
+            <b:datepicker tooltip="large-screen='two-thirds'" large-screen="two-thirds" />
+          </b:row>
+          <b:row style="padding-top:5px">
+            <b:datepicker tooltip="small-screen='one-third'" small-screen="one-third" />
+            <b:datepicker tooltip="small-screen='two-thirds'" small-screen="two-thirds" />
+          </b:row>
+          <b:row style="padding-top:5px">
+            <b:datepicker tooltip="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
+            <b:datepicker tooltip="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
+          </b:row>
+        </b:well>
+      </b:tab>
+      <b:tab title="JSF markup">
+        <b:well>
           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-             <![CDATA[
-             <b:row>
-                <b:datepicker tooltip="large-screen='full-width'" large-screen="full-width" />
-             </b:row>
-             <b:row style="padding-top:5px">
-                <b:datepicker tooltip="large-screen='one-third'" large-screen="one-third" />
-                <b:datepicker tooltip="large-screen='two-thirds'" large-screen="two-thirds" />
-             </b:row>
-             <b:row style="padding-top:5px">
-                <b:datepicker tooltip="small-screen='one-third'" small-screen="one-third" />
-                <b:datepicker tooltip="small-screen='two-thirds'" small-screen="two-thirds" />
-             </b:row>
-             <b:row style="padding-top:5px">
-                <b:datepicker tooltip="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
-                <b:datepicker tooltip="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
-             </b:row>
-             ]]></script>
-          </b:well>
-          </b:tab>
-        </b:tabView>
+          <![CDATA[
+          <b:row>
+            <b:datepicker tooltip="large-screen='full-width'" large-screen="full-width" />
+          </b:row>
+          <b:row style="padding-top:5px">
+            <b:datepicker tooltip="large-screen='one-third'" large-screen="one-third" />
+            <b:datepicker tooltip="large-screen='two-thirds'" large-screen="two-thirds" />
+          </b:row>
+          <b:row style="padding-top:5px">
+            <b:datepicker tooltip="small-screen='one-third'" small-screen="one-third" />
+            <b:datepicker tooltip="small-screen='two-thirds'" small-screen="two-thirds" />
+          </b:row>
+          <b:row style="padding-top:5px">
+            <b:datepicker tooltip="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
+            <b:datepicker tooltip="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
+          </b:row>
+          ]]></script>
+        </b:well>
+      </b:tab>
+    </b:tabView>
 
-        <h2>Visibility depending on screen size <b:badge tooltip="since 0.8.6/0.9.0" /></h2>
-        <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
-        <br/>
-        <b:tabView>
-          <b:tab title="live preview">
-          <b:well>
-               <b:panelGrid colSpans="3,9">
-                  <h:outputText value="Visible on &gt;= md:" />
-                  <b:datepicker tooltip="Visible on medium or large screen" severity="info" visible="md..." />
-                  <h:outputText value="Visible on &lt;= sm:" />
-                  <b:datepicker tooltip="Visible on small-screen" severity="success" visible="...sm"/>
-                  <h:outputText value="Visible on sm...lg:" />
-                  <b:datepicker tooltip="Visible on small to large screen" severity="success" visible="sm...lg"/>
-                  <h:outputText value="Visible on xs and md:" />
-                  <b:datepicker tooltip="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
-                  <h:outputText value="Col-md-6, offset 2:" />
-                  <b:datepicker tooltip="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
-               </b:panelGrid>
-         </b:well>
-          </b:tab>
-          <b:tab title="JSF markup">
-          <b:well>
+    <h2><a id="visibility_depending_on_screen_size">Visibility depending on screen size</a><b:badge tooltip="since 0.8.6/0.9.0" /></h2>
+    <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
+    <br/>
+    <b:tabView>
+      <b:tab title="live preview">
+        <b:well>
+          <b:panelGrid colSpans="3,9">
+            <h:outputText value="Visible on &gt;= md:" />
+            <b:datepicker tooltip="Visible on medium or large screen" severity="info" visible="md..." />
+            <h:outputText value="Visible on &lt;= sm:" />
+            <b:datepicker tooltip="Visible on small-screen" severity="success" visible="...sm"/>
+            <h:outputText value="Visible on sm...lg:" />
+            <b:datepicker tooltip="Visible on small to large screen" severity="success" visible="sm...lg"/>
+            <h:outputText value="Visible on xs and md:" />
+            <b:datepicker tooltip="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
+            <h:outputText value="Col-md-6, offset 2:" />
+            <b:datepicker tooltip="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
+          </b:panelGrid>
+        </b:well>
+      </b:tab>
+      <b:tab title="JSF markup">
+        <b:well>
           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-             <![CDATA[
-               <b:panelGrid colSpans="3,9">
-                  <h:outputText value="Visible on &gt;= md:" />
-                  <b:datepicker tooltip="Visible on medium or large screen" severity="info" visible="md..." />
-                  <h:outputText value="Visible on &lt;= sm:" />
-                  <b:datepicker tooltip="Visible on small-screen" severity="success" visible="...sm"/>
-                  <h:outputText value="Visible on sm...lg:" />
-                  <b:datepicker tooltip="Visible on small to large screen" severity="success" visible="sm...lg"/>
-                  <h:outputText value="Visible on xs and md:" />
-                  <b:datepicker tooltip="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
-                  <h:outputText value="Col-md-6, offset 2:" />
-                  <b:datepicker tooltip="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
-               </b:panelGrid>
-             ]]></script>
-          </b:well>
-          </b:tab>
-        </b:tabView>
+          <![CDATA[
+          <b:panelGrid colSpans="3,9">
+            <h:outputText value="Visible on &gt;= md:" />
+            <b:datepicker tooltip="Visible on medium or large screen" severity="info" visible="md..." />
+            <h:outputText value="Visible on &lt;= sm:" />
+            <b:datepicker tooltip="Visible on small-screen" severity="success" visible="...sm"/>
+            <h:outputText value="Visible on sm...lg:" />
+            <b:datepicker tooltip="Visible on small to large screen" severity="success" visible="sm...lg"/>
+            <h:outputText value="Visible on xs and md:" />
+            <b:datepicker tooltip="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
+            <h:outputText value="Col-md-6, offset 2:" />
+            <b:datepicker tooltip="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
+          </b:panelGrid>
+          ]]></script>
+        </b:well>
+      </b:tab>
+    </b:tabView>
 
     <br/>
-                <h2>Reference section</h2>
-                <ui:include src="DatepickerAttributes.xhtml" />
-            <b:panel look="info">
-				<f:facet name="heading">
-					<b>Skinning</b>
-				</f:facet>
-				<ul>
-					<li>
-				   		<code>&lt;b:datePicker /&gt;</code> is an <code>input</code> tag bearing the CSS-classes <code>form-control</code>  and <code>hasDatepicker</code>.
-				   </li>
-				   <li>
-				   		If the attribute <code>required</code> is true, the pseudo CSS class <code>bf-required</code> is added.
-                        Thus you can define your custom style for required fields.
-				   </li>
-                   <li>
-                   If there's a <code>FacesMessage</code>, the input field is bears one of the pseudo CSS classes
-                   <code>bf-info</code>, <code>bf-warning</code>, <code>bf-error</code> or <code>bf-fatal</code>. If there are no messages,
-                   the input field bears the pseudo CSS class <code>bf-no-message</code>  and <code>has-success</code>. The latter colors the label green by default.
-                   </li>
-				  </ul>
-			</b:panel>
-                <script type="text/javascript">
-                    SyntaxHighlighter.all();
-                </script>
+    <h2><a id="reference_section">Reference section</a></h2>
+    <ui:include src="DatepickerAttributes.xhtml" />
+    <b:panel look="info">
+      <f:facet name="heading">
+        <b>Skinning</b>
+      </f:facet>
+      <ul>
+        <li>
+          <code>&lt;b:datePicker /&gt;</code> is an <code>input</code> tag bearing the CSS-classes <code>form-control</code>  and <code>hasDatepicker</code>.
+        </li>
+        <li>
+          If the attribute <code>required</code> is true, the pseudo CSS class <code>bf-required</code> is added.
+          Thus you can define your custom style for required fields.
+        </li>
+        <li>
+          If there's a <code>FacesMessage</code>, the input field is bears one of the pseudo CSS classes
+          <code>bf-info</code>, <code>bf-warning</code>, <code>bf-error</code> or <code>bf-fatal</code>. If there are no messages,
+          the input field bears the pseudo CSS class <code>bf-no-message</code>  and <code>has-success</code>. The latter colors the label green by default.
+        </li>
+      </ul>
+    </b:panel>
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
 
-                <br/><br/><br/><br/>
-            </ui:define>
-        </ui:composition>
+    <br/><br/><br/><br/>
+  </ui:define>
+</ui:composition>

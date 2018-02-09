@@ -1,101 +1,177 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:b="http://bootsfaces.net/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<ui:define name="content">
-		<style>
-td {
-	padding: 8px;
-}
-</style>
-		<h1>Fly-out menu</h1>
-		<p>The fly-out menu is a hierarchical menu that puts the sub-menus
-			to the right-hand side of the parent menu. They "fly out" of the
-			parent menu.</p>
-		<p>
-			The menu entries are
-			<code>&lt;b:navLink /&gt;</code>
-			tags supporting both AJAX and non-AJAX navigation.
-		</p>
-		<p>
-			You can create a submenu by grouping several menu entries in a
-			<code>&lt;b:dropMenu /&gt;</code>
-			tag.
-		</p>
-        <b:panel title="Live preview" look="info" collapsible="false">
-            <h:form>
-                <b:panelGrid columns="2" size="tiny-screen" id="flyOutMenuId">
-                    <b:flyOutMenu width="50px"
-                                  content-disabled="#{flyOutMenuBean.contentDisabled}">
-                        <b:navLink value="Lunch" icon="globe" iconAlign="right" />
-                        <b:dropMenu value="Users">
-                            <b:navLink value="Register yourself" />
-                            <b:navLink value="Users" />
-                        </b:dropMenu>
-                        <b:navLink />
-                        <b:dropMenu value="Administration">
-                            <b:navLink value="Delivery Services" />
-                            <b:navLink value="Users" />
-                        </b:dropMenu>
-                        <b:navLink value="Action" href="http://www.google.de" />
-                        <b:navCommandLink value="ActionC" />
-                    </b:flyOutMenu>
-                    <b:switch value="#{flyOutMenuBean.contentDisabled}"
-                              label="content-disabled="  on-text="true"
-                              off-text=" false" onchange="ajax:flyOutMenuBean.onChange()"
-                              update="flyOutMenuId">
-                    </b:switch>
-                </b:panelGrid>
-            </h:form>
 
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-	<script type="syntaxhighlighter"
-							class="brush: xml; toolbar: false;first-line: 0">
-					<![CDATA[
-				<b:flyOutMenu width="50px">
-					<b:navLink value="Lunch" icon="globe" iconAlign="right" />
-					<b:dropMenu value="Users">
-						<b:navLink value="Register yourself" />
-						<b:navLink value="Users" />
-					</b:dropMenu>
-					<b:navLink />
-					<b:dropMenu value="Administration">
-						<b:navLink value="Delivery Services" />
-						<b:navLink value="Users" />
-					</b:dropMenu>
-					<b:navLink value="Action" />
-					<b:navCommandLink value="ActionC" />
-				</b:flyOutMenu>
-					]]>
-				</script>
-                </b:panel>
-            </f:facet>
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#fly" value="Fly-out menu" />
+      <b:navLink href="#reference_section" value="Reference section" />
+      <b:navLink href="#downwards" value="Position of the submenu" />
+    </b:listLinks>
+  </ui:define>
+
+
+  <ui:define name="content">
+    <style>
+      td {
+        padding: 8px;
+      }
+    </style>
+    <h1><a id="fly">Fly-out menu</a></h1>
+    <p>The fly-out menu is a hierarchical menu that puts the sub-menus
+    to the right-hand side of the parent menu. They "fly out" of the
+    parent menu.</p>
+    <p>
+    The menu entries are
+    <code>&lt;b:navLink /&gt;</code>
+    tags supporting both AJAX and non-AJAX navigation.
+    </p>
+    <p>
+    You can create a submenu by grouping several menu entries in a
+    <code>&lt;b:dropMenu /&gt;</code>
+    tag.
+    </p>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form>
+        <b:panelGrid columns="2" size="tiny-screen" id="flyOutMenuId">
+          <b:flyOutMenu width="50px"
+                        content-disabled="#{flyOutMenuBean.contentDisabled}">
+            <b:navLink value="Lunch" icon="globe" iconAlign="right" />
+            <b:dropMenu value="Users">
+              <b:navLink value="Register yourself" />
+              <b:navLink value="Users" />
+            </b:dropMenu>
+            <b:navLink />
+            <b:dropMenu value="Administration">
+              <b:navLink value="Delivery Services" />
+              <b:navLink value="Users" />
+            </b:dropMenu>
+            <b:navLink value="Action" href="http://www.google.de" />
+            <b:navCommandLink value="ActionC" />
+          </b:flyOutMenu>
+          <b:switch value="#{flyOutMenuBean.contentDisabled}"
+                    label="content-disabled="  on-text="true"
+                    off-text=" false" onchange="ajax:flyOutMenuBean.onChange()"
+                    update="flyOutMenuId">
+          </b:switch>
+        </b:panelGrid>
+      </h:form>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:flyOutMenu width="50px">
+            <b:navLink value="Lunch" icon="globe" iconAlign="right" />
+            <b:dropMenu value="Users">
+              <b:navLink value="Register yourself" />
+              <b:navLink value="Users" />
+            </b:dropMenu>
+            <b:navLink />
+            <b:dropMenu value="Administration">
+              <b:navLink value="Delivery Services" />
+              <b:navLink value="Users" />
+            </b:dropMenu>
+            <b:navLink value="Action" />
+            <b:navCommandLink value="ActionC" />
+          </b:flyOutMenu>
+          ]]>
+          </script>
         </b:panel>
-        
-		<h2>Reference section</h2>
-		<ui:include src="FlyOutMenuAttributes.xhtml" />
-		<b:panel look="info" rendered="false">
-			<f:facet name="heading">
-				<b>Skinning</b>
-			</f:facet>
-			<ul>
-				<li>Tell the world which CSS classes can be used to change the
-					look of the component.</li>
-			</ul>
-		</b:panel>
-		<script type="text/javascript">
-			SyntaxHighlighter.all();
-		</script>
-		<br />
-		<br />
-		<br />
-		<br />
-	</ui:define>
+      </f:facet>
+      </b:panel>
+      
+          <h1><a id="downwards">Opening submenus downwards instead of positioning them to the left-hand side</a></h1>
+
+	 <p>You can modify the position of the submenu with a little CSS code. For instance, you can open the submenu below the current menu item,
+	 pushing the rest of the menu downward like so:</p>
+     <b:panel title="Live preview" look="info" collapsible="false">
+     <style>
+        .downwards .dropdown-submenu>.dropdown-menu {
+    			position: relative;
+    			left: 0;
+    		}
+    </style>
+      <h:form>
+        <b:panelGrid columns="2" size="tiny-screen" id="flyOutMenuId">
+          <b:flyOutMenu width="50px" styleClass="downwards"
+                        content-disabled="#{flyOutMenuBean.contentDisabled}">
+            <b:navLink value="Lunch" icon="globe" iconAlign="right" />
+            <b:dropMenu value="Users">
+              <b:navLink value="Register yourself" />
+              <b:navLink value="Users" />
+            </b:dropMenu>
+            <b:navLink />
+            <b:dropMenu value="Administration">
+              <b:navLink value="Delivery Services" />
+              <b:navLink value="Users" />
+            </b:dropMenu>
+            <b:navLink value="Action" href="http://www.google.de" />
+            <b:navCommandLink value="ActionC" />
+          </b:flyOutMenu>
+          <b:switch value="#{flyOutMenuBean.contentDisabled}"
+                    label="content-disabled="  on-text="true"
+                    off-text=" false" onchange="ajax:flyOutMenuBean.onChange()"
+                    update="flyOutMenuId">
+          </b:switch>
+        </b:panelGrid>
+      </h:form>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <style>
+        . downwards .dropdown-submenu>.dropdown-menu {
+    			position: relative;
+    			left: 0;
+    		  }
+          </style>
+          <b:flyOutMenu width="50px" styleClass="downwards">
+            <b:navLink value="Lunch" icon="globe" iconAlign="right" />
+            <b:dropMenu value="Users">
+              <b:navLink value="Register yourself" />
+              <b:navLink value="Users" />
+            </b:dropMenu>
+            <b:navLink />
+            <b:dropMenu value="Administration">
+              <b:navLink value="Delivery Services" />
+              <b:navLink value="Users" />
+            </b:dropMenu>
+            <b:navLink value="Action" />
+            <b:navCommandLink value="ActionC" />
+          </b:flyOutMenu>
+          ]]>
+          </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+    <h2><a id="reference_section">Reference section</a></h2>
+    <ui:include src="FlyOutMenuAttributes.xhtml" />
+    <b:panel look="info" rendered="false">
+      <f:facet name="heading">
+        <b>Skinning</b>
+      </f:facet>
+      <ul>
+        <li>Tell the world which CSS classes can be used to change the
+        look of the component.</li>
+      </ul>
+    </b:panel>
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+    <br />
+    <br />
+    <br />
+    <br />
+  </ui:define>
 </ui:composition>

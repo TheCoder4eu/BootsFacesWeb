@@ -1,149 +1,158 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml"
-        xmlns="http://www.w3.org/1999/xhtml"
-        xmlns:h="http://java.sun.com/jsf/html"
-        xmlns:f="http://java.sun.com/jsf/core"
-        xmlns:b="http://bootsfaces.net/ui"
-        xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
 
-        <ui:define name="content">
-                <style>
-td {
+
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#kebab" value="Kebab (&lt;b:kebab /&gt;)" />
+      <b:navLink href="#basic_usage" value="Basic usage" />
+      <b:navLink href="#reference_section" value="Reference section" />
+    </b:listLinks>
+  </ui:define>
+
+
+  <ui:define name="content">
+    <style>
+      td {
         padding: 8px;
-}
-</style>
-                <h1>Kebab (&lt;b:kebab /&gt;)</h1>
+      }
+    </style>
+    <h1><a id="kebab">Kebab (&lt;b:kebab /&gt;)</a></h1>
 
-                <p><code>&lt;b:kebab&gt;</code> are similar to DropMenu and support the same feature set.</p>
-                <h1>Basic usage</h1>
-                <p>Kebabs are rendered as three vertical dots and will show a overflow menu when clicked.
-                The example below shows both the kebab menu, and what it looks like if it's content is disabled by setting <code>content-disabled="true"</code>:</p>
-                
-                <b:panel title="Live preview" look="info" collapsible="false">
-                    <h:form>
-			                	<b:panelGrid columns="2">
-					                <b:kebab content-disabled="#{kebabBean.contentDisabled}" id="kebabId">
-					                  <b:listLinks>
-					                    <b:navLink value="Action" href="#"></b:navLink>
-					                    <b:navLink value="Another action" href="#"></b:navLink>
-					                    <b:navLink value="Something else here" href="#"></b:navLink>
-					                    <b:navLink></b:navLink>
-					                    <b:navLink header="Nav header"></b:navLink>
-					                    <b:navLink value="Separated link" href="#"></b:navLink>
-					                    <b:navLink value="One more separated link" href="#"></b:navLink>
-					                  </b:listLinks>
-					                </b:kebab>
-					                <b:switch value="#{kebabBean.contentDisabled}" label="content-disabled="  on-text="true" off-text=" false" 
-									          onchange="ajax:kebabBean.onChange()" update="@form">
-									</b:switch>
-								</b:panelGrid>
-							</h:form>
-                    
-                    <f:facet name="footer">
-                        <strong>JSF markup:</strong>
-                        
-                        <b:panel>
-                            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-					    	<![CDATA[
-                              <h:form>
-			                	<b:panelGrid columns="2">
-					                <b:kebab content-disabled="#{kebabBean.contentDisabled}" id="kebabId">
-					                  <b:listLinks>
-					                    <b:navLink value="Action" href="#"></b:navLink>
-					                    <b:navLink value="Another action" href="#"></b:navLink>
-					                    <b:navLink value="Something else here" href="#"></b:navLink>
-					                    <b:navLink></b:navLink>
-					                    <b:navLink header="Nav header"></b:navLink>
-					                    <b:navLink value="Separated link" href="#"></b:navLink>
-					                    <b:navLink value="One more separated link" href="#"></b:navLink>
-					                  </b:listLinks>
-					                </b:kebab>
-					                <b:switch value="#{kebabBean.contentDisabled}" label="content-disabled="  on-text="true" off-text=" false" 
-									          onchange="ajax:kebabBean.onChange()" update="@form">
-									</b:switch>
-								</b:panelGrid>
-                              </h:form>]]>
-						</script>
-                        </b:panel>
-                    </f:facet>
-                </b:panel>
-                
-                <hr />
-                <br/>
-                <strong>Using the Kebab in a Navbar</strong>
-                <p>It is possible tu use the Kebab in a Navbar:</p>
-                <b:panel title="Live preview" look="info" collapsible="false">
-                    <b:navBar brand="Brand" brandHref="#">
-                        <b:navbarLinks>
-                            <b:navLink value="Home" href="#"></b:navLink>
-                            <b:navLink value="Link" href="#"></b:navLink>
-                            <b:navLink value="Link" href="#"></b:navLink>
-                        </b:navbarLinks>
-                        <!-- Following line is needed for TBS 3.x (panel content overflow issue) -->
-                        <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
-                        <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
-                        <b:navbarLinks pull="right">
-                        <b:kebab>
-                          <b:listLinks>
-                            <b:navLink value="Action" href="#"></b:navLink>
-                            <b:navLink value="Another action" href="#"></b:navLink>
-                            <b:navLink value="Something else here" href="#"></b:navLink>
-                            <b:navLink></b:navLink>
-                            <b:navLink header="Nav header"></b:navLink>
-                            <b:navLink value="Separated link" href="#"></b:navLink>
-                            <b:navLink value="One more separated link" href="#"></b:navLink>
-                          </b:listLinks>
-                        </b:kebab>
-                        </b:navbarLinks>
-                    </b:navBar>
-                    <f:facet name="footer">
-                        <strong>JSF markup:</strong>
+    <p><code>&lt;b:kebab&gt;</code> are similar to DropMenu and support the same feature set.</p>
+    <h1><a id="basic_usage">Basic usage</a></h1>
+    <p>Kebabs are rendered as three vertical dots and will show a overflow menu when clicked.
+    The example below shows both the kebab menu, and what it looks like if it's content is disabled by setting <code>content-disabled="true"</code>:</p>
 
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
-                            <![CDATA[
-                              <b:navBar brand="Brand" brandHref="#">
-                                  <b:navbarLinks>
-                                      <b:navLink value="Home" href="#"></b:navLink>
-                                      <b:navLink value="Link" href="#"></b:navLink>
-                                      <b:navLink value="Link" href="#"></b:navLink>
-                                  </b:navbarLinks>
-                                  <!-- Following line is needed for TBS 3.x (panel content overflow issue) -->
-                                  <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
-                                  <b:navbarLinks pull="right">
-                                  
-                                  <b:kebab>
-                                    <b:listLinks>
-                                      <b:navLink value="Action" href="#"></b:navLink>
-                                      <b:navLink value="Another action" href="#"></b:navLink>
-                                      <b:navLink value="Something else here" href="#"></b:navLink>
-                                      <b:navLink></b:navLink>
-                                      <b:navLink header="Nav header"></b:navLink>
-                                      <b:navLink value="Separated link" href="#"></b:navLink>
-                                      <b:navLink value="One more separated link" href="#"></b:navLink>
-                                    </b:listLinks>
-                                  </b:kebab>
-                                  
-                                  </b:navbarLinks>
-                              </b:navBar>
-                            ]]></script>
-                    </f:facet>
-                </b:panel>
-                <br/>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form>
+        <b:panelGrid columns="2">
+          <b:kebab content-disabled="#{kebabBean.contentDisabled}" id="kebabId">
+            <b:listLinks>
+              <b:navLink value="Action" href="#"></b:navLink>
+              <b:navLink value="Another action" href="#"></b:navLink>
+              <b:navLink value="Something else here" href="#"></b:navLink>
+              <b:navLink></b:navLink>
+              <b:navLink header="Nav header"></b:navLink>
+              <b:navLink value="Separated link" href="#"></b:navLink>
+              <b:navLink value="One more separated link" href="#"></b:navLink>
+            </b:listLinks>
+          </b:kebab>
+          <b:switch value="#{kebabBean.contentDisabled}" label="content-disabled="  on-text="true" off-text=" false"
+                    onchange="ajax:kebabBean.onChange()" update="@form">
+          </b:switch>
+        </b:panelGrid>
+      </h:form>
 
-<hr />
-                <ui:include src="KebabAttributes.xhtml" />
-                <b:panel look="info">
-                        <f:facet name="heading">
-                                <b>Skinning</b>
-                        </f:facet>
-                        <ul>
-                                <li>none.</li>
-                        </ul>
-                </b:panel>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
 
-                <script type="text/javascript">
-                SyntaxHighlighter.all();
-        </script>
-        </ui:define>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <h:form>
+            <b:panelGrid columns="2">
+              <b:kebab content-disabled="#{kebabBean.contentDisabled}" id="kebabId">
+                <b:listLinks>
+                  <b:navLink value="Action" href="#"></b:navLink>
+                  <b:navLink value="Another action" href="#"></b:navLink>
+                  <b:navLink value="Something else here" href="#"></b:navLink>
+                  <b:navLink></b:navLink>
+                  <b:navLink header="Nav header"></b:navLink>
+                  <b:navLink value="Separated link" href="#"></b:navLink>
+                  <b:navLink value="One more separated link" href="#"></b:navLink>
+                </b:listLinks>
+              </b:kebab>
+              <b:switch value="#{kebabBean.contentDisabled}" label="content-disabled="  on-text="true" off-text=" false"
+                        onchange="ajax:kebabBean.onChange()" update="@form">
+              </b:switch>
+            </b:panelGrid>
+          </h:form>]]>
+          </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+    <hr />
+    <br/>
+    <strong>Using the Kebab in a Navbar</strong>
+    <p>It's also possible to use the Kebab in a Navbar, you may need to use the <code>fluid="true"</code> option in the navBar tag for its correct positioning:</p>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <b:navBar brand="Brand" brandHref="#" fluid="true">
+        <b:navbarLinks>
+          <b:navLink value="Home" href="#"></b:navLink>
+          <b:navLink value="Link" href="#"></b:navLink>
+          <b:navLink value="Link" href="#"></b:navLink>
+        </b:navbarLinks>
+        <!-- Following line is needed for TBS 3.x (panel content overflow issue) >
+      <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks -->
+        <b:navbarLinks pull="right">
+          <b:kebab>
+            <b:listLinks>
+              <b:navLink value="Action" href="#"></b:navLink>
+              <b:navLink value="Another action" href="#"></b:navLink>
+              <b:navLink value="Something else here" href="#"></b:navLink>
+              <b:navLink></b:navLink>
+              <b:navLink header="Nav header"></b:navLink>
+              <b:navLink value="Separated link" href="#"></b:navLink>
+              <b:navLink value="One more separated link" href="#"></b:navLink>
+            </b:listLinks>
+          </b:kebab>
+        </b:navbarLinks>
+      </b:navBar>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
+        <![CDATA[
+        <b:navBar brand="Brand" brandHref="#" fluid="true">
+          <b:navbarLinks>
+            <b:navLink value="Home" href="#"></b:navLink>
+            <b:navLink value="Link" href="#"></b:navLink>
+            <b:navLink value="Link" href="#"></b:navLink>
+          </b:navbarLinks>
+          <!-- Following line is needed for TBS 3.x (panel content overflow issue) -->
+        <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
+          <b:navbarLinks pull="right">
+
+            <b:kebab>
+              <b:listLinks>
+                <b:navLink value="Action" href="#"></b:navLink>
+                <b:navLink value="Another action" href="#"></b:navLink>
+                <b:navLink value="Something else here" href="#"></b:navLink>
+                <b:navLink></b:navLink>
+                <b:navLink header="Nav header"></b:navLink>
+                <b:navLink value="Separated link" href="#"></b:navLink>
+                <b:navLink value="One more separated link" href="#"></b:navLink>
+              </b:listLinks>
+            </b:kebab>
+
+          </b:navbarLinks>
+        </b:navBar>
+        ]]></script>
+      </f:facet>
+    </b:panel>
+    <br/>
+
+    <h2><a id="reference_section">Reference section</a></h2>
+    <ui:include src="KebabAttributes.xhtml" />
+    <b:panel look="info">
+      <f:facet name="heading">
+        <b>Skinning</b>
+      </f:facet>
+      <ul>
+        <li>none.</li>
+      </ul>
+    </b:panel>
+
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+  </ui:define>
 </ui:composition>

@@ -6,80 +6,119 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
-    <h:head>
-        <title>BootsFaces: the next-gen JSF Framework based on Bootstrap</title>
-        <meta name="author" content="Riccardo Massera" />
-        <meta name="description" content="BootsFaces, a powerful JSF framework that takes the best from Bootstrap and jQuery UI to let develop well-designed state-of-the-art next-gen Front-end Enterprise Applications fast and easy supporting HTML5." />
-        <meta name="KEYWORDS" content="jsf, bootstrap, framework, java, enterprise, server, faces, jquery, usability, next-gen, web, html5, easy, modern, well-designed, website, state-of-the-art" />
-        <meta name="robots" content="index, follow" />
-        
-        <!--  meta name="viewport" content="width=device-width, initial-scale=1"/-->
-        <meta name="revisit-after" content="7 days" />
-        <meta name="DISTRIBUTION" content="GLOBAL" />
-        <meta http-equiv="PRAGMA" content="NO-CACHE" />
-        <meta name="copyright" content="TheCoder4.eu ( Riccardo Massera ), Stephan Rauh et al." />
-        <h:outputStylesheet library="sh" name="css/shCore.css"/>
-        <h:outputStylesheet library="sh" name="css/shCoreEclipse.css"/>
-        <!-- These CSS don't do anything. The just demonstrate the position attribute. -->
-        <h:outputStylesheet name="last.css" position="last"/>
-        <h:outputStylesheet name="first.css" position="first"/>
-        <h:outputStylesheet name="middle.css" position="middle"/>
-        <!-- h:outputStylesheet library="customthemes" name="freelancer/bootstrap.min.css" / -->
-        <h:outputStylesheet library="customthemes" name="#{theme.customTheme}/bootstrap.min.css"  rendered="#{theme.customTheme ne ''}"/>
-        <h:outputStylesheet library="customthemes" name="#{theme.customTheme}/#{theme.customTheme}.css" rendered="#{theme.customTheme ne ''}"/>
-        <style>
-        
-        .tooltip-inner {
-		    max-width: 350px;
-		    /* If max-width does not work, try using width instead */
-		    width: 350px; 
-		}
-		
-		#bsfscroll {
-			background-image: url("#{resource['images:top.png']}");
-			bottom: 65px;
-			right: 18px;
-			width: 38px; /* width of the custom image */
-			height: 38px; /* height of the custom image */
-			outline: none;
-		}
-		code {
-			background-color: #f5f5f5;
-			font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif;
-		}
-		
-		</style>
+  <h:head>
+    <title>BootsFaces: the next-gen JSF Framework based on Bootstrap</title>
+    <meta name="author" content="Riccardo Massera" />
+    <meta name="description" content="BootsFaces, a powerful JSF framework that takes the best from Bootstrap and jQuery UI to let develop well-designed state-of-the-art next-gen Front-end Enterprise Applications fast and easy supporting HTML5." />
+    <meta name="KEYWORDS" content="jsf, bootstrap, framework, java, enterprise, server, faces, jquery, usability, next-gen, web, html5, easy, modern, well-designed, website, state-of-the-art" />
+    <meta name="robots" content="index, follow" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="DISTRIBUTION" content="GLOBAL" />
+    <meta http-equiv="PRAGMA" content="NO-CACHE" />
+    <meta name="copyright" content="TheCoder4.eu ( Riccardo Massera ), Stephan Rauh et al." />
+    <h:outputStylesheet library="sh" name="css/shCore.css"/>
+    <h:outputStylesheet library="sh" name="css/shCoreEclipse.css"/>
+    <!-- These CSS don't do anything. The just demonstrate the position attribute. -->
+    <h:outputStylesheet name="last.css" position="last"/>
+    <h:outputStylesheet name="first.css" position="first"/>
+    <h:outputStylesheet name="middle.css" position="middle"/>
+    <!-- h:outputStylesheet library="customthemes" name="freelancer/bootstrap.min.css" / -->
+    <h:outputStylesheet library="customthemes" name="#{theme.customTheme}/bootstrap.min.css"  rendered="#{theme.customTheme ne ''}"/>
+    <h:outputStylesheet library="customthemes" name="#{theme.customTheme}/#{theme.customTheme}.css" rendered="#{theme.customTheme ne ''}"/>
+    <link href="#{resource['images:bsf.simple.white.ico']}" rel="shortcut icon" type="image/x-icon" />
+    <style>
 
-		<ui:insert name="custom-header" />
-    </h:head>
-    <h:body style="padding-top: 85px;padding-bottom: 85px;" addLabels="false" addMessages="false">
-        
-        <h:outputScript library="sh" name="js/shCore.js"         target="head"/>
-        <h:outputScript library="sh" name="js/shBrushCss.js"     target="head"/>
-        <h:outputScript library="sh" name="js/shBrushXml.js"     target="head"/>
-        <h:outputScript library="sh" name="js/shBrushJava.js"    target="head"/>
-        <h:outputScript library="sh" name="js/shBrushGroovy.js"  target="head"/>
-        <h:outputScript library="sh" name="js/shBrushJScript.js" target="head"/>
-        <script>SyntaxHighlighter.defaults['gutter'] = false;</script>   
-        <script>
-        if ($.blockUI) {
-          $.blockUI.defaults.overlayCSS.opacity=0;
-          $.blockUI.defaults.message='<h1><img src="../javax.faces.resource/images/waitcursor.gif.jsf?ln=bsf" /></h1>';
-        }
-        </script>    
-        <b:scrollUp distance="200" animation="fade" text="" scrollTitle="false" name="bsfscroll" />
-		     
-        <ui:insert name="nbtop">
-            <ui:include src="/applayout/navbartop.xhtml"/>
-        </ui:insert>
-        
-        <b:container>
-            <ui:insert name="content"/>
-        </b:container>
-        
-        <ui:insert name="nbtop">
-            <ui:include src="/applayout/navbarbottom.xhtml"/>
-        </ui:insert>
-        
-    </h:body>
+      .tooltip-inner {
+        max-width: 350px;
+        /* If max-width does not work, try using width instead */
+        width: 350px;
+      }
+
+      #bsfscroll {
+        background-image: url("#{resource['images:top.png']}");
+        bottom: 65px;
+        right: 18px;
+        width: 38px; /* width of the custom image */
+        height: 38px; /* height of the custom image */
+        outline: none;
+      }
+      code {
+        background-color: #f5f5f5;
+        font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif;
+      }
+
+      h2>a, h1>a {
+        padding-top: 40px;
+      }
+
+      .internal-navigation > .nav > li > a  {
+        padding-top:0;
+        padding-bottom:5px;
+        color: #888888;
+        font-weight: 200;
+        font-size: 90%;
+      }
+      .internal-navigation > .nav > li > a:hover,
+      .internal-navigation > .nav > li > a:focus  {
+        color: #007bff;
+        background-color: unset;
+      }
+      .site-navigation > form > .nav > li > a  {
+        padding-top:0;
+        padding-bottom:5px;
+        color: #888888;
+        font-weight: 200;
+        font-size: 90%;
+      }
+      .internal-navigation > .nav {
+        border-left: 1px solid #EEE;
+      }
+      .site-navigation {
+        border-right: 1px solid #EEE;
+      }
+    </style>
+
+    <ui:insert name="custom-header" />
+  </h:head>
+  <h:body style="padding-top: 85px;padding-bottom: 85px;" addLabels="false" addMessages="false">
+
+    <h:outputScript library="sh" name="js/shCore.js"         target="head"/>
+    <h:outputScript library="sh" name="js/shBrushCss.js"     target="head"/>
+    <h:outputScript library="sh" name="js/shBrushXml.js"     target="head"/>
+    <h:outputScript library="sh" name="js/shBrushJava.js"    target="head"/>
+    <h:outputScript library="sh" name="js/shBrushGroovy.js"  target="head"/>
+    <h:outputScript library="sh" name="js/shBrushJScript.js" target="head"/>
+    <script>SyntaxHighlighter.defaults['gutter'] = false;</script>
+    <script>
+    if ($.blockUI) {
+      $.blockUI.defaults.overlayCSS.opacity=0;
+      $.blockUI.defaults.message='<h1><img src="../javax.faces.resource/images/waitcursor.gif.jsf?ln=bsf" /></h1>';
+    }
+    </script>
+    <b:scrollUp distance="200" animation="fade" text="" scrollTitle="false" name="bsfscroll" />
+
+    <ui:insert name="nbtop">
+      <ui:include src="/applayout/navbartop.xhtml"/>
+    </ui:insert>
+
+    <b:container fluid="true">
+      <b:row>
+        <b:column medium-screen="2" hidden="tiny-screen,small-screen" style-class="site-navigation">
+          <ui:include src="componentSidebar.xhtml" />
+        </b:column>
+        <b:column medium-screen="8">
+          <ui:insert name="content"/>
+        </b:column>
+        <b:column medium-screen="2"  hidden="tiny-screen,small-screen">
+          <div style="position:fixed;top:118px" class="internal-navigation">
+            <ui:insert name="content-navigator"/>
+          </div>
+        </b:column>
+      </b:row>
+    </b:container>
+
+    <ui:insert name="nbtop">
+      <ui:include src="/applayout/navbarbottom.xhtml"/>
+    </ui:insert>
+  </h:body>
 </html>

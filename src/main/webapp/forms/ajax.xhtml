@@ -1,434 +1,453 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml"
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:b="http://bootsfaces.net/ui"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:p="http://primefaces.org/ui">
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
 
-        <ui:define name="content">
-            <h1>AJAX <b:badge value="since 0.8.0" /></h1>
-                <p>While supporting the traditional AJAX style of JSF, BootsFaces also implements a new AJAX API that's a little simpler to use.</p>
 
-                <h2>State of the art</h2>
-                <p>The BootsFaces AJAX API is supported by many, but not by all BootsFaces components. Currently, these components include:</p>
-                <ul>
-                <li><code>&lt;b:commandButton /&gt;</code></li>
-                <li><code>&lt;b:selectBooleanCheckbox /&gt;</code></li>
-                <li><code>&lt;b:selectOneMenu /&gt;</code></li>
-                <li><code>&lt;b:inputText /&gt;</code> and <code>&lt;b:inputSecret /&gt;</code></li>
-                <li><code>&lt;b:carousel /&gt;</code></li>
-                <li><code>&lt;b:panel /&gt;</code></li>
-                <li><code>&lt;b:tabView /&gt;</code></li>
-                <li><code>&lt;b:icon /&gt;</code></li>
-                <li><code>&lt;b:iconAwesome /&gt;</code></li>
-                <li><code>&lt;b:image /&gt;</code></li>
-                </ul>
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#ajax" value="AJAX" />
+      <b:navLink href="#state_of_the_art" value="State of the art" />
+      <b:navLink href="#basic_usage" value="Basic usage" />
+      <b:navLink href="#busy_indicator" value="Busy indicator" />
+      <b:navLink href="#partial_processing" value="Partial processing" />
+      <b:navLink href="#advanced_usage" value="Advanced usage" />
+      <b:navLink href="#exceptions_during_ajax_calls" value="Exceptions during AJAX calls" />
+      <b:navLink href="#limits_to_bootsfaces_ajax" value=" Limits to BootsFaces AJAX" />
+      <b:navLink href="#corner_cases_" value="Corner cases:" />
+      <b:navLink href="#known_bugs_and_limitations" value="Known bugs and limitations" />
+      <b:navLink href="#live_demo" value="Live demo" />
+      <b:navLink href="#traditional_jsf_ajax" value="Traditional JSF AJAX" />
+    </b:listLinks>
+  </ui:define>
 
-                <h2>Basic usage</h2>
-                <p>The general idea is to use the JavaScript attributes for JSF AJAX calls. Unfortunately, JSF doesn't allow us to simply use the JSF EL syntax.
-                So, we had to look for some inspiration, and we found it with an almost forgotten way to define HTML JavaScript callback handlers. You can
-                optionally define such a handler by preceding it with <code>javascript:</code> to make clear which language you want to use. Similarly, BootsFaces
-                uses the prefix <code>ajax:</code> to indicate the following code is Java code. If you want to execute another piece of JavaScript code after
-                sending the AJAX call, prefix it with <code>javascript:</code> again. Notice that the second JavaScript code usually is executed before the Java code.
-                AJAX means that the reference Java code is executed asynchronically.</p>
 
-                <b:panel>
-                   <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                   <![CDATA[
-                                   <b:selectOneMenu update="someRegion"
-                                      onchange="ajax:ajaxBean.onComboboxChange()" />
-                   ]]>
-                   </script>
-                                   </b:panel>
-				<p>Like said before, you can freely combine AJAX calls and JavaScript. If you want to execute JavaScript code after the AJAX call,
-				you have to precede it with <code>javascript:</code>. Otherwise BootsFaces tries to run your JavaScript code on the server side. </p>
-                <b:panel>
-                  <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                	<![CDATA[
-                                <b:selectOneMenu update="someRegion"
-                                   onchange="alert('Before the AJAX call');ajax:ajaxBean.onComboboxChange();javascript:alert('after the AJAX call');" />
-               	 ]]>
-                	</script>
+  <ui:define name="content">
+    <h1><a id="ajax">AJAX</a><b:badge value="since 0.8.0" /></h1>
+    <p>While supporting the traditional AJAX style of JSF, BootsFaces also implements a new AJAX API that's a little simpler to use.</p>
+
+    <h2><a id="state_of_the_art">State of the art</a></h2>
+    <p>The BootsFaces AJAX API is supported by many, but not by all BootsFaces components. Currently, these components include:</p>
+    <ul>
+      <li><code>&lt;b:commandButton /&gt;</code></li>
+      <li><code>&lt;b:selectBooleanCheckbox /&gt;</code></li>
+      <li><code>&lt;b:selectOneMenu /&gt;</code></li>
+      <li><code>&lt;b:inputText /&gt;</code> and <code>&lt;b:inputSecret /&gt;</code></li>
+      <li><code>&lt;b:carousel /&gt;</code></li>
+      <li><code>&lt;b:panel /&gt;</code></li>
+      <li><code>&lt;b:tabView /&gt;</code></li>
+      <li><code>&lt;b:icon /&gt;</code></li>
+      <li><code>&lt;b:iconAwesome /&gt;</code></li>
+      <li><code>&lt;b:image /&gt;</code></li>
+    </ul>
+
+    <h2><a id="basic_usage">Basic usage</a></h2>
+    <p>The general idea is to use the JavaScript attributes for JSF AJAX calls. Unfortunately, JSF doesn't allow us to simply use the JSF EL syntax.
+    So, we had to look for some inspiration, and we found it with an almost forgotten way to define HTML JavaScript callback handlers. You can
+    optionally define such a handler by preceding it with <code>javascript:</code> to make clear which language you want to use. Similarly, BootsFaces
+    uses the prefix <code>ajax:</code> to indicate the following code is Java code. If you want to execute another piece of JavaScript code after
+    sending the AJAX call, prefix it with <code>javascript:</code> again. Notice that the second JavaScript code usually is executed before the Java code.
+    AJAX means that the reference Java code is executed asynchronically.</p>
+
+    <b:panel>
+      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+      <![CDATA[
+      <b:selectOneMenu update="someRegion"
+                       onchange="ajax:ajaxBean.onComboboxChange()" />
+      ]]>
+      </script>
+    </b:panel>
+    <p>Like said before, you can freely combine AJAX calls and JavaScript. If you want to execute JavaScript code after the AJAX call,
+    you have to precede it with <code>javascript:</code>. Otherwise BootsFaces tries to run your JavaScript code on the server side. </p>
+    <b:panel>
+      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+      <![CDATA[
+      <b:selectOneMenu update="someRegion"
+                       onchange="alert('Before the AJAX call');ajax:ajaxBean.onComboboxChange();javascript:alert('after the AJAX call');" />
+      ]]>
+      </script>
+    </b:panel>
+    <p>You can also use more than one JavaScript attribute to call AJAX code: <code>onclick</code>, <code>ondlbclick</code>, <code>onfocus</code>,
+    just to name a few. Each of these AJAX calls update the same part of the DOM tree, defined by the <code>update</code> attribute.</p>
+
+    <h2><a id="busy_indicator">Busy indicator</a></h2>
+    <p>You can use the BlockUI feature to give feedback to the user. The general idea of BlockUI is to fade the screen to gray while
+    an AJAX request is running. It also prevents the user from sending multiple AJAX requests. It's a common problem that hurried users
+    start to click frantically because they simply don't know whether the application accepted the click or not. Giving the user visual
+    feedback solves this problem. It also solves the dreaded "double click" problem. Many users have learned they need to use a double click
+    to start an application, and it hardly ever causes problems, so they use it everywhere. Unfortunately, web applications don't work
+    that way. They try to execute the action twice. BlockUI solves that problem, too. See <a href="blockUI.jsf">the BlockUI page</a>
+    for more details.</p>
+
+    <h2><a id="partial_processing">Partial processing</a></h2>
+    <p>Use the <code>process</code> attribute to define which input fields are send to the server.</p>
+
+
+    <h2><a id="advanced_usage">Advanced usage</a></h2>
+    <p>Sometimes you need more flexibility. For instance, it's a common use case to update different regions, depending on the event.
+    In this case you can resort to the traditional <code>&lt;f:ajax&gt;</code> facets of standard JSF. Note the diffenrent naming
+    conventions: BootsFaces <code>update</code> becomes <code>render</code>, and <code>process</code> becomes <code>execute</code>.
+    This is because <code>f:ajax</code> is provided by the underlying JSF framework, which doesn't follow the conventions of
+    BootsFaces, which in turn has been inspired by (and is seeking compatibility to) PrimeFaces.</p>
+
+    <h2><a id="exceptions_during_ajax_calls">Exceptions during AJAX calls</a></h2>
+    <p>For technical reasons, JSF reacts a bit ungraceful if the server raises an exception during and AJAX request.
+    If you're using MyFaces and if you've configured your application to be in the development stage,
+    you'll see a non-descript JavaScript error message. In every other case you don't see anything at all.</p>
+    <p>To solve the problem, register an <code>AjaxExceptionHandler</code>, as described at
+    <a target="#" href="http://www.beyondjava.net/blog/jsf-2-0-hides-exceptions-ajax/">http://www.beyondjava.net/blog/jsf-2-0-hides-exceptions-ajax/</a>.
+    A good starting point is the OmniFaces <code>FullAjaxExceptionHandler</code>. If you use CDI and DeltaSpike,
+    <code>@ExceptionHandler</code> is an interesting alternative.</p>
+
+
+    <h2><a id="limits_to_bootsfaces_ajax">(Virtually no) Limits to BootsFaces AJAX</a></h2>
+    <p>From a technical point of view, you can do everything with BootsFaces AJAX - as long as the network latency permits. We've even been
+    able to implement drag and drop via AJAX. This chess demo is an example of drag and drop using BootsFaces:
+    <a target="#" href="http://www.angularfaces.net/BootsFacesChess-1.0.0-SNAPSHOT/">BootsFaces Chess demo</a>. You can move the chess pieces
+    by clicking and draggging them to their target destination.</p>
+    <p>In other words: what you can and can not do with BootsFaces AJAX depends on your network latency (and your server-side processing time). BootsFaces
+    processes AJAX fairly efficient, so it's unlikely BootsFaces is the bottleneck to your projects.</p>
+
+    <h2><a id="corner_cases_">Corner cases:</a><code>onstart</code>,  <code>oncomplete</code>,  <code>onsuccess</code> and  <code>onerror</code></h2>
+    <p>Strictly speaking, there are four events that can be triggerd during an AJAX request:</p>
+    <ul>
+      <li><code>onstart</code> notifies your that an AJAX request is sent to the server.</li>
+      <li><code>onerror</code> is called when an exception happened on the server side.</li>
+      <li><code>onsuccess</code> is called when a request finished without exceptions.</li>
+      <li><code>oncomplete</code> is called when a request has finished, regardless of whether it was successful
+      or if an exception occurred.</li>
+    </ul>
+    <p>From a technical perspective, almost every AJAXified component of BootsFaces supports
+    all events except <code>onstart</code>. Unfortunately, the API hasn't been unlocked for every component
+    yet. Plus, none of the components support <code>onstart</code> yet.</p>
+    <p>You can circumvent this limitation by hooking directly into the JavaScript API of JSF:</p>
+    <b:panel>
+      <script type="syntaxhighlighter" class="brush: javascript; toolbar: false;gutter: false; first-line: 1">
+      <![CDATA[
+      jsf.ajax.addOnEvent(function (data) {
+        if (data.status === 'begin') {
+          doOnStart();
+        }
+        if (data.status === 'complete') {
+          doOnComplete();
+        }
+        if (data.status === 'success') {
+          doOnSuccess();
+        }
+        if (data.status === 'error') {
+          doOnError();
+        }
+      });
+      ]]>
+      </script>
+    </b:panel>
+    <p>IF you're using PrimeFaces, the API is slightly different:</p>
+    <b:panel>
+      <script type="syntaxhighlighter" class="brush: javascript; toolbar: false;gutter: false; first-line: 1">
+      <![CDATA[
+      $(document).on('pfAjaxComplete', function() { ... });
+      $(document).on('pfAjaxSuccess', function() { ... });
+      $(document).on('pfAjaxStart', function() { ... });
+      $(document).on('pfAjaxSend', function() { ... });
+      $(document).on('pfAjaxError', function() { ... });
+      ]]>
+      </script>
+    </b:panel>
+
+    <h2><a id="known_bugs_and_limitations">Known bugs and limitations</a></h2>
+    <ul>
+      <li><code>update="@all"</code> doesn't work in BootsFaces 0.8.0.</li>
+      <li>The algorithm parsing jQuery expression in update statements (e.g. <code>update="@(body>*)"</code>) is very primitive. It fails if
+      there's a space in the jQuery expression.</li>
+    </ul>
+    <h2><a id="live_demo">Live demo</a></h2>
+    <p>This demo shows some of the options at a glance.</p>
+
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form>
+        <b:row>
+          <b:column col-sm="6">
+            <b:panel look="primary"
+                     title="AJAXified Combobox without mouse events">
+              <b:label text="Which JSF framework do you like most?" />
+              <b:selectOneMenu value="#{ajaxBean.jsf}" id="jsfID"
+                               onchange="console.log('before onChange');ajax:ajaxBean.onChange();javascript:console.log('afterOnChange')"
+                               onblur="console.log('blur');ajax:ajaxBean.onBlur()"
+                               onfocus="console.log('focus');ajax:ajaxBean.onFocus()"
+                               onclick="console.log('click');ajax:ajaxBean.onClick()"
+                               ondblclick="console.log('dblclick');ajax:ajaxBean.onDblClick()"
+                               onkeydown="console.log('key down');ajax:ajaxBean.onKeyDown()"
+                               onkeyup="console.log('key down');ajax:ajaxBean.onKeyUp()"
+                               onkeypress="console.log('key press');ajax:ajaxBean.onKeyPress()"
+                               onselect="console.log('select');ajax:ajaxBean.onSelect()"
+                               update="messages jsfMessages">
+
+
+                <f:selectItem itemLabel="(Please select)" itemValue="0" />
+                <f:selectItem itemLabel="PrimeFaces" itemValue="1" />
+                <f:selectItem itemLabel="BootsFaces" itemValue="2" />
+                <f:selectItem itemLabel="I combine both!" itemValue="3" />
+              </b:selectOneMenu>
+            </b:panel>
+            <b:panel look="primary"
+                     title="AJAXified Combobox including most mouse events">
+              <ui:remove>
+                <!-- onmousemove="console.log('mouse move')ajax:ajaxBean.onMouseMove();"  -->
+              </ui:remove>
+
+              <b:label text="What about JavaScript?" />
+              <b:selectOneMenu value="#{ajaxBean.js}" id="jsID"
+                               onchange="console.log('before onChange');ajax:ajaxBean.onChange();javascript:console.log('after onChange')"
+                               onblur="console.log('blur');ajax:ajaxBean.onBlur()"
+                               onfocus="console.log('focus');ajax:ajaxBean.onFocus()"
+                               onclick="console.log('click');ajax:ajaxBean.onClick()"
+                               ondblclick="console.log('dblclick');ajax:ajaxBean.onDblClick()"
+                               onkeydown="console.log('keyd own');ajax:ajaxBean.onKeyDown()"
+                               onkeyup="console.log('key up');ajax:ajaxBean.onKeyDown()"
+                               onmousedown="console.log('mouse down');ajax:ajaxBean.onMouseDown();"
+                               onmouseout="console.log('mouse out');ajax:ajaxBean.onMouseOut();"
+                               onmouseover="console.log('mouse over');ajax:ajaxBean.onMouseOver();"
+                               onmouseup="console.log('mouse up');ajax:ajaxBean.onMouseUp();"
+                               onmouseselect="console.log('mouse select');ajax:ajaxBean.onMouseSelect();"
+                               onvaluechange="console.log('valueChange);ajax:ajaxBean.onValueChange()"
+                               onselect="console.log('select');ajax:ajaxBean.onSelect()"
+                               update="messages jsfMessages">
+
+
+                <f:selectItem itemLabel="(Please select)" itemValue="0" />
+                <f:selectItem itemLabel="JavaScript? No way!" itemValue="1" />
+                <f:selectItem itemLabel="AngularFaces rocks!" itemValue="2" />
+                <f:selectItem itemLabel="Real developers do JavaScript."
+                              itemValue="3" />
+              </b:selectOneMenu>
+            </b:panel>
+            <b:panel look="primary" title="AJAXified Combobox - only mouse move and onchange">
+              <ui:remove>
+              </ui:remove>
+
+              <b:label
+                 text="Which framework do you choose for desktop applications?" />
+              <b:selectOneMenu value="#{ajaxBean.desktop}" id="desktopId"
+                               onmousemove="console.log('mouse move');ajax:ajaxBean.onMouseMove();"
+                               onchange="console.log('before onChange');ajax:ajaxBean.onChange()"
+                               update="messages jsfMessages">
+
+
+                <f:selectItem itemLabel="(Please select)" itemValue="0" />
+                <f:selectItem itemLabel=".NET" itemValue="1" />
+                <f:selectItem itemLabel="JavaFX" itemValue="2" />
+                <f:selectItem itemLabel="GroovyFX" itemValue="3" />
+                <f:selectItem itemLabel="JSF" itemValue="4" />
+              </b:selectOneMenu>
+            </b:panel>
+            <b:panel look="primary" title="JSF messages" id="jsfMessages">
+              <b:messages showSummary="false" />
+            </b:panel>
+
+          </b:column>
+          <b:column col-sm="6">
+            <b:well id="messages">
+              Last server-side events:
+              <ul>
+                <ui:repeat var="message" value="#{ajaxBean.messages}">
+                  <li>#{message}</li>
+                </ui:repeat>
+              </ul>
+            </b:well>
+          </b:column>
+        </b:row>
+      </h:form>
+
+      <f:facet name="footer">
+        <strong>JSF markup: </strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:form>
+            <b:row>
+              <b:column col-sm="6">
+                <b:panel look="primary"
+                         title="AJAXified Combobox without mouse events">
+                  <b:label text="Which JSF framework do you like most?" />
+                  <b:selectOneMenu value="&num;{ajaxBean.jsf}" id="jsfID"
+                                   onchange="console.log('before onChange');ajax:ajaxBean.onChange();javascript:console.log('afterOnChange')"
+                                   onblur="console.log('blur');ajax:ajaxBean.onBlur()"
+                                   onfocus="console.log('focus');ajax:ajaxBean.onFocus()"
+                                   onclick="console.log('click');ajax:ajaxBean.onClick()"
+                                   ondblclick="console.log('dblclick');ajax:ajaxBean.onDblClick()"
+                                   onkeydown="console.log('key down');ajax:ajaxBean.onKeyDown()"
+                                   onkeyup="console.log('key up');ajax:ajaxBean.onKeyUp()"
+                                   onkeypress="console.log('key press');ajax:ajaxBean.onKeyPress()"
+                                   onselect="console.log('select');ajax:ajaxBean.onSelect()"
+                                   update="messages jsfMessages">
+
+
+                    <f:selectItem itemLabel="(Please select)" itemValue="0" />
+                    <f:selectItem itemLabel="PrimeFaces" itemValue="1" />
+                    <f:selectItem itemLabel="BootsFaces" itemValue="2" />
+                    <f:selectItem itemLabel="I combine both!" itemValue="3" />
+                  </b:selectOneMenu>
                 </b:panel>
-				<p>You can also use more than one JavaScript attribute to call AJAX code: <code>onclick</code>, <code>ondlbclick</code>, <code>onfocus</code>,
-				just to name a few. Each of these AJAX calls update the same part of the DOM tree, defined by the <code>update</code> attribute.</p>
+                <b:panel look="primary"
+                         title="AJAXified Combobox including mouse events">
+                  <ui:remove>
+                    <!-- onmousemove="console.log('mouse move')ajax:ajaxBean.onMouseMove();"  -->
+                  </ui:remove>
 
-                <h2>Busy indicator</h2>
-                <p>You can use the BlockUI feature to give feedback to the user. The general idea of BlockUI is to fade the screen to gray while
-                an AJAX request is running. It also prevents the user from sending multiple AJAX requests. It's a common problem that hurried users
-                start to click frantically because they simply don't know whether the application accepted the click or not. Giving the user visual
-                feedback solves this problem. It also solves the dreaded "double click" problem. Many users have learned they need to use a double click
-                to start an application, and it hardly ever causes problems, so they use it everywhere. Unfortunately, web applications don't work
-                that way. They try to execute the action twice. BlockUI solves that problem, too. See <a href="blockUI.jsf">the BlockUI page</a>
-                for more details.</p>
-
-                <h2>Partial processing</h2>
-                <p>Use the <code>process</code> attribute to define which input fields are send to the server.</p>
-
-
-				<h2>Advanced usage</h2>
-                <p>Sometimes you need more flexibility. For instance, it's a common use case to update different regions, depending on the event.
-                 In this case you can resort to the traditional <code>&lt;f:ajax&gt;</code> facets of standard JSF. Note the diffenrent naming
-                 conventions: BootsFaces <code>update</code> becomes <code>render</code>, and <code>process</code> becomes <code>execute</code>.
-                 This is because <code>f:ajax</code> is provided by the underlying JSF framework, which doesn't follow the conventions of
-                 BootsFaces, which in turn has been inspired by (and is seeking compatibility to) PrimeFaces.</p>
-
-                <h2>Exceptions during AJAX calls</h2>
-                <p>For technical reasons, JSF reacts a bit ungraceful if the server raises an exception during and AJAX request.
-                If you're using MyFaces and if you've configured your application to be in the development stage,
-                you'll see a non-descript JavaScript error message. In every other case you don't see anything at all.</p>
-                <p>To solve the problem, register an <code>AjaxExceptionHandler</code>, as described at
-                <a target="#" href="http://www.beyondjava.net/blog/jsf-2-0-hides-exceptions-ajax/">http://www.beyondjava.net/blog/jsf-2-0-hides-exceptions-ajax/</a>.
-                A good starting point is the OmniFaces <code>FullAjaxExceptionHandler</code>. If you use CDI and DeltaSpike,
-                <code>@ExceptionHandler</code> is an interesting alternative.</p>
+                  <b:label text="What about JavaScript?" />
+                  <b:selectOneMenu value="&num;{ajaxBean.js}" id="jsID"
+                                   onchange="console.log('before onChange');ajax:ajaxBean.onChange();javascript:console.log('afterOnChange')"
+                                   onblur="console.log('blur');ajax:ajaxBean.onBlur()"
+                                   onfocus="console.log('focus');ajax:ajaxBean.onFocus()"
+                                   onclick="console.log('click');ajax:ajaxBean.onClick()"
+                                   ondblclick="console.log('dblclick');ajax:ajaxBean.onDblClick()"
+                                   onkeydown="console.log('keyd own');ajax:ajaxBean.onKeyDown()"
+                                   onkeyup="console.log('key up');ajax:ajaxBean.onKeyDown()"
+                                   onmousedown="console.log('mouse down');ajax:ajaxBean.onMouseDown();"
+                                   onmouseout="console.log('mouse out');ajax:ajaxBean.onMouseOut();"
+                                   onmouseup="console.log('mouse up');ajax:ajaxBean.onMouseUp();"
+                                   onmouseselect="console.log('mouse select');ajax:ajaxBean.onMouseSelect();"
+                                   onvaluechange="console.log('valueChange);ajax:ajaxBean.onValueChange()"
+                                   onselect="console.log('select');ajax:ajaxBean.onSelect()"
+                                   update="messages jsfMessages">
 
 
-                 <h2>(Virtually no) Limits to BootsFaces AJAX</h2>
-                 <p>From a technical point of view, you can do everything with BootsFaces AJAX - as long as the network latency permits. We've even been
-                 able to implement drag and drop via AJAX. This chess demo is an example of drag and drop using BootsFaces:
-                 <a target="#" href="http://www.angularfaces.net/BootsFacesChess-1.0.0-SNAPSHOT/">BootsFaces Chess demo</a>. You can move the chess pieces
-                 by clicking and draggging them to their target destination.</p>
-                 <p>In other words: what you can and can not do with BootsFaces AJAX depends on your network latency (and your server-side processing time). BootsFaces
-                 processes AJAX fairly efficient, so it's unlikely BootsFaces is the bottleneck to your projects.</p>
-
-                 <h2>Corner cases: <code>onstart</code>,  <code>oncomplete</code>,  <code>onsuccess</code> and  <code>onerror</code></h2>
-                 <p>Strictly speaking, there are four events that can be triggerd during an AJAX request:</p>
-                 <ul>
-	                 <li><code>onstart</code> notifies your that an AJAX request is sent to the server.</li>
-	                 <li><code>onerror</code> is called when an exception happened on the server side.</li>
-	                 <li><code>onsuccess</code> is called when a request finished without exceptions.</li>
-	                 <li><code>oncomplete</code> is called when a request has finished, regardless of whether it was successful
-	                 or if an exception occurred.</li>
-                 </ul>
-                 <p>From a technical perspective, almost every AJAXified component of BootsFaces supports 
-                 all events except <code>onstart</code>. Unfortunately, the API hasn't been unlocked for every component
-                 yet. Plus, none of the components support <code>onstart</code> yet.</p>
-                 <p>You can circumvent this limitation by hooking directly into the JavaScript API of JSF:</p>
-				 <b:panel>
-                  <script type="syntaxhighlighter" class="brush: javascript; toolbar: false;gutter: false; first-line: 1">
-                	<![CDATA[
-                      jsf.ajax.addOnEvent(function (data) {
-                              if (data.status === 'begin') {
-                                  doOnStart();
-                              }
-                              if (data.status === 'complete') {
-                                  doOnComplete();
-                              }
-                              if (data.status === 'success') {
-                                  doOnSuccess();
-                              }
-                              if (data.status === 'error') {
-                                  doOnError();
-                              }
-                          });
-               	    ]]>
-                   </script>
+                    <f:selectItem itemLabel="(Please select)" itemValue="0" />
+                    <f:selectItem itemLabel="JavaScript? No way!" itemValue="1" />
+                    <f:selectItem itemLabel="AngularFaces rocks!" itemValue="2" />
+                    <f:selectItem itemLabel="Real developers do JavaScript."
+                                  itemValue="3" />
+                  </b:selectOneMenu>
                 </b:panel>
-                <p>IF you're using PrimeFaces, the API is slightly different:</p>
- 				 <b:panel>
-                  <script type="syntaxhighlighter" class="brush: javascript; toolbar: false;gutter: false; first-line: 1">
-                	<![CDATA[
-                      $(document).on('pfAjaxComplete', function() { ... });
-                      $(document).on('pfAjaxSuccess', function() { ... });
-                      $(document).on('pfAjaxStart', function() { ... });
-                      $(document).on('pfAjaxSend', function() { ... });
-                      $(document).on('pfAjaxError', function() { ... });               	    
-                    ]]>
-                   </script>
+                <b:panel look="primary" title="AJAXified Combobox - only mouse move">
+                  <ui:remove>
+                  </ui:remove>
+
+                  <b:label
+                     text="Which framework do you choose for desktop applications?" />
+                  <b:selectOneMenu value="&num;{ajaxBean.desktop}" id="desktopId"
+                                   onmousemove="console.log('mouse move');ajax:ajaxBean.onMouseMove();"
+                                   update="messages jsfMessages">
+
+
+                    <f:selectItem itemLabel="(Please select)" itemValue="0" />
+                    <f:selectItem itemLabel=".NET" itemValue="1" />
+                    <f:selectItem itemLabel="JavaFX" itemValue="2" />
+                    <f:selectItem itemLabel="GroovyFX" itemValue="3" />
+                    <f:selectItem itemLabel="JSF" itemValue="4" />
+                  </b:selectOneMenu>
                 </b:panel>
-                
-                <h2>Known bugs and limitations</h2>
-                <ul>
-                <li><code>update="@all"</code> doesn't work in BootsFaces 0.8.0.</li>
-                <li>The algorithm parsing jQuery expression in update statements (e.g. <code>update="@(body>*)"</code>) is very primitive. It fails if
-                there's a space in the jQuery expression.</li>
-                </ul>
-				<h2>Live demo</h2>
-				<p>This demo shows some of the options at a glance.</p>
-                
-                
-                <b:panel title="Live preview" look="info" collapsible="false">
-                    <h:form>
-                        <b:row>
-                            <b:column col-sm="6">
-                                <b:panel look="primary"
-                                    title="AJAXified Combobox without mouse events">
-                                    <b:label text="Which JSF framework do you like most?" />
-                                    <b:selectOneMenu value="#{ajaxBean.jsf}" id="jsfID"
-                                        onchange="console.log('before onChange');ajax:ajaxBean.onChange();javascript:console.log('afterOnChange')"
-                                        onblur="console.log('blur');ajax:ajaxBean.onBlur()"
-                                        onfocus="console.log('focus');ajax:ajaxBean.onFocus()"
-                                        onclick="console.log('click');ajax:ajaxBean.onClick()"
-                                        ondblclick="console.log('dblclick');ajax:ajaxBean.onDblClick()"
-                                        onkeydown="console.log('key down');ajax:ajaxBean.onKeyDown()"
-                                        onkeyup="console.log('key down');ajax:ajaxBean.onKeyUp()"
-                                        onkeypress="console.log('key press');ajax:ajaxBean.onKeyPress()"
-                                        onselect="console.log('select');ajax:ajaxBean.onSelect()"
-                                        update="messages jsfMessages">
-
-
-                                        <f:selectItem itemLabel="(Please select)" itemValue="0" />
-                                        <f:selectItem itemLabel="PrimeFaces" itemValue="1" />
-                                        <f:selectItem itemLabel="BootsFaces" itemValue="2" />
-                                        <f:selectItem itemLabel="I combine both!" itemValue="3" />
-                                    </b:selectOneMenu>
-                                </b:panel>
-                                <b:panel look="primary"
-                                    title="AJAXified Combobox including most mouse events">
-                                    <ui:remove>
-                                        <!-- onmousemove="console.log('mouse move')ajax:ajaxBean.onMouseMove();"  -->
-                                    </ui:remove>
-
-                                    <b:label text="What about JavaScript?" />
-                                    <b:selectOneMenu value="#{ajaxBean.js}" id="jsID"
-                                        onchange="console.log('before onChange');ajax:ajaxBean.onChange();javascript:console.log('after onChange')"
-                                        onblur="console.log('blur');ajax:ajaxBean.onBlur()"
-                                        onfocus="console.log('focus');ajax:ajaxBean.onFocus()"
-                                        onclick="console.log('click');ajax:ajaxBean.onClick()"
-                                        ondblclick="console.log('dblclick');ajax:ajaxBean.onDblClick()"
-                                        onkeydown="console.log('keyd own');ajax:ajaxBean.onKeyDown()"
-                                        onkeyup="console.log('key up');ajax:ajaxBean.onKeyDown()"
-                                        onmousedown="console.log('mouse down');ajax:ajaxBean.onMouseDown();"
-                                        onmouseout="console.log('mouse out');ajax:ajaxBean.onMouseOut();"
-                                        onmouseover="console.log('mouse over');ajax:ajaxBean.onMouseOver();"
-                                        onmouseup="console.log('mouse up');ajax:ajaxBean.onMouseUp();"
-                                        onmouseselect="console.log('mouse select');ajax:ajaxBean.onMouseSelect();"
-                                        onvaluechange="console.log('valueChange);ajax:ajaxBean.onValueChange()"
-                                        onselect="console.log('select');ajax:ajaxBean.onSelect()"
-                                        update="messages jsfMessages">
-
-
-                                        <f:selectItem itemLabel="(Please select)" itemValue="0" />
-                                        <f:selectItem itemLabel="JavaScript? No way!" itemValue="1" />
-                                        <f:selectItem itemLabel="AngularFaces rocks!" itemValue="2" />
-                                        <f:selectItem itemLabel="Real developers do JavaScript."
-                                            itemValue="3" />
-                                    </b:selectOneMenu>
-                                </b:panel>
-                                <b:panel look="primary" title="AJAXified Combobox - only mouse move and onchange">
-                                    <ui:remove>
-                                    </ui:remove>
-
-                                    <b:label
-                                        text="Which framework do you choose for desktop applications?" />
-                                    <b:selectOneMenu value="#{ajaxBean.desktop}" id="desktopId"
-                                        onmousemove="console.log('mouse move');ajax:ajaxBean.onMouseMove();"
-                                        onchange="console.log('before onChange');ajax:ajaxBean.onChange()"
-                                        update="messages jsfMessages">
-
-
-                                        <f:selectItem itemLabel="(Please select)" itemValue="0" />
-                                        <f:selectItem itemLabel=".NET" itemValue="1" />
-                                        <f:selectItem itemLabel="JavaFX" itemValue="2" />
-                                        <f:selectItem itemLabel="GroovyFX" itemValue="3" />
-                                        <f:selectItem itemLabel="JSF" itemValue="4" />
-                                    </b:selectOneMenu>
-                                </b:panel>
-                                <b:panel look="primary" title="JSF messages" id="jsfMessages">
-                                    <b:messages showSummary="false" />
-                                </b:panel>
-
-                            </b:column>
-                            <b:column col-sm="6">
-                                <b:well id="messages">
-                                Last server-side events:
-                                <ul>
-                                        <ui:repeat var="message" value="#{ajaxBean.messages}">
-                                            <li>#{message}</li>
-                                        </ui:repeat>
-                                    </ul>
-                                </b:well>
-                            </b:column>
-                        </b:row>
-                    </h:form>
-                    
-                    <f:facet name="footer">
-                        <strong>JSF markup: </strong>
-                        <b:panel>
-                            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                            <![CDATA[
-                                <h:form>
-                                    <b:row>
-                                        <b:column col-sm="6">
-                                            <b:panel look="primary"
-                                                title="AJAXified Combobox without mouse events">
-                                                <b:label text="Which JSF framework do you like most?" />
-                                                <b:selectOneMenu value="&num;{ajaxBean.jsf}" id="jsfID"
-                                                    onchange="console.log('before onChange');ajax:ajaxBean.onChange();javascript:console.log('afterOnChange')"
-                                                    onblur="console.log('blur');ajax:ajaxBean.onBlur()"
-                                                    onfocus="console.log('focus');ajax:ajaxBean.onFocus()"
-                                                    onclick="console.log('click');ajax:ajaxBean.onClick()"
-                                                    ondblclick="console.log('dblclick');ajax:ajaxBean.onDblClick()"
-                                                    onkeydown="console.log('key down');ajax:ajaxBean.onKeyDown()"
-                                                    onkeyup="console.log('key up');ajax:ajaxBean.onKeyUp()"
-                                                    onkeypress="console.log('key press');ajax:ajaxBean.onKeyPress()"
-                                                    onselect="console.log('select');ajax:ajaxBean.onSelect()"
-                                                    update="messages jsfMessages">
-
-
-                                                    <f:selectItem itemLabel="(Please select)" itemValue="0" />
-                                                    <f:selectItem itemLabel="PrimeFaces" itemValue="1" />
-                                                    <f:selectItem itemLabel="BootsFaces" itemValue="2" />
-                                                    <f:selectItem itemLabel="I combine both!" itemValue="3" />
-                                                </b:selectOneMenu>
-                                            </b:panel>
-                                            <b:panel look="primary"
-                                                title="AJAXified Combobox including mouse events">
-                                                <ui:remove>
-                                                    <!-- onmousemove="console.log('mouse move')ajax:ajaxBean.onMouseMove();"  -->
-                                                </ui:remove>
-
-                                                <b:label text="What about JavaScript?" />
-                                                <b:selectOneMenu value="&num;{ajaxBean.js}" id="jsID"
-                                                    onchange="console.log('before onChange');ajax:ajaxBean.onChange();javascript:console.log('afterOnChange')"
-                                                    onblur="console.log('blur');ajax:ajaxBean.onBlur()"
-                                                    onfocus="console.log('focus');ajax:ajaxBean.onFocus()"
-                                                    onclick="console.log('click');ajax:ajaxBean.onClick()"
-                                                    ondblclick="console.log('dblclick');ajax:ajaxBean.onDblClick()"
-                                                    onkeydown="console.log('keyd own');ajax:ajaxBean.onKeyDown()"
-                                                    onkeyup="console.log('key up');ajax:ajaxBean.onKeyDown()"
-                                                    onmousedown="console.log('mouse down');ajax:ajaxBean.onMouseDown();"
-                                                    onmouseout="console.log('mouse out');ajax:ajaxBean.onMouseOut();"
-                                                    onmouseup="console.log('mouse up');ajax:ajaxBean.onMouseUp();"
-                                                    onmouseselect="console.log('mouse select');ajax:ajaxBean.onMouseSelect();"
-                                                    onvaluechange="console.log('valueChange);ajax:ajaxBean.onValueChange()"
-                                                    onselect="console.log('select');ajax:ajaxBean.onSelect()"
-                                                    update="messages jsfMessages">
-
-
-                                                    <f:selectItem itemLabel="(Please select)" itemValue="0" />
-                                                    <f:selectItem itemLabel="JavaScript? No way!" itemValue="1" />
-                                                    <f:selectItem itemLabel="AngularFaces rocks!" itemValue="2" />
-                                                    <f:selectItem itemLabel="Real developers do JavaScript."
-                                                        itemValue="3" />
-                                                </b:selectOneMenu>
-                                            </b:panel>
-                                            <b:panel look="primary" title="AJAXified Combobox - only mouse move">
-                                                <ui:remove>
-                                                </ui:remove>
-
-                                                <b:label
-                                                    text="Which framework do you choose for desktop applications?" />
-                                                <b:selectOneMenu value="&num;{ajaxBean.desktop}" id="desktopId"
-                                                    onmousemove="console.log('mouse move');ajax:ajaxBean.onMouseMove();"
-                                                    update="messages jsfMessages">
-
-
-                                                    <f:selectItem itemLabel="(Please select)" itemValue="0" />
-                                                    <f:selectItem itemLabel=".NET" itemValue="1" />
-                                                    <f:selectItem itemLabel="JavaFX" itemValue="2" />
-                                                    <f:selectItem itemLabel="GroovyFX" itemValue="3" />
-                                                    <f:selectItem itemLabel="JSF" itemValue="4" />
-                                                </b:selectOneMenu>
-                                            </b:panel>
-                                            <b:panel look="primary" title="JSF messages" id="jsfMessages">
-                                                <b:messages showSummary="false" />
-                                            </b:panel>
-
-                                        </b:column>
-                                        <b:column col-sm="6">
-                                            <b:well id="messages">
-                                            Last server-side events:
-                                            <ul>
-                                                    <ui:repeat var="message" value="&num;{ajaxBean.messages}">
-                                                        <li>&num;{message}</li>
-                                                    </ui:repeat>
-                                                </ul>
-                                            </b:well>
-                                        </b:column>
-                                    </b:row>
-                                </h:form>
-                            ]]>
-                            </script>
-                        </b:panel>                
-                    </f:facet>
+                <b:panel look="primary" title="JSF messages" id="jsfMessages">
+                  <b:messages showSummary="false" />
                 </b:panel>
-				
-				<h2>Traditional JSF AJAX</h2>
-				<p>By public demand, BootsFaces also supports the traditional approach to AJAX. 
-				But BootsFaces doesn't offer full compatibility. Most things work, but some
-				features may be broken. That's because we put more resources on the BootsFaces
-				syntax than on the legacy syntax.</p>
-                                                                
-                <b:panel title="Live preview" look="info" collapsible="false">
-                    <h:form>
-					<b:row>
-						<b:column col-sm="6">
-							<b:panel look="primary"
-								title="Traditional JSF AJAX API">
-								<b:label text="Which JSF framework do you like most?" />
-								<b:selectOneMenu value="#{ajaxBean.jsf}" id="jsfID">
-									<f:selectItem itemLabel="(Please select)" itemValue="0" />
-									<f:selectItem itemLabel="PrimeFaces" itemValue="1" />
-									<f:selectItem itemLabel="BootsFaces" itemValue="2" />
-									<f:selectItem itemLabel="I combine both!" itemValue="3" />
-									<f:ajax event="blur" listener="#{ajaxBean.onBlur}" render="jsfMessages messages" />
-									<f:ajax event="change" listener="#{ajaxBean.onChange}" render="jsfMessages messages" />
-								</b:selectOneMenu>
-							</b:panel>
-							<b:panel look="primary" title="JSF messages" id="jsfMessages">
-								<b:messages showSummary="false" />
-							</b:panel>
-						</b:column>
-						<b:column col-sm="6">
-							<b:well id="messages">
-			                Last server-side events:
-			                <ul>
-									<ui:repeat var="message" value="#{ajaxBean.messages}">
-										<li>#{message}</li>
-									</ui:repeat>
-								</ul>
-							</b:well>
-						</b:column>
-					</b:row>
-				</h:form>
-                    <f:facet name="footer">
-                        <strong>JSF markup: </strong>
-                        <b:panel>
- <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                            <![CDATA[
-                <h:form>
-					<b:row>
-						<b:column col-sm="6">
-							<b:panel look="primary"
-								title="Traditional JSF AJAX API">
-								<b:label text="Which JSF framework do you like most?" />
-								<b:selectOneMenu value="&num;{ajaxBean.jsf}" id="jsfID">
-									<f:selectItem itemLabel="(Please select)" itemValue="0" />
-									<f:selectItem itemLabel="PrimeFaces" itemValue="1" />
-									<f:selectItem itemLabel="BootsFaces" itemValue="2" />
-									<f:selectItem itemLabel="I combine both!" itemValue="3" />
-									<f:ajax event="blur" listener="&num;{ajaxBean.onBlur}" render="jsfMessages messages" />
-									<f:ajax event="change" listener="&num;{ajaxBean.onChange}" render="jsfMessages messages" />
-								</b:selectOneMenu>
-							</b:panel>
-							<b:panel look="primary" title="JSF messages" id="jsfMessages">
-								<b:messages showSummary="false" />
-							</b:panel>
-						</b:column>
-						<b:column col-sm="6">
-							<b:well id="messages">
-			                Last server-side events:
-			                <ul>
-									<ui:repeat var="message" value="&num;{ajaxBean.messages}">
-										<li>&num;{message}</li>
-									</ui:repeat>
-								</ul>
-							</b:well>
-						</b:column>
-					</b:row>
-				</h:form>
-                            ]]>
-                            </script>
-                        </b:panel>                
-                    </f:facet>
+
+              </b:column>
+              <b:column col-sm="6">
+                <b:well id="messages">
+                  Last server-side events:
+                  <ul>
+                    <ui:repeat var="message" value="&num;{ajaxBean.messages}">
+                      <li>&num;{message}</li>
+                    </ui:repeat>
+                  </ul>
+                </b:well>
+              </b:column>
+            </b:row>
+          </h:form>
+          ]]>
+          </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+    <h2><a id="traditional_jsf_ajax">Traditional JSF AJAX</a></h2>
+    <p>By public demand, BootsFaces also supports the traditional approach to AJAX.
+    But BootsFaces doesn't offer full compatibility. Most things work, but some
+    features may be broken. That's because we put more resources on the BootsFaces
+    syntax than on the legacy syntax.</p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form>
+        <b:row>
+          <b:column col-sm="6">
+            <b:panel look="primary"
+                     title="Traditional JSF AJAX API">
+              <b:label text="Which JSF framework do you like most?" />
+              <b:selectOneMenu value="#{ajaxBean.jsf}" id="jsfID">
+                <f:selectItem itemLabel="(Please select)" itemValue="0" />
+                <f:selectItem itemLabel="PrimeFaces" itemValue="1" />
+                <f:selectItem itemLabel="BootsFaces" itemValue="2" />
+                <f:selectItem itemLabel="I combine both!" itemValue="3" />
+                <f:ajax event="blur" listener="#{ajaxBean.onBlur}" render="jsfMessages messages" />
+                <f:ajax event="change" listener="#{ajaxBean.onChange}" render="jsfMessages messages" />
+              </b:selectOneMenu>
+            </b:panel>
+            <b:panel look="primary" title="JSF messages" id="jsfMessages">
+              <b:messages showSummary="false" />
+            </b:panel>
+          </b:column>
+          <b:column col-sm="6">
+            <b:well id="messages">
+              Last server-side events:
+              <ul>
+                <ui:repeat var="message" value="#{ajaxBean.messages}">
+                  <li>#{message}</li>
+                </ui:repeat>
+              </ul>
+            </b:well>
+          </b:column>
+        </b:row>
+      </h:form>
+      <f:facet name="footer">
+        <strong>JSF markup: </strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:form>
+            <b:row>
+              <b:column col-sm="6">
+                <b:panel look="primary"
+                         title="Traditional JSF AJAX API">
+                  <b:label text="Which JSF framework do you like most?" />
+                  <b:selectOneMenu value="&num;{ajaxBean.jsf}" id="jsfID">
+                    <f:selectItem itemLabel="(Please select)" itemValue="0" />
+                    <f:selectItem itemLabel="PrimeFaces" itemValue="1" />
+                    <f:selectItem itemLabel="BootsFaces" itemValue="2" />
+                    <f:selectItem itemLabel="I combine both!" itemValue="3" />
+                    <f:ajax event="blur" listener="&num;{ajaxBean.onBlur}" render="jsfMessages messages" />
+                    <f:ajax event="change" listener="&num;{ajaxBean.onChange}" render="jsfMessages messages" />
+                  </b:selectOneMenu>
                 </b:panel>
-                
-            <script type="text/javascript">
-                SyntaxHighlighter.all();
-            </script>
-        </ui:define>
-    </ui:composition>
+                <b:panel look="primary" title="JSF messages" id="jsfMessages">
+                  <b:messages showSummary="false" />
+                </b:panel>
+              </b:column>
+              <b:column col-sm="6">
+                <b:well id="messages">
+                  Last server-side events:
+                  <ul>
+                    <ui:repeat var="message" value="&num;{ajaxBean.messages}">
+                      <li>&num;{message}</li>
+                    </ui:repeat>
+                  </ul>
+                </b:well>
+              </b:column>
+            </b:row>
+          </h:form>
+          ]]>
+          </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+  </ui:define>
+</ui:composition>

@@ -22,8 +22,6 @@ public class BlockUIBean implements Serializable {
 		String viewId = FacesContext.getCurrentInstance().getViewRoot().getViewId();
 		if ("/forms/blockUI.xhtml".equals(viewId))
 			return true;
-		if("/pages/test_newcomp.xhtml".equals(viewId))
-			return true;
 		if("/bootstrap/SocialShare.xhtml".equals(viewId))
 			return true;
 		return false;

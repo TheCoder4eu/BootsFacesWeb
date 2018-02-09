@@ -1,70 +1,81 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
-<ui:composition template="/applayout/pageTemplate.xhtml" 
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/applayout/pageTemplate.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
 
-            <ui:define name="content">
-                <h1>Themes</h1>
-                <p>BootsFaces comes with the Bootstrap default theme and 16 Bootswatch themes. Plus, you can
-                use an arbitrary third-party or custom Bootstrap theme.</p>
-                
-                 <h3>Theme CSS support <b:badge value="improved in BootsFaces 0.8.0" /></h3>
-                
-                <p>The BootsFaces_USETHEME context-param in your web.xml controls whether <code>theme.css</code> is loaded or not.</p>
-                <p>If you set the parameter to false, BootsFaces delivers a CSS file containing the basic layout instructions. This basic
-                file doesn't contain shadows, decorations or colors, so it looks pretty boring. But it's a good starting point to implement your own
-                look and feel.</p>
-                <p>Setting the parameter to true causes BootsFaces to load <code>theme.css</code>, this is true for Bootstrap and Bootswatch Themes.</p>
-                <b:panel>
-                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                        <![CDATA[
-    <context-param>
-        <param-name>BootsFaces_USETHEME</param-name>
-        <param-value>default</param-value>
-    </context-param>
-                        ]]></script>
-                </b:panel>
-                
-                <p>BootsFaces also contains all 16 BootsWatch themes. You can activate any of these by setting <code>BootsFaces_THEME</code> to the name of the theme:</p>
-                <b:panel>
-                 <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                        <![CDATA[
-    <context-param>
-        <param-name>BootsFaces_THEME</param-name>
-        <param-value>cerulean</param-value>
-    </context-param>
-                        ]]></script>
-                </b:panel>
-                
-                 <h3>Custom themes</h3>
-                 <p>If you want to use a custom theme, set <code>BootsFaces_THEME</code> to <code>custom</code> .
-                 In this case, you have to add the custom theme files manually to your JSF page. Typically, the custom CSS files are a <code>Bootstrap.min.css</code>
-                 and a <code>theme.css</code>, so the import looks like this:</p>
-                 <b:panel>
-                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                        <![CDATA[
-         <h:outputStylesheet library="customthemes" name="bootstrap.min.css"/>
-        <h:outputStylesheet library="customthemes" name="Freelancer.css""/>
-                        ]]></script>
-                </b:panel>
-               <h3>Switching themes</h3> 
-               <p>You can even implement a theme switcher by using an EL expression in the web.xml:</p>
-                                <b:panel>
-                 <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                        <![CDATA[
-    <context-param>
-        <param-name>BootsFaces_USETHEME</param-name>
-        <param-value>&num;{themeBean.currentTheme}</param-value>
-    </context-param>
-                        ]]></script>
-                        </b:panel>
-                
-                <script type="text/javascript">
-                    SyntaxHighlighter.all();
-                </script>
-            </ui:define>
-        </ui:composition>
+
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#themes" value="Themes" />
+      <b:navLink href="#theme_css_support" value="Theme CSS support" />
+      <b:navLink href="#custom_themes" value="Custom themes" />
+      <b:navLink href="#switching_themes" value="Switching themes" />
+    </b:listLinks>
+  </ui:define>
+
+
+  <ui:define name="content">
+    <h1><a id="themes">Themes</a></h1>
+    <p>BootsFaces comes with the Bootstrap default theme and 16 Bootswatch themes. Plus, you can
+    use an arbitrary third-party or custom Bootstrap theme.</p>
+
+    <h2><a id="theme_css_support">Theme CSS support</a><b:badge value="improved in BootsFaces 0.8.0" /></h2>
+
+    <p>The BootsFaces_USETHEME context-param in your web.xml controls whether <code>theme.css</code> is loaded or not.</p>
+    <p>If you set the parameter to false, BootsFaces delivers a CSS file containing the basic layout instructions. This basic
+    file doesn't contain shadows, decorations or colors, so it looks pretty boring. But it's a good starting point to implement your own
+    look and feel.</p>
+    <p>Setting the parameter to true causes BootsFaces to load <code>theme.css</code>, this is true for Bootstrap and Bootswatch Themes.</p>
+    <b:panel>
+      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+      <![CDATA[
+      <context-param>
+      <param-name>BootsFaces_USETHEME</param-name>
+      <param-value>default</param-value>
+      </context-param>
+      ]]></script>
+    </b:panel>
+
+    <p>BootsFaces also contains all 16 BootsWatch themes. You can activate any of these by setting <code>BootsFaces_THEME</code> to the name of the theme:</p>
+    <b:panel>
+      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+      <![CDATA[
+      <context-param>
+      <param-name>BootsFaces_THEME</param-name>
+      <param-value>cerulean</param-value>
+      </context-param>
+      ]]></script>
+    </b:panel>
+
+    <h2><a id="custom_themes">Custom themes</a></h2>
+    <p>If you want to use a custom theme, set <code>BootsFaces_THEME</code> to <code>custom</code> .
+    In this case, you have to add the custom theme files manually to your JSF page. Typically, the custom CSS files are a <code>Bootstrap.min.css</code>
+    and a <code>theme.css</code>, so the import looks like this:</p>
+    <b:panel>
+      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+      <![CDATA[
+      <h:outputStylesheet library="customthemes" name="bootstrap.min.css"/>
+      <h:outputStylesheet library="customthemes" name="Freelancer.css""/>
+      ]]></script>
+    </b:panel>
+    <h2><a id="switching_themes">Switching themes</a></h2>
+    <p>You can even implement a theme switcher by using an EL expression in the web.xml:</p>
+    <b:panel>
+      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+      <![CDATA[
+      <context-param>
+      <param-name>BootsFaces_USETHEME</param-name>
+      <param-value>&num;{themeBean.currentTheme}</param-value>
+      </context-param>
+      ]]></script>
+    </b:panel>
+
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+  </ui:define>
+</ui:composition>

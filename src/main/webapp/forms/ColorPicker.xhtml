@@ -1,269 +1,285 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:b="http://bootsfaces.net/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<ui:define name="custom-header">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	</ui:define>
-	<ui:define name="content">
-		<style>
-		td {
-			padding: 8px;
-		}
-		</style>
+  <ui:define name="custom-header">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  </ui:define>
+
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#colorpicker" value="ColorPicker (&lt;b:colorPicker /&gt;)" />
+      <b:navLink href="#basic_rgb_color_picker_aligned_left_with_opacity_active" value="Basic RGB Color picker aligned left with opacity active" />
+      <b:navLink href="#basic_hex_color_wheel_aligned_right_without_opacity_and_popup_position_in_bottom" value="Basic HEX Color wheel aligned right without opacity and popup position in bottom-right corner" />
+      <b:navLink href="#basic_rgb_color_picker_with_predefined_color_swatches" value="Basic RGB Color Picker with predefined color swatches" />
+      <b:navLink href="#mobile_devices" value="Mobile devices" />
+      <b:navLink href="#labels" value="Labels, required fields and error messages" />
+      <b:navLink href="#responsive_design" value="Responsive design" />
+      <b:navLink href="#visibility_depending_on_screen_size" value="Visibility depending on screen size" />
+      <b:navLink href="#tooltips" value="Tooltips" />
+      <b:navLink href="#reference_section" value="Reference section" />
+    </b:listLinks>
+  </ui:define>
+
+
+  <ui:define name="content">
+    <style>
+      td {
+        padding: 8px;
+      }
+    </style>
     <h:form>
-		<h1>ColorPicker (&lt;b:colorPicker /&gt;) <b:badge value="since 0.8.5" /></h1>
+      <h1><a id="colorpicker">ColorPicker (&lt;b:colorPicker /&gt;)</a><b:badge value="since 0.8.5" /></h1>
 
-		<p><code>&lt;b:colorPicker&gt;</code> is a simple inputText that display color swatches.
-		The component provides a set of configuration to display the swatch in different positions and with different
-		color configurations (RGB, HSL, with or without alpha.)</p>
-		<br/>
-		<h3>Basic RGB Color picker aligned left with opacity active</h3>
-		        <b:panel title="Live preview" look="info" collapsible="false">
-                    <b:form>
-                        <b:colorPicker value="#{test.selectedColor}" opacity="true" format="rgb"
-                                       label="Choose an RGB color" />
-                    </b:form>
+      <p><code>&lt;b:colorPicker&gt;</code> is a simple inputText that display color swatches.
+      The component provides a set of configuration to display the swatch in different positions and with different
+      color configurations (RGB, HSL, with or without alpha.)</p>
+      <br/>
+      <h2><a id="basic_rgb_color_picker_aligned_left_with_opacity_active">Basic RGB Color picker aligned left with opacity active</a></h2>
+      <b:panel title="Live preview" look="info" collapsible="false">
+        <b:form>
+          <b:colorPicker value="#{test.selectedColor}" opacity="true" format="rgb"
+                         label="Choose an RGB color" />
+        </b:form>
 
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-						<![CDATA[
-<b:form>
-    <b:colorPicker value="&num;{test.selectedColor}" opacity="true" format="rgb" label="Choose an RBB color" />
-</b:form>
-]]></script>
-                </b:panel>
-            </f:facet>
-        </b:panel>
-
-		<h3>Basic HEX Color wheel aligned right without opacity and popup position in bottom-right corner</h3>
-		  <b:panel title="Live preview" look="info" collapsible="false">
-            <b:form>
-				<b:colorPicker value="#{test.selectedColor}" opacity="false" format="hex" control="wheel" position="bottom right"/>
-            </b:form>
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-<b:form>
-    <b:colorPicker value="&num;{test.selectedColor}" opacity="false" format="hex" control="wheel" position="bottom right"/>
-</b:form>
-]]></script>
-                </b:panel>
-            </f:facet>
-        </b:panel>
-
-		<h3>Basic RGB Color Picker with predefined color swatches</h3>
-		        <b:panel title="Live preview" look="info" collapsible="false">
-            <b:form>
-				<b:colorPicker value="#{test.selectedColor}" opacity="true" format="rgb" swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"/>
-            </b:form>
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-						<![CDATA[
-<b:form>
-    <b:colorPicker value="#{test.selectedColor}" opacity="true" format="rgb" swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"/>
-</b:form>
-					]]></script>
-                </b:panel>
-            </f:facet>
-        </b:panel>
-
-        <h3>Mobile devices</h3>
-        <p>On a mobile device, you should prevent the user from zooming into the page because this interferes with the colorpicker.
-        Simply add these lines to the <code>&lt;h:head /&gt;</code> of your JSF page:</p>
-        <b:panel>
-        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+        <f:facet name="footer">
+          <strong>JSF markup:</strong>
+          <b:panel>
+            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
             <![CDATA[
-              <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          ]]></script>
-            </b:panel>
-
-	    <a id="labels"></a>
-	    <h3>Labels, required fields and error messages <b:badge value="breaking change in 1.1.0" /></h3>
-	    <p>You can add a label by adding the attribute <code>label</code>. The label is also used by the JSF messages. To give you maximum flexibility,
-	    you can suppress automatic rendering of labels by adding <code>renderLabel="false"</code>.
-	    </p>
-	    <h4>BootsFaces 1.0.2 and below:</h4>
-	    <p>Required inputs fields and their labels both bear the CSS class <code>bf-required</code>. By default, this adds an asterisk to the label.</p>
-	    <p>If the field has a FacesMessage, one of the CSS classes <code>bf-info</code>, <code>bf-warning</code>,
-	        <code>bf-error</code> or <code>bf-fatal</code>, depending on which error severity the message has.
-	        The latter two classes color the label red.</p>
-	     <p>If there's no message,
-	        the field and its label bear the pseudo CSS class <code>bf-no-message</code>  and <code>has-success</code>. The latter colors the label green by default.
-	    </p>
-	    <h4>BootsFaces 1.1.0:</h4>
-	    <p><code>bf-info</code>, <code>bf-warning</code>,
-        <code>bf-error</code> or <code>bf-fatal</code> have been dropped in favor of the standard Bootstrap CSS classes <code>has-success</code>,
-        <code>has-warning</code> and <code>has-error</code>. Plus, they are applied to the <code>form-group</code> instead of the labels and input fields.</p>
-        <h4>Compatibility settings</h4>
-        <p>If your application depends on the old HTML code, activate the context parameter <code>net.bootsfaces.legacy_error_classes</code>
-        in the web.xml. The example below shows how to do this.</p>
-            <b:panel title="Live preview" look="info" collapsible="false">
-                <b:form>
-                    <b:row>
-                        <b:column colXs="6">
-                            <b:colorPicker value="#{test.selectedColor}" required="true" label="required color"  />
-                            <b:message for="@previous" />
-                        
-                            <b:commandButton value="Submit" update="@parent" look="success" />
-                        </b:column>
-                        <b:column colXs="6">
-                              <b:switch value="#{messageStyleBean.useLegacyBootsFacesStyle}"
-                                  process="@this"
-                                  caption="use legacy BootsFaces CSS classes"
-                                  label="compatibility settings" 
-                                  onchange="ajax:messageStyleBean.toggleSettings();" update="@form" />
-                        </b:column>
-                    </b:row>
-                </b:form>
-                <f:facet name="footer">
-                    <strong>JSF markup:</strong>
-                    <b:panel>
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-             <![CDATA[
-         	<b:form>
-                <b:colorPicker value="#{test.selectedColor}" required="true" label="required color"  />
-                <b:message for="@previous" />
-                        
-                <b:commandButton value="Submit" update="@parent" look="success" />
-            </b:form>
-             ]]></script>
-                    </b:panel>
-                </f:facet>
-            </b:panel>
-        
-        <h3>Responsive design <b:badge value="since 0.9.0" /></h3>
-        <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
-        also with <code>&lt;b:colorPicker /&gt;</code>:</p>
-        <b:panel title="Live preview" look="info" collapsible="false">
             <b:form>
-                <b:row>
-                    <b:colorPicker label="large-screen='full-width'" large-screen="full-width"  />
-                </b:row>
-                <b:row style="padding-top:5px">
-                    <b:colorPicker label="large-screen='one-third'" large-screen="one-third"  />
-                    <b:colorPicker label="large-screen='two-thirds'" large-screen="two-thirds"  />
-                </b:row>
-                <b:row style="padding-top:5px">
-                    <b:colorPicker label="small-screen='one-third'" small-screen="one-third"  />
-                    <b:colorPicker label="small-screen='two-thirds'" small-screen="two-thirds"  />
-                </b:row>
-                <b:row style="padding-top:5px">
-                    <b:colorPicker label="tiny-screen='one-fourth'" tiny-screen="one-fourth"  />
-                    <b:colorPicker label="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3"  />
-                </b:row>
-            </b:form>
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                        <![CDATA[
-            <b:form>
-                <b:row>
-                    <b:colorPicker label="large-screen='full-width'" large-screen="full-width" />
-                </b:row>
-                <b:row style="padding-top:5px">
-                    <b:colorPicker label="large-screen='one-third'" large-screen="one-third" />
-                    <b:colorPicker label="large-screen='two-thirds'" large-screen="two-thirds" />
-                </b:row>
-                <b:row style="padding-top:5px">
-                    <b:colorPicker label="small-screen='one-third'" small-screen="one-third" />
-                    <b:colorPicker label="small-screen='two-thirds'" small-screen="two-thirds" />
-                </b:row>
-                <b:row style="padding-top:5px">
-                    <b:colorPicker label="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
-                    <b:colorPicker label="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
-                </b:row>
+              <b:colorPicker value="&num;{test.selectedColor}" opacity="true" format="rgb" label="Choose an RBB color" />
             </b:form>
             ]]></script>
-            </b:panel>
-            </f:facet>
-        </b:panel>
+          </b:panel>
+        </f:facet>
+      </b:panel>
 
-        <h2>Visibility depending on screen size <b:badge value="since 0.8.6/0.9.0" /></h2>
-        <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
-        <br/>
-        
-        <b:panel title="Live preview" look="info" collapsible="false">
-
-            <b:form horizontal="true">
-                <h:outputText value="" />
-                <b:colorPicker value="Visible on medium or large screen" label="Visible on &gt;= md:"  labelColMd="2" colMd="10" visible="md..." />
-                  <b:colorPicker value="Visible on small-screen" label="Visible on &lt;= sm:"  labelColMd="2" colMd="10" visible="...sm"/>
-                  <b:colorPicker value="Visible on small to large screen" label="Visible on sm...lg:"  labelColMd="2" colMd="10" visible="sm...lg"/>
-                  <b:colorPicker value="Visible on tiny and medium screen" label="Visible on xs and md:"  labelColMd="2" colMd="10" visible="xs,md"/>
-                  <b:colorPicker value="col-md-6, offset 2" label="Col-md-6, offset 2:"  labelColMd="2" colMd="6" offset="2" />
-            </b:form>
-            
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-                              <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-             <![CDATA[
-            <b:form horizontal="true">
-                <b:colorPicker value="Visible on medium or large screen" label="Visible on &gt;= md:" labelColMd="2" colMd="10" visible="md..." />
-                <b:colorPicker value="Visible on small-screen" label="Visible on &lt;= sm:" labelColMd="2" colMd="10" visible="...sm"/>
-                <b:colorPicker value="Visible on small to large screen" label="Visible on sm...lg:" labelColMd="2" colMd="10" visible="sm...lg"/>
-                <b:colorPicker value="Visible on tiny and medium screen" label="Visible on xs and md:" labelColMd="2" colMd="10" visible="xs,md"/>
-                <b:colorPicker value="col-md-6, offset 2" label="Col-md-6, offset 2:" labelColMd="2" colMd="6" offset="2" />
-            </b:form>
-             ]]></script>
-                </b:panel>
-            </f:facet>
-        </b:panel>
-
-        <h3>Tooltips</h3>
-        <p><code>&lt;b:colorPicker /&gt;</code> supports tooltips:</p>
-        <b:panel title="Live preview" look="info" collapsible="false">
+      <h2><a id="basic_hex_color_wheel_aligned_right_without_opacity_and_popup_position_in_bottom">Basic HEX Color wheel aligned right without opacity and popup position in bottom-right corner</a></h2>
+      <b:panel title="Live preview" look="info" collapsible="false">
+        <b:form>
+          <b:colorPicker value="#{test.selectedColor}" opacity="false" format="hex" control="wheel" position="bottom right"/>
+        </b:form>
+        <f:facet name="footer">
+          <strong>JSF markup:</strong>
+          <b:panel>
+            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
             <b:form>
-                <b:colorPicker value="Look at my tooltip!" tooltip="Ain't it a nice tooltip?"/>
+              <b:colorPicker value="&num;{test.selectedColor}" opacity="false" format="hex" control="wheel" position="bottom right"/>
             </b:form>
+            ]]></script>
+          </b:panel>
+        </f:facet>
+      </b:panel>
 
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-                                                  <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                                                            <![CDATA[
+      <h2><a id="basic_rgb_color_picker_with_predefined_color_swatches">Basic RGB Color Picker with predefined color swatches</a></h2>
+      <b:panel title="Live preview" look="info" collapsible="false">
+        <b:form>
+          <b:colorPicker value="#{test.selectedColor}" opacity="true" format="rgb" swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"/>
+        </b:form>
+        <f:facet name="footer">
+          <strong>JSF markup:</strong>
+          <b:panel>
+            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
             <b:form>
-                <b:colorPicker value="Look at my tooltip!" tooltip="Ain't it a nice tooltip?"/>
+              <b:colorPicker value="#{test.selectedColor}" opacity="true" format="rgb" swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"/>
+            </b:form>
+            ]]></script>
+          </b:panel>
+        </f:facet>
+      </b:panel>
+
+      <h2><a id="mobile_devices">Mobile devices</a></h2>
+      <p>On a mobile device, you should prevent the user from zooming into the page because this interferes with the colorpicker.
+      Simply add these lines to the <code>&lt;h:head /&gt;</code> of your JSF page:</p>
+      <b:panel>
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+        <![CDATA[
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        ]]></script>
+      </b:panel>
+
+      <h2><a id="labels">Labels, required fields and error messages</a><b:badge value="breaking change in 1.1.0" /></h2>
+      <p>You can add a label by adding the attribute <code>label</code>. The label is also used by the JSF messages. To give you maximum flexibility,
+      you can suppress automatic rendering of labels by adding <code>renderLabel="false"</code>.
+      </p>
+      <h4>BootsFaces 1.0.2 and below:</h4>
+      <p>Required inputs fields and their labels both bear the CSS class <code>bf-required</code>. By default, this adds an asterisk to the label.</p>
+      <p>If the field has a FacesMessage, one of the CSS classes <code>bf-info</code>, <code>bf-warning</code>,
+      <code>bf-error</code> or <code>bf-fatal</code>, depending on which error severity the message has.
+      The latter two classes color the label red.</p>
+      <p>If there's no message,
+      the field and its label bear the pseudo CSS class <code>bf-no-message</code>  and <code>has-success</code>. The latter colors the label green by default.
+      </p>
+      <h4>BootsFaces 1.1.0:</h4>
+      <p><code>bf-info</code>, <code>bf-warning</code>,
+      <code>bf-error</code> or <code>bf-fatal</code> have been dropped in favor of the standard Bootstrap CSS classes <code>has-success</code>,
+      <code>has-warning</code> and <code>has-error</code>. Plus, they are applied to the <code>form-group</code> instead of the labels and input fields.</p>
+      <h4>Compatibility settings</h4>
+      <p>If your application depends on the old HTML code, activate the context parameter <code>net.bootsfaces.legacy_error_classes</code>
+      in the web.xml. The example below shows how to do this.</p>
+      <b:panel title="Live preview" look="info" collapsible="false">
+        <b:form>
+          <b:row>
+            <b:column colXs="6">
+              <b:colorPicker value="#{test.selectedColor}" required="true" label="required color"  />
+              <b:message for="@previous" />
+
+              <b:commandButton value="Submit" update="@parent" look="success" />
+            </b:column>
+            <b:column colXs="6">
+              <b:switch value="#{messageStyleBean.useLegacyBootsFacesStyle}"
+                        process="@this"
+                        caption="use legacy BootsFaces CSS classes"
+                        label="compatibility settings"
+                        onchange="ajax:messageStyleBean.toggleSettings();" update="@form" />
+            </b:column>
+          </b:row>
+        </b:form>
+        <f:facet name="footer">
+          <strong>JSF markup:</strong>
+          <b:panel>
+            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+            <![CDATA[
+            <b:form>
+              <b:colorPicker value="#{test.selectedColor}" required="true" label="required color"  />
+              <b:message for="@previous" />
+
+              <b:commandButton value="Submit" update="@parent" look="success" />
+            </b:form>
+            ]]></script>
+          </b:panel>
+        </f:facet>
+      </b:panel>
+
+      <h2><a id="responsive_design">Responsive design</a><b:badge value="since 0.9.0" /></h2>
+      <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
+      also with <code>&lt;b:colorPicker /&gt;</code>:</p>
+      <b:panel title="Live preview" look="info" collapsible="false">
+        <b:form>
+          <b:row>
+            <b:colorPicker label="large-screen='full-width'" large-screen="full-width"  />
+          </b:row>
+          <b:row style="padding-top:5px">
+            <b:colorPicker label="large-screen='one-third'" large-screen="one-third"  />
+            <b:colorPicker label="large-screen='two-thirds'" large-screen="two-thirds"  />
+          </b:row>
+          <b:row style="padding-top:5px">
+            <b:colorPicker label="small-screen='one-third'" small-screen="one-third"  />
+            <b:colorPicker label="small-screen='two-thirds'" small-screen="two-thirds"  />
+          </b:row>
+          <b:row style="padding-top:5px">
+            <b:colorPicker label="tiny-screen='one-fourth'" tiny-screen="one-fourth"  />
+            <b:colorPicker label="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3"  />
+          </b:row>
+        </b:form>
+        <f:facet name="footer">
+          <strong>JSF markup:</strong>
+          <b:panel>
+            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+            <![CDATA[
+            <b:form>
+              <b:row>
+                <b:colorPicker label="large-screen='full-width'" large-screen="full-width" />
+              </b:row>
+              <b:row style="padding-top:5px">
+                <b:colorPicker label="large-screen='one-third'" large-screen="one-third" />
+                <b:colorPicker label="large-screen='two-thirds'" large-screen="two-thirds" />
+              </b:row>
+              <b:row style="padding-top:5px">
+                <b:colorPicker label="small-screen='one-third'" small-screen="one-third" />
+                <b:colorPicker label="small-screen='two-thirds'" small-screen="two-thirds" />
+              </b:row>
+              <b:row style="padding-top:5px">
+                <b:colorPicker label="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
+                <b:colorPicker label="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
+              </b:row>
+            </b:form>
+            ]]></script>
+          </b:panel>
+        </f:facet>
+      </b:panel>
+
+      <h2><a id="visibility_depending_on_screen_size">Visibility depending on screen size</a><b:badge value="since 0.8.6/0.9.0" /></h2>
+      <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
+      <br/>
+
+      <b:panel title="Live preview" look="info" collapsible="false">
+
+        <b:form horizontal="true">
+          <h:outputText value="" />
+          <b:colorPicker value="Visible on medium or large screen" label="Visible on &gt;= md:"  labelColMd="2" colMd="10" visible="md..." />
+          <b:colorPicker value="Visible on small-screen" label="Visible on &lt;= sm:"  labelColMd="2" colMd="10" visible="...sm"/>
+          <b:colorPicker value="Visible on small to large screen" label="Visible on sm...lg:"  labelColMd="2" colMd="10" visible="sm...lg"/>
+          <b:colorPicker value="Visible on tiny and medium screen" label="Visible on xs and md:"  labelColMd="2" colMd="10" visible="xs,md"/>
+          <b:colorPicker value="col-md-6, offset 2" label="Col-md-6, offset 2:"  labelColMd="2" colMd="6" offset="2" />
+        </b:form>
+
+        <f:facet name="footer">
+          <strong>JSF markup:</strong>
+          <b:panel>
+            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+            <![CDATA[
+            <b:form horizontal="true">
+              <b:colorPicker value="Visible on medium or large screen" label="Visible on &gt;= md:" labelColMd="2" colMd="10" visible="md..." />
+              <b:colorPicker value="Visible on small-screen" label="Visible on &lt;= sm:" labelColMd="2" colMd="10" visible="...sm"/>
+              <b:colorPicker value="Visible on small to large screen" label="Visible on sm...lg:" labelColMd="2" colMd="10" visible="sm...lg"/>
+              <b:colorPicker value="Visible on tiny and medium screen" label="Visible on xs and md:" labelColMd="2" colMd="10" visible="xs,md"/>
+              <b:colorPicker value="col-md-6, offset 2" label="Col-md-6, offset 2:" labelColMd="2" colMd="6" offset="2" />
+            </b:form>
+            ]]></script>
+          </b:panel>
+        </f:facet>
+      </b:panel>
+
+      <h2><a id="tooltips">Tooltips</a></h2>
+      <p><code>&lt;b:colorPicker /&gt;</code> supports tooltips:</p>
+      <b:panel title="Live preview" look="info" collapsible="false">
+        <b:form>
+          <b:colorPicker value="Look at my tooltip!" tooltip="Ain't it a nice tooltip?"/>
+        </b:form>
+
+        <f:facet name="footer">
+          <strong>JSF markup:</strong>
+          <b:panel>
+            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+            <![CDATA[
+            <b:form>
+              <b:colorPicker value="Look at my tooltip!" tooltip="Ain't it a nice tooltip?"/>
             </b:form>]]></script>
-                </b:panel>
-            </f:facet>
-        </b:panel>
-       
+          </b:panel>
+        </f:facet>
+      </b:panel>
 
 
-		<h3>Reference section</h3>
-		<ui:include src="ColorPickerAttributes.xhtml" />
-		<b:panel look="info" rendered="false">
-			<f:facet name="heading">
-				<b>Skinning</b>
-			</f:facet>
-			<ul>
-				<li>Tell the world which CSS classes can be used to change the
-					look of the component.</li>
-			</ul>
-		</b:panel>
+
+      <h2><a id="reference_section">Reference section</a></h2>
+      <ui:include src="ColorPickerAttributes.xhtml" />
+      <b:panel look="info" rendered="false">
+        <f:facet name="heading">
+          <b>Skinning</b>
+        </f:facet>
+        <ul>
+          <li>Tell the world which CSS classes can be used to change the
+          look of the component.</li>
+        </ul>
+      </b:panel>
     </h:form>
 
-		<script type="text/javascript">
-      		SyntaxHighlighter.all();
-      		/*
-      		document.body.addEventListener('touchmove', function(event) {
-      		  event.preventDefault();
-      		}, false);
-      		*/
-    	</script>
-	</ui:define>
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    /*
+    document.body.addEventListener('touchmove', function(event) {
+      event.preventDefault();
+    }, false);
+    */
+    </script>
+  </ui:define>
 </ui:composition>

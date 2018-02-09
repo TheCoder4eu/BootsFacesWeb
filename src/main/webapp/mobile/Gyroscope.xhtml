@@ -1,132 +1,143 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:b="http://bootsfaces.net/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<ui:define name="content">
-		<style>
-td {
-	padding: 8px;
-}
-</style>
-		<h1>Gyroscope (&lt;b:gyroscope /&gt;) <b:badge value="since 0.9.0" /></h1>
 
-		<p>Gyroscope is a component targeted specifically at mobile device. If your smartphone or tablet PC
-		has a motion and rotation sensor, you can send the values of the sensor to a Java bean.
-		This results in a lot of AJAX calls, so be careful with your network capacity. We've set the
-		default value how often the gyroscope reports back to the server to half a second. 
-		That's too slow for most real-world applications, so you can configure it yourself using the
-		<code>interval</code> property. </p>
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#gyroscope" value="Gyroscope (&lt;b:gyroscope /&gt;)" />
+      <b:navLink href="#basic_usage" value="Basic usage" />
+      <b:navLink href="#reference_section" value="Reference section" />
+    </b:listLinks>
+  </ui:define>
 
-        <h1>Basic usage</h1>
-        <p>Use the attributes <code>alpha</code>, <code>beta</code> and <code>gamma</code> to define
-        the variables to contain the rotation angle of your mobile device. These attributes contain
-        EL expression pointing to variables of your back-end bean. Every half a second these variables
-        are updated. Like mentioned above, you can modify the update frequency using the <code>interval</code>
-        attribute.</p>
-        <h:form>
-            <b:tabView activeIndex="1">
-                <b:tab title="JSF markup">
-                    <b:well>
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-        <b:gyroscope onrotation="ajax:gyroscopeBean.onRotation()"
-                     alpha="&num;{gyroscopeBean.alpha}"
-                     beta="&num;{gyroscopeBean.beta}"
-                     gamma="&num;{gyroscopeBean.gamma}"
-                     update="@form:server"/>
-          <b:panel title="Values reported to the server" id="server"  look="primary">
-            <p>Alpha: &num;{gyroscopeBean.alpha} (rotation around z-axis - i.e. rotation while the smartphone lies flat on the table)</p>
-            <p>Beta: &num;{gyroscopeBean.beta} (rotation around x-axis)</p>
-            <p>Gamma: &num;{gyroscopeBean.gamma} (rotation around y-axis)</p>
-            <p>Calls: &num;{gyroscopeBean.calls}</p>
+
+  <ui:define name="content">
+    <style>
+      td {
+        padding: 8px;
+      }
+    </style>
+    <h1><a id="gyroscope">Gyroscope (&lt;b:gyroscope /&gt;)</a><b:badge value="since 0.9.0" /></h1>
+
+    <p>Gyroscope is a component targeted specifically at mobile device. If your smartphone or tablet PC
+    has a motion and rotation sensor, you can send the values of the sensor to a Java bean.
+    This results in a lot of AJAX calls, so be careful with your network capacity. We've set the
+    default value how often the gyroscope reports back to the server to half a second.
+    That's too slow for most real-world applications, so you can configure it yourself using the
+    <code>interval</code> property. </p>
+
+    <h1><a id="basic_usage">Basic usage</a></h1>
+    <p>Use the attributes <code>alpha</code>, <code>beta</code> and <code>gamma</code> to define
+    the variables to contain the rotation angle of your mobile device. These attributes contain
+    EL expression pointing to variables of your back-end bean. Every half a second these variables
+    are updated. Like mentioned above, you can modify the update frequency using the <code>interval</code>
+    attribute.</p>
+    <h:form>
+      <b:tabView activeIndex="1">
+        <b:tab title="JSF markup">
+          <b:well>
+            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+            <b:gyroscope onrotation="ajax:gyroscopeBean.onRotation()"
+                         alpha="&num;{gyroscopeBean.alpha}"
+                         beta="&num;{gyroscopeBean.beta}"
+                         gamma="&num;{gyroscopeBean.gamma}"
+                         update="@form:server"/>
+            <b:panel title="Values reported to the server" id="server"  look="primary">
+              <p>Alpha: &num;{gyroscopeBean.alpha} (rotation around z-axis - i.e. rotation while the smartphone lies flat on the table)</p>
+              <p>Beta: &num;{gyroscopeBean.beta} (rotation around x-axis)</p>
+              <p>Gamma: &num;{gyroscopeBean.gamma} (rotation around y-axis)</p>
+              <p>Calls: &num;{gyroscopeBean.calls}</p>
+            </b:panel>
+            ]]>
+            </script>
+          </b:well>
+        </b:tab>
+        <b:tab title="displayed as">
+          <b:gyroscope onrotation="ajax:gyroscopeBean.onRotation()"
+                       alpha="#{gyroscopeBean.alpha}"
+                       beta="#{gyroscopeBean.beta}"
+                       gamma="#{gyroscopeBean.gamma}"
+                       update="@form:server"/>
+          <b:panel title="Values reported to the server" id="server" look="primary">
+            <p>Alpha: #{gyroscopeBean.alpha} (rotation around z-axis - i.e. rotation while the smartphone lies flat on the table)</p>
+            <p>Beta: #{gyroscopeBean.beta} (rotation around x-axis)</p>
+            <p>Gamma: #{gyroscopeBean.gamma} (rotation around y-axis)</p>
+            <p>Calls: #{gyroscopeBean.calls}</p>
           </b:panel>
-]]>
-       </script>
-                    </b:well>
-                </b:tab>
-                <b:tab title="displayed as">
-		         <b:gyroscope onrotation="ajax:gyroscopeBean.onRotation()"
-		                     alpha="#{gyroscopeBean.alpha}"
-		                     beta="#{gyroscopeBean.beta}"
-		                     gamma="#{gyroscopeBean.gamma}"
-		                     update="@form:server"/>
-		          <b:panel title="Values reported to the server" id="server" look="primary">
-		            <p>Alpha: #{gyroscopeBean.alpha} (rotation around z-axis - i.e. rotation while the smartphone lies flat on the table)</p>
-		            <p>Beta: #{gyroscopeBean.beta} (rotation around x-axis)</p>
-		            <p>Gamma: #{gyroscopeBean.gamma} (rotation around y-axis)</p>
-		            <p>Calls: #{gyroscopeBean.calls}</p>
-		          </b:panel>
-                </b:tab>
-              <b:tab title="Java bean">
-                    <b:well>
-                        <script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-@ManagedBean
-@ViewScoped
-public class GyroscopeBean {
+        </b:tab>
+        <b:tab title="Java bean">
+          <b:well>
+            <script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+            @ManagedBean
+            @ViewScoped
+            public class GyroscopeBean {
 
-	private int alpha;
-	private int beta;
-	private int gamma;
-	private int calls = 0;
+              private int alpha;
+              private int beta;
+              private int gamma;
+              private int calls = 0;
 
-	public int getAlpha() {
-		return alpha;
-	}
+              public int getAlpha() {
+                return alpha;
+              }
 
-	public void setAlpha(int alpha) {
-		this.alpha = alpha;
-		calls++;
-	}
+              public void setAlpha(int alpha) {
+                this.alpha = alpha;
+                calls++;
+              }
 
-	public int getBeta() {
-		return beta;
-	}
+              public int getBeta() {
+                return beta;
+              }
 
-	public void setBeta(int beta) {
-		this.beta = beta;
-	}
+              public void setBeta(int beta) {
+                this.beta = beta;
+              }
 
-	public int getGamma() {
-		return gamma;
-	}
+              public int getGamma() {
+                return gamma;
+              }
 
-	public void setGamma(int gamma) {
-		this.gamma = gamma;
-	}
+              public void setGamma(int gamma) {
+                this.gamma = gamma;
+              }
 
-	public void onRotation() {
-		System.out.println("Rotate! " + System.currentTimeMillis());
-	}
+              public void onRotation() {
+                System.out.println("Rotate! " + System.currentTimeMillis());
+              }
 
-	public int getCalls() {
-		return calls;
-	}
+              public int getCalls() {
+                return calls;
+              }
 
-	public void setCalls(int calls) {
-		this.calls = calls;
-	}
-}
- ]]>
-       </script>
-                    </b:well>
-                </b:tab>
-             </b:tabView>
-         </h:form>
+              public void setCalls(int calls) {
+                this.calls = calls;
+              }
+            }
+            ]]>
+            </script>
+          </b:well>
+        </b:tab>
+      </b:tabView>
+    </h:form>
 
-        <ui:include src="GyroscopeAttributes.xhtml" />
+    <h2><a id="reference_section">Reference section</a></h2>
+    <ui:include src="GyroscopeAttributes.xhtml" />
 
-		<script type="text/javascript">
-      		SyntaxHighlighter.all();
-    	</script>
-		<br />
-		<br />
-		<br />
-		<br />
-	</ui:define>
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+    <br />
+    <br />
+    <br />
+    <br />
+  </ui:define>
 </ui:composition>

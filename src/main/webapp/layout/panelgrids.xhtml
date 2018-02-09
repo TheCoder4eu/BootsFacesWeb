@@ -1,111 +1,284 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:b="http://bootsfaces.net/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
-
-		<ui:define name="content">
-			<h1>Panel grids</h1>
-			<p>
-				Using a panel grid is a convenient way to display a couple of input
-				fields. BootsFaces aligns your input fields automatically. You don't
-				have to care about
-				<code>&lt;b:row&gt;</code>
-				and
-				<code>&lt;b:col&gt;</code>
-				. BootsFaces panel grid adds these tags automatically for you.
-			</p>
-			<p>
-				The difference to a standard JSF
-				<code>&lt;h:panelGrid&gt;</code>
-				is that standard JSF generates a table instead of Bootstrap-friendly
-				<code>row</code>
-				and
-				<code>col</code>
-				divs.
-			</p>
-			<h3>Basic example</h3>
-			<p>
-				The attribute
-				<code>colSpan</code>
-				of
-				<code>&lt;b:panelGrid /&gt;</code>
-				takes the a comma-separated list of numbers. Each number defines how
-				many Bootstrap columns a
-				<code>&lt;b:panelGrid /&gt;</code>
-				column spans.
-			</p>
-            
-            <b:panel title="Live preview" look="info" collapsible="false">
-                <h:form>
-                    <b:panelGrid colSpans="2,10" size="xs" contentDisabled="#{columnsBean.containerDisabled}" id="panelGridId">
-                        <h:outputLabel value="Value 1" />
-                        <b:inputText span="8" value="#{settingsBean.value1}" />
-                        <h:outputLabel value="Value 2" />
-                        <b:inputText span="10" value="#{settingsBean.value2}" />
-                        <h:outputLabel value="Checkbox 1" />
-                        <b:selectBooleanCheckbox value="#{settingsBean.checkbox1}" />
-                        <h:outputLabel value="Checkbox 2" />
-                        <b:selectBooleanCheckbox value="#{settingsBean.checkbox2}" />
-                    </b:panelGrid>
-                    <b:panel look="primary" title="Options">
-                        <b:switch on-text="true" off-text="default" value="#{columnsBean.containerDisabled}"
-                                  update="panelGridId" onchange="ajax:columnsBean.onChange()" 
-                                  label="b:panelGrid contentDisabled=" />
-                    </b:panel>
-                </h:form>
-                
-                <f:facet name="footer">
-                    <strong>JSF markup: </strong>
-                    <b:panel>
-<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-<h:form>
-	<b:panelGrid colSpans="2,10" size="xs">
-		<h:outputLabel value="Value 1" />
-		<b:inputText span="8" value="# {settingsBean.value1}"/>
-		<h:outputLabel value="Value 2" />
-		<b:inputText span="10" value="# {settingsBean.value2}"  />
-		<h:outputLabel value="Checkbox 1" />
-		<b:selectBooleanCheckbox value="# {settingsBean.cb1}" />
-		<h:outputLabel value="Checkbox 2" />
-		<b:selectBooleanCheckbox value="# {settingsBean.cb2}" />
-	</b:panelGrid>
-</h:form>
-]]>
-</script>
-                    </b:panel>
-                </f:facet>
-            </b:panel>
-
-			<p>colSpan="2,10" means the content of the &lt;b:panelGrid&gt; is
-				arranged in to columns. The first colum takes 2 Bootstrap columns
-				(16% of the available space), the second column take the remaining
-				10 Bootstrap columns (83% of the available space).</p>
-
-            <br/>
-            <h2>Reference section</h2>
-            <ui:include src="PanelGridAttributes.xhtml" />
-			<b:panel look="info">
-				<f:facet name="heading">
-					<b>Skinning</b>
-				</f:facet>
-					<p><code>&lt;b:panelGrid&gt;</code> uses the standard Bootstrap CSS classes:</p>
-					<ul>
-					<li>The panelgrid is a <code>div</code> bearing the CSS class <code>container</code>.</li>
-					<li>Each row is a <code>div</code> bearing the CSS class <code>row</code>.</li>
-					<li>Each column is a <code>div</code> bearing the CSS class <code>col-lg-1</code> - <code>col-lg-12</code>.</li>
-					</ul>
-			</b:panel>
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
 
 
-			<br />
-			<br />
-			<br />
-			<script type="text/javascript">
-                    SyntaxHighlighter.all();
-                </script>
-		</ui:define>
-	</ui:composition>
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#panel_grids" value="Panel grids" />
+      <b:navLink href="#basic_usage" value="Basic usage" />
+      <b:navLink href="#different_columns" value="differently sized columns" />
+      <b:navLink href="#size" value="Size (Bootstrap breakpoints)" />
+      <b:navLink href="#form_example" value="Form example" />
+      <b:navLink href="#reference_section" value="Reference section" />
+    </b:listLinks>
+  </ui:define>
+
+
+  <ui:define name="content">
+    <h1><a id="panel_grids">Panel grids</a></h1>
+    <p>
+    Using a panel grid is a convenient way to display a couple of input
+    fields. BootsFaces aligns your input fields automatically. You don't
+    have to care about
+    <code>&lt;b:row&gt;</code> and <code>&lt;b:col&gt;</code>. BootsFaces panel grid adds these tags automatically for you.
+    </p>
+    <p>
+    The difference to a standard JSF <code>&lt;h:panelGrid&gt;</code>
+    is that standard JSF generates a simple HTML table. <code>&lt;b:panelGrid /gt;</code> generates a responsive table consisting of
+    <code>row</code> and <code>col</code> divs.
+    </p>
+    
+    <h2><a id="basic_usage">Basic usage</a></h2>
+    <p>The simplest way to use the panel grid is to tell it how many columns you need:</p>
+       <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form>
+        <b:panelGrid columns="#{columnsBean.columns}">
+        		<b:badge value="lorem" />
+        		<b:badge value="ipsum" />
+        		<b:badge value="dolor" />
+        		<b:badge value="sit" />
+        		<b:badge value="amet" />
+        		<b:badge value="consectetuer" />
+        		<b:badge value="adipiscing" />
+        		<b:badge value="elit." />
+        		<b:badge value="Aenean" />
+        		<b:badge value="commodo" />
+        		<b:badge value="ligula" />
+        		<b:badge value="eget" />
+        </b:panelGrid>
+        <b:panel look="primary" title="Options: number of columns" style="margin-top:10px;">
+            <b:panelGrid size="xs" columns="6">
+              <b:radiobutton value="#{columnsBean.columns}" itemValue="1"  update="@parent:@parent:@previous"/>
+              <b:radiobutton value="#{columnsBean.columns}" itemValue="2"  update="@parent:@parent:@previous"/>
+              <b:radiobutton value="#{columnsBean.columns}" itemValue="3"  update="@parent:@parent:@previous"/>
+              <b:radiobutton value="#{columnsBean.columns}" itemValue="4"  update="@parent:@parent:@previous"/>
+              <b:radiobutton value="#{columnsBean.columns}" itemValue="6"  update="@parent:@parent:@previous"/>
+              <b:radiobutton value="#{columnsBean.columns}" itemValue="12" update="@parent:@parent:@previous"/>
+            </b:panelGrid>
+          </b:panel>
+      </h:form>
+
+      <f:facet name="footer">
+        <strong>JSF markup: </strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+             <b:panelGrid columns="#{columnsBean.columns}">
+                <b:badge value="lorem" />
+                <b:badge value="ipsum" />
+                <b:badge value="dolor" />
+                <b:badge value="sit" />
+                <b:badge value="amet" />
+                <b:badge value="consectetuer" />
+                <b:badge value="adipiscing" />
+                <b:badge value="elit." />
+                <b:badge value="Aenean" />
+                <b:badge value="commodo" />
+                <b:badge value="ligula" />
+                <b:badge value="eget" />
+             </b:panelGrid>
+           ]]>
+          </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+    
+    <h2><a id="different_columns">Columns of difference width</a></h2>
+    <p>If you need to columns of different width, use the <code>col-spans</code> option. This attribute takes a comma-separated
+    list of integers indicating how many Bootstrap columns are to be spanned:</p>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form>
+        <b:panelGrid col-spans="#{columnsBean.colspan}">
+        		<b:badge value="lorem" style="width:100%" />
+        		<b:badge value="ipsum"  style="width:100%"/>
+        		<b:badge value="dolor"  style="width:100%"/>
+        		<b:badge value="sit"  style="width:100%"/>
+        		<b:badge value="amet"  style="width:100%"/>
+        		<b:badge value="consectetuer"  style="width:100%"/>
+        		<b:badge value="adipiscing"  style="width:100%"/>
+        		<b:badge value="elit."  style="width:100%"/>
+        		<b:badge value="Aenean" style="width:100%" />
+        		<b:badge value="commodo"  style="width:100%"/>
+        		<b:badge value="ligula"  style="width:100%"/>
+        		<b:badge value="eget"  style="width:100%"/>
+        </b:panelGrid>
+        <b:panel look="primary" title="Options: number of columns" style="margin-top:10px;">
+            <b:panelGrid size="xs" columns="4">
+              <b:radiobutton value="#{columnsBean.colspan}" itemValue="2,10"         update="@parent:@parent:@previous"/>
+              <b:radiobutton value="#{columnsBean.colspan}" itemValue="4,8"          update="@parent:@parent:@previous"/>
+              <b:radiobutton value="#{columnsBean.colspan}" itemValue="4,4,4"        update="@parent:@parent:@previous"/>
+              <b:radiobutton value="#{columnsBean.colspan}" itemValue="2,2,2,2,2,2"  update="@parent:@parent:@previous"/>
+            </b:panelGrid>
+          </b:panel>
+      </h:form>
+
+      <f:facet name="footer">
+        <strong>JSF markup: </strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+             <b:panelGrid col-spans="#{columnsBean.columns}">
+                <b:badge value="lorem" />
+                <b:badge value="ipsum" />
+                <b:badge value="dolor" />
+                <b:badge value="sit" />
+                <b:badge value="amet" />
+                <b:badge value="consectetuer" />
+                <b:badge value="adipiscing" />
+                <b:badge value="elit." />
+                <b:badge value="Aenean" />
+                <b:badge value="commodo" />
+                <b:badge value="ligula" />
+                <b:badge value="eget" />
+             </b:panelGrid>
+           ]]>
+          </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+ 
+    <h2><a id="size">Size</a></h2>
+    <p>
+    The <code>size</code> attributes determines when the screen is so small that the columns have to be stacked on top of each other.
+    The default value is <code>medium-screen</code> (aka <code>md</code>).
+    </p>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form>
+        <b:panelGrid columns="4" size="#{columnsBean.size}">
+        		<b:badge value="lorem" style="width:100%" />
+        		<b:badge value="ipsum"  style="width:100%"/>
+        		<b:badge value="dolor"  style="width:100%"/>
+        		<b:badge value="sit"  style="width:100%"/>
+        		<b:badge value="amet"  style="width:100%"/>
+        		<b:badge value="consectetuer"  style="width:100%"/>
+        		<b:badge value="adipiscing"  style="width:100%"/>
+        		<b:badge value="elit."  style="width:100%"/>
+        		<b:badge value="Aenean" style="width:100%" />
+        		<b:badge value="commodo"  style="width:100%"/>
+        		<b:badge value="ligula"  style="width:100%"/>
+        		<b:badge value="eget"  style="width:100%"/>
+        </b:panelGrid>
+        <b:panel look="primary" title="Options: size (aka Bootstrap breakpoint)" style="margin-top:10px;">
+            <b:panelGrid size="xs" columns="4">
+              <b:radiobutton value="#{columnsBean.size}" itemValue="xs"            update="@parent:@parent:@previous"/>
+              <b:radiobutton value="#{columnsBean.size}" itemValue="sm"            update="@parent:@parent:@previous"/>
+              <b:radiobutton value="#{columnsBean.size}" itemValue="md"            update="@parent:@parent:@previous"/>
+              <b:radiobutton value="#{columnsBean.size}" itemValue="lg"            update="@parent:@parent:@previous"/>
+              <b:radiobutton value="#{columnsBean.size}" itemValue="tiny-screen"   update="@parent:@parent:@previous"/>
+              <b:radiobutton value="#{columnsBean.size}" itemValue="small-screen"  update="@parent:@parent:@previous"/>
+              <b:radiobutton value="#{columnsBean.size}" itemValue="medium-screen" update="@parent:@parent:@previous"/>
+              <b:radiobutton value="#{columnsBean.size}" itemValue="large-screen"  update="@parent:@parent:@previous"/>
+            </b:panelGrid>
+          </b:panel>
+      </h:form>
+
+      <f:facet name="footer">
+        <strong>JSF markup: </strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+              <b:panelGrid columns="4" size="#{columnsBean.size}">
+                <b:badge value="lorem" />
+                <b:badge value="ipsum" />
+                <b:badge value="dolor" />
+                <b:badge value="sit" />
+                <b:badge value="amet" />
+                <b:badge value="consectetuer" />
+                <b:badge value="adipiscing" />
+                <b:badge value="elit." />
+                <b:badge value="Aenean" />
+                <b:badge value="commodo" />
+                <b:badge value="ligula" />
+                <b:badge value="eget" />
+             </b:panelGrid>
+           ]]>
+          </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+ 
+    
+    
+    <h2><a id="form_example">Form example</a></h2>
+    <p>
+    The classic use case of <code>&lt;b:panelGrid /&gt;</code> is the input form. In most cases, such an input form is a long list
+    of fairly uniform rows. The details vary, but usually such a row consists of a label, the input field and an optional error message.
+    Sometimes there's also a help text. <code>&lt;b:panelGrid /&gt;</code> makes generating such a form a walk in the park:
+    </p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form>
+        <b:panelGrid colSpans="2,10" size="xs" contentDisabled="#{columnsBean.containerDisabled}" id="panelGridId">
+          <h:outputLabel value="Value 1" />
+          <b:inputText span="8" value="#{settingsBean.value1}" />
+          <h:outputLabel value="Value 2" />
+          <b:inputText span="10" value="#{settingsBean.value2}" />
+          <h:outputLabel value="Checkbox 1" />
+          <b:selectBooleanCheckbox value="#{settingsBean.checkbox1}" />
+          <h:outputLabel value="Checkbox 2" />
+          <b:selectBooleanCheckbox value="#{settingsBean.checkbox2}" />
+        </b:panelGrid>
+        <b:panel look="primary" title="Options">
+          <b:switch on-text="true" off-text="default" value="#{columnsBean.containerDisabled}"
+                    update="panelGridId" onchange="ajax:columnsBean.onChange()"
+                    label="b:panelGrid contentDisabled=" />
+        </b:panel>
+      </h:form>
+
+      <f:facet name="footer">
+        <strong>JSF markup: </strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:form>
+            <b:panelGrid colSpans="2,10" size="xs">
+              <h:outputLabel value="Value 1" />
+              <b:inputText span="8" value="# {settingsBean.value1}"/>
+              <h:outputLabel value="Value 2" />
+              <b:inputText span="10" value="# {settingsBean.value2}"  />
+              <h:outputLabel value="Checkbox 1" />
+              <b:selectBooleanCheckbox value="# {settingsBean.cb1}" />
+              <h:outputLabel value="Checkbox 2" />
+              <b:selectBooleanCheckbox value="# {settingsBean.cb2}" />
+            </b:panelGrid>
+          </h:form>
+          ]]>
+          </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+    <p>colSpan="2,10" means the content of the &lt;b:panelGrid&gt; is
+    arranged in to columns. The first colum takes 2 Bootstrap columns
+    (16% of the available space), the second column take the remaining
+    10 Bootstrap columns (83% of the available space).</p>
+
+    <br/>
+    <h2><a id="reference_section">Reference section</a></h2>
+    <ui:include src="PanelGridAttributes.xhtml" />
+    <b:panel look="info">
+      <f:facet name="heading">
+        <b>Skinning</b>
+      </f:facet>
+      <p><code>&lt;b:panelGrid&gt;</code> uses the standard Bootstrap CSS classes:</p>
+      <ul>
+        <li>The panelgrid is a <code>div</code> bearing the CSS class <code>container</code>.</li>
+        <li>Each row is a <code>div</code> bearing the CSS class <code>row</code>.</li>
+        <li>Each column is a <code>div</code> bearing the CSS class <code>col-lg-1</code> - <code>col-lg-12</code>.</li>
+      </ul>
+    </b:panel>
+
+
+    <br />
+    <br />
+    <br />
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+  </ui:define>
+</ui:composition>

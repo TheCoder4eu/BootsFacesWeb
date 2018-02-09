@@ -1,204 +1,219 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:b="http://bootsfaces.net/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<ui:define name="content">
-		<style>
-td {
-	padding: 8px;
-}
-</style>
-		<h1>Video (&lt;b:video /&gt;)</h1>
 
-		<p>This component is a simple implementation of the HTML <code>&lt;video /&gt;</code> element.</p>
-		<h1>Basic usage</h1>
-		<p>Basically, showing a video is as simple as writing &lt;b:video src="http://URL.com/myVideo.mp4" style="width:100%" /&gt;:</p>
-        
-        <b:panel title="Video">
-            <b:video small-screen="two-thirds" 
-                     src="http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b1-1.mov" 
-                     style="width:100%"
-                     tooltip="Video of Hawai provided by Apple (http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b1-1.mov)"
-                     tooltip-position="right"
-                     onplay="ajax:videoBean.onPlay()"
-                     onpause="ajax:videoBean.onPause()"
-                     onloadeddata="ajax:videoBean.onLoadedData()"
-                     oncanplaythrough="ajax:videoBean.onCanplaythrough()"
-                     onseeking="ajax:videoBean.onSeeking()"
-                     update="@next">
-            </b:video>
-            <b:inputTextarea value="#{videoBean.events}" small-screen="one-third" tooltip="recorded video AJAX events" style="height:350px" />
-            
-            <f:facet name="footer">
-                <b:tabView>
-              <b:tab title="JSF Markup">
-                  <b:panel>
-                      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                    <![CDATA[
-	 		<b:row>
-				<b:video small-screen="two-thirds" 
-				         src="http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b1-1.mov" 
-				         style="width:100%"
-				         tooltip="Video of Hawai provided by Apple (http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b1-1.mov)"
-				         tooltip-position="right"
-				         onplay="ajax:videoBean.onPlay()"
-				         onpause="ajax:videoBean.onPause()"
-				         onloadeddata="ajax:videoBean.onLoadedData()"
-				         oncanplaythrough="ajax:videoBean.onCanplaythrough()"
-				         onseeking="ajax:videoBean.onSeeking()"
-				         update="@next">
-		         </b:video>
-		         <b:inputTextarea value="#{videoBean.events}" small-screen="one-third" tooltip="recorded video AJAX events" style="height:350px" />
-			</b:row>
-                    ]]></script>
-                   </b:panel>
-              </b:tab>
-              <b:tab title="Java Bean">
-                  <b:panel>
-                      <script type="syntaxhighlighter" class="brush: java; toolbar: false;first-line: 0">
-                    <![CDATA[
-@ManagedBean
-@ViewScoped
-public class VideoBean implements Serializable {
-	private static final long serialVersionUID = 1L;
-	
-	private String events = "";
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#video" value="Video (&lt;b:video /&gt;)" />
+      <b:navLink href="#basic_usage" value="Basic usage" />
+      <b:navLink href="#playing_videos_from_your_own_server" value="Playing videos from your own server" />
+      <b:navLink href="#ajax" value="AJAX" />
+      <b:navLink href="#reference_section" value="Reference section" />
+    </b:listLinks>
+  </ui:define>
 
-	public String getEvents() {
-		return events;
-	}
 
-	public void setEvents(String events) {
-		this.events = events;
-	}
-	
-	public void onPlay() {
-		events = "play" + "\n" + events;
-	}
-	public void onPause() {
-		events = "pause" + "\n" + events;
-	}
-	
-	public void onSeeking() {
-		events = "seeking" + "\n" + events;
-	}
-	
-	public void onCanplaythrough() {
-		events = "can play through" + "\n" + events;
-	}
-	
-	public void onLoadeddata() {
-		events = "loaded data" + "\n" + events;
-	}
-}
-                    ]]></script>
-                   </b:panel>
-              </b:tab>
+  <ui:define name="content">
+    <style>
+      td {
+        padding: 8px;
+      }
+    </style>
+    <h1><a id="video">Video (&lt;b:video /&gt;)</a></h1>
+
+    <p>This component is a simple implementation of the HTML <code>&lt;video /&gt;</code> element.</p>
+    <h1><a id="basic_usage">Basic usage</a></h1>
+    <p>Basically, showing a video is as simple as writing &lt;b:video src="http://URL.com/myVideo.mp4" style="width:100%" /&gt;:</p>
+
+    <b:panel title="Video">
+      <b:video small-screen="two-thirds"
+               src="http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b1-1.mov"
+               style="width:100%"
+               tooltip="Video of Hawai provided by Apple (http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b1-1.mov)"
+               tooltip-position="right"
+               onplay="ajax:videoBean.onPlay()"
+               onpause="ajax:videoBean.onPause()"
+               onloadeddata="ajax:videoBean.onLoadedData()"
+               oncanplaythrough="ajax:videoBean.onCanplaythrough()"
+               onseeking="ajax:videoBean.onSeeking()"
+               update="@next">
+      </b:video>
+      <b:inputTextarea value="#{videoBean.events}" small-screen="one-third" tooltip="recorded video AJAX events" style="height:350px" />
+
+      <f:facet name="footer">
+        <b:tabView>
+          <b:tab title="JSF Markup">
+            <b:panel>
+              <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+              <![CDATA[
+              <b:row>
+                <b:video small-screen="two-thirds"
+                         src="http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b1-1.mov"
+                         style="width:100%"
+                         tooltip="Video of Hawai provided by Apple (http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b1-1.mov)"
+                         tooltip-position="right"
+                         onplay="ajax:videoBean.onPlay()"
+                         onpause="ajax:videoBean.onPause()"
+                         onloadeddata="ajax:videoBean.onLoadedData()"
+                         oncanplaythrough="ajax:videoBean.onCanplaythrough()"
+                         onseeking="ajax:videoBean.onSeeking()"
+                         update="@next">
+                </b:video>
+                <b:inputTextarea value="#{videoBean.events}" small-screen="one-third" tooltip="recorded video AJAX events" style="height:350px" />
+              </b:row>
+              ]]></script>
+            </b:panel>
+          </b:tab>
+          <b:tab title="Java Bean">
+            <b:panel>
+              <script type="syntaxhighlighter" class="brush: java; toolbar: false;first-line: 0">
+              <![CDATA[
+              @ManagedBean
+              @ViewScoped
+              public class VideoBean implements Serializable {
+                private static final long serialVersionUID = 1L;
+
+                private String events = "";
+
+                public String getEvents() {
+                  return events;
+                }
+
+                public void setEvents(String events) {
+                  this.events = events;
+                }
+
+                public void onPlay() {
+                  events = "play" + "\n" + events;
+                }
+                public void onPause() {
+                  events = "pause" + "\n" + events;
+                }
+
+                public void onSeeking() {
+                  events = "seeking" + "\n" + events;
+                }
+
+                public void onCanplaythrough() {
+                  events = "can play through" + "\n" + events;
+                }
+
+                public void onLoadeddata() {
+                  events = "loaded data" + "\n" + events;
+                }
+              }
+              ]]></script>
+            </b:panel>
+          </b:tab>
         </b:tabView>
-            </f:facet>
-        </b:panel>
-		
-		<h2>Playing videos from your own server</h2>
-		<p>Most application servers support playing videos. Using a relative URL usually suffices to play the video: &lt;b:video src="myVideo.mp4" style="width:100%" /&gt;.</p>
-		
-		<h2>Always set the <code>width</code> attribute</h2>
-		<p>It's a good idea to always set the <code>width</code> of the video. In general, setting it to 100% makes it fit in nicely
-		with the responsive design of your page. The height of the video is calculated automatically because you can't modify the
-		aspect ration of the video. Nonetheless, it's a good idea to set the height, too, in order to prevent the page from 
-		flickering while the video is loaded. As long as the browser doesn't know the dimensions of the video, it uses default
-		values which are almost always wrong.</p>
+      </f:facet>
+    </b:panel>
+
+    <h2><a id="playing_videos_from_your_own_server">Playing videos from your own server</a></h2>
+    <p>Most application servers support playing videos. Using a relative URL usually suffices to play the video: &lt;b:video src="myVideo.mp4" style="width:100%" /&gt;.</p>
+
+    <h2><a id="always_set_the">Always set the <code>width</code> attribute</a></h2>
+    <p>It's a good idea to always set the <code>width</code> of the video. In general, setting it to 100% makes it fit in nicely
+    with the responsive design of your page. The height of the video is calculated automatically because you can't modify the
+    aspect ration of the video. Nonetheless, it's a good idea to set the height, too, in order to prevent the page from
+    flickering while the video is loaded. As long as the browser doesn't know the dimensions of the video, it uses default
+    values which are almost always wrong.</p>
 
 
-		<h3>AJAX</h3>
-		<p>The video element supports a couple of standard events, such as <code>onclick</code>, and the full range of 
-		events described at <a target="#" href="http://www.w3schools.com/tags/ref_av_dom.asp">w3schools.com</a>.
-		The only exception is onerror, which is not supported because there's already a standard AJAX attribute called <code>onerror</code>.</p>
-		<DL class="dl-horizontal">
-		<DT>Event
-		
-		</DT>
-		<DD>Description</DD>
-		<DT>abort</DT>
-		<DD>Fires when the loading of an audio/video is aborted</DD>
-		<DT>canplay</DT>
-		<DD>Fires when the browser can start playing the audio/video</DD>
-		<DT>canplaythrough</DT>
-		<DD>Fires when the browser can play through the audio/video
-			without stopping for buffering</DD>
-		<DT>durationchange</DT>
-		<DD>Fires when the duration of the audio/video is changed</DD>
-		<DT>emptied</DT>
-		<DD>Fires when the current playlist is empty</DD>
-		<DT>ended</DT>
-		<DD>Fires when the current playlist is ended</DD>
-		<DT>error</DT>
-		<DD><b>Not supported!</b> Fires when an error occurred during the loading of an
-			audio/video</DD>
-		<DT>loadeddata</DT>
-		<DD>Fires when the browser has loaded the current frame of the
-			audio/video</DD>
-		<DT>loadedmetadata</DT>
-		<DD>Fires when the browser has loaded meta data for the
-			audio/video</DD>
-		<DT>loadstart</DT>
-		<DD>Fires when the browser starts looking for the audio/video</DD>
-		<DT>pause</DT>
-		<DD>Fires when the audio/video has been paused</DD>
-		<DT>play</DT>
-		<DD>Fires when the audio/video has been started or is no longer
-			paused</DD>
-		<DT>playing</DT>
-		<DD>Fires when the audio/video is playing after having been
-			paused or stopped for buffering</DD>
-		<DT>progress</DT>
-		<DD>Fires when the browser is downloading the audio/video</DD>
-		<DT>ratechange</DT>
-		<DD>Fires when the playing speed of the audio/video is changed</DD>
-		<DT>seeked</DT>
-		<DD>Fires when the user is finished moving/skipping to a new
-			position in the audio/video</DD>
-		<DT>seeking</DT>
-		<DD>Fires when the user starts moving/skipping to a new position
-			in the audio/video</DD>
-		<DT>stalled</DT>
-		<DD>Fires when the browser is trying to get media data, but data
-			is not available</DD>
-		<DT>suspend</DT>
-		<DD>Fires when the browser is intentionally not getting media
-			data</DD>
-		<DT>timeupdate</DT>
-		<DD>Fires when the current playback position has changed</DD>
-		<DT>volumechange</DT>
-		<DD>Fires when the volume has been changed</DD>
-		<DT>waiting</DT>
-		<DD>Fires when the video stops because it needs to buffer the
-			next frame</DD>
-        </DL>
+    <h2><a id="ajax">AJAX</a></h2>
+    <p>The video element supports a couple of standard events, such as <code>onclick</code>, and the full range of
+    events described at <a target="#" href="http://www.w3schools.com/tags/ref_av_dom.asp">w3schools.com</a>.
+    The only exception is onerror, which is not supported because there's already a standard AJAX attribute called <code>onerror</code>.</p>
+    <DL class="dl-horizontal">
+    <DT>Event
 
-		<br />
-		<br />
-		<ui:include src="VideoAttributes.xhtml" />
-		<b:panel look="info">
-			<f:facet name="heading">
-				<b>Skinning</b>
-			</f:facet>
-			<ul>
-				<li>Tell the world which CSS classes can be used to change the
-					look of the component.</li>
-			</ul>
-		</b:panel>
+    </DT>
+    <DD>Description</DD>
+    <DT>abort</DT>
+    <DD>Fires when the loading of an audio/video is aborted</DD>
+    <DT>canplay</DT>
+    <DD>Fires when the browser can start playing the audio/video</DD>
+    <DT>canplaythrough</DT>
+    <DD>Fires when the browser can play through the audio/video
+    without stopping for buffering</DD>
+    <DT>durationchange</DT>
+    <DD>Fires when the duration of the audio/video is changed</DD>
+    <DT>emptied</DT>
+    <DD>Fires when the current playlist is empty</DD>
+    <DT>ended</DT>
+    <DD>Fires when the current playlist is ended</DD>
+    <DT>error</DT>
+    <DD><b>Not supported!</b> Fires when an error occurred during the loading of an
+    audio/video</DD>
+    <DT>loadeddata</DT>
+    <DD>Fires when the browser has loaded the current frame of the
+    audio/video</DD>
+    <DT>loadedmetadata</DT>
+    <DD>Fires when the browser has loaded meta data for the
+    audio/video</DD>
+    <DT>loadstart</DT>
+    <DD>Fires when the browser starts looking for the audio/video</DD>
+    <DT>pause</DT>
+    <DD>Fires when the audio/video has been paused</DD>
+    <DT>play</DT>
+    <DD>Fires when the audio/video has been started or is no longer
+    paused</DD>
+    <DT>playing</DT>
+    <DD>Fires when the audio/video is playing after having been
+    paused or stopped for buffering</DD>
+    <DT>progress</DT>
+    <DD>Fires when the browser is downloading the audio/video</DD>
+    <DT>ratechange</DT>
+    <DD>Fires when the playing speed of the audio/video is changed</DD>
+    <DT>seeked</DT>
+    <DD>Fires when the user is finished moving/skipping to a new
+    position in the audio/video</DD>
+    <DT>seeking</DT>
+    <DD>Fires when the user starts moving/skipping to a new position
+    in the audio/video</DD>
+    <DT>stalled</DT>
+    <DD>Fires when the browser is trying to get media data, but data
+    is not available</DD>
+    <DT>suspend</DT>
+    <DD>Fires when the browser is intentionally not getting media
+    data</DD>
+    <DT>timeupdate</DT>
+    <DD>Fires when the current playback position has changed</DD>
+    <DT>volumechange</DT>
+    <DD>Fires when the volume has been changed</DD>
+    <DT>waiting</DT>
+    <DD>Fires when the video stops because it needs to buffer the
+    next frame</DD>
+    </DL>
 
-		<script type="text/javascript">
-      		SyntaxHighlighter.all();
-    	</script>
-		<br />
-		<br />
-		<br />
-		<br />
-	</ui:define>
+    <br />
+    <br />
+
+
+    <h2><a id="reference_section">Reference section</a></h2>
+    <ui:include src="VideoAttributes.xhtml" />
+    <b:panel look="info">
+      <f:facet name="heading">
+        <b>Skinning</b>
+      </f:facet>
+      <ul>
+        <li>Tell the world which CSS classes can be used to change the
+        look of the component.</li>
+      </ul>
+    </b:panel>
+
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+    <br />
+    <br />
+    <br />
+    <br />
+  </ui:define>
 </ui:composition>

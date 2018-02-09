@@ -58,6 +58,11 @@
                 <td>Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false.</td>
             </tr>
             <tr>
+                <td>offset</td>
+                <td>(none)</td>
+                <td>Read-write property setting the offset from the beginning of the collection from which to start the iteration. If not set, this offset is not considered and iteration will start at the beginning of the collection.</td>
+            </tr>
+            <tr>
                 <td>onclick</td>
                 <td>(none)</td>
                 <td>Optional JavaScript function that's called when the tab is clicked.</td>
@@ -76,6 +81,16 @@
                 <td>rendered</td>
                 <td>false</td>
                 <td>Boolean value to specify the rendering of the component, when set to false the component will not be rendered.</td>
+            </tr>
+            <tr>
+                <td>size</td>
+                <td>(none)</td>
+                <td>Read-write property setting the size of the collection to iterate. The value of this attribute must be less than or equal to the actual size of the collection, or a FacesException must be thrown.</td>
+            </tr>
+            <tr>
+                <td>step</td>
+                <td>(none)</td>
+                <td>Iteration will only process every step items of the collection, starting with the first one.</td>
             </tr>
             <tr>
                 <td>style</td>
@@ -126,6 +141,21 @@
                 <td>update</td>
                 <td>(none)</td>
                 <td>Component(s) to be updated with ajax.</td>
+            </tr>
+            <tr>
+                <td>value</td>
+                <td>(none)</td>
+                <td>The name of a collection of items that this tag iterates over. The collection may be a List, array, java.sql.ResultSet, or an individual java Object. If the collection is null, this tag does nothing.</td>
+            </tr>
+            <tr>
+                <td>var</td>
+                <td>(none)</td>
+                <td>Name of the exported scoped variable for the current item of the iteration. This scoped variable has nested visibility. Its type depends on the object of the underlying collection</td>
+            </tr>
+            <tr>
+                <td>varStatus</td>
+                <td>(none)</td>
+                <td>Name of the exported request scoped variable for the status of the iteration. Object is a POJO with the following read-only JavaBeans properties: begin, end, index, step, even, odd, first, and last. This scoped variable has nested visibility.</td>
             </tr>
           </tbody>
         </table>

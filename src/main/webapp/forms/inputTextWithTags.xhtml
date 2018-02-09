@@ -1,311 +1,326 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
 
-      <ui:define name="content">
-        <style>td {padding: 8px;}</style>
 
-        <h:form>
-          <h1>InputText with tags and / or typeahead (aka autocompletion) <b:badge value="since 0.9.0" /></h1>
-          <p>You can design your input texts more fancy by decorating them with little tags. Note that this is a late
-          addition to <code>&lt;b:inputText /></code>. Most features of the basic input text component should work
-          with the tags extension, but there's no guarantee. However, the alternative was to make it a component of
-          its own, which seemed like overkill to us.</p>
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#inputtext_with_tags_and__or_typeahead" value="InputText with tags and / or typeahead (aka autocompletion)" />
+      <b:navLink href="#known_issues" value="Known issues" />
+      <b:navLink href="#tags__basic_usage" value="Tags: Basic usage" />
+      <b:navLink href="#simple_typeahead" value="Simple typeahead" />
+      <b:navLink href="#how_to_define_the_list_of_possible_values" value="How to define the list of possible values" />
+      <b:navLink href="#type_ahead_with_tags" value="Type ahead with tags" />
+      <b:navLink href="#reference_section" value="Reference section" />
+    </b:listLinks>
+  </ui:define>
 
-          <h2>Known issues</h2>
-          <p>The tag extension and the typeahead extension are recent additions. They are fully functional, but there
-          are still a few known issues.</p>
-          <ul>
-          <li>Both the tags extension and the typeahead extension create new input fields. This means some features
+
+  <ui:define name="content">
+    <style>td {padding: 8px;}</style>
+
+    <h:form>
+      <h1><a id="inputtext_with_tags_and__or_typeahead">InputText with tags and / or typeahead (aka autocompletion)</a><b:badge value="since 0.9.0" /></h1>
+      <p>You can design your input texts more fancy by decorating them with little tags. Note that this is a late
+      addition to <code>&lt;b:inputText /&gt;</code>. Most features of the basic input text component should work
+      with the tags extension, but there's no guarantee. However, the alternative was to make it a component of
+      its own, which seemed like overkill to us.</p>
+
+      <h2><a id="known_issues">Known issues</a></h2>
+      <p>The tag extension and the typeahead extension are recent additions. They are fully functional, but there
+      are still a few known issues.</p>
+      <ul>
+        <li>Both the tags extension and the typeahead extension create new input fields. This means some features
           don't work. In particular, CSS styles and style classes get lost. For instance, in the examples
-          below, the input fields for the tags are smaller than they should be.</li>
-          <li>If you update an <code>&lt;b:inputText</code> with tags by an AJAX request, the input field is not properly
+        below, the input fields for the tags are smaller than they should be.</li>
+        <li>If you update an <code>&lt;b:inputText</code> with tags by an AJAX request, the input field is not properly
           reinitialized. You have to do so yourself by adding a CSS pseudo class to the
           <code>&lt;b:inputText</code> and a JavaScript command to the updated region:
           <b:panel>
-             <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-             <![CDATA[
-                <b:inputText tags="true" style-class="tags" />
-                <script>
-                    $('.tags').tagsinput('refresh');
-                </script&gt;
-             ]]></script>
-              </b:panel>
-          </li>
-          <li>In theory, the typeahead widget can fetch the list of proposals from the server. However, we haven't
-          implemented the BootsFaces API. Currently you're limited to a fixed list of entries.</li>
-          </ul>
+            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+            <![CDATA[
+            <b:inputText tags="true" style-class="tags" />
+            <script>
+            $('.tags').tagsinput('refresh');
+            </script&gt;
+            ]]></script>
+          </b:panel>
+        </li>
+        <li>In theory, the typeahead widget can fetch the list of proposals from the server. However, we haven't
+        implemented the BootsFaces API. Currently you're limited to a fixed list of entries.</li>
+      </ul>
 
-          <h2>Tags: Basic usage</h2>
-          <p>By setting the attribute <code>tags="true"</code> you can display the input values as tag - similar to
-          <code>&lt;b:badge /></code> or to price tags in the supermarket. The tags are separated by commas. Users can
-          separate tags either by tying a comma or by hitting the <code>return</code> key.</p>
-          <p>The tags extension is based on the jQuery plugin
-          <a target="#" href="https://bootstrap-tagsinput.github.io/bootstrap-tagsinput/examples/">Tim Schlechter</a>,
-          which has been published unter a MIT license. In other words, you can freely use it.</p>
-            <b:panel title="Live preview" look="info" collapsible="false">
+      <h2><a id="tags__basic_usage">Tags: Basic usage</a></h2>
+      <p>By setting the attribute <code>tags="true"</code> you can display the input values as tag - similar to
+      <code>&lt;b:badge /&gt;
+      </code> or to price tags in the supermarket. The tags are separated by commas. Users can
+      separate tags either by tying a comma or by hitting the <code>return</code> key.</p>
+      <p>The tags extension is based on the jQuery plugin
+      <a target="#" href="https://bootstrap-tagsinput.github.io/bootstrap-tagsinput/examples/">Tim Schlechter</a>,
+      which has been published unter a MIT license. In other words, you can freely use it.</p>
+      <b:panel title="Live preview" look="info" collapsible="false">
+        <b:form>
+          <b:inputText tags="true" value="#{tagsBean.tags}"
+                       placeholder="Hit return to create label"
+                       label="What's your favorite music style?"
+                       col-xs="12"
+                       />
+        </b:form>
+
+        <f:facet name="footer">
+          <b:tabView contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+            <b:tab title="JSF markup">
+              <b:panel>
+                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                <![CDATA[
                 <b:form>
-                    <b:inputText tags="true" value="#{tagsBean.tags}"
-                             placeholder="Hit return to create label"
-                             label="What's your favorite music style?"
-                             col-xs="12"
-                             />
+                  <b:inputText tags="true" value="&num;{tagsBean.tags}" placeholder="Hit return to create label" label="What's your favorite music style?" />
                 </b:form>
-
-            <f:facet name="footer">
-                <b:tabView contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
-                    <b:tab title="JSF markup">
-                        <b:panel>
-                                       <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-             <![CDATA[
-            <b:form>
-                <b:inputText tags="true" value="&num;{tagsBean.tags}" placeholder="Hit return to create label" label="What's your favorite music style?" />
-            </b:form>
-             ]]></script>
-                        </b:panel>
-                    </b:tab>
-                    <b:tab title="Java Bean">
-                        <b:panel>
-                            <script type="syntaxhighlighter" class="brush: java toolbar: false;first-line: 0">
-             <![CDATA[
+                ]]></script>
+              </b:panel>
+            </b:tab>
+            <b:tab title="Java Bean">
+              <b:panel>
+                <script type="syntaxhighlighter" class="brush: java toolbar: false;first-line: 0">
+                <![CDATA[
                 @ViewScoped
                 @ManagedBean
                 public class TagsBean implements Serializable {
-                
-                	private static final long serialVersionUID = 1L;
-                
-                	private String tags = "Rock, Jazz, Rhythm and Blues";
-                
-                	public String getTags() {
-                		return tags;
-                	}
-                
-                	public void setTags(String tags) {
-                		this.tags = tags;
-                	}
+
+                  private static final long serialVersionUID = 1L;
+
+                  private String tags = "Rock, Jazz, Rhythm and Blues";
+
+                  public String getTags() {
+                    return tags;
+                  }
+
+                  public void setTags(String tags) {
+                    this.tags = tags;
+                  }
                 }
-             ]]></script>
-                        </b:panel>
-                    </b:tab>
-                </b:tabView>
-            </f:facet>
-        </b:panel>
-          
-         <h2>Simple typeahead</h2>
-          <p>By setting the attribute <code>tags="true"</code> you can display the input values as tag - similar to
-          <code>&lt;b:badge /></code> or to price tags in the supermarket. The tags are separated by commas. Users can
-          separate tags either by tying a comma or by hitting the <code>return</code> key.</p>
-          <p>The typeahead extension is based on the <a target="#" href="https://twitter.github.io/typeahead.js/">Twitter typeahead</a>
-          jQuery plugin, which has been published under the Twitter license. You can use it freely, as long as you
-          mention the plugin and add the <a target="#" href="https://github.com/bootstrap-tagsinput/bootstrap-tagsinput/blob/master/LICENSE">license file</a>
-          to your project. The CSS styles for Bootstrap 3 are added by the
-          <a target="#" href="https://github.com/bassjobsen/typeahead.js-bootstrap-css">CSS files by Bass Jobsen</a>,
-          which have been put under a MIT license.</p>
-          <p>The remote interface (which is yet to be implemented) requires
-          <a target="#" href="https://github.com/twitter/typeahead.js/blob/master/doc/bloodhound.md">Bloodhound</a>,
-          which has been published under a MIT licence.</p>
+                ]]></script>
+              </b:panel>
+            </b:tab>
+          </b:tabView>
+        </f:facet>
+      </b:panel>
+
+      <h2><a id="simple_typeahead">Simple typeahead</a></h2>
+      <p>By setting the attribute <code>tags="true"</code> you can display the input values as tag - similar to
+      <code>&lt;b:badge /&gt;</code> or to price tags in the supermarket. The tags are separated by commas. Users can
+      separate tags either by tying a comma or by hitting the <code>return</code> key.</p>
+      <p>The typeahead extension is based on the <a target="#" href="https://twitter.github.io/typeahead.js/">Twitter typeahead</a>
+      jQuery plugin, which has been published under the Twitter license. You can use it freely, as long as you
+      mention the plugin and add the <a target="#" href="https://github.com/bootstrap-tagsinput/bootstrap-tagsinput/blob/master/LICENSE">license file</a>
+      to your project. The CSS styles for Bootstrap 3 are added by the
+      <a target="#" href="https://github.com/bassjobsen/typeahead.js-bootstrap-css">CSS files by Bass Jobsen</a>,
+      which have been put under a MIT license.</p>
+      <p>The remote interface (which is yet to be implemented) requires
+      <a target="#" href="https://github.com/twitter/typeahead.js/blob/master/doc/bloodhound.md">Bloodhound</a>,
+      which has been published under a MIT licence.</p>
 
 
-                 <b:panel title="Live preview" look="info" collapsible="false">
-            <b:form horizontal="true">
-                <b:inputText value="" placeholder="CSV string" typeahead="true" typeahead-values="#{tagsBean.bandsCSV}" tiny-screen="full-width" />
-                <b:inputText value="" placeholder="java.util.List" typeahead="true" typeahead-values="#{tagsBean.bandsList}" tiny-screen="full-width" />
-                <b:inputText value="" placeholder="array of strings" typeahead="true" typeahead-values="#{tagsBean.bands}" tiny-screen="full-width" />
-            </b:form>
+      <b:panel title="Live preview" look="info" collapsible="false">
+        <b:form horizontal="true">
+          <b:inputText value="" placeholder="CSV string" typeahead="true" typeahead-values="#{tagsBean.bandsCSV}" tiny-screen="full-width" />
+          <b:inputText value="" placeholder="java.util.List" typeahead="true" typeahead-values="#{tagsBean.bandsList}" tiny-screen="full-width" />
+          <b:inputText value="" placeholder="array of strings" typeahead="true" typeahead-values="#{tagsBean.bands}" tiny-screen="full-width" />
+        </b:form>
 
-            <f:facet name="footer">
-                <b:tabView contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
-                    <b:tab title="JSF markup">
-                        <b:panel>
-              <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-             <![CDATA[
-            <b:form horizontal="true">
-                <b:inputText value="" placeholder="CSV string" typeahead="true" typeahead-values="#{tagsBean.bandsCSV}" tiny-screen="full-width" />
-                <b:inputText value="" placeholder="java.util.List" typeahead="true" typeahead-values="#{tagsBean.bandsList}" tiny-screen="full-width" />
-                <b:inputText value="" placeholder="array of strings" typeahead="true" typeahead-values="#{tagsBean.bands}" tiny-screen="full-width" />
-            </b:form>
-             ]]></script>
-                        </b:panel>
-                    </b:tab>
-                    <b:tab title="Java Bean">
-                        <b:panel>
-                            <script type="syntaxhighlighter" class="brush: java toolbar: false;first-line: 0">
-             <![CDATA[
+        <f:facet name="footer">
+          <b:tabView contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+            <b:tab title="JSF markup">
+              <b:panel>
+                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                <![CDATA[
+                <b:form horizontal="true">
+                  <b:inputText value="" placeholder="CSV string" typeahead="true" typeahead-values="#{tagsBean.bandsCSV}" tiny-screen="full-width" />
+                  <b:inputText value="" placeholder="java.util.List" typeahead="true" typeahead-values="#{tagsBean.bandsList}" tiny-screen="full-width" />
+                  <b:inputText value="" placeholder="array of strings" typeahead="true" typeahead-values="#{tagsBean.bands}" tiny-screen="full-width" />
+                </b:form>
+                ]]></script>
+              </b:panel>
+            </b:tab>
+            <b:tab title="Java Bean">
+              <b:panel>
+                <script type="syntaxhighlighter" class="brush: java toolbar: false;first-line: 0">
+                <![CDATA[
                 @ViewScoped
                 @ManagedBean
                 public class TagsBean implements Serializable {
-                
-                	private static final long serialVersionUID = 1L;
-                
-                	private String tags = "Rock, Jazz, Rhythm and Blues";
-                
-                	private static String[] bands = {"Arch Enemy","Blind Guardian","Children of Bodom","Dimmu Borgir","Edge of Sanity",
-                	"Fields of the Nephilim", "Gates of Ishtar", "Holy Moses", "Iced Earth", "Jethro Tull",
-                	"Kreator", "Lamb of God", "Mekong Delta", "Night in Gales", "Old Dead Tree", "Persefone",
-                	"Running Wild", "Skyclad", "The Dillinger Escape Plan", "Theater of Tragedy", "Unleashed", "Vanden Plas", "Within Temptation", "Xystus", "Yes",
-                	"Zenobia",
-                	};
-                
-                	public String getBandsCSV() {
-                		StringBuilder b=new StringBuilder();
-                		for (String s:bands) {
-                			if (b.length()>0) {
-                				b.append(",");
-                			}
-                			b.append(s);
-                		}
-                		return b.toString();
-                	}
-                
-                	public String getTags() {
-                		return tags;
-                	}
-                
-                	public void setTags(String tags) {
-                		this.tags = tags;
-                	}
-                   	public String[] getBands() {
-                   		return bands;
-                   	}
-                   	
-                   	public List<String> getBandsList() {
-                   		return Arrays.asList(bands);
-                   	}
+
+                  private static final long serialVersionUID = 1L;
+
+                  private String tags = "Rock, Jazz, Rhythm and Blues";
+
+                  private static String[] bands = {"Arch Enemy","Blind Guardian","Children of Bodom","Dimmu Borgir","Edge of Sanity",
+                    "Fields of the Nephilim", "Gates of Ishtar", "Holy Moses", "Iced Earth", "Jethro Tull",
+                    "Kreator", "Lamb of God", "Mekong Delta", "Night in Gales", "Old Dead Tree", "Persefone",
+                    "Running Wild", "Skyclad", "The Dillinger Escape Plan", "Theater of Tragedy", "Unleashed", "Vanden Plas", "Within Temptation", "Xystus", "Yes",
+                    "Zenobia",
+                  };
+
+                  public String getBandsCSV() {
+                    StringBuilder b=new StringBuilder();
+                    for (String s:bands) {
+                      if (b.length()>0) {
+                        b.append(",");
+                      }
+                      b.append(s);
+                    }
+                    return b.toString();
+                  }
+
+                  public String getTags() {
+                    return tags;
+                  }
+
+                  public void setTags(String tags) {
+                    this.tags = tags;
+                  }
+                  public String[] getBands() {
+                    return bands;
+                  }
+
+                  public List<String> getBandsList() {
+                    return Arrays.asList(bands);
+                  }
                 }
-             ]]></script>
-                        </b:panel>
-                    </b:tab>
-                </b:tabView>
-            </f:facet>
-        </b:panel>
-           
-           <h2>How to define the list of possible values</h2>
-           <p>The example above show the three options to define the list of possible values:</p>
-           <ul>
-           	 <li><code>typeahead-values</code> may be a comma separated string.</li>
-           	 <li>It may also be a <code>java.util.List</code> of strings (or anything returning something useful when calling <code>toString()</code>). Note that these strings must not contain a comma.</li>
-           	 <li>Or is can be an array of strings (or anything returning something useful when calling <code>toString()</code>). Again, these strings must not contain a comma.</li>
-           </ul>
-           
+                ]]></script>
+              </b:panel>
+            </b:tab>
+          </b:tabView>
+        </f:facet>
+      </b:panel>
 
-        <h2>Type ahead with tags</h2>
-          <p>You can also combine tags and typeahead.</p>
-          <p>Using tags and typeahead at the same time requires
-          <a target="#" href="https://github.com/twitter/typeahead.js/blob/master/doc/bloodhound.md">Bloodhound</a>,
-          which has been published under a MIT licence.</p>
-          <b:panel title="Live preview" look="info" collapsible="false">
-<b:form horizontal="true">
-    <b:inputText value="" placeholder="CSV" tags="true" typeahead="true" typeahead-values="#{tagsBean.bandsCSV}" tiny-screen="full-width" />
-    <b:inputText value="" placeholder="java.util.List" tags="true" typeahead="true" typeahead-values="#{tagsBean.bandsList}"  tiny-screen="full-width" />
-    <b:inputText value="" placeholder="array of strings" tags="true" typeahead="true" typeahead-values="#{tagsBean.bands}" tiny-screen="full-width" />
-</b:form>
+      <h2><a id="how_to_define_the_list_of_possible_values">How to define the list of possible values</a></h2>
+      <p>The example above show the three options to define the list of possible values:</p>
+      <ul>
+        <li><code>typeahead-values</code> may be a comma separated string.</li>
+        <li>It may also be a <code>java.util.List</code> of strings (or anything returning something useful when calling <code>toString()</code>). Note that these strings must not contain a comma.</li>
+        <li>Or is can be an array of strings (or anything returning something useful when calling <code>toString()</code>). Again, these strings must not contain a comma.</li>
+      </ul>
 
-            <f:facet name="footer">
-                <b:tabView contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
-                    <b:tab title="JSF markup">
-                        <b:panel>
-              <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-             <![CDATA[
-<b:form horizontal="true">
-    <b:inputText value="" placeholder="CSV" tags="true" typeahead="true" typeahead-values="#{tagsBean.bandsCSV}" tiny-screen="full-width" />
-    <b:inputText value="" placeholder="java.util.List" tags="true" typeahead="true" typeahead-values="#{tagsBean.bandsList}"  tiny-screen="full-width" />
-    <b:inputText value="" placeholder="array of strings" tags="true" typeahead="true" typeahead-values="#{tagsBean.bands}" tiny-screen="full-width" />
-</b:form>
-            ]]></script>  
-                        </b:panel>
-                    </b:tab>
-                    <b:tab title="Java Bean">
-                        <b:panel>
-                            <script type="syntaxhighlighter" class="brush: java toolbar: false;first-line: 0">
-             <![CDATA[
+
+      <h2><a id="type_ahead_with_tags">Type ahead with tags</a></h2>
+      <p>You can also combine tags and typeahead.</p>
+      <p>Using tags and typeahead at the same time requires
+      <a target="#" href="https://github.com/twitter/typeahead.js/blob/master/doc/bloodhound.md">Bloodhound</a>,
+      which has been published under a MIT licence.</p>
+      <b:panel title="Live preview" look="info" collapsible="false">
+        <b:form horizontal="true">
+          <b:inputText value="" placeholder="CSV" tags="true" typeahead="true" typeahead-values="#{tagsBean.bandsCSV}" tiny-screen="full-width" />
+          <b:inputText value="" placeholder="java.util.List" tags="true" typeahead="true" typeahead-values="#{tagsBean.bandsList}"  tiny-screen="full-width" />
+          <b:inputText value="" placeholder="array of strings" tags="true" typeahead="true" typeahead-values="#{tagsBean.bands}" tiny-screen="full-width" />
+        </b:form>
+
+        <f:facet name="footer">
+          <b:tabView contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+            <b:tab title="JSF markup">
+              <b:panel>
+                <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                <![CDATA[
+                <b:form horizontal="true">
+                  <b:inputText value="" placeholder="CSV" tags="true" typeahead="true" typeahead-values="#{tagsBean.bandsCSV}" tiny-screen="full-width" />
+                  <b:inputText value="" placeholder="java.util.List" tags="true" typeahead="true" typeahead-values="#{tagsBean.bandsList}"  tiny-screen="full-width" />
+                  <b:inputText value="" placeholder="array of strings" tags="true" typeahead="true" typeahead-values="#{tagsBean.bands}" tiny-screen="full-width" />
+                </b:form>
+                ]]></script>
+              </b:panel>
+            </b:tab>
+            <b:tab title="Java Bean">
+              <b:panel>
+                <script type="syntaxhighlighter" class="brush: java toolbar: false;first-line: 0">
+                <![CDATA[
                 @ViewScoped
                 @ManagedBean
                 public class TagsBean implements Serializable {
-                
-                	private static final long serialVersionUID = 1L;
-                
-                	private String tags = "Rock, Jazz, Rhythm and Blues";
-                
-                	private static String[] bands = {"Arch Enemy","Blind Guardian","Children of Bodom","Dimmu Borgir","Edge of Sanity",
-                	"Fields of the Nephilim", "Gates of Ishtar", "Holy Moses", "Iced Earth", "Jethro Tull",
-                	"Kreator", "Lamb of God", "Mekong Delta", "Night in Gales", "Old Dead Tree", "Persefone",
-                	"Running Wild", "Skyclad", "The Dillinger Escape Plan", "Theater of Tragedy", "Unleashed", "Vanden Plas", "Within Temptation", "Xystus", "Yes",
-                	"Zenobia",
-                	};
-                
-                	public String getBandsCSV() {
-                		StringBuilder b=new StringBuilder();
-                		for (String s:bands) {
-                			if (b.length()>0) {
-                				b.append(",");
-                			}
-                			b.append(s);
-                		}
-                		return b.toString();
-                	}
-                
-                	public String getTags() {
-                		return tags;
-                	}
-                
-                	public void setTags(String tags) {
-                		this.tags = tags;
-                	}
-                   	public String[] getBands() {
-                   		return bands;
-                   	}
-                   	
-                   	public List<String> getBandsList() {
-                   		return Arrays.asList(bands);
-                   	}
+
+                  private static final long serialVersionUID = 1L;
+
+                  private String tags = "Rock, Jazz, Rhythm and Blues";
+
+                  private static String[] bands = {"Arch Enemy","Blind Guardian","Children of Bodom","Dimmu Borgir","Edge of Sanity",
+                    "Fields of the Nephilim", "Gates of Ishtar", "Holy Moses", "Iced Earth", "Jethro Tull",
+                    "Kreator", "Lamb of God", "Mekong Delta", "Night in Gales", "Old Dead Tree", "Persefone",
+                    "Running Wild", "Skyclad", "The Dillinger Escape Plan", "Theater of Tragedy", "Unleashed", "Vanden Plas", "Within Temptation", "Xystus", "Yes",
+                    "Zenobia",
+                  };
+
+                  public String getBandsCSV() {
+                    StringBuilder b=new StringBuilder();
+                    for (String s:bands) {
+                      if (b.length()>0) {
+                        b.append(",");
+                      }
+                      b.append(s);
+                    }
+                    return b.toString();
+                  }
+
+                  public String getTags() {
+                    return tags;
+                  }
+
+                  public void setTags(String tags) {
+                    this.tags = tags;
+                  }
+                  public String[] getBands() {
+                    return bands;
+                  }
+
+                  public List<String> getBandsList() {
+                    return Arrays.asList(bands);
+                  }
                 }
-             ]]></script>
-                        </b:panel>
-                    </b:tab>
-                </b:tabView>
-            </f:facet>
-        </b:panel>
+                ]]></script>
+              </b:panel>
+            </b:tab>
+          </b:tabView>
+        </f:facet>
+      </b:panel>
 
-              <h2>Reference section</h2>
-                  <ui:include src="InputTextAttributes.xhtml" />
+      <h2><a id="reference_section">Reference section</a></h2>
+      <ui:include src="InputTextAttributes.xhtml" />
 
-              <b:panel look="info">
-  				<f:facet name="heading">
-  					<b>Skinning</b>
-  				</f:facet>
-  				<ul>
-  					<li>
-  				   		<code>&lt;b:inputfield /&gt;</code> is an <code>input</code> tag bearing the CSS-class <code>form-control</code>.
-  				   </li>
-  				   <li>
-  				   		If the attribute <code>required</code> is true, the pseudo CSS class <code>bf-required</code> is added.
-                          Thus you can define your custom style for required fields.
-  				   </li>
-                     <li>
-                     If there's a <code>FacesMessage</code>, the input field is bears one of the pseudo CSS classes
-                     <code>bf-info</code>, <code>bf-warning</code>, <code>bf-error</code> or <code>bf-fatal</code>. If there are no messages,
-                     the input field bears the pseudo CSS class <code>bf-no-message</code>  and <code>has-success</code>. The latter colors the label green by default.
-                     </li>
-                     <li>If there's a label, it bears the CSS class <code>required</code>, if it's a mandatory field.
-                     This class adds an asterisk to the label text. You can override the CSS class to remove the asterisk
-                     or to replace it by something else.</li>
-                     <li>If there's a label, it bears the CSS classes <code>bf-info</code>, <code>bf-warning</code>,
-                     <code>bf-error</code> or <code>bf-fatal</code>, depending on which severity the error message the input field has.
-                     The latter two classes color the label red.<br />
-                     If there's no message,
-                     the label bears the pseudo CSS class <code>bf-no-message</code>  and <code>has-success</code>. The latter colors the label green by default.
-                     </li>
-  				  </ul>
-  			</b:panel>
-        </h:form>
+      <b:panel look="info">
+        <f:facet name="heading">
+          <b>Skinning</b>
+        </f:facet>
+        <ul>
+          <li>
+            <code>&lt;b:inputfield /&gt;</code> is an <code>input</code> tag bearing the CSS-class <code>form-control</code>.
+          </li>
+          <li>
+            If the attribute <code>required</code> is true, the pseudo CSS class <code>bf-required</code> is added.
+            Thus you can define your custom style for required fields.
+          </li>
+          <li>
+            If there's a <code>FacesMessage</code>, the input field is bears one of the pseudo CSS classes
+            <code>bf-info</code>, <code>bf-warning</code>, <code>bf-error</code> or <code>bf-fatal</code>. If there are no messages,
+            the input field bears the pseudo CSS class <code>bf-no-message</code>  and <code>has-success</code>. The latter colors the label green by default.
+          </li>
+          <li>If there's a label, it bears the CSS class <code>required</code>, if it's a mandatory field.
+            This class adds an asterisk to the label text. You can override the CSS class to remove the asterisk
+          or to replace it by something else.</li>
+          <li>If there's a label, it bears the CSS classes <code>bf-info</code>, <code>bf-warning</code>,
+            <code>bf-error</code> or <code>bf-fatal</code>, depending on which severity the error message the input field has.
+            The latter two classes color the label red.<br />
+            If there's no message,
+            the label bears the pseudo CSS class <code>bf-no-message</code>  and <code>has-success</code>. The latter colors the label green by default.
+          </li>
+        </ul>
+      </b:panel>
+    </h:form>
 
-				<script type="text/javascript">
-                    SyntaxHighlighter.all();
-                </script>
-                <br/><br/><br/><br/>
-            </ui:define>
-        </ui:composition>
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+    <br/><br/><br/><br/>
+  </ui:define>
+</ui:composition>

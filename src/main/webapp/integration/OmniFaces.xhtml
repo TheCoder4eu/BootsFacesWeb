@@ -1,91 +1,100 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
 
-             <ui:define name="content">
-                <style>td {padding: 8px;}</style>
-                <h1>Integration with OmniFaces</h1>
-                <p>BootsFaces loads many small CSS and JavaScript files. So it's a good idea to combine it with OmniFaces.
-                In particular, we recommend to use the <a target="#" href="http://showcase.omnifaces.org/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></a>.
-                </p>
-                <p>Note that we didn't run an exhaustive compatibility test yet. However, nobody's ever reported us problems with BootsFaces and OmniFaces.</p>
 
-     <b:tabView contentStyle="height:280px">
-        <b:tab title="Maven">
-          <p>Add these lines to your Maven pom.xml file:</p>
-          <b:panel>
-                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-<dependency>
-  <groupId>net.bootsfaces</groupId>
-  <artifactId>bootsfaces</artifactId>
-  <version>1.1.0</version>
-  <scope>compile</scope>
-</dependency>
-<dependency>
-  <groupId>org.omnifaces</groupId>
-  <artifactId>omnifaces</artifactId>
-  <version>2.6.1</version>
-  <scope>compile</scope>
-</dependency>
-]]>
-</script>
-          </b:panel>
-        </b:tab>
-        <b:tab title="Gradle">
-          <b:panel>
-<script type="syntaxhighlighter" class="brush: groovy; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-  compile 'net.bootsfaces:bootsfaces:1.1.0'
-  compile 'org.omnifaces:omnifaces:2.6.1'
-]]>
-</script>
-          </b:panel>
-        </b:tab>
-        <b:tab title="faces-config.xml">
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#integration_with_omnifaces" value="Integration with OmniFaces" />
+      <b:navLink href="#caching_version_of_the_combinedresourcehandler" value="Caching version of the CombinedResourceHandler" />
+    </b:listLinks>
+  </ui:define>
+
+
+  <ui:define name="content">
+    <style>td {padding: 8px;}</style>
+    <h1><a id="integration_with_omnifaces">Integration with OmniFaces</a></h1>
+    <p>BootsFaces loads many small CSS and JavaScript files. So it's a good idea to combine it with OmniFaces.
+    In particular, we recommend to use the <a target="#" href="http://showcase.omnifaces.org/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></a>.
+    </p>
+    <p>Note that we didn't run an exhaustive compatibility test yet. However, nobody's ever reported us problems with BootsFaces and OmniFaces.</p>
+
+    <b:tabView contentStyle="height:280px">
+      <b:tab title="Maven">
+        <p>Add these lines to your Maven pom.xml file:</p>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <dependency>
+            <groupId>net.bootsfaces</groupId>
+            <artifactId>bootsfaces</artifactId>
+            <version>1.2.0</version>
+            <scope>compile</scope>
+          </dependency>
+          <dependency>
+            <groupId>org.omnifaces</groupId>
+            <artifactId>omnifaces</artifactId>
+            <version>2.6.1</version>
+            <scope>compile</scope>
+          </dependency>
+          ]]>
+          </script>
+        </b:panel>
+      </b:tab>
+      <b:tab title="Gradle">
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: groovy; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          compile 'net.bootsfaces:bootsfaces:1.2.0'
+          compile 'org.omnifaces:omnifaces:2.6.1'
+          ]]>
+          </script>
+        </b:panel>
+      </b:tab>
+      <b:tab title="faces-config.xml">
         To activate the <code>CombinedResourceHandler</code>, add a <code>&lt;resource-handler&gt;</code> to the <code>faces-config.xml</code> file:
         <b:panel>
-<script type="syntaxhighlighter" class="brush: groovy; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-<?xml version="1.0" encoding="UTF-8"?>
-<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
-    version="2.2">
-    <application>
-        <resource-handler>org.omnifaces.resourcehandler.CombinedResourceHandler</resource-handler>
-    </application>
-</faces-config>
-]]>
-</script>
+          <script type="syntaxhighlighter" class="brush: groovy; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <?xml version="1.0" encoding="UTF-8"?>
+          <faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+          version="2.2">
+          <application>
+          <resource-handler>org.omnifaces.resourcehandler.CombinedResourceHandler</resource-handler>
+          </application>
+          </faces-config>
+          ]]>
+          </script>
         </b:panel>
-        </b:tab>
-      </b:tabView>
+      </b:tab>
+    </b:tabView>
 
-<h3>Caching version of the CombinedResourceHandler</h3>
-<p>Caching can add a lot to your page's responsiveness. You have to add a few lines to the <code>web.xml</code> file to activate and configure caching.</p>
+    <h2><a id="caching_version_of_the_combinedresourcehandler">Caching version of the CombinedResourceHandler</a></h2>
+    <p>Caching can add a lot to your page's responsiveness. You have to add a few lines to the <code>web.xml</code> file to activate and configure caching.</p>
 
-<p>Download the <a target="#" href="http://repository.primefaces.org/org/primefaces/themes/bootstrap/">PrimeFaces Bootsstrap theme</a>, add it to your application's <code>lib</code> folder and activate it in the <code>web.xml</code> like so:</p>
+    <p>Download the <a target="#" href="http://repository.primefaces.org/org/primefaces/themes/bootstrap/">PrimeFaces Bootsstrap theme</a>, add it to your application's <code>lib</code> folder and activate it in the <code>web.xml</code> like so:</p>
 
-     <b:panel>
-<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-    <!-- set the maximum time-to-live of cache entries to one day -->
-    <context-param>
-        <param-name>org.omnifaces.COMBINED_RESOURCE_HANDLER_CACHE_TTL</param-name>
-        <param-value>86400</param-value>
-    </context-param>
-]]>
-</script>
-          </b:panel>
+    <b:panel>
+      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+      <![CDATA[
+      <!-- set the maximum time-to-live of cache entries to one day -->
+      <context-param>
+      <param-name>org.omnifaces.COMBINED_RESOURCE_HANDLER_CACHE_TTL</param-name>
+      <param-value>86400</param-value>
+      </context-param>
+      ]]>
+      </script>
+    </b:panel>
 
-                <script type="text/javascript">
-                    SyntaxHighlighter.all();
-                </script>
-                <br/><br/><br/><br/>
-            </ui:define>
-        </ui:composition>
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+    <br/><br/><br/><br/>
+  </ui:define>
+</ui:composition>

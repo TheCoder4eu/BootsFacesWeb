@@ -53,9 +53,24 @@
                 <td>Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
             </tr>
             <tr>
+                <td>columnVisibility</td>
+                <td> false </td>
+                <td>Adds a button allowing the user to show and hide of the columns.</td>
+            </tr>
+            <tr>
                 <td>content-disabled<br />contentDisabled (alternative writing)</td>
                 <td> false </td>
                 <td>Enables or disables every child element of this container. By default, child elements are enabled.</td>
+            </tr>
+            <tr>
+                <td>copy</td>
+                <td> false </td>
+                <td>Adds a 'copy to clipboard' button.</td>
+            </tr>
+            <tr>
+                <td>csv</td>
+                <td> false </td>
+                <td>Adds a 'export CSV file' button.</td>
             </tr>
             <tr>
                 <td>custom-lang-url<br />customLangUrl (alternative writing)</td>
@@ -68,6 +83,11 @@
                 <td>Allows you to pass an arbitrary option to the datatable widget. Separate the options by a comma if you pass more than one. Note that this may cause incompatibilities when the next version of BootsFaces is released. Use at own risk.</td>
             </tr>
             <tr>
+                <td>deselect-on-backdrop-click<br />deselectOnBackdropClick (alternative writing)</td>
+                <td> false </td>
+                <td>If you set this option to true, the user can de-select rows by simply clicking outside the table. Defaults to false.</td>
+            </tr>
+            <tr>
                 <td>disabled</td>
                 <td>false</td>
                 <td>Boolean value to specify if the button is disabled.</td>
@@ -76,6 +96,11 @@
                 <td>display</td>
                 <td> block </td>
                 <td>If you use the "visible" attribute, the value of this attribute is added. Legal values: block, inline, inline-block. Default: block.</td>
+            </tr>
+            <tr>
+                <td>excel</td>
+                <td> false </td>
+                <td>Adds a 'export Excel file' button.</td>
             </tr>
             <tr>
                 <td>fixed-header<br />fixedHeader (alternative writing)</td>
@@ -233,6 +258,16 @@
                 <td>Activates the pagination of the dataTable. Default value is 'true'.</td>
             </tr>
             <tr>
+                <td>pdf</td>
+                <td> false </td>
+                <td>Adds a 'export PDF file' button.</td>
+            </tr>
+            <tr>
+                <td>print</td>
+                <td> false </td>
+                <td>Adds a 'print' button.</td>
+            </tr>
+            <tr>
                 <td>process</td>
                 <td>(none)</td>
                 <td>Comma or space separated list of ids or search expressions denoting which values are to be sent to the server.</td>
@@ -253,6 +288,11 @@
                 <td>Enable the row highlight css. Default: true.</td>
             </tr>
             <tr>
+                <td>row-style-class<br />rowStyleClass (alternative writing)</td>
+                <td>(none)</td>
+                <td>Optional CSS class for each row. If it's an EL expression, it's evaluated for each row. You can also provide a comma-separated list. In this case, the CSS classes are assigned cyclically to the row.</td>
+            </tr>
+            <tr>
                 <td>save-state<br />saveState (alternative writing)</td>
                 <td> true </td>
                 <td>Stores the state of the datatable on the client, so that after a page reload the same filters are active, the same page is shown etc.</td>
@@ -263,6 +303,11 @@
                 <td>If set, this will have the container match the height of the rows shown in the table if that height is smaller than that given height by the scroll-size. Default: true.</td>
             </tr>
             <tr>
+                <td>scroll-horizontally<br />scrollHorizontally (alternative writing)</td>
+                <td>false</td>
+                <td>Adds a horizontal scroll bar on small screens. Similar to scroll-x, but wraps the entire table within the scroll area. Defaults to false.</td>
+            </tr>
+            <tr>
                 <td>scroll-size<br />scrollSize (alternative writing)</td>
                 <td>(none)</td>
                 <td>If set, force the height of table to the size specified. You can optionally to add the unit (e.g. scroll-size="200px"). By default, it's px.</td>
@@ -270,7 +315,7 @@
             <tr>
                 <td>scroll-x<br />scrollX (alternative writing)</td>
                 <td>false</td>
-                <td>If set, the table can scroll horizontally. Defaults to false.</td>
+                <td>If set, the table can scroll horizontally. Similar to scroll-x, but uses a different approach, so the page selector, the search are not scrolled with the table. Defaults to false.</td>
             </tr>
             <tr>
                 <td>searching</td>
@@ -280,10 +325,30 @@
             <tr>
                 <td>select</td>
                 <td>false</td>
-                <td>Allows the user to select rows. Defaults to false.</td>
+                <td>Allows the user to select rows. Defaults to false. Is automatically set to true if selected-column, selected-row or selection-mode is set.</td>
             </tr>
             <tr>
-                <td>selectionMode</td>
+                <td>selected-column<br />selectedColumn (alternative writing)</td>
+                <td>(none)</td>
+                <td>Optional parameter defining which columns are selected when the datatable is initially rendered. If this attribute is an integer, it's the column index. If it's a string, it's a jQuery expression. Automatically sets selection='true' and selected-items='column'.</td>
+            </tr>
+            <tr>
+                <td>selected-items<br />selectedItems (alternative writing)</td>
+                <td>(none)</td>
+                <td>Determines whether rows, columns or individual cells are selected. Legal values are 'row', 'column', and 'cell'. The default value is 'row'. Automatically sets select='true'.</td>
+            </tr>
+            <tr>
+                <td>selected-row<br />selectedRow (alternative writing)</td>
+                <td>(none)</td>
+                <td>Optional parameter defining which rows are selected when the datatable is initially rendered. If this attribute is an integer, it's the row index. If it's a string, it's a jQuery expression. If it's another object, it's compared to the loop var.  Automatically sets selection='true' and selected-items='row'.</td>
+            </tr>
+            <tr>
+                <td>selection-info<br />selectionInfo (alternative writing)</td>
+                <td> true </td>
+                <td>The datatable shows below the table how many rows are selected. Setting this option to false deactivates this feature. Defaults to true.</td>
+            </tr>
+            <tr>
+                <td>selection-mode<br />selectionMode (alternative writing)</td>
                 <td> multiple </td>
                 <td>Set this property to "single" if you want to prevent multiple selections. Default is "multiple".</td>
             </tr>

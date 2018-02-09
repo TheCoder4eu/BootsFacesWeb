@@ -8,263 +8,278 @@
                 xmlns:hf="http://highfaces.org"
                 xmlns:p="http://primefaces.org/ui">
 
-    <ui:define name="content">
-        <style>
-            .ui-growl {position:fixed;top:80px}
-        </style>
-        <style>td {padding: 8px;}</style>
-        <h1>Integration with HighFaces</h1>
-        <p><a target="#" href="http://www.highfaces.org">HighFaces</a> is a small JSF library focusing on charts. 
-            It's based on <a target="#" href="">Highcharts.js</a>. Note that HighFaces is published under
-            an Apache V2 license, but the base library, Highcharts.js, is not. It's free for non-commercial
-            use, but you have to buy a license for commercial use.</p>
 
-        <h2>Example</h2>
-        <p>HighFaces works with BootsFaces out-of-the-box. Just add the library to your project,
-            add the </p>
-        <b:panel title="Live preview" look="info" collapsible="false">
-             <h:form>
-                        <hf:chart type="pie" title="Series with individual lists">
-                            <hf:chartSerie name="Boys" value="#{lineChartBean.boys}" var="point" point="#{point.amount}"  tickLabel="#{point.year}"
-                                           dataLabel="&lt;b>{point.name}&lt;/b>: {point.percentage:.1f} % &lt;i>({point.y})&lt;/i>"
-                                           />
-                        </hf:chart>                       
-                    </h:form> 
-            
-            <f:facet name="footer"> 
-                <b:tabView>
-            <b:tab title="JSF markup">
-                <b:panel>
-                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                        <![CDATA[
-                        <hf:chart type="pie" title="Series with individual lists">
-                            <hf:chartSerie name="Boys" value="&num;{lineChartBean.boys}" var="point" point="&num;{point.amount}"  tickLabel="&num;{point.year}"
-                        dataLabel="&lt;b>{point.name}&lt;/b>: {point.percentage:.1f} % &lt;i>({point.y})&lt;/i>"/>
-                        </hf:chart>
-                        ]]>
-                    </script>
-                </b:panel>
-            </b:tab>
-            <b:tab title="Java Bean">
-                <b:panel>
-                    <script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1">
-                        <![CDATA[
-@ManagedBean
-@RequestScoped
-public class LineChartBean {
- 
-    protected List<Birth> boys;
-    protected List<Birth> girls;
-     
-    public List<Birth> getBoys() {
-        return boys;
-    }           
-     
-    public List<Birth> getGirls() {
-        return girls;
-    }   
-     
-    public LineChartBean() {
-        reload();
-    }
- 
-    private void reload() {
-        boys = new ArrayList<>();
-        girls = new ArrayList<>();
-        Random r = new Random();
-        for (int i = 2000; i < 2010; i++) {
-            boys.add(new Birth(Integer.toString(i), r.nextInt(500) + 800));   
-            girls.add(new Birth(Integer.toString(i), r.nextInt(500) + 800));   
-        }  
-    }
-}                        ]]>
-                    </script>
-                </b:panel>
-            </b:tab>
-            <b:tab title="Java Bean">
-                <b:panel>
-                    <script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1">
-                        <![CDATA[
-public class Birth {
- 
-    protected String year;
-    protected Integer amount;
- 
-    public String getYear() {
-        return year;
-    }
- 
-    public void setYear(String year) {
-        this.year = year;
-    }
- 
-    public Integer getAmount() {
-        return amount;
-    }
- 
-    public void setAmount(Integer amount) {
-        this.amount = amount;
-    }
- 
-    public Birth() {
-    }
- 
-    public Birth(String year, Integer amount) {
-        this.year = year;
-        this.amount = amount;
-    }
-}                        ]]>
-                    </script>
-                    </b:panel>
-                    </b:tab>
-                </b:tabView>
-            </f:facet>
-        </b:panel>
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#integration_with_highfaces" value="Integration with HighFaces" />
+      <b:navLink href="#prerequisites" value="Prerequisites" />
+      <b:navLink href="#example" value="Example" />
+      <b:navLink href="#interactive_example" value="Interactive example" />
+    </b:listLinks>
+  </ui:define>
 
-        <h2>Interactive example</h2>
-        <p>The charts play well with the AJAX API of BootsFaces:</p>
-        <b:panel title="Live preview" look="info" collapsible="false">
-            <h:form>
-                        <b:row>
-                            <b:column small-screen="two-thirds">
-                                <hf:chart title="Series with individual lists" xaxisLabel="Year" yaxisLabel="Amount">
-                                    <hf:chartSerie name="Boys" 
-                                                   type="#{highFacesSettingsBean.boysType}" 
-                                                   value="#{lineChartBean.boys}" 
-                                                   var="point" 
-                                                   point="#{point.amount}"  
-                                                   tickLabel="#{point.year}"/>
-                                    <hf:chartSerie colorByPoint="true" 
-                                                   type="#{highFacesSettingsBean.girlsType}" 
-                                                   name="Girls" 
-                                                   value="#{lineChartBean.girls}" 
-                                                   var="point" 
-                                                   point="#{point.amount}"  />
-                                </hf:chart>	
-                            </b:column>
-                            <b:column small-screen="one-third">
-                                <b:panelGrid columns="2">
-                                    <h:outputLabel value="Chart type (girls):" />
-                                    <h:outputLabel value="Chart type (boys):" />
-                                    <b:radiobutton value="#{highFacesSettingsBean.girlsType}">
-                                        <f:selectItems value="#{highFacesSettingsBean.chartTypes}" />
-                                    </b:radiobutton>
-                                    <b:radiobutton value="#{highFacesSettingsBean.boysType}">
-                                        <f:selectItems value="#{highFacesSettingsBean.chartTypes}" />
-                                    </b:radiobutton>
-                                </b:panelGrid>
-                                <br />
-                                <b:commandButton value="draw" update="@form" onclick="ajax:highFacesSettingsBean.redraw()" />
-                            </b:column>
-                        </b:row>				  
-                    </h:form> 
-            
-            <f:facet name="footer">
-                <b:tabView>
-            <b:tab title="JSF markup">
-                <b:panel>
-                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                        <![CDATA[
-                   <h:form>
-                        <b:row>
-                            <b:column small-screen="two-thirds">
-                                <hf:chart title="Series with individual lists" xaxisLabel="Year" yaxisLabel="Amount">
-                                    <hf:chartSerie name="Boys" 
-                                                   type="&num;{highFacesSettingsBean.boysType}" 
-                                                   value="&num;{lineChartBean.boys}" 
-                                                   var="point" 
-                                                   point="&num;{point.amount}"  
-                                                   tickLabel="&num;{point.year}"/>
-                                    <hf:chartSerie colorByPoint="true" 
-                                                   type="&num;{highFacesSettingsBean.girlsType}" 
-                                                   name="Girls" 
-                                                   value="&num;{lineChartBean.girls}" 
-                                                   var="point" 
-                                                   point="&num;{point.amount}"  />
-                                </hf:chart>	
-                            </b:column>
-                            <b:column small-screen="one-third">
-                                <b:panelGrid columns="2">
-                                    <h:outputLabel value="Chart type (girls):" />
-                                    <h:outputLabel value="Chart type (boys):" />
-                                    <b:radiobutton value="&num;{highFacesSettingsBean.girlsType}">
-                                        <f:selectItems value="&num;{highFacesSettingsBean.chartTypes}" />
-                                    </b:radiobutton>
-                                    <b:radiobutton value="&num;{highFacesSettingsBean.boysType}">
-                                        <f:selectItems value="&num;{highFacesSettingsBean.chartTypes}" />
-                                    </b:radiobutton>
-                                </b:panelGrid>
-                                <br />
-                                <b:commandButton value="draw" update="@form" onclick="ajax:highFacesSettingsBean.redraw()" />
-                            </b:column>
-                        </b:row>				  
-                    </h:form> 
-                        ]]>
-                    </script>
-                </b:panel>
-            </b:tab>
-            <b:tab title="Java bean (settings)">
-                <b:panel>
-                    <script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1">
-                        <![CDATA[
-@ManagedBean
-@RequestScoped
-public class HighFacesSettingsBean implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
-	private String boysType="line";
-	
-	private String girlsType="column";
-	
-	private List<String> chartTypes = new ArrayList<String>();
-	
-	public HighFacesSettingsBean() {
-		chartTypes.add("line");
-		chartTypes.add("bar");
-		chartTypes.add("pie");
-		chartTypes.add("column");
-	}
+  <ui:define name="content">
+    <style>
+      .ui-growl {position:fixed;top:80px}
+    </style>
+    <style>td {padding: 8px;}</style>
+    <h1><a id="integration_with_highfaces">Integration with HighFaces</a></h1>
+    <p><a target="#" href="http://www.highfaces.org">HighFaces</a> is a small JSF library focusing on charts.
+    It's based on <a target="#" href="">Highcharts.js</a>. Note that HighFaces is published under
+    an Apache V2 license, but the base library, Highcharts.js, is not. It's free for non-commercial
+    use, but you have to buy a license for commercial use.</p>
 
-	public String getBoysType() {
-		return boysType;
-	}
+    <h2><a id="prerequisites">Prerequisites</a></h2>
+    <p>HighFaces requires Mojarra. It's not compatible with MyFaces.</p>
 
-	public void setBoysType(String boysType) {
-		this.boysType = boysType;
-	}
 
-	public String getGirlsType() {
-		return girlsType;
-	}
+    <h2><a id="example">Example</a></h2>
+    <p>HighFaces works with BootsFaces out-of-the-box. Just add the library to your project,
+    add the </p>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form>
+        <hf:chart type="pie" title="Series with individual lists">
+          <hf:chartSerie name="Boys" value="#{lineChartBean.boys}" var="point" point="#{point.amount}"  tickLabel="#{point.year}"
+                         dataLabel="&lt;b>{point.name}&lt;/b>: {point.percentage:.1f} % &lt;i>({point.y})&lt;/i>"
+            />
+        </hf:chart>
+      </h:form>
 
-	public void setGirlsType(String girlsType) {
-		this.girlsType = girlsType;
-	}
+      <f:facet name="footer">
+        <b:tabView>
+          <b:tab title="JSF markup">
+            <b:panel>
+              <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+              <![CDATA[
+              <hf:chart type="pie" title="Series with individual lists">
+                <hf:chartSerie name="Boys" value="&num;{lineChartBean.boys}" var="point" point="&num;{point.amount}"  tickLabel="&num;{point.year}"
+                               dataLabel="&lt;b>{point.name}&lt;/b>: {point.percentage:.1f} % &lt;i>({point.y})&lt;/i>"/>
+              </hf:chart>
+              ]]>
+              </script>
+            </b:panel>
+          </b:tab>
+          <b:tab title="Java Bean">
+            <b:panel>
+              <script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1">
+              <![CDATA[
+              @ManagedBean
+              @RequestScoped
+              public class LineChartBean {
 
-	public List<String> getChartTypes() {
-		return chartTypes;
-	}
+                protected List<Birth> boys;
+                protected List<Birth> girls;
 
-	public void setChartTypes(List<String> chartTypes) {
-		this.chartTypes = chartTypes;
-	}
-	
-	public void redraw() {
-	}
-}
-                        ]]>
-                    </script>
-                </b:panel>
-            </b:tab>
-        </b:tabView>   
-            </f:facet>
-        </b:panel>
-        
-                     
-        <script type="text/javascript">
-            SyntaxHighlighter.all();
-        </script>
-        <br/><br/><br/><br/>
-    </ui:define>
+                public List<Birth> getBoys() {
+                  return boys;
+                }
+
+                public List<Birth> getGirls() {
+                  return girls;
+                }
+
+                public LineChartBean() {
+                  reload();
+                }
+
+                private void reload() {
+                  boys = new ArrayList<>();
+                  girls = new ArrayList<>();
+                  Random r = new Random();
+                  for (int i = 2000; i < 2010; i++) {
+                    boys.add(new Birth(Integer.toString(i), r.nextInt(500) + 800));
+                    girls.add(new Birth(Integer.toString(i), r.nextInt(500) + 800));
+                  }
+                }
+              }                        ]]>
+              </script>
+            </b:panel>
+          </b:tab>
+          <b:tab title="Java Bean">
+            <b:panel>
+              <script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1">
+              <![CDATA[
+              public class Birth {
+
+                protected String year;
+                protected Integer amount;
+
+                public String getYear() {
+                  return year;
+                }
+
+                public void setYear(String year) {
+                  this.year = year;
+                }
+
+                public Integer getAmount() {
+                  return amount;
+                }
+
+                public void setAmount(Integer amount) {
+                  this.amount = amount;
+                }
+
+                public Birth() {
+                }
+
+                public Birth(String year, Integer amount) {
+                  this.year = year;
+                  this.amount = amount;
+                }
+              }                        ]]>
+              </script>
+            </b:panel>
+          </b:tab>
+        </b:tabView>
+      </f:facet>
+    </b:panel>
+
+    <h2><a id="interactive_example">Interactive example</a></h2>
+    <p>The charts play well with the AJAX API of BootsFaces:</p>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form>
+        <b:row>
+          <b:column small-screen="two-thirds">
+            <hf:chart title="Series with individual lists" xaxisLabel="Year" yaxisLabel="Amount">
+              <hf:chartSerie name="Boys"
+                             type="#{highFacesSettingsBean.boysType}"
+                             value="#{lineChartBean.boys}"
+                             var="point"
+                             point="#{point.amount}"
+                             tickLabel="#{point.year}"/>
+              <hf:chartSerie colorByPoint="true"
+                             type="#{highFacesSettingsBean.girlsType}"
+                             name="Girls"
+                             value="#{lineChartBean.girls}"
+                             var="point"
+                             point="#{point.amount}"  />
+            </hf:chart>
+          </b:column>
+          <b:column small-screen="one-third">
+            <b:panelGrid columns="2">
+              <h:outputLabel value="Chart type (girls):" />
+              <h:outputLabel value="Chart type (boys):" />
+              <b:radiobutton value="#{highFacesSettingsBean.girlsType}">
+                <f:selectItems value="#{highFacesSettingsBean.chartTypes}" />
+              </b:radiobutton>
+              <b:radiobutton value="#{highFacesSettingsBean.boysType}">
+                <f:selectItems value="#{highFacesSettingsBean.chartTypes}" />
+              </b:radiobutton>
+            </b:panelGrid>
+            <br />
+            <b:commandButton value="draw" update="@form" onclick="ajax:highFacesSettingsBean.redraw()" />
+          </b:column>
+        </b:row>
+      </h:form>
+
+      <f:facet name="footer">
+        <b:tabView>
+          <b:tab title="JSF markup">
+            <b:panel>
+              <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+              <![CDATA[
+              <h:form>
+                <b:row>
+                  <b:column small-screen="two-thirds">
+                    <hf:chart title="Series with individual lists" xaxisLabel="Year" yaxisLabel="Amount">
+                      <hf:chartSerie name="Boys"
+                                     type="&num;{highFacesSettingsBean.boysType}"
+                                     value="&num;{lineChartBean.boys}"
+                                     var="point"
+                                     point="&num;{point.amount}"
+                                     tickLabel="&num;{point.year}"/>
+                      <hf:chartSerie colorByPoint="true"
+                                     type="&num;{highFacesSettingsBean.girlsType}"
+                                     name="Girls"
+                                     value="&num;{lineChartBean.girls}"
+                                     var="point"
+                                     point="&num;{point.amount}"  />
+                    </hf:chart>
+                  </b:column>
+                  <b:column small-screen="one-third">
+                    <b:panelGrid columns="2">
+                      <h:outputLabel value="Chart type (girls):" />
+                      <h:outputLabel value="Chart type (boys):" />
+                      <b:radiobutton value="&num;{highFacesSettingsBean.girlsType}">
+                        <f:selectItems value="&num;{highFacesSettingsBean.chartTypes}" />
+                      </b:radiobutton>
+                      <b:radiobutton value="&num;{highFacesSettingsBean.boysType}">
+                        <f:selectItems value="&num;{highFacesSettingsBean.chartTypes}" />
+                      </b:radiobutton>
+                    </b:panelGrid>
+                    <br />
+                    <b:commandButton value="draw" update="@form" onclick="ajax:highFacesSettingsBean.redraw()" />
+                  </b:column>
+                </b:row>
+              </h:form>
+              ]]>
+              </script>
+            </b:panel>
+          </b:tab>
+          <b:tab title="Java bean (settings)">
+            <b:panel>
+              <script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1">
+              <![CDATA[
+              @ManagedBean
+              @RequestScoped
+              public class HighFacesSettingsBean implements Serializable {
+
+                private static final long serialVersionUID = 1L;
+
+                private String boysType="line";
+
+                private String girlsType="column";
+
+                private List<String> chartTypes = new ArrayList<String>();
+
+                public HighFacesSettingsBean() {
+                  chartTypes.add("line");
+                  chartTypes.add("bar");
+                  chartTypes.add("pie");
+                  chartTypes.add("column");
+                }
+
+                public String getBoysType() {
+                  return boysType;
+                }
+
+                public void setBoysType(String boysType) {
+                  this.boysType = boysType;
+                }
+
+                public String getGirlsType() {
+                  return girlsType;
+                }
+
+                public void setGirlsType(String girlsType) {
+                  this.girlsType = girlsType;
+                }
+
+                public List<String> getChartTypes() {
+                  return chartTypes;
+                }
+
+                public void setChartTypes(List<String> chartTypes) {
+                  this.chartTypes = chartTypes;
+                }
+
+                public void redraw() {
+                }
+              }
+              ]]>
+              </script>
+            </b:panel>
+          </b:tab>
+        </b:tabView>
+      </f:facet>
+    </b:panel>
+
+
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+    <br/><br/><br/><br/>
+  </ui:define>
 </ui:composition>

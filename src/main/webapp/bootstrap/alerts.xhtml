@@ -1,110 +1,121 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
 
-            <ui:define name="content">
-                <h1>Alerts</h1>
-                <p class="lead">Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.</p>
-                <p>A default gray alert wouldn't make too much sense, so you're required to specify a type with the severity attribute. Choose from success, info, warning, or danger.</p>
-                <p>The <code>title</code> attribute is optional and will add a title to the Alert.</p>
-                <p>The b:alert tag is a container you can put arbitrary JSF and HTML code in:</p>
-                
-                <b:panel title="Live preview" look="info" collapsible="false">            
 
-        <b:alert severity="success"><strong>Well done!</strong> You successfully read this important alert message.</b:alert>
-                    <b:alert severity="info"><strong>Heads up!</strong> This alert needs your attention, but it's not super important. </b:alert>
-                    <b:alert severity="warning"><strong>Warning!</strong> Best check yo self, you're not looking too good. </b:alert>
-                    <b:alert severity="danger"><strong>Oh snap!</strong> Change a few things up and try submitting again. </b:alert>
-                    <b:alert severity="info" title="Heads up!">This alert needs your attention, but it's not super important. </b:alert>
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#alerts" value="Alerts" />
+      <b:navLink href="#dismissable_alerts" value="Dismissable alerts" />
+      <b:navLink href="#custom_alerts" value="Custom alerts" />
+      <b:navLink href="#reference_section" value="Reference section" />
+    </b:listLinks>
+  </ui:define>
 
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-	          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-             <![CDATA[
-                    <b:alert severity="success"><strong>Well done!</strong> You successfully read this important alert message.</b:alert>
-                    <b:alert severity="info"><strong>Heads up!</strong> This alert needs your attention, but it's not super important. </b:alert>
-                    <b:alert severity="warning"><strong>Warning!</strong> Best check yo self, you're not looking too good. </b:alert>
-                    <b:alert severity="danger"><strong>Oh snap!</strong> Change a few things up and try submitting again. </b:alert>
-                    <b:alert severity="info" title="Heads up!">This alert needs your attention, but it's not super important. </b:alert>
-             ]]></script>
-                </b:panel>
-            </f:facet>
+
+  <ui:define name="content">
+    <h1><a id="alerts">Alerts</a></h1>
+    <p class="lead">Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.</p>
+    <p>A default gray alert wouldn't make too much sense, so you're required to specify a type with the severity attribute. Choose from success, info, warning, or danger.</p>
+    <p>The <code>title</code> attribute is optional and will add a title to the Alert.</p>
+    <p>The b:alert tag is a container you can put arbitrary JSF and HTML code in:</p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+
+      <b:alert severity="success"><strong>Well done!</strong> You successfully read this important alert message.</b:alert>
+      <b:alert severity="info"><strong>Heads up!</strong> This alert needs your attention, but it's not super important. </b:alert>
+      <b:alert severity="warning"><strong>Warning!</strong> Best check yo self, you're not looking too good. </b:alert>
+      <b:alert severity="danger"><strong>Oh snap!</strong> Change a few things up and try submitting again. </b:alert>
+      <b:alert severity="info" title="Heads up!">This alert needs your attention, but it's not super important. </b:alert>
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:alert severity="success"><strong>Well done!</strong> You successfully read this important alert message.</b:alert>
+          <b:alert severity="info"><strong>Heads up!</strong> This alert needs your attention, but it's not super important. </b:alert>
+          <b:alert severity="warning"><strong>Warning!</strong> Best check yo self, you're not looking too good. </b:alert>
+          <b:alert severity="danger"><strong>Oh snap!</strong> Change a few things up and try submitting again. </b:alert>
+          <b:alert severity="info" title="Heads up!">This alert needs your attention, but it's not super important. </b:alert>
+          ]]></script>
         </b:panel>
-                
-                <h3>Dismissable alerts</h3>
-                <p>You can make Alerts dismissable adding <code>closable="true"</code> :</p>
-                
-                <b:panel title="Live preview" look="info" collapsible="false">            
+      </f:facet>
+    </b:panel>
 
-<b:alert severity="warning" title="Warning Title" closable="true"><strong>Warning!</strong> Best check yo self, you're not looking too good. </b:alert>
+    <h2><a id="dismissable_alerts">Dismissable alerts</a></h2>
+    <p>You can make Alerts dismissable adding <code>closable="true"</code> :</p>
 
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-	          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-             <![CDATA[
-             <b:alert severity="warning" title="Warning Title" closable="true"><strong>Warning!</strong> Best check yo self, you're not looking too good. </b:alert>
-             ]]></script>
-                </b:panel>
-            </f:facet>
+    <b:panel title="Live preview" look="info" collapsible="false">
+
+      <b:alert severity="warning" title="Warning Title" closable="true"><strong>Warning!</strong> Best check yo self, you're not looking too good. </b:alert>
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:alert severity="warning" title="Warning Title" closable="true"><strong>Warning!</strong> Best check yo self, you're not looking too good. </b:alert>
+          ]]></script>
         </b:panel>
-                
-                <p>Click the cross on the right to get rid of the message.</p>
-                
-                <h3>Custom alerts</h3>
-                <p><b>Caveat:</b> This is a feature that works with Bootstrap 3 but may break with Bootstrap 4. Use at own risk.</p>
-                <p>BootsFaces doesn't restrict the <code>severity</code> parameters to the five values defined by Bootstrap. So you can define
-                your own alert type.</p>
-                
-                <b:panel title="Live preview" look="info" collapsible="false">            
+      </f:facet>
+    </b:panel>
 
-<style>
-	                    .alert-pink {
-						    background-color: #FF1493;
-						    border-color: black;
-						    color: white;
-					    }
-	                </style>
-	                <b:alert severity="pink" title="Let's go pink!">This is an alert featuring custom colors.</b:alert>
+    <p>Click the cross on the right to get rid of the message.</p>
 
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
-                            <![CDATA[
- 	                <style>
-	                   .alert-pink {
-						    background-color: #FF1493;
-						    border-color: black;
-						    color: white;
-						}
-	                </style>
-	                <b:alert severity="pink" title="Let's go pink!">This is an alert featuring custom colors.</b:alert>
-                    ]]></script>
-                </b:panel>
-            </f:facet>
+    <h2><a id="custom_alerts">Custom alerts</a></h2>
+    <p><b>Caveat:</b> This is a feature that works with Bootstrap 3 but may break with Bootstrap 4. Use at own risk.</p>
+    <p>BootsFaces doesn't restrict the <code>severity</code> parameters to the five values defined by Bootstrap. So you can define
+    your own alert type.</p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+
+      <style>
+        .alert-pink {
+          background-color: #FF1493;
+          border-color: black;
+          color: white;
+        }
+      </style>
+      <b:alert severity="pink" title="Let's go pink!">This is an alert featuring custom colors.</b:alert>
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 1">
+          <![CDATA[
+          <style>
+            .alert-pink {
+              background-color: #FF1493;
+              border-color: black;
+              color: white;
+            }
+          </style>
+          <b:alert severity="pink" title="Let's go pink!">This is an alert featuring custom colors.</b:alert>
+          ]]></script>
         </b:panel>
-                
-                <h3>Reference section</h3>
-                <ui:include src="AlertAttributes.xhtml" />
-                <b:panel look="info" rendered="false">
-					<f:facet name="heading">
-						<b>Skinning</b>
-					</f:facet>
-					<ul>
-						<li>Tell the world which CSS classes can be used to change the
-						look of the component.</li>
-					</ul>
-				</b:panel>
-                
-                <br/><br/><br/>
-                <script type="text/javascript">
-                    SyntaxHighlighter.all();
-                </script>
-            </ui:define>
-        </ui:composition>
+      </f:facet>
+    </b:panel>
+
+    <h2><a id="reference_section">Reference section</a></h2>
+    <ui:include src="AlertAttributes.xhtml" />
+    <b:panel look="info" rendered="false">
+      <f:facet name="heading">
+        <b>Skinning</b>
+      </f:facet>
+      <ul>
+        <li>Tell the world which CSS classes can be used to change the
+        look of the component.</li>
+      </ul>
+    </b:panel>
+
+    <br/><br/><br/>
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+  </ui:define>
+</ui:composition>

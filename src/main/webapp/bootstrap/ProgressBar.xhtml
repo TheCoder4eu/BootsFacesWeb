@@ -1,330 +1,343 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:b="http://bootsfaces.net/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<ui:define name="content">
-		<style>
-td {
-	padding: 8px;
-}
-</style>
-		<h1>ProgressBar <b:badge value="since 0.8.5" /></h1>
 
-		<p>Sometimes you want to show your users a progress or a completion of some kind. That's where a ProgressBar comes in handy.</p>
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#progressbar" value="ProgressBar" />
+      <b:navLink href="#basic_usage" value="Basic usage" />
+      <b:navLink href="#responsive_design" value="Responsive design" />
+      <b:navLink href="#visibility_depending_on_screen_size" value="Visibility depending on screen size" />
+      <b:navLink href="#tooltips" value="Tooltips" />
+      <b:navLink href="#reference_section" value="Reference section" />
+    </b:listLinks>
+  </ui:define>
 
-		<h1>Basic usage</h1>
-		<p>In the simplest case you only need to provide the value the ProgressBar should present. It will then be rendered with the primary look, ranging between 0 and 100, showing the bar completion as a percentage. </p>
 
-		        <b:panel title="Live preview" look="info" collapsible="false">         
-			<b:progressBar value="50"/>
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-					<![CDATA[
-						<b:progressBar value="50"/>
-					]]>
-				</script>
-                </b:panel>
-            </f:facet>
-        </b:panel>
-       
+  <ui:define name="content">
+    <style>
+      td {
+        padding: 8px;
+      }
+    </style>
+    <h1><a id="progressbar">ProgressBar</a><b:badge value="since 0.8.5" /></h1>
 
-		<h3 id="contextual-alternatives">Contextual alternatives</h3>
-		<p>
-			Like other components, easily make a ProgressBar more meaningful to a particular context by adding a look attribute with values primary, success, info, warning or danger.
-		</p>
-		        <b:panel title="Live preview" look="info" collapsible="false">         
-				<b:progressBar value="100" look="primary"/>
-				<b:progressBar value="90" look="info"/>
-				<b:progressBar value="80" look="success"/>
-				<b:progressBar value="70" look="warning"/>
-				<b:progressBar value="60" look="danger"/>
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-					<![CDATA[
-						<b:progressBar value="100" look="primary"/>
-						<b:progressBar value="90" look="info"/>
-						<b:progressBar value="80" look="success"/>
-						<b:progressBar value="70" look="warning"/>
-						<b:progressBar value="60" look="danger"/>
-					]]>
-				</script>
-                </b:panel>
-            </f:facet>
-        </b:panel>
-       
+    <p>Sometimes you want to show your users a progress or a completion of some kind. That's where a ProgressBar comes in handy.</p>
 
-		<h3 id="labels">Labels</h3>
-		<p>
-			You can always provide your own caption instead of using the standard percentage or simply hide the caption, if you want a pure ProgressBar.
-		</p>
+    <h2><a id="basic_usage">Basic usage</a></h2>
+    <p>In the simplest case you only need to provide the value the ProgressBar should present. It will then be rendered with the primary look, ranging between 0 and 100, showing the bar completion as a percentage. </p>
 
-		        <b:panel title="Live preview" look="info" collapsible="false">         
-<b:progressBar value="50" caption="This bar is half done."/>
-				<b:progressBar value="50" renderCaption="false"/>
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-					<![CDATA[
-						<b:progressBar value="50" caption="This bar is half done."/>
-						<b:progressBar value="50" renderCaption="false"/>
-					]]>
-				</script>
-                </b:panel>
-            </f:facet>
-        </b:panel>
-       
-
-		<p>
-			If you use the standard caption, you can also configure the amount of shown fraction digits.
-		</p>
-
-		        <b:panel title="Live preview" look="info" collapsible="false">         
-
-	<b:progressBar value="100" min="50" max="200"/>
-				<b:progressBar value="100" min="50" max="200" maxDecimalPlaces="6"/>
-				<b:progressBar value="100" min="50" max="200" maxDecimalPlaces="0"/>
-
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-	<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-					<![CDATA[
-						<b:progressBar value="100" min="50" max="200"/>
-						<b:progressBar value="100" min="50" max="200" maxDecimalPlaces="6"/>
-						<b:progressBar value="100" min="50" max="200" maxDecimalPlaces="0"/>
-					]]>
-				</script>
-                </b:panel>
-            </f:facet>
-        </b:panel>
-       
-
-		<h3 id="custom-ranges">Custom ranges</h3>
-		<p>
-			Instead 0 and 100 you can use any integer values as boundaries.
-		</p>
-		<p>
-			You don't need to calculate the desired completion percentage yourself, just drop a value that lies between your defined range.
-		</p>
-
-        <b:panel title="Live preview" look="info" collapsible="false">         
-
-<b:progressBar value="100" min="50" max="200" tooltip="min=50, max=200, value=100"/>
-				<b:progressBar value="0" min="-100" max="0"   tooltip="min=-100, max=0, value=0"/>
-
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-				<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-					<![CDATA[
-						<b:progressBar value="100" min="50" max="200" tooltip="min=50, max=200, value=100"/>
-						<b:progressBar value="0" min="-100" max="0" tooltip="min=-100, max=0, value=0"/>
-					]]>
-				</script>
-                </b:panel>
-            </f:facet>
-        </b:panel>
-       
-
-		<h3 id="striped">Striped</h3>
-		<p>
-			Striped ProgressBars can be used to indicate a long running action, that was already finished or aborted.
-		</p>
-		<p>
-			Uses a gradient to create a striped effect. Not available in IE9 and below.
-		</p>
-
-		        <b:panel title="Live preview" look="info" collapsible="false">         
-
-	<b:progressBar value="100" striped="true" />
-
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-	<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-					<![CDATA[
-						<b:progressBar value="100" striped="true" />
-					]]>
-				</script>
-                </b:panel>
-            </f:facet>
-        </b:panel>
-       
-
-		<h3 id="animated">Animated</h3>
-		<p>
-			If you want to indicate a currently running action, it's much more untuitive to make your ProgressBar move a bit.
-		</p>
-		<p>
-			Making a ProgressBar animated automatically applies stripes to it (otherwise there would be nothing to see). Thus this is also not available in IE9 and below.
-		</p>
-
-		        <b:panel title="Live preview" look="info" collapsible="false">         
-
-<b:progressBar value="100" animated="true" renderCaption="false"/>
-				<b:progressBar value="75" animated="true"/>
-
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-					<![CDATA[
-						<b:progressBar value="100" animated="true" renderCaption="false"/>
-						<b:progressBar value="75" animated="true"/>
-					]]>
-				</script>
-                </b:panel>
-            </f:facet>
-        </b:panel>
-
-        <br/>
-        <h3>Responsive design <b:badge value="since 0.9.0" /></h3>
-        <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
-        also with <code>&lt;b:progressBar /&gt;</code>:</p>
-       
-                <b:panel title="Live preview" look="info" collapsible="false">         
-
-<b:row>
-                <b:progressBar value="50" min="0" max="100"  tooltip="large-screen='full-width'" large-screen="full-width" />
-             </b:row>
-             <b:row style="padding-top:5px">
-                <b:progressBar value="50" min="0" max="100"  tooltip="large-screen='one-third'" large-screen="one-third" />
-                <b:progressBar value="50" min="0" max="100"  tooltip="large-screen='two-thirds'" large-screen="two-thirds" />
-             </b:row>
-             <b:row style="padding-top:5px">
-                <b:progressBar value="50" min="0" max="100"  tooltip="small-screen='one-third'" small-screen="one-third" />
-                <b:progressBar value="50" min="0" max="100"  tooltip="small-screen='two-thirds'" small-screen="two-thirds" />
-             </b:row>
-             <b:row style="padding-top:5px">
-                <b:progressBar value="50" min="0" max="100"  tooltip="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
-                <b:progressBar value="50" min="0" max="100"  tooltip="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
-             </b:row>
-
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-             <![CDATA[
-             <b:row>
-                <b:progressBar value="50" min="0" max="100"  tooltip="large-screen='full-width'" large-screen="full-width" />
-             </b:row>
-             <b:row style="padding-top:5px">
-                <b:progressBar value="50" min="0" max="100"  tooltip="large-screen='one-third'" large-screen="one-third" />
-                <b:progressBar value="50" min="0" max="100"  tooltip="large-screen='two-thirds'" large-screen="two-thirds" />
-             </b:row>
-             <b:row style="padding-top:5px">
-                <b:progressBar value="50" min="0" max="100"  tooltip="small-screen='one-third'" small-screen="one-third" />
-                <b:progressBar value="50" min="0" max="100"  tooltip="small-screen='two-thirds'" small-screen="two-thirds" />
-             </b:row>
-             <b:row style="padding-top:5px">
-                <b:progressBar value="50" min="0" max="100"  tooltip="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
-                <b:progressBar value="50" min="0" max="100"  tooltip="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
-             </b:row>
-             ]]></script>
-                </b:panel>
-            </f:facet>
-        </b:panel>
-       
-
-        <h3>Visibility depending on screen size <b:badge value="since 0.8.6/0.9.0" /></h3>
-        <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
-       
-                <b:panel title="Live preview" look="info" collapsible="false">         
-
-<b:panelGrid colSpans="3,9">
-                  <h:outputText value="Visible on &gt;= md:" />
-                  <b:progressBar value="50" min="0" max="100" tooltip="Visible on medium or large screen" look="info" visible="md..." />
-                  
-                  <h:outputText value="Visible on &lt;= sm:" />
-                  <b:progressBar value="50" min="0" max="100" tooltip="Visible on small-screen" look="success" visible="...sm"/>
-                  
-                  <h:outputText value="Visible on sm...lg:" />
-                  <b:progressBar value="50" min="0" max="100" tooltip="Visible on small to large screen" look="success" visible="sm...lg"/>
-                  
-                  <h:outputText value="Visible on xs and md:" />
-                  <b:progressBar value="50" min="0" max="100" tooltip="Visible on tiny and medium screen" look="success" visible="xs,md"/>
-                  
-                  <h:outputText value="Col-md-6, offset 2:" />
-                  <b:progressBar value="50" min="0" max="100" tooltip="col-md-6, offset 2" look="success" col-md="6" offset="2" />
-               </b:panelGrid>
-
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <b:progressBar value="50"/>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-             <![CDATA[
-               <b:panelGrid colSpans="3,9">
-                  <h:outputText value="Visible on &gt;= md:" />
-                  <b:progressBar value="50" min="0" max="100" tooltip="Visible on medium or large screen" severity="info" visible="md..." />
-                  
-                  <h:outputText value="Visible on &lt;= sm:" />
-                  <b:progressBar value="50" min="0" max="100" tooltip="Visible on small-screen" severity="success" visible="...sm"/>
-                  
-                  <h:outputText value="Visible on sm...lg:" />
-                  <b:progressBar value="50" min="0" max="100" tooltip="Visible on small to large screen" severity="success" visible="sm...lg"/>
-                  
-                  <h:outputText value="Visible on xs and md:" />
-                  <b:progressBar value="50" min="0" max="100" tooltip="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
-                  
-                  <h:outputText value="Col-md-6, offset 2:" />
-                  <b:progressBar value="50" min="0" max="100" tooltip="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
-               </b:panelGrid>
-             ]]></script>
-                </b:panel>
-            </f:facet>
+          <![CDATA[
+          <b:progressBar value="50"/>
+          ]]>
+          </script>
         </b:panel>
-       
+      </f:facet>
+    </b:panel>
 
-        <h3>Tooltips</h3>
-        <p><code>&lt;b:progressBar /&gt;</code> supports tooltips:</p>
-        
-                <b:panel title="Live preview" look="info" collapsible="false">         
 
-<b:progressBar value="50" min="0" max="100" look="info" tooltip="Ain't it a nice tooltip?"/>
-
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                  <![CDATA[
-                      <b:progressBar  value="Look at my tooltip!" tooltip="Ain't it a nice tooltip?"/>
-                 ]]></script>
-                </b:panel>
-            </f:facet>
+    <h3 id="contextual-alternatives">Contextual alternatives</h3>
+    <p>
+    Like other components, easily make a ProgressBar more meaningful to a particular context by adding a look attribute with values primary, success, info, warning or danger.
+    </p>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <b:progressBar value="100" look="primary"/>
+      <b:progressBar value="90" look="info"/>
+      <b:progressBar value="80" look="success"/>
+      <b:progressBar value="70" look="warning"/>
+      <b:progressBar value="60" look="danger"/>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:progressBar value="100" look="primary"/>
+          <b:progressBar value="90" look="info"/>
+          <b:progressBar value="80" look="success"/>
+          <b:progressBar value="70" look="warning"/>
+          <b:progressBar value="60" look="danger"/>
+          ]]>
+          </script>
         </b:panel>
+      </f:facet>
+    </b:panel>
 
-        <h3>Reference section</h3>
-        <ui:include src="ProgressBarAttributes.xhtml" />
-		<b:panel look="info">
-			<f:facet name="heading">
-				<b>Skinning</b>
-			</f:facet>
-			<ul>
-				<li>The entire <code>progressBar</code> is enclosed in a <code>div</code> bearing the CSS-class <code>progress</code>.</li>
-				<li>The actual bar, that shows the current progress is a <code>div</code> itself bearing the CSS-class <code>progress-bar</code>.
-				<ul>
-					<li>If the bar has a custom look, this div additionally contains the class <code>progress-bar-{look}</code> where {look} may be primary, info, success, warning or danger.</li>
-					<li>If the bar is striped, this div additionally contains the class <code>progress-bar-striped</code>.</li>
-					<li>If the bar is animated, this div additionally contains the class <code>active</code> and  <code>progress-bar-striped</code>.</li>
-				</ul>
-				</li>
 
-				<li>The bar's caption is held inside a span with no class, if it is hidden, if bears the CSS-class <code>sr-only</code></li>
-			</ul>
-		</b:panel>
+    <h3 id="labels">Labels</h3>
+    <p>
+    You can always provide your own caption instead of using the standard percentage or simply hide the caption, if you want a pure ProgressBar.
+    </p>
 
-		<script type="text/javascript">
-      		SyntaxHighlighter.all();
-    	</script>
-	</ui:define>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <b:progressBar value="50" caption="This bar is half done."/>
+      <b:progressBar value="50" renderCaption="false"/>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:progressBar value="50" caption="This bar is half done."/>
+          <b:progressBar value="50" renderCaption="false"/>
+          ]]>
+          </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+
+    <p>
+    If you use the standard caption, you can also configure the amount of shown fraction digits.
+    </p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+
+      <b:progressBar value="100" min="50" max="200"/>
+      <b:progressBar value="100" min="50" max="200" maxDecimalPlaces="6"/>
+      <b:progressBar value="100" min="50" max="200" maxDecimalPlaces="0"/>
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:progressBar value="100" min="50" max="200"/>
+          <b:progressBar value="100" min="50" max="200" maxDecimalPlaces="6"/>
+          <b:progressBar value="100" min="50" max="200" maxDecimalPlaces="0"/>
+          ]]>
+          </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+
+    <h3 id="custom-ranges">Custom ranges</h3>
+    <p>
+    Instead 0 and 100 you can use any integer values as boundaries.
+    </p>
+    <p>
+    You don't need to calculate the desired completion percentage yourself, just drop a value that lies between your defined range.
+    </p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+
+      <b:progressBar value="100" min="50" max="200" tooltip="min=50, max=200, value=100"/>
+      <b:progressBar value="0" min="-100" max="0"   tooltip="min=-100, max=0, value=0"/>
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:progressBar value="100" min="50" max="200" tooltip="min=50, max=200, value=100"/>
+          <b:progressBar value="0" min="-100" max="0" tooltip="min=-100, max=0, value=0"/>
+          ]]>
+          </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+
+    <h3 id="striped">Striped</h3>
+    <p>
+    Striped ProgressBars can be used to indicate a long running action, that was already finished or aborted.
+    </p>
+    <p>
+    Uses a gradient to create a striped effect. Not available in IE9 and below.
+    </p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+
+      <b:progressBar value="100" striped="true" />
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:progressBar value="100" striped="true" />
+          ]]>
+          </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+
+    <h3 id="animated">Animated</h3>
+    <p>
+    If you want to indicate a currently running action, it's much more untuitive to make your ProgressBar move a bit.
+    </p>
+    <p>
+    Making a ProgressBar animated automatically applies stripes to it (otherwise there would be nothing to see). Thus this is also not available in IE9 and below.
+    </p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+
+      <b:progressBar value="100" animated="true" renderCaption="false"/>
+      <b:progressBar value="75" animated="true"/>
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:progressBar value="100" animated="true" renderCaption="false"/>
+          <b:progressBar value="75" animated="true"/>
+          ]]>
+          </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+    <br/>
+    <h2><a id="responsive_design">Responsive design</a><b:badge value="since 0.9.0" /></h2>
+    <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
+    also with <code>&lt;b:progressBar /&gt;</code>:</p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+
+      <b:row>
+        <b:progressBar value="50" min="0" max="100"  tooltip="large-screen='full-width'" large-screen="full-width" />
+      </b:row>
+      <b:row style="padding-top:5px">
+        <b:progressBar value="50" min="0" max="100"  tooltip="large-screen='one-third'" large-screen="one-third" />
+        <b:progressBar value="50" min="0" max="100"  tooltip="large-screen='two-thirds'" large-screen="two-thirds" />
+      </b:row>
+      <b:row style="padding-top:5px">
+        <b:progressBar value="50" min="0" max="100"  tooltip="small-screen='one-third'" small-screen="one-third" />
+        <b:progressBar value="50" min="0" max="100"  tooltip="small-screen='two-thirds'" small-screen="two-thirds" />
+      </b:row>
+      <b:row style="padding-top:5px">
+        <b:progressBar value="50" min="0" max="100"  tooltip="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
+        <b:progressBar value="50" min="0" max="100"  tooltip="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
+      </b:row>
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:row>
+            <b:progressBar value="50" min="0" max="100"  tooltip="large-screen='full-width'" large-screen="full-width" />
+          </b:row>
+          <b:row style="padding-top:5px">
+            <b:progressBar value="50" min="0" max="100"  tooltip="large-screen='one-third'" large-screen="one-third" />
+            <b:progressBar value="50" min="0" max="100"  tooltip="large-screen='two-thirds'" large-screen="two-thirds" />
+          </b:row>
+          <b:row style="padding-top:5px">
+            <b:progressBar value="50" min="0" max="100"  tooltip="small-screen='one-third'" small-screen="one-third" />
+            <b:progressBar value="50" min="0" max="100"  tooltip="small-screen='two-thirds'" small-screen="two-thirds" />
+          </b:row>
+          <b:row style="padding-top:5px">
+            <b:progressBar value="50" min="0" max="100"  tooltip="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
+            <b:progressBar value="50" min="0" max="100"  tooltip="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
+          </b:row>
+          ]]></script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+
+    <h2><a id="visibility_depending_on_screen_size">Visibility depending on screen size</a><b:badge value="since 0.8.6/0.9.0" /></h2>
+    <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+
+      <b:panelGrid colSpans="3,9">
+        <h:outputText value="Visible on &gt;= md:" />
+        <b:progressBar value="50" min="0" max="100" tooltip="Visible on medium or large screen" look="info" visible="md..." />
+
+        <h:outputText value="Visible on &lt;= sm:" />
+        <b:progressBar value="50" min="0" max="100" tooltip="Visible on small-screen" look="success" visible="...sm"/>
+
+        <h:outputText value="Visible on sm...lg:" />
+        <b:progressBar value="50" min="0" max="100" tooltip="Visible on small to large screen" look="success" visible="sm...lg"/>
+
+        <h:outputText value="Visible on xs and md:" />
+        <b:progressBar value="50" min="0" max="100" tooltip="Visible on tiny and medium screen" look="success" visible="xs,md"/>
+
+        <h:outputText value="Col-md-6, offset 2:" />
+        <b:progressBar value="50" min="0" max="100" tooltip="col-md-6, offset 2" look="success" col-md="6" offset="2" />
+      </b:panelGrid>
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:panelGrid colSpans="3,9">
+            <h:outputText value="Visible on &gt;= md:" />
+            <b:progressBar value="50" min="0" max="100" tooltip="Visible on medium or large screen" severity="info" visible="md..." />
+
+            <h:outputText value="Visible on &lt;= sm:" />
+            <b:progressBar value="50" min="0" max="100" tooltip="Visible on small-screen" severity="success" visible="...sm"/>
+
+            <h:outputText value="Visible on sm...lg:" />
+            <b:progressBar value="50" min="0" max="100" tooltip="Visible on small to large screen" severity="success" visible="sm...lg"/>
+
+            <h:outputText value="Visible on xs and md:" />
+            <b:progressBar value="50" min="0" max="100" tooltip="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
+
+            <h:outputText value="Col-md-6, offset 2:" />
+            <b:progressBar value="50" min="0" max="100" tooltip="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
+          </b:panelGrid>
+          ]]></script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+
+    <h2><a id="tooltips">Tooltips</a></h2>
+    <p><code>&lt;b:progressBar /&gt;</code> supports tooltips:</p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+
+      <b:progressBar value="50" min="0" max="100" look="info" tooltip="Ain't it a nice tooltip?"/>
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:progressBar  value="Look at my tooltip!" tooltip="Ain't it a nice tooltip?"/>
+          ]]></script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+    <h2><a id="reference_section">Reference section</a></h2>
+    <ui:include src="ProgressBarAttributes.xhtml" />
+    <b:panel look="info">
+      <f:facet name="heading">
+        <b>Skinning</b>
+      </f:facet>
+      <ul>
+        <li>The entire <code>progressBar</code> is enclosed in a <code>div</code> bearing the CSS-class <code>progress</code>.</li>
+        <li>The actual bar, that shows the current progress is a <code>div</code> itself bearing the CSS-class <code>progress-bar</code>.
+          <ul>
+            <li>If the bar has a custom look, this div additionally contains the class <code>progress-bar-{look}</code> where {look} may be primary, info, success, warning or danger.</li>
+            <li>If the bar is striped, this div additionally contains the class <code>progress-bar-striped</code>.</li>
+            <li>If the bar is animated, this div additionally contains the class <code>active</code> and  <code>progress-bar-striped</code>.</li>
+          </ul>
+        </li>
+
+        <li>The bar's caption is held inside a span with no class, if it is hidden, if bears the CSS-class <code>sr-only</code></li>
+      </ul>
+    </b:panel>
+
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+  </ui:define>
 </ui:composition>

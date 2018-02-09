@@ -1,741 +1,763 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-  <!DOCTYPE html>
-  <ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-        xmlns:h="http://java.sun.com/jsf/html"
-        xmlns:f="http://java.sun.com/jsf/core"
-        xmlns:b="http://bootsfaces.net/ui"
-        xmlns:ui="http://java.sun.com/jsf/facelets">
-
-               <ui:define name="content">
-                  <style>
-                      .show-grid [class^="col-"] {
-                          background-color: rgba(86, 61, 124, 0.15);
-                          border: 1px solid rgba(86, 61, 124, 0.2);
-                          padding-bottom: 10px;
-                          padding-top: 10px;
-                          margin-bottom: 15px;
-                      }
-                      //Needed for TBS 3.0.1 (panel content overflow issue)
-                      .panel-body { margin: 0px 15px; }
-                  </style>
-                  <h1>The grid system of Bootstrap</h1>
-                  <p>The general idea of both BootsFaces and Bootstrap is to apply the lesson learnt by generations of typesetters to the
-                  world of websites and applications. Most people like pages with a lot of white space. Plus, they
-                  like a clear structure. It's surprisingly simply to achieve this goal. Put everything into a container
-                  that provides a lot of white space surrounding the payload area, and divide the payload area into twelve
-                  equal-sized columns. Align everything to this grid:</p>
-                  <b:image value="BootsFacesLayout.png" width="100%"/>
-                  <p>What seems as an annoying restriction at first, turns out to be a big plus. Everybody can create
-                  attractive web applications with little effort. The grid system and the well-thought color scheme
-                  of Bootstrap make it almost impossible to create a page that doesn't look nice.</p>
-
-                  <h2>Basic usage</h2>
-                 <p><b:badge value="Hint"></b:badge> To understand this page better, check out <a target="#" href="https://github.com/stephanrauh/BootsFaces-Examples/tree/master/ResponsiveDesign">this demo project</a>. It doesn't cover exactly this page,
-                  but it's a good starting point to play with the grid system of BootsFaces.</p>
-                   <p>You can see the building blocks of every BootsFaces application in the image above:</p>
-                  <ul>
-                  <li>Every BootsFaces page should have a <code>&lt;b:container /&gt;</code>. That's the component
-                  providing the generous white space around your payload area. As a rule of thumb,
-                  everything must be put in a container, and every BootsFaces page needs a container. But only one. Don't try
-                  to nest containers.<br />
-                  It goes without saying that the white space around your widgets may look nice, but it's also a waste of
-                  space. Screen estate is a scarce resource. You can get rid of the border by using the attribute
-                  <code>fluid="true"</code>.
-                  </li>
-                  <li>The grid is made of <code>&lt;b:row /&gt;</code> and <code>&lt;b:column /&gt;</code>. <code>&lt;b:row /&gt;</code>
-                  is a simple component that usually doesn't need any parameters.
-                  </li>
-                  <li>A <code>&lt;b:column /&gt;</code> spans one of more grid columns. You can define different column
-                  spans for different screen sizes. More on this in a minute. For now, suffice it to say that
-                  it's usually a good idea to optimize the screen for medium sized or small screens. Your layout will scale
-                  seamlessly on larger screens, and still be usable on smaller screens. To define that a column spans
-                  three grid columns on almost every laptop or desktop PC, use the attribute <code>medium="3"</code>.
-                  For those who're already familiar with Bootstap: that's the same as <code>col-md="3"</code>. The generated
-                  HTML code is <code>&lt;div class="col-md-3" /&gt;</code>.
-                  </li>
-                  </ul>
-
-                  <h1>Putting it into action</h1>
-
-                  <b:panel title="Live preview" look="info" collapsible="false">
-                      <h:form id="loginForm">
-                          <b:container fluid="true">
-                              <b:panel title="login screen" look="primary">
-                                  <b:row>
-                                      <b:column medium-screen="2">
-                                          <h:outputLabel value="Username:" for="username" />
-                                      </b:column>
-                                      <b:column medium-screen="4">
-                                          <b:inputText placeholder="Username" id="username" value="#{loginBean.username}" ajax="true"
-                                                       autocomplete="false" update="@(.message)">
-                                              <f:facet name="prepend">
-                                                  <b:icon name="user" />
-                                              </f:facet>
-                                          </b:inputText>
-                                      </b:column>
-                                      <b:column medium-screen="6" style-class="message">
-                                          <b:message for="username" />
-                                      </b:column>
-                                  </b:row>
-                                  <b:row tooltip="This password has fancy error messages.">
-                                      <b:column medium-screen="2">
-                                          <h:outputText value="Password:" />
-                                      </b:column>
-                                      <b:column medium-screen="4">
-                                          <b:inputSecret placeholder="Password" id="password" value="#{loginBean.password}" ajax="true"
-                                                         autocomplete="false" update="@(.message)">
-                                              <f:facet name="prepend">
-                                                  <b:iconAwesome name="key" />
-                                              </f:facet>
-                                          </b:inputSecret>
-                                      </b:column>
-                                      <b:column medium-screen="6" styleClass="message">
-                                          <b:message for="password" line-break-tag="&lt;p&gt;&lt;hr /&gt;&lt;/p&gt;" />
-                                      </b:column>
-                                  </b:row>
-                                  <b:row>
-                                      <b:column span="2" offset="2">
-                                          <b:commandButton value="login" onclick="ajax:loginBean.login()" update="@form" look="primary"
-                                                           style="width:100%" />
-                                      </b:column>
-                                      <b:column span="2">
-                                          <b:commandButton value="forgot password" onclick="ajax:loginBean.forgotPassword()" update="@form"
-                                                           look="danger" style="width:100%" immediate="true"/>
-                                      </b:column>
-                                  </b:row>
-                              </b:panel>
-                          </b:container>
-                      </h:form>
-
-                      <f:facet name="footer">
-                          <b:tabView>
-                 <b:tab title="JSF markup (simplified)">
-                   <b:panel>
-                     <script type="syntaxhighlighter"
-                       class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                  <![CDATA[
-      <b:container fluid="true">
-        <b:row>
-          <b:column medium-screen="2">
-            <h:outputText value="Username:"/>
-          </b:column>
-          <b:column medium-screen="4">
-            <b:inputText placeholder="Username" />
-          </b:column>
-          <b:column medium-screen="6">
-            <b:message/>
-          </b:column>
-        </b:row>
-        <b:row>
-          <b:column medium-screen="2">
-            <h:outputText value="Password:" />
-          </b:column>
-          <b:column medium-screen="4">
-            <b:inputSecret placeholder="Password" />
-          </b:column>
-          <b:column medium-screen="6">
-            <b:message />
-          </b:column>
-        </b:row>
-        <b:row>
-          <b:column span="2" offset="2">
-            <b:commandButton value="login" look="primary" style="width:100%" />
-          </b:column>
-          <b:column span="2">
-            <b:commandButton value="password forgotten" look="danger" style="width:100%" />
-          </b:column>
-        </b:row>
-      </b:container>                  ]]>
-                     </script>
-                   </b:panel>
-                 </b:tab>
-                 <b:tab title="JSF markup (complete picture)">
-                     <b:panel>
-                     <script type="syntaxhighlighter"
-                       class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                  <![CDATA[
-    <h:form id="loginForm">
-      <b:container layout="fluid">
-        <b:panel title="login screen" look="primary">
-          <b:row>
-            <b:column medium-screen="2">
-              <h:outputText value="Username:" for="username" />
-            </b:column>
-            <b:column medium-screen="4">
-              <b:inputText placeholder="Username" id="username" value="#{loginBean.username}"
-                           ajax="true" autocomplete="false" update="@(.message)">
-                <f:facet name="prepend">
-                  <b:icon name="user" />
-                </f:facet>
-              </b:inputText>
-            </b:column>
-            <b:column medium-screen="6" style-class="message">
-              <b:message for="username" />
-            </b:column>
-          </b:row>
-          <b:row tooltip="This password has fancy error messages.">
-            <b:column medium-screen="2">
-              <h:outputText value="Password:" />
-            </b:column>
-            <b:column medium-screen="4">
-              <b:inputSecret placeholder="Password" id="password" value="#{loginBean.password}"
-                             ajax="true" autocomplete="false" update="@(.message)">
-                <f:facet name="prepend">
-                  <b:iconAwesome name="key" />
-                </f:facet>
-              </b:inputSecret>
-            </b:column>
-            <b:column medium-screen="6" styleClass="message">
-              <b:message for="password" line-break-tag="&lt;p&gt;&lt;hr /&gt;&lt;/p&gt;"/>
-            </b:column>
-          </b:row>
-          <b:row>
-            <b:column span="2" offset="2">
-              <b:commandButton value="login" onclick="ajax:loginBean.login()" update="@form" look="primary"
-                style="width:100%" />
-            </b:column>
-            <b:column span="2">
-              <b:commandButton value="password forgotten" onclick="ajax:loginBean.forgotPassword()" update="@form"
-                look="danger" style="width:100%" />
-            </b:column>
-          </b:row>
-        </b:panel>
-      </b:container>
-    </h:form>
-    ]]>
-                     </script>
-                     </b:panel>
-                 </b:tab>
-                 <b:tab title="Java bean">
-                     <b:panel>
-                         <script type="syntaxhighlighter"
-                       class="brush: java; toolbar: false;gutter: false; first-line: 1">
-                  <![CDATA[
-@ManagedBean
-@RequestScoped
-public class LoginBean {
-	@Size(min=4, max=10)
-	@NotEmpty
-	private String username;
-
-	@Size(min=4, max=10)
-	@NotEmpty
-	private String password;
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
 
 
-	public void setUsername(String name) {
-		this.username = name;
-	}
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#the_grid_system_of_bootstrap" value="The grid system of Bootstrap" />
+      <b:navLink href="#basic_usage" value="Basic usage" />
+      <b:navLink href="#putting_it_into_action" value="Putting it into action" />
+      <b:navLink href="#responsive_design" value="Responsive design" />
+      <b:navLink href="#why_bootsfaces" value="Why BootsFaces? Why not using Bootstrap natively?" />
+      <b:navLink href="#understanding_bootsfaces_grid_system" value="Understanding BootsFaces Grid System" />
+      <b:navLink href="#example__mobile_and_desktop" value="Example: Mobile and desktop" />
+      <b:navLink href="#example__mobile" value="Example: Mobile, tablet, desktops" />
+      <b:navLink href="#offsetting_columns" value="Offsetting columns" />
+      <b:navLink href="#nesting_columns" value="Nesting columns" />
+      <b:navLink href="#alternative_attribute_names_and_values" value="Alternative attribute names and values" />
+      <b:navLink href="#hiding_columns_on_certain_screens" value="Hiding columns on certain screens" />
+      <b:navLink href="#corner_cases__zero_columns" value="Corner cases: zero columns" />
+      <b:navLink href="#disabling_the_content" value="Disabling the content" />
+      <b:navLink href="#reference_section" value="Reference section" />
+    </b:listLinks>
+  </ui:define>
 
-	public String getUsername() {
-		return username;
-	}
 
+  <ui:define name="content">
+    <style>
+      .show-grid [class^="col-"] {
+        background-color: rgba(86, 61, 124, 0.15);
+        border: 1px solid rgba(86, 61, 124, 0.2);
+        padding-bottom: 10px;
+        padding-top: 10px;
+        margin-bottom: 15px;
+      }
+      //Needed for TBS 3.0.1 (panel content overflow issue)
+      .panel-body { margin: 0px 15px; }
+    </style>
+    <h1><a id="the_grid_system_of_bootstrap">The grid system of Bootstrap</a></h1>
+    <p>The general idea of both BootsFaces and Bootstrap is to apply the lesson learnt by generations of typesetters to the
+    world of websites and applications. Most people like pages with a lot of white space. Plus, they
+    like a clear structure. It's surprisingly simply to achieve this goal. Put everything into a container
+    that provides a lot of white space surrounding the payload area, and divide the payload area into twelve
+    equal-sized columns. Align everything to this grid:</p>
+    <b:image value="BootsFacesLayout.png" width="100%"/>
+    <p>What seems as an annoying restriction at first, turns out to be a big plus. Everybody can create
+    attractive web applications with little effort. The grid system and the well-thought color scheme
+    of Bootstrap make it almost impossible to create a page that doesn't look nice.</p>
 
-	public String getPassword() {
-		return password;
-	}
+    <h2><a id="basic_usage">Basic usage</a></h2>
+    <p><b:badge value="Hint"></b:badge> To understand this page better, check out <a target="#" href="https://github.com/stephanrauh/BootsFaces-Examples/tree/master/ResponsiveDesign">this demo project</a>. It doesn't cover exactly this page,
+    but it's a good starting point to play with the grid system of BootsFaces.</p>
+    <p>You can see the building blocks of every BootsFaces application in the image above:</p>
+    <ul>
+      <li>Every BootsFaces page should have a <code>&lt;b:container /&gt;</code>. That's the component
+        providing the generous white space around your payload area. As a rule of thumb,
+        everything must be put in a container, and every BootsFaces page needs a container. But only one. Don't try
+        to nest containers.<br />
+        It goes without saying that the white space around your widgets may look nice, but it's also a waste of
+        space. Screen estate is a scarce resource. You can get rid of the border by using the attribute
+        <code>fluid="true"</code>.
+      </li>
+      <li>The grid is made of <code>&lt;b:row /&gt;</code> and <code>&lt;b:column /&gt;</code>. <code>&lt;b:row /&gt;</code>
+        is a simple component that usually doesn't need any parameters.
+      </li>
+      <li>A <code>&lt;b:column /&gt;</code> spans one of more grid columns. You can define different column
+        spans for different screen sizes. More on this in a minute. For now, suffice it to say that
+        it's usually a good idea to optimize the screen for medium sized or small screens. Your layout will scale
+        seamlessly on larger screens, and still be usable on smaller screens. To define that a column spans
+        three grid columns on almost every laptop or desktop PC, use the attribute <code>medium="3"</code>.
+        For those who're already familiar with Bootstap: that's the same as <code>col-md="3"</code>. The generated
+        HTML code is <code>&lt;div class="col-md-3" /&gt;</code>.
+      </li>
+    </ul>
 
+    <h1><a id="putting_it_into_action">Putting it into action</a></h1>
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form id="loginForm">
+        <b:container fluid="true">
+          <b:panel title="login screen" look="primary">
+            <b:row>
+              <b:column medium-screen="2">
+                <h:outputLabel value="Username:" for="username" />
+              </b:column>
+              <b:column medium-screen="4">
+                <b:inputText placeholder="Username" id="username" value="#{loginBean.username}" ajax="true"
+                             autocomplete="false" update="@(.message)">
+                  <f:facet name="prepend">
+                    <b:icon name="user" />
+                  </f:facet>
+                </b:inputText>
+              </b:column>
+              <b:column medium-screen="6" style-class="message">
+                <b:message for="username" />
+              </b:column>
+            </b:row>
+            <b:row tooltip="This password has fancy error messages.">
+              <b:column medium-screen="2">
+                <h:outputText value="Password:" />
+              </b:column>
+              <b:column medium-screen="4">
+                <b:inputSecret placeholder="Password" id="password" value="#{loginBean.password}" ajax="true"
+                               autocomplete="false" update="@(.message)">
+                  <f:facet name="prepend">
+                    <b:iconAwesome name="key" />
+                  </f:facet>
+                </b:inputSecret>
+              </b:column>
+              <b:column medium-screen="6" styleClass="message">
+                <b:message for="password" line-break-tag="&lt;p&gt;&lt;hr /&gt;&lt;/p&gt;" />
+              </b:column>
+            </b:row>
+            <b:row>
+              <b:column span="2" offset="2">
+                <b:commandButton value="login" onclick="ajax:loginBean.login()" update="@form" look="primary"
+                                 style="width:100%" />
+              </b:column>
+              <b:column span="2">
+                <b:commandButton value="forgot password" onclick="ajax:loginBean.forgotPassword()" update="@form"
+                                 look="danger" style="width:100%" immediate="true"/>
+              </b:column>
+            </b:row>
+          </b:panel>
+        </b:container>
+      </h:form>
 
-	public void login() {
-		if ("BootsFaces".equalsIgnoreCase(username) && "rocks!".equalsIgnoreCase(password)) {
-			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Congratulations! You've successfully logged in.");
-			FacesContext.getCurrentInstance().addMessage("loginForm:password", msg);
-
-		} else {
-			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "That's the wrong password. Hint: BootsFaces rocks!");
-			FacesContext.getCurrentInstance().addMessage("loginForm:password", msg);
-		}
-	}
-
-	public void forgotPassword() {
-		FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Default user name: BootsFaces");
-		FacesContext.getCurrentInstance().addMessage("loginForm:username", msg);
-		msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Default password: rocks!");
-		FacesContext.getCurrentInstance().addMessage("loginForm:password", msg);
-	}
-}
-                  ]]>
-                         </script>
-                     </b:panel>
-                 </b:tab>
-                          </b:tabView>
-                      </f:facet>
-                  </b:panel>
-       
-                  <h2>Responsive design</h2>
-                  <p>We'll explain the responsive design of BootsFaces in a minute. But we can show it now. Resize your browser window slowly.
-                  Make it smaller. When the window is too small to display everything side-by-side, the widgets are stacked on top of each other.</p>
-
-                  <h2>Why BootsFaces? Why not using Bootstrap natively?</h2>
-                 <p>BootsFaces takes full advantage of Bootstrap's Grid system while maintaining the benefits of being a JSF framework. Actually, we believe
-                 it's more concise and more expressive
-                     than programming Bootstrap natively. Convince yourself: inspect the source code of the demo in your
-                     browser's source code view. After reformatting, the form is 81 lines. The JSF source is is 45 lines.</p>
-                  <p>BootsFaces being a JSF framework means that you can leverage Bootstrap's layout feature using - for example - the JSF templating system and JSF's conditional rendering to achieve and maintain very complex layouts without much effort.</p>
-                  <p>This website is an example itself: it uses a page template with <code>ui:insert</code> and <code>ui:include</code> and the pages are <code>ui:composition</code>s.</p>
-                  <h2>Understanding BootsFaces Grid System</h2>
-                  <p>We've already talked about the Bootstrap grid. Let's cover the topic in more detail.</p>
-                  <p>The central idea is to divide the page into 12 equal-sized columns. Each element of your page - be it an input field, a label, a table or a text - covers
-                  several of these columns. Widgets can't cover half a column. You're limited to integer multiples: one, two, three, ..., up to twelve columns. At first glance this sounds like
-                  a severe restriction, but in practice 12 columns offer enough flexibility for almost every use case. At the same time, being limited to twelve columns usually ensures an attractive page design.</p>
-                  <p>The second central idea is to avoid horizontal scrolling. If your screen is wide enough to display the twelve columns side-by-side, do it. If not, stack the columns on top of each other.
-                  This means you have to do a lot of horizontal scrolling on small phone displays. But that's still better than having to scroll both horizontally and vertically. Users
-                  can use your application even if screen estate is scarce.</p>
-                  <strong>Grid options</strong>
-                  <div class="table-responsive">
-                      <table class="table table-bordered table-striped">
-                          <thead>
-                              <tr>
-                                  <th></th>
-                                  <th>
-                                      Extra small devices
-                                      <small>Phones (&lt;768px)</small>
-                                  </th>
-                                  <th>
-                                      Small devices
-                                      <small>Tablets (≥768px)</small>
-                                  </th>
-                                  <th>
-                                      Medium devices
-                                      <small>Desktops (≥992px)</small>
-                                  </th>
-                                  <th>
-                                      Large devices
-                                      <small>Desktops (≥1200px)</small>
-                                  </th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              <tr>
-                                  <th>Grid behavior</th>
-                                  <td>Horizontal at all times</td>
-                                  <td colspan="3">Collapsed to start, horizontal above breakpoints</td>
-                              </tr>
-                              <tr>
-                                  <th>Max container width</th>
-                                  <td>None (auto)</td>
-                                  <td>750px</td>
-                                  <td>970px</td>
-                                  <td>1170px</td>
-                              </tr>
-                              <tr>
-                                  <th><code>b:column</code> attributes</th>
-                                  <td><code>col-xs</code> or <code>tiny-screen</code></td>
-                                  <td><code>col-sm</code> or <code>small-screen</code></td>
-                                  <td><code>col-md</code>, <code>medium-screen</code> or <code>span</code></td>
-                                  <td><code>col-lg</code> or <code>large-screen</code></td>
-                              </tr>
-                              <tr>
-                                  <th># of columns</th>
-                                  <td colspan="4">12</td>
-                              </tr>
-                              <tr>
-                                  <th>Max column width</th>
-                                  <td class="text-muted">Auto</td>
-                                  <td>60px</td>
-                                  <td>78px</td>
-                                  <td>95px</td>
-                              </tr>
-                              <tr>
-                                  <th>Gutter width</th>
-                                  <td colspan="4">30px (15px on each side of a column)</td>
-                              </tr>
-                              <tr>
-                                  <th>Nestable</th>
-                                  <td colspan="4">Yes</td>
-                              </tr>
-                              <tr>
-                                  <th>Offsets</th>
-                                  <td class="text-muted" colspan="1">N/A</td>
-                                  <td colspan="3">Yes</td>
-                              </tr>
-                              <tr>
-                                  <th>Column ordering</th>
-                                  <td class="text-muted">N/A</td>
-                                  <td colspan="3">Yes</td>
-                              </tr>
-                          </tbody>
-                      </table>
-                  </div>
-                  <br/>
-                  <h3 id="grid-example-basic">Example: Stacked-to-horizontal</h3>
-                  <p>Using a single set of <code>col-md=*</code> or <code>span=*</code> attributes,
-                      you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range)
-                      before becoming horizontal on desktop (medium) devices.</p>
-                  <p>The <code>span=*</code> and <code>offset=*</code> attributes are meant for this common special use case, to speed up markup writing</p>
-                  <b:panel title="Live preview" look="info" collapsible="false">
-
-                      <b:row styleClass="show-grid">
-                          <b:column span="1"><h:outputText value="span=1"/></b:column>
-                          <b:column span="1"><h:outputText value="span=1"/></b:column>
-                          <b:column span="1"><h:outputText value="span=1"/></b:column>
-                          <b:column span="1"><h:outputText value="span=1"/></b:column>
-                          <b:column span="1"><h:outputText value="span=1"/></b:column>
-                          <b:column span="1"><h:outputText value="span=1"/></b:column>
-                          <b:column span="1"><h:outputText value="span=1"/></b:column>
-                          <b:column span="1"><h:outputText value="span=1"/></b:column>
-                          <b:column span="1"><h:outputText value="span=1"/></b:column>
-                          <b:column span="1"><h:outputText value="span=1"/></b:column>
-                          <b:column span="1"><h:outputText value="span=1"/></b:column>
-                          <b:column span="1"><h:outputText value="span=1"/></b:column>
-                      </b:row>
-                      <b:row styleClass="show-grid">
-                          <b:column span="8"><h:outputText value="span=8"/></b:column>
-                          <b:column span="4"><h:outputText value="span=4"/></b:column>
-                      </b:row>
-                      <b:row styleClass="show-grid">
-                          <b:column span="4"><h:outputText value="span=4"/></b:column>
-                          <b:column span="4"><h:outputText value="span=4"/></b:column>
-                          <b:column span="4"><h:outputText value="span=4"/></b:column>
-                      </b:row>
-                      <b:row styleClass="show-grid">
-                          <b:column span="6"><h:outputText value="span=6"/></b:column>
-                          <b:column span="6"><h:outputText value="span=6"/></b:column>
-                      </b:row>
-                      <f:facet name="footer">
-                          <strong>Markup:</strong><br/>
-
-                          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                            <![CDATA[
-                            <b:row>
-                                <b:column span="1"><h:outputText value="span=1"/></b:column>
-                                <b:column span="1"><h:outputText value="span=1"/></b:column>
-                                <b:column span="1"><h:outputText value="span=1"/></b:column>
-                                <b:column span="1"><h:outputText value="span=1"/></b:column>
-                                <b:column span="1"><h:outputText value="span=1"/></b:column>
-                                <b:column span="1"><h:outputText value="span=1"/></b:column>
-                                <b:column span="1"><h:outputText value="span=1"/></b:column>
-                                <b:column span="1"><h:outputText value="span=1"/></b:column>
-                                <b:column span="1"><h:outputText value="span=1"/></b:column>
-                                <b:column span="1"><h:outputText value="span=1"/></b:column>
-                                <b:column span="1"><h:outputText value="span=1"/></b:column>
-                                <b:column span="1"><h:outputText value="span=1"/></b:column>
-                            </b:row>
-                            <b:row>
-                                <b:column span="8"><h:outputText value="span=8"/></b:column>
-                                <b:column span="4"><h:outputText value="span=4"/></b:column>
-                            </b:row>
-                            <b:row>
-                                <b:column span="4"><h:outputText value="span=4"/></b:column>
-                                <b:column span="4"><h:outputText value="span=4"/></b:column>
-                                <b:column span="4"><h:outputText value="span=4"/></b:column>
-                            </b:row>
-                            <b:row>
-                                <b:column span="6"><h:outputText value="span=6"/></b:column>
-                                <b:column span="6"><h:outputText value="span=6"/></b:column>
-                            </b:row>
-                            ]]></script>
-                      </f:facet>
-                  </b:panel>
-                  <h3>Example: Mobile and desktop</h3>
-                  <p>
-                      Don't want your columns to simply stack in smaller devices? Use the extra small and medium device grid attributes including
-                      <code>col-xs=*</code> and <code>col-md=*</code> in your columns. See the example below for a better idea of how it all works.
-                  </p>
-                  <b:panel title="Live preview" look="info" collapsible="false">
-
-                      <!-- Stack the columns on mobile by making one full-width and the other half-width -->
-                      <b:row styleClass="show-grid">
-                          <b:column col-xs="12" col-md="8"><h:outputText value="col-xs=12 col-md=8"/></b:column>
-                          <b:column col-xs="6" col-md="4"><h:outputText value="col-xs=6 col-md=4"/></b:column>
-                      </b:row>
-                      <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
-                      <b:row styleClass="show-grid">
-                          <b:column col-xs="6" col-md="4"><h:outputText value="col-xs=6 col-md=4"/></b:column>
-                          <b:column col-xs="6" col-md="4"><h:outputText value="col-xs=6 col-md=4"/></b:column>
-                          <b:column col-xs="6" col-md="4"><h:outputText value="col-xs=6 col-md=4"/></b:column>
-                      </b:row>
-                      <!-- Columns are always 50% wide, on mobile and desktop -->
-                      <b:row styleClass="show-grid">
-                          <b:column col-xs="6"><h:outputText value="col-xs=6"/></b:column>
-                          <b:column col-xs="6"><h:outputText value="col-xs=6"/></b:column>
-                      </b:row>
-                      <f:facet name="footer">
-                          <strong>Markup:</strong><br/>
-
-                          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                            <![CDATA[
-                            <!-- Stack the columns on mobile by making one full-width and the other half-width -->
-                            <b:row styleClass="show-grid">
-                                <b:column col-xs="12" col-md="8"><h:outputText value="col-xs=12 col-md=8"/></b:column>
-                                <b:column col-xs="6" col-md="4"><h:outputText value="col-xs=6 col-md=4"/></b:column>
-                            </b:row>
-                            <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
-                            <b:row styleClass="show-grid">
-                                <b:column col-xs="6" col-md="4"><h:outputText value="col-xs=6 col-md=4"/></b:column>
-                                <b:column col-xs="6" col-md="4"><h:outputText value="col-xs=6 col-md=4"/></b:column>
-                                <b:column col-xs="6" col-md="4"><h:outputText value="col-xs=6 col-md=4"/></b:column>
-                            </b:row>
-                            <!-- Columns are always 50% wide, on mobile and desktop -->
-                            <b:row styleClass="show-grid">
-                                <b:column col-xs="6"><h:outputText value="col-xs=6"/></b:column>
-                                <b:column col-xs="6"><h:outputText value="col-xs=6"/></b:column>
-                            </b:row>
-                            ]]></script>
-                      </f:facet>
-                  </b:panel>
-                  <h3>Example: Mobile, tablet, desktops</h3>
-                  <p>Build on the previous example by creating even more dynamic and powerful layouts with tablet <code>col-sm=*</code> attribute.</p>
-                  <b:panel title="Live preview" look="info" collapsible="false">
-
-                      <b:row styleClass="show-grid">
-                          <b:column col-xs="12" col-sm="6" col-md="8"><h:outputText value="col-xs=12 col-sm=6 col-md=8"/></b:column>
-                          <b:column col-xs="6" col-sm="6" col-md="4"><h:outputText value="col-xs=6 col-sm=6 col-md=4"/></b:column>
-                      </b:row>
-                      <b:row styleClass="show-grid">
-                          <b:column col-xs="6" col-sm="4" col-md="4"><h:outputText value="col-xs=6 col-sm=4 col-md=4"/></b:column>
-                          <b:column col-xs="6" col-sm="4" col-md="4"><h:outputText value="col-xs=6 col-sm=4 col-md=4"/></b:column>
-                          <!-- Optional: clear the XS cols if their content doesn't match in height -->
-                          <div class="clearfix visible-xs"></div>
-                          <b:column col-xs="6" col-sm="4" col-md="4"><h:outputText value="col-xs=6 col-sm=4 col-md=4"/></b:column>
-                      </b:row>
-                      <f:facet name="footer">
-                          <strong>Markup:</strong><br/>
-
-                          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                            <![CDATA[
-                            <b:row styleClass="show-grid">
-                                <b:column col-xs="12" col-sm="6" col-md="8"><h:outputText value="col-xs=12 col-sm=6 col-md=8"/></b:column>
-                                <b:column col-xs="6" col-sm="6" col-md="4"><h:outputText value="col-xs=6 col-sm=6 col-md=4"/></b:column>
-                            </b:row>
-                            <b:row styleClass="show-grid">
-                                <b:column col-xs="6" col-sm="4" col-md="4"><h:outputText value="col-xs=6 col-sm=4 col-md=4"/></b:column>
-                                <b:column col-xs="6" col-sm="4" col-md="4"><h:outputText value="col-xs=6 col-sm=4 col-md=4"/></b:column>
-                                <!-- Optional: clear the XS cols if their content doesn't match in height -->
-                                <div class="clearfix visible-xs"></div>
-                                <b:column col-xs="6" col-sm="4" col-md="4"><h:outputText value="col-xs=6 col-sm=4 col-md=4"/></b:column>
-                            </b:row>
-                            ]]></script>
-                      </f:facet>
-                  </b:panel>
-                  <h3>Offsetting columns</h3>
-                  <p> Move columns to the right using <code>offset=*</code> or <code>col-md-offset=*</code> attribute.
-                      These attributes increase the left margin of a column by <code>*</code> columns.
-                      For example, <code>offest=4</code> moves a <code>span=4</code> over four columns.
-                  </p>
-                  <b:panel title="Live preview" look="info" collapsible="false">
-
-                      <b:row styleClass="show-grid">
-                          <b:column span="4"><h:outputText value="span=4"/></b:column>
-                          <b:column span="4" offset="4"><h:outputText value="span=4 offset=4"/></b:column>
-                      </b:row>
-                      <b:row styleClass="show-grid">
-                          <b:column span="3" offset="3"><h:outputText value="span=3 offset=3"/></b:column>
-                          <b:column span="3" offset="3"><h:outputText value="span=3 offset=3"/></b:column>
-                      </b:row>
-                      <b:row styleClass="show-grid">
-                          <b:column span="6" offset="3"><h:outputText value="span=6 offset=3"/></b:column>
-                      </b:row>
-                      <f:facet name="footer">
-                          <strong>Markup:</strong><br/>
-
-                          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                            <![CDATA[
-                            <b:row styleClass="show-grid">
-                                <b:column span="4"><h:outputText value="span=4"/></b:column>
-                                <b:column span="4" offset="4"><h:outputText value="span=4 offset=4"/></b:column>
-                            </b:row>
-                            <b:row styleClass="show-grid">
-                                <b:column span="3" offset="3"><h:outputText value="span=3 offset=3"/></b:column>
-                                <b:column span="3" offset="3"><h:outputText value="span=3 offset=3"/></b:column>
-                            </b:row>
-                            <b:row styleClass="show-grid">
-                                <b:column span="6" offset="3"><h:outputText value="span=6 offset=3"/></b:column>
-                            </b:row>
-                            ]]></script>
-                      </f:facet>
-                  </b:panel>
-                  <h3>Nesting columns</h3>
-                  <p>
-                  To nest your content with the default grid, add a new <code>row</code> and set of <code>col-md=*</code> columns within an existing
-                  <code>col-md=*</code> column.
-                  Nested rows should include a set of columns that add up to 12.
-                  </p>
-                  <b:panel title="Live preview" look="info" collapsible="false">
-
-                      <b:row styleClass="show-grid">
-                          <b:column col-md="9">
-                              <h:outputText value="Level 1: col-md=9"/>
-                              <b:row styleClass="show-grid">
-                                  <b:column col-md="6"><h:outputText value="Level 2: col-md=6"/></b:column>
-                                  <b:column col-md="6"><h:outputText value="Level 2: col-md=6"/></b:column>
-                              </b:row>
-                          </b:column>
-                      </b:row>
-                      <f:facet name="footer">
-                          <strong>Markup:</strong><br/>
-
-                          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-                            <![CDATA[
-                            <b:row styleClass="show-grid">
-                                <b:column col-md="9">
-                                    <h:outputText value="Level 1: col-md=9"/>
-                                    <b:row styleClass="show-grid">
-                                        <b:column col-md="6"><h:outputText value="Level 2: col-md=6"/></b:column>
-                                        <b:column col-md="6"><h:outputText value="Level 2: col-md=6"/></b:column>
-                                    </b:row>
-                                </b:column>
-                            </b:row>
-                            ]]></script>
-                      </f:facet>
-                  </b:panel>
-
-                 <h2>Alternative attribute names and values <b:badge value="since 0.8.1" /></h2>
-                 <p>You can choose from two alternative spellings to define the column span:</p>
-                 <ul>
-                 <li><code>col-xs</code>, <code>col-xs</code>, <code>col-xs</code> and <code>col-xs</code> follow
-                 the tradition coined by Bootstrap.</li>
-                 <li>Alternatively, you can use the symboliv names <code>tiny-screen</code>,
-                 <code>small-screen</code>, <code>medium-screen</code> and <code>huge-screen</code>.</li>
-                 </ul>
-                 <p>You can also use symbolic names to indicate how many columns to span, at least for
-                 some common cases:</p>
-                 <ul>
-                 <li><code>medium-screen="full-width"</code> amounts to <code>col-md="12"</code>.</li>
-                 <li><code>medium-screen="half"</code> amounts to <code>col-md="6"</code>.</li>
-                 <li><code>medium-screen="one-third"</code> amounts to <code>col-md="4"</code>.</li>
-                 <li><code>medium-screen="two-thirds"</code> amounts to <code>col-md="8"</code>.</li>
-                 <li><code>medium-screen="one-fourth"</code> amounts to <code>col-md="3"</code>.</li>
-                 <li><code>medium-screen="three-fourth"</code> amounts to <code>col-md="9"</code>.</li>
-                 </ul>
-                 
-                 <h2>Hiding columns on certain screens</h2>
-                 <p>There are two attributes allowing you to hide columns depending on the screen size:</p>
-                 <ul>
-                 <li><code>hidden</code> hides an element on a certain screen size and below. For example, <code>hidden="sm"</code> hides the element on
-                 small (sm) and extra-small (xs) screens.</li>
-                <li><code>visible</code> shows an element on a certain screen size and above. It also hides it on smaller screens. For example, 
-                <code>visible="sm</code> shows the element on small (sm), medium (md) and large (lg) screens.</li>
-                 </ul>
-                 <p><b>Beware:</b> These attributes behave different than the underlying Bootstrap library. To alleviate this, we introduced
-                 a second syntax of the parameter:</p>
-                 <ul>
-                 	<li>Lists of sizes: for instance, <code>hidden="xs,lg"</code> hides the element on tiny and large screens, while showing it on
-                 	small and medium screens.</li>
-                 	<li>Ranges: <code>hidden="xs...md"</code> hides the element on tiny and medium screens, and on every screen size between (i.e. small screens).</li>
-                 	<li>Open ranges: <code>hidden="...md"</code> hides the element on medium screens and everything below.</li>
-                 	<li>Analogously, <code>hidden="sm..."</code> hides the element on small screens and everything above.</li>
-                 </ul>
-                 
-                 <h2>Corner cases: zero columns</h2>
-                 <p>You can define a column to span zero columns. That's equivalent to using the <code>hidden</code> attribute.</p>
-                 <b:row>
-                 	<b:column large-screen="0">large-screen="0" always hides the column on large screens. It's visible on every other screen size.</b:column>
-                 	<b:column medium-screen="0">medium-screen="0" hides the text on medium screens. It's visible on every other screen size.</b:column>
-                 	<b:column small-screen="0">small-screen="0" hides the text on small screens. It's visible on every other screen size.</b:column>
-                 	<b:column tiny-screen="0">tiny-screen="0" hides the text on tiny screens. It's visible on every other screen size.</b:column>
-                 </b:row>
-
-		<h2>Disabling the content <b:badge value="Since 1.1.0"/></h2>
-		<p>By setting the flag <code>contentDisabled="true"</code> you can set each child element of
-		<code>&lt;b:container</code>, <code>&lt;b:row</code>, and <code>&lt;b:column</code> to disabled. More precisely,
-		the panels of the accordion are wrapped in a disabled fieldset, which disables input fields, checkboxes and buttons, but
-		not every component. In particular, tabs and panels still work. You'll also have to be careful about
-		links (everything that's using an <code>&lt;a&gt;</code> tag, like <code>&lt;button&gt;</code> and <code>&lt;b:navLink&gt;</code>.)
-		These elements will be shown as disbled, but still are accessible. In part, that's because this CSS property isn't fully
-		standardized yet. For instance, it isn't supported by Internet Explorer 11 and below, and Opera 18 and below.</p>
-		
-            <b:panel title="Live preview" look="info" collapsible="false">
-                <h:form>
-                    <b:row>
-                        <b:column span="8">
-                            <b:container fluid="true" contentDisabled="#{columnsBean.containerDisabled}" id="contentDisabledDemoId">
-                                <b:row contentDisabled="#{columnsBean.rowDisabled}">
-                                    <b:column span="6" contentDisabled="#{columnsBean.columnDisabled}">
-                                        <b:inputText placeholder="You can't input anything here" label="b:inputText" />
-                                        <b:datepicker label="Datepicker"  />
-                                        <b:button look="primary" value="You can't click me!"/>
-                                    </b:column>
-                                    <b:column span="6">
-                                        <b:dateTimePicker label="DateTimerPicker" />
-                                        <b:colorPicker label="ColorPicker" />
-                                        <b:selectOneMenu label="SelectOneMenu" >
-                                            <f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
-                                            <f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
-                                        </b:selectOneMenu>
-                                        <b:selectMultiMenu label="SelectMultiMenu" >
-                                            <f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
-                                            <f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
-                                        </b:selectMultiMenu>
-                                    </b:column>
-                                </b:row>
-                            </b:container>
-                        </b:column>
-                        <b:column span="4">
-                            <b:panel look="primary" title="Options">
-                                <b:switch on-text="true" off-text="default" value="#{columnsBean.containerDisabled}"
-                                          update="contentDisabledDemoId" onchange="ajax:columnsBean.onChange()" 
-                                          label="b:container contentDisabled=" />
-                                <b:switch on-text="disabled" off-text="default" value="#{columnsBean.rowDisabled}"
-                                          update="contentDisabledDemoId" onchange="ajax:columnsBean.onChange()" 
-                                          label="b:row contentDisabled=" />
-                                <b:switch on-text="disabled" off-text="default" value="#{columnsBean.columnDisabled}"
-                                          update="contentDisabledDemoId" onchange="ajax:columnsBean.onChange()" 
-                                          label="first b:column contentDisabled=" />
-                            </b:panel>
-                        </b:column>
-                    </b:row>
-                </h:form>
-                <f:facet name="footer">
-                    <strong>JSF markup</strong>:
-                    <b:panel>
-                        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-                    <![CDATA[                    
-                            <b:container fluid="true" contentDisabled="false">
-                                <b:row contentDisabled="false">
-                                    <b:column span="6" contentDisabled="false">
-                                        <b:inputText placeholder="You can't input anything here" label="b:inputText"/>
-                                        <b:datepicker label="Datepicker" />
-                                        <b:button look="primary" value="You can't click me!"/>
-                                    </b:column>
-                                    <b:column span="6">
-                                        <b:dateTimePicker label="DateTimerPicker"/>
-                                        <b:colorPicker label="ColorPicker"/>
-                                        <b:selectOneMenu label="SelectOneMenu">
-                                            <f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
-                                            <f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
-                                        </b:selectOneMenu>
-                                        <b:selectMultiMenu label="SelectMultiMenu" >
-                                            <f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
-                                            <f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
-                                        </b:selectMultiMenu>
-                                    </b:column>
-                                </b:row>
-                            </b:container>
- 					]]>
-                        </script>
-                    </b:panel>
-                </f:facet>
+      <f:facet name="footer">
+        <b:tabView>
+          <b:tab title="JSF markup (simplified)">
+            <b:panel>
+              <script type="syntaxhighlighter"
+              class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+              <![CDATA[
+              <b:container fluid="true">
+                <b:row>
+                  <b:column medium-screen="2">
+                    <h:outputText value="Username:"/>
+                  </b:column>
+                  <b:column medium-screen="4">
+                    <b:inputText placeholder="Username" />
+                  </b:column>
+                  <b:column medium-screen="6">
+                    <b:message/>
+                  </b:column>
+                </b:row>
+                <b:row>
+                  <b:column medium-screen="2">
+                    <h:outputText value="Password:" />
+                  </b:column>
+                  <b:column medium-screen="4">
+                    <b:inputSecret placeholder="Password" />
+                  </b:column>
+                  <b:column medium-screen="6">
+                    <b:message />
+                  </b:column>
+                </b:row>
+                <b:row>
+                  <b:column span="2" offset="2">
+                    <b:commandButton value="login" look="primary" style="width:100%" />
+                  </b:column>
+                  <b:column span="2">
+                    <b:commandButton value="password forgotten" look="danger" style="width:100%" />
+                  </b:column>
+                </b:row>
+              </b:container>                  ]]>
+              </script>
             </b:panel>
-            
-			  
-		
+          </b:tab>
+          <b:tab title="JSF markup (complete picture)">
+            <b:panel>
+              <script type="syntaxhighlighter"
+              class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+              <![CDATA[
+              <h:form id="loginForm">
+                <b:container layout="fluid">
+                  <b:panel title="login screen" look="primary">
+                    <b:row>
+                      <b:column medium-screen="2">
+                        <h:outputText value="Username:" for="username" />
+                      </b:column>
+                      <b:column medium-screen="4">
+                        <b:inputText placeholder="Username" id="username" value="#{loginBean.username}"
+                                     ajax="true" autocomplete="false" update="@(.message)">
+                          <f:facet name="prepend">
+                            <b:icon name="user" />
+                          </f:facet>
+                        </b:inputText>
+                      </b:column>
+                      <b:column medium-screen="6" style-class="message">
+                        <b:message for="username" />
+                      </b:column>
+                    </b:row>
+                    <b:row tooltip="This password has fancy error messages.">
+                      <b:column medium-screen="2">
+                        <h:outputText value="Password:" />
+                      </b:column>
+                      <b:column medium-screen="4">
+                        <b:inputSecret placeholder="Password" id="password" value="#{loginBean.password}"
+                                       ajax="true" autocomplete="false" update="@(.message)">
+                          <f:facet name="prepend">
+                            <b:iconAwesome name="key" />
+                          </f:facet>
+                        </b:inputSecret>
+                      </b:column>
+                      <b:column medium-screen="6" styleClass="message">
+                        <b:message for="password" line-break-tag="&lt;p&gt;&lt;hr /&gt;&lt;/p&gt;"/>
+                      </b:column>
+                    </b:row>
+                    <b:row>
+                      <b:column span="2" offset="2">
+                        <b:commandButton value="login" onclick="ajax:loginBean.login()" update="@form" look="primary"
+                                         style="width:100%" />
+                      </b:column>
+                      <b:column span="2">
+                        <b:commandButton value="password forgotten" onclick="ajax:loginBean.forgotPassword()" update="@form"
+                                         look="danger" style="width:100%" />
+                      </b:column>
+                    </b:row>
+                  </b:panel>
+                </b:container>
+              </h:form>
+              ]]>
+              </script>
+            </b:panel>
+          </b:tab>
+          <b:tab title="Java bean">
+            <b:panel>
+              <script type="syntaxhighlighter"
+              class="brush: java; toolbar: false;gutter: false; first-line: 1">
+              <![CDATA[
+              @ManagedBean
+              @RequestScoped
+              public class LoginBean {
+                @Size(min=4, max=10)
+                @NotEmpty
+                private String username;
 
-                  <br/>
-                  <h2>Reference section</h2>
-                  <ui:include src="ContainerAttributes.xhtml" />
-                  <ui:include src="RowAttributes.xhtml" />
-                  <ui:include src="ColumnAttributes.xhtml" />
-
-                  <b:panel look="info" rendered="false">
-  					<f:facet name="heading">
-  						<b>Skinning</b>
-  					</f:facet>
-  					<ul>
-  						<li>Tell the world which CSS classes can be used to change the
-  						look of the component.</li>
-  					</ul>
-  				</b:panel>
+                @Size(min=4, max=10)
+                @NotEmpty
+                private String password;
 
 
-                  <br/><br/><br/>
-                  <script type="text/javascript">
-                      SyntaxHighlighter.all();
-                  </script>
-              </ui:define>
-          </ui:composition>
+                public void setUsername(String name) {
+                  this.username = name;
+                }
+
+                public String getUsername() {
+                  return username;
+                }
+
+
+                public String getPassword() {
+                  return password;
+                }
+
+
+                public void setPassword(String password) {
+                  this.password = password;
+                }
+
+                public void login() {
+                  if ("BootsFaces".equalsIgnoreCase(username) && "rocks!".equalsIgnoreCase(password)) {
+                    FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Congratulations! You've successfully logged in.");
+                    FacesContext.getCurrentInstance().addMessage("loginForm:password", msg);
+
+                  } else {
+                    FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "That's the wrong password. Hint: BootsFaces rocks!");
+                    FacesContext.getCurrentInstance().addMessage("loginForm:password", msg);
+                  }
+                }
+
+                public void forgotPassword() {
+                  FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Default user name: BootsFaces");
+                  FacesContext.getCurrentInstance().addMessage("loginForm:username", msg);
+                  msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Default password: rocks!");
+                  FacesContext.getCurrentInstance().addMessage("loginForm:password", msg);
+                }
+              }
+              ]]>
+              </script>
+            </b:panel>
+          </b:tab>
+        </b:tabView>
+      </f:facet>
+    </b:panel>
+
+    <h2><a id="responsive_design">Responsive design</a></h2>
+    <p>We'll explain the responsive design of BootsFaces in a minute. But we can show it now. Resize your browser window slowly.
+    Make it smaller. When the window is too small to display everything side-by-side, the widgets are stacked on top of each other.</p>
+
+    <h2><a id="why_bootsfaces">Why BootsFaces? Why not using Bootstrap natively?</a></h2>
+    <p>BootsFaces takes full advantage of Bootstrap's Grid system while maintaining the benefits of being a JSF framework. Actually, we believe
+    it's more concise and more expressive
+    than programming Bootstrap natively. Convince yourself: inspect the source code of the demo in your
+    browser's source code view. After reformatting, the form is 81 lines. The JSF source is is 45 lines.</p>
+    <p>BootsFaces being a JSF framework means that you can leverage Bootstrap's layout feature using - for example - the JSF templating system and JSF's conditional rendering to achieve and maintain very complex layouts without much effort.</p>
+    <p>This website is an example itself: it uses a page template with <code>ui:insert</code> and <code>ui:include</code> and the pages are <code>ui:composition</code>s.</p>
+    <h2><a id="understanding_bootsfaces_grid_system">Understanding BootsFaces Grid System</a></h2>
+    <p>We've already talked about the Bootstrap grid. Let's cover the topic in more detail.</p>
+    <p>The central idea is to divide the page into 12 equal-sized columns. Each element of your page - be it an input field, a label, a table or a text - covers
+    several of these columns. Widgets can't cover half a column. You're limited to integer multiples: one, two, three, ..., up to twelve columns. At first glance this sounds like
+    a severe restriction, but in practice 12 columns offer enough flexibility for almost every use case. At the same time, being limited to twelve columns usually ensures an attractive page design.</p>
+    <p>The second central idea is to avoid horizontal scrolling. If your screen is wide enough to display the twelve columns side-by-side, do it. If not, stack the columns on top of each other.
+    This means you have to do a lot of horizontal scrolling on small phone displays. But that's still better than having to scroll both horizontally and vertically. Users
+    can use your application even if screen estate is scarce.</p>
+    <strong>Grid options</strong>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th></th>
+            <th>
+              Extra small devices
+              <small>Phones (&lt;768px)</small>
+            </th>
+            <th>
+              Small devices
+              <small>Tablets (≥768px)</small>
+            </th>
+            <th>
+              Medium devices
+              <small>Desktops (≥992px)</small>
+            </th>
+            <th>
+              Large devices
+              <small>Desktops (≥1200px)</small>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th>Grid behavior</th>
+          <td>Horizontal at all times</td>
+        <td colspan="3">Collapsed to start, horizontal above breakpoints</td>
+        </tr>
+        <tr>
+          <th>Max container width</th>
+          <td>None (auto)</td>
+          <td>750px</td>
+          <td>970px</td>
+          <td>1170px</td>
+        </tr>
+        <tr>
+          <th><code>b:column</code> attributes</th>
+          <td><code>col-xs</code> or <code>tiny-screen</code></td>
+          <td><code>col-sm</code> or <code>small-screen</code></td>
+          <td><code>col-md</code>, <code>medium-screen</code> or <code>span</code></td>
+          <td><code>col-lg</code> or <code>large-screen</code></td>
+        </tr>
+        <tr>
+          <th># of columns</th>
+        <td colspan="4">12</td>
+        </tr>
+        <tr>
+          <th>Max column width</th>
+        <td class="text-muted">Auto</td>
+          <td>60px</td>
+          <td>78px</td>
+          <td>95px</td>
+        </tr>
+        <tr>
+          <th>Gutter width</th>
+        <td colspan="4">30px (15px on each side of a column)</td>
+        </tr>
+        <tr>
+          <th>Nestable</th>
+        <td colspan="4">Yes</td>
+        </tr>
+        <tr>
+          <th>Offsets</th>
+        <td class="text-muted" colspan="1">N/A</td>
+        <td colspan="3">Yes</td>
+        </tr>
+        <tr>
+          <th>Column ordering</th>
+        <td class="text-muted">N/A</td>
+        <td colspan="3">Yes</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <br/>
+    <h3 id="grid-example-basic">Example: Stacked-to-horizontal</h3>
+    <p>Using a single set of <code>col-md=*</code> or <code>span=*</code> attributes,
+    you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range)
+    before becoming horizontal on desktop (medium) devices.</p>
+    <p>The <code>span=*</code> and <code>offset=*</code> attributes are meant for this common special use case, to speed up markup writing</p>
+    <b:panel title="Live preview" look="info" collapsible="false">
+
+      <b:row styleClass="show-grid">
+        <b:column span="1"><h:outputText value="span=1"/></b:column>
+        <b:column span="1"><h:outputText value="span=1"/></b:column>
+        <b:column span="1"><h:outputText value="span=1"/></b:column>
+        <b:column span="1"><h:outputText value="span=1"/></b:column>
+        <b:column span="1"><h:outputText value="span=1"/></b:column>
+        <b:column span="1"><h:outputText value="span=1"/></b:column>
+        <b:column span="1"><h:outputText value="span=1"/></b:column>
+        <b:column span="1"><h:outputText value="span=1"/></b:column>
+        <b:column span="1"><h:outputText value="span=1"/></b:column>
+        <b:column span="1"><h:outputText value="span=1"/></b:column>
+        <b:column span="1"><h:outputText value="span=1"/></b:column>
+        <b:column span="1"><h:outputText value="span=1"/></b:column>
+      </b:row>
+      <b:row styleClass="show-grid">
+        <b:column span="8"><h:outputText value="span=8"/></b:column>
+        <b:column span="4"><h:outputText value="span=4"/></b:column>
+      </b:row>
+      <b:row styleClass="show-grid">
+        <b:column span="4"><h:outputText value="span=4"/></b:column>
+        <b:column span="4"><h:outputText value="span=4"/></b:column>
+        <b:column span="4"><h:outputText value="span=4"/></b:column>
+      </b:row>
+      <b:row styleClass="show-grid">
+        <b:column span="6"><h:outputText value="span=6"/></b:column>
+        <b:column span="6"><h:outputText value="span=6"/></b:column>
+      </b:row>
+      <f:facet name="footer">
+        <strong>Markup:</strong><br/>
+
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+        <![CDATA[
+        <b:row>
+          <b:column span="1"><h:outputText value="span=1"/></b:column>
+          <b:column span="1"><h:outputText value="span=1"/></b:column>
+          <b:column span="1"><h:outputText value="span=1"/></b:column>
+          <b:column span="1"><h:outputText value="span=1"/></b:column>
+          <b:column span="1"><h:outputText value="span=1"/></b:column>
+          <b:column span="1"><h:outputText value="span=1"/></b:column>
+          <b:column span="1"><h:outputText value="span=1"/></b:column>
+          <b:column span="1"><h:outputText value="span=1"/></b:column>
+          <b:column span="1"><h:outputText value="span=1"/></b:column>
+          <b:column span="1"><h:outputText value="span=1"/></b:column>
+          <b:column span="1"><h:outputText value="span=1"/></b:column>
+          <b:column span="1"><h:outputText value="span=1"/></b:column>
+        </b:row>
+        <b:row>
+          <b:column span="8"><h:outputText value="span=8"/></b:column>
+          <b:column span="4"><h:outputText value="span=4"/></b:column>
+        </b:row>
+        <b:row>
+          <b:column span="4"><h:outputText value="span=4"/></b:column>
+          <b:column span="4"><h:outputText value="span=4"/></b:column>
+          <b:column span="4"><h:outputText value="span=4"/></b:column>
+        </b:row>
+        <b:row>
+          <b:column span="6"><h:outputText value="span=6"/></b:column>
+          <b:column span="6"><h:outputText value="span=6"/></b:column>
+        </b:row>
+        ]]></script>
+      </f:facet>
+    </b:panel>
+    <h2><a id="example__mobile_and_desktop">Example: Mobile and desktop</a></h2>
+    <p>
+    Don't want your columns to simply stack in smaller devices? Use the extra small and medium device grid attributes including
+    <code>col-xs=*</code> and <code>col-md=*</code> in your columns. See the example below for a better idea of how it all works.
+    </p>
+    <b:panel title="Live preview" look="info" collapsible="false">
+
+      <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+      <b:row styleClass="show-grid">
+        <b:column col-xs="12" col-md="8"><h:outputText value="col-xs=12 col-md=8"/></b:column>
+        <b:column col-xs="6" col-md="4"><h:outputText value="col-xs=6 col-md=4"/></b:column>
+      </b:row>
+      <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+      <b:row styleClass="show-grid">
+        <b:column col-xs="6" col-md="4"><h:outputText value="col-xs=6 col-md=4"/></b:column>
+        <b:column col-xs="6" col-md="4"><h:outputText value="col-xs=6 col-md=4"/></b:column>
+        <b:column col-xs="6" col-md="4"><h:outputText value="col-xs=6 col-md=4"/></b:column>
+      </b:row>
+      <!-- Columns are always 50% wide, on mobile and desktop -->
+      <b:row styleClass="show-grid">
+        <b:column col-xs="6"><h:outputText value="col-xs=6"/></b:column>
+        <b:column col-xs="6"><h:outputText value="col-xs=6"/></b:column>
+      </b:row>
+      <f:facet name="footer">
+        <strong>Markup:</strong><br/>
+
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+        <![CDATA[
+        <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+        <b:row styleClass="show-grid">
+          <b:column col-xs="12" col-md="8"><h:outputText value="col-xs=12 col-md=8"/></b:column>
+          <b:column col-xs="6" col-md="4"><h:outputText value="col-xs=6 col-md=4"/></b:column>
+        </b:row>
+        <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+        <b:row styleClass="show-grid">
+          <b:column col-xs="6" col-md="4"><h:outputText value="col-xs=6 col-md=4"/></b:column>
+          <b:column col-xs="6" col-md="4"><h:outputText value="col-xs=6 col-md=4"/></b:column>
+          <b:column col-xs="6" col-md="4"><h:outputText value="col-xs=6 col-md=4"/></b:column>
+        </b:row>
+        <!-- Columns are always 50% wide, on mobile and desktop -->
+        <b:row styleClass="show-grid">
+          <b:column col-xs="6"><h:outputText value="col-xs=6"/></b:column>
+          <b:column col-xs="6"><h:outputText value="col-xs=6"/></b:column>
+        </b:row>
+        ]]></script>
+      </f:facet>
+    </b:panel>
+    <h2><a id="example__mobile">Example: Mobile, tablet, desktops</a></h2>
+    <p>Build on the previous example by creating even more dynamic and powerful layouts with tablet <code>col-sm=*</code> attribute.</p>
+    <b:panel title="Live preview" look="info" collapsible="false">
+
+      <b:row styleClass="show-grid">
+        <b:column col-xs="12" col-sm="6" col-md="8"><h:outputText value="col-xs=12 col-sm=6 col-md=8"/></b:column>
+        <b:column col-xs="6" col-sm="6" col-md="4"><h:outputText value="col-xs=6 col-sm=6 col-md=4"/></b:column>
+      </b:row>
+      <b:row styleClass="show-grid">
+        <b:column col-xs="6" col-sm="4" col-md="4"><h:outputText value="col-xs=6 col-sm=4 col-md=4"/></b:column>
+        <b:column col-xs="6" col-sm="4" col-md="4"><h:outputText value="col-xs=6 col-sm=4 col-md=4"/></b:column>
+        <!-- Optional: clear the XS cols if their content doesn't match in height -->
+      <div class="clearfix visible-xs"></div>
+        <b:column col-xs="6" col-sm="4" col-md="4"><h:outputText value="col-xs=6 col-sm=4 col-md=4"/></b:column>
+      </b:row>
+      <f:facet name="footer">
+        <strong>Markup:</strong><br/>
+
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+        <![CDATA[
+        <b:row styleClass="show-grid">
+          <b:column col-xs="12" col-sm="6" col-md="8"><h:outputText value="col-xs=12 col-sm=6 col-md=8"/></b:column>
+          <b:column col-xs="6" col-sm="6" col-md="4"><h:outputText value="col-xs=6 col-sm=6 col-md=4"/></b:column>
+        </b:row>
+        <b:row styleClass="show-grid">
+          <b:column col-xs="6" col-sm="4" col-md="4"><h:outputText value="col-xs=6 col-sm=4 col-md=4"/></b:column>
+          <b:column col-xs="6" col-sm="4" col-md="4"><h:outputText value="col-xs=6 col-sm=4 col-md=4"/></b:column>
+          <!-- Optional: clear the XS cols if their content doesn't match in height -->
+        <div class="clearfix visible-xs"></div>
+          <b:column col-xs="6" col-sm="4" col-md="4"><h:outputText value="col-xs=6 col-sm=4 col-md=4"/></b:column>
+        </b:row>
+        ]]></script>
+      </f:facet>
+    </b:panel>
+    <h2><a id="offsetting_columns">Offsetting columns</a></h2>
+    <p> Move columns to the right using <code>offset=*</code> or <code>col-md-offset=*</code> attribute.
+    These attributes increase the left margin of a column by <code>*</code> columns.
+    For example, <code>offest=4</code> moves a <code>span=4</code> over four columns.
+    </p>
+    <b:panel title="Live preview" look="info" collapsible="false">
+
+      <b:row styleClass="show-grid">
+        <b:column span="4"><h:outputText value="span=4"/></b:column>
+        <b:column span="4" offset="4"><h:outputText value="span=4 offset=4"/></b:column>
+      </b:row>
+      <b:row styleClass="show-grid">
+        <b:column span="3" offset="3"><h:outputText value="span=3 offset=3"/></b:column>
+        <b:column span="3" offset="3"><h:outputText value="span=3 offset=3"/></b:column>
+      </b:row>
+      <b:row styleClass="show-grid">
+        <b:column span="6" offset="3"><h:outputText value="span=6 offset=3"/></b:column>
+      </b:row>
+      <f:facet name="footer">
+        <strong>Markup:</strong><br/>
+
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+        <![CDATA[
+        <b:row styleClass="show-grid">
+          <b:column span="4"><h:outputText value="span=4"/></b:column>
+          <b:column span="4" offset="4"><h:outputText value="span=4 offset=4"/></b:column>
+        </b:row>
+        <b:row styleClass="show-grid">
+          <b:column span="3" offset="3"><h:outputText value="span=3 offset=3"/></b:column>
+          <b:column span="3" offset="3"><h:outputText value="span=3 offset=3"/></b:column>
+        </b:row>
+        <b:row styleClass="show-grid">
+          <b:column span="6" offset="3"><h:outputText value="span=6 offset=3"/></b:column>
+        </b:row>
+        ]]></script>
+      </f:facet>
+    </b:panel>
+    <h2><a id="nesting_columns">Nesting columns</a></h2>
+    <p>
+    To nest your content with the default grid, add a new <code>row</code> and set of <code>col-md=*</code> columns within an existing
+    <code>col-md=*</code> column.
+    Nested rows should include a set of columns that add up to 12.
+    </p>
+    <b:panel title="Live preview" look="info" collapsible="false">
+
+      <b:row styleClass="show-grid">
+        <b:column col-md="9">
+          <h:outputText value="Level 1: col-md=9"/>
+          <b:row styleClass="show-grid">
+            <b:column col-md="6"><h:outputText value="Level 2: col-md=6"/></b:column>
+            <b:column col-md="6"><h:outputText value="Level 2: col-md=6"/></b:column>
+          </b:row>
+        </b:column>
+      </b:row>
+      <f:facet name="footer">
+        <strong>Markup:</strong><br/>
+
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+        <![CDATA[
+        <b:row styleClass="show-grid">
+          <b:column col-md="9">
+            <h:outputText value="Level 1: col-md=9"/>
+            <b:row styleClass="show-grid">
+              <b:column col-md="6"><h:outputText value="Level 2: col-md=6"/></b:column>
+              <b:column col-md="6"><h:outputText value="Level 2: col-md=6"/></b:column>
+            </b:row>
+          </b:column>
+        </b:row>
+        ]]></script>
+      </f:facet>
+    </b:panel>
+
+    <h2><a id="alternative_attribute_names_and_values">Alternative attribute names and values</a><b:badge value="since 0.8.1" /></h2>
+    <p>You can choose from two alternative spellings to define the column span:</p>
+    <ul>
+      <li><code>col-xs</code>, <code>col-xs</code>, <code>col-xs</code> and <code>col-xs</code> follow
+      the tradition coined by Bootstrap.</li>
+      <li>Alternatively, you can use the symboliv names <code>tiny-screen</code>,
+      <code>small-screen</code>, <code>medium-screen</code> and <code>huge-screen</code>.</li>
+    </ul>
+    <p>You can also use symbolic names to indicate how many columns to span, at least for
+    some common cases:</p>
+    <ul>
+      <li><code>medium-screen="full-width"</code> amounts to <code>col-md="12"</code>.</li>
+      <li><code>medium-screen="half"</code> amounts to <code>col-md="6"</code>.</li>
+      <li><code>medium-screen="one-third"</code> amounts to <code>col-md="4"</code>.</li>
+      <li><code>medium-screen="two-thirds"</code> amounts to <code>col-md="8"</code>.</li>
+      <li><code>medium-screen="one-fourth"</code> amounts to <code>col-md="3"</code>.</li>
+      <li><code>medium-screen="three-fourth"</code> amounts to <code>col-md="9"</code>.</li>
+    </ul>
+
+    <h2><a id="hiding_columns_on_certain_screens">Hiding columns on certain screens</a></h2>
+    <p>There are two attributes allowing you to hide columns depending on the screen size:</p>
+    <ul>
+      <li><code>hidden</code> hides an element on a certain screen size and below. For example, <code>hidden="sm"</code> hides the element on
+      small (sm) and extra-small (xs) screens.</li>
+      <li><code>visible</code> shows an element on a certain screen size and above. It also hides it on smaller screens. For example,
+      <code>visible="sm</code> shows the element on small (sm), medium (md) and large (lg) screens.</li>
+    </ul>
+    <p><b>Beware:</b> These attributes behave different than the underlying Bootstrap library. To alleviate this, we introduced
+    a second syntax of the parameter:</p>
+    <ul>
+      <li>Lists of sizes: for instance, <code>hidden="xs,lg"</code> hides the element on tiny and large screens, while showing it on
+      small and medium screens.</li>
+      <li>Ranges: <code>hidden="xs...md"</code> hides the element on tiny and medium screens, and on every screen size between (i.e. small screens).</li>
+      <li>Open ranges: <code>hidden="...md"</code> hides the element on medium screens and everything below.</li>
+      <li>Analogously, <code>hidden="sm..."</code> hides the element on small screens and everything above.</li>
+    </ul>
+
+    <h2><a id="corner_cases__zero_columns">Corner cases: zero columns</a></h2>
+    <p>You can define a column to span zero columns. That's equivalent to using the <code>hidden</code> attribute.</p>
+    <b:row>
+      <b:column large-screen="0">large-screen="0" always hides the column on large screens. It's visible on every other screen size.</b:column>
+      <b:column medium-screen="0">medium-screen="0" hides the text on medium screens. It's visible on every other screen size.</b:column>
+      <b:column small-screen="0">small-screen="0" hides the text on small screens. It's visible on every other screen size.</b:column>
+      <b:column tiny-screen="0">tiny-screen="0" hides the text on tiny screens. It's visible on every other screen size.</b:column>
+    </b:row>
+
+    <h2><a id="disabling_the_content">Disabling the content</a><b:badge value="Since 1.1.0"/></h2>
+    <p>By setting the flag <code>contentDisabled="true"</code> you can set each child element of
+    <code>&lt;b:container</code>, <code>&lt;b:row</code>, and <code>&lt;b:column</code> to disabled. More precisely,
+    the panels of the accordion are wrapped in a disabled fieldset, which disables input fields, checkboxes and buttons, but
+    not every component. In particular, tabs and panels still work. You'll also have to be careful about
+    links (everything that's using an <code>&lt;a&gt;</code> tag, like <code>&lt;button&gt;</code> and <code>&lt;b:navLink&gt;</code>.)
+    These elements will be shown as disbled, but still are accessible. In part, that's because this CSS property isn't fully
+    standardized yet. For instance, it isn't supported by Internet Explorer 11 and below, and Opera 18 and below.</p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form>
+        <b:row>
+          <b:column span="8">
+            <b:container fluid="true" contentDisabled="#{columnsBean.containerDisabled}" id="contentDisabledDemoId">
+              <b:row contentDisabled="#{columnsBean.rowDisabled}">
+                <b:column span="6" contentDisabled="#{columnsBean.columnDisabled}">
+                  <b:inputText placeholder="You can't input anything here" label="b:inputText" />
+                  <b:datepicker label="Datepicker"  />
+                  <b:button look="primary" value="You can't click me!"/>
+                </b:column>
+                <b:column span="6">
+                  <b:dateTimePicker label="DateTimerPicker" />
+                  <b:colorPicker label="ColorPicker" />
+                  <b:selectOneMenu label="SelectOneMenu" >
+                  <f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
+                  <f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
+                  </b:selectOneMenu>
+                  <b:selectMultiMenu label="SelectMultiMenu" >
+                  <f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
+                  <f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
+                  </b:selectMultiMenu>
+                </b:column>
+              </b:row>
+            </b:container>
+          </b:column>
+          <b:column span="4">
+            <b:panel look="primary" title="Options">
+              <b:switch on-text="true" off-text="default" value="#{columnsBean.containerDisabled}"
+                        update="contentDisabledDemoId" onchange="ajax:columnsBean.onChange()"
+                        label="b:container contentDisabled=" />
+              <b:switch on-text="disabled" off-text="default" value="#{columnsBean.rowDisabled}"
+                        update="contentDisabledDemoId" onchange="ajax:columnsBean.onChange()"
+                        label="b:row contentDisabled=" />
+              <b:switch on-text="disabled" off-text="default" value="#{columnsBean.columnDisabled}"
+                        update="contentDisabledDemoId" onchange="ajax:columnsBean.onChange()"
+                        label="first b:column contentDisabled=" />
+            </b:panel>
+          </b:column>
+        </b:row>
+      </h:form>
+      <f:facet name="footer">
+        <strong>JSF markup</strong>:
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:container fluid="true" contentDisabled="false">
+            <b:row contentDisabled="false">
+              <b:column span="6" contentDisabled="false">
+                <b:inputText placeholder="You can't input anything here" label="b:inputText"/>
+                <b:datepicker label="Datepicker" />
+                <b:button look="primary" value="You can't click me!"/>
+              </b:column>
+              <b:column span="6">
+                <b:dateTimePicker label="DateTimerPicker"/>
+                <b:colorPicker label="ColorPicker"/>
+                <b:selectOneMenu label="SelectOneMenu">
+                <f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
+                <f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
+                </b:selectOneMenu>
+                <b:selectMultiMenu label="SelectMultiMenu" >
+                <f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
+                <f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
+                </b:selectMultiMenu>
+              </b:column>
+            </b:row>
+          </b:container>
+          ]]>
+          </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+
+
+
+    <br/>
+    <h2><a id="reference_section">Reference section</a></h2>
+    <ui:include src="ContainerAttributes.xhtml" />
+    <ui:include src="RowAttributes.xhtml" />
+    <ui:include src="ColumnAttributes.xhtml" />
+
+    <b:panel look="info" rendered="false">
+      <f:facet name="heading">
+        <b>Skinning</b>
+      </f:facet>
+      <ul>
+        <li>Tell the world which CSS classes can be used to change the
+        look of the component.</li>
+      </ul>
+    </b:panel>
+
+
+    <br/><br/><br/>
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+  </ui:define>
+</ui:composition>

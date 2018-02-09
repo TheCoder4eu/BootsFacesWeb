@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
+  <h:head>
+  </h:head>
+  <h:body style="padding-top: 60px">
+<h:form>
+ <b:dataTable id="admins_table" value="#{adminController.admins}" var="admin" searching="false" select="true" selectionMode="single"
+   onselect="ajax:adminController.onSelect(admin)" update="@form:skills_table">
+   <b:dataTableColumn value="#{admin.id}"  label="#{msg['admin.id']}"/>
+</b:dataTable>
+<b:dataTable id="skills_table"  value="#{adminController.adminSkills}" var="skill" searching="false">
+   <b:dataTableColumn label="Skill id" value="#{skill.id}" />
+</b:dataTable>
+</h:form>
+  </h:body>
+</html>

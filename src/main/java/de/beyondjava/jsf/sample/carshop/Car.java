@@ -18,7 +18,6 @@ package de.beyondjava.jsf.sample.carshop;
 
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -137,6 +136,10 @@ public class Car implements Serializable {
 	public int getEnginePower() {
 		return enginePower;
 	}
+	
+	public int getEnginePowerKW() {
+		return (int)Math.round(enginePower / 1.35962);
+	}
 
 	public void setEnginePower(int enginePower) {
 		this.enginePower = enginePower;
@@ -157,5 +160,12 @@ public class Car implements Serializable {
 	public String getAge() {
 		int currentYear = Calendar.getInstance().get(Calendar.YEAR);
 		return ((currentYear - year) * 12 +5) + " months";				
+	}
+
+	@Override
+	public String toString() {
+		return "Car [brand=" + brand + ", color=" + color + ", type=" + type + ", year=" + year + ", mileage=" + mileage
+				+ ", fuel=" + fuel + ", price=" + price + ", enginePower=" + enginePower + ", editable=" + editable
+				+ "]";
 	}
 }

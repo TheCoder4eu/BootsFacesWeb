@@ -1,625 +1,644 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
 
-            <ui:define name="content">
-                <style>td {padding: 8px;}</style>
-                <h1>Combobox (&lt;b:selectOneMenu&gt;)</h1>
 
-                <p>Comboboxes give you a list of items to select from. As of Bootsfaces 1.1.0, comboboxes are not editable - they are pure drop-down menus.</p>
-                <p>&lt;b:selectOneMenu&gt; makes the Bootstrap style of displaying comboboxes available to JSF programmers.</p>
-                <h3>Basic usage</h3>
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#combobox" value="Combobox (&lt;b:selectOneMenu&gt;)" />
+      <b:navLink href="#basic_usage" value="Basic usage" />
+      <b:navLink href="#disabled_items" value="Disabled items" />
+      <b:navLink href="#a_note_on_ajax" value="A note on AJAX" />
+      <b:navLink href="#converters" value="Converters" />
+      <b:navLink href="#arrays_and_hashmaps" value="Arrays and HashMaps" />
+      <b:navLink href="#prepending_or_appending_facets" value="Prepending or appending facets" />
+      <b:navLink href="#labels" value="Labels, required fields and error messages" />
+      <b:navLink href="#ajax_and_javascript" value="AJAX and JavaScript" />
+      <b:navLink href="#responsive_design" value="Responsive design" />
+      <b:navLink href="#visibility_depending_on_screen_size" value="Visibility depending on screen size" />
+      <b:navLink href="#tooltips" value="Tooltips" />
+      <b:navLink href="#reference_section" value="Reference section" />
+    </b:listLinks>
+  </ui:define>
 
-        <b:panel title="Live preview" look="info" collapsible="false">         
-<b:form horizontal="true">
-                            <b:formGroup>
-                                <b:selectOneMenu value="#{selectOneMenuBean.brand}" colMd="2" required="true" label="Select your car's brand:" labelColMd="2">
-                                    <f:selectItem itemLabel="(Please select)" itemValue="" />
-                                    <f:selectItem itemLabel="Fiat" itemValue="1" />
-                                    <f:selectItem itemLabel="Honda" itemValue="2" />
-                                    <f:selectItem itemLabel="Opel" itemValue="3" />
-                                </b:selectOneMenu>
-                                <b:message for="@previous" colMd="2" />
-                                <b:inputText value="#{selectOneMenuBean.brand}" disabled="true" colMd="4" label="Last submitted value:" labelColMd="2" />
-                            </b:formGroup>
 
-                            <b:formGroup>
-                                <b:selectOneMenu value="#{selectOneMenuBean.type}" colMd="2" required="true" label="Select your car's type:" labelColMd="2">
-                                    <f:selectItem itemLabel="(Please select)" itemValue="" />
-                                    <f:selectItem itemLabel="Cinquecento" itemValue="1" />
-                                    <f:selectItem itemLabel="Civic" itemValue="2" />
-                                    <f:selectItem itemLabel="Astra" itemValue="3" />
-                                    <f:selectItem itemLabel="Megane" itemValue="4" />
-                                </b:selectOneMenu>
-                                <b:message for="@previous" colMd="2" />
-                                <b:inputText value="#{selectOneMenuBean.type}" disabled="true" colMd="4" label="Last submitted value:" labelColMd="2" />
-                            </b:formGroup>
-                            
-                            <b:commandButton value="Submit AJAX" process="@form" update="@form" />
-                        </b:form>
+  <ui:define name="content">
+    <style>td {padding: 8px;}</style>
+    <h1><a id="combobox">Combobox (&lt;b:selectOneMenu&gt;)</a></h1>
 
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-                        <b:form horizontal="true">
-                            <b:formGroup>
-                                <b:selectOneMenu value="&num;{selectOneMenuBean.brand}" colMd="2" required="true" label="Select your car's brand:" labelColMd="2">
-                                    <f:selectItem itemLabel="(Please select)" itemValue="" />
-                                    <f:selectItem itemLabel="Fiat" itemValue="1" />
-                                    <f:selectItem itemLabel="Honda" itemValue="2" />
-                                    <f:selectItem itemLabel="Opel" itemValue="3" />
-                                </b:selectOneMenu>
-                                <b:message for="@previous" colMd="2" />
-                                <b:inputText value="&num;{selectOneMenuBean.brand}" disabled="true" colMd="4" label="Last submitted value:" labelColMd="2" />
-                            </b:formGroup>
+    <p>Comboboxes give you a list of items to select from. As of Bootsfaces 1.1.0, comboboxes are not editable - they are pure drop-down menus.</p>
+    <p>&lt;b:selectOneMenu&gt; makes the Bootstrap style of displaying comboboxes available to JSF programmers.</p>
+    <h2><a id="basic_usage">Basic usage</a></h2>
 
-                            <b:formGroup>
-                                <b:selectOneMenu value="&num;{selectOneMenuBean.type}" colMd="2" required="true" label="Select your car's type:" labelColMd="2">
-                                    <f:selectItem itemLabel="(Please select)" itemValue="" />
-                                    <f:selectItem itemLabel="Cinquecento" itemValue="1" />
-                                    <f:selectItem itemLabel="Civic" itemValue="2" />
-                                    <f:selectItem itemLabel="Astra" itemValue="3" />
-                                    <f:selectItem itemLabel="Megane" itemValue="4" />
-                                </b:selectOneMenu>
-                                <b:message for="@previous" colMd="2" />
-                                <b:inputText value="&num;{selectOneMenuBean.type}" disabled="true" colMd="4" label="Last submitted value:" labelColMd="2" />
-                            </b:formGroup>
-                            
-                            <b:commandButton value="Submit AJAX" process="@form" update="@form" />
-                        </b:form>
-]]>
-       </script>
-                </b:panel>
-            </f:facet>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <b:form horizontal="true">
+        <b:formGroup>
+          <b:selectOneMenu value="#{selectOneMenuBean.brand}" colMd="2" required="true" label="Select your car's brand:" labelColMd="2">
+            <f:selectItem itemLabel="(Please select)" itemValue="" />
+            <f:selectItem itemLabel="Fiat" itemValue="1" />
+            <f:selectItem itemLabel="Honda" itemValue="2" />
+            <f:selectItem itemLabel="Opel" itemValue="3" />
+          </b:selectOneMenu>
+          <b:message for="@previous" colMd="2" />
+          <b:inputText value="#{selectOneMenuBean.brand}" disabled="true" colMd="4" label="Last submitted value:" labelColMd="2" />
+        </b:formGroup>
+
+        <b:formGroup>
+          <b:selectOneMenu value="#{selectOneMenuBean.type}" colMd="2" required="true" label="Select your car's type:" labelColMd="2">
+            <f:selectItem itemLabel="(Please select)" itemValue="" />
+            <f:selectItem itemLabel="Cinquecento" itemValue="1" />
+            <f:selectItem itemLabel="Civic" itemValue="2" />
+            <f:selectItem itemLabel="Astra" itemValue="3" />
+            <f:selectItem itemLabel="Megane" itemValue="4" />
+          </b:selectOneMenu>
+          <b:message for="@previous" colMd="2" />
+          <b:inputText value="#{selectOneMenuBean.type}" disabled="true" colMd="4" label="Last submitted value:" labelColMd="2" />
+        </b:formGroup>
+
+        <b:commandButton value="Submit AJAX" process="@form" update="@form" />
+      </b:form>
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <b:form horizontal="true">
+            <b:formGroup>
+              <b:selectOneMenu value="&num;{selectOneMenuBean.brand}" colMd="2" required="true" label="Select your car's brand:" labelColMd="2">
+                <f:selectItem itemLabel="(Please select)" itemValue="" />
+                <f:selectItem itemLabel="Fiat" itemValue="1" />
+                <f:selectItem itemLabel="Honda" itemValue="2" />
+                <f:selectItem itemLabel="Opel" itemValue="3" />
+              </b:selectOneMenu>
+              <b:message for="@previous" colMd="2" />
+              <b:inputText value="&num;{selectOneMenuBean.brand}" disabled="true" colMd="4" label="Last submitted value:" labelColMd="2" />
+            </b:formGroup>
+
+            <b:formGroup>
+              <b:selectOneMenu value="&num;{selectOneMenuBean.type}" colMd="2" required="true" label="Select your car's type:" labelColMd="2">
+                <f:selectItem itemLabel="(Please select)" itemValue="" />
+                <f:selectItem itemLabel="Cinquecento" itemValue="1" />
+                <f:selectItem itemLabel="Civic" itemValue="2" />
+                <f:selectItem itemLabel="Astra" itemValue="3" />
+                <f:selectItem itemLabel="Megane" itemValue="4" />
+              </b:selectOneMenu>
+              <b:message for="@previous" colMd="2" />
+              <b:inputText value="&num;{selectOneMenuBean.type}" disabled="true" colMd="4" label="Last submitted value:" labelColMd="2" />
+            </b:formGroup>
+
+            <b:commandButton value="Submit AJAX" process="@form" update="@form" />
+          </b:form>
+          ]]>
+          </script>
         </b:panel>
-       
+      </f:facet>
+    </b:panel>
 
-    <h3>Disabled items</h3>
+
+    <h2><a id="disabled_items">Disabled items</a></h2>
 
     <p>Items can also be disabled. If so, they are grayed out, and they can't be selected.</p>
-   
-    
-         <b:panel title="Live preview" look="info" collapsible="false">         
-<b:form horizontal="true">
-        <b:formGroup>
-            <b:selectOneMenu value="#{selectOneMenuBean.brand}" colMd="2" required="true" label="Select your car's brand:" labelColMd="2">
-                <f:selectItem itemLabel="(Please select)" itemValue="" />
-                <f:selectItem itemLabel="Fiat" itemValue="1" itemDisabled="true" />
-                <f:selectItem itemLabel="Honda" itemValue="2" />
-                <f:selectItem itemLabel="Opel" itemValue="3" itemDisabled="true" />
-            </b:selectOneMenu>
-            <b:message colMd="2" />
-            <b:inputText value="#{selectOneMenuBean.brand}" disabled="true" colMd="4" label="Last submitted value:" labelColMd="2" id="brandOutputID2" />
-        </b:formGroup>
-        <b:commandButton value="Submit AJAX" update="brandOutputID2" />
-    </b:form>
 
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-    <b:form horizontal="true">
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <b:form horizontal="true">
         <b:formGroup>
-            <b:selectOneMenu value="&num;{selectOneMenuBean.brand}" colMd="2" required="true" label="Select your car's brand:" labelColMd="2">
+          <b:selectOneMenu value="#{selectOneMenuBean.brand}" colMd="2" required="true" label="Select your car's brand:" labelColMd="2">
+            <f:selectItem itemLabel="(Please select)" itemValue="" />
+            <f:selectItem itemLabel="Fiat" itemValue="1" itemDisabled="true" />
+            <f:selectItem itemLabel="Honda" itemValue="2" />
+            <f:selectItem itemLabel="Opel" itemValue="3" itemDisabled="true" />
+          </b:selectOneMenu>
+          <b:message colMd="2" />
+          <b:inputText value="#{selectOneMenuBean.brand}" disabled="true" colMd="4" label="Last submitted value:" labelColMd="2" id="brandOutputID2" />
+        </b:formGroup>
+        <b:commandButton value="Submit AJAX" update="brandOutputID2" />
+      </b:form>
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <b:form horizontal="true">
+            <b:formGroup>
+              <b:selectOneMenu value="&num;{selectOneMenuBean.brand}" colMd="2" required="true" label="Select your car's brand:" labelColMd="2">
                 <f:selectItem itemLabel="(Please select)" itemValue="" />
                 <f:selectItem itemLabel="Fiat" itemValue="1" itemDisabled="true" />
                 <f:selectItem itemLabel="Honda" itemValue="2" />
                 <f:selectItem itemLabel="Opel" itemValue="3" itemDisabled="true" />
-            </b:selectOneMenu>
-            <b:message colMd="2" />
-            <b:inputText value="&num;{selectOneMenuBean.brand}" disabled="true" colMd="4" label="Last submitted value:" labelColMd="2" id="brandOutputID2" />
-        </b:formGroup>
-        <b:commandButton value="Submit AJAX" update="brandOutputID2" />
-    </b:form>
-]]>
-       </script>
-                </b:panel>
-            </f:facet>
+              </b:selectOneMenu>
+              <b:message colMd="2" />
+              <b:inputText value="&num;{selectOneMenuBean.brand}" disabled="true" colMd="4" label="Last submitted value:" labelColMd="2" id="brandOutputID2" />
+            </b:formGroup>
+            <b:commandButton value="Submit AJAX" update="brandOutputID2" />
+          </b:form>
+          ]]>
+          </script>
         </b:panel>
-       
-
-        <h3>A note on AJAX</h3>
-        <p>Note that since BootsFaces 0.8.0, we favor an
-        <a href="../forms/ajax.jsf">all-new approach to AJAX</a>. The standard JSF approach
-        to AJAX we used in the example above is supported by us, too, but we recommend to adopt the new
-        BootsFaces style of AJAX (i.e. <code>onclick="ajax:bean.method()"</code>). Supporting standard
-        JSF AJAX and the PrimeFaces approach to AJAX raises the complexity of the implementation considerably.
-        So if you run into bugs with either the standard or the PrimeFaces syntax,
-        bear with us, and report the bugs <a target="#" href="https://github.com/TheCoder4eu/BootsFaces-OSP/issues">
-        on our bug tracker</a>.</p>
+      </f:facet>
+    </b:panel>
 
 
-		<h2>Converters <b:badge value="(rarely) breaking change in 1.1.0" /></h2>
-		<p>Since BootsFaces 1.1.0, you can use converters as defined by <a href="http://docs.oracle.com/javaee/6/tutorial/doc/bnaus.html" target="#">the JavaEE documentation</a>
-		and described by <a href="https://www.mkyong.com/jsf2/custom-converter-in-jsf-2-0/" target="#">M. K. Yong</a>.
-		In rare cases, this may turn out to be a breaking change. Previous versions of BootsFaces simply ignored the 
-		converter. In some case, such as <a target="#" href="https://github.com/TheCoder4eu/BootsFaces-OSP/issues/713">issue 713</a>,
-		this can be surprising because JavaEE allows you to define converters via annotations. In this case, the converter
-		isn't mentioned by the <code>&lt;b:selectOneMenu /&gt;</code> declaration directly.</p>
+    <h2><a id="a_note_on_ajax">A note on AJAX</a></h2>
+    <p>Note that since BootsFaces 0.8.0, we favor an
+    <a href="../forms/ajax.jsf">all-new approach to AJAX</a>. The standard JSF approach
+    to AJAX we used in the example above is supported by us, too, but we recommend to adopt the new
+    BootsFaces style of AJAX (i.e. <code>onclick="ajax:bean.method()"</code>). Supporting standard
+    JSF AJAX and the PrimeFaces approach to AJAX raises the complexity of the implementation considerably.
+    So if you run into bugs with either the standard or the PrimeFaces syntax,
+    bear with us, and report the bugs <a target="#" href="https://github.com/TheCoder4eu/BootsFaces-OSP/issues">
+    on our bug tracker</a>.</p>
 
-        <h2>Arrays and HashMaps <b:badge value="broken in 0.8.5" /></h2>
-        <p>The list of items can be defined as an <code>&lt;f:selectItems /&gt;</code> tag. BootsFaces uses a modified version of the
-        algorithm PrimeFaces 5.1 uses to implement <code>&lt;f:selectItems /&gt;</code>. As a result, you can use <code>&lt;b:selectOneMenu&gt;</code>
-        almost the same way as <code>&lt;b:selectOneMenu&gt;</code>. </p>
-        <b:alert severity="danger">Due to a bug, arrays and hashmaps can be used to display the combobox, but the
-        user input is not processed correctly by the server. This bug will be fixed in the next version of BootsFaces.</b:alert>
 
-        
-        <b:panel title="Live preview" look="info" collapsible="false">
-<b:form horizontal="true">
-    <b:formGroup>
-        <b:selectOneMenu value="#{semaphoreBean.color}" colMd="2" label="Traffic light color" labelColMd="2">
+    <h2><a id="converters">Converters</a><b:badge value="(rarely) breaking change in 1.1.0" /></h2>
+    <p>Since BootsFaces 1.1.0, you can use converters as defined by <a href="http://docs.oracle.com/javaee/6/tutorial/doc/bnaus.html" target="#">the JavaEE documentation</a>
+    and described by <a href="https://www.mkyong.com/jsf2/custom-converter-in-jsf-2-0/" target="#">M. K. Yong</a>.
+    In rare cases, this may turn out to be a breaking change. Previous versions of BootsFaces simply ignored the
+    converter. In some case, such as <a target="#" href="https://github.com/TheCoder4eu/BootsFaces-OSP/issues/713">issue 713</a>,
+    this can be surprising because JavaEE allows you to define converters via annotations. In this case, the converter
+    isn't mentioned by the <code>&lt;b:selectOneMenu /&gt;</code> declaration directly.</p>
+
+    <h2><a id="arrays_and_hashmaps">Arrays and HashMaps</a><b:badge value="broken in 0.8.5" /></h2>
+    <p>The list of items can be defined as an <code>&lt;f:selectItems /&gt;</code> tag. BootsFaces uses a modified version of the
+    algorithm PrimeFaces 5.1 uses to implement <code>&lt;f:selectItems /&gt;</code>. As a result, you can use <code>&lt;b:selectOneMenu&gt;</code>
+    almost the same way as <code>&lt;b:selectOneMenu&gt;</code>. </p>
+    <b:alert severity="danger">Due to a bug, arrays and hashmaps can be used to display the combobox, but the
+    user input is not processed correctly by the server. This bug will be fixed in the next version of BootsFaces.</b:alert>
+
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <b:form horizontal="true">
+        <b:formGroup>
+          <b:selectOneMenu value="#{semaphoreBean.color}" colMd="2" label="Traffic light color" labelColMd="2">
             <f:selectItems value="#{semaphoreBean.colors}" var="c" itemValue="#{c}" itemLabel="#{c}"/>
-        </b:selectOneMenu>
-    </b:formGroup>
-    <b:formGroup>
-        <b:selectOneMenu value="#{semaphoreBean.meaning}" colMd="2" label="Traffic light meaning" labelColMd="2">
+          </b:selectOneMenu>
+        </b:formGroup>
+        <b:formGroup>
+          <b:selectOneMenu value="#{semaphoreBean.meaning}" colMd="2" label="Traffic light meaning" labelColMd="2">
             <f:selectItems value="#{semaphoreBean.meanings}"/>
-        </b:selectOneMenu>
-    </b:formGroup>
-</b:form>            
+          </b:selectOneMenu>
+        </b:formGroup>
+      </b:form>
 
-            <f:facet name="footer">
-                <b:tabView contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
-                    <b:tab title="JSF markup">
-                        <b:panel>
-       <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-<b:form horizontal="true">
-    <b:formGroup>
-        <b:selectOneMenu value="&num;{semaphoreBean.color}" colMd="2" label="Traffic light color" labelColMd="2">
-            <f:selectItems value="&num;{semaphoreBean.colors}" var="c" itemValue="&num;{c}" itemLabel="&num;{c}"/>
-        </b:selectOneMenu>
-    </b:formGroup>
-    <b:formGroup>
-        <b:selectOneMenu value="&num;{semaphoreBean.meaning}" colMd="2" label="Traffic light meaning" labelColMd="2">
-            <f:selectItems value="&num;{semaphoreBean.meanings}"/>
-        </b:selectOneMenu>
-    </b:formGroup>
-</b:form>  
-]]>
-       </script>
-                        </b:panel>
-                    </b:tab>
-                    <b:tab title="Java Bean">
-                        <b:panel>
- <script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-@RequestScoped
-@ManagedBean
-public class SemaphoreBean {
+      <f:facet name="footer">
+        <b:tabView contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+          <b:tab title="JSF markup">
+            <b:panel>
+              <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+              <![CDATA[
+              <b:form horizontal="true">
+                <b:formGroup>
+                  <b:selectOneMenu value="&num;{semaphoreBean.color}" colMd="2" label="Traffic light color" labelColMd="2">
+                    <f:selectItems value="&num;{semaphoreBean.colors}" var="c" itemValue="&num;{c}" itemLabel="&num;{c}"/>
+                  </b:selectOneMenu>
+                </b:formGroup>
+                <b:formGroup>
+                  <b:selectOneMenu value="&num;{semaphoreBean.meaning}" colMd="2" label="Traffic light meaning" labelColMd="2">
+                    <f:selectItems value="&num;{semaphoreBean.meanings}"/>
+                  </b:selectOneMenu>
+                </b:formGroup>
+              </b:form>
+              ]]>
+              </script>
+            </b:panel>
+          </b:tab>
+          <b:tab title="Java Bean">
+            <b:panel>
+              <script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1">
+              <![CDATA[
+              @RequestScoped
+              @ManagedBean
+              public class SemaphoreBean {
 
-    @NotNull
-	private String color = null;
+                @NotNull
+                private String color = null;
 
-	@NotNull
-	private String meaning = null;
+                @NotNull
+                private String meaning = null;
 
-	private List<String> colors;
+                private List<String> colors;
 
-	private Map<String, String> meanings;
+                private Map<String, String> meanings;
 
-    public SemaphoreBean() {
-		colors = Arrays.asList("green", "yellow", "red");
-		meanings = new HashMap<>();
-		meanings.put("go", "green");
-		meanings.put("be alert", "yellow");
-		meanings.put("stop", "red");
-	}
-    
-	public String getColor() {
-		return color;
-	}
+                public SemaphoreBean() {
+                  colors = Arrays.asList("green", "yellow", "red");
+                  meanings = new HashMap<>();
+                  meanings.put("go", "green");
+                  meanings.put("be alert", "yellow");
+                  meanings.put("stop", "red");
+                }
 
-	public void setColor(String color) {
-		this.color = color;
-	}
+                public String getColor() {
+                  return color;
+                }
 
-	public String getMeaning() {
-		return meaning;
-	}
+                public void setColor(String color) {
+                  this.color = color;
+                }
 
-	public void setMeaning(String meaning) {
-		this.meaning = meaning;
-	}
+                public String getMeaning() {
+                  return meaning;
+                }
 
-	public List<String> getColors() {
-		return colors;
-	}
+                public void setMeaning(String meaning) {
+                  this.meaning = meaning;
+                }
 
-	public void setColors(List<String> colors) {
-		this.colors = colors;
-	}
+                public List<String> getColors() {
+                  return colors;
+                }
 
-	public Map<String, String> getMeanings() {
-		return meanings;
-	}
+                public void setColors(List<String> colors) {
+                  this.colors = colors;
+                }
 
-	public void setMeanings(Map<String, String> meanings) {
-		this.meanings = meanings;
-	}
-}
-]]>
-       </script>
-                        </b:panel>
-                    </b:tab>
-                </b:tabView>
-            </f:facet>
-        </b:panel>
+                public Map<String, String> getMeanings() {
+                  return meanings;
+                }
 
-    <h3>Prepending or appending facets <b:badge value="since 0.8.5" /></h3>
+                public void setMeanings(Map<String, String> meanings) {
+                  this.meanings = meanings;
+                }
+              }
+              ]]>
+              </script>
+            </b:panel>
+          </b:tab>
+        </b:tabView>
+      </f:facet>
+    </b:panel>
+
+    <h2><a id="prepending_or_appending_facets">Prepending or appending facets</a><b:badge value="since 0.8.5" /></h2>
     <p>To help you enhance the user experience, BootsFaces comes in with a useful feature:</p>
     <p>You can easily prepend or append text to your InputTextareas and what you prepend and append will seem part
-      of the input field.</p>
+    of the input field.</p>
     <p>
-      To do so, you just need to use the facets
-      <code>prepend</code>
-      and
-      <code>append</code>
-      where you will place the
-      <code>h:outputText</code>
-      element (or any other element). Note that there's a minor layout glitch between the facet and the combobox (the rounded corner).
-      You'll have to fix this with some CSS code.
+    To do so, you just need to use the facets
+    <code>prepend</code>
+    and
+    <code>append</code>
+    where you will place the
+    <code>h:outputText</code>
+    element (or any other element). Note that there's a minor layout glitch between the facet and the combobox (the rounded corner).
+    You'll have to fix this with some CSS code.
     </p>
     <p>You can even prepend and append at the same time, as in the following example:</p>
 
-                  <b:panel title="Live preview" look="info" collapsible="false">         
+    <b:panel title="Live preview" look="info" collapsible="false">
 
-<b:form>
-    <b:row>
-        <b:column small-screen="half">
+      <b:form>
+        <b:row>
+          <b:column small-screen="half">
             <b:selectOneMenu label="Form of address">
-                <f:facet name="prepend">
-                    <b:iconAwesome name="comment" />
-                </f:facet>
+              <f:facet name="prepend">
+                <b:iconAwesome name="comment" />
+              </f:facet>
 
-                <f:selectItem itemLabel="- please select - " />
-                <f:selectItem itemLabel="Mrs." />
-                <f:selectItem itemLabel="Mr." />
+              <f:selectItem itemLabel="- please select - " />
+              <f:selectItem itemLabel="Mrs." />
+              <f:selectItem itemLabel="Mr." />
 
-                <f:facet name="append">
-                    <b:iconAwesome name="list" />
-                </f:facet>
+              <f:facet name="append">
+                <b:iconAwesome name="list" />
+              </f:facet>
             </b:selectOneMenu>
-        </b:column>
-    </b:row>
-</b:form>
+          </b:column>
+        </b:row>
+      </b:form>
 
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-<b:form>
-    <b:row>
-        <b:column small-screen="half">
-            <b:selectOneMenu label="Form of address">
-                <f:facet name="prepend">
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <b:form>
+            <b:row>
+              <b:column small-screen="half">
+                <b:selectOneMenu label="Form of address">
+                  <f:facet name="prepend">
                     <b:iconAwesome name="comment" />
-                </f:facet>
+                  </f:facet>
 
-                <f:selectItem itemLabel="- please select - " />
-                <f:selectItem itemLabel="Mrs." />
-                <f:selectItem itemLabel="Mr." />
+                  <f:selectItem itemLabel="- please select - " />
+                  <f:selectItem itemLabel="Mrs." />
+                  <f:selectItem itemLabel="Mr." />
 
-                <f:facet name="append">
+                  <f:facet name="append">
                     <b:iconAwesome name="list" />
-                </f:facet>
+                  </f:facet>
+                </b:selectOneMenu>
+              </b:column>
+            </b:row>
+          </b:form>
+          ]]></script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+
+
+
+
+    <h2><a id="labels">Labels, required fields and error messages</a><b:badge value="breaking change in 1.1.0" /></h2>
+    <p>You can add a label by adding the attribute <code>label</code>. The label is also used by the JSF messages. To give you maximum flexibility,
+    you can suppress automatic rendering of labels by adding <code>renderLabel="false"</code>.
+    </p>
+    <h4>BootsFaces 1.0.2 and below:</h4>
+    <p>Required inputs fields and their labels both bear the CSS class <code>bf-required</code>. By default, this adds an asterisk to the label.</p>
+    <p>If the field has a FacesMessage, one of the CSS classes <code>bf-info</code>, <code>bf-warning</code>,
+    <code>bf-error</code> or <code>bf-fatal</code>, depending on which error severity the message has.
+    The latter two classes color the label red.</p>
+    <p>If there's no message,
+    the field and its label bear the pseudo CSS class <code>bf-no-message</code>  and <code>has-success</code>. The latter colors the label green by default.
+    </p>
+    <h4>BootsFaces 1.1.0:</h4>
+    <p><code>bf-info</code>, <code>bf-warning</code>,
+    <code>bf-error</code> or <code>bf-fatal</code> have been dropped in favor of the standard Bootstrap CSS classes <code>has-success</code>,
+    <code>has-warning</code> and <code>has-error</code>. Plus, they are applied to the <code>form-group</code> instead of the labels and input fields.</p>
+    <h5>Compatibility settings</h5>
+    <p>If your application depends on the old HTML code, activate the context parameter <code>net.bootsfaces.legacy_error_classes</code>
+    in the web.xml. The example below shows how to do this.</p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <b:panelGrid columns="2" size="sm">
+        <b:form>
+          <p>AJAX:</p>
+          <b:selectOneMenu label="form of address (required)"
+                           required="true"
+                           requiredMessage="Please provide the form of address."
+                           update="@this" value="#{selectOneMenuBean.address}"
+                           onchange="ajax:selectOneMenuBean.onChange()">
+            <f:selectItem itemLabel="- please select - " />
+            <f:selectItem itemLabel="Mrs." />
+            <f:selectItem itemLabel="Mr." />
+          </b:selectOneMenu>
+
+          <p>Non-AJAX:</p>
+
+          <b:selectOneMenu label="form of address (required)"
+                           required="true"
+                           requiredMessage="Please provide the form of address."
+                           value="selectOneMenuBean.address">
+            <f:selectItem itemLabel="- please select - " />
+            <f:selectItem itemLabel="Mrs." />
+            <f:selectItem itemLabel="Mr." />
+          </b:selectOneMenu>
+          <b:commandButton value="submit form and perform validations" process="@previous" update="@form" />
+        </b:form>
+
+        <b:form>
+          <b:switch value="#{messageStyleBean.useLegacyBootsFacesStyle}"
+                    immediate="true"
+                    caption="use legacy BootsFaces CSS classes"
+                    label="compatibility settings"
+                    onchange="ajax:messageStyleBean.toggleSettings();"
+                    update="@form"
+                    />
+        </b:form>
+      </b:panelGrid>
+
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <b:form>
+            <p>AJAX:</p>
+            <b:selectOneMenu label="form of address (required)"
+                             required="true"
+                             requiredMessage="Please provide the form of address."
+                             update="@this" value="&num;{selectOneMenuBean.address}"
+                             onchange="ajax:selectOneMenuBean.onChange()">
+              <f:selectItem itemLabel="- please select - " />
+              <f:selectItem itemLabel="Mrs." />
+              <f:selectItem itemLabel="Mr." />
             </b:selectOneMenu>
-        </b:column>
-    </b:row>
-</b:form>
-]]></script>
-                </b:panel>
-            </f:facet>
+
+            <p>Non-AJAX:</p>
+
+            <b:selectOneMenu label="form of address (required)"
+                             required="true"
+                             requiredMessage="Please provide the form of address."
+                             value="selectOneMenuBean.address">
+              <f:selectItem itemLabel="- please select - " />
+              <f:selectItem itemLabel="Mrs." />
+              <f:selectItem itemLabel="Mr." />
+            </b:selectOneMenu>
+            <b:commandButton value="submit form and perform validations" process="@previous" update="@form" />
+          </b:form>
+          ]]>
+          </script>
+
         </b:panel>
-       
-       
+      </f:facet>
+    </b:panel>
 
 
-	<a id="errorClasses" />
-		    <a id="labels"></a>
-		    <h3>Labels, required fields and error messages <b:badge value="breaking change in 1.1.0" /></h3>
-		    <p>You can add a label by adding the attribute <code>label</code>. The label is also used by the JSF messages. To give you maximum flexibility,
-		    you can suppress automatic rendering of labels by adding <code>renderLabel="false"</code>.
-		    </p>
-		    <h4>BootsFaces 1.0.2 and below:</h4>
-		    <p>Required inputs fields and their labels both bear the CSS class <code>bf-required</code>. By default, this adds an asterisk to the label.</p>
-		    <p>If the field has a FacesMessage, one of the CSS classes <code>bf-info</code>, <code>bf-warning</code>,
-		        <code>bf-error</code> or <code>bf-fatal</code>, depending on which error severity the message has.
-		        The latter two classes color the label red.</p>
-		     <p>If there's no message,
-		        the field and its label bear the pseudo CSS class <code>bf-no-message</code>  and <code>has-success</code>. The latter colors the label green by default.
-		    </p>
-		    <h4>BootsFaces 1.1.0:</h4>
-		    <p><code>bf-info</code>, <code>bf-warning</code>,
-	        <code>bf-error</code> or <code>bf-fatal</code> have been dropped in favor of the standard Bootstrap CSS classes <code>has-success</code>,
-	        <code>has-warning</code> and <code>has-error</code>. Plus, they are applied to the <code>form-group</code> instead of the labels and input fields.</p>
-	        <h5>Compatibility settings</h5>
-	        <p>If your application depends on the old HTML code, activate the context parameter <code>net.bootsfaces.legacy_error_classes</code>
-	        in the web.xml. The example below shows how to do this.</p>
+    <h2><a id="ajax_and_javascript">AJAX and JavaScript</a><b:badge value="since 0.8.0" /></h2>
+    <p>The <code>&lt;b:selectBooleanCheckbox &gt;</code> supports the full suite of JavaScript and AJAX events,
+    as described in <a href="ajax.jsf">the description of AJAX in BootsFaces</a>. Basically, each of the
+    many JavaScript callback handlers (the <code>on[event]</code> attributes) also supports AJAX.
+    To get familiar with BootsFaces AJAX, try the
+    <a target="#" href="https://github.com/stephanrauh/BootsFaces-Examples/tree/master/AJAX">BootsFaces AJAX demo project</a>.</p>
 
-                    <b:panel title="Live preview" look="info" collapsible="false">         
-<b:panelGrid columns="2" size="sm">
-                <b:form>
-                    <p>AJAX:</p>
-                    <b:selectOneMenu label="form of address (required)"
-                                     required="true"
-                                     requiredMessage="Please provide the form of address."
-                                     update="@this" value="#{selectOneMenuBean.address}"
-                                     onchange="ajax:selectOneMenuBean.onChange()">
-                        <f:selectItem itemLabel="- please select - " />
-                        <f:selectItem itemLabel="Mrs." />
-                        <f:selectItem itemLabel="Mr." />
-                    </b:selectOneMenu>
+    <b:panel title="Live preview" look="info" collapsible="false">
 
-                    <p>Non-AJAX:</p>
+      <b:form horizontal="true">
+        <b:formGroup>
+          <b:selectOneMenu value="#{selectOneMenuBean.brand}" update="@parent" process="@form" colMd="2" label="Select your car's brand:" labelColMd="2">
+            <f:selectItem itemLabel="(Please select)" itemValue="" />
+            <f:selectItem itemLabel="Fiat" itemValue="1" />
+            <f:selectItem itemLabel="Honda" itemValue="2" />
+            <f:selectItem itemLabel="Opel" itemValue="3" />
+          </b:selectOneMenu>
+          <b:message colMd="2" />
+          <b:inputText value="#{selectOneMenuBean.brand}" disabled="true" colMd="4" label="Last submitted value:" labelColMd="2" />
+        </b:formGroup>
+        <b:formGroup>
+          <b:selectOneMenu value="#{selectOneMenuBean.type}" update="@parent" process="@form" colMd="2" label="Select your car's type:" labelColMd="2">
+            <f:selectItem itemLabel="(Please select)" itemValue="" />
+            <f:selectItem itemLabel="Cinquecento" itemValue="1" />
+            <f:selectItem itemLabel="Civic" itemValue="2" />
+            <f:selectItem itemLabel="Astra" itemValue="3" />
+            <f:selectItem itemLabel="Megane" itemValue="4" />
+          </b:selectOneMenu>
+          <b:message colMd="2" />
+          <b:inputText value="#{selectOneMenuBean.type}" disabled="true" colMd="4" label="Last submitted value" labelColMd="2" />
+        </b:formGroup>
+      </b:form>
 
-                    <b:selectOneMenu label="form of address (required)"
-                                     required="true"
-                                     requiredMessage="Please provide the form of address."
-                                     value="selectOneMenuBean.address">
-                        <f:selectItem itemLabel="- please select - " />
-                        <f:selectItem itemLabel="Mrs." />
-                        <f:selectItem itemLabel="Mr." />
-                    </b:selectOneMenu>
-                    <b:commandButton value="submit form and perform validations" process="@previous" update="@form" />
-                </b:form>
-
-                <b:form>
-                    <b:switch value="#{messageStyleBean.useLegacyBootsFacesStyle}"
-                              immediate="true"
-                              caption="use legacy BootsFaces CSS classes"
-                              label="compatibility settings" 
-                              onchange="ajax:messageStyleBean.toggleSettings();"
-                              update="@form"
-                              />
-                </b:form>
-            </b:panelGrid>
-
-
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-<script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-<![CDATA[
-                <b:form>
-                    <p>AJAX:</p>
-                    <b:selectOneMenu label="form of address (required)"
-                                     required="true"
-                                     requiredMessage="Please provide the form of address."
-                                     update="@this" value="&num;{selectOneMenuBean.address}"
-                                     onchange="ajax:selectOneMenuBean.onChange()">
-                        <f:selectItem itemLabel="- please select - " />
-                        <f:selectItem itemLabel="Mrs." />
-                        <f:selectItem itemLabel="Mr." />
-                    </b:selectOneMenu>
-
-                    <p>Non-AJAX:</p>
-
-                    <b:selectOneMenu label="form of address (required)"
-                                     required="true"
-                                     requiredMessage="Please provide the form of address."
-                                     value="selectOneMenuBean.address">
-                        <f:selectItem itemLabel="- please select - " />
-                        <f:selectItem itemLabel="Mrs." />
-                        <f:selectItem itemLabel="Mr." />
-                    </b:selectOneMenu>
-                    <b:commandButton value="submit form and perform validations" process="@previous" update="@form" />
-                </b:form>
-]]>
-       </script>
-
-                </b:panel>
-            </f:facet>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:form horizontal="true">
+            <b:formGroup>
+              <b:selectOneMenu value="&num;{selectOneMenuBean.brand}" update="@parent" process="@form" colMd="2" label="Select your car's brand:" labelColMd="2">
+                <f:selectItem itemLabel="(Please select)" itemValue="" />
+                <f:selectItem itemLabel="Fiat" itemValue="1" />
+                <f:selectItem itemLabel="Honda" itemValue="2" />
+                <f:selectItem itemLabel="Opel" itemValue="3" />
+              </b:selectOneMenu>
+              <b:message colMd="2" />
+              <b:inputText value="&num;{selectOneMenuBean.brand}" disabled="true" colMd="4" label="Last submitted value:" labelColMd="2" />
+            </b:formGroup>
+            <b:formGroup>
+              <b:selectOneMenu value="&num;{selectOneMenuBean.type}" update="@parent" process="@form" colMd="2" label="Select your car's type:" labelColMd="2">
+                <f:selectItem itemLabel="(Please select)" itemValue="" />
+                <f:selectItem itemLabel="Cinquecento" itemValue="1" />
+                <f:selectItem itemLabel="Civic" itemValue="2" />
+                <f:selectItem itemLabel="Astra" itemValue="3" />
+                <f:selectItem itemLabel="Megane" itemValue="4" />
+              </b:selectOneMenu>
+              <b:message colMd="2" />
+              <b:inputText value="&num;{selectOneMenuBean.type}" disabled="true" colMd="4" label="Last submitted value" labelColMd="2" />
+            </b:formGroup>
+          </b:form>
+          ]]></script>
         </b:panel>
-       
+      </f:facet>
+    </b:panel>
 
-                <h2>AJAX and JavaScript  <b:badge value="since 0.8.0" /></h2>
-                <p>The <code>&lt;b:selectBooleanCheckbox &gt;</code> supports the full suite of JavaScript and AJAX events,
-                as described in <a href="ajax.jsf">the description of AJAX in BootsFaces</a>. Basically, each of the
-                many JavaScript callback handlers (the <code>on[event]</code> attributes) also supports AJAX.
-                To get familiar with BootsFaces AJAX, try the
-                <a target="#" href="https://github.com/stephanrauh/BootsFaces-Examples/tree/master/AJAX">BootsFaces AJAX demo project</a>.</p>
+    <br/>
+    <h2><a id="responsive_design">Responsive design</a><b:badge value="since 0.9.0" /></h2>
+    <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
+    also with <code>&lt;b:icon /&gt;</code>:</p>
+    <b:panel title="Live preview" look="info" collapsible="false">
 
-                             <b:panel title="Live preview" look="info" collapsible="false">         
+      <b:form horizontal="true">
+        <b:selectOneMenu value="large-screen='full-width'" large-screen="full-width" />
+        <b:formGroup>
+          <b:selectOneMenu value="large-screen='one-third'" large-screen="one-third" />
+          <b:selectOneMenu value="large-screen='two-thirds'" large-screen="two-thirds" />
+        </b:formGroup>
+        <b:formGroup>
+          <b:selectOneMenu value="small-screen='one-third'" small-screen="one-third" />
+          <b:selectOneMenu value="small-screen='two-thirds'" small-screen="two-thirds" />
+        </b:formGroup>
+        <b:formGroup>
+          <b:selectOneMenu value="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
+          <b:selectOneMenu value="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
+        </b:formGroup>
+      </b:form>
 
-<b:form horizontal="true">
-                    <b:formGroup>
-                        <b:selectOneMenu value="#{selectOneMenuBean.brand}" update="@parent" process="@form" colMd="2" label="Select your car's brand:" labelColMd="2">
-                            <f:selectItem itemLabel="(Please select)" itemValue="" />
-                            <f:selectItem itemLabel="Fiat" itemValue="1" />
-                            <f:selectItem itemLabel="Honda" itemValue="2" />
-                            <f:selectItem itemLabel="Opel" itemValue="3" />
-                        </b:selectOneMenu>
-                        <b:message colMd="2" />
-                        <b:inputText value="#{selectOneMenuBean.brand}" disabled="true" colMd="4" label="Last submitted value:" labelColMd="2" />
-                    </b:formGroup>
-                    <b:formGroup>
-                        <b:selectOneMenu value="#{selectOneMenuBean.type}" update="@parent" process="@form" colMd="2" label="Select your car's type:" labelColMd="2">
-                            <f:selectItem itemLabel="(Please select)" itemValue="" />
-                            <f:selectItem itemLabel="Cinquecento" itemValue="1" />            
-                            <f:selectItem itemLabel="Civic" itemValue="2" />
-                            <f:selectItem itemLabel="Astra" itemValue="3" />
-                            <f:selectItem itemLabel="Megane" itemValue="4" />
-                        </b:selectOneMenu>
-                        <b:message colMd="2" />
-                        <b:inputText value="#{selectOneMenuBean.type}" disabled="true" colMd="4" label="Last submitted value" labelColMd="2" />
-                    </b:formGroup>
-                </b:form>
-
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-<script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-             <![CDATA[
-                <b:form horizontal="true">
-                    <b:formGroup>
-                        <b:selectOneMenu value="&num;{selectOneMenuBean.brand}" update="@parent" process="@form" colMd="2" label="Select your car's brand:" labelColMd="2">
-                            <f:selectItem itemLabel="(Please select)" itemValue="" />
-                            <f:selectItem itemLabel="Fiat" itemValue="1" />
-                            <f:selectItem itemLabel="Honda" itemValue="2" />
-                            <f:selectItem itemLabel="Opel" itemValue="3" />
-                        </b:selectOneMenu>
-                        <b:message colMd="2" />
-                        <b:inputText value="&num;{selectOneMenuBean.brand}" disabled="true" colMd="4" label="Last submitted value:" labelColMd="2" />
-                    </b:formGroup>
-                    <b:formGroup>
-                        <b:selectOneMenu value="&num;{selectOneMenuBean.type}" update="@parent" process="@form" colMd="2" label="Select your car's type:" labelColMd="2">
-                            <f:selectItem itemLabel="(Please select)" itemValue="" />
-                            <f:selectItem itemLabel="Cinquecento" itemValue="1" />            
-                            <f:selectItem itemLabel="Civic" itemValue="2" />
-                            <f:selectItem itemLabel="Astra" itemValue="3" />
-                            <f:selectItem itemLabel="Megane" itemValue="4" />
-                        </b:selectOneMenu>
-                        <b:message colMd="2" />
-                        <b:inputText value="&num;{selectOneMenuBean.type}" disabled="true" colMd="4" label="Last submitted value" labelColMd="2" />
-                    </b:formGroup>
-                </b:form>
-             ]]></script>
-                </b:panel>
-            </f:facet>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:form horizontal="true">
+            <b:selectOneMenu value="large-screen='full-width'" large-screen="full-width" />
+            <b:formGroup>
+              <b:selectOneMenu value="large-screen='one-third'" large-screen="one-third" />
+              <b:selectOneMenu value="large-screen='two-thirds'" large-screen="two-thirds" />
+            </b:formGroup>
+            <b:formGroup>
+              <b:selectOneMenu value="small-screen='one-third'" small-screen="one-third" />
+              <b:selectOneMenu value="small-screen='two-thirds'" small-screen="two-thirds" />
+            </b:formGroup>
+            <b:formGroup>
+              <b:selectOneMenu value="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
+              <b:selectOneMenu value="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
+            </b:formGroup>
+          </b:form>
+          ]]></script>
         </b:panel>
+      </f:facet>
+    </b:panel>
 
-                <br/>
-                <h2>Responsive design <b:badge value="since 0.9.0" /></h2>
-                <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
-                also with <code>&lt;b:icon /&gt;</code>:</p>
-               <b:panel title="Live preview" look="info" collapsible="false">            
+    <h2><a id="visibility_depending_on_screen_size">Visibility depending on screen size</a><b:badge value="since 0.8.6/0.9.0" /></h2>
+    <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
+    <br/>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <b:form horizontal="true">
+        <b:selectOneMenu visible="md..." label="Visible on &gt;= md:"  label-col-md="2" col-md="10" />
+        <b:selectOneMenu visible="...sm" label="Visible on &lt;= sm:"  label-col-md="2" col-md="10"/>
+        <b:selectOneMenu visible="sm...lg" label="Visible on sm...lg:"  label-col-md="2" col-md="10"/>
+        <b:selectOneMenu visible="xs,md" label="Visible on xs and md:"  label-col-md="2" col-md="10"/>
+        <b:selectOneMenu label="Col-md-6, offset 2:"  label-col-md="2" col-md="6" offset="2" />
+      </b:form>
 
-<b:form horizontal="true">
-    <b:selectOneMenu value="large-screen='full-width'" large-screen="full-width" />
-    <b:formGroup>
-        <b:selectOneMenu value="large-screen='one-third'" large-screen="one-third" />
-        <b:selectOneMenu value="large-screen='two-thirds'" large-screen="two-thirds" />
-    </b:formGroup>
-    <b:formGroup>
-        <b:selectOneMenu value="small-screen='one-third'" small-screen="one-third" />
-        <b:selectOneMenu value="small-screen='two-thirds'" small-screen="two-thirds" />
-    </b:formGroup>
-    <b:formGroup>
-        <b:selectOneMenu value="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
-        <b:selectOneMenu value="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
-    </b:formGroup>
-</b:form>
-
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-	          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-             <![CDATA[
-<b:form horizontal="true">
-    <b:selectOneMenu value="large-screen='full-width'" large-screen="full-width" />
-    <b:formGroup>
-        <b:selectOneMenu value="large-screen='one-third'" large-screen="one-third" />
-        <b:selectOneMenu value="large-screen='two-thirds'" large-screen="two-thirds" />
-    </b:formGroup>
-    <b:formGroup>
-        <b:selectOneMenu value="small-screen='one-third'" small-screen="one-third" />
-        <b:selectOneMenu value="small-screen='two-thirds'" small-screen="two-thirds" />
-    </b:formGroup>
-    <b:formGroup>
-        <b:selectOneMenu value="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
-        <b:selectOneMenu value="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
-    </b:formGroup>
-</b:form>
-             ]]></script>
-                </b:panel>
-            </f:facet>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:form horizontal="true">
+            <b:selectOneMenu visible="md..." label="Visible on &gt;= md:" label-col-md="2" col-md="10" />
+            <b:selectOneMenu visible="...sm" label="Visible on &lt;= sm:" label-col-md="2" col-md="10"/>
+            <b:selectOneMenu visible="sm...lg" label="Visible on sm...lg:" label-col-md="2" col-md="10"/>
+            <b:selectOneMenu visible="xs,md" label="Visible on xs and md:" label-col-md="2" col-md="10"/>
+            <b:selectOneMenu label="Col-md-6, offset 2:" label-col-md="2" col-md="6" offset="2" />
+          </b:form>
+          ]]></script>
         </b:panel>
+      </f:facet>
+    </b:panel>
 
-                <h3>Visibility depending on screen size <b:badge value="since 0.8.6/0.9.0" /></h3>
-                <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
-                <br/>
-                <b:panel title="Live preview" look="info" collapsible="false">            
-            <b:form horizontal="true">
-                <b:selectOneMenu visible="md..." label="Visible on &gt;= md:"  label-col-md="2" col-md="10" />
-                <b:selectOneMenu visible="...sm" label="Visible on &lt;= sm:"  label-col-md="2" col-md="10"/>
-                <b:selectOneMenu visible="sm...lg" label="Visible on sm...lg:"  label-col-md="2" col-md="10"/>
-                <b:selectOneMenu visible="xs,md" label="Visible on xs and md:"  label-col-md="2" col-md="10"/>
-                <b:selectOneMenu label="Col-md-6, offset 2:"  label-col-md="2" col-md="6" offset="2" />
-            </b:form>
+    <h2><a id="tooltips">Tooltips</a></h2>
+    <p><code>&lt;b:selectOneMenu  /&gt;</code> supports tooltips:</p>
+    <br/>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <b:form>
+        <b:selectOneMenu value="Look at my tooltip!" tooltip="Ain't it a nice tooltip?"/>
+      </b:form>
 
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-	          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-             <![CDATA[
-            <b:form horizontal="true">
-                <b:selectOneMenu visible="md..." label="Visible on &gt;= md:" label-col-md="2" col-md="10" />
-                <b:selectOneMenu visible="...sm" label="Visible on &lt;= sm:" label-col-md="2" col-md="10"/>
-                <b:selectOneMenu visible="sm...lg" label="Visible on sm...lg:" label-col-md="2" col-md="10"/>
-                <b:selectOneMenu visible="xs,md" label="Visible on xs and md:" label-col-md="2" col-md="10"/>
-                <b:selectOneMenu label="Col-md-6, offset 2:" label-col-md="2" col-md="6" offset="2" />
-            </b:form>
-             ]]></script>
-                </b:panel>
-            </f:facet>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:form>
+            <b:selectOneMenu value="Look at my tooltip!" tooltip="Ain't it a nice tooltip?"/>
+          </b:form>
+          ]]></script>
         </b:panel>
+      </f:facet>
+    </b:panel>
 
-                <h3>Tooltips</h3>
-                <p><code>&lt;b:selectOneMenu  /&gt;</code> supports tooltips:</p>
-                <br/>
-                <b:panel title="Live preview" look="info" collapsible="false">            
-            <b:form>
-                          <b:selectOneMenu value="Look at my tooltip!" tooltip="Ain't it a nice tooltip?"/>
-                      </b:form>
+    <h2><a id="reference_section">Reference section</a></h2>
+    <ui:include src="SelectOneMenuAttributes.xhtml" />
 
-            <f:facet name="footer">
-                <strong>JSF markup:</strong>
-                <b:panel>
-	          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-             <![CDATA[
-            <b:form>
-                <b:selectOneMenu value="Look at my tooltip!" tooltip="Ain't it a nice tooltip?"/>
-            </b:form>
-             ]]></script>
-                </b:panel>
-            </f:facet>
-        </b:panel>
+    <b:panel look="info">
+      <f:facet name="heading">
+        <b>Skinning</b>
+      </f:facet>
+      <ul>
+        <li>
+          The combobox is a <code>select</code> tag bearing the CSS-class <code>form-control</code>.
+        </li>
+        <li>
+          If the attribute <code>required</code> is true, the pseudo CSS class <code>bf-required</code> is added.
+          Thus you can define your custom style for required fields.
+        </li>
+        <li>
+          If there's a <code>FacesMessage</code>, the input field is bears one of the pseudo CSS classes
+          <code>bf-info</code>, <code>bf-warning</code>, <code>bf-error</code> or <code>bf-fatal</code>. If there are no messages,
+          the input field bears the pseudo CSS class <code>bf-no-message</code>  and <code>has-success</code>. The latter colors the label green by default.
+        </li>
+        <li>If there's a label, it bears the CSS class <code>required</code>, if it's a mandatory field.
+          This class adds an asterisk to the label text. You can override the CSS class to remove the asterisk
+        or to replace it by something else.</li>
+        <li>If there's a label, it bears the CSS classes <code>bf-info</code>, <code>bf-warning</code>,
+          <code>bf-error</code> or <code>bf-fatal</code>, depending on which severity the error message the input field has.
+          The latter two classes color the label red.<br />
+          If there's no message,
+          the input field bears the pseudo CSS class <code>bf-no-message</code>  and <code>has-success</code>. The latter colors the label green by default.
+        </li>
+      </ul>
+    </b:panel>
 
-                <h3>Reference section</h3>
-                <ui:include src="SelectOneMenuAttributes.xhtml" />
-
-            <b:panel look="info">
-				<f:facet name="heading">
-					<b>Skinning</b>
-				</f:facet>
-				<ul>
-					<li>
-				   		The combobox is a <code>select</code> tag bearing the CSS-class <code>form-control</code>.
-				   </li>
-				   <li>
-				   		If the attribute <code>required</code> is true, the pseudo CSS class <code>bf-required</code> is added.
-                        Thus you can define your custom style for required fields.
-				   </li>
-                   <li>
-                   If there's a <code>FacesMessage</code>, the input field is bears one of the pseudo CSS classes
-                   <code>bf-info</code>, <code>bf-warning</code>, <code>bf-error</code> or <code>bf-fatal</code>. If there are no messages,
-                   the input field bears the pseudo CSS class <code>bf-no-message</code>  and <code>has-success</code>. The latter colors the label green by default.
-                   </li>
-                   <li>If there's a label, it bears the CSS class <code>required</code>, if it's a mandatory field.
-                   This class adds an asterisk to the label text. You can override the CSS class to remove the asterisk
-                   or to replace it by something else.</li>
-                   <li>If there's a label, it bears the CSS classes <code>bf-info</code>, <code>bf-warning</code>,
-                   <code>bf-error</code> or <code>bf-fatal</code>, depending on which severity the error message the input field has.
-                   The latter two classes color the label red.<br />
-                   If there's no message,
-                   the input field bears the pseudo CSS class <code>bf-no-message</code>  and <code>has-success</code>. The latter colors the label green by default.
-                   </li>
-				  </ul>
-			</b:panel>
-
-                <script type="text/javascript">
-                    SyntaxHighlighter.all();
-                </script>
-                <br/><br/><br/><br/>
-            </ui:define>
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+    <br/><br/><br/><br/>
+  </ui:define>
 </ui:composition>
