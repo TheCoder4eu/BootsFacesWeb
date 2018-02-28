@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+  <h:head>
+  </h:head>
+  <h:body style="padding-top: 60px">
+<h:form>
+<b:tabView>
+    <b:tab title="#{not empty currentHazard.id?currentHazard.id:'new'}" value="#{issue918.getHazards()}" var="currentHazard" varStatus="tabStatus">
+        <h:outputText value="#{currentHazard.id} - #{currentHazard.origin}"/>
+        <b:selectOneMenu value="#{currentHazard.origin}" rendered="#{not empty currentHazard}">
+            <f:selectItem itemLabel="(Please select)" itemValue="#{null}" />
+            <f:selectItems value="#{issue918.potentialHazards}" var="hazardOrigin" itemValue="#{hazardOrigin}" itemLabel="#{hazardOrigin.origin}" />
+        </b:selectOneMenu>
+    </b:tab>
+</b:tabView>
+
+<b:commandButton action="#{issue918.addNewHazard(issue918.selectedHazard)}" value="Add Hazard"/>
+</h:form>
+  </h:body>
+</html>
