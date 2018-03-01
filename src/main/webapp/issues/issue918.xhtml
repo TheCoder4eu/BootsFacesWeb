@@ -4,22 +4,28 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
-  <h:head>
-  </h:head>
-  <h:body style="padding-top: 60px">
-<h:form>
-<b:tabView>
-    <b:tab title="#{not empty currentHazard.id?currentHazard.id:'new'}" value="#{issue918.getHazards()}" var="currentHazard" varStatus="tabStatus">
-        <h:outputText value="#{currentHazard.id} - #{currentHazard.origin}"/>
-        <b:selectOneMenu value="#{currentHazard.origin}" rendered="#{not empty currentHazard}">
-            <f:selectItem itemLabel="(Please select)" itemValue="#{null}" />
-            <f:selectItems value="#{issue918.potentialHazards}" var="hazardOrigin" itemValue="#{hazardOrigin}" itemLabel="#{hazardOrigin.origin}" />
-        </b:selectOneMenu>
-    </b:tab>
-</b:tabView>
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+    </h:head>
+    <h:body style="padding-top: 60px">
+        <h:form>
+            <!--<p:tabView value="#{issue918.getHazards()}" var="currentHazard" >-->
+            <!--<p:tab title="ID">-->
+            <b:tabView>
+                <b:tab title="ID" value="#{issue918.getHazards()}" var="currentHazard" varStatus="tabStatus">
+                    <h:outputText value="#{currentHazard.origin}" />
+                    <b:selectOneMenu value="#{currentHazard.origin}" rendered="#{not empty currentHazard}">
+                        <f:converter binding="#{hazardOriginConverter_}"/>
+                        <f:selectItem itemLabel="(Please select)" itemValue="#{null}" />
+                        <f:selectItems value="#{currentHazard.type.hazardOrigins}" var="hazardOrigin" itemValue="#{hazardOrigin}" itemLabel="#{hazardOrigin.code}" />
+                    </b:selectOneMenu>
+                </b:tab>
+            </b:tabView>
+            <!--</p:tab>-->
+            <!--</p:tabView>-->
 
-<b:commandButton action="#{issue918.addNewHazard(issue918.selectedHazard)}" value="Add Hazard"/>
-</h:form>
-  </h:body>
+            <b:commandButton action="#{issue918.addNewHazard()}" value="Add Hazard"/>
+        </h:form>
+    </h:body>
 </html>
