@@ -1002,6 +1002,11 @@
     This first number in the curly braces defines the minimum number of characters. The
     second number specifies the maximum number of characters.
     Optional masks can be defined by putting them into square brackets: <code>9{1,3}[,999]</code>.
+    </p>
+    <p>
+    When a mask starts with <code>{</code> it is considered to be a JSON object. This allows you to use more advanced masks,
+    for example using a regular expression: <code>{ regex: '\\d*' }</code>,
+    or set greedy to false: <code>{ mask: '9[-9999]', greedy: false }</code>.
     Read the full documentation at the project page of the
     <a target="#" href="https://github.com/RobinHerbots/Inputmask">underlying JavaScript plugin</a>
     written by Robin Herbots.
@@ -1039,6 +1044,9 @@
           <b:inputText value="#{inputTextBean.text}"
                        mask="A{1,3}-A{1,2} 9{1,4}"
                        label="German number plate with capital letters" render-label="true"/>
+          <b:inputText value="#{inputTextBean.text}"
+                       mask="{regex:'[0-9\u0600-\u06FF]*'}"
+                       label="Regular expression '[\u0600-\u06FF]*' (Arabic)" render-label="true"/>
         </b:panelGrid>
 
       </h:form>
@@ -1080,6 +1088,9 @@
             <b:inputText value="&num;{inputTextBean.text}"
                          mask="A{1,3}-A{1,2} 9{1,4}"
                          label="German number plate with capital letters" render-label="true"/>
+            <b:inputText value="&num;{inputTextBean.text}"
+                         mask="{regex:'[0-9\u0600-\u06FF]*'}"
+                         label="Regular expression '[\u0600-\u06FF]*' (Arabic)" render-label="true"/>
           </b:panelGrid>
           ]]>
           </script>
