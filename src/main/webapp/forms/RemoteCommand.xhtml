@@ -39,7 +39,7 @@
             class="brush: xml; toolbar: false;gutter: false; first-line: 1">
             <![CDATA[
             <b:panel title="RemoteCommand demo">
-              <b:button onclick="countRemotely()" value="increment remote counter" look="success"/>
+              <b:button onclick="countRemotely(event)" value="increment remote counter" look="success"/>
               <b:remoteCommand name="countRemotely" id="remoteCommand" actionListener="&num;{remoteCommandBean.count}" update="@(.counter)" />
               <h:panelGroup id="counterId" layout="block" class="counter">
                 <br />
@@ -79,7 +79,7 @@
         </b:tab>
         <b:tab title="live demo">
           <b:panel title="RemoteCommand demo">
-            <b:button onclick="countRemotely()" value="increment remote counter" look="success"/>
+            <b:button onclick="countRemotely(event)" value="increment remote counter" look="success"/>
             <b:remoteCommand name="countRemotely" id="remoteCommand" actionListener="#{remoteCommandBean.count}" update="@(.counter)" />
           <h:panelGroup id="counterId" layout="block" class="counter"><br />You've triggered the remoteCommand #{remoteCommandBean.counter} times.</h:panelGroup>
           </b:panel>
@@ -95,6 +95,12 @@
       <li><code>&lt;b:remoteCommand name="setCounter" parameters="initialValue,step" /&gt;</code> generates the JavaScript function <code>setCounter(initialValue,step)</code>.</li>
     </ul>
 
+    <h2><a id="parameters">Implicit parameter "event"</a></h2>
+    <p>The last parameter is always the <code>event</code>. This parameter is added automatically to the parameter list. It's necessary to
+    call an AJAX request and it's useful in many other situations. It's a good idea to pass the <code>event</code> when you're calling
+    the function, even though the AJAX engine usually also works without it. In this case, the event passed to the AJAX engine is 
+    <code>undefined</code>, which may or may not cause problems.</p>
+
     <h:form>
       <b:tabView active-index="2">
         <b:tab title="JSF code">
@@ -102,8 +108,8 @@
             <script type="syntaxhighlighter"
             class="brush: xml; toolbar: false;gutter: false; first-line: 1">
             <![CDATA[
-            <b:button onclick="setCounter(0)" value="set counter to zero" look="success"/>
-            <b:button onclick="setCounter(10)" value="set counter to ten" look="success"/>
+            <b:button onclick="setCounter(0, event)" value="set counter to zero" look="success"/>
+            <b:button onclick="setCounter(10, event)" value="set counter to ten" look="success"/>
             <b:remoteCommand name="setCounter" id="remoteCommand2"
                              actionListener="&num;{remoteCommandBean.setCounter}"
                              update="@(.counter)" parameters="initialValue" />
@@ -152,8 +158,8 @@
         </b:tab>
         <b:tab title="live demo">
           <b:panel title="RemoteCommand demo">
-            <b:button onclick="setCounter(0)" value="set counter to zero" look="success"/>
-            <b:button onclick="setCounter(10)" value="set counter to ten" look="success"/>
+            <b:button onclick="setCounter(0, event)" value="set counter to zero" look="success"/>
+            <b:button onclick="setCounter(10, event)" value="set counter to ten" look="success"/>
             <b:remoteCommand name="setCounter" id="remoteCommand2" actionListener="#{remoteCommandBean.setCounter}" update="@(.counter)" parameters="initialValue" />
           <h:panelGroup id="counterId" layout="block" class="counter"><br />You've set the remoteCommand counter to #{remoteCommandBean.counter}.</h:panelGroup>
           </b:panel>

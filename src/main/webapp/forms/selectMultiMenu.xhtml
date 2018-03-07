@@ -80,9 +80,7 @@
             <b:panelGrid colSpans="2,2,2,2,4">
               <h:outputLabel value="Select your car's brand:" for="brandID" id="l1" />
               <b:selectMultiMenu value="#{selectMultiMenuBean.brand}" id="brandID">
-                <f:selectItem itemLabel="Fiat" itemValue="1" />
-                <f:selectItem itemLabel="Honda" itemValue="2" />
-                <f:selectItem itemLabel="Opel" itemValue="3" />
+                <f:selectItems value="#{selectMultiMenuBean.myList}" var="l" itemValue="#{l.key}" itemLabel="#{l.value}" />
               </b:selectMultiMenu>
               <h:message for="brandID" />
               <h:outputLabel value="last submitted value:" for="brandOutputID" />

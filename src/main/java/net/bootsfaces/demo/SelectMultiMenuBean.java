@@ -18,6 +18,8 @@
 package net.bootsfaces.demo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -51,7 +53,15 @@ public class SelectMultiMenuBean implements Serializable {
 	@Max(999)
 	private int enginePower;
 
+	private List<NumericKeyStringValuePair> myList = new ArrayList<>();
+
 	private boolean iAgreeToTheTermsAndConditions = false;
+
+	public SelectMultiMenuBean() {
+		getMyList().add(new NumericKeyStringValuePair(1, "Tesla"));
+		getMyList().add(new NumericKeyStringValuePair(2, "Porsche"));
+		getMyList().add(new NumericKeyStringValuePair(3, "BMW"));
+	}
 
 	public String getColor() {
 		return color;
@@ -115,5 +125,13 @@ public class SelectMultiMenuBean implements Serializable {
 		} else {
 			FacesMessages.info("**:typeID", "Type selected", "You've selected " + type);
 		}
+	}
+
+	public List<NumericKeyStringValuePair> getMyList() {
+		return myList;
+	}
+
+	public void setMyList(List<NumericKeyStringValuePair> myList) {
+		this.myList = myList;
 	}
 }
