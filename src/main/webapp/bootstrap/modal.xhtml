@@ -13,6 +13,7 @@
       <b:navLink href="#triggering" value="triggering modals" />
       <b:navLink href="#troubleshooting" value="troubleshooting" />
       <b:navLink href="#closable" value="closable and backdrop" />
+      <b:navLink href="#growl" value="growls" />
       <b:navLink href="#datatables" value="datatables" />
       <b:navLink href="#attributes" value="attributes" />
     </b:listLinks>
@@ -250,6 +251,20 @@
     Calling <code>$('.modalPseudoClass').modal('show');</code> or <code>$('.modalPseudoClass').modal('hide');</code> overrides the default
     setting defined by <code>pt:data-show="true"</code>.</p>
     <br />
+    
+    <h2><a id="growl">Displaying a &lt;b:growl /&gt; above a modal</a></h2>
+ 	<p>By default, growls are shown in a lower z-index level than the modal. In order to display the &lt;b:growl /&gt; properly 
+ 	you have to raise its <code>z-index</code> to 1050 or above, as shown in this example:</p>
+      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+      <![CDATA[
+    <style>
+   .beam-me-up {
+      z-index:1050 !important;
+   }
+   </style>
+   <b:growl styleClass="beam-me-up" />
+      ]]>
+      </script>
 
     <h2><a id="datatables">Datatables in a modal</a></h2>
     <p>By default, modals are hidden. As a consequence, any <code>&lt;b:dataTable /&gt;</code> inside the modal is rendered incorrectly.
