@@ -971,7 +971,7 @@
     separate tags either by tying a comma or by hitting the <code>return</code> key.</p>
   <p>We've dedicated a special <h:link outcome="inputTextWithTags.jsf">showcase page to the input text tags</h:link>.</p>
 
-    <h2><a id="mask">Mask</a><b:badge value="since 1.1.2" /></h2>
+    <h2><a id="mask">Mask</a><b:badge value="since 1.1.2" /><b:badge value="improved with 1.2.1" /></h2>
     <p>
     An input mask can be set using the <code>mask</code> attribute.
     Default masking definitions:
@@ -1046,7 +1046,7 @@
                        label="German number plate with capital letters" render-label="true"/>
           <b:inputText value="#{inputTextBean.text}"
                        mask="{regex:'[0-9\u0600-\u06FF]*'}"
-                       label="Regular expression '[\u0600-\u06FF]*' (Arabic)" render-label="true"/>
+                       label="Regular expression '[\u0600-\u06FF]*' (Arabic) (since 1.2.1)" render-label="true"/>
         </b:panelGrid>
 
       </h:form>
@@ -1090,7 +1090,7 @@
                          label="German number plate with capital letters" render-label="true"/>
             <b:inputText value="&num;{inputTextBean.text}"
                          mask="{regex:'[0-9\u0600-\u06FF]*'}"
-                         label="Regular expression '[\u0600-\u06FF]*' (Arabic)" render-label="true"/>
+                         label="Regular expression '[\u0600-\u06FF]*' (Arabic) (since 1.2.1)" render-label="true"/>
           </b:panelGrid>
           ]]>
           </script>
