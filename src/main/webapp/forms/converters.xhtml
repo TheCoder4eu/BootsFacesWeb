@@ -16,6 +16,7 @@
         <b:listLinks>
           <b:navLink href="#jsf_converters" value="JSF converters" />
           <b:navLink href="#converter_demo" value="Converter demo" />
+          <b:navLink href="#select_one" value="SelectOneMenu with converters" />
         </b:listLinks>
       </ui:define>
 
@@ -161,6 +162,141 @@
             </b:tabView>
           </f:facet>
         </b:panel>
+        <h1><a id="select_one">Using converters with &lt;b:selectOneMenu /&gt;</a><b:badge value="Since 1.2.1" /></h1>
+        <p>This example has been inspired by <a href="#" target="https://memorynotfound.com/using-custom-converter-for-hselectonemenu/">https://memorynotfound.com/using-custom-converter-for-hselectonemenu/</a>.
+ 		</p>
+ 		<b:panel title="Using a converter with b:selectOneMenu">
+			<b:form>
+				<b:panelGrid columns="3">
+					<b:selectOneMenu value="#{beersBean.selectedBeer}" ajax="true" process="@this" update="@next @next:@next" label="Your favorite beer brand?">
+						<f:converter converterId="beerConverter" />
+						<f:selectItems value="#{beersBean.beers}" var="beer"
+							itemValue="#{beer}" itemLabel="#{beer.brand}" />
+					</b:selectOneMenu>
+					<b:inputText value="#{beersBean.selectedBeer.id}" label="id"  disabled="true"/>
+					<b:inputText value="#{beersBean.selectedBeer.brand}" label="name"  disabled="true"/>
+				
+					<b:selectOneMenu value="#{beersBean.selectedBeer2}" ajax="true" process="@this" update="@after"
+						converter="beerConverter" label="Any other beer you like?">
+						<f:selectItems value="#{beersBean.beers}" var="beer"
+							itemValue="#{beer}" itemLabel="#{beer.brand}" />
+					</b:selectOneMenu>
+					<b:inputText value="#{beersBean.selectedBeer2.id}" label="id" disabled="true"/>
+					<b:inputText value="#{beersBean.selectedBeer2.brand}" label="name" disabled="true"/>
+				</b:panelGrid>
+			</b:form>
+ 		    <f:facet name="footer">
+            <b:tabView activeIndex="0"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+              <b:tab title="JSF markup">
+                <b:panel>
+                  <script type="syntaxhighlighter"
+                  class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                  <![CDATA[
+ 				<b:form>
+					<b:panelGrid columns="3">
+						<b:selectOneMenu value="&num;{beersBean.selectedBeer}" ajax="true" process="@this" update="@next @next:@next" label="Your favorite beer brand?">
+							<f:converter converterId="beerConverter" />
+							<f:selectItems value="&num;{beersBean.beers}" var="beer"
+								itemValue="&num;{beer}" itemLabel="&num;{beer.brand}" />
+						</b:selectOneMenu>
+						<b:inputText value="&num;{beersBean.selectedBeer.id}" label="id"  disabled="true"/>
+						<b:inputText value="&num;{beersBean.selectedBeer.brand}" label="name"  disabled="true"/>
+					
+						<b:selectOneMenu value="&num;{beersBean.selectedBeer2}" ajax="true" process="@this" update="@after"
+							converter="beerConverter" label="Any other beer you like?">
+							<f:selectItems value="&num;{beersBean.beers}" var="beer"
+								itemValue="&num;{beer}" itemLabel="&num;{beer.brand}" />
+						</b:selectOneMenu>
+						<b:inputText value="&num;{beersBean.selectedBeer2.id}" label="id" disabled="true"/>
+						<b:inputText value="&num;{beersBean.selectedBeer2.brand}" label="name" disabled="true"/>
+					</b:panelGrid>
+				</b:form>
+                  ]]>
+                  </script>
+                </b:panel>
+              </b:tab>
+              <b:tab title="Custom converter">
+                <b:panel>
+                  <script type="syntaxhighlighter"
+                  class="brush: java; toolbar: false;gutter: false; first-line: 1">
+                  <![CDATA[
+ @FacesConverter(value = "beerConverter")
+public class BeerConverter implements Converter {
+
+	@Override
+	public Object getAsObject(FacesContext ctx, UIComponent uiComponent, String beerId) {
+		System.out.println("getAsObject:" + beerId);
+
+		ValueExpression vex = ctx.getApplication().getExpressionFactory().createValueExpression(ctx.getELContext(),
+				"#{beersBean}", BeersBean.class);
+
+		BeersBean beers = (BeersBean) vex.getValue(ctx.getELContext());
+		return beers.getBeer(Integer.valueOf(beerId));
+	}
+
+	@Override
+	public String getAsString(FacesContext facesContext, UIComponent uiComponent, Object beer) {
+		System.out.println("getAsString:" + beer);
+		return ((Beer) beer).getId().toString();
+	}
+}
+
+                  ]]>
+                  </script>
+                </b:panel>
+              </b:tab>
+              <b:tab title="Java Bean">
+                <b:panel>
+                  <script type="syntaxhighlighter"
+                  class="brush: java; toolbar: false;gutter: false; first-line: 1">
+                  <![CDATA[
+@ManagedBean
+@javax.faces.bean.ViewScoped
+public class BeersBean implements Serializable {
+	private static final long serialVersionUID = -3192521384162408966L;
+	private Beer selectedBeer;
+	private Beer selectedBeer2;
+
+	public Beer getSelectedBeer2() {
+		return selectedBeer2;
+	}
+
+	public void setSelectedBeer2(Beer selectedBeer2) {
+		this.selectedBeer2 = selectedBeer2;
+	}
+
+	private List<Beer> beers;
+
+	public BeersBean() {
+		beers = new ArrayList<Beer>();
+		beers.add(new Beer(10, "La Chouffe"));
+		beers.add(new Beer(20, "Stella Artois"));
+		beers.add(new Beer(30, "Westmalle Trippel"));
+	}
+
+    // getters and setters omitted for the sage of brevity
+	public Beer getBeer(Integer id) {
+		if (id == null) {
+			throw new IllegalArgumentException("no id provided");
+		}
+		for (Beer beer : beers) {
+			if (id.equals(beer.getId())) {
+				return beer;
+			}
+		}
+		return null;
+	}
+}
+]]>
+                  </script>
+                </b:panel>
+              </b:tab>
+            </b:tabView>
+          </f:facet>
+        </b:panel>
+ 		
+ 
+ 
         <script type="text/javascript">
         SyntaxHighlighter.all();
         </script>

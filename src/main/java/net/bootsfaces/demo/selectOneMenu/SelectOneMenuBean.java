@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.bootsfaces.demo;
+package net.bootsfaces.demo.selectOneMenu;
 
 import java.io.Serializable;
 
