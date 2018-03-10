@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#breadcrumbs" value="Breadcrumbs (&lt;b:breadcrumbs /&gt;)"/>
+      <b:navLink href="#basic_usage" value="Basic Usage" />
+      <b:navLink href="#reference_section" value="Reference section" />
+    </b:listLinks>
+  </ui:define>
+
+
+  <ui:define name="content">
+    <style>
+      td {
+        padding: 8px;
+      }
+    </style>
+    <h1><a id="breadcrumbs">Breadcrumbs (&lt;b:breadcrumbs /&gt;)</a><b:badge value="since 1.2.1" /></h1>
+
+    <p>Breadcrumbs are typically used with complex menu structures. They indicate where you are, and
+    allow you to navigate back fast.</p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+    <b:breadcrumbs>
+	  <b:navLink value="Miscellaneous" outcome="/miscellaneous/Configuration"/>
+	  <b:navLink value="Configuration" outcome="/miscellaneous/Configuration" 
+	             icon-awesome="pencil-square-o" />
+	</b:breadcrumbs>
+
+      <f:facet name="footer">
+        <strong>JSF markup: </strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+    <b:breadcrumbs>
+	  <b:navLink value="Miscellaneous" outcome="/miscellaneous/Configuration"/>
+	  <b:navLink value="Configuration" outcome="/miscellaneous/Configuration" 
+                 icon-awesome="pencil-square-o" />
+	</b:breadcrumbs>
+         ]]>
+          </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+
+
+
+
+    <br/>
+    <h2><a id="reference_section">Reference section</a></h2>
+    <!-- 
+    <ui:include src="BreadcrumbsAttributes.xhtml" />
+     -->
+    <b:panel look="info" rendered="false">
+      <f:facet name="heading">
+        <b>Skinning</b>
+      </f:facet>
+      <ul>
+        <li>Tell the world which CSS classes can be used to change the
+        look of the component.</li>
+      </ul>
+    </b:panel>
+
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+    <br />
+    <br />
+    <br />
+    <br />
+  </ui:define>
+</ui:composition>
