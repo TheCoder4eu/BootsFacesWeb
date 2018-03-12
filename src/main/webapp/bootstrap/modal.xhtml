@@ -14,6 +14,7 @@
       <b:navLink href="#troubleshooting" value="troubleshooting" />
       <b:navLink href="#closable" value="closable and backdrop" />
       <b:navLink href="#growl" value="growls" />
+      <b:navLink href="#validation" value="form validation" />
       <b:navLink href="#datatables" value="datatables" />
       <b:navLink href="#attributes" value="attributes" />
     </b:listLinks>
@@ -265,8 +266,39 @@
    <b:growl styleClass="beam-me-up" />
       ]]>
       </script>
+ 
+      <h2><a id="validation">Form validation in a modal</a></h2>
+      <b:button onclick="$('.formValidationModalClass').modal('show')" value="show modal with validation"></b:button>
+      <b:modal id="setBackupPeriodM" title="Backup-Periode verändern" styleClass="formValidationModalClass"
+                     closable="false"
+                     closeOnEscape="true">
+                <b:form id="setBackupPeriodF">
+                    <p>Please enter a number between 1 and 99</p>
+                    <b:inputText id="backupPeriodInput"
+                                 value="#{modalBean.backupPeriod}"
+                                 label="Tage"
+                                 required="true"
+                                 requiredMessage="Please enter a number"
+                                 large-screen="two-thirds">
+                        <f:convertNumber integerOnly="true"/>
+                        <f:validateLongRange minimum="1" maximum="99"/>
+                    </b:inputText>
+                    <b:row>
+                        <b:column>
+                            <b:button largeScreen="half"  value="Cancsel"
+                                      dismiss="modal" onclick="return false;"/>
+                            <b:commandButton largeScreen="half" update="@form"
+                                             dismiss="modal"
+                                             value="Save" look="success"
+                                             oncomplete="if(!validationFailed) { $('.formValidationModalClass').modal('hide') } "/>
+                        </b:column>
+                    </b:row>
+                    <b:fetchBeanInfos />
+                    <b:messages />
+                </b:form>
+            </b:modal>
 
-    <h2><a id="datatables">Datatables in a modal</a></h2>
+    <h2 style="margin-top:40px"><a id="datatables">Datatables in a modal</a></h2>
     <p>By default, modals are hidden. As a consequence, any <code>&lt;b:dataTable /&gt;</code> inside the modal is rendered incorrectly.
     You can fix that by recalculating the datatable after showing the modal. You need the JavaScript approach for that. Just add the line
     <code>myDataTableWidgetVar.DataTable().responsive.recalc();</code> as shown in the example below.</p>
