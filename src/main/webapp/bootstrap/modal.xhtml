@@ -268,37 +268,80 @@
       </script>
  
       <h2><a id="validation">Form validation in a modal</a></h2>
-      <b:button onclick="$('.formValidationModalClass').modal('show')" value="show modal with validation"></b:button>
-      <b:modal id="setBackupPeriodM" title="Backup-Periode verändern" styleClass="formValidationModalClass"
-                     closable="false"
-                     closeOnEscape="true">
-                <b:form id="setBackupPeriodF">
-                    <p>Please enter a number between 1 and 99</p>
-                    <b:inputText id="backupPeriodInput"
-                                 value="#{modalBean.backupPeriod}"
-                                 label="Tage"
-                                 required="true"
-                                 requiredMessage="Please enter a number"
-                                 large-screen="two-thirds">
-                        <f:convertNumber integerOnly="true"/>
-                        <f:validateLongRange minimum="1" maximum="99"/>
-                    </b:inputText>
-                    <b:row>
-                        <b:column>
-                            <b:button largeScreen="half"  value="Cancsel"
-                                      dismiss="modal" onclick="return false;"/>
-                            <b:commandButton largeScreen="half" update="@form"
-                                             dismiss="modal"
-                                             value="Save" look="success"
-                                             oncomplete="if(!validationFailed) { $('.formValidationModalClass').modal('hide') } "/>
-                        </b:column>
-                    </b:row>
-                    <b:fetchBeanInfos />
-                    <b:messages />
-                </b:form>
-            </b:modal>
-
-    <h2 style="margin-top:40px"><a id="datatables">Datatables in a modal</a></h2>
+      <p>Often modals contains a form with validations. You'll want to check the validation rules before closing the form. If 
+      any validation is violated, you don't want to close the modal. Instead, you'd rather update the form with the error message.</p>
+      <p>You can achieve this by adding <code>&lt;b:fetchBeanInfo /></code> to the form. Plus, you need to add an <code>oncomplete</code>
+      listener closing the modal if the global flag <code>validationFailed</code> is <code>false</code>:</p>
+       <b:panel title="Live demo">
+      <b:button onclick="$('.formValidationModalClass').modal('show')" value="show modal with validation"/>
+        <b:modal id="setBackupPeriodM" title="Number game" styleClass="formValidationModalClass"
+                       closable="false"
+                       closeOnEscape="true">
+          <b:form>
+              <p>Please enter a number between 1 and 99.</p>
+              <b:inputText value="#{modalBean.backupPeriod}"
+                           label="Tage"
+                           required="true"
+                           requiredMessage="Please enter a number"
+                           large-screen="two-thirds">
+                  <f:convertNumber integerOnly="true"/>
+                  <f:validateLongRange minimum="1" maximum="99"/>
+              </b:inputText>
+              <b:row>
+                  <b:column>
+                      <b:button largeScreen="half"  value="Cancel"
+                                dismiss="modal" onclick="return false;"/>
+                      <b:commandButton largeScreen="half" update="@form"
+                         dismiss="modal"
+                         value="Save" look="success"
+                         oncomplete="if(!validationFailed) { $('.formValidationModalClass').modal('hide') } "/>
+                  </b:column>
+              </b:row>
+              <b:fetchBeanInfos />
+              <b:messages />
+          </b:form>
+        </b:modal>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+      <b:button onclick="$('.formValidationModalClass').modal('show')" value="show modal with validation"/>
+        <b:modal title="Number game" styleClass="formValidationModalClass"
+                       closable="false"
+                       closeOnEscape="true">
+          <b:form>
+              <p>Please enter a number between 1 and 99.</p>
+              <b:inputText value="#{modalBean.backupPeriod}"
+                           label="Tage"
+                           required="true"
+                           requiredMessage="Please enter a number"
+                           large-screen="two-thirds">
+                  <f:convertNumber integerOnly="true"/>
+                  <f:validateLongRange minimum="1" maximum="99"/>
+              </b:inputText>
+              <b:row>
+                  <b:column>
+                      <b:button largeScreen="half"  value="Cancel"
+                                dismiss="modal" onclick="return false;"/>
+                      <b:commandButton largeScreen="half" update="@form"
+                         dismiss="modal"
+                         value="Save" look="success"
+                         oncomplete="if(!validationFailed) { $('.formValidationModalClass').modal('hide') } "/>
+                  </b:column>
+              </b:row>
+              <b:fetchBeanInfos />
+              <b:messages />
+          </b:form>
+        </b:modal>
+    ]]>
+	</script>
+	</b:panel>
+	</f:facet>
+	</b:panel>
+        
+        
+    <h2><a id="datatables">Datatables in a modal</a></h2>
     <p>By default, modals are hidden. As a consequence, any <code>&lt;b:dataTable /&gt;</code> inside the modal is rendered incorrectly.
     You can fix that by recalculating the datatable after showing the modal. You need the JavaScript approach for that. Just add the line
     <code>myDataTableWidgetVar.DataTable().responsive.recalc();</code> as shown in the example below.</p>
