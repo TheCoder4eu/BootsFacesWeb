@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head></h:head>
+<h:body>
+	<b:container>
+		<h1>Field, labels and validations</h1>
+		<b:form horizontal="true">
+			<b:row>
+				<b:formGroup>
+					<b:inputText label-col-xs="2" col-xs="2" label="First name"
+						value="#{personBean.firstName}" />
+					<b:message col-xs="2" for="@previous" />
+					<b:inputText label-col-xs="2" col-xs="2" label="Last name"
+						value="#{personBean.lastName}" />
+					<b:message col-xs="2" for="@previous" />
+				</b:formGroup>
+			</b:row>
+			<b:row>
+				<b:formGroup>
+					<b:inputText label-col-xs="2" col-xs="2" label="Zip code"
+						value="#{personBean.zipCode}" />
+					<b:message col-xs="2" for="@previous" />
+					<b:inputText label-col-xs="2" col-xs="2" label="City"
+						value="#{personBean.city}" />
+					<b:message col-xs="2" for="@previous" />
+				</b:formGroup>
+			</b:row>
+		</b:form>
+	</b:container>
+</h:body>
+</html>
