@@ -346,6 +346,7 @@
       <h:form id="table-form">
         <b:row>
           <b:column small-screen="half">
+          <!-- "#{dataTableSettingsBean.multiColumnSearch}"  -->
             <b:dataTable value="#{carPool.carPool}"
                          var="car"
                          id="basic-usage-id"
@@ -354,6 +355,7 @@
                          custom-options="#{dataTableSettingsBean.customOptionsValue}"
                          fixedHeader="#{dataTableSettingsBean.fixedHeader}"
                          lang="#{dataTableSettingsBean.language}"
+                         mark-search-results="true"
                          multi-column-search="#{dataTableSettingsBean.multiColumnSearch}"
                          multi-column-search-position="#{dataTableSettingsBean.multiColumnSearchPosition}"
                          page-length="5"
@@ -438,7 +440,10 @@
                                      onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                                      disabled="#{!dataTableSettingsBean.searching}"
                                      update="basic-usage-id @next" />
-            <b:inputText value="#{dataTableSettingsBean.defaultColumnFilter}" label="default search filter for the color:"
+           <b:selectBooleanCheckbox value="#{dataTableSettingsBean.markSearchResults}" caption="mark-search-results"
+                                     onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                     update="basic-usage-id" />
+             <b:inputText value="#{dataTableSettingsBean.defaultColumnFilter}" label="default search filter for the color:"
                          onkeyup="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                          update="basic-usage-id"
                          styleClass="#{dataTableSettingsBean.multiColumnSearch and dataTableSettingsBean.searching?'':'hidden'}"
@@ -495,6 +500,7 @@
                          lang="&num;{dataTableSettingsBean.language}"
                          multi-column-search="&num;{dataTableSettingsBean.multiColumnSearch}"
                          multi-column-search-position="&num;{dataTableSettingsBean.multiColumnSearchPosition}"
+                         mark-search-results="#{dataTableSettingsBean.markSearchResults}"
                          page-length="5"
                          page-length-menu="5,10,20"
                          row-highlight="&num;{dataTableSettingsBean.rowHighlight}"

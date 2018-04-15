@@ -50,6 +50,7 @@ public class DataTableSettingsBean implements Serializable {
 
 	private boolean multiColumnSearch = false;
 	private String multiColumnSearchPosition = "top";
+	private boolean markSearchResults = true;
 
 	private boolean searching = false;
 
@@ -475,5 +476,13 @@ public class DataTableSettingsBean implements Serializable {
 
 	public void setCarPool(List<Car> carPool) {
 		this.carPool = carPool;
+	}
+
+	public boolean isMarkSearchResults() {
+		return markSearchResults;
+	}
+
+	public void setMarkSearchResults(boolean markSearchResult) {
+		this.markSearchResults = markSearchResult;
 	}
 }
