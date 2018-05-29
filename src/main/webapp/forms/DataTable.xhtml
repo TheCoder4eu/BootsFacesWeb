@@ -14,6 +14,7 @@
       <b:navLink href="#defining_the_content_cells" value="Defining the content cells" />
       <b:navLink href="#defining_the_header" value="Defining the header" />
       <b:navLink href="#customizing_the_table" value="Customizing the table" />
+      <b:navLink href="#rowgroup" value="Grouping the rows" />
       <b:navLink href="#sorting_input_fields" value="Sorting input fields" />
       <b:navLink href="#fine" value="Fine-tuning search and sort order" />
       <b:navLink href="#setting_the_initial_search_filter" value="Setting the initial search filter" />
@@ -542,6 +543,78 @@
       </f:facet>
     </b:panel>
 
+    <h2><a id="rowgroup">Grouping the rows</a></h2>
+    <p>You can pick a column to define row groups. This feature is highly customizable; see the 
+    <a target="#" href="https://datatables.net/extensions/rowgroup/">full reference here</a>.
+    Here we describe only a few features.</p>
+    <p>In the simplest case, you pass only a number. This number is the index of the column
+    that's used for grouping. The first column has index 0:</p>
+    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+    <![CDATA[
+      <b:dataTable ... row-group="2">
+]]></script>
+          
+    <p>Alternatively, you can pass a Json object. In this case, you define the column like so:</p>
+    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+    <![CDATA[
+      <b:dataTable ... row-group="orderFixed:[2,'asc'],rowGroup:{dataSrc:2}">
+]]></script>
+    <p>Actually, this example passes two parameters. The first parameter orders the table before grouping it.</p>
+    <p>The difference between the regular <code>order</code> attribute of the <code>&lt;b:dataTableColumn /&gt;</code>
+    and <code>orderFix</code> is that the user still can order the table. Doing to orders the data within each group
+    individually. Unfortunately, you can't combine <code>orderFix</code> and <code>order</code>. To group both the 
+    groups and one of the other columns, pass an array like so:</p>
+    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+    <![CDATA[
+      <b:dataTable ... row-group="orderFixed:[[0,'asc'],[2,'desc']]">
+]]></script>
+    <p>You also generate arbitrary texts in the rows below and/or above each group using the functions <code>endRender</code> and 
+    <code>startRender</code>:</p>
+    
+    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+    <![CDATA[
+      <b:dataTable ... row-group="orderFixed:[[0,'asc'],[2,'desc']],rowGroup:{dataSrc:0,startRender:null,endRender: function ( rows, group ) {return 'Cars in the ' + group +' group: '+rows.count();}}">
+]]></script>
+    
+          
+       <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form>
+        <b:dataTable value="#{carPool.carPool}"
+                     var="car"
+                     row-group="orderFixed:[[0,'asc'],[2,'desc']],rowGroup:{dataSrc:0,startRender:null,endRender: function ( rows, group ) {return 'Cars in the ' + group +' group: '+rows.count();}}">
+          <b:dataTableColumn value="#{car.brand}" />
+          <b:dataTableColumn value="#{car.type}" />
+          <b:dataTableColumn value="#{car.color}"/>
+          <b:dataTableColumn value="#{car.year}"  />
+          <b:dataTableColumn value="#{car.price}" />
+          <b:dataTableColumn value="#{car.enginePower}" label="Engine Power (hp)" />
+        </b:dataTable>
+      </h:form>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:form>
+            <b:dataTable value="&num;{carPool.carPool}"
+                         var="car"
+                         row-group="orderFixed:[0,'asc'],rowGroup:{dataSrc:0,endRender: function ( rows, group ) {return group +' ('+rows.count()+')';}}">
+              <b:dataTableColumn value="&num;{car.brand}" />
+              <b:dataTableColumn value="&num;{car.type}" />
+              <b:dataTableColumn value="&num;{car.color}" order="asc"/>
+              <b:dataTableColumn value="&num;{car.year}"/>
+              <b:dataTableColumn value="&num;{car.price}" />
+              <b:dataTableColumn value="&num;{car.enginePower}" label="Engine Power (hp)" />
+            </b:dataTable>
+          </h:form>
+          ]]>
+          </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+    
+    
     <h2><a id="sorting_input_fields">Sorting input fields</a></h2>
     <p>By default, the data table only sorts plain text. If you want to sort input field, checkboxes or comboboxes,
     you have to tell the column which the data type of the input field is:</p>
