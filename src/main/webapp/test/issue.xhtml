@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      >
+  <h:head>
+    <title>BootsFaces rocks!</title>
+  <meta name="author" content="Stephan Rauh"></meta>
+  </h:head>
+  <h:body>
+  <style>
+     div.dataTables_wrapper div.dataTables_filter { 
+     	text-align:left; 
+     }
+     .dataTables_wrapper > .row:first-child > div:first-child { 
+     	display: none;
+     }
+  </style>
+  <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form>
+        <b:dataTable value="#{carPool.carPool}"
+                     var="car">
+          <b:dataTableColumn value="#{car.brand}" />
+          <b:dataTableColumn value="#{car.type}" />
+          <b:dataTableColumn value="#{car.color}" />
+          <b:dataTableColumn value="#{car.year}"  order="asc" />
+          <b:dataTableColumn value="#{car.price}" />
+          <b:dataTableColumn value="#{car.enginePower}" label="Engine Power (hp)" />
+        </b:dataTable>
+      </h:form>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:form>
+            <b:dataTable value="&num;{carPool.carPool}"
+                         var="car">
+              <b:dataTableColumn value="&num;{car.brand}" />
+              <b:dataTableColumn value="&num;{car.type}" />
+              <b:dataTableColumn value="&num;{car.color}" />
+              <b:dataTableColumn value="&num;{car.year}"  order="asc"/>
+              <b:dataTableColumn value="&num;{car.price}" />
+              <b:dataTableColumn value="&num;{car.enginePower}" label="Engine Power (hp)" />
+            </b:dataTable>
+          </h:form>
+          ]]>
+          </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+  </h:body>
+</html>

@@ -220,6 +220,7 @@
     </p>
     <b:panel title="live preview">
       <h:form>
+        <b:remoteCommand name="removeTab" id="removeTab" actionListener="#{testBean.removeTab()}" update="@form" parameters="title"/>
         <b:tabView contentStyle="border: 1px solid #ddd;padding:10px;"
                    content-disabled="#{testBean.contentDisabled}"
                    active-index="-2">
@@ -235,6 +236,9 @@
               </div>
               <b:commandButton onclick="ajax:currentTab.add()" update="result">add</b:commandButton>
             </b:panelGrid>
+             <f:facet name="anchor">
+                <b:iconAwesome name="times" style="float: right;padding-left: 5px;color: #333;" onclick="removeTab('#{currentTab.title}')" />
+              </f:facet>
           </b:tab>
           <b:tab title="final static tab">
             This final tab is static. It's content is no quite so static.
@@ -254,6 +258,7 @@
         <b:panel>
           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
           <![CDATA[
+          <b:remoteCommand name="removeTab" id="removeTab" actionListener="&num;{testBean.removeTab()}" update="@form" parameters="title"/>
           <b:tabView contentStyle="border: 1px solid #ddd;padding:10px;"
                      content-disabled="#{testBean.contentDisabled}"
                      active-index="-2">
@@ -261,6 +266,9 @@
               This tab is static. It's content is static, too.
             </b:tab>
             <b:tab title="dynamic tab #{status.index}" value="&num;{testBean.tabs}" var="currentTab" varStatus="status">
+              <f:facet name="anchor">
+                <b:iconAwesome name="times" style="float: right;padding-left: 5px;color: #333;" onclick="removeTab('#{currentTab.title}')" />
+              </f:facet>
               <b:panelGrid columns="3" size="xs">
                 <b:inputText label="Value 1" value="&num;{currentTab.summand1}" />
                 <b:inputText label="Value 2" value="&num;{currentTab.summand2}" onkeyup="ajax:currentTab.add()" update="result"/>

@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -36,6 +37,8 @@ public class TestBean implements Serializable {
 	private boolean contentDisabled = false;
 
 	private int index = 2;
+	
+	private Calculation selectedTab = null;
 
 	public void nextTab() {
 		index++;
@@ -164,6 +167,17 @@ public class TestBean implements Serializable {
 	public void setCalc(Calculation calc) {
 		this.calc = calc;
 	}
+	
+	public void removeTab() {
+		String title = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("title");
+		for (Calculation t: tabs) {
+			if (t.title.equals(title)) {
+				tabs.remove(t);
+				break;
+			}
+		}
+		
+	}
 
 	public class Calculation {
 		private String title;
@@ -210,5 +224,7 @@ public class TestBean implements Serializable {
 		public void setTitle(String title) {
 			this.title = title;
 		}
+		
+		
 	}
 }
