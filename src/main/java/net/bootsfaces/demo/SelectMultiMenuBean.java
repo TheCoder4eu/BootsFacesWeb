@@ -36,7 +36,7 @@ public class SelectMultiMenuBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@NotNull
-	private String brand = null;
+	private String brand = "1, 2, 3";
 
 	@NotNull
 	private String type = "2";
