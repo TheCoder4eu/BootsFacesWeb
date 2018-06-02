@@ -218,6 +218,8 @@
     in the getter. Otherwise, this algorithm is called multiple times, resulting in
     mediocre performance.
     </p>
+    <p>The example below also demonstrate how to use a facet to simulate the "close" button.
+    The facets don't work with AJAX, so a <code>&lt;b:remoteCommand /&gt;</code> fills the gap.</p>
     <b:panel title="live preview">
       <h:form>
         <b:remoteCommand name="removeTab" id="removeTab" actionListener="#{testBean.removeTab()}" update="@form" parameters="title"/>
