@@ -938,7 +938,7 @@
               <b:inputText value="#{dataTableSettingsBean.selectedRows}" update="@parent:@parent:@previous"
                            onkeyup="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()" />
             </b:panelGrid>
-            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.selectedRowsActive2}" caption="selectedRows=#num;{carPool.getCar(2)}"
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.selectedRowsActive2}" caption="selectedRows=# {carPool.getCar(2)}"
                                      onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                                      update="@parent:@previous" />
             <b:panelGrid columns="2">
@@ -960,24 +960,24 @@
             <b:panel>
               <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
               <![CDATA[
-              <b:dataTable value="#num;{carPool.carPool}"
+              <b:dataTable value="&#35;{carPool.carPool}"
                            var="car"
                            onselect="console.log( typeOfSelection + ' ' + indexes + ' has been selected');ajax:carPool.onSelect(car, typeOfSelection, indexes);"
                            ondeselect="console.log(typeOfSelection + ' ' + indexes + ' has been deselected');ajax:carPool.onDeselect(car, typeOfSelection, indexes);"
-                           select="#num;{dataTableSettingsBean.select}"
-                           selection-mode="#num;{dataTableSettingsBean.selectionMode}"
-                           selected-items="#num;{dataTableSettingsBean.selectedItems}"
-                           selection-info="#num;{dataTableSettingsBean.showInfo}"
-                           selected-row="#num;{dataTableSettingsBean.selectedRows}"
-                           selected-column="#num;{dataTableSettingsBean.selectedColumns}"
-                           deselect-on-backdrop-click="#num;{dataTableSettingsBean.deselectOnBackdropClick}"
+                           select="&#35;{dataTableSettingsBean.select}"
+                           selection-mode="&#35;{dataTableSettingsBean.selectionMode}"
+                           selected-items="&#35;{dataTableSettingsBean.selectedItems}"
+                           selection-info="&#35;{dataTableSettingsBean.showInfo}"
+                           selected-row="&#35;{dataTableSettingsBean.selectedRows}"
+                           selected-column="&#35;{dataTableSettingsBean.selectedColumns}"
+                           deselect-on-backdrop-click="&#35;{dataTableSettingsBean.deselectOnBackdropClick}"
                            widget-var="selectableTable">
-                <b:dataTableColumn value="#num;{car.brand}" />
-                <b:dataTableColumn value="#num;{car.type}" />
-                <b:dataTableColumn value="#num;{car.color}" />
-                <b:dataTableColumn value="#num;{car.year}" />
-                <b:dataTableColumn value="#num;{car.price}" />
-                <b:dataTableColumn value="#num;{car.enginePower}"
+                <b:dataTableColumn value="&#35;{car.brand}" />
+                <b:dataTableColumn value="&#35;{car.type}" />
+                <b:dataTableColumn value="&#35;{car.color}" />
+                <b:dataTableColumn value="&#35;{car.year}" />
+                <b:dataTableColumn value="&#35;{car.price}" />
+                <b:dataTableColumn value="&#35;{car.enginePower}"
                                    label="Engine Power (hp)" />
               </b:dataTable>
               ]]>
