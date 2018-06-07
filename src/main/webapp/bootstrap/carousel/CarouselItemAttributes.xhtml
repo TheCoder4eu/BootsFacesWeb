@@ -43,9 +43,19 @@
                 <td>Whether the Button submits the form with AJAX.</td>
             </tr>
             <tr>
+                <td>auto-update<br />autoUpdate (alternative writing)</td>
+                <td>false</td>
+                <td>Setting this flag updates the widget on every AJAX request.</td>
+            </tr>
+            <tr>
                 <td>caption</td>
                 <td>(none)</td>
                 <td>Optional caption, which is embedded in an h3 tag. If you need more flexibility, add an carouselCaption child tag. If you don't need a caption, omit both.</td>
+            </tr>
+            <tr>
+                <td>delay</td>
+                <td>(none)</td>
+                <td>Delays the AJAX request.</td>
             </tr>
             <tr>
                 <td>disabled</td>
@@ -65,12 +75,17 @@
             <tr>
                 <td>oncomplete</td>
                 <td>(none)</td>
-                <td>JavaScript to be executed when ajax completes with success.</td>
+                <td>JavaScript to be executed when ajax completes.</td>
             </tr>
             <tr>
                 <td>ondblclick</td>
                 <td>(none)</td>
                 <td>Client side callback to execute when input element is double clicked.</td>
+            </tr>
+            <tr>
+                <td>onerror</td>
+                <td>(none)</td>
+                <td>JavaScript to be executed when ajax results on an error (including both network errors and Java exceptions).</td>
             </tr>
             <tr>
                 <td>onmousedown</td>
@@ -96,6 +111,11 @@
                 <td>onmouseup</td>
                 <td>(none)</td>
                 <td>Client side callback to execute when a pointer input element is released over input element.</td>
+            </tr>
+            <tr>
+                <td>onsuccess</td>
+                <td>(none)</td>
+                <td>JavaScript to be executed when ajax completes with success (i.e. there's neither a network error nor a Java exception).</td>
             </tr>
             <tr>
                 <td>process</td>

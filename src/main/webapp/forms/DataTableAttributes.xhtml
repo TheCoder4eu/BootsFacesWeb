@@ -25,7 +25,12 @@
             <tr>
                 <td>ajax</td>
                 <td>false</td>
-                <td>Activates AJAX. The default value is false (no AJAX).</td>
+                <td>Whether the Button submits the form with AJAX.</td>
+            </tr>
+            <tr>
+                <td>auto-update<br />autoUpdate (alternative writing)</td>
+                <td>false</td>
+                <td>Setting this flag updates the widget on every AJAX request.</td>
             </tr>
             <tr>
                 <td>border</td>
@@ -53,7 +58,7 @@
                 <td>Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
             </tr>
             <tr>
-                <td>columnVisibility</td>
+                <td>column-visibility<br />columnVisibility (alternative writing)</td>
                 <td> false </td>
                 <td>Adds a button allowing the user to show and hide of the columns.</td>
             </tr>
@@ -81,6 +86,11 @@
                 <td>custom-options<br />customOptions (alternative writing)</td>
                 <td>(none)</td>
                 <td>Allows you to pass an arbitrary option to the datatable widget. Separate the options by a comma if you pass more than one. Note that this may cause incompatibilities when the next version of BootsFaces is released. Use at own risk.</td>
+            </tr>
+            <tr>
+                <td>delay</td>
+                <td>(none)</td>
+                <td>Delays the AJAX request.</td>
             </tr>
             <tr>
                 <td>deselect-on-backdrop-click<br />deselectOnBackdropClick (alternative writing)</td>
@@ -138,6 +148,11 @@
                 <td>Alternative spelling to col-lg. Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
             </tr>
             <tr>
+                <td>mark-search-results<br />markSearchResults (alternative writing)</td>
+                <td>false</td>
+                <td>If true, search results are marked yellow as you type. Based on mark.js (see https://datatables.net/blog/2017-01-19).</td>
+            </tr>
+            <tr>
                 <td>medium-screen<br />mediumScreen (alternative writing)</td>
                 <td> -1 </td>
                 <td>Alternative spelling to col-md. Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
@@ -185,7 +200,7 @@
             <tr>
                 <td>oncomplete</td>
                 <td>(none)</td>
-                <td>JavaScript to be executed when ajax completes with success.</td>
+                <td>JavaScript to be executed when ajax completes.</td>
             </tr>
             <tr>
                 <td>ondblclick</td>
@@ -196,6 +211,11 @@
                 <td>ondeselect</td>
                 <td>(none)</td>
                 <td>Client side and/or AJAX callback to execute when a row is deselected.</td>
+            </tr>
+            <tr>
+                <td>onerror</td>
+                <td>(none)</td>
+                <td>JavaScript to be executed when ajax results on an error (including both network errors and Java exceptions).</td>
             </tr>
             <tr>
                 <td>onmousedown</td>
@@ -243,6 +263,11 @@
                 <td>Client side and/or AJAX callback to execute when a row is selected.</td>
             </tr>
             <tr>
+                <td>onsuccess</td>
+                <td>(none)</td>
+                <td>JavaScript to be executed when ajax completes with success (i.e. there's neither a network error nor a Java exception).</td>
+            </tr>
+            <tr>
                 <td>page-length<br />pageLength (alternative writing)</td>
                 <td> 10 </td>
                 <td>Sets the default page length for paginated dataTable. The default value is 10.</td>
@@ -281,6 +306,11 @@
                 <td>responsive</td>
                 <td>false</td>
                 <td>Activates the responsive plugin of the dataTable</td>
+            </tr>
+            <tr>
+                <td>row-group<br />rowGroup (alternative writing)</td>
+                <td>(none)</td>
+                <td>Group the rows by a common column value. Can be a number or a Json-object, as documented at https://datatables.net/reference/option/#rowgroup.</td>
             </tr>
             <tr>
                 <td>row-highlight<br />rowHighlight (alternative writing)</td>
