@@ -17,8 +17,14 @@ public class BeersBean implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -3192521384162408966L;
+	private List<Beer> beers;
+	private List<Wine> wines;
+
 	private Beer selectedBeer;
 	private Beer selectedBeer2;
+	
+	private Wine selectedWine;
+
 
 	public Beer getSelectedBeer2() {
 		return selectedBeer2;
@@ -28,7 +34,6 @@ public class BeersBean implements Serializable {
 		this.selectedBeer2 = selectedBeer2;
 	}
 
-	private List<Beer> beers;
 
 	public BeersBean() {
 		_init();
@@ -39,6 +44,11 @@ public class BeersBean implements Serializable {
 		beers.add(new Beer(10, "La Chouffe"));
 		beers.add(new Beer(20, "Stella Artois"));
 		beers.add(new Beer(30, "Westmalle Trippel"));
+		
+		wines = new ArrayList<>();
+		getWines().add(new Wine(10, "Riesling"));
+		getWines().add(new Wine(20, "Pinet Noir"));
+		getWines().add(new Wine(30, "Merlot"));
 	}
 
 	public Beer getSelectedBeer() {
@@ -68,5 +78,34 @@ public class BeersBean implements Serializable {
 			}
 		}
 		return null;
+	}
+	
+	public Wine getWine(Integer id) {
+		if (id == null) {
+			throw new IllegalArgumentException("no id provided");
+		}
+		for (Wine wine : wines) {
+			if (id.equals(wine.getId())) {
+				return wine;
+			}
+		}
+		return null;
+	}
+
+
+	public Wine getSelectedWine() {
+		return selectedWine;
+	}
+
+	public void setSelectedWine(Wine selectedWhine) {
+		this.selectedWine = selectedWhine;
+	}
+
+	public List<Wine> getWines() {
+		return wines;
+	}
+
+	public void setWines(List<Wine> wines) {
+		this.wines = wines;
 	}
 }

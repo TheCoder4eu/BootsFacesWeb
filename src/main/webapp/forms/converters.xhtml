@@ -183,6 +183,15 @@
 					</b:selectOneMenu>
 					<b:inputText value="#{beersBean.selectedBeer2.id}" label="id" disabled="true"/>
 					<b:inputText value="#{beersBean.selectedBeer2.brand}" label="name" disabled="true"/>
+					
+					<b:selectOneMenu value="#{beersBean.selectedWine}" ajax="true" process="@this" update="@after"
+						label="Any wine you like?">
+						<f:selectItems value="#{beersBean.wines}" var="wine"
+							itemValue="#{wine}" itemLabel="#{wine.brand}" />
+					</b:selectOneMenu>
+					<b:inputText value="#{beersBean.selectedWine.id}" label="id" disabled="true"/>
+					<b:inputText value="#{beersBean.selectedWine.brand}" label="name" disabled="true"/>
+					
 				</b:panelGrid>
 			</b:form>
  		    <f:facet name="footer">
@@ -209,7 +218,14 @@
 						</b:selectOneMenu>
 						<b:inputText value="&num;{beersBean.selectedBeer2.id}" label="id" disabled="true"/>
 						<b:inputText value="&num;{beersBean.selectedBeer2.brand}" label="name" disabled="true"/>
-					</b:panelGrid>
+     					<b:selectOneMenu value="&num;{beersBean.selectedWine}" ajax="true" process="@this" update="@after"
+     						label="Any wine you like?">
+     						<f:selectItems value="&num;{beersBean.wines}" var="wine"
+     							itemValue="&num;{wine}" itemLabel="&num;{wine.brand}" />
+     					</b:selectOneMenu>
+     					<b:inputText value="&num;{beersBean.selectedWine.id}" label="id" disabled="true"/>
+     					<b:inputText value="&num;{beersBean.selectedWine.brand}" label="name" disabled="true"/>
+     				</b:panelGrid>
 				</b:form>
                   ]]>
                   </script>
@@ -245,6 +261,35 @@ public class BeerConverter implements Converter {
                   </script>
                 </b:panel>
               </b:tab>
+             <b:tab title="Custom converter with annotation">
+                <b:panel>
+                  <script type="syntaxhighlighter"
+                  class="brush: java; toolbar: false;gutter: false; first-line: 1">
+                  <![CDATA[
+@FacesConverter(forClass = Wine.class)
+public class WineConverter implements Converter {
+
+	@Override
+	public Object getAsObject(FacesContext ctx, UIComponent uiComponent, String wineId) {
+		System.out.println("getAsObject:" + wineId);
+
+		ValueExpression vex = ctx.getApplication().getExpressionFactory().createValueExpression(ctx.getELContext(),
+				"#{beersBean}", BeersBean.class);
+
+		BeersBean beers = (BeersBean) vex.getValue(ctx.getELContext());
+		return beers.getWine(Integer.valueOf(wineId));
+	}
+
+	@Override
+	public String getAsString(FacesContext facesContext, UIComponent uiComponent, Object wine) {
+		System.out.println("getAsString:" + wine);
+		return ((Wine) wine).getId().toString();
+	}
+}
+                   ]]>
+                  </script>
+                </b:panel>
+              </b:tab>
               <b:tab title="Java Bean">
                 <b:panel>
                   <script type="syntaxhighlighter"
@@ -256,25 +301,25 @@ public class BeersBean implements Serializable {
 	private static final long serialVersionUID = -3192521384162408966L;
 	private Beer selectedBeer;
 	private Beer selectedBeer2;
-
-	public Beer getSelectedBeer2() {
-		return selectedBeer2;
-	}
-
-	public void setSelectedBeer2(Beer selectedBeer2) {
-		this.selectedBeer2 = selectedBeer2;
-	}
-
+	private List<Wine> wines;
 	private List<Beer> beers;
+
+	private Wine selectedWine;
+
+	// getters and setter omitted for the sake of brevity
 
 	public BeersBean() {
 		beers = new ArrayList<Beer>();
 		beers.add(new Beer(10, "La Chouffe"));
 		beers.add(new Beer(20, "Stella Artois"));
 		beers.add(new Beer(30, "Westmalle Trippel"));
+
+		wines = new ArrayList<>();
+		getWines().add(new Wine(10, "Riesling"));
+		getWines().add(new Wine(20, "Pinet Noir"));
+		getWines().add(new Wine(30, "Merlot"));
 	}
 
-    // getters and setters omitted for the sage of brevity
 	public Beer getBeer(Integer id) {
 		if (id == null) {
 			throw new IllegalArgumentException("no id provided");
@@ -282,6 +327,18 @@ public class BeersBean implements Serializable {
 		for (Beer beer : beers) {
 			if (id.equals(beer.getId())) {
 				return beer;
+			}
+		}
+		return null;
+	}
+
+	public Wine getWine(Integer id) {
+		if (id == null) {
+			throw new IllegalArgumentException("no id provided");
+		}
+		for (Wine wine : wines) {
+			if (id.equals(wine.getId())) {
+				return wine;
 			}
 		}
 		return null;
