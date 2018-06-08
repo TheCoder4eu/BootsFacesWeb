@@ -33,22 +33,27 @@
     <p>BootsFaces supports the default Icon set of Bootstrap <a href="http://getbootstrap.com/components/#glyphicons-glyphs">Glyphicons</a></p>
     <hr/>
 
-    <p>Using an icon in BootsFaces is very simple: just add a <code>&lt;b:icon&gt;</code> with a <code>name</code> attribute with the icon name (without the trailing <b>glyphicon-</b> prefix)</p>
+    <p>Using an icon in BootsFaces is very simple: just add a <code>&lt;b:icon&gt;</code> with a <code>value</code> attribute with the icon name (without the trailing <b>glyphicon-</b> prefix).</p>
+    <p><b:label severity="warning" text="Changed in 1.2.1" />
+    You can also use the attribute <code>name</code>, but we've deprecated it in BootsFaces 1.2.1 in favor of <code>value</code>.</p>
+    <p><b:label severity="danger" text="Not available in BootsFaces 2.x" />
+    BootsFaces 2.x is based on Bootstrap 4, which, in turn, has dropped support for the Glyphicons. 
+    Please considering migrating to one of the icon sets supported by Bootstrap 4. There's no hurry, but updating early saves you a lot of trouble later.</p>
 
     <b:panel title="Live preview" look="info" collapsible="false">
-      <b:icon name="cloud" /> glyphicon-cloud<br/>
-      <b:icon name="envelope" /> glyphicon-envelope<br/>
-      <b:icon name="pencil" /> glyphicon-pencil<br/>
-      <b:icon name="glass" /> glyphicon-glass<br/>
+      <b:icon value="cloud" /> glyphicon-cloud<br/>
+      <b:icon value="envelope" /> glyphicon-envelope<br/>
+      <b:icon value="pencil" /> glyphicon-pencil<br/>
+      <b:icon value="glass" /> glyphicon-glass<br/>
       <f:facet name="footer">
         <strong>JSF markup: </strong>
         <b:panel>
           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
           <![CDATA[
-          <b:icon name="cloud" /> glyphicon-cloud<br/>
-          <b:icon name="envelope" /> glyphicon-envelope<br/>
-          <b:icon name="pencil" /> glyphicon-pencil<br/>
-          <b:icon name="glass" /> glyphicon-glass<br/>
+          <b:icon value="cloud" /> glyphicon-cloud<br/>
+          <b:icon value="envelope" /> glyphicon-envelope<br/>
+          <b:icon value="pencil" /> glyphicon-pencil<br/>
+          <b:icon value="glass" /> glyphicon-glass<br/>
           ]]></script>
         </b:panel>
       </f:facet>
@@ -61,28 +66,30 @@
     <p>Since BootsFaces is born to help you design a wonderful website, we recognize that Icons are an important tool to achieve this goal and there are never enough:</p>
     <p>for this reason, BootsFaces now supports the <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a> Icon set with its 600+ icons.</p>
     <p>As you will see later, we also support most Awesome features, which will work with Glyphicon too!</p>
+    <p><b:label severity="warning" text="Changed in 1.2.1" />
+    You can also use both <code>name</code> and <code>value</code> to specify the icon, but we've deprecated <code>name</code> in BootsFaces 1.2.1 in favor of <code>value</code>.</p>
 
     <hr/>
 
     <b:panel title="Live preview" look="info" collapsible="false">
-      <b:iconAwesome name="camera-retro" /> fa-camera-retro<br/>
-      <b:iconAwesome name="coffee" /> fa-coffee<br/>
-      <b:iconAwesome name="futbol-o" /> fa-futbol-o<br/>
-      <b:iconAwesome name="heartbeat" /> fa-heartbeat<br/>
-      <b:iconAwesome name="group" /> fa-group<br/>
-      <b:iconAwesome name="gamepad" /> fa-gamepad<br/>
+      <b:iconAwesome value="camera-retro" /> fa-camera-retro<br/>
+      <b:iconAwesome value="coffee" /> fa-coffee<br/>
+      <b:iconAwesome value="futbol-o" /> fa-futbol-o<br/>
+      <b:iconAwesome value="heartbeat" /> fa-heartbeat<br/>
+      <b:iconAwesome value="group" /> fa-group<br/>
+      <b:iconAwesome value="gamepad" /> fa-gamepad<br/>
 
       <f:facet name="footer">
         <strong>JSF markup: </strong>
         <b:panel>
           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
           <![CDATA[
-          <b:iconAwesome name="camera-retro" /> fa-camera-retro<br/>
-          <b:iconAwesome name="coffee" /> fa-coffee<br/>
-          <b:iconAwesome name="futbol-o" /> fa-futbol-o<br/>
-          <b:iconAwesome name="heartbeat" /> fa-heartbeat<br/>
-          <b:iconAwesome name="group" /> fa-group<br/>
-          <b:iconAwesome name="gamepad" /> fa-gamepad
+          <b:iconAwesome value="camera-retro" /> fa-camera-retro<br/>
+          <b:iconAwesome value="coffee" /> fa-coffee<br/>
+          <b:iconAwesome value="futbol-o" /> fa-futbol-o<br/>
+          <b:iconAwesome value="heartbeat" /> fa-heartbeat<br/>
+          <b:iconAwesome value="group" /> fa-group<br/>
+          <b:iconAwesome value="gamepad" /> fa-gamepad
           ]]></script>
         </b:panel>
       </f:facet>
@@ -97,22 +104,22 @@
     <code>size="3x"</code>, <code>size="4x"</code>, or <code>size="5x"</code> attributes.</p>
 
     <b:panel title="Live preview" look="info" collapsible="false">
-      <b:icon name="globe" size="lg" /> size="lg"<br/>
-      <b:icon name="globe" size="2x" /> size="2x"<br/>
-      <b:icon name="globe" size="3x" /> size="3x"<br/>
-      <b:icon name="globe" size="4x" /> size="4x"<br/>
-      <b:icon name="globe" size="5x" /> size="5x"<br/>
+      <b:icon value="globe" size="lg" /> size="lg"<br/>
+      <b:icon value="globe" size="2x" /> size="2x"<br/>
+      <b:icon value="globe" size="3x" /> size="3x"<br/>
+      <b:icon value="globe" size="4x" /> size="4x"<br/>
+      <b:icon value="globe" size="5x" /> size="5x"<br/>
 
       <f:facet name="footer">
         <strong>JSF markup: </strong>
         <b:panel>
           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
           <![CDATA[
-          <b:icon name="globe" size="lg" /> size="lg"<br/>
-          <b:icon name="globe" size="2x" /> size="2x"<br/>
-          <b:icon name="globe" size="3x" /> size="3x"<br/>
-          <b:icon name="globe" size="4x" /> size="4x"<br/>
-          <b:icon name="globe" size="5x" /> size="5x"<br/>
+          <b:icon value="globe" size="lg" /> size="lg"<br/>
+          <b:icon value="globe" size="2x" /> size="2x"<br/>
+          <b:icon value="globe" size="3x" /> size="3x"<br/>
+          <b:icon value="globe" size="4x" /> size="4x"<br/>
+          <b:icon value="globe" size="5x" /> size="5x"<br/>
           ]]></script>
         </b:panel>
       </f:facet>
@@ -125,22 +132,22 @@
     <p>To rotate or flip your icons, just use the <code>rotate="R"</code>, <code>rotate="L"</code> and <code>flip="H"</code>, <code>flip="V"</code> attributes respectively.</p>
 
     <b:panel title="Live preview" look="info" collapsible="false">
-      <b:iconAwesome name="shield" /> normal<br/>
-      <b:iconAwesome name="shield" rotate="R" /> rotate="R" (right - 90 deg.)<br/>
-      <b:iconAwesome name="shield" rotate="L" /> rotate="L" (left - 270 deg.)<br/>
-      <b:iconAwesome name="shield" flip="H" /> flip="H" (horizontal)<br/>
-      <b:iconAwesome name="shield" flip="V" /> flip="V" (vertical)<br/>
+      <b:iconAwesome value="shield" /> normal<br/>
+      <b:iconAwesome value="shield" rotate="R" /> rotate="R" (right - 90 deg.)<br/>
+      <b:iconAwesome value="shield" rotate="L" /> rotate="L" (left - 270 deg.)<br/>
+      <b:iconAwesome value="shield" flip="H" /> flip="H" (horizontal)<br/>
+      <b:iconAwesome value="shield" flip="V" /> flip="V" (vertical)<br/>
 
       <f:facet name="footer">
         <strong>JSF markup: </strong>
         <b:panel>
           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
           <![CDATA[
-          <b:iconAwesome name="shield" /> normal<br/>
-          <b:iconAwesome name="shield" rotate="R" /> rotate="R" (right - 90 deg.)<br/>
-          <b:iconAwesome name="shield" rotate="L" /> rotate="L" (left - 270 deg.)<br/>
-          <b:iconAwesome name="shield" flip="H" /> flip="H" (horizontal)<br/>
-          <b:iconAwesome name="shield" flip="V" /> flip="V" (vertical)
+          <b:iconAwesome value="shield" /> normal<br/>
+          <b:iconAwesome value="shield" rotate="R" /> rotate="R" (right - 90 deg.)<br/>
+          <b:iconAwesome value="shield" rotate="L" /> rotate="L" (left - 270 deg.)<br/>
+          <b:iconAwesome value="shield" flip="H" /> flip="H" (horizontal)<br/>
+          <b:iconAwesome value="shield" flip="V" /> flip="V" (vertical)
           ]]></script>
         </b:panel>
       </f:facet>
