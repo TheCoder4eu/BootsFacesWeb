@@ -40,12 +40,12 @@
     <p>The most simple example is a plain <code>b:inputText</code> with a <code>placeholder</code> attribute,
     which contains an hint that is shown in the input field until something is typed in it.
     The demo below shows what such a simple inputText looks like. We've added a bit of
-    <a href="../forms/ajax.jsf">AJAX functionality</a> to it to make it more interesting:</p>
+    <a href="../forms/ajax.jsf">AJAX functionality</a> with a small delay to it to make it more interesting:</p>
 
     <b:panel title="Live preview" look="info" collapsible="false">
       <h:form>
         <b:inputText placeholder="Type something here..." value="#{inputTextBean.map[inputTextBean.key]}"
-                     onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"/>
+                     onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" delay="1000"/>
         <b:label text="#{inputTextBean.map['key']}" id="label"/>
       </h:form>
 
@@ -57,7 +57,7 @@
           <![CDATA[
           <h:form>
             <b:inputText placeholder="Type something here..." value="&num;{inputTextBean.text}"
-                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" delay="1000" />
             <b:label text="&num;{inputTextBean.map['key']}" id="label"/>
           </h:form>
           ]]>
