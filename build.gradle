@@ -39,7 +39,7 @@ compile files("${System.properties['java.home']}/../lib/tools.jar")
 
 compile fileTree(dir: 'bsflib', include: '*.jar') //Required for messages/utils
 
-compile "net.bootsfaces:bootsfaces:1.3.0-SNAPSHOT"
+compile "net.bootsfaces:bootsfaces:1.3.0"
 }
 
 war.doFirst {
