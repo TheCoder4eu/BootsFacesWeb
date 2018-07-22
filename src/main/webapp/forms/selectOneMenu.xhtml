@@ -11,6 +11,7 @@
     <b:listLinks>
       <b:navLink href="#combobox" value="Combobox (&lt;b:selectOneMenu&gt;)" />
       <b:navLink href="#basic_usage" value="Basic usage" />
+      <b:navLink href="#filtering" value="Filtering options" />
       <b:navLink href="#disabled_items" value="Disabled items" />
       <b:navLink href="#a_note_on_ajax" value="A note on AJAX" />
       <b:navLink href="#converters" value="Converters" />
@@ -99,6 +100,35 @@
         </b:panel>
       </f:facet>
     </b:panel>
+
+
+    <h2><a id="filtering">Filtering options</a></h2>
+    <p>You can add a filter field by adding the option <code>select2="true"</code>:</p>
+     <b:panel title="Live preview" look="info" collapsible="false">
+      <b:form horizontal="true">
+        <b:formGroup>
+          <b:selectOneMenu value="#{tagsBean.favoriteBand}" select2="true" colMd="3" required="true" label="What's your favorite band?" labelColMd="2"
+          >
+            <f:selectItem itemLabel="(Please select)" itemValue="" />
+            <f:selectItems value="#{tagsBean.bands}" var="c" itemValue="#{c}" itemLabel="#{c}" />
+          </b:selectOneMenu>
+          <b:message colMd="2" />
+          <b:inputText style="margin-bottom:300px" value="#{tagsBean.favoriteBand}" disabled="true" colMd="2" label="Last submitted value:" labelColMd="3" id="brandOutputID2" />
+        </b:formGroup>
+        <b:commandButton value="Submit AJAX" update="brandOutputID2" />
+      </b:form>
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+           ]]>
+          </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+    
 
 
     <h2><a id="disabled_items">Disabled items</a></h2>

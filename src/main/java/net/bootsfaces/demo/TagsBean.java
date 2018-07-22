@@ -21,6 +21,8 @@ public class TagsBean implements Serializable {
 	"Running Wild", "Skyclad", "The Dillinger Escape Plan", "Theater of Tragedy", "Unleashed", "Vanden Plas", "Within Temptation", "Xystus", "Yes",
 	"Zenobia",
 	};
+	
+	private String favoriteBand="Skyclad";
 
 	public String getBandsCSV() {
 		StringBuilder b=new StringBuilder();
@@ -47,5 +49,13 @@ public class TagsBean implements Serializable {
 	
 	public List<String> getBandsList() {
 		return Arrays.asList(bands);
+	}
+
+	public String getFavoriteBand() {
+		return favoriteBand;
+	}
+
+	public void setFavoriteBand(String favoriteBand) {
+		this.favoriteBand = favoriteBand;
 	}
 }
