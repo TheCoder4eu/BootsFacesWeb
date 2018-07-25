@@ -93,10 +93,20 @@
     <h2><a id="perrequest">Activation and deactivation on a per-request basis</a></h2>
     <p>Setting the parameter <code>&lt; f:param name="blockui.disabled" value="true"/&gt;/f:param></code>
     of a commandbutton deactivates BlockUI for this particular button. You can observe this in the next
-    demo if you open the web developer tools of your browser. Both requests take five seconds,
-    even if the first request doesn't show the waitcursor.</p>
+    demo if you open the web developer tools of your browser. Both requests take five seconds.
+    The first button triggers a standard AJAX request without BlockUI. The second button triggers the
+    same request with BlockUI. It shows a waitcursor, it grays the background, and it blocks input
+    until the request has been finished.</p>
 
     <b:panel look="info" collapsible="false">
+    <script>
+            $.blockUI.defaults.css.width = '20%';
+            $.blockUI.defaults.css.left = '40%';
+            $.blockUI.defaults.css.height = '5em';
+            $.blockUI.defaults.css.borderRadius = '10px';
+            $.blockUI.defaults.overlayCSS.opacity = 0.5;
+            $.blockUI.defaults.message = '<div style="padding-top:1em"><span class="fa fa-circle-o-notch fa-2x fa-spin" /> Please hold the line </div>';
+        </script>
       <h:form>
         <b:panelGrid columns="3">
           <b:commandButton value="Wait 5 seconds without BlockUI"
@@ -194,7 +204,7 @@
     <code>$.blockUI.defaults</code>
     to configure BootsFaces BlockUI, as decribed <a target="#"
     href="http://malsup.com/jquery/block/#options">here.</a> For
-    instance, these lines deactive the gray-out-effect, and show the
+    instance, these lines deactivate the gray-out-effect, and show the
     waitcursor of BootsFaces.
     </p>
     <b:panel>
@@ -202,7 +212,7 @@
       class="brush: javascript; toolbar: false;gutter: false; first-line: 1">
       <![CDATA[
       &lt;script>
-      $.blockUI.defaults.overlayCSS.opacity=0;
+      $.blockUI.defaults.overlayCSS.opacity = 0;
       $.blockUI.defaults.message='<h1><img src="javax.faces.resource/images/waitcursor.gif.jsf?ln=bsf" /></h1>';
       &lt;/script>
       ]]>
