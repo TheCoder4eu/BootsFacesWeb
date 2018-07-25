@@ -105,8 +105,8 @@
             $.blockUI.defaults.css.height = '5em';
             $.blockUI.defaults.css.borderRadius = '10px';
             $.blockUI.defaults.overlayCSS.opacity = 0.5;
-            $.blockUI.defaults.message = '<div style="padding-top:1em"><span class="fa fa-circle-o-notch fa-2x fa-spin" /> Please hold the line </div>';
-        </script>
+            $.blockUI.defaults.message = '<div style="padding-top:1em"><b:spinner name="circle-o-notch" size="2x" /> Please hold the line </div>';
+      </script>
       <h:form>
         <b:panelGrid columns="3">
           <b:commandButton value="Wait 5 seconds without BlockUI"
@@ -121,6 +121,14 @@
         <script type="syntaxhighlighter"
         class="brush: xml; toolbar: false;gutter: false; first-line: 1">
         <![CDATA[
+	    <script>
+            $.blockUI.defaults.css.width = '20%';
+            $.blockUI.defaults.css.left = '40%';
+            $.blockUI.defaults.css.height = '5em';
+            $.blockUI.defaults.css.borderRadius = '10px';
+            $.blockUI.defaults.overlayCSS.opacity = 0.5;
+            $.blockUI.defaults.message = '<div style="padding-top:1em"><b:spinner name="circle-o-notch" size="2x" /> Please hold the line </div>';
+    		</script>
         <b:commandButton value="Wait 5 seconds without BlockUI"
                          onclick="ajax:blockUIBean.waitFiveSeconds()" look="danger">
           <f:param name="blockui.disabled" value="true" />
