@@ -13,6 +13,7 @@
       <b:navLink href="#autocompletion_" value="Autocompletion:" />
       <b:navLink href="#defining_the_content_cells" value="Defining the content cells" />
       <b:navLink href="#defining_the_header" value="Defining the header" />
+      <b:navLink href="#column_width" value="Column widths" />
       <b:navLink href="#customizing_the_table" value="Customizing the table" />
       <b:navLink href="#rowgroup" value="Grouping the rows" />
       <b:navLink href="#sorting_input_fields" value="Sorting input fields" />
@@ -340,7 +341,40 @@
       </f:facet>
     </b:panel>
 
-    <h2><a id="customizing_the_table">Customizing the table</a></h2>
+    <h2><a id="column_width">Defining the column widths</a></h2>
+    <p>By default, the datatable tries to guess the optimal column width, based on the contents of the table cells and the header.
+    Alternatively, you can specify the width manually by adding the <code>width</code> attribute to the column
+    definitions. If you specify a number, BootsFaces assumes you want to define the with in Pixels ('px').
+    Alternatively, you can use any other of the units used in CSS, such as <code>em</code>,
+    <code>rem</code>, <code>%</code>, and <code>vw</code>.</p>	
+    <p><b>Caveat:</b> The table width may be wider than the sum of the colum widths. If so, the columns
+    widths are scaled accordingly. In other words, the column widths are more like a recommendation than a
+    pixel-exact definition. If you need that, you also have to specify the width of the <code>&lt;b:dataTable /&gt;</code>.</p>
+    <b:panel title="Live preview" look="info" collapsible="false">
+		<h:form>
+			<b:dataTable value="#{carPool.carPool}" var="car">
+				<b:dataTableColumn value="#{car.brand}" width="50"/>
+				<b:dataTableColumn value="#{car.type}" width="5vw"/>
+				<b:dataTableColumn value="#{car.color}" width="5rem"/>
+				<b:dataTableColumn value="#{car.age}" width="20%"/>
+			</b:dataTable>
+		</h:form>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+			<b:dataTable value="&num;{carPool.carPool}" var="car" width="5em">
+				<b:dataTableColumn value="&num;{car.brand}" width="100"/>
+				<b:dataTableColumn value="&num;{car.type}" width="10vw"/>
+				<b:dataTableColumn value="&num;{car.color}" width="10rem"/>
+				<b:dataTableColumn value="&num;{car.age}" width="10%"/>
+			</b:dataTable>
+          ]]></script>
+        </b:panel>
+      </f:facet>
+	</b:panel>
+	<h2><a id="customizing_the_table">Customizing the table</a></h2>
     <p>The datatable has a couple of options to configure it. Some of them are shown in the example below.</p>
 
     <b:panel title="Live preview" look="info" collapsible="false">
