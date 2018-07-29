@@ -45,8 +45,10 @@
     <b:panel title="Live preview" look="info" collapsible="false">
       <h:form>
         <b:inputText placeholder="Type something here..." value="#{inputTextBean.map[inputTextBean.key]}"
-                     onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" delay="1000"/>
+                     onkeyup="ajax:inputTextBean.capitalizeText()" update="@after" delay="1000"/>
         <b:label text="#{inputTextBean.map['key']}" id="label"/>
+
+        <b:label text="#{inputTextBean.capitalText}" id="captitallabel"/>
       </h:form>
 
       <f:facet name="footer">
@@ -59,6 +61,7 @@
             <b:inputText placeholder="Type something here..." value="&num;{inputTextBean.text}"
                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" delay="1000" />
             <b:label text="&num;{inputTextBean.map['key']}" id="label"/>
+            <b:label text="&num;{inputTextBean.getCapitalText()}" id="captitallabel"/>
           </h:form>
           ]]>
           </script>
