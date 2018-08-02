@@ -107,13 +107,11 @@
      <b:panel title="Live preview" look="info" collapsible="false">
       <b:form horizontal="true">
         <b:formGroup>
-          <b:selectOneMenu value="#{tagsBean.favoriteBand}" select2="true" colMd="3" required="true" label="What's your favorite band?" labelColMd="2"
-          >
+          <b:selectOneMenu value="#{tagsBean.favoriteBand}" select2="true" colMd="3" required="true" label="What's your favorite band?" labelColMd="2">
             <f:selectItem itemLabel="(Please select)" itemValue="" />
             <f:selectItems value="#{tagsBean.bands}" var="c" itemValue="#{c}" itemLabel="#{c}" />
           </b:selectOneMenu>
-          <b:message colMd="2" />
-          <b:inputText style="margin-bottom:300px" value="#{tagsBean.favoriteBand}" disabled="true" colMd="2" label="Last submitted value:" labelColMd="3" id="brandOutputID2" />
+          <b:inputText value="#{tagsBean.favoriteBand}" disabled="true" colMd="3" label="Last submitted value:" labelColMd="3" id="brandOutputID2" />
         </b:formGroup>
         <b:commandButton value="Submit AJAX" update="brandOutputID2" />
       </b:form>
@@ -123,6 +121,16 @@
         <b:panel>
           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
           <![CDATA[
+     <b:form horizontal="true">
+        <b:formGroup>
+          <b:selectOneMenu value="&num;{tagsBean.favoriteBand}" select2="true" colMd="3" required="true" label="What's your favorite band?" labelColMd="2">
+            <f:selectItem itemLabel="(Please select)" itemValue="" />
+            <f:selectItems value="&num;{tagsBean.bands}" var="c" itemValue="&num;{c}" itemLabel="&num;{c}" />
+          </b:selectOneMenu>
+          <b:inputText value="&num;{tagsBean.favoriteBand}" disabled="true" colMd="3" label="Last submitted value:" labelColMd="3" id="brandOutputID2" />
+        </b:formGroup>
+        <b:commandButton value="Submit AJAX" update="brandOutputID2" />
+      </b:form>
            ]]>
           </script>
         </b:panel>
