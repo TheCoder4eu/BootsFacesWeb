@@ -17,7 +17,7 @@
       <b:navLink href="#rotated_and_flipped_icons" value="Rotated and Flipped Icons" />
       <b:navLink href="#animated_icons" value="Animated Icons" />
       <b:navLink href="#ajax" value="AJAX, JavaScript," />
-      <b:navLink href="#configuring_fontawesome" value="Configuring FontAwesome" />
+      <b:navLink href="#configuring_fontawesome" value="Configuring Font Awesome" />
       <b:navLink href="#responsive_design" value="Responsive design" />
       <b:navLink href="#visibility_depending_on_screen_size" value="Visibility depending on screen size" />
       <b:navLink href="#tooltips" value="Tooltips" />
@@ -28,19 +28,34 @@
 
 
   <ui:define name="content">
-    <h1><a id="icons">Fontawesome 5</a></h1>
+    <h1><a id="icons">Font Awesome 5</a></h1>
     <h2><a id="fontawesome_4_5">Version 4 vs. version 5</a></h2>
-    <p>BootsFaces supports both FontAwesome 4 and Fontawesome 5. However, you can't mix both versions on the same page.
-    If you need to mix these versions for some reason, you have to add the CSS code to the page yourself.</p>
-    <p>If you're interested in Fontawesome 4, follow <a href="icons.jsf">this link</a>.</p>
+    <p>BootsFaces supports both Font Awesome 4 and Font Awesome 5.</p>
+    <p>If you're interested in Font Awesome 4, follow <a href="icons.jsf">this link</a>. The page you're currently reading focuses on Font Awesome 5.</p>
+    
+     <h2><a id="font_awesome_icon_set">Using both versions on the same page</a></h2>
+     <p>BootsFaces allows you to use both version of Font Awesome on the same page. However, we don't recommend this because the icon sets don't blend in
+     seamlessly, as you can see by opening the menu of this page.</p>
     
     <h2><a id="font_awesome_icon_set">Font Awesome Icon set</a></h2>
-    <p>Since BootsFaces is born to help you design a wonderful website, we recognize that icons are an important tool to 
-    achieve this goal and there are never enough:</p>
-    <p>for this reason, BootsFaces now supports the <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a> icon set with its 600+ icons.</p>
+    <p>BootsFaces supports the <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a> icon set with its 3000+ icons.</p>
+    <p>To activate Font Awesome 5, select one of the flavors of the icon set:</p>
+    <dl class="dl-horizontal">
+	  <dt>solid</dt>
+	  <dd>free icon set with a bold look</dd>
+	  <dt>brand</dt>
+	  <dd>free icon set featuring company icons. Please don't forget to mention the trademark when you're using the icons</dd>
+	  <dt>regular</dt>
+	  <dd>paid icon set</dd>
+    	  <dt>light</dt>
+  	  <dd>paid icon set with a lighter look</dd>
+	</dl>
+	
     <p>As you will see later, we also support most Awesome features, which will work with Glyphicon too!</p>
     <p><b:label severity="warning" text="Changed in 1.2.1" />
     You can also use both <code>name</code> and <code>value</code> to specify the icon, but we've deprecated <code>name</code> in BootsFaces 1.2.1 in favor of <code>value</code>.</p>
+    <p><b:label severity="warning" text="Glyphicons" />
+    With version 4, Bootstrap dropped support of the Glyphicons. So BootsFaces 2 won't support the Glyphicons, either.</p>
 
     <hr/>
 
@@ -52,12 +67,18 @@
       <b:iconAwesome value="group" solid="true"/> fa-group<br/>
       <b:iconAwesome value="gamepad" solid="true"/> fa-gamepad<br/>
       <b:iconAwesome value="newspaper-o" solid="true" /> fa-newspaper-o<br/>
-
       <f:facet name="footer">
         <strong>JSF markup: </strong>
         <b:panel>
           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
           <![CDATA[
+      <b:iconAwesome value="camera-retro" solid="true"/> fa-camera-retro<br/>
+      <b:iconAwesome value="coffee" solid="true"/> fa-coffee<br/>
+      <b:iconAwesome value="futbol-o" solid="true"/> fa-futbol-o<br/>
+      <b:iconAwesome value="heartbeat" solid="true"/> fa-heartbeat<br/>
+      <b:iconAwesome value="group" solid="true"/> fa-group<br/>
+      <b:iconAwesome value="gamepad" solid="true"/> fa-gamepad<br/>
+      <b:iconAwesome value="newspaper-o" solid="true" /> fa-newspaper-o<br/>
           ]]></script>
         </b:panel>
       </f:facet>
@@ -65,7 +86,51 @@
 
 
     <h2><a id="icon_size">Icon Size</a></h2>
-    <p>BootsFaces supports different sizes for the Icons.</p>
+    <p>To increase icon sizes relative to their container, use the <code>size="xs"</code> (75% of the original size),
+    <code>size="sm"</code> (87,5%),
+    <code>size="lg"</code> (33% increase), <code>size="2x"</code>,
+    <code>size="3x"</code>, and so on, up to <code>size="10x"</code> attributes.</p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+    <b:row>
+	    <b:column small-screen="6">
+	      <b:iconAwesome value="globe" solid="true" size="xs" /> size="xs"<br/>
+	      <b:iconAwesome value="globe" solid="true" size="sm" /> size="sm"<br/>
+	      <b:iconAwesome value="globe" solid="true" size="lg" /> size="lg"<br/>
+	      <b:iconAwesome value="globe" solid="true" size="2x" /> size="2x"<br/>
+	      <b:iconAwesome value="globe" solid="true" size="3x" /> size="3x"<br/>
+	      <b:iconAwesome value="globe" solid="true" size="4x" /> size="4x"<br/>
+      </b:column>
+      <b:column small-screen="6">
+	      <b:iconAwesome value="globe" solid="true" size="10x" /> size="10x"<br/>
+      </b:column>
+    </b:row>
+
+      <f:facet name="footer">
+        <strong>JSF markup: </strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+    <b:row>
+	    <b:column small-screen="6">
+	      <b:iconAwesome value="globe" solid="true" size="xs" /> size="xs"<br/>
+	      <b:iconAwesome value="globe" solid="true" size="sm" /> size="sm"<br/>
+	      <b:iconAwesome value="globe" solid="true" size="lg" /> size="lg"<br/>
+	      <b:iconAwesome value="globe" solid="true" size="2x" /> size="2x"<br/>
+	      <b:iconAwesome value="globe" solid="true" size="3x" /> size="3x"<br/>
+	      <b:iconAwesome value="globe" solid="true" size="4x" /> size="4x"<br/>
+      </b:column>
+      <b:column small-screen="6">
+	      <b:iconAwesome value="globe" solid="true" size="10x" /> size="10x"<br/>
+      </b:column>
+    </b:row>
+          ]]></script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+    
+    
     <h2><a id="rotated_and_flipped_icons">Rotated and flipped Icons</a></h2>
     <p>You can also rotate and flip your icons.</p>
     <hr/>
@@ -73,38 +138,47 @@
     <p>To rotate or flip your icons, just use the <code>rotate="R"</code>, <code>rotate="L"</code> and <code>flip="H"</code>, <code>flip="V"</code> attributes respectively.</p>
 
     <b:panel title="Live preview" look="info" collapsible="false">
-      <b:iconAwesome value="shield" solid="true"/> normal<br/>
-      <b:iconAwesome value="shield" rotate="R" solid="true"/> rotate="R" (right - 90 deg.)<br/>
-      <b:iconAwesome value="shield" rotate="L" solid="true"/> rotate="L" (left - 270 deg.)<br/>
-      <b:iconAwesome value="shield" flip="H" solid="true"/> flip="H" (horizontal)<br/>
-      <b:iconAwesome value="shield" flip="V" solid="true"/> flip="V" (vertical)<br/>
+      <b:iconAwesome value="shield-alt" solid="true"/> normal<br/>
+      <b:iconAwesome value="shield-alt" rotate="R" solid="true"/> rotate="R" (right - 90 deg.)<br/>
+      <b:iconAwesome value="shield-alt" rotate="L" solid="true"/> rotate="L" (left - 270 deg.)<br/>
+      <b:iconAwesome value="shield-alt" flip="H" solid="true"/> flip="H" (horizontal)<br/>
+      <b:iconAwesome value="shield-alt" flip="V" solid="true"/> flip="V" (vertical)<br/>
 
       <f:facet name="footer">
         <strong>JSF markup: </strong>
         <b:panel>
           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
           <![CDATA[
+      <b:iconAwesome value="shield-alt" solid="true"/> normal<br/>
+      <b:iconAwesome value="shield-alt" rotate="R" solid="true"/> rotate="R" (right - 90 deg.)<br/>
+      <b:iconAwesome value="shield-alt" rotate="L" solid="true"/> rotate="L" (left - 270 deg.)<br/>
+      <b:iconAwesome value="shield-alt" flip="H" solid="true"/> flip="H" (horizontal)<br/>
+      <b:iconAwesome value="shield-alt" flip="V" solid="true"/> flip="V" (vertical)<br/>
           ]]></script>
         </b:panel>
       </f:facet>
     </b:panel>
 
 
-    <h2><a id="animated_icons">Animated Icons</a></h2>
+    <h2><a id="animated_icons">Animated icons</a></h2>
     <hr/>
 
-    <p>To let your icons spin, just add the <code>spin="true"</code> attribute.</p>
+    <p>To let your icons spin, just add the attribute <code>spin="true"</code>. Alternatively, you can use the attribute <code>pulse</code>
+    to have your icon rotate in eight discrete steps.</p>
     <b:panel title="Live preview" look="info" collapsible="false">
-      <b:iconAwesome name="spinner" spin="true" size="3x" solid="true"/>#{'   '}
+      <b:iconAwesome name="spinner" pulse="true" size="3x" solid="true"/>#{'   '}
       <b:iconAwesome name="circle-o-notch" spin="true" size="3x" solid="true"/>#{'   '}
       <b:iconAwesome name="refresh" spin="true" size="3x" solid="true"/>#{'   '}
       <b:iconAwesome name="cog" spin="true" size="3x" solid="true"/>
-
       <f:facet name="footer">
         <strong>JSF markup: </strong>
         <b:panel>
           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
           <![CDATA[
+      <b:iconAwesome name="spinner" pulse="true" size="3x" solid="true"/>#{'   '}
+      <b:iconAwesome name="circle-o-notch" spin="true" size="3x" solid="true"/>#{'   '}
+      <b:iconAwesome name="refresh" spin="true" size="3x" solid="true"/>#{'   '}
+      <b:iconAwesome name="cog" spin="true" size="3x" solid="true"/>
            ]]></script>
         </b:panel>
       </f:facet>
@@ -217,12 +291,12 @@
     </b:panel>
 
 
-    <h2><a id="configuring_fontawesome">Configuring FontAwesome</a></h2>
-    <p>By default, BootsFaces fetches FontAwesome 5.2.0 from a CDN (from <code>http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css</code>, to be precise).</p>
+    <h2><a id="configuring_fontawesome">Configuring Font Awesome</a></h2>
+    <p>By default, BootsFaces fetches Font Awesome 5.2.0 from a CDN (from <code>https://use.fontawesome.com/releases/v5.2.0/css/all.css</code>, to be precise).</p>
     <p>If you want to suppress the automatic web access for some reason, you've got several options. You can deactivate it globally in the web.xml, you can
     add a facet to the header of the JSF-view (which allows you to activate and deactivate the feature on a per-page basis) or you can simply include your own
-    CSS import. If the file name contains the word <code>font-awesome</code> and ends with <code>.css</code>, BootsFaces won't try to load FontAwesome a second time.
-    In most cases that's precisely what you need to do anyways, so you don't have to configure anything to deactivate the defaults.</p>
+    CSS import. If the file name contains the word <code>font-awesome</code> and ends with <code>.css</code>, BootsFaces won't try to load Font Awesome a second time.
+    In most cases that's precisely what you need to do, so you don't have to configure anything to deactivate the defaults.</p>
 
     <b:tabView>
       <b:tab title="web.xml (global deactivation)">
@@ -230,8 +304,8 @@
           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
           <![CDATA[
           <context-param>
-          <param-name>net.bootsfaces.get_fontawesome_from_cdn</param-name>
-          <param-value>false</param-value>
+            <param-name>net.bootsfaces.get_fontawesome_from_cdn</param-name>
+            <param-value>false</param-value>
           </context-param>
           ]]></script>
         </b:panel>
@@ -241,7 +315,7 @@
           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
           <![CDATA[
           <h:head>
-          <f:facet name="no-fa">true</f:facet>
+            <f:facet name="no-fa">true</f:facet>
           </h:head>
           <h:body>
             ...
@@ -261,7 +335,7 @@
 
     <br/>
     <h2><a id="responsive_design">Responsive design</a><b:badge value="since 0.9.0" /></h2>
-    <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
+    <p>You can use all the attributes controlling the responsive behavior of <code>&lt;b:column /&gt;</code>
     also with <code>&lt;b:icon /&gt;</code>. The example may look a bit odd, because these icons
     don't fill all the available screen space, but still, it shows the idea nicely:</p>
 
@@ -288,7 +362,22 @@
         <b:panel>
           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
           <![CDATA[
-          ]]></script>
+       <b:row>
+        <b:iconAwesome name="cog" solid="true" tooltip="large-screen='full-width'" large-screen="full-width" />
+      </b:row>
+      <b:row style="padding-top:5px">
+        <b:iconAwesome name="cog" solid="true" tooltip="large-screen='one-third'" large-screen="one-third" />
+        <b:iconAwesome name="cog" solid="true" tooltip="large-screen='two-thirds'" large-screen="two-thirds" />
+      </b:row>
+      <b:row style="padding-top:5px">
+        <b:iconAwesome name="cog" solid="true" tooltip="small-screen='one-third'" small-screen="one-third" />
+        <b:iconAwesome name="cog" solid="true" tooltip="small-screen='two-thirds'" small-screen="two-thirds" />
+      </b:row>
+      <b:row style="padding-top:5px">
+        <b:iconAwesome name="cog" solid="true" tooltip="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
+        <b:iconAwesome name="cog" solid="true" tooltip="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
+      </b:row>
+         ]]></script>
         </b:panel>
       </f:facet>
     </b:panel>
@@ -315,7 +404,17 @@
         <b:panel>
           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
           <![CDATA[
-           ]]></script>
+        <h:outputText value="Visible on &gt;= md:" />
+        <b:iconAwesome name="cog" solid="true" value="Visible on medium or large screen" severity="info" visible="md..." />
+        <h:outputText value="Visible on &lt;= sm:" />
+        <b:iconAwesome name="cog" solid="true" value="Visible on small-screen" severity="success" visible="...sm"/>
+        <h:outputText value="Visible on sm...lg:" />
+        <b:iconAwesome name="cog" solid="true" value="Visible on small to large screen" severity="success" visible="sm...lg"/>
+        <h:outputText value="Visible on xs and md:" />
+        <b:iconAwesome name="cog" solid="true" value="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
+        <h:outputText value="Col-md-6, offset 2:" />
+        <b:iconAwesome name="cog" solid="true" value="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
+          ]]></script>
         </b:panel>
       </f:facet>
     </b:panel>
@@ -339,13 +438,8 @@
     <h2><a id="reference_section">Reference section</a></h2>
     <ui:include src="IconAwesomeAttributes.xhtml" />
 
-    <h2><a id="list_of_font_awesome_icons">TODO List of Font Awesome icons</a></h2>
-    <ui:repeat var="fontAwesomeIcon" value="#{iconAwesomeBean.fontAwesomeIconList}">
-      <div>
-        <i class="fa #{fontAwesomeIcon}" style="padding-right: 20px" />
-        <h:outputText value="#{fontAwesomeIcon}"/>
-      </div>
-    </ui:repeat>
+    <h2><a id="list_of_font_awesome_icons">List of Font Awesome icons</a></h2>
+    <p>You can browse the list of Font Awesome icons on <a target="#" href="https://fontawesome.com/icons?d=gallery">the Font Awesome project page</a>.</p>
 
     <b:panel look="info" rendered="false">
       <f:facet name="heading">
