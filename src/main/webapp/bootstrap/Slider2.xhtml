@@ -505,12 +505,12 @@
           <h:form>
             <b:panelGrid columns="2" size="sm">
               <h:panelGroup display="block">
-                <div class="container">
                   <b:slider2 orientation="horizontal" value="#{sliderBean.age}" label="Enter your age (18-65)"
-                             mode="edit" id="age" />
+                             mode="edit" id="age" 
+                             badge-span="2" 
+                             badge-style="width: 2.7em;padding-right:5px;padding-left:5px"/>
                   <b:message for="age" />
                   <b:commandButton update="@form" value="Validate constraints" />
-                </div>
               </h:panelGroup>
               <h:panelGroup display="block">
                 <b:switch value="#{messageStyleBean.useLegacyBootsFacesStyle}"
@@ -531,15 +531,14 @@
           <script type="syntaxhighlighter"
           class="brush: xml; toolbar: false;gutter: false; first-line: 1">
           <![CDATA[
-          <h:form>
-            <b:inputTextarea rows="3" id="name" value="&num;{userBean.name}" label="Enter your name"
-                             required="true"    />
-            <h:message for="age" />
-            <b:inputTextarea rows="3" id="age" value="&num;{userBean.age}" label="What's your age?"
-                             />
-            <h:message for="age" />
-            <b:commandButton update="@form" value="Validate constraints" />
-          </h:form>
+            <h:form>
+             <b:slider2 orientation="horizontal" value="#{sliderBean.age}" label="Enter your age (18-65)"
+                        mode="edit" id="age" 
+                        badge-span="2" 
+                        badge-style="width: 2.7em;padding-right:5px;padding-left:5px"/>
+             <b:message for="age" />
+             <b:commandButton update="@form" value="Validate constraints" />
+            </h:form>
           ]]>
           </script>
         </b:well>
@@ -571,7 +570,7 @@
           If the attribute <code>required</code> is true, the pseudo CSS class <code>bf-required</code> is added. Thus you can define your custom style for required fields.
         </li>
         <li>
-          if theres a <code>FacesMessage</code>, the input field is bears one of the pseudo CSS classes
+          If there's a <code>FacesMessage</code>, the input field is bears one of the pseudo CSS classes
           <code>bf-info</code>, <code>bf-warning</code>, <code>bf-error</code> or <code>bf-fatal</code>. If there are no messages,
           the input field bears the pseudo CSS class <code>bf-no-message</code>  and <code>has-success</code>. The latter colors the label green by default.
         </li>

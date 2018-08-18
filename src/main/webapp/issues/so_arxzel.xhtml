@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body style="padding-top: 60px">
+	<b:container>
+		<b:panel title="not mandatory">
+			<h:form style="width:500px">
+				<b:panelGrid columns="1">
+					<b:inputText id="notMandatory"
+					      placeholder="123456-78-90123" 
+					      required="true" 
+					      requiredMessage="Es necesario este dato. Rellenelo de la manera en la que se indica."
+					      value="#{soArxzelBean.text}" 
+					      label="Código:" >
+					          <f:validateRegex id="validateRegex" 
+					                pattern="^([0-9]{4}-[0-9]{2}-[0-9]{5})$" />
+					</b:inputText>
+					<b:commandButton action="#{soArxzelBean.action}" value="enviar"/>
+					<b:messages for="notMandatory" />
+				</b:panelGrid>
+			</h:form>
+		</b:panel>
+	</b:container>
+	<b:container>
+		<b:panel title="not mandatory">
+			<h:form style="width:500px">
+				<b:panelGrid columns="1">
+					<b:inputText id="mandatory"
+					      placeholder="123456-78-90123" 
+					      value="#{soArxzelBeanNonMandatory.text}" 
+					      label="Código:" >
+					          <f:validateRegex id="validateRegex" 
+					                pattern="^([0-9]{4}-[0-9]{2}-[0-9]{5})$" />
+					</b:inputText>
+					<b:commandButton action="#{soArxzelBeanNonMandatory.action}" value="enviar"/>
+					<b:messages for="mandatory"/>
+				</b:panelGrid>
+			</h:form>
+		</b:panel>
+	</b:container>
+</h:body>
+</html>

@@ -30,12 +30,17 @@
             <tr>
                 <td>ajax</td>
                 <td>false</td>
-                <td>Activates AJAX. The default value is false (no AJAX).</td>
+                <td>Whether the Button submits the form with AJAX.</td>
             </tr>
             <tr>
                 <td>alt</td>
                 <td>(none)</td>
                 <td>Alternate textual description of the input element.</td>
+            </tr>
+            <tr>
+                <td>auto-update<br />autoUpdate (alternative writing)</td>
+                <td>false</td>
+                <td>Setting this flag updates the widget on every AJAX request.</td>
             </tr>
             <tr>
                 <td>binding</td>
@@ -63,6 +68,16 @@
                 <td>Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
             </tr>
             <tr>
+                <td>converter</td>
+                <td>(none)</td>
+                <td>An EL expression or a literal text that defines a converter for the component. When it's an EL expression, it's resolved to a converter instance. In case it's a static text, it must refer to a converter id.</td>
+            </tr>
+            <tr>
+                <td>delay</td>
+                <td>(none)</td>
+                <td>Delays the AJAX request.</td>
+            </tr>
+            <tr>
                 <td>dir</td>
                 <td>(none)</td>
                 <td>Direction indication for text that does not inherit directionality. Legal values: ltr (Default. Left-to-right text direction), rtl (Right-to-left text direction) and auto (let the browser figure out the direction of your alphabet, based on the page content).</td>
@@ -86,6 +101,11 @@
                 <td>hidden</td>
                 <td>(none)</td>
                 <td>This column is hidden on a certain screen size and below. Legal values: lg, md, sm, xs.</td>
+            </tr>
+            <tr>
+                <td>hideNoSelectionOption</td>
+                <td>false</td>
+                <td>Hide a noSelectionOption, if a value is already set. Requires update after selection.</td>
             </tr>
             <tr>
                 <td>id</td>
@@ -210,17 +230,22 @@
             <tr>
                 <td>onclick</td>
                 <td>(none)</td>
-                <td>OnClick DHTML event .</td>
+                <td>The onclick attribute.</td>
             </tr>
             <tr>
                 <td>oncomplete</td>
                 <td>(none)</td>
-                <td>JavaScript to be executed when ajax completes with success.</td>
+                <td>JavaScript to be executed when ajax completes.</td>
             </tr>
             <tr>
                 <td>ondblclick</td>
                 <td>(none)</td>
                 <td>Client side callback to execute when input element is double clicked.</td>
+            </tr>
+            <tr>
+                <td>onerror</td>
+                <td>(none)</td>
+                <td>JavaScript to be executed when ajax results on an error (including both network errors and Java exceptions).</td>
             </tr>
             <tr>
                 <td>onfocus</td>
@@ -273,6 +298,11 @@
                 <td>Client side callback to execute when text within input element is selected by user.</td>
             </tr>
             <tr>
+                <td>onsuccess</td>
+                <td>(none)</td>
+                <td>JavaScript to be executed when ajax completes with success (i.e. there's neither a network error nor a Java exception).</td>
+            </tr>
+            <tr>
                 <td>process</td>
                 <td>(none)</td>
                 <td>Comma or space separated list of ids or search expressions denoting which values are to be sent to the server.</td>
@@ -301,6 +331,11 @@
                 <td>required-message<br />requiredMessage (alternative writing)</td>
                 <td>(none)</td>
                 <td>Message to show if the user did not specify a value and the attribute required is set to true.</td>
+            </tr>
+            <tr>
+                <td>select2</td>
+                <td>false</td>
+                <td>Enable select2 component to make the dropdown filterable by setting this attribute to true.</td>
             </tr>
             <tr>
                 <td>size</td>

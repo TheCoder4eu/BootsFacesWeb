@@ -196,6 +196,27 @@
       <li>onInitialized    </li>
     </ul>
 
+	<h2><a id="width">Setting the width</a></h2>
+	<p>By default, the multiple-choice select box doesn't respect the <code>form-group</code>
+	properties. In other words, it's smaller than the other input fields, which use all
+	available space in a <code>&lt;b:column /&gt;</code>. You can fix this with a few lines
+	of CSS code:</p>
+	<b:well>
+	 <script type="syntaxhighlighter" class="brush: css toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+  div > .btn-group {
+	width:100%;
+  }
+  div > .btn-group > button {
+	width:100%;
+  }
+  div > .btn-group > ul {
+	width:100%;
+  }
+]]>
+     </script>
+     </b:well>
+	
 
     <h2><a id="options">Options</a></h2>
     <h:form>

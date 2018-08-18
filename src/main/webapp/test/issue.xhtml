@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>BootsFaces rocks!</title>
+	<meta name="author" content="Stephan Rauh"></meta>
+</h:head>
+<h:body>
+<style>
+	div > .btn-group {
+		width:100%;
+	}
+	div > .btn-group > button {
+		width:100%;
+	}
+	div > .btn-group > ul {
+		width:100%;
+	}
+</style>
+		<h:form>
+		<b:container>
+			<b:row>
+				<b:column col-md="6">
+					        <b:inputText value="radiobuttons" />
+
+				</b:column>
+				<b:column col-md="6" style="background-color:red">
+					<b:selectMultiMenu value="#{selectMultiMenuBean.brand}"
+						id="brandID">
+						<f:selectItems value="#{selectMultiMenuBean.myList}" var="l"
+							itemValue="#{l.key}" itemLabel="#{l.value}" />
+					</b:selectMultiMenu>
+				</b:column>
+				</b:row>
+				<b:row>
+				<b:column col-md="6">
+					        <b:inputText value="radiobuttons" />
+
+				</b:column>
+				<b:column col-md="6">
+					        <b:inputText value="radiobuttons" />
+
+				</b:column>
+				</b:row>
+				</b:container>
+		</h:form>
+</h:body>
+</html>

@@ -43,6 +43,11 @@
                 <td>Whether the Button submits the form with AJAX.</td>
             </tr>
             <tr>
+                <td>auto-update<br />autoUpdate (alternative writing)</td>
+                <td>false</td>
+                <td>Setting this flag updates the widget on every AJAX request.</td>
+            </tr>
+            <tr>
                 <td>col-lg<br />colLg (alternative writing)</td>
                 <td> -1 </td>
                 <td>Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
@@ -61,6 +66,11 @@
                 <td>col-xs<br />colXs (alternative writing)</td>
                 <td> -1 </td>
                 <td>Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths.</td>
+            </tr>
+            <tr>
+                <td>delay</td>
+                <td>(none)</td>
+                <td>Delays the AJAX request.</td>
             </tr>
             <tr>
                 <td>disabled</td>
@@ -130,12 +140,17 @@
             <tr>
                 <td>oncomplete</td>
                 <td>(none)</td>
-                <td>JavaScript to be executed when ajax completes with success.</td>
+                <td>JavaScript to be executed when ajax completes.</td>
             </tr>
             <tr>
                 <td>ondblclick</td>
                 <td>(none)</td>
                 <td>Client side callback to execute when input element is double clicked.</td>
+            </tr>
+            <tr>
+                <td>onerror</td>
+                <td>(none)</td>
+                <td>JavaScript to be executed when ajax results on an error (including both network errors and Java exceptions).</td>
             </tr>
             <tr>
                 <td>onmousedown</td>
@@ -171,6 +186,11 @@
                 <td>onslidestart</td>
                 <td>(none)</td>
                 <td>Client side callback to execute when the carousel start to slide to another item.</td>
+            </tr>
+            <tr>
+                <td>onsuccess</td>
+                <td>(none)</td>
+                <td>JavaScript to be executed when ajax completes with success (i.e. there's neither a network error nor a Java exception).</td>
             </tr>
             <tr>
                 <td>pause</td>

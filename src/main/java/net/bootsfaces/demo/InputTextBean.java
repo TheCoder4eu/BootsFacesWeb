@@ -33,7 +33,7 @@ public class InputTextBean implements Serializable {
 	private static final long serialVersionUID = -6810958868318611791L;
 	private String text="";
 	
-	private String capitalText = "";
+	private String capitalText = "VALUE";
 	
 	private Map<String, String> map = new HashMap<String, String>();
 	
@@ -46,7 +46,7 @@ public class InputTextBean implements Serializable {
 	}
 	
 	public void capitalizeText() {
-		setCapitalText(text.toUpperCase());
+		setCapitalText(getMap().get("key").toUpperCase());
 	}
 
 	public String getText() {

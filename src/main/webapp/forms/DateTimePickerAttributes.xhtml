@@ -25,12 +25,17 @@
             <tr>
                 <td>ajax</td>
                 <td>false</td>
-                <td>Activates AJAX. The default value is false (no AJAX).</td>
+                <td>Whether the Button submits the form with AJAX.</td>
             </tr>
             <tr>
                 <td>allow-input-toggle<br />allowInputToggle (alternative writing)</td>
                 <td>false</td>
                 <td>If true, the picker will show on textbox focus and icon click when used in a button group. Default: false.</td>
+            </tr>
+            <tr>
+                <td>auto-update<br />autoUpdate (alternative writing)</td>
+                <td>false</td>
+                <td>Setting this flag updates the widget on every AJAX request.</td>
             </tr>
             <tr>
                 <td>binding</td>
@@ -66,6 +71,11 @@
                 <td>day-view-header-format<br />dayViewHeaderFormat (alternative writing)</td>
                 <td> MMMM YYYY </td>
                 <td>Changes the heading of the datepicker when in 'days' view. Default: 'MMMM YYYY'.</td>
+            </tr>
+            <tr>
+                <td>delay</td>
+                <td>(none)</td>
+                <td>Delays the AJAX request.</td>
             </tr>
             <tr>
                 <td>disable-time-interval<br />disableTimeInterval (alternative writing)</td>
@@ -128,9 +138,59 @@
                 <td>Font Awesome Icon to show in this DateTimePicker, can be one of the Font Awesome icon names.</td>
             </tr>
             <tr>
+                <td>icon-brand<br />iconBrand (alternative writing)</td>
+                <td>false</td>
+                <td>Use the free brand font of FontAwesome 5. As a side effect, every FontAwesome icon on the same page is switched to FontAwesome 5.2.0. By default, the icon set is the older version 4.7.0.</td>
+            </tr>
+            <tr>
+                <td>icon-flip<br />iconFlip (alternative writing)</td>
+                <td>(none)</td>
+                <td>Flip the icon: can be H (horizontal) or V (vertical).</td>
+            </tr>
+            <tr>
+                <td>icon-inverse<br />iconInverse (alternative writing)</td>
+                <td>false</td>
+                <td>Switch the icon from black-on-white to white-on-black.</td>
+            </tr>
+            <tr>
+                <td>icon-light<br />iconLight (alternative writing)</td>
+                <td>false</td>
+                <td>Use the paid 'light' font of FontAwesome 5. As a side effect, every FontAwesome icon on the same page is switched to FontAwesome 5.2.0. By default, the icon set is the older version 4.7.0.</td>
+            </tr>
+            <tr>
                 <td>icon-position<br />iconPosition (alternative writing)</td>
                 <td> right </td>
                 <td>Put the icon to the left or to the right of the input field. Legal values: 'left' and 'right'. Default value: 'right'.</td>
+            </tr>
+            <tr>
+                <td>icon-pulse<br />iconPulse (alternative writing)</td>
+                <td>false</td>
+                <td>Boolean value: if true the icon will rotate with 8 discrete steps.</td>
+            </tr>
+            <tr>
+                <td>icon-regular<br />iconRegular (alternative writing)</td>
+                <td>false</td>
+                <td>Use the paid 'regular' font of FontAwesome 5. As a side effect, every FontAwesome icon on the same page is switched to FontAwesome 5.2.0. By default, the icon set is the older version 4.7.0.</td>
+            </tr>
+            <tr>
+                <td>icon-rotate<br />iconRotate (alternative writing)</td>
+                <td>(none)</td>
+                <td>Rotate 90 degrees the icon: Can be L,R.</td>
+            </tr>
+            <tr>
+                <td>icon-size<br />iconSize (alternative writing)</td>
+                <td>(none)</td>
+                <td>Icon Size: legal values are lg (=133%), 2x, 3x, 4x, 5x. If you're using Fontawesome 5, also 6x, 7x, 8x, 9, 10x, xs (=75%), and sm (=87.5%) are allowed.</td>
+            </tr>
+            <tr>
+                <td>icon-solid<br />iconSolid (alternative writing)</td>
+                <td>false</td>
+                <td>Use the free font of FontAwesome 5. As a side effect, every FontAwesome icon on the same page is switched to FontAwesome 5.2.0. By default, the icon set is the older version 4.7.0.</td>
+            </tr>
+            <tr>
+                <td>icon-spin<br />iconSpin (alternative writing)</td>
+                <td>false</td>
+                <td>Boolean value: if true the icon will spin.</td>
             </tr>
             <tr>
                 <td>id</td>
@@ -280,12 +340,12 @@
             <tr>
                 <td>onclick</td>
                 <td>(none)</td>
-                <td>OnClick DHTML event .</td>
+                <td>The onclick attribute.</td>
             </tr>
             <tr>
                 <td>oncomplete</td>
                 <td>(none)</td>
-                <td>JavaScript to be executed when ajax completes with success.</td>
+                <td>JavaScript to be executed when ajax completes.</td>
             </tr>
             <tr>
                 <td>ondblclick</td>
@@ -296,6 +356,11 @@
                 <td>ondtchange</td>
                 <td>(none)</td>
                 <td>JavaScript event to manage date time change.</td>
+            </tr>
+            <tr>
+                <td>onerror</td>
+                <td>(none)</td>
+                <td>JavaScript to be executed when ajax results on an error (including both network errors and Java exceptions).</td>
             </tr>
             <tr>
                 <td>onfocus</td>
@@ -346,6 +411,11 @@
                 <td>onselect</td>
                 <td>(none)</td>
                 <td>Client side callback to execute when text within input element is selected by user.</td>
+            </tr>
+            <tr>
+                <td>onsuccess</td>
+                <td>(none)</td>
+                <td>JavaScript to be executed when ajax completes with success (i.e. there's neither a network error nor a Java exception).</td>
             </tr>
             <tr>
                 <td>placeholder</td>

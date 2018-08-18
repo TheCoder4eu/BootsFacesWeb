@@ -16,6 +16,7 @@
       <b:navLink href="#basic_usage" value="Basic usage" />
       <b:navLink href="#busy_indicator" value="Busy indicator" />
       <b:navLink href="#partial_processing" value="Partial processing" />
+      <b:navLink href="#auto_update" value="auto-update" />
       <b:navLink href="#advanced_usage" value="Advanced usage" />
       <b:navLink href="#exceptions_during_ajax_calls" value="Exceptions during AJAX calls" />
       <b:navLink href="#limits_to_bootsfaces_ajax" value=" Limits to BootsFaces AJAX" />
@@ -86,6 +87,14 @@
 
     <h2><a id="partial_processing">Partial processing</a></h2>
     <p>Use the <code>process</code> attribute to define which input fields are send to the server.</p>
+    
+     <h2><a id="auto_update">auto-update="true"</a><b:badge value="since 1.2.1" /></h2>
+ 	<p>The attribute <code>auto-update</code> allows you to update a component on each AJAX request without explicitly mentioning it.
+ 	By default, you have to specify which parts of the DOM need to be updated. This can become tedious,
+ 	especially in the case of error messages. If an error occurs, you always want to inform your user.
+ 	Adding the attribute <code>auto-update="true"</code> does just that.</p>
+
+    
 
 
     <h2><a id="advanced_usage">Advanced usage</a></h2>

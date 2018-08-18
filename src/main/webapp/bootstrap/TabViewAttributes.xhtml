@@ -30,7 +30,12 @@
             <tr>
                 <td>ajax</td>
                 <td>false</td>
-                <td>Activates AJAX. The default value is false (no AJAX).</td>
+                <td>Whether the Button submits the form with AJAX.</td>
+            </tr>
+            <tr>
+                <td>auto-update<br />autoUpdate (alternative writing)</td>
+                <td>false</td>
+                <td>Setting this flag updates the widget on every AJAX request.</td>
             </tr>
             <tr>
                 <td>content-class<br />contentClass (alternative writing)</td>
@@ -46,6 +51,11 @@
                 <td>content-style<br />contentStyle (alternative writing)</td>
                 <td>(none)</td>
                 <td>Inline CSS style of the div surrounding the panes.</td>
+            </tr>
+            <tr>
+                <td>delay</td>
+                <td>(none)</td>
+                <td>Delays the AJAX request.</td>
             </tr>
             <tr>
                 <td>dir</td>
@@ -70,12 +80,17 @@
             <tr>
                 <td>onclick</td>
                 <td>(none)</td>
-                <td>OnClick DHTML event .</td>
+                <td>The onclick attribute.</td>
             </tr>
             <tr>
                 <td>oncomplete</td>
                 <td>(none)</td>
-                <td>JavaScript to be executed when ajax completes with success.</td>
+                <td>JavaScript to be executed when ajax completes.</td>
+            </tr>
+            <tr>
+                <td>onerror</td>
+                <td>(none)</td>
+                <td>JavaScript to be executed when ajax results on an error (including both network errors and Java exceptions).</td>
             </tr>
             <tr>
                 <td>onhidden</td>
@@ -96,6 +111,11 @@
                 <td>onshown</td>
                 <td>(none)</td>
                 <td>JavaScript and/or AJAX code to be executed just after bringing a tab to the front</td>
+            </tr>
+            <tr>
+                <td>onsuccess</td>
+                <td>(none)</td>
+                <td>JavaScript to be executed when ajax completes with success (i.e. there's neither a network error nor a Java exception).</td>
             </tr>
             <tr>
                 <td>pills</td>

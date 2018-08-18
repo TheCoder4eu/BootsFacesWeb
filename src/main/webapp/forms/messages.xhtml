@@ -12,6 +12,7 @@
   <ui:define name="content-navigator">
     <b:listLinks>
       <b:navLink href="#b_message" value="&lt;b:message /&gt;" />
+      <b:navLink href="#auto_update" value="auto-update" />
       <b:navLink href="#to_escape_or_not_to_escape" value="To escape or not to escape" />
       <b:navLink href="#b_messages" value="&lt;b:messages /&gt;" />
       <b:navLink href="#b_messages___the" value="&lt;b:messages /&gt;: the for attribute" />
@@ -62,12 +63,12 @@
             <b:message for="checkboxWithFatalMessage" />
             <b:selectBooleanCheckbox value="#{checkboxBean.cbxWarning}"
                                      id="checkboxWithWarning"
-                                     caption="click to toggle the warning"
+                                     caption="click to toggle the warning with auto-update"
                                      label="Warning"
                                      onclick="ajax:checkboxBean.action();"
-                                     update="@form"
+                                     update="@none"
                                      />
-            <b:message for="@previous:@previous:@next" />
+            <b:message for="@previous:@previous:@next" auto-update="true" />
             <b:selectBooleanCheckbox value="#{checkboxBean.cbxInfo}"
                                      id="checkboxWithInfoMessage"
                                      caption="click to toggle the info message"
@@ -104,12 +105,12 @@
             <b:message for="checkboxWithFatalMessage" />
             <b:selectBooleanCheckbox value="#num;{checkboxBean.cbxWarning}"
                                      id="checkboxWithWarning"
-                                     caption="click to toggle the warning"
+                                     caption="click to toggle the warning  with auto-update"
                                      label="warning"
                                      onclick="ajax:checkboxBean.action();"
                                      update="@form"
                                      />
-            <b:message for="@previous:@previous:@next" />
+            <b:message for="@previous:@previous:@next" auto-update="true" />
             <b:selectBooleanCheckbox value="#num;{checkboxBean.cbxInfo}"
                                      id="checkboxWithInfoMessage"
                                      caption="click to toggle the info message"
@@ -209,7 +210,14 @@
       </b:tab>
     </b:tabView -->
 
-    <h1><a id="to_escape_or_not_to_escape">To escape or not to escape</a><b:badge value="since 0.8.5" /></h1>
+ 	<h2><a id="auto_update">auto-update="true"</a><b:badge value="since 1.2.1" /></h2>
+ 	<p>The attribute <code>auto-update</code> allows you to update a component on each AJAX request without explicitly mentioning it.
+ 	By default, you have to specify which parts of the DOM need to be updated. This can become tedious,
+ 	especially in the case of error messages. If an error occurs, you always want to inform your user.
+ 	Adding the attribute <code>auto-update="true"</code> does just that.</p>
+
+ 
+    <h2><a id="to_escape_or_not_to_escape">To escape or not to escape</a><b:badge value="since 0.8.5" /></h2>
     <p>By public demand, we've added the <code>escape</code> attribute. It allows you to add HTML tags in your
     messages. Please note that this might be a security issue. You're responsible to make sure that
     hackers do not enter JavaScript code and have it executed when the page is rendered later. Therefore,
@@ -217,7 +225,7 @@
     for the first time. This message can't be deactivated. We know that using HTML tags in your error messages
     is a useful features, but at the same time we want to make sure you're aware of the risk.</p>
 
-    <h1><a id="b_messages">&lt;b:messages /&gt;</a><b:badge value="since 0.7" /></h1>
+    <h2><a id="b_messages">&lt;b:messages /&gt;</a><b:badge value="since 0.7" /></h2>
     <p>Displays <code>FacesMessages</code> in Bootstrap style.</p>
 
     <b:tabView activeIndex="1"  contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
@@ -249,7 +257,7 @@
       </b:tab>
     </b:tabView>
 
-    <h1><a id="b_messages___the">&lt;b:messages /&gt;: the</a><code>for</code> attribute <b:badge value="since 0.9.0" /></h1>
+    <h2><a id="b_messages___the">&lt;b:messages /&gt;: the</a><code>for</code> attribute <b:badge value="since 0.9.0" /></h2>
     <p>The <code>for</code> attribute of BootsFaces is more flexible than the <code>for</code> of <code>h:messages</code>.
     You can use it to limit the list of error messages to a certain form. More precisely, you can show every
     error message of an arbitrary component and its children. To use this feature you have to set a second
@@ -258,7 +266,7 @@
     <p>You can see the effect in the example below. The error messages in the live demo are updated as you type.</p>
     <h:form>
       <b:tabView contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px"
-                 onshow="ajax:messagesBean.update()" update="leftmessages rightmessages">
+                 onshow="ajax:messagesBean.update()">
         <b:tab title="JSF markup">
           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
           <![CDATA[
@@ -295,7 +303,7 @@
     </h:form>
 
 
-    <h1><a id="separators_between_messages">Separators between messages</a><b:badge value="since 0.8.5" /></h1>
+    <h2><a id="separators_between_messages">Separators between messages</a><b:badge value="since 0.8.5" /></h2>
     <p>By default, the <code>&lt;b:message &gt;</code> tag separates multiple messages of a single input field
     with a <code>&lt;br /&gt;</code> tag. You can switch off this feature by setting <code>line-break="false"</code>,
     or you can customizing it by providing an arbitrary HTML snippet. Note that this snippet has to be escaped:</p>
@@ -352,7 +360,7 @@
       </b:tabView>
     </h:form>
 
-    <h1><a id="multiple_messages_and">Multiple messages and</a><code>&lt;b:message /&gt;</code> <b:badge value="since 0.9.0" /></h1>
+    <h2><a id="multiple_messages_and">Multiple messages and</a><code>&lt;b:message /&gt;</code> <b:badge value="since 0.9.0" /></h2>
     <p>Standard JSF defines that <code>&lt;h:message /&gt;</code> displays only a single message. If there are
     multiple messages, a random message is displayed. By default, BootsFaces always displays every message
     that has been reported for the associated component. However, some developers need to be able to display
@@ -488,6 +496,8 @@
     this component for error messages.<br />
     Allowed severity names are: <code>info</code>, <code>warn</code>, <code>error</code>, <code>fatal</code>.
     </p>
+    <p>Note that <code>severity</code> is only available for <code>&lt;b:growl /&gt;</code> and (plural) <code>&lt;b:messages /&gt;</code>.
+    It's not implemented for (singular) <code>&lt;b:message /&gt;</code>.</p>
     <br/>
     <h:form>
       <b:tabView>

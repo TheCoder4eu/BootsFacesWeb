@@ -20,20 +20,20 @@ public class ImageGallery implements Serializable {
 
 	private List<String> images = new ArrayList<String>() {
 		{
-			add("http://www.11pictures.com/foto/stories/Camargue_2013_Nature/framedPreview.png");
-			add("http://www.11pictures.com/foto/stories/Camargue_2013/framedPreview.png");
-			add("http://www.11pictures.com/foto/stories/GreenCevennes/framedPreview.png");
+			add("Camargue_2013_Nature/framedPreview.png");
+			add("Camargue_2013/framedPreview.png");
+			add("GreenCevennes/framedPreview.png");
 		}
 		private static final long serialVersionUID = 1L;
 	};
 
 	private List<String> imagePool = new ArrayList<String>() {
 		{
-			add("http://www.11pictures.com/foto/stories/ValleeDeLaGrandMaison_2012/framedPreview.png");
-			add("http://www.11pictures.com/foto/stories/Clouds2/framedPreview.png");
-			add("http://www.11pictures.com/foto/stories/BretagneFog2003/framedPreview.png");
-			add("http://www.11pictures.com/foto/stories/LifeInWinter/framedPreview.png");
-			add("http://www.11pictures.com/foto/stories/Alpilles_2013/framedPreview.png");
+			add("ValleeDeLaGrandMaison_2012/framedPreview.png");
+			add("Clouds2/framedPreview.png");
+			add("BretagneFog2003/framedPreview.png");
+			add("LifeInWinter/framedPreview.png");
+			add("Alpilles_2013/framedPreview.png");
 		}
 		private static final long serialVersionUID = 1L;
 	};

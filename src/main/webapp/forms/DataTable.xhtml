@@ -13,7 +13,9 @@
       <b:navLink href="#autocompletion_" value="Autocompletion:" />
       <b:navLink href="#defining_the_content_cells" value="Defining the content cells" />
       <b:navLink href="#defining_the_header" value="Defining the header" />
+      <b:navLink href="#column_width" value="Column widths" />
       <b:navLink href="#customizing_the_table" value="Customizing the table" />
+      <b:navLink href="#rowgroup" value="Grouping the rows" />
       <b:navLink href="#sorting_input_fields" value="Sorting input fields" />
       <b:navLink href="#fine" value="Fine-tuning search and sort order" />
       <b:navLink href="#setting_the_initial_search_filter" value="Setting the initial search filter" />
@@ -339,13 +341,47 @@
       </f:facet>
     </b:panel>
 
-    <h2><a id="customizing_the_table">Customizing the table</a></h2>
+    <h2><a id="column_width">Defining the column widths</a></h2>
+    <p>By default, the datatable tries to guess the optimal column width, based on the contents of the table cells and the header.
+    Alternatively, you can specify the width manually by adding the <code>width</code> attribute to the column
+    definitions. If you specify a number, BootsFaces assumes you want to define the with in Pixels ('px').
+    Alternatively, you can use any other of the units used in CSS, such as <code>em</code>,
+    <code>rem</code>, <code>%</code>, and <code>vw</code>.</p>	
+    <p><b>Caveat:</b> The table width may be wider than the sum of the colum widths. If so, the columns
+    widths are scaled accordingly. In other words, the column widths are more like a recommendation than a
+    pixel-exact definition. If you need that, you also have to specify the width of the <code>&lt;b:dataTable /&gt;</code>.</p>
+    <b:panel title="Live preview" look="info" collapsible="false">
+		<h:form>
+			<b:dataTable value="#{carPool.carPool}" var="car">
+				<b:dataTableColumn value="#{car.brand}" width="50"/>
+				<b:dataTableColumn value="#{car.type}" width="5vw"/>
+				<b:dataTableColumn value="#{car.color}" width="5rem"/>
+				<b:dataTableColumn value="#{car.age}" width="20%"/>
+			</b:dataTable>
+		</h:form>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+			<b:dataTable value="&num;{carPool.carPool}" var="car" width="5em">
+				<b:dataTableColumn value="&num;{car.brand}" width="100"/>
+				<b:dataTableColumn value="&num;{car.type}" width="10vw"/>
+				<b:dataTableColumn value="&num;{car.color}" width="10rem"/>
+				<b:dataTableColumn value="&num;{car.age}" width="10%"/>
+			</b:dataTable>
+          ]]></script>
+        </b:panel>
+      </f:facet>
+	</b:panel>
+	<h2><a id="customizing_the_table">Customizing the table</a></h2>
     <p>The datatable has a couple of options to configure it. Some of them are shown in the example below.</p>
 
     <b:panel title="Live preview" look="info" collapsible="false">
       <h:form id="table-form">
         <b:row>
           <b:column small-screen="half">
+          <!-- "#{dataTableSettingsBean.multiColumnSearch}"  -->
             <b:dataTable value="#{carPool.carPool}"
                          var="car"
                          id="basic-usage-id"
@@ -354,6 +390,7 @@
                          custom-options="#{dataTableSettingsBean.customOptionsValue}"
                          fixedHeader="#{dataTableSettingsBean.fixedHeader}"
                          lang="#{dataTableSettingsBean.language}"
+                         mark-search-results="true"
                          multi-column-search="#{dataTableSettingsBean.multiColumnSearch}"
                          multi-column-search-position="#{dataTableSettingsBean.multiColumnSearchPosition}"
                          page-length="5"
@@ -394,7 +431,8 @@
             <br />
             <br />
             <p>Note that the search has an interesting twist: it's a full-text search allowing to search for the
-            construction year, also this column isn't shown.</p>
+            construction year, although this column isn't shown. That's a feature activated by setting the <code>data-search</code>
+            attribute with both the age and the construction year of the car.</p>
           </b:column>
           <b:panelGrid columns="1" small-screen="3">
             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.saveState}" caption="save-state='true'"
@@ -438,7 +476,10 @@
                                      onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                                      disabled="#{!dataTableSettingsBean.searching}"
                                      update="basic-usage-id @next" />
-            <b:inputText value="#{dataTableSettingsBean.defaultColumnFilter}" label="default search filter for the color:"
+           <b:selectBooleanCheckbox value="#{dataTableSettingsBean.markSearchResults}" caption="mark-search-results"
+                                     onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                     update="basic-usage-id" />
+             <b:inputText value="#{dataTableSettingsBean.defaultColumnFilter}" label="default search filter for the color:"
                          onkeyup="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                          update="basic-usage-id"
                          styleClass="#{dataTableSettingsBean.multiColumnSearch and dataTableSettingsBean.searching?'':'hidden'}"
@@ -495,6 +536,7 @@
                          lang="&num;{dataTableSettingsBean.language}"
                          multi-column-search="&num;{dataTableSettingsBean.multiColumnSearch}"
                          multi-column-search-position="&num;{dataTableSettingsBean.multiColumnSearchPosition}"
+                         mark-search-results="#{dataTableSettingsBean.markSearchResults}"
                          page-length="5"
                          page-length-menu="5,10,20"
                          row-highlight="&num;{dataTableSettingsBean.rowHighlight}"
@@ -536,6 +578,78 @@
       </f:facet>
     </b:panel>
 
+    <h2><a id="rowgroup">Grouping the rows</a></h2>
+    <p>You can pick a column to define row groups. This feature is highly customizable; see the 
+    <a target="#" href="https://datatables.net/extensions/rowgroup/">full reference here</a>.
+    Here we describe only a few features.</p>
+    <p>In the simplest case, you pass only a number. This number is the index of the column
+    that's used for grouping. The first column has index 0:</p>
+    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+    <![CDATA[
+      <b:dataTable ... row-group="2">
+]]></script>
+          
+    <p>Alternatively, you can pass a Json object. In this case, you define the column like so:</p>
+    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+    <![CDATA[
+      <b:dataTable ... row-group="orderFixed:[2,'asc'],rowGroup:{dataSrc:2}">
+]]></script>
+    <p>Actually, this example passes two parameters. The first parameter orders the table before grouping it.</p>
+    <p>The difference between the regular <code>order</code> attribute of the <code>&lt;b:dataTableColumn /&gt;</code>
+    and <code>orderFix</code> is that the user still can order the table. Doing to orders the data within each group
+    individually. Unfortunately, you can't combine <code>orderFix</code> and <code>order</code>. To group both the 
+    groups and one of the other columns, pass an array like so:</p>
+    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+    <![CDATA[
+      <b:dataTable ... row-group="orderFixed:[[0,'asc'],[2,'desc']]">
+]]></script>
+    <p>You also generate arbitrary texts in the rows below and/or above each group using the functions <code>endRender</code> and 
+    <code>startRender</code>:</p>
+    
+    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+    <![CDATA[
+      <b:dataTable ... row-group="orderFixed:[[0,'asc'],[2,'desc']],rowGroup:{dataSrc:0,startRender:null,endRender: function ( rows, group ) {return 'Cars in the ' + group +' group: '+rows.count();}}">
+]]></script>
+    
+          
+       <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form>
+        <b:dataTable value="#{carPool.carPool}"
+                     var="car"
+                     row-group="orderFixed:[[0,'asc'],[2,'desc']],rowGroup:{dataSrc:0,startRender:null,endRender: function ( rows, group ) {return 'Cars in the ' + group +' group: '+rows.count();}}">
+          <b:dataTableColumn value="#{car.brand}" />
+          <b:dataTableColumn value="#{car.type}" />
+          <b:dataTableColumn value="#{car.color}"/>
+          <b:dataTableColumn value="#{car.year}"  />
+          <b:dataTableColumn value="#{car.price}" />
+          <b:dataTableColumn value="#{car.enginePower}" label="Engine Power (hp)" />
+        </b:dataTable>
+      </h:form>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:form>
+            <b:dataTable value="&num;{carPool.carPool}"
+                         var="car"
+                         row-group="orderFixed:[0,'asc'],rowGroup:{dataSrc:0,endRender: function ( rows, group ) {return group +' ('+rows.count()+')';}}">
+              <b:dataTableColumn value="&num;{car.brand}" />
+              <b:dataTableColumn value="&num;{car.type}" />
+              <b:dataTableColumn value="&num;{car.color}" order="asc"/>
+              <b:dataTableColumn value="&num;{car.year}"/>
+              <b:dataTableColumn value="&num;{car.price}" />
+              <b:dataTableColumn value="&num;{car.enginePower}" label="Engine Power (hp)" />
+            </b:dataTable>
+          </h:form>
+          ]]>
+          </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+    
+    
     <h2><a id="sorting_input_fields">Sorting input fields</a></h2>
     <p>By default, the data table only sorts plain text. If you want to sort input field, checkboxes or comboboxes,
     you have to tell the column which the data type of the input field is:</p>
@@ -859,7 +973,7 @@
               <b:inputText value="#{dataTableSettingsBean.selectedRows}" update="@parent:@parent:@previous"
                            onkeyup="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()" />
             </b:panelGrid>
-            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.selectedRowsActive2}" caption="selectedRows=#num;{carPool.getCar(2)}"
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.selectedRowsActive2}" caption="selectedRows=# {carPool.getCar(2)}"
                                      onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                                      update="@parent:@previous" />
             <b:panelGrid columns="2">
@@ -881,24 +995,24 @@
             <b:panel>
               <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
               <![CDATA[
-              <b:dataTable value="#num;{carPool.carPool}"
+              <b:dataTable value="&#35;{carPool.carPool}"
                            var="car"
                            onselect="console.log( typeOfSelection + ' ' + indexes + ' has been selected');ajax:carPool.onSelect(car, typeOfSelection, indexes);"
                            ondeselect="console.log(typeOfSelection + ' ' + indexes + ' has been deselected');ajax:carPool.onDeselect(car, typeOfSelection, indexes);"
-                           select="#num;{dataTableSettingsBean.select}"
-                           selection-mode="#num;{dataTableSettingsBean.selectionMode}"
-                           selected-items="#num;{dataTableSettingsBean.selectedItems}"
-                           selection-info="#num;{dataTableSettingsBean.showInfo}"
-                           selected-row="#num;{dataTableSettingsBean.selectedRows}"
-                           selected-column="#num;{dataTableSettingsBean.selectedColumns}"
-                           deselect-on-backdrop-click="#num;{dataTableSettingsBean.deselectOnBackdropClick}"
+                           select="&#35;{dataTableSettingsBean.select}"
+                           selection-mode="&#35;{dataTableSettingsBean.selectionMode}"
+                           selected-items="&#35;{dataTableSettingsBean.selectedItems}"
+                           selection-info="&#35;{dataTableSettingsBean.showInfo}"
+                           selected-row="&#35;{dataTableSettingsBean.selectedRows}"
+                           selected-column="&#35;{dataTableSettingsBean.selectedColumns}"
+                           deselect-on-backdrop-click="&#35;{dataTableSettingsBean.deselectOnBackdropClick}"
                            widget-var="selectableTable">
-                <b:dataTableColumn value="#num;{car.brand}" />
-                <b:dataTableColumn value="#num;{car.type}" />
-                <b:dataTableColumn value="#num;{car.color}" />
-                <b:dataTableColumn value="#num;{car.year}" />
-                <b:dataTableColumn value="#num;{car.price}" />
-                <b:dataTableColumn value="#num;{car.enginePower}"
+                <b:dataTableColumn value="&#35;{car.brand}" />
+                <b:dataTableColumn value="&#35;{car.type}" />
+                <b:dataTableColumn value="&#35;{car.color}" />
+                <b:dataTableColumn value="&#35;{car.year}" />
+                <b:dataTableColumn value="&#35;{car.price}" />
+                <b:dataTableColumn value="&#35;{car.enginePower}"
                                    label="Engine Power (hp)" />
               </b:dataTable>
               ]]>
@@ -977,7 +1091,7 @@
               class="brush: xml; toolbar: false;gutter: false; first-line: 1">
               <![CDATA[
               <h:form>
-                <b:dataTable value="#{carPool.carPool}"
+                <b:dataTable value="&num;{carPool.carPool}"
                              var="car"
                              onorder="console.log('order');"
                              onpage="console.log('page');"

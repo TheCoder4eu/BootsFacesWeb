@@ -25,7 +25,12 @@
             <tr>
                 <td>ajax</td>
                 <td>false</td>
-                <td>Activates AJAX. The default value is false (no AJAX).</td>
+                <td>Whether the Button submits the form with AJAX.</td>
+            </tr>
+            <tr>
+                <td>auto-update<br />autoUpdate (alternative writing)</td>
+                <td>false</td>
+                <td>Setting this flag updates the widget on every AJAX request.</td>
             </tr>
             <tr>
                 <td>binding</td>
@@ -78,6 +83,11 @@
                 <td>Inline style of the content area.</td>
             </tr>
             <tr>
+                <td>delay</td>
+                <td>(none)</td>
+                <td>Delays the AJAX request.</td>
+            </tr>
+            <tr>
                 <td>dir</td>
                 <td>(none)</td>
                 <td>Direction indication for text that does not inherit directionality. Legal values: ltr (Default. Left-to-right text direction), rtl (Right-to-left text direction) and auto (let the browser figure out the direction of your alphabet, based on the page content).</td>
@@ -113,9 +123,34 @@
                 <td>Font Awesome icon to show in this Panel header, can be one of the Font Awesome icon names. Alignment can be specified with the icon-align attribute.</td>
             </tr>
             <tr>
+                <td>icon-brand<br />iconBrand (alternative writing)</td>
+                <td>false</td>
+                <td>Use the free brand font of FontAwesome 5. As a side effect, every FontAwesome icon on the same page is switched to FontAwesome 5.2.0. By default, the icon set is the older version 4.7.0.</td>
+            </tr>
+            <tr>
                 <td>icon-flip<br />iconFlip (alternative writing)</td>
                 <td>(none)</td>
                 <td>Flip the icon: can be H (horizontal) or V (vertical).</td>
+            </tr>
+            <tr>
+                <td>icon-inverse<br />iconInverse (alternative writing)</td>
+                <td>false</td>
+                <td>Switch the icon from black-on-white to white-on-black.</td>
+            </tr>
+            <tr>
+                <td>icon-light<br />iconLight (alternative writing)</td>
+                <td>false</td>
+                <td>Use the paid 'light' font of FontAwesome 5. As a side effect, every FontAwesome icon on the same page is switched to FontAwesome 5.2.0. By default, the icon set is the older version 4.7.0.</td>
+            </tr>
+            <tr>
+                <td>icon-pulse<br />iconPulse (alternative writing)</td>
+                <td>false</td>
+                <td>Boolean value: if true the icon will rotate with 8 discrete steps.</td>
+            </tr>
+            <tr>
+                <td>icon-regular<br />iconRegular (alternative writing)</td>
+                <td>false</td>
+                <td>Use the paid 'regular' font of FontAwesome 5. As a side effect, every FontAwesome icon on the same page is switched to FontAwesome 5.2.0. By default, the icon set is the older version 4.7.0.</td>
             </tr>
             <tr>
                 <td>icon-rotate<br />iconRotate (alternative writing)</td>
@@ -125,7 +160,12 @@
             <tr>
                 <td>icon-size<br />iconSize (alternative writing)</td>
                 <td>(none)</td>
-                <td>Icon Size: legal values are lg, 2x, 3x, 4x, 5x.</td>
+                <td>Icon Size: legal values are lg (=133%), 2x, 3x, 4x, 5x. If you're using Fontawesome 5, also 6x, 7x, 8x, 9, 10x, xs (=75%), and sm (=87.5%) are allowed.</td>
+            </tr>
+            <tr>
+                <td>icon-solid<br />iconSolid (alternative writing)</td>
+                <td>false</td>
+                <td>Use the free font of FontAwesome 5. As a side effect, every FontAwesome icon on the same page is switched to FontAwesome 5.2.0. By default, the icon set is the older version 4.7.0.</td>
             </tr>
             <tr>
                 <td>icon-spin<br />iconSpin (alternative writing)</td>
@@ -200,12 +240,17 @@
             <tr>
                 <td>oncomplete</td>
                 <td>(none)</td>
-                <td>JavaScript to be executed when ajax completes with success.</td>
+                <td>JavaScript to be executed when ajax completes.</td>
             </tr>
             <tr>
                 <td>ondblclick</td>
                 <td>(none)</td>
                 <td>Client side callback to execute when input element is double clicked.</td>
+            </tr>
+            <tr>
+                <td>onerror</td>
+                <td>(none)</td>
+                <td>JavaScript to be executed when ajax results on an error (including both network errors and Java exceptions).</td>
             </tr>
             <tr>
                 <td>onexpand</td>
@@ -241,6 +286,11 @@
                 <td>onmouseup</td>
                 <td>(none)</td>
                 <td>Client side callback to execute when a pointer input element is released over input element.</td>
+            </tr>
+            <tr>
+                <td>onsuccess</td>
+                <td>(none)</td>
+                <td>JavaScript to be executed when ajax completes with success (i.e. there's neither a network error nor a Java exception).</td>
             </tr>
             <tr>
                 <td>process</td>
@@ -330,7 +380,7 @@
             <tr>
                 <td>update</td>
                 <td>(none)</td>
-                <td>Which region of the screen is to be updated? Default value: @form</td>
+                <td>Component(s) to be updated with ajax.</td>
             </tr>
             <tr>
                 <td>visible</td>

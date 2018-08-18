@@ -13,6 +13,7 @@
       <b:navLink href="#sticky" value="sticky navbars" />
       <b:navLink href="#basic" value="basic usage" />
       <b:navLink href="#inverted" value="inverted navbars" />
+      <b:navLink href="#kebab" value="custom kebab icon" />
       <b:navLink href="#links" value="links and command links" />
       <b:navLink href="#dropmenu" value="dropmenus" />
       <b:navLink href="#attributes" value="attributes" />
@@ -314,6 +315,47 @@
       </f:facet>
     </b:panel>
     <br/>
+    
+    
+    <h2><a id="kebab">Custom kebab icon</a></h2>
+    <p>You can modify the "kebab" icon shown on small screens by adding a facet called "kebeb":</p>
+
+    <b:panel title="Example">
+      <b:navBar brand="Brand" brandHref="#" fluid="true">
+      	<f:facet name="kebab">
+      		<span class="fa fa-chevron-right"></span>
+      	</f:facet>
+        <b:navbarLinks>
+          <b:navLink value="Link" href="#"></b:navLink>
+          <b:navLink value="Link" href="#"></b:navLink>
+        </b:navbarLinks>
+      </b:navBar>
+
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+      <b:navBar brand="Brand" brandHref="#" fluid="true">
+      	<f:facet name="kebab">
+      		<span class="fa fa-chevron-right"></span>
+      	</f:facet>
+        <b:navbarLinks>
+          <b:navLink value="Link" href="#"></b:navLink>
+          <b:navLink value="Link" href="#"></b:navLink>
+        </b:navbarLinks>
+      </b:navBar>
+         ]]>
+          </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+    
+    
+    <br />
+    
+    
+    
     <h2><a id="links">Navbar links and commandlinks</a></h2>
     <strong>Navbar Links</strong>
     <p>A NavBar will also contain a set of links. You can add the links to <code>b:navbar</code> using <code>b:navLink</code> as you do with <code>b:listLinks</code>.</p>

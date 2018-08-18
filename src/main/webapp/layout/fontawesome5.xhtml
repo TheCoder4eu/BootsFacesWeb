@@ -1,0 +1,459 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+  <ui:define name="content-navigator">
+    <b:listLinks>
+      <b:navLink href="#icons" value="Icons" />
+      <b:navLink href="#default_icons" value="Default Icons" />
+      <b:navLink href="#font_awesome_icon_set" value="Font Awesome Icon set" />
+      <b:navLink href="#icon_size" value="Icon Size" />
+      <b:navLink href="#rotated_and_flipped_icons" value="Rotated and Flipped Icons" />
+      <b:navLink href="#animated_icons" value="Animated Icons" />
+      <b:navLink href="#ajax" value="AJAX, JavaScript," />
+      <b:navLink href="#configuring_fontawesome" value="Configuring Font Awesome" />
+      <b:navLink href="#responsive_design" value="Responsive design" />
+      <b:navLink href="#visibility_depending_on_screen_size" value="Visibility depending on screen size" />
+      <b:navLink href="#tooltips" value="Tooltips" />
+      <b:navLink href="#reference_section" value="Reference section" />
+      <b:navLink href="#list_of_font_awesome_icons" value="List of Font Awesome icons" />
+    </b:listLinks>
+  </ui:define>
+
+
+  <ui:define name="content">
+    <h1><a id="icons">Font Awesome 5</a></h1>
+    <h2><a id="fontawesome_4_5">Version 4 vs. version 5</a></h2>
+    <p>BootsFaces supports both Font Awesome 4 and Font Awesome 5.</p>
+    <p>If you're interested in Font Awesome 4, follow <a href="icons.jsf">this link</a>. The page you're currently reading focuses on Font Awesome 5.</p>
+    
+     <h2><a id="font_awesome_icon_set">Using both versions on the same page</a></h2>
+     <p>BootsFaces allows you to use both version of Font Awesome on the same page. However, we don't recommend this because the icon sets don't blend in
+     seamlessly, as you can see by opening the menu of this page.</p>
+    
+    <h2><a id="font_awesome_icon_set">Font Awesome Icon set</a></h2>
+    <p>BootsFaces supports the <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a> icon set with its 3000+ icons.</p>
+    <p>To activate Font Awesome 5, select one of the flavors of the icon set:</p>
+    <dl class="dl-horizontal">
+	  <dt>solid</dt>
+	  <dd>free icon set with a bold look</dd>
+	  <dt>brand</dt>
+	  <dd>free icon set featuring company icons. Please don't forget to mention the trademark when you're using the icons</dd>
+	  <dt>regular</dt>
+	  <dd>paid icon set</dd>
+    	  <dt>light</dt>
+  	  <dd>paid icon set with a lighter look</dd>
+	</dl>
+	
+    <p>As you will see later, we also support most Awesome features, which will work with Glyphicon too!</p>
+    <p><b:label severity="warning" text="Changed in 1.2.1" />
+    You can also use both <code>name</code> and <code>value</code> to specify the icon, but we've deprecated <code>name</code> in BootsFaces 1.2.1 in favor of <code>value</code>.</p>
+    <p><b:label severity="warning" text="Glyphicons" />
+    With version 4, Bootstrap dropped support of the Glyphicons. So BootsFaces 2 won't support the Glyphicons, either.</p>
+
+    <hr/>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <b:iconAwesome value="camera-retro" solid="true"/> fa-camera-retro<br/>
+      <b:iconAwesome value="coffee" solid="true"/> fa-coffee<br/>
+      <b:iconAwesome value="futbol-o" solid="true"/> fa-futbol-o<br/>
+      <b:iconAwesome value="heartbeat" solid="true"/> fa-heartbeat<br/>
+      <b:iconAwesome value="group" solid="true"/> fa-group<br/>
+      <b:iconAwesome value="gamepad" solid="true"/> fa-gamepad<br/>
+      <b:iconAwesome value="newspaper-o" solid="true" /> fa-newspaper-o<br/>
+      <f:facet name="footer">
+        <strong>JSF markup: </strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+      <b:iconAwesome value="camera-retro" solid="true"/> fa-camera-retro<br/>
+      <b:iconAwesome value="coffee" solid="true"/> fa-coffee<br/>
+      <b:iconAwesome value="futbol-o" solid="true"/> fa-futbol-o<br/>
+      <b:iconAwesome value="heartbeat" solid="true"/> fa-heartbeat<br/>
+      <b:iconAwesome value="group" solid="true"/> fa-group<br/>
+      <b:iconAwesome value="gamepad" solid="true"/> fa-gamepad<br/>
+      <b:iconAwesome value="newspaper-o" solid="true" /> fa-newspaper-o<br/>
+          ]]></script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+
+    <h2><a id="icon_size">Icon Size</a></h2>
+    <p>To increase icon sizes relative to their container, use the <code>size="xs"</code> (75% of the original size),
+    <code>size="sm"</code> (87,5%),
+    <code>size="lg"</code> (33% increase), <code>size="2x"</code>,
+    <code>size="3x"</code>, and so on, up to <code>size="10x"</code> attributes.</p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+    <b:row>
+	    <b:column small-screen="6">
+	      <b:iconAwesome value="globe" solid="true" size="xs" /> size="xs"<br/>
+	      <b:iconAwesome value="globe" solid="true" size="sm" /> size="sm"<br/>
+	      <b:iconAwesome value="globe" solid="true" size="lg" /> size="lg"<br/>
+	      <b:iconAwesome value="globe" solid="true" size="2x" /> size="2x"<br/>
+	      <b:iconAwesome value="globe" solid="true" size="3x" /> size="3x"<br/>
+	      <b:iconAwesome value="globe" solid="true" size="4x" /> size="4x"<br/>
+      </b:column>
+      <b:column small-screen="6">
+	      <b:iconAwesome value="globe" solid="true" size="10x" /> size="10x"<br/>
+      </b:column>
+    </b:row>
+
+      <f:facet name="footer">
+        <strong>JSF markup: </strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+    <b:row>
+	    <b:column small-screen="6">
+	      <b:iconAwesome value="globe" solid="true" size="xs" /> size="xs"<br/>
+	      <b:iconAwesome value="globe" solid="true" size="sm" /> size="sm"<br/>
+	      <b:iconAwesome value="globe" solid="true" size="lg" /> size="lg"<br/>
+	      <b:iconAwesome value="globe" solid="true" size="2x" /> size="2x"<br/>
+	      <b:iconAwesome value="globe" solid="true" size="3x" /> size="3x"<br/>
+	      <b:iconAwesome value="globe" solid="true" size="4x" /> size="4x"<br/>
+      </b:column>
+      <b:column small-screen="6">
+	      <b:iconAwesome value="globe" solid="true" size="10x" /> size="10x"<br/>
+      </b:column>
+    </b:row>
+          ]]></script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+    
+    
+    <h2><a id="rotated_and_flipped_icons">Rotated and flipped Icons</a></h2>
+    <p>You can also rotate and flip your icons.</p>
+    <hr/>
+
+    <p>To rotate or flip your icons, just use the <code>rotate="R"</code>, <code>rotate="L"</code> and <code>flip="H"</code>, <code>flip="V"</code> attributes respectively.</p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <b:iconAwesome value="shield-alt" solid="true"/> normal<br/>
+      <b:iconAwesome value="shield-alt" rotate="R" solid="true"/> rotate="R" (right - 90 deg.)<br/>
+      <b:iconAwesome value="shield-alt" rotate="L" solid="true"/> rotate="L" (left - 270 deg.)<br/>
+      <b:iconAwesome value="shield-alt" flip="H" solid="true"/> flip="H" (horizontal)<br/>
+      <b:iconAwesome value="shield-alt" flip="V" solid="true"/> flip="V" (vertical)<br/>
+
+      <f:facet name="footer">
+        <strong>JSF markup: </strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+      <b:iconAwesome value="shield-alt" solid="true"/> normal<br/>
+      <b:iconAwesome value="shield-alt" rotate="R" solid="true"/> rotate="R" (right - 90 deg.)<br/>
+      <b:iconAwesome value="shield-alt" rotate="L" solid="true"/> rotate="L" (left - 270 deg.)<br/>
+      <b:iconAwesome value="shield-alt" flip="H" solid="true"/> flip="H" (horizontal)<br/>
+      <b:iconAwesome value="shield-alt" flip="V" solid="true"/> flip="V" (vertical)<br/>
+          ]]></script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+
+    <h2><a id="animated_icons">Animated icons</a></h2>
+    <hr/>
+
+    <p>To let your icons spin, just add the attribute <code>spin="true"</code>. Alternatively, you can use the attribute <code>pulse</code>
+    to have your icon rotate in eight discrete steps.</p>
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <b:iconAwesome name="spinner" pulse="true" size="3x" solid="true"/>#{'   '}
+      <b:iconAwesome name="circle-o-notch" spin="true" size="3x" solid="true"/>#{'   '}
+      <b:iconAwesome name="refresh" spin="true" size="3x" solid="true"/>#{'   '}
+      <b:iconAwesome name="cog" spin="true" size="3x" solid="true"/>
+      <f:facet name="footer">
+        <strong>JSF markup: </strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+      <b:iconAwesome name="spinner" pulse="true" size="3x" solid="true"/>#{'   '}
+      <b:iconAwesome name="circle-o-notch" spin="true" size="3x" solid="true"/>#{'   '}
+      <b:iconAwesome name="refresh" spin="true" size="3x" solid="true"/>#{'   '}
+      <b:iconAwesome name="cog" spin="true" size="3x" solid="true"/>
+           ]]></script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+    <h2><a id="ajax">AJAX, JavaScript,</a><code>disabled</code> and <code>readOnly</code></h2>
+    <p>Both icon and iconAwesome can be used with AJAX and/or JavaScript.</p>
+    <p>The attributes <code>readonly</code> and <code>disabled</code> prevent AJAX from being executed. Note that JavaScript is not affected - it's executed without checking the state of the widget.
+    The difference between <code>readonly</code> and <code>disabled</code> is that <code>disabled</code> grays out the icon.</p>
+    <p>This is one of the cases a picture is worth a thousand words. Move the mouse over the spinning icons below, click them, and
+    change the checkboxes below to get the idea.</p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form>
+        <b:row>
+          <b:column col-sm="6">
+            <b:panel look="primary" title="AJAXified Gylphicon and Font Awesome icon">
+               Font Awesome icon:
+              <b:iconAwesome name="futbol-o" size="3x" spin="#{ajaxBean.spinning}" disabled="#{ajaxBean.disabled}" readonly="#{ajaxBean.readOnly}" id="fontAwesomeicon"
+                             solid="true"
+                             onblur="console.log('blur');ajax:ajaxBean.onBlur()"
+                             onfocus="console.log('focus');ajax:ajaxBean.onFocus()"
+                             onclick="console.log('click');ajax:ajaxBean.onClick()"
+                             ondblclick="console.log('dblclick');ajax:ajaxBean.onDblClick()"
+                             onmousedown="console.log('mouse down');ajax:ajaxBean.onMouseDown();"
+                             onmousemove="console.log('mouse move');ajax:ajaxBean.onMouseMove();"
+                             onmouseout="console.log('mouse out');ajax:ajaxBean.onMouseOut();"
+                             onmouseover="console.log('mouse over');ajax:ajaxBean.onMouseOver();"
+                             onmouseup="console.log('mouse up');ajax:ajaxBean.onMouseUp();"
+                             onmouseselect="console.log('mouse select');ajax:ajaxBean.onMouseSelect();"
+                             update="messages" />
+              <br />
+              <b:selectBooleanCheckbox value="#{ajaxBean.spinning}"
+                                       onchange="console.log('before onChange');ajax:ajaxBean.onChange();javascript:console.log('afterOnChange')"
+                                       update="messages @form:**:*icon" caption="spinning" />
+              <b:selectBooleanCheckbox value="#{ajaxBean.disabled}"
+                                       onchange="console.log('before onChange');ajax:ajaxBean.onChange();javascript:console.log('afterOnChange')"
+                                       update="messages @form:**:*icon" caption="disabled (gray the icon and disabled AJAX)" />
+              <b:selectBooleanCheckbox value="#{ajaxBean.readOnly}"
+                                       onchange="console.log('before onChange');ajax:ajaxBean.onChange();javascript:console.log('afterOnChange')"
+                                       update="messages @form:**:*icon" caption="readOnly (disabled AJAX, but doesn't gray out the icon)" />
+            </b:panel>
+          </b:column>
+          <b:column col-sm="6">
+            <b:well id="messages" style="height:216px;overflow-y:auto">
+              Last action:
+              <ul>
+                <ui:repeat var="message" value="#{ajaxBean.messages}">
+                  <li>#{message}</li>
+                </ui:repeat>
+              </ul>
+            </b:well>
+          </b:column>
+        </b:row>
+      </h:form>
+
+      <f:facet name="footer">
+        <strong>JSF markup: </strong>
+        <b:panel>
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:form>
+            <b:row>
+              <b:column col-sm="6">
+                <b:panel look="primary" title="AJAXified Gylphicon and Font Awesome icon">
+                  Font Awesome icon:
+                  <b:iconAwesome name="futbol-o" size="3x" spin="&num;{ajaxBean.spinning}" disabled="&num;{ajaxBean.disabled}" readonly="&num;{ajaxBean.readOnly}" id="fontAwesomeicon"
+                                 solid="true"
+                                 onblur="console.log('blur');ajax:ajaxBean.onBlur()"
+                                 onfocus="console.log('focus');ajax:ajaxBean.onFocus()"
+                                 onclick="console.log('click');ajax:ajaxBean.onClick()"
+                                 ondblclick="console.log('dblclick');ajax:ajaxBean.onDblClick()"
+                                 onmousedown="console.log('mouse down');ajax:ajaxBean.onMouseDown();"
+                                 onmousemove="console.log('mouse move');ajax:ajaxBean.onMouseMove();"
+                                 onmouseout="console.log('mouse out');ajax:ajaxBean.onMouseOut();"
+                                 onmouseover="console.log('mouse over');ajax:ajaxBean.onMouseOver();"
+                                 onmouseup="console.log('mouse up');ajax:ajaxBean.onMouseUp();"
+                                 onmouseselect="console.log('mouse select');ajax:ajaxBean.onMouseSelect();"
+                                 update="messages" />
+                  <br />
+                  <b:selectBooleanCheckbox value="&num;{ajaxBean.spinning}"
+                                           onchange="console.log('before onChange');ajax:ajaxBean.onChange();javascript:console.log('afterOnChange')"
+                                           update="messages @form:**:*icon" caption="spinning" />
+                  <b:selectBooleanCheckbox value="&num;{ajaxBean.disabled}"
+                                           onchange="console.log('before onChange');ajax:ajaxBean.onChange();javascript:console.log('afterOnChange')"
+                                           update="messages @form:**:*icon" caption="disabled (gray the icon and disabled AJAX)" />
+                  <b:selectBooleanCheckbox value="&num;{ajaxBean.readOnly}"
+                                           onchange="console.log('before onChange');ajax:ajaxBean.onChange();javascript:console.log('afterOnChange')"
+                                           update="messages @form:**:*icon" caption="readOnly (disabled AJAX, but doesn't gray out the icon)" />
+                </b:panel>
+              </b:column>
+              <b:column col-sm="6">
+                <b:well id="messages" style="height:216px;overflow-y:auto">
+                  Last action:
+                  <ul>
+                    <ui:repeat var="message" value="&num;{ajaxBean.messages}">
+                      <li>&num;{message}</li>
+                    </ui:repeat>
+                  </ul>
+                </b:well>
+              </b:column>
+            </b:row>
+          </h:form>
+
+          ]]>
+          </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+
+    <h2><a id="configuring_fontawesome">Configuring Font Awesome</a></h2>
+    <p>By default, BootsFaces fetches Font Awesome 5.2.0 from a CDN (from <code>https://use.fontawesome.com/releases/v5.2.0/css/all.css</code>, to be precise).</p>
+    <p>If you want to suppress the automatic web access for some reason, you've got several options. You can deactivate it globally in the web.xml, you can
+    add a facet to the header of the JSF-view (which allows you to activate and deactivate the feature on a per-page basis) or you can simply include your own
+    CSS import. If the file name contains the word <code>font-awesome</code> and ends with <code>.css</code>, BootsFaces won't try to load Font Awesome a second time.
+    In most cases that's precisely what you need to do, so you don't have to configure anything to deactivate the defaults.</p>
+
+    <b:tabView>
+      <b:tab title="web.xml (global deactivation)">
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <context-param>
+            <param-name>net.bootsfaces.get_fontawesome_from_cdn</param-name>
+            <param-value>false</param-value>
+          </context-param>
+          ]]></script>
+        </b:panel>
+      </b:tab>
+      <b:tab title="Header facet">
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <h:head>
+            <f:facet name="no-fa">true</f:facet>
+          </h:head>
+          <h:body>
+            ...
+          </h:body>
+          ]]></script>
+        </b:panel>
+      </b:tab>
+      <b:tab title="Manual import">
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+        <h:outputStylesheet library="myLocalFontAwesome" name="font-awesome.css"></h:outputStylesheet>
+          ]]></script>
+        </b:panel>
+      </b:tab>
+    </b:tabView>
+
+    <br/>
+    <h2><a id="responsive_design">Responsive design</a><b:badge value="since 0.9.0" /></h2>
+    <p>You can use all the attributes controlling the responsive behavior of <code>&lt;b:column /&gt;</code>
+    also with <code>&lt;b:icon /&gt;</code>. The example may look a bit odd, because these icons
+    don't fill all the available screen space, but still, it shows the idea nicely:</p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <b:row>
+        <b:iconAwesome name="cog" solid="true" tooltip="large-screen='full-width'" large-screen="full-width" />
+      </b:row>
+      <b:row style="padding-top:5px">
+        <b:iconAwesome name="cog" solid="true" tooltip="large-screen='one-third'" large-screen="one-third" />
+        <b:iconAwesome name="cog" solid="true" tooltip="large-screen='two-thirds'" large-screen="two-thirds" />
+      </b:row>
+      <b:row style="padding-top:5px">
+        <b:iconAwesome name="cog" solid="true" tooltip="small-screen='one-third'" small-screen="one-third" />
+        <b:iconAwesome name="cog" solid="true" tooltip="small-screen='two-thirds'" small-screen="two-thirds" />
+      </b:row>
+      <b:row style="padding-top:5px">
+        <b:iconAwesome name="cog" solid="true" tooltip="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
+        <b:iconAwesome name="cog" solid="true" tooltip="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
+      </b:row>
+
+
+      <f:facet name="footer">
+        <strong>JSF markup: </strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+       <b:row>
+        <b:iconAwesome name="cog" solid="true" tooltip="large-screen='full-width'" large-screen="full-width" />
+      </b:row>
+      <b:row style="padding-top:5px">
+        <b:iconAwesome name="cog" solid="true" tooltip="large-screen='one-third'" large-screen="one-third" />
+        <b:iconAwesome name="cog" solid="true" tooltip="large-screen='two-thirds'" large-screen="two-thirds" />
+      </b:row>
+      <b:row style="padding-top:5px">
+        <b:iconAwesome name="cog" solid="true" tooltip="small-screen='one-third'" small-screen="one-third" />
+        <b:iconAwesome name="cog" solid="true" tooltip="small-screen='two-thirds'" small-screen="two-thirds" />
+      </b:row>
+      <b:row style="padding-top:5px">
+        <b:iconAwesome name="cog" solid="true" tooltip="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
+        <b:iconAwesome name="cog" solid="true" tooltip="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
+      </b:row>
+         ]]></script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+    <h2><a id="visibility_depending_on_screen_size">Visibility depending on screen size</a><b:badge value="since 0.8.6/0.9.0" /></h2>
+    <p>You can play also with col-*-*, visible and hidden attribute, as any bootstrap elements. For example:</p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <b:panelGrid colSpans="3,9">
+        <h:outputText value="Visible on &gt;= md:" />
+        <b:iconAwesome name="cog" solid="true" value="Visible on medium or large screen" severity="info" visible="md..." />
+        <h:outputText value="Visible on &lt;= sm:" />
+        <b:iconAwesome name="cog" solid="true" value="Visible on small-screen" severity="success" visible="...sm"/>
+        <h:outputText value="Visible on sm...lg:" />
+        <b:iconAwesome name="cog" solid="true" value="Visible on small to large screen" severity="success" visible="sm...lg"/>
+        <h:outputText value="Visible on xs and md:" />
+        <b:iconAwesome name="cog" solid="true" value="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
+        <h:outputText value="Col-md-6, offset 2:" />
+        <b:iconAwesome name="cog" solid="true" value="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
+      </b:panelGrid>
+
+      <f:facet name="footer">
+        <strong>JSF markup: </strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+        <h:outputText value="Visible on &gt;= md:" />
+        <b:iconAwesome name="cog" solid="true" value="Visible on medium or large screen" severity="info" visible="md..." />
+        <h:outputText value="Visible on &lt;= sm:" />
+        <b:iconAwesome name="cog" solid="true" value="Visible on small-screen" severity="success" visible="...sm"/>
+        <h:outputText value="Visible on sm...lg:" />
+        <b:iconAwesome name="cog" solid="true" value="Visible on small to large screen" severity="success" visible="sm...lg"/>
+        <h:outputText value="Visible on xs and md:" />
+        <b:iconAwesome name="cog" solid="true" value="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
+        <h:outputText value="Col-md-6, offset 2:" />
+        <b:iconAwesome name="cog" solid="true" value="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
+          ]]></script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+    <h2><a id="tooltips">Tooltips</a></h2>
+    <p><code>&lt;b:iconAwesome name="cog" /&gt;</code> supports tooltips:</p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <b:iconAwesome name="cog" solid="true" value="Look at my tooltip!" severity="info" tooltip="Ain't it a nice tooltip?"/>
+      <f:facet name="footer">
+        <strong>JSF markup: </strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+          <b:iconAwesome name="cog" solid="true" value="Look at my tooltip!" tooltip="Ain't it a nice tooltip?"/>
+          ]]></script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+
+    <h2><a id="reference_section">Reference section</a></h2>
+    <ui:include src="IconAwesomeAttributes.xhtml" />
+
+    <h2><a id="list_of_font_awesome_icons">List of Font Awesome icons</a></h2>
+    <p>You can browse the list of Font Awesome icons on <a target="#" href="https://fontawesome.com/icons?d=gallery">the Font Awesome project page</a>.</p>
+
+    <b:panel look="info" rendered="false">
+      <f:facet name="heading">
+        <b>Skinning</b>
+      </f:facet>
+      <ul>
+        <li>Tell the world which CSS classes can be used to change the
+        look of the component.</li>
+      </ul>
+    </b:panel>
+
+    <br/><br/><br/>
+    <script type="text/javascript">
+    SyntaxHighlighter.all();
+    </script>
+  </ui:define>
+</ui:composition>
