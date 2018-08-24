@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="so20180817-template.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:define name="content">
+
+    <div class="container" style="width: auto">
+        <h:form id="idForm">
+            <b:panel title="administrar servicio" look="primary"
+                id="panel" collapsible="false">
+
+                <b:commandButton id="idBorrar" col-lg="3" col-md="3" colSm="10"
+                    col-xs="10" offset-lg="2" offset-md="2" offset-sm="1"
+                    offset-xs="1" value="Borrar" look="danger"
+                    iconAwesome="trash" iconAlign="right"
+                    action="#{so20180817.borrar}" />
+            </b:panel>
+
+            <b:growl id="growlCommonMsg" placementFrom="bottom"
+                show-detail="true" show-summary="true" allowDismiss="true"
+                global-only="true" delay="10000" escape="true" />
+
+            <b:growl for="idBorrar" id="growlMsg" globalOnly="true"
+                placementFrom="bottom" show-detail="true" show-summary="true"
+                allowDismiss="true" delay="10000" escape="true" global-only="false"
+                animation-enter="animated bounceInDown"
+                animation-exit="animated flipOutX" />
+        </h:form>
+
+    </div>
+</ui:define>
+</ui:composition>
