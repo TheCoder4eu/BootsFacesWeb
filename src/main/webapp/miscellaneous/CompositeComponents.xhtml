@@ -47,7 +47,7 @@
           <b:dataTableColumn value="#{car.year}"  order="asc" />
           <b:dataTableColumn value="#{car.price}" />
           <b:dataTableColumn label="Engine Power (hp)">
-          	<cc:input editorValue="car.enginePower" />
+          	<cc:input editorValue="#{car.enginePower}" />
           </b:dataTableColumn>
           <b:dataTableColumn label="Non-AJAX">
             <cc:blueButton caption="Select this #{car.brand}" action="#{customComponentsBean.onClick}" />
