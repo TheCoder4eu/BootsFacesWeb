@@ -5,7 +5,6 @@ package net.bootsfaces.demo;
  */
 
 import java.io.Serializable;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.validation.constraints.Max;
@@ -26,21 +25,19 @@ public class SliderBean implements Serializable {
 	private int value5 = 12;
 	private int value6 = 30;
 
+	private int min = -10;
+	private int max = 10;
+	
+	private float floatValue1 = 0f;
+
 	@Min(18)
 	@Max(65)
-	private double age = 0;
-
-	private double valueDouble = 15.5;
+	private int age = 0;
 
 	/**
 	 * Creates a new instance of informBean
 	 */
 	public SliderBean() {
-	}
-
-	public void button1() {
-		System.out.println("Double value is: " + valueDouble);
-		// valueDouble = 28.5;
 	}
 
 	public int getValue1() {
@@ -91,19 +88,28 @@ public class SliderBean implements Serializable {
 		this.value6 = value6;
 	}
 
-	public double getValueDouble() {
-		return valueDouble;
-	}
-
-	public void setValueDouble(double valueDouble) {
-		this.valueDouble = valueDouble;
-	}
-
-	public double getAge() {
+	public int getAge() {
 		return age;
 	}
 
-	public void setAge(double age) {
+	public void setAge(int age) {
 		this.age = age;
 	}
+
+	public int getMin() {
+		return min;
+	}
+
+	public int getMax() {
+		return max;
+	}
+
+	public float getFloatValue1() {
+		return floatValue1;
+	}
+
+	public void setFloatValue1(float floatValue1) {
+		this.floatValue1 = floatValue1;
+	}
+
 }
