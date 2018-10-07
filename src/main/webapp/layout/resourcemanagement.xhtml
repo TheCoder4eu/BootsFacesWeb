@@ -87,6 +87,82 @@
         <code>&lt;h:outputStylesheet name="*datatables*.css /&gt;</code>. If it finds something like this, it prevents the corresponding file to be loaded from the CDN.
         BootsFaces even ignores the case to give you maximum flexibility.</li>
     </ul>
+    
+    <script>
+    if (#{dataTableSettingsBean.scrollToDemo}) {
+    	setTimeout(() => {
+	    	jQuery('html, body').animate({
+	            scrollTop: jQuery("#datatableDemo").offset().top - 120
+	        }, 10);
+    	}, 100);
+    }
+    </script>
+    
+        <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form>
+      	<b:row>
+	      	<b:column small-screen="half">
+		        <b:dataTable value="#{carPool.carPool}"
+		                     id="basic-usage-id"
+		                     var="car"
+		                     excel="true"
+		                     csv="true"
+		                     pdf="true"
+		                     columnVisibility="true"
+		                     copy="true"
+		                     print="true">
+		          <b:dataTableColumn value="#{car.brand}" />
+		          <b:dataTableColumn value="#{car.type}" />
+		          <b:dataTableColumn value="#{car.color}" />
+		          <b:dataTableColumn value="#{car.year}"  order="asc" />
+		          <b:dataTableColumn value="#{car.price}" />
+		          <b:dataTableColumn value="#{car.enginePower}" label="Engine Power (hp)" />
+		        </b:dataTable>
+	        </b:column>
+	        <b:column small-screen="half" style="padding-left:35px">
+		        <h4><a id="datatableDemo">How this demo works</a></h4>
+		        <p>Unchecking the first checkbox will remove the advanced feature of the datatable, 
+		        turning it into a simple HTML table.
+		        We've implemented this only for demonstration purposes. In real life, you could
+		        use this to bring your own copy. For example, you could use a slim copy of dataTables.net
+		        without Excel export, or you could provide a full-blown copy containing every feature the
+		        DataTables.net has implemented.</p>
+		          <b:selectBooleanCheckbox value="#{dataTableSettingsBean.useCDN}" caption="Use default files from a CDN" />
+		          <b:commandButton value="Update and reload page" action="#{dataTableSettingsBean.reload}" 
+		                           onComplete="scrollToAnchor()"/>
+	        </b:column>
+        </b:row>
+      </h:form>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:form>
+            <b:dataTable value="&num;{carPool.carPool}"
+                         var="car"
+                         excel="true"
+                         csv="true"
+                         pdf="true"
+                         columnVisibility="true"
+                         copy="true"
+                         print="true"
+                         row-style-class="&num;{car.enginePower>100?'light-power':'light'}, &num;{car.enginePower>100?'dark-power':'dark'} ">
+              <b:dataTableColumn value="&num;{car.brand}" />
+              <b:dataTableColumn value="&num;{car.type}" />
+              <b:dataTableColumn value="&num;{car.color}" />
+              <b:dataTableColumn value="&num;{car.year}"  order="asc"/>
+              <b:dataTableColumn value="&num;{car.price}" />
+              <b:dataTableColumn value="&num;{car.enginePower}" label="Engine Power (hp)" />
+            </b:dataTable>
+          </h:form>
+          ]]>
+          </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+    
 
     <h2><a id="defining_when_your_resource_files_are_loaded">Defining when your resource files are loaded (aka load order)</a></h2>
     <p>If you need to place your CSS or JS file before or after the other resource files, you can use the attribute <code>position</code> of the
