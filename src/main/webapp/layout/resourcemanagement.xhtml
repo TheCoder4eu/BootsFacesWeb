@@ -18,7 +18,11 @@
     </b:listLinks>
   </ui:define>
 
-
+  <ui:define name="custom-header">
+  	<h:outputStylesheet library="datatables.net" name="datatables.min.css" rendered="#{dataTableSettingsBean.useSlimFiles}" />
+  	<h:outputScript library="datatables.net" name="datatables.min.js" target="head" rendered="#{dataTableSettingsBean.useSlimFiles}" />
+  </ui:define>
+  
   <ui:define name="content">
     <h1><a id="dealing_with_resource_files">Dealing with resource files</a><b:badge value="improved in 0.8.0" /></h1>
     <p>The BootsFaces jar contains many CSS and JavaScript files. You don't need external resource files to use BootsFaces. However,
@@ -128,6 +132,7 @@
 		        without Excel export, or you could provide a full-blown copy containing every feature the
 		        DataTables.net has implemented.</p>
 		          <b:selectBooleanCheckbox value="#{dataTableSettingsBean.useCDN}" caption="Use default files from a CDN" />
+		          <b:selectBooleanCheckbox value="#{dataTableSettingsBean.useSlimFiles}" caption="Use custom files without Excel download" />
 		          <b:commandButton value="Update and reload page" action="#{dataTableSettingsBean.reload}" 
 		                           onComplete="scrollToAnchor()"/>
 	        </b:column>

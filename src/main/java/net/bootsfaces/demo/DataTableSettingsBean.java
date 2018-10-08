@@ -493,13 +493,11 @@ public class DataTableSettingsBean implements Serializable {
 	}
 
 	public boolean isUseCDN() {
-		System.out.println("using CDN:" + useCDN);
 		return useCDN;
 	}
 
 	public void setUseCDN(boolean useCDN) {
 		this.useCDN = useCDN;
-		System.out.println("Setting useCDN = " + useCDN);
 	}
 	
 	public String reload() {
