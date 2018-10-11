@@ -26,20 +26,20 @@ providedCompile 'com.sun.faces:jsf-api:2.2.+'
 providedCompile 'com.sun.faces:jsf-impl:2.2.+'
 providedCompile 'org.glassfish.web:el-impl:2.2'
 providedCompile 'javax.validation:validation-api:1.0.0.GA'
-compile 'org.hibernate:hibernate-validator:5.2.2.Final'
-compile 'org.primefaces:primefaces:6.1'
+compile 'org.hibernate.validator:hibernate-validator:6.0.13.Final'
+compile 'org.primefaces:primefaces:6.2'
 compile 'net.glxn:qrgen:1.4'
 compile 'net.sf.barcode4j:barcode4j-light:2.0'
-compile 'com.google.zxing:core:3.1.0'
-compile 'com.google.zxing:javase:3.1.0'
-compile 'org.omnifaces:omnifaces:2.6.1'
+compile 'com.google.zxing:core:3.3.3'
+compile 'com.google.zxing:javase:3.3.3'
+compile 'org.omnifaces:omnifaces:3.2'
 //compile 'de.larmic.butterfaces:components:1.10.3'
 compile 'org.highfaces:highfaces:1.2'
 compile files("${System.properties['java.home']}/../lib/tools.jar")
 
 compile fileTree(dir: 'bsflib', include: '*.jar') //Required for messages/utils
 
-compile "net.bootsfaces:bootsfaces:1.3.0"
+compile "net.bootsfaces:bootsfaces:1.3.1-SNAPSHOT"
 }
 
 war.doFirst {
