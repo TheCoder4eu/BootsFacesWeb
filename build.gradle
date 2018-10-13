@@ -30,10 +30,9 @@ compile 'org.hibernate:hibernate-validator:5.2.2.Final'
 compile 'org.primefaces:primefaces:6.2'
 compile 'net.glxn:qrgen:1.4'
 compile 'net.sf.barcode4j:barcode4j-light:2.0'
-compile 'com.google.zxing:core:3.1.0'
-compile 'com.google.zxing:javase:3.1.0'
-compile 'org.omnifaces:omnifaces:2.6.1'
-//compile 'de.larmic.butterfaces:components:1.10.3'
+compile 'com.google.zxing:core:3.3.3'
+compile 'com.google.zxing:javase:3.3.3'
+compile 'org.omnifaces:omnifaces:3.2'
 compile 'org.highfaces:highfaces:1.2'
 compile files("${System.properties['java.home']}/../lib/tools.jar")
 
