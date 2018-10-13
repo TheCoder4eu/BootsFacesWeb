@@ -545,19 +545,22 @@
       </b:tab>
     </b:tabView>
 
-    <br/>
-    <!-- TODO in 1.5.0 -->
-    <!-- <h:form>
-      <h4>Float Values</h4>
-      <p>Another feature is the option to use Float values to with the Slider. Use the <code>precision</code> attribute to specify the precision to use.</p>
+    <h2>Float values <b:badge value="Since TODO" /></h2>
+    <p>
+      Another feature is the option to use float values to with the slider.
+      Just bind the slider <code>value</code> to a float type property
+      and use a float value with the <code>step</code> attribute.
+    </p>
 
-      <b:row>
-        <b:column>
-          <b:slider2 id="sdl" mode="basic" label="Double Slider:" value="{sliderBean.valueDouble}" precision="2" min="0" max="30" step="0.5"/>
-        </b:column>
-      </b:row>
-      <b:commandButton id="button1" actionListener="{sliderBean.button1}" value="Send Value" ajax="true" update="sdl" />
-    </h:form -->
+    <b:row>
+      <b:column>
+        <b:slider2 mode="basic" label="Step .25:"
+                   value="#{sliderBean.floatValue1}"
+                   min="-10"
+                   max="10"
+                   step=".25"/>
+      </b:column>
+    </b:row>
 
     <h2><a id="reference_section">Reference section</a></h2>
     <ui:include src="Slider2Attributes.xhtml" />
