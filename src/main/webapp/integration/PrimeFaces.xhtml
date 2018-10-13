@@ -25,11 +25,14 @@
     </style>
     <style>td {padding: 8px;}</style>
     <h1><a id="integration_with_primefaces">Integration with PrimeFaces</a></h1>
-    <p>BootsFaces plays nicely with PrimeFaces. Both frameworks have a couple of components in common, so there are two interesting strategies:</p>
-    <ul>
-      <li>Use BootsFaces for defining the layout only. PrimeFaces contributes the input widgets.</li>
-      <li>Use the full wealth of BootsFaces components. In this case, PrimeFaces contributes the fancy widgets, such as the data table, tooltips, <code>prime:growl</code> or the chart widget.</li>
-    </ul>
+    <p>Many people are using PrimeFaces together with BootsFaces. A common strategy is to use
+    BootsFaces to benefit from the layout, and to add PrimeFaces because it has some
+    very advanced widgets.</p>
+    <p>Unfortunately, the CSS frameworks of PrimeFaces and BootsFaces are incompatible.
+    As soon as you add BootsFaces, the layout of many PrimeFaces widgets is destroyed.
+    Follow this link <a target="#" href="https://www.beyondjava.net/how-to-use-bootsfaces-and-primefaces-in-the-same-project">to learn how to fix this incompatibility.</a>
+    Both frameworks have a couple of components in common, 
+    so there are two interesting strategies:</p>
 
     <h2><a id="configuration">Configuration</a></h2>
     <b:tabView contentStyle="height:280px">
@@ -41,13 +44,13 @@
           <dependency>
             <groupId>net.bootsfaces</groupId>
             <artifactId>bootsfaces</artifactId>
-            <version>1.2.0</version>
+            <version>1.4.0</version>
             <scope>compile</scope>
           </dependency>
           <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
-            <version>6.1</version>
+            <version>6.2</version>
             <scope>compile</scope>
           </dependency>
           ]]>
@@ -58,21 +61,42 @@
         <b:panel>
           <script type="syntaxhighlighter" class="brush: groovy; toolbar: false;gutter: false; first-line: 1">
           <![CDATA[
-          compile 'net.bootsfaces:bootsfaces:1.2.0'
-          compile 'org.primefaces:primefaces:6.1'
+          compile 'net.bootsfaces:bootsfaces:1.4.0'
+          compile 'org.primefaces:primefaces:6.2'
           ]]>
           </script>
         </b:panel>
       </b:tab>
       <b:tab title="web.xml">
-        <p>Download the <a target="#" href="http://repository.primefaces.org/org/primefaces/themes/bootstrap/">PrimeFaces Bootstrap theme</a>, add it to your application's <code>lib</code> folder and activate it in the <code>web.xml</code> like so:</p>s
+        <p>Download the <a target="#" href="http://repository.primefaces.org/org/primefaces/themes/bootstrap/">PrimeFaces Bootstrap theme</a>, 
+        add it to your application's <code>lib</code> folder, and activate it in the <code>web.xml</code> like so:</p>
         <b:panel>
           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
           <![CDATA[
           <context-param>
-          <param-name>primefaces.THEME</param-name>
-          <param-value>bootstrap</param-value>
+            <param-name>primefaces.THEME</param-name>
+            <param-value>bootstrap</param-value>
           </context-param>
+          ]]>
+          </script>
+        </b:panel>
+      </b:tab>
+    <b:tab title="CSS">
+        <p>You need to add some CSS to make PrimeFaces and BootsFaces compatible.
+        Read <a target="#" href="https://www.beyondjava.net/how-to-use-bootsfaces-and-primefaces-in-the-same-project">the full story here.</a>
+        The CSS code is just a sketch indicating at what to do.</p>
+		<b:panel>
+		  <script type="syntaxhighlighter" class="brush: css; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          .pf,
+          .pf * {
+              -webkit-box-sizing: content-box;
+              -moz-box-sizing: content-box;
+              box-sizing: content-box;
+          }
+          .nest-bf-in-pf .form-group {
+              margin-bottom:0px;
+          }
           ]]>
           </script>
         </b:panel>
