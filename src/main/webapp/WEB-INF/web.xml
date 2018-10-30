@@ -26,6 +26,15 @@
         <param-name>BootsFaces_THEME</param-name>
         <param-value>#{theme.internalTheme}</param-value>
     </context-param>
+    <!-- By default, the dataTables.net files are loaded from a fast CDN.
+    Use this parameter to deactivate the feature, allowing you to bring your own copy.
+    Notice that in most cases you don't need the context parameter. If BootsFaces detects
+    a copy of dataTables.min.js or dataTables.min.css, it'll drop the bundled copy in
+    favor of the custom copy. -->
+    <context-param>
+        <param-name>net.bootsfaces.get_datatable_from_cdn</param-name>
+        <param-value>#{!dataTableSettingsBean.useCDN}</param-value>
+    </context-param>
     <!-- The BootsFaces_USETHEME context-param controls the loading of the bootstrap-theme.css -->
     <!-- The default is false, when set to true the bootstrap-theme.css will be loaded -->
     <context-param>

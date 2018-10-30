@@ -46,7 +46,9 @@
           <b:dataTableColumn value="#{car.color}" />
           <b:dataTableColumn value="#{car.year}"  order="asc" />
           <b:dataTableColumn value="#{car.price}" />
-          <b:dataTableColumn value="#{car.enginePower}" label="Engine Power (hp)" />
+          <b:dataTableColumn label="Engine Power (hp)">
+          	<cc:input editorValue="#{car.enginePower}" />
+          </b:dataTableColumn>
           <b:dataTableColumn label="Non-AJAX">
             <cc:blueButton caption="Select this #{car.brand}" action="#{customComponentsBean.onClick}" />
           </b:dataTableColumn>
@@ -123,7 +125,7 @@
               </script>
             </b:panel>
           </b:tab>
-          <b:tab title="Composite (redButton)">
+          <b:tab title="Composite (blueButton)">
             <b:panel>
               <script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1">
               <![CDATA[

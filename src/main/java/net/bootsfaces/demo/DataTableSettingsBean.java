@@ -93,6 +93,12 @@ public class DataTableSettingsBean implements Serializable {
 
 	private String selectedColumns = "1,3";
 	
+	private boolean useCDN = true;
+
+	private boolean useSlimFiles = false;
+	
+	private boolean scrollToDemo = false;
+	
 	@ManagedProperty("#{carPool.carPool}")
 	private List<Car> carPool;
 
@@ -484,5 +490,34 @@ public class DataTableSettingsBean implements Serializable {
 
 	public void setMarkSearchResults(boolean markSearchResult) {
 		this.markSearchResults = markSearchResult;
+	}
+
+	public boolean isUseCDN() {
+		return useCDN;
+	}
+
+	public void setUseCDN(boolean useCDN) {
+		this.useCDN = useCDN;
+	}
+	
+	public String reload() {
+		scrollToDemo = true;
+		return "/layout/resourcemanagement.jsf#dataTablePreview";
+	}
+
+	public boolean isUseSlimFiles() {
+		return useSlimFiles;
+	}
+
+	public void setUseSlimFiles(boolean useSlimFiles) {
+		this.useSlimFiles = useSlimFiles;
+	}
+
+	public boolean isScrollToDemo() {
+		return scrollToDemo;
+	}
+
+	public void setScrollToDemo(boolean scrollToDemo) {
+		this.scrollToDemo = scrollToDemo;
 	}
 }

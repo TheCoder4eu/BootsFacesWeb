@@ -53,6 +53,13 @@
 
     <p>Use the <code>caption</code> attribute to display the label checkbox. Don't confuse it with the <code>label</code> attribute. This puts the label above the checkbox, as you can see in the next example.</p>
 
+    <h2><a id="escaping">HTML tags in the caption</a></h2>
+    <b:form>
+	    <b:selectBooleanCheckbox value="#{checkboxBean.checkbox}"
+	                             caption="&lt;caption within pointed brackets&gt;" />
+     </b:form>
+
+
     <h2><a id="disabling_checkboxes">Disabling Checkboxes</a></h2>
     <ul>
       <li>Checkboxes can be disabled by setting the <code>disabled</code> attribute.</li>
@@ -63,6 +70,8 @@
     </ul>
     <p>The example below shows both options:</p>
     <b:panel title="Live preview" look="info" collapsible="false">
+    
+    
 
       <b:form horizontal="true">
         <b:formGroup>

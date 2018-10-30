@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,6 +32,12 @@ public class ComponentList {
 
 	public static void scanFolder(File folder, int charactersToIgnore) {
 		File[] files = folder.listFiles();
+		Arrays.sort(files, new Comparator<File>() {
+			@Override
+			public int compare(File a, File b) {
+				return a.getName().replaceAll("s.xhtml", ".xhtml").compareTo(b.getName().replaceAll("s.xhtml", ".xhtml"));
+			}
+		});
 		for (File file : files) {
 			if (file.isDirectory()) {
 				scanFolder(file, charactersToIgnore);
@@ -65,7 +72,11 @@ public class ComponentList {
 
 						String url = filename.substring(charactersToIgnore, filename.length());
 						url = url.replace("\\", "/").replace(".xhtml", ".jsf");
-						docFiles.put("<" + tag + ">", url);
+						String key = "<" + tag + ">";
+						if (docFiles.containsKey(key)) {
+							key = key + " (2)";
+						}
+						docFiles.put(key, url);
 					}
 				}
 			}

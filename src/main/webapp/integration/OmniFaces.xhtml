@@ -18,10 +18,14 @@
   <ui:define name="content">
     <style>td {padding: 8px;}</style>
     <h1><a id="integration_with_omnifaces">Integration with OmniFaces</a></h1>
-    <p>BootsFaces loads many small CSS and JavaScript files. So it's a good idea to combine it with OmniFaces.
-    In particular, we recommend to use the <a target="#" href="http://showcase.omnifaces.org/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></a>.
+    <p>BootsFaces loads many small CSS and JavaScript files. So it's a good idea to use http/2. If
+    that's not an option, we recommend using BootsFaces with OmniFaces. The 
+    <a target="#" href="http://showcase.omnifaces.org/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></a>
+    combines all these small files into a larger file. This costs some performance on the server side,
+    but this pays off because of the reduced network overhead.</p>
+    <p>However, with the advent of http/2,
+    it's the other way round. With http/2 we recommend not to use the <code>CombinedResourceHandler</code>
     </p>
-    <p>Note that we didn't run an exhaustive compatibility test yet. However, nobody's ever reported us problems with BootsFaces and OmniFaces.</p>
 
     <b:tabView contentStyle="height:280px">
       <b:tab title="Maven">
@@ -32,13 +36,13 @@
           <dependency>
             <groupId>net.bootsfaces</groupId>
             <artifactId>bootsfaces</artifactId>
-            <version>1.2.0</version>
+            <version>1.4.0</version>
             <scope>compile</scope>
           </dependency>
           <dependency>
             <groupId>org.omnifaces</groupId>
             <artifactId>omnifaces</artifactId>
-            <version>2.6.1</version>
+            <version>3.2</version>
             <scope>compile</scope>
           </dependency>
           ]]>
@@ -49,8 +53,8 @@
         <b:panel>
           <script type="syntaxhighlighter" class="brush: groovy; toolbar: false;gutter: false; first-line: 1">
           <![CDATA[
-          compile 'net.bootsfaces:bootsfaces:1.2.0'
-          compile 'org.omnifaces:omnifaces:2.6.1'
+          compile 'net.bootsfaces:bootsfaces:1.4.0'
+          compile 'org.omnifaces:omnifaces:3.2'
           ]]>
           </script>
         </b:panel>
@@ -58,16 +62,16 @@
       <b:tab title="faces-config.xml">
         To activate the <code>CombinedResourceHandler</code>, add a <code>&lt;resource-handler&gt;</code> to the <code>faces-config.xml</code> file:
         <b:panel>
-          <script type="syntaxhighlighter" class="brush: groovy; toolbar: false;gutter: false; first-line: 1">
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
           <![CDATA[
           <?xml version="1.0" encoding="UTF-8"?>
           <faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
-          version="2.2">
-          <application>
-          <resource-handler>org.omnifaces.resourcehandler.CombinedResourceHandler</resource-handler>
-          </application>
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+                        version="2.2">
+            <application>
+              <resource-handler>org.omnifaces.resourcehandler.CombinedResourceHandler</resource-handler>
+            </application>
           </faces-config>
           ]]>
           </script>
