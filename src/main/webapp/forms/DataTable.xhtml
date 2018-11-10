@@ -508,7 +508,10 @@
                                      onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                                      update="basic-usage-id" />
 
-            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.customOptions}" caption="customOption='colReorder:true'"
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.customOptions}" caption="custom-option='colReorder:true'"
+                                     onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                     update="basic-usage-id" />
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.pagingType}" caption="custom-option='pagingType: 'full'"
                                      onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                                      update="basic-usage-id" />
             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.fixedHeader}" caption="fixedHeader='true'"
@@ -611,7 +614,6 @@
       <b:dataTable ... row-group="orderFixed:[[0,'asc'],[2,'desc']],rowGroup:{dataSrc:0,startRender:null,endRender: function ( rows, group ) {return 'Cars in the ' + group +' group: '+rows.count();}}">
 ]]></script>
     
-          
        <b:panel title="Live preview" look="info" collapsible="false">
       <h:form>
         <b:dataTable value="#{carPool.carPool}"
@@ -1285,7 +1287,9 @@
 
     <b:panel title="Live preview" look="info" collapsible="false">
       <h:form>
-        <b:dataTable value="#{carPool.carPool}" var="car" class="editableCarTable">
+        <b:dataTable value="#{carPool.carPool}" var="car" class="editableCarTable" select="true"                        
+        onselect="console.log( typeOfSelection + ' ' + indexes + ' has been selected');ajax:carPool.onSelectDemo2(car, typeOfSelection, indexes);"
+        >
           <b:dataTableColumn value="#{car.brand}" />
           <b:dataTableColumn value="#{car.type}" />
           <b:dataTableColumn value="#{car.color}" />
@@ -1296,7 +1300,7 @@
           </b:dataTableColumn>
           <b:dataTableColumn>
             <b:commandButton value="edit" icon="edit" ajax="true" update="@(.editableCarTable)"
-                             onclick="ajax:car.edit()" >
+                             onclick="ajax:car.edit(); return false;" >
             </b:commandButton>
 
           </b:dataTableColumn>

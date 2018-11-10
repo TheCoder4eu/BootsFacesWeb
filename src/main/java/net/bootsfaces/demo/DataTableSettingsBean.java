@@ -82,6 +82,8 @@ public class DataTableSettingsBean implements Serializable {
 	private String defaultColumnFilter = "";
 
 	private boolean paginated = true;
+	
+	private boolean pagingType = true;
 
 	private boolean selectedRowsActive1 = false;
 
@@ -289,8 +291,18 @@ public class DataTableSettingsBean implements Serializable {
 	}
 
 	public String getCustomOptionsValue() {
+		String result = "";
 		if (this.customOptions) {
-			return "colReorder:true";
+			result += "colReorder:true";
+		}
+		if (this.pagingType) {
+			if (result.length()>0) {
+				result += ",";
+			}
+			result += "pagingType:'full'";
+		}
+		if (result.length() > 0) {
+			return result;
 		}
 		return null;
 	}
@@ -519,5 +531,13 @@ public class DataTableSettingsBean implements Serializable {
 
 	public void setScrollToDemo(boolean scrollToDemo) {
 		this.scrollToDemo = scrollToDemo;
+	}
+
+	public boolean isPagingType() {
+		return pagingType;
+	}
+
+	public void setPagingType(boolean pagingType) {
+		this.pagingType = pagingType;
 	}
 }
