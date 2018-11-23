@@ -736,20 +736,20 @@
       </script>
     </b:panel>
 
-    <h2><a id="internationalization">Internationalization</a></h2>
+    <h2><a id="internationalization">Internationalization</a> <b:badge value="nl + pt since TODO" /></h2>
     <p>
     This example below shows how to use the i18n support of
     <code>&lt;b:dataTable &gt;</code>. For i18n there are three ways:
     </p>
     <ul>
-      <li>BootsFaces comes with a limited set of predefined translation files: English, German, Spanish, French, Hungarian, Italian, Polish and Russian.
+      <li>BootsFaces comes with a limited set of predefined translation files: English, German, Spanish, French, Hungarian, Italian, Polish, Russian, Dutch and Portuguese.
       You can either rely on the browser's default setting, or you can override the browser's language choice using the <code>lang</code> attribute.</li>
-      <li>Use other translations using a remote URL (e.g. a CDN):
+      <li>Use <a href="https://datatables.net/plug-ins/i18n/">other translations</a> using a remote URL (e.g. a CDN):
         <b:panel>
           <script type="syntaxhighlighter"
           class="brush: xml; toolbar: false;gutter: false; first-line: 1">
           <![CDATA[
-          <b:dataTable customLangUrl="//cdn.datatables.net/plug-ins/1.10.12/i18n/Portuguese-Brasil.json" />
+          <b:dataTable customLangUrl="//cdn.datatables.net/plug-ins/1.10.19/i18n/Turkish.json" />
           ]]>
           </script>
         </b:panel>
@@ -759,7 +759,7 @@
           <script type="syntaxhighlighter"
           class="brush: xml; toolbar: false;gutter: false; first-line: 1">
           <![CDATA[
-          <b:dataTable customLangUrl="&num;{resource['/pt-br.json']}" />
+          <b:dataTable customLangUrl="&num;{resource['/tr.json']}" />
           ]]>
           </script>
         </b:panel>
