@@ -29,23 +29,38 @@
     allow you to navigate back fast.</p>
 
     <b:panel title="Live preview" look="info" collapsible="false">
-    <b:breadcrumbs>
-	  <b:navLink value="Miscellaneous" outcome="/miscellaneous/Configuration"/>
-	  <b:navLink value="Configuration" outcome="/miscellaneous/Configuration" 
-	             icon-awesome="pencil-square-o" />
-	</b:breadcrumbs>
+      <b:breadcrumbs>
+        <f:facet name="root">
+          <b:iconAwesome value="fa-desktop" />
+          Root
+        </f:facet> 
+        <b:navLink value="Miscellaneous" outcome="/miscellaneous/Configuration"/>
+        <b:navLink value="Configuration" outcome="/miscellaneous/Configuration" 
+                   icon-awesome="pencil-square-o" />
+        <f:facet name="end">
+          <b:iconAwesome value="coffee" />
+          Current item
+        </f:facet> 
+      </b:breadcrumbs>
 
       <f:facet name="footer">
         <strong>JSF markup: </strong>
         <b:panel>
           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
           <![CDATA[
-    <b:breadcrumbs>
-	  <b:navLink value="Miscellaneous" outcome="/miscellaneous/Configuration"/>
-	  <b:navLink value="Configuration" outcome="/miscellaneous/Configuration" 
-                 icon-awesome="pencil-square-o" />
-	</b:breadcrumbs>
-         ]]>
+      <b:breadcrumbs>
+        <f:facet name="root">
+          <b:iconAwesome value="fa-desktop" />
+          Root
+        </f:facet> 
+        <b:navLink value="Miscellaneous" outcome="/miscellaneous/Configuration"/>
+        <b:navLink value="Configuration" outcome="/miscellaneous/Configuration" 
+                   icon-awesome="pencil-square-o" />
+        <f:facet name="end">
+          <b:iconAwesome value="coffee" />
+          Current item
+        </f:facet> 
+      </b:breadcrumbs>]]>
           </script>
         </b:panel>
       </f:facet>
