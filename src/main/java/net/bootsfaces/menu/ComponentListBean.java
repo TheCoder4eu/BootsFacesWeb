@@ -1,7 +1,9 @@
 package net.bootsfaces.menu;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -9,10 +11,24 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class ComponentListBean {
+	
+	private Map<String, String> allConcepts = new HashMap<>();
+	private Map<String, String> filteredConcepts = new HashMap<>();
 
 	private String filter = null;
 	
 	private String[] filteredTags = ComponentList.tags;
+	
+	public ComponentListBean() {
+		allConcepts.put("Grid system", "layout/basic.jsf");
+		allConcepts.put("PrimeFaces", "integration/PrimeFaces.jsf");
+		allConcepts.put("Converters", "forms/converters.jsf");
+		allConcepts.put("AJAX", "forms/ajax.jsf");
+		allConcepts.put("Search expressions", "forms/searchExpressions.jsf");
+		allConcepts.put("BlockUI", "forms/blockUI.jsf");
+		allConcepts.put("Fontawesome 5", "layout/fontawesome5.jsf");
+		filteredConcepts = allConcepts;
+	}
 	
 	public String[] getTags() {
 		return filteredTags;
@@ -30,6 +46,7 @@ public class ComponentListBean {
 		if (filter == null || filter.trim().equals("")) {
 			filteredTags = ComponentList.tags;
 			this.filter = filter;
+			filteredConcepts = allConcepts;
 		} else {
 			filter = filter.replace("<b:", "<");
 			if (filter.equals(this.filter)) {
@@ -43,7 +60,13 @@ public class ComponentListBean {
 					result.add(s);
 				}
 			}
+			final String finalFilter = filter.toLowerCase();
 			filteredTags = result.toArray(new String[result.size()]);
+			filteredConcepts = new HashMap<>();
+			allConcepts.forEach((name, url) -> 
+				{ 
+					if (name.toLowerCase().contains(finalFilter) ) { filteredConcepts.put(name, url); }
+				});
 		}
 	}
 
@@ -71,5 +94,9 @@ public class ComponentListBean {
 			return path;
 		}
 		return path + "/";
+	}
+
+	public Map<String, String> getFilteredConcepts() {
+		return filteredConcepts;
 	}
 }
