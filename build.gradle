@@ -34,7 +34,7 @@ compile 'net.sf.barcode4j:barcode4j-light:2.0'
 compile 'com.google.zxing:core:3.3.3'
 compile 'com.google.zxing:javase:3.3.3'
 compile 'org.omnifaces:omnifaces:2.6.9'
-compile 'org.highfaces:highfaces:1.2'
+compile 'org.highfaces:highfaces:1.3'
 compile files("${System.properties['java.home']}/../lib/tools.jar")
 
 compile fileTree(dir: 'bsflib', include: '*.jar') //Required for messages/utils
