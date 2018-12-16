@@ -24,6 +24,7 @@
       <b:navLink href="#internationalization" value="Internationalization" />
       <b:navLink href="#custom_options" value="Custom options" />
       <b:navLink href="#selecting" value="Selecting rows, columns or cells" />
+      <b:navLink href="#selectioncolumn" value="Checkboxes for mobile-friendly selection" />
       <b:navLink href="#selectingServer" value="Server-side selection API" />
       <b:navLink href="#unified_ajax_and_javascript_api" value="Unified AJAX and JavaScript API" />
       <b:navLink href="#responsiveness" value="Responsiveness" />
@@ -837,7 +838,8 @@
                      responsive="true"
                      lang="#{carPool.lang}"
                      custom-lang-url="#{carPool.customLangUrl}"
-                     searching="false">
+                     searching="false"
+                     checkboxColumn="1">
           <b:dataTableColumn value="#{car.brand}" />
           <b:dataTableColumn value="#{car.type}" />
           <b:dataTableColumn value="#{car.color}" />
@@ -1068,6 +1070,51 @@
         </b:tabView>
       </f:facet>
     </b:panel>
+    
+    <h2><a id="selectioncolumn">Adding a mobile-friendly checkbox to select rows</a></h2>
+    <p>Checkboxes make it easier for users to select rows. Among other things, they see at
+    first glance you can select a row. Plus, it's easier so select multiple rows on mobile
+    devices.</p>
+    <p>BootsFaces uses the same API as PrimeFaces to implement this feature. Add a column
+    without children. Instead, set the attribute <code>selectionMode</code> like so:</p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form>
+        <b:dataTable value="#{carPool.carPool}"
+                     var="car">
+          <b:dataTableColumn selection-mode="multiple" />
+          <b:dataTableColumn value="#{car.brand}" />
+          <b:dataTableColumn value="#{car.type}" />
+          <b:dataTableColumn value="#{car.color}" />
+          <b:dataTableColumn value="#{car.year}"  order="asc" />
+          <b:dataTableColumn value="#{car.price}" />
+          <b:dataTableColumn value="#{car.enginePower}" label="Engine Power (hp)" />
+        </b:dataTable>
+      </h:form>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:form>
+            <b:dataTable value="&num;{carPool.carPool}"
+                         var="car">
+          	  <b:dataTableColumn selection-mode="multiple" />
+              <b:dataTableColumn value="&num;{car.brand}" />
+              <b:dataTableColumn value="&num;{car.type}" />
+              <b:dataTableColumn value="&num;{car.color}" />
+              <b:dataTableColumn value="&num;{car.year}"  order="asc"/>
+              <b:dataTableColumn value="&num;{car.price}" />
+              <b:dataTableColumn value="&num;{car.enginePower}" label="Engine Power (hp)" />
+            </b:dataTable>
+          </h:form>
+          ]]>
+          </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+    
 
     <h2><a id="selectingServer">Server-side selection API</a><b:badge value="Breaking changes in BootsFaces 1.2.0" /></h2>
     <p>There are two JavaScript callback functions you can use to react to select events:</p>
