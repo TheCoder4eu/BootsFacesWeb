@@ -54,12 +54,22 @@
     for each component, thus ruining the layout.
     </p>
     
+    <h2><a id="myfaces">Compatibility to MyFaces 2.3</a></h2>
+    <p>If you're using MyFaces, please updated to BootsFaces 1.4.1. The older versions of BootsFaces didn't render the
+    CSS code properly if run on MyFaces.</p>
+ 
     <style>
     .some-class {
     	color:white;
     }
     </style>
-    <b:form style="background-color:black" horizontal="true">
+    
+    <h:form style="background-color:black" horizontal="true" styleClass="some-class">
+    This is a demo form.
+    </h:form>
+    
+    
+    <b:form style="background-color:black" horizontal="true" styleClass="some-class">
     This is a demo form.
     </b:form>
 
