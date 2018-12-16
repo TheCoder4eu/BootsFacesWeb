@@ -5,7 +5,8 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:b="http://bootsfaces.net/ui"
-                xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
 
   <ui:define name="content-navigator">
@@ -52,6 +53,15 @@
     <code>&lt;b:formGroup /&gt;</code>. Otherwise, BootsFaces generates a <code>form-group</code> <code>div</code>
     for each component, thus ruining the layout.
     </p>
+    
+    <style>
+    .some-class {
+    	color:white;
+    }
+    </style>
+    <b:form style="background-color:black" horizontal="true">
+    This is a demo form.
+    </b:form>
 
 
     <h2><a id="reference_section">Reference section</a></h2>

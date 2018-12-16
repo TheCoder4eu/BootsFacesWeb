@@ -998,7 +998,7 @@
             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.singleSelectionMode}" caption="select='single'"
                                      onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                                      update="@parent:@previous" />
-          <h:outputLabel>selectedItems=</h:outputLabel>
+          <h:outputLabel for="@next">selectedItems=</h:outputLabel>
             <b:radiobutton value="#{dataTableSettingsBean.selectedItems}" caption="selected-items='row'"
                            item-value="row"
                            onclick="selectableTable.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
