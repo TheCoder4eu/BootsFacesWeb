@@ -1119,7 +1119,15 @@
         </b:panel>
       </f:facet>
     </b:panel>
-    
+
+	<p>If you're targeting an international audience, you have to provide the translation for the number of selected rows yourself.
+	The example shows how to pass the translations as <code>customOptions</code>. The translation is a Json object
+	with the key "language.select.rows" and three values:</p> 
+	<dl class="dl-horizontal">
+		<dt>'_'</dt><dd>the text for an arbitrary number of entries</dd>
+		<dt>'0'</dt><dd>the text for zero selected entries (usually empty)</dd>
+		<dt>'1'</dt><dd>the text for a single selected entry</dd>
+	</dl>
 
     <h2><a id="selectingServer">Server-side selection API</a><b:badge value="Breaking changes in BootsFaces 1.2.0" /></h2>
     <p>There are two JavaScript callback functions you can use to react to select events:</p>
