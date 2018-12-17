@@ -1081,7 +1081,10 @@
     <b:panel title="Live preview" look="info" collapsible="false">
       <h:form>
         <b:dataTable value="#{carPool.carPool}"
-                     var="car">
+                     var="car"
+                     customOptions="'language':{select:{'rows': { '_': '%d filas elegido', '0': '','1': '%d fila elegido'}}}"
+                     lang="es"
+                     >
           <b:dataTableColumn selection-mode="multiple" />
           <b:dataTableColumn value="#{car.brand}" />
           <b:dataTableColumn value="#{car.type}" />
@@ -1099,7 +1102,9 @@
           <![CDATA[
           <h:form>
             <b:dataTable value="&num;{carPool.carPool}"
-                         var="car">
+                         var="car"
+                         customOptions="'language':{select:{'rows': { '_': '%d filas elegido', '0': '','1': '%d fila elegido'}}}"
+                         lang="es">
           	  <b:dataTableColumn selection-mode="multiple" />
               <b:dataTableColumn value="&num;{car.brand}" />
               <b:dataTableColumn value="&num;{car.type}" />
