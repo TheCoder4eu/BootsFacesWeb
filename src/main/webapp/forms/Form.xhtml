@@ -56,22 +56,53 @@
     
     <h2><a id="myfaces">Compatibility to MyFaces 2.3</a></h2>
     <p>If you're using MyFaces, please updated to BootsFaces 1.4.1. The older versions of BootsFaces didn't render the
-    CSS code properly if run on MyFaces.</p>
+    CSS code properly if run on MyFaces. Nor did they render any attribute you'd set, such as <code>style</code>.</p>
+    <p>This demo shows that <code>&lt;b:form /&gt;</code> behaves exactly like the standard <code>&lt;h:form /&gt;</code>.
+    If the texts are printed white on a black background, <code>&lt;b:form /&gt;</code> is rendered correctly.</p>
+    
+    <b:panel title="Live preview" look="info" collapsible="false">
+	    <style>
+	    .some-class {
+	    	color:white;
+	    }
+	    </style>
+	    
+	    <h:form style="background-color:black" horizontal="true" styleClass="some-class">
+	      This is a demo form.
+	    </h:form>
+	    
+	    
+	    <b:form style="background-color:black" horizontal="true" styleClass="some-class">
+	      This is a demo form.
+	 	</b:form>
+
+        <f:facet name="footer">
+	        <strong>JSF markup:</strong>
+	          <b:panel>
+	         	<script type="syntaxhighlighter"
+	              class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                  <![CDATA[
+                   <style>
+                   .some-class {
+                   	color:white;
+                   }
+                   </style>
+                   
+                   <h:form style="background-color:black" horizontal="true" styleClass="some-class">
+                     This is a demo form.
+                   </h:form>
+                   
+                   
+                   <b:form style="background-color:black" horizontal="true" styleClass="some-class">
+                     This is a demo form.
+                   </b:form>
+                  ]]>
+          		</script>
+	        </b:panel>
+	    </f:facet>
+    </b:panel>
+    
  
-    <style>
-    .some-class {
-    	color:white;
-    }
-    </style>
-    
-    <h:form style="background-color:black" horizontal="true" styleClass="some-class">
-    This is a demo form.
-    </h:form>
-    
-    
-    <b:form style="background-color:black" horizontal="true" styleClass="some-class">
-    This is a demo form.
-    </b:form>
 
 
     <h2><a id="reference_section">Reference section</a></h2>
