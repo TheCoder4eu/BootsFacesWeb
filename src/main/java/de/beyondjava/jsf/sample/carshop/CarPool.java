@@ -247,4 +247,8 @@ public class CarPool implements Serializable {
 	public void setCurrentlySelectedCars(List<Car> currentlySelectedCars) {
 		this.currentlySelectedCars = currentlySelectedCars;
 	}
+	
+	public void delete(Car car) {
+		this.carPool.remove(car);
+	}
 }

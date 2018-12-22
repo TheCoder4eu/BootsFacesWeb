@@ -1404,14 +1404,13 @@
           </b:dataTableColumn>
           <b:dataTableColumn>
             <b:commandButton value="edit" icon="edit" ajax="true" update="@(.editableCarTable)"
-                             onclick="ajax:car.edit(); return false;" >
+                             onclick="ajax:car.edit(); javascript:return false;" >
             </b:commandButton>
 
           </b:dataTableColumn>
           <b:dataTableColumn>
             <b:commandButton value="Delete" iconAwesome="trash"
-                             action="#{car.edit}"
-                             onclick="debugger">
+                             action="#{carPool.delete(car)}">
               <f:ajax execute="@this" render="@form" />
             </b:commandButton>
           </b:dataTableColumn>
