@@ -77,6 +77,12 @@
       .site-navigation {
         border-right: 1px solid #EEE;
       }
+      :target::before { /* push the link target position 60px down to compensate for the sticky header */
+		  content: "";
+		  display: block;
+		  height: 60px; /* fixed header height*/
+		  margin: -60px 0 0; /* negative fixed header height */
+		}
     </style>
 
     <ui:insert name="custom-header" />
