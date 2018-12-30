@@ -1391,9 +1391,7 @@
 
     <b:panel title="Live preview" look="info" collapsible="false">
       <h:form>
-        <b:dataTable value="#{carPool.carPool}" var="car" class="editableCarTable" select="true"                        
-        onselect="console.log( typeOfSelection + ' ' + indexes + ' has been selected');ajax:carPool.onSelectDemo2(car, typeOfSelection, indexes);"
-        >
+        <b:dataTable value="#{carPool.carPool}" var="car" class="editableCarTable">
           <b:dataTableColumn value="#{car.brand}" />
           <b:dataTableColumn value="#{car.type}" />
           <b:dataTableColumn value="#{car.color}" />
@@ -1408,6 +1406,13 @@
             </b:commandButton>
 
           </b:dataTableColumn>
+                    <b:dataTableColumn>
+            <b:commandButton value="change color" iconAwesome="paint-brush"
+                             onclick="ajax:carPool.changeColor(car);javascript:return false;"
+                             update="@(.editableCarTable)">
+            </b:commandButton>
+          </b:dataTableColumn>
+          
           <b:dataTableColumn>
             <b:commandButton value="Delete" iconAwesome="trash"
                              action="#{carPool.delete(car)}">
@@ -1424,18 +1429,32 @@
           class="brush: xml; toolbar: false;gutter: false; first-line: 1">
           <![CDATA[
           <h:form>
-            <b:dataTable value="&num;{carPool.carPool}" var="car" class="editableCarTable">
-              <b:dataTableColumn value="&num;{car.brand}" />
-              <b:dataTableColumn value="&num;{car.type}" />
-              <b:dataTableColumn value="&num;{car.color}" />
-              <b:dataTableColumn value="&num;{car.year}" order="asc" />
+            <b:dataTable value="&#35;{carPool.carPool}" var="car" class="editableCarTable">
+              <b:dataTableColumn value="&#35;{car.brand}" />
+              <b:dataTableColumn value="&#35;{car.type}" />
+              <b:dataTableColumn value="&#35;{car.color}" />
+              <b:dataTableColumn value="&#35;{car.year}"  order="asc" />
               <b:dataTableColumn label="Price">
-                <b:inputText value="&num;{car.price}" rendered="&num;{car.editable}" />
-                <h:outputText value="&num;{car.price}" rendered="&num;{not car.editable}" />
+                <b:inputText value="&#35;{car.price}" rendered="&#35;{car.editable}" />
+                <h:outputText value="&#35;{car.price}" rendered="&#35;{not car.editable}" />
               </b:dataTableColumn>
               <b:dataTableColumn>
                 <b:commandButton value="edit" icon="edit" ajax="true" update="@(.editableCarTable)"
-                                 onclick="ajax:car.edit()" >
+                                 onclick="ajax:car.edit(); javascript:return false;" >
+                </b:commandButton>
+    
+              </b:dataTableColumn>
+                        <b:dataTableColumn>
+                <b:commandButton value="change color" iconAwesome="paint-brush"
+                                 onclick="ajax:carPool.changeColor(car);javascript:return false;"
+                                 update="@(.editableCarTable)">
+                </b:commandButton>
+              </b:dataTableColumn>
+              
+              <b:dataTableColumn>
+                <b:commandButton value="Delete" iconAwesome="trash"
+                                 action="&#35;{carPool.delete(car)}">
+                  <f:ajax execute="@this" render="@form" />
                 </b:commandButton>
               </b:dataTableColumn>
             </b:dataTable>

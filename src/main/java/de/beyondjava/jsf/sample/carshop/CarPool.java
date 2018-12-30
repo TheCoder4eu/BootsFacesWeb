@@ -251,4 +251,14 @@ public class CarPool implements Serializable {
 	public void delete(Car car) {
 		this.carPool.remove(car);
 	}
+	
+	public void changeColor(Car car) {
+		String color;
+		do {
+		int colorIndex = (int) Math.floor(Math.random() * (staticOptions.getColors().size() - 1));
+		 color = staticOptions.getColors().get(colorIndex + 1);
+		} while (color.equals(car.getColor()));
+
+		car.setColor(color);
+	}
 }
