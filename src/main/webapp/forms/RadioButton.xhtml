@@ -40,7 +40,7 @@
             <p>Which Java version do you use?</p>
             <b:panelGrid size="xs" columns="6">
               <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 6(Obsolete)" itemValue="6" disabled="true" />
-              <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 7" itemValue="7" />
+              <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 7" itemValue="7" required="true" />
               <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 8(LTS)" itemValue="8" />
               <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 9" itemValue="9" disabled="true"/>
               <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 10" itemValue="10" disabled="true"/>
@@ -59,11 +59,11 @@
                 <p>Which Java version do you use?</p>
                 <b:panelGrid size="xs" columns="4">
                   <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 6" itemValue="6" disabled="true" />
-                  <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 7" itemValue="7" />
+                  <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 7" itemValue="7" required="true" />
                   <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 8(LTS)" itemValue="8" />
                   <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 9" itemValue="9" disabled="true"/>
-                  <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 10" itemValue="10" disabled="true"/>
-                  <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 11(LTS)" itemValue="11" />
+                  <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 10" itemValue="10" disabled="true"/>
+                  <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 11(LTS)" itemValue="11" />
                 </b:panelGrid>
                 <b:commandButton value="submit your choice" action="&num;{radiobuttonBean.submit}" look="primary" update="@form" />
                 <b:messages />
