@@ -274,12 +274,24 @@
           class="brush: xml; toolbar: false;gutter: false; first-line: 1">
           <![CDATA[
           <h:form>
+            <b:dataTable value="&num;{carPool.carPool}"
+                         var="car"
+                         custom-options="dom: 'lfrtiBp',buttons: ['colvis','copy','csv',{extend: 'excelHtml5', exportOptions: {columns: [ 0, 1, 2, 3, 5 ]}},{extend: 'pdfHtml5', exportOptions: {columns: [ 0, 1, 2, 3, 5 ]}},'print']">
+               <b:dataTableColumn value="&num;{car.brand}" />
+               <b:dataTableColumn value="&num;{car.type}" />
+               <b:dataTableColumn value="&num;{car.color}" />
+               <b:dataTableColumn value="&num;{car.year}"  order="asc" />
+               <b:dataTableColumn value="&num;{car.price}" />
+               <b:dataTableColumn value="&num;{car.enginePower}" label="Engine Power (hp)" />
+             </b:dataTable>
            </h:form>
           ]]>
           </script>
         </b:panel>
       </f:facet>
     </b:panel>
+    
+    <p>You can also use jQuery expressions instead of the numerical column indexes.</p>
 
 
     <h2><a id="autocompletion_">Autocompletion:</a><code>h:column</code> vs. <code>b:dataTableColumn</code></h2>
