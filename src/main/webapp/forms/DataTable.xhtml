@@ -10,7 +10,8 @@
       <b:navLink href="#datatable" value="DataTable (&lt;b:dataTable /&gt;)" />
       <b:navLink href="#basic_usage" value="Basic usage" />
       <b:navLink href="#accessibility" value="Accessibility" />
-      <b:navLink href="#buttons_and_row_classes" value="Buttons and row classes" />
+      <b:navLink href="#buttons_and_row_classes" value="Export buttons and row classes" />
+      <b:navLink href="#exclude-columns-from-print" value="Excluding rows from print or Excel export" />
       <b:navLink href="#autocompletion_" value="Autocompletion:" />
       <b:navLink href="#defining_the_content_cells" value="Defining the content cells" />
       <b:navLink href="#defining_the_header" value="Defining the header" />
@@ -33,7 +34,7 @@
       <b:navLink href="#reference_section" value="Reference section" />
     </b:listLinks>
   </ui:define>
-
+  
 
   <ui:define name="content">
     <style>
@@ -152,7 +153,7 @@
     
     <h2><a id="buttons_and_row_classes">Buttons and row classes</a></h2>
     <p>There are a couple of pre-defined buttons to export the table as an Excel file, as a CSV file, as a PDF file, to copy it to the clipboard
-    ot the print it.</p>
+    or to print it.</p>
     <p>You can also add CSS classes to the rows using the attribute <code>row-style-class</code>. This attribute may contain an EL expression.
     It may also contain a comma-separated list of CSS classes. In this case, the CSS classes are cyclically assigned to the rows.
     There's a caveat: if the client reorders the rows, the order of the `row-style-classes` is not updated. You can see the effect
@@ -201,6 +202,79 @@
               <b:dataTableColumn value="&num;{car.enginePower}" label="Engine Power (hp)" />
             </b:dataTable>
           </h:form>
+          ]]>
+          </script>
+        </b:panel>
+      </f:facet>
+    </b:panel>
+    
+    <h2><a id="exclude-columns-from-print">Exclude columns from print or export</a></h2>
+    <p>Sometimes you want to exclude one or more columns from the PDF or Excel export. You can achieve this 
+    using the <code>customOptions</code> attribute. To understand the idea you have to know that the shorthand
+    attributes <code>columnVisibility</code>, <code>copy</code>, <code>csv</code>, <code>excel</code>, <code>csv</code>, 
+    and <code>print</code> add this line to the Json object initializing the datatable:</p>
+    <b:panel>
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+             dom: '<"col-sm-6"l><"col-sm-6"f>rtiBp',buttons: ['colvis','copy','csv','excel','pdf','print']"
+          ]]>
+          </script>
+    </b:panel>
+    <p>Looking at the documentation of the underlying JavaScript library, we learn that Datatables.net supports
+    excluding columns with a modified <code>buttons</code> object:</p>
+    
+    <b:panel>
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+           buttons: [
+            {
+                extend: 'copyHtml5',
+                exportOptions: {
+                    columns: [ 0, ':visible' ]
+                }
+            },
+            {
+                extend: 'excelHtml5',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            {
+                extend: 'pdfHtml5',
+                exportOptions: {
+                    columns: [ 0, 1, 2, 5 ]
+                }
+            },
+            'colvis'
+          ]]>
+          </script>
+    </b:panel>
+	<p>The next demo use this idea to exclude the price from the PDF export and from the Excel export.</p>
+    
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <h:form>
+        <b:dataTable value="#{carPool.carPool}"
+                     var="car"
+                     custom-options="dom: 'lfrtiBp',buttons: ['colvis','copy','csv',{extend: 'excelHtml5', exportOptions: {columns: [ 0, 1, 2, 3, 5 ]}},{extend: 'pdfHtml5', exportOptions: {columns: [ 0, 1, 2, 3, 5 ]}},'print']">
+          <b:dataTableColumn value="#{car.brand}" />
+          <b:dataTableColumn value="#{car.type}" />
+          <b:dataTableColumn value="#{car.color}" />
+          <b:dataTableColumn value="#{car.year}"  order="asc" />
+          <b:dataTableColumn value="#{car.price}" />
+          <b:dataTableColumn value="#{car.enginePower}" label="Engine Power (hp)" />
+        </b:dataTable>
+      </h:form>
+      <f:facet name="footer">
+        <strong>JSF markup:</strong>
+        <b:panel>
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+          <h:form>
+           </h:form>
           ]]>
           </script>
         </b:panel>
