@@ -34,11 +34,13 @@
     <p>Comboboxes give you a list of items to select from. As of Bootsfaces 1.1.0, comboboxes are not editable - they are pure drop-down menus.</p>
     <p>&lt;b:selectOneMenu&gt; makes the Bootstrap style of displaying comboboxes available to JSF programmers.</p>
     <h2><a id="basic_usage">Basic usage</a></h2>
+    <p>This example shows the two different flavors of the combobox. The second combobox is just plain Bootstrap vanilla standard.
+     The first combobox has the "select2" flavor. It looks a bit different, and more important, it allows you to filter the long list of options.</p>
 
     <b:panel title="Live preview" look="info" collapsible="false">
       <b:form horizontal="true">
         <b:formGroup>
-          <b:selectOneMenu value="#{selectOneMenuBean.brand}" colMd="2" required="true" label="Select your car's brand:" labelColMd="2"
+          <b:selectOneMenu styleClass="my-car-brand" value="#{selectOneMenuBean.brand}" colMd="2" required="true" label="Select your car's brand:" labelColMd="2"
           select2="true">
             <f:selectItem itemLabel="(Please select)" itemValue="" />
             <f:selectItem itemLabel="Fiat" itemValue="1" />
@@ -50,7 +52,7 @@
         </b:formGroup>
 
         <b:formGroup>
-          <b:selectOneMenu value="#{selectOneMenuBean.type}" colMd="2" required="true" label="Select your car's type:" labelColMd="2">
+          <b:selectOneMenu value="#{selectOneMenuBean.type}" colMd="2" required="true" label="Select your car's type:" labelColMd="2" styleClass="car-class">
             <f:selectItem itemLabel="(Please select)" itemValue="" />
             <f:selectItem itemLabel="Cinquecento" itemValue="1" />
             <f:selectItem itemLabel="Civic" itemValue="2" />
