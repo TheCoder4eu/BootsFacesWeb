@@ -130,13 +130,14 @@
 
 
         <h2><a id="using_lists_and_hashmaps">Using lists and hashmaps</a></h2>
-        <p><code>&lt;f:selectItems /&gt;</code> allows you to generate the radio buttons from a list or a map:</p>
+        <p><code>&lt;f:selectItems /&gt;</code> allows you to generate the radio buttons from a list or a map. You can
+        use the attribute <code>itemDisabled="true"</code> to disable individual items within this list.</p>
 
         <b:panel title="Live preview" look="info" collapsible="false">
           <b:form>
             <p>What's your favorite band?</p>
             <b:radiobutton value="#{radiobuttonBean.favoriteBand}">
-              <f:selectItems value="#{radiobuttonBean.bands}" />
+              <f:selectItems value="#{radiobuttonBean.bands}" var="item" itemDisabled="#{item.equals('rock')}" />
               <f:selectItem itemValue="#{null}" itemLabel="None of the above" />
             </b:radiobutton>
             <b:commandButton value="submit your choice" action="#{radiobuttonBean.submitBand}"
@@ -152,7 +153,7 @@
                   <b:form>
                     <p>What's your favorite band?</p>
                     <b:radiobutton value="&num;{radiobuttonBean.favoriteBand}">
-                      <f:selectItems value="&num;{radiobuttonBean.bands}" />
+                      <f:selectItems value="&num;{radiobuttonBean.bands}" var="item" itemDisabled="#{item.equals('rock')}" />
                       <f:selectItem itemValue="" itemLabel="None of the above" />
                     </b:radiobutton>
                     <b:commandButton value="submit your choice" action="&num;{radiobuttonBean.submitBand}"
@@ -175,7 +176,7 @@
                       getBands().put("Arch Enemy", "melodic death metal");
                       getBands().put("Blind Guardian", "speed metal");
                       getBands().put("Fields of the Nephilim", "gothic metal");
-                      getBands().put("Led Zeppelin", "rock");
+                      getBands().put("Led Zeppelin (disabled)", "rock");
                     }
                     public void submitBand() {
                       if (favoriteBand == null || favoriteBand.equals("")) {

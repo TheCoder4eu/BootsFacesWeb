@@ -43,7 +43,7 @@ public class RadiobuttonBean implements Serializable {
 		getBands().put("Arch Enemy", "melodic death metal");
 		getBands().put("Blind Guardian", "speed metal");
 		getBands().put("Fields of the Nephilim", "gothic metal");
-		getBands().put("Led Zeppelin", "rock");
+		getBands().put("Led Zeppelin  (disabled)", "rock");
 	}
 
 	public int getJavaVersion() {
