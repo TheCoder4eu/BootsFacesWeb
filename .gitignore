@@ -28,3 +28,4 @@ faces-config.NavData
 nb-configuration.xml
 .idea/
 BootsFacesWeb.iml
+/.apt_generated_tests/
