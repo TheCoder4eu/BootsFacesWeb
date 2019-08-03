@@ -55,6 +55,8 @@ public class DateTimeBean implements Serializable {
 	private boolean allowInputToggle = false;
 
 	private boolean useCurrent = true;
+	
+	private String weekDaysDisabled = null;
 
 	private String locale = Locale.getDefault().getLanguage();
 
@@ -520,6 +522,22 @@ public class DateTimeBean implements Serializable {
 			}
 		} catch (Exception e) {
 			momentJSFormatString = "(an error occurred: " + e.getClass().getSimpleName() + " " + e.getMessage() + ")";
+		}
+	}
+
+	public String getWeekDaysDisabled() {
+		return weekDaysDisabled;
+	}
+	
+	public boolean isDisableWeekend() {
+		return weekDaysDisabled != null;
+	}
+	
+	public void setDisableWeekend(boolean value) {
+		if (value) {
+			this.weekDaysDisabled = "6,0";
+		} else {
+			this.weekDaysDisabled = null;
 		}
 	}
 }

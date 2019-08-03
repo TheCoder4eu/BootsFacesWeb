@@ -38,7 +38,8 @@
                             show-date="#{dateTimeBean.showDate}"
                             show-time="#{dateTimeBean.showTime}"
                             show-icon="#{dateTimeBean.showIcon}"
-                            use-current="#{dateTimeBean.useCurrent}" />
+                            use-current="#{dateTimeBean.useCurrent}"
+                            week-days-disabled="#{dateTimeBean.weekDaysDisabled}" />
           <b:panel title="Settings" look="primary">
             <b:panelGrid columns="1" id="settings">
               <b:selectBooleanCheckbox value="#{dateTimeBean.modeInline}" caption="mode='inline' (default is 'popup')"
@@ -63,6 +64,9 @@
                                        onclick="ajax:dateTimeBean.updateSettings()"
                                        update="@form" />
               <b:selectBooleanCheckbox value="#{dateTimeBean.useCurrent}" caption="useCurrent='true' (default: true)"
+                                       onclick="ajax:dateTimeBean.updateSettings()"
+                                       update="@form" />
+              <b:selectBooleanCheckbox value="#{dateTimeBean.disableWeekend}" caption="week-days-disabled='6,0'"
                                        onclick="ajax:dateTimeBean.updateSettings()"
                                        update="@form" />
             </b:panelGrid>
