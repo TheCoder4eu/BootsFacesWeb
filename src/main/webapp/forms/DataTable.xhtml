@@ -9,6 +9,7 @@
     <b:listLinks>
       <b:navLink href="#datatable" value="DataTable (&lt;b:dataTable /&gt;)" />
       <b:navLink href="#basic_usage" value="Basic usage" />
+      <b:navLink href="#patternfly" value="Patternfly" />
       <b:navLink href="#accessibility" value="Accessibility" />
       <b:navLink href="#buttons_and_row_classes" value="Export buttons and row classes" />
       <b:navLink href="#exclude-columns-from-print" value="Excluding rows from print or Excel export" />
@@ -107,6 +108,22 @@
         </b:panel>
       </f:facet>
     </b:panel>
+
+    <h2><a id="patternfly">Using the datatable with the Patternfly theme</a></h2>
+    <p>For some reason, Patterfly sets the width of the table to a fixed value
+    based on the width of the window.
+    However, it doesn't change that value when the browser window is resized.
+    So responsive design is broken. You can fix this by adding a style attribute like so:
+    </p>
+    	<b:panel>
+          <script type="syntaxhighlighter"
+          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+          <![CDATA[
+            <b:dataTable style="width:100%">
+          ]]>
+          </script>
+    	</b:panel>
+    
     
     <h2><a id="accessibility">Accessibility <b:badge  value="since 1.4.0"/></a></h2>
     <p>Use the attribute <code>caption</code> to provide a hint what the table is used for. The most common use case are screen readers.</p>
