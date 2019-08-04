@@ -12,6 +12,7 @@
     <b:listLinks>
       <b:navLink href="#canvas" value="Canvas (&lt;b:canvas /&gt;)" />
       <b:navLink href="#basic_usage" value="Basic usage" />
+      <b:navLink href="#responsive_design" value="Responsive design" />
       <b:navLink href="#reference_section" value="Reference section" />
     </b:listLinks>
   </ui:define>
@@ -91,6 +92,49 @@
         </b:panel>
       </f:facet>
     </b:panel>
+    
+    <h2><a id="responsive_design">Responsive design</a><b:badge value="since 0.9.0" /></h2>
+    <p>You can use all the attributes controlling the responsive behaviour of <code>&lt;b:column /&gt;</code>
+    also with <code>&lt;b:icon /&gt;</code>.</p>
+
+    <b:panel title="Live preview" look="info" collapsible="false">
+      <b:row style="padding-top:5px">
+       <b:canvas style="width:100%"
+                width="1600"
+                height="900"
+                drawing="#{techRadar2019}"
+                tooltip="small-screen='two-thirds'" 
+                small-screen="two-thirds" />
+      <b:canvas style="width:100%"
+                width="1600"
+                height="900"
+                drawing="#{techRadar2019}" 
+                tooltip="small-screen='one-third'" 
+                small-screen="one-third" />
+      </b:row>
+      <f:facet name="footer">
+        <strong>JSF markup: </strong>
+        <b:panel>
+          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+          <![CDATA[
+       <b:canvas style="width:100%"
+                width="1600"
+                height="900"
+                drawing="&num;{techRadar2019}"
+                tooltip="small-screen='two-thirds'" 
+                small-screen="two-thirds" />
+       <b:canvas style="width:100%"
+                width="1600"
+                height="900"
+                drawing="&num;{techRadar2019}" 
+                tooltip="small-screen='one-third'" 
+                small-screen="one-third" />
+          ]]></script>
+        </b:panel>
+      </f:facet>
+      
+ </b:panel>
+    
 
     <br/>
     <h2><a id="reference_section">Reference section</a></h2>
