@@ -27,14 +27,84 @@
 
     <h2><a id="basic_usage">Basic usage</a></h2>
     <p>Put a short description in simple words here.</p>
-    <b:panel title="Live preview" look="info" collapsible="false">
-      <b:fullCalendar />
+   		<b:panel title="Live preview" look="info" collapsible="false">
+   		<h:form>
+		<b:selectOneMenu
+			value="#{fullCalendarBean.language}" 
+			label="Language:" select2="true"
+			onchange="ajax:fullCalendarBean.updateLanguage()"
+			update="@next">
+			<f:selectItem itemLabel="(default)" itemValue="" />
+			<f:selectItem itemValue="ar-sa" /> 
+			<f:selectItem itemValue="ar" /> 
+			<f:selectItem itemValue="ar-tn" />
+			<f:selectItem itemValue="bg" /> 
+			<f:selectItem itemValue="ca" />
+			<f:selectItem itemValue="cs" />
+			<f:selectItem itemValue="da" />
+			<f:selectItem itemValue="de-at" />
+			<f:selectItem itemValue= "de" /> 
+			<f:selectItem itemValue="el" /> 
+			<f:selectItem itemValue="en-au" />
+			<f:selectItem itemValue="en-gb" />
+			<f:selectItem itemValue="en-nz" />
+			<f:selectItem itemValue="es" />
+			<f:selectItem itemValue="eu" />
+			<f:selectItem itemValue="fa" /> 
+			<f:selectItem itemValue="fi" />
+			<f:selectItem itemValue="fr-ca" />
+			<f:selectItem itemValue="fr-ch" />
+			<f:selectItem itemValue="fr" />
+			<f:selectItem itemValue="gl" />
+			<f:selectItem itemValue="he" />
+			<f:selectItem itemValue="hi" /> 
+			<f:selectItem itemValue="hr" />
+			<f:selectItem itemValue="hu" /> 
+			<f:selectItem itemValue="id" /> 
+			<f:selectItem itemValue="is" />
+			<f:selectItem itemValue="it" />
+			<f:selectItem itemValue="ja" /> 
+			<f:selectItem itemValue="ko" />
+			<f:selectItem itemValue="lb" /> 
+			<f:selectItem itemValue="lt" /> 
+			<f:selectItem itemValue="lv" />
+			<f:selectItem itemValue="nb" />
+			<f:selectItem itemValue="nl" /> 
+			<f:selectItem itemValue="pl" />
+			<f:selectItem itemValue="pt-br" /> 
+			<f:selectItem itemValue="pt" /> 
+			<f:selectItem itemValue="ro" /> 
+			<f:selectItem itemValue="ru" /> 
+			<f:selectItem itemValue="sk" />
+			<f:selectItem itemValue="sl" />
+			<f:selectItem itemValue="sr-cyrl" />
+			<f:selectItem itemValue="sr" /> 
+			<f:selectItem itemValue="sv" /> 
+			<f:selectItem itemValue="th" />
+			<f:selectItem itemValue="tr" /> 
+			<f:selectItem itemValue="uk" /> 
+			<f:selectItem itemValue="vi" />
+			<f:selectItem itemValue="zh-cn" />
+			<f:selectItem itemValue="zh-tw" /> 
+		</b:selectOneMenu>
 
-      <f:facet name="footer">
+		<b:fullCalendar lang="#{fullCalendarBean.language}"/>
+		</h:form>
+
+		<f:facet name="footer">
         JSF markup:<br/>
         <b:panel>
           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
-          <b:fullCalendar />
+	 		<b:selectOneMenu
+				value="&num;{fullCalendarBean.language}" 
+				label="Language:" select2="true"
+				onchange="ajax:fullCalendarBean.updateLanguage()"
+				update="@next">
+				<f:selectItem itemLabel="(default)" itemValue="" />
+				<f:selectItem itemValue="ar-sa" /> 
+				// plus 50 other languages
+		    </b:selectOneMenu>
+	        <b:fullCalendar lang="&num;{fullCalendarBean.language}"/>
           ]]></script>
         </b:panel>
       </f:facet>
