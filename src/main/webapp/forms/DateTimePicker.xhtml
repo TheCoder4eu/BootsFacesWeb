@@ -151,8 +151,9 @@
 
     <b:panel title="Live preview" look="info" collapsible="false">
       <b:form>
-        <b:dateTimePicker value="#{dateTimeBean.justNow}" format="DD.MM.YYYY" label="German date format"  />
-        <b:dateTimePicker value="#{dateTimeBean.justNow}" format="MM/DD/YYYY" label="American date format"  />
+        <b:dateTimePicker locale="de" value="#{dateTimeBean.justNow}" format="DD.MM.YYYY" label="German date format"  />
+        <b:dateTimePicker locale="en" value="#{dateTimeBean.justNow}" format="MM/DD/YYYY" label="American date format"  />
+        <b:dateTimePicker locale="it" placeholder="Data di inizio" format="DD/MM/YYYY" label="Italian date format" />
       </b:form>
 
       <f:facet name="footer">
@@ -162,8 +163,9 @@
           class="brush: xml; toolbar: false;gutter: false; first-line: 1">
           <![CDATA[
           <b:form>
-            <b:dateTimePicker value="&num;{dateTimeBean.justNow}" format="DD.MM.YYYY" label="German date format"  />
-            <b:dateTimePicker value="&num;{dateTimeBean.justNow}" format="MM/DD/YYYY" label="American date format"  />
+            <b:dateTimePicker format="DD.MM.YYYY" locale="de" value="&num;{dateTimeBean.justNow}" label="German date format"  />
+            <b:dateTimePicker format="MM/DD/YYYY" locale="en" value="&num;{dateTimeBean.justNow}" label="American date format"  />
+            <b:dateTimePicker format="DD/MM/YYYY" locale="it" placeholder="Data di inizio" label="Italian date format" />
           </b:form>
           ]]>
           </script>
