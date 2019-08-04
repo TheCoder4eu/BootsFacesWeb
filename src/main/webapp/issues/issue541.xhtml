@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+    <b:container fluid="true">
+      <h:form>
+               <b:row>
+                <b:column>
+                    <ui:include src="issue541_include.xhtml">
+                        <ui:param name="beanCtrl" value="#{issue541Bean}" />
+                    </ui:include>
+                    <b:commandButton disabled="#{issue541Bean.disabled}" value="OK"></b:commandButton>
+                </b:column>
+            </b:row>
+        </h:form>
+        </b:container>
+   </h:body>
+</html>
