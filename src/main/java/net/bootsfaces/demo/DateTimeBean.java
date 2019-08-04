@@ -226,7 +226,7 @@ public class DateTimeBean implements Serializable {
 
 	private static void loadMomentSource() {
 		InputStream is = Thread.currentThread().getContextClassLoader()
-				.getResourceAsStream("META-INF/resources/bsf/js/moment.min.js");
+				.getResourceAsStream("META-INF/resources/bsf/js/moment-with-locales.min.js");
 		Reader reader = new InputStreamReader(is);
 		ScriptEngineManager manager = new ScriptEngineManager();
 		scriptEngine = manager.getEngineByName("JavaScript");
