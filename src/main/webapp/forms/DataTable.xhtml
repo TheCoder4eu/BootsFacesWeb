@@ -828,6 +828,10 @@
                          data-order="&num;{car.year}" />
       ]]></script>
     </b:panel>
+    
+    <p><b>Caveat:</b> <code>data-order</code> doesn't support every data type. However, it's guaranteed
+    to work with numbers. If you want to order your table by a <code>java.util.Date</code>,
+    convert it to a number like so: <code style="padding-right:0">#</code><code style="padding-left:0">{car.date.time}</code>.</p>
 
     <p>A similar challenge sometimes occurs with search. The table above allows you to search both for the visible age in months
     and for the (invisible) construction date. Another interesting use case might be to allow search for both American and
