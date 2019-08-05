@@ -34,6 +34,8 @@ public class SettingsBean implements Serializable {
 	private boolean checkbox2;
 	private boolean checkbox3;
 	private boolean checkbox4;
+	
+	private CharSequence sbox1;
 
 	public int getValue1() {
 		return value1;
@@ -85,5 +87,14 @@ public class SettingsBean implements Serializable {
 
 	public void setCheckbox4(boolean checkbox4) {
 		this.checkbox4 = checkbox4;
+	}
+
+	public CharSequence getSbox1() {
+		return sbox1;
+	}
+
+	public void setSbox1(CharSequence sbox1) {
+		System.out.println("sbox=" + sbox1);
+		this.sbox1 = sbox1;
 	}
 }

@@ -32,8 +32,13 @@
     <b:panel title="Live preview" look="info" collapsible="false">
       <b:form>
         <b:panelGrid columns="4">
-          <b:switch value="#{settingsBean.checkbox1}" label="switch 1" offColor="success" onColor="info"
-                    />
+          <b:switch value="#{settingsBean.sbox1}" label="sswitch 1" offColor="success" onColor="info"
+          			onchange="ajax:settingsBean.action()" update="@none"
+                    converter="StringToBooleanConverter">
+                    <!-- 
+                    <f:converter converterId="beerConverter" />
+                     -->
+          </b:switch>
           <b:switch value="#{settingsBean.checkbox2}" label="switch with tooltip"
                     tooltip="I'm the tooltip. I'll tell you what this switch is all about."  />
           <b:switch value="#{settingsBean.checkbox3}" label="switch with rtl-support!"
