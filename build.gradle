@@ -1,7 +1,8 @@
 apply plugin: 'java'
 apply plugin: 'war'
 
-//webAppDirName = 'web'
+// BootsFaces Library Version to use in the Build
+ext.BootsFacesVersion = '1.4.2-SNAPSHOT'
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
@@ -10,14 +11,6 @@ repositories {
 mavenLocal()
 mavenCentral()
 }
-
-//sourceSets {
-//    main {
-//        java {
-//            srcDir 'src/java'
-//        }
-//    }
-//}
 
 dependencies {
 providedCompile 'javax.enterprise:cdi-api:1.2'
@@ -39,7 +32,7 @@ compile files("${System.properties['java.home']}/../lib/tools.jar")
 
 compile fileTree(dir: 'bsflib', include: '*.jar') //Required for messages/utils
 
-compile "net.bootsfaces:bootsfaces:1.5.0-SNAPSHOT"
+compile "net.bootsfaces:bootsfaces:${BootsFacesVersion}" //1.4.2-SNAPSHOT"
 }
 
 war.doFirst {
@@ -86,6 +79,7 @@ war.doFirst {
                            Java Version $currentJvm<br/>
                            sourceCompatibility $sourceCompatibility<br/>
                            targetCompatibility $targetCompatibility<br/>
+                           BootsFacesVersion $BootsFacesVersion<br/>
                            Build Date  ${buildDate}<br/>
                         </b:panel>
                         <b:panel title="Libraries used in the demo" look="info">
