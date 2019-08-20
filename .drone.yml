@@ -4,3 +4,4 @@ pipeline:
     image: maven:3.6-jdk-8
     commands:
       - mvn clean package
+      
