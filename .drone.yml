@@ -1,7 +1,19 @@
-pipeline:
+kind: pipeline
+name: default
 
-  maven-build:
-    image: maven:3.6-jdk-8
-    commands:
-      - mvn clean package #-P MavenCentral
-      - ls -lisa ./target
+steps:
+- name: maven-build
+  image: maven:3.6-jdk-11
+  commands:
+    - mvn clean package #-P MavenCentral
+    - ls -lisa ./target
+
+- name: docker-publish
+  image: plugins/docker
+  settings:
+    repo: geopossachs/bootsfaces_showcase
+    tags: snapshot
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
