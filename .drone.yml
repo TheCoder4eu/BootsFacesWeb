@@ -3,5 +3,5 @@ pipeline:
   maven-build:
     image: maven:3.6-jdk-8
     commands:
-      - mvn clean package -P MavenCentral
-      
+      - mvn clean package #-P MavenCentral
+      - ls -lisa ./target
