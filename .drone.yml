@@ -13,6 +13,7 @@ steps:
   settings:
     repo: geopossachs/bootsfaces_showcase
     tags: snapshot
+    dockerfile: Dockerfile-wildfly
     username:
       from_secret: docker_username
     password:
