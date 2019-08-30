@@ -2,7 +2,7 @@ apply plugin: 'java'
 apply plugin: 'war'
 
 // BootsFaces Library Version to use in the Build
-ext.BootsFacesVersion = '1.4.2'
+ext.BootsFacesVersion = '1.5.0-SNAPSHOT'
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
@@ -32,7 +32,7 @@ compile files("${System.properties['java.home']}/../lib/tools.jar")
 
 compile fileTree(dir: 'bsflib', include: '*.jar') //Required for messages/utils
 
-compile "net.bootsfaces:bootsfaces:${BootsFacesVersion}" //1.4.2-SNAPSHOT"
+compile "net.bootsfaces:bootsfaces:${BootsFacesVersion}" //e.g. 1.4.2-SNAPSHOT"
 }
 
 war.doFirst {
