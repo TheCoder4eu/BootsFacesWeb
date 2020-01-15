@@ -87,9 +87,9 @@ public class ComponentListBean {
 	}
 	
 	public String addSlashIfNecessary(String path) {
-		if (path.length() <= 1) {
-			return path;
-		}
+//		if (path.length() <= 1) {
+//			return path;
+//		}
 		if (path.endsWith("/")) {
 			return path;
 		}
