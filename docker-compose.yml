@@ -1,0 +1,7 @@
+version: '3.3'
+
+services:
+  portainer:
+    image: geopossachs/bootsfaces_showcase:snapshot
+    restart: always
+    
