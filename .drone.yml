@@ -28,7 +28,7 @@ steps:
       from_secret: rsync_user
   settings:
     hosts: [ "showcase.bootsfaces.pecer.de" ]
-    source: docker-compose.yml
+    source: ./docker-compose.yml
     target: /srv/bootsfaces-showcase/
     secrets: [ rsync_user, rsync_key ]
     script:
