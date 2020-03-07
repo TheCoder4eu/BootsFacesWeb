@@ -5,4 +5,4 @@ services:
     image: geopossachs/bootsfaces_showcase:snapshot
     restart: always
     ports:
-      - "localhost:6080:8080"
+      - "127.0.0.1:6080:8080"
