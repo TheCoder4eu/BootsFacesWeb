@@ -2,12 +2,13 @@ kind: pipeline
 name: default
 
 steps:
+  # build the ./target/BootsFacesWeb.war
 - name: maven-build
   image: maven:3.6-jdk-11
   commands:
     - mvn clean package #-P MavenCentral
-    - ls -lisa ./target
 
+  # push an image to geopossachs/bootsfaces_showcase:snapshot
 - name: docker-publish
   image: plugins/docker
   settings:
@@ -19,6 +20,7 @@ steps:
     password:
       from_secret: docker_password
 
+  # boot the app on a docker based runtime
 - name: container-reboot
   image: drillster/drone-rsync
   environment:
