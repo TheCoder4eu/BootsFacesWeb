@@ -4,4 +4,5 @@ services:
   portainer:
     image: geopossachs/bootsfaces_showcase:snapshot
     restart: always
-    
+    ports:
+      - "localhost:6080:8080"
