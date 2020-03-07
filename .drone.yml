@@ -18,3 +18,15 @@ steps:
       from_secret: docker_username
     password:
       from_secret: docker_password
+
+- name: container-reboot
+  image: drillster/drone-rsync
+  settings:
+    hosts: [ "showcase.bootsfaces.pecer.de" ]
+    source: docker-compose.yml
+    target: /srv/bootsfaces-showcase/
+    secrets: [ rsync_user, rsync_key ]
+    script:
+      - cd /srv/bootsfaces-showcase/
+      - docker-compose pull
+      - docker-compose up -d
