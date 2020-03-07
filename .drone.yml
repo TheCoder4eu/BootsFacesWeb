@@ -21,6 +21,11 @@ steps:
 
 - name: container-reboot
   image: drillster/drone-rsync
+  environment:
+    RSYNC_KEY:
+      from_secret: rsync_key
+    RSYNC_USER:
+      from_secret: rsync_user
   settings:
     hosts: [ "showcase.bootsfaces.pecer.de" ]
     source: docker-compose.yml
