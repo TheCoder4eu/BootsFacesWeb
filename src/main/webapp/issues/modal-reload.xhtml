@@ -9,18 +9,12 @@
   <ui:define name="content">
     <style>td {padding: 8px;}</style>
 	<b:modal class="modalPseudoClass">
-		<b:form>
-	    	<b:panel>
-	        	<b:selectOneMenu >
-	               <f:selectItem itemValue="one" />
-	               <f:selectItem itemValue="two" />
-	               <f:selectItem itemValue="three" />
-	               <f:selectItem itemValue="four" />
-	               <f:selectItem itemValue="five" />
-	               <f:selectItem itemValue="six" />
-	         	 </b:selectOneMenu >
-	          	<b:commandButton value="Closed modal and reload" look="success" action="#{modalReloadBean.closeAndReload}" size="lg"/>
-	    	</b:panel>
+		<b:form enctype="multipart/form-data">
+		    <h:inputFile value="#{modalReloadBean.file}">
+		        <f:ajax listener="#{modalReloadBean.save}" render="messagesId" />
+		    </h:inputFile>
+		    <b:commandButton value="Closed modal and reload" look="success" action="#{modalReloadBean.closeAndReload}" size="lg"/>
+		    <b:messages id="messagesId" />
 	    </b:form>
 	</b:modal>
 	#{modalReloadBean.someValue}
