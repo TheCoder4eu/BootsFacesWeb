@@ -1,8 +1,6 @@
 package net.bootsfaces.issues.modalRelead;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
