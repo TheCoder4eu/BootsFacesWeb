@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:define name="content">
+    <style>td {padding: 8px;}</style>
+	<b:modal class="modalPseudoClass">
+		<b:form enctype="multipart/form-data">
+		    <h:inputFile value="#{modalReloadBean.file}">
+		        <f:ajax listener="#{modalReloadBean.save}" render="messagesId" />
+		    </h:inputFile>
+		    <b:commandButton value="Closed modal and reload" look="success" action="#{modalReloadBean.closeAndReload}" size="lg"/>
+		    <b:messages id="messagesId" />
+	    </b:form>
+	</b:modal>
+	#{modalReloadBean.someValue}
+
+	<b:button value="Show modal" look="success" onclick="$('.modalPseudoClass').modal()" size="lg"/>
+    <br/><br/><br/><br/>
+  </ui:define>
+</ui:composition>

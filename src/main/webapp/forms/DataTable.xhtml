@@ -550,6 +550,7 @@
                          selectionMode="#{dataTableSettingsBean.selectionMode}"
                          striped="#{dataTableSettingsBean.striped}"
                          paginated="#{dataTableSettingsBean.paginated}"
+                         length-change="#{dataTableSettingsBean.lengthChange}"
                          >
               <b:dataTableColumn value="#{car.brand}" />
               <b:dataTableColumn order-by="dom-text" data-type="text" searchable="#{dataTableSettingsBean.searchable}">
@@ -666,6 +667,9 @@
                                      onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                                      update="basic-usage-id" />
             <b:selectBooleanCheckbox value="#{dataTableSettingsBean.paginated}" caption="paginated='true'"
+                                     onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
+                                     update="basic-usage-id" />
+            <b:selectBooleanCheckbox value="#{dataTableSettingsBean.lengthChange}" caption="lengthChange='true'"
                                      onclick="tableFormBasicUsageIdWidget.DataTable().destroy();ajax:dataTableSettingsBean.updateSettings()"
                                      update="basic-usage-id" />
 
