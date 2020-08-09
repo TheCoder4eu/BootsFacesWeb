@@ -27,7 +27,7 @@
     also implements a new AJAX API that's a little simpler to use. Among
     other things, this includes a fairly opinionated BlockUI component.
     Our theory is you want to activate BlockUI with every AJAX request,
-    so you only have to configure it. Other than other frameworks
+    so you only have to configure it. Unlike other frameworks
     BootsFaces doesn't require you to activate BlockUI on every AJAX
     requests individually.</p>
     <p>Most likely you've already suffered from mysterious errors
@@ -72,7 +72,7 @@
     triggered by a BootsFaces component activates the waitcursor and
     prevents the user from doing further input until the request has been
     completed. This way, you get a fairly good protection against
-    accidential double-clicks.</p>
+    accidental double-clicks.</p>
     <p>If you don't want to activate BlockUI generally, you can
     control it via an EL expression. Note that this expression is read
     when the page is rendered, and it's only read on non-AJAX requests.</p>
@@ -128,7 +128,7 @@
             $.blockUI.defaults.css.borderRadius = '10px';
             $.blockUI.defaults.overlayCSS.opacity = 0.5;
             $.blockUI.defaults.message = '<div style="padding-top:1em"><b:spinner name="circle-o-notch" size="2x" /> Please hold the line </div>';
-    		</script>
+    	&lt;/script>
         <b:commandButton value="Wait 5 seconds without BlockUI"
                          onclick="ajax:blockUIBean.waitFiveSeconds()" look="danger">
           <f:param name="blockui.disabled" value="true" />
@@ -143,9 +143,9 @@
 
     <h2><a id="ajax">AJAX, mouse events and BlockUI</a></h2>
     <p>
-    If blockUI is active, every AJAX request triggers a
-    <code>mouseOutEvent</code>
-    . When the AJAX request has been processed and the BlockUI overlay
+    If blockUI is active, every AJAX request triggers
+    <code>mouseOutEvent</code> on the client. 
+    When the AJAX request has been processed and the BlockUI overlay
     pane is hidden, a
     <code>mouseOverEvent</code>
     is triggered. Keep this in mind if you need to use the mouse events.
@@ -212,16 +212,16 @@
     <code>$.blockUI.defaults</code>
     to configure BootsFaces BlockUI, as decribed <a target="#"
     href="http://malsup.com/jquery/block/#options">here.</a> For
-    instance, these lines deactivate the gray-out-effect, and show the
+    instance, the code snippet below deactivates the gray-out-effect replaces it with the
     waitcursor of BootsFaces.
     </p>
     <b:panel>
       <script type="syntaxhighlighter"
-      class="brush: javascript; toolbar: false;gutter: false; first-line: 1">
+      class="brush: html toolbar: false;gutter: false; first-line: 1">
       <![CDATA[
-      &lt;script>
-      $.blockUI.defaults.overlayCSS.opacity = 0;
-      $.blockUI.defaults.message='<h1><img src="javax.faces.resource/images/waitcursor.gif.jsf?ln=bsf" /></h1>';
+      <script>
+        $.blockUI.defaults.overlayCSS.opacity = 0;
+        $.blockUI.defaults.message='<h1><img src="javax.faces.resource/images/waitcursor.gif.jsf?ln=bsf" /></h1>';
       &lt;/script>
       ]]>
       </script>
@@ -240,7 +240,7 @@
     BootsFaces doesn't trigger BlockUI on PrimeFaces components. You'll
     have to use the
     <code>&lt;p:blockUI /&gt;</code>
-    component of PrimeFaces.
+    component of PrimeFaces if you're using both frameworks in the same project.
     </p>
 
     <script type="text/javascript">
