@@ -204,7 +204,7 @@
           </p:calendar>
 
           <p:outputLabel for="german" value="German:" />
-          <p:calendar id="german" value="#{calendarView.date5}" locale="de" navigator="true" pattern="yyyy-MMM-dd" />
+          <p:calendar id="german" value="#{calendarView.date5}" locale="de" navigator="true" pattern="dd. MMMM yyyy" />
 
           <p:outputLabel for="restricted" value="Restricted:" />
           <p:calendar id="restricted" value="#{calendarView.date6}" mindate="4/1/14" maxdate="7/1/14" />
@@ -222,7 +222,7 @@
           <p:calendar id="datetime" value="#{calendarView.date10}" pattern="MM/dd/yyyy HH:mm:ss" />
 
           <p:outputLabel for="time" value="Time:" />
-          <p:calendar id="time" value="#{calendarView.date11}" pattern="HH:mm a" timeOnly="true"  />
+          <p:calendar id="time" value="#{calendarView.date11}" pattern="HH:mm" timeOnly="true"  />
         </b:panelGrid>
         <p:commandButton value="Submit" update="msgs" actionListener="#{calendarView.click}" icon="ui-icon-check" />
 
@@ -250,7 +250,7 @@
 
             <h:outputText value="German:" />
             <h:outputText value="#{calendarView.date5}">
-              <f:convertDateTime pattern="MM/dd/yyyy" />
+              <f:convertDateTime pattern="dd.MM.yyyy" />
             </h:outputText>
 
             <h:outputText value="Restricted:" />
@@ -309,7 +309,7 @@
             </p:calendar>
 
             <p:outputLabel for="german" value="German:" />
-            <p:calendar id="german" value="&num;{calendarView.date5}" locale="de" navigator="true" pattern="yyyy-MMM-dd" />
+            <p:calendar id="german" value="&num;{calendarView.date5}" locale="de" navigator="true" pattern="dd. MMMM yyyy" />
 
             <p:outputLabel for="restricted" value="Restricted:" />
             <p:calendar id="restricted" value=" #{calendarView.date6}" mindate="4/1/14" maxdate="7/1/14" />
@@ -327,7 +327,7 @@
             <p:calendar id="datetime" value="&num;{calendarView.date10}" pattern="MM/dd/yyyy HH:mm:ss" />
 
             <p:outputLabel for="time" value="Time:" />
-            <p:calendar id="time" value=" #{calendarView.date11}" pattern="HH:mm a" timeOnly="true"  />
+            <p:calendar id="time" value=" #{calendarView.date11}" pattern="HH:mm" timeOnly="true"  />
           </b:panelGrid>
 
           <p:commandButton value="Submit" update="msgs" actionListener="&num;{calendarView.click}" icon="ui-icon-check" />
@@ -359,7 +359,7 @@
 
               <h:outputText value="German:" />
               <h:outputText value="&num;{calendarView.date5}">
-                <f:convertDateTime pattern="MM/dd/yyyy" />
+                <f:convertDateTime pattern="dd.MM.yyyy" />
               </h:outputText>
 
               <h:outputText value="Restricted:" />
@@ -403,5 +403,34 @@
     SyntaxHighlighter.all();
     </script>
     <br/><br/><br/><br/>
+    
+    <script type="text/javascript">    
+    PrimeFaces.locales ['de'] = {
+        closeText: 'Schließen',
+        prevText: 'Zurück',
+        nextText: 'Weiter',
+        monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember' ],
+        monthNamesShort: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez' ],
+        dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+        dayNamesShort: ['Son', 'Mon', 'Die', 'Mit', 'Don', 'Fre', 'Sam'],
+        dayNamesMin: ['S', 'M', 'D', 'M ', 'D', 'F ', 'S'],
+        weekHeader: 'Woche',
+        firstDay: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix:'',
+        timeOnlyTitle: 'Nur Zeit',
+        timeText: 'Zeit',
+        hourText: 'Stunde',
+        minuteText: 'Minute',
+        secondText: 'Sekunde',
+        currentText: 'Aktuelles Datum',
+        ampm: false,
+        month: 'Monat',
+        week: 'Woche',
+        day: 'Tag',
+        allDayText: 'Ganzer Tag'
+    };
+    </script>
   </ui:define>
 </ui:composition>
