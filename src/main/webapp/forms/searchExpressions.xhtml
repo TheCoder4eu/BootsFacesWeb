@@ -145,7 +145,7 @@
           <p:outputLabel for="@next" value="Enter a number between 1 and 10:"/>
           <b:inputText value="#{imageGallery.oneToTen}" onkeyup="ajax:imageGallery.validateNumber()" update="@previous @next"
                        id="oneToTenId" render-label="false"/>
-          <b:message for="@previous"/>
+          <b:message for="@previous" show-summary="false"/>
           Also enter other numbers or texts to see the error messages.
         </b:panelGrid>
       </h:form>
@@ -160,7 +160,7 @@
                 <p:outputLabel for="@next" value="Enter a number between 1 and 10"/>
                 <b:inputText value="#{imageGallery.oneToTen}" onkeyup="ajax:imageGallery.validateNumber()" update="@previous @next"
                              id="oneToTenId"/>
-                <b:message for="@previous"/>
+                <b:message for="@previous" show-summary="false"/>
               </b:panelGrid>
               ]]></script>
             </b:panel>
@@ -210,10 +210,10 @@
       <h:form id="oneToTenFormId2">
         <b:panelGrid colSpans="2,2,2,6">
           <b:selectBooleanCheckbox value="#{imageGallery.showNumber}" onclick="ajax:imageGallery.validateNumber()"
-                                   update="@after" caption="Show number"/>
+                                   update="@after" caption="Show number" immediate="true"/>
           <p:outputLabel for="@next" value="Enter a number between 1 and 10" styleClass="#{imageGallery.showNumber?'':'hidden'}"/>
           <b:inputText value="#{imageGallery.oneToTen}" onkeyup="ajax:imageGallery.validateNumber()" update="@previous @next"
-                       id="oneToTenId" styleClass="#{imageGallery.showNumber?'':'hidden'}"/>
+                       id="oneToTenId" styleClass="#{imageGallery.showNumber?'':'hidden'}" render-label="false" />
           <b:message for="@previous" styleClass="#{imageGallery.showNumber?'':'hidden'}"/>
         </b:panelGrid>
       </h:form>
@@ -224,10 +224,10 @@
           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
           <![CDATA[
           <b:selectBooleanCheckbox value="#{imageGallery.showNumber}" onclick="ajax:imageGallery.validateNumber()"
-                                   update="@after" caption="Show number"/>
+                                   update="@after" caption="Show number" immediate="true" />
           <p:outputLabel for="@next" value="Enter a number between 1 and 10" styleClass="#{imageGallery.showNumber?'':'hidden'}"/>
           <b:inputText value="#{imageGallery.oneToTen}" onkeyup="ajax:imageGallery.validateNumber()" update="@previous @next"
-                       id="oneToTenId" styleClass="#{imageGallery.showNumber?'':'hidden'}"/>
+                       id="oneToTenId" styleClass="#{imageGallery.showNumber?'':'hidden'}" render-label="false" />
           <b:message for="@previous" styleClass="#{imageGallery.showNumber?'':'hidden'}"/>
           ]]></script>
         </b:panel>

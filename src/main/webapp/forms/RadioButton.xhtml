@@ -44,6 +44,7 @@
               <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 9" itemValue="9" disabled="true"/>
               <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 10" itemValue="10" disabled="true"/>
               <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 11(LTS)" itemValue="11" />
+              <b:radiobutton value="#{radiobuttonBean.javaVersion}" itemLabel="Java 14" itemValue="14" />
             </b:panelGrid>
             <b:commandButton value="submit your choice" action="#{radiobuttonBean.submit}" look="primary" update="@form" />
             <b:messages />
@@ -62,6 +63,7 @@
                   <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 9" itemValue="9" disabled="true"/>
                   <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 10" itemValue="10" disabled="true"/>
                   <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 11(LTS)" itemValue="11" />
+                  <b:radiobutton value="&num;{radiobuttonBean.javaVersion}" itemLabel="Java 14" itemValue="14" />
                 </b:panelGrid>
                 <b:commandButton value="submit your choice" action="&num;{radiobuttonBean.submit}" look="primary" update="@form" />
                 <b:messages />
@@ -250,7 +252,7 @@
         <h2><a id="reference_section">Reference section</a></h2>
         <ui:include src="RadiobuttonAttributes.xhtml" />
         <b:panel look="info">
-          <f:facet name="heading">
+          <f:facet name="heading" rendered="false">
             <b>Skinning</b>
           </f:facet>
           <ul>

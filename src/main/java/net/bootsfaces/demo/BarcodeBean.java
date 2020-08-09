@@ -31,8 +31,8 @@ import javax.faces.view.ViewScoped;
 public class BarcodeBean implements Serializable {
 	private static final long serialVersionUID = -6810958868318611791L;
 	private String code39 = "1234567890128";
-	private String protocol = "http://";
-	private String url = "angularfaces.net";
+	private String protocol = "https://";
+	private String url = "pdfviewer.net";
 	private String url2 = "http://www.bootsfaces.net";
 	private String emptyText="";
 	private String nonEmptyText="Hello World";

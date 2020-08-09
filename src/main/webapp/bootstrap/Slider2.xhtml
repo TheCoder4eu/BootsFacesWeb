@@ -67,7 +67,39 @@
     </h:form>
     <h2><a id="options_and_examples">Options and Examples</a></h2>
     <h4>Horizontal sliders width</h4>
-    <p>You can use the <code>span</code> attribute to control the width, in terms of Bootstrap's grid columns:</p>
+    <p>By default, the slider is 210 pixels wide. You can use the <code>span</code> attribute to control the width, in terms of Bootstrap's grid columns,
+    if you override this setting with a CSS rule:</p>
+    <b:panel look="info">
+      <f:facet name="heading"><b>EXAMPLE - <span class="glyphicon glyphicon-time"></span> Time slider</b></f:facet>
+ 
+	    <style>
+	        .slider.slider-horizontal{width:97%}
+	    </style>
+	    <b:row>
+	      <b:column>
+	        <b:slider2 mode="basic" label="Full width(12 columns default):" />
+	      </b:column>
+	    </b:row>
+	    <b:row>
+	      <b:column>
+	        <b:slider2 mode="basic" span="6" label="Slider (span=6):" />
+	      </b:column>
+	    </b:row>
+	    <b:row>
+	      <b:column>
+	        <b:slider2 mode="basic" span="4" label="Slider (span=4):" />
+	      </b:column>
+	    </b:row>
+       <f:facet name="footer">
+     <strong>Markup:</strong><br/>
+
+     <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+     <![CDATA[
+    <style>
+        .slider.slider-horizontal {
+           width: 97%;
+        }
+    </style>
     <b:row>
       <b:column>
         <b:slider2 mode="basic" label="Full width(12 columns default):" />
@@ -83,9 +115,13 @@
         <b:slider2 mode="basic" span="4" label="Slider (span=4):" />
       </b:column>
     </b:row>
-    <p>If you omit the <code>span</code> attribute, the component will take the full width of the parent container.</p>
+
+          ]]></script>
+        </f:facet>
+      </b:panel>
+    
     <br/>
-    <p>You can use more than one slider to get input for complex values, like the Time:</p>
+    <p>You can use more than one slider to get input for complex values, like the time:</p>
     <h:form id="fslider">
       <b:panel look="info">
       <f:facet name="heading"><b>EXAMPLE - <span class="glyphicon glyphicon-time"></span> Time slider</b></f:facet>
