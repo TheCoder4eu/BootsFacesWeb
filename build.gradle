@@ -2,7 +2,7 @@ apply plugin: 'java'
 apply plugin: 'war'
 
 // BootsFaces Library Version to use in the Build
-ext.BootsFacesVersion = '1.5.0'
+ext.BootsFacesVersion = '1.6.0-SNAPSHOT'
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
