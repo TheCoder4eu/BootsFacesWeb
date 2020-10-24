@@ -8,11 +8,14 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletContext;
 
 public class ComponentList {
+    
+    static final Logger log = Logger.getLogger(ComponentList.class.getName());
 
     static Map<String, String> docFiles = new HashMap<>();
 
@@ -39,8 +42,10 @@ public class ComponentList {
         });
         for (File file : files) {
             if (file.isDirectory()) {
+                // go into the folder
                 scanFolder(file, charactersToIgnore);
             } else if (file.getName().endsWith(".xhtml")) {
+                // index only .xhtml files which name '...Attributes'
                 if (!file.getName().endsWith("Attributes.xhtml")) {
                     readFile(file.getAbsolutePath(), charactersToIgnore);
                 }
@@ -48,7 +53,7 @@ public class ComponentList {
         }
     }
 
-    public static void readFile(String filename, int charactersToIgnore) {
+    private static void readFile(String filename, int charactersToIgnore) {
         BufferedReader br = null;
         FileReader fr = null;
 
@@ -71,6 +76,7 @@ public class ComponentList {
 
                         String url = filename.substring(charactersToIgnore, filename.length());
                         url = url.replace("\\", "/").replace(".xhtml", ".jsf");
+                        url = url.startsWith("/") ? url.substring(1) : url;
                         String key = "<" + tag + ">";
                         if (docFiles.containsKey(key)) {
                             key = key + " (2)";
