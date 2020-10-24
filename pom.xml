@@ -6,7 +6,7 @@
     <artifactId>BootsFacesWeb</artifactId>
     <version>1.5.0-SNAPSHOT</version>
     <name>BootsFacesWeb</name>
-
+    
     <packaging>war</packaging>
     <description>Documentation page of BootsFaces</description>
     <url>http://www.bootsfaces.net</url>
@@ -42,8 +42,7 @@
         <maven.compiler.testSource>1.8</maven.compiler.testSource>
         <maven.compiler.testTarget>1.8</maven.compiler.testTarget>
     </properties>
-    <dependencies>
-        
+    <dependencies>        
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
@@ -74,95 +73,14 @@
             <artifactId>primefaces</artifactId>
             <version>8.0</version>
         </dependency>
-
-        
-        <!--        <dependency>
-            <groupId>org.apache.myfaces.core</groupId>
-            <artifactId>myfaces-impl</artifactId>
-            <version>2.3.4</version>
-            <scope>provided</scope>
-        </dependency>-->
-        <!-- https://mvnrepository.com/artifact/org.apache.myfaces.core/myfaces-api -->
-        <!--        <dependency>
-            <groupId>org.apache.myfaces.core</groupId>
-            <artifactId>myfaces-api</artifactId>
-            <version>2.3.4</version>
-            <scope>provided</scope>
-        </dependency>-->
-        <!--        <dependency>
-            <groupId>javax.el</groupId>
-            <artifactId>javax.el-api</artifactId>
-            <version>3.0.1-b06</version>
-            <scope>provided</scope>
-        </dependency>-->
-        <!--        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>6.0.13.Final</version>
-        </dependency>-->
-        <!--        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>2.0.1.Final</version>
-        </dependency>-->
-
-        <!--        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.1</version>
-            <scope>provided</scope>
-        </dependency>-->
-
-        <!--        <dependency>
-            <groupId>net.sf.barcode4j</groupId>
-            <artifactId>barcode4j-light</artifactId>
-            <version>2.0</version>
-        </dependency>-->
-        <!--        <dependency>
-            <groupId>net.glxn</groupId>
-            <artifactId>qrgen</artifactId>
-            <version>1.4</version>
-        </dependency>-->
-        <!--        <dependency>
-            <groupId>com.google.zxing</groupId>
-            <artifactId>core</artifactId>
-            <version>3.4.0</version>
-        </dependency>-->
-        <!--        <dependency>
-            <groupId>com.google.zxing</groupId>
-            <artifactId>javase</artifactId>
-            <version>3.4.0</version>
-        </dependency>-->
-    
+      
     </dependencies>
-    <profiles>
-        <!--        <profile>
-            <id>JavaEE8</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <dependencies>
-                <dependency>
-                    <groupId>javax</groupId>
-                    <artifactId>javaee-api</artifactId>
-                    <version>7.0</version>
-                    <scope>provided</scope>
-                </dependency>
-            </dependencies>
-        </profile>-->
+    <profiles>       
         <profile>
             <id>MavenCentral</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
-            </activation>
-            <dependencies>
-                <dependency>
-                    <groupId>javax</groupId>
-                    <artifactId>javaee-api</artifactId>
-                    <version>8.0.1</version>
-                    <scope>provided</scope>
-                </dependency>
-            </dependencies>
+            </activation>      
             <build>
                 <plugins>
                     <plugin>

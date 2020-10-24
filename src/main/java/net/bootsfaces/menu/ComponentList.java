@@ -14,7 +14,7 @@ import javax.faces.context.FacesContext;
 import javax.servlet.ServletContext;
 
 public class ComponentList {
-    
+
     static final Logger log = Logger.getLogger(ComponentList.class.getName());
 
     static Map<String, String> docFiles = new HashMap<>();
@@ -32,12 +32,12 @@ public class ComponentList {
         }
     }
 
-    public static void scanFolder(File folder, int charactersToIgnore) {
+    private static void scanFolder(File folder, int charactersToIgnore) {
         File[] files = folder.listFiles();
         Arrays.sort(files, new Comparator<File>() {
             @Override
             public int compare(File a, File b) {
-                return a.getName().replaceAll("s.xhtml", ".xhtml").compareTo(b.getName().replaceAll("s.xhtml", ".xhtml"));
+                return (a.getName().replaceAll("s.xhtml", ".xhtml")).compareTo(b.getName().replaceAll("s.xhtml", ".xhtml"));
             }
         });
         for (File file : files) {
@@ -45,7 +45,7 @@ public class ComponentList {
                 // go into the folder
                 scanFolder(file, charactersToIgnore);
             } else if (file.getName().endsWith(".xhtml")) {
-                // index only .xhtml files which name '...Attributes'
+                // read only .xhtml files which ???
                 if (!file.getName().endsWith("Attributes.xhtml")) {
                     readFile(file.getAbsolutePath(), charactersToIgnore);
                 }
