@@ -7,40 +7,33 @@ package net.bootsfaces.issues.issue918;
 
 import java.util.List;
 
-public class HazardType_
-{
+public class HazardType_ {
 
     private String code;
     private String text;
     private List<HazardOrigin_> hazardOrigins;
 
-    public String getCode()
-    {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(String code)
-    {
+    public void setCode(String code) {
         this.code = code;
     }
 
-    public String getText()
-    {
+    public String getText() {
         return text;
     }
 
-    public void setText(String text)
-    {
+    public void setText(String text) {
         this.text = text;
     }
 
-    public List<HazardOrigin_> getHazardOrigins()
-    {
+    public List<HazardOrigin_> getHazardOrigins() {
         return hazardOrigins;
     }
 
-    public void setHazardOrigins(List<HazardOrigin_> hazardOrigins)
-    {
+    public void setHazardOrigins(List<HazardOrigin_> hazardOrigins) {
         this.hazardOrigins = hazardOrigins;
     }
 

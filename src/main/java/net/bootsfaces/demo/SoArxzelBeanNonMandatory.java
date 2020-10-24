@@ -17,35 +17,35 @@
 package net.bootsfaces.demo;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.view.ViewScoped;
 
-import net.bootsfaces.component.messages.Messages;
 import net.bootsfaces.utils.FacesMessages;
 
 /**
- * This bean is used by the reproducer of  https://stackoverflow.com/questions/51831950/fvalidateregex-for-not-required-inputtext-its-possible.
+ * This bean is used by the reproducer of
+ * https://stackoverflow.com/questions/51831950/fvalidateregex-for-not-required-inputtext-its-possible.
+ *
  * @author Stephan Rauh, http://www.beyondjava.net
  */
 @ViewScoped
 @ManagedBean
 public class SoArxzelBeanNonMandatory implements Serializable {
-	private static final long serialVersionUID = -6810958868318611791L;
-	private String text="";
-	
-	public String getText() {
-		return text;
-	}
 
-	public void setText(String text) {
-		this.text = text;
-	}
+    private static final long serialVersionUID = -6810958868318611791L;
+    private String text = "";
 
-	public void action() {
-		System.out.println("Action called!");
-		FacesMessages.info("Código enviado: " + text);
-	}
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public void action() {
+        System.out.println("Action called!");
+        FacesMessages.info("Código enviado: " + text);
+    }
 }

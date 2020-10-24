@@ -1,4 +1,5 @@
 package issue908;
+
 import java.io.Serializable;
 
 import javax.faces.component.UIComponent;
@@ -8,9 +9,10 @@ import javax.faces.convert.FacesConverter;
 
 @FacesConverter(value = "cartaportesFletConv")
 public class CartaportesFletConv implements Converter, Serializable {
-	private static final long serialVersionUID = 1L;
 
-	@Override
+    private static final long serialVersionUID = 1L;
+
+    @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
         if (value == null) {
             return null;

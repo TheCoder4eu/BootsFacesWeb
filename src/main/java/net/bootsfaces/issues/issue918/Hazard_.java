@@ -5,29 +5,24 @@
  */
 package net.bootsfaces.issues.issue918;
 
-public class Hazard_
-{
+public class Hazard_ {
 
     private HazardType_ type;
     private HazardOrigin_ origin;
 
-    public HazardOrigin_ getOrigin()
-    {
+    public HazardOrigin_ getOrigin() {
         return origin;
     }
 
-    public void setOrigin(HazardOrigin_ origin)
-    {
+    public void setOrigin(HazardOrigin_ origin) {
         this.origin = origin;
     }
 
-    public HazardType_ getType()
-    {
+    public HazardType_ getType() {
         return type;
     }
 
-    public void setType(HazardType_ type)
-    {
+    public void setType(HazardType_ type) {
         this.type = type;
     }
 

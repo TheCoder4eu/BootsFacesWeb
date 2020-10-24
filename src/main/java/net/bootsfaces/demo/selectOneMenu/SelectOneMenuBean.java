@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package net.bootsfaces.demo.selectOneMenu;
 
 import java.io.Serializable;
@@ -27,89 +26,92 @@ import javax.validation.constraints.NotNull;
 
 import net.bootsfaces.utils.FacesMessages;
 
-/** A simple bean for demo purposes. */
+/**
+ * A simple bean for demo purposes.
+ */
 @RequestScoped
 @ManagedBean
 public class SelectOneMenuBean implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	private String brand=null;
+    private static final long serialVersionUID = 1L;
 
-	private String type="2";
+    private String brand = null;
 
-	private String color;
+    private String type = "2";
 
-	@NotNull
-	@Min(500)
-	@Max(50000)
-	private int price;
+    private String color;
 
-	@NotNull
-	@Min(2)
-	@Max(999)
-	private int enginePower;
-	
-	private String address;
+    @NotNull
+    @Min(500)
+    @Max(50000)
+    private int price;
 
-	private boolean iAgreeToTheTermsAndConditions=false;
+    @NotNull
+    @Min(2)
+    @Max(999)
+    private int enginePower;
 
-	public String getColor() {
-		return color;
-	}
+    private String address;
 
-	public void setColor(String color) {
-		this.color = color;
-	}
+    private boolean iAgreeToTheTermsAndConditions = false;
 
-	public int getPrice() {
-		return price;
-	}
+    public String getColor() {
+        return color;
+    }
 
-	public void setPrice(int price) {
-		this.price = price;
-	}
+    public void setColor(String color) {
+        this.color = color;
+    }
 
-	public int getEnginePower() {
-		return enginePower;
-	}
+    public int getPrice() {
+        return price;
+    }
 
-	public void setEnginePower(int enginePower) {
-		this.enginePower = enginePower;
-	}
+    public void setPrice(int price) {
+        this.price = price;
+    }
 
-	public String getBrand() {
-		return brand;
-	}
+    public int getEnginePower() {
+        return enginePower;
+    }
 
-	public void setBrand(String brand) {
-		this.brand = brand;
-	}
+    public void setEnginePower(int enginePower) {
+        this.enginePower = enginePower;
+    }
 
-	public String getType() {
-		return type;
-	}
+    public String getBrand() {
+        return brand;
+    }
 
-	public void setType(String type) {
-		this.type = type;
-	}
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
 
-	public boolean isiAgreeToTheTermsAndConditions() {
-		return iAgreeToTheTermsAndConditions;
-	}
+    public String getType() {
+        return type;
+    }
 
-	public void setiAgreeToTheTermsAndConditions(boolean iAgreeToTheTermsAndConditions) {
-		this.iAgreeToTheTermsAndConditions = iAgreeToTheTermsAndConditions;
-	}
+    public void setType(String type) {
+        this.type = type;
+    }
 
-	public void onChange() {
-		FacesMessages.info("on change has been called");
-	}
+    public boolean isiAgreeToTheTermsAndConditions() {
+        return iAgreeToTheTermsAndConditions;
+    }
 
-	public String getAddress() {
-		return address;
-	}
+    public void setiAgreeToTheTermsAndConditions(boolean iAgreeToTheTermsAndConditions) {
+        this.iAgreeToTheTermsAndConditions = iAgreeToTheTermsAndConditions;
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public void onChange() {
+        FacesMessages.info("on change has been called");
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 }

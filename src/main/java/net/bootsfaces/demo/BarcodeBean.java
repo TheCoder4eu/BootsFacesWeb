@@ -24,97 +24,99 @@ import javax.faces.view.ViewScoped;
 
 /**
  * This bean is used by the PrimeFaces barcode demo.
+ *
  * @author Stephan Rauh, http://www.beyondjava.net
  */
 @ViewScoped
 @ManagedBean
 public class BarcodeBean implements Serializable {
-	private static final long serialVersionUID = -6810958868318611791L;
-	private String code39 = "1234567890128";
-	private String protocol = "https://";
-	private String url = "pdfviewer.net";
-	private String url2 = "http://www.bootsfaces.net";
-	private String emptyText="";
-	private String nonEmptyText="Hello World";
-	private String emptyTextCapital="";
-	private String nonEmptyTextCapital=nonEmptyText.toUpperCase();
-	
-	public void capitalizeURL(AjaxBehaviorEvent event) {
-	    url = url.toUpperCase();
-	    setEmptyTextCapital(emptyText==null?"":emptyText.toUpperCase());
-	    setNonEmptyTextCapital(nonEmptyText==null?"":nonEmptyText.toUpperCase());
-	}
-	
-	public void doNothing() {
-		// this method does nothing, but it's required by the unified AJAX API of BootsFaces
-	}
 
-	public String getUrl() {
-		return url;
-	}
+    private static final long serialVersionUID = -6810958868318611791L;
+    private String code39 = "1234567890128";
+    private String protocol = "https://";
+    private String url = "pdfviewer.net";
+    private String url2 = "http://www.bootsfaces.net";
+    private String emptyText = "";
+    private String nonEmptyText = "Hello World";
+    private String emptyTextCapital = "";
+    private String nonEmptyTextCapital = nonEmptyText.toUpperCase();
 
-	public void setUrl(String url) {
-		this.url = url;
-	}
+    public void capitalizeURL(AjaxBehaviorEvent event) {
+        url = url.toUpperCase();
+        setEmptyTextCapital(emptyText == null ? "" : emptyText.toUpperCase());
+        setNonEmptyTextCapital(nonEmptyText == null ? "" : nonEmptyText.toUpperCase());
+    }
 
-	public String getProtocol() {
-		return protocol;
-	}
+    public void doNothing() {
+        // this method does nothing, but it's required by the unified AJAX API of BootsFaces
+    }
 
-	public void setProtocol(String protocol) {
-		this.protocol = protocol;
-	}
+    public String getUrl() {
+        return url;
+    }
 
-	public String getCode39() {
-		return code39;
-	}
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
-	public void setCode39(String code39) {
-		this.code39 = code39;
-	}
+    public String getProtocol() {
+        return protocol;
+    }
 
-	public String getCompleteURL() {
-		return protocol + "www." + url;
-	}
+    public void setProtocol(String protocol) {
+        this.protocol = protocol;
+    }
 
-	public String getUrl2() {
-		return url2;
-	}
+    public String getCode39() {
+        return code39;
+    }
 
-	public void setUrl2(String url2) {
-		this.url2 = url2;
-	}
+    public void setCode39(String code39) {
+        this.code39 = code39;
+    }
 
-	public String getEmptyText() {
-		return emptyText;
-	}
+    public String getCompleteURL() {
+        return protocol + "www." + url;
+    }
 
-	public void setEmptyText(String emptyText) {
-		this.emptyText = emptyText;
-	}
+    public String getUrl2() {
+        return url2;
+    }
 
-	public String getEmptyTextCapital() {
-		return emptyTextCapital;
-	}
+    public void setUrl2(String url2) {
+        this.url2 = url2;
+    }
 
-	public void setEmptyTextCapital(String emptyTextCapital) {
-		this.emptyTextCapital = emptyTextCapital;
-	}
+    public String getEmptyText() {
+        return emptyText;
+    }
 
-	public String getNonEmptyText() {
-		return nonEmptyText;
-	}
+    public void setEmptyText(String emptyText) {
+        this.emptyText = emptyText;
+    }
 
-	public void setNonEmptyText(String nonEmptyText) {
-		this.nonEmptyText = nonEmptyText;
-	}
+    public String getEmptyTextCapital() {
+        return emptyTextCapital;
+    }
 
-	public String getNonEmptyTextCapital() {
-		return nonEmptyTextCapital;
-	}
+    public void setEmptyTextCapital(String emptyTextCapital) {
+        this.emptyTextCapital = emptyTextCapital;
+    }
 
-	public void setNonEmptyTextCapital(String nonEmptyTextCapital) {
-		this.nonEmptyTextCapital = nonEmptyTextCapital;
-	}
+    public String getNonEmptyText() {
+        return nonEmptyText;
+    }
+
+    public void setNonEmptyText(String nonEmptyText) {
+        this.nonEmptyText = nonEmptyText;
+    }
+
+    public String getNonEmptyTextCapital() {
+        return nonEmptyTextCapital;
+    }
+
+    public void setNonEmptyTextCapital(String nonEmptyTextCapital) {
+        this.nonEmptyTextCapital = nonEmptyTextCapital;
+    }
 
 }

@@ -8,8 +8,8 @@ import javax.faces.bean.ViewScoped;
 
 @ManagedBean
 @ViewScoped
-public class Issue918 implements Serializable
-{
+public class Issue918 implements Serializable {
+
     Domains domains = new Domains();
 
     private List<Hazard_> hazards = new ArrayList<>();
@@ -18,14 +18,11 @@ public class Issue918 implements Serializable
     HazardType_ lHazardType2 = new HazardType_();
     HazardType_ lHazardType3 = new HazardType_();
 
-    public Issue918()
-    {
-    	initialise();
+    public Issue918() {
+        initialise();
     }
 
-    
-    private void initialise()
-    {
+    private void initialise() {
         lHazardType1.setCode("type1");
         lHazardType1.setText("type1");
         lHazardType1.setHazardOrigins(domains.getHazardOrigins());
@@ -48,18 +45,15 @@ public class Issue918 implements Serializable
 
     }
 
-    public List<Hazard_> getHazards()
-    {
+    public List<Hazard_> getHazards() {
         return hazards;
     }
 
-    public void setHazards(List<Hazard_> hazards)
-    {
+    public void setHazards(List<Hazard_> hazards) {
         this.hazards = hazards;
     }
 
-    public void addNewHazard()
-    {
+    public void addNewHazard() {
         Hazard_ lHazard = new Hazard_();
         lHazard.setType(lHazardType1);
         hazards.add(lHazard);

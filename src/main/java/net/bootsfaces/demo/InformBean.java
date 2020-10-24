@@ -3,7 +3,6 @@ package net.bootsfaces.demo;
 /*
  * A Bean Used for Demo purposes
  */
-
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
@@ -16,8 +15,9 @@ import javax.faces.bean.ViewScoped;
 @ManagedBean
 @ViewScoped
 public class InformBean implements Serializable {
-	private static final long serialVersionUID = 3776366707374123185L;
-	private String firstname;
+
+    private static final long serialVersionUID = 3776366707374123185L;
+    private String firstname;
     private String familyname;
 
     public String getFirstname() {
@@ -35,7 +35,7 @@ public class InformBean implements Serializable {
     public void setFamilyname(String familyname) {
         this.familyname = familyname;
     }
-    
+
     /**
      * Creates a new instance of informBean
      */

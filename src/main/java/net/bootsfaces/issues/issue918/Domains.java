@@ -8,17 +8,15 @@ package net.bootsfaces.issues.issue918;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Domains
-{
-	public Domains() {
-		fillDomains();
-	}
+public class Domains {
+
+    public Domains() {
+        fillDomains();
+    }
 
     private List<HazardOrigin_> lHazardOrigins = new ArrayList<>();
 
- 
-    private void fillDomains()
-    {
+    private void fillDomains() {
         HazardOrigin_ lHazardOrigin1 = new HazardOrigin_();
         lHazardOrigin1.setCode("origin1");
         lHazardOrigin1.setText("origin1");
@@ -35,8 +33,7 @@ public class Domains
 
     }
 
-    public List<HazardOrigin_> getHazardOrigins()
-    {
+    public List<HazardOrigin_> getHazardOrigins() {
         return lHazardOrigins;
     }
 }

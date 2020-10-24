@@ -1,4 +1,5 @@
 package issue908;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,37 +11,38 @@ import javax.faces.model.SelectItem;
 @ManagedBean
 @ViewScoped
 public class FletesController implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	private List<SelectItem> tipos;
+    private static final long serialVersionUID = 1L;
 
-	private SelectItem selectedFlete = new SelectItem("02", "Steel");
+    private List<SelectItem> tipos;
 
-	public FletesController() {
-		tipos = new ArrayList<>();
-		getTipos().add(new SelectItem("01", "Wood"));
-		getTipos().add(new SelectItem("02", "Steel"));
-		getTipos().add(new SelectItem("03", "Plastic"));
-	}
+    private SelectItem selectedFlete = new SelectItem("02", "Steel");
 
-	// Listener in b:dataTable commandButton
-	public void onEdit(SelectItem flete) {
-       setSelectedFlete(new SelectItem("03", "Plastic"));
+    public FletesController() {
+        tipos = new ArrayList<>();
+        getTipos().add(new SelectItem("01", "Wood"));
+        getTipos().add(new SelectItem("02", "Steel"));
+        getTipos().add(new SelectItem("03", "Plastic"));
     }
 
-	public SelectItem getSelectedFlete() {
-		return selectedFlete;
-	}
+    // Listener in b:dataTable commandButton
+    public void onEdit(SelectItem flete) {
+        setSelectedFlete(new SelectItem("03", "Plastic"));
+    }
 
-	public void setSelectedFlete(SelectItem selectedFlete) {
-		this.selectedFlete = selectedFlete;
-	}
+    public SelectItem getSelectedFlete() {
+        return selectedFlete;
+    }
 
-	public List<SelectItem> getTipos() {
-		return tipos;
-	}
+    public void setSelectedFlete(SelectItem selectedFlete) {
+        this.selectedFlete = selectedFlete;
+    }
 
-	public void setTipos(List<SelectItem> tipos) {
-		this.tipos = tipos;
-	}
+    public List<SelectItem> getTipos() {
+        return tipos;
+    }
+
+    public void setTipos(List<SelectItem> tipos) {
+        this.tipos = tipos;
+    }
 }

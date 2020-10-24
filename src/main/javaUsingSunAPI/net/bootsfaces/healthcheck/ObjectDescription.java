@@ -1,23 +1,24 @@
 package net.bootsfaces.healthcheck;
 
 public class ObjectDescription {
-	private String name;
-	
-	private long count;
 
-	public long getCount() {
-		return count;
-	}
+    private String name;
 
-	public void setCount(long count) {
-		this.count = count;
-	}
+    private long count;
 
-	public String getName() {
-		return name;
-	}
+    public long getCount() {
+        return count;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setCount(long count) {
+        this.count = count;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

@@ -10,31 +10,34 @@ import javax.faces.event.ActionEvent;
 @ViewScoped
 @ManagedBean
 public class PollDemoBean implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
-    private int counter=0;
-	
-	private boolean stop;
+    private int counter = 0;
 
-	public Date getCurrentTime() { return new Date(); }
+    private boolean stop;
 
-	public int getCounter() {
-		return counter;
-	}
+    public Date getCurrentTime() {
+        return new Date();
+    }
 
-	public void setCounter(int counter) {
-		this.counter = counter+1;
-	}
+    public int getCounter() {
+        return counter;
+    }
 
-	public boolean isStop() {
-		return stop;
-	}
+    public void setCounter(int counter) {
+        this.counter = counter + 1;
+    }
 
-	public void setStop(boolean stop) {
-		this.stop = stop;
-	}
-	
-	public void listener(ActionEvent event) {
+    public boolean isStop() {
+        return stop;
+    }
+
+    public void setStop(boolean stop) {
+        this.stop = stop;
+    }
+
+    public void listener(ActionEvent event) {
 //		System.out.println("Poll called me");
-	}
+    }
 }

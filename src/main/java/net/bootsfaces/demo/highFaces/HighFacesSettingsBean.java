@@ -11,45 +11,45 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 public class HighFacesSettingsBean implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
-	private String boysType="line";
-	
-	private String girlsType="column";
-	
-	private List<String> chartTypes = new ArrayList<String>();
-	
-	public HighFacesSettingsBean() {
-		chartTypes.add("line");
-		chartTypes.add("bar");
-		chartTypes.add("pie");
-		chartTypes.add("column");
-	}
+    private static final long serialVersionUID = 1L;
 
-	public String getBoysType() {
-		return boysType;
-	}
+    private String boysType = "line";
 
-	public void setBoysType(String boysType) {
-		this.boysType = boysType;
-	}
+    private String girlsType = "column";
 
-	public String getGirlsType() {
-		return girlsType;
-	}
+    private List<String> chartTypes = new ArrayList<String>();
 
-	public void setGirlsType(String girlsType) {
-		this.girlsType = girlsType;
-	}
+    public HighFacesSettingsBean() {
+        chartTypes.add("line");
+        chartTypes.add("bar");
+        chartTypes.add("pie");
+        chartTypes.add("column");
+    }
 
-	public List<String> getChartTypes() {
-		return chartTypes;
-	}
+    public String getBoysType() {
+        return boysType;
+    }
 
-	public void setChartTypes(List<String> chartTypes) {
-		this.chartTypes = chartTypes;
-	}
-	
-	public void redraw() {
-	}
+    public void setBoysType(String boysType) {
+        this.boysType = boysType;
+    }
+
+    public String getGirlsType() {
+        return girlsType;
+    }
+
+    public void setGirlsType(String girlsType) {
+        this.girlsType = girlsType;
+    }
+
+    public List<String> getChartTypes() {
+        return chartTypes;
+    }
+
+    public void setChartTypes(List<String> chartTypes) {
+        this.chartTypes = chartTypes;
+    }
+
+    public void redraw() {
+    }
 }

@@ -32,7 +32,7 @@ public class IconAwesomeBean implements Serializable {
     private void initialiseList() {
         fontAwesomeIconList = new ArrayList<>();
         ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
-        
+
         try (InputStream inputStream = servletContext.getResourceAsStream("/WEB-INF/classes/fontAwesomeList.txt");
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))) {
             String line = null;

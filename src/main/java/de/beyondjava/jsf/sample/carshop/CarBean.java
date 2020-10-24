@@ -3,101 +3,100 @@ package de.beyondjava.jsf.sample.carshop;
 import java.io.Serializable;
 
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 public class CarBean implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	private boolean iAgreeToTheTermsAndConditions = false;
-	private Car car;
+    private static final long serialVersionUID = 1L;
 
-	public CarBean() {
-		car = new Car();
-	}
+    private boolean iAgreeToTheTermsAndConditions = false;
+    private Car car;
 
-	public String showDetails(Car car) {
-		this.car = car;
-		return "details.jsf";
-	}
+    public CarBean() {
+        car = new Car();
+    }
 
-	public String getBrand() {
-		return car.getBrand();
-	}
+    public String showDetails(Car car) {
+        this.car = car;
+        return "details.jsf";
+    }
 
-	public void setBrand(String brand) {
-		car.setBrand(brand);
-	}
+    public String getBrand() {
+        return car.getBrand();
+    }
 
-	public String getType() {
-		return car.getType();
-	}
+    public void setBrand(String brand) {
+        car.setBrand(brand);
+    }
 
-	public void setType(String type) {
-		car.setType(type);
-	}
+    public String getType() {
+        return car.getType();
+    }
 
-	public String getColor() {
-		return car.getColor();
-	}
+    public void setType(String type) {
+        car.setType(type);
+    }
 
-	public void setColor(String color) {
-		car.setColor(color);
-	}
+    public String getColor() {
+        return car.getColor();
+    }
 
-	public int getPrice() {
-		return car.getPrice();
-	}
+    public void setColor(String color) {
+        car.setColor(color);
+    }
 
-	public void setPrice(int price) {
-		car.setPrice(price);
-	}
+    public int getPrice() {
+        return car.getPrice();
+    }
 
-	public int getMileage() {
-		return car.getMileage();
-	}
+    public void setPrice(int price) {
+        car.setPrice(price);
+    }
 
-	public void setMileage(int mileage) {
-		car.setMileage(mileage);
-	}
+    public int getMileage() {
+        return car.getMileage();
+    }
 
-	public int getYear() {
-		return car.getYear();
-	}
+    public void setMileage(int mileage) {
+        car.setMileage(mileage);
+    }
 
-	public void setYear(int year) {
-		car.setYear(year);
-	}
+    public int getYear() {
+        return car.getYear();
+    }
 
-	public String getFuel() {
-		return car.getFuel();
-	}
+    public void setYear(int year) {
+        car.setYear(year);
+    }
 
-	public void setFuel(String fuel) {
-		car.setFuel(fuel);
-	}
+    public String getFuel() {
+        return car.getFuel();
+    }
 
-	public int getEnginePower() {
-		return car.getEnginePower();
-	}
+    public void setFuel(String fuel) {
+        car.setFuel(fuel);
+    }
 
-	public void setEnginePower(int enginePower) {
-		car.setEnginePower(enginePower);
-	}
+    public int getEnginePower() {
+        return car.getEnginePower();
+    }
 
-	public void listAvailableCars() {
-		FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_INFO, "",
-				"Currently, there's no car available. Try again later.");
-		FacesContext.getCurrentInstance().addMessage(null, fm);
+    public void setEnginePower(int enginePower) {
+        car.setEnginePower(enginePower);
+    }
 
-	}
+    public void listAvailableCars() {
+        FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_INFO, "",
+                "Currently, there's no car available. Try again later.");
+        FacesContext.getCurrentInstance().addMessage(null, fm);
 
-	public boolean isiAgreeToTheTermsAndConditions() {
-		return iAgreeToTheTermsAndConditions;
-	}
+    }
 
-	public void setiAgreeToTheTermsAndConditions(boolean iAgreeToTheTermsAndConditions) {
-		this.iAgreeToTheTermsAndConditions = iAgreeToTheTermsAndConditions;
-	}
+    public boolean isiAgreeToTheTermsAndConditions() {
+        return iAgreeToTheTermsAndConditions;
+    }
+
+    public void setiAgreeToTheTermsAndConditions(boolean iAgreeToTheTermsAndConditions) {
+        this.iAgreeToTheTermsAndConditions = iAgreeToTheTermsAndConditions;
+    }
 }

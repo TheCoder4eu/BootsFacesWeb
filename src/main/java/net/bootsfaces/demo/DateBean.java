@@ -18,8 +18,9 @@ import net.bootsfaces.utils.FacesMessages;
 @ManagedBean
 @RequestScoped
 public class DateBean implements Serializable {
-	private static final long serialVersionUID = -7642332089180105956L;
-	private Date adate;
+
+    private static final long serialVersionUID = -7642332089180105956L;
+    private Date adate;
     private Date bdate;
     private Date cdate;
     private Date ddate;
@@ -79,8 +80,8 @@ public class DateBean implements Serializable {
      */
     public DateBean() {
     }
-    
+
     public void onSubmitDate3() {
-    	FacesMessages.info("**:cdate3", "", "Date successfully sent. Empty the field to see the 'required' message." );
+        FacesMessages.info("**:cdate3", "", "Date successfully sent. Empty the field to see the 'required' message.");
     }
 }

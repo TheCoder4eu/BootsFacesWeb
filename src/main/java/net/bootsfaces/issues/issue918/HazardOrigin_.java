@@ -5,29 +5,24 @@
  */
 package net.bootsfaces.issues.issue918;
 
-public class HazardOrigin_
-{
+public class HazardOrigin_ {
 
     private String code;
     private String text;
 
-    public String getCode()
-    {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(String code)
-    {
+    public void setCode(String code) {
         this.code = code;
     }
 
-    public String getText()
-    {
+    public String getText() {
         return text;
     }
 
-    public void setText(String text)
-    {
+    public void setText(String text) {
         this.text = text;
     }
 

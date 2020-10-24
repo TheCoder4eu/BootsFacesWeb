@@ -32,84 +32,87 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class DynamicOptionBean implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	private Map<String, String> brand2Type = new HashMap<String, String>();
+    private static final long serialVersionUID = 1L;
+    private Map<String, String> brand2Type = new HashMap<String, String>();
 
-	private List<String> types = new ArrayList<String>();
+    private List<String> types = new ArrayList<String>();
 
-	public DynamicOptionBean() {
-		initBrandsAndTypes();
+    public DynamicOptionBean() {
+        initBrandsAndTypes();
 
-		types.add("");
-		types.add("Civic");
-		types.add("Golf");
-		types.add("320");
-		types.add("V50");
-		types.add("Astra");
-		types.add("Megane");
-		types.add("Picasso");
-		types.add("Ibiza");
-		types.add("Punto");
-	}
+        types.add("");
+        types.add("Civic");
+        types.add("Golf");
+        types.add("320");
+        types.add("V50");
+        types.add("Astra");
+        types.add("Megane");
+        types.add("Picasso");
+        types.add("Ibiza");
+        types.add("Punto");
+    }
 
+    public String getBrandToType(String type) {
+        if (type == null) {
+            return "";
+        }
+        return brand2Type.get(type);
+    }
 
-	public String getBrandToType(String type) {
-		if (type == null)
-			return "";
-		return brand2Type.get(type);
-	}
+    public List<String> getTypes() {
+        return getTypesToBrand(brand);
+    }
 
-	public List<String> getTypes() {
-		return getTypesToBrand(brand);
-	}
+    public List<String> getTypesToBrand(String brand) {
+        if (brand == null || brand.length() == 0) {
+            return types;
+        }
+        List<String> l = new ArrayList<String>();
 
-	public List<String> getTypesToBrand(String brand) {
-		if (brand == null || brand.length() == 0)
-			return types;
-		List<String> l = new ArrayList<String>();
+        Set<Entry<String, String>> entrySet = brand2Type.entrySet();
+        Iterator<Entry<String, String>> iter = entrySet.iterator();
+        while (iter.hasNext()) {
+            Entry<String, String> entry = iter.next();
+            if (entry.getValue().equals(brand)) {
+                l.add(entry.getKey());
+            }
+        }
+        if (l.size() > 0) {
+            l.add(0, "");
+        }
+        return l;
+    }
 
-		Set<Entry<String, String>> entrySet = brand2Type.entrySet();
-		Iterator<Entry<String, String>> iter = entrySet.iterator();
-		while (iter.hasNext()) {
-			Entry<String, String> entry = iter.next();
-			if (entry.getValue().equals(brand)) {
-				l.add(entry.getKey());
-			}
-		}
-		if (l.size() > 0)
-			l.add(0, "");
-		return l;
-	}
+    public void initBrandsAndTypes() {
+        brand2Type.put("Civic", "Honda");
+        brand2Type.put("Jazz", "Honda");
+        brand2Type.put("Golf", "VW");
+        brand2Type.put("Passat", "VW");
+        brand2Type.put("Polo", "VW");
+        brand2Type.put("320", "BMW");
+        brand2Type.put("C40", "Volvo");
+        brand2Type.put("V50", "Volvo");
+        brand2Type.put("C60", "Volvo");
+        brand2Type.put("V70", "Volvo");
+        brand2Type.put("Corsa", "Opel");
+        brand2Type.put("Astra", "Opel");
+        brand2Type.put("Vectra", "Opel");
+        brand2Type.put("Picasso", "Citroen");
+        brand2Type.put("León", "Seat");
+        brand2Type.put("Ibiza", "Seat");
+        brand2Type.put("Exeo", "Seat");
+        brand2Type.put("Punto", "Fiat");
+        brand2Type.put("500", "Fiat");
+        brand2Type.put("Panda", "Fiat");
+        brand2Type.put("Megane", "Renault");
+    }
 
-	public void initBrandsAndTypes() {
-		brand2Type.put("Civic", "Honda");
-		brand2Type.put("Jazz", "Honda");
-		brand2Type.put("Golf", "VW");
-		brand2Type.put("Passat", "VW");
-		brand2Type.put("Polo", "VW");
-		brand2Type.put("320", "BMW");
-		brand2Type.put("C40", "Volvo");
-		brand2Type.put("V50", "Volvo");
-		brand2Type.put("C60", "Volvo");
-		brand2Type.put("V70", "Volvo");
-		brand2Type.put("Corsa", "Opel");
-		brand2Type.put("Astra", "Opel");
-		brand2Type.put("Vectra", "Opel");
-		brand2Type.put("Picasso", "Citroen");
-		brand2Type.put("León", "Seat");
-		brand2Type.put("Ibiza", "Seat");
-		brand2Type.put("Exeo", "Seat");
-		brand2Type.put("Punto", "Fiat");
-		brand2Type.put("500", "Fiat");
-		brand2Type.put("Panda", "Fiat");
-		brand2Type.put("Megane", "Renault");
-	}
+    private String brand = null;
+    private String type = null;
 
-	private String brand=null;
-	private String type=null;
-	public void setBrandAndType(String brand, String type) {
-		this.brand=brand;
-		this.type=type;
-		
-	}
+    public void setBrandAndType(String brand, String type) {
+        this.brand = brand;
+        this.type = type;
+
+    }
 }

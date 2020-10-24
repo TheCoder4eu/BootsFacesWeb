@@ -13,19 +13,18 @@ public class Issue541Bean implements Serializable {
 
     private static final long serialVersionUID = 745232242454805589L;
 
-
     boolean b = true;
 
     public Issue541Bean() {
         super();
     }
 
-    public void onChange(){
+    public void onChange() {
         System.out.println("##### > OK");
         b = false;
     }
 
-    public boolean isDisabled(){
+    public boolean isDisabled() {
         return b;
     }
 
@@ -35,6 +34,6 @@ public class Issue541Bean implements Serializable {
 
     public void setValue(String value) {
         this.value = value;
-    } 
+    }
 
 }

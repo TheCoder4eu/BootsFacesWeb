@@ -8,19 +8,20 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class MessageStyleBean implements Serializable {
-	private static final long serialVersionUID = 1L;
-	private boolean useLegacyBootsFacesStyle = true;
 
-	public boolean isUseLegacyBootsFacesStyle() {
-		return useLegacyBootsFacesStyle;
-	}
+    private static final long serialVersionUID = 1L;
+    private boolean useLegacyBootsFacesStyle = true;
 
-	public void setUseLegacyBootsFacesStyle(boolean useLegacyBootsFacesStyle) {
-		this.useLegacyBootsFacesStyle = useLegacyBootsFacesStyle;
-	}
-	
-	public void toggleSettings() {
-		this.useLegacyBootsFacesStyle=!this.useLegacyBootsFacesStyle;
-	}
+    public boolean isUseLegacyBootsFacesStyle() {
+        return useLegacyBootsFacesStyle;
+    }
+
+    public void setUseLegacyBootsFacesStyle(boolean useLegacyBootsFacesStyle) {
+        this.useLegacyBootsFacesStyle = useLegacyBootsFacesStyle;
+    }
+
+    public void toggleSettings() {
+        this.useLegacyBootsFacesStyle = !this.useLegacyBootsFacesStyle;
+    }
 
 }
