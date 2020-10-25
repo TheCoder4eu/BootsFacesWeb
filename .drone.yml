@@ -8,6 +8,10 @@ steps:
   commands:
     - ./gradlew -Dorg.gradle.daemon=false -b build.gradle clean war
     - ls -lisa
+    - cd ./build/
+    - ls -lisa
+    - cd ./libs/
+    - ls -lisa
   volumes:
   - name: maven-cache
     path: /root/.m2
