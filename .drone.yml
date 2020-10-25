@@ -14,6 +14,9 @@ steps:
   image: maven:3.6-jdk-11
   commands:
     - mvn clean package #-P MavenCentral
+  volumes:
+  - name: maven-cache
+    path: /root/.m2
 
   # push an image to geopossachs/bootsfaces_showcase:snapshot
 - name: docker-publish
@@ -50,3 +53,8 @@ steps:
       - cd /srv/bootsfaces-showcase/
       - docker-compose pull
       - docker-compose up -d --remove-orphans
+
+volumes:
+  - name: maven-cache
+    host: 
+      path: /temp/drone/m2cache
