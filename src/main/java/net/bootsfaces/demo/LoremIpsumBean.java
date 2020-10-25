@@ -2,9 +2,9 @@ package net.bootsfaces.demo;
 
 /**
  * Managed Bean for Items
+ *
  * @author Thecoder4.eu
  */
-
 import java.io.Serializable;
 import java.util.StringTokenizer;
 
@@ -15,14 +15,16 @@ import javax.faces.model.DataModel;
 
 /**
  * Data Model Bean for Items
+ *
  * @author Thecoder4.eu
  */
 @ManagedBean
 @RequestScoped
 public class LoremIpsumBean implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
-    public static final String loremipsum="Lorem ipsum dolor sit amet "
+    public static final String loremipsum = "Lorem ipsum dolor sit amet "
             + "consectetur adipiscing elit sed "
             + "do eiusmod tempor incididunt "
             + "ut labore et dolore magna aliqua "
@@ -33,7 +35,7 @@ public class LoremIpsumBean implements Serializable {
             + "velit esse cillum dolore eu fugiat nulla pariatur "
             + "Excepteur sint occaecat cupidatat non proident "
             + "sunt in culpa qui officia deserunt mollit anim id est laborum";
-    
+
     private static LoremItem[] itemList;
     private DataModel<LoremItem> items;
 
@@ -58,7 +60,7 @@ public class LoremIpsumBean implements Serializable {
         };
         items = new ArrayDataModel<LoremItem>(itemList);
     }
-    
+
     public DataModel<LoremItem> getItems() {
         return items;
     }
@@ -66,5 +68,5 @@ public class LoremIpsumBean implements Serializable {
     public void setItems(DataModel<LoremItem> items) {
         this.items = items;
     }
-    
+
 }

@@ -2,9 +2,11 @@ package net.bootsfaces.demo;
 
 /**
  * Store Items Class
+ *
  * @author Thecoder4.eu
  */
 public class LoremItem {
+
     private String h1;
     private String h2;
     private String h3;

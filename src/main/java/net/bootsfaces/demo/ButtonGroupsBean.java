@@ -8,38 +8,39 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 @ManagedBean
 public class ButtonGroupsBean implements Serializable {
-	private static final long serialVersionUID = 1L;
-	private boolean contentDisabled = false;
-	private boolean invidualLinksDisabled = false;
-	private boolean dropButtonDisabled = false;
 
-	public boolean isContentDisabled() {
-		return contentDisabled;
-	}
+    private static final long serialVersionUID = 1L;
+    private boolean contentDisabled = false;
+    private boolean invidualLinksDisabled = false;
+    private boolean dropButtonDisabled = false;
 
-	public void setContentDisabled(boolean contentDisabled) {
-		this.contentDisabled = contentDisabled;
-	}
+    public boolean isContentDisabled() {
+        return contentDisabled;
+    }
 
-	/**
-	 * Dummy method to handle the AJAX event
-	 */
-	public void onChange() {
-	}
+    public void setContentDisabled(boolean contentDisabled) {
+        this.contentDisabled = contentDisabled;
+    }
 
-	public boolean isDropButtonDisabled() {
-		return dropButtonDisabled;
-	}
+    /**
+     * Dummy method to handle the AJAX event
+     */
+    public void onChange() {
+    }
 
-	public void setDropButtonDisabled(boolean dropButtonDisabled) {
-		this.dropButtonDisabled = dropButtonDisabled;
-	}
+    public boolean isDropButtonDisabled() {
+        return dropButtonDisabled;
+    }
 
-	public boolean isInvidualLinksDisabled() {
-		return invidualLinksDisabled;
-	}          
+    public void setDropButtonDisabled(boolean dropButtonDisabled) {
+        this.dropButtonDisabled = dropButtonDisabled;
+    }
 
-	public void setInvidualLinksDisabled(boolean invidualLinksDisabled) {
-		this.invidualLinksDisabled = invidualLinksDisabled;
-	}
+    public boolean isInvidualLinksDisabled() {
+        return invidualLinksDisabled;
+    }
+
+    public void setInvidualLinksDisabled(boolean invidualLinksDisabled) {
+        this.invidualLinksDisabled = invidualLinksDisabled;
+    }
 }

@@ -2,14 +2,34 @@ kind: pipeline
 name: default
 
 steps:
+
+- name: gradle-check
+  image: openjdk:11-jdk
+  commands:
+    - ./gradlew -Dorg.gradle.daemon=false -b build.gradle clean war
+    - cd ./build/
+    - cd ./libs/
+    - ls -lisa
+  volumes:
+  - name: maven-cache
+    path: /root/.m2
+
   # build the ./target/BootsFacesWeb.war
 - name: maven-build
   image: maven:3.6-jdk-11
   commands:
     - mvn clean package #-P MavenCentral
+    - cd ./target/
+    - ls -lisa
+  volumes:
+  - name: maven-cache
+    path: /root/.m2
 
   # push an image to geopossachs/bootsfaces_showcase:snapshot
 - name: docker-publish
+  when:
+    branch:
+      - master
   image: plugins/docker
   settings:
     repo: geopossachs/bootsfaces_showcase
@@ -22,6 +42,9 @@ steps:
 
   # boot the app on a docker based runtime
 - name: container-reboot
+  when:
+    branch:
+      - master
   image: drillster/drone-rsync
   environment:
     RSYNC_KEY:
@@ -37,3 +60,8 @@ steps:
       - cd /srv/bootsfaces-showcase/
       - docker-compose pull
       - docker-compose up -d --remove-orphans
+
+volumes:
+  - name: maven-cache
+    host: 
+      path: /temp/drone/m2cache

@@ -8,16 +8,17 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 @ManagedBean
 public class ModalBean implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	private int backupPeriod = 42;
+    private static final long serialVersionUID = 1L;
 
-	public int getBackupPeriod() {
-		return backupPeriod;
-	}
+    private int backupPeriod = 42;
 
-	public void setBackupPeriod(int backupPeriod) {
-		this.backupPeriod = backupPeriod;
-	}
-	
+    public int getBackupPeriod() {
+        return backupPeriod;
+    }
+
+    public void setBackupPeriod(int backupPeriod) {
+        this.backupPeriod = backupPeriod;
+    }
+
 }

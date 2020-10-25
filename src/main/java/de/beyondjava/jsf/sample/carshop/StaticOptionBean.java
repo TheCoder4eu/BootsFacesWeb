@@ -28,105 +28,105 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class StaticOptionBean implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	private List<String> brands = new ArrayList<String>();
+    private List<String> brands = new ArrayList<String>();
 
-	private List<String> colors = new ArrayList<String>();
+    private List<String> colors = new ArrayList<String>();
 
-	private List<String> fuels = new ArrayList<String>();
+    private List<String> fuels = new ArrayList<String>();
 
-	private List<String> mileages = new ArrayList<String>();
-	private List<String> prices = new ArrayList<String>();
-	private List<String> years = new ArrayList<String>();
+    private List<String> mileages = new ArrayList<String>();
+    private List<String> prices = new ArrayList<String>();
+    private List<String> years = new ArrayList<String>();
 
-	public StaticOptionBean() {
-		brands.add("");
-		brands.add("Honda");
-		brands.add("VW");
-		brands.add("BMW");
-		brands.add("Volvo");
-		brands.add("Opel");
-		brands.add("Renault");
-		brands.add("Citroen");
-		brands.add("Seat");
-		brands.add("Fiat");
+    public StaticOptionBean() {
+        brands.add("");
+        brands.add("Honda");
+        brands.add("VW");
+        brands.add("BMW");
+        brands.add("Volvo");
+        brands.add("Opel");
+        brands.add("Renault");
+        brands.add("Citroen");
+        brands.add("Seat");
+        brands.add("Fiat");
 
-		colors.add("");
-		colors.add("red");
-		colors.add("white");
-		colors.add("blue");
-		colors.add("yellow");
-		colors.add("green");
-		colors.add("black");
-		colors.add("white");
-		colors.add("silver");
+        colors.add("");
+        colors.add("red");
+        colors.add("white");
+        colors.add("blue");
+        colors.add("yellow");
+        colors.add("green");
+        colors.add("black");
+        colors.add("white");
+        colors.add("silver");
 
-		prices.add("");
-		prices.add("< €500");
-		prices.add("< €1000");
-		prices.add("< €2000");
-		prices.add("< €3000");
-		prices.add("< €4000");
-		prices.add("< €5000");
-		prices.add("< €7500");
-		prices.add("< €10000");
-		prices.add("< €15000");
-		prices.add("< €20000");
-		prices.add("< €30000");
-		prices.add("< €40000");
-		prices.add("< €50000");
+        prices.add("");
+        prices.add("< €500");
+        prices.add("< €1000");
+        prices.add("< €2000");
+        prices.add("< €3000");
+        prices.add("< €4000");
+        prices.add("< €5000");
+        prices.add("< €7500");
+        prices.add("< €10000");
+        prices.add("< €15000");
+        prices.add("< €20000");
+        prices.add("< €30000");
+        prices.add("< €40000");
+        prices.add("< €50000");
 
-		mileages.add("");
-		mileages.add("< 100 km");
-		mileages.add("< 2000 km");
-		mileages.add("< 5000 km");
-		mileages.add("< 10000 km");
-		mileages.add("< 25000 km");
-		mileages.add("< 50000 km");
-		mileages.add("< 100000 km");
-		mileages.add("< 200000 km");
+        mileages.add("");
+        mileages.add("< 100 km");
+        mileages.add("< 2000 km");
+        mileages.add("< 5000 km");
+        mileages.add("< 10000 km");
+        mileages.add("< 25000 km");
+        mileages.add("< 50000 km");
+        mileages.add("< 100000 km");
+        mileages.add("< 200000 km");
 
-		fuels.add("");
-		fuels.add("gasoline");
-		fuels.add("diesel");
-		fuels.add("hybrid");
-		fuels.add("electric");
+        fuels.add("");
+        fuels.add("gasoline");
+        fuels.add("diesel");
+        fuels.add("hybrid");
+        fuels.add("electric");
 
-		years.add("");
-		int year = Calendar.getInstance().get(Calendar.YEAR);
-		for (int i = 0; i < 10; i++) {
-			years.add(new Integer(year - i).toString() + " or younger");
-		}
-		for (int i = 10; i < 20; i += 3) {
-			years.add(new Integer(year - i).toString() + " or younger");
-		}
-		for (int i = 20; i < 50; i += 5) {
-			years.add(new Integer(year - i).toString() + " or younger");
-		}
-	}
-	
-	public List<String> getBrands() {
-		return brands;
-	}
+        years.add("");
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+        for (int i = 0; i < 10; i++) {
+            years.add(new Integer(year - i).toString() + " or younger");
+        }
+        for (int i = 10; i < 20; i += 3) {
+            years.add(new Integer(year - i).toString() + " or younger");
+        }
+        for (int i = 20; i < 50; i += 5) {
+            years.add(new Integer(year - i).toString() + " or younger");
+        }
+    }
 
-	public List<String> getColors() {
-		return colors;
-	}
+    public List<String> getBrands() {
+        return brands;
+    }
 
-	public List<String> getFuels() {
-		return fuels;
-	}
+    public List<String> getColors() {
+        return colors;
+    }
 
-	public List<String> getMileages() {
-		return mileages;
-	}
+    public List<String> getFuels() {
+        return fuels;
+    }
 
-	public List<String> getPrices() {
-		return prices;
-	}
+    public List<String> getMileages() {
+        return mileages;
+    }
 
-	public List<String> getYears() {
-		return years;
-	}
+    public List<String> getPrices() {
+        return prices;
+    }
+
+    public List<String> getYears() {
+        return years;
+    }
 }

@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package net.bootsfaces.demo;
 
 import java.util.Arrays;
@@ -26,58 +25,60 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.validation.constraints.NotNull;
 
-/** A simple bean for demo purposes. */
+/**
+ * A simple bean for demo purposes.
+ */
 @RequestScoped
 @ManagedBean
 public class SemaphoreBean {
 
     @NotNull
-	private String color = null;
+    private String color = null;
 
-	@NotNull
-	private String meaning = null;
+    @NotNull
+    private String meaning = null;
 
-	private List<String> colors;
+    private List<String> colors;
 
-	private Map<String, String> meanings;
+    private Map<String, String> meanings;
 
     public SemaphoreBean() {
-		colors = Arrays.asList("green", "yellow", "red");
-		meanings = new HashMap<>();
-		meanings.put("go", "green");
-		meanings.put("be alert", "yellow");
-		meanings.put("stop", "red");
-	}
-    
-	public String getColor() {
-		return color;
-	}
+        colors = Arrays.asList("green", "yellow", "red");
+        meanings = new HashMap<>();
+        meanings.put("go", "green");
+        meanings.put("be alert", "yellow");
+        meanings.put("stop", "red");
+    }
 
-	public void setColor(String color) {
-		this.color = color;
-	}
+    public String getColor() {
+        return color;
+    }
 
-	public String getMeaning() {
-		return meaning;
-	}
+    public void setColor(String color) {
+        this.color = color;
+    }
 
-	public void setMeaning(String meaning) {
-		this.meaning = meaning;
-	}
+    public String getMeaning() {
+        return meaning;
+    }
 
-	public List<String> getColors() {
-		return colors;
-	}
+    public void setMeaning(String meaning) {
+        this.meaning = meaning;
+    }
 
-	public void setColors(List<String> colors) {
-		this.colors = colors;
-	}
+    public List<String> getColors() {
+        return colors;
+    }
 
-	public Map<String, String> getMeanings() {
-		return meanings;
-	}
+    public void setColors(List<String> colors) {
+        this.colors = colors;
+    }
 
-	public void setMeanings(Map<String, String> meanings) {
-		this.meanings = meanings;
-	}
+    public Map<String, String> getMeanings() {
+        return meanings;
+    }
+
+    public void setMeanings(Map<String, String> meanings) {
+        this.meanings = meanings;
+    }
 }

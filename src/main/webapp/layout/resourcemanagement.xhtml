@@ -7,185 +7,185 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets">
 
 
-  <ui:define name="content-navigator">
-    <b:listLinks>
-      <b:navLink href="#dealing_with_resource_files" value="Dealing with resource files" />
-      <b:navLink href="#jquery_and_jqueryui" value="jQuery and jQueryUI" />
-      <b:navLink href="#font_awesome" value="Font Awesome" />
-      <b:navLink href="#configuring_resources_via_the" value="Configuring resources via the web.xml" />
-      <b:navLink href="#defining_when_your_resource_files_are_loaded" value="Defining when your resource files are loaded" />
-      <b:navLink href="#datatable" value="Using DataTables behind a firewall" />
-    </b:listLinks>
-  </ui:define>
+    <ui:define name="content-navigator">
+        <b:listLinks>
+            <b:navLink href="#dealing_with_resource_files" value="Dealing with resource files" />
+            <b:navLink href="#jquery_and_jqueryui" value="jQuery and jQueryUI" />
+            <b:navLink href="#font_awesome" value="Font Awesome" />
+            <b:navLink href="#configuring_resources_via_the" value="Configuring resources via the web.xml" />
+            <b:navLink href="#defining_when_your_resource_files_are_loaded" value="Defining when your resource files are loaded" />
+            <b:navLink href="#datatable" value="Using DataTables behind a firewall" />
+        </b:listLinks>
+    </ui:define>
 
-  <ui:define name="custom-header">
-  	<h:outputStylesheet library="datatables.net" name="datatables.min.css" rendered="#{dataTableSettingsBean.useSlimFiles}" />
-  	<h:outputScript library="datatables.net" name="datatables.min.js" target="head" rendered="#{dataTableSettingsBean.useSlimFiles}" />
-  </ui:define>
-  
-  <ui:define name="content">
-    <h1><a id="dealing_with_resource_files">Dealing with resource files</a><b:badge value="improved in 0.8.0" /></h1>
-    <p>The BootsFaces jar contains many CSS and JavaScript files. You don't need external resource files to use BootsFaces. However,
-    many developers and web designers aren't happy with that. These are basically the reasons for using external resources:
-    </p>
-    <ul>
-      <li>Many resource files BootsFaces uses are also provided by CDNs. Using a CDN reduces your server's load, and in many cases CDNs
-      serve the files faster.</li>
-      <li>Often developers want to use their own versions of our JS or CSS libraries.</li>
-      <li>Sometimes another framework already add its own instance of jQuery (or anather library we need).</li>
-      <li>BootsFaces doesn't serve the entires jQueryUI library. Instead, it tries to optimize the network traffic by serving the
-      jQueryUI modules individually. That's a good choice with respect to http/2, but currently this approach slows things down.</li>
-      <li>In rare cases, developers want to modify the resource files BootsFaces provides.</li>
-    </ul>
-    <p>To serve all these requirements, we've implemented quite a few options to influence which files are loaded and which are not.</p>
+    <ui:define name="custom-header">
+        <h:outputStylesheet library="datatables.net" name="datatables.min.css" rendered="#{dataTableSettingsBean.useSlimFiles}" />
+        <h:outputScript library="datatables.net" name="datatables.min.js" target="head" rendered="#{dataTableSettingsBean.useSlimFiles}" />
+    </ui:define>
 
-    <h2><a id="jquery_and_jqueryui">jQuery and jQueryUI</a></h2>
-    <p>In general, BootsFaces goes into some lengths to decide which libraries to load, and when. Among other things, BootsFaces modifies the order of JavaScript
-    libraries if need be:</p>
-    <ul>
-      <li>jQuery.js is always loaded first.</li>
-      <li>jQueryUI.js is always loaded second.</li>
-      <li>bsf.js is always loaded last.</li>
-    </ul>
-    <p>If you provide your own version of jQuery (i.e. if there's a <code>&lt;h:outputScript library="(whatever)" name="(whatever)/jQuery-(whatever).js" /&gt;</code>),
-    BootsFaces doesn't add its own jQuery. Its up to you to make sure your jQuery is compatible to BootsFaces. Our mechanism to detect whether you
-    add jQuery or not is fairly flexible. It checks whether the resource name contains the substring "jquery" and ends with ".js". Plus, it's case-agnostic.</p>
-    <p>The some applies to jQueryUI. In this case, we check for the sub-string "jquery-ui".</p>
-
-
-    <h2><a id="font_awesome">Font Awesome</a></h2>
-    <p>If you provide your own version of FontAwesome, BootsFaces doesn't load its own version of FontAwesome. We're looking for resource files containing the
-    sub-string "font-awesome" or "fontawesome" and ending with ".css". Again, we ignore the case.</p>
-    <p>You can suppress Font Awesome on a per-page basis by adding the facet "no-fa" to the <code>&lt;h:head /&gt;</code> of your XHTML file.</p>
-
-    <h2><a id="configuring_resources_via_the">Configuring resources via the</a><code>web.xml</code></h2>
-    <p>Alternatively, you can configure your <code>web.xml</code> to suppress certain resources:</p>
-    <ul>
-      <li>Setting the context parameter <code>net.bootsfaces.get_fontawesome_from_cdn</code> to "yes" or "true" allows you to provide your own Font Awesome file.</li>
-      <li>Setting the context parameter <code>net.bootsfaces.get_datatable_from_cdn</code> to "yes" or "true" allows you to provide your own DataTables.js and dataTables.css 
-          file. Also see the explanation in the section below.</li>
-      <li>Setting the context parameter <code>net.bootsfaces.get_jquery_from_cdn</code> to "yes" or "true" allows you to provide your own jQuery file.</li>
-      <li>Setting the context parameter <code>net.bootsfaces.get_jqueryui_from_cdn</code> to "yes" or "true" allows you to provide your own jQueryUI file.</li>
-      <li>Setting the context parameter <code>net.bootsfaces.get_bootstrap_from_cdn</code> to "yes" or "true" allows you to provide your own Bootstrap CSS file.
-        Note that this option is a bit difficult to get up and running. BootsFaces modifies the original Bootstrap files. That's only a handful of lines of code,
-        but be warned. Currently, we're aware of changes in these files:
+    <ui:define name="content">
+        <h1><a id="dealing_with_resource_files">Dealing with resource files</a><b:badge value="improved in 0.8.0" /></h1>
+        <p>The BootsFaces jar contains many CSS and JavaScript files. You don't need external resource files to use BootsFaces. However,
+            many developers and web designers aren't happy with that. These are basically the reasons for using external resources:
+        </p>
         <ul>
-          <li>https://github.com/TheCoder4eu/BootsFaces-OSP/blob/master/gradleResources/less/bs-navbar.less</li>
-          <li>https://github.com/TheCoder4eu/BootsFaces-OSP/blob/master/gradleResources/less/bs-thumbnails.less</li>
-          <li>https://github.com/TheCoder4eu/BootsFaces-OSP/blob/master/gradleResources/jq/ui/datepicker.js</li>
+            <li>Many resource files BootsFaces uses are also provided by CDNs. Using a CDN reduces your server's load, and in many cases CDNs
+                serve the files faster.</li>
+            <li>Often developers want to use their own versions of our JS or CSS libraries.</li>
+            <li>Sometimes another framework already add its own instance of jQuery (or anather library we need).</li>
+            <li>BootsFaces doesn't serve the entires jQueryUI library. Instead, it tries to optimize the network traffic by serving the
+                jQueryUI modules individually. That's a good choice with respect to http/2, but currently this approach slows things down.</li>
+            <li>In rare cases, developers want to modify the resource files BootsFaces provides.</li>
         </ul>
-      </li>
-    </ul>
+        <p>To serve all these requirements, we've implemented quite a few options to influence which files are loaded and which are not.</p>
 
-    <h2><a id="datatable">Using &lt;b:dataTable /&gt; behind a restrictive firewall, or how to use your own version of datatables.min.js</a></h2>
-    <p>There are many reasons to stray away from the way BootsFaces loads the JavaScript and CSS files of it's datatable.
-    In most cases, it's because of the firewall. Some time ago, we tried to improve both the memory footprint
-    and the UI performance of BootsFaces by dropping our own copy of the JavaScript and CSS resource files of <code>&lt;b:dataTable /&gt;</code>.
-    Since version 1.2.0, BootsFaces loads these file from a super-fast CDN. Before long, our friends from LiferayFaces informed us that
-    this is a no-go in many companies. The firewall doesn't allow to load JS files from outside.</p>
-    <p>So we follow the same approach you've already seen for jQuery above:</p>
-    <ul>
-    	<li>Setting the context parameter <code>net.bootsfaces.get_datatable_from_cdn</code> to "yes" or "true" allows you to provide your own DataTables.js and dataTables.css 
-          file. This means it's up to you to add these files in a <code>&lt;script&gt;</code> or <code>&lt;h:outoutScript&gt;</code>.</li>
-        <li>BootsFaces scans the header, the body, and the form for <code>&lt;h:outputScript library="whatever" name="*datatables*.js /&gt;</code> and
-        <code>&lt;h:outputStylesheet name="*datatables*.css /&gt;</code>. If it finds something like this, it prevents the corresponding file to be loaded from the CDN.
-        BootsFaces even ignores the case to give you maximum flexibility.</li>
-    </ul>
-    
-    <script>
-    if (#{dataTableSettingsBean.scrollToDemo}) {
-    	setTimeout(() => {
-	    	jQuery('html, body').animate({
-	            scrollTop: jQuery("#datatableDemo").offset().top - 120
-	        }, 10);
-    	}, 100);
-    }
-    </script>
-    
+        <h2><a id="jquery_and_jqueryui">jQuery and jQueryUI</a></h2>
+        <p>In general, BootsFaces goes into some lengths to decide which libraries to load, and when. Among other things, BootsFaces modifies the order of JavaScript
+            libraries if need be:</p>
+        <ul>
+            <li>jQuery.js is always loaded first.</li>
+            <li>jQueryUI.js is always loaded second.</li>
+            <li>bsf.js is always loaded last.</li>
+        </ul>
+        <p>If you provide your own version of jQuery (i.e. if there's a <code>&lt;h:outputScript library="(whatever)" name="(whatever)/jQuery-(whatever).js" /&gt;</code>),
+            BootsFaces doesn't add its own jQuery. Its up to you to make sure your jQuery is compatible to BootsFaces. Our mechanism to detect whether you
+            add jQuery or not is fairly flexible. It checks whether the resource name contains the substring "jquery" and ends with ".js". Plus, it's case-agnostic.</p>
+        <p>The some applies to jQueryUI. In this case, we check for the sub-string "jquery-ui".</p>
+
+
+        <h2><a id="font_awesome">Font Awesome</a></h2>
+        <p>If you provide your own version of FontAwesome, BootsFaces doesn't load its own version of FontAwesome. We're looking for resource files containing the
+            sub-string "font-awesome" or "fontawesome" and ending with ".css". Again, we ignore the case.</p>
+        <p>You can suppress Font Awesome on a per-page basis by adding the facet "no-fa" to the <code>&lt;h:head /&gt;</code> of your XHTML file.</p>
+
+        <h2><a id="configuring_resources_via_the">Configuring resources via the</a><code>web.xml</code></h2>
+        <p>Alternatively, you can configure your <code>web.xml</code> to suppress certain resources:</p>
+        <ul>
+            <li>Setting the context parameter <code>net.bootsfaces.get_fontawesome_from_cdn</code> to "yes" or "true" allows you to provide your own Font Awesome file.</li>
+            <li>Setting the context parameter <code>net.bootsfaces.get_datatable_from_cdn</code> to "yes" or "true" allows you to provide your own DataTables.js and dataTables.css 
+                file. Also see the explanation in the section below.</li>
+            <li>Setting the context parameter <code>net.bootsfaces.get_jquery_from_cdn</code> to "yes" or "true" allows you to provide your own jQuery file.</li>
+            <li>Setting the context parameter <code>net.bootsfaces.get_jqueryui_from_cdn</code> to "yes" or "true" allows you to provide your own jQueryUI file.</li>
+            <li>Setting the context parameter <code>net.bootsfaces.get_bootstrap_from_cdn</code> to "yes" or "true" allows you to provide your own Bootstrap CSS file.
+                Note that this option is a bit difficult to get up and running. BootsFaces modifies the original Bootstrap files. That's only a handful of lines of code,
+                but be warned. Currently, we're aware of changes in these files:
+                <ul>
+                    <li>https://github.com/TheCoder4eu/BootsFaces-OSP/blob/master/gradleResources/less/bs-navbar.less</li>
+                    <li>https://github.com/TheCoder4eu/BootsFaces-OSP/blob/master/gradleResources/less/bs-thumbnails.less</li>
+                    <li>https://github.com/TheCoder4eu/BootsFaces-OSP/blob/master/gradleResources/jq/ui/datepicker.js</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2><a id="datatable">Using &lt;b:dataTable /&gt; behind a restrictive firewall, or how to use your own version of datatables.min.js</a></h2>
+        <p>There are many reasons to stray away from the way BootsFaces loads the JavaScript and CSS files of it's datatable.
+            In most cases, it's because of the firewall. Some time ago, we tried to improve both the memory footprint
+            and the UI performance of BootsFaces by dropping our own copy of the JavaScript and CSS resource files of <code>&lt;b:dataTable /&gt;</code>.
+            Since version 1.2.0, BootsFaces loads these file from a super-fast CDN. Before long, our friends from LiferayFaces informed us that
+            this is a no-go in many companies. The firewall doesn't allow to load JS files from outside.</p>
+        <p>So we follow the same approach you've already seen for jQuery above:</p>
+        <ul>
+            <li>Setting the context parameter <code>net.bootsfaces.get_datatable_from_cdn</code> to "yes" or "true" allows you to provide your own DataTables.js and dataTables.css 
+                file. This means it's up to you to add these files in a <code>&lt;script&gt;</code> or <code>&lt;h:outoutScript&gt;</code>.</li>
+            <li>BootsFaces scans the header, the body, and the form for <code>&lt;h:outputScript library="whatever" name="*datatables*.js /&gt;</code> and
+                <code>&lt;h:outputStylesheet name="*datatables*.css /&gt;</code>. If it finds something like this, it prevents the corresponding file to be loaded from the CDN.
+                BootsFaces even ignores the case to give you maximum flexibility.</li>
+        </ul>
+
+        <script>
+        if (#{dataTableSettingsBean.scrollToDemo}) {
+            setTimeout(() => {
+                jQuery('html, body').animate({
+                    scrollTop: jQuery("#datatableDemo").offset().top - 120
+                }, 10);
+            }, 100);
+        }
+        </script>
+
         <b:panel title="Live preview" look="info" collapsible="false">
-      <h:form>
-      	<b:row>
-	      	<b:column small-screen="half">
-		        <b:dataTable value="#{carPool.carPool}"
-		                     id="basic-usage-id"
-		                     var="car"
-		                     excel="true"
-		                     csv="true"
-		                     pdf="true"
-		                     columnVisibility="true"
-		                     copy="true"
-		                     print="true">
-		          <b:dataTableColumn value="#{car.brand}" />
-		          <b:dataTableColumn value="#{car.type}" />
-		          <b:dataTableColumn value="#{car.color}" />
-		          <b:dataTableColumn value="#{car.year}"  order="asc" />
-		          <b:dataTableColumn value="#{car.price}" />
-		          <b:dataTableColumn value="#{car.enginePower}" label="Engine Power (hp)" />
-		        </b:dataTable>
-	        </b:column>
-	        <b:column small-screen="half" style="padding-left:35px">
-		        <h4><a id="datatableDemo">How this demo works</a></h4>
-		        <p>Unchecking the first checkbox will remove the advanced feature of the datatable, 
-		        turning it into a simple HTML table.
-		        We've implemented this only for demonstration purposes. In real life, you could
-		        use this to bring your own copy. For example, you could use a slim copy of dataTables.net
-		        without Excel export, or you could provide a full-blown copy containing every feature the
-		        DataTables.net has implemented.</p>
-		          <b:selectBooleanCheckbox value="#{dataTableSettingsBean.useCDN}" caption="Use default files from a CDN" />
-		          <b:selectBooleanCheckbox value="#{dataTableSettingsBean.useSlimFiles}" caption="Use custom files without Excel download" />
-		          <b:commandButton value="Update and reload page" action="#{dataTableSettingsBean.reload}" 
-		                           onComplete="scrollToAnchor()"/>
-	        </b:column>
-        </b:row>
-      </h:form>
-      <f:facet name="footer">
-        <strong>JSF markup:</strong>
-        <b:panel>
-          <script type="syntaxhighlighter"
-          class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-          <![CDATA[
-          <h:form>
-            <b:dataTable value="&num;{carPool.carPool}"
-                         var="car"
-                         excel="true"
-                         csv="true"
-                         pdf="true"
-                         columnVisibility="true"
-                         copy="true"
-                         print="true"
-                         row-style-class="&num;{car.enginePower>100?'light-power':'light'}, &num;{car.enginePower>100?'dark-power':'dark'} ">
-              <b:dataTableColumn value="&num;{car.brand}" />
-              <b:dataTableColumn value="&num;{car.type}" />
-              <b:dataTableColumn value="&num;{car.color}" />
-              <b:dataTableColumn value="&num;{car.year}"  order="asc"/>
-              <b:dataTableColumn value="&num;{car.price}" />
-              <b:dataTableColumn value="&num;{car.enginePower}" label="Engine Power (hp)" />
-            </b:dataTable>
-          </h:form>
-          ]]>
-          </script>
+            <h:form>
+                <b:row>
+                    <b:column small-screen="half">
+                        <b:dataTable value="#{carPool.carPool}"
+                                     id="basic-usage-id"
+                                     var="car"
+                                     excel="true"
+                                     csv="true"
+                                     pdf="true"
+                                     columnVisibility="true"
+                                     copy="true"
+                                     print="true">
+                            <b:dataTableColumn value="#{car.brand}" />
+                            <b:dataTableColumn value="#{car.type}" />
+                            <b:dataTableColumn value="#{car.color}" />
+                            <b:dataTableColumn value="#{car.year}"  order="asc" />
+                            <b:dataTableColumn value="#{car.price}" />
+                            <b:dataTableColumn value="#{car.enginePower}" label="Engine Power (hp)" />
+                        </b:dataTable>
+                    </b:column>
+                    <b:column small-screen="half" style="padding-left:35px">
+                        <h4><a id="datatableDemo">How this demo works</a></h4>
+                        <p>Unchecking the first checkbox will remove the advanced feature of the datatable, 
+                            turning it into a simple HTML table.
+                            We've implemented this only for demonstration purposes. In real life, you could
+                            use this to bring your own copy. For example, you could use a slim copy of dataTables.net
+                            without Excel export, or you could provide a full-blown copy containing every feature the
+                            DataTables.net has implemented.</p>
+                        <b:selectBooleanCheckbox value="#{dataTableSettingsBean.useCDN}" caption="Use default files from a CDN" />
+                        <b:selectBooleanCheckbox value="#{dataTableSettingsBean.useSlimFiles}" caption="Use custom files without Excel download" />
+                        <b:commandButton value="Update and reload page" action="#{dataTableSettingsBean.reload}" 
+                                         onComplete="scrollToAnchor()"/>
+                    </b:column>
+                </b:row>
+            </h:form>
+            <f:facet name="footer">
+                <strong>JSF markup:</strong>
+                <b:panel>
+                    <script type="syntaxhighlighter"
+                            class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                        <![CDATA[
+                        <h:form>
+                        <b:dataTable value="&num;{carPool.carPool}"
+                        var="car"
+                        excel="true"
+                        csv="true"
+                        pdf="true"
+                        columnVisibility="true"
+                        copy="true"
+                        print="true"
+                        row-style-class="&num;{car.enginePower>100?'light-power':'light'}, &num;{car.enginePower>100?'dark-power':'dark'} ">
+                        <b:dataTableColumn value="&num;{car.brand}" />
+                        <b:dataTableColumn value="&num;{car.type}" />
+                        <b:dataTableColumn value="&num;{car.color}" />
+                        <b:dataTableColumn value="&num;{car.year}"  order="asc"/>
+                        <b:dataTableColumn value="&num;{car.price}" />
+                        <b:dataTableColumn value="&num;{car.enginePower}" label="Engine Power (hp)" />
+                        </b:dataTable>
+                        </h:form>
+                        ]]>
+                    </script>
+                </b:panel>
+            </f:facet>
         </b:panel>
-      </f:facet>
-    </b:panel>
-    
 
-    <h2><a id="defining_when_your_resource_files_are_loaded">Defining when your resource files are loaded (aka load order)</a></h2>
-    <p>If you need to place your CSS or JS file before or after the other resource files, you can use the attribute <code>position</code> of the
-    <code>&lt;h:outputStylesheet /&gt;</code>. This is a non-standard attribute, so chances are your IDE complains about it. If so, make it a pass-through attribute.
-    </p>
-    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
-    <![CDATA[
-    <h:outputStylesheet name="first.css" position="first"/>
-    <h:outputStylesheet name="middle.css" position="middle"/>
-    <h:outputStylesheet name="last.css" position="last"/>
-    ]]></script>
+
+        <h2><a id="defining_when_your_resource_files_are_loaded">Defining when your resource files are loaded (aka load order)</a></h2>
+        <p>If you need to place your CSS or JS file before or after the other resource files, you can use the attribute <code>position</code> of the
+            <code>&lt;h:outputStylesheet /&gt;</code>. This is a non-standard attribute, so chances are your IDE complains about it. If so, make it a pass-through attribute.
+        </p>
+        <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+            <![CDATA[
+            <h:outputStylesheet name="first.css" position="first"/>
+            <h:outputStylesheet name="middle.css" position="middle"/>
+            <h:outputStylesheet name="last.css" position="last"/>
+            ]]></script>
 
 
 
 
-    <br/><br/><br/>
-    <script type="text/javascript">
-    SyntaxHighlighter.all();
-    </script>
-  </ui:define>
+        <br/><br/><br/>
+        <script type="text/javascript">
+            SyntaxHighlighter.all();
+        </script>
+    </ui:define>
 </ui:composition>

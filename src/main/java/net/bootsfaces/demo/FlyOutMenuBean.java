@@ -9,19 +9,19 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 public class FlyOutMenuBean implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	private boolean contentDisabled = false;
+    private boolean contentDisabled = false;
 
-	public boolean isContentDisabled() {
-		return contentDisabled;
-	}
+    public boolean isContentDisabled() {
+        return contentDisabled;
+    }
 
-	public void setContentDisabled(boolean contentDisabled) {
-		this.contentDisabled = contentDisabled;
-	}
-	
-	public void onChange() {
-		
-	}
+    public void setContentDisabled(boolean contentDisabled) {
+        this.contentDisabled = contentDisabled;
+    }
+
+    public void onChange() {
+
+    }
 }

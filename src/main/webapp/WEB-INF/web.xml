@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+  
     <context-param>
         <param-name>javax.faces.PROJECT_STAGE</param-name>
         <!--param-value>Production</param-value -->
         <param-value>Production</param-value>
     </context-param>
+    
     <context-param>
         <param-name>de.larmic.butterfaces.provideJQuery</param-name>
         <param-value>true</param-value>
     </context-param>
-        <context-param>
+    
+    <context-param>
         <param-name>de.larmic.butterfaces.provideBootstrap</param-name>
         <param-value>false</param-value>
     </context-param>
+    
     <context-param>
         <param-name>org.butterfaces.provideBootstrap</param-name>
         <param-value>false</param-value>
@@ -21,11 +26,12 @@
 
     <!-- The BootsFaces_THEME context-param controls the loading of the Themes -->
     <!-- The default is Bootstrap, the valid values are a Bootswach Theme name (lowercase) or "custom".
-         If custom is chosen, you will have to provide your custom CSS in the "other" folder. -->
+    If custom is chosen, you will have to provide your custom CSS in the "other" folder. -->
     <context-param>
         <param-name>BootsFaces_THEME</param-name>
         <param-value>#{theme.internalTheme}</param-value>
     </context-param>
+    
     <!-- By default, the dataTables.net files are loaded from a fast CDN.
     Use this parameter to deactivate the feature, allowing you to bring your own copy.
     Notice that in most cases you don't need the context parameter. If BootsFaces detects
@@ -35,68 +41,82 @@
         <param-name>net.bootsfaces.get_datatable_from_cdn</param-name>
         <param-value>#{!dataTableSettingsBean.useCDN}</param-value>
     </context-param>
+    
     <!-- The BootsFaces_USETHEME context-param controls the loading of the bootstrap-theme.css -->
     <!-- The default is false, when set to true the bootstrap-theme.css will be loaded -->
     <context-param>
         <param-name>BootsFaces_USETHEME</param-name>
         <param-value>true</param-value>
     </context-param>
+    
     <context-param>
         <param-name>net.bootsfaces.get_jquery_from_cdn</param-name>
         <param-value>false</param-value>
     </context-param>
-     <!-- Activates the waitcursor and the double-click protection -->
+    
+    <!-- Activates the waitcursor and the double-click protection -->
     <context-param>
-      <param-name>net.bootsfaces.blockUI</param-name>
+        <param-name>net.bootsfaces.blockUI</param-name>
         <param-value>#{blockUIBean.isBlockUIActive()}</param-value>
     </context-param>
+    
     <context-param>
-      <param-name>net.bootsfaces.defaults.renderLabel</param-name>
+        <param-name>net.bootsfaces.defaults.renderLabel</param-name>
         <param-value>#{defaultValuesBean.renderLabel}</param-value>
     </context-param>
+    
     <!-- should the (wrong, but working) BootsFaces style of displaying error message CSS classes be used? -->
     <context-param>
-      <param-name>net.bootsfaces.legacy_error_classes</param-name>
+        <param-name>net.bootsfaces.legacy_error_classes</param-name>
         <param-value>#{messageStyleBean.useLegacyBootsFacesStyle}</param-value>
     </context-param>
+    
     <context-param>
-      <param-name>net.bootsfaces.defaults.decorator</param-name>
+        <param-name>net.bootsfaces.defaults.decorator</param-name>
         <param-value>false</param-value>
     </context-param>
+    
     <!-- set the maximum time-to-live of cache entries to one day -->
     <context-param>
         <param-name>org.omnifaces.COMBINED_RESOURCE_HANDLER_CACHE_TTL</param-name>
         <param-value>86400</param-value>
     </context-param>
+    
     <context-param>
         <param-name>org.omnifaces.COMBINED_RESOURCE_HANDLER_EXCLUDED_RESOURCES</param-name>
         <param-value>bsf:css/icons.css</param-value>
     </context-param>
 
     <context-param>
-      <param-name>javax.faces.FACELETS_DECORATORS</param-name>
-      <param-value>
-          net.bootsfaces.decorator.BootsFacesTagDecorator
-      </param-value>
+        <param-name>javax.faces.FACELETS_DECORATORS</param-name>
+        <param-value>net.bootsfaces.decorator.BootsFacesTagDecorator</param-value>
     </context-param>
 
     <context-param>
         <param-name>primefaces.THEME</param-name>
         <param-value>bootstrap</param-value>
     </context-param>
+    
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
-    </servlet>
+    </servlet>    
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.jsf</url-pattern>
     </servlet-mapping>
+    
     <session-config>
-        <session-timeout>30
-        </session-timeout>
+        <session-timeout>30</session-timeout>
+        <tracking-mode>COOKIE</tracking-mode>
+        <cookie-config>
+            <name>showcase</name>
+            <http-only>true</http-only>
+            <secure>false</secure>            
+        </cookie-config>
     </session-config>
+    
     <welcome-file-list>
         <welcome-file>index.jsf</welcome-file>
     </welcome-file-list>

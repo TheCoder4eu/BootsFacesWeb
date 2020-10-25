@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package net.bootsfaces.demo;
 
 import java.io.Serializable;
@@ -29,109 +28,112 @@ import javax.validation.constraints.NotNull;
 
 import net.bootsfaces.utils.FacesMessages;
 
-/** A simple bean for demo purposes. */
+/**
+ * A simple bean for demo purposes.
+ */
 @RequestScoped
 @ManagedBean
 public class SelectMultiMenuBean implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	@NotNull
-	private String brand = "1, 2, 3";
+    private static final long serialVersionUID = 1L;
 
-	@NotNull
-	private String type = "2";
+    @NotNull
+    private String brand = "1, 2, 3";
 
-	private String color;
+    @NotNull
+    private String type = "2";
 
-	@NotNull
-	@Min(500)
-	@Max(50000)
-	private int price;
+    private String color;
 
-	@NotNull
-	@Min(2)
-	@Max(999)
-	private int enginePower;
+    @NotNull
+    @Min(500)
+    @Max(50000)
+    private int price;
 
-	private List<NumericKeyStringValuePair> myList = new ArrayList<>();
+    @NotNull
+    @Min(2)
+    @Max(999)
+    private int enginePower;
 
-	private boolean iAgreeToTheTermsAndConditions = false;
+    private List<NumericKeyStringValuePair> myList = new ArrayList<>();
 
-	public SelectMultiMenuBean() {
-		getMyList().add(new NumericKeyStringValuePair(1, "Tesla"));
-		getMyList().add(new NumericKeyStringValuePair(2, "Porsche"));
-		getMyList().add(new NumericKeyStringValuePair(3, "BMW"));
-	}
+    private boolean iAgreeToTheTermsAndConditions = false;
 
-	public String getColor() {
-		return color;
-	}
+    public SelectMultiMenuBean() {
+        getMyList().add(new NumericKeyStringValuePair(1, "Tesla"));
+        getMyList().add(new NumericKeyStringValuePair(2, "Porsche"));
+        getMyList().add(new NumericKeyStringValuePair(3, "BMW"));
+    }
 
-	public void setColor(String color) {
-		this.color = color;
-	}
+    public String getColor() {
+        return color;
+    }
 
-	public int getPrice() {
-		return price;
-	}
+    public void setColor(String color) {
+        this.color = color;
+    }
 
-	public void setPrice(int price) {
-		this.price = price;
-	}
+    public int getPrice() {
+        return price;
+    }
 
-	public int getEnginePower() {
-		return enginePower;
-	}
+    public void setPrice(int price) {
+        this.price = price;
+    }
 
-	public void setEnginePower(int enginePower) {
-		this.enginePower = enginePower;
-	}
+    public int getEnginePower() {
+        return enginePower;
+    }
 
-	public String getBrand() {
-		return brand;
-	}
+    public void setEnginePower(int enginePower) {
+        this.enginePower = enginePower;
+    }
 
-	public void setBrand(String brand) {
-		this.brand = brand;
-	}
+    public String getBrand() {
+        return brand;
+    }
 
-	public String getType() {
-		return type;
-	}
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
 
-	public void setType(String type) {
-		this.type = type;
-	}
+    public String getType() {
+        return type;
+    }
 
-	public boolean isiAgreeToTheTermsAndConditions() {
-		return iAgreeToTheTermsAndConditions;
-	}
+    public void setType(String type) {
+        this.type = type;
+    }
 
-	public void setiAgreeToTheTermsAndConditions(boolean iAgreeToTheTermsAndConditions) {
-		this.iAgreeToTheTermsAndConditions = iAgreeToTheTermsAndConditions;
-	}
+    public boolean isiAgreeToTheTermsAndConditions() {
+        return iAgreeToTheTermsAndConditions;
+    }
 
-	public void updateBrandMessage() {
-		if (null == brand) {
-			FacesMessages.error("**:brandID", "Error", "No brand selected");
-		} else {
-			FacesMessages.info("**:brandID", "Brand selected", "You've selected " + brand);
-		}
-	}
+    public void setiAgreeToTheTermsAndConditions(boolean iAgreeToTheTermsAndConditions) {
+        this.iAgreeToTheTermsAndConditions = iAgreeToTheTermsAndConditions;
+    }
 
-	public void updateTypeMessage() {
-		if (null == type) {
-			FacesMessages.warning("**:typeID", "Warning", "No type selected");
-		} else {
-			FacesMessages.info("**:typeID", "Type selected", "You've selected " + type);
-		}
-	}
+    public void updateBrandMessage() {
+        if (null == brand) {
+            FacesMessages.error("**:brandID", "Error", "No brand selected");
+        } else {
+            FacesMessages.info("**:brandID", "Brand selected", "You've selected " + brand);
+        }
+    }
 
-	public List<NumericKeyStringValuePair> getMyList() {
-		return myList;
-	}
+    public void updateTypeMessage() {
+        if (null == type) {
+            FacesMessages.warning("**:typeID", "Warning", "No type selected");
+        } else {
+            FacesMessages.info("**:typeID", "Type selected", "You've selected " + type);
+        }
+    }
 
-	public void setMyList(List<NumericKeyStringValuePair> myList) {
-		this.myList = myList;
-	}
+    public List<NumericKeyStringValuePair> getMyList() {
+        return myList;
+    }
+
+    public void setMyList(List<NumericKeyStringValuePair> myList) {
+        this.myList = myList;
+    }
 }

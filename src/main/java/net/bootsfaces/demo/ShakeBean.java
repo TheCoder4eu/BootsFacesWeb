@@ -18,9 +18,10 @@ import net.bootsfaces.utils.FacesMessages;
 @ManagedBean
 @RequestScoped
 public class ShakeBean implements Serializable {
-	private static final long serialVersionUID = -1;
 
-	public void onShaken() {
-		FacesMessages.info("Shaken at " + new Date());
-	}
+    private static final long serialVersionUID = -1;
+
+    public void onShaken() {
+        FacesMessages.info("Shaken at " + new Date());
+    }
 }

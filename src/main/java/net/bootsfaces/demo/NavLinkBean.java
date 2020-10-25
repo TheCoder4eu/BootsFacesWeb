@@ -10,67 +10,71 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 @ManagedBean
 public class NavLinkBean implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	private int activePage = 0;
+    private static final long serialVersionUID = 1L;
 
-	private String source;
+    private int activePage = 0;
 
-	private List<String> musicStyles= new ArrayList<String>();
-	
-	private boolean disabled=false;
+    private String source;
 
-	public NavLinkBean() {
-		musicStyles.add("Jazz");
-		musicStyles.add("Rock");
-		musicStyles.add("Rhythm and Blues");
-		musicStyles.add("Punk");
-		musicStyles.add("Heavy Metal");
-	}
+    private List<String> musicStyles = new ArrayList<String>();
 
-	public void navigateToPage(int page, String source) {
-		activePage = page;
-		this.source = source;
-	}
+    private boolean disabled = false;
 
-	public String getPageTitle() {
-		return "Page " + (activePage + 1);
-	}
+    public NavLinkBean() {
+        musicStyles.add("Jazz");
+        musicStyles.add("Rock");
+        musicStyles.add("Rhythm and Blues");
+        musicStyles.add("Punk");
+        musicStyles.add("Heavy Metal");
+    }
 
-	public String getPageContent() {
-		if (source == null) {
-			return "This is the default page.";
-		}
-		if (0 == activePage)
-			return "This is the first page, and you've called it using a " + source + ".";
-		if (1 == activePage)
-			return "This is the second page, and you've called it using a " + source + ".";
-		return "This is an unknown page.";
-	}
+    public void navigateToPage(int page, String source) {
+        activePage = page;
+        this.source = source;
+    }
 
-	public String getPageLook() {
-		if (0 == activePage)
-			return "primary";
-		return "success";
-	}
+    public String getPageTitle() {
+        return "Page " + (activePage + 1);
+    }
 
-	public List<String> getMusicStyles() {
-		return musicStyles;
-	}
+    public String getPageContent() {
+        if (source == null) {
+            return "This is the default page.";
+        }
+        if (0 == activePage) {
+            return "This is the first page, and you've called it using a " + source + ".";
+        }
+        if (1 == activePage) {
+            return "This is the second page, and you've called it using a " + source + ".";
+        }
+        return "This is an unknown page.";
+    }
 
-	public void setMusicStyles(List<String> musicStyles) {
-		this.musicStyles = musicStyles;
-	}
+    public String getPageLook() {
+        if (0 == activePage) {
+            return "primary";
+        }
+        return "success";
+    }
 
-	public boolean isDisabled() {
-		return disabled;
-	}
+    public List<String> getMusicStyles() {
+        return musicStyles;
+    }
 
-	public void setDisabled(boolean disabled) {
-		this.disabled = disabled;
-	}
-	
-	public void onChange() {
-		
-	}
+    public void setMusicStyles(List<String> musicStyles) {
+        this.musicStyles = musicStyles;
+    }
+
+    public boolean isDisabled() {
+        return disabled;
+    }
+
+    public void setDisabled(boolean disabled) {
+        this.disabled = disabled;
+    }
+
+    public void onChange() {
+
+    }
 }

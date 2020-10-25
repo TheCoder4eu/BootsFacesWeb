@@ -1,32 +1,32 @@
 package net.bootsfaces.demo.selectOneMenu;
 
 /**
- * Example taken from : https://memorynotfound.com/using-custom-converter-for-hselectonemenu/
+ * Example taken from :
+ * https://memorynotfound.com/using-custom-converter-for-hselectonemenu/
  */
-
 public class Wine {
 
-	private Integer id;
-	private String brand;
+    private Integer id;
+    private String brand;
 
-	public Wine(Integer id, String brand) {
-		this.id = id;
-		this.brand = brand;
-	}
+    public Wine(Integer id, String brand) {
+        this.id = id;
+        this.brand = brand;
+    }
 
-	public Integer getId() {
-		return id;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public String getBrand() {
-		return brand;
-	}
+    public String getBrand() {
+        return brand;
+    }
 
-	public void setBrand(String brand) {
-		this.brand = brand;
-	}
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
 }

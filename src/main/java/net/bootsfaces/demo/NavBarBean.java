@@ -8,34 +8,36 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 @ManagedBean
 public class NavBarBean implements Serializable {
-	private static final long serialVersionUID = 1L;
-	private boolean navBarDisabled = false;
-	private boolean navBarLinksDisabled = false;
-	private boolean dropMenuDisabled = false;
 
-	public boolean isNavBarDisabled() {
-		return navBarDisabled;
-	}
+    private static final long serialVersionUID = 1L;
+    private boolean navBarDisabled = false;
+    private boolean navBarLinksDisabled = false;
+    private boolean dropMenuDisabled = false;
 
-	public void setNavBarDisabled(boolean navBarDisabled) {
-		this.navBarDisabled = navBarDisabled;
-	}
+    public boolean isNavBarDisabled() {
+        return navBarDisabled;
+    }
 
-	public boolean isNavBarLinksDisabled() {
-		return navBarLinksDisabled;
-	}
+    public void setNavBarDisabled(boolean navBarDisabled) {
+        this.navBarDisabled = navBarDisabled;
+    }
 
-	public void setNavBarLinksDisabled(boolean navLinksDisabled) {
-		this.navBarLinksDisabled = navLinksDisabled;
-	}
+    public boolean isNavBarLinksDisabled() {
+        return navBarLinksDisabled;
+    }
 
-	public boolean isDropMenuDisabled() {
-		return dropMenuDisabled;
-	}
+    public void setNavBarLinksDisabled(boolean navLinksDisabled) {
+        this.navBarLinksDisabled = navLinksDisabled;
+    }
 
-	public void setDropMenuDisabled(boolean dropMenuDisabled) {
-		this.dropMenuDisabled = dropMenuDisabled;
-	}
-	
-	public void onChange() {}
+    public boolean isDropMenuDisabled() {
+        return dropMenuDisabled;
+    }
+
+    public void setDropMenuDisabled(boolean dropMenuDisabled) {
+        this.dropMenuDisabled = dropMenuDisabled;
+    }
+
+    public void onChange() {
+    }
 }

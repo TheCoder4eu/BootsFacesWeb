@@ -1,72 +1,77 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:fragment xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:b="http://bootsfaces.net/ui" 
-	xmlns:jsf="http://xmlns.jcp.org/jsf"
-	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+             xmlns:h="http://java.sun.com/jsf/html"
+             xmlns:ui="http://java.sun.com/jsf/facelets"
+             xmlns:f="http://java.sun.com/jsf/core"
+             xmlns:b="http://bootsfaces.net/ui" 
+             xmlns:jsf="http://xmlns.jcp.org/jsf"
+             xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
-	<ui:remove>
-		<!--
-    Hint to editors: The menus follow the Chicago style of capitalization. Please capitalize everything but the "smaller" words.
-    -->
-	</ui:remove>
-	<style>
-		ul.navbar-sidebar>li a[data-toggle].collapsed:before {
-			    content: "\f105";
-			    margin-left: 2px;
-			    margin-right: 7px;
-			}
-		ul.navbar-sidebar>li a[data-toggle]:before {
-		    content: "\f107";
-		    font-family: FontAwesome;
-		    margin-right: 5px;
-		    vertical-align: 0;
-	    }
-	    ul.navbar-sidebar>li >ul > li > a {
-	    		padding-top:2px;
-	    		padding-bottom:2px;
-	    		margin-left:1.5em;
-	    		font-size:90%;
-	       color: #888888;
-	    	}
-	    	ul.navbar-sidebar>li >ul > li > a:hover, 
-	    	ul.navbar-sidebar>li >ul > li > a:focus {
-	        color: #007bff;
-	        background-color: unset;
-	    	}
-	    	
+    <ui:remove>
+        <!--
+Hint to editors: The menus follow the Chicago style of capitalization. Please capitalize everything but the "smaller" words.
+        -->
+    </ui:remove>
+    <style>
+        ul.navbar-sidebar>li a[data-toggle].collapsed:before {
+            content: "\f105";
+            margin-left: 2px;
+            margin-right: 7px;
+        }
+        ul.navbar-sidebar>li a[data-toggle]:before {
+            content: "\f107";
+            font-family: FontAwesome;
+            margin-right: 5px;
+            vertical-align: 0;
+        }
+        ul.navbar-sidebar>li >ul > li > a {
+            padding-top:2px;
+            padding-bottom:2px;
+            margin-left:1.5em;
+            font-size:90%;
+            color: #888888;
+        }
+        ul.navbar-sidebar>li >ul > li > a:hover, 
+        ul.navbar-sidebar>li >ul > li > a:focus {
+            color: #007bff;
+            background-color: unset;
+        }
     </style>
-	<h:form prependId="false">
-		<b:inputText placeholder="search component" style="margin-top:22px"
-			value="#{componentListBean.filter}" update="@next"
-			onkeyup="ajax:componentListBean.updateFilter();"
-			onkeydown="if (event) {if(event.keyCode == 13) { $('.site-navigation > form > .nav > li > a').first()[0].click(); return false; }}" />
+    <h:form prependId="false">
+        <b:inputText placeholder="search component" style="margin-top:22px"
+                     value="#{componentListBean.filter}" update="@next"
+                     onkeyup="ajax:componentListBean.updateFilter();"
+                     onkeydown="if (event) {
+                                    if (event.keyCode == 13) {
+                                        $('.site-navigation > form > .nav > li > a').first()[0].click();
+                                        return false;
+                                    }
+                                }" />
 
-		<b:listLinks styleClass="navbar-sidebar">
-			<li>
-				<a role="button" data-toggle="collapse" class="collapsed"
-					href="#concepts-navigation"> Concepts </a> 
-				<b:listLinks
-					id="concepts-navigation" styleClass="collapse in">
-					<ui:repeat var="c" value="#{componentListBean.filteredConcepts}">
-						<b:navLink href="#{request.contextPath}/#{c.value}" value="#{c.key}" />
-					</ui:repeat>
-				</b:listLinks></li>
-			<li class="active">
-			  <a role="button" data-toggle="collapse"
-				 href="#components-navigation"> Components </a> 
-			  <b:listLinks
-					id="components-navigation" styleClass="collapse in">
-					<ui:repeat var="c" value="#{componentListBean.tags}">
-						<b:navLink
-							href="#{componentListBean.addSlashIfNecessary(request.contextPath)}#{componentListBean.url(c)}"
-							value="#{componentListBean.getDisplayName(c)}" />
-					</ui:repeat>
-				</b:listLinks>
-			</li>
-		</b:listLinks>
-	</h:form>
+        <b:listLinks styleClass="navbar-sidebar">
+            <li>
+                <a role="button" data-toggle="collapse" class="collapsed"
+                   href="#concepts-navigation"> Concepts </a> 
+                <b:listLinks
+                    id="concepts-navigation" styleClass="collapse in">
+                    <ui:repeat var="c" value="#{componentListBean.filteredConcepts}">
+                        <b:navLink href="#{request.contextPath}/#{c.value}" value="#{c.key}" />
+                    </ui:repeat>
+                </b:listLinks></li>
+            <li class="active">
+                <a role="button" data-toggle="collapse"
+                   href="#components-navigation"> Components </a> 
+                <b:listLinks
+                    id="components-navigation" styleClass="collapse in">
+                    <ui:repeat var="c" value="#{componentListBean.tags}">
+                        <b:navLink
+                            href="#{componentListBean.addSlashIfNecessary(request.contextPath)}#{componentListBean.url(c)}"
+                            value="#{componentListBean.getDisplayName(c)}" 
+                            rendered="#{not empty componentListBean.url(c)}"/>
+                    </ui:repeat>
+                </b:listLinks>
+            </li>
+        </b:listLinks>
+    </h:form>
 </ui:fragment>
