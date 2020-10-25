@@ -159,7 +159,7 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.2.2</version>
                 <configuration>
-                    <warName>BootsFacesWeb</warName>
+                    <warName>Showcase</warName>
                 </configuration>
 
                 <!--configuration> <webResources> <resource> <- this is relative to the 

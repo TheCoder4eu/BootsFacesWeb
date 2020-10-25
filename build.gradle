@@ -78,6 +78,6 @@ war.doFirst {
 }
 
 war {
-    archiveName = 'BootsFacesWeb.war'
+    archiveName = 'Showcase.war'
 }
 

@@ -7,9 +7,7 @@ steps:
   image: openjdk:11-jdk
   commands:
     - ./gradlew -Dorg.gradle.daemon=false -b build.gradle clean war
-    - ls -lisa
     - cd ./build/
-    - ls -lisa
     - cd ./libs/
     - ls -lisa
   volumes:
@@ -21,6 +19,8 @@ steps:
   image: maven:3.6-jdk-11
   commands:
     - mvn clean package #-P MavenCentral
+    - cd ./target/
+    - ls -lisa
   volumes:
   - name: maven-cache
     path: /root/.m2
