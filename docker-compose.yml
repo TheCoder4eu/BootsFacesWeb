@@ -1,0 +1,8 @@
+version: '3.3'
+
+services:
+  bootsfaces_showcase:
+    image: geopossachs/bootsfaces_showcase:snapshot
+    restart: always
+    ports:
+      - "127.0.0.1:6080:8080"

@@ -9,65 +9,65 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class PersonBean implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
-	private String firstName = "";
-	
-	private String lastName = "";
-	
-	private String zipCode ="";
-	private String city="";
-	
-	private String street="";
-	
-	private String poBox="";
+    private static final long serialVersionUID = 1L;
 
-	public String getFirstName() {
-		return firstName;
-	}
+    private String firstName = "";
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    private String lastName = "";
 
-	public String getLastName() {
-		return lastName;
-	}
+    private String zipCode = "";
+    private String city = "";
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    private String street = "";
 
-	public String getZipCode() {
-		return zipCode;
-	}
+    private String poBox = "";
 
-	public void setZipCode(String zipCode) {
-		this.zipCode = zipCode;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public String getCity() {
-		return city;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public void setCity(String city) {
-		this.city = city;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	public String getStreet() {
-		return street;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public void setStreet(String street) {
-		this.street = street;
-	}
+    public String getZipCode() {
+        return zipCode;
+    }
 
-	public String getPoBox() {
-		return poBox;
-	}
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
 
-	public void setPoBox(String poBox) {
-		this.poBox = poBox;
-	}
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getPoBox() {
+        return poBox;
+    }
+
+    public void setPoBox(String poBox) {
+        this.poBox = poBox;
+    }
 
 }

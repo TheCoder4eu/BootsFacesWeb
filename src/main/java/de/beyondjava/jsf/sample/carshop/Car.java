@@ -28,144 +28,144 @@ import javax.validation.constraints.NotNull;
 @ManagedBean
 @SessionScoped
 public class Car implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
-	String brand;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	public int getMileage() {
-		return mileage;
-	}
+    String brand;
 
-	public void setMileage(int mileage) {
-		this.mileage = mileage;
-	}
+    public int getMileage() {
+        return mileage;
+    }
 
-	public String getFuel() {
-		return fuel;
-	}
+    public void setMileage(int mileage) {
+        this.mileage = mileage;
+    }
 
-	public void setFuel(String fuel) {
-		this.fuel = fuel;
-	}
+    public String getFuel() {
+        return fuel;
+    }
 
-	public int getPrice() {
-		return price;
-	}
+    public void setFuel(String fuel) {
+        this.fuel = fuel;
+    }
 
-	public void setPrice(int price) {
-		this.price = price;
-	}
+    public int getPrice() {
+        return price;
+    }
 
-	@NotNull
-	String color;
+    public void setPrice(int price) {
+        this.price = price;
+    }
 
-	String type;
+    @NotNull
+    String color;
 
-	@Min(1886)
-	@Max(2014)
-	@NotNull
-	int year;
+    String type;
 
-	@Min(0)
-	@Max(1000000)
-	@NotNull
-	int mileage;
+    @Min(1886)
+    @Max(2014)
+    @NotNull
+    int year;
 
-	@NotNull
-	String fuel;
+    @Min(0)
+    @Max(1000000)
+    @NotNull
+    int mileage;
 
-	@Min(1)
-	@Max(5000000)
-	int price;
+    @NotNull
+    String fuel;
 
-	@Min(50)
-	@Max(200)
-	private
-	int enginePower;
+    @Min(1)
+    @Max(5000000)
+    int price;
 
-	private boolean editable;
+    @Min(50)
+    @Max(200)
+    private int enginePower;
 
-	public Car() {
-	}
+    private boolean editable;
 
-	public Car(String brand, String type, int year, String color, int mileage, String fuel, int price) {
-		this.brand = brand;
-		this.type = type;
-		this.year = year;
-		this.color = color;
-		this.mileage = mileage;
-		this.fuel = fuel;
-		this.price = price;
-	}
+    public Car() {
+    }
 
-	public String getBrand() {
-		return brand;
-	}
+    public Car(String brand, String type, int year, String color, int mileage, String fuel, int price) {
+        this.brand = brand;
+        this.type = type;
+        this.year = year;
+        this.color = color;
+        this.mileage = mileage;
+        this.fuel = fuel;
+        this.price = price;
+    }
 
-	public String getColor() {
-		return color;
-	}
+    public String getBrand() {
+        return brand;
+    }
 
-	public String getType() {
-		return type;
-	}
+    public String getColor() {
+        return color;
+    }
 
-	public int getYear() {
-		return year;
-	}
+    public String getType() {
+        return type;
+    }
 
-	public void setBrand(String brand) {
-		this.brand = brand;
-	}
+    public int getYear() {
+        return year;
+    }
 
-	public void setColor(String color) {
-		this.color = color;
-	}
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
 
-	public void setType(String type) {
-		this.type = type;
-	}
+    public void setColor(String color) {
+        this.color = color;
+    }
 
-	public void setYear(int year) {
-		this.year = year;
-	}
+    public void setType(String type) {
+        this.type = type;
+    }
 
-	public int getEnginePower() {
-		return enginePower;
-	}
-	
-	public int getEnginePowerKW() {
-		return (int)Math.round(enginePower / 1.35962);
-	}
+    public void setYear(int year) {
+        this.year = year;
+    }
 
-	public void setEnginePower(int enginePower) {
-		this.enginePower = enginePower;
-	}
-	
-	public void edit() {
-		editable = !editable;
-	}
+    public int getEnginePower() {
+        return enginePower;
+    }
 
-	public boolean isEditable() {
-		return editable;
-	}
+    public int getEnginePowerKW() {
+        return (int) Math.round(enginePower / 1.35962);
+    }
 
-	public void setEditable(boolean editable) {
-		this.editable = editable;
-	}
-	
-	public String getAge() {
-		int currentYear = Calendar.getInstance().get(Calendar.YEAR);
-		return ((currentYear - year) * 12 +5) + " months";				
-	}
+    public void setEnginePower(int enginePower) {
+        this.enginePower = enginePower;
+    }
 
-	@Override
-	public String toString() {
-		return "Car [brand=" + brand + ", color=" + color + ", type=" + type + ", year=" + year + ", mileage=" + mileage
-				+ ", fuel=" + fuel + ", price=" + price + ", enginePower=" + enginePower + ", editable=" + editable
-				+ "]";
-	}
+    public void edit() {
+        editable = !editable;
+    }
+
+    public boolean isEditable() {
+        return editable;
+    }
+
+    public void setEditable(boolean editable) {
+        this.editable = editable;
+    }
+
+    public String getAge() {
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        return ((currentYear - year) * 12 + 5) + " months";
+    }
+
+    @Override
+    public String toString() {
+        return "Car [brand=" + brand + ", color=" + color + ", type=" + type + ", year=" + year + ", mileage=" + mileage
+                + ", fuel=" + fuel + ", price=" + price + ", enginePower=" + enginePower + ", editable=" + editable
+                + "]";
+    }
 }

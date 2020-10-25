@@ -1,0 +1,2 @@
+ FROM jboss/wildfly:18.0.1.Final
+ ADD target/BootsFacesWeb.war /opt/jboss/wildfly/standalone/deployments/BootsFacesWeb.war

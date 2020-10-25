@@ -2,37 +2,23 @@ apply plugin: 'java'
 apply plugin: 'war'
 
 // BootsFaces Library Version to use in the Build
-ext.BootsFacesVersion = '1.6.0-SNAPSHOT'
+ext.BootsFacesVersion = '1.5.0'
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 
 repositories {
-mavenLocal()
-mavenCentral()
+    mavenLocal()
+    mavenCentral()
 }
 
 dependencies {
-providedCompile 'javax.enterprise:cdi-api:1.2'
-providedCompile 'javax.annotation:javax.annotation-api:1.3+'
-providedCompile 'javax.servlet:javax.servlet-api:4.0.1'
-providedCompile 'com.sun.faces:jsf-api:2.2.+'
-providedCompile 'com.sun.faces:jsf-impl:2.2.+'
-providedCompile 'org.glassfish.web:el-impl:2.2'
-compile 'javax.validation:validation-api:2.0.1.Final'
-compile 'org.hibernate:hibernate-validator:6.0.13.Final'
-compile 'org.primefaces:primefaces:6.2'
-compile 'net.glxn:qrgen:1.4'
-compile 'net.sf.barcode4j:barcode4j-light:2.0'
-compile 'com.google.zxing:core:3.3.3'
-compile 'com.google.zxing:javase:3.3.3'
-compile 'org.omnifaces:omnifaces:2.6.9'
-compile 'org.highfaces:highfaces:1.3'
-compile files("${System.properties['java.home']}/../lib/tools.jar")
+    providedCompile 'javax:javaee-api:8.0.1'
+    compile "net.bootsfaces:bootsfaces:${BootsFacesVersion}"
+    compile 'com.googlecode.owasp-java-html-sanitizer:owasp-java-html-sanitizer:20200713.1'
+    compile 'org.primefaces:primefaces:8.0'
+    //compile files("${System.properties['java.home']}/../lib/tools.jar")
 
-compile fileTree(dir: 'bsflib', include: '*.jar') //Required for messages/utils
-
-compile "net.bootsfaces:bootsfaces:${BootsFacesVersion}" //e.g. 1.4.2-SNAPSHOT"
 }
 
 war.doFirst {
@@ -46,11 +32,8 @@ war.doFirst {
     String hostname= InetAddress.getLocalHost().getHostName()
     String currentJvm = org.gradle.internal.jvm.Jvm.current()
 
-	String dependencies="";
+    String dependencies="";
 	try {
-//		eachDependency { DependencyResolveDetails details ->
-//			dependencies +="${details.requested.group}:${details.requested.name}:${details.requested.version}"
-//		}
     	def compileConfiguration = project.configurations.getByName("compile")
     	def resolvedConfiguration = compileConfiguration.resolvedConfiguration
     	def resolvedArtifacts = resolvedConfiguration.resolvedArtifacts
@@ -95,7 +78,6 @@ war.doFirst {
 }
 
 war {
-   archiveName = 'BootsFacesWeb.war'
-//   classpath fileTree(dir: 'bsflib', include: '*') // adds a file-set to the WEB-INF/lib dir.
+    archiveName = 'BootsFacesWeb.war'
 }
 

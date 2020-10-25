@@ -8,61 +8,63 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 @ManagedBean
 public class ColumnsBean implements Serializable {
-	private static final long serialVersionUID = 1L;
-	private boolean containerDisabled = false;
-	private boolean rowDisabled = false;
-	private boolean columnDisabled = false;
-	private int columns = 3;
-	private String colspan = "4,8";
-	private String size = "lg";
 
-	public boolean isContainerDisabled() {
-		return containerDisabled;
-	}
+    private static final long serialVersionUID = 1L;
+    private boolean containerDisabled = false;
+    private boolean rowDisabled = false;
+    private boolean columnDisabled = false;
+    private int columns = 3;
+    private String colspan = "4,8";
+    private String size = "lg";
 
-	public void setContainerDisabled(boolean containerDisabled) {
-		this.containerDisabled = containerDisabled;
-	}
+    public boolean isContainerDisabled() {
+        return containerDisabled;
+    }
 
-	public boolean isRowDisabled() {
-		return rowDisabled;
-	}
+    public void setContainerDisabled(boolean containerDisabled) {
+        this.containerDisabled = containerDisabled;
+    }
 
-	public void setRowDisabled(boolean rowDisabled) {
-		this.rowDisabled = rowDisabled;
-	}
+    public boolean isRowDisabled() {
+        return rowDisabled;
+    }
 
-	public boolean isColumnDisabled() {
-		return columnDisabled;
-	}
+    public void setRowDisabled(boolean rowDisabled) {
+        this.rowDisabled = rowDisabled;
+    }
 
-	public void setColumnDisabled(boolean columnDisabled) {
-		this.columnDisabled = columnDisabled;
-	}
-	
-	public void onChange() {}
+    public boolean isColumnDisabled() {
+        return columnDisabled;
+    }
 
-	public int getColumns() {
-		return columns;
-	}
+    public void setColumnDisabled(boolean columnDisabled) {
+        this.columnDisabled = columnDisabled;
+    }
 
-	public void setColumns(int columns) {
-		this.columns = columns;
-	}
+    public void onChange() {
+    }
 
-	public String getColspan() {
-		return colspan;
-	}
+    public int getColumns() {
+        return columns;
+    }
 
-	public void setColspan(String colspan) {
-		this.colspan = colspan;
-	}
+    public void setColumns(int columns) {
+        this.columns = columns;
+    }
 
-	public String getSize() {
-		return size;
-	}
+    public String getColspan() {
+        return colspan;
+    }
 
-	public void setSize(String size) {
-		this.size = size;
-	}
+    public void setColspan(String colspan) {
+        this.colspan = colspan;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
 }

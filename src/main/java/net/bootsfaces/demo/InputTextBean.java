@@ -25,51 +25,53 @@ import javax.faces.view.ViewScoped;
 
 /**
  * This bean is used by the InputText demo.
+ *
  * @author Stephan Rauh, http://www.beyondjava.net
  */
 @ViewScoped
 @ManagedBean
 public class InputTextBean implements Serializable {
-	private static final long serialVersionUID = -6810958868318611791L;
-	private String text="";
-	
-	private String capitalText = "VALUE";
-	
-	private Map<String, String> map = new HashMap<String, String>();
-	
-	public String getKey() {
-		return "key";
-	}
-	
-	public InputTextBean() {
-		getMap().put("key", "value");
-	}
-	
-	public void capitalizeText() {
-		setCapitalText(getMap().get("key").toUpperCase());
-	}
 
-	public String getText() {
-		return text;
-	}
+    private static final long serialVersionUID = -6810958868318611791L;
+    private String text = "";
 
-	public void setText(String text) {
-		this.text = text;
-	}
+    private String capitalText = "VALUE";
 
-	public String getCapitalText() {
-		return capitalText;
-	}
+    private Map<String, String> map = new HashMap<String, String>();
 
-	public void setCapitalText(String capitalText) {
-		this.capitalText = capitalText;
-	}
+    public String getKey() {
+        return "key";
+    }
 
-	public Map<String, String> getMap() {
-		return map;
-	}
+    public InputTextBean() {
+        getMap().put("key", "value");
+    }
 
-	public void setMap(Map<String, String> map) {
-		this.map = map;
-	}
+    public void capitalizeText() {
+        setCapitalText(getMap().get("key").toUpperCase());
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public String getCapitalText() {
+        return capitalText;
+    }
+
+    public void setCapitalText(String capitalText) {
+        this.capitalText = capitalText;
+    }
+
+    public Map<String, String> getMap() {
+        return map;
+    }
+
+    public void setMap(Map<String, String> map) {
+        this.map = map;
+    }
 }

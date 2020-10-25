@@ -10,10 +10,11 @@ import net.bootsfaces.utils.FacesMessages;
 @ManagedBean
 @ViewScoped
 public class CommandLinkBean implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	public String testAction() {
-		FacesMessages.info("Command link clicked", "Detail?");
-		return null;
-	}
+    private static final long serialVersionUID = 1L;
+
+    public String testAction() {
+        FacesMessages.info("Command link clicked", "Detail?");
+        return null;
+    }
 }

@@ -2,9 +2,11 @@ package net.bootsfaces.demo;
 
 /**
  * Store Items Class
+ *
  * @author Thecoder4.eu
  */
 public class Item {
+
     private String name;
     private String code;
     private String price;
@@ -12,7 +14,7 @@ public class Item {
     public Item(String name, String code, String price) {
         this.name = name;
         this.code = code;
-        this.price= price;
+        this.price = price;
     }
 
     public String getName() {
@@ -30,7 +32,7 @@ public class Item {
     public void setCode(String code) {
         this.code = code;
     }
-    
+
     public String getPrice() {
         return price;
     }

@@ -20,55 +20,58 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/eternallyStreamingVideo")
 public class EndlessVideoServlet extends HttpServlet {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	   // Constants ----------------------------------------------------------------------------------
-
+    // Constants ----------------------------------------------------------------------------------
     private static final int DEFAULT_BUFFER_SIZE = 10240; // ..bytes = 10KB.
     private static final long DEFAULT_EXPIRE_TIME = 604800000L; // ..ms = 1 week.
     private static final String MULTIPART_BOUNDARY = "MULTIPART_BYTERANGES";
 
     // Properties ---------------------------------------------------------------------------------
-
     private String basePath;
 
     // Actions ------------------------------------------------------------------------------------
-
- 
     /**
-     * Process HEAD request. This returns the same headers as GET request, but without content.
+     * Process HEAD request.This returns the same headers as GET request, but
+     * without content.
+     *
+     * @param request
+     * @param response
      * @see HttpServlet#doHead(HttpServletRequest, HttpServletResponse).
      */
+    @Override
     protected void doHead(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException
-    {
+            throws ServletException, IOException {
         // Process request without content.
         processRequest(request, response, false);
     }
 
     /**
      * Process GET request.
+     *
+     * @param request
+     * @param response
      * @see HttpServlet#doGet(HttpServletRequest, HttpServletResponse).
      */
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException
-    {
+            throws ServletException, IOException {
         // Process request with content.
         processRequest(request, response, true);
     }
 
     /**
      * Process the actual request.
+     *
      * @param request The request to be processed.
      * @param response The response to be created.
-     * @param content Whether the request body should be written (GET) or not (HEAD).
+     * @param content Whether the request body should be written (GET) or not
+     * (HEAD).
      * @throws IOException If something fails at I/O level.
      */
-    private void processRequest
-        (HttpServletRequest request, HttpServletResponse response, boolean content)
-            throws IOException
-    {
-         // URL-decode the file name (might contain spaces and on) and prepare file object.
+    private void processRequest(HttpServletRequest request, HttpServletResponse response, boolean content)
+            throws IOException {
+        // URL-decode the file name (might contain spaces and on) and prepare file object.
         File file = new File(request.getServletContext().getRealPath("miscellaneous/SampleVideo_1280x720_1mb.mp4"));
 
         // Check if file actually exists in filesystem.
@@ -86,9 +89,7 @@ public class EndlessVideoServlet extends HttpServlet {
         String eTag = fileName + "_" + length + "_" + lastModified;
         long expires = System.currentTimeMillis() + DEFAULT_EXPIRE_TIME;
 
-
         // Validate request headers for caching ---------------------------------------------------
-
         // If-None-Match header should contain "*" or ETag. If so, then return 304.
         String ifNoneMatch = request.getHeader("If-None-Match");
         if (ifNoneMatch != null && matches(ifNoneMatch, eTag)) {
@@ -108,9 +109,7 @@ public class EndlessVideoServlet extends HttpServlet {
             return;
         }
 
-
         // Validate request headers for resume ----------------------------------------------------
-
         // If-Match header should contain "*" or ETag. If not, then return 412.
         String ifMatch = request.getHeader("If-Match");
         if (ifMatch != null && !matches(ifMatch, eTag)) {
@@ -125,9 +124,7 @@ public class EndlessVideoServlet extends HttpServlet {
             return;
         }
 
-
         // Validate and process range -------------------------------------------------------------
-
         // Prepare some variables. The full Range represents the complete file.
         Range full = new Range(0, length - 1, length);
         List<Range> ranges = new ArrayList<Range>();
@@ -185,9 +182,7 @@ public class EndlessVideoServlet extends HttpServlet {
             }
         }
 
-
         // Prepare and initialize response --------------------------------------------------------
-
         // Get content type by file name and set default GZIP support and content disposition.
         String contentType = getServletContext().getMimeType(fileName);
         boolean acceptsGzip = false;
@@ -206,9 +201,7 @@ public class EndlessVideoServlet extends HttpServlet {
             String acceptEncoding = request.getHeader("Accept-Encoding");
             acceptsGzip = acceptEncoding != null && accepts(acceptEncoding, "gzip");
             contentType += ";charset=UTF-8";
-        } 
-
-        // Else, expect for images, determine content disposition. If content type is supported by
+        } // Else, expect for images, determine content disposition. If content type is supported by
         // the browser, then set to inline, else attachment which will pop a 'save as' dialogue.
         else if (!contentType.startsWith("image")) {
             String accept = request.getHeader("Accept");
@@ -224,9 +217,7 @@ public class EndlessVideoServlet extends HttpServlet {
         response.setDateHeader("Last-Modified", lastModified);
         response.setDateHeader("Expires", expires);
 
-
         // Send requested file (part(s)) to client ------------------------------------------------
-
         // Prepare streams.
         RandomAccessFile input = null;
         OutputStream output = null;
@@ -306,9 +297,9 @@ public class EndlessVideoServlet extends HttpServlet {
     }
 
     // Helpers (can be refactored to public utility class) ----------------------------------------
-
     /**
      * Returns true if the given accept header accepts the given value.
+     *
      * @param acceptHeader The accept header.
      * @param toAccept The value to be accepted.
      * @return True if the given accept header accepts the given value.
@@ -317,12 +308,13 @@ public class EndlessVideoServlet extends HttpServlet {
         String[] acceptValues = acceptHeader.split("\\s*(,|;)\\s*");
         Arrays.sort(acceptValues);
         return Arrays.binarySearch(acceptValues, toAccept) > -1
-            || Arrays.binarySearch(acceptValues, toAccept.replaceAll("/.*$", "/*")) > -1
-            || Arrays.binarySearch(acceptValues, "*/*") > -1;
+                || Arrays.binarySearch(acceptValues, toAccept.replaceAll("/.*$", "/*")) > -1
+                || Arrays.binarySearch(acceptValues, "*/*") > -1;
     }
 
     /**
      * Returns true if the given match header matches the given value.
+     *
      * @param matchHeader The match header.
      * @param toMatch The value to be matched.
      * @return True if the given match header matches the given value.
@@ -331,16 +323,20 @@ public class EndlessVideoServlet extends HttpServlet {
         String[] matchValues = matchHeader.split("\\s*,\\s*");
         Arrays.sort(matchValues);
         return Arrays.binarySearch(matchValues, toMatch) > -1
-            || Arrays.binarySearch(matchValues, "*") > -1;
+                || Arrays.binarySearch(matchValues, "*") > -1;
     }
 
     /**
-     * Returns a substring of the given string value from the given begin index to the given end
-     * index as a long. If the substring is empty, then -1 will be returned
+     * Returns a substring of the given string value from the given begin index
+     * to the given end index as a long. If the substring is empty, then -1 will
+     * be returned
+     *
      * @param value The string value to return a substring as long for.
-     * @param beginIndex The begin index of the substring to be returned as long.
+     * @param beginIndex The begin index of the substring to be returned as
+     * long.
      * @param endIndex The end index of the substring to be returned as long.
-     * @return A substring of the given string value as long or -1 if substring is empty.
+     * @return A substring of the given string value as long or -1 if substring
+     * is empty.
      */
     private static long sublong(String value, int beginIndex, int endIndex) {
         String substring = value.substring(beginIndex, endIndex);
@@ -349,15 +345,16 @@ public class EndlessVideoServlet extends HttpServlet {
 
     /**
      * Copy the given byte range of the given input to the given output.
+     *
      * @param input The input to copy the given range to the given output for.
-     * @param output The output to copy the given range from the given input for.
+     * @param output The output to copy the given range from the given input
+     * for.
      * @param start Start of the byte range.
      * @param length Length of the byte range.
      * @throws IOException If something fails at I/O level.
      */
     private static void copy(RandomAccessFile input, OutputStream output, long start, long length)
-        throws IOException
-    {
+            throws IOException {
         byte[] buffer = new byte[DEFAULT_BUFFER_SIZE];
         int read;
 
@@ -384,6 +381,7 @@ public class EndlessVideoServlet extends HttpServlet {
 
     /**
      * Close the given resource.
+     *
      * @param resource The resource to be closed.
      */
     private static void close(Closeable resource) {
@@ -398,11 +396,11 @@ public class EndlessVideoServlet extends HttpServlet {
     }
 
     // Inner classes ------------------------------------------------------------------------------
-
     /**
      * This class represents a byte range.
      */
     protected class Range {
+
         long start;
         long end;
         long length;
@@ -410,6 +408,7 @@ public class EndlessVideoServlet extends HttpServlet {
 
         /**
          * Construct a byte range.
+         *
          * @param start Start of the byte range.
          * @param end End of the byte range.
          * @param total Total length of the byte source.
@@ -422,6 +421,5 @@ public class EndlessVideoServlet extends HttpServlet {
         }
 
     }
-
 
 }

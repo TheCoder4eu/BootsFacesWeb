@@ -29,236 +29,247 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class CarPool implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	private final static int SIZE_OF_INITIAL_CAR_POOL = 15;
+    private static final long serialVersionUID = 1L;
 
-	private String language = "Italian";
-	
-	@ManagedProperty("#{staticOptionBean}")
-	private StaticOptionBean staticOptions;
+    private final static int SIZE_OF_INITIAL_CAR_POOL = 15;
 
-	public StaticOptionBean getStaticOptions() {
-		return staticOptions;
-	}
+    private String language = "Italian";
 
-	public void setStaticOptions(StaticOptionBean staticOptions) {
-		this.staticOptions = staticOptions;
-	}
+    @ManagedProperty("#{staticOptionBean}")
+    private StaticOptionBean staticOptions;
 
-	public DynamicOptionBean getDynamicOptions() {
-		return dynamicOptions;
-	}
+    public StaticOptionBean getStaticOptions() {
+        return staticOptions;
+    }
 
-	public void setDynamicOptions(DynamicOptionBean dynamicOptions) {
-		this.dynamicOptions = dynamicOptions;
-	}
+    public void setStaticOptions(StaticOptionBean staticOptions) {
+        this.staticOptions = staticOptions;
+    }
 
-	@ManagedProperty("#{dynamicOptionBean}")
-	private DynamicOptionBean dynamicOptions;
+    public DynamicOptionBean getDynamicOptions() {
+        return dynamicOptions;
+    }
 
-	private List<String> types;
+    public void setDynamicOptions(DynamicOptionBean dynamicOptions) {
+        this.dynamicOptions = dynamicOptions;
+    }
 
-	private int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+    @ManagedProperty("#{dynamicOptionBean}")
+    private DynamicOptionBean dynamicOptions;
 
-	private List<Car> carPool;
+    private List<String> types;
 
-	public List<Car> getCarPool() {
-		return carPool;
-	}
+    private int currentYear = Calendar.getInstance().get(Calendar.YEAR);
 
-	public List<Car> getEmptyCarPool() {
-		return new ArrayList<Car>();
-	}
+    private List<Car> carPool;
 
-	private List<Car> selectedCars = new ArrayList<>();
+    public List<Car> getCarPool() {
+        return carPool;
+    }
 
-	private List<Car> currentlySelectedCars = new ArrayList<>();
+    public List<Car> getEmptyCarPool() {
+        return new ArrayList<Car>();
+    }
 
-	public List<Car> getSelectedCars() {
-		return selectedCars;
-	}
+    private List<Car> selectedCars = new ArrayList<>();
 
-	@PostConstruct
-	public void initRandomCarPool() {
-		types = dynamicOptions.getTypesToBrand(null);
-		carPool = new ArrayList<Car>();
-		for (int i = 0; i < SIZE_OF_INITIAL_CAR_POOL; i++) {
-			carPool.add(getRandomCar());
-		}
-		selectedCars = carPool;
-	}
+    private List<Car> currentlySelectedCars = new ArrayList<>();
 
-	public void setCarPool(List<Car> carpool) {
-		this.carPool = carpool;
-	}
+    public List<Car> getSelectedCars() {
+        return selectedCars;
+    }
 
-	private Car getRandomCar() {
-		int typeIndex = (int) Math.floor(Math.random() * (types.size() - 1));
-		String type = types.get(typeIndex + 1);
-		String brand = dynamicOptions.getBrandToType(type);
-		int year = (int) (Math.floor((currentYear - 1980) * Math.random())) + 1980;
-		int age = currentYear - year;
+    @PostConstruct
+    public void initRandomCarPool() {
+        types = dynamicOptions.getTypesToBrand(null);
+        carPool = new ArrayList<Car>();
+        for (int i = 0; i < SIZE_OF_INITIAL_CAR_POOL; i++) {
+            carPool.add(getRandomCar());
+        }
+        selectedCars = carPool;
+    }
 
-		int price = 60000 / (1 + age) + (int) Math.floor(Math.random() * 10000);
+    public void setCarPool(List<Car> carpool) {
+        this.carPool = carpool;
+    }
 
-		int mileage = (int) (Math.floor((age + 1) * 20000 * Math.random()));
+    private Car getRandomCar() {
+        int typeIndex = (int) Math.floor(Math.random() * (types.size() - 1));
+        String type = types.get(typeIndex + 1);
+        String brand = dynamicOptions.getBrandToType(type);
+        int year = (int) (Math.floor((currentYear - 1980) * Math.random())) + 1980;
+        int age = currentYear - year;
 
-		int colorIndex = (int) Math.floor(Math.random() * (staticOptions.getColors().size() - 1));
-		String color = staticOptions.getColors().get(colorIndex + 1);
+        int price = 60000 / (1 + age) + (int) Math.floor(Math.random() * 10000);
 
-		int fuelIndex = (int) Math.floor(Math.random() * (staticOptions.getFuels().size() - 1));
-		String fuel = staticOptions.getFuels().get(fuelIndex + 1);
-		
-		int enginePower = (int)Math.floor(Math.random() * 100) + 50;
+        int mileage = (int) (Math.floor((age + 1) * 20000 * Math.random()));
 
-		Car c = new Car(brand, type, year, color, mileage, fuel, price);
-		c.setEnginePower(enginePower);
-		return c;
-	}
+        int colorIndex = (int) Math.floor(Math.random() * (staticOptions.getColors().size() - 1));
+        String color = staticOptions.getColors().get(colorIndex + 1);
 
-	public void applyFilter(FilterBean b) {
-		selectedCars = new ArrayList<Car>();
-		for (Car c : carPool) {
-			String criterium = b.getBrand();
-			if (criterium != null && criterium.length() > 0) {
-				if (!c.getBrand().equals(criterium))
-					continue;
-			}
-			criterium = b.getType();
-			if (criterium != null && criterium.length() > 0) {
-				if (!c.getType().equals(criterium))
-					continue;
-			}
-			criterium = b.getColor();
-			if (criterium != null && criterium.length() > 0) {
-				if (!c.getColor().equals(criterium))
-					continue;
-			}
-			criterium = b.getFuel();
-			if (criterium != null && criterium.length() > 0) {
-				if (!c.getFuel().equals(criterium))
-					continue;
-			}
-			int year = b.getYear();
-			if (c.getYear() < year)
-				continue;
-			criterium = b.getMileage();
-			if (criterium != null && criterium.length() > 0) {
-				int km = Integer.parseInt(criterium.substring(2, criterium.length() - 3));
-				if (c.getMileage() > km)
-					continue;
-			}
-			criterium = b.getPrice();
-			if (criterium != null && criterium.length() > 0) {
-				int euro = Integer.parseInt(criterium.substring(3, criterium.length()));
-				if (c.getPrice() > euro)
-					continue;
-			}
-			selectedCars.add(c);
-		}
-	}
+        int fuelIndex = (int) Math.floor(Math.random() * (staticOptions.getFuels().size() - 1));
+        String fuel = staticOptions.getFuels().get(fuelIndex + 1);
 
-	public String getLanguage() {
-		return language;
-	}
+        int enginePower = (int) Math.floor(Math.random() * 100) + 50;
 
-	public void setLanguage(String language) {
-		this.language = language;
-	}
+        Car c = new Car(brand, type, year, color, mileage, fuel, price);
+        c.setEnginePower(enginePower);
+        return c;
+    }
 
-	public String getLang() {
-		if ("Italian".equals(language))
-			return "it";
-		return null;
-	}
+    public void applyFilter(FilterBean b) {
+        selectedCars = new ArrayList<Car>();
+        for (Car c : carPool) {
+            String criterium = b.getBrand();
+            if (criterium != null && criterium.length() > 0) {
+                if (!c.getBrand().equals(criterium)) {
+                    continue;
+                }
+            }
+            criterium = b.getType();
+            if (criterium != null && criterium.length() > 0) {
+                if (!c.getType().equals(criterium)) {
+                    continue;
+                }
+            }
+            criterium = b.getColor();
+            if (criterium != null && criterium.length() > 0) {
+                if (!c.getColor().equals(criterium)) {
+                    continue;
+                }
+            }
+            criterium = b.getFuel();
+            if (criterium != null && criterium.length() > 0) {
+                if (!c.getFuel().equals(criterium)) {
+                    continue;
+                }
+            }
+            int year = b.getYear();
+            if (c.getYear() < year) {
+                continue;
+            }
+            criterium = b.getMileage();
+            if (criterium != null && criterium.length() > 0) {
+                int km = Integer.parseInt(criterium.substring(2, criterium.length() - 3));
+                if (c.getMileage() > km) {
+                    continue;
+                }
+            }
+            criterium = b.getPrice();
+            if (criterium != null && criterium.length() > 0) {
+                int euro = Integer.parseInt(criterium.substring(3, criterium.length()));
+                if (c.getPrice() > euro) {
+                    continue;
+                }
+            }
+            selectedCars.add(c);
+        }
+    }
 
-	public String getCustomLangUrl() {
-		if ("Brazilian Portuguese".equals(language))
-			return "//cdn.datatables.net/plug-ins/1.10.12/i18n/Portuguese-Brasil.json";
-		if ("Norwegian".equals(language))
-			return "//cdn.datatables.net/plug-ins/1.10.12/i18n/Norwegian-Bokmal.json";
-		return null;
-	}
+    public String getLanguage() {
+        return language;
+    }
 
-	public void onLanguageChange() {
+    public void setLanguage(String language) {
+        this.language = language;
+    }
 
-	}
+    public String getLang() {
+        if ("Italian".equals(language)) {
+            return "it";
+        }
+        return null;
+    }
 
-	public void onSelect() {
-		System.out.println("OnSelect");
-	}
-	public void onSelect(Car car) {
-		System.out.println("OnSelect:" + car);
-	}
-	
-	public void onSelect(Car car, String typeOfSelection, String indexes) {
-		System.out.println("OnSelect:" + car + " typeOfSelection: " + typeOfSelection + " indexes: " + indexes);
-		
-		if (!"row".equals(typeOfSelection)) {
-			car = null; // it's an empty instance of Car, so we better get rid of it
-		}
-		if (indexes!=null && indexes.contains("[")) {
-			car = null; // JSF can't deal with arrays of parameters
-		}
-		if (null != car) {
-			getCurrentlySelectedCars().add(car);
-		} else if (null != indexes && "row".equals(typeOfSelection)) {
-			if (indexes.startsWith("[")) {
-				indexes = indexes.substring(1, indexes.length()-1);
-			}
-			String[] indexArray = indexes.split(",");
-			for (String index:indexArray) {
-				int i = Integer.valueOf(index);
-				Car newCar=carPool.get(i);
-				if (!currentlySelectedCars.contains(newCar)) {
-					getCurrentlySelectedCars().add(newCar);
-				}
-			}
-		}
-	}
-	
-	public void onDeselect(Car car, String typeOfSelection, String indexes) {
-		System.out.println("OnDeselect:" + car + " typeOfSelection: " + typeOfSelection + " indexes: " + indexes);
-		if (null != car && "row".equals(typeOfSelection)) {
-			getCurrentlySelectedCars().remove(car);
-		} else if (null != indexes && "row".equals(typeOfSelection)) {
-			String[] indexArray = indexes.split(",");
-			for (String index:indexArray) {
-				int i = Integer.valueOf(index);
-				getCurrentlySelectedCars().remove(carPool.get(i));
-			}
-		}
-	}
-	
-	public void onSelectDemo2(Car car, String typeOfSelection, String indexes) {
-		System.out.println("OnSelect:" + car + " typeOfSelection: " + typeOfSelection + " indexes: " + indexes);
-	}
-	
-	public void onDeselectDemo2(Car car, String typeOfSelection, String indexes) {
-		System.out.println("OnDeselect:" + car + " typeOfSelection: " + typeOfSelection + " indexes: " + indexes);
-	}
+    public String getCustomLangUrl() {
+        if ("Brazilian Portuguese".equals(language)) {
+            return "//cdn.datatables.net/plug-ins/1.10.12/i18n/Portuguese-Brasil.json";
+        }
+        if ("Norwegian".equals(language)) {
+            return "//cdn.datatables.net/plug-ins/1.10.12/i18n/Norwegian-Bokmal.json";
+        }
+        return null;
+    }
 
+    public void onLanguageChange() {
 
-	public List<Car> getCurrentlySelectedCars() {
-		return currentlySelectedCars;
-	}
+    }
 
-	public void setCurrentlySelectedCars(List<Car> currentlySelectedCars) {
-		this.currentlySelectedCars = currentlySelectedCars;
-	}
-	
-	public void delete(Car car) {
-		this.carPool.remove(car);
-	}
-	
-	public void changeColor(Car car) {
-		String color;
-		do {
-		int colorIndex = (int) Math.floor(Math.random() * (staticOptions.getColors().size() - 1));
-		 color = staticOptions.getColors().get(colorIndex + 1);
-		} while (color.equals(car.getColor()));
+    public void onSelect() {
+        System.out.println("OnSelect");
+    }
 
-		car.setColor(color);
-	}
+    public void onSelect(Car car) {
+        System.out.println("OnSelect:" + car);
+    }
+
+    public void onSelect(Car car, String typeOfSelection, String indexes) {
+        System.out.println("OnSelect:" + car + " typeOfSelection: " + typeOfSelection + " indexes: " + indexes);
+
+        if (!"row".equals(typeOfSelection)) {
+            car = null; // it's an empty instance of Car, so we better get rid of it
+        }
+        if (indexes != null && indexes.contains("[")) {
+            car = null; // JSF can't deal with arrays of parameters
+        }
+        if (null != car) {
+            getCurrentlySelectedCars().add(car);
+        } else if (null != indexes && "row".equals(typeOfSelection)) {
+            if (indexes.startsWith("[")) {
+                indexes = indexes.substring(1, indexes.length() - 1);
+            }
+            String[] indexArray = indexes.split(",");
+            for (String index : indexArray) {
+                int i = Integer.valueOf(index);
+                Car newCar = carPool.get(i);
+                if (!currentlySelectedCars.contains(newCar)) {
+                    getCurrentlySelectedCars().add(newCar);
+                }
+            }
+        }
+    }
+
+    public void onDeselect(Car car, String typeOfSelection, String indexes) {
+        System.out.println("OnDeselect:" + car + " typeOfSelection: " + typeOfSelection + " indexes: " + indexes);
+        if (null != car && "row".equals(typeOfSelection)) {
+            getCurrentlySelectedCars().remove(car);
+        } else if (null != indexes && "row".equals(typeOfSelection)) {
+            String[] indexArray = indexes.split(",");
+            for (String index : indexArray) {
+                int i = Integer.valueOf(index);
+                getCurrentlySelectedCars().remove(carPool.get(i));
+            }
+        }
+    }
+
+    public void onSelectDemo2(Car car, String typeOfSelection, String indexes) {
+        System.out.println("OnSelect:" + car + " typeOfSelection: " + typeOfSelection + " indexes: " + indexes);
+    }
+
+    public void onDeselectDemo2(Car car, String typeOfSelection, String indexes) {
+        System.out.println("OnDeselect:" + car + " typeOfSelection: " + typeOfSelection + " indexes: " + indexes);
+    }
+
+    public List<Car> getCurrentlySelectedCars() {
+        return currentlySelectedCars;
+    }
+
+    public void setCurrentlySelectedCars(List<Car> currentlySelectedCars) {
+        this.currentlySelectedCars = currentlySelectedCars;
+    }
+
+    public void delete(Car car) {
+        this.carPool.remove(car);
+    }
+
+    public void changeColor(Car car) {
+        String color;
+        do {
+            int colorIndex = (int) Math.floor(Math.random() * (staticOptions.getColors().size() - 1));
+            color = staticOptions.getColors().get(colorIndex + 1);
+        } while (color.equals(car.getColor()));
+
+        car.setColor(color);
+    }
 }
