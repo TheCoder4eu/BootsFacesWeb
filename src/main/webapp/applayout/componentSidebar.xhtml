@@ -37,7 +37,6 @@ Hint to editors: The menus follow the Chicago style of capitalization. Please ca
             color: #007bff;
             background-color: unset;
         }
-
     </style>
     <h:form prependId="false">
         <b:inputText placeholder="search component" style="margin-top:22px"
@@ -68,7 +67,8 @@ Hint to editors: The menus follow the Chicago style of capitalization. Please ca
                     <ui:repeat var="c" value="#{componentListBean.tags}">
                         <b:navLink
                             href="#{componentListBean.addSlashIfNecessary(request.contextPath)}#{componentListBean.url(c)}"
-                            value="#{componentListBean.getDisplayName(c)}" />
+                            value="#{componentListBean.getDisplayName(c)}" 
+                            rendered="#{not empty componentListBean.url(c)}"/>
                     </ui:repeat>
                 </b:listLinks>
             </li>
