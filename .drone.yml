@@ -2,6 +2,13 @@ kind: pipeline
 name: default
 
 steps:
+
+- name: gradle-check
+  image: gradle:jdk11
+  commands:
+    - gradle assemble
+    - gradle check
+
   # build the ./target/BootsFacesWeb.war
 - name: maven-build
   image: maven:3.6-jdk-11
