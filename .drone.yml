@@ -4,10 +4,13 @@ name: default
 steps:
 
 - name: gradle-check
-  image: gradle:jdk11
+  image: openjdk:11-jdk
   commands:
-    - gradle assemble
-    - gradle check
+    - ./gradlew -Dorg.gradle.daemon=false -b build.gradle clean war
+    - ls -lisa
+  volumes:
+  - name: maven-cache
+    path: /root/.m2
 
   # build the ./target/BootsFacesWeb.war
 - name: maven-build
