@@ -184,7 +184,7 @@
           <b:column col-sm="6">
             <b:panel look="primary"
                      title="AJAXified Combobox without mouse events">
-              <b:label text="Which JSF framework do you like most?" />
+              <b:label value="Which JSF framework do you like most?" />
               <b:selectOneMenu value="#{ajaxBean.jsf}" id="jsfID"
                                onchange="console.log('before onChange');ajax:ajaxBean.onChange();javascript:console.log('afterOnChange')"
                                onblur="console.log('blur');ajax:ajaxBean.onBlur()"
@@ -210,7 +210,7 @@
                 <!-- onmousemove="console.log('mouse move')ajax:ajaxBean.onMouseMove();"  -->
               </ui:remove>
 
-              <b:label text="What about JavaScript?" />
+              <b:label value="What about JavaScript?" />
               <b:selectOneMenu value="#{ajaxBean.js}" id="jsID"
                                onchange="console.log('before onChange');ajax:ajaxBean.onChange();javascript:console.log('after onChange')"
                                onblur="console.log('blur');ajax:ajaxBean.onBlur()"
@@ -240,8 +240,7 @@
               <ui:remove>
               </ui:remove>
 
-              <b:label
-                 text="Which framework do you choose for desktop applications?" />
+              <b:label value="Which framework do you choose for desktop applications?" />
               <b:selectOneMenu value="#{ajaxBean.desktop}" id="desktopId"
                                onmousemove="console.log('mouse move');ajax:ajaxBean.onMouseMove();"
                                onchange="console.log('before onChange');ajax:ajaxBean.onChange()"
@@ -283,7 +282,7 @@
               <b:column col-sm="6">
                 <b:panel look="primary"
                          title="AJAXified Combobox without mouse events">
-                  <b:label text="Which JSF framework do you like most?" />
+                  <b:label value="Which JSF framework do you like most?" />
                   <b:selectOneMenu value="&num;{ajaxBean.jsf}" id="jsfID"
                                    onchange="console.log('before onChange');ajax:ajaxBean.onChange();javascript:console.log('afterOnChange')"
                                    onblur="console.log('blur');ajax:ajaxBean.onBlur()"
@@ -309,7 +308,7 @@
                     <!-- onmousemove="console.log('mouse move')ajax:ajaxBean.onMouseMove();"  -->
                   </ui:remove>
 
-                  <b:label text="What about JavaScript?" />
+                  <b:label value="What about JavaScript?" />
                   <b:selectOneMenu value="&num;{ajaxBean.js}" id="jsID"
                                    onchange="console.log('before onChange');ajax:ajaxBean.onChange();javascript:console.log('afterOnChange')"
                                    onblur="console.log('blur');ajax:ajaxBean.onBlur()"
@@ -338,8 +337,7 @@
                   <ui:remove>
                   </ui:remove>
 
-                  <b:label
-                     text="Which framework do you choose for desktop applications?" />
+                  <b:label value="Which framework do you choose for desktop applications?" />
                   <b:selectOneMenu value="&num;{ajaxBean.desktop}" id="desktopId"
                                    onmousemove="console.log('mouse move');ajax:ajaxBean.onMouseMove();"
                                    update="messages jsfMessages">
@@ -387,7 +385,7 @@
           <b:column col-sm="6">
             <b:panel look="primary"
                      title="Traditional JSF AJAX API">
-              <b:label text="Which JSF framework do you like most?" />
+              <b:label value="Which JSF framework do you like most?" />
               <b:selectOneMenu value="#{ajaxBean.jsf}" id="jsfID">
                 <f:selectItem itemLabel="(Please select)" itemValue="0" />
                 <f:selectItem itemLabel="PrimeFaces" itemValue="1" />
@@ -423,7 +421,7 @@
               <b:column col-sm="6">
                 <b:panel look="primary"
                          title="Traditional JSF AJAX API">
-                  <b:label text="Which JSF framework do you like most?" />
+                  <b:label value="Which JSF framework do you like most?" />
                   <b:selectOneMenu value="&num;{ajaxBean.jsf}" id="jsfID">
                     <f:selectItem itemLabel="(Please select)" itemValue="0" />
                     <f:selectItem itemLabel="PrimeFaces" itemValue="1" />
