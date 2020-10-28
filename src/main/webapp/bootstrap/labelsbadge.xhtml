@@ -33,19 +33,19 @@
         <h:outputText value="Label" />
         <h:outputText value="Badge" />
 
-        <b:label text="Default"/>
+        <b:label value="Default"/>
         <b:badge value="1"/>
-        <b:label text="Success" severity="success"/>
+        <b:label value="Success" severity="success"/>
         <b:badge value="7" />
 
-        <b:label text="Warning" severity="warning"/>
+        <b:label value="Warning" severity="warning"/>
         <b:badge value="9" />
-        <b:label text="Danger" severity="danger"/>
+        <b:label value="Danger" severity="danger"/>
         <b:badge value="4" />
 
-        <b:label text="Info" severity="info"/>
+        <b:label value="Info" severity="info"/>
         <b:badge value="12" />
-        <b:label text="Primary" severity="primary"/>
+        <b:label value="Primary" severity="primary"/>
         <b:badge value="3"/>
       </b:panelGrid>
 
@@ -60,19 +60,19 @@
             <h:outputText value="Label" />
             <h:outputText value="Badge" />
 
-            <b:label text="Default"/>
+            <b:label value="Default"/>
             <b:badge value="1"/>
-            <b:label text="Success" severity="success"/>
+            <b:label value="Success" severity="success"/>
             <b:badge value="7" />
 
-            <b:label text="Warning" severity="warning"/>
+            <b:label value="Warning" severity="warning"/>
             <b:badge value="9" />
-            <b:label text="Danger" severity="danger"/>
+            <b:label value="Danger" severity="danger"/>
             <b:badge value="4" />
 
-            <b:label text="Info" severity="info"/>
+            <b:label value="Info" severity="info"/>
             <b:badge value="12" />
-            <b:label text="Primary" severity="primary"/>
+            <b:label value="Primary" severity="primary"/>
             <b:badge value="3"/>
           </b:panelGrid>
           ]]></script>
@@ -90,9 +90,9 @@
         <h:outputText value="Label" />
         <h:outputText value="Badge" />
 
-        <b:label text="#{testBean.label1}" severity="info"/>
+        <b:label value="#{testBean.label1}" severity="info"/>
         <b:badge value="#{testBean.val1}" />
-        <b:label text="#{testBean.label2}" severity="success"/>
+        <b:label value="#{testBean.label2}" severity="success"/>
         <b:badge value="#{testBean.val2}" />
       </b:panelGrid>
 
@@ -107,9 +107,9 @@
             <h:outputText value="Label" />
             <h:outputText value="Badge" />
 
-            <b:label text="#{testBean.label1}" severity="info"/>
+            <b:label value="#{testBean.label1}" severity="info"/>
             <b:badge value="#{testBean.val1}" />
-            <b:label text="#{testBean.label2}" severity="success"/>
+            <b:label value="#{testBean.label2}" severity="success"/>
             <b:badge value="#{testBean.val2}" />
           </b:panelGrid>
           ]]></script>
@@ -141,19 +141,19 @@
 
       Labels
       <b:row>
-        <b:label severity="primary" text="large-screen='full-width'" large-screen="full-width" />
+        <b:label severity="primary" value="large-screen='full-width'" large-screen="full-width" />
       </b:row>
       <b:row style="padding-top:5px">
-        <b:label severity="primary" text="large-screen='one-third'" large-screen="one-third" />
-        <b:label severity="success" text="large-screen='two-thirds'" large-screen="two-thirds" />
+        <b:label severity="primary" value="large-screen='one-third'" large-screen="one-third" />
+        <b:label severity="success" value="large-screen='two-thirds'" large-screen="two-thirds" />
       </b:row>
       <b:row style="padding-top:5px">
-        <b:label severity="danger" text="small-screen='one-third'" small-screen="one-third" />
-        <b:label severity="primary" text="small-screen='two-thirds'" small-screen="two-thirds" />
+        <b:label severity="danger" value="small-screen='one-third'" small-screen="one-third" />
+        <b:label severity="primary" value="small-screen='two-thirds'" small-screen="two-thirds" />
       </b:row>
       <b:row style="padding-top:5px">
-        <b:label severity="primary" text="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
-        <b:label severity="danger" text="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
+        <b:label severity="primary" value="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
+        <b:label severity="danger" value="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
       </b:row>
 
       <f:facet name="footer">
@@ -180,19 +180,19 @@
 
           Labels
           <b:row>
-            <b:label severity="primary" text="large-screen='full-width'" large-screen="full-width" />
+            <b:label severity="primary" value="large-screen='full-width'" large-screen="full-width" />
           </b:row>
           <b:row style="padding-top:5px">
-            <b:label severity="primary" text="large-screen='one-third'" large-screen="one-third" />
-            <b:label severity="success" text="large-screen='two-thirds'" large-screen="two-thirds" />
+            <b:label severity="primary" value="large-screen='one-third'" large-screen="one-third" />
+            <b:label severity="success" value="large-screen='two-thirds'" large-screen="two-thirds" />
           </b:row>
           <b:row style="padding-top:5px">
-            <b:label severity="danger" text="small-screen='one-third'" small-screen="one-third" />
-            <b:label severity="primary" text="small-screen='two-thirds'" small-screen="two-thirds" />
+            <b:label severity="danger" value="small-screen='one-third'" small-screen="one-third" />
+            <b:label severity="primary" value="small-screen='two-thirds'" small-screen="two-thirds" />
           </b:row>
           <b:row style="padding-top:5px">
-            <b:label severity="primary" text="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
-            <b:label severity="danger" text="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
+            <b:label severity="primary" value="tiny-screen='one-fourth'" tiny-screen="one-fourth" />
+            <b:label severity="danger" value="tiny-screen='half' offset-sm='3'" tiny-screen="half" offset-sm="3" />
           </b:row>
           ]]></script>
         </b:panel>
@@ -205,7 +205,7 @@
     <b:panel title="Live preview" look="info" collapsible="false">
 
       <b:row>
-        <b:label severity="primary" text="Badges" />
+        <b:label severity="primary" value="Badges" />
       </b:row>
       <b:panelGrid colSpans="3,9">
         <h:outputText value="Visible on &gt;= md:" />
@@ -220,19 +220,19 @@
         <b:badge value="col-md-6, offset 2" col-md="6" offset="2" />
       </b:panelGrid>
       <b:row style="padding-top:15px">
-        <b:label severity="primary" text="Labels" />
+        <b:label severity="primary" value="Labels" />
       </b:row>
       <b:panelGrid colSpans="3,9">
         <h:outputText value="Visible on &gt;= md:" />
-        <b:label text="Visible on medium or large screen" severity="info" visible="md..." />
+        <b:label value="Visible on medium or large screen" severity="info" visible="md..." />
         <h:outputText value="Visible on &lt;= sm:" />
-        <b:label text="Visible on small-screen" severity="success" visible="...sm"/>
+        <b:label value="Visible on small-screen" severity="success" visible="...sm"/>
         <h:outputText value="Visible on sm...lg:" />
-        <b:label text="Visible on small to large screen" severity="success" visible="sm...lg"/>
+        <b:label value="Visible on small to large screen" severity="success" visible="sm...lg"/>
         <h:outputText value="Visible on xs and md:" />
-        <b:label text="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
+        <b:label value="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
         <h:outputText value="Col-md-6, offset 2:" />
-        <b:label text="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
+        <b:label value="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
       </b:panelGrid>
 
       <f:facet name="footer">
@@ -241,7 +241,7 @@
           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
           <![CDATA[
           <b:row>
-            <b:label severity="primary" text="Badges" />
+            <b:label severity="primary" value="Badges" />
           </b:row>
           <b:panelGrid colSpans="3,9">
             <h:outputText value="Visible on &gt;= md:" />
@@ -256,19 +256,19 @@
             <b:badge value="col-md-6, offset 2" col-md="6" offset="2" />
           </b:panelGrid>
           <b:row style="padding-top:15px">
-            <b:label severity="primary" text="Labels" />
+            <b:label severity="primary" value="Labels" />
           </b:row>
           <b:panelGrid colSpans="3,9">
             <h:outputText value="Visible on &gt;= md:" />
-            <b:label text="Visible on medium or large screen" severity="info" visible="md..." />
+            <b:label value="Visible on medium or large screen" severity="info" visible="md..." />
             <h:outputText value="Visible on &lt;= sm:" />
-            <b:label text="Visible on small-screen" severity="success" visible="...sm"/>
+            <b:label value="Visible on small-screen" severity="success" visible="...sm"/>
             <h:outputText value="Visible on sm...lg:" />
-            <b:label text="Visible on small to large screen" severity="success" visible="sm...lg"/>
+            <b:label value="Visible on small to large screen" severity="success" visible="sm...lg"/>
             <h:outputText value="Visible on xs and md:" />
-            <b:label text="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
+            <b:label value="Visible on tiny and medium screen" severity="success" visible="xs,md"/>
             <h:outputText value="Col-md-6, offset 2:" />
-            <b:label text="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
+            <b:label value="col-md-6, offset 2" severity="success" col-md="6" offset="2" />
           </b:panelGrid>
           ]]></script>
         </b:panel>
@@ -282,7 +282,7 @@
 
       <b:badge value="Look at my tooltip!" tooltip="Ain't it a nice tooltip?"/>
       <br />
-      <b:label text="Labels also support tooltips." severity="info" tooltip="... and they implement the BootsFaces tooltip API meticulously!"/>
+      <b:label value="Labels also support tooltips." severity="info" tooltip="... and they implement the BootsFaces tooltip API meticulously!"/>
 
       <f:facet name="footer">
         <strong>JSF markup:</strong>
@@ -291,7 +291,7 @@
           <![CDATA[
           <b:badge value="Look at my tooltip!" tooltip="Ain't it a nice tooltip?" />
           <br />
-          <b:label text="Labels also support tooltips." severity="info" tooltip="... and they implement the BootsFaces tooltip API meticulously!" />
+          <b:label value="Labels also support tooltips." severity="info" tooltip="... and they implement the BootsFaces tooltip API meticulously!" />
           ]]></script>
         </b:panel>
       </f:facet>

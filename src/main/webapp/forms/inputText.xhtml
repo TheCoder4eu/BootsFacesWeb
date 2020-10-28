@@ -46,9 +46,9 @@
       <h:form>
         <b:inputText placeholder="Type something here..." value="#{inputTextBean.map[inputTextBean.key]}"
                      onkeyup="ajax:inputTextBean.capitalizeText()" update="@after" delay="1000"/>
-        <b:label text="#{inputTextBean.map['key']}" id="label"/>
+        <b:label value="#{inputTextBean.map['key']}" id="label"/>
 
-        <b:label text="#{inputTextBean.capitalText}" id="captitallabel"/>
+        <b:label value="#{inputTextBean.capitalText}" id="captitallabel"/>
       </h:form>
 
       <f:facet name="footer">
@@ -60,8 +60,8 @@
           <h:form>
             <b:inputText placeholder="Type something here..." value="&num;{inputTextBean.text}"
                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" delay="1000" />
-            <b:label text="&num;{inputTextBean.map['key']}" id="label"/>
-            <b:label text="&num;{inputTextBean.getCapitalText()}" id="captitallabel"/>
+            <b:label value="&num;{inputTextBean.map['key']}" id="label"/>
+            <b:label value="&num;{inputTextBean.getCapitalText()}" id="captitallabel"/>
           </h:form>
           ]]>
           </script>
