@@ -41,7 +41,7 @@
         <b:inputTextarea placeholder="Type something here..." value="#{barcodeBean.nonEmptyText}">
           <f:ajax event="keyup" render="label" listener="#{barcodeBean.capitalizeURL}" />
         </b:inputTextarea>
-        <b:label text="#{barcodeBean.nonEmptyTextCapital}" id="label"/>
+        <b:label value="#{barcodeBean.nonEmptyTextCapital}" id="label"/>
       </b:form>
       <f:facet name="footer">
         <strong>JSF markup:</strong>
@@ -53,7 +53,7 @@
             <b:inputTextarea placeholder="Type something here..." value="&num;{barcodeBean.nonEmptyText}">
               <f:ajax event="keyup" render="label" listener="&num;{barcodeBean.capitalizeURL}" />
             </b:inputTextarea>
-            <b:label text="&num;{barcodeBean.nonEmptyTextCapital}" id="label"/>
+            <b:label value="&num;{barcodeBean.nonEmptyTextCapital}" id="label"/>
           </b:form>
           ]]>
           </script>

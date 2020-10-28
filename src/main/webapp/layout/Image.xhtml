@@ -8,179 +8,181 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets">
 
 
-  <ui:define name="content-navigator">
-    <b:listLinks>
-      <b:navLink href="#image" value="Image (&lt;b:image /&gt;)" />
-      <b:navLink href="#basic_usage" value="Basic usage" />
-      <b:navLink href="#progress_bar" value="Progress bar" />
-      <b:navLink href="#advanced_usage" value="Advanced usage" />
-      <b:navLink href="#don" value="Don't use both" />
-      <b:navLink href="#responsive_attributes" value="Responsive attributes" />
-      <b:navLink href="#reference_section" value="Reference section" />
-    </b:listLinks>
-  </ui:define>
+    <ui:define name="content-navigator">
+        <b:listLinks>
+            <b:navLink href="#image" value="Image (&lt;b:image /&gt;)" />
+            <b:navLink href="#basic_usage" value="Basic usage" />
+            <b:navLink href="#progress_bar" value="Progress bar" />
+            <b:navLink href="#advanced_usage" value="Advanced usage" />
+            <b:navLink href="#don" value="Don't use both" />
+            <b:navLink href="#responsive_attributes" value="Responsive attributes" />
+            <b:navLink href="#reference_section" value="Reference section" />
+        </b:listLinks>
+    </ui:define>
 
 
-  <ui:define name="content">
-    <style>
-      td {
-        padding: 8px;
-      }
-    </style>
-    <h1><a id="image">Image (&lt;b:image /&gt;)</a><b:badge value="since 0.8.0" /></h1>
-    <p>The <code>&lt;b:image /&gt;</code> component is just that: an image. Plus the unified AJAX engine of BootsFaces, and Bootstrap tooltips.</p>
+    <ui:define name="content">
+        <style>
+            td {
+                padding: 8px;
+            }
+        </style>
+        <h1><a id="image">Image (&lt;b:image /&gt;)</a><b:badge value="since 0.8.0" /></h1>
+        <p>The <code>&lt;b:image /&gt;</code> component is just that: an image. Plus the unified AJAX engine of BootsFaces, and Bootstrap tooltips.</p>
 
-    <h2><a id="basic_usage">Basic usage</a></h2>
+        <h2><a id="basic_usage">Basic usage</a></h2>
 
-    <b:panel title="Live preview" look="info" collapsible="false">
-      <b:image name="test" value="../bootstrap/carousel/Valladolid-parque-3.jpg"  tooltip="Ain't he a beauty?" tooltipPosition="right"/>
+        <b:panel title="Live preview" look="info" collapsible="false">
+            <b:image name="images/bootstrap/carousel/Valladolid-parque-3.jpg"  tooltip="Ain't he a beauty?" tooltipPosition="right"/>
 
-      <f:facet name="footer">
-        <strong>JSF markup: </strong>
-        <b:panel>
-          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-          <![CDATA[
-          <b:image name="test" value="../bootstrap/carousel/Valladolid-parque-3.jpg"  tooltip="Ain't he a beauty?" tooltipPosition="right"/>
-          ]]>
-          </script>
+            <f:facet name="footer">
+                <strong>JSF markup: </strong>
+                <b:panel>
+                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                        <![CDATA[
+                        <b:image name="bootstrap/carousel/Valladolid-parque-3.jpg"  tooltip="Ain't he a beauty?" tooltipPosition="right"/>
+                        ]]>
+                    </script>
+                </b:panel>
+            </f:facet>
         </b:panel>
-      </f:facet>
-    </b:panel>
 
-    <p>Alternatively, you can use the JSF resource libraries, just the way you're used to from <code>&lt;h:graphicImage /&gt;</code>;</p>
+        <p>Alternatively, you can use the JSF resource libraries, just the way you're used to from <code>&lt;h:graphicImage /&gt;</code>;</p>
 
-    <b:panel title="Live preview" look="info" collapsible="false">
-      <b:image library="images" name="Valladolid4.png" tooltip="Great water fountain in Valladolid, Spain" />
+        <b:panel title="Live preview" look="info" collapsible="false">
+            <b:image library="images" name="bootstrap/Valladolid4.png" tooltip="Great water fountain in Valladolid, Spain" />
 
-      <f:facet name="footer">
-        <strong>JSF markup: </strong>
-        <b:panel>
-          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-          <![CDATA[
-          <b:image library="images" name="Valladolid4.png" tooltip="Great water fountain in Valladolid, Spain" />
-          ]]>
-          </script>
+            <f:facet name="footer">
+                <strong>JSF markup: </strong>
+                <b:panel>
+                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                        <![CDATA[
+                        <b:image library="images" name="bootstrap/Valladolid4.png" tooltip="Great water fountain in Valladolid, Spain" />
+                        ]]>
+                    </script>
+                </b:panel>
+            </f:facet>
         </b:panel>
-      </f:facet>
-    </b:panel>
 
-    <h2><a id="progress_bar">Progress bar</a></h2>
-    <p>Sometime your images load slowly. BootsFaces offers a JavaScript API tracking the progress. You can use it to implement
-    a progress bar. If you benefit from a fast internet connection, the example below is to fast to show a progress bar.
-    However, you can track the progress by opening your browser's web developer tools: </p>
-    <ul>
-      <li>The console window should display at least threee progress messages (and probably more).</li>
-      <li>If you're using Chrome, open the network tab, deactivate the cache and activate throttling. Set the speed of the
-        connection to "fast 3G". Now this page loads very slow (more than 10 seconds until the page starts to be rendered),
-      so you can watch the progress bar moving slowly to 100%. (Other browsers probably have similar features).</li>
-    </ul>
+        <h2><a id="progress_bar">Progress bar</a></h2>
+        <p>Sometime your images load slowly. BootsFaces offers a JavaScript API tracking the progress. You can use it to implement
+            a progress bar. If you benefit from a fast internet connection, the example below is to fast to show a progress bar.
+            However, you can track the progress by opening your browser's web developer tools: </p>
+        <ul>
+            <li>The console window should display at least threee progress messages (and probably more).</li>
+            <li>If you're using Chrome, open the network tab, deactivate the cache and activate throttling. Set the speed of the
+                connection to "fast 3G". Now this page loads very slow (more than 10 seconds until the page starts to be rendered),
+                so you can watch the progress bar moving slowly to 100%. (Other browsers probably have similar features).</li>
+        </ul>
 
-    <b:panel title="Live preview" look="info" collapsible="false">
-      <b:image value="../bootstrap/Valladolid3.png"  tooltip="Slow loading image" tooltipPosition="right"
-               onloadstart="console.log('start loading ' + img.completedPercentage + '%');"
-               onloadend="console.log('finished loading ' + img.completedPercentage + '%');;$('.imageProgressBar').parent().hide();"
-               onprogress="console.log('continue loading ' + img.completedPercentage + '%');$('.imageProgressBar')[0].setAttribute('style', 'width:' + img.completedPercentage + '%');$('.imageProgressBar')[0].innerText= img.completedPercentage + '%';"
-               />
-      <b:progressBar value="90" look="info" content-class="imageProgressBar"/>
-      <f:facet name="footer">
-        <strong>JSF markup: </strong>
-        <b:panel>
-          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-          <![CDATA[
-          <b:image value="../bootstrap/Valladolid3.png"  tooltip="Slow loading image" tooltipPosition="right"
-                   onloadstart="console.log('start loading ' + img.completedPercentage + '%');"
-                   onloadend="console.log('finished loading ' + img.completedPercentage + '%');;$('.imageProgressBar').parent().hide();"
-                   onprogress="console.log('continue loading ' + img.completedPercentage + '%');$('.imageProgressBar')[0].setAttribute('style', 'width:' + img.completedPercentage + '%');$('.imageProgressBar')[0].innerText= img.completedPercentage + '%';"
-                   style="width:100%"
-                   />
-          <b:progressBar value="90" look="info" content-class="imageProgressBar"/>
-          ]]>
-          </script>
+        <b:panel title="Live preview" look="info" collapsible="false">
+            <b:image library="images" name="bootstrap/Valladolid3.png"  tooltip="Slow loading image" tooltipPosition="right"
+                     onloadstart="console.log('start loading ' + img.completedPercentage + '%');"
+                     onloadend="console.log('finished loading ' + img.completedPercentage + '%');;$('.imageProgressBar').parent().hide();"
+                     onprogress="console.log('continue loading ' + img.completedPercentage + '%');$('.imageProgressBar')[0].setAttribute('style', 'width:' + img.completedPercentage + '%');$('.imageProgressBar')[0].innerText= img.completedPercentage + '%';"
+                     />
+            <b:progressBar value="90" look="info" content-class="imageProgressBar"/>
+            <f:facet name="footer">
+                <strong>JSF markup: </strong>
+                <b:panel>
+                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                        <![CDATA[
+                        <b:image library="images" name="bootstrap/Valladolid3.png"  tooltip="Slow loading image" tooltipPosition="right"
+                          onloadstart="console.log('start loading ' + img.completedPercentage + '%');"
+                          onloadend="console.log('finished loading ' + img.completedPercentage + '%');;$('.imageProgressBar').parent().hide();"
+                          onprogress="console.log('continue loading ' + img.completedPercentage + '%');$('.imageProgressBar')[0].setAttribute('style', 'width:' + img.completedPercentage + '%');$('.imageProgressBar')[0].innerText= img.completedPercentage + '%';"
+                          style="width:100%"
+                        />
+                        <b:progressBar value="90" look="info" content-class="imageProgressBar"/>
+                        ]]>
+                    </script>
+                </b:panel>
+            </f:facet>
         </b:panel>
-      </f:facet>
-    </b:panel>
 
 
-    <h2><a id="advanced_usage">Advanced usage</a></h2>
-    <p>You can use the standard JavaScript callbacks to call both JavaScript function and Java methods (via AJAX).
-    See <a target="#" href="http://www.angularfaces.net/BootsFacesChess-1.0.0-SNAPSHOT/">BootsFaces chess</a>
-    for a full-blown demo. These following demonstrate how BootsFaces chess uses AJAX to implement drag and drop:</p>
+        <h2><a id="advanced_usage">Advanced usage</a></h2>
+        <p>You can use the standard JavaScript callbacks to call both JavaScript function and Java methods (via AJAX).
+            See <a target="#" href="http://www.angularfaces.net/BootsFacesChess-1.0.0-SNAPSHOT/">BootsFaces chess</a>
+            for a full-blown demo. These following demonstrate how BootsFaces chess uses AJAX to implement drag and drop:</p>
 
-    <b:panel title="Live preview" look="info" collapsible="false">
+        <b:panel title="Live preview" look="info" collapsible="false">
 
-      Missing live preview
+            Missing live preview
 
-      <f:facet name="footer">
-        <strong>JSF markup: </strong>
-        <b:panel>
-          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-          <![CDATA[
-          <b:image value="&num;{image}"
-                   style="position: absolute; top: 0px; left: 0px;width: 68px; height: 68px;#{board.getOpacity(rowStatus.index,columnStatus.index)}"
-                   onclick="ajax:board.onclick(rowStatus.index,columnStatus.index)"
-                   oncomplete="document.getElementById('form:opponent').click()"
-                   ondragstart="ajax:board.ondragstart(rowStatus.index,columnStatus.index)"
-                   ondragover="if (targets.indexOf('(#{rowStatus.index},#{columnStatus.index})')>=0) event.preventDefault();"
-            ondrop="ajax:board.ondragdrop(rowStatus.index,columnStatus.index)"
-            update="@form :messages" />
-          ]]>
-          </script>
+            <f:facet name="footer">
+                <strong>JSF markup: </strong>
+                <b:panel>
+                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                        <![CDATA[
+                        <b:image value="&num;{image}"
+                          style="position: absolute; top: 0px; left: 0px;width: 68px; height: 68px;#{board.getOpacity(rowStatus.index,columnStatus.index)}"
+                          onclick="ajax:board.onclick(rowStatus.index,columnStatus.index)"
+                          oncomplete="document.getElementById('form:opponent').click()"
+                          ondragstart="ajax:board.ondragstart(rowStatus.index,columnStatus.index)"
+                          ondragover="if (targets.indexOf('(#{rowStatus.index},#{columnStatus.index})')>=0) event.preventDefault();"
+                          ondrop="ajax:board.ondragdrop(rowStatus.index,columnStatus.index)"
+                          update="@form :messages" />
+                        ]]>
+                    </script>
+                </b:panel>
+            </f:facet>
         </b:panel>
-      </f:facet>
-    </b:panel>
 
-    <b:well>
+        <b:well>
 
-    </b:well>
+        </b:well>
 
-    <h1><a id="don">Don't use both</a><code>value</code> and <code>name/library</code></h1>
-    <p>Until BootsFaces 0.8.5, there was an error in the documentation which lead some developers to use both
-    <code>name</code> and <code>value</code>. Both attributes belong to different resource loading mechanisms,
-    so this caused <code>RES_NOT_FOUND</code> errors. Since BootsFaces 0.8.6, the value attributes is evaluated first.
-    If both attributes are provided, BootsFaces displays a warning in the logfile (only in the development stage).</p>
+        <h1><a id="don">Don't use both</a><code>value</code> and <code>name/library</code></h1>
+        <p>Until BootsFaces 0.8.5, there was an error in the documentation which lead some developers to use both
+            <code>name</code> and <code>value</code>. Both attributes belong to different resource loading mechanisms,
+            so this caused <code>RES_NOT_FOUND</code> errors. Since BootsFaces 0.8.6, the value attributes is evaluated first.
+            If both attributes are provided, BootsFaces displays a warning in the logfile (only in the development stage).</p>
 
-    <h1><a id="responsive_attributes">Responsive attributes</a><b:badge value="since 0.9.0" /></h1>
-    <p>The image supports the full range of responsive attributes, such as <code>col-*</code>, <code>visible</code>
-    and <code>hidden</code>:</p>
+        <h1><a id="responsive_attributes">Responsive attributes</a><b:badge value="since 0.9.0" /></h1>
+        <p>The image supports the full range of responsive attributes, such as <code>col-*</code>, <code>visible</code>
+            and <code>hidden</code>:</p>
+        
+        <b:panel title="Live preview" look="info" collapsible="false">
+            <b:row>
+                <b:image small-screen="one-third" library="images" name="bootstrap/carousel/Valladolid-parque-1.jpg" 
+                         tooltip="small-screen='one-third'"/>
+                <b:image small-screen="one-third" library="images" name="bootstrap/carousel/Valladolid-parque-2.jpg"
+                         tooltip="small-screen='one-third'"/>
+                <b:image small-screen="one-third" hidden="tiny-screen" library="images" name="bootstrap/carousel/Valladolid-parque-3.jpg"
+                         tooltip="small-screen='one-third' hidden='tiny-screen'"/>
+            </b:row>
 
-    <b:panel title="Live preview" look="info" collapsible="false">
-      <b:row>
-        <b:image small-screen="one-third" value="../bootstrap/carousel/Valladolid-parque-1.jpg"  tooltip="small-screen='one-third'"/>
-        <b:image small-screen="one-third" value="../bootstrap/carousel/Valladolid-parque-2.jpg"  tooltip="small-screen='one-third'"/>
-        <b:image small-screen="one-third" hidden="tiny-screen"  value="../bootstrap/carousel/Valladolid-parque-3.jpg"
-                 tooltip="small-screen='one-third' hidden='tiny-screen'"/>
-      </b:row>
-
-      <f:facet name="footer">
-        <strong>JSF markup: </strong>
-        <b:panel>
-          <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-          <![CDATA[
-          <b:row>
-            <b:image small-screen="one-third" value="../bootstrap/carousel/Valladolid-parque-1.jpg" tooltip="small-screen='one-third'"/>
-            <b:image small-screen="one-third" value="../bootstrap/carousel/Valladolid-parque-2.jpg" tooltip="small-screen='one-third'"/>
-            <b:image small-screen="one-third" hidden="tiny-screen" value="../bootstrap/carousel/Valladolid-parque-3.jpg" tooltip="small-screen='one-third' hidden='tiny-screen'"/>
-          </b:row>
-          ]]>
-          </script>
+            <f:facet name="footer">
+                <strong>JSF markup: </strong>
+                <b:panel>
+                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                        <![CDATA[
+                        <b:row>
+                         <b:image small-screen="one-third" library="images" name="bootstrap/carousel/Valladolid-parque-1.jpg" tooltip="small-screen='one-third'"/>
+                         <b:image small-screen="one-third" library="images" name="bootstrap/carousel/Valladolid-parque-2.jpg" tooltip="small-screen='one-third'"/>
+                         <b:image small-screen="one-third" hidden="tiny-screen" library="images" name="bootstrap/carousel/Valladolid-parque-3.jpg" tooltip="small-screen='one-third' hidden='tiny-screen'"/>
+                        </b:row>
+                        ]]>
+                    </script>
+                </b:panel>
+            </f:facet>
         </b:panel>
-      </f:facet>
-    </b:panel>
 
 
 
-    <h2><a id="reference_section">Reference section</a></h2>
-    <ui:include src="ImageAttributes.xhtml" />
-    <b:panel look="info">
-      <f:facet name="heading">
-        <b>Skinning</b>
-      </f:facet>
-      <p>BootsFaces generates pretty simple code for the <code>&lt;b:image&gt;</code>. In particular, there's no extra CSS class. You can modify the appearance of the
-      image using the standard JSF attributes <code>styleClass</code> and <code>style</code>.</p>
-    </b:panel>
+        <h2><a id="reference_section">Reference section</a></h2>
+        <ui:include src="ImageAttributes.xhtml" />
+        <b:panel look="info">
+            <f:facet name="heading">
+                <b>Skinning</b>
+            </f:facet>
+            <p>BootsFaces generates pretty simple code for the <code>&lt;b:image&gt;</code>. In particular, there's no extra CSS class. You can modify the appearance of the
+                image using the standard JSF attributes <code>styleClass</code> and <code>style</code>.</p>
+        </b:panel>
 
-    <script type="text/javascript">
-    SyntaxHighlighter.all();
-    </script>
-  </ui:define>
+        <script type="text/javascript">
+            SyntaxHighlighter.all();
+        </script>
+    </ui:define>
 </ui:composition>

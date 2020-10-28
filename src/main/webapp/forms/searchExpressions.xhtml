@@ -263,7 +263,7 @@
                                update="@next"
                                tooltip="update='@next'"
                                look="info"/>
-              <h:graphicImage url="#{image}" id="graphic" style="width:153; height:117px" />
+              <h:graphicImage  library="images" name="forms/#{image}" id="graphic" style="width:153; height:117px" />
               <b:commandButton value="@previous " ajax="true"
                                actionListener="#{imageGallery.chooseAnotherImage(image)}"
                                update="@previous"
@@ -324,7 +324,7 @@
                                    actionListener="&num;{imageGallery.chooseAnotherImage(image)}"
                                    update="@next"
                                    tooltip="update='@next'"/>
-                  <h:graphicImage url="&num;{image}" id="graphic" style="width:153; height:117px" />
+                  <h:graphicImage  library="images" name="forms/&num;{image}" id="graphic" style="width:153; height:117px" />
                   <b:commandButton value="@previous " ajax="true"
                                    actionListener="&num;{imageGallery.chooseAnotherImage(image)}"
                                    update="@previous"
@@ -406,7 +406,7 @@
                                  actionListener="#{imageGallery.chooseAnotherImage(image)}"
                                  update="@next"
                                  tooltip="update='@next'"/>
-                <h:graphicImage url="#{image}" id="graphic" style="width:153; height:117px" />
+                <h:graphicImage  library="images" name="forms/#{image}" id="graphic" style="width:153; height:117px" />
               </b:column>
             </b:row>
           </ui:repeat>
@@ -505,7 +505,7 @@
                                        actionListener="&num;{imageGallery.chooseAnotherImage(image)}"
                                        update="@next"
                                        tooltip="update='@next'"/>
-                      <h:graphicImage url="&num;{image}" id="graphic" style="width:153; height:117px" />
+                      <h:graphicImage  library="images" name="forms/&num;{image}" id="graphic" style="width:153; height:117px" />
                     </b:column>
                   </b:row>
                 </ui:repeat>

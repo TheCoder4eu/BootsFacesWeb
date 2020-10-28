@@ -8,80 +8,80 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets">
 
 
-  <ui:define name="content-navigator">
-    <b:listLinks>
-      <b:navLink href="#scrollup" value="ScrollUp (&lt;b:scrollUp /&gt;)" />
-      <b:navLink href="#basic_usage" value="Basic usage" />
-      <b:navLink href="#reference_section" value="Reference section" />
-    </b:listLinks>
-  </ui:define>
+    <ui:define name="content-navigator">
+        <b:listLinks>
+            <b:navLink href="#scrollup" value="ScrollUp (&lt;b:scrollUp /&gt;)" />
+            <b:navLink href="#basic_usage" value="Basic usage" />
+            <b:navLink href="#reference_section" value="Reference section" />
+        </b:listLinks>
+    </ui:define>
 
 
-  <ui:define name="content">
-    <style>
-      td {
-        padding: 8px;
-      }
-      #scrollUpCustom {
-        background-image: url("#{resource['images:top.png']}");
-        bottom: 65px;
-        right: 18px;
-        width: 38px; /* width of the custom image */
-        height: 38px; /* height of the custom image */
-        outline: none;
-      }
-    </style>
-    <h1><a id="scrollup">ScrollUp (&lt;b:scrollUp /&gt;)</a><b:badge value="since 0.8.5" /></h1>
-    <b:scrollUp distance="200" animation="fade" text="" scrollTitle="false" name="scrollUpCustom" />
+    <ui:define name="content">
+        <style>
+            td {
+                padding: 8px;
+            }
+            #scrollUpCustom {
+                background-image: url("#{resource['images:bootstrap/top.png']}");
+                bottom: 65px;
+                right: 18px;
+                width: 38px; /* width of the custom image */
+                height: 38px; /* height of the custom image */
+                outline: none;
+            }
+        </style>
+        <h1><a id="scrollup">ScrollUp (&lt;b:scrollUp /&gt;)</a><b:badge value="since 0.8.5" /></h1>
+        <b:scrollUp distance="200" animation="fade" text="" scrollTitle="false" name="scrollUpCustom" />
 
 
-    <p><code>&lt;b:scrollUp&gt;</code> create a customisable 'Scroll to top' feature that will work with any website.</p>
-    <h2><a id="basic_usage">Basic usage</a></h2>
-    <p>By default, ScrollUp is placed on the bottom right corner without any image or text. It is basically a link to scroll up to the Top of the page.</p>
+        <p><code>&lt;b:scrollUp&gt;</code> create a customisable 'Scroll to top' feature that will work with any website.</p>
+        <h2><a id="basic_usage">Basic usage</a></h2>
+        <p>By default, ScrollUp is placed on the bottom right corner without any image or text. It is basically a link to scroll up to the Top of the page.</p>
 
-    <p>Using the attributes, you can setup link text or distance between display the item. In addition, using a custom CSS, you can fully customize
-    this component. The reference to the CSS id selector is done with the "name" attribute, as displayed in the example</p>
-    <br/>
+        <p>Using the attributes, you can setup link text or distance between display the item. In addition, using a custom CSS, you can fully customize
+            this component. The reference to the CSS id selector is done with the "name" attribute, as displayed in the example</p>
+        <br/>
 
-    <b:well>
-      <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
-      <![CDATA[
-      <b:scrollUp distance="200" animation="fade" text="" scrollTitle="false" name="scrollUpCustom" />
-      ]]></script>
-      <p>And the related css section (note that name is the css ID selector) </p>
-      <script type="syntaxhighlighter" class="brush: css; toolbar: false;gutter: false; first-line: 1">
-      <![CDATA[
-      &num;scrollUpCustom {
-        background-image: url("&num;{resource['images:top.png']}");
-        bottom: 65px;
-        right: 18px;
-        width: 38px; /* width of the custom image */
-        height: 38px; /* height of the custom image */
-        outline: none;
-      }
-      ]]></script>
-      <b:badge value="Note" /> You can change the background image size directly, setting the background-size property using a CSS3 selector.
-    </b:well>
+        <b:well>
+            <script type="syntaxhighlighter" class="brush: xml; toolbar: false;gutter: false; first-line: 1">
+                <![CDATA[
+                <b:scrollUp distance="200" animation="fade" text="" scrollTitle="false" name="scrollUpCustom" />
+                ]]></script>
+            <p>And the related css section (note that name is the css ID selector) </p>
+            <script type="syntaxhighlighter" class="brush: css; toolbar: false;gutter: false; first-line: 1">
+            <![CDATA[
+            &num;scrollUpCustom {
+              background-image: url("&num;{resource['images:bootstrap/top.png']}");
+              bottom: 65px;
+              right: 18px;
+              width: 38px; /* width of the custom image */
+              height: 38px; /* height of the custom image */
+              outline: none;
+            }
+            ]]></script>
+            <b:badge value="Note" /> You can change the background image size directly, setting the background-size property using a CSS3 selector.
+        </b:well>
 
-    <br/>
-    <h2><a id="reference_section">Reference section</a></h2>
-    <ui:include src="ScrollUpAttributes.xhtml" />
-    <b:panel look="info" rendered="false">
-      <f:facet name="heading">
-        <b>Skinning</b>
-      </f:facet>
-      <ul>
-        <li>Tell the world which CSS classes can be used to change the
-        look of the component.</li>
-      </ul>
-    </b:panel>
+        <br/>
+        <h2><a id="reference_section">Reference section</a></h2>
+        <ui:include src="ScrollUpAttributes.xhtml" />
+        <b:panel look="info" rendered="false">
+            <f:facet name="heading">
+                <b>Skinning</b>
+            </f:facet>
+            <ul>
+                <li>Tell the world which CSS classes can be used to change the
+                    look of the component.</li>
+            </ul>
+        </b:panel>
 
-    <script type="text/javascript">
-    SyntaxHighlighter.all();
-    </script>
-    <br />
-    <br />
-    <br />
-    <br />
-  </ui:define>
+        <script type="text/javascript">
+            SyntaxHighlighter.all();
+        </script>
+        <br />
+        <br />
+        <br />
+        <br />
+    </ui:define>
 </ui:composition>
