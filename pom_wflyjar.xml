@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>net.bootsfaces</groupId>
+    <artifactId>BootsFacesWeb</artifactId>
+    <version>1.5.1-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <name>BootsFaces Showcase bootable jar</name>
+
+    <description>The BootsFaces Documentation App</description>
+    <url>http://www.bootsfaces.net</url>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <properties>
+        <version.bootable.jar>2.0.1.Final</version.bootable.jar>
+        <version.wildfly>21.0.0.Final</version.wildfly>
+        <plugin.fork.embedded>true</plugin.fork.embedded>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+        <version.microprofile.bom>${version.wildfly}</version.microprofile.bom>
+	<version.server.bom>${version.wildfly}</version.server.bom>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.testSource>1.8</maven.compiler.testSource>
+        <maven.compiler.testTarget>1.8</maven.compiler.testTarget>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>jakarta.platform</groupId>
+                <artifactId>jakarta.jakartaee-api</artifactId>
+                <version>8.0.0</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- importing the jakartaee8-with-tools BOM adds specs and other useful artifacts as managed dependencies -->
+            <dependency>
+                <groupId>org.wildfly.bom</groupId>
+                <artifactId>wildfly-jakartaee8</artifactId>
+                <version>${version.server.bom}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+                <groupId>net.bootsfaces</groupId>
+                <artifactId>bootsfaces</artifactId>
+                <version>1.5.0</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-api</artifactId>
+            <scope>provided</scope>
+    </dependency>
+
+	 <dependency>
+                        <groupId>org.apache.myfaces.core</groupId>
+                        <artifactId>myfaces-impl</artifactId>
+                        <version>2.3.4</version>
+                        <scope>provided</scope>
+                </dependency>
+                <!-- https://mvnrepository.com/artifact/org.apache.myfaces.core/myfaces-api -->
+                <dependency>
+                        <groupId>org.apache.myfaces.core</groupId>
+                        <artifactId>myfaces-api</artifactId>
+                        <version>2.3.4</version>
+                        <scope>provided</scope>
+		</dependency>
+                <dependency>
+                        <groupId>org.highfaces</groupId>
+                        <artifactId>highfaces</artifactId>
+                        <version>1.3</version>
+		</dependency>
+
+	<dependency>
+                        <groupId>org.hibernate</groupId>
+                        <artifactId>hibernate-validator</artifactId>
+                        <version>6.0.13.Final</version>
+		</dependency>
+	<dependency>
+                        <groupId>org.primefaces</groupId>
+                        <artifactId>primefaces</artifactId>
+                        <version>8.0</version>
+                </dependency>
+                <dependency>
+                        <groupId>net.sf.barcode4j</groupId>
+                        <artifactId>barcode4j-light</artifactId>
+                        <version>2.0</version>
+                </dependency>
+                <dependency>
+                        <groupId>net.glxn</groupId>
+                        <artifactId>qrgen</artifactId>
+                        <version>1.4</version>
+                </dependency>
+                <dependency>
+                        <groupId>com.google.zxing</groupId>
+                        <artifactId>core</artifactId>
+                        <version>3.4.0</version>
+                </dependency>
+                <dependency>
+                        <groupId>com.google.zxing</groupId>
+                        <artifactId>javase</artifactId>
+                        <version>3.4.0</version>
+                </dependency>
+    </dependencies>
+    
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-jar-maven-plugin</artifactId>
+                <version>${version.bootable.jar}</version> 
+                <configuration>
+                    <feature-pack-location>wildfly@maven(org.jboss.universe:community-universe):current#${version.wildfly}</feature-pack-location>
+                    <layers>
+                        <layer>cdi</layer>
+                        <layer>jsf</layer>
+                        <layer>web-server</layer>
+                    </layers>
+                    <plugin-options>
+                        <jboss-fork-embedded>${plugin.fork.embedded}</jboss-fork-embedded>
+                    </plugin-options>
+                    <excluded-layers>
+                        <layer>deployment-scanner</layer>
+                    </excluded-layers>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>package</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.2.3</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>openshift</id>
+            <build>
+                <finalName>${project.artifactId}</finalName>
+                <plugins>
+                    <plugin>
+                        <groupId>org.wildfly.plugins</groupId>
+                        <artifactId>wildfly-jar-maven-plugin</artifactId>
+                        <configuration>
+                            <cloud/>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+    
+</project>
