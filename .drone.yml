@@ -3,19 +3,17 @@ name: default
 
 steps:
 
-- name: gradle-check
+- name: gradle-dummy-build-war
   image: openjdk:11-jdk
   commands:
     - ./gradlew -Dorg.gradle.daemon=false -b build.gradle clean war
-    - cd ./build/
-    - cd ./libs/
-    - ls -lisa
+    - ls -lisa ./build/libs/
   volumes:
   - name: maven-cache
     path: /root/.m2
 
   # build the ./target/BootsFacesWeb.war
-- name: maven-build
+- name: maven-build-war
   image: maven:3.6-jdk-11
   commands:
     - mvn clean package #-P MavenCentral
@@ -25,15 +23,16 @@ steps:
   - name: maven-cache
     path: /root/.m2
 
-  # push an image to geopossachs/bootsfaces_showcase:snapshot
+  # push an image to geopossachs/bootsfaces_showcase:{environment}
 - name: docker-publish
   when:
     branch:
-      - master
+      - system/production
+      - system/stage
   image: plugins/docker
   settings:
     repo: geopossachs/bootsfaces_showcase
-    tags: snapshot
+    tags: ${DRONE_BRANCH##system/}
     dockerfile: Dockerfile-wildfly
     username:
       from_secret: docker_username
@@ -44,7 +43,8 @@ steps:
 - name: container-reboot
   when:
     branch:
-      - master
+      - system/production
+      - system/stage
   image: drillster/drone-rsync
   environment:
     RSYNC_KEY:
@@ -52,14 +52,18 @@ steps:
     RSYNC_USER:
       from_secret: rsync_user
   settings:
-    hosts: [ "showcase.bootsfaces.pecer.de" ]
+    hosts: [ "showcase.bootsfaces.de" ]
     source: ./docker-compose.yml
-    target: /srv/bootsfaces-showcase/
+    target: /srv/bootsfaces-showcase__${DRONE_BRANCH/\//-}/
     secrets: [ rsync_user, rsync_key ]
     script:
-      - cd /srv/bootsfaces-showcase/
+      - cd /srv/bootsfaces-showcase__${DRONE_BRANCH/\//-}/
+      - echo VERSION=${DRONE_BRANCH##system/}>.env
+      - if [ "${DRONE_BRANCH##system/}" = "production" ]; then echo "PORT=6070" >> .env ; fi
+      - if [ "${DRONE_BRANCH##system/}" = "stage" ]; then echo "PORT=6060" >> .env ; fi
       - docker-compose pull
       - docker-compose up -d --remove-orphans
+
 
 volumes:
   - name: maven-cache

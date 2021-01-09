@@ -42,14 +42,13 @@
         <maven.compiler.testSource>1.8</maven.compiler.testSource>
         <maven.compiler.testTarget>1.8</maven.compiler.testTarget>
     </properties>
-    <dependencies>        
+    <dependencies>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>8.0.1</version>
             <scope>provided</scope>
         </dependency>
-        
         <dependency>
             <groupId>net.bootsfaces</groupId>
             <artifactId>bootsfaces</artifactId>
@@ -61,26 +60,23 @@
                 </exclusion>
             </exclusions>
         </dependency>
-                        
         <dependency>
             <groupId>com.googlecode.owasp-java-html-sanitizer</groupId>
             <artifactId>owasp-java-html-sanitizer</artifactId>
             <version>20200713.1</version>
         </dependency>
-        
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
             <version>8.0</version>
         </dependency>
-      
     </dependencies>
-    <profiles>       
+    <profiles>
         <profile>
             <id>MavenCentral</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
-            </activation>      
+            </activation>
             <build>
                 <plugins>
                     <plugin>
