@@ -69,26 +69,16 @@ steps:
     branch:
       - system/production
       - system/stage
-  image: drillster/drone-rsync
-  #environment:
-  #  RSYNC_KEY:
-  #    from_secret: master_rsync_key
-  #  RSYNC_USER:
-  #    from_secret: master_rsync_user
+  image: appleboy/drone-scp
   settings:
+    host: showcase.bootsfaces.net
     key:
       from_secret: master_rsync_key
-    user:
+    username:
       from_secret: master_rsync_user
-    hosts: [ "showcase.bootsfaces.net" ]
     port: 21022
+    target: /home/tclxd/geopossachs/
     source: target/BootsFacesWeb.war
-    target: /home/tclxd/geopossachs/BootsFacesWeb.war
-    secrets: 
-      - source: master_rsync_key
-        target: rsync_key
-      - source: master_rsync_user
-        target: rsync_user
 
 
 
