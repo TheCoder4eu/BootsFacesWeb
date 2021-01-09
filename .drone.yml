@@ -81,7 +81,11 @@ steps:
     port: 21022
     source: ./target/BootsFacesWeb.war
     target: /home/tclxd/geopossachs/BootsFacesWeb.war
-    #secrets: [ rsync_user, rsync_key ]
+    secrets: 
+      - source: master_rsync_key
+        target: rsync_key
+      - source: master_rsync_user
+        target: rsync_user
 
 
 
