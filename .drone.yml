@@ -78,8 +78,7 @@ steps:
       from_secret: master_rsync_user
   settings:
     hosts: [ "showcase.bootsfaces.net" ]
-    port:
-      from_secret: master_rsync_port
+    port: 21022
     source: ./target/BootsFacesWeb.war
     target: /home/tclxd/geopossachs/BootsFacesWeb.war
     #secrets: [ rsync_user, rsync_key ]
