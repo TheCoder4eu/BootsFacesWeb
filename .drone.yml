@@ -55,7 +55,6 @@ steps:
     hosts: [ "showcase.bootsfaces.de" ]
     source: ./docker-compose.yml
     target: /srv/bootsfaces-showcase__${DRONE_BRANCH/\//-}/
-    #secrets: [ rsync_user, rsync_key ]
     script:
       - cd /srv/bootsfaces-showcase__${DRONE_BRANCH/\//-}/
       - echo VERSION=${DRONE_BRANCH##system/}>.env
@@ -71,15 +70,19 @@ steps:
       - system/production
       - system/stage
   image: drillster/drone-rsync
-  environment:
-    RSYNC_KEY:
-      from_secret: master_rsync_key
-    RSYNC_USER:
-      from_secret: master_rsync_user
+  #environment:
+  #  RSYNC_KEY:
+  #    from_secret: master_rsync_key
+  #  RSYNC_USER:
+  #    from_secret: master_rsync_user
   settings:
+    key:
+      from_secret: master_rsync_key
+    user:
+      from_secret: master_rsync_user
     hosts: [ "showcase.bootsfaces.net" ]
     port: 21022
-    source: ./target/BootsFacesWeb.war
+    source: target/BootsFacesWeb.war
     target: /home/tclxd/geopossachs/BootsFacesWeb.war
     secrets: 
       - source: master_rsync_key
