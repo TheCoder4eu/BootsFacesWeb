@@ -55,7 +55,7 @@ steps:
     hosts: [ "showcase.bootsfaces.de" ]
     source: ./docker-compose.yml
     target: /srv/bootsfaces-showcase__${DRONE_BRANCH/\//-}/
-    secrets: [ rsync_user, rsync_key ]
+    #secrets: [ rsync_user, rsync_key ]
     script:
       - cd /srv/bootsfaces-showcase__${DRONE_BRANCH/\//-}/
       - echo VERSION=${DRONE_BRANCH##system/}>.env
@@ -63,6 +63,27 @@ steps:
       - if [ "${DRONE_BRANCH##system/}" = "stage" ]; then echo "PORT=6060" >> .env ; fi
       - docker-compose pull
       - docker-compose up -d --remove-orphans
+
+
+- name: container-reboot
+  when:
+    branch:
+      - system/production
+      - system/stage
+  image: drillster/drone-rsync
+  environment:
+    RSYNC_KEY:
+      from_secret: master_rsync_key
+    RSYNC_USER:
+      from_secret: master_rsync_user
+  settings:
+    hosts: [ "showcase.bootsfaces.net" ]
+    port:
+      from_secret: master_rsync_port
+    source: ./target/BootsFacesWeb.war
+    target: /home/tclxd/geopossachs/BootsFacesWeb.war
+    #secrets: [ rsync_user, rsync_key ]
+
 
 
 volumes:
