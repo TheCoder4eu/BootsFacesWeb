@@ -24,7 +24,7 @@ steps:
     path: /root/.m2
 
   # push an image to geopossachs/bootsfaces_showcase:{environment}
-- name: docker-publish
+- name: mirror__docker-publish
   when:
     branch:
       - system/production
@@ -40,7 +40,7 @@ steps:
       from_secret: docker_password
 
   # boot the app on a docker based runtime
-- name: container-reboot
+- name: mirror__container-reboot
   when:
     branch:
       - system/production
@@ -65,7 +65,7 @@ steps:
       - docker-compose up -d --remove-orphans
 
 
-- name: container-reboot
+- name: mirror__publish
   when:
     branch:
       - system/production
