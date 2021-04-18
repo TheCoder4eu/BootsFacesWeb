@@ -20,8 +20,8 @@
     </licenses>
 
     <properties>
-        <version.bootable.jar>2.0.1.Final</version.bootable.jar>
-        <version.wildfly>21.0.0.Final</version.wildfly>
+        <version.bootable.jar>4.0.3.Final</version.bootable.jar>
+        <version.wildfly>23.0.1.Final</version.wildfly>
         <plugin.fork.embedded>true</plugin.fork.embedded>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -129,9 +129,9 @@
                 <configuration>
                     <feature-pack-location>wildfly@maven(org.jboss.universe:community-universe):current#${version.wildfly}</feature-pack-location>
                     <layers>
-                        <layer>cdi</layer>
                         <layer>jsf</layer>
-                        <layer>web-server</layer>
+                        <layer>cdi</layer>
+                        <!--layer>web-server</layer-->
                     </layers>
                     <plugin-options>
                         <jboss-fork-embedded>${plugin.fork.embedded}</jboss-fork-embedded>
