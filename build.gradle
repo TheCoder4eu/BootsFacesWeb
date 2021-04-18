@@ -13,10 +13,13 @@ repositories {
 }
 
 dependencies {
-    providedCompile 'javax:javaee-api:8.0.1'
-    compile "net.bootsfaces:bootsfaces:${BootsFacesVersion}"
-    compile 'com.googlecode.owasp-java-html-sanitizer:owasp-java-html-sanitizer:20200713.1'
-    compile 'org.primefaces:primefaces:8.0'
+    // CAUTION:
+    // Old java plugin configurations compile,testCompile,providedCompile were Deprecated!
+    // They have been removed and superseded by implementation in Gradle 7.0+.
+    implementation 'javax:javaee-api:8.0.1'
+    implementation "net.bootsfaces:bootsfaces:${BootsFacesVersion}"
+    implementation 'com.googlecode.owasp-java-html-sanitizer:owasp-java-html-sanitizer:20200713.1'
+    implementation 'org.primefaces:primefaces:8.0'
     //compile files("${System.properties['java.home']}/../lib/tools.jar")
 
 }
@@ -78,6 +81,7 @@ war.doFirst {
 }
 
 war {
-    archiveName = 'BootsFacesWeb.war'
+    archiveFileName = 'BootsFacesWeb.war'
+    //archiveName = 'BootsFacesWeb.war'
 }
 
