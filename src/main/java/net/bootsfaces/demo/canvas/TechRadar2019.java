@@ -1,7 +1,7 @@
 package net.bootsfaces.demo.canvas;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import jakarta.faces.bean.ManagedBean;
+import jakarta.faces.bean.RequestScoped;
 
 import net.bootsfaces.component.canvas.Drawing;
 

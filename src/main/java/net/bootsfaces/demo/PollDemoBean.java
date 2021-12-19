@@ -3,9 +3,9 @@ package net.bootsfaces.demo;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
-import javax.faces.event.ActionEvent;
+import jakarta.faces.bean.ManagedBean;
+import jakarta.faces.bean.ViewScoped;
+import jakarta.faces.event.ActionEvent;
 
 @ViewScoped
 @ManagedBean

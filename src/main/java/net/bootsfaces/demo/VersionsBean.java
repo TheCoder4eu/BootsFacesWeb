@@ -1,8 +1,8 @@
 package net.bootsfaces.demo;
 
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
+import jakarta.faces.bean.ApplicationScoped;
+import jakarta.faces.bean.ManagedBean;
+import jakarta.faces.context.FacesContext;
 
 import net.bootsfaces.listeners.AddResourcesListener;
 

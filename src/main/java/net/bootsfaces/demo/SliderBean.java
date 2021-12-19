@@ -4,10 +4,10 @@ package net.bootsfaces.demo;
  * A Bean Used for Demo purposes
  */
 import java.io.Serializable;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+import jakarta.faces.bean.ManagedBean;
+import jakarta.faces.bean.SessionScoped;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 
 /**
  *

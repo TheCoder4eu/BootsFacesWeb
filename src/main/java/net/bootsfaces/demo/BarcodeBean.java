@@ -18,9 +18,9 @@ package net.bootsfaces.demo;
 
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.event.AjaxBehaviorEvent;
-import javax.faces.view.ViewScoped;
+import jakarta.faces.bean.ManagedBean;
+import jakarta.faces.event.AjaxBehaviorEvent;
+import jakarta.faces.view.ViewScoped;
 
 /**
  * This bean is used by the PrimeFaces barcode demo.

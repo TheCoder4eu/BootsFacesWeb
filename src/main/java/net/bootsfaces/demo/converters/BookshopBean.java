@@ -2,8 +2,8 @@ package net.bootsfaces.demo.converters;
 
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.view.ViewScoped;
+import jakarta.faces.bean.ManagedBean;
+import jakarta.faces.view.ViewScoped;
 
 @ManagedBean
 @ViewScoped

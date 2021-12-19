@@ -8,10 +8,10 @@ package net.bootsfaces.demo;
 import java.io.Serializable;
 import java.util.StringTokenizer;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.model.ArrayDataModel;
-import javax.faces.model.DataModel;
+import jakarta.faces.bean.ManagedBean;
+import jakarta.faces.bean.RequestScoped;
+import jakarta.faces.model.ArrayDataModel;
+import jakarta.faces.model.DataModel;
 
 /**
  * Data Model Bean for Items

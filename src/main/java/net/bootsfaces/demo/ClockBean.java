@@ -6,8 +6,8 @@ package net.bootsfaces.demo;
 import java.io.Serializable;
 import java.util.Calendar;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import jakarta.faces.bean.ManagedBean;
+import jakarta.faces.bean.RequestScoped;
 
 /**
  * @author Stephan Rauh, http://www.beyondjava.net

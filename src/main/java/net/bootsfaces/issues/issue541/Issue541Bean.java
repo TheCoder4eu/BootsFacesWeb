@@ -2,10 +2,11 @@ package net.bootsfaces.issues.issue541;
 
 import java.io.Serializable;
 
-import javax.faces.view.ViewScoped;
-import javax.inject.Named;
+import jakarta.annotation.ManagedBean;
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
 
-@Named("issue541Bean")
+@Named
 @ViewScoped
 public class Issue541Bean implements Serializable {
 

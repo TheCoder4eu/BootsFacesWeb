@@ -18,8 +18,8 @@ package net.bootsfaces.demo;
 
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import jakarta.faces.bean.ManagedBean;
+import jakarta.faces.bean.RequestScoped;
 
 /**
  * A simple bean for demo purposes.

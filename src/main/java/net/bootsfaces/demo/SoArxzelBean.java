@@ -18,8 +18,8 @@ package net.bootsfaces.demo;
 
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.view.ViewScoped;
+import jakarta.faces.bean.ManagedBean;
+import jakarta.faces.view.ViewScoped;
 
 import net.bootsfaces.utils.FacesMessages;
 

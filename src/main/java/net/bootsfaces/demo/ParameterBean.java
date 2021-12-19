@@ -3,11 +3,11 @@ package net.bootsfaces.demo;
 import java.io.Serializable;
 import java.util.Map;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+import jakarta.faces.bean.ManagedBean;
+import jakarta.faces.bean.ViewScoped;
+import jakarta.faces.context.FacesContext;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 
 import net.bootsfaces.utils.FacesMessages;
 
