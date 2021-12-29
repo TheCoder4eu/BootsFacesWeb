@@ -18,7 +18,7 @@ dependencies {
     // They have been removed and superseded by implementation in Gradle 7.0+.
     implementation 'javax:javaee-api:8.0.1'
     implementation "net.bootsfaces:bootsfaces:${BootsFacesVersion}"
-    implementation 'com.googlecode.owasp-java-html-sanitizer:owasp-java-html-sanitizer:20200713.1'
+    implementation 'com.googlecode.owasp-java-html-sanitizer:owasp-java-html-sanitizer:20211018.2'
     implementation 'org.primefaces:primefaces:8.0'
     //compile files("${System.properties['java.home']}/../lib/tools.jar")
 
@@ -82,6 +82,5 @@ war.doFirst {
 
 war {
     archiveFileName = 'BootsFacesWeb.war'
-    //archiveName = 'BootsFacesWeb.war'
 }
 
