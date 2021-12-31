@@ -61,7 +61,7 @@ war.doFirst {
 
     String dependencies="";
 	try {
-    	def compileConfiguration = project.configurations.getByName("compile")
+    	def compileConfiguration = project.configurations.getByName("runtimeClasspath")
     	def resolvedConfiguration = compileConfiguration.resolvedConfiguration
     	def resolvedArtifacts = resolvedConfiguration.resolvedArtifacts
     	resolvedArtifacts.each { dp ->
