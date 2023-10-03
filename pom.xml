@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.bootsfaces</groupId>
     <artifactId>BootsFacesWeb</artifactId>
-    <version>1.5.1-SNAPSHOT</version>
+    <version>1.6.0-SNAPSHOT</version>
     <name>BootsFacesWeb</name>
     
     <packaging>war</packaging>
@@ -65,7 +65,7 @@
         <dependency>
             <groupId>com.googlecode.owasp-java-html-sanitizer</groupId>
             <artifactId>owasp-java-html-sanitizer</artifactId>
-            <version>20200713.1</version>
+            <version>20211018.1</version>
         </dependency>
         
         <dependency>
