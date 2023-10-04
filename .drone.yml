@@ -2,7 +2,7 @@ kind: pipeline
 name: default
 
 steps:
-
+#
 - name: gradle-dummy-build-war
   image: openjdk:11-jdk
   commands:
@@ -12,7 +12,7 @@ steps:
   - name: maven-cache
     path: /root/.m2
 
-  # build the ./target/BootsFacesWeb.war
+# build the ./target/BootsFacesWeb.war
 - name: maven-build-war
   image: maven:3.6-jdk-11
   commands:
@@ -23,7 +23,7 @@ steps:
   - name: maven-cache
     path: /root/.m2
 
-  # push an image to geopossachs/bootsfaces_showcase:{environment}
+# push an image to geopossachs/bootsfaces_showcase:{environment}
 - name: mirror__docker-publish
   when:
     branch:
@@ -39,31 +39,28 @@ steps:
     password:
       from_secret: docker_password
 
-  # boot the app on a docker based runtime
+# boot the app on a docker based runtime
 - name: mirror__container-reboot
   when:
     branch:
       - system/production
       - system/stage
-  image: drillster/drone-rsync
-  environment:
-    RSYNC_KEY:
-      from_secret: rsync_key
-    RSYNC_USER:
-      from_secret: rsync_user
+  image: appleboy/drone-ssh
   settings:
-    hosts: [ "showcase.bootsfaces.de" ]
-    source: ./docker-compose.yml
-    target: /srv/bootsfaces-showcase__${DRONE_BRANCH/\//-}/
+    host:
+      - showcase.bootsfaces.de
+    username:
+      from_secret: rsync_user
+    key:
+      from_secret: rsync_key
+    port:
+      from_secret: rsync_port
     script:
-      - cd /srv/bootsfaces-showcase__${DRONE_BRANCH/\//-}/
-      - echo VERSION=${DRONE_BRANCH##system/}>.env
-      - if [ "${DRONE_BRANCH##system/}" = "production" ]; then echo "PORT=6070" >> .env ; fi
-      - if [ "${DRONE_BRANCH##system/}" = "stage" ]; then echo "PORT=6060" >> .env ; fi
+      - cd /srv/IaC/bootsfaces-showcase__${DRONE_BRANCH/\//-}/
       - docker-compose pull
       - docker-compose up -d --remove-orphans
 
-
+#
 - name: mirror__publish
   when:
     branch:
@@ -72,11 +69,12 @@ steps:
   image: appleboy/drone-scp
   settings:
     host: showcase.bootsfaces.net
-    key:
-      from_secret: master_rsync_key
     username:
       from_secret: master_rsync_user
-    port: 21022
+    key:
+      from_secret: master_rsync_key
+    port: 
+      from_secret: master_rsync_port
     target: /home/tclxd/geopossachs/
     source: target/BootsFacesWeb.war
 

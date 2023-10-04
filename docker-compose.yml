@@ -1,8 +1,8 @@
 version: '3.3'
 
 services:
-  bootsfaces_showcase:
-    image: geopossachs/bootsfaces_showcase:${VERSION:-snapshot}
-    restart: always
+  bootsfaces_showcase_dev:
+    build:
+      dockerfile: ./Dockerfile-wildfly
     ports:
       - "127.0.0.1:${PORT:-6080}:8080"
