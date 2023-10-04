@@ -42,8 +42,6 @@
                        col-sm="4" label-col-sm="2" readonly="true"/>
           <b:inputText label="moment.js" value="#{dateTimeBean.momentJSFormatFromJavaFormat}"
                        col-sm="4" label-col-sm="2" readonly="true"/>
-          <b:inputText label="moment.js example" value="#{dateTimeBean.formatDateAsMomentJSDate()}"
-                       col-sm="4" label-col-sm="2" readonly="true"/>
         </b:panel>
         <p>Note that the internationalization doesn't work with the moment.js version of the interactive example. For some reason, the
         Nashorn JavaScript engine seems to ignore the locale setting of moment.js.</p>
@@ -54,8 +52,6 @@
         <b:panel id="m2j" title="conversion from moment.js to Java's SimpleDateFormat" look="primary">
           <b:inputText label="moment.js" value="#{dateTimeBean.momentJSFormatString}" onkeyup="ajax:dateTimeBean.updateSettings" update="@after"
                        col-sm="4" label-col-sm="2"/>
-          <b:inputText label="moment.js example" value="#{dateTimeBean.formatDateAsMomentJSDate()}"
-                       col-sm="4" label-col-sm="2" readonly="true"/>
           <b:inputText label="SimpleDateFormat" value="#{dateTimeBean.javaFormatString}"
                        col-sm="4" label-col-sm="2" readonly="true"/>
           <b:inputText label="Java example" value="#{dateTimeBean.formatDateAsJavaDate()}"

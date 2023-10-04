@@ -3,32 +3,17 @@
  */
 package net.bootsfaces.demo;
 
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
+import net.bootsfaces.utils.BsfUtils;
+import net.bootsfaces.utils.LocaleUtils;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
-
-import net.bootsfaces.utils.BsfUtils;
-import net.bootsfaces.utils.LocaleUtils;
+import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.Map.Entry;
 
 /**
  *
@@ -66,8 +51,6 @@ public class DateTimeBean implements Serializable {
     private String momentJSFormatString = null;
 
     private String javaFormatString = null;
-
-    private static ScriptEngine scriptEngine;
 
     private static List<String> locales = new ArrayList<String>();
 
@@ -221,39 +204,6 @@ public class DateTimeBean implements Serializable {
         predefinedMomentjsFormats.add("lll");
         predefinedMomentjsFormats.add("LLLL");
         predefinedMomentjsFormats.add("llll");
-
-        loadMomentSource();
-
-    }
-
-    private static void loadMomentSource() {
-        InputStream is = Thread.currentThread().getContextClassLoader()
-                .getResourceAsStream("META-INF/resources/bsf/js/moment-with-locales.min.js");
-        Reader reader = new InputStreamReader(is);
-        ScriptEngineManager manager = new ScriptEngineManager();
-        scriptEngine = manager.getEngineByName("JavaScript");
-        try {
-            scriptEngine.eval(reader);
-        } catch (ScriptException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public String formatDateAsMomentJSDate() {
-        if (momentJSFormatString == null || momentJSFormatString.equals("")) {
-            return "";
-        }
-        try {
-            String variableName = "z" + (new Date()).getTime();
-            String jsFormat = momentJSFormatString.replace("'", "\\'");
-            String javascript = "moment.locale('" + locale + "');" + "var " + variableName + " = moment().lang('"
-                    + locale + "').format('" + jsFormat + "');";
-            scriptEngine.eval(javascript);
-            String variable = (String) scriptEngine.get(variableName);
-            return variable;
-        } catch (ScriptException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     public String formatDateAsJavaDate() {
