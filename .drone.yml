@@ -75,7 +75,7 @@ steps:
       from_secret: master_rsync_key
     port: 
       from_secret: master_rsync_port
-    target: /home/tclxd/geopossachs/
+    target: /home/tclxd/geopossachs/bootsfaces-showcase__${DRONE_BRANCH/\//-}/
     source: target/BootsFacesWeb.war
 
 
