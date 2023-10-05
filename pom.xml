@@ -42,10 +42,10 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.testSource>1.8</maven.compiler.testSource>
-        <maven.compiler.testTarget>1.8</maven.compiler.testTarget>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.testSource>11</maven.compiler.testSource>
+        <maven.compiler.testTarget>11</maven.compiler.testTarget>
     </properties>
 
     <distributionManagement>
@@ -88,10 +88,12 @@
             <version>8.0.1</version>
             <scope>provided</scope>
         </dependency>
+        
         <dependency>
             <groupId>net.bootsfaces</groupId>
             <artifactId>bootsfaces</artifactId>
-            <version>1.5.0</version>
+            <version>1.6.0-SNAPSHOT</version>
+            <classifier>jakarta</classifier>
             <exclusions>
                 <exclusion>
                     <groupId>com.googlecode.owasp-java-html-sanitizer</groupId>
@@ -102,8 +104,9 @@
         <dependency>
             <groupId>com.googlecode.owasp-java-html-sanitizer</groupId>
             <artifactId>owasp-java-html-sanitizer</artifactId>
-            <version>20211018.1</version>
+            <version>20211018.2</version>
         </dependency>
+
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
