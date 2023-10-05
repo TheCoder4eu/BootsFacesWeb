@@ -6,7 +6,7 @@ steps:
 - name: gradle-dummy-build-war
   image: openjdk:11-jdk
   commands:
-    - ./gradlew -Dorg.gradle.daemon=false -b build.gradle clean war
+    - ./gradlew --no-daemon -b build.gradle clean war
     - ls -lisa ./build/libs/
   volumes:
   - name: maven-cache
