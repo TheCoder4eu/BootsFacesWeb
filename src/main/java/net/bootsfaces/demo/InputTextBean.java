@@ -16,12 +16,12 @@
  */
 package net.bootsfaces.demo;
 
+import jakarta.annotation.ManagedBean;
+import jakarta.faces.view.ViewScoped;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.view.ViewScoped;
 
 /**
  * This bean is used by the InputText demo.

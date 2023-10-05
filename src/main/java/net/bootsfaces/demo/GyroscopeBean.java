@@ -1,7 +1,7 @@
 package net.bootsfaces.demo;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import jakarta.annotation.ManagedBean;
+import jakarta.faces.view.ViewScoped;
 
 @ManagedBean
 @ViewScoped

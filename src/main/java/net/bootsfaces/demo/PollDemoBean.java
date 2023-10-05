@@ -1,11 +1,11 @@
 package net.bootsfaces.demo;
 
+import jakarta.annotation.ManagedBean;
+import jakarta.faces.event.ActionEvent;
+import jakarta.faces.view.ViewScoped;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
-import javax.faces.event.ActionEvent;
 
 @ViewScoped
 @ManagedBean

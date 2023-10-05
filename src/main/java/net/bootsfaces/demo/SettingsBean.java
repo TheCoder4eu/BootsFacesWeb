@@ -16,10 +16,10 @@
  */
 package net.bootsfaces.demo;
 
+import jakarta.annotation.ManagedBean;
+import jakarta.enterprise.context.RequestScoped;
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 
 /**
  * A simple bean for demo purposes.

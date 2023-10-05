@@ -16,14 +16,14 @@
  */
 package de.beyondjava.jsf.sample.carshop;
 
+import jakarta.annotation.ManagedBean;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.annotation.ManagedProperty;
+import jakarta.faces.event.AjaxBehaviorEvent;
 import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Logger;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
-import javax.faces.event.AjaxBehaviorEvent;
 
 import net.bootsfaces.beans.ELTools;
 

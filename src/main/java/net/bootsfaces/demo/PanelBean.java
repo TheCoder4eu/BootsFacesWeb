@@ -3,11 +3,11 @@ package net.bootsfaces.demo;
 /*
  * A Bean Used for Demo purposes
  */
+import jakarta.annotation.ManagedBean;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.event.ActionEvent;
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.faces.event.ActionEvent;
 
 /**
  * @author Stephan Rauh, http://www.beyondjava.net

@@ -3,10 +3,10 @@ package net.bootsfaces.demo;
 /*
  * A Bean Used for Demo purposes
  */
+import jakarta.annotation.ManagedBean;
+import jakarta.enterprise.context.RequestScoped;
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 
 import net.bootsfaces.utils.FacesMessages;
 

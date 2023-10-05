@@ -3,11 +3,11 @@ package net.bootsfaces.demo;
 /*
  * A Bean Used for Demo purposes
  */
+import jakarta.annotation.ManagedBean;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import java.io.Serializable;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 
 /**
  *

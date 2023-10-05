@@ -1,14 +1,14 @@
 package test.beans;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
+import jakarta.annotation.ManagedBean;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
 
 import net.bootsfaces.component.scrollSpy.event.ScrollSpyEventListener;
 
 @SessionScoped
-@ManagedBean(name = "spy")
+@ManagedBean(value = "spy")
 public class ScrollSpyBean implements ScrollSpyEventListener {
 
     @Override

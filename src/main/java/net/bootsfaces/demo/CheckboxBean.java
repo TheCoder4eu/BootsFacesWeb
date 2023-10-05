@@ -1,12 +1,12 @@
 package net.bootsfaces.demo;
 
+import jakarta.annotation.ManagedBean;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
+import jakarta.validation.constraints.AssertTrue;
 import java.io.Serializable;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
-import javax.validation.constraints.AssertTrue;
 
 @SessionScoped
 @ManagedBean

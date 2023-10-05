@@ -1,9 +1,9 @@
 package net.bootsfaces.demo.forms;
 
+import jakarta.annotation.ManagedBean;
+import jakarta.faces.view.ViewScoped;
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 
 import net.bootsfaces.utils.FacesMessages;
 

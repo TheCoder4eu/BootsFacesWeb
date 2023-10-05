@@ -1,7 +1,7 @@
 package net.bootsfaces.demo;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import jakarta.annotation.ManagedBean;
+import jakarta.enterprise.context.SessionScoped;
 
 @ManagedBean
 @SessionScoped

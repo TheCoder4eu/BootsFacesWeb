@@ -3,11 +3,11 @@ package net.bootsfaces.demo;
 /*
  * A Bean Used for Demo purposes
  */
+import jakarta.annotation.ManagedBean;
+import jakarta.enterprise.context.RequestScoped;
 import java.io.Serializable;
 import java.util.Calendar;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 
 /**
  * @author Stephan Rauh, http://www.beyondjava.net

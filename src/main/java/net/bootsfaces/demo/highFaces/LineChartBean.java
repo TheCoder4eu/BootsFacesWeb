@@ -1,11 +1,11 @@
 package net.bootsfaces.demo.highFaces;
 
+import jakarta.annotation.ManagedBean;
+import jakarta.enterprise.context.RequestScoped;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 
 @ManagedBean
 @RequestScoped

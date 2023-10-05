@@ -5,7 +5,7 @@
     
     <groupId>net.bootsfaces</groupId>
     <artifactId>BootsFacesWeb</artifactId>
-    <version>1.6.0-SNAPSHOT</version>
+    <version>1.6.1-SNAPSHOT</version>
     <name>BootsFacesWeb</name>
     
     <packaging>war</packaging>
@@ -82,18 +82,26 @@
     </repositories>
 
     <dependencies>
+        <!--
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>8.0.1</version>
             <scope>provided</scope>
         </dependency>
-        
+        -->
+        <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-web-api</artifactId>
+            <version>10.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+
         <dependency>
             <groupId>net.bootsfaces</groupId>
             <artifactId>bootsfaces</artifactId>
             <version>1.6.0-SNAPSHOT</version>
-            <classifier>jakarta</classifier>
+             <classifier>jakarta</classifier> 
             <exclusions>
                 <exclusion>
                     <groupId>com.googlecode.owasp-java-html-sanitizer</groupId>
@@ -110,7 +118,8 @@
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
-            <version>8.0</version>
+            <version>12.0.0</version>
+            <classifier>jakarta</classifier>
         </dependency>
     </dependencies>
 

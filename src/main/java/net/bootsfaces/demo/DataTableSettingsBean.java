@@ -19,11 +19,11 @@ package net.bootsfaces.demo;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
 
 import de.beyondjava.jsf.sample.carshop.Car;
+import jakarta.annotation.ManagedBean;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.annotation.ManagedProperty;
 
 /**
  * A simple bean for demo purposes.

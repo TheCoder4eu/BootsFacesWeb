@@ -1,12 +1,12 @@
 package net.bootsfaces.menu;
 
+import jakarta.annotation.ManagedBean;
+import jakarta.enterprise.context.SessionScoped;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 
 @ManagedBean
 @SessionScoped

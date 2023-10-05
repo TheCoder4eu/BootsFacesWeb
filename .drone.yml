@@ -4,6 +4,9 @@ name: default
 steps:
 #
 - name: gradle-dummy-build-war
+  when:
+    branch:
+      - master
   image: openjdk:11-jdk
   commands:
     - ./gradlew --no-daemon -b build.gradle clean war

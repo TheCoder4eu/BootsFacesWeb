@@ -1,15 +1,15 @@
 package net.bootsfaces.demo;
 
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
+import jakarta.annotation.ManagedBean;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.faces.context.FacesContext;
 
 import net.bootsfaces.listeners.AddResourcesListener;
 
 /**
  * ManagedBean which holds the version numbers of used frameworks.
  */
-@ManagedBean(name = "versions")
+@ManagedBean(value = "versions")
 @ApplicationScoped
 public class VersionsBean {
 

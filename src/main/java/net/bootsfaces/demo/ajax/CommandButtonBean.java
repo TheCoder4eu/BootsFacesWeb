@@ -1,11 +1,11 @@
 package net.bootsfaces.demo.ajax;
 
+import jakarta.annotation.ManagedBean;
+import jakarta.faces.view.ViewScoped;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 
 @ViewScoped
 @ManagedBean
