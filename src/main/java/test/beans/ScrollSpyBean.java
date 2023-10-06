@@ -4,12 +4,13 @@ import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
+import java.io.Serializable;
 
 import net.bootsfaces.component.scrollSpy.event.ScrollSpyEventListener;
 
-@SessionScoped
 @ManagedBean(value = "spy")
-public class ScrollSpyBean implements ScrollSpyEventListener {
+@SessionScoped
+public class ScrollSpyBean implements ScrollSpyEventListener, Serializable {
 
     @Override
     public void itemSelected(String arg0) {

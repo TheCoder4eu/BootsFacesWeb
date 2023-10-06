@@ -2,12 +2,13 @@ package net.bootsfaces.demo.forms;
 
 import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.SessionScoped;
+import java.io.Serializable;
 import java.util.Date;
 
 
 @ManagedBean
 @SessionScoped
-public class FormBean {
+public class FormBean implements Serializable {
 
     private int inputText = 0;
     private int inputTextarea = 0;

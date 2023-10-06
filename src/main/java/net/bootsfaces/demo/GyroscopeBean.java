@@ -2,10 +2,11 @@ package net.bootsfaces.demo;
 
 import jakarta.annotation.ManagedBean;
 import jakarta.faces.view.ViewScoped;
+import java.io.Serializable;
 
 @ManagedBean
 @ViewScoped
-public class GyroscopeBean {
+public class GyroscopeBean implements Serializable {
 
     private int alpha;
     private int beta;

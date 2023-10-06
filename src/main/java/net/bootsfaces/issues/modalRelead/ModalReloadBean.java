@@ -12,8 +12,8 @@ import java.io.Serializable;
 
 import net.bootsfaces.utils.FacesMessages;
 
-@SessionScoped
 @Named
+@SessionScoped
 public class ModalReloadBean implements Serializable {
 
     private static final long serialVersionUID = 1L;

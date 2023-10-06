@@ -18,8 +18,8 @@ import net.bootsfaces.component.tree.model.DefaultNodeImpl;
 import net.bootsfaces.component.tree.model.Node;
 import net.bootsfaces.utils.FacesMessages;
 
-@SessionScoped
 @ManagedBean(value = "test")
+@SessionScoped
 public class TestBean implements TreeNodeEventListener, Serializable {
 
     private static final long serialVersionUID = -4647459610022075061L;

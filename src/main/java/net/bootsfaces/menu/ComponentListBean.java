@@ -2,6 +2,7 @@ package net.bootsfaces.menu;
 
 import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.SessionScoped;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.Map;
 
 @ManagedBean
 @SessionScoped
-public class ComponentListBean {
+public class ComponentListBean implements Serializable {
 
     private Map<String, String> allConcepts = new HashMap<>();
     private Map<String, String> filteredConcepts = new HashMap<>();

@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 @ManagedBean
 @SessionScoped
-public class SpinBean implements Serializable{
+public class SpinBean implements Serializable {
 
     private double spinValue = 45f;
     private int intSpinValue = 33;
