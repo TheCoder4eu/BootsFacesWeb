@@ -2,10 +2,11 @@ package net.bootsfaces.demo;
 
 import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.SessionScoped;
+import java.io.Serializable;
 
 @ManagedBean
 @SessionScoped
-public class SpinBean {
+public class SpinBean implements Serializable{
 
     private double spinValue = 45f;
     private int intSpinValue = 33;
