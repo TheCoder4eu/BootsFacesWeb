@@ -2,13 +2,14 @@ package net.bootsfaces.demo.ajax;
 
 import jakarta.annotation.ManagedBean;
 import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
+@Named
 @ViewScoped
-@ManagedBean
 public class CommandButtonBean implements Serializable {
 
     private static final long serialVersionUID = 1L;

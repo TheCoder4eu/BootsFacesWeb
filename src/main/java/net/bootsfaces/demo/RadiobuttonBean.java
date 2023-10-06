@@ -18,6 +18,7 @@ package net.bootsfaces.demo;
 
 import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,8 +29,8 @@ import net.bootsfaces.utils.FacesMessages;
 /**
  * A simple bean for demo purposes.
  */
+@Named
 @RequestScoped
-@ManagedBean
 public class RadiobuttonBean implements Serializable {
 
     private static final long serialVersionUID = 1L;

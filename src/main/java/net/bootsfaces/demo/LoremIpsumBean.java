@@ -9,6 +9,7 @@ import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.model.ArrayDataModel;
 import jakarta.faces.model.DataModel;
+import jakarta.inject.Named;
 import java.io.Serializable;
 import java.util.StringTokenizer;
 
@@ -18,7 +19,7 @@ import java.util.StringTokenizer;
  *
  * @author Thecoder4.eu
  */
-@ManagedBean
+@Named
 @RequestScoped
 public class LoremIpsumBean implements Serializable {
 

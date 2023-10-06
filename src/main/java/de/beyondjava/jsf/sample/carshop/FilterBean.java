@@ -20,6 +20,7 @@ import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.annotation.ManagedProperty;
 import jakarta.faces.event.AjaxBehaviorEvent;
+import jakarta.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Logger;
@@ -27,7 +28,7 @@ import java.util.logging.Logger;
 
 import net.bootsfaces.beans.ELTools;
 
-@ManagedBean
+@Named
 @SessionScoped
 public class FilterBean implements Serializable {
 

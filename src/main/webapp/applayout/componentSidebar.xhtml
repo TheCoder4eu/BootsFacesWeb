@@ -13,6 +13,7 @@
 Hint to editors: The menus follow the Chicago style of capitalization. Please capitalize everything but the "smaller" words.
         -->
     </ui:remove>
+    
     <style>
         ul.navbar-sidebar>li a[data-toggle].collapsed:before {
             content: "\f105";
@@ -38,6 +39,7 @@ Hint to editors: The menus follow the Chicago style of capitalization. Please ca
             background-color: unset;
         }
     </style>
+    
     <h:form prependId="false">
         <b:inputText placeholder="search component" style="margin-top:22px"
                      value="#{componentListBean.filter}" update="@next"
@@ -53,17 +55,16 @@ Hint to editors: The menus follow the Chicago style of capitalization. Please ca
             <li>
                 <a role="button" data-toggle="collapse" class="collapsed"
                    href="#concepts-navigation"> Concepts </a> 
-                <b:listLinks
-                    id="concepts-navigation" styleClass="collapse in">
+                <b:listLinks id="concepts-navigation" styleClass="collapse in">
                     <ui:repeat var="c" value="#{componentListBean.filteredConcepts}">
                         <b:navLink href="#{request.contextPath}/#{c.value}" value="#{c.key}" />
                     </ui:repeat>
-                </b:listLinks></li>
+                </b:listLinks>
+            </li>
             <li class="active">
                 <a role="button" data-toggle="collapse"
                    href="#components-navigation"> Components </a> 
-                <b:listLinks
-                    id="components-navigation" styleClass="collapse in">
+                <b:listLinks id="components-navigation" styleClass="collapse in">
                     <ui:repeat var="c" value="#{componentListBean.tags}">
                         <b:navLink
                             href="#{componentListBean.addSlashIfNecessary(request.contextPath)}#{componentListBean.url(c)}"
@@ -74,4 +75,5 @@ Hint to editors: The menus follow the Chicago style of capitalization. Please ca
             </li>
         </b:listLinks>
     </h:form>
+    
 </ui:fragment>

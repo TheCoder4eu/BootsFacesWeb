@@ -2,6 +2,7 @@ package net.bootsfaces.demo.selectOneMenu;
 
 import jakarta.annotation.ManagedBean;
 import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
  * Example taken from :
  * https://memorynotfound.com/using-custom-converter-for-hselectonemenu/
  */
-@ManagedBean
+@Named
 @ViewScoped
 public class BeersBean implements Serializable {
 

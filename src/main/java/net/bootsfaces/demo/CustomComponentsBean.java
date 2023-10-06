@@ -5,12 +5,13 @@ import jakarta.annotation.ManagedBean;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.event.ActionEvent;
 import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
 
 import java.io.Serializable;
 import java.util.List;
 
 
-@ManagedBean
+@Named
 @ViewScoped
 public class CustomComponentsBean implements Serializable {
 

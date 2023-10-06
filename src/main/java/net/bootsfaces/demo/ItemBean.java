@@ -4,6 +4,7 @@ import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.model.ArrayDataModel;
 import jakarta.faces.model.DataModel;
+import jakarta.inject.Named;
 import java.io.Serializable;
 
 
@@ -12,7 +13,7 @@ import java.io.Serializable;
  *
  * @author Thecoder4.eu
  */
-@ManagedBean
+@Named
 @RequestScoped
 public class ItemBean implements Serializable {
 

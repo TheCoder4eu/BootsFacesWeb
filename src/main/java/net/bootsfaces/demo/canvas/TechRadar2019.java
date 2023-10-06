@@ -2,10 +2,11 @@ package net.bootsfaces.demo.canvas;
 
 import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Named;
 
 import net.bootsfaces.component.canvas.Drawing;
 
-@ManagedBean
+@Named
 @RequestScoped
 public class TechRadar2019 extends Drawing {
 

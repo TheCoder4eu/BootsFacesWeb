@@ -3,13 +3,14 @@ package net.bootsfaces.demo;
 import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.faces.context.FacesContext;
+import jakarta.inject.Named;
 
 import net.bootsfaces.listeners.AddResourcesListener;
 
 /**
  * ManagedBean which holds the version numbers of used frameworks.
  */
-@ManagedBean(value = "versions")
+@Named(value = "versions")
 @ApplicationScoped
 public class VersionsBean {
 

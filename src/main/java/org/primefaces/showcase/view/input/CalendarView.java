@@ -1,14 +1,17 @@
 package org.primefaces.showcase.view.input;
 
 import jakarta.annotation.ManagedBean;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
+import jakarta.inject.Named;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.primefaces.PrimeFaces;
 import org.primefaces.event.SelectEvent;
 
-@ManagedBean
+@Named
+@RequestScoped
 public class CalendarView {
 
     private Date date1;

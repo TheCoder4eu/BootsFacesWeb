@@ -2,9 +2,10 @@ package net.bootsfaces.demo;
 
 import jakarta.annotation.ManagedBean;
 import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 
-@ManagedBean
+@Named
 @ViewScoped
 public class GyroscopeBean implements Serializable {
 

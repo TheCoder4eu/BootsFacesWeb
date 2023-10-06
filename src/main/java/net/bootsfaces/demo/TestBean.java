@@ -6,6 +6,7 @@ package net.bootsfaces.demo;
 import jakarta.annotation.ManagedBean;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
  *
  * @author TheCoder4eu
  */
-@ManagedBean
+@Named
 @ViewScoped
 public class TestBean implements Serializable {
 

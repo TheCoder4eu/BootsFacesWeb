@@ -2,10 +2,11 @@ package net.bootsfaces.themes;
 
 import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 
 
-@ManagedBean
+@Named
 @SessionScoped
 public class Theme implements Serializable {
 

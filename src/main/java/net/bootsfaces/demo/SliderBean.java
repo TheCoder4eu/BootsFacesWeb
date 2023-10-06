@@ -5,6 +5,7 @@ package net.bootsfaces.demo;
  */
 import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import java.io.Serializable;
@@ -13,7 +14,7 @@ import java.io.Serializable;
  *
  * @author TheCoder4eu
  */
-@ManagedBean
+@Named
 @SessionScoped
 public class SliderBean implements Serializable {
 

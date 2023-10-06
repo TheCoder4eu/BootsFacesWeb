@@ -18,6 +18,7 @@ package net.bootsfaces.demo;
 
 import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Named;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -31,8 +32,8 @@ import net.bootsfaces.utils.FacesMessages;
 /**
  * A simple bean for demo purposes.
  */
+@Named
 @RequestScoped
-@ManagedBean
 public class SelectMultiMenuBean implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -5,6 +5,7 @@ package net.bootsfaces.demo;
  */
 import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 import java.util.Calendar;
 
@@ -12,7 +13,7 @@ import java.util.Calendar;
 /**
  * @author Stephan Rauh, http://www.beyondjava.net
  */
-@ManagedBean
+@Named
 @RequestScoped
 public class ClockBean implements Serializable {
 

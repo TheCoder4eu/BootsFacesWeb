@@ -2,12 +2,13 @@ package net.bootsfaces.demo.highFaces;
 
 import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 
-@ManagedBean
+@Named
 @RequestScoped
 public class HighFacesSettingsBean implements Serializable {
 

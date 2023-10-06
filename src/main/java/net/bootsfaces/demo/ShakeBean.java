@@ -5,6 +5,7 @@ package net.bootsfaces.demo;
 
 import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -15,7 +16,7 @@ import net.bootsfaces.utils.FacesMessages;
  *
  * @author TheCoder4eu
  */
-@ManagedBean
+@Named
 @RequestScoped
 public class ShakeBean implements Serializable {
 

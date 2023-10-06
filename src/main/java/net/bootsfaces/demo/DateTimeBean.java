@@ -6,6 +6,7 @@ package net.bootsfaces.demo;
 import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.context.FacesContext;
+import jakarta.inject.Named;
 import net.bootsfaces.utils.BsfUtils;
 import net.bootsfaces.utils.LocaleUtils;
 
@@ -19,7 +20,7 @@ import java.util.Map.Entry;
  *
  * @author TheCoder4eu
  */
-@ManagedBean
+@Named
 @RequestScoped
 public class DateTimeBean implements Serializable {
 

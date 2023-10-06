@@ -18,6 +18,7 @@ package net.bootsfaces.demo;
 
 import jakarta.annotation.ManagedBean;
 import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,8 +29,8 @@ import java.util.Map;
  *
  * @author Stephan Rauh, http://www.beyondjava.net
  */
+@Named
 @ViewScoped
-@ManagedBean
 public class InputTextBean implements Serializable {
 
     private static final long serialVersionUID = -6810958868318611791L;

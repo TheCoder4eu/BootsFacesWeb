@@ -6,6 +6,7 @@ package net.bootsfaces.demo;
 import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.event.ActionEvent;
+import jakarta.inject.Named;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Past;
@@ -19,7 +20,7 @@ import net.bootsfaces.utils.FacesMessages;
 /**
  * @author Stephan Rauh, http://www.beyondjava.net
  */
-@ManagedBean
+@Named
 @RequestScoped
 public class MessagesBean implements Serializable {
 

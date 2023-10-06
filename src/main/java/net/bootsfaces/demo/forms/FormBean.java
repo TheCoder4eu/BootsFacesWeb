@@ -2,11 +2,12 @@ package net.bootsfaces.demo.forms;
 
 import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 import java.util.Date;
 
 
-@ManagedBean
+@Named
 @SessionScoped
 public class FormBean implements Serializable {
 

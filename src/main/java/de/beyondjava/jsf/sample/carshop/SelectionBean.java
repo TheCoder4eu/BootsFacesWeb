@@ -3,10 +3,11 @@ package de.beyondjava.jsf.sample.carshop;
 import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.annotation.ManagedProperty;
+import jakarta.inject.Named;
 import java.util.List;
 
 
-@ManagedBean
+@Named
 @RequestScoped
 public class SelectionBean {
 

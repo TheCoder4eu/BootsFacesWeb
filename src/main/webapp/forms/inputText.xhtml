@@ -455,7 +455,7 @@
               <script type="syntaxhighlighter"
               class="brush: java; toolbar: false;gutter: false; first-line: 1">
               <![CDATA[
-              @ManagedBean
+              @Named
               @RequestScoped
               public class UserBean {
                 @Size(min=1, max=10)
@@ -542,7 +542,7 @@
               <script type="syntaxhighlighter"
               class="brush: java; toolbar: false;gutter: false; first-line: 1">
               <![CDATA[
-              @ManagedBean
+              @Named
               @RequestScoped
               public class BeanValidationBean {
                 @NotNull(message="Your name is as important as you are. Don't hesitate to fill this field!")
@@ -721,7 +721,7 @@
               <script type="syntaxhighlighter"
               class="brush: java toolbar: false;gutter: false; first-line: 1">
               <![CDATA[
-              @ManagedBean
+              @Named
               @SessionScoped
               public class DefaultValuesBean implements Serializable {
                 private static final long serialVersionUID = 1L;

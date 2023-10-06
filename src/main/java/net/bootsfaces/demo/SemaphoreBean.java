@@ -18,6 +18,7 @@ package net.bootsfaces.demo;
 
 import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Named;
 import jakarta.validation.constraints.NotNull;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -28,8 +29,8 @@ import java.util.Map;
 /**
  * A simple bean for demo purposes.
  */
+@Named
 @RequestScoped
-@ManagedBean
 public class SemaphoreBean {
 
     @NotNull

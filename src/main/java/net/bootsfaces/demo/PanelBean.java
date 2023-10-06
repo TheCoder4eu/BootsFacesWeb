@@ -6,13 +6,14 @@ package net.bootsfaces.demo;
 import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.event.ActionEvent;
+import jakarta.inject.Named;
 import java.io.Serializable;
 
 
 /**
  * @author Stephan Rauh, http://www.beyondjava.net
  */
-@ManagedBean
+@Named
 @SessionScoped
 public class PanelBean implements Serializable {
 

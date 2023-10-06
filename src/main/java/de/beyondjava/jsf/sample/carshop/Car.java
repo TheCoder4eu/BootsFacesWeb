@@ -18,6 +18,7 @@ package de.beyondjava.jsf.sample.carshop;
 
 import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -25,7 +26,7 @@ import java.io.Serializable;
 import java.util.Calendar;
 
 
-@ManagedBean
+@Named
 @SessionScoped
 public class Car implements Serializable {
 

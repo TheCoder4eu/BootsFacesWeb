@@ -5,6 +5,7 @@ package net.bootsfaces.demo;
  */
 import jakarta.annotation.ManagedBean;
 import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 
 
@@ -12,7 +13,7 @@ import java.io.Serializable;
  *
  * @author TheCoder4eu
  */
-@ManagedBean
+@Named
 @ViewScoped
 public class InformBean implements Serializable {
 

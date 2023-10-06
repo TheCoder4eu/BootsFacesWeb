@@ -2,6 +2,7 @@ package test.beans;
 
 import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ import net.bootsfaces.component.tree.model.DefaultNodeImpl;
 import net.bootsfaces.component.tree.model.Node;
 import net.bootsfaces.utils.FacesMessages;
 
-@ManagedBean(value = "test")
+@Named(value = "test")
 @SessionScoped
 public class TestBean implements TreeNodeEventListener, Serializable {
 

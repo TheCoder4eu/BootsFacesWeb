@@ -18,6 +18,7 @@ package de.beyondjava.jsf.sample.carshop;
 
 import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,7 +29,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 
-@ManagedBean
+@Named
 @SessionScoped
 public class DynamicOptionBean implements Serializable {
 
