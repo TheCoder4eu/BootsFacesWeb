@@ -3,16 +3,16 @@ package net.bootsfaces.demo;
 /*
  * A Bean Used for Demo purposes
  */
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 
 /**
  *
  * @author TheCoder4eu
  */
-@ManagedBean
+@Named
 @ViewScoped
 public class InformBean implements Serializable {
 

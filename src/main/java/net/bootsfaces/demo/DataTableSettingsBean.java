@@ -19,17 +19,17 @@ package net.bootsfaces.demo;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
 
 import de.beyondjava.jsf.sample.carshop.Car;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.annotation.ManagedProperty;
+import jakarta.inject.Named;
 
 /**
  * A simple bean for demo purposes.
  */
+@Named
 @SessionScoped
-@ManagedBean
 public class DataTableSettingsBean implements Serializable {
 
     private static final long serialVersionUID = 1L;

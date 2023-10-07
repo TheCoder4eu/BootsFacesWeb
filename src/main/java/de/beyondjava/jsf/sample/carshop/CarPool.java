@@ -16,17 +16,17 @@
  */
 package de.beyondjava.jsf.sample.carshop;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.annotation.ManagedProperty;
+import jakarta.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
 
-@ManagedBean
+@Named
 @SessionScoped
 public class CarPool implements Serializable {
 

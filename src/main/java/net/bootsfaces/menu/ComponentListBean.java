@@ -1,18 +1,19 @@
 package net.bootsfaces.menu;
 
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 
-@ManagedBean
+@Named
 @SessionScoped
-public class ComponentListBean {
+public class ComponentListBean implements Serializable {
 
-    private Map<String, String> allConcepts = new HashMap<>();
+    private final Map<String, String> allConcepts = new HashMap<>();
     private Map<String, String> filteredConcepts = new HashMap<>();
 
     private String filter = null;

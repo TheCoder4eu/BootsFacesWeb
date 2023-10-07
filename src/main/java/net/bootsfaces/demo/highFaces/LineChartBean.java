@@ -1,13 +1,13 @@
 package net.bootsfaces.demo.highFaces;
 
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Named;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 
-@ManagedBean
+@Named
 @RequestScoped
 public class LineChartBean {
 

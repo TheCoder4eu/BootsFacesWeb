@@ -1,12 +1,12 @@
 package de.beyondjava.jsf.sample.carshop;
 
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.faces.annotation.ManagedProperty;
+import jakarta.inject.Named;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
 
-@ManagedBean
+@Named
 @RequestScoped
 public class SelectionBean {
 

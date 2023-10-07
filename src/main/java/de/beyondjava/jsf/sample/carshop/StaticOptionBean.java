@@ -16,15 +16,15 @@
  */
 package de.beyondjava.jsf.sample.carshop;
 
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 
-@ManagedBean
+@Named
 @SessionScoped
 public class StaticOptionBean implements Serializable {
 

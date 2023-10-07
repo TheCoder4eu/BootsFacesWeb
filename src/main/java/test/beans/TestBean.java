@@ -1,5 +1,7 @@
 package test.beans;
 
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -7,8 +9,6 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 
 import net.bootsfaces.component.tree.event.TreeNodeCheckedEvent;
 import net.bootsfaces.component.tree.event.TreeNodeEventListener;
@@ -18,8 +18,8 @@ import net.bootsfaces.component.tree.model.DefaultNodeImpl;
 import net.bootsfaces.component.tree.model.Node;
 import net.bootsfaces.utils.FacesMessages;
 
+@Named(value = "test")
 @SessionScoped
-@ManagedBean(name = "test")
 public class TestBean implements TreeNodeEventListener, Serializable {
 
     private static final long serialVersionUID = -4647459610022075061L;

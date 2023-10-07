@@ -1,14 +1,14 @@
 package net.bootsfaces.demo;
 
+import jakarta.faces.event.ActionEvent;
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
-import javax.faces.event.ActionEvent;
 
+@Named
 @ViewScoped
-@ManagedBean
 public class PollDemoBean implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -1,15 +1,14 @@
 package net.bootsfaces.demo;
 
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
+import jakarta.inject.Named;
+import jakarta.validation.constraints.AssertTrue;
 import java.io.Serializable;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
-import javax.validation.constraints.AssertTrue;
-
+@Named
 @SessionScoped
-@ManagedBean
 public class CheckboxBean implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -3,16 +3,16 @@ package net.bootsfaces.demo;
 /*
  * A Bean Used for Demo purposes
  */
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 import java.util.Calendar;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 
 /**
  * @author Stephan Rauh, http://www.beyondjava.net
  */
-@ManagedBean
+@Named
 @RequestScoped
 public class ClockBean implements Serializable {
 

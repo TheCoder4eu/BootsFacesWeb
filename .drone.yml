@@ -4,9 +4,12 @@ name: default
 steps:
 #
 - name: gradle-dummy-build-war
+  when:
+    branch:
+      - master
   image: openjdk:11-jdk
   commands:
-    - ./gradlew -Dorg.gradle.daemon=false -b build.gradle clean war
+    - ./gradlew --no-daemon -b build.gradle clean war
     - ls -lisa ./build/libs/
   volumes:
   - name: maven-cache

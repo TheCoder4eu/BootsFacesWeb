@@ -16,10 +16,10 @@
  */
 package net.bootsfaces.demo;
 
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.view.ViewScoped;
 
 import net.bootsfaces.utils.FacesMessages;
 
@@ -29,8 +29,8 @@ import net.bootsfaces.utils.FacesMessages;
  *
  * @author Stephan Rauh, http://www.beyondjava.net
  */
+@Named
 @ViewScoped
-@ManagedBean
 public class SoArxzelBean implements Serializable {
 
     private static final long serialVersionUID = -6810958868318611791L;

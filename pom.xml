@@ -5,7 +5,7 @@
     
     <groupId>net.bootsfaces</groupId>
     <artifactId>BootsFacesWeb</artifactId>
-    <version>1.6.0-SNAPSHOT</version>
+    <version>1.6.1-SNAPSHOT</version>
     <name>BootsFacesWeb</name>
     
     <packaging>war</packaging>
@@ -42,10 +42,10 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.testSource>1.8</maven.compiler.testSource>
-        <maven.compiler.testTarget>1.8</maven.compiler.testTarget>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.testSource>11</maven.compiler.testSource>
+        <maven.compiler.testTarget>11</maven.compiler.testTarget>
     </properties>
 
     <distributionManagement>
@@ -83,16 +83,26 @@
 
     <dependencies>
         <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>8.0.1</version>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-web-api</artifactId>
+            <version>10.0.0</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>net.bootsfaces</groupId>
             <artifactId>bootsfaces</artifactId>
-            <version>1.5.0</version>
+            <version>1.6.0-SNAPSHOT</version>
+            <classifier>jakarta</classifier> 
             <exclusions>
+                <exclusion>
+                    <groupId>jakarta.faces</groupId>
+                    <artifactId>jakarta.faces-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>jakarta.el</groupId>
+                    <artifactId>jakarta.el-api</artifactId>
+                </exclusion>
                 <exclusion>
                     <groupId>com.googlecode.owasp-java-html-sanitizer</groupId>
                     <artifactId>owasp-java-html-sanitizer</artifactId>
@@ -102,12 +112,14 @@
         <dependency>
             <groupId>com.googlecode.owasp-java-html-sanitizer</groupId>
             <artifactId>owasp-java-html-sanitizer</artifactId>
-            <version>20211018.1</version>
+            <version>20211018.2</version>
         </dependency>
+
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
-            <version>8.0</version>
+            <version>12.0.0</version>
+            <classifier>jakarta</classifier>
         </dependency>
     </dependencies>
 

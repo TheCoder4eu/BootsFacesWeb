@@ -16,18 +16,18 @@
  */
 package de.beyondjava.jsf.sample.carshop;
 
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.annotation.ManagedProperty;
+import jakarta.faces.event.AjaxBehaviorEvent;
+import jakarta.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Logger;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
-import javax.faces.event.AjaxBehaviorEvent;
 
 import net.bootsfaces.beans.ELTools;
 
-@ManagedBean
+@Named
 @SessionScoped
 public class FilterBean implements Serializable {
 

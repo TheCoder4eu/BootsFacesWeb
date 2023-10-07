@@ -1,2 +1,4 @@
- FROM jboss/wildfly:18.0.1.Final
+ #FROM jboss/wildfly:18.0.1.Final
+ FROM quay.io/wildfly/wildfly:28.0.1.Final-jdk11
+ 
  ADD target/BootsFacesWeb.war /opt/jboss/wildfly/standalone/deployments/BootsFacesWeb.war
