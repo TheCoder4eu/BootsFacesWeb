@@ -5,7 +5,6 @@ package net.bootsfaces.demo;
  *
  * @author Thecoder4.eu
  */
-import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.model.ArrayDataModel;
 import jakarta.faces.model.DataModel;

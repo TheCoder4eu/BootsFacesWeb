@@ -93,8 +93,16 @@
             <groupId>net.bootsfaces</groupId>
             <artifactId>bootsfaces</artifactId>
             <version>1.6.0-SNAPSHOT</version>
-             <classifier>jakarta</classifier> 
+            <classifier>jakarta</classifier> 
             <exclusions>
+                <exclusion>
+                    <groupId>jakarta.faces</groupId>
+                    <artifactId>jakarta.faces-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>jakarta.el</groupId>
+                    <artifactId>jakarta.el-api</artifactId>
+                </exclusion>
                 <exclusion>
                     <groupId>com.googlecode.owasp-java-html-sanitizer</groupId>
                     <artifactId>owasp-java-html-sanitizer</artifactId>

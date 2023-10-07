@@ -1,6 +1,5 @@
 package test.beans;
 
-import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import java.io.Serializable;

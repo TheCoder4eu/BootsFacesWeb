@@ -16,7 +16,6 @@
  */
 package net.bootsfaces.demo.selectOneMenu;
 
-import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Named;
 import jakarta.validation.constraints.Max;

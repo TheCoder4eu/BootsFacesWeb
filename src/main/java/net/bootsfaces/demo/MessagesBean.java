@@ -3,7 +3,6 @@ package net.bootsfaces.demo;
 /*
  * A Bean Used for Demo purposes
  */
-import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.event.ActionEvent;
 import jakarta.inject.Named;

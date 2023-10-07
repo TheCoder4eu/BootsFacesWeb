@@ -21,7 +21,6 @@ import java.util.List;
 
 
 import de.beyondjava.jsf.sample.carshop.Car;
-import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.annotation.ManagedProperty;
 import jakarta.inject.Named;

@@ -1,6 +1,5 @@
 package net.bootsfaces.demo.ajax;
 
-import jakarta.annotation.ManagedBean;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.event.AjaxBehaviorEvent;

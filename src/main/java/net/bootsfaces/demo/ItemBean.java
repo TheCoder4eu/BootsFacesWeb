@@ -1,6 +1,5 @@
 package net.bootsfaces.demo;
 
-import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.model.ArrayDataModel;
 import jakarta.faces.model.DataModel;

@@ -3,7 +3,6 @@
  */
 package net.bootsfaces.demo;
 
-import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Named;
 import java.io.Serializable;

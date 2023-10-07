@@ -1,6 +1,5 @@
 package net.bootsfaces.issues.issue78;
 
-import jakarta.annotation.ManagedBean;
 import jakarta.faces.event.ComponentSystemEvent;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;

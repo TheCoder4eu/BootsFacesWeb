@@ -16,7 +16,6 @@
  */
 package de.beyondjava.jsf.sample.carshop;
 
-import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import java.io.Serializable;

@@ -1,6 +1,5 @@
 package net.bootsfaces.demo.canvas;
 
-import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Named;
 

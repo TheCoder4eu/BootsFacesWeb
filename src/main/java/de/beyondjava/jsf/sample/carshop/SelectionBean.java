@@ -1,6 +1,5 @@
 package de.beyondjava.jsf.sample.carshop;
 
-import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.annotation.ManagedProperty;
 import jakarta.inject.Named;

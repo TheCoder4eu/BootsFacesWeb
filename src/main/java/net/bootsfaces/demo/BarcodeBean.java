@@ -16,7 +16,6 @@
  */
 package net.bootsfaces.demo;
 
-import jakarta.annotation.ManagedBean;
 import jakarta.faces.event.AjaxBehaviorEvent;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
