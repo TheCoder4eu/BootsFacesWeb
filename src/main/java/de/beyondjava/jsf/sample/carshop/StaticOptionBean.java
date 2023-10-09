@@ -37,7 +37,9 @@ public class StaticOptionBean implements Serializable {
     private List<String> fuels = new ArrayList<String>();
 
     private List<String> mileages = new ArrayList<String>();
+    
     private List<String> prices = new ArrayList<String>();
+    
     private List<String> years = new ArrayList<String>();
 
     public StaticOptionBean() {
@@ -129,4 +131,5 @@ public class StaticOptionBean implements Serializable {
     public List<String> getYears() {
         return years;
     }
+    
 }

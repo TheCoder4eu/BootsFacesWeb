@@ -100,4 +100,5 @@ public class CarBean implements Serializable {
     public void setiAgreeToTheTermsAndConditions(boolean iAgreeToTheTermsAndConditions) {
         this.iAgreeToTheTermsAndConditions = iAgreeToTheTermsAndConditions;
     }
+    
 }

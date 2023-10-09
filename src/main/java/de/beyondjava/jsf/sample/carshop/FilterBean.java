@@ -17,13 +17,12 @@
 package de.beyondjava.jsf.sample.carshop;
 
 import jakarta.enterprise.context.SessionScoped;
-import jakarta.faces.annotation.ManagedProperty;
 import jakarta.faces.event.AjaxBehaviorEvent;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Logger;
-
 
 import net.bootsfaces.beans.ELTools;
 
@@ -35,15 +34,15 @@ public class FilterBean implements Serializable {
 
     private static final Logger LOGGER = Logger.getLogger("de.beyondjava.jsf.sample.carshop.FilterBean");
 
-    private String brand;
-
-    @ManagedProperty("#{carPool}")
+    @Inject
     private transient CarPool carPool;
 
-    private String color;
-
-    @ManagedProperty("#{dynamicOptionBean}")
+    @Inject
     private DynamicOptionBean dynamicOptions;
+
+    private String brand;
+
+    private String color;
 
     private String fuel;
 
@@ -191,4 +190,5 @@ public class FilterBean implements Serializable {
     public void setYearText(String year) {
         yearText = year;
     }
+
 }

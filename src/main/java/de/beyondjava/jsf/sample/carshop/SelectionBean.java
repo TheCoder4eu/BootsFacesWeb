@@ -2,18 +2,21 @@ package de.beyondjava.jsf.sample.carshop;
 
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.annotation.ManagedProperty;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import java.util.List;
 
 
+@Deprecated
 @Named
 @RequestScoped
 public class SelectionBean {
 
+    @Inject
     @ManagedProperty("#{carPool.selectedCars}")
     private List<Car> selectedCars;
 
-    @ManagedProperty("#{carBean}")
+    @Inject
     private CarBean carBean;
 
     public CarBean getCarBean() {
@@ -41,13 +44,5 @@ public class SelectionBean {
     public void setCarAsJSon(String carAsJSon) {
         this.carAsJSon = carAsJSon;
     }
-
-//	public String showDetails() {
-//		int pos = carAsJSon.indexOf(",\"$$hashKey\"");
-//		if (pos > 0)
-//			carAsJSon = carAsJSon.substring(0, pos) + "}";
-//
-//		Car car = (Car) JSONUtilities.readObjectFromJSONString(carAsJSon, Car.class);
-//		return getCarBean().showDetails(car);
-//	}
+    
 }
