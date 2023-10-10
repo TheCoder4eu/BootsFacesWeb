@@ -48,10 +48,10 @@ dependencies {
     // CAUTION:
     // Old java plugin configurations compile,testCompile,providedCompile were Deprecated!
     // They have been removed and superseded by implementation in Gradle 7.0+.
-    implementation 'javax:javaee-api:8.0.1'
+    implementation 'jakarta.platform:jakarta.jakartaee-web-api:10.0.0'
     implementation "net.bootsfaces:bootsfaces:${BootsFacesVersion}:jakarta"
     implementation 'com.googlecode.owasp-java-html-sanitizer:owasp-java-html-sanitizer:20211018.2'
-    implementation 'org.primefaces:primefaces:8.0'
+    implementation 'org.primefaces:primefaces:12.0.0:jakarta'
     //compile files("${System.properties['java.home']}/../lib/tools.jar")
 
 }
@@ -83,7 +83,7 @@ war.doFirst {
     String buildInfo = """\n\
                     <b:row>
                     <b:jumbotron>
-                        <img src="https://www.bootsfaces.net/img/bsf_logo.png"/>
+                        <b:image library="images" name="bsf_logo.png"/>
 
                         <p>Welcome to the BootsFaces Showcase and Documentation</p>
                         <p><b:navLink value="BootsFaces License" outcome="license" iconAwesome="gavel"/></p>
@@ -107,7 +107,7 @@ war.doFirst {
                         <b:button value="close" dismiss="modal" onclick="return false;"/>
                     </f:facet>
                 </b:modal>
-					   """
+                       """
     contents = contents.replaceAll( '</h1>', '</h1>'+buildInfo )
     new File( indexPage ).write( contents, 'UTF-8' )
 }

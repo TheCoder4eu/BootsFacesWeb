@@ -29,6 +29,8 @@ steps:
 # push an image to geopossachs/bootsfaces_showcase:{environment}
 - name: mirror__docker-publish
   when:
+    repo:
+      - geopossachs/BootsFacesWeb
     branch:
       - system/production
       - system/stage
@@ -45,6 +47,8 @@ steps:
 # boot the app on a docker based runtime
 - name: mirror__container-reboot
   when:
+    repo:
+      - geopossachs/BootsFacesWeb
     branch:
       - system/production
       - system/stage
@@ -66,6 +70,8 @@ steps:
 #
 - name: mirror__publish
   when:
+    repo:
+      - geopossachs/BootsFacesWeb
     branch:
       - system/production
       - system/stage
