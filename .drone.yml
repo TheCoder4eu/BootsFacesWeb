@@ -2,8 +2,9 @@ kind: pipeline
 name: default
 
 steps:
-#
-- name: gradle-dummy-build-war
+
+# build the project with gradle
+- name: gradle-build-war
   when:
     branch:
       - master
@@ -15,13 +16,29 @@ steps:
   - name: maven-cache
     path: /root/.m2
 
-# build the ./target/BootsFacesWeb.war
-- name: maven-build-war
+# build the project with maven
+- name: maven-package-war
   image: maven:3.6-jdk-11
   commands:
     - mvn clean package #-P MavenCentral
     - cd ./target/
     - ls -lisa
+  volumes:
+  - name: maven-cache
+    path: /root/.m2
+
+# deploy to 'GitHub Packages'
+- name: mirror__maven-deploy-war
+  when:
+    repo:
+      - geopossachs/BootsFacesWeb
+  image: maven:3.6-jdk-11
+  commands:
+    -  mvn -s ./.drone_maven_settings.xml clean deploy -P geopossachs
+  environment:
+    GITHUB_USERNAME: geopossachs
+    GITHUB_ACCESS_TOKEN: 
+      from_secret: github_access_token
   volumes:
   - name: maven-cache
     path: /root/.m2
