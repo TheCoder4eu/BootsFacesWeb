@@ -5,9 +5,6 @@ steps:
 
 # build the project with gradle
 - name: gradle-build-war
-  when:
-    branch:
-      - master
   image: openjdk:11-jdk
   commands:
     - ./gradlew --no-daemon -b build.gradle clean war

@@ -40,8 +40,11 @@ repositories {
     mavenLocal()
     mavenCentral()
     maven {
-        url "https://oss.sonatype.org/content/repositories/snapshots"
+        url "https://maven.pkg.github.com/geopossachs/BootsFaces-OSP"
     }
+    //maven {
+    //    url "https://oss.sonatype.org/content/repositories/snapshots"
+    //}
 }
 
 dependencies {
@@ -49,8 +52,7 @@ dependencies {
     // Old java plugin configurations compile,testCompile,providedCompile were Deprecated!
     // They have been removed and superseded by implementation in Gradle 7.0+.
     implementation 'jakarta.platform:jakarta.jakartaee-web-api:10.0.0'
-    implementation "net.bootsfaces:bootsfaces:${BootsFacesVersion}:jakarta"
-    implementation 'com.googlecode.owasp-java-html-sanitizer:owasp-java-html-sanitizer:20211018.2'
+    implementation "net.bootsfaces:bootsfaces:${BootsFacesVersion}"
     implementation 'org.primefaces:primefaces:12.0.0:jakarta'
     //compile files("${System.properties['java.home']}/../lib/tools.jar")
 
