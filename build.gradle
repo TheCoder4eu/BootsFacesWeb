@@ -53,9 +53,10 @@ dependencies {
     // They have been removed and superseded by implementation in Gradle 7.0+.
     implementation 'jakarta.platform:jakarta.jakartaee-web-api:10.0.0'
     implementation "net.bootsfaces:bootsfaces:${BootsFacesVersion}"
-    implementation 'org.primefaces:primefaces:12.0.0:jakarta'
+    implementation group: 'org.primefaces', name: 'primefaces', version: '12.0.0', classifier: 'jakarta'
+    implementation 'io.nayuki:qrcodegen:1.8.0'
+    implementation 'org.primefaces.extensions:barcode4j-light:2.3.0'
     //compile files("${System.properties['java.home']}/../lib/tools.jar")
-
 }
 
 war.doFirst {
