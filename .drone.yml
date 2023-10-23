@@ -31,7 +31,7 @@ steps:
       - geopossachs/BootsFacesWeb
   image: maven:3.6-jdk-11
   commands:
-    -  mvn -s ./.drone_maven_settings.xml clean deploy -P geopossachs
+    -  mvn -s ./.drone_maven_settings.xml clean deploy -P geopossachs -P bootable
   environment:
     GITHUB_USERNAME: geopossachs
     GITHUB_ACCESS_TOKEN: 
@@ -99,7 +99,9 @@ steps:
     port: 
       from_secret: master_rsync_port
     target: /home/tclxd/geopossachs/bootsfaces-showcase__${DRONE_BRANCH/\//-}/
-    source: target/BootsFacesWeb.war
+    source:
+      - target/BootsFacesWeb.war
+      - target/BootsFacesWeb-bootable.jar
 
 
 
