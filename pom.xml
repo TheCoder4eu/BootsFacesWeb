@@ -49,14 +49,14 @@
     </properties>
 
     <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
         <repository>
             <id>ossrh</id>
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
     </distributionManagement>
 
     <repositories> 
@@ -69,17 +69,6 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
-        
-        <!-- for SNAPSHOT import from 'GitHub Packages' -->
-        <repository>
-            <id>github</id>
-            <url>https://maven.pkg.github.com/geopossachs/BootsFaces-OSP</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-
-        <!--
         <repository>
             <id>ossrh</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
@@ -90,7 +79,6 @@
                 <enabled>true</enabled>
             </snapshots> 
         </repository>
-        -->
     </repositories>
 
     <dependencies>
@@ -229,40 +217,21 @@
         </profile>
         
         <profile>
-            <id>geopossachs</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <distributionManagement>
-                <snapshotRepository>
-                    <id>github</id>
-                    <name>GitHub Apache Maven Packages</name>
-                    <url>https://maven.pkg.github.com/geopossachs/BootsFacesWeb</url>
-                </snapshotRepository>
-                <repository>
-                    <id>github</id>
-                    <name>GitHub Apache Maven Packages</name>
-                    <url>https://maven.pkg.github.com/geopossachs/BootsFacesWeb</url>
-                </repository>
-            </distributionManagement>
-        </profile>
-        
-        <profile>
             <id>bootable</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <version.wildfly>28.0.1.Final</version.wildfly>
-                <version.bootable.jar>10.0.0.Final</version.bootable.jar>
+                <wildfly-jar-plugin.version>10.0.0.Final</wildfly-jar-plugin.version>
                 <plugin.fork.embedded>true</plugin.fork.embedded>
+                <version.wildfly>28.0.1.Final</version.wildfly>
             </properties>
             <build>
                 <plugins>
                     <plugin>
                         <groupId>org.wildfly.plugins</groupId>
                         <artifactId>wildfly-jar-maven-plugin</artifactId>
-                        <version>${version.bootable.jar}</version>
+                        <version>${wildfly-jar-plugin.version}</version>
                         <configuration>
                             <outputFileName>BootsFacesWeb-bootable.jar</outputFileName>
                             <feature-pack-location>wildfly@maven(org.jboss.universe:community-universe)#${version.wildfly}</feature-pack-location>
@@ -287,5 +256,47 @@
             </build>
         </profile>
         
+        <profile>
+            <id>geopossachs</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation> 
+            <repositories>
+                <repository>
+                    <id>central</id>
+                    <name>Central Repository</name>
+                    <url>https://repo.maven.apache.org/maven2</url>
+                    <layout>default</layout>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+                
+                <!-- for SNAPSHOT import from 'GitHub Packages' -->
+                <repository>
+                    <id>github</id>
+                    <url>https://maven.pkg.github.com/geopossachs/BootsFaces-OSP</url>
+                    <releases> 
+                        <enabled>false</enabled> 
+                    </releases> 
+                    <snapshots> 
+                        <enabled>true</enabled>
+                    </snapshots> 
+                </repository>
+            </repositories>
+            <distributionManagement>
+                <repository>
+                    <id>github</id>
+                    <name>GitHub Apache Maven Packages</name>
+                    <url>https://maven.pkg.github.com/geopossachs/BootsFacesWeb</url>
+                </repository>
+                <snapshotRepository>
+                    <id>github</id>
+                    <name>GitHub Apache Maven Packages</name>
+                    <url>https://maven.pkg.github.com/geopossachs/BootsFacesWeb</url>
+                </snapshotRepository>
+            </distributionManagement>
+        </profile>
+
     </profiles>
 </project>

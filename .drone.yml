@@ -17,7 +17,7 @@ steps:
 - name: maven-package-war
   image: maven:3.6-jdk-11
   commands:
-    - mvn clean package #-P MavenCentral
+    - mvn -s ./.drone_maven_settings.xml clean package -P geopossachs #-P MavenCentral
     - cd ./target/
     - ls -lisa
   volumes:
