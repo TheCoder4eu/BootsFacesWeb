@@ -20,6 +20,10 @@ steps:
     - mvn -s ./.drone_maven_settings.xml clean package -P geopossachs #-P MavenCentral
     - cd ./target/
     - ls -lisa
+  environment:
+    GITHUB_USERNAME: geopossachs
+    GITHUB_ACCESS_TOKEN: 
+      from_secret: github_access_token
   volumes:
   - name: maven-cache
     path: /root/.m2
