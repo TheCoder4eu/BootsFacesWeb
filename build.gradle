@@ -40,6 +40,8 @@ repositories {
     mavenLocal()
     mavenCentral()
     maven {
+        name = 'githubRepository'
+        credentials(PasswordCredentials)
         url "https://maven.pkg.github.com/geopossachs/BootsFaces-OSP"
     }
     //maven {

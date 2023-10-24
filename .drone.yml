@@ -9,6 +9,10 @@ steps:
   commands:
     - ./gradlew --no-daemon -b build.gradle clean war
     - ls -lisa ./build/libs/
+  environment:
+    ORG_GRADLE_PROJECT_githubRepositoryUsername : geopossachs
+    ORG_GRADLE_PROJECT_githubRepositoryPassword : 
+      from_secret: github_access_token
   volumes:
   - name: maven-cache
     path: /root/.m2
