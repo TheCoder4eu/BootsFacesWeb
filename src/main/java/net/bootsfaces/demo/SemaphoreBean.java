@@ -16,20 +16,20 @@
  */
 package net.bootsfaces.demo;
 
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Named;
+import jakarta.validation.constraints.NotNull;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.validation.constraints.NotNull;
 
 /**
  * A simple bean for demo purposes.
  */
+@Named
 @RequestScoped
-@ManagedBean
 public class SemaphoreBean {
 
     @NotNull

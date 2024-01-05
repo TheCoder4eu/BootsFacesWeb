@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
                 xmlns:b="http://bootsfaces.net/ui"
-                xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns:ui="jakarta.faces.facelets">
 
 
   <ui:define name="content-navigator">
@@ -293,8 +293,8 @@ public class BeerConverter implements Converter {
                   <script type="syntaxhighlighter"
                   class="brush: java; toolbar: false;gutter: false; first-line: 1">
                   <![CDATA[
-@ManagedBean
-@javax.faces.bean.ViewScoped
+@Named
+@ViewScoped
 public class BeersBean implements Serializable {
 	private static final long serialVersionUID = -3192521384162408966L;
 	private Beer selectedBeer;
@@ -407,7 +407,7 @@ public class Beer {
               <script type="syntaxhighlighter" class="brush: java; toolbar: false;gutter: false; first-line: 1">
               <![CDATA[
               @RequestScoped
-              @ManagedBean
+              @Named
               public class SemaphoreBean {
 
                 @NotNull

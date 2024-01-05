@@ -16,17 +16,16 @@
  */
 package de.beyondjava.jsf.sample.carshop;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
-
-@ManagedBean
+@Named
 @SessionScoped
 public class CarPool implements Serializable {
 
@@ -34,10 +33,13 @@ public class CarPool implements Serializable {
 
     private final static int SIZE_OF_INITIAL_CAR_POOL = 15;
 
-    private String language = "Italian";
-
-    @ManagedProperty("#{staticOptionBean}")
+    @Inject
     private StaticOptionBean staticOptions;
+
+    @Inject
+    private DynamicOptionBean dynamicOptions;
+
+    private String language = "Italian";
 
     public StaticOptionBean getStaticOptions() {
         return staticOptions;
@@ -54,9 +56,6 @@ public class CarPool implements Serializable {
     public void setDynamicOptions(DynamicOptionBean dynamicOptions) {
         this.dynamicOptions = dynamicOptions;
     }
-
-    @ManagedProperty("#{dynamicOptionBean}")
-    private DynamicOptionBean dynamicOptions;
 
     private List<String> types;
 
@@ -272,4 +271,5 @@ public class CarPool implements Serializable {
 
         car.setColor(color);
     }
+
 }

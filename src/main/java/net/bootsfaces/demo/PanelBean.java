@@ -3,16 +3,16 @@ package net.bootsfaces.demo;
 /*
  * A Bean Used for Demo purposes
  */
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.event.ActionEvent;
+import jakarta.inject.Named;
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.faces.event.ActionEvent;
 
 /**
  * @author Stephan Rauh, http://www.beyondjava.net
  */
-@ManagedBean
+@Named
 @SessionScoped
 public class PanelBean implements Serializable {
 

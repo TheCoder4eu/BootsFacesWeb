@@ -1,11 +1,11 @@
 package net.bootsfaces.demo;
 
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 
-@ManagedBean
+@Named
 @SessionScoped
 public class DefaultValuesBean implements Serializable {
 

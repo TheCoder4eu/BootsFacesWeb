@@ -3,17 +3,17 @@ package net.bootsfaces.demo;
 /*
  * A Bean Used for Demo purposes
  */
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 
 import net.bootsfaces.utils.FacesMessages;
 
 /**
  * @author Stephan Rauh, http://www.beyondjava.net
  */
-@ManagedBean
+@Named
 @RequestScoped
 public class So20180817 implements Serializable {
 

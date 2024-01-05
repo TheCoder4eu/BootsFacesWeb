@@ -1,11 +1,11 @@
 package net.bootsfaces.demo;
 
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 
-@ManagedBean
+@Named
 @ViewScoped
 public class FlyOutMenuBean implements Serializable {
 

@@ -1,14 +1,14 @@
 package net.bootsfaces.demo.ajax;
 
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 
+@Named
 @ViewScoped
-@ManagedBean
 public class CommandButtonBean implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -1,13 +1,13 @@
 package net.bootsfaces.demo.forms;
 
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 
 import net.bootsfaces.utils.FacesMessages;
 
-@ManagedBean
+@Named
 @ViewScoped
 public class CommandLinkBean implements Serializable {
 

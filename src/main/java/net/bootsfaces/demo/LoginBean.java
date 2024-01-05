@@ -1,15 +1,15 @@
 package net.bootsfaces.demo;
 
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import java.io.Serializable;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 
-@ManagedBean
+@Named
 @ViewScoped
 public class LoginBean implements Serializable {
 

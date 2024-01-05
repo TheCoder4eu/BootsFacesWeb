@@ -3,63 +3,115 @@ name: default
 
 steps:
 
-- name: gradle-check
+# build the project with gradle
+- name: gradle-build-war
   image: openjdk:11-jdk
   commands:
-    - ./gradlew -Dorg.gradle.daemon=false -b build.gradle clean war
-    - cd ./build/
-    - cd ./libs/
-    - ls -lisa
+    - ./gradlew --no-daemon -b build.gradle clean war
+    - ls -lisa ./build/libs/
+  environment:
+    ORG_GRADLE_PROJECT_githubRepositoryUsername : geopossachs
+    ORG_GRADLE_PROJECT_githubRepositoryPassword : 
+      from_secret: github_access_token
   volumes:
   - name: maven-cache
     path: /root/.m2
 
-  # build the ./target/BootsFacesWeb.war
-- name: maven-build
+# build the project with maven
+- name: maven-package-war
   image: maven:3.6-jdk-11
   commands:
-    - mvn clean package #-P MavenCentral
+    - mvn -s ./.drone_maven_settings.xml clean package -P geopossachs #-P MavenCentral
     - cd ./target/
     - ls -lisa
+  environment:
+    GITHUB_USERNAME: geopossachs
+    GITHUB_ACCESS_TOKEN: 
+      from_secret: github_access_token
   volumes:
   - name: maven-cache
     path: /root/.m2
 
-  # push an image to geopossachs/bootsfaces_showcase:snapshot
-- name: docker-publish
+# deploy to 'GitHub Packages'
+- name: mirror__maven-deploy-war
   when:
+    repo:
+      - geopossachs/BootsFacesWeb
+  image: maven:3.6-jdk-11
+  commands:
+    -  mvn -s ./.drone_maven_settings.xml clean deploy -P geopossachs -P bootable
+  environment:
+    GITHUB_USERNAME: geopossachs
+    GITHUB_ACCESS_TOKEN: 
+      from_secret: github_access_token
+  volumes:
+  - name: maven-cache
+    path: /root/.m2
+
+# push an image to geopossachs/bootsfaces_showcase:{environment}
+- name: mirror__docker-publish
+  when:
+    repo:
+      - geopossachs/BootsFacesWeb
     branch:
-      - master
+      - system/production
+      - system/stage
   image: plugins/docker
   settings:
     repo: geopossachs/bootsfaces_showcase
-    tags: snapshot
+    tags: ${DRONE_BRANCH##system/}
     dockerfile: Dockerfile-wildfly
     username:
       from_secret: docker_username
     password:
       from_secret: docker_password
 
-  # boot the app on a docker based runtime
-- name: container-reboot
+# boot the app on a docker based runtime
+- name: mirror__container-reboot
   when:
+    repo:
+      - geopossachs/BootsFacesWeb
     branch:
-      - master
-  image: drillster/drone-rsync
-  environment:
-    RSYNC_KEY:
-      from_secret: rsync_key
-    RSYNC_USER:
-      from_secret: rsync_user
+      - system/production
+      - system/stage
+  image: appleboy/drone-ssh
   settings:
-    hosts: [ "showcase.bootsfaces.pecer.de" ]
-    source: ./docker-compose.yml
-    target: /srv/bootsfaces-showcase/
-    secrets: [ rsync_user, rsync_key ]
+    host:
+      - showcase.bootsfaces.de
+    username:
+      from_secret: rsync_user
+    key:
+      from_secret: rsync_key
+    port:
+      from_secret: rsync_port
     script:
-      - cd /srv/bootsfaces-showcase/
-      - docker-compose pull
-      - docker-compose up -d --remove-orphans
+      - cd /srv/IaC/bootsfaces-showcase__${DRONE_BRANCH/\//-}/
+      - docker compose pull
+      - docker compose up -d --remove-orphans
+
+#
+- name: mirror__publish
+  when:
+    repo:
+      - geopossachs/BootsFacesWeb
+    branch:
+      - system/production
+      - system/stage
+  image: appleboy/drone-scp
+  settings:
+    host: showcase.bootsfaces.net
+    username:
+      from_secret: master_rsync_user
+    key:
+      from_secret: master_rsync_key
+    port: 
+      from_secret: master_rsync_port
+    target: /home/tclxd/geopossachs/bootsfaces-showcase__${DRONE_BRANCH/\//-}/
+    source:
+      - target/BootsFacesWeb.war
+      - target/BootsFacesWeb-bootable.jar
+
+
 
 volumes:
   - name: maven-cache

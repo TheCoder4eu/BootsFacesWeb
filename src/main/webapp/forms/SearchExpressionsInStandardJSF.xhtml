@@ -1,8 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui" xmlns:jsf="http://xmlns.jcp.org/jsf"
-      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough" xmlns:ui="http://java.sun.com/jsf/facelets">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="jakarta.faces.html" 
+      xmlns:f="jakarta.faces.core"
+      xmlns:b="http://bootsfaces.net/ui" 
+      xmlns:jsf="jakarta.faces"
+      xmlns:pt="jakarta.faces.passthrough" 
+      xmlns:ui="jakarta.faces.facelets">
   <h:head>
     <title>BootsFaces: next-gen JSF Framework</title>
   <meta name="author" content="Riccardo Massera"></meta>
@@ -79,7 +83,7 @@
                   <script type="syntaxhighlighter"
                   class="brush: java; toolbar: false;gutter: false; first-line: 1">
                   <![CDATA[
-                  @ManagedBean
+                  @Named
                   @ViewScoped
                   public class NumberGuessBean  implements Serializable {
 
@@ -123,7 +127,7 @@
                   <script type="syntaxhighlighter"
                   class="brush: java; toolbar: false;gutter: false; first-line: 1">
                   <![CDATA[
-                  @ManagedBean
+                  @Named
                   @RequestScoped
                   public class SearchExpressionResolverBean {
                     public String resolve(UIComponent component, String expression) {
@@ -207,7 +211,7 @@
                     class="brush: xml; toolbar: false;gutter: false; first-line: 1">
                     <![CDATA[
                     <context-param>
-                    <param-name>javax.faces.FACELETS_DECORATORS</param-name>
+                    <param-name>jakarta.faces.FACELETS_DECORATORS</param-name>
                     <param-value>
                     net.bootsfaces.expressions.decorator.SearchExpressionsTagDecorator
                     </param-value>
@@ -221,7 +225,7 @@
                     class="brush: xml; toolbar: false;gutter: false; first-line: 1">
                     <![CDATA[
                     <context-param>
-                    <param-name>javax.faces.FACELETS_DECORATORS</param-name>
+                    <param-name>jakarta.faces.FACELETS_DECORATORS</param-name>
                     <param-value>
                     net.bootsfaces.decorator.BootsFacesTagDecorator
                     </param-value>

@@ -2,10 +2,10 @@
 <!DOCTYPE html>
 <ui:composition template="/applayout/pageTemplate.xhtml"
                 xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
                 xmlns:b="http://bootsfaces.net/ui"
-                xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns:ui="jakarta.faces.facelets">
 
 
   <ui:define name="content-navigator">
@@ -152,7 +152,7 @@
       class="brush: xml; toolbar: false;gutter: false; first-line: 1">
       <![CDATA[
       <context-param>
-      <param-name>javax.faces.FACELETS_DECORATORS</param-name>
+      <param-name>jakarta.faces.FACELETS_DECORATORS</param-name>
       <param-value>
       net.bootsfaces.decorator.BootsFacesTagDecorator
       </param-value>

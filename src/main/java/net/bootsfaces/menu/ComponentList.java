@@ -1,5 +1,7 @@
 package net.bootsfaces.menu;
 
+import jakarta.faces.context.FacesContext;
+import jakarta.servlet.ServletContext;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -10,8 +12,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import javax.faces.context.FacesContext;
-import javax.servlet.ServletContext;
 
 public class ComponentList {
 

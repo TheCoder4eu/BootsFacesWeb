@@ -16,19 +16,19 @@
  */
 package net.bootsfaces.demo;
 
+import jakarta.faces.event.AjaxBehaviorEvent;
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.event.AjaxBehaviorEvent;
-import javax.faces.view.ViewScoped;
 
 /**
  * This bean is used by the PrimeFaces barcode demo.
  *
  * @author Stephan Rauh, http://www.beyondjava.net
  */
+@Named
 @ViewScoped
-@ManagedBean
 public class BarcodeBean implements Serializable {
 
     private static final long serialVersionUID = -6810958868318611791L;

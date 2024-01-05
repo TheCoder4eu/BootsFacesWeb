@@ -1,17 +1,17 @@
 package net.bootsfaces.demo.selectOneMenu;
 
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 
 /**
  * Example taken from :
  * https://memorynotfound.com/using-custom-converter-for-hselectonemenu/
  */
-@ManagedBean
+@Named
 @ViewScoped
 public class BeersBean implements Serializable {
 
