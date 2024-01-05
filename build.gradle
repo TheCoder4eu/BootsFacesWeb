@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2022 Riccardo Massera (TheCoder4.Eu)
+ * Copyright 2014-2023 Riccardo Massera (TheCoder4.Eu)
  *
  * This file is part of BootsFaces.
  *
@@ -39,11 +39,6 @@ java {
 repositories {
     mavenLocal()
     mavenCentral()
-    maven {
-        name = 'githubRepository'
-        credentials(PasswordCredentials)
-        url "https://maven.pkg.github.com/geopossachs/BootsFaces-OSP"
-    }
     //maven {
     //    url "https://oss.sonatype.org/content/repositories/snapshots"
     //}
