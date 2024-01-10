@@ -46,11 +46,13 @@ dependencies {
     // CAUTION:
     // Old java plugin configurations compile,testCompile,providedCompile were Deprecated!
     // They have been removed and superseded by implementation in Gradle 7.0+.
-    implementation 'jakarta.platform:jakarta.jakartaee-web-api:10.0.0'
+    compileOnly 'jakarta.platform:jakarta.jakartaee-web-api:10.0.0'
     implementation "net.bootsfaces:bootsfaces:${BootsFacesVersion}"
     implementation group: 'org.primefaces', name: 'primefaces', version: '12.0.0', classifier: 'jakarta'
     implementation 'io.nayuki:qrcodegen:1.8.0'
     implementation 'org.primefaces.extensions:barcode4j-light:2.3.0'
+    implementation 'com.googlecode.owasp-java-html-sanitizer:owasp-java-html-sanitizer:20220608.1'
+    implementation 'com.google.guava:guava:32.0.1-jre'
     //compile files("${System.properties['java.home']}/../lib/tools.jar")
 }
 
