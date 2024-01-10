@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2023 Riccardo Massera (TheCoder4.Eu)
+ * Copyright 2014-2024 Riccardo Massera (TheCoder4.Eu)
  *
  * This file is part of BootsFaces.
  *
@@ -26,8 +26,6 @@ plugins {
 // BootsFaces Library Version to use in the Build
 ext.BootsFacesVersion = '2.0.0-SNAPSHOT'
 
-//sourceCompatibility = '11'
-//targetCompatibility = '11'
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(11))
