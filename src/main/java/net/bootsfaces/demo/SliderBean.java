@@ -3,17 +3,17 @@ package net.bootsfaces.demo;
 /*
  * A Bean Used for Demo purposes
  */
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import java.io.Serializable;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 
 /**
  *
  * @author TheCoder4eu
  */
-@ManagedBean
+@Named
 @SessionScoped
 public class SliderBean implements Serializable {
 

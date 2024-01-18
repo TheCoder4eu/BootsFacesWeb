@@ -1,12 +1,12 @@
 package net.bootsfaces;
 
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 
+@Named
 @SessionScoped
-@ManagedBean
 public class RtlBean implements Serializable {
 
     private static final long serialVersionUID = 1L;

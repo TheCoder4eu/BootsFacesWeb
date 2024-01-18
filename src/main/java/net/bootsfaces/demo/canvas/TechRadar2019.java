@@ -1,11 +1,11 @@
 package net.bootsfaces.demo.canvas;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Named;
 
 import net.bootsfaces.component.canvas.Drawing;
 
-@ManagedBean
+@Named
 @RequestScoped
 public class TechRadar2019 extends Drawing {
 

@@ -16,16 +16,16 @@
  */
 package net.bootsfaces.demo;
 
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 
 /**
  * A simple bean for demo purposes.
  */
+@Named
 @RequestScoped
-@ManagedBean
 public class SettingsBean implements Serializable {
 
     private static final long serialVersionUID = 1L;

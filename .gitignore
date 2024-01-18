@@ -1,15 +1,9 @@
-/web/download.xhtml
-/web/index.xhtml
 /nbproject/
 /build.xml
-/web/WEB-INF/jboss-web.xml
-/web/META-INF/context.xml
 /target/
 .settings/
 .project
 .classpath
-/web/META-INF
-/web/WEB-INF/.faces-config.xml.jsfdia
 /bin/
 /lib/xmltask.jar
 /lib/yuicompressor-2.4.8.jar

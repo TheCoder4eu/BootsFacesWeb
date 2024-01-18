@@ -2,23 +2,48 @@ kind: pipeline
 name: default
 
 steps:
-#
-- name: gradle-dummy-build-war
+
+# build the project with gradle
+- name: gradle-build-war
   image: openjdk:11-jdk
   commands:
-    - ./gradlew -Dorg.gradle.daemon=false -b build.gradle clean war
+    - ./gradlew --no-daemon -b build.gradle clean war
     - ls -lisa ./build/libs/
+  environment:
+    ORG_GRADLE_PROJECT_githubRepositoryUsername : geopossachs
+    ORG_GRADLE_PROJECT_githubRepositoryPassword : 
+      from_secret: github_access_token
   volumes:
   - name: maven-cache
     path: /root/.m2
 
-# build the ./target/BootsFacesWeb.war
-- name: maven-build-war
+# build the project with maven
+- name: maven-package-war
   image: maven:3.6-jdk-11
   commands:
-    - mvn clean package #-P MavenCentral
+    - mvn -s ./.drone_maven_settings.xml clean package -P geopossachs #-P MavenCentral
     - cd ./target/
     - ls -lisa
+  environment:
+    GITHUB_USERNAME: geopossachs
+    GITHUB_ACCESS_TOKEN: 
+      from_secret: github_access_token
+  volumes:
+  - name: maven-cache
+    path: /root/.m2
+
+# deploy to 'GitHub Packages'
+- name: mirror__maven-deploy-war
+  when:
+    repo:
+      - geopossachs/BootsFacesWeb
+  image: maven:3.6-jdk-11
+  commands:
+    -  mvn -s ./.drone_maven_settings.xml clean deploy -P geopossachs -P bootable
+  environment:
+    GITHUB_USERNAME: geopossachs
+    GITHUB_ACCESS_TOKEN: 
+      from_secret: github_access_token
   volumes:
   - name: maven-cache
     path: /root/.m2
@@ -26,6 +51,8 @@ steps:
 # push an image to geopossachs/bootsfaces_showcase:{environment}
 - name: mirror__docker-publish
   when:
+    repo:
+      - geopossachs/BootsFacesWeb
     branch:
       - system/production
       - system/stage
@@ -42,6 +69,8 @@ steps:
 # boot the app on a docker based runtime
 - name: mirror__container-reboot
   when:
+    repo:
+      - geopossachs/BootsFacesWeb
     branch:
       - system/production
       - system/stage
@@ -63,6 +92,8 @@ steps:
 #
 - name: mirror__publish
   when:
+    repo:
+      - geopossachs/BootsFacesWeb
     branch:
       - system/production
       - system/stage
@@ -76,7 +107,9 @@ steps:
     port: 
       from_secret: master_rsync_port
     target: /home/tclxd/geopossachs/bootsfaces-showcase__${DRONE_BRANCH/\//-}/
-    source: target/BootsFacesWeb.war
+    source:
+      - target/BootsFacesWeb.war
+      - target/BootsFacesWeb-bootable.jar
 
 
 

@@ -1,15 +1,16 @@
 package test.beans;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
+import jakarta.inject.Named;
+import java.io.Serializable;
 
 import net.bootsfaces.component.scrollSpy.event.ScrollSpyEventListener;
 
+@Named(value = "spy")
 @SessionScoped
-@ManagedBean(name = "spy")
-public class ScrollSpyBean implements ScrollSpyEventListener {
+public class ScrollSpyBean implements ScrollSpyEventListener, Serializable {
 
     @Override
     public void itemSelected(String arg0) {

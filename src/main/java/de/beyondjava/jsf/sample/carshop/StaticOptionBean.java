@@ -16,15 +16,15 @@
  */
 package de.beyondjava.jsf.sample.carshop;
 
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 
-@ManagedBean
+@Named
 @SessionScoped
 public class StaticOptionBean implements Serializable {
 
@@ -37,7 +37,9 @@ public class StaticOptionBean implements Serializable {
     private List<String> fuels = new ArrayList<String>();
 
     private List<String> mileages = new ArrayList<String>();
+    
     private List<String> prices = new ArrayList<String>();
+    
     private List<String> years = new ArrayList<String>();
 
     public StaticOptionBean() {
@@ -129,4 +131,5 @@ public class StaticOptionBean implements Serializable {
     public List<String> getYears() {
         return years;
     }
+    
 }

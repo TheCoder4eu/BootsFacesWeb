@@ -1,11 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
-<ui:composition template="/applayout/pageTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:jsf="http://xmlns.jcp.org/jsf">
+<ui:composition template="/applayout/pageTemplate.xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:jsf="jakarta.faces">
 
             <ui:define name="content" bootsFacesDecorator="true">
                 <h1>Using <code>&lt;div /&gt;</code> tags in JSF <b:badge value="since 0.9.0 (experimental)" /></h1>
@@ -149,7 +150,7 @@
                       <b:panel>
                       <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0"><![CDATA[
                       <context-param>
-                        <param-name>javax.faces.FACELETS_DECORATORS</param-name>
+                        <param-name>jakarta.faces.FACELETS_DECORATORS</param-name>
                         <param-value>
                             net.bootsfaces.decorator.BootsFacesTagDecorator
                         </param-value>

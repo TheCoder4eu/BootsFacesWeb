@@ -2,10 +2,10 @@
 <!DOCTYPE html>
 <ui:composition 
 	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="jakarta.faces.html"
+	xmlns:f="jakarta.faces.core"
 	xmlns:b="http://bootsfaces.net/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="jakarta.faces.facelets">
 <p>Include page blah blah lorem ipsum</p>
 
 		<b:inputText value="#{beanCtrl.value}" onchange="ajax:beanCtrl.onChange()" update="@next @(.btn)"></b:inputText>

@@ -1,8 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui" xmlns:jsf="http://xmlns.jcp.org/jsf"
-      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough" xmlns:ui="http://java.sun.com/jsf/facelets">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:b="http://bootsfaces.net/ui" 
+      xmlns:jsf="jakarta.faces"
+      xmlns:pt="jakarta.faces.passthrough"
+      xmlns:ui="jakarta.faces.facelets">
   <h:head>
     <title>BootsFaces: next-gen JSF Framework</title>
   <meta name="author" content="Riccardo Massera"></meta>
@@ -74,14 +78,15 @@
           <script type="syntaxhighlighter"
           class="brush: java; toolbar: false;gutter: false; first-line: 1">
           <![CDATA[
-          @ManagedBean
+          @Named
+          @ViewScoped
           public class NumberGuessBean implements Serializable {
             @Min(1)
             @Max(10)
             private int guess=2;
+            
             public void submitGuess() {
               FacesMessages.info("@property(numberGuessBean.guess)", "summary", "detail message");
-
             }
           }
           ]]></script>

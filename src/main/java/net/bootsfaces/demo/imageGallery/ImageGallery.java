@@ -1,16 +1,16 @@
 package net.bootsfaces.demo.imageGallery;
 
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 
 import net.bootsfaces.utils.FacesMessages;
 
+@Named
 @ViewScoped
-@ManagedBean
 public class ImageGallery implements Serializable {
 
     private static final long serialVersionUID = 1L;

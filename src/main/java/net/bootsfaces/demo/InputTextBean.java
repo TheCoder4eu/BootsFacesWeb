@@ -16,20 +16,20 @@
  */
 package net.bootsfaces.demo;
 
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.view.ViewScoped;
 
 /**
  * This bean is used by the InputText demo.
  *
  * @author Stephan Rauh, http://www.beyondjava.net
  */
+@Named
 @ViewScoped
-@ManagedBean
 public class InputTextBean implements Serializable {
 
     private static final long serialVersionUID = -6810958868318611791L;

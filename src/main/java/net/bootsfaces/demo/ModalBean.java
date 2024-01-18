@@ -1,12 +1,12 @@
 package net.bootsfaces.demo;
 
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 
+@Named
 @ViewScoped
-@ManagedBean
 public class ModalBean implements Serializable {
 
     private static final long serialVersionUID = 1L;

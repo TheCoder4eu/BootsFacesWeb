@@ -1,16 +1,16 @@
 package net.bootsfaces.demo;
 
+import jakarta.faces.event.ActionEvent;
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
-import javax.faces.event.ActionEvent;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 
 import net.bootsfaces.utils.FacesMessages;
 
-@ManagedBean
+@Named
 @ViewScoped
 public class NumberGuessBean implements Serializable {
 

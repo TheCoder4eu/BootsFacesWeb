@@ -1,14 +1,14 @@
 package net.bootsfaces.issues.issue78;
 
+import jakarta.faces.event.ComponentSystemEvent;
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.event.ComponentSystemEvent;
-import javax.faces.view.ViewScoped;
 
-@ManagedBean
+@Named
 @ViewScoped
 public class SoccerTeamBean implements Serializable {
 

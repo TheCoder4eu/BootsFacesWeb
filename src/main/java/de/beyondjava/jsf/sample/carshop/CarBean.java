@@ -1,15 +1,18 @@
 package de.beyondjava.jsf.sample.carshop;
 
+import jakarta.enterprise.context.Dependent;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
 import java.io.Serializable;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-
+@Deprecated
+@Dependent
 public class CarBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private boolean iAgreeToTheTermsAndConditions = false;
+    
     private Car car;
 
     public CarBean() {
@@ -99,4 +102,5 @@ public class CarBean implements Serializable {
     public void setiAgreeToTheTermsAndConditions(boolean iAgreeToTheTermsAndConditions) {
         this.iAgreeToTheTermsAndConditions = iAgreeToTheTermsAndConditions;
     }
+
 }

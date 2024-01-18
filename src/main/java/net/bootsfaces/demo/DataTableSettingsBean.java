@@ -19,20 +19,24 @@ package net.bootsfaces.demo;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
-
 import de.beyondjava.jsf.sample.carshop.Car;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.annotation.ManagedProperty;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 /**
  * A simple bean for demo purposes.
  */
+@Named
 @SessionScoped
-@ManagedBean
 public class DataTableSettingsBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    @Inject
+    @ManagedProperty("#{carPool.carPool}")
+    private List<Car> carPool;
 
     private boolean headerStyle = false;
     private boolean headerStyleClass = false;
@@ -104,9 +108,6 @@ public class DataTableSettingsBean implements Serializable {
     private boolean scrollToDemo = false;
 
     private boolean lengthChange = true;
-
-    @ManagedProperty("#{carPool.carPool}")
-    private List<Car> carPool;
 
     public boolean isSaveState() {
         return saveState;
@@ -404,7 +405,7 @@ public class DataTableSettingsBean implements Serializable {
     }
 
     public boolean isMultiColumnSearchPositionTop() {
-        return this.multiColumnSearchPosition == "top";
+        return "top".equals(this.multiColumnSearchPosition);
     }
 
     public boolean isContentDisabled() {
@@ -553,4 +554,5 @@ public class DataTableSettingsBean implements Serializable {
     public void setLengthChange(boolean lengthChange) {
         this.lengthChange = lengthChange;
     }
+    
 }

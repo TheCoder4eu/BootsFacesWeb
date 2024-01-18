@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2022 Riccardo Massera (TheCoder4.Eu)
+ * Copyright 2014-2024 Riccardo Massera (TheCoder4.Eu)
  *
  * This file is part of BootsFaces.
  *
@@ -22,30 +22,36 @@ plugins {
     id 'war'
 }
 
-//apply plugin: 'java'
-//apply plugin: 'war'
 
 // BootsFaces Library Version to use in the Build
-ext.BootsFacesVersion = '1.6.0-SNAPSHOT'
+ext.BootsFacesVersion = '2.0.0-SNAPSHOT'
 
-sourceCompatibility = '1.8'
-targetCompatibility = '1.8'
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(11))
+    }
+}
 
 repositories {
     mavenLocal()
     mavenCentral()
+    //maven {
+    //    url "https://oss.sonatype.org/content/repositories/snapshots"
+    //}
 }
 
 dependencies {
     // CAUTION:
     // Old java plugin configurations compile,testCompile,providedCompile were Deprecated!
     // They have been removed and superseded by implementation in Gradle 7.0+.
-    implementation 'javax:javaee-api:8.0.1'
+    compileOnly 'jakarta.platform:jakarta.jakartaee-web-api:10.0.0'
     implementation "net.bootsfaces:bootsfaces:${BootsFacesVersion}"
-    implementation 'com.googlecode.owasp-java-html-sanitizer:owasp-java-html-sanitizer:20211018.2'
-    implementation 'org.primefaces:primefaces:8.0'
+    implementation group: 'org.primefaces', name: 'primefaces', version: '12.0.0', classifier: 'jakarta'
+    implementation 'io.nayuki:qrcodegen:1.8.0'
+    implementation 'org.primefaces.extensions:barcode4j-light:2.3.0'
+    implementation 'com.googlecode.owasp-java-html-sanitizer:owasp-java-html-sanitizer:20220608.1'
+    implementation 'com.google.guava:guava:32.0.1-jre'
     //compile files("${System.properties['java.home']}/../lib/tools.jar")
-
 }
 
 war.doFirst {
@@ -60,22 +66,22 @@ war.doFirst {
     String currentJvm = org.gradle.internal.jvm.Jvm.current()
 
     String dependencies="";
-	try {
+    try {
     	def compileConfiguration = project.configurations.getByName("runtimeClasspath")
     	def resolvedConfiguration = compileConfiguration.resolvedConfiguration
     	def resolvedArtifacts = resolvedConfiguration.resolvedArtifacts
     	resolvedArtifacts.each { dp ->
-			dependencies += "${dp.name}<br/>"
+            dependencies += "${dp.name}<br/>"
     	}
-	} catch (Exception e) {
-		dependencies = "Couldn't resolve the dependencies: $e"
-	}
+    } catch (Exception e) {
+        dependencies = "Couldn't resolve the dependencies: $e"
+    }
 
     String currentOS = System.properties['os.name']+' '+System.properties['os.version']+' '+System.properties['os.arch']
     String buildInfo = """\n\
                     <b:row>
                     <b:jumbotron>
-                        <img src="https://www.bootsfaces.net/img/bsf_logo.png"/>
+                        <b:image library="images" name="bsf_logo.png"/>
 
                         <p>Welcome to the BootsFaces Showcase and Documentation</p>
                         <p><b:navLink value="BootsFaces License" outcome="license" iconAwesome="gavel"/></p>
@@ -99,7 +105,7 @@ war.doFirst {
                         <b:button value="close" dismiss="modal" onclick="return false;"/>
                     </f:facet>
                 </b:modal>
-					   """
+                       """
     contents = contents.replaceAll( '</h1>', '</h1>'+buildInfo )
     new File( indexPage ).write( contents, 'UTF-8' )
 }
@@ -107,4 +113,3 @@ war.doFirst {
 war {
     archiveFileName = 'BootsFacesWeb.war'
 }
-

@@ -16,25 +16,18 @@
  */
 package de.beyondjava.jsf.sample.carshop;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Calendar;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-
-@ManagedBean
-@SessionScoped
 public class Car implements Serializable {
 
     /**
      *
      */
     private static final long serialVersionUID = 1L;
-
-    String brand;
 
     public int getMileage() {
         return mileage;
@@ -59,6 +52,8 @@ public class Car implements Serializable {
     public void setPrice(int price) {
         this.price = price;
     }
+
+    String brand;
 
     @NotNull
     String color;
@@ -164,8 +159,16 @@ public class Car implements Serializable {
 
     @Override
     public String toString() {
-        return "Car [brand=" + brand + ", color=" + color + ", type=" + type + ", year=" + year + ", mileage=" + mileage
-                + ", fuel=" + fuel + ", price=" + price + ", enginePower=" + enginePower + ", editable=" + editable
+        return "Car [brand=" + brand
+                + ", color=" + color
+                + ", type=" + type
+                + ", year=" + year
+                + ", mileage=" + mileage
+                + ", fuel=" + fuel
+                + ", price=" + price
+                + ", enginePower=" + enginePower
+                + ", editable=" + editable
                 + "]";
     }
+
 }

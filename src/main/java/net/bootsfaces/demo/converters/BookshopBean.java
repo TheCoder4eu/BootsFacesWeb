@@ -1,11 +1,11 @@
 package net.bootsfaces.demo.converters;
 
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.view.ViewScoped;
 
-@ManagedBean
+@Named
 @ViewScoped
 public class BookshopBean implements Serializable {
 

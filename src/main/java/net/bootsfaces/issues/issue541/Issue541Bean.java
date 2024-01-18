@@ -1,9 +1,9 @@
 package net.bootsfaces.issues.issue541;
 
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
 import java.io.Serializable;
 
-import javax.faces.view.ViewScoped;
-import javax.inject.Named;
 
 @Named("issue541Bean")
 @ViewScoped

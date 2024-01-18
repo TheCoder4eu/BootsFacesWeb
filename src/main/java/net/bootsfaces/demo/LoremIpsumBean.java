@@ -5,20 +5,20 @@ package net.bootsfaces.demo;
  *
  * @author Thecoder4.eu
  */
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.faces.model.ArrayDataModel;
+import jakarta.faces.model.DataModel;
+import jakarta.inject.Named;
 import java.io.Serializable;
 import java.util.StringTokenizer;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.model.ArrayDataModel;
-import javax.faces.model.DataModel;
 
 /**
  * Data Model Bean for Items
  *
  * @author Thecoder4.eu
  */
-@ManagedBean
+@Named
 @RequestScoped
 public class LoremIpsumBean implements Serializable {
 
