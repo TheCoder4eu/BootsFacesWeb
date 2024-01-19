@@ -5,16 +5,12 @@ import jakarta.faces.context.FacesContext;
 import jakarta.faces.convert.Converter;
 import jakarta.faces.convert.FacesConverter;
 
-@FacesConverter(value = "StringToBooleanConverter")
+@FacesConverter(value = "stringToBooleanConverter")
 public class StringToBooleanConverter implements Converter {
 
     @Override
     public Object getAsObject(FacesContext ctx, UIComponent uiComponent, String s) {
-        if (s != null && s.equals("true")) {
-            return true;
-        } else {
-            return false;
-        }
+        return s;
     }
 
     @Override
@@ -22,9 +18,7 @@ public class StringToBooleanConverter implements Converter {
         if (bool == null) {
             return "false";
         }
-        if (bool.equals(Boolean.TRUE)) {
-            return "true";
-        }
-        return "false";
+        return bool.toString();
     }
+    
 }
