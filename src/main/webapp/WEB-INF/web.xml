@@ -110,12 +110,12 @@
     
     <session-config>
         <session-timeout>30</session-timeout>
-        <tracking-mode>COOKIE</tracking-mode>
         <cookie-config>
             <name>showcase</name>
             <http-only>true</http-only>
-            <secure>false</secure>            
+            <secure>false</secure>
         </cookie-config>
+        <tracking-mode>COOKIE</tracking-mode>
     </session-config>
     
     <welcome-file-list>
