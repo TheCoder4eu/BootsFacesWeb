@@ -41,10 +41,7 @@
                     onColor="info"
                     onchange="ajax:settingsBean.action()"
                     update="@none"
-                    converter="StringToBooleanConverter">
-                    <!-- 
-                    <f:converter converterId="beerConverter" />
-                    -->
+                    converter="stringToBooleanConverter">
           </b:switch>
           <b:switch value="#{settingsBean.checkbox2}" 
                     label="switch with tooltip"
