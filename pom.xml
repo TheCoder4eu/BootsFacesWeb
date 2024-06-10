@@ -82,49 +82,49 @@
     </repositories>
 
     <dependencies>
-      <dependency>
-          <groupId>jakarta.platform</groupId>
-          <artifactId>jakarta.jakartaee-web-api</artifactId>
-          <version>10.0.0</version>
-          <scope>provided</scope>
-      </dependency>
+        <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-web-api</artifactId>
+            <version>10.0.0</version>
+            <scope>provided</scope>
+        </dependency>
 
-      <dependency>
-          <groupId>net.bootsfaces</groupId>
-          <artifactId>bootsfaces</artifactId>
-          <version>1.6.0-SNAPSHOT</version>
-      </dependency>
+        <dependency>
+            <groupId>net.bootsfaces</groupId>
+            <artifactId>bootsfaces</artifactId>
+            <version>2.0.0-SNAPSHOT</version>
+        </dependency>
 
         <!-- https://primefaces.github.io/primefaces/12_0_0/#/gettingstarted/dependencies -->
-      <dependency>
-          <groupId>org.primefaces</groupId>
-          <artifactId>primefaces</artifactId>
-          <version>12.0.0</version>
-          <classifier>jakarta</classifier>
-      </dependency>
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>12.0.0</version>
+            <classifier>jakarta</classifier>
+        </dependency>
         
-      <!-- import for primefaces example # https://mvnrepository.com/artifact/io.nayuki/qrcodegen -->
-      <dependency>
-         <groupId>io.nayuki</groupId>
-         <artifactId>qrcodegen</artifactId>
-         <version>1.8.0</version>
-      </dependency>
-      <!-- import for primefaces example # https://mvnrepository.com/artifact/org.primefaces.extensions/barcode4j-light -->
-      <dependency>
-         <groupId>org.primefaces.extensions</groupId>
-         <artifactId>barcode4j-light</artifactId>
-         <version>2.3.0</version>
-      </dependency>
-      <dependency>
-        <groupId>com.googlecode.owasp-java-html-sanitizer</groupId>
-        <artifactId>owasp-java-html-sanitizer</artifactId>
-        <version>20220608.1</version>
-      </dependency>
-      <dependency>
-        <groupId>com.google.guava</groupId>
-	<artifactId>guava</artifactId>
-	<version>32.0.1-jre</version>
-      </dependency>
+        <!-- import for primefaces example # https://mvnrepository.com/artifact/io.nayuki/qrcodegen -->
+        <dependency>
+            <groupId>io.nayuki</groupId>
+            <artifactId>qrcodegen</artifactId>
+            <version>1.8.0</version>
+        </dependency>
+        <!-- import for primefaces example # https://mvnrepository.com/artifact/org.primefaces.extensions/barcode4j-light -->
+        <dependency>
+            <groupId>org.primefaces.extensions</groupId>
+            <artifactId>barcode4j-light</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.owasp-java-html-sanitizer</groupId>
+            <artifactId>owasp-java-html-sanitizer</artifactId>
+            <version>20220608.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>32.0.1-jre</version>
+        </dependency>
         
         <!-- currently not see to be necessary -->
         <!--
@@ -234,7 +234,7 @@
             <properties>
                 <wildfly-jar-plugin.version>10.0.0.Final</wildfly-jar-plugin.version>
                 <plugin.fork.embedded>true</plugin.fork.embedded>
-                <version.wildfly>30.0.1.Final</version.wildfly>
+                <version.wildfly>31.0.1.Final</version.wildfly>
             </properties>
             <build>
                 <plugins>
