@@ -234,7 +234,7 @@
             <properties>
                 <wildfly-jar-plugin.version>10.0.0.Final</wildfly-jar-plugin.version>
                 <plugin.fork.embedded>true</plugin.fork.embedded>
-                <version.wildfly>30.0.1.Final</version.wildfly>
+                <version.wildfly>31.0.1.Final</version.wildfly>
             </properties>
             <build>
                 <plugins>
