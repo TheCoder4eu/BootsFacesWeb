@@ -87,21 +87,24 @@
         <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
         <![CDATA[
     <b:openStreetMap width="100%" height="500px"
-			center="37,-3.7" 
-			zoom="10"
-			urlTemplate="http://c.tiles.wmflabs.org/hillshading/{z}/{x}/{y}.png" />
-    ]]>
+			ccenter="37,-3.7"
+			zoom="10" zoomControl="true" dragging="true"
+			urlTemplate="https://opentopomap.org/{z}/{x}/{y}.png" />
+		]]>
 </script>
 
 		<b:openStreetMap width="100%" height="500px"
-			center="37,-3.7" 
+			center="37,-3.7"
 			zoom="10" zoomControl="true" dragging="true"
-			urlTemplate="http://c.tiles.wmflabs.org/hillshading/{z}/{x}/{y}.png"
+			urlTemplate="https://opentopomap.org/{z}/{x}/{y}.png"
                         attribution="Map data &#169; &lt;a href=\'http://openstreetmap.org\'&gt;OpenStreetMap&lt;/a&gt; contributors,&lt;a href=\'http://creativecommons.org/licenses/by-sa/2.0/\'&gt;CC-BY-SA&lt;/a&gt;"
                         />
 			
-</b:panel>			
-			<h2><a id="reference_section">Reference section</a></h2>
+</b:panel>
+	<h2><a id="reference_section">Minimap</a></h2>
+		<p>As of version 2.0.0, the minimap is broken.</p>
+
+    <h2><a id="reference_section">Reference section</a></h2>
     <ui:include src="OpenStreetMapAttributes.xhtml" />
     <script type="text/javascript">
     SyntaxHighlighter.all();
