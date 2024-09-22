@@ -1,3 +1,3 @@
-FROM quay.io/wildfly/wildfly:28.0.1.Final-jdk11
+FROM quay.io/wildfly/wildfly:30.0.1.Final-jdk11
 
 ADD target/BootsFacesWeb.war /opt/jboss/wildfly/standalone/deployments/BootsFacesWeb.war
